@@ -1,0 +1,150 @@
+{
+  "moduleId": "M22",
+  "moduleName": "Discipline & Wellbeing",
+  "portal": "lifecycle",
+  "description": "Incident logging, severity, action workflow",
+  "tags": [
+    "Risk classification",
+    "Sentiment",
+    "Privacy"
+  ],
+  "kpis": [
+    {
+      "label": "Active Discipline Items",
+      "value": "164",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M22-REC-1001",
+      "name": "Discipline & Wellbeing Record #1",
+      "referenceCode": "REF-M22-202601",
+      "scope": "Counselling sessions, case notes, confidentiality",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Risk classification",
+        "Sentiment",
+        "Privacy"
+      ],
+      "notes": "Simulated operational payload for Discipline & Wellbeing workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M22-REC-1002",
+      "name": "Discipline & Wellbeing Record #2",
+      "referenceCode": "REF-M22-202602",
+      "scope": "Anonymous anti-bullying reporting",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Risk classification",
+        "Sentiment",
+        "Privacy"
+      ],
+      "notes": "Simulated operational payload for Discipline & Wellbeing workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M22-REC-1003",
+      "name": "Discipline & Wellbeing Record #3",
+      "referenceCode": "REF-M22-202603",
+      "scope": "Health and mental-wellness check-ins",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Risk classification",
+        "Sentiment",
+        "Privacy"
+      ],
+      "notes": "Simulated operational payload for Discipline & Wellbeing workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M22-REC-1004",
+      "name": "Discipline & Wellbeing Record #4",
+      "referenceCode": "REF-M22-202604",
+      "scope": "At-risk watchlist and intervention plans",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Risk classification",
+        "Sentiment",
+        "Privacy"
+      ],
+      "notes": "Simulated operational payload for Discipline & Wellbeing workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M22-REC-1005",
+      "name": "Discipline & Wellbeing Record #5",
+      "referenceCode": "REF-M22-202605",
+      "scope": "Incident logging, severity, action workflow",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Risk classification",
+        "Sentiment",
+        "Privacy"
+      ],
+      "notes": "Simulated operational payload for Discipline & Wellbeing workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M22-01",
+      "title": "Initial Discipline & Wellbeing Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M22-02",
+      "title": "Periodic Compliance Sync for Discipline & Wellbeing",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M22-03",
+      "title": "Approval Pending for Record #M22-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Incident logging",
+      "Counselling sessions",
+      "Anonymous anti-bullying reporting",
+      "Health and mental-wellness check-ins"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

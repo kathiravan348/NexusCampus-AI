@@ -1,0 +1,144 @@
+{
+  "moduleId": "M07",
+  "moduleName": "Academics & Curriculum",
+  "portal": "academics",
+  "description": "Programme, course, subject, elective catalogue",
+  "tags": [
+    "Constraint optimisation",
+    "Knowledge graph"
+  ],
+  "kpis": [
+    {
+      "label": "Active Academics Items",
+      "value": "59",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M07-REC-1001",
+      "name": "Academics & Curriculum Record #1",
+      "referenceCode": "REF-M07-202601",
+      "scope": "Credits, prerequisites, syllabus versioning",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Constraint optimisation",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Academics & Curriculum workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M07-REC-1002",
+      "name": "Academics & Curriculum Record #2",
+      "referenceCode": "REF-M07-202602",
+      "scope": "Course Outcome \u2194 Programme Outcome mapping",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Constraint optimisation",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Academics & Curriculum workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M07-REC-1003",
+      "name": "Academics & Curriculum Record #3",
+      "referenceCode": "REF-M07-202603",
+      "scope": "Lesson plans, teaching diary, coverage tracking",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Constraint optimisation",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Academics & Curriculum workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M07-REC-1004",
+      "name": "Academics & Curriculum Record #4",
+      "referenceCode": "REF-M07-202604",
+      "scope": "Timetable generation with constraints",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Constraint optimisation",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Academics & Curriculum workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M07-REC-1005",
+      "name": "Academics & Curriculum Record #5",
+      "referenceCode": "REF-M07-202605",
+      "scope": "Substitution & class adjustment",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Constraint optimisation",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Academics & Curriculum workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M07-01",
+      "title": "Initial Academics & Curriculum Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M07-02",
+      "title": "Periodic Compliance Sync for Academics & Curriculum",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M07-03",
+      "title": "Approval Pending for Record #M07-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Programme",
+      "Credits",
+      "Course Outcome \u2194 Programme Outcome mapping",
+      "Lesson plans"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

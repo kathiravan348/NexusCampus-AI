@@ -1,0 +1,144 @@
+{
+  "moduleId": "M20",
+  "moduleName": "Parent & Student Portal",
+  "portal": "lifecycle",
+  "description": "Attendance, marks, homework, timetable, fees",
+  "tags": [
+    "Voice assistant",
+    "Text-to-SQL"
+  ],
+  "kpis": [
+    {
+      "label": "Active Parent Items",
+      "value": "150",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M20-REC-1001",
+      "name": "Parent & Student Portal Record #1",
+      "referenceCode": "REF-M20-202601",
+      "scope": "Bus live tracking, leave requests, appointments",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Voice assistant",
+        "Text-to-SQL"
+      ],
+      "notes": "Simulated operational payload for Parent & Student Portal workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M20-REC-1002",
+      "name": "Parent & Student Portal Record #2",
+      "referenceCode": "REF-M20-202602",
+      "scope": "Digital diary, remarks, achievement feed",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Voice assistant",
+        "Text-to-SQL"
+      ],
+      "notes": "Simulated operational payload for Parent & Student Portal workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M20-REC-1003",
+      "name": "Parent & Student Portal Record #3",
+      "referenceCode": "REF-M20-202603",
+      "scope": "Fee payment, receipts, document requests",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Voice assistant",
+        "Text-to-SQL"
+      ],
+      "notes": "Simulated operational payload for Parent & Student Portal workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M20-REC-1004",
+      "name": "Parent & Student Portal Record #4",
+      "referenceCode": "REF-M20-202604",
+      "scope": "Push notifications, offline-first mobile app",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Voice assistant",
+        "Text-to-SQL"
+      ],
+      "notes": "Simulated operational payload for Parent & Student Portal workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M20-REC-1005",
+      "name": "Parent & Student Portal Record #5",
+      "referenceCode": "REF-M20-202605",
+      "scope": "Attendance, marks, homework, timetable, fees",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Voice assistant",
+        "Text-to-SQL"
+      ],
+      "notes": "Simulated operational payload for Parent & Student Portal workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M20-01",
+      "title": "Initial Parent & Student Portal Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M20-02",
+      "title": "Periodic Compliance Sync for Parent & Student Portal",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M20-03",
+      "title": "Approval Pending for Record #M20-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Attendance",
+      "Bus live tracking",
+      "Digital diary",
+      "Fee payment"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

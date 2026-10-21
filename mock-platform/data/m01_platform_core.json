@@ -1,0 +1,131 @@
+{
+  "moduleId": "M01",
+  "moduleName": "Platform Core",
+  "portal": "core",
+  "description": "Multi-tenancy, isolation, data residency",
+  "tags": [],
+  "kpis": [
+    {
+      "label": "Active Platform Items",
+      "value": "17",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M01-REC-1001",
+      "name": "Platform Core Record #1",
+      "referenceCode": "REF-M01-202601",
+      "scope": "Org hierarchy & campus setup",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Platform Core workflow 1."
+    },
+    {
+      "id": "M01-REC-1002",
+      "name": "Platform Core Record #2",
+      "referenceCode": "REF-M01-202602",
+      "scope": "Academic year, terms, holiday calendar",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Platform Core workflow 2."
+    },
+    {
+      "id": "M01-REC-1003",
+      "name": "Platform Core Record #3",
+      "referenceCode": "REF-M01-202603",
+      "scope": "White-labelling: theme, domain, templates",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Platform Core workflow 3."
+    },
+    {
+      "id": "M01-REC-1004",
+      "name": "Platform Core Record #4",
+      "referenceCode": "REF-M01-202604",
+      "scope": "Feature flags, module licensing, plans",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Platform Core workflow 4."
+    },
+    {
+      "id": "M01-REC-1005",
+      "name": "Platform Core Record #5",
+      "referenceCode": "REF-M01-202605",
+      "scope": "i18n, multi-currency, timezone",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Platform Core workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M01-01",
+      "title": "Initial Platform Core Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M01-02",
+      "title": "Periodic Compliance Sync for Platform Core",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M01-03",
+      "title": "Approval Pending for Record #M01-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Multi-tenancy",
+      "Org hierarchy & campus setup",
+      "Academic year",
+      "White-labelling: theme"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

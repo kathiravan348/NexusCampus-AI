@@ -1,0 +1,144 @@
+{
+  "moduleId": "M14",
+  "moduleName": "Library",
+  "portal": "academics",
+  "description": "Catalogue, accession register, ISBN/RFID/barcode",
+  "tags": [
+    "Semantic search",
+    "Recommenders"
+  ],
+  "kpis": [
+    {
+      "label": "Active Library Items",
+      "value": "108",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M14-REC-1001",
+      "name": "Library Record #1",
+      "referenceCode": "REF-M14-202601",
+      "scope": "Issue, return, renew, reserve, fines",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Semantic search",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Library workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M14-REC-1002",
+      "name": "Library Record #2",
+      "referenceCode": "REF-M14-202602",
+      "scope": "Digital library: e-books, journals, past papers",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Semantic search",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Library workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M14-REC-1003",
+      "name": "Library Record #3",
+      "referenceCode": "REF-M14-202603",
+      "scope": "Research repository and archives",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Semantic search",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Library workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M14-REC-1004",
+      "name": "Library Record #4",
+      "referenceCode": "REF-M14-202604",
+      "scope": "Reading history, recommendations, usage reports",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Semantic search",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Library workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M14-REC-1005",
+      "name": "Library Record #5",
+      "referenceCode": "REF-M14-202605",
+      "scope": "Stock verification, weeding, vendor purchase",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Semantic search",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Library workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M14-01",
+      "title": "Initial Library Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M14-02",
+      "title": "Periodic Compliance Sync for Library",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M14-03",
+      "title": "Approval Pending for Record #M14-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Catalogue",
+      "Issue",
+      "Digital library: e-books",
+      "Research repository and archives"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

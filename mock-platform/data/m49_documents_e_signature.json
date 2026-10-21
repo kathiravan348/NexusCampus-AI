@@ -1,0 +1,134 @@
+{
+  "moduleId": "M49",
+  "moduleName": "Documents & e-Signature",
+  "portal": "operations",
+  "description": "Central document store with folders, tags, permissions",
+  "tags": [
+    "OCR",
+    "Semantic search"
+  ],
+  "kpis": [
+    {
+      "label": "Active Documents Items",
+      "value": "353",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M49-REC-1001",
+      "name": "Documents & e-Signature Record #1",
+      "referenceCode": "REF-M49-202601",
+      "scope": "Template library with merge fields and bulk generation",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "OCR",
+        "Semantic search"
+      ],
+      "notes": "Simulated operational payload for Documents & e-Signature workflow 1."
+    },
+    {
+      "id": "M49-REC-1002",
+      "name": "Documents & e-Signature Record #2",
+      "referenceCode": "REF-M49-202602",
+      "scope": "Version control, watermarking, expiry",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "OCR",
+        "Semantic search"
+      ],
+      "notes": "Simulated operational payload for Documents & e-Signature workflow 2."
+    },
+    {
+      "id": "M49-REC-1003",
+      "name": "Documents & e-Signature Record #3",
+      "referenceCode": "REF-M49-202603",
+      "scope": "e-Signature workflows: offers, consents, contracts",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "OCR",
+        "Semantic search"
+      ],
+      "notes": "Simulated operational payload for Documents & e-Signature workflow 3."
+    },
+    {
+      "id": "M49-REC-1004",
+      "name": "Documents & e-Signature Record #4",
+      "referenceCode": "REF-M49-202604",
+      "scope": "Retention schedules and legal hold",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "OCR",
+        "Semantic search"
+      ],
+      "notes": "Simulated operational payload for Documents & e-Signature workflow 4."
+    },
+    {
+      "id": "M49-REC-1005",
+      "name": "Documents & e-Signature Record #5",
+      "referenceCode": "REF-M49-202605",
+      "scope": "OCR-indexed full-text search",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "OCR",
+        "Semantic search"
+      ],
+      "notes": "Simulated operational payload for Documents & e-Signature workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M49-01",
+      "title": "Initial Documents & e-Signature Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M49-02",
+      "title": "Periodic Compliance Sync for Documents & e-Signature",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M49-03",
+      "title": "Approval Pending for Record #M49-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Central document store with folders",
+      "Template library with merge fields and bulk generation",
+      "Version control",
+      "e-Signature workflows: offers"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

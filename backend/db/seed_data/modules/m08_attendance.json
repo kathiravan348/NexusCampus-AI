@@ -1,0 +1,140 @@
+{
+  "moduleId": "M08",
+  "moduleName": "Attendance",
+  "portal": "operations",
+  "description": "Biometric, RFID, face, QR, geo-fence, manual",
+  "tags": [
+    "Face recognition",
+    "Anti-spoof",
+    "Anomaly"
+  ],
+  "kpis": [
+    {
+      "label": "Active Attendance Items",
+      "value": "66",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M08-REC-1001",
+      "name": "Attendance Record #1",
+      "referenceCode": "REF-M08-202601",
+      "scope": "Daily and period-wise capture",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Face recognition",
+        "Anti-spoof",
+        "Anomaly"
+      ],
+      "notes": "Simulated operational payload for Attendance workflow 1."
+    },
+    {
+      "id": "M08-REC-1002",
+      "name": "Attendance Record #2",
+      "referenceCode": "REF-M08-202602",
+      "scope": "Staff attendance, late / early-exit marks",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Face recognition",
+        "Anti-spoof",
+        "Anomaly"
+      ],
+      "notes": "Simulated operational payload for Attendance workflow 2."
+    },
+    {
+      "id": "M08-REC-1003",
+      "name": "Attendance Record #3",
+      "referenceCode": "REF-M08-202603",
+      "scope": "Leave integration, regularisation requests",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Face recognition",
+        "Anti-spoof",
+        "Anomaly"
+      ],
+      "notes": "Simulated operational payload for Attendance workflow 3."
+    },
+    {
+      "id": "M08-REC-1004",
+      "name": "Attendance Record #4",
+      "referenceCode": "REF-M08-202604",
+      "scope": "Shortage & condonation alerts to parents",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Face recognition",
+        "Anti-spoof",
+        "Anomaly"
+      ],
+      "notes": "Simulated operational payload for Attendance workflow 4."
+    },
+    {
+      "id": "M08-REC-1005",
+      "name": "Attendance Record #5",
+      "referenceCode": "REF-M08-202605",
+      "scope": "Heatmaps and attendance analytics",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Face recognition",
+        "Anti-spoof",
+        "Anomaly"
+      ],
+      "notes": "Simulated operational payload for Attendance workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M08-01",
+      "title": "Initial Attendance Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M08-02",
+      "title": "Periodic Compliance Sync for Attendance",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M08-03",
+      "title": "Approval Pending for Record #M08-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Biometric",
+      "Daily and period-wise capture",
+      "Staff attendance",
+      "Leave integration"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

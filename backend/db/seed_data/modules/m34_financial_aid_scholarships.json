@@ -1,0 +1,144 @@
+{
+  "moduleId": "M34",
+  "moduleName": "Financial Aid & Scholarships",
+  "portal": "lifecycle",
+  "description": "Aid application, need assessment, packaging",
+  "tags": [
+    "Eligibility matching",
+    "Document AI"
+  ],
+  "kpis": [
+    {
+      "label": "Active Financial Items",
+      "value": "248",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M34-REC-1001",
+      "name": "Financial Aid & Scholarships Record #1",
+      "referenceCode": "REF-M34-202601",
+      "scope": "Government and board scholarship schemes",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Eligibility matching",
+        "Document AI"
+      ],
+      "notes": "Simulated operational payload for Financial Aid & Scholarships workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M34-REC-1002",
+      "name": "Financial Aid & Scholarships Record #2",
+      "referenceCode": "REF-M34-202602",
+      "scope": "Corporate sponsorship and CSR-funded seats",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Eligibility matching",
+        "Document AI"
+      ],
+      "notes": "Simulated operational payload for Financial Aid & Scholarships workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M34-REC-1003",
+      "name": "Financial Aid & Scholarships Record #3",
+      "referenceCode": "REF-M34-202603",
+      "scope": "Third-party billing and sponsor invoicing",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Eligibility matching",
+        "Document AI"
+      ],
+      "notes": "Simulated operational payload for Financial Aid & Scholarships workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M34-REC-1004",
+      "name": "Financial Aid & Scholarships Record #4",
+      "referenceCode": "REF-M34-202604",
+      "scope": "Loan, EMI and income-share partner integrations",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Eligibility matching",
+        "Document AI"
+      ],
+      "notes": "Simulated operational payload for Financial Aid & Scholarships workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M34-REC-1005",
+      "name": "Financial Aid & Scholarships Record #5",
+      "referenceCode": "REF-M34-202605",
+      "scope": "Disbursement, verification, renewal, revocation",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Eligibility matching",
+        "Document AI"
+      ],
+      "notes": "Simulated operational payload for Financial Aid & Scholarships workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M34-01",
+      "title": "Initial Financial Aid & Scholarships Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M34-02",
+      "title": "Periodic Compliance Sync for Financial Aid & Scholarships",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M34-03",
+      "title": "Approval Pending for Record #M34-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Aid application",
+      "Government and board scholarship schemes",
+      "Corporate sponsorship and CSR-funded seats",
+      "Third-party billing and sponsor invoicing"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

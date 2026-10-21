@@ -1,0 +1,144 @@
+{
+  "moduleId": "M57",
+  "moduleName": "Service Desk & Student Services",
+  "portal": "lifecycle",
+  "description": "One-stop catalogue: IT, admin, hostel, transport, finance",
+  "tags": [
+    "Ticket triage",
+    "RAG deflection"
+  ],
+  "kpis": [
+    {
+      "label": "Active Service Items",
+      "value": "409",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M57-REC-1001",
+      "name": "Service Desk & Student Services Record #1",
+      "referenceCode": "REF-M57-202601",
+      "scope": "Ticketing, SLAs, escalation, satisfaction rating",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Ticket triage",
+        "RAG deflection"
+      ],
+      "notes": "Simulated operational payload for Service Desk & Student Services workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M57-REC-1002",
+      "name": "Service Desk & Student Services Record #2",
+      "referenceCode": "REF-M57-202602",
+      "scope": "Knowledge base and self-service answers",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Ticket triage",
+        "RAG deflection"
+      ],
+      "notes": "Simulated operational payload for Service Desk & Student Services workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M57-REC-1003",
+      "name": "Service Desk & Student Services Record #3",
+      "referenceCode": "REF-M57-202603",
+      "scope": "Bonafide, transcript and document request workflows",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Ticket triage",
+        "RAG deflection"
+      ],
+      "notes": "Simulated operational payload for Service Desk & Student Services workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M57-REC-1004",
+      "name": "Service Desk & Student Services Record #4",
+      "referenceCode": "REF-M57-202604",
+      "scope": "Appointment booking with offices and counsellors",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Ticket triage",
+        "RAG deflection"
+      ],
+      "notes": "Simulated operational payload for Service Desk & Student Services workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M57-REC-1005",
+      "name": "Service Desk & Student Services Record #5",
+      "referenceCode": "REF-M57-202605",
+      "scope": "Queue and token management for front desks",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Ticket triage",
+        "RAG deflection"
+      ],
+      "notes": "Simulated operational payload for Service Desk & Student Services workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M57-01",
+      "title": "Initial Service Desk & Student Services Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M57-02",
+      "title": "Periodic Compliance Sync for Service Desk & Student Services",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M57-03",
+      "title": "Approval Pending for Record #M57-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "One-stop catalogue: IT",
+      "Ticketing",
+      "Knowledge base and self-service answers",
+      "Bonafide"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

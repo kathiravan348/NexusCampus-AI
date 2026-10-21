@@ -1,0 +1,134 @@
+{
+  "moduleId": "M42",
+  "moduleName": "Smart Campus & IoT",
+  "portal": "operations",
+  "description": "Device fleet: biometric, RFID, cameras, smart boards",
+  "tags": [
+    "Edge inference",
+    "Anomaly detection"
+  ],
+  "kpis": [
+    {
+      "label": "Active Smart Items",
+      "value": "304",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M42-REC-1001",
+      "name": "Smart Campus & IoT Record #1",
+      "referenceCode": "REF-M42-202601",
+      "scope": "Digital signage and notice screens",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Edge inference",
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Smart Campus & IoT workflow 1."
+    },
+    {
+      "id": "M42-REC-1002",
+      "name": "Smart Campus & IoT Record #2",
+      "referenceCode": "REF-M42-202602",
+      "scope": "Energy, water, air-quality and occupancy sensors",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Edge inference",
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Smart Campus & IoT workflow 2."
+    },
+    {
+      "id": "M42-REC-1003",
+      "name": "Smart Campus & IoT Record #3",
+      "referenceCode": "REF-M42-202603",
+      "scope": "Edge gateway with local buffering",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Edge inference",
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Smart Campus & IoT workflow 3."
+    },
+    {
+      "id": "M42-REC-1004",
+      "name": "Smart Campus & IoT Record #4",
+      "referenceCode": "REF-M42-202604",
+      "scope": "Device health, firmware, provisioning",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Edge inference",
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Smart Campus & IoT workflow 4."
+    },
+    {
+      "id": "M42-REC-1005",
+      "name": "Smart Campus & IoT Record #5",
+      "referenceCode": "REF-M42-202605",
+      "scope": "Automation rules and alerts",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Edge inference",
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Smart Campus & IoT workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M42-01",
+      "title": "Initial Smart Campus & IoT Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M42-02",
+      "title": "Periodic Compliance Sync for Smart Campus & IoT",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M42-03",
+      "title": "Approval Pending for Record #M42-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Device fleet: biometric",
+      "Digital signage and notice screens",
+      "Energy",
+      "Edge gateway with local buffering"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

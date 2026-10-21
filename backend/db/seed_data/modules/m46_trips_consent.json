@@ -1,0 +1,128 @@
+{
+  "moduleId": "M46",
+  "moduleName": "Trips & Consent",
+  "portal": "operations",
+  "description": "Trip planning, itinerary, costing, capacity",
+  "tags": [
+    "Risk drafting"
+  ],
+  "kpis": [
+    {
+      "label": "Active Trips Items",
+      "value": "332",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M46-REC-1001",
+      "name": "Trips & Consent Record #1",
+      "referenceCode": "REF-M46-202601",
+      "scope": "Risk assessments and approval workflow",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Risk drafting"
+      ],
+      "notes": "Simulated operational payload for Trips & Consent workflow 1."
+    },
+    {
+      "id": "M46-REC-1002",
+      "name": "Trips & Consent Record #2",
+      "referenceCode": "REF-M46-202602",
+      "scope": "Digital consent forms with e-signature",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Risk drafting"
+      ],
+      "notes": "Simulated operational payload for Trips & Consent workflow 2."
+    },
+    {
+      "id": "M46-REC-1003",
+      "name": "Trips & Consent Record #3",
+      "referenceCode": "REF-M46-202603",
+      "scope": "Medical and dietary information packs",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Risk drafting"
+      ],
+      "notes": "Simulated operational payload for Trips & Consent workflow 3."
+    },
+    {
+      "id": "M46-REC-1004",
+      "name": "Trips & Consent Record #4",
+      "referenceCode": "REF-M46-202604",
+      "scope": "Headcount, live tracking, check-in points",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Risk drafting"
+      ],
+      "notes": "Simulated operational payload for Trips & Consent workflow 4."
+    },
+    {
+      "id": "M46-REC-1005",
+      "name": "Trips & Consent Record #5",
+      "referenceCode": "REF-M46-202605",
+      "scope": "Incident reporting and post-trip review",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Risk drafting"
+      ],
+      "notes": "Simulated operational payload for Trips & Consent workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M46-01",
+      "title": "Initial Trips & Consent Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M46-02",
+      "title": "Periodic Compliance Sync for Trips & Consent",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M46-03",
+      "title": "Approval Pending for Record #M46-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Trip planning",
+      "Risk assessments and approval workflow",
+      "Digital consent forms with e-signature",
+      "Medical and dietary information packs"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deployment Architecture: NexusCampus AI</title>
+    <style>
+        /* ============================ tokens ============================ */
+        :root {
+            --bg-0: #060911;
+            --bg-1: #0c1220;
+            --bg-2: #111a2c;
+            --line: #243250;
+            --fg-0: #eaf1ff;
+            --fg-1: #b4c3e0;
+            --fg-2: #7e90b3;
+            --a1: #58a6ff;
+            --sans: "Segoe UI", Inter, system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 60px 40px;
+            background: 
+                radial-gradient(1100px 600px at 12% -10%, rgba(88, 166, 255, .13), transparent 60%),
+                var(--bg-0);
+            color: var(--fg-0);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 { 
+            font-size: 38px; 
+            margin-bottom: 10px; 
+            color: var(--a1);
+        }
+
+        .subtitle { 
+            color: var(--fg-2); 
+            font-size: 18px; 
+            margin-bottom: 40px; 
+        }
+
+        .diagram-wrapper {
+            background: var(--bg-1);
+            border: 1px solid var(--line);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            overflow-x: auto;
+            text-align: center;
+        }
+
+        .mermaid {
+            display: inline-block;
+            text-align: left;
+        }
+        
+        .description-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+        
+        .desc-card {
+            background: var(--bg-2);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+        }
+        
+        .desc-card h3 {
+            margin-top: 0;
+            color: var(--fg-0);
+            font-size: 18px;
+        }
+        
+        .desc-card p {
+            color: var(--fg-1);
+            font-size: 15px;
+            line-height: 1.5;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>System Architecture & Operations</h1>
+        <div class="subtitle">NexusCampus AI: Deployment, Observability, and Infrastructure Blueprint</div>
+        
+        <div class="diagram-wrapper">
+<pre class="mermaid">
+flowchart TD
+    %% 1. Client Layer
+    subgraph Clients["1. Client Layer"]
+        Web["Web Application"]
+        Mob["Mobile App"]
+    end
+
+    %% 2. Edge / Gateway
+    subgraph Edge["2. Edge Network & API Gateway"]
+        CDN["CDN / WAF"]
+        GW["API Gateway / Load Balancer"]
+    end
+
+    %% 3. Application Layer
+    subgraph AppLayer["3. Application Core (Docker / Kubernetes)"]
+        Auth["Auth & Identity Service"]
+        CoreAPI["Core ERP Modules API"]
+        AI_Orch["AI Orchestration / Agent Layer"]
+    end
+
+    %% 4. AI Infrastructure
+    subgraph AI["4. AI & ML Infrastructure"]
+        ExtLLM["External LLM Providers"]
+        VDB[("Vector Database")]
+    end
+
+    %% 5. Data Layer
+    subgraph Data["5. Persistence Layer"]
+        RDB[("Relational DB: PostgreSQL - Multi-tenant")]
+        Cache[("Redis Cache")]
+        Blob[("Object Storage: S3")]
+    end
+
+    %% 6. Observability Layer
+    subgraph Obs["6. Observability & Monitoring"]
+        Log["Centralized Logging (ELK / Loki)"]
+        Mon["Metrics & APM (Datadog / Prometheus)"]
+        Alert["Alerting (PagerDuty)"]
+    end
+
+    %% 7. CI/CD & Deploy
+    subgraph Deploy["7. CI/CD & Provisioning"]
+        Pipe["CI/CD Pipelines (GitHub Actions)"]
+        IaC["Infrastructure as Code (Terraform)"]
+    end
+
+    %% Connections
+    Clients --> CDN
+    CDN --> GW
+    GW --> Auth
+    GW --> CoreAPI
+    GW --> AI_Orch
+    
+    CoreAPI --> RDB
+    CoreAPI --> Cache
+    CoreAPI --> Blob
+    
+    AI_Orch --> ExtLLM
+    AI_Orch --> VDB
+    AI_Orch --> CoreAPI
+    
+    AppLayer -.->|Logs| Log
+    AppLayer -.->|Metrics| Mon
+    Data -.->|Metrics| Mon
+    Mon --> Alert
+    
+    Pipe --> AppLayer
+    IaC --> Edge
+    IaC --> Data
+    IaC --> AI
+</pre>
+        </div>
+        
+        <div class="description-grid">
+            <div class="desc-card">
+                <h3>Observability & Monitoring</h3>
+                <p>All core containers and databases stream metrics to the APM (Application Performance Monitoring) tool. Application logs are centralized into a logging cluster (like ELK or Loki) for easy debugging. Alerts are triggered based on latency spikes, error rates, or infrastructure failures.</p>
+            </div>
+            <div class="desc-card">
+                <h3>Deployment & CI/CD</h3>
+                <p>Infrastructure is strictly managed via Infrastructure-as-Code (Terraform) to ensure environments are reproducible. CI/CD pipelines run automated tests, build Docker images, and deploy them to the container orchestration layer (Kubernetes) automatically.</p>
+            </div>
+            <div class="desc-card">
+                <h3>Application Core Isolation</h3>
+                <p>The core business logic (ERP API) is distinctly separated from the AI Orchestration layer. This ensures that the core application remains highly available and scalable even if the AI components experience heavy load or rate-limiting from external LLM providers.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Load Mermaid -->
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'dark',
+            securityLevel: 'loose',
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis'
+            }
+        });
+    </script>
+</body>
+</html>

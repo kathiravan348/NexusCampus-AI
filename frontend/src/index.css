@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light Theme (Default Light) */
+    --bg-0: #f4f7fc;
+    --bg-1: #ffffff;
+    --bg-2: #fbfcfe;
+    --bg-3: #eef2f8;
+    --line: #d5dded;
+    --line-soft: #e5ebf4;
+    --fg-0: #101a2b;
+    --fg-1: #3c4b63;
+    --fg-2: #6a7a94;
+    
+    /* Brand Colors */
+    --primary: #0969da;
+    --secondary: #8250df;
+    
+    /* Semantic Colors */
+    --success: #0f8a5f;
+    --warning: #bc4c00;
+    --error: #cf222e;
+    --info: #0969da;
+  }
+
+  /* Dark Theme */
+  .dark {
+    --bg-0: #060911;
+    --bg-1: #0c1220;
+    --bg-2: #111a2c;
+    --bg-3: #18233c;
+    --line: #243250;
+    --line-soft: #1b2740;
+    --fg-0: #eaf1ff;
+    --fg-1: #b4c3e0;
+    --fg-2: #7e90b3;
+    
+    /* Brand Colors */
+    --primary: #58a6ff;
+    --secondary: #d2a8ff;
+    
+    /* Semantic Colors */
+    --success: #7ee2b8;
+    --warning: #ffa657;
+    --error: #ff7b72;
+    --info: #58a6ff;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-bg-0 text-fg-0 font-sans antialiased;
+    /* Theme background gradient logic can be placed here or applied via components */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: var(--line-soft);
+    border-radius: 10px;
+  }
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background-color: var(--fg-2);
+  }
+}

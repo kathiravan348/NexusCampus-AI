@@ -1,0 +1,144 @@
+{
+  "moduleId": "M16",
+  "moduleName": "Inventory & Assets",
+  "portal": "finance",
+  "description": "Stores, categories, stock, batch/serial tracking",
+  "tags": [
+    "Demand forecasting",
+    "Reorder agent"
+  ],
+  "kpis": [
+    {
+      "label": "Active Inventory Items",
+      "value": "122",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M16-REC-1001",
+      "name": "Inventory & Assets Record #1",
+      "referenceCode": "REF-M16-202601",
+      "scope": "Requisition, issue, return, inter-campus transfer",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Demand forecasting",
+        "Reorder agent"
+      ],
+      "notes": "Simulated operational payload for Inventory & Assets workflow 1.",
+      "amount": 1250,
+      "currency": "USD"
+    },
+    {
+      "id": "M16-REC-1002",
+      "name": "Inventory & Assets Record #2",
+      "referenceCode": "REF-M16-202602",
+      "scope": "Purchase orders, GRN, stock valuation",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Demand forecasting",
+        "Reorder agent"
+      ],
+      "notes": "Simulated operational payload for Inventory & Assets workflow 2.",
+      "amount": 2500,
+      "currency": "USD"
+    },
+    {
+      "id": "M16-REC-1003",
+      "name": "Inventory & Assets Record #3",
+      "referenceCode": "REF-M16-202603",
+      "scope": "Fixed assets, depreciation, AMC, warranty",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Demand forecasting",
+        "Reorder agent"
+      ],
+      "notes": "Simulated operational payload for Inventory & Assets workflow 3.",
+      "amount": 3750,
+      "currency": "USD"
+    },
+    {
+      "id": "M16-REC-1004",
+      "name": "Inventory & Assets Record #4",
+      "referenceCode": "REF-M16-202604",
+      "scope": "Lab equipment, sports kit, uniforms, books sale",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Demand forecasting",
+        "Reorder agent"
+      ],
+      "notes": "Simulated operational payload for Inventory & Assets workflow 4.",
+      "amount": 5000,
+      "currency": "USD"
+    },
+    {
+      "id": "M16-REC-1005",
+      "name": "Inventory & Assets Record #5",
+      "referenceCode": "REF-M16-202605",
+      "scope": "Maintenance tickets and service history",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Demand forecasting",
+        "Reorder agent"
+      ],
+      "notes": "Simulated operational payload for Inventory & Assets workflow 5.",
+      "amount": 6250,
+      "currency": "USD"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M16-01",
+      "title": "Initial Inventory & Assets Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M16-02",
+      "title": "Periodic Compliance Sync for Inventory & Assets",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M16-03",
+      "title": "Approval Pending for Record #M16-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Stores",
+      "Requisition",
+      "Purchase orders",
+      "Fixed assets"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

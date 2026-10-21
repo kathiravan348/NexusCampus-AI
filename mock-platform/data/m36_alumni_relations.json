@@ -1,0 +1,144 @@
+{
+  "moduleId": "M36",
+  "moduleName": "Alumni Relations",
+  "portal": "lifecycle",
+  "description": "Alumni directory, chapters, class years",
+  "tags": [
+    "Engagement scoring",
+    "Matching"
+  ],
+  "kpis": [
+    {
+      "label": "Active Alumni Items",
+      "value": "262",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M36-REC-1001",
+      "name": "Alumni Relations Record #1",
+      "referenceCode": "REF-M36-202601",
+      "scope": "Engagement scoring and lifecycle",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Engagement scoring",
+        "Matching"
+      ],
+      "notes": "Simulated operational payload for Alumni Relations workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M36-REC-1002",
+      "name": "Alumni Relations Record #2",
+      "referenceCode": "REF-M36-202602",
+      "scope": "Reunions, events, newsletters",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Engagement scoring",
+        "Matching"
+      ],
+      "notes": "Simulated operational payload for Alumni Relations workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M36-REC-1003",
+      "name": "Alumni Relations Record #3",
+      "referenceCode": "REF-M36-202603",
+      "scope": "Mentorship and alumni-to-student matching",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Engagement scoring",
+        "Matching"
+      ],
+      "notes": "Simulated operational payload for Alumni Relations workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M36-REC-1004",
+      "name": "Alumni Relations Record #4",
+      "referenceCode": "REF-M36-202604",
+      "scope": "Alumni job board and referrals",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Engagement scoring",
+        "Matching"
+      ],
+      "notes": "Simulated operational payload for Alumni Relations workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M36-REC-1005",
+      "name": "Alumni Relations Record #5",
+      "referenceCode": "REF-M36-202605",
+      "scope": "Legacy admissions linkage and giving integration",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Engagement scoring",
+        "Matching"
+      ],
+      "notes": "Simulated operational payload for Alumni Relations workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M36-01",
+      "title": "Initial Alumni Relations Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M36-02",
+      "title": "Periodic Compliance Sync for Alumni Relations",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M36-03",
+      "title": "Approval Pending for Record #M36-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Alumni directory",
+      "Engagement scoring and lifecycle",
+      "Reunions",
+      "Mentorship and alumni-to-student matching"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

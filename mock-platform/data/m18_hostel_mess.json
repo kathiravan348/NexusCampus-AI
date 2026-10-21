@@ -1,0 +1,134 @@
+{
+  "moduleId": "M18",
+  "moduleName": "Hostel & Mess",
+  "portal": "operations",
+  "description": "Blocks, rooms, beds, allotment and vacate",
+  "tags": [
+    "Forecasting",
+    "Text classification"
+  ],
+  "kpis": [
+    {
+      "label": "Active Hostel Items",
+      "value": "136",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M18-REC-1001",
+      "name": "Hostel & Mess Record #1",
+      "referenceCode": "REF-M18-202601",
+      "scope": "Warden duty, in/out register, visitor pass",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Forecasting",
+        "Text classification"
+      ],
+      "notes": "Simulated operational payload for Hostel & Mess workflow 1."
+    },
+    {
+      "id": "M18-REC-1002",
+      "name": "Hostel & Mess Record #2",
+      "referenceCode": "REF-M18-202602",
+      "scope": "Late-entry alerts, night attendance",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Forecasting",
+        "Text classification"
+      ],
+      "notes": "Simulated operational payload for Hostel & Mess workflow 2."
+    },
+    {
+      "id": "M18-REC-1003",
+      "name": "Hostel & Mess Record #3",
+      "referenceCode": "REF-M18-202603",
+      "scope": "Mess menu planning, billing, waste tracking",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Forecasting",
+        "Text classification"
+      ],
+      "notes": "Simulated operational payload for Hostel & Mess workflow 3."
+    },
+    {
+      "id": "M18-REC-1004",
+      "name": "Hostel & Mess Record #4",
+      "referenceCode": "REF-M18-202604",
+      "scope": "Complaints and maintenance requests",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Forecasting",
+        "Text classification"
+      ],
+      "notes": "Simulated operational payload for Hostel & Mess workflow 4."
+    },
+    {
+      "id": "M18-REC-1005",
+      "name": "Hostel & Mess Record #5",
+      "referenceCode": "REF-M18-202605",
+      "scope": "Blocks, rooms, beds, allotment and vacate",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Forecasting",
+        "Text classification"
+      ],
+      "notes": "Simulated operational payload for Hostel & Mess workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M18-01",
+      "title": "Initial Hostel & Mess Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M18-02",
+      "title": "Periodic Compliance Sync for Hostel & Mess",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M18-03",
+      "title": "Approval Pending for Record #M18-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Blocks",
+      "Warden duty",
+      "Late-entry alerts",
+      "Mess menu planning"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

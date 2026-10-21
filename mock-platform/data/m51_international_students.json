@@ -1,0 +1,144 @@
+{
+  "moduleId": "M51",
+  "moduleName": "International Students",
+  "portal": "lifecycle",
+  "description": "International application and credential evaluation",
+  "tags": [
+    "Credential mapping",
+    "Translation"
+  ],
+  "kpis": [
+    {
+      "label": "Active International Items",
+      "value": "367",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M51-REC-1001",
+      "name": "International Students Record #1",
+      "referenceCode": "REF-M51-202601",
+      "scope": "Visa documents (I-20 / CAS), SEVIS / UKVI style reporting",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Credential mapping",
+        "Translation"
+      ],
+      "notes": "Simulated operational payload for International Students workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M51-REC-1002",
+      "name": "International Students Record #2",
+      "referenceCode": "REF-M51-202602",
+      "scope": "Overseas agent management and commissions",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Credential mapping",
+        "Translation"
+      ],
+      "notes": "Simulated operational payload for International Students workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M51-REC-1003",
+      "name": "International Students Record #3",
+      "referenceCode": "REF-M51-202603",
+      "scope": "Multi-currency payments and FX handling",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Credential mapping",
+        "Translation"
+      ],
+      "notes": "Simulated operational payload for International Students workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M51-REC-1004",
+      "name": "International Students Record #4",
+      "referenceCode": "REF-M51-202604",
+      "scope": "Arrival, orientation, housing, buddy programme",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Credential mapping",
+        "Translation"
+      ],
+      "notes": "Simulated operational payload for International Students workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M51-REC-1005",
+      "name": "International Students Record #5",
+      "referenceCode": "REF-M51-202605",
+      "scope": "Attendance and status compliance monitoring",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Credential mapping",
+        "Translation"
+      ],
+      "notes": "Simulated operational payload for International Students workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M51-01",
+      "title": "Initial International Students Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M51-02",
+      "title": "Periodic Compliance Sync for International Students",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M51-03",
+      "title": "Approval Pending for Record #M51-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "International application and credential evaluation",
+      "Visa documents (I-20 / CAS)",
+      "Overseas agent management and commissions",
+      "Multi-currency payments and FX handling"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "moduleId": "M25",
+  "moduleName": "Research & Publications",
+  "portal": "governance",
+  "description": "Research projects, grants, funding, milestones",
+  "tags": [
+    "Semantic search",
+    "Similarity"
+  ],
+  "kpis": [
+    {
+      "label": "Active Research Items",
+      "value": "185",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M25-REC-1001",
+      "name": "Research & Publications Record #1",
+      "referenceCode": "REF-M25-202601",
+      "scope": "Publications, citations, patents, IPR",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Semantic search",
+        "Similarity"
+      ],
+      "notes": "Simulated operational payload for Research & Publications workflow 1.",
+      "staffId": "FAC-01",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M25-REC-1002",
+      "name": "Research & Publications Record #2",
+      "referenceCode": "REF-M25-202602",
+      "scope": "Plagiarism checks and collaboration workspaces",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Semantic search",
+        "Similarity"
+      ],
+      "notes": "Simulated operational payload for Research & Publications workflow 2.",
+      "staffId": "FAC-02",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M25-REC-1003",
+      "name": "Research & Publications Record #3",
+      "referenceCode": "REF-M25-202603",
+      "scope": "Research analytics and rankings input",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Semantic search",
+        "Similarity"
+      ],
+      "notes": "Simulated operational payload for Research & Publications workflow 3.",
+      "staffId": "FAC-03",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M25-REC-1004",
+      "name": "Research & Publications Record #4",
+      "referenceCode": "REF-M25-202604",
+      "scope": "Research projects, grants, funding, milestones",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Semantic search",
+        "Similarity"
+      ],
+      "notes": "Simulated operational payload for Research & Publications workflow 4.",
+      "staffId": "FAC-04",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M25-REC-1005",
+      "name": "Research & Publications Record #5",
+      "referenceCode": "REF-M25-202605",
+      "scope": "Publications, citations, patents, IPR",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Semantic search",
+        "Similarity"
+      ],
+      "notes": "Simulated operational payload for Research & Publications workflow 5.",
+      "staffId": "FAC-05",
+      "department": "Faculty of Computing"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M25-01",
+      "title": "Initial Research & Publications Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M25-02",
+      "title": "Periodic Compliance Sync for Research & Publications",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M25-03",
+      "title": "Approval Pending for Record #M25-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Research projects",
+      "Publications",
+      "Plagiarism checks and collaboration workspaces",
+      "Research analytics and rankings input"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

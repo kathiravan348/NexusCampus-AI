@@ -1,0 +1,131 @@
+{
+  "moduleId": "M63",
+  "moduleName": "White-label App Factory",
+  "portal": "core",
+  "description": "Per-tenant branded app build and store publishing",
+  "tags": [],
+  "kpis": [
+    {
+      "label": "Active White-label Items",
+      "value": "451",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M63-REC-1001",
+      "name": "White-label App Factory Record #1",
+      "referenceCode": "REF-M63-202601",
+      "scope": "Custom icon, splash, theme, module visibility",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for White-label App Factory workflow 1."
+    },
+    {
+      "id": "M63-REC-1002",
+      "name": "White-label App Factory Record #2",
+      "referenceCode": "REF-M63-202602",
+      "scope": "Push certificates, deep links, store metadata",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for White-label App Factory workflow 2."
+    },
+    {
+      "id": "M63-REC-1003",
+      "name": "White-label App Factory Record #3",
+      "referenceCode": "REF-M63-202603",
+      "scope": "Staged rollout and forced-update policy",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for White-label App Factory workflow 3."
+    },
+    {
+      "id": "M63-REC-1004",
+      "name": "White-label App Factory Record #4",
+      "referenceCode": "REF-M63-202604",
+      "scope": "App analytics per tenant",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for White-label App Factory workflow 4."
+    },
+    {
+      "id": "M63-REC-1005",
+      "name": "White-label App Factory Record #5",
+      "referenceCode": "REF-M63-202605",
+      "scope": "Per-tenant branded app build and store publishing",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for White-label App Factory workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M63-01",
+      "title": "Initial White-label App Factory Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M63-02",
+      "title": "Periodic Compliance Sync for White-label App Factory",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M63-03",
+      "title": "Approval Pending for Record #M63-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Per-tenant branded app build and store publishing",
+      "Custom icon",
+      "Push certificates",
+      "Staged rollout and forced-update policy"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

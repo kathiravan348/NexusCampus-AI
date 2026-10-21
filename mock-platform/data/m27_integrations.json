@@ -1,0 +1,131 @@
+{
+  "moduleId": "M27",
+  "moduleName": "Integrations",
+  "portal": "core",
+  "description": "Payment gateways; accounting (Tally/Zoho/QuickBooks)",
+  "tags": [],
+  "kpis": [
+    {
+      "label": "Active Integrations Items",
+      "value": "199",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M27-REC-1001",
+      "name": "Integrations Record #1",
+      "referenceCode": "REF-M27-202601",
+      "scope": "SMS, email, WhatsApp Business API, IVR",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Integrations workflow 1."
+    },
+    {
+      "id": "M27-REC-1002",
+      "name": "Integrations Record #2",
+      "referenceCode": "REF-M27-202602",
+      "scope": "Google Workspace / Microsoft 365 / Zoom / Teams",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Integrations workflow 2."
+    },
+    {
+      "id": "M27-REC-1003",
+      "name": "Integrations Record #3",
+      "referenceCode": "REF-M27-202603",
+      "scope": "Biometric & RFID devices, IP cameras, GPS trackers",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Integrations workflow 3."
+    },
+    {
+      "id": "M27-REC-1004",
+      "name": "Integrations Record #4",
+      "referenceCode": "REF-M27-202604",
+      "scope": "Government, board and university APIs",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Integrations workflow 4."
+    },
+    {
+      "id": "M27-REC-1005",
+      "name": "Integrations Record #5",
+      "referenceCode": "REF-M27-202605",
+      "scope": "Identity providers, HRMS, external ERP",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Integrations workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M27-01",
+      "title": "Initial Integrations Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M27-02",
+      "title": "Periodic Compliance Sync for Integrations",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M27-03",
+      "title": "Approval Pending for Record #M27-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Payment gateways; accounting (Tally/Zoho/QuickBooks)",
+      "SMS",
+      "Google Workspace / Microsoft 365 / Zoom / Teams",
+      "Biometric & RFID devices"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

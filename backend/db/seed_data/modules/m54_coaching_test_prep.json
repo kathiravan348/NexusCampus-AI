@@ -1,0 +1,144 @@
+{
+  "moduleId": "M54",
+  "moduleName": "Coaching & Test-Prep",
+  "portal": "academics",
+  "description": "Batch and doubt-session scheduling",
+  "tags": [
+    "Rank prediction",
+    "Adaptive testing"
+  ],
+  "kpis": [
+    {
+      "label": "Active Coaching Items",
+      "value": "388",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M54-REC-1001",
+      "name": "Coaching & Test-Prep Record #1",
+      "referenceCode": "REF-M54-202601",
+      "scope": "Test series, sectional tests, all-India ranking",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Rank prediction",
+        "Adaptive testing"
+      ],
+      "notes": "Simulated operational payload for Coaching & Test-Prep workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M54-REC-1002",
+      "name": "Coaching & Test-Prep Record #2",
+      "referenceCode": "REF-M54-202602",
+      "scope": "Rank prediction and college-fit prediction",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Rank prediction",
+        "Adaptive testing"
+      ],
+      "notes": "Simulated operational payload for Coaching & Test-Prep workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M54-REC-1003",
+      "name": "Coaching & Test-Prep Record #3",
+      "referenceCode": "REF-M54-202603",
+      "scope": "Faculty payout by hours or batch performance",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Rank prediction",
+        "Adaptive testing"
+      ],
+      "notes": "Simulated operational payload for Coaching & Test-Prep workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M54-REC-1004",
+      "name": "Coaching & Test-Prep Record #4",
+      "referenceCode": "REF-M54-202604",
+      "scope": "Question bank marketplace and paper licensing",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Rank prediction",
+        "Adaptive testing"
+      ],
+      "notes": "Simulated operational payload for Coaching & Test-Prep workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M54-REC-1005",
+      "name": "Coaching & Test-Prep Record #5",
+      "referenceCode": "REF-M54-202605",
+      "scope": "Multi-branch batch replication",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Rank prediction",
+        "Adaptive testing"
+      ],
+      "notes": "Simulated operational payload for Coaching & Test-Prep workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M54-01",
+      "title": "Initial Coaching & Test-Prep Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M54-02",
+      "title": "Periodic Compliance Sync for Coaching & Test-Prep",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M54-03",
+      "title": "Approval Pending for Record #M54-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Batch and doubt-session scheduling",
+      "Test series",
+      "Rank prediction and college-fit prediction",
+      "Faculty payout by hours or batch performance"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

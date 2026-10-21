@@ -1,0 +1,144 @@
+{
+  "moduleId": "M35",
+  "moduleName": "Fundraising & Endowment",
+  "portal": "finance",
+  "description": "Donor CRM, segmentation, giving history",
+  "tags": [
+    "Propensity to give",
+    "Appeal drafting"
+  ],
+  "kpis": [
+    {
+      "label": "Active Fundraising Items",
+      "value": "255",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M35-REC-1001",
+      "name": "Fundraising & Endowment Record #1",
+      "referenceCode": "REF-M35-202601",
+      "scope": "Campaigns, appeals, giving days, crowdfunding pages",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Propensity to give",
+        "Appeal drafting"
+      ],
+      "notes": "Simulated operational payload for Fundraising & Endowment workflow 1.",
+      "amount": 1250,
+      "currency": "USD"
+    },
+    {
+      "id": "M35-REC-1002",
+      "name": "Fundraising & Endowment Record #2",
+      "referenceCode": "REF-M35-202602",
+      "scope": "Pledges, recurring gifts, matching gifts",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Propensity to give",
+        "Appeal drafting"
+      ],
+      "notes": "Simulated operational payload for Fundraising & Endowment workflow 2.",
+      "amount": 2500,
+      "currency": "USD"
+    },
+    {
+      "id": "M35-REC-1003",
+      "name": "Fundraising & Endowment Record #3",
+      "referenceCode": "REF-M35-202603",
+      "scope": "Receipting and tax compliance (80G / 501c3 / Gift Aid)",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Propensity to give",
+        "Appeal drafting"
+      ],
+      "notes": "Simulated operational payload for Fundraising & Endowment workflow 3.",
+      "amount": 3750,
+      "currency": "USD"
+    },
+    {
+      "id": "M35-REC-1004",
+      "name": "Fundraising & Endowment Record #4",
+      "referenceCode": "REF-M35-202604",
+      "scope": "Endowment and restricted fund tracking",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Propensity to give",
+        "Appeal drafting"
+      ],
+      "notes": "Simulated operational payload for Fundraising & Endowment workflow 4.",
+      "amount": 5000,
+      "currency": "USD"
+    },
+    {
+      "id": "M35-REC-1005",
+      "name": "Fundraising & Endowment Record #5",
+      "referenceCode": "REF-M35-202605",
+      "scope": "Stewardship, acknowledgements, donor wall",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Propensity to give",
+        "Appeal drafting"
+      ],
+      "notes": "Simulated operational payload for Fundraising & Endowment workflow 5.",
+      "amount": 6250,
+      "currency": "USD"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M35-01",
+      "title": "Initial Fundraising & Endowment Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M35-02",
+      "title": "Periodic Compliance Sync for Fundraising & Endowment",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M35-03",
+      "title": "Approval Pending for Record #M35-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Donor CRM",
+      "Campaigns",
+      "Pledges",
+      "Receipting and tax compliance (80G / 501c3 / Gift Aid)"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

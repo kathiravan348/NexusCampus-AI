@@ -1,0 +1,140 @@
+{
+  "moduleId": "M23",
+  "moduleName": "Placement & Career",
+  "portal": "operations",
+  "description": "Company registry, MOUs, recruiter portal",
+  "tags": [
+    "Embeddings matching",
+    "Voice agent",
+    "Ranking"
+  ],
+  "kpis": [
+    {
+      "label": "Active Placement Items",
+      "value": "171",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M23-REC-1001",
+      "name": "Placement & Career Record #1",
+      "referenceCode": "REF-M23-202601",
+      "scope": "Job / internship posting, eligibility filters",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Embeddings matching",
+        "Voice agent",
+        "Ranking"
+      ],
+      "notes": "Simulated operational payload for Placement & Career workflow 1."
+    },
+    {
+      "id": "M23-REC-1002",
+      "name": "Placement & Career Record #2",
+      "referenceCode": "REF-M23-202602",
+      "scope": "Drives, rounds, shortlists, offers, CTC tracking",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Embeddings matching",
+        "Voice agent",
+        "Ranking"
+      ],
+      "notes": "Simulated operational payload for Placement & Career workflow 2."
+    },
+    {
+      "id": "M23-REC-1003",
+      "name": "Placement & Career Record #3",
+      "referenceCode": "REF-M23-202603",
+      "scope": "Resume builder and verification",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Embeddings matching",
+        "Voice agent",
+        "Ranking"
+      ],
+      "notes": "Simulated operational payload for Placement & Career workflow 3."
+    },
+    {
+      "id": "M23-REC-1004",
+      "name": "Placement & Career Record #4",
+      "referenceCode": "REF-M23-202604",
+      "scope": "Aptitude prep, mock interviews, skill assessments",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Embeddings matching",
+        "Voice agent",
+        "Ranking"
+      ],
+      "notes": "Simulated operational payload for Placement & Career workflow 4."
+    },
+    {
+      "id": "M23-REC-1005",
+      "name": "Placement & Career Record #5",
+      "referenceCode": "REF-M23-202605",
+      "scope": "Skill-gap analysis and training recommendations",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Embeddings matching",
+        "Voice agent",
+        "Ranking"
+      ],
+      "notes": "Simulated operational payload for Placement & Career workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M23-01",
+      "title": "Initial Placement & Career Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M23-02",
+      "title": "Periodic Compliance Sync for Placement & Career",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M23-03",
+      "title": "Approval Pending for Record #M23-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Company registry",
+      "Job / internship posting",
+      "Drives",
+      "Resume builder and verification"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

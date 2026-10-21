@@ -1,0 +1,138 @@
+{
+  "moduleId": "M06",
+  "moduleName": "Payroll & Salary",
+  "portal": "governance",
+  "description": "Pay structures, grades, allowances, deductions",
+  "tags": [
+    "Anomaly detection"
+  ],
+  "kpis": [
+    {
+      "label": "Active Payroll Items",
+      "value": "52",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M06-REC-1001",
+      "name": "Payroll & Salary Record #1",
+      "referenceCode": "REF-M06-202601",
+      "scope": "Statutory: PF, ESI, TDS, PT, gratuity",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Payroll & Salary workflow 1.",
+      "staffId": "FAC-01",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M06-REC-1002",
+      "name": "Payroll & Salary Record #2",
+      "referenceCode": "REF-M06-202602",
+      "scope": "Attendance/leave-linked payroll runs",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Payroll & Salary workflow 2.",
+      "staffId": "FAC-02",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M06-REC-1003",
+      "name": "Payroll & Salary Record #3",
+      "referenceCode": "REF-M06-202603",
+      "scope": "Arrears, bonus, increments, loans, advances",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Payroll & Salary workflow 3.",
+      "staffId": "FAC-03",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M06-REC-1004",
+      "name": "Payroll & Salary Record #4",
+      "referenceCode": "REF-M06-202604",
+      "scope": "Payslips, Form 16, reimbursements",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Payroll & Salary workflow 4.",
+      "staffId": "FAC-04",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M06-REC-1005",
+      "name": "Payroll & Salary Record #5",
+      "referenceCode": "REF-M06-202605",
+      "scope": "Bank transfer file export",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Anomaly detection"
+      ],
+      "notes": "Simulated operational payload for Payroll & Salary workflow 5.",
+      "staffId": "FAC-05",
+      "department": "Faculty of Computing"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M06-01",
+      "title": "Initial Payroll & Salary Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M06-02",
+      "title": "Periodic Compliance Sync for Payroll & Salary",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M06-03",
+      "title": "Approval Pending for Record #M06-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Pay structures",
+      "Statutory: PF",
+      "Attendance/leave-linked payroll runs",
+      "Arrears"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

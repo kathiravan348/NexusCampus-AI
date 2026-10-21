@@ -1,0 +1,144 @@
+{
+  "moduleId": "M56",
+  "moduleName": "Course & Faculty Feedback",
+  "portal": "academics",
+  "description": "Course evaluation surveys per term",
+  "tags": [
+    "Sentiment",
+    "Theme extraction"
+  ],
+  "kpis": [
+    {
+      "label": "Active Course Items",
+      "value": "402",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M56-REC-1001",
+      "name": "Course & Faculty Feedback Record #1",
+      "referenceCode": "REF-M56-202601",
+      "scope": "Anonymous feedback with response-rate drives",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Sentiment",
+        "Theme extraction"
+      ],
+      "notes": "Simulated operational payload for Course & Faculty Feedback workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M56-REC-1002",
+      "name": "Course & Faculty Feedback Record #2",
+      "referenceCode": "REF-M56-202602",
+      "scope": "Faculty scorecards and trend tracking",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Sentiment",
+        "Theme extraction"
+      ],
+      "notes": "Simulated operational payload for Course & Faculty Feedback workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M56-REC-1003",
+      "name": "Course & Faculty Feedback Record #3",
+      "referenceCode": "REF-M56-202603",
+      "scope": "360 feedback from peers and HODs",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Sentiment",
+        "Theme extraction"
+      ],
+      "notes": "Simulated operational payload for Course & Faculty Feedback workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M56-REC-1004",
+      "name": "Course & Faculty Feedback Record #4",
+      "referenceCode": "REF-M56-202604",
+      "scope": "Action plans and follow-up verification",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Sentiment",
+        "Theme extraction"
+      ],
+      "notes": "Simulated operational payload for Course & Faculty Feedback workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M56-REC-1005",
+      "name": "Course & Faculty Feedback Record #5",
+      "referenceCode": "REF-M56-202605",
+      "scope": "Accreditation-ready feedback evidence",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Sentiment",
+        "Theme extraction"
+      ],
+      "notes": "Simulated operational payload for Course & Faculty Feedback workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M56-01",
+      "title": "Initial Course & Faculty Feedback Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M56-02",
+      "title": "Periodic Compliance Sync for Course & Faculty Feedback",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M56-03",
+      "title": "Approval Pending for Record #M56-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Course evaluation surveys per term",
+      "Anonymous feedback with response-rate drives",
+      "Faculty scorecards and trend tracking",
+      "360 feedback from peers and HODs"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

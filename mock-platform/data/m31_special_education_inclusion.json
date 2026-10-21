@@ -1,0 +1,144 @@
+{
+  "moduleId": "M31",
+  "moduleName": "Special Education & Inclusion",
+  "portal": "academics",
+  "description": "Referral, screening, eligibility determination",
+  "tags": [
+    "Plan drafting",
+    "Progress analysis"
+  ],
+  "kpis": [
+    {
+      "label": "Active Special Items",
+      "value": "227",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M31-REC-1001",
+      "name": "Special Education & Inclusion Record #1",
+      "referenceCode": "REF-M31-202601",
+      "scope": "IEP / 504 / RTI / MTSS authoring and versioning",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Plan drafting",
+        "Progress analysis"
+      ],
+      "notes": "Simulated operational payload for Special Education & Inclusion workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M31-REC-1002",
+      "name": "Special Education & Inclusion Record #2",
+      "referenceCode": "REF-M31-202602",
+      "scope": "Goals, accommodations, service minutes, providers",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Plan drafting",
+        "Progress analysis"
+      ],
+      "notes": "Simulated operational payload for Special Education & Inclusion workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M31-REC-1003",
+      "name": "Special Education & Inclusion Record #3",
+      "referenceCode": "REF-M31-202603",
+      "scope": "Progress monitoring and data collection",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Plan drafting",
+        "Progress analysis"
+      ],
+      "notes": "Simulated operational payload for Special Education & Inclusion workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M31-REC-1004",
+      "name": "Special Education & Inclusion Record #4",
+      "referenceCode": "REF-M31-202604",
+      "scope": "Statutory timelines, notices, compliance alerts",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Plan drafting",
+        "Progress analysis"
+      ],
+      "notes": "Simulated operational payload for Special Education & Inclusion workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M31-REC-1005",
+      "name": "Special Education & Inclusion Record #5",
+      "referenceCode": "REF-M31-202605",
+      "scope": "Meeting scheduling, attendance, signatures",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Plan drafting",
+        "Progress analysis"
+      ],
+      "notes": "Simulated operational payload for Special Education & Inclusion workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M31-01",
+      "title": "Initial Special Education & Inclusion Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M31-02",
+      "title": "Periodic Compliance Sync for Special Education & Inclusion",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M31-03",
+      "title": "Approval Pending for Record #M31-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Referral",
+      "IEP / 504 / RTI / MTSS authoring and versioning",
+      "Goals",
+      "Progress monitoring and data collection"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

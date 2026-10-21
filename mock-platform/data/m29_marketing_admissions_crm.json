@@ -1,0 +1,150 @@
+{
+  "moduleId": "M29",
+  "moduleName": "Marketing & Admissions CRM",
+  "portal": "lifecycle",
+  "description": "Campaigns, ad-spend attribution, cost per admission",
+  "tags": [
+    "Lead scoring",
+    "Copy generation",
+    "Attribution"
+  ],
+  "kpis": [
+    {
+      "label": "Active Marketing Items",
+      "value": "213",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M29-REC-1001",
+      "name": "Marketing & Admissions CRM Record #1",
+      "referenceCode": "REF-M29-202601",
+      "scope": "Website builder, landing pages, SEO, enquiry widgets",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Lead scoring",
+        "Copy generation",
+        "Attribution"
+      ],
+      "notes": "Simulated operational payload for Marketing & Admissions CRM workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M29-REC-1002",
+      "name": "Marketing & Admissions CRM Record #2",
+      "referenceCode": "REF-M29-202602",
+      "scope": "Drip journeys over email / SMS / WhatsApp",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Lead scoring",
+        "Copy generation",
+        "Attribution"
+      ],
+      "notes": "Simulated operational payload for Marketing & Admissions CRM workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M29-REC-1003",
+      "name": "Marketing & Admissions CRM Record #3",
+      "referenceCode": "REF-M29-202603",
+      "scope": "Telecalling console, recordings, counsellor targets",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Lead scoring",
+        "Copy generation",
+        "Attribution"
+      ],
+      "notes": "Simulated operational payload for Marketing & Admissions CRM workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M29-REC-1004",
+      "name": "Marketing & Admissions CRM Record #4",
+      "referenceCode": "REF-M29-202604",
+      "scope": "Education agent portal with commission tracking",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Lead scoring",
+        "Copy generation",
+        "Attribution"
+      ],
+      "notes": "Simulated operational payload for Marketing & Admissions CRM workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M29-REC-1005",
+      "name": "Marketing & Admissions CRM Record #5",
+      "referenceCode": "REF-M29-202605",
+      "scope": "Referral programmes and alumni referrals",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Lead scoring",
+        "Copy generation",
+        "Attribution"
+      ],
+      "notes": "Simulated operational payload for Marketing & Admissions CRM workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M29-01",
+      "title": "Initial Marketing & Admissions CRM Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M29-02",
+      "title": "Periodic Compliance Sync for Marketing & Admissions CRM",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M29-03",
+      "title": "Approval Pending for Record #M29-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Campaigns",
+      "Website builder",
+      "Drip journeys over email / SMS / WhatsApp",
+      "Telecalling console"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

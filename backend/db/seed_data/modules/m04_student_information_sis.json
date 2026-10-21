@@ -1,0 +1,141 @@
+{
+  "moduleId": "M04",
+  "moduleName": "Student Information (SIS)",
+  "portal": "lifecycle",
+  "description": "Student 360: academic, financial, health, conduct",
+  "tags": [],
+  "kpis": [
+    {
+      "label": "Active Student Items",
+      "value": "38",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M04-REC-1001",
+      "name": "Student Information (SIS) Record #1",
+      "referenceCode": "REF-M04-202601",
+      "scope": "Guardian & sibling linkage, emergency contacts",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Student Information (SIS) workflow 1.",
+      "studentId": "STU-1001",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M04-REC-1002",
+      "name": "Student Information (SIS) Record #2",
+      "referenceCode": "REF-M04-202602",
+      "scope": "ID card & QR generation",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Student Information (SIS) workflow 2.",
+      "studentId": "STU-1002",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M04-REC-1003",
+      "name": "Student Information (SIS) Record #3",
+      "referenceCode": "REF-M04-202603",
+      "scope": "Health, allergies, immunisation, clinic visits",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Student Information (SIS) workflow 3.",
+      "studentId": "STU-1003",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M04-REC-1004",
+      "name": "Student Information (SIS) Record #4",
+      "referenceCode": "REF-M04-202604",
+      "scope": "Scholarship / category eligibility flags",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Student Information (SIS) workflow 4.",
+      "studentId": "STU-1004",
+      "cohort": "2024-2028"
+    },
+    {
+      "id": "M04-REC-1005",
+      "name": "Student Information (SIS) Record #5",
+      "referenceCode": "REF-M04-202605",
+      "scope": "Document wallet, issued certificates",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Student Information (SIS) workflow 5.",
+      "studentId": "STU-1005",
+      "cohort": "2024-2028"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M04-01",
+      "title": "Initial Student Information (SIS) Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M04-02",
+      "title": "Periodic Compliance Sync for Student Information (SIS)",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M04-03",
+      "title": "Approval Pending for Record #M04-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Student 360: academic",
+      "Guardian & sibling linkage",
+      "ID card & QR generation",
+      "Health"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

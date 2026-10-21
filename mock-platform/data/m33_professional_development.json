@@ -1,0 +1,144 @@
+{
+  "moduleId": "M33",
+  "moduleName": "Professional Development",
+  "portal": "governance",
+  "description": "Training catalogue, mandatory vs elective",
+  "tags": [
+    "Skill gap",
+    "Recommenders"
+  ],
+  "kpis": [
+    {
+      "label": "Active Professional Items",
+      "value": "241",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M33-REC-1001",
+      "name": "Professional Development Record #1",
+      "referenceCode": "REF-M33-202601",
+      "scope": "CPD credits, certification renewal reminders",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Skill gap",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Professional Development workflow 1.",
+      "staffId": "FAC-01",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M33-REC-1002",
+      "name": "Professional Development Record #2",
+      "referenceCode": "REF-M33-202602",
+      "scope": "Classroom observation, coaching cycles, walkthroughs",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Skill gap",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Professional Development workflow 2.",
+      "staffId": "FAC-02",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M33-REC-1003",
+      "name": "Professional Development Record #3",
+      "referenceCode": "REF-M33-202603",
+      "scope": "Peer learning and communities of practice",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Skill gap",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Professional Development workflow 3.",
+      "staffId": "FAC-03",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M33-REC-1004",
+      "name": "Professional Development Record #4",
+      "referenceCode": "REF-M33-202604",
+      "scope": "Skill matrix and competency framework",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Skill gap",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Professional Development workflow 4.",
+      "staffId": "FAC-04",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M33-REC-1005",
+      "name": "Professional Development Record #5",
+      "referenceCode": "REF-M33-202605",
+      "scope": "External PD marketplace and vendors",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Skill gap",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for Professional Development workflow 5.",
+      "staffId": "FAC-05",
+      "department": "Faculty of Computing"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M33-01",
+      "title": "Initial Professional Development Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M33-02",
+      "title": "Periodic Compliance Sync for Professional Development",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M33-03",
+      "title": "Approval Pending for Record #M33-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Training catalogue",
+      "CPD credits",
+      "Classroom observation",
+      "Peer learning and communities of practice"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

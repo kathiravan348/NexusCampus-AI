@@ -1,0 +1,150 @@
+{
+  "moduleId": "M05",
+  "moduleName": "HR & Recruitment",
+  "portal": "governance",
+  "description": "Staff directory, designations, reporting lines",
+  "tags": [
+    "Resume parsing",
+    "JD matching",
+    "Attrition risk"
+  ],
+  "kpis": [
+    {
+      "label": "Active HR Items",
+      "value": "45",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M05-REC-1001",
+      "name": "HR & Recruitment Record #1",
+      "referenceCode": "REF-M05-202601",
+      "scope": "Requisition \u2192 posting \u2192 ATS pipeline \u2192 offer",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Resume parsing",
+        "JD matching",
+        "Attrition risk"
+      ],
+      "notes": "Simulated operational payload for HR & Recruitment workflow 1.",
+      "staffId": "FAC-01",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M05-REC-1002",
+      "name": "HR & Recruitment Record #2",
+      "referenceCode": "REF-M05-202602",
+      "scope": "Interview panels & scheduling",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Resume parsing",
+        "JD matching",
+        "Attrition risk"
+      ],
+      "notes": "Simulated operational payload for HR & Recruitment workflow 2.",
+      "staffId": "FAC-02",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M05-REC-1003",
+      "name": "HR & Recruitment Record #3",
+      "referenceCode": "REF-M05-202603",
+      "scope": "Onboarding, contracts, probation",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Resume parsing",
+        "JD matching",
+        "Attrition risk"
+      ],
+      "notes": "Simulated operational payload for HR & Recruitment workflow 3.",
+      "staffId": "FAC-03",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M05-REC-1004",
+      "name": "HR & Recruitment Record #4",
+      "referenceCode": "REF-M05-202604",
+      "scope": "Leave policies, quotas, approvals, comp-off",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Resume parsing",
+        "JD matching",
+        "Attrition risk"
+      ],
+      "notes": "Simulated operational payload for HR & Recruitment workflow 4.",
+      "staffId": "FAC-04",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M05-REC-1005",
+      "name": "HR & Recruitment Record #5",
+      "referenceCode": "REF-M05-202605",
+      "scope": "Duty roster, shifts, substitution",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Resume parsing",
+        "JD matching",
+        "Attrition risk"
+      ],
+      "notes": "Simulated operational payload for HR & Recruitment workflow 5.",
+      "staffId": "FAC-05",
+      "department": "Faculty of Computing"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M05-01",
+      "title": "Initial HR & Recruitment Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M05-02",
+      "title": "Periodic Compliance Sync for HR & Recruitment",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M05-03",
+      "title": "Approval Pending for Record #M05-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Staff directory",
+      "Requisition \u2192 posting \u2192 ATS pipeline \u2192 offer",
+      "Interview panels & scheduling",
+      "Onboarding"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

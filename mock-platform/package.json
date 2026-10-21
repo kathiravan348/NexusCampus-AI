@@ -1,0 +1,24 @@
+{
+  "name": "@nexuscampus/mock-platform",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Standalone mock data engine and API simulator for all 64 NexusCampus AI product modules",
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./*": "./*"
+  },
+  "scripts": {
+    "server": "node --loader ts-node/esm server.ts"
+  },
+  "keywords": [
+    "mock",
+    "nexuscampus",
+    "higher-ed",
+    "k12",
+    "erp",
+    "lms"
+  ]
+}

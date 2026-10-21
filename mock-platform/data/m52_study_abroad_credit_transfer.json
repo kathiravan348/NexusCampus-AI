@@ -1,0 +1,134 @@
+{
+  "moduleId": "M52",
+  "moduleName": "Study Abroad & Credit Transfer",
+  "portal": "operations",
+  "description": "Partner university registry and agreements",
+  "tags": [
+    "Syllabus similarity",
+    "Knowledge graph"
+  ],
+  "kpis": [
+    {
+      "label": "Active Study Items",
+      "value": "374",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M52-REC-1001",
+      "name": "Study Abroad & Credit Transfer Record #1",
+      "referenceCode": "REF-M52-202601",
+      "scope": "Articulation and credit-mapping tables",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Syllabus similarity",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Study Abroad & Credit Transfer workflow 1."
+    },
+    {
+      "id": "M52-REC-1002",
+      "name": "Study Abroad & Credit Transfer Record #2",
+      "referenceCode": "REF-M52-202602",
+      "scope": "Semester exchange, mobility windows, applications",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Syllabus similarity",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Study Abroad & Credit Transfer workflow 2."
+    },
+    {
+      "id": "M52-REC-1003",
+      "name": "Study Abroad & Credit Transfer Record #3",
+      "referenceCode": "REF-M52-202603",
+      "scope": "Transcript exchange and credit recognition",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Syllabus similarity",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Study Abroad & Credit Transfer workflow 3."
+    },
+    {
+      "id": "M52-REC-1004",
+      "name": "Study Abroad & Credit Transfer Record #4",
+      "referenceCode": "REF-M52-202604",
+      "scope": "Twinning, dual-degree and pathway programmes",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Syllabus similarity",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Study Abroad & Credit Transfer workflow 4."
+    },
+    {
+      "id": "M52-REC-1005",
+      "name": "Study Abroad & Credit Transfer Record #5",
+      "referenceCode": "REF-M52-202605",
+      "scope": "Partner university registry and agreements",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Syllabus similarity",
+        "Knowledge graph"
+      ],
+      "notes": "Simulated operational payload for Study Abroad & Credit Transfer workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M52-01",
+      "title": "Initial Study Abroad & Credit Transfer Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M52-02",
+      "title": "Periodic Compliance Sync for Study Abroad & Credit Transfer",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M52-03",
+      "title": "Approval Pending for Record #M52-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Partner university registry and agreements",
+      "Articulation and credit-mapping tables",
+      "Semester exchange",
+      "Transcript exchange and credit recognition"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

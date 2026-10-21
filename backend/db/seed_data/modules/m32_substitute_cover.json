@@ -1,0 +1,144 @@
+{
+  "moduleId": "M32",
+  "moduleName": "Substitute & Cover",
+  "portal": "governance",
+  "description": "Absence reporting and approval",
+  "tags": [
+    "Matching",
+    "Optimisation"
+  ],
+  "kpis": [
+    {
+      "label": "Active Substitute Items",
+      "value": "234",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M32-REC-1001",
+      "name": "Substitute & Cover Record #1",
+      "referenceCode": "REF-M32-202601",
+      "scope": "Substitute pool, qualifications, availability",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Matching",
+        "Optimisation"
+      ],
+      "notes": "Simulated operational payload for Substitute & Cover workflow 1.",
+      "staffId": "FAC-01",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M32-REC-1002",
+      "name": "Substitute & Cover Record #2",
+      "referenceCode": "REF-M32-202602",
+      "scope": "Auto-matching and cascade notification",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Matching",
+        "Optimisation"
+      ],
+      "notes": "Simulated operational payload for Substitute & Cover workflow 2.",
+      "staffId": "FAC-02",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M32-REC-1003",
+      "name": "Substitute & Cover Record #3",
+      "referenceCode": "REF-M32-202603",
+      "scope": "Cover lesson plan handover",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Matching",
+        "Optimisation"
+      ],
+      "notes": "Simulated operational payload for Substitute & Cover workflow 3.",
+      "staffId": "FAC-03",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M32-REC-1004",
+      "name": "Substitute & Cover Record #4",
+      "referenceCode": "REF-M32-202604",
+      "scope": "Substitute timesheets and pay",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Matching",
+        "Optimisation"
+      ],
+      "notes": "Simulated operational payload for Substitute & Cover workflow 4.",
+      "staffId": "FAC-04",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M32-REC-1005",
+      "name": "Substitute & Cover Record #5",
+      "referenceCode": "REF-M32-202605",
+      "scope": "Coverage cost analytics",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Matching",
+        "Optimisation"
+      ],
+      "notes": "Simulated operational payload for Substitute & Cover workflow 5.",
+      "staffId": "FAC-05",
+      "department": "Faculty of Computing"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M32-01",
+      "title": "Initial Substitute & Cover Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M32-02",
+      "title": "Periodic Compliance Sync for Substitute & Cover",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M32-03",
+      "title": "Approval Pending for Record #M32-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Absence reporting and approval",
+      "Substitute pool",
+      "Auto-matching and cascade notification",
+      "Cover lesson plan handover"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "moduleId": "M48",
+  "moduleName": "Legal, Contracts & Insurance",
+  "portal": "governance",
+  "description": "Contract lifecycle: draft, approve, sign, renew, terminate",
+  "tags": [
+    "Clause extraction",
+    "Renewal alerts"
+  ],
+  "kpis": [
+    {
+      "label": "Active Legal, Items",
+      "value": "346",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M48-REC-1001",
+      "name": "Legal, Contracts & Insurance Record #1",
+      "referenceCode": "REF-M48-202601",
+      "scope": "MOU and affiliation repository",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Clause extraction",
+        "Renewal alerts"
+      ],
+      "notes": "Simulated operational payload for Legal, Contracts & Insurance workflow 1.",
+      "staffId": "FAC-01",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M48-REC-1002",
+      "name": "Legal, Contracts & Insurance Record #2",
+      "referenceCode": "REF-M48-202602",
+      "scope": "Litigation and notice tracking",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Clause extraction",
+        "Renewal alerts"
+      ],
+      "notes": "Simulated operational payload for Legal, Contracts & Insurance workflow 2.",
+      "staffId": "FAC-02",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M48-REC-1003",
+      "name": "Legal, Contracts & Insurance Record #3",
+      "referenceCode": "REF-M48-202603",
+      "scope": "Student, staff, asset, vehicle and liability insurance",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Clause extraction",
+        "Renewal alerts"
+      ],
+      "notes": "Simulated operational payload for Legal, Contracts & Insurance workflow 3.",
+      "staffId": "FAC-03",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M48-REC-1004",
+      "name": "Legal, Contracts & Insurance Record #4",
+      "referenceCode": "REF-M48-202604",
+      "scope": "Claims workflow and premium scheduling",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Clause extraction",
+        "Renewal alerts"
+      ],
+      "notes": "Simulated operational payload for Legal, Contracts & Insurance workflow 4.",
+      "staffId": "FAC-04",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M48-REC-1005",
+      "name": "Legal, Contracts & Insurance Record #5",
+      "referenceCode": "REF-M48-202605",
+      "scope": "Regulatory licence and permit renewals",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Clause extraction",
+        "Renewal alerts"
+      ],
+      "notes": "Simulated operational payload for Legal, Contracts & Insurance workflow 5.",
+      "staffId": "FAC-05",
+      "department": "Faculty of Computing"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M48-01",
+      "title": "Initial Legal, Contracts & Insurance Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M48-02",
+      "title": "Periodic Compliance Sync for Legal, Contracts & Insurance",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M48-03",
+      "title": "Approval Pending for Record #M48-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Contract lifecycle: draft",
+      "MOU and affiliation repository",
+      "Litigation and notice tracking",
+      "Student"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

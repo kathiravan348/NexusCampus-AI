@@ -1,0 +1,131 @@
+{
+  "moduleId": "M62",
+  "moduleName": "Trust Centre & Certifications",
+  "portal": "core",
+  "description": "Public trust page: security, privacy, uptime, subprocessors",
+  "tags": [],
+  "kpis": [
+    {
+      "label": "Active Trust Items",
+      "value": "444",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M62-REC-1001",
+      "name": "Trust Centre & Certifications Record #1",
+      "referenceCode": "REF-M62-202601",
+      "scope": "SOC 2 / ISO 27001 / ISO 27701 evidence and controls",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Trust Centre & Certifications workflow 1."
+    },
+    {
+      "id": "M62-REC-1002",
+      "name": "Trust Centre & Certifications Record #2",
+      "referenceCode": "REF-M62-202602",
+      "scope": "GDPR, DPDP, FERPA, COPPA documentation and DPAs",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Trust Centre & Certifications workflow 2."
+    },
+    {
+      "id": "M62-REC-1003",
+      "name": "Trust Centre & Certifications Record #3",
+      "referenceCode": "REF-M62-202603",
+      "scope": "VPAT / WCAG accessibility conformance",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Trust Centre & Certifications workflow 3."
+    },
+    {
+      "id": "M62-REC-1004",
+      "name": "Trust Centre & Certifications Record #4",
+      "referenceCode": "REF-M62-202604",
+      "scope": "Penetration test summaries, vulnerability disclosure",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Trust Centre & Certifications workflow 4."
+    },
+    {
+      "id": "M62-REC-1005",
+      "name": "Trust Centre & Certifications Record #5",
+      "referenceCode": "REF-M62-202605",
+      "scope": "Status page, incident history, RCA publication",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Trust Centre & Certifications workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M62-01",
+      "title": "Initial Trust Centre & Certifications Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M62-02",
+      "title": "Periodic Compliance Sync for Trust Centre & Certifications",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M62-03",
+      "title": "Approval Pending for Record #M62-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Public trust page: security",
+      "SOC 2 / ISO 27001 / ISO 27701 evidence and controls",
+      "GDPR",
+      "VPAT / WCAG accessibility conformance"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

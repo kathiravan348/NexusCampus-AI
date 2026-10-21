@@ -1,0 +1,134 @@
+{
+  "moduleId": "M41",
+  "moduleName": "Facility & Maintenance",
+  "portal": "operations",
+  "description": "Building, floor, room and space inventory",
+  "tags": [
+    "Predictive maintenance",
+    "Ticket triage"
+  ],
+  "kpis": [
+    {
+      "label": "Active Facility Items",
+      "value": "297",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M41-REC-1001",
+      "name": "Facility & Maintenance Record #1",
+      "referenceCode": "REF-M41-202601",
+      "scope": "Room / lab / auditorium booking with approvals",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Predictive maintenance",
+        "Ticket triage"
+      ],
+      "notes": "Simulated operational payload for Facility & Maintenance workflow 1."
+    },
+    {
+      "id": "M41-REC-1002",
+      "name": "Facility & Maintenance Record #2",
+      "referenceCode": "REF-M41-202602",
+      "scope": "Work orders, breakdown and preventive maintenance",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Predictive maintenance",
+        "Ticket triage"
+      ],
+      "notes": "Simulated operational payload for Facility & Maintenance workflow 2."
+    },
+    {
+      "id": "M41-REC-1003",
+      "name": "Facility & Maintenance Record #3",
+      "referenceCode": "REF-M41-202603",
+      "scope": "Housekeeping schedules and checklists",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Predictive maintenance",
+        "Ticket triage"
+      ],
+      "notes": "Simulated operational payload for Facility & Maintenance workflow 3."
+    },
+    {
+      "id": "M41-REC-1004",
+      "name": "Facility & Maintenance Record #4",
+      "referenceCode": "REF-M41-202604",
+      "scope": "Utility metering, energy and water consumption",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Predictive maintenance",
+        "Ticket triage"
+      ],
+      "notes": "Simulated operational payload for Facility & Maintenance workflow 4."
+    },
+    {
+      "id": "M41-REC-1005",
+      "name": "Facility & Maintenance Record #5",
+      "referenceCode": "REF-M41-202605",
+      "scope": "Vendor SLAs, AMC contracts, spare parts",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Predictive maintenance",
+        "Ticket triage"
+      ],
+      "notes": "Simulated operational payload for Facility & Maintenance workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M41-01",
+      "title": "Initial Facility & Maintenance Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M41-02",
+      "title": "Periodic Compliance Sync for Facility & Maintenance",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M41-03",
+      "title": "Approval Pending for Record #M41-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Building",
+      "Room / lab / auditorium booking with approvals",
+      "Work orders",
+      "Housekeeping schedules and checklists"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

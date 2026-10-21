@@ -1,0 +1,144 @@
+{
+  "moduleId": "M30",
+  "moduleName": "Gradebook & Assessment",
+  "portal": "academics",
+  "description": "Weighted categories, formative vs summative",
+  "tags": [
+    "Standards mapping",
+    "Comment generation"
+  ],
+  "kpis": [
+    {
+      "label": "Active Gradebook Items",
+      "value": "220",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M30-REC-1001",
+      "name": "Gradebook & Assessment Record #1",
+      "referenceCode": "REF-M30-202601",
+      "scope": "Standards-based grading and mastery tracking",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Standards mapping",
+        "Comment generation"
+      ],
+      "notes": "Simulated operational payload for Gradebook & Assessment workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M30-REC-1002",
+      "name": "Gradebook & Assessment Record #2",
+      "referenceCode": "REF-M30-202602",
+      "scope": "Standards alignment: CBSE, ICSE, IB, IGCSE, Common Core, NEP",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Standards mapping",
+        "Comment generation"
+      ],
+      "notes": "Simulated operational payload for Gradebook & Assessment workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M30-REC-1003",
+      "name": "Gradebook & Assessment Record #3",
+      "referenceCode": "REF-M30-202603",
+      "scope": "Rubrics, comment banks, moderation",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Standards mapping",
+        "Comment generation"
+      ],
+      "notes": "Simulated operational payload for Gradebook & Assessment workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M30-REC-1004",
+      "name": "Gradebook & Assessment Record #4",
+      "referenceCode": "REF-M30-202604",
+      "scope": "Report card designer per board and grade level",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Standards mapping",
+        "Comment generation"
+      ],
+      "notes": "Simulated operational payload for Gradebook & Assessment workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M30-REC-1005",
+      "name": "Gradebook & Assessment Record #5",
+      "referenceCode": "REF-M30-202605",
+      "scope": "Progress reports, predicted grades, target setting",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Standards mapping",
+        "Comment generation"
+      ],
+      "notes": "Simulated operational payload for Gradebook & Assessment workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M30-01",
+      "title": "Initial Gradebook & Assessment Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M30-02",
+      "title": "Periodic Compliance Sync for Gradebook & Assessment",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M30-03",
+      "title": "Approval Pending for Record #M30-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Weighted categories",
+      "Standards-based grading and mastery tracking",
+      "Standards alignment: CBSE",
+      "Rubrics"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

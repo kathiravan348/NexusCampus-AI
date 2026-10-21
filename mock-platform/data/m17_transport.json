@@ -1,0 +1,140 @@
+{
+  "moduleId": "M17",
+  "moduleName": "Transport",
+  "portal": "operations",
+  "description": "Routes, stops, vehicles, drivers, attendants",
+  "tags": [
+    "Route optimisation",
+    "ETA prediction",
+    "Geo ML"
+  ],
+  "kpis": [
+    {
+      "label": "Active Transport Items",
+      "value": "129",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M17-REC-1001",
+      "name": "Transport Record #1",
+      "referenceCode": "REF-M17-202601",
+      "scope": "Student route allocation and seat capacity",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Route optimisation",
+        "ETA prediction",
+        "Geo ML"
+      ],
+      "notes": "Simulated operational payload for Transport workflow 1."
+    },
+    {
+      "id": "M17-REC-1002",
+      "name": "Transport Record #2",
+      "referenceCode": "REF-M17-202602",
+      "scope": "GPS live tracking, geofencing, speed alerts",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Route optimisation",
+        "ETA prediction",
+        "Geo ML"
+      ],
+      "notes": "Simulated operational payload for Transport workflow 2."
+    },
+    {
+      "id": "M17-REC-1003",
+      "name": "Transport Record #3",
+      "referenceCode": "REF-M17-202603",
+      "scope": "Pickup / drop attendance, parent live ETA",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Route optimisation",
+        "ETA prediction",
+        "Geo ML"
+      ],
+      "notes": "Simulated operational payload for Transport workflow 3."
+    },
+    {
+      "id": "M17-REC-1004",
+      "name": "Transport Record #4",
+      "referenceCode": "REF-M17-202604",
+      "scope": "Fuel, mileage, maintenance, insurance, permits",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Route optimisation",
+        "ETA prediction",
+        "Geo ML"
+      ],
+      "notes": "Simulated operational payload for Transport workflow 4."
+    },
+    {
+      "id": "M17-REC-1005",
+      "name": "Transport Record #5",
+      "referenceCode": "REF-M17-202605",
+      "scope": "Transport fees and route-wise costing",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Route optimisation",
+        "ETA prediction",
+        "Geo ML"
+      ],
+      "notes": "Simulated operational payload for Transport workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M17-01",
+      "title": "Initial Transport Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M17-02",
+      "title": "Periodic Compliance Sync for Transport",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M17-03",
+      "title": "Approval Pending for Record #M17-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Routes",
+      "Student route allocation and seat capacity",
+      "GPS live tracking",
+      "Pickup / drop attendance"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

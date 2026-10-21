@@ -1,0 +1,150 @@
+{
+  "moduleId": "M15",
+  "moduleName": "Fees & Finance",
+  "portal": "finance",
+  "description": "Fee heads & structures per course/batch/category",
+  "tags": [
+    "Default prediction",
+    "Invoice parsing",
+    "Collection agent"
+  ],
+  "kpis": [
+    {
+      "label": "Active Fees Items",
+      "value": "115",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M15-REC-1001",
+      "name": "Fees & Finance Record #1",
+      "referenceCode": "REF-M15-202601",
+      "scope": "Concessions, scholarships, sponsorships, sibling discounts",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Default prediction",
+        "Invoice parsing",
+        "Collection agent"
+      ],
+      "notes": "Simulated operational payload for Fees & Finance workflow 1.",
+      "amount": 1250,
+      "currency": "USD"
+    },
+    {
+      "id": "M15-REC-1002",
+      "name": "Fees & Finance Record #2",
+      "referenceCode": "REF-M15-202602",
+      "scope": "Instalments, due dates, fines, partial payments",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Default prediction",
+        "Invoice parsing",
+        "Collection agent"
+      ],
+      "notes": "Simulated operational payload for Fees & Finance workflow 2.",
+      "amount": 2500,
+      "currency": "USD"
+    },
+    {
+      "id": "M15-REC-1003",
+      "name": "Fees & Finance Record #3",
+      "referenceCode": "REF-M15-202603",
+      "scope": "Invoices, receipts, refunds, adjustments",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Default prediction",
+        "Invoice parsing",
+        "Collection agent"
+      ],
+      "notes": "Simulated operational payload for Fees & Finance workflow 3.",
+      "amount": 3750,
+      "currency": "USD"
+    },
+    {
+      "id": "M15-REC-1004",
+      "name": "Fees & Finance Record #4",
+      "referenceCode": "REF-M15-202604",
+      "scope": "Payment gateways: UPI, cards, net banking, EMI",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Default prediction",
+        "Invoice parsing",
+        "Collection agent"
+      ],
+      "notes": "Simulated operational payload for Fees & Finance workflow 4.",
+      "amount": 5000,
+      "currency": "USD"
+    },
+    {
+      "id": "M15-REC-1005",
+      "name": "Fees & Finance Record #5",
+      "referenceCode": "REF-M15-202605",
+      "scope": "Dues tracking, reminder campaigns, defaulter reports",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Default prediction",
+        "Invoice parsing",
+        "Collection agent"
+      ],
+      "notes": "Simulated operational payload for Fees & Finance workflow 5.",
+      "amount": 6250,
+      "currency": "USD"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M15-01",
+      "title": "Initial Fees & Finance Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M15-02",
+      "title": "Periodic Compliance Sync for Fees & Finance",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M15-03",
+      "title": "Approval Pending for Record #M15-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Fee heads & structures per course/batch/category",
+      "Concessions",
+      "Instalments",
+      "Invoices"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "moduleId": "M24",
+  "moduleName": "Accreditation & Compliance",
+  "portal": "governance",
+  "description": "NAAC / NBA / NIRF / AICTE / UGC / board data packs",
+  "tags": [
+    "RAG",
+    "Summarisation"
+  ],
+  "kpis": [
+    {
+      "label": "Active Accreditation Items",
+      "value": "178",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M24-REC-1001",
+      "name": "Accreditation & Compliance Record #1",
+      "referenceCode": "REF-M24-202601",
+      "scope": "Evidence repository and criteria mapping",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "RAG",
+        "Summarisation"
+      ],
+      "notes": "Simulated operational payload for Accreditation & Compliance workflow 1.",
+      "staffId": "FAC-01",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M24-REC-1002",
+      "name": "Accreditation & Compliance Record #2",
+      "referenceCode": "REF-M24-202602",
+      "scope": "Auto-filled submissions and narratives",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "RAG",
+        "Summarisation"
+      ],
+      "notes": "Simulated operational payload for Accreditation & Compliance workflow 2.",
+      "staffId": "FAC-02",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M24-REC-1003",
+      "name": "Accreditation & Compliance Record #3",
+      "referenceCode": "REF-M24-202603",
+      "scope": "Statutory returns and government portal exports",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "RAG",
+        "Summarisation"
+      ],
+      "notes": "Simulated operational payload for Accreditation & Compliance workflow 3.",
+      "staffId": "FAC-03",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M24-REC-1004",
+      "name": "Accreditation & Compliance Record #4",
+      "referenceCode": "REF-M24-202604",
+      "scope": "Policy library with acknowledgement tracking",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "RAG",
+        "Summarisation"
+      ],
+      "notes": "Simulated operational payload for Accreditation & Compliance workflow 4.",
+      "staffId": "FAC-04",
+      "department": "Faculty of Computing"
+    },
+    {
+      "id": "M24-REC-1005",
+      "name": "Accreditation & Compliance Record #5",
+      "referenceCode": "REF-M24-202605",
+      "scope": "Data protection, consent, retention, erasure",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "RAG",
+        "Summarisation"
+      ],
+      "notes": "Simulated operational payload for Accreditation & Compliance workflow 5.",
+      "staffId": "FAC-05",
+      "department": "Faculty of Computing"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M24-01",
+      "title": "Initial Accreditation & Compliance Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M24-02",
+      "title": "Periodic Compliance Sync for Accreditation & Compliance",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M24-03",
+      "title": "Approval Pending for Record #M24-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "NAAC / NBA / NIRF / AICTE / UGC / board data packs",
+      "Evidence repository and criteria mapping",
+      "Auto-filled submissions and narratives",
+      "Statutory returns and government portal exports"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

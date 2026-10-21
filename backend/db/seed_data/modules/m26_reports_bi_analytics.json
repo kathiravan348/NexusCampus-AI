@@ -1,0 +1,140 @@
+{
+  "moduleId": "M26",
+  "moduleName": "Reports, BI & Analytics",
+  "portal": "operations",
+  "description": "Role-based dashboards: owner, principal, HOD, teacher, parent",
+  "tags": [
+    "NL2SQL",
+    "Insight narration",
+    "Forecasting"
+  ],
+  "kpis": [
+    {
+      "label": "Active Reports, Items",
+      "value": "192",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M26-REC-1001",
+      "name": "Reports, BI & Analytics Record #1",
+      "referenceCode": "REF-M26-202601",
+      "scope": "Standard report library, scheduled delivery",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "NL2SQL",
+        "Insight narration",
+        "Forecasting"
+      ],
+      "notes": "Simulated operational payload for Reports, BI & Analytics workflow 1."
+    },
+    {
+      "id": "M26-REC-1002",
+      "name": "Reports, BI & Analytics Record #2",
+      "referenceCode": "REF-M26-202602",
+      "scope": "Ad-hoc report builder, pivot, drill-down, export",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "NL2SQL",
+        "Insight narration",
+        "Forecasting"
+      ],
+      "notes": "Simulated operational payload for Reports, BI & Analytics workflow 2."
+    },
+    {
+      "id": "M26-REC-1003",
+      "name": "Reports, BI & Analytics Record #3",
+      "referenceCode": "REF-M26-202603",
+      "scope": "Cross-campus benchmarking",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "NL2SQL",
+        "Insight narration",
+        "Forecasting"
+      ],
+      "notes": "Simulated operational payload for Reports, BI & Analytics workflow 3."
+    },
+    {
+      "id": "M26-REC-1004",
+      "name": "Reports, BI & Analytics Record #4",
+      "referenceCode": "REF-M26-202604",
+      "scope": "Predictive dashboards: risk, revenue, enrolment",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "NL2SQL",
+        "Insight narration",
+        "Forecasting"
+      ],
+      "notes": "Simulated operational payload for Reports, BI & Analytics workflow 4."
+    },
+    {
+      "id": "M26-REC-1005",
+      "name": "Reports, BI & Analytics Record #5",
+      "referenceCode": "REF-M26-202605",
+      "scope": "Warehouse and self-service semantic layer",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "NL2SQL",
+        "Insight narration",
+        "Forecasting"
+      ],
+      "notes": "Simulated operational payload for Reports, BI & Analytics workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M26-01",
+      "title": "Initial Reports, BI & Analytics Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M26-02",
+      "title": "Periodic Compliance Sync for Reports, BI & Analytics",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M26-03",
+      "title": "Approval Pending for Record #M26-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Role-based dashboards: owner",
+      "Standard report library",
+      "Ad-hoc report builder",
+      "Cross-campus benchmarking"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "moduleId": "M45",
+  "moduleName": "Early Years & Day Care",
+  "portal": "operations",
+  "description": "Developmental milestones and observation portfolios",
+  "tags": [
+    "Photo tagging",
+    "Milestone insights"
+  ],
+  "kpis": [
+    {
+      "label": "Active Early Items",
+      "value": "325",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M45-REC-1001",
+      "name": "Early Years & Day Care Record #1",
+      "referenceCode": "REF-M45-202601",
+      "scope": "Nap, meal, nappy and mood logs",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Photo tagging",
+        "Milestone insights"
+      ],
+      "notes": "Simulated operational payload for Early Years & Day Care workflow 1."
+    },
+    {
+      "id": "M45-REC-1002",
+      "name": "Early Years & Day Care Record #2",
+      "referenceCode": "REF-M45-202602",
+      "scope": "Live photo and activity feed for parents",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Photo tagging",
+        "Milestone insights"
+      ],
+      "notes": "Simulated operational payload for Early Years & Day Care workflow 2."
+    },
+    {
+      "id": "M45-REC-1003",
+      "name": "Early Years & Day Care Record #3",
+      "referenceCode": "REF-M45-202603",
+      "scope": "Staff-to-child ratio monitoring",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Photo tagging",
+        "Milestone insights"
+      ],
+      "notes": "Simulated operational payload for Early Years & Day Care workflow 3."
+    },
+    {
+      "id": "M45-REC-1004",
+      "name": "Early Years & Day Care Record #4",
+      "referenceCode": "REF-M45-202604",
+      "scope": "Authorised pickup, ID verification, late fees",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Photo tagging",
+        "Milestone insights"
+      ],
+      "notes": "Simulated operational payload for Early Years & Day Care workflow 4."
+    },
+    {
+      "id": "M45-REC-1005",
+      "name": "Early Years & Day Care Record #5",
+      "referenceCode": "REF-M45-202605",
+      "scope": "Montessori / EYFS / NEP foundational curriculum",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Photo tagging",
+        "Milestone insights"
+      ],
+      "notes": "Simulated operational payload for Early Years & Day Care workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M45-01",
+      "title": "Initial Early Years & Day Care Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M45-02",
+      "title": "Periodic Compliance Sync for Early Years & Day Care",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M45-03",
+      "title": "Approval Pending for Record #M45-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Developmental milestones and observation portfolios",
+      "Nap",
+      "Live photo and activity feed for parents",
+      "Staff-to-child ratio monitoring"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

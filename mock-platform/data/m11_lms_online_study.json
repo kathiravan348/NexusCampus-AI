@@ -1,0 +1,150 @@
+{
+  "moduleId": "M11",
+  "moduleName": "LMS & Online Study",
+  "portal": "academics",
+  "description": "Course catalogue, cohorts, drip content, prerequisites",
+  "tags": [
+    "AI tutor",
+    "RAG",
+    "Recommenders"
+  ],
+  "kpis": [
+    {
+      "label": "Active LMS Items",
+      "value": "87",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M11-REC-1001",
+      "name": "LMS & Online Study Record #1",
+      "referenceCode": "REF-M11-202601",
+      "scope": "Video lessons, live classes, recordings, notes, e-books",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "AI tutor",
+        "RAG",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for LMS & Online Study workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M11-REC-1002",
+      "name": "LMS & Online Study Record #2",
+      "referenceCode": "REF-M11-202602",
+      "scope": "SCORM / xAPI support",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "AI tutor",
+        "RAG",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for LMS & Online Study workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M11-REC-1003",
+      "name": "LMS & Online Study Record #3",
+      "referenceCode": "REF-M11-202603",
+      "scope": "Assignments, submissions, rubric grading",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "AI tutor",
+        "RAG",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for LMS & Online Study workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M11-REC-1004",
+      "name": "LMS & Online Study Record #4",
+      "referenceCode": "REF-M11-202604",
+      "scope": "Forums, Q&A, doubt clearing, peer review",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "AI tutor",
+        "RAG",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for LMS & Online Study workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M11-REC-1005",
+      "name": "LMS & Online Study Record #5",
+      "referenceCode": "REF-M11-202605",
+      "scope": "Gamification: points, badges, streaks, leaderboards",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "AI tutor",
+        "RAG",
+        "Recommenders"
+      ],
+      "notes": "Simulated operational payload for LMS & Online Study workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M11-01",
+      "title": "Initial LMS & Online Study Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M11-02",
+      "title": "Periodic Compliance Sync for LMS & Online Study",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M11-03",
+      "title": "Approval Pending for Record #M11-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Course catalogue",
+      "Video lessons",
+      "SCORM / xAPI support",
+      "Assignments"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

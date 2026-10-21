@@ -1,0 +1,131 @@
+{
+  "moduleId": "M61",
+  "moduleName": "Partner & Marketplace",
+  "portal": "core",
+  "description": "Reseller and implementation-partner portal",
+  "tags": [],
+  "kpis": [
+    {
+      "label": "Active Partner Items",
+      "value": "437",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M61-REC-1001",
+      "name": "Partner & Marketplace Record #1",
+      "referenceCode": "REF-M61-202601",
+      "scope": "Deal registration, quoting, commissions",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Partner & Marketplace workflow 1."
+    },
+    {
+      "id": "M61-REC-1002",
+      "name": "Partner & Marketplace Record #2",
+      "referenceCode": "REF-M61-202602",
+      "scope": "Partner certification and training",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Partner & Marketplace workflow 2."
+    },
+    {
+      "id": "M61-REC-1003",
+      "name": "Partner & Marketplace Record #3",
+      "referenceCode": "REF-M61-202603",
+      "scope": "App and integration marketplace with reviews",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Partner & Marketplace workflow 3."
+    },
+    {
+      "id": "M61-REC-1004",
+      "name": "Partner & Marketplace Record #4",
+      "referenceCode": "REF-M61-202604",
+      "scope": "Developer portal, API keys, sandbox tenants",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Partner & Marketplace workflow 4."
+    },
+    {
+      "id": "M61-REC-1005",
+      "name": "Partner & Marketplace Record #5",
+      "referenceCode": "REF-M61-202605",
+      "scope": "Revenue share and payout automation",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Automated",
+        "Standard"
+      ],
+      "notes": "Simulated operational payload for Partner & Marketplace workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M61-01",
+      "title": "Initial Partner & Marketplace Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M61-02",
+      "title": "Periodic Compliance Sync for Partner & Marketplace",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M61-03",
+      "title": "Approval Pending for Record #M61-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Reseller and implementation-partner portal",
+      "Deal registration",
+      "Partner certification and training",
+      "App and integration marketplace with reviews"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

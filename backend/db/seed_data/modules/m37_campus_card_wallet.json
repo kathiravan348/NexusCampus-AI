@@ -1,0 +1,144 @@
+{
+  "moduleId": "M37",
+  "moduleName": "Campus Card & Wallet",
+  "portal": "finance",
+  "description": "One identity across gate, library, canteen, transport, printing, labs",
+  "tags": [
+    "Fraud detection",
+    "Spend anomaly"
+  ],
+  "kpis": [
+    {
+      "label": "Active Campus Items",
+      "value": "269",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M37-REC-1001",
+      "name": "Campus Card & Wallet Record #1",
+      "referenceCode": "REF-M37-202601",
+      "scope": "Prepaid wallet, top-up, auto-recharge, refunds",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Fraud detection",
+        "Spend anomaly"
+      ],
+      "notes": "Simulated operational payload for Campus Card & Wallet workflow 1.",
+      "amount": 1250,
+      "currency": "USD"
+    },
+    {
+      "id": "M37-REC-1002",
+      "name": "Campus Card & Wallet Record #2",
+      "referenceCode": "REF-M37-202602",
+      "scope": "Parent-set spend limits and category controls",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Fraud detection",
+        "Spend anomaly"
+      ],
+      "notes": "Simulated operational payload for Campus Card & Wallet workflow 2.",
+      "amount": 2500,
+      "currency": "USD"
+    },
+    {
+      "id": "M37-REC-1003",
+      "name": "Campus Card & Wallet Record #3",
+      "referenceCode": "REF-M37-202603",
+      "scope": "Lost card blocking, temporary passes",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Fraud detection",
+        "Spend anomaly"
+      ],
+      "notes": "Simulated operational payload for Campus Card & Wallet workflow 3.",
+      "amount": 3750,
+      "currency": "USD"
+    },
+    {
+      "id": "M37-REC-1004",
+      "name": "Campus Card & Wallet Record #4",
+      "referenceCode": "REF-M37-202604",
+      "scope": "Transaction ledger and reconciliation",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Fraud detection",
+        "Spend anomaly"
+      ],
+      "notes": "Simulated operational payload for Campus Card & Wallet workflow 4.",
+      "amount": 5000,
+      "currency": "USD"
+    },
+    {
+      "id": "M37-REC-1005",
+      "name": "Campus Card & Wallet Record #5",
+      "referenceCode": "REF-M37-202605",
+      "scope": "Card printing, batch issuance, design templates",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Fraud detection",
+        "Spend anomaly"
+      ],
+      "notes": "Simulated operational payload for Campus Card & Wallet workflow 5.",
+      "amount": 6250,
+      "currency": "USD"
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M37-01",
+      "title": "Initial Campus Card & Wallet Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M37-02",
+      "title": "Periodic Compliance Sync for Campus Card & Wallet",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M37-03",
+      "title": "Approval Pending for Record #M37-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "One identity across gate",
+      "Prepaid wallet",
+      "Parent-set spend limits and category controls",
+      "Lost card blocking"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

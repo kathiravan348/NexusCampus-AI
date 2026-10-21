@@ -1,0 +1,150 @@
+{
+  "moduleId": "M09",
+  "moduleName": "Examination (offline)",
+  "portal": "academics",
+  "description": "Exam types, schemes, grading, weightage",
+  "tags": [
+    "Question generation",
+    "OMR / OCR",
+    "Handwriting"
+  ],
+  "kpis": [
+    {
+      "label": "Active Examination Items",
+      "value": "73",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M09-REC-1001",
+      "name": "Examination (offline) Record #1",
+      "referenceCode": "REF-M09-202601",
+      "scope": "Scheduling, hall ticket, seating plan",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Question generation",
+        "OMR / OCR",
+        "Handwriting"
+      ],
+      "notes": "Simulated operational payload for Examination (offline) workflow 1.",
+      "courseCode": "CRS-301",
+      "credits": 4
+    },
+    {
+      "id": "M09-REC-1002",
+      "name": "Examination (offline) Record #2",
+      "referenceCode": "REF-M09-202602",
+      "scope": "Invigilator duty allocation",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Question generation",
+        "OMR / OCR",
+        "Handwriting"
+      ],
+      "notes": "Simulated operational payload for Examination (offline) workflow 2.",
+      "courseCode": "CRS-302",
+      "credits": 3
+    },
+    {
+      "id": "M09-REC-1003",
+      "name": "Examination (offline) Record #3",
+      "referenceCode": "REF-M09-202603",
+      "scope": "Question bank, blueprint, difficulty tagging",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Question generation",
+        "OMR / OCR",
+        "Handwriting"
+      ],
+      "notes": "Simulated operational payload for Examination (offline) workflow 3.",
+      "courseCode": "CRS-303",
+      "credits": 4
+    },
+    {
+      "id": "M09-REC-1004",
+      "name": "Examination (offline) Record #4",
+      "referenceCode": "REF-M09-202604",
+      "scope": "Paper generation & confidential packaging",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Question generation",
+        "OMR / OCR",
+        "Handwriting"
+      ],
+      "notes": "Simulated operational payload for Examination (offline) workflow 4.",
+      "courseCode": "CRS-304",
+      "credits": 3
+    },
+    {
+      "id": "M09-REC-1005",
+      "name": "Examination (offline) Record #5",
+      "referenceCode": "REF-M09-202605",
+      "scope": "OMR design, scanning, bubble detection",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Question generation",
+        "OMR / OCR",
+        "Handwriting"
+      ],
+      "notes": "Simulated operational payload for Examination (offline) workflow 5.",
+      "courseCode": "CRS-305",
+      "credits": 4
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M09-01",
+      "title": "Initial Examination (offline) Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M09-02",
+      "title": "Periodic Compliance Sync for Examination (offline)",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M09-03",
+      "title": "Approval Pending for Record #M09-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Exam types",
+      "Scheduling",
+      "Invigilator duty allocation",
+      "Question bank"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

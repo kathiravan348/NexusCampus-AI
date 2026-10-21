@@ -1,0 +1,140 @@
+{
+  "moduleId": "M19",
+  "moduleName": "Communication Hub",
+  "portal": "operations",
+  "description": "Announcements, circulars, notice board, targeted broadcast",
+  "tags": [
+    "Drafting",
+    "Translation",
+    "Sentiment"
+  ],
+  "kpis": [
+    {
+      "label": "Active Communication Items",
+      "value": "143",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M19-REC-1001",
+      "name": "Communication Hub Record #1",
+      "referenceCode": "REF-M19-202601",
+      "scope": "Parent\u2013teacher and teacher\u2013student chat with moderation",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Drafting",
+        "Translation",
+        "Sentiment"
+      ],
+      "notes": "Simulated operational payload for Communication Hub workflow 1."
+    },
+    {
+      "id": "M19-REC-1002",
+      "name": "Communication Hub Record #2",
+      "referenceCode": "REF-M19-202602",
+      "scope": "PTM scheduling, slot booking, meeting minutes",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Drafting",
+        "Translation",
+        "Sentiment"
+      ],
+      "notes": "Simulated operational payload for Communication Hub workflow 2."
+    },
+    {
+      "id": "M19-REC-1003",
+      "name": "Communication Hub Record #3",
+      "referenceCode": "REF-M19-202603",
+      "scope": "SMS / Email / WhatsApp / push / IVR integration",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Drafting",
+        "Translation",
+        "Sentiment"
+      ],
+      "notes": "Simulated operational payload for Communication Hub workflow 3."
+    },
+    {
+      "id": "M19-REC-1004",
+      "name": "Communication Hub Record #4",
+      "referenceCode": "REF-M19-202604",
+      "scope": "Templates, multilingual delivery, delivery reports",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Drafting",
+        "Translation",
+        "Sentiment"
+      ],
+      "notes": "Simulated operational payload for Communication Hub workflow 4."
+    },
+    {
+      "id": "M19-REC-1005",
+      "name": "Communication Hub Record #5",
+      "referenceCode": "REF-M19-202605",
+      "scope": "Feedback forms, surveys, NPS",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Drafting",
+        "Translation",
+        "Sentiment"
+      ],
+      "notes": "Simulated operational payload for Communication Hub workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M19-01",
+      "title": "Initial Communication Hub Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M19-02",
+      "title": "Periodic Compliance Sync for Communication Hub",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M19-03",
+      "title": "Approval Pending for Record #M19-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Announcements",
+      "Parent\u2013teacher and teacher\u2013student chat with moderation",
+      "PTM scheduling",
+      "SMS / Email / WhatsApp / push / IVR integration"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

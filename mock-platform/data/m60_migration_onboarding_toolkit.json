@@ -1,0 +1,134 @@
+{
+  "moduleId": "M60",
+  "moduleName": "Migration & Onboarding Toolkit",
+  "portal": "core",
+  "description": "Importers for competitor systems and spreadsheets",
+  "tags": [
+    "Schema matching",
+    "Agents"
+  ],
+  "kpis": [
+    {
+      "label": "Active Migration Items",
+      "value": "430",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M60-REC-1001",
+      "name": "Migration & Onboarding Toolkit Record #1",
+      "referenceCode": "REF-M60-202601",
+      "scope": "Field-mapping wizard with validation and dry run",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Schema matching",
+        "Agents"
+      ],
+      "notes": "Simulated operational payload for Migration & Onboarding Toolkit workflow 1."
+    },
+    {
+      "id": "M60-REC-1002",
+      "name": "Migration & Onboarding Toolkit Record #2",
+      "referenceCode": "REF-M60-202602",
+      "scope": "Duplicate detection and merge",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Schema matching",
+        "Agents"
+      ],
+      "notes": "Simulated operational payload for Migration & Onboarding Toolkit workflow 2."
+    },
+    {
+      "id": "M60-REC-1003",
+      "name": "Migration & Onboarding Toolkit Record #3",
+      "referenceCode": "REF-M60-202603",
+      "scope": "Historical load: marks, fees, attendance",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Schema matching",
+        "Agents"
+      ],
+      "notes": "Simulated operational payload for Migration & Onboarding Toolkit workflow 3."
+    },
+    {
+      "id": "M60-REC-1004",
+      "name": "Migration & Onboarding Toolkit Record #4",
+      "referenceCode": "REF-M60-202604",
+      "scope": "Go-live cutover checklist and rollback",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Schema matching",
+        "Agents"
+      ],
+      "notes": "Simulated operational payload for Migration & Onboarding Toolkit workflow 4."
+    },
+    {
+      "id": "M60-REC-1005",
+      "name": "Migration & Onboarding Toolkit Record #5",
+      "referenceCode": "REF-M60-202605",
+      "scope": "Guided setup templates by institution type",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Schema matching",
+        "Agents"
+      ],
+      "notes": "Simulated operational payload for Migration & Onboarding Toolkit workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M60-01",
+      "title": "Initial Migration & Onboarding Toolkit Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M60-02",
+      "title": "Periodic Compliance Sync for Migration & Onboarding Toolkit",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M60-03",
+      "title": "Approval Pending for Record #M60-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Importers for competitor systems and spreadsheets",
+      "Field-mapping wizard with validation and dry run",
+      "Duplicate detection and merge",
+      "Historical load: marks"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}

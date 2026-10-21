@@ -1,0 +1,134 @@
+{
+  "moduleId": "M44",
+  "moduleName": "Sports & Athletics",
+  "portal": "operations",
+  "description": "Teams, squads, tryouts, selection",
+  "tags": [
+    "Pose estimation",
+    "Injury risk"
+  ],
+  "kpis": [
+    {
+      "label": "Active Sports Items",
+      "value": "318",
+      "change": "+12.4%",
+      "trend": "up"
+    },
+    {
+      "label": "Audit Compliance Rate",
+      "value": "99.2%",
+      "change": "+0.8%",
+      "trend": "up"
+    },
+    {
+      "label": "Average Processing Time",
+      "value": "1.4 hrs",
+      "change": "-18%",
+      "trend": "down"
+    }
+  ],
+  "records": [
+    {
+      "id": "M44-REC-1001",
+      "name": "Sports & Athletics Record #1",
+      "referenceCode": "REF-M44-202601",
+      "scope": "Fixtures, leagues, tournaments, results",
+      "status": "completed",
+      "updatedAt": "2026-09-01T10:20:00Z",
+      "tags": [
+        "Pose estimation",
+        "Injury risk"
+      ],
+      "notes": "Simulated operational payload for Sports & Athletics workflow 1."
+    },
+    {
+      "id": "M44-REC-1002",
+      "name": "Sports & Athletics Record #2",
+      "referenceCode": "REF-M44-202602",
+      "scope": "Fitness testing, training plans, load monitoring",
+      "status": "pending",
+      "updatedAt": "2026-09-02T10:25:00Z",
+      "tags": [
+        "Pose estimation",
+        "Injury risk"
+      ],
+      "notes": "Simulated operational payload for Sports & Athletics workflow 2."
+    },
+    {
+      "id": "M44-REC-1003",
+      "name": "Sports & Athletics Record #3",
+      "referenceCode": "REF-M44-202603",
+      "scope": "Injury log, physio, return-to-play clearance",
+      "status": "in_review",
+      "updatedAt": "2026-09-03T10:30:00Z",
+      "tags": [
+        "Pose estimation",
+        "Injury risk"
+      ],
+      "notes": "Simulated operational payload for Sports & Athletics workflow 3."
+    },
+    {
+      "id": "M44-REC-1004",
+      "name": "Sports & Athletics Record #4",
+      "referenceCode": "REF-M44-202604",
+      "scope": "Equipment, kit issue, ground booking",
+      "status": "verified",
+      "updatedAt": "2026-09-04T10:35:00Z",
+      "tags": [
+        "Pose estimation",
+        "Injury risk"
+      ],
+      "notes": "Simulated operational payload for Sports & Athletics workflow 4."
+    },
+    {
+      "id": "M44-REC-1005",
+      "name": "Sports & Athletics Record #5",
+      "referenceCode": "REF-M44-202605",
+      "scope": "Eligibility rules and athletic scholarships",
+      "status": "active",
+      "updatedAt": "2026-09-05T10:40:00Z",
+      "tags": [
+        "Pose estimation",
+        "Injury risk"
+      ],
+      "notes": "Simulated operational payload for Sports & Athletics workflow 5."
+    }
+  ],
+  "workflows": [
+    {
+      "id": "WF-M44-01",
+      "title": "Initial Sports & Athletics Verification",
+      "status": "completed",
+      "actor": "System Automation Engine",
+      "timestamp": "10 mins ago"
+    },
+    {
+      "id": "WF-M44-02",
+      "title": "Periodic Compliance Sync for Sports & Athletics",
+      "status": "active",
+      "actor": "Dr. Alan Turing",
+      "timestamp": "1 hour ago"
+    },
+    {
+      "id": "WF-M44-03",
+      "title": "Approval Pending for Record #M44-1003",
+      "status": "pending",
+      "actor": "Admin Office",
+      "timestamp": "3 hours ago"
+    }
+  ],
+  "options": {
+    "categories": [
+      "Teams",
+      "Fixtures",
+      "Fitness testing",
+      "Injury log"
+    ],
+    "channels": [
+      "App Notification",
+      "Email",
+      "SMS",
+      "WhatsApp"
+    ]
+  }
+}
