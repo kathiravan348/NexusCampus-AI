@@ -10,3 +10,7 @@ export * from "./rbac";
 export * from "./studio";
 export * from "./plan";
 export * from "./compliance";
+export * from "./notification";
+export * from "./sync";
+export * from "./ai";
+export * from "./vault";
