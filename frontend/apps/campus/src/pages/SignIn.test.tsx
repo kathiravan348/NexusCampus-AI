@@ -1,3 +1,4 @@
+import { brand } from "@nexus/brand";
 import { setMockScenario } from "@nexus/services";
 import { fireEvent, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
@@ -14,6 +15,8 @@ describe("SignIn", () => {
       await screen.findByRole("heading", { level: 1, name: "Sign in to a demo institution" }),
     ).toBeInTheDocument();
     expect(screen.getByRole("note")).toBeInTheDocument();
+    expect(screen.getByText(brand.name)).toBeInTheDocument();
+    expect(document.querySelector(`img[src="${brand.logo.mark}"]`)).toHaveAttribute("alt", "");
 
     const btn = await screen.findByRole("button", {
       name: /Sign in to Little Steps.*as Administrator/,

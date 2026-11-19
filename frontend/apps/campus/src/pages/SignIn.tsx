@@ -1,9 +1,11 @@
+import { brand } from "@nexus/brand";
 import { useText } from "@nexus/i18n";
 import { DATA_MODE, useDemoTenants, useSession } from "@nexus/services";
 import { Button, Card, DemoBanner, EmptyState } from "@nexus/ui-core";
 import { Building2 } from "lucide-react";
 import { useState } from "react";
 import { personaLabelKey, useSwitchUser } from "../app/PersonaSwitch";
+import { PlatformMark } from "../app/PlatformMark";
 import { localeName } from "../app/LocaleSwitch";
 import { useRuntime } from "../app/TenantRuntime";
 
@@ -79,6 +81,12 @@ export function SignIn() {
       {DATA_MODE === "mock" && <DemoBanner />}
       <main id="main-content" className="mx-auto max-w-5xl space-y-6 px-4 py-8 md:px-7">
         <header className="space-y-2">
+          <div className="flex items-center gap-3 pb-2">
+            <PlatformMark size="md" decorative />
+            <span className="font-sans text-section-title font-semibold text-text-primary">
+              {brand.name}
+            </span>
+          </div>
           <h1 className="font-sans text-page-title font-semibold">{t("m02.signIn.title")}</h1>
           <p className="text-body text-text-secondary">{t("m02.signIn.intro")}</p>
         </header>
