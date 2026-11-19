@@ -1,5 +1,12 @@
 import type { TextOverride } from "@nexus/contracts";
-import { formatDateTime, getDirection, useText, type MessageKey } from "@nexus/i18n";
+import {
+  formatDateTime,
+  getDirection,
+  isPseudoLocale,
+  SOURCE_LOCALE,
+  useText,
+  type MessageKey,
+} from "@nexus/i18n";
 import { useRevisions, useRollbackOverride } from "@nexus/services";
 import { Badge, Button, EmptyState, Skeleton, useToast } from "@nexus/ui-core";
 import { History, RotateCcw } from "lucide-react";
@@ -34,6 +41,7 @@ export function HistoryPanel({
   );
   const latestVersion = sorted[0]?.version ?? null;
   const textDir = getDirection(locale);
+  const dateLocale = isPseudoLocale(uiLocale) ? SOURCE_LOCALE : uiLocale;
 
   const handleRollback = async (version: number) => {
     try {
@@ -102,7 +110,7 @@ export function HistoryPanel({
                     </Badge>
                     {isCurrent && <Badge tone="info">{t("m04.history.current")}</Badge>}
                     <span className="text-caption text-text-muted">
-                      {formatDateTime(rev.changedAt, { locale: uiLocale, timeZone })}
+                      {formatDateTime(rev.changedAt, { locale: dateLocale, timeZone })}
                     </span>
                   </div>
                   {rev.message === null ? (

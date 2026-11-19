@@ -81,4 +81,24 @@ describe("KeyEditor", () => {
     expect(screen.queryByRole("button", { name: "Save" })).not.toBeInTheDocument();
     expect(screen.queryByRole("button", { name: "Remove override" })).not.toBeInTheDocument();
   });
+
+  it("saves and removes an institution override via the modal actions", async () => {
+    const onOpenChange = vi.fn();
+    renderEditor({ key: "term.learner", onOpenChange });
+    const textarea = await screen.findByLabelText("Institution override");
+    fireEvent.change(textarea, { target: { value: "Fellow" } });
+    fireEvent.click(screen.getByRole("button", { name: "Save" }));
+    expect(await screen.findByText("Text override saved.")).toBeInTheDocument();
+    expect(onOpenChange).toHaveBeenCalledWith(false);
+
+    const onOpenChangeRemove = vi.fn();
+    renderEditor({
+      key: "term.learner",
+      institution: { "term.learner": "Fellow" },
+      onOpenChange: onOpenChangeRemove,
+    });
+    fireEvent.click(await screen.findByRole("button", { name: "Remove override" }));
+    expect(await screen.findByText("Text override removed.")).toBeInTheDocument();
+    expect(onOpenChangeRemove).toHaveBeenCalledWith(false);
+  });
 });

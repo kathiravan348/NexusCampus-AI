@@ -148,6 +148,15 @@ describe("m04 handlers", () => {
     });
     expect(forbiddenRes.status).toBe(403);
     expect(ApiErrorSchema.parse(await forbiddenRes.json()).error.code).toBe("forbidden");
+
+    const campusKeyRevRes = await req(
+      "/texts/revisions?key=term.class&locale=en-GB",
+      "GET",
+      RV_ADMIN,
+    );
+    expect(
+      pageSchema(TextOverrideRevisionSchema).parse(await campusKeyRevRes.json()).items,
+    ).toEqual([]);
   });
 
   it("previews import diffs on dry run, rejects invalid apply with 400, and applies valid imports", async () => {

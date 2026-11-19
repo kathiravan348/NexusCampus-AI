@@ -96,12 +96,13 @@ export const m04Handlers = [
     return list(ctx, overrides, pageSchema(TextOverrideSchema));
   }),
 
-  /** History of this tenant's overrides; `?key=` and `?locale=` narrow the result. */
+  /** History of this tenant's overrides; `?key=` and `?locale=` narrow to studio (group/institution) revisions. */
   get("/texts/revisions", { module: M04_MODULE, permission: M04_MANAGE }, (ctx) => {
     const key = param(ctx.url, "key");
     const locale = param(ctx.url, "locale");
     const ids = new Set<string>();
     for (const o of ofTenant(mockDb.textOverrides, ctx.viewer.tenantId)) {
+      if (key !== null && o.scope.kind === "campus") continue;
       if ((key === null || o.key === key) && (locale === null || o.locale === locale)) {
         ids.add(o.id);
       }

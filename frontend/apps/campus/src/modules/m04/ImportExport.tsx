@@ -53,7 +53,8 @@ export function ImportExport({
 
   const [rawJson, setRawJson] = useState("");
   const [parseError, setParseError] = useState<string | undefined>(undefined);
-  const [diff, setDiff] = useState<TextOverrideImportResult | null>(null);
+  const [diffResult, setDiffResult] = useState<TextOverrideImportResult | null>(null);
+  const diff = diffResult?.locale === locale ? diffResult : null;
   const textDir = getDirection(locale);
 
   const handleExport = () => {
@@ -83,7 +84,7 @@ export function ImportExport({
     reader.onload = () => {
       setRawJson(typeof reader.result === "string" ? reader.result : "");
       setParseError(undefined);
-      setDiff(null);
+      setDiffResult(null);
     };
     reader.readAsText(file);
   };
@@ -92,7 +93,7 @@ export function ImportExport({
     const entries = parseImportEntries(rawJson);
     if (!entries) {
       setParseError(t("m04.io.jsonInvalid"));
-      setDiff(null);
+      setDiffResult(null);
       return;
     }
     setParseError(undefined);
@@ -102,7 +103,7 @@ export function ImportExport({
         toast.show({ tone: "warning", title: t("m04.studio.offlineNotice") });
         return;
       }
-      setDiff(result.data);
+      setDiffResult(result.data);
     } catch {
       toast.show({ tone: "danger", title: t("m04.io.previewFailedToast") });
     }
@@ -126,7 +127,7 @@ export function ImportExport({
         title: t("m04.io.appliedToast", { count: result.data.appliedCount }),
       });
       setRawJson("");
-      setDiff(null);
+      setDiffResult(null);
     } catch {
       toast.show({ tone: "danger", title: t("m04.io.applyFailedToast") });
     }
@@ -182,7 +183,7 @@ export function ImportExport({
             onChange={(event) => {
               setRawJson(event.target.value);
               setParseError(undefined);
-              setDiff(null);
+              setDiffResult(null);
             }}
           />
 
