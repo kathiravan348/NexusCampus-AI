@@ -18,6 +18,20 @@ export const brand = {
     ui: { name: "Nexus UI", short: "UI", description: "Shared component library" },
     style: { name: "Nexus Style", short: "Style", description: "Design system and theme tokens" },
   },
+  /** Platform logo files, served from `frontend/apps/campus/public` (D40). Reference logos only through these paths. */
+  logo: {
+    mark: "/brand/nexuscampus-mark.png",
+    lockupHorizontal: "/brand/nexuscampus-lockup-horizontal.png",
+    lockupStacked: "/brand/nexuscampus-lockup-stacked.png",
+    lockupHorizontalDark: "/brand/nexuscampus-lockup-horizontal-dark.png",
+    favicon: "/brand/favicon.ico",
+    favicon16: "/brand/favicon-16.png",
+    favicon32: "/brand/favicon-32.png",
+    appleTouchIcon: "/brand/apple-touch-icon.png",
+    icon192: "/brand/icon-192.png",
+    icon512: "/brand/icon-512.png",
+    iconMaskable512: "/brand/icon-maskable-512.png",
+  },
 } as const;
 
 export type ProductKey = keyof typeof brand.products;
