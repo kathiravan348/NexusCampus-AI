@@ -61,6 +61,8 @@ interface TokensData {
   density: { default: string; presets: DensityPreset[] };
   radius: { tokens: NamedValue[] };
   size: { tokens: NamedValue[] };
+  /** CSS-only effects (gradients) derived from colour tokens; no Tailwind entry (D39). */
+  effect: { tokens: NamedValue[] };
 }
 
 const __filename = fileURLToPath(import.meta.url);
@@ -94,6 +96,9 @@ export function generateTokensCss(tokens: TokensData): string {
     lines.push(`  --${token.name}: ${token.value};`);
   }
   for (const token of tokens.size.tokens) {
+    lines.push(`  --${token.name}: ${token.value};`);
+  }
+  for (const token of tokens.effect.tokens) {
     lines.push(`  --${token.name}: ${token.value};`);
   }
   lines.push("}");
