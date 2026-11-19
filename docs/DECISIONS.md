@@ -32,6 +32,9 @@
 | D26 | 2026-11-19 | Added modules M85–M91 (emergency/crisis L3, year rollover, scholarships/aid, archive & statutory returns, labs/workshops, governance/policies, consent-aware portfolios) and P17–P18 (sandboxes/staging, tenant portability/migrations) | End-to-end audit closed critical gaps across safety, regulatory returns, VOC/HE labs, EY/SK portfolios, and SaaS ⇄ self-hosted portability |
 | D27 | 2026-11-19 | Stage 1 prototype covers every Stage 1 module: M07 (Notifications, core) added as NEX-024. M08 (forms/fields/workflows) and M09 (import/migration) move to Stage 3, where there are records to customise and import (NEX-025/026 withdrawn). Contracts split into NEX-009 (studio & compliance) and NEX-027 (ops). Demo mocks wrap Riverside School inside a 2-campus Group (GRP) | Closes the module-to-task gap while keeping Stage 1 lean; makes group hierarchy, theme locks (C-1) and text inheritance (C-2) testable in Stage 1 |
 | D28 | 2026-11-19 | Theme engine adds `density` token + dual WCAG 2.2 contrast thresholds (4.5:1 text / 3:1 UI & focus); i18n terminology packs are locale-scoped across all 8 types (incl. `grp`) and `formatDate` supports G-3 secondary calendars | Prevents English terminology packs from overwriting Arabic/non-English locales and completes C-1/G-3/G-8 |
+| D29 | 2026-11-19 | Theme stack (NEX-002): Tailwind CSS 4.3.3; self-hosted fonts Inter, Noto Sans Arabic, JetBrains Mono (@fontsource 5.3.0); `border-strong` darkened to `#878F9C` / `#5E6E8A` so control borders meet WCAG 2.2 SC 1.4.11 | Token-only styling, no font CDN, and the 3:1 rule for borders |
+| D30 | 2026-11-19 | i18n stack (NEX-003): react-intl 12.2.0 + `@formatjs/icu-messageformat-parser` 3.5.23 (same version react-intl uses) to reject invalid ICU overrides; formatting via `Intl` only, no date-fns | One ICU engine; invalid tenant texts never reach users |
+| D31 | 2026-11-19 | NEX-008 split: core/tenancy contracts stay in NEX-008; identity contracts move to new NEX-028. Contracts keep offset paging `{items,total,page,pageSize}` (D15), not NOVA's cursor paging | Task size ≤ 60 lines; no reopening D15 |
 
 ## Open (decide by the Stage 1 freeze)
 - Identity: own implementation vs. Keycloak / Zitadel for SSO, SCIM and passkeys.
@@ -45,5 +48,3 @@
 
 ## Requests
 _(implementers note new dependencies or decision requests here; the planner moves them into the table)_
-- NEX-002 (Claude): `tailwindcss@4.3.3` + `@tailwindcss/vite@4.3.3` (stack, AGENTS §5); self-hosted fonts `@fontsource/inter@5.3.0`, `@fontsource/noto-sans-arabic@5.3.0`, `@fontsource/jetbrains-mono@5.3.0` (the NEX-002 font library; no font CDN). `border-strong` changed from NOVA's values to `#878F9C` / `#5E6E8A` so input borders meet WCAG 2.2 SC 1.4.11 (3:1).
-- NEX-003 (Claude): `react-intl@12.2.0` (FormatJS, in the stack, AGENTS §5; supports React 18). `date-fns`/`date-fns-tz` not added: `Intl` covers every formatter in the task. Review added `@formatjs/icu-messageformat-parser@3.5.23` (the version react-intl already uses) to reject invalid ICU overrides.
