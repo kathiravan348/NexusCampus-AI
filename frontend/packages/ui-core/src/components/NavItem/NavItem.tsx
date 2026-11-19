@@ -27,7 +27,7 @@ export const NavItem = React.forwardRef<HTMLButtonElement, NavItemProps>(
         aria-current={active ? "page" : undefined}
         onClick={handleClick}
         className={cn(
-          "flex items-center gap-3 w-full px-3 h-(--nav-item-height) rounded-md text-body font-sans text-text-secondary transition-colors hover:text-text-primary hover:bg-bg-raised/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary cursor-pointer select-none text-start",
+          "flex items-center gap-3 w-full px-3 h-(--nav-item-height) rounded-md text-body font-sans text-text-secondary transition-colors hover:text-text-primary hover:bg-bg-raised/60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-primary cursor-pointer select-none text-start disabled:pointer-events-none disabled:opacity-50",
           active &&
             "bg-brand-primary-subtle text-brand-primary-text hover:bg-brand-primary-subtle hover:text-brand-primary-text font-medium",
           className,

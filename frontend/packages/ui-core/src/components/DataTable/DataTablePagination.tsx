@@ -57,7 +57,7 @@ export function DataTablePagination({
         {onPageSizeChange && (
           <Select
             label={t("common.rowsPerPage")}
-            containerClassName="shrink-0 w-36"
+            containerClassName="shrink-0 min-w-36"
             className="font-mono"
             value={String(safePageSize)}
             options={sizes.map((size) => ({

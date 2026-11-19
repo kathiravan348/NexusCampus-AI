@@ -50,7 +50,6 @@ export function AppShell({
           <Dialog.Portal>
             <Dialog.Overlay className="fixed inset-0 z-40 bg-bg-ground/80 backdrop-blur-xs transition-opacity" />
             <Dialog.Content
-              aria-label={t("common.navigationMenu")}
               aria-describedby={undefined}
               className="fixed inset-y-0 start-0 z-50 flex flex-col w-(--sidebar-width) max-w-[85vw] bg-bg-sidebar border-e border-border-default shadow-lg focus:outline-hidden"
             >

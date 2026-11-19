@@ -195,7 +195,7 @@ export function DataTable<TData, TValue = unknown>({
               ))
             ) : error ? (
               <tr>
-                <td colSpan={columns.length} className="px-5 py-8 text-center">
+                <td colSpan={Math.max(1, columns.length)} className="px-5 py-8 text-center">
                   <div role="alert" className="text-body text-danger-text">
                     {error}
                   </div>
@@ -204,7 +204,7 @@ export function DataTable<TData, TValue = unknown>({
             ) : visibleRows.length === 0 ? (
               <tr>
                 <td
-                  colSpan={columns.length}
+                  colSpan={Math.max(1, columns.length)}
                   className="px-5 py-8 text-center text-body text-text-muted"
                 >
                   {emptyState ?? t("common.empty")}

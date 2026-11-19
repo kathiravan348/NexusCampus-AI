@@ -43,4 +43,11 @@ describe("NavItem", () => {
     expect(onClick).toHaveBeenCalledTimes(1);
     expect(closeMenu).toHaveBeenCalledTimes(1);
   });
+
+  it("applies disabled styling and prevents interaction when disabled", () => {
+    render(<NavItem disabled>Archived</NavItem>);
+    const button = screen.getByRole("button", { name: "Archived" });
+    expect(button).toBeDisabled();
+    expect(button).toHaveClass("disabled:pointer-events-none", "disabled:opacity-50");
+  });
 });
