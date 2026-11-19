@@ -35,6 +35,7 @@
 | D29 | 2026-11-19 | Theme stack (NEX-002): Tailwind CSS 4.3.3; self-hosted fonts Inter, Noto Sans Arabic, JetBrains Mono (@fontsource 5.3.0); `border-strong` darkened to `#878F9C` / `#5E6E8A` so control borders meet WCAG 2.2 SC 1.4.11 | Token-only styling, no font CDN, and the 3:1 rule for borders |
 | D30 | 2026-11-19 | i18n stack (NEX-003): react-intl 12.2.0 + `@formatjs/icu-messageformat-parser` 3.5.23 (same version react-intl uses) to reject invalid ICU overrides; formatting via `Intl` only, no date-fns | One ICU engine; invalid tenant texts never reach users |
 | D31 | 2026-11-19 | NEX-008 split: core/tenancy contracts stay in NEX-008; identity contracts move to new NEX-028. Contracts keep offset paging `{items,total,page,pageSize}` (D15), not NOVA's cursor paging | Task size ≤ 60 lines; no reopening D15 |
+| D32 | 2026-11-19 | Max 3 commits per task: 1 implementer commit (`NEX-###: …`), 1 reviewer commit (`review: …`, combining fixes, review note and board/task `done`), and 1 merge commit on `main`. No separate intermediate `board:` commits | Owner request; keeps git history clean and compact |
 
 ## Open (decide by the Stage 1 freeze)
 - Identity: own implementation vs. Keycloak / Zitadel for SSO, SCIM and passkeys.

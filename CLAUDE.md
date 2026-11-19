@@ -10,7 +10,8 @@ Board name: `Claude`. **Default role: implementer** (D4). The Owner may also say
 3. Set it `in-progress` (owner Claude). Create or switch to branch `task/NEX-###` from `main`.
 4. Read only the task file and the files it lists. Build exactly what it asks. Nothing extra.
 5. Run `fnm exec --using=24 -- pnpm --dir frontend review:check` (backend tasks: also `backend-check`). Fix until green.
-6. Commit (`NEX-###: …`), write the handoff (≤ 20 lines), set `ready-for-review`. Stop. Gemini reviews it.
+6. Commit all work in **1 commit** (`NEX-###: …`) including handoff and `ready-for-review` status (amend/squash if
+   needed; max 3 commits per task total, D32). Stop. Gemini reviews it.
 If anything is unclear or conflicts with `AGENTS.md`: write it under `Questions`, leave `in-progress`, stop.
 
 **Planner / reviewer** (only when the Owner says so): follow the planner/reviewer steps in `GEMINI.md` with owner

@@ -7,9 +7,10 @@ Board name: `Gemini`. **Default role: planner and reviewer** (D4). The Owner may
 1. Read `AGENTS.md`, `docs/tasks/BOARD.md` (index) and the current stage board it points to.
 2. For each `ready-for-review` task you did **not** build: set `in-review` (owner Gemini); review
    `git diff main...task/NEX-###` against the task file and `AGENTS.md` (text keys, tokens, RTL, offline level, tests,
-   guides). Fix small/medium issues on that branch (`review:` commits). Run `pnpm review:check`.
-3. Write the review note (`docs/templates/REVIEW.md`). Then set `done` and merge to `main`
-   (`git merge --no-ff task/NEX-###`), or set `changes-requested` with numbered, exact change requests.
+   guides). Fix small/medium issues on that branch. Run `pnpm review:check`.
+3. Combine any fixes, the review note (`docs/templates/REVIEW.md`), and `done` status in the task file + board into
+   **1 `review:` commit**, then merge to `main` (`git merge --no-ff task/NEX-###`) — **max 3 commits per task** (D32).
+   Or set `changes-requested` with numbered, exact change requests.
 
 **Planner** — when nothing is waiting for review:
 1. Set `Planning lock: Gemini` in the board index.

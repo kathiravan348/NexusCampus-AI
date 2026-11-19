@@ -41,15 +41,18 @@ tasks; task files `docs/tasks/stage-N/NEX-###.md`). Read the index and the curre
 
 From `in-review` the reviewer may send a task back: `changes-requested` (implementer) → `ready-for-review`.
 
-1. Change the status on the board **before** starting work, and set yourself as owner.
+1. Change the status on the board **before** starting work, and set yourself as owner; fold board updates into the
+   task/review commit rather than making separate board-only commits.
 2. Never edit files of a task you do not own.
 3. Two tasks whose `Files` overlap may not be `in-progress` / `in-review` at the same time. Shared list files do not
    count: `frontend/pnpm-lock.yaml` (generated; rebase, re-run `pnpm install`, never hand-edit),
    `frontend/packages/*/package.json` (dependency lines), `frontend/packages/*/src/index.ts` (export lines),
    `frontend/packages/i18n/messages/*.json` (own keys only), `docs/STRUCTURE.md`, `docs/CONTRACTS.md`,
    `docs/COMPONENTS.md`, `docs/guides/*.md`. Edit only your own lines; on a conflict rebase and keep both sides.
-4. One branch per task: `task/NEX-###`. Commit all work (`NEX-###: …`) before `ready-for-review`.
-   Reviewer fixes go on the same branch with prefix `review:`.
+4. One branch per task: `task/NEX-###`. **Max 3 commits per task** (D32):
+   - Implementer: **1 commit** (`NEX-###: …`) with code, tests, maps/guides, handoff and `ready-for-review` (squash/amend before handoff).
+   - Reviewer: **1 commit** (`review: …`) combining any fixes, the review note and `done` status in the task file + board.
+   - Merge: **1 commit** on `main` (`git merge --no-ff task/NEX-###`). No separate intermediate `board:` commits.
 5. Planner priority: review `ready-for-review` tasks first, then plan. Keep 2 tasks `planned` ahead.
 6. The reviewer fixes small/medium issues directly; for larger problems writes exact change requests.
 7. Only the reviewer merges to `main`, after all checks pass. Never push to `main` otherwise.
