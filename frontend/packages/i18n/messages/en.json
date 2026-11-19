@@ -1,10 +1,16 @@
 {
-  "common.save": { "message": "Save", "description": "Button: save the current form or changes." },
+  "common.save": {
+    "message": "Save",
+    "description": "Button: save the current form or changes."
+  },
   "common.cancel": {
     "message": "Cancel",
     "description": "Button: close a form or dialog without saving."
   },
-  "common.edit": { "message": "Edit", "description": "Button: open an item for editing." },
+  "common.edit": {
+    "message": "Edit",
+    "description": "Button: open an item for editing."
+  },
   "common.delete": {
     "message": "Delete",
     "description": "Button: delete an item (asks to confirm first)."
@@ -13,7 +19,10 @@
     "message": "Search",
     "description": "Placeholder and label for a search box."
   },
-  "common.loading": { "message": "Loading…", "description": "Shown while data is loading." },
+  "common.loading": {
+    "message": "Loading…",
+    "description": "Shown while data is loading."
+  },
   "common.empty": {
     "message": "Nothing here yet",
     "description": "Shown when a list or table has no items."
@@ -34,9 +43,18 @@
     "message": "{count, plural, one {# change waiting to sync} other {# changes waiting to sync}}",
     "description": "Sync status: number of changes saved on this device but not yet uploaded. {count} is a number."
   },
-  "common.back": { "message": "Back", "description": "Button or link: go to the previous screen." },
-  "common.next": { "message": "Next", "description": "Button: go to the next step." },
-  "common.close": { "message": "Close", "description": "Button: close a dialog or panel." },
+  "common.back": {
+    "message": "Back",
+    "description": "Button or link: go to the previous screen."
+  },
+  "common.next": {
+    "message": "Next",
+    "description": "Button: go to the next step."
+  },
+  "common.close": {
+    "message": "Close",
+    "description": "Button: close a dialog or panel."
+  },
   "common.active": {
     "message": "Active",
     "description": "Status badge: active record or account."
@@ -61,7 +79,10 @@
     "message": "Select an option",
     "description": "Placeholder text inside a dropdown select control."
   },
-  "common.name": { "message": "Name", "description": "Generic form label for a record name." },
+  "common.name": {
+    "message": "Name",
+    "description": "Generic form label for a record name."
+  },
   "common.notes": {
     "message": "Notes",
     "description": "Generic form label for multi-line notes or remarks."
@@ -74,8 +95,14 @@
     "message": "Disabled",
     "description": "Toggle or status label indicating a feature is switched off."
   },
-  "common.status": { "message": "Status", "description": "Generic label for status fields." },
-  "common.details": { "message": "Details", "description": "Generic heading for detail sections." },
+  "common.status": {
+    "message": "Status",
+    "description": "Generic label for status fields."
+  },
+  "common.details": {
+    "message": "Details",
+    "description": "Generic heading for detail sections."
+  },
   "common.skipToContent": {
     "message": "Skip to content",
     "description": "Skip navigation link for keyboard and screen reader users."
@@ -199,5 +226,133 @@
   "term.guardian": {
     "message": "Guardian",
     "description": "Terminology: a parent or guardian responsible for a learner."
+  },
+  "common.shell.home": {
+    "message": "Home",
+    "description": "Menu item: the signed-in home page."
+  },
+  "common.shell.signOut": {
+    "message": "Sign out",
+    "description": "Icon button label: sign out of the app."
+  },
+  "common.shell.signOutBlocked": {
+    "message": "{count, plural, one {# change is} other {# changes are}} still waiting to sync. Connect and sync before signing out.",
+    "description": "Error toast: sign-out refused because offline changes have not synced; count = number of changes."
+  },
+  "common.shell.themeDark": {
+    "message": "Switch to dark theme",
+    "description": "Icon button label: switch the app to the dark colour theme."
+  },
+  "common.shell.themeLight": {
+    "message": "Switch to light theme",
+    "description": "Icon button label: switch the app to the light colour theme."
+  },
+  "common.shell.switchPersona": {
+    "message": "Switch user",
+    "description": "Icon button label and dialog title: sign in as another demo user of this institution."
+  },
+  "common.shell.switchInstitution": {
+    "message": "Switch institution",
+    "description": "Button: go back to the sign-in page to pick another demo institution."
+  },
+  "common.shell.current": {
+    "message": "Current",
+    "description": "Badge next to the user who is signed in now."
+  },
+  "common.shell.welcome": {
+    "message": "Welcome, {name}",
+    "description": "Home page heading; name = the signed-in person's preferred name."
+  },
+  "common.shell.modulesHeading": {
+    "message": "Your modules",
+    "description": "Accessible label of the list of module tiles on the home page."
+  },
+  "common.shell.noModulesTitle": {
+    "message": "No modules yet",
+    "description": "Empty state title on home when the user may open no modules."
+  },
+  "common.shell.noModulesBody": {
+    "message": "Modules for your role appear here once they are switched on for your institution.",
+    "description": "Empty state text on home when the user may open no modules."
+  },
+  "common.shell.goHome": {
+    "message": "Go to home",
+    "description": "Button: go to the home page from an error page."
+  },
+  "common.shell.notFoundTitle": {
+    "message": "Page not found",
+    "description": "Error page title: the address matches no page."
+  },
+  "common.shell.notFoundBody": {
+    "message": "This address does not match any page. Check the link or go back to home.",
+    "description": "Error page text: the address matches no page."
+  },
+  "common.shell.moduleOffTitle": {
+    "message": "Not in your plan",
+    "description": "Page title: the institution's plan does not include this module."
+  },
+  "common.shell.moduleOffBody": {
+    "message": "Your institution's plan does not include this module. Ask your administrator if you need it.",
+    "description": "Page text: the institution's plan does not include this module."
+  },
+  "common.shell.forbiddenTitle": {
+    "message": "No access",
+    "description": "Page title: the user's role may not open this page."
+  },
+  "common.shell.forbiddenBody": {
+    "message": "Your role does not allow you to open this page. Ask your administrator if you need access.",
+    "description": "Page text: the user's role may not open this page."
+  },
+  "common.shell.offlineTitle": {
+    "message": "Needs a connection",
+    "description": "Notice title: this page works only online and the device is offline."
+  },
+  "common.shell.offlineBody": {
+    "message": "This page works only online. Connect to the internet and try again.",
+    "description": "Notice text: this page works only online and the device is offline."
+  },
+  "m02.signIn.title": {
+    "message": "Sign in to a demo institution",
+    "description": "Sign-in page heading (prototype with demo data)."
+  },
+  "m02.signIn.intro": {
+    "message": "Pick an institution and a role. This prototype uses fictional demo data and needs no password.",
+    "description": "Sign-in page intro text."
+  },
+  "m02.signIn.signInAs": {
+    "message": "Sign in to {institution} as {role}",
+    "description": "Accessible label of a sign-in button; institution = demo institution name, role = persona role."
+  },
+  "m02.signIn.empty": {
+    "message": "No demo institutions are available.",
+    "description": "Empty state on the sign-in page."
+  },
+  "m02.signIn.error": {
+    "message": "The demo institutions could not be loaded.",
+    "description": "Error state on the sign-in page."
+  },
+  "m02.persona.admin": {
+    "message": "Administrator",
+    "description": "Demo persona role: institution administrator."
+  },
+  "m02.persona.teacher": {
+    "message": "Teacher",
+    "description": "Demo persona role: teacher or instructor."
+  },
+  "m02.persona.guardian": {
+    "message": "Parent or guardian",
+    "description": "Demo persona role: parent or guardian of a learner."
+  },
+  "m02.persona.learner": {
+    "message": "Learner",
+    "description": "Demo persona role: learner or student."
+  },
+  "m02.persona.user": {
+    "message": "User",
+    "description": "Demo persona role when no specific role label is known."
+  },
+  "m04.localeSwitch.label": {
+    "message": "Language",
+    "description": "Label of the language picker in the menu."
   }
 }
