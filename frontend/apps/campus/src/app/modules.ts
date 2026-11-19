@@ -5,6 +5,7 @@ import {
   Gauge,
   Languages,
   Palette,
+  RefreshCw,
   ShieldCheck,
   Users,
   type LucideIcon,
@@ -87,5 +88,14 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m06.audit.read",
     offlineLevel: "L0",
     load: () => import("../modules/m06/PrivacyPage"),
+  },
+  {
+    moduleId: "M10",
+    path: "sync",
+    navKey: "m10.nav.title",
+    icon: RefreshCw,
+    permission: null,
+    offlineLevel: "L3",
+    load: () => import("../modules/m10/SyncCentrePage"),
   },
 ];

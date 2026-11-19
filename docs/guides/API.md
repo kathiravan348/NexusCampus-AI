@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, M05, and M06 write endpoints landed)
+> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, M05, M06, and M10 write endpoints landed)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -74,3 +74,12 @@ In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request 
 | `GET /api/v1/data-requests` | `m06.request.manage` | `?page=&pageSize=` → `Page<DataSubjectRequest>` | `400`, `401`, `403` |
 | `PATCH /api/v1/data-requests/:id` | `m06.request.manage` | `{ status, reason? }` → `DataSubjectRequest` (received → in_progress → completed \| rejected; `reason` required to reject, never stored in audit) | `400 invalid_request` (missing reason), `401`, `403`, `404`, `409 conflict` (step not allowed); audits `m06.dataRequest.started` / `.completed` / `.rejected` on the hash chain |
 | `GET /api/v1/compliance-packs` | `m06.audit.read` | `?page=&pageSize=` → `Page<CompliancePack>` | `400`, `401`, `403` |
+
+## Sync centre (M10)
+
+| Method & path | Permission | Input / Output | Errors & audit |
+|---|---|---|---|
+| `GET /api/v1/devices` | `m10.device.read` (all with `m10.device.wipe`, else own) | `?page=&pageSize=` → `Page<DeviceSync>` | `400`, `401`, `403` |
+| `GET /api/v1/sync-conflicts` | `m10.device.read` (for the visible devices) | `?page=&pageSize=` → `Page<SyncConflict>` (no payloads) | `400`, `401`, `403` |
+| `POST /api/v1/devices/:id/revoke` | `m10.device.wipe` | `{}` → `DeviceSync` (`revoke_pending`; pending writes counted as lost) | `401`, `403`, `404`, `409 conflict` (not active); audits `m10.device.revokeRequested` |
+| `POST /api/v1/sync-conflicts/:id/resolve` | `m10.device.wipe` | `{ resolution: keep_server \| keep_client \| merged }` → `SyncConflict` (device `conflictCount` − 1) | `400` (missing resolution), `401`, `403`, `404`, `409 conflict` (already resolved); audits `m10.conflict.resolved` |
