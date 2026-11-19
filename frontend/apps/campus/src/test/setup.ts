@@ -3,7 +3,7 @@ import "fake-indexeddb/auto";
 import { afterAll, afterEach, beforeAll } from "vitest";
 import { resetMockDb } from "@nexus/mocks";
 import { server } from "@nexus/mocks/node";
-import { cleanup } from "@testing-library/react";
+import { cleanup, configure } from "@testing-library/react";
 import { transferableAbortController } from "node:util";
 
 // jsdom replaces AbortController/AbortSignal, but Node's fetch (used by MSW in tests) only accepts
@@ -20,6 +20,9 @@ if (typeof globalThis.ResizeObserver === "undefined") {
     disconnect() {}
   };
 }
+
+// Lazy module screens plus several queries can take over 1 s on a loaded machine (full workspace run).
+configure({ asyncUtilTimeout: 5000 });
 
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 afterEach(() => {

@@ -1295,6 +1295,10 @@
     "message": "Restricted",
     "description": "Badge: this value is hidden because the viewer may not see restricted personal data."
   },
+  "common.unlimited": {
+    "message": "Unlimited",
+    "description": "Shown next to a usage figure that has no limit."
+  },
   "m03.nav.title": {
     "message": "Theme studio",
     "description": "Sidebar menu item and page title for Theme studio (M03)."
@@ -2370,5 +2374,213 @@
   "m06.permission.requestManage": {
     "message": "Handle data requests",
     "description": "Permission description: handle data subject requests (sensitive)."
+  },
+  "m05.nav.title": {
+    "message": "Plan & usage",
+    "description": "Menu item and page title of the plan, modules and usage screen (M05)."
+  },
+  "m05.plan.intro": {
+    "message": "See your plan, switch optional modules on or off, and follow this period's usage.",
+    "description": "Intro text under the plan and usage page title."
+  },
+  "m05.plan.current": {
+    "message": "Current plan",
+    "description": "Heading of the current plan card."
+  },
+  "m05.plan.name": {
+    "message": "Plan",
+    "description": "Label: the plan's name."
+  },
+  "m05.plan.aiCredits": {
+    "message": "AI credits per month",
+    "description": "Label: AI credits included each month."
+  },
+  "m05.plan.learnerLimit": {
+    "message": "Learner limit",
+    "description": "Label: maximum number of learners in the plan."
+  },
+  "m05.plan.tabsLabel": {
+    "message": "Plan sections",
+    "description": "Accessible label of the tab list on the plan page."
+  },
+  "m05.plan.tabModules": {
+    "message": "Modules",
+    "description": "Tab: modules and their switches."
+  },
+  "m05.plan.tabUsage": {
+    "message": "Usage",
+    "description": "Tab: usage meters."
+  },
+  "m05.plan.error": {
+    "message": "Plan and usage could not be loaded.",
+    "description": "Error heading when plan or usage data fails to load."
+  },
+  "m05.plan.saveFailed": {
+    "message": "The change could not be saved. Try again.",
+    "description": "Toast shown when switching a module fails."
+  },
+  "m05.plan.starter": {
+    "message": "Starter",
+    "description": "Plan name: the entry plan."
+  },
+  "m05.plan.standard": {
+    "message": "Standard",
+    "description": "Plan name: the standard plan."
+  },
+  "m05.plan.enterprise": {
+    "message": "Enterprise",
+    "description": "Plan name: the enterprise plan."
+  },
+  "m05.modules.intro": {
+    "message": "Core modules are always on. Optional modules in your plan can be switched off; switched-off modules disappear from the menu for everyone.",
+    "description": "Intro text on the modules tab."
+  },
+  "m05.modules.caption": {
+    "message": "Modules",
+    "description": "Accessible caption of the modules table."
+  },
+  "m05.modules.colModule": {
+    "message": "Module",
+    "description": "Modules table column: module name."
+  },
+  "m05.modules.colSource": {
+    "message": "Included by",
+    "description": "Modules table column: why the institution has it (core, plan, add-on, trial)."
+  },
+  "m05.modules.colEnabled": {
+    "message": "On",
+    "description": "Modules table column: on/off switch."
+  },
+  "m05.modules.notInPlan": {
+    "message": "Not in your plan",
+    "description": "Badge: the module is not part of the institution's plan."
+  },
+  "m05.modules.expires": {
+    "message": "Ends {date}",
+    "description": "Shown next to a trial: the date it ends."
+  },
+  "m05.modules.switchLabel": {
+    "message": "Turn {module} on",
+    "description": "Accessible label of a module's on/off switch."
+  },
+  "m05.modules.turnedOn": {
+    "message": "{module} is on.",
+    "description": "Toast after a module is switched on."
+  },
+  "m05.modules.turnedOff": {
+    "message": "{module} is off and hidden from the menu.",
+    "description": "Toast after a module is switched off."
+  },
+  "m05.modules.empty": {
+    "message": "No modules.",
+    "description": "Empty state of the modules table."
+  },
+  "m05.source.core": {
+    "message": "Core",
+    "description": "Badge: module that is always on."
+  },
+  "m05.source.plan": {
+    "message": "Plan",
+    "description": "Badge: module included in the plan."
+  },
+  "m05.source.addon": {
+    "message": "Add-on",
+    "description": "Badge: module bought as an add-on."
+  },
+  "m05.source.trial": {
+    "message": "Trial",
+    "description": "Badge: module on a time-limited trial."
+  },
+  "m05.module.m01": {
+    "message": "Institution setup",
+    "description": "Module name M01."
+  },
+  "m05.module.m02": {
+    "message": "Users & access",
+    "description": "Module name M02."
+  },
+  "m05.module.m03": {
+    "message": "Theme studio",
+    "description": "Module name M03."
+  },
+  "m05.module.m04": {
+    "message": "Text & language studio",
+    "description": "Module name M04."
+  },
+  "m05.module.m05": {
+    "message": "Plan & usage",
+    "description": "Module name M05."
+  },
+  "m05.module.m06": {
+    "message": "Audit & privacy",
+    "description": "Module name M06."
+  },
+  "m05.module.m07": {
+    "message": "Notifications",
+    "description": "Module name M07."
+  },
+  "m05.module.m10": {
+    "message": "Sync centre",
+    "description": "Module name M10."
+  },
+  "m05.module.m11": {
+    "message": "Nexus Assist",
+    "description": "Module name M11 (AI assistant; product name, not translated)."
+  },
+  "m05.module.m83": {
+    "message": "Data vault & access",
+    "description": "Module name M83."
+  },
+  "m05.usage.title": {
+    "message": "This period",
+    "description": "Heading of the usage card."
+  },
+  "m05.usage.period": {
+    "message": "{from} – {to}",
+    "description": "Billing period dates on the usage card."
+  },
+  "m05.usage.ofLimit": {
+    "message": "{used} of {limit}",
+    "description": "Usage value against its limit, e.g. 950 of 1,000."
+  },
+  "m05.usage.gigabytes": {
+    "message": "{value} GB",
+    "description": "Storage amount in gigabytes."
+  },
+  "m05.usage.empty": {
+    "message": "No usage recorded this period.",
+    "description": "Empty state when there are no usage meters."
+  },
+  "m05.metric.learners": {
+    "message": "Learners",
+    "description": "Usage meter: number of learners."
+  },
+  "m05.metric.staff": {
+    "message": "Staff",
+    "description": "Usage meter: number of staff."
+  },
+  "m05.metric.storage": {
+    "message": "Storage",
+    "description": "Usage meter: file storage used."
+  },
+  "m05.metric.aiCredits": {
+    "message": "AI credits",
+    "description": "Usage meter: AI credits used."
+  },
+  "m05.metric.sms": {
+    "message": "Text messages",
+    "description": "Usage meter: SMS messages sent."
+  },
+  "m05.metric.email": {
+    "message": "Emails",
+    "description": "Usage meter: emails sent."
+  },
+  "m05.permission.planRead": {
+    "message": "See plan and usage",
+    "description": "Permission description: view plan, modules and usage."
+  },
+  "m05.permission.moduleManage": {
+    "message": "Switch modules on or off",
+    "description": "Permission description: switch optional modules on or off."
   }
 }

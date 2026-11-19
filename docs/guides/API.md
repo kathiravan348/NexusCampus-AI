@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, and M06 write endpoints landed)
+> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, M05, and M06 write endpoints landed)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -36,6 +36,15 @@ In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request 
 | `DELETE /api/v1/role-assignments/:id` | `m02.role.manage` | — → `204` | `401`, `403`, `404`, `409 conflict` (your own last admin role); audits `m02.role.unassigned` |
 | `DELETE /api/v1/sessions/:id` | Own session, or `m02.user.invite` | — → `Session` (with `revokedAt`) | `401`, `403`, `404`; audits `m02.session.revoked` |
 | `POST /api/v1/sso-providers` · `PUT /api/v1/sso-providers/:id` | `m02.sso.manage` | `{ institutionId, protocol, name, issuerUrl (https), clientId, domains, scimEnabled, enabled }` → `201` / `200 SsoProvider` (no secrets) | `400 invalid_request` (non-https issuer, bad domain), `401`, `403`, `404`; audits `m02.sso.created` / `m02.sso.updated` |
+
+## Plan & usage (M05)
+
+| Method & path | Permission | Input / Output | Errors & audit |
+|---|---|---|---|
+| `GET /api/v1/plan` | `m05.plan.read` | — → `Plan` | `401`, `403`, `404` |
+| `GET /api/v1/entitlements` | Authenticated | `?page=&pageSize=` → `Page<Entitlement>` (drives the menu) | `400`, `401` |
+| `GET /api/v1/usage` | `m05.plan.read` | `?page=&pageSize=` → `Page<UsageMeter>` | `400`, `401`, `403` |
+| `PATCH /api/v1/entitlements/:moduleId` | `m05.module.manage` | `{ enabled }` → `Entitlement` | `400`, `401`, `403`, `403 module_disabled` (not in plan), `409 conflict` (core module); audits `m05.module.enabled` / `m05.module.disabled` |
 
 ## Theme studio (M03)
 

@@ -10,6 +10,7 @@
 | `Card` | `@nexus/ui-core` | Surface container with optional header title, actions and footer | `Components/Card` |
 | `StatCard` | `@nexus/ui-core` | KPI card with label, tabular figure, semantic caption and skeleton loading state | `Components/StatCard` |
 | `Skeleton` | `@nexus/ui-core` | Reduced-motion-safe decorative loading placeholder | `Components/Skeleton` |
+| `Meter` | `@nexus/ui-core` | Labelled usage meter (`role="meter"`) with normal / warning / danger tones by threshold, unlimited and loading states, RTL fill | `Components/Meter` |
 | `Field` | `@nexus/ui-core` | Form wrapper pairing label, required indicator, description and `role="alert"` error | `Components/Field` |
 | `Input` | `@nexus/ui-core` | Single-line text/numeric input with logical leading/trailing slots and ARIA wiring | `Components/Input` |
 | `ColorField` | `@nexus/ui-core` | Colour token input combining live swatch, native colour picker and hex text field | `Components/ColorField` |

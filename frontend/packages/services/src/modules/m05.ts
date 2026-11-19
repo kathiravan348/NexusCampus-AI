@@ -4,9 +4,13 @@ import {
   PlanSchema,
   UsageMeterSchema,
   pageSchema,
+  type Entitlement,
+  type ModuleId,
 } from "@nexus/contracts";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryKeys } from "../keys";
-import { useScopedQuery } from "../query";
+import { useScopedQuery, useServices } from "../query";
+import { useSession } from "../session";
 
 export const EntitlementPageSchema = pageSchema(EntitlementSchema);
 export const UsageMeterPageSchema = pageSchema(UsageMeterSchema);
@@ -30,4 +34,26 @@ export function useUsage() {
   return useScopedQuery(queryKeys.m05.usage, (client, signal) =>
     client.get("/usage", UsageMeterPageSchema, { pageSize: PAGE_SIZE_MAX }, { signal }),
   );
+}
+
+/**
+ * Switches an optional module on or off for the tenant (M05, L0 online-only). Refetches the
+ * entitlements, so the shell menu and route guard update at once.
+ */
+export function useSetModuleEnabled() {
+  const { client } = useServices();
+  const { session } = useSession();
+  const qc = useQueryClient();
+  return useMutation<Entitlement, Error, { moduleId: ModuleId; enabled: boolean }>({
+    mutationFn: ({ moduleId, enabled }) =>
+      client.send(
+        "PATCH",
+        `/entitlements/${encodeURIComponent(moduleId)}`,
+        { enabled },
+        EntitlementSchema,
+      ),
+    onSuccess: async () => {
+      if (session) await qc.invalidateQueries({ queryKey: queryKeys.m05.entitlements(session) });
+    },
+  });
 }
