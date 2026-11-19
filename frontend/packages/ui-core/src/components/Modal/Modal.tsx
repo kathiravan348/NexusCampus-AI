@@ -1,0 +1,90 @@
+import * as React from "react";
+import * as Dialog from "@radix-ui/react-dialog";
+import { X } from "lucide-react";
+import { useText } from "@nexus/i18n";
+import { cn } from "../../lib/cn";
+import { IconButton } from "../IconButton/IconButton";
+
+export interface ModalProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+  defaultOpen?: boolean;
+  trigger?: React.ReactNode;
+  title: React.ReactNode;
+  description?: React.ReactNode;
+  children: React.ReactNode;
+  footer?: React.ReactNode;
+  className?: string;
+  size?: "md" | "lg" | "xl";
+}
+
+const SIZE_CLASSES: Readonly<Record<NonNullable<ModalProps["size"]>, string>> = {
+  md: "max-w-lg",
+  lg: "max-w-3xl",
+  xl: "max-w-6xl",
+};
+
+export function Modal({
+  open,
+  onOpenChange,
+  defaultOpen,
+  trigger,
+  title,
+  description,
+  children,
+  footer,
+  className,
+  size = "md",
+}: ModalProps): React.ReactElement {
+  const t = useText();
+
+  return (
+    <Dialog.Root open={open} onOpenChange={onOpenChange} defaultOpen={defaultOpen}>
+      {trigger && <Dialog.Trigger asChild>{trigger}</Dialog.Trigger>}
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 z-40 bg-bg-ground/80 backdrop-blur-xs transition-opacity" />
+        <Dialog.Content
+          {...(description ? {} : { "aria-describedby": undefined })}
+          className={cn(
+            "fixed top-1/2 start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -translate-y-1/2 z-50",
+            "w-[calc(100%-2rem)] max-h-[85vh] flex flex-col",
+            SIZE_CLASSES[size],
+            "rounded-lg border border-border-default bg-bg-surface p-6 shadow-xl",
+            "focus:outline-hidden",
+            className,
+          )}
+        >
+          <div className="flex items-start justify-between gap-4">
+            <div className="space-y-1 min-w-0">
+              <Dialog.Title className="font-sans text-card-title font-semibold text-text-primary">
+                {title}
+              </Dialog.Title>
+              {description && (
+                <Dialog.Description className="text-body-sm text-text-secondary">
+                  {description}
+                </Dialog.Description>
+              )}
+            </div>
+            <Dialog.Close asChild>
+              <IconButton
+                icon={<X className="h-4 w-4" />}
+                aria-label={t("common.close")}
+                variant="ghost"
+                size="sm"
+                className="shrink-0 -me-2 -mt-2"
+              />
+            </Dialog.Close>
+          </div>
+
+          <div className="my-4 overflow-y-auto flex-1">{children}</div>
+
+          {footer && (
+            <div className="mt-2 flex flex-col-reverse sm:flex-row sm:items-center sm:justify-end gap-2 shrink-0">
+              {footer}
+            </div>
+          )}
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
+  );
+}

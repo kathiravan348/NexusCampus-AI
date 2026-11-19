@@ -14,7 +14,7 @@
 | NEX-003 | i18n engine: FormatJS, message catalogue, locale-scoped terminology packs, formatters (incl. G-3 calendars), pseudo-locale, RTL | B | done | Claude | 001 |
 | NEX-004 | Storybook: theme, tenant-theme, locale, RTL, viewport toggles; a11y addon | A | done | Gemini | 002, 003 |
 | NEX-005 | ui-core port from NOVA (1/2): Button, IconButton, Badge, Card, StatCard, Skeleton, form fields — text via keys, RTL | A | done | Gemini | 004 |
-| NEX-006 | ui-core port from NOVA (2/2): DataTable, AppShell, NavItem, Modal, Tabs, Toast, EmptyState, DemoBanner, SyncStatus | A | planned | — | 005 |
+| NEX-006 | ui-core port from NOVA (2/2): DataTable, AppShell, NavItem, Modal, Tabs, Toast, EmptyState, DemoBanner, SyncStatus | A | done | Gemini | 005 |
 | NEX-007 | Offline package: Dexie store, outbox with idempotency keys, sync status hook, encryption, wipe | B | done | Gemini | 001 |
 | NEX-008 | Contracts (core): primitives (Id, dates, Locale, TimeZone, Currency, Region, InstitutionType, ModuleId), ApiError, Page, DomainEvent, LocaleSettings, Group, Institution, Campus, InstitutionTypeProfile, AcademicCalendar | B | done | Gemini | 001 |
 | NEX-009 | Contracts (studio & compliance): Theme, Font, TextOverride, TerminologyPack, Plan, Entitlement, AuditEvent, Consent, DataSubjectRequest, CompliancePack | B | draft | — | 008 |

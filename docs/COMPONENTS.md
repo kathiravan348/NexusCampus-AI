@@ -16,3 +16,12 @@
 | `Select` | `@nexus/ui-core` | Native select with `<optgroup>` runs, placeholder and RTL-safe indicator | `Components/Select` |
 | `Checkbox` | `@nexus/ui-core` | Radix checkbox supporting checked, unchecked and indeterminate states | `Components/Checkbox` |
 | `Switch` | `@nexus/ui-core` | Radix toggle switch with RTL-mirrored thumb transition | `Components/Switch` |
+| `AppShell` | `@nexus/ui-core` | Responsive app layout with desktop sidebar, mobile Radix drawer, skip link and `useAppShell` | `Components/AppShell` |
+| `NavItem` | `@nexus/ui-core` | Sidebar navigation item with icon, active state, `asChild` support and auto-close in mobile drawer | `Components/NavItem` |
+| `Modal` | `@nexus/ui-core` | Accessible Radix dialog (`md`, `lg`, `xl`) with localized close chrome and focus trap | `Components/Modal` |
+| `Tabs` | `@nexus/ui-core` | Accessible Radix tabs with scrollable tab list and active logical underline | `Components/Tabs` |
+| `ToastProvider` | `@nexus/ui-core` | Radix toast notifications (`info`, `success`, `warning`, `danger`) with `useToast` hook | `Components/Toast` |
+| `EmptyState` | `@nexus/ui-core` | Centered empty or error state with localized fallback headings and optional action | `Components/EmptyState` |
+| `DemoBanner` | `@nexus/ui-core` | Prototype mock-data notice banner (`role="note"`) with localized default text | `Components/DemoBanner` |
+| `SyncStatus` | `@nexus/ui-core` | Props-driven offline sync indicator (`synced`, `pending`, `syncing`, `conflict`, `offline`, `error`) | `Components/SyncStatus` |
+| `DataTable` | `@nexus/ui-core` | TanStack Table with sortable columns, D15 offset pagination, mobile 360px cards, loading/empty/error states | `Components/DataTable` |
