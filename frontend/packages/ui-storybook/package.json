@@ -1,0 +1,33 @@
+{
+  "name": "@nexus/ui-storybook",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "storybook dev -p 6006",
+    "build": "storybook build -o storybook-static --quiet",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@nexus/i18n": "workspace:*",
+    "@nexus/ui-core": "workspace:*",
+    "@nexus/ui-edu": "workspace:*",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "10.6.0",
+    "@storybook/react-vite": "10.6.0",
+    "@tailwindcss/vite": "4.3.3",
+    "@types/node": "20.19.43",
+    "@types/react": "18.3.18",
+    "@types/react-dom": "18.3.5",
+    "@vitejs/plugin-react": "4.7.0",
+    "storybook": "10.6.0",
+    "typescript": "5.7.3",
+    "vite": "6.4.3",
+    "vitest": "3.2.7"
+  }
+}

@@ -48,4 +48,4 @@
 - Licence pricing unit for self-hosted: per learner, per campus, or flat edition.
 
 ## Requests
-_(implementers note new dependencies or decision requests here; the planner moves them into the table)_
+- NEX-004 (`@nexus/ui-storybook`): `storybook`, `@storybook/react-vite`, `@storybook/addon-a11y` at `10.6.0` (exact pins, same versions as NOVA).
