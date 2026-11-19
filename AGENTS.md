@@ -49,7 +49,7 @@ From `in-review` the reviewer may send a task back: `changes-requested` (impleme
    `frontend/packages/*/package.json` (dependency lines), `frontend/packages/*/src/index.ts` (export lines),
    `frontend/packages/i18n/messages/*.json` (own keys only), `frontend/apps/campus/src/app/modules.ts` (one line per
    module), `frontend/packages/mocks/src/{handlers,fixtures}/index.ts` (one line per file), `docs/STRUCTURE.md`, `docs/CONTRACTS.md`,
-   `docs/COMPONENTS.md`, `docs/guides/*.md`. Edit only your own lines; on a conflict rebase and keep both sides.
+   `docs/COMPONENTS.md`, `docs/TIMINGS.md`, `docs/guides/*.md`. Edit only your own lines; on a conflict rebase and keep both sides.
 4. One branch per task: `task/NEX-###`. **Max 3 commits per task** (D32):
    - Implementer: **1 commit** (`NEX-###: …`) with code, tests, maps/guides, handoff and `ready-for-review` (squash/amend before handoff).
    - Reviewer: **1 commit** (`review: …`) combining any fixes, the review note and `done` status in the task file + board.
@@ -146,12 +146,25 @@ Describe only what is merged and works. Update the "State as of" line. `USER-GUI
 - Python (build step): mypy strict; Pydantic forbids extra fields; every query under the tenant's RLS context;
   every endpoint tested; every contract model has a parity test; every write audited.
 
+## 8a. Startup & test timings (D37)
+Every runnable surface and test suite reports elapsed time and warns (soft budget — never fails on slower machines)
+when over budget (`docs/TIMINGS.md` holds the budgets and measured baselines):
+- **Project start (all places):** dev servers (`campus`, `ui-storybook`, future `control`), `preview` / `review:start`,
+  browser dev cold-boot, and future `backend/` / `control/` API + Docker Compose starts log boot-to-ready time (`[timing] ...`).
+- **Tests & checks (all places):** `pnpm test` (workspace total + per-package breakdown + top-5 slowest files),
+  per-package `test`, `pnpm review:check` (per step: format, lint, typecheck, test, build + total), `pnpm e2e`
+  (NEX-021), and future `backend-check` / `pytest` print elapsed time and soft-budget warnings.
+- **New apps, packages or services** must wire into the same timing harness (no untimed start or test entrypoints).
+- **Every task handoff** records `Timings:` (from `pnpm review:check`, plus start/e2e/backend times when touched) and
+  updates `docs/TIMINGS.md` when adding a surface, changing a budget, or exceeding a soft budget.
+
 ## 9. Definition of done (every task)
 - [ ] Acceptance checks in the task file all pass
 - [ ] `pnpm review:check` passes (format, lint, typecheck, test, build); backend: `backend-check` passes
 - [ ] Stories checked at 360px and desktop, light and dark, pseudo-locale and RTL
 - [ ] No hardcoded text, hex values or font names; offline level met if the task touches a module screen
 - [ ] Maps updated (`STRUCTURE`, `CONTRACTS`, `COMPONENTS`) if touched; guides per §7a or `Guides: none`
+- [ ] Timings recorded in handoff (§8a); `docs/TIMINGS.md` updated if a surface was added or soft budget exceeded
 - [ ] Handoff note written in the task file; board status updated
 
 ## 10. Never
