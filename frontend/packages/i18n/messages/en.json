@@ -2582,5 +2582,289 @@
   "m05.permission.moduleManage": {
     "message": "Switch modules on or off",
     "description": "Permission description: switch optional modules on or off."
+  },
+  "m10.nav.title": {
+    "message": "Sync centre",
+    "description": "Menu item and page title of the sync centre (M10)."
+  },
+  "m10.sync.intro": {
+    "message": "See what this device still has to send, sync it, and manage the institution's devices and conflicts.",
+    "description": "Intro text under the sync centre title."
+  },
+  "m10.sync.tabsLabel": {
+    "message": "Sync centre sections",
+    "description": "Accessible label of the tab list on the sync centre."
+  },
+  "m10.sync.tabDevice": {
+    "message": "This device",
+    "description": "Tab: this device's sync state and queued changes."
+  },
+  "m10.sync.tabDevices": {
+    "message": "Devices",
+    "description": "Tab: the institution's devices."
+  },
+  "m10.sync.tabConflicts": {
+    "message": "Conflicts",
+    "description": "Tab: server-side sync conflicts."
+  },
+  "m10.sync.error": {
+    "message": "Sync data could not be loaded.",
+    "description": "Error heading when sync data fails to load."
+  },
+  "m10.sync.failed": {
+    "message": "That did not work. Try again.",
+    "description": "Toast when a sync action fails."
+  },
+  "m10.device.title": {
+    "message": "This device",
+    "description": "Heading of the card with this device's sync state."
+  },
+  "m10.device.syncNow": {
+    "message": "Sync now",
+    "description": "Button: send this device's queued changes now."
+  },
+  "m10.device.synced": {
+    "message": "{sent, plural, =0 {Nothing was sent.} one {# change sent.} other {# changes sent.}}",
+    "description": "Toast after Sync now, with how many changes were sent."
+  },
+  "m10.device.offlineHint": {
+    "message": "You are offline. Changes stay safely on this device and send when you are back online.",
+    "description": "Hint on this device's card while offline."
+  },
+  "m10.outbox.title": {
+    "message": "Waiting to send",
+    "description": "Heading of the list of queued changes on this device."
+  },
+  "m10.outbox.privacy": {
+    "message": "Only the kind of change is shown here, never its content.",
+    "description": "Explains that queued changes show no personal content."
+  },
+  "m10.outbox.empty": {
+    "message": "Everything on this device is sent.",
+    "description": "Empty state when the outbox is empty."
+  },
+  "m10.outbox.meta": {
+    "message": "{attempts, plural, =0 {Not tried yet} one {Tried once} other {Tried # times}} · queued {created}",
+    "description": "Attempts and queue time of a queued change."
+  },
+  "m10.outbox.keepMine": {
+    "message": "Keep mine",
+    "description": "Button: send my version again over the server's."
+  },
+  "m10.outbox.keepServer": {
+    "message": "Keep the server's",
+    "description": "Button: drop my change and keep the server's version."
+  },
+  "m10.outbox.status.pending": {
+    "message": "Waiting",
+    "description": "Queued change status: waiting to send."
+  },
+  "m10.outbox.status.syncing": {
+    "message": "Sending",
+    "description": "Queued change status: being sent."
+  },
+  "m10.outbox.status.conflict": {
+    "message": "Needs a decision",
+    "description": "Queued change status: conflicts with the server."
+  },
+  "m10.outbox.status.failed": {
+    "message": "Failed",
+    "description": "Queued change status: could not be sent."
+  },
+  "m10.priority.critical": {
+    "message": "Critical",
+    "description": "Sync priority: sent first."
+  },
+  "m10.priority.high": {
+    "message": "High",
+    "description": "Sync priority: high."
+  },
+  "m10.priority.normal": {
+    "message": "Normal",
+    "description": "Sync priority: normal."
+  },
+  "m10.priority.low": {
+    "message": "Low",
+    "description": "Sync priority: low."
+  },
+  "m10.devices.caption": {
+    "message": "Devices",
+    "description": "Accessible caption of the devices table."
+  },
+  "m10.devices.colDevice": {
+    "message": "Device",
+    "description": "Devices table column: device name, owner and platform."
+  },
+  "m10.devices.colLastSync": {
+    "message": "Last sync",
+    "description": "Devices table column: last successful sync."
+  },
+  "m10.devices.colCounts": {
+    "message": "Changes",
+    "description": "Devices table column: pending, conflict and lost changes."
+  },
+  "m10.devices.colStatus": {
+    "message": "Status",
+    "description": "Devices table column: active or revoked."
+  },
+  "m10.devices.colActions": {
+    "message": "Actions",
+    "description": "Devices table column holding row actions."
+  },
+  "m10.devices.never": {
+    "message": "Never",
+    "description": "Shown when a device has never synced."
+  },
+  "m10.devices.pending": {
+    "message": "{count, plural, one {# waiting} other {# waiting}}",
+    "description": "Badge: number of changes waiting on the device."
+  },
+  "m10.devices.conflicts": {
+    "message": "{count, plural, one {# conflict} other {# conflicts}}",
+    "description": "Badge: number of open conflicts from the device."
+  },
+  "m10.devices.lost": {
+    "message": "{count, plural, one {# lost} other {# lost}}",
+    "description": "Badge: number of changes lost by a remote wipe."
+  },
+  "m10.devices.revoke": {
+    "message": "Revoke & wipe",
+    "description": "Button: ask for a remote wipe of a device."
+  },
+  "m10.devices.revokeLabel": {
+    "message": "Revoke and wipe {device}",
+    "description": "Accessible label of the revoke button."
+  },
+  "m10.devices.confirmTitle": {
+    "message": "Revoke and wipe {device}?",
+    "description": "Title of the confirm dialog for a remote wipe."
+  },
+  "m10.devices.lossWarning": {
+    "message": "{count, plural, =0 {No changes are waiting on this device.} one {# change waiting on this device will be lost.} other {# changes waiting on this device will be lost.}}",
+    "description": "Warning in the wipe dialog about changes that will be lost."
+  },
+  "m10.devices.ownWarning": {
+    "message": "This is the device you are using now. You will be signed out and its data removed.",
+    "description": "Extra warning when wiping the current device."
+  },
+  "m10.devices.wipeNote": {
+    "message": "The device is signed out and its offline data removed the next time it connects.",
+    "description": "Explains when a remote wipe takes effect."
+  },
+  "m10.devices.confirm": {
+    "message": "Revoke & wipe",
+    "description": "Button: confirm the remote wipe."
+  },
+  "m10.devices.confirmOwnFirst": {
+    "message": "Yes, this device",
+    "description": "Button: first of two confirmations when wiping the current device."
+  },
+  "m10.devices.revoked": {
+    "message": "Wipe requested for {device}.",
+    "description": "Toast after a remote wipe is requested."
+  },
+  "m10.devices.empty": {
+    "message": "No devices registered.",
+    "description": "Empty state of the devices table."
+  },
+  "m10.device.status.active": {
+    "message": "Active",
+    "description": "Device status: active."
+  },
+  "m10.device.status.revokePending": {
+    "message": "Wipe pending",
+    "description": "Device status: wipe requested, not run yet."
+  },
+  "m10.device.status.revoked": {
+    "message": "Revoked",
+    "description": "Device status: wiped and revoked."
+  },
+  "m10.platform.web": {
+    "message": "Browser",
+    "description": "Device platform: web browser."
+  },
+  "m10.platform.android": {
+    "message": "Android",
+    "description": "Device platform: Android."
+  },
+  "m10.platform.ios": {
+    "message": "iPhone or iPad",
+    "description": "Device platform: iOS."
+  },
+  "m10.platform.edge": {
+    "message": "Edge server",
+    "description": "Device platform: on-campus Nexus Edge server."
+  },
+  "m10.conflicts.caption": {
+    "message": "Sync conflicts",
+    "description": "Accessible caption of the conflicts table."
+  },
+  "m10.conflicts.colSummary": {
+    "message": "Change",
+    "description": "Conflicts table column: what changed (no personal content)."
+  },
+  "m10.conflicts.colDevice": {
+    "message": "Device",
+    "description": "Conflicts table column: device it came from."
+  },
+  "m10.conflicts.colCreated": {
+    "message": "Raised",
+    "description": "Conflicts table column: when the conflict was raised."
+  },
+  "m10.conflicts.colResolution": {
+    "message": "Resolution",
+    "description": "Conflicts table column: how it was or can be resolved."
+  },
+  "m10.conflicts.filter": {
+    "message": "Show",
+    "description": "Filter: open or resolved conflicts."
+  },
+  "m10.conflicts.open": {
+    "message": "Open",
+    "description": "Filter option and badge: unresolved conflicts."
+  },
+  "m10.conflicts.resolvedFilter": {
+    "message": "Resolved",
+    "description": "Filter option: resolved conflicts."
+  },
+  "m10.conflicts.keepServer": {
+    "message": "Keep server",
+    "description": "Resolution: keep the server's version."
+  },
+  "m10.conflicts.keepClient": {
+    "message": "Keep device",
+    "description": "Resolution: keep the device's version."
+  },
+  "m10.conflicts.merged": {
+    "message": "Merged",
+    "description": "Resolution: both versions merged."
+  },
+  "m10.conflicts.resolved": {
+    "message": "Conflict resolved.",
+    "description": "Toast after a conflict is resolved."
+  },
+  "m10.conflicts.empty": {
+    "message": "No conflicts here.",
+    "description": "Empty state of the conflicts table."
+  },
+  "m10.conflict.phoneChanged": {
+    "message": "Phone number changed on both sides",
+    "description": "Conflict summary: a phone number was edited on the device and on the server."
+  },
+  "m10.conflict.nameChanged": {
+    "message": "Name changed on both sides",
+    "description": "Conflict summary: a name was edited on the device and on the server."
+  },
+  "m10.conflict.emailChanged": {
+    "message": "Email changed on both sides",
+    "description": "Conflict summary: an email was edited on the device and on the server."
+  },
+  "m10.permission.deviceRead": {
+    "message": "See devices and sync",
+    "description": "Permission description: see devices and sync conflicts."
+  },
+  "m10.permission.deviceWipe": {
+    "message": "Wipe devices and resolve conflicts",
+    "description": "Permission description: remote-wipe devices and resolve conflicts."
   }
 }

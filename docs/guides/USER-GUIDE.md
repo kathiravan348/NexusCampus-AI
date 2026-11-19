@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, and Audit & privacy)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, and Sync centre)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -82,5 +82,13 @@ Available to administrators and auditors from **Audit & privacy** in the menu. I
 - **Data requests** lists access, correction, deletion and export requests with their due dates; open requests past their deadline show **Overdue**. Open a request to **Start work**, then **Mark completed** or **Reject** with a reason.
 - **Compliance** shows the privacy rules that apply to your institution: deadline for data requests, the age under which someone counts as a minor, whether guardians must consent to AI and to photos and media, and the default retention period.
 
+## Sync centre
+Available to everyone from **Sync centre** in the menu, also offline.
+
+- **This device** shows whether this device is synced, what is **Waiting to send** (only the kind of change, never its content), and how often each was tried. Choose **Sync now** to send it when online; while offline the changes stay safely on the device. If a change conflicts with the server, choose **Keep mine** to send it again or **Keep the server's** to drop it.
+- **Devices** (staff who manage devices) lists the institution's devices with their owner, last sync, and how many changes are waiting, in conflict, or lost. **Revoke & wipe** asks for a remote wipe after a warning about the changes that will be lost; wiping the device you are using asks you to confirm twice. The device shows **Wipe pending** until it next connects.
+- **Conflicts** lists changes the server could not merge. Show **Open** or **Resolved** ones and resolve with **Keep server**, **Keep device**, or **Merged**.
+- Known limit: in this prototype the wipe itself is not run on the device yet — the request is recorded and shown as **Wipe pending**.
+
 ## Not there yet
-- Remaining module screens (sync centre, AI assist, data vault & access grants, notifications) and offline app install.
+- Remaining module screens (AI assist, data vault & access grants, notifications) and offline app install.
