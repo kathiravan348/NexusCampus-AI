@@ -29,7 +29,7 @@
 | NEX-018 | Plans & usage (M05): modules on/off, AI credits, usage meters | C | planned | — | 012 |
 | NEX-019 | Sync centre (M10): devices, pending queue, conflicts, remote wipe | C | planned | — | 012 |
 | NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | planned | — | 018 |
-| NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030, 032, 033 |
+| NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030, 032–034 |
 | NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | planned | — | 021 |
 | NEX-023 | Data vault & access grants (M83): key status, provider access requests (approve / deny / revoke), active grants, break-glass notices, access history | C | planned | — | 012 |
 | NEX-024 | Notifications engine (M07, core): per-locale templates, channels, preferences, quiet hours, delivery log | C | planned | — | 012 |
@@ -42,3 +42,4 @@
 | NEX-031 | Mocks (ops fixtures): audit, consent, data requests, compliance packs, notifications, sync, AI, vault (split from NEX-010) | B | done | Claude | 010, 027 |
 | NEX-032 | Startup & test timings: timing harness, Vitest reporter, soft budgets, and baseline log (`AGENTS.md` §8a, D37) | — | planned | — | 012 |
 | NEX-033 | Campus Prism default theme tokens (Nexus Style refresh, D38) | A | done | Gemini | 002, 014 |
+| NEX-034 | Freeze Campus Prism palette: radius-xs 4px, border-strong fix, `brand-sky`, `hero-glow`, full freeze test (D39) | A | planned | — | 033 |
