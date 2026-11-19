@@ -1,0 +1,21 @@
+{
+  "common.save": "حفظ",
+  "common.cancel": "إلغاء",
+  "common.edit": "تعديل",
+  "common.delete": "حذف",
+  "common.search": "بحث",
+  "common.loading": "جارٍ التحميل…",
+  "common.empty": "لا توجد عناصر بعد",
+  "common.error": "حدث خطأ ما",
+  "common.retry": "إعادة المحاولة",
+  "common.offline": "أنت غير متصل بالإنترنت",
+  "common.syncPending": "{count, plural, zero {لا توجد تغييرات بانتظار المزامنة} one {تغيير واحد بانتظار المزامنة} two {تغييران بانتظار المزامنة} few {# تغييرات بانتظار المزامنة} many {# تغييرًا بانتظار المزامنة} other {# تغيير بانتظار المزامنة}}",
+  "common.back": "رجوع",
+  "common.next": "التالي",
+  "common.close": "إغلاق",
+  "term.learner": "متعلم",
+  "term.learners": "المتعلمون",
+  "term.teacher": "معلم",
+  "term.class": "صف",
+  "term.guardian": "ولي الأمر"
+}
