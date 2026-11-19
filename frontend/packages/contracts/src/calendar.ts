@@ -58,11 +58,13 @@ export const AcademicCalendarSchema = z
         issue(["periods", p.index], "Period is outside the academic year");
       }
     }
+    let latest = sorted[0];
     for (let i = 1; i < sorted.length; i++) {
-      const prev = sorted[i - 1]!;
       const cur = sorted[i]!;
-      if (cur.startsOn <= prev.endsOn)
-        issue(["periods", cur.index], `Period overlaps "${prev.name}"`);
+      if (latest && cur.startsOn <= latest.endsOn) {
+        issue(["periods", cur.index], `Period overlaps "${latest.name}"`);
+      }
+      if (!latest || cur.endsOn > latest.endsOn) latest = cur;
     }
 
     cal.holidays.forEach((h, index) => {

@@ -43,8 +43,9 @@ describe("PageQuery", () => {
     expect(PageQuerySchema.parse({ page: 3, pageSize: 20 })).toEqual({ page: 3, pageSize: 20 });
   });
 
-  it("rejects out-of-range values", () => {
+  it("rejects out-of-range values and extra keys", () => {
     expect(PageQuerySchema.safeParse({ page: 0 }).success).toBe(false);
     expect(PageQuerySchema.safeParse({ pageSize: 500 }).success).toBe(false);
+    expect(PageQuerySchema.safeParse({ cursor: "abc" }).success).toBe(false);
   });
 });

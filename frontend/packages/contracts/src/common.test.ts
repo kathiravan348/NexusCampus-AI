@@ -58,7 +58,7 @@ describe("primitives", () => {
 
   it("Country is an upper-case ISO 3166-1 alpha-2 code", () => {
     ok(CountryCodeSchema, ["IN", "AE", "GB", "US"]);
-    bad(CountryCodeSchema, ["in", "IND", "QQ", "ZZ", "EU"]);
+    bad(CountryCodeSchema, ["in", "IND", "QQ", "ZZ", "EU", "XA", "XB"]);
   });
 
   it("MinorUnits are safe integers", () => {

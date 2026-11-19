@@ -41,7 +41,7 @@ export const LocaleSettingsSchema = z
   });
 export type LocaleSettings = z.infer<typeof LocaleSettingsSchema>;
 
-const notBefore = (created: string, updated: string) => updated >= created;
+const notBefore = (created: string, updated: string) => Date.parse(updated) >= Date.parse(created);
 
 /**
  * A multi-campus group or chain (E-6). The group is the tenant: its institutions share its `tenantId`.

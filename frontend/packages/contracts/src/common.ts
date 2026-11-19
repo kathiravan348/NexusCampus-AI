@@ -54,8 +54,8 @@ export const CurrencyCodeSchema = z.string().refine((v) => CURRENCIES.has(v), {
 export type CurrencyCode = z.infer<typeof CurrencyCodeSchema>;
 
 const REGION_NAMES = new Intl.DisplayNames(["en"], { type: "region", fallback: "none" });
-/** Codes that `Intl` names but that are not countries. */
-const NOT_COUNTRIES: ReadonlySet<string> = new Set(["ZZ", "EU", "EZ", "UN", "QO"]);
+/** Codes that `Intl` names but that are not countries (incl. CLDR pseudo-regions XA/XB). */
+const NOT_COUNTRIES: ReadonlySet<string> = new Set(["ZZ", "EU", "EZ", "UN", "QO", "XA", "XB"]);
 
 function isCountryCode(value: string): boolean {
   return (
@@ -93,3 +93,4 @@ export type DisplayCalendar = z.infer<typeof DisplayCalendarSchema>;
 
 /** Non-empty display name (institution, campus, period). */
 export const NameSchema = z.string().trim().min(1).max(200);
+export type Name = z.infer<typeof NameSchema>;

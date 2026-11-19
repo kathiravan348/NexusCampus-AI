@@ -52,9 +52,19 @@ describe("AcademicCalendar", () => {
     expect(messages({ ...calendar, periods })).toContain("Period ends before it starts");
   });
 
-  it("rejects overlapping periods, in any order", () => {
+  it("rejects overlapping periods, in any order or enclosed by an outer period", () => {
     const periods = [calendar.periods[1]!, { ...calendar.periods[0]!, endsOn: "2026-10-15" }];
     expect(messages({ ...calendar, periods })).toContain('Period overlaps "Term 1"');
+
+    const enclosed = [
+      { id: "full", kind: "term", name: "Full", startsOn: "2026-06-01", endsOn: "2026-12-31" },
+      { id: "sub1", kind: "block", name: "Sub 1", startsOn: "2026-07-01", endsOn: "2026-07-31" },
+      { id: "sub2", kind: "block", name: "Sub 2", startsOn: "2026-08-01", endsOn: "2026-08-31" },
+    ];
+    expect(messages({ ...calendar, periods: enclosed })).toEqual([
+      'Period overlaps "Full"',
+      'Period overlaps "Full"',
+    ]);
   });
 
   it("rejects a holiday outside the year", () => {
@@ -63,11 +73,24 @@ describe("AcademicCalendar", () => {
     ).toContain("Holiday is outside the academic year");
   });
 
-  it("rejects unknown period kinds and calendars", () => {
+  it("rejects unknown period kinds, calendars, and extra keys", () => {
     const periods = [{ ...calendar.periods[0]!, kind: "quarter" }];
     expect(AcademicCalendarSchema.safeParse({ ...calendar, periods }).success).toBe(false);
     expect(
       AcademicCalendarSchema.safeParse({ ...calendar, displayCalendar: "islamic" }).success,
+    ).toBe(false);
+    expect(AcademicCalendarSchema.safeParse({ ...calendar, extra: true }).success).toBe(false);
+    expect(
+      AcademicCalendarSchema.safeParse({
+        ...calendar,
+        periods: [{ ...calendar.periods[0]!, extra: true }],
+      }).success,
+    ).toBe(false);
+    expect(
+      AcademicCalendarSchema.safeParse({
+        ...calendar,
+        holidays: [{ ...calendar.holidays[0]!, extra: true }],
+      }).success,
     ).toBe(false);
   });
 });

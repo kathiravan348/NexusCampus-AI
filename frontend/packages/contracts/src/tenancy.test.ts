@@ -54,6 +54,7 @@ describe("LocaleSettings", () => {
       { ...locale, timeZone: "Mars/Phobos" },
       { ...locale, currency: "XYZ" },
       { ...locale, country: "in" },
+      { ...locale, extra: true },
     ];
     for (const c of cases)
       expect(LocaleSettingsSchema.safeParse(c).success, JSON.stringify(c)).toBe(false);
@@ -82,7 +83,33 @@ describe("Group and Institution", () => {
     expect(
       InstitutionSchema.safeParse({ ...institution, updatedAt: "2026-05-01T00:00:00Z" }).success,
     ).toBe(false);
+    expect(
+      InstitutionSchema.safeParse({
+        ...institution,
+        createdAt: "2026-06-01T00:00:00.500Z",
+        updatedAt: "2026-06-01T00:00:00Z",
+      }).success,
+    ).toBe(false);
+    expect(
+      InstitutionSchema.safeParse({
+        ...institution,
+        createdAt: "2026-06-01T00:00:00Z",
+        updatedAt: "2026-06-01T00:00:00.500Z",
+      }).success,
+    ).toBe(true);
     expect(InstitutionSchema.safeParse({ ...institution, plan: "gold" }).success).toBe(false);
+    const group = {
+      id: "grp_riverside",
+      tenantId: "ten_riverside_group",
+      name: "Riverside Education Group",
+      region: "in",
+      createdAt: "2026-06-01T00:00:00Z",
+      updatedAt: "2026-06-01T00:00:00Z",
+    };
+    expect(GroupSchema.safeParse({ ...group, updatedAt: "2026-05-01T00:00:00Z" }).success).toBe(
+      false,
+    );
+    expect(GroupSchema.safeParse({ ...group, extra: true }).success).toBe(false);
   });
 });
 
@@ -117,6 +144,7 @@ describe("Campus", () => {
     expect(
       CampusSchema.safeParse({ ...campus, address: { ...campus.address, city: "" } }).success,
     ).toBe(false);
+    expect(CampusSchema.safeParse({ ...campus, extra: true }).success).toBe(false);
   });
 });
 
@@ -147,5 +175,6 @@ describe("InstitutionTypeProfile", () => {
     expect(InstitutionTypeProfileSchema.safeParse({ ...profile, defaultModules: [] }).success).toBe(
       false,
     );
+    expect(InstitutionTypeProfileSchema.safeParse({ ...profile, extra: true }).success).toBe(false);
   });
 });
