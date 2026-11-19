@@ -45,3 +45,4 @@
 
 ## Requests
 _(implementers note new dependencies or decision requests here; the planner moves them into the table)_
+- NEX-002 (Claude): `tailwindcss@4.3.3` + `@tailwindcss/vite@4.3.3` (stack, AGENTS §5); self-hosted fonts `@fontsource/inter@5.3.0`, `@fontsource/noto-sans-arabic@5.3.0`, `@fontsource/jetbrains-mono@5.3.0` (the NEX-002 font library; no font CDN). `border-strong` changed from NOVA's values to `#878F9C` / `#5E6E8A` so input borders meet WCAG 2.2 SC 1.4.11 (3:1).
