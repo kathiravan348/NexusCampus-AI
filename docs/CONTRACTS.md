@@ -37,3 +37,17 @@
 | Consent | `compliance.ts` | Purpose ai_features / media_sharing / marketing / data_processing; guardian in `givenByPersonId` for minors; `withdrawnAt` set iff withdrawn | NEX-031 | Stage 1 build step |
 | DataSubjectRequest | `compliance.ts` | Kind access / correct / delete / export; `dueAt` > `receivedAt`; `completedAt` set iff completed or rejected | NEX-031 | Stage 1 build step |
 | CompliancePack | `compliance.ts` | gdpr, uk_gdpr, ferpa, coppa, dpdp, lgpd, popia, pdpa, eu_ai_act; DSR due 1–90 days; minor age 13–21; guardian consent for AI / media | NEX-031 | Stage 1 build step |
+| Channel, TimeOfDay | `notification.ts` | Channels email / sms / whatsapp / push / in_app; times `HH:mm` 24-hour | — | — |
+| NotificationTemplate | `notification.ts` | Per event type + channel + locale; ICU `body`; `subject` required iff `email` | NEX-031 | Stage 1 build step |
+| NotificationDelivery | `notification.ts` | Status queued / sent / delivered / failed / suppressed; `reason` iff failed or suppressed; sent and delivered need `sentAt` ≥ `queuedAt` | NEX-031 | Stage 1 build step |
+| NotificationPreference | `notification.ts` | Per user + channel, one event type or all (`null`); quiet hours may cross midnight, start ≠ end, read in `timeZone` | NEX-031 | Stage 1 build step |
+| DeviceSync | `sync.ts` | Device registry row: platform web / android / ios / edge; pending, conflict and lost-write counts; `revokedAt` iff `revoked` | NEX-031 | Stage 1 build step |
+| MergeRule / SyncConflict | `sync.ts` | Same merge rules as `@nexus/offline`; no payload (privacy) — `summaryKey` message key; `resolution` and `resolvedAt` iff resolved | NEX-031 | Stage 1 build step |
+| CapabilityTier | `ai.ts` | fast / balanced / reasoning / embedding / multimodal (D24); features never name a vendor model | — | — |
+| AiSettings | `ai.ts` | `piiRedaction` and `minorGuardianConsentRequired` always `true`; `blockedModules` always includes M61 + M83, which can never be switched on; M62 needs `safeguardingEnabled`; no API keys | NEX-031 | Stage 1 build step |
+| AiCredit | `ai.ts` | Credits per period; under `hardCap`, `used` ≤ `granted` | NEX-031 | Stage 1 build step |
+| AssistAnswer | `ai.ts` | `aiGenerated: true`; ≥ 1 source `{ moduleId, recordType, recordId, label }`; never cites M61 / M83 | NEX-031 | Stage 1 build step |
+| KeyStatus | `vault.ts` | Key purpose, custody platform / BYOK / HYOK, state; metadata only, never key material | NEX-031 | Stage 1 build step |
+| AccessRequest | `vault.ts` | Provider request: opaque `staffRef`, reason, unique modules, read / edit, 1–72 h; `decidedAt` + `decidedBy` iff not pending | NEX-031 | Stage 1 build step |
+| AccessGrant | `vault.ts` | Window `endsAt` > `startsAt`, ≤ 72 h; optional early `revokedAt` | NEX-031 | Stage 1 build step |
+| BreakGlassNotice | `vault.ts` | Legal order / security incident; exactly 2 distinct approvers; `notifiedAt` ≥ `occurredAt`; report link https or `/path` | NEX-031 | Stage 1 build step |
