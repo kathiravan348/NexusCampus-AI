@@ -53,6 +53,17 @@ describe("tokens.json", () => {
       }
     }
   });
+
+  it("uses Campus Prism brand defaults while keeping Green/Yellow/Red/Blue status indicators locked (D38)", () => {
+    const byName = Object.fromEntries(tokens.color.tokens.map((t) => [t.name, t.value]));
+    expect(byName["brand-primary"]).toEqual({ light: "#1D4ED8", dark: "#2E6EE8" });
+    expect(byName["brand-accent"]).toEqual({ light: "#0D9488", dark: "#2DD4BF" });
+    expect(byName["bg-ground"]).toEqual({ light: "#F4F7FC", dark: "#0B1426" });
+    expect(byName["success"]).toEqual({ light: "#087A52", dark: "#2BC48A" });
+    expect(byName["warning"]).toEqual({ light: "#9A6100", dark: "#E8B04B" });
+    expect(byName["danger"]).toEqual({ light: "#C4323F", dark: "#F0616D" });
+    expect(byName["info"]).toEqual({ light: "#0369A1", dark: "#38BDF8" });
+  });
 });
 
 describe("generated tokens.css", () => {
