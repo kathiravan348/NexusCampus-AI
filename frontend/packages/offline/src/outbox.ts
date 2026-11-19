@@ -183,13 +183,6 @@ async function runFlush(
     const [keyAfter, rowAfter] = await Promise.all([db.keys.get(scopeKey), db.outbox.get(row.id)]);
     if (!keyAfter || !rowAfter) break;
 
-    // Never resurrect a wiped scope if remoteRevokeWipe ran while transport was in flight (O-3).
-    const [keyAfter, rowAfter] = await Promise.all([
-      db.keys.get(scopeKey),
-      db.outbox.get(row.id),
-    ]);
-    if (!keyAfter || !rowAfter) break;
-
     const doneAt = new Date().toISOString();
     if (result.kind === "ok") {
       await db.outbox.delete(row.id);
