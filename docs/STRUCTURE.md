@@ -30,7 +30,9 @@
 │  │  │  ├─ terminology/ <locale>/<type>.json: words per institution type (ey, k12, he, voc, tp, sk, onl, grp)
 │  │  │  └─ src/        resolve (layers), pseudo (en-XA), direction (RTL), format, I18nProvider, useText
 │  │  ├─ offline/       IndexedDB store, outbox, sync status (NEX-007)
-│  │  ├─ ui-storybook/  Storybook (planned, NEX-004)
+│  │  ├─ ui-storybook/  Storybook: theme, tenant-theme, locale, RTL, viewport toggles, a11y (NEX-004)
+│  │  │  ├─ .storybook/ main (Vite + Tailwind + a11y), preview (globals + decorator), preview.css
+│  │  │  └─ src/        sampleThemes + foundations/ (Tokens & Texts stories)
 │  │  ├─ contracts/     API types + Zod schemas (NEX-008, 009, 027)
 │  │  ├─ mocks/         demo tenants + MSW handlers (NEX-010)
 │  │  ├─ services/      data layer, mock | real, offline-aware (NEX-011)
