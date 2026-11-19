@@ -34,8 +34,9 @@
 │  │  │  ├─ .storybook/ main (Vite + Tailwind + a11y), preview (globals + decorator), preview.css
 │  │  │  └─ src/        sampleThemes + foundations/ (Tokens & Texts stories)
 │  │  ├─ contracts/     API types + Zod schemas (NEX-008, 009, 027)
-│  │  ├─ mocks/         demo tenants + MSW handlers (NEX-010)
-│  │  │  └─ src/fixtures/ ids, tenants, profiles, calendars, people, role-profiles, identity, rbac, studio, plans
+│  │  ├─ mocks/         demo tenants + MSW handlers (NEX-010, 031)
+│  │  │  └─ src/fixtures/ ids, tenants, profiles, calendars, people, role-profiles, identity, rbac, studio, plans,
+│  │  │                    compliance, audit (+ audit-hashes), notifications, sync, ai, vault
 │  │  ├─ services/      data layer, mock | real, offline-aware (NEX-011)
 │  │  └─ ui-control/    Nexus Control components (planned, Stage 2)
 │  └─ apps/
