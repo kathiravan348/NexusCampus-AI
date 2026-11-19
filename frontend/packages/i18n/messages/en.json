@@ -1126,5 +1126,361 @@
   "m03.preview.formToggle": {
     "message": "Include in summary",
     "description": "Sample switch label in the theme preview form."
+  },
+  "m04.nav.title": {
+    "message": "Text & language studio",
+    "description": "Navigation link and page heading for the Text & language studio (M04)."
+  },
+  "m04.studio.intro": {
+    "message": "Search interface texts, customise wording per language, review history, and import or export overrides.",
+    "description": "Introductory subtitle shown under the Text & language studio heading."
+  },
+  "m04.studio.localeLabel": {
+    "message": "Editing language",
+    "description": "Label for the language selector in Text & language studio."
+  },
+  "m04.studio.tabsLabel": {
+    "message": "Text and language studio sections",
+    "description": "Accessible label for the tab bar in Text & language studio."
+  },
+  "m04.studio.tabMessages": {
+    "message": "Messages",
+    "description": "Tab label for the searchable table of message keys."
+  },
+  "m04.studio.tabImportExport": {
+    "message": "Import & export",
+    "description": "Tab label for exporting and importing JSON text overrides."
+  },
+  "m04.studio.offlineNotice": {
+    "message": "You are offline. Cached texts can be browsed, but saving, removing, rolling back, or importing overrides requires a connection.",
+    "description": "Notice shown in Text & language studio when the browser has no network connection."
+  },
+  "m04.studio.error": {
+    "message": "Could not load text overrides.",
+    "description": "Error heading shown when loading text overrides fails."
+  },
+  "m04.studio.searchLabel": {
+    "message": "Search keys or text",
+    "description": "Label for the message key and wording search input."
+  },
+  "m04.studio.searchPlaceholder": {
+    "message": "Search by key (e.g. term.learner) or wording…",
+    "description": "Placeholder text inside the message search input."
+  },
+  "m04.studio.overriddenOnly": {
+    "message": "Overridden only",
+    "description": "Checkbox label to filter the table to overridden keys only."
+  },
+  "m04.studio.summaryCount": {
+    "message": "{shown, number} of {total, number} keys · {overridden, number} overridden",
+    "description": "Summary count showing visible keys, total keys, and overridden keys."
+  },
+  "m04.studio.tableCaption": {
+    "message": "Message keys and resolved wording for the selected language",
+    "description": "Accessible caption for the message keys data table."
+  },
+  "m04.studio.colKey": {
+    "message": "Message key",
+    "description": "Table column header for the message key identifier."
+  },
+  "m04.studio.colText": {
+    "message": "Current text",
+    "description": "Table column header for the currently resolved wording."
+  },
+  "m04.studio.colSource": {
+    "message": "Source",
+    "description": "Table column header showing which layer provides the current text."
+  },
+  "m04.studio.colActions": {
+    "message": "Actions",
+    "description": "Table column header for row action buttons."
+  },
+  "m04.studio.noMatchesTitle": {
+    "message": "No matching messages",
+    "description": "Empty state heading when no message keys match the current search or filter."
+  },
+  "m04.studio.noMatchesBody": {
+    "message": "Try a different search term or turn off the overridden-only filter.",
+    "description": "Empty state helper text when no message keys match the current search or filter."
+  },
+  "m04.studio.badgeOverridden": {
+    "message": "Overridden",
+    "description": "Badge indicating a key has an active tenant override."
+  },
+  "m04.studio.badgeGroupLocked": {
+    "message": "Locked by group",
+    "description": "Badge indicating a key is controlled by a parent group override and cannot be changed."
+  },
+  "m04.studio.badgeTerminology": {
+    "message": "Terminology",
+    "description": "Badge indicating a key comes from the institution type terminology pack."
+  },
+  "m04.studio.badgePlatform": {
+    "message": "Platform",
+    "description": "Badge indicating a key uses the default platform wording."
+  },
+  "m04.studio.viewAction": {
+    "message": "View",
+    "description": "Row button label to inspect a read-only group-locked key."
+  },
+  "m04.editor.title": {
+    "message": "Edit text override",
+    "description": "Modal title when editing a message key override."
+  },
+  "m04.editor.titleReadOnly": {
+    "message": "View text override",
+    "description": "Modal title when viewing a group-locked message key."
+  },
+  "m04.editor.layersHeading": {
+    "message": "Resolution layers",
+    "description": "Heading for the list showing each layer's text from platform to campus."
+  },
+  "m04.editor.layersHint": {
+    "message": "The highest set layer wins. Lower layers remain as fallbacks.",
+    "description": "Explanation of how text resolution layers inherit and override each other."
+  },
+  "m04.editor.layerPlatform": {
+    "message": "Platform",
+    "description": "Layer name for the platform default translation."
+  },
+  "m04.editor.layerTerminology": {
+    "message": "Terminology",
+    "description": "Layer name for the institution type terminology pack."
+  },
+  "m04.editor.layerGroup": {
+    "message": "Group",
+    "description": "Layer name for the group-wide override."
+  },
+  "m04.editor.layerInstitution": {
+    "message": "Institution",
+    "description": "Layer name for this institution's override."
+  },
+  "m04.editor.layerCampus": {
+    "message": "Campus",
+    "description": "Layer name for a campus-specific override."
+  },
+  "m04.editor.layerActive": {
+    "message": "Active",
+    "description": "Badge marking the winning resolution layer."
+  },
+  "m04.editor.layerNotSet": {
+    "message": "Not set",
+    "description": "Muted text shown when a resolution layer has no override for this key."
+  },
+  "m04.editor.groupLockedNotice": {
+    "message": "Locked by the group override. Institution administrators cannot modify or remove this wording.",
+    "description": "Notice shown in the key editor modal when a key is locked by a group override."
+  },
+  "m04.editor.overrideLabel": {
+    "message": "Institution override",
+    "description": "Textarea label for editing the institution's custom wording."
+  },
+  "m04.editor.overridePlaceholder": {
+    "message": "Enter custom wording for this language…",
+    "description": "Placeholder text inside the override textarea."
+  },
+  "m04.editor.overrideHint": {
+    "message": "Supports ICU message syntax such as placeholders and plurals.",
+    "description": "Helper hint beneath the override textarea."
+  },
+  "m04.editor.icuInvalid": {
+    "message": "Invalid ICU message: {reason}",
+    "description": "Validation error shown when the draft text is not valid ICU syntax. {reason} is the parser detail."
+  },
+  "m04.editor.emptyError": {
+    "message": "Enter non-empty wording before saving.",
+    "description": "Validation error shown when the override textarea contains only whitespace."
+  },
+  "m04.editor.previewHeading": {
+    "message": "In-context preview",
+    "description": "Heading for the live rendered message preview inside the key editor."
+  },
+  "m04.editor.previewSampleNote": {
+    "message": "Placeholders are filled with sample values.",
+    "description": "Note shown when the preview substituted sample values for ICU placeholders."
+  },
+  "m04.editor.previewError": {
+    "message": "Fix the ICU syntax error above to see a preview.",
+    "description": "Message shown in the preview box when the draft has an ICU syntax error."
+  },
+  "m04.editor.removeOverride": {
+    "message": "Remove override",
+    "description": "Danger button to delete the institution's override for this key."
+  },
+  "m04.editor.savedToast": {
+    "message": "Text override saved.",
+    "description": "Success toast after saving a text override."
+  },
+  "m04.editor.saveFailedToast": {
+    "message": "Could not save text override.",
+    "description": "Error toast when saving a text override fails."
+  },
+  "m04.editor.removedToast": {
+    "message": "Text override removed.",
+    "description": "Success toast after removing an institution text override."
+  },
+  "m04.editor.removeFailedToast": {
+    "message": "Could not remove text override.",
+    "description": "Error toast when removing a text override fails."
+  },
+  "m04.history.heading": {
+    "message": "Change history",
+    "description": "Heading for the revision history section of a text override."
+  },
+  "m04.history.empty": {
+    "message": "No override changes recorded for this key yet.",
+    "description": "Empty state text when a key has no saved revisions."
+  },
+  "m04.history.error": {
+    "message": "Could not load change history.",
+    "description": "Error text when loading revisions fails."
+  },
+  "m04.history.version": {
+    "message": "Version {version, number}",
+    "description": "Badge showing the revision number of a text override."
+  },
+  "m04.history.current": {
+    "message": "Current",
+    "description": "Badge marking the latest revision in the history list."
+  },
+  "m04.history.removed": {
+    "message": "Override removed",
+    "description": "Badge indicating a revision removed the override."
+  },
+  "m04.history.rollback": {
+    "message": "Roll back",
+    "description": "Button to restore a previous override revision."
+  },
+  "m04.history.rolledBackToast": {
+    "message": "Rolled back to version {version, number}.",
+    "description": "Success toast after rolling back a text override to an earlier version."
+  },
+  "m04.history.rollbackFailedToast": {
+    "message": "Could not roll back this override.",
+    "description": "Error toast when rolling back a text override fails."
+  },
+  "m04.io.exportHeading": {
+    "message": "Export overrides",
+    "description": "Card heading for exporting overrides as a JSON file."
+  },
+  "m04.io.exportDescription": {
+    "message": "Download this institution's overrides for {locale} as a JSON file.",
+    "description": "Description of the JSON export action. {locale} is the selected locale code or name."
+  },
+  "m04.io.exportCount": {
+    "message": "{count, plural, one {# institution override ready to export} other {# institution overrides ready to export}}",
+    "description": "Count of overrides that will be included in the JSON export."
+  },
+  "m04.io.exportEmpty": {
+    "message": "No institution overrides are set for {locale} yet. The exported file will have an empty entries object.",
+    "description": "Hint shown when exporting a locale with zero institution overrides."
+  },
+  "m04.io.exportButton": {
+    "message": "Export JSON",
+    "description": "Button label to download the JSON overrides file."
+  },
+  "m04.io.exportedToast": {
+    "message": "Overrides exported for {locale}.",
+    "description": "Success toast after triggering a JSON export download."
+  },
+  "m04.io.importHeading": {
+    "message": "Import overrides",
+    "description": "Card heading for importing overrides from JSON."
+  },
+  "m04.io.importDescription": {
+    "message": "Upload a JSON file or paste JSON below, preview the diff, then apply valid changes to {locale}.",
+    "description": "Instructions for the JSON import and dry-run diff workflow."
+  },
+  "m04.io.fileLabel": {
+    "message": "Choose JSON file",
+    "description": "Label for the JSON file upload input."
+  },
+  "m04.io.jsonLabel": {
+    "message": "Overrides JSON",
+    "description": "Label for the textarea where JSON overrides can be pasted or inspected."
+  },
+  "m04.io.jsonPlaceholder": {
+    "message": "Paste JSON mapping message keys to text…",
+    "description": "Placeholder inside the JSON import textarea."
+  },
+  "m04.io.jsonInvalid": {
+    "message": "Invalid JSON. Provide a JSON object mapping message keys to text.",
+    "description": "Validation error when the imported text is not valid JSON or not an object."
+  },
+  "m04.io.previewButton": {
+    "message": "Preview changes",
+    "description": "Button label to run a dry-run diff before applying imported overrides."
+  },
+  "m04.io.applyButton": {
+    "message": "Apply valid changes",
+    "description": "Button label to apply valid additions and changes from the dry-run preview."
+  },
+  "m04.io.diffHeading": {
+    "message": "Dry-run diff preview",
+    "description": "Section heading for the dry-run import comparison results."
+  },
+  "m04.io.addedCount": {
+    "message": "{count, plural, one {# added} other {# added}}",
+    "description": "Badge showing how many new overrides will be added."
+  },
+  "m04.io.changedCount": {
+    "message": "{count, plural, one {# changed} other {# changed}}",
+    "description": "Badge showing how many existing overrides will be updated."
+  },
+  "m04.io.unchangedCount": {
+    "message": "{count, plural, one {# unchanged} other {# unchanged}}",
+    "description": "Badge showing how many overrides already match the imported wording."
+  },
+  "m04.io.rejectedCount": {
+    "message": "{count, plural, one {# rejected} other {# rejected}}",
+    "description": "Badge showing how many imported rows were rejected."
+  },
+  "m04.io.addedHeading": {
+    "message": "To be added",
+    "description": "List heading for new overrides in the dry-run diff."
+  },
+  "m04.io.changedHeading": {
+    "message": "To be changed",
+    "description": "List heading for modified overrides in the dry-run diff."
+  },
+  "m04.io.rejectedHeading": {
+    "message": "Rejected rows",
+    "description": "List heading for invalid or locked rows rejected during import."
+  },
+  "m04.io.noChanges": {
+    "message": "No valid additions or changes to apply.",
+    "description": "Message shown when a dry-run preview contains zero applicable changes."
+  },
+  "m04.io.reasonUnknownKey": {
+    "message": "Unknown message key",
+    "description": "Import rejection reason when the message key is not in the platform catalogue."
+  },
+  "m04.io.reasonInvalidIcu": {
+    "message": "Invalid ICU message syntax",
+    "description": "Import rejection reason when the text fails ICU validation."
+  },
+  "m04.io.reasonEmptyMessage": {
+    "message": "Message cannot be empty",
+    "description": "Import rejection reason when the text is empty or whitespace."
+  },
+  "m04.io.reasonLockedByGroup": {
+    "message": "Locked by a group override",
+    "description": "Import rejection reason when the key is locked by a group-level override."
+  },
+  "m04.io.reasonInvalidValue": {
+    "message": "Value must be a text string",
+    "description": "Import rejection reason when an imported JSON value is not a string."
+  },
+  "m04.io.appliedToast": {
+    "message": "{count, plural, one {Applied # text override} other {Applied # text overrides}}",
+    "description": "Success toast after applying imported overrides."
+  },
+  "m04.io.previewFailedToast": {
+    "message": "Could not preview import.",
+    "description": "Error toast when the dry-run import request fails."
+  },
+  "m04.io.applyFailedToast": {
+    "message": "Could not apply imported overrides.",
+    "description": "Error toast when applying imported overrides fails."
   }
 }

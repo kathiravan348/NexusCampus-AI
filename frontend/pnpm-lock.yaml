@@ -209,6 +209,9 @@ importers:
       '@nexus/contracts':
         specifier: workspace:*
         version: link:../contracts
+      '@nexus/i18n':
+        specifier: workspace:*
+        version: link:../i18n
       '@nexus/ui-core':
         specifier: workspace:*
         version: link:../ui-core
