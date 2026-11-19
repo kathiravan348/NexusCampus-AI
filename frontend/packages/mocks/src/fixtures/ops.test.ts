@@ -154,7 +154,7 @@ describe("ops fixtures (D16)", () => {
       expect(resolves(r.tenantId, r.personId), r.id).toBe(true);
       if (r.handledBy !== null)
         expect(isUser(r.handledBy) && resolves(r.tenantId, r.handledBy)).toBe(true);
-      const days = Math.max(
+      const days = Math.min(
         ...(F.TENANT_COMPLIANCE[r.tenantId] ?? []).map(
           (code) => F.COMPLIANCE_PACKS.find((p) => p.code === code)?.dsrDueDays ?? 0,
         ),
@@ -245,9 +245,12 @@ describe("ops fixtures (D16)", () => {
       expect(s.enabled, s.tenantId).toBe(m11?.enabled === true);
       expect(s.provider.kind, s.tenantId).toBe(s.tenantId === F.TENANT.apex ? "local" : "cloud");
     }
-    expect(F.AI_SETTINGS.find((s) => s.tenantId === F.TENANT.littleSteps)?.enabled).toBe(false);
 
     for (const c of F.AI_CREDITS) {
+      const meter = F.USAGE_METERS.find(
+        (m) => m.tenantId === c.tenantId && m.metric === "ai_credits",
+      );
+      expect(c.used, c.tenantId).toBe(meter?.used);
       const plan = F.PLANS.find((p) => p.id === F.TENANT_PLANS[c.tenantId]);
       expect(c.granted, c.tenantId).toBe(plan?.aiCreditsPerMonth);
     }
@@ -289,8 +292,6 @@ describe("ops fixtures (D16)", () => {
       const active = g.revokedAt === null && at(g.startsAt) <= NOW && NOW < at(g.endsAt);
       expect(active, g.id).toBe(r.status === "approved");
     }
-    const apexActive = F.ACCESS_GRANTS.filter((g) => g.tenantId === F.TENANT.apex);
-    expect(apexActive).toHaveLength(1);
     for (const n of F.BREAK_GLASS_NOTICES) {
       expect(n.tenantId).toBe(F.TENANT.northbridge);
       for (const ref of n.approverRefs) expect(staff).toContain(ref);

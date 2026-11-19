@@ -96,11 +96,18 @@ const metersFor = (tenantId: string): UsageMeter[] => {
     periodEnd: PERIOD_END,
   });
   const aiCredits = plan?.aiCreditsPerMonth ?? 0;
+  // Apex is near its AI limit (95 %) so the M05/M11 screens can show the warning state.
+  const aiUsed =
+    tenantId === TENANT.littleSteps
+      ? 0
+      : tenantId === TENANT.apex
+        ? Math.floor(aiCredits * 0.95)
+        : Math.floor(aiCredits / 5);
   return [
     meter("learners", count(tenantId, "learner"), plan?.learnerLimit ?? null),
     meter("staff", count(tenantId, "staff"), null),
     meter("storage_bytes", 52_428_800, 10_737_418_240),
-    meter("ai_credits", tenantId === TENANT.littleSteps ? 0 : Math.floor(aiCredits / 5), aiCredits),
+    meter("ai_credits", aiUsed, aiCredits),
     meter("email", 120, null),
   ];
 };

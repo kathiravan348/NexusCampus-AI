@@ -154,7 +154,7 @@ const dsr = (
   handledBy,
 });
 
-/** One request of each kind. Apex's correction is overdue at `DEMO_NOW`. */
+/** One request of each kind; `dueAt` uses the strictest deadline of the tenant's packs. Apex's correction is overdue at `DEMO_NOW`. */
 export const DATA_SUBJECT_REQUESTS = [
   dsr(
     "dsr-rv-access",
@@ -174,7 +174,7 @@ export const DATA_SUBJECT_REQUESTS = [
     "export",
     "in_progress",
     "2026-09-04T14:00:00Z",
-    45,
+    30,
     USER.nbRobert,
   ),
   dsr(

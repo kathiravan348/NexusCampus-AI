@@ -1,6 +1,6 @@
 import type { AiCredit, AiSettings, AssistAnswer } from "@nexus/contracts";
 import { CALENDAR, INSTITUTION, TENANT } from "./ids";
-import { PLANS, TENANT_PLANS } from "./plans";
+import { PLANS, TENANT_PLANS, USAGE_METERS } from "./plans";
 import { UPDATED_AT } from "./tenants";
 
 const BLOCKED = ["M61", "M62", "M83"];
@@ -49,22 +49,26 @@ const PERIOD_END = "2026-10-01T00:00:00Z";
 const granted = (tenantId: string) =>
   PLANS.find((p) => p.id === TENANT_PLANS[tenantId])?.aiCreditsPerMonth ?? 0;
 
-const credit = (tenantId: string, used: number): AiCredit => ({
+/** `used` is the `ai_credits` usage meter of the same period (D16: one number, one source). */
+const used = (tenantId: string) =>
+  USAGE_METERS.find((m) => m.tenantId === tenantId && m.metric === "ai_credits")?.used ?? 0;
+
+const credit = (tenantId: string): AiCredit => ({
   tenantId,
   periodStart: PERIOD_START,
   periodEnd: PERIOD_END,
   granted: granted(tenantId),
-  used,
+  used: used(tenantId),
   hardCap: true,
 });
 
 /** This period's AI credits; Apex is at 95 % of its grant. */
 export const AI_CREDITS = [
-  credit(TENANT.littleSteps, 0),
-  credit(TENANT.riverside, 1000),
-  credit(TENANT.northbridge, 1000),
-  credit(TENANT.apex, 475),
-  credit(TENANT.harmony, 0),
+  credit(TENANT.littleSteps),
+  credit(TENANT.riverside),
+  credit(TENANT.northbridge),
+  credit(TENANT.apex),
+  credit(TENANT.harmony),
 ] satisfies readonly AiCredit[];
 
 /** Sample Assist answers in each AI-enabled tenant's default locale, each with sources. */
