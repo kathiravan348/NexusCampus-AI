@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, and Theme studio)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Theme studio, and Text & language studio)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -43,5 +43,18 @@ Available to administrators from **Theme studio** in the menu. You can inspect t
 - **Contrast guard** checks every colour pair against WCAG 2.2 AA rules in both light and dark modes. Any failing pair blocks **Save**, displays the current and required ratio, and offers **Use suggestion** to apply a passing colour.
 - **Live preview** shows buttons, a card, a table, and a form using your draft theme without changing the rest of the app until you choose **Save**. Saving updates the whole app and increments the **Version** badge.
 
+## Text & language studio
+Available to administrators from **Text & language studio** in the menu. You can browse cached texts while offline, but saving, removing, rolling back, or importing overrides requires an internet connection.
+
+- Choose the **Editing language** at the top of the screen to work on any language supported by your institution.
+- Under **Messages**, use **Search keys or text** to find wording by key or current text, or tick **Overridden only** to see customised strings.
+- Choose **Edit** on any row to open **Edit text override**:
+  - **Resolution layers** shows how the final text is built from **Platform**, **Terminology**, **Group**, **Institution**, and **Campus**, marking the winning layer **Active**.
+  - Enter custom wording under **Institution override**. Message syntax is checked as you type, and **In-context preview** shows how the text reads with sample values for placeholders. Invalid syntax blocks **Save**.
+  - Saving updates the wording across the whole app immediately. Choose **Remove override** to return to the inherited wording.
+  - For institutions in a multi-campus group, group-wide overrides appear with **Locked by group** and open read-only via **View**.
+  - **Change history** lists every version of an override. Choose **Roll back** beside an older version to restore it.
+- Under **Import & export**, choose **Export JSON** to download your institution's overrides for the selected language. To import, pick a file or paste JSON, choose **Preview changes** to see additions, updates, unchanged entries, and any rejected rows with reasons, then choose **Apply valid changes**.
+
 ## Not there yet
-- Remaining module screens (text & language studio, users & roles, audit & privacy, plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.
+- Remaining module screens (users & roles, audit & privacy, plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.

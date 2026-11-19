@@ -1,6 +1,6 @@
 import type { ModuleId } from "@nexus/contracts";
 import type { MessageKey } from "@nexus/i18n";
-import { Building2, Palette, type LucideIcon } from "lucide-react";
+import { Building2, Languages, Palette, type LucideIcon } from "lucide-react";
 import type { ComponentType } from "react";
 
 /** Offline level from `docs/MODULES.md`: L0 online only … L3 pre-synced reference data. */
@@ -43,5 +43,14 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m03.theme.manage",
     offlineLevel: "L1",
     load: () => import("../modules/m03/ThemeStudioPage"),
+  },
+  {
+    moduleId: "M04",
+    path: "texts",
+    navKey: "m04.nav.title",
+    icon: Languages,
+    permission: "m04.text.manage",
+    offlineLevel: "L1",
+    load: () => import("../modules/m04/TextStudioPage"),
   },
 ];

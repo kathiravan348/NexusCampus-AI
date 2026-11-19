@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nexus/contracts": "workspace:*",
+    "@nexus/i18n": "workspace:*",
     "@nexus/ui-core": "workspace:*",
     "msw": "3.0.7",
     "zod": "4.6.5"

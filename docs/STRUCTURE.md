@@ -24,10 +24,10 @@
 │  │  │  ├─ scripts/    build-tokens (tokens.json → CSS), check-classes (lint: token-only classes)
 │  │  │  └─ src/        lib/cn, theme/ (tokens, contrast, suggest, fonts, tenantTheme), components/ (22 core, form, layout, overlay & data components)
 │  │  ├─ ui-edu/        education components built on ui-core
-│  │  ├─ i18n/          messages, formatters, layered text overrides, RTL (NEX-003)
+│  │  ├─ i18n/          messages, formatters, layered text overrides, RTL (NEX-003, 015)
 │  │  │  ├─ messages/   en.json (source + translator notes), ar.json
 │  │  │  ├─ terminology/ <locale>/<type>.json: words per institution type (ey, k12, he, voc, tp, sk, onl, grp)
-│  │  │  └─ src/        resolve (layers), pseudo (en-XA), direction (RTL), format, I18nProvider, useText
+│  │  │  └─ src/        resolve (layers), layers (explainMessage, preview), pseudo (en-XA), direction (RTL), format, I18nProvider, useText
 │  │  ├─ offline/       IndexedDB store, outbox, sync status, encryption, wipe (NEX-007)
 │  │  │  └─ src/        types, crypto (AES-GCM), db (Dexie), cache, outbox, wipe (+ idle lock), useSyncStatus
 │  │  ├─ ui-storybook/  Storybook: theme, tenant-theme, locale, RTL, viewport toggles, a11y (NEX-004)
@@ -52,7 +52,8 @@
 │     │  └─ src/        main, App (providers), styles.css, app/ (TenantRuntime, modules, router, RouteGuard, Shell,
 │     │                 ShellHeader, PersonaSwitch, LocaleSwitch), pages/ (SignIn, Home, NotFound, ModuleOff, Forbidden),
 │     │                 modules/m01/ (SetupPage, ProfileTab, StructureTab, CampusFormModal, LocaleTab, CalendarTab, NEX-013),
-│     │                 modules/m03/ (ThemeStudioPage, ColorTokens, TypographyPanel, AssetsPanel, ThemePreview, ContrastPanel, NEX-014)
+│     │                 modules/m03/ (ThemeStudioPage, ColorTokens, TypographyPanel, AssetsPanel, ThemePreview, ContrastPanel, NEX-014),
+│     │                 modules/m04/ (TextStudioPage, KeyEditor, HistoryPanel, ImportExport, NEX-015)
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)
 ├─ backend/             product backend (planned, Stage 1 build step)
 ├─ control/             Nexus Control backend (planned, Stage 2)

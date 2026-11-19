@@ -37,6 +37,8 @@ export const queryKeys = {
   },
   m04: {
     textOverrides: (s: KeyScope, locale: string) => scoped(s, "m04", "text-overrides", locale),
+    revisions: (s: KeyScope, key: string | null, locale: string | null = null) =>
+      scoped(s, "m04", "revisions", key, locale),
   },
   m05: {
     plan: (s: KeyScope) => scoped(s, "m05", "plan"),
