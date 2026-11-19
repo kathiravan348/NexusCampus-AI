@@ -56,7 +56,7 @@ export function Field({
         <>
           <label
             htmlFor={htmlFor}
-            className="block text-label font-sans font-semibold text-text-primary"
+            className="block text-label font-sans font-semibold text-text-primary rtl:tracking-normal"
           >
             {label}
             {required && (

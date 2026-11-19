@@ -10,7 +10,6 @@ export interface IconButtonProps
   "aria-label": string;
   icon: React.ReactNode;
   loading?: boolean;
-  asChild?: boolean;
 }
 
 export const IconButton = React.forwardRef<HTMLButtonElement, IconButtonProps>(

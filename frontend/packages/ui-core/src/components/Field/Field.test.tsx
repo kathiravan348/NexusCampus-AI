@@ -16,6 +16,7 @@ describe("Field", () => {
       </Field>,
     );
     expect(screen.getByRole("textbox", { name: "Name" })).toBeInTheDocument();
+    expect(screen.getByText("Name")).toHaveClass("rtl:tracking-normal");
     expect(screen.getByText("Optional")).toHaveAttribute("id", "name-description");
     expect(screen.getByRole("alert")).toHaveTextContent("Required");
   });

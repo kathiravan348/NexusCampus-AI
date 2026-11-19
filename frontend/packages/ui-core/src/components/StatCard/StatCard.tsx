@@ -34,7 +34,7 @@ export const StatCard = React.forwardRef<HTMLDivElement, StatCardProps>(
           </div>
         ) : (
           <div className="flex flex-col">
-            <span className="font-sans text-label uppercase font-semibold text-text-muted select-none">
+            <span className="font-sans text-label uppercase font-semibold text-text-muted select-none rtl:tracking-normal">
               {label}
             </span>
             <div className="font-mono text-number-lg font-medium text-text-primary mt-1">
