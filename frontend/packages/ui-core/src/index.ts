@@ -1,5 +1,6 @@
 export * from "./theme/theme";
 export * from "./theme/contrast";
+export * from "./theme/suggest";
 export * from "./theme/fonts";
 export * from "./theme/tenantTheme";
 export { cn } from "./lib/cn";
@@ -16,6 +17,7 @@ export {
 export { Skeleton, type SkeletonProps } from "./components/Skeleton/Skeleton";
 export { Field, getDescribedBy, type FieldProps } from "./components/Field/Field";
 export { Input, type InputProps } from "./components/Input/Input";
+export { ColorField, type ColorFieldProps } from "./components/ColorField/ColorField";
 export { Textarea, type TextareaProps } from "./components/Textarea/Textarea";
 export { Select, type SelectProps, type SelectOption } from "./components/Select/Select";
 export { Checkbox, type CheckboxProps } from "./components/Checkbox/Checkbox";

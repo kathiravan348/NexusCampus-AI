@@ -17,6 +17,7 @@
     "baseUrl": ".",
     "paths": {
       "@nexus/brand": ["../brand.config.ts"],
+      "@nexus/ui-core/contrast": ["packages/ui-core/src/theme/contrast.ts"],
       "@nexus/ui-core/styles.css": ["packages/ui-core/src/theme/styles.css"],
       "@nexus/ui-core": ["packages/ui-core/src/index.ts"],
       "@nexus/ui-edu": ["packages/ui-edu/src/index.ts"],

@@ -30,6 +30,18 @@ export class ThemeValueError extends Error {
 
 export const TENANT_THEME_STYLE_ID = "nexus-tenant-theme";
 
+export interface RadiusTokenDefinition {
+  readonly name: string;
+  readonly value: string;
+  readonly usage: string;
+}
+
+export const RADIUS_TOKENS: readonly RadiusTokenDefinition[] = tokens.radius.tokens;
+
+export const DEFAULT_RADIUS: Readonly<Record<string, string>> = Object.fromEntries(
+  tokens.radius.tokens.map((t) => [t.name, t.value]),
+);
+
 const RADIUS_NAMES: ReadonlySet<string> = new Set(tokens.radius.tokens.map((t) => t.name));
 const DENSITY_SCALE: ReadonlyMap<string, number> = new Map(
   tokens.density.presets.map((p) => [p.name, p.scale]),
@@ -58,8 +70,11 @@ function block(selector: string, vars: Readonly<Record<string, string>>): string
   return `${selector} {\n${entries.map(([k, v]) => `  --${k}: ${v};`).join("\n")}\n}\n`;
 }
 
-/** The CSS a theme produces: CSS variables only, scoped so light and dark stay separate. */
-export function tenantThemeCss(theme: TenantTheme): string {
+/**
+ * The CSS a theme produces: CSS variables only, scoped so light and dark stay separate.
+ * Pass `scope` (e.g. `[data-theme-preview="m03"]`) to limit overrides to one container.
+ */
+export function tenantThemeCss(theme: TenantTheme, scope?: string): string {
   const shared: Record<string, string> = {};
   if (theme.fonts?.sans !== undefined)
     shared["font-sans"] = resolveFont(theme.fonts.sans, "sans").family;
@@ -68,6 +83,14 @@ export function tenantThemeCss(theme: TenantTheme): string {
   Object.assign(shared, theme.radius);
   if (theme.density !== undefined)
     shared["density-scale"] = String(DENSITY_SCALE.get(theme.density));
+
+  if (scope !== undefined) {
+    return [
+      block(scope, shared),
+      block(`${scope}[data-theme="light"]`, theme.light ?? {}),
+      block(`${scope}[data-theme="dark"]`, theme.dark ?? {}),
+    ].join("");
+  }
 
   // `html` selectors outrank the generated `:root` / `[data-theme]` rules in tokens.css.
   return [

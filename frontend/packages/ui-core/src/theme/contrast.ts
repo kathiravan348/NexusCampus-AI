@@ -22,9 +22,17 @@ export interface ContrastFailure extends ContrastPair {
   ratio: number;
 }
 
+export interface ColorTokenDefinition {
+  readonly name: string;
+  readonly value: Readonly<Record<ThemeName, string>>;
+  readonly usage: string;
+}
+
+export const COLOR_TOKENS: readonly ColorTokenDefinition[] = tokens.color.tokens;
+
 export const CONTRAST_PAIRS: readonly ContrastPair[] = tokens.contrastPairs;
 
-const DEFAULT_COLORS: Readonly<Record<ThemeName, Readonly<Record<string, string>>>> = {
+export const DEFAULT_COLORS: Readonly<Record<ThemeName, Readonly<Record<string, string>>>> = {
   light: Object.fromEntries(tokens.color.tokens.map((t) => [t.name, t.value.light])),
   dark: Object.fromEntries(tokens.color.tokens.map((t) => [t.name, t.value.dark])),
 };

@@ -12,6 +12,7 @@
 | `Skeleton` | `@nexus/ui-core` | Reduced-motion-safe decorative loading placeholder | `Components/Skeleton` |
 | `Field` | `@nexus/ui-core` | Form wrapper pairing label, required indicator, description and `role="alert"` error | `Components/Field` |
 | `Input` | `@nexus/ui-core` | Single-line text/numeric input with logical leading/trailing slots and ARIA wiring | `Components/Input` |
+| `ColorField` | `@nexus/ui-core` | Colour token input combining live swatch, native colour picker and hex text field | `Components/ColorField` |
 | `Textarea` | `@nexus/ui-core` | Multi-line text input sharing `Field` labels, error states and ref forwarding | `Components/Textarea` |
 | `Select` | `@nexus/ui-core` | Native select with `<optgroup>` runs, placeholder and RTL-safe indicator | `Components/Select` |
 | `Checkbox` | `@nexus/ui-core` | Radix checkbox supporting checked, unchecked and indeterminate states | `Components/Checkbox` |

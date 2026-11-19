@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell and Institution setup)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, and Theme studio)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -32,5 +32,16 @@ Available to administrators from **Institution setup** in the menu (requires an 
 - **Locale & formats** lets you choose the default language, supported languages, time zone, currency, country, and weekend days. **Live format preview** immediately shows today's date and time, a sample number, and a sample money amount in your chosen settings before you choose **Save**.
 - **Calendar** manages the academic year dates, **Display calendar** (Gregorian, Hijri, Hebrew, or Indian National), **Academic periods** (use **Add period** or the remove button), and **Holidays** (use **Add holiday** or the remove button). Overlapping periods or dates outside the academic year are flagged inline before saving.
 
+## Theme studio
+Available to administrators from **Theme studio** in the menu. You can inspect the cached theme while offline, but **Save** requires an internet connection.
+
+- **Colours** edits light and dark mode colour tokens grouped by **Brand**, **Surfaces & borders**, **Text**, **Status**, and **Charts**. Switch between **Light** and **Dark** modes, pick a colour or enter a hex value, and use the reset button beside any changed token to return it to the platform default.
+- Changing the primary brand colour offers a **Suggested brand pair** banner with **Apply suggestions** so button text and links automatically pass contrast checks.
+- For institutions inside a multi-campus group (such as Riverside), tokens locked by the group appear with a **Locked by group** badge and cannot be edited at the institution level.
+- **Typography & spacing** chooses the **Body and UI font**, **Numbers and code font**, **Layout density** (**Compact**, **Comfortable**, or **Spacious**), and **Corner radius** tokens.
+- **Assets** configures the **Logo URL** and **Favicon URL** with an inline image preview.
+- **Contrast guard** checks every colour pair against WCAG 2.2 AA rules in both light and dark modes. Any failing pair blocks **Save**, displays the current and required ratio, and offers **Use suggestion** to apply a passing colour.
+- **Live preview** shows buttons, a card, a table, and a form using your draft theme without changing the rest of the app until you choose **Save**. Saving updates the whole app and increments the **Version** badge.
+
 ## Not there yet
-- Remaining module screens (theme studio, text & language studio, users & roles, audit & privacy, plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.
+- Remaining module screens (text & language studio, users & roles, audit & privacy, plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.
