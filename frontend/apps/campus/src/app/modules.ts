@@ -1,6 +1,6 @@
 import type { ModuleId } from "@nexus/contracts";
 import type { MessageKey } from "@nexus/i18n";
-import type { LucideIcon } from "lucide-react";
+import { Building2, type LucideIcon } from "lucide-react";
 import type { ComponentType } from "react";
 
 /** Offline level from `docs/MODULES.md`: L0 online only … L3 pre-synced reference data. */
@@ -25,4 +25,14 @@ export interface ModuleEntry {
  * Every module screen, one line per screen task (shared list file, `AGENTS.md` §3).
  * Keep entries in module order.
  */
-export const MODULES: readonly ModuleEntry[] = [];
+export const MODULES: readonly ModuleEntry[] = [
+  {
+    moduleId: "M01",
+    path: "setup",
+    navKey: "m01.nav.title",
+    icon: Building2,
+    permission: "m01.institution.manage",
+    offlineLevel: "L0",
+    load: () => import("../modules/m01/SetupPage"),
+  },
+];
