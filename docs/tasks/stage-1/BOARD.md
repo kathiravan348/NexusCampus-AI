@@ -11,7 +11,7 @@
 |---|---|---|---|---|---|
 | NEX-001 | Monorepo setup: pnpm workspaces, Vite, TS strict, ESLint, Prettier, Vitest, empty packages, app `campus` | — | done | Gemini | — |
 | NEX-002 | Theme engine: Nexus Style tokens, token pipeline, runtime tenant theme (colours, fonts, radius, density) + contrast guard | A | done | Claude | 001 |
-| NEX-003 | i18n engine: FormatJS, message catalogue, locale-scoped terminology packs, formatters (incl. G-3 calendars), pseudo-locale, RTL | B | ready-for-review | Claude | 001 |
+| NEX-003 | i18n engine: FormatJS, message catalogue, locale-scoped terminology packs, formatters (incl. G-3 calendars), pseudo-locale, RTL | B | in-review | Claude | 001 |
 | NEX-004 | Storybook: theme, tenant-theme, locale, RTL, viewport toggles; a11y addon | A | draft | — | 002, 003 |
 | NEX-005 | ui-core port from NOVA (1/2): Button, IconButton, Badge, Card, StatCard, Skeleton, form fields — text via keys, RTL | A | draft | — | 004 |
 | NEX-006 | ui-core port from NOVA (2/2): DataTable, AppShell, NavItem, Modal, Tabs, Toast, EmptyState, DemoBanner, SyncStatus | A | draft | — | 005 |
