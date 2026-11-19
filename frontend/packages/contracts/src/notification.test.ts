@@ -89,6 +89,8 @@ describe("NotificationDelivery", () => {
       { ...delivery, reason: "bounced" },
       { ...delivery, sentAt: "2026-11-01T06:59:59Z" },
       { ...delivery, sentAt: null },
+      { ...delivery, status: "queued" },
+      { ...delivery, status: "suppressed", reason: "quiet_hours" },
       { ...delivery, status: "bounced" },
       { ...delivery, body: "Dear…" },
     ]);

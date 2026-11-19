@@ -115,6 +115,10 @@ export const AccessGrantSchema = z
   .refine((g) => g.revokedAt === null || notBefore(g.startsAt, g.revokedAt), {
     message: "revokedAt is before startsAt",
     path: ["revokedAt"],
+  })
+  .refine((g) => g.revokedAt === null || Date.parse(g.revokedAt) < Date.parse(g.endsAt), {
+    message: "a grant can only be revoked before it ends",
+    path: ["revokedAt"],
   });
 export type AccessGrant = z.infer<typeof AccessGrantSchema>;
 

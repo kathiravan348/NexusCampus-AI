@@ -120,6 +120,8 @@ describe("AccessGrant", () => {
       { ...grant, endsAt: grant.startsAt },
       { ...grant, endsAt: "2026-11-17T09:00:00Z" },
       { ...grant, revokedAt: "2026-11-17T09:00:00Z" },
+      { ...grant, revokedAt: grant.endsAt },
+      { ...grant, revokedAt: "2026-11-21T00:00:00Z" },
       { ...grant, modules: [] },
       { ...grant, credential: "x" },
     ]);

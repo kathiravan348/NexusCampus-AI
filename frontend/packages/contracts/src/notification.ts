@@ -60,6 +60,10 @@ export const NotificationDeliverySchema = z
   .refine((d) => d.sentAt !== null || (d.status !== "sent" && d.status !== "delivered"), {
     message: "sent and delivered messages need sentAt",
     path: ["sentAt"],
+  })
+  .refine((d) => d.sentAt === null || (d.status !== "queued" && d.status !== "suppressed"), {
+    message: "queued and suppressed messages were never sent, so sentAt must be null",
+    path: ["sentAt"],
   });
 export type NotificationDelivery = z.infer<typeof NotificationDeliverySchema>;
 
