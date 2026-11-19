@@ -24,13 +24,14 @@ import {
   useCallback,
   useContext,
   useMemo,
+  useEffect,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
 import { ApiClient, ApiRequestError } from "./client";
 import { DATA_MODE, type DataMode } from "./config";
 import type { KeyScope } from "./keys";
-import { getMockScenario, useSession, type SessionIdentity } from "./session";
+import { getMockScenario, useSession, type SessionIdentity, type SignOutGuard } from "./session";
 
 /** Cache key of the whole persisted query client inside the user's encrypted L1 store. */
 export const PERSIST_CACHE_KEY = "nexus.query-client";
@@ -58,25 +59,49 @@ export function createNexusQueryClient(config?: QueryClientConfig): QueryClient 
   });
 }
 
+/** A persister that sign-out can pause before it wipes the user's data. */
+export interface OfflinePersister extends Persister, SignOutGuard {}
+
 /** Query-cache persister on `@nexus/offline` (encrypted, scoped to one tenant + user). */
 export function createOfflinePersister(
   db: NexusOfflineDB,
   scope: OfflineScope,
   throttleMs = 1000,
-): Persister {
+): OfflinePersister {
   let latest: PersistedClient | null = null;
   let timer: ReturnType<typeof setTimeout> | null = null;
-  const write = async () => {
+  let paused = false;
+  let inflight: Promise<void> = Promise.resolve();
+  const write = (): Promise<void> => {
     timer = null;
+    if (paused || !latest) return inflight;
     const client = latest;
     latest = null;
-    if (client) await setCached(db, scope, PERSIST_CACHE_KEY, client);
+    // Writes run one at a time and re-check `paused`, so none lands after a sign-out wipe (O-3).
+    inflight = inflight.then(async () => {
+      if (!paused) await setCached(db, scope, PERSIST_CACHE_KEY, client);
+    });
+    return inflight;
+  };
+  const schedule = (): Promise<void> | undefined => {
+    if (throttleMs <= 0) return write();
+    timer ??= setTimeout(() => void write().catch(() => undefined), throttleMs);
+    return undefined;
   };
   return {
     persistClient(client) {
       latest = client;
-      if (throttleMs <= 0) return write();
-      timer ??= setTimeout(() => void write(), throttleMs);
+      if (!paused) return schedule();
+    },
+    async pause() {
+      paused = true;
+      if (timer) clearTimeout(timer);
+      timer = null;
+      await inflight.catch(() => undefined);
+    },
+    resume() {
+      paused = false;
+      if (latest) void schedule()?.catch(() => undefined);
     },
     async restoreClient() {
       const entry = await getCached<PersistedClient>(db, scope, PERSIST_CACHE_KEY);
@@ -120,7 +145,7 @@ export function NexusQueryProvider({
   createClient = createNexusQueryClient,
   persistThrottleMs,
 }: NexusQueryProviderProps) {
-  const { session, db } = useSession();
+  const { session, db, registerSignOutGuard } = useSession();
   const tenantId = session?.tenantId ?? null;
   const userId = session?.userId ?? null;
   const scope = useMemo<SessionIdentity | null>(
@@ -146,6 +171,15 @@ export function NexusQueryProvider({
     () => (scope ? createOfflinePersister(db, scope, persistThrottleMs) : null),
     [db, scope, persistThrottleMs],
   );
+  useEffect(() => {
+    if (!persister) return;
+    const unregister = registerSignOutGuard(persister);
+    // A replaced persister (user switch, unmount) never writes again.
+    return () => {
+      unregister();
+      void persister.pause();
+    };
+  }, [persister, registerSignOutGuard]);
 
   const inner = <ServicesContext.Provider value={services}>{children}</ServicesContext.Provider>;
   if (!persister) return <QueryClientProvider client={queryClient}>{inner}</QueryClientProvider>;

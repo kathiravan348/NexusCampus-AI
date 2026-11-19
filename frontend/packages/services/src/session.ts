@@ -6,6 +6,7 @@ import {
   useCallback,
   useContext,
   useMemo,
+  useRef,
   useState,
   type ReactNode,
 } from "react";
@@ -26,6 +27,16 @@ export interface SessionContextValue {
   readonly db: NexusOfflineDB;
   signIn(tenantId: string, userId: string): void;
   signOut(): Promise<SignOutResult>;
+  /** Writers of user data (the query persister) pause before sign-out wipes; returns unregister. */
+  registerSignOutGuard(guard: SignOutGuard): () => void;
+}
+
+/** Something that writes user data in the background and must stop before a sign-out wipe. */
+export interface SignOutGuard {
+  /** Stop writing and wait for any write in flight. */
+  pause(): Promise<void>;
+  /** Sign-out was refused: carry on writing. */
+  resume(): void;
 }
 
 export const SESSION_STORAGE_KEY = "nexus.session";
@@ -111,10 +122,22 @@ export function SessionProvider({ children, db }: SessionProviderProps) {
     setSession(next);
   }, []);
 
+  const guards = useRef(new Set<SignOutGuard>());
+  const registerSignOutGuard = useCallback((guard: SignOutGuard) => {
+    guards.current.add(guard);
+    return () => {
+      guards.current.delete(guard);
+    };
+  }, []);
+
   const signOut = useCallback(async (): Promise<SignOutResult> => {
     if (session) {
+      // Stop and drain cache writers first, or a late write would re-create the wiped data (O-3).
+      const active = [...guards.current];
+      await Promise.all(active.map((guard) => guard.pause()));
       const result = await signOutWipe(offlineDb, session);
       if (!result.wiped) {
+        active.forEach((guard) => guard.resume());
         return { blocked: true, pending: result.pendingCount + result.conflictCount };
       }
     }
@@ -124,8 +147,8 @@ export function SessionProvider({ children, db }: SessionProviderProps) {
   }, [offlineDb, session]);
 
   const value = useMemo<SessionContextValue>(
-    () => ({ session, db: offlineDb, signIn, signOut }),
-    [session, offlineDb, signIn, signOut],
+    () => ({ session, db: offlineDb, signIn, signOut, registerSignOutGuard }),
+    [session, offlineDb, signIn, signOut, registerSignOutGuard],
   );
   return createElement(SessionContext.Provider, { value }, children);
 }

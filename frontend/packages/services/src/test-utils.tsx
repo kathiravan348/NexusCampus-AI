@@ -45,17 +45,18 @@ export function freshDb(): NexusOfflineDB {
 export interface WrapperOptions {
   readonly db: NexusOfflineDB;
   readonly appVersion?: string;
+  readonly persistThrottleMs?: number;
 }
 
 /** Providers as the app wires them, with retries off and persistence unthrottled. */
-export function wrapper({ db, appVersion = "test" }: WrapperOptions) {
+export function wrapper({ db, appVersion = "test", persistThrottleMs = 0 }: WrapperOptions) {
   return function Wrapper({ children }: { readonly children?: ReactNode }) {
     return (
       <SessionProvider db={db}>
         <NexusQueryProvider
           appVersion={appVersion}
           mode="mock"
-          persistThrottleMs={0}
+          persistThrottleMs={persistThrottleMs}
           createClient={() =>
             createNexusQueryClient({ defaultOptions: { queries: { retry: false } } })
           }

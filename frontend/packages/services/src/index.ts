@@ -24,6 +24,7 @@ export {
   type SessionContextValue,
   type SessionIdentity,
   type SessionProviderProps,
+  type SignOutGuard,
   type SignOutResult,
 } from "./session";
 export {
@@ -37,6 +38,7 @@ export {
   useScopedQuery,
   useServices,
   type NexusQueryProviderProps,
+  type OfflinePersister,
   type ServicesContextValue,
 } from "./query";
 export {

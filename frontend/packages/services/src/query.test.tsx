@@ -1,10 +1,11 @@
 import { getCached } from "@nexus/offline";
-import { renderHook, waitFor } from "@testing-library/react";
+import { useQueryClient } from "@tanstack/react-query";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { ApiRequestError } from "./client";
 import { queryKeys } from "./keys";
 import { useTenant } from "./modules/m01";
 import { PERSIST_CACHE_KEY, shouldRetry, useLastSynced, useServices } from "./query";
-import { setMockScenario } from "./session";
+import { setMockScenario, useSession } from "./session";
 import { ADMIN, TEACHER, freshDb, signInAs, startMockServer, wrapper } from "./test-utils";
 
 startMockServer();
@@ -68,6 +69,26 @@ describe("NexusQueryProvider", () => {
     const other = renderHook(() => useTenant(), { wrapper: wrapper({ db }) });
     await waitFor(() => expect(other.result.current.isError).toBe(true));
     expect(other.result.current.data).toBeUndefined();
+  });
+
+  it("leaves no cache behind after sign-out, even with a write still scheduled (O-3)", async () => {
+    const db = freshDb();
+    signInAs(ADMIN);
+    const { result } = renderHook(
+      () => ({ tenant: useTenant(), session: useSession(), client: useQueryClient() }),
+      { wrapper: wrapper({ db, persistThrottleMs: 60 }) },
+    );
+    await waitFor(() => expect(result.current.tenant.isSuccess).toBe(true));
+    await act(() => new Promise((resolve) => setTimeout(resolve, 120)));
+    await act(async () => {
+      // A cache change schedules a write, then sign-out starts before the throttle fires.
+      result.current.client.setQueryData(queryKeys.m02.me(adminScope), { late: true });
+      expect(await result.current.session.signOut()).toEqual({ blocked: false });
+    });
+    // Wait past the throttle: a late write would re-create the wiped cache.
+    await act(() => new Promise((resolve) => setTimeout(resolve, 150)));
+    expect(await db.cache.count()).toBe(0);
+    expect(await getCached(db, adminScope, PERSIST_CACHE_KEY)).toBeNull();
   });
 
   it("drops a cache persisted by another app version", async () => {
