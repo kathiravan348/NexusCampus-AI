@@ -49,4 +49,4 @@
 - Licence pricing unit for self-hosted: per learner, per campus, or flat edition.
 
 ## Requests
-_(implementers note new dependencies or decision requests here; the planner moves them into the table)_
+- NEX-005 (`@nexus/ui-core` exact pins matching NOVA): `@radix-ui/react-checkbox@1.3.11`, `@radix-ui/react-slot@1.3.3`, `@radix-ui/react-switch@1.3.7`, `class-variance-authority@0.7.1`, `clsx@2.1.1`, `lucide-react@1.47.0`, `tailwind-merge@3.7.0`.
