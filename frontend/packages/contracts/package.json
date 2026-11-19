@@ -8,10 +8,13 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run"
   },
   "devDependencies": {
     "typescript": "5.7.3",
     "vitest": "3.2.7"
+  },
+  "dependencies": {
+    "zod": "4.6.5"
   }
 }
