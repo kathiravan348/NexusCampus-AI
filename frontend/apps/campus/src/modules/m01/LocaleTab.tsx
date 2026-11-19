@@ -206,9 +206,9 @@ export function LocaleTab({ institution, online }: LocaleTabProps) {
                 />
               ))}
             </div>
-            {errors.supportedLocales?.message && (
+            {(errors.supportedLocales?.message ?? errors.supportedLocales?.root?.message) && (
               <p className="text-body-sm text-danger-text" role="alert">
-                {errors.supportedLocales.message}
+                {errors.supportedLocales?.message ?? errors.supportedLocales?.root?.message}
               </p>
             )}
           </fieldset>
@@ -227,9 +227,9 @@ export function LocaleTab({ institution, online }: LocaleTabProps) {
                 />
               ))}
             </div>
-            {errors.weekendDays?.message && (
+            {(errors.weekendDays?.message ?? errors.weekendDays?.root?.message) && (
               <p className="text-body-sm text-danger-text" role="alert">
-                {errors.weekendDays.message}
+                {errors.weekendDays?.message ?? errors.weekendDays?.root?.message}
               </p>
             )}
           </fieldset>

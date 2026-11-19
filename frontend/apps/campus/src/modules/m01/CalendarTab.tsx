@@ -195,7 +195,7 @@ export function CalendarTab({ institution, online }: CalendarTabProps) {
             disabled={!online}
             onClick={() =>
               periods.append({
-                id: `per-${Date.now()}-${periods.fields.length + 1}`,
+                id: `per-${globalThis.crypto.randomUUID().slice(0, 8)}`,
                 kind: "term",
                 name: "",
                 startsOn: watch("startsOn") || active.startsOn,
