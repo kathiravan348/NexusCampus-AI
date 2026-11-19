@@ -76,21 +76,17 @@ export function ThemeStudioPage() {
     [draft, inherited],
   );
   const contrastFailures = useMemo(() => checkTheme(effectiveColors), [effectiveColors]);
-  const brandSuggestion = useMemo(
-    () =>
-      computeBrandSuggestion(
-        draft,
-        brandEdited[editMode],
-        effectiveColors[editMode],
-        inherited.locked,
-      ),
-    [draft, brandEdited, editMode, effectiveColors, inherited.locked],
+  const brandSuggestion = computeBrandSuggestion(
+    draft,
+    brandEdited[editMode],
+    effectiveColors[editMode],
+    inherited.locked,
   );
   const isDirty =
     draft !== null &&
     institutionLayer !== null &&
     JSON.stringify(draft) !== JSON.stringify(draftFromLayer(institutionLayer));
-  const hasFieldErrors = useMemo(() => hasDraftFieldErrors(draft), [draft]);
+  const hasFieldErrors = hasDraftFieldErrors(draft);
   const previewTheme = useMemo(
     () => buildPreviewTheme(effectiveColors, draft, inherited),
     [effectiveColors, draft, inherited],
@@ -141,7 +137,10 @@ export function ThemeStudioPage() {
   const handleSave = async () => {
     try {
       const result = await saveTheme.mutateAsync(toUpdatePayload(draft));
-      if (result.queued) return;
+      if (result.queued) {
+        toast.show({ tone: "warning", title: t("m03.studio.offlineNotice") });
+        return;
+      }
       applyTenantTheme(toTenantTheme(result.data.effective));
       const savedInst = result.data.layers.find((l) => l.scope.kind === "institution");
       if (savedInst) setDraft(draftFromLayer(savedInst));
@@ -279,6 +278,7 @@ export function ThemeStudioPage() {
         </div>
         <aside className="min-w-0 space-y-4 xl:sticky xl:top-6 xl:self-start">
           <ContrastPanel
+            locale={locale}
             failures={contrastFailures}
             effectiveColors={effectiveColors}
             lockedTokens={inherited.locked}

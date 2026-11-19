@@ -104,12 +104,18 @@ describe("m03 write handlers", () => {
     expect(err.details?.some((d) => d.path === "light.on-brand")).toBe(true);
   });
 
-  it("rejects unknown colour tokens and invalid asset URLs with 400", async () => {
+  it("rejects unknown colour/radius tokens and invalid asset URLs with 400", async () => {
     const unknownTokenRes = await putTheme(
       { ...VALID_BODY, light: { "not-a-token": "#112233" } },
       NB_ADMIN,
     );
     expect(unknownTokenRes.status).toBe(400);
+
+    const unknownRadiusRes = await putTheme(
+      { ...VALID_BODY, radius: { "radius-huge": "9px" } },
+      NB_ADMIN,
+    );
+    expect(unknownRadiusRes.status).toBe(400);
 
     const badUrlRes = await putTheme(
       {

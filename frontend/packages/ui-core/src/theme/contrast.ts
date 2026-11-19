@@ -41,6 +41,10 @@ export const COLOR_TOKEN_NAMES: ReadonlySet<string> = new Set(
   tokens.color.tokens.map((t) => t.name),
 );
 
+export const RADIUS_TOKEN_NAMES: ReadonlySet<string> = new Set(
+  tokens.radius.tokens.map((t) => t.name),
+);
+
 const HEX = /^#[0-9a-fA-F]{6}$/;
 
 export function isHexColor(value: string): boolean {

@@ -1,4 +1,4 @@
-import { useText } from "@nexus/i18n";
+import { formatNumber, useText } from "@nexus/i18n";
 import {
   Badge,
   Button,
@@ -9,6 +9,7 @@ import {
 import { AlertTriangle, CheckCircle2 } from "lucide-react";
 
 export interface ContrastPanelProps {
+  readonly locale?: string;
   readonly failures: readonly ContrastFailure[];
   readonly effectiveColors: Readonly<Record<ThemeName, Readonly<Record<string, string>>>>;
   readonly lockedTokens: ReadonlySet<string>;
@@ -16,6 +17,7 @@ export interface ContrastPanelProps {
 }
 
 export function ContrastPanel({
+  locale = "en",
   failures,
   effectiveColors,
   lockedTokens,
@@ -71,8 +73,11 @@ export function ContrastPanel({
                 </div>
                 <p className="text-body-sm text-text-secondary">
                   {t("m03.contrast.ratioDetail", {
-                    ratio: failure.ratio.toFixed(2),
-                    minRatio: String(failure.minRatio),
+                    ratio: formatNumber(failure.ratio, locale, {
+                      minimumFractionDigits: 2,
+                      maximumFractionDigits: 2,
+                    }),
+                    minRatio: formatNumber(failure.minRatio, locale),
                   })}
                 </p>
               </div>

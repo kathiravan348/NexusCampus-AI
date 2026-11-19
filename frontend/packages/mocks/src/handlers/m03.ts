@@ -13,7 +13,7 @@ import {
   type AuditEvent,
   type Theme,
 } from "@nexus/contracts";
-import { COLOR_TOKEN_NAMES, checkTheme } from "@nexus/ui-core/contrast";
+import { COLOR_TOKEN_NAMES, RADIUS_TOKEN_NAMES, checkTheme } from "@nexus/ui-core/contrast";
 import { http } from "msw";
 import { z } from "zod";
 import {
@@ -130,6 +130,11 @@ async function parseThemeInput(request: Request): Promise<ThemeUpdateInput> {
       if (!COLOR_TOKEN_NAMES.has(token)) {
         bad.push({ path: `${mode}.${token}`, message: `Unknown colour token: ${token}` });
       }
+    }
+  }
+  for (const token of Object.keys(input.radius)) {
+    if (!RADIUS_TOKEN_NAMES.has(token)) {
+      bad.push({ path: `radius.${token}`, message: `Unknown radius token: ${token}` });
     }
   }
   const fontIds = new Set(mockDb.fonts.map((f) => f.id));
