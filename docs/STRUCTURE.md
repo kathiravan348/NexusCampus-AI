@@ -26,6 +26,9 @@
 │  │  │                 fonts (font library), tenantTheme (institution theme at runtime)
 │  │  ├─ ui-edu/        education components built on ui-core
 │  │  ├─ i18n/          messages, formatters, layered text overrides, RTL (NEX-003)
+│  │  │  ├─ messages/   en.json (source + translator notes), ar.json
+│  │  │  ├─ terminology/ <locale>/<type>.json: words per institution type (ey, k12, he, voc, tp, sk, onl, grp)
+│  │  │  └─ src/        resolve (layers), pseudo (en-XA), direction (RTL), format, I18nProvider, useText
 │  │  ├─ offline/       IndexedDB store, outbox, sync status (NEX-007)
 │  │  ├─ ui-storybook/  Storybook (planned, NEX-004)
 │  │  ├─ contracts/     API types + Zod schemas (NEX-008, 009, 027)

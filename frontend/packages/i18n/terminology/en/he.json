@@ -1,0 +1,7 @@
+{
+  "term.learner": "Student",
+  "term.learners": "Students",
+  "term.teacher": "Lecturer",
+  "term.class": "Course",
+  "term.guardian": "Guardian"
+}

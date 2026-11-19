@@ -1,0 +1,60 @@
+{
+  "common.save": { "message": "Save", "description": "Button: save the current form or changes." },
+  "common.cancel": {
+    "message": "Cancel",
+    "description": "Button: close a form or dialog without saving."
+  },
+  "common.edit": { "message": "Edit", "description": "Button: open an item for editing." },
+  "common.delete": {
+    "message": "Delete",
+    "description": "Button: delete an item (asks to confirm first)."
+  },
+  "common.search": {
+    "message": "Search",
+    "description": "Placeholder and label for a search box."
+  },
+  "common.loading": { "message": "Loading…", "description": "Shown while data is loading." },
+  "common.empty": {
+    "message": "Nothing here yet",
+    "description": "Shown when a list or table has no items."
+  },
+  "common.error": {
+    "message": "Something went wrong",
+    "description": "Generic error message when a request fails."
+  },
+  "common.retry": {
+    "message": "Try again",
+    "description": "Button: repeat a request that failed."
+  },
+  "common.offline": {
+    "message": "You are offline",
+    "description": "Banner shown when the device has no connection."
+  },
+  "common.syncPending": {
+    "message": "{count, plural, one {# change waiting to sync} other {# changes waiting to sync}}",
+    "description": "Sync status: number of changes saved on this device but not yet uploaded. {count} is a number."
+  },
+  "common.back": { "message": "Back", "description": "Button or link: go to the previous screen." },
+  "common.next": { "message": "Next", "description": "Button: go to the next step." },
+  "common.close": { "message": "Close", "description": "Button: close a dialog or panel." },
+  "term.learner": {
+    "message": "Learner",
+    "description": "Terminology: one person who studies here. Institution types rename it (e.g. Child, Student, Trainee)."
+  },
+  "term.learners": {
+    "message": "Learners",
+    "description": "Terminology: plural of term.learner, used in menus and headings."
+  },
+  "term.teacher": {
+    "message": "Teacher",
+    "description": "Terminology: a person who teaches (e.g. Lecturer, Trainer, Instructor)."
+  },
+  "term.class": {
+    "message": "Class",
+    "description": "Terminology: a teaching group (e.g. Group, Course, Batch, Cohort)."
+  },
+  "term.guardian": {
+    "message": "Guardian",
+    "description": "Terminology: a parent or guardian responsible for a learner."
+  }
+}
