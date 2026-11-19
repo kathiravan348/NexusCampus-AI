@@ -40,3 +40,6 @@ backend/logs/
 Thumbs.db
 *.swp
 *.swo
+# Frontend tooling
+storybook-static/
+*.tsbuildinfo
