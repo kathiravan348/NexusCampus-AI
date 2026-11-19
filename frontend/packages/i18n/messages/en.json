@@ -351,6 +351,478 @@
     "message": "User",
     "description": "Demo persona role when no specific role label is known."
   },
+  "m02.nav.title": {
+    "message": "Users & access",
+    "description": "Menu item and page title of the users, roles and access screen (M02)."
+  },
+  "m02.access.intro": {
+    "message": "Invite people, give them roles in a scope, review sign-in sessions and single sign-on.",
+    "description": "Intro text under the users and access page title."
+  },
+  "m02.access.tabsLabel": {
+    "message": "Users and access sections",
+    "description": "Accessible label of the tab list on the users and access page."
+  },
+  "m02.access.tabUsers": {
+    "message": "Users",
+    "description": "Tab: list of user accounts."
+  },
+  "m02.access.tabRoles": {
+    "message": "Roles",
+    "description": "Tab: roles and their permissions."
+  },
+  "m02.access.tabSessions": {
+    "message": "Sessions",
+    "description": "Tab: signed-in devices and sessions."
+  },
+  "m02.access.tabSso": {
+    "message": "Single sign-on",
+    "description": "Tab: single sign-on (SSO) provider settings."
+  },
+  "m02.access.error": {
+    "message": "Users and access could not be loaded.",
+    "description": "Error heading when the users and access data fails to load."
+  },
+  "m02.access.saveFailed": {
+    "message": "The change could not be saved. Try again.",
+    "description": "Toast shown when a users or access change fails to save."
+  },
+  "m02.access.offlineNotice": {
+    "message": "You are offline. You can look at cached users, but changes need a connection.",
+    "description": "Notice on the users page while the device is offline."
+  },
+  "m02.users.caption": {
+    "message": "User accounts",
+    "description": "Accessible caption of the users table."
+  },
+  "m02.users.colName": {
+    "message": "Name",
+    "description": "Users table column: the person's name."
+  },
+  "m02.users.colContact": {
+    "message": "Contact",
+    "description": "Users table column: email address (restricted for minors)."
+  },
+  "m02.users.colRoles": {
+    "message": "Roles",
+    "description": "Users table column: role names the user has."
+  },
+  "m02.users.colStatus": {
+    "message": "Status",
+    "description": "Users table column: account status."
+  },
+  "m02.users.colLastSignIn": {
+    "message": "Last sign-in",
+    "description": "Users table column: when the user last signed in."
+  },
+  "m02.users.never": {
+    "message": "Never",
+    "description": "Shown when a user has never signed in."
+  },
+  "m02.users.statusFilter": {
+    "message": "Status",
+    "description": "Label of the status filter above the users table."
+  },
+  "m02.users.statusAll": {
+    "message": "All statuses",
+    "description": "Status filter option: show every status."
+  },
+  "m02.users.status.invited": {
+    "message": "Invited",
+    "description": "User status: invited, has not signed in yet."
+  },
+  "m02.users.status.active": {
+    "message": "Active",
+    "description": "User status: active account."
+  },
+  "m02.users.status.suspended": {
+    "message": "Suspended",
+    "description": "User status: suspended by an administrator."
+  },
+  "m02.users.status.locked": {
+    "message": "Locked",
+    "description": "User status: locked after failed sign-ins."
+  },
+  "m02.users.invite": {
+    "message": "Invite user",
+    "description": "Button: open the invite user form."
+  },
+  "m02.users.empty": {
+    "message": "No users match.",
+    "description": "Empty state when no users match the search or filter."
+  },
+  "m02.invite.title": {
+    "message": "Invite user",
+    "description": "Title of the invite user dialog."
+  },
+  "m02.invite.legalName": {
+    "message": "Full name",
+    "description": "Invite form field: the person's legal name."
+  },
+  "m02.invite.email": {
+    "message": "Email",
+    "description": "Invite form field: email address the invitation goes to."
+  },
+  "m02.invite.emailInvalid": {
+    "message": "Enter a valid email address.",
+    "description": "Field error when the email address is not valid."
+  },
+  "m02.invite.duplicate": {
+    "message": "This email already has an account.",
+    "description": "Field error when inviting an email that already has an account."
+  },
+  "m02.invite.role": {
+    "message": "Role",
+    "description": "Form field: which role to give."
+  },
+  "m02.invite.scopeKind": {
+    "message": "Applies to",
+    "description": "Form field: the kind of scope the role applies to (institution, campus and so on)."
+  },
+  "m02.invite.scopeTarget": {
+    "message": "Where",
+    "description": "Form field: which institution, campus or group the role applies to."
+  },
+  "m02.invite.pick": {
+    "message": "Choose…",
+    "description": "Placeholder of a select field before anything is chosen."
+  },
+  "m02.invite.submit": {
+    "message": "Send invitation",
+    "description": "Button: send the invitation."
+  },
+  "m02.invite.sent": {
+    "message": "Invitation sent.",
+    "description": "Toast after an invitation is sent."
+  },
+  "m02.scope.group": {
+    "message": "Group",
+    "description": "Scope kind: the whole group of institutions."
+  },
+  "m02.scope.institution": {
+    "message": "Institution",
+    "description": "Scope kind: one institution."
+  },
+  "m02.scope.campus": {
+    "message": "Campus",
+    "description": "Scope kind: one campus."
+  },
+  "m02.scope.department": {
+    "message": "Department",
+    "description": "Scope kind: one department."
+  },
+  "m02.scope.class": {
+    "message": "Class",
+    "description": "Scope kind: one class."
+  },
+  "m02.scope.own": {
+    "message": "Own records only",
+    "description": "Scope kind: only the user's own records (and their linked learners)."
+  },
+  "m02.detail.assignments": {
+    "message": "Role assignments",
+    "description": "Heading of the list of a user's roles in the user dialog."
+  },
+  "m02.detail.noAssignments": {
+    "message": "This user has no roles yet.",
+    "description": "Shown when a user has no role assignments."
+  },
+  "m02.detail.openEnded": {
+    "message": "open-ended",
+    "description": "Shown instead of an end date when a role has no end date."
+  },
+  "m02.detail.remove": {
+    "message": "Remove {role}",
+    "description": "Accessible label of the button that removes one role from a user."
+  },
+  "m02.detail.removed": {
+    "message": "Role removed.",
+    "description": "Toast after a role is removed from a user."
+  },
+  "m02.detail.lastAdmin": {
+    "message": "You cannot remove your own last admin role.",
+    "description": "Hint on the disabled remove button for the user's own last admin role."
+  },
+  "m02.detail.addAssignment": {
+    "message": "Add a role",
+    "description": "Heading of the form that gives the user another role."
+  },
+  "m02.detail.effectiveFrom": {
+    "message": "From",
+    "description": "Date field: when the role starts."
+  },
+  "m02.detail.effectiveTo": {
+    "message": "Until",
+    "description": "Date field: when the role ends (optional)."
+  },
+  "m02.detail.assign": {
+    "message": "Add role",
+    "description": "Button: give the chosen role to the user."
+  },
+  "m02.detail.assigned": {
+    "message": "Role added.",
+    "description": "Toast after a role is given to a user."
+  },
+  "m02.detail.suspend": {
+    "message": "Suspend",
+    "description": "Button: suspend the user's account."
+  },
+  "m02.detail.reactivate": {
+    "message": "Reactivate",
+    "description": "Button: reactivate a suspended account."
+  },
+  "m02.detail.suspended": {
+    "message": "User suspended.",
+    "description": "Toast after a user is suspended."
+  },
+  "m02.detail.reactivated": {
+    "message": "User reactivated.",
+    "description": "Toast after a user is reactivated."
+  },
+  "m02.detail.selfHint": {
+    "message": "This is your account. Another administrator must change its status.",
+    "description": "Shown in the user dialog when you open your own account."
+  },
+  "m02.roles.intro": {
+    "message": "System roles ship with the product and are read-only. Create custom roles for your own needs.",
+    "description": "Intro text on the roles tab."
+  },
+  "m02.roles.caption": {
+    "message": "Roles",
+    "description": "Accessible caption of the roles table."
+  },
+  "m02.roles.colKind": {
+    "message": "Type",
+    "description": "Roles table column: system or custom role."
+  },
+  "m02.roles.colPermissions": {
+    "message": "Permissions",
+    "description": "Roles table column: number of permissions."
+  },
+  "m02.roles.colActions": {
+    "message": "Actions",
+    "description": "Table column holding row actions on the roles table."
+  },
+  "m02.roles.system": {
+    "message": "System",
+    "description": "Badge: a role that ships with the product."
+  },
+  "m02.roles.custom": {
+    "message": "Custom",
+    "description": "Badge: a role created by the institution."
+  },
+  "m02.roles.permissionCount": {
+    "message": "{count, plural, one {# permission} other {# permissions}}",
+    "description": "Number of permissions in a role."
+  },
+  "m02.roles.view": {
+    "message": "View",
+    "description": "Button: open a read-only system role."
+  },
+  "m02.roles.viewRole": {
+    "message": "View role {name}",
+    "description": "Accessible label of the button that opens a system role."
+  },
+  "m02.roles.editRole": {
+    "message": "Edit role {name}",
+    "description": "Accessible label of the button that edits a custom role."
+  },
+  "m02.roles.newRole": {
+    "message": "New role",
+    "description": "Button: create a custom role."
+  },
+  "m02.roles.empty": {
+    "message": "No roles yet.",
+    "description": "Empty state of the roles table."
+  },
+  "m02.role.newTitle": {
+    "message": "New custom role",
+    "description": "Title of the dialog that creates a custom role."
+  },
+  "m02.role.editTitle": {
+    "message": "Edit custom role",
+    "description": "Title of the dialog that edits a custom role."
+  },
+  "m02.role.viewTitle": {
+    "message": "{name} (system role)",
+    "description": "Title of the dialog that shows a system role read-only."
+  },
+  "m02.role.systemReadOnly": {
+    "message": "System roles are read-only.",
+    "description": "Notice that system roles cannot be edited."
+  },
+  "m02.role.name": {
+    "message": "Role name",
+    "description": "Form field: name of the custom role."
+  },
+  "m02.role.scopeKinds": {
+    "message": "Can be given for",
+    "description": "Group of checkboxes: which scope kinds this role may be assigned in."
+  },
+  "m02.role.permissions": {
+    "message": "Permissions",
+    "description": "Caption of the permission matrix in the role dialog."
+  },
+  "m02.role.allowed": {
+    "message": "Allowed",
+    "description": "Column header in the permission matrix when the role has no name yet."
+  },
+  "m02.role.sensitive": {
+    "message": "Sensitive",
+    "description": "Badge: permission that gives access to restricted personal data."
+  },
+  "m02.role.incomplete": {
+    "message": "Give the role a name, at least one permission and at least one scope.",
+    "description": "Error when saving an incomplete role."
+  },
+  "m02.role.saved": {
+    "message": "Role saved.",
+    "description": "Toast after a role is saved."
+  },
+  "m02.permission.userRead": {
+    "message": "See users and people",
+    "description": "Permission description: list users and people."
+  },
+  "m02.permission.userInvite": {
+    "message": "Invite and manage users",
+    "description": "Permission description: invite, suspend and reactivate users."
+  },
+  "m02.permission.roleManage": {
+    "message": "Manage roles and assignments",
+    "description": "Permission description: edit custom roles and give roles to users."
+  },
+  "m02.permission.personReadRestricted": {
+    "message": "See restricted personal data",
+    "description": "Permission description: see minors' and restricted personal data (sensitive)."
+  },
+  "m02.permission.ssoManage": {
+    "message": "Manage single sign-on",
+    "description": "Permission description: edit SSO provider settings."
+  },
+  "m02.sessions.caption": {
+    "message": "Active sessions",
+    "description": "Accessible caption of the sessions table."
+  },
+  "m02.sessions.colUser": {
+    "message": "User",
+    "description": "Sessions table column: whose session it is."
+  },
+  "m02.sessions.colDevice": {
+    "message": "Device",
+    "description": "Sessions table column: device and browser."
+  },
+  "m02.sessions.colMethod": {
+    "message": "Sign-in method",
+    "description": "Sessions table column: how the user signed in."
+  },
+  "m02.sessions.colLastSeen": {
+    "message": "Last seen",
+    "description": "Sessions table column: last activity time."
+  },
+  "m02.sessions.colActions": {
+    "message": "Actions",
+    "description": "Table column holding row actions on the sessions table."
+  },
+  "m02.sessions.method.password": {
+    "message": "Password",
+    "description": "Sign-in method: password."
+  },
+  "m02.sessions.method.sso": {
+    "message": "Single sign-on",
+    "description": "Sign-in method: single sign-on."
+  },
+  "m02.sessions.method.passkey": {
+    "message": "Passkey",
+    "description": "Sign-in method: passkey."
+  },
+  "m02.sessions.mfa": {
+    "message": "MFA",
+    "description": "Badge: the session passed multi-factor authentication."
+  },
+  "m02.sessions.revoke": {
+    "message": "Revoke",
+    "description": "Button: end another user's session."
+  },
+  "m02.sessions.signOutDevice": {
+    "message": "Sign out",
+    "description": "Button: sign one of your own devices out."
+  },
+  "m02.sessions.revokeLabel": {
+    "message": "End the session on {device}",
+    "description": "Accessible label of the button that ends a session."
+  },
+  "m02.sessions.revoked": {
+    "message": "Session ended.",
+    "description": "Toast after a session is revoked."
+  },
+  "m02.sessions.empty": {
+    "message": "No active sessions.",
+    "description": "Empty state of the sessions table."
+  },
+  "m02.sso.title": {
+    "message": "Single sign-on provider",
+    "description": "Heading of the SSO settings card."
+  },
+  "m02.sso.provider": {
+    "message": "Provider",
+    "description": "Select: which SSO provider to edit."
+  },
+  "m02.sso.add": {
+    "message": "Add a provider",
+    "description": "Select option: set up a new SSO provider."
+  },
+  "m02.sso.empty": {
+    "message": "No single sign-on provider is set up yet.",
+    "description": "Shown when the tenant has no SSO provider."
+  },
+  "m02.sso.protocol": {
+    "message": "Protocol",
+    "description": "Form field: OIDC or SAML 2."
+  },
+  "m02.sso.protocolOidc": {
+    "message": "OpenID Connect",
+    "description": "Protocol option: OpenID Connect (OIDC)."
+  },
+  "m02.sso.protocolSaml": {
+    "message": "SAML 2.0",
+    "description": "Protocol option: SAML 2.0."
+  },
+  "m02.sso.issuerUrl": {
+    "message": "Issuer URL",
+    "description": "Form field: the identity provider's issuer URL (https)."
+  },
+  "m02.sso.httpsOnly": {
+    "message": "The issuer URL must start with https://",
+    "description": "Field error when the issuer URL is not https."
+  },
+  "m02.sso.clientId": {
+    "message": "Client ID",
+    "description": "Form field: the client id registered with the identity provider."
+  },
+  "m02.sso.domains": {
+    "message": "Email domains",
+    "description": "Form field: which email domains sign in with this provider."
+  },
+  "m02.sso.domainsHint": {
+    "message": "Separate domains with commas, for example riverside.example.edu",
+    "description": "Help text under the email domains field."
+  },
+  "m02.sso.domainsInvalid": {
+    "message": "Enter lower-case domains such as riverside.example.edu",
+    "description": "Field error when a domain is not valid."
+  },
+  "m02.sso.scim": {
+    "message": "Provision users with SCIM",
+    "description": "Switch: let the identity provider create and update users (SCIM)."
+  },
+  "m02.sso.secretNote": {
+    "message": "The client secret is never shown or stored in the browser. It is set in the institution's key vault.",
+    "description": "Note on the SSO form explaining where the secret lives."
+  },
+  "m02.sso.saved": {
+    "message": "Single sign-on settings saved.",
+    "description": "Toast after SSO settings are saved."
+  },
   "m04.localeSwitch.label": {
     "message": "Language",
     "description": "Label of the language picker in the menu."
@@ -818,6 +1290,10 @@
   "common.colorPicker": {
     "message": "Choose colour",
     "description": "Accessible fallback label for a native colour picker input."
+  },
+  "common.restricted": {
+    "message": "Restricted",
+    "description": "Badge: this value is hidden because the viewer may not see restricted personal data."
   },
   "m03.nav.title": {
     "message": "Theme studio",

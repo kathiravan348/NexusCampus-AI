@@ -14,6 +14,7 @@ import { z } from "zod";
 import { familyOf, maskPerson, ofTenant } from "../context";
 import { mockDb } from "../db";
 import { found, get, list, ok } from "./route";
+import { m02WriteHandlers } from "./m02Writes";
 
 const M = "M02";
 const USER_READ = "m02.user.read";
@@ -90,4 +91,6 @@ export const m02Handlers = [
       : sessions.filter((s) => s.userId === ctx.viewer.userId);
     return list(ctx, visible, pageSchema(SessionSchema));
   }),
+
+  ...m02WriteHandlers,
 ];

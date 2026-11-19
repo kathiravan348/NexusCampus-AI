@@ -16,6 +16,7 @@
 | `Textarea` | `@nexus/ui-core` | Multi-line text input sharing `Field` labels, error states and ref forwarding | `Components/Textarea` |
 | `Select` | `@nexus/ui-core` | Native select with `<optgroup>` runs, placeholder and RTL-safe indicator | `Components/Select` |
 | `Checkbox` | `@nexus/ui-core` | Radix checkbox supporting checked, unchecked and indeterminate states | `Components/Checkbox` |
+| `CheckboxMatrix` | `@nexus/ui-core` | Rows × columns of checkboxes with group headers, read-only columns, RTL-aware arrow-key grid navigation and a card list below `md` | `Components/CheckboxMatrix` |
 | `Switch` | `@nexus/ui-core` | Radix toggle switch with RTL-mirrored thumb transition | `Components/Switch` |
 | `AppShell` | `@nexus/ui-core` | Responsive app layout with desktop sidebar, mobile Radix drawer, skip link and `useAppShell` | `Components/AppShell` |
 | `NavItem` | `@nexus/ui-core` | Sidebar navigation item with icon, active state, `asChild` support and auto-close in mobile drawer | `Components/NavItem` |
