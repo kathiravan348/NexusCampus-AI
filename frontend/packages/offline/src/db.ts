@@ -43,7 +43,8 @@ export interface OutboxRecord {
   attempts: number;
   createdAt: string;
   updatedAt: string;
-  lastError?: string;
+  /** Server error message, encrypted: it may quote record data (never plaintext in IndexedDB). */
+  lastError?: EncryptedPayload;
   payload: EncryptedPayload;
   serverSnapshot?: EncryptedPayload;
 }

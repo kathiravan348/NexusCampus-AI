@@ -4,8 +4,31 @@
     {
       "name": "campus",
       "runtimeExecutable": "fnm",
-      "runtimeArgs": ["exec", "--using=24", "--", "pnpm", "--dir", "frontend", "dev"],
+      "runtimeArgs": [
+        "exec",
+        "--using=24",
+        "--",
+        "pnpm",
+        "--dir",
+        "frontend",
+        "dev"
+      ],
       "port": 3100
+    },
+    {
+      "name": "storybook",
+      "runtimeExecutable": "fnm",
+      "runtimeArgs": [
+        "exec",
+        "--using=24",
+        "--",
+        "pnpm",
+        "--dir",
+        "frontend/packages/ui-storybook",
+        "dev",
+        "--no-open"
+      ],
+      "port": 6006
     }
   ]
 }

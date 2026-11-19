@@ -113,6 +113,7 @@ export function SyncStatus({
     return (
       <button
         type="button"
+        aria-live="polite"
         data-state={state}
         onClick={onClick}
         className={cn(

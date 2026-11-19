@@ -22,22 +22,28 @@ async function purgeScope(db: NexusOfflineDB, scopeKey: string): Promise<void> {
  */
 export async function signOutWipe(db: NexusOfflineDB, scope: OfflineScope): Promise<WipeResult> {
   const scopeKey = scopeKeyOf(scope);
-  const rows = await db.outbox.where("scopeKey").equals(scopeKey).toArray();
-  let pendingCount = 0;
-  let conflictCount = 0;
+  // Check and purge in one transaction so a write queued in between is never wiped (O-2).
+  const result = await db.transaction(
+    "rw",
+    [db.keys, db.cache, db.outbox, db.meta],
+    async (): Promise<WipeResult> => {
+      const rows = await db.outbox.where("scopeKey").equals(scopeKey).toArray();
+      let pendingCount = 0;
+      let conflictCount = 0;
+      for (const row of rows) {
+        if (row.status === "pending" || row.status === "syncing") pendingCount += 1;
+        else if (row.status === "conflict") conflictCount += 1;
+      }
+      if (pendingCount > 0 || conflictCount > 0) {
+        return { wiped: false, reason: "unsynced_writes", pendingCount, conflictCount };
+      }
+      await purgeScope(db, scopeKey);
+      return { wiped: true };
+    },
+  );
 
-  for (const row of rows) {
-    if (row.status === "pending" || row.status === "syncing") pendingCount += 1;
-    else if (row.status === "conflict") conflictCount += 1;
-  }
-
-  if (pendingCount > 0 || conflictCount > 0) {
-    return { wiped: false, reason: "unsynced_writes", pendingCount, conflictCount };
-  }
-
-  await purgeScope(db, scopeKey);
-  notifyScopeChanges(db, scope);
-  return { wiped: true };
+  if (result.wiped) notifyScopeChanges(db, scope);
+  return result;
 }
 
 /**

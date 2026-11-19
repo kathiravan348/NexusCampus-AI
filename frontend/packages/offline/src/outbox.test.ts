@@ -129,6 +129,8 @@ describe("outbox", () => {
     expect(conflicts).toHaveLength(1);
     expect(conflicts[0]?.serverSnapshot).toEqual({ amount: 4500 });
     expect(conflicts[0]?.lastError).toBe("Version mismatch");
+    const raw = await db.outbox.get(conflicts[0]!.id);
+    expect(JSON.stringify(raw)).not.toContain("Version mismatch");
 
     // Raw serverSnapshot is also encrypted at rest
     const rawConflict = await db.outbox.get(conflictEntry.id);
