@@ -1,5 +1,5 @@
 import { TENANT } from "@nexus/mocks";
-import { fireEvent, screen } from "@testing-library/react";
+import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { MODULES } from "../../app/modules";
 import { persona, renderApp } from "../../test/renderApp";
@@ -9,7 +9,8 @@ async function openSso() {
   const tab = await screen.findByRole("tab", { name: "Single sign-on" });
   fireEvent.mouseDown(tab);
   fireEvent.click(tab);
-  return screen.findByDisplayValue("Riverside staff and pupils");
+  await screen.findByDisplayValue("https://idp.riverside.example.edu/saml");
+  return screen.getByRole("textbox", { name: /^Name/ });
 }
 
 describe("SsoTab", () => {
@@ -24,10 +25,18 @@ describe("SsoTab", () => {
     expect(await screen.findByText("The issuer URL must start with https://")).toBeInTheDocument();
   });
 
-  it("saves a valid change", async () => {
+  it("updates the shown provider in place (no duplicate)", async () => {
     const name = await openSso();
     fireEvent.change(name, { target: { value: "Riverside SSO" } });
     fireEvent.click(screen.getByRole("button", { name: "Save" }));
     expect(await screen.findByText("Single sign-on settings saved.")).toBeInTheDocument();
+    const provider = screen.getByLabelText("Provider");
+    await waitFor(() =>
+      expect(
+        within(provider)
+          .getAllByRole("option")
+          .map((o) => o.textContent),
+      ).toEqual(["Riverside SSO", "Add a provider"]),
+    );
   });
 });

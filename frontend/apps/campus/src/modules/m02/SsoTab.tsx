@@ -53,14 +53,14 @@ export function SsoTab({ online }: { readonly online: boolean }) {
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
 
   const items = providers.data?.items ?? [];
-  const current = items.find((p) => p.id === selected);
   const selectedId = selected || items[0]?.id || NEW;
+  const current = items.find((p) => p.id === selectedId);
 
+  // Reset the form when the chosen provider (or its saved data) changes.
   useEffect(() => {
-    setDraft(draftOf(items.find((p) => p.id === selectedId)));
+    setDraft(draftOf(providers.data?.items.find((p) => p.id === selectedId)));
     setErrors({});
-    // Reset the form when the chosen provider (or its saved data) changes.
-  }, [selectedId, providers.data]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [selectedId, providers.data]);
 
   if (providers.isPending) return <Skeleton className="h-64 w-full" />;
   if (providers.isError) {
