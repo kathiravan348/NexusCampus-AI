@@ -14,6 +14,7 @@ export function ShellBrand() {
     <div className="flex min-w-0 items-center gap-2">
       {logoUrl && (
         <img
+          key={logoUrl}
           src={logoUrl}
           alt=""
           className="h-7 w-7 shrink-0 rounded-xs object-contain"

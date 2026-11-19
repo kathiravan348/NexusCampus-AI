@@ -5,6 +5,7 @@ import { WifiOff } from "lucide-react";
 import { useCallback, useMemo, useSyncExternalStore, type ReactNode } from "react";
 import { Navigate, useLocation } from "react-router";
 import { Forbidden } from "../pages/Forbidden";
+import { HomeLink } from "../pages/HomeLink";
 import { ModuleOff } from "../pages/ModuleOff";
 import type { ModuleEntry } from "./modules";
 
@@ -91,6 +92,7 @@ function ModuleGuard({
         icon={<WifiOff className="h-6 w-6" />}
         title={t("common.shell.offlineTitle")}
         description={t("common.shell.offlineBody")}
+        action={<HomeLink />}
       />
     );
   }

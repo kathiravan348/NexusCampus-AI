@@ -49,5 +49,6 @@ describe("RouteGuard", () => {
       modules: [...TEST_MODULES, ONLINE_ONLY_MODULE],
     });
     expect(await screen.findByRole("heading", { name: "Needs a connection" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Go to home" })).toHaveAttribute("href", "/");
   });
 });
