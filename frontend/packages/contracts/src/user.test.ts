@@ -1,4 +1,6 @@
 import { describe, expect, it } from "vitest";
+import { PersonSchema, RoleProfileSchema } from "./person";
+import { PermissionSchema, RoleAssignmentSchema, RoleSchema, RoleScopeSchema } from "./rbac";
 import { SessionSchema, SsoProviderSchema, UserSchema } from "./user";
 
 const user = {
@@ -52,8 +54,19 @@ const rejects = (schema: { safeParse: (v: unknown) => { success: boolean } }, ca
 const SECRET_KEY = /password|secret|token|hash|private|apikey/i;
 
 describe("identity contracts carry no secrets", () => {
-  it("no schema has a password, secret, token, hash or key field", () => {
-    for (const schema of [UserSchema, SessionSchema, SsoProviderSchema])
+  it("no identity or RBAC schema has a password, secret, token, hash or key field", () => {
+    const schemas = [
+      PersonSchema,
+      RoleProfileSchema,
+      UserSchema,
+      SessionSchema,
+      SsoProviderSchema,
+      PermissionSchema,
+      RoleScopeSchema,
+      RoleSchema,
+      RoleAssignmentSchema,
+    ];
+    for (const schema of schemas)
       for (const key of Object.keys(schema.shape)) expect(key).not.toMatch(SECRET_KEY);
   });
 });
