@@ -8,9 +8,25 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
-    "test": "vitest run --passWithNoTests"
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": "18.3.1"
+  },
+  "dependencies": {
+    "@nexus/contracts": "workspace:*",
+    "@nexus/offline": "workspace:*",
+    "@tanstack/react-query": "5.106.0",
+    "@tanstack/react-query-persist-client": "5.106.0",
+    "zod": "4.6.5"
   },
   "devDependencies": {
+    "@nexus/mocks": "workspace:*",
+    "@testing-library/react": "16.3.3",
+    "@types/react": "18.3.18",
+    "fake-indexeddb": "6.2.8",
+    "jsdom": "26.1.0",
+    "msw": "3.0.7",
     "typescript": "5.7.3",
     "vitest": "3.2.7"
   }
