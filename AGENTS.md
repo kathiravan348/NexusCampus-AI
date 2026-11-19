@@ -71,7 +71,9 @@ behaviour needs it), TanStack Table, TanStack Query (+ persisted cache), React H
 vite-plugin-pwa (Workbox), Storybook, Vitest + Testing Library, Playwright (e2e, offline and RTL checks).
 Backend (build step): Python 3.12 (Docker; host via uv), FastAPI, Pydantic v2, pydantic-settings, SQLAlchemy 2 +
 Alembic, PostgreSQL 16 + RLS, Redis, S3-compatible storage, OpenTelemetry; ruff, mypy `--strict`, pytest.
-AI: Claude API via the official `anthropic` SDK, only inside the AI gateway (D14).
+AI: provider-agnostic AI gateway (D14, M11) — Claude via the official `anthropic` SDK (or Bedrock/Vertex) by default,
+plus pluggable providers and OpenAI-compatible local models for air-gapped/self-hosted installs; never call a model
+outside the AI gateway.
 Pin exact versions (`package.json` no `^`/`~`; `pyproject.toml` `==`, `uv.lock`). New dependency = handoff note +
 `docs/DECISIONS.md` Requests. Never add a library that duplicates one above.
 
@@ -86,8 +88,9 @@ Pin exact versions (`package.json` no `^`/`~`; `pyproject.toml` `==`, `uv.lock`)
 - `apps/campus` imports UI only from `@nexus/ui-core` and `@nexus/ui-edu`; `apps/control` (Stage 2) only from
   `@nexus/ui-core` and its own `@nexus/ui-control`. `ui-core` has no domain words, no API calls.
 - **No hardcoded text (D8).** Every visible string, label, aria-label, toast, error and placeholder uses a message key
-  from `@nexus/i18n`. Keys: `<module>.<screen>.<element>` (e.g. `m17.roll.markAll`). New keys get an `en` message
-  and a description for translators.
+  from `@nexus/i18n`. Keys: `<module>.<screen>.<element>` (e.g. `m17.roll.markAll`), `common.<element>` for shared
+  actions/states, and `term.<concept>` for institution-type terminology. New keys get an `en` message and a description
+  for translators.
 - **Theme (D7):** colours, fonts, spacing, radius only from tokens. **Never write a hex value or font name in a
   component.** Components must look right under any theme that passes the contrast guard.
 - **RTL:** use logical properties (`ms-`, `me-`, `ps-`, `pe-`, `start`, `end`), never `left`/`right`.

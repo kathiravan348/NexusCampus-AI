@@ -39,14 +39,16 @@ academic structure, grading scheme, report templates. Institutions can change al
 - **G-1 Languages:** every UI, email, SMS, PDF and AI answer is localisable (ICU MessageFormat, BCP 47 locales).
   Plural/gender rules, per-user language, **right-to-left** layouts (Arabic, Hebrew, Urdu).
 - **G-2 Formats:** dates, numbers, names, addresses, phone (E.164) per locale. Time stored UTC, shown in the
-  institution's time zone. Money as integer minor units + ISO 4217 currency; multi-currency fees and payouts.
+  institution's time zone. Money as integer minor units + ISO 4217 currency; multi-currency fees and payouts;
+  country tax and e-invoicing rules (e.g. GST, VAT, ZATCA).
 - **G-3 Calendars:** any academic year start, terms / semesters / trimesters / rolling; weekend days and holidays per
   country/region; optional secondary calendars (Hijri, Hindu, Hebrew) for display.
 - **G-4 Grading:** configurable schemes — marks, percentage, letter, GPA/CGPA (4, 5, 10 point), IB, descriptors for
   early years, competency levels, pass rules, weighting, moderation.
 - **G-5 Data residency:** tenant chooses region (e.g. India, EU, US, Middle East, APAC); its data and backups stay there.
 - **G-6 Compliance packs:** GDPR, UK GDPR, FERPA, COPPA, India DPDP 2023, Brazil LGPD, South Africa POPIA, Singapore PDPA,
-  EU AI Act (education AI is high-risk), PCI DSS (via gateways only). Region pack sets consent, retention and minors' rules.
+  EU AI Act (education AI is high-risk), PCI DSS (via gateways only). Region pack sets consent, retention, statutory
+  returns and minors' rules — including verifiable guardian consent before minors use AI features or media sharing.
 - **G-7 Payments & messaging:** pluggable gateways (Stripe, Razorpay, PayU, Adyen, Paystack, regional wallets/UPI) and
   channels (email, SMS, WhatsApp, push, in-app) chosen per region.
 - **G-8 Accessibility:** WCAG 2.2 AA for every screen, in every theme an institution creates.
@@ -73,8 +75,11 @@ Each module declares an offline level (see `docs/MODULES.md`):
 | **L3** | Run offline: full workflow for days on a device or the on-campus **Edge node**, incl. low-bandwidth sites. |
 
 - **O-1** Sync status is always visible (synced / pending n / conflict). **O-2** Every offline write is idempotent and
-  audited with device and time. **O-3** Offline data is encrypted on device and wiped on sign-out or remote revoke.
-- **O-4** Mobile-first for offline modules (teachers, drivers, gate staff, parents on weak networks).
+  audited with device and time. **O-3** Offline data is encrypted on device, survives app restarts, supports quick user
+  switching with idle lock on shared campus devices, and is wiped on sign-out or remote revoke. Sign-out is blocked
+  while writes are still waiting to sync (O-2: nothing is lost); only a remote revoke wipes them, and M10 reports them.
+- **O-4** Mobile-first for offline modules (teachers, drivers, gate staff, parents on weak networks); priority sync
+  sends safety/attendance writes before media uploads.
 
 ## 7. Enterprise (E)
 - **E-1 Identity:** email/password + MFA, passkeys, SSO (SAML 2.0, OIDC: Google, Microsoft, others), SCIM provisioning,
@@ -95,6 +100,9 @@ Each module declares an offline level (see `docs/MODULES.md`):
 - **A-1 Optional per institution and per module;** AI credits metered and capped per tenant.
 - **A-2 Same permissions as the user:** AI reads only through the API with the user's rights. No cross-tenant context.
 - **A-3 Privacy:** PII redaction before model calls; no training on customer data; region-pinned processing (G-5).
+  Hard block on AI processing of health (M61) and vault/key (M83) records; safeguarding (M62) AI is off by default and
+  an institution may switch it on only after a privacy impact assessment. Verifiable guardian consent is required before
+  minors use AI features (G-6).
 - **A-4 Human in the loop** for high-stakes outcomes (admissions, grades, discipline, safeguarding, hiring, proctoring):
   AI suggests with reasons, a person decides, both are logged (EU AI Act).
 - **A-5 Explainable:** answers cite the records used; predictions show their main factors.
@@ -102,7 +110,10 @@ Each module declares an offline level (see `docs/MODULES.md`):
 - **A-7 Capability types** used across modules: *Ask* (questions over data), *Draft* (messages, remarks, plans),
   *Generate* (content, questions, timetables), *Predict* (risk, demand), *Classify* (triage, tagging),
   *Tutor* (learner-facing help), *Act* (multi-step agent actions, always confirmed by the user).
-- **A-8 Quality:** each AI feature has an evaluation set and a safety review before release; usage and feedback tracked.
+- **A-8 Quality & provider flexibility:** each AI feature has an evaluation set and a safety review before release;
+  usage and feedback tracked. Features request capability tiers (`fast`, `balanced`, `reasoning`, `embedding`,
+  `multimodal`) through the gateway — supporting cloud providers and local OpenAI-compatible models for self-hosted
+  and air-gapped installs.
 
 ## 9. Delivery models (DM) — one product, sold two ways
 | Model | Who | Commercial | Runs where | Data |
@@ -117,10 +128,12 @@ Each module declares an offline level (see `docs/MODULES.md`):
 - **DM-6 We maintain what we deliver:** for self-hosted customers we ship signed updates, security patches, their
   extensions and new modifications, and give support — without access to their data (V-6).
 - **DM-7 Feature parity:** features that need external services (AI, SMS, payments, email) use the customer's own
-  accounts/keys in self-hosted installs, or switch off gracefully.
-- **DM-8 Moving between models:** a standard, encrypted tenant export lets an institution move SaaS ⇄ self-hosted.
-- **DM-9 Installs:** Docker Compose for small single-server installs; Kubernetes (Helm) for large ones; offline
-  update bundles for air-gapped sites. Optional source-code escrow in licence contracts.
+  accounts/keys or local OpenAI-compatible LLM endpoints in self-hosted/air-gapped installs, or switch off gracefully.
+- **DM-8 Moving between models:** a standard, encrypted tenant export lets an institution move SaaS ⇄ self-hosted
+  or between regions.
+- **DM-9 Installs & staging:** Docker Compose for small single-server installs; Kubernetes (Helm) for large ones;
+  offline update bundles for air-gapped sites. Enterprise SaaS and self-hosted contracts include a non-production
+  sandbox/staging environment for testing updates and extensions. Optional source-code escrow in licence contracts.
 
 ## 10. Data vault and provider access (V) — "no access without the institution's permission"
 - **V-1 Zero standing access.** No provider staff (support, engineering, sales) can read institution data by

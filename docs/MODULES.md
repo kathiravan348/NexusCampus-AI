@@ -14,12 +14,12 @@
 | M03 | Theme studio **(core)** | All colour tokens, fonts, radius, density, logo, login page, letterheads, contrast guard, locks for groups | All | L1 | Palette from logo, auto-fixes failing contrast |
 | M04 | Text & language studio **(core)** | Message keys, terminology packs, per-locale overrides, in-context preview, XLIFF import/export, history | All | L1 | Translation drafts, glossary consistency, tone check |
 | M05 | Plans, entitlements & usage **(core)** | Plans, add-ons, module switches, AI credits, usage meters, invoices to institutions | All | L0 | Usage forecast |
-| M06 | Audit, privacy & consent **(core)** | Audit log, consent records, data requests, retention rules, region compliance packs | All | L0 | Finds personal data for data requests |
+| M06 | Audit, privacy & consent **(core)** | Audit log, consent records, data requests, retention engine (rules, scheduled purge, legal holds), region compliance packs | All | L0 | Finds personal data for data requests |
 | M07 | Notifications engine **(core)** | Templates per locale, channels, preferences, quiet hours, delivery log | All | L1 | Message drafting and translation |
 | M08 | Forms, fields & workflow builder | Custom fields, forms, approval chains, SLA, escalation, numbering formats | All | L1 | Builds a form or workflow from a description |
 | M09 | Import & migration toolkit | Templates, column mapping, validation, dry run, rollback, legacy system connectors | All | L0 | Column mapping and data clean-up suggestions |
 | M10 | Offline & sync centre | Device registry, sync queue, conflicts, remote wipe, bandwidth modes | All | L3 | — |
-| M11 | AI gateway & Nexus Assist | AI switches, credits, PII policy, model routing, prompt library, evaluations, Assist panel | All | L0 | Ask across modules, with citations |
+| M11 | AI gateway & Nexus Assist | AI switches, credits, PII policy, provider-agnostic capability routing (cloud + local/air-gapped), minor-consent guard, prompt library, evaluations, Assist panel | All | L0 | Ask across modules, with citations |
 | M83 | Data vault & access grants **(core)** | Per-tenant keys, field encryption, BYOK status, provider access requests (approve / deny / revoke), active grants, access history, break-glass notices | All | L0 | — (never AI on keys or grants) |
 
 ## Stage 2 — Nexus Control & delivery (provider platform)
@@ -44,7 +44,9 @@
 | P14 | Compliance & trust operations | DPAs, sub-processors, certifications, security incidents, breach-notification workflow, data-request tracking | All | Incident report drafts |
 | P15 | Implementation projects | Onboarding plans, data-migration runs (M09), training, go-live checklists for enterprise and self-hosted customers | All | Project plan drafts |
 | P16 | Business analytics | MRR/ARR, churn, cohorts, customer health score, support load | All | Churn risk with reasons |
-| M84 | Install agent **(core, in product)** | Licence check, update check/pull, PII-free health telemetry, diagnostic bundle (scrubbed, customer-reviewed), air-gapped mode | All | — |
+| P17 | Sandbox, demo & staging environments | Self-expiring sales demos by institution type; masked/synthetic staging clones for release & extension testing | All | — |
+| P18 | Tenant portability & migrations | Orchestrated encrypted SaaS ⇄ self-hosted moves (DM-8), regional cell moves (G-5), verifiable crypto-shred certificates | All | Mapping and pre-flight diagnostics |
+| M84 | Install agent **(core, in product)** | Licence check, update check/pull, encrypted backup & export/import (DM-8), PII-free health telemetry, diagnostic bundle (scrubbed, customer-reviewed), air-gapped mode | All | — |
 
 ## Stage 3 — Core institution operations
 | ID | Module | Main features | Types | Off | AI |
@@ -55,7 +57,7 @@
 | M15 | Academic structure | Programs, grades/years, classes, sections, batches, subjects, courses, credits, terms | All | L1 | Suggests structure from type profile |
 | M16 | Timetable & scheduling | School timetables, university course scheduling, batch/session slots, rooms, teacher load | All | L1 | Generates and optimises timetables under constraints |
 | M17 | Attendance | Daily / period / session / event attendance, QR, NFC, biometric, geo, late, leave requests | All | L2 | Absence pattern alerts |
-| M18 | Fees & payments | Fee plans, instalments, discounts, scholarships, invoices, online/offline payments, refunds, dunning, receipts | All | L2 | Payment-risk prediction, reminder drafts |
+| M18 | Fees & payments | Fee plans, instalments, discounts and concessions, award credits (from M87 when enabled), invoices, online/offline payments, refunds, dunning, receipts | All | L2 | Payment-risk prediction, reminder drafts |
 | M19 | Accounting | Ledger, budgets, expenses, bank reconciliation, taxes per country, ERP export | All | L0 | Anomaly detection, categorisation |
 | M20 | Assessment & gradebook | Grading schemes, weightings, marks entry, rubrics, moderation, competencies | All | L2 | Remark drafts, outlier flags in moderation |
 | M21 | Exams (in person) | Exam schedules, seating, hall tickets, invigilation, marks, results, re-evaluation | K12 HE VOC TP | L2 | Seating plans, result analysis |
@@ -66,6 +68,7 @@
 | M26 | Learner portal & app | Timetable, attendance, grades, fees, requests, documents | All | L2 | Study helper (links to M35) |
 | M27 | Staff portal & app | Classes, attendance, marks, leave, payslips, tasks | All | L2 | Daily briefing |
 | M28 | Dashboards & role homes | Role home pages, KPIs, alerts, saved views | All | L1 | Insight narratives |
+| M86 | Academic year rollover & promotion | End-of-year/term promotion, detention, stream/section allocation, batch progression, graduation, alumni handoff, fee carry-forward, dry-run & rollback | All | L0 | Eligibility checks and anomaly flags |
 
 ## Stage 4 — Teaching & learning
 | ID | Module | Main features | Types | Off | AI |
@@ -78,7 +81,7 @@
 | M34 | Online proctoring | Identity check, browser lock, recordings, flags for review | HE TP ONL | L0 | Proctoring flags (human review only) |
 | M35 | AI tutor & learning paths | Personal tutor per course, mastery tracking, adaptive paths, practice | All | L1 | Tutor (guard-railed, age-appropriate) |
 | M36 | Live classes | Zoom/Meet/Teams/BigBlueButton, attendance from joins, recordings | All | L0 | Transcripts, summaries, chapters |
-| M37 | Early years | Daily diary (meals, naps, nappies), observations, milestones, photos, pickup checks, ratios | EY | L2 | Observation → milestone tagging, parent day summary |
+| M37 | Early years | Daily diary (meals, naps, nappies), observations, milestones, photos (stored in the M91 gallery when enabled, with the same consent rules), pickup checks, ratios | EY | L2 | Observation → milestone tagging, parent day summary |
 | M38 | Special education & inclusion | IEP/ILP plans, accommodations, interventions, progress | All | L1 | Goal drafts (human approval) |
 | M39 | Library | Catalogue, circulation, e-books, OPAC, fines, digital resources | All | L2 | Recommendations, cataloguing from ISBN/photo |
 | M40 | Coaching & test prep | Batches, mock test series, ranks, percentiles, doubt solving, parent reports | TP | L2 | Doubt answers, weak-topic plans |
@@ -88,6 +91,7 @@
 | M44 | Surveys & feedback | Course, faculty, parent, staff surveys; anonymity rules | All | L2 | Theme and sentiment summary |
 | M45 | Credentials & badges | Certificates, Open Badges 3, W3C verifiable credentials, digital diplomas, verification | All | L1 | — |
 | M46 | Learning analytics & early warning | Engagement, mastery, risk scores, interventions | All | L0 | At-risk prediction with reasons |
+| M91 | Media, portfolios & learning evidence | Consent-aware photo/video gallery (auto-enforces guardian media opt-out), longitudinal learner e-portfolios tagged to outcomes/milestones, portable export | EY K12 VOC SK | L2 | Outcome tagging and smart captions |
 
 ## Stage 5 — People, finance & operations
 | ID | Module | Main features | Types | Off | AI |
@@ -103,6 +107,10 @@
 | M63 | Grievances & service desk | Requests, complaints, SLA, one-stop student services | All | L1 | Triage and answer drafts |
 | M71 | Research & grants | Projects, grants, publications, ethics approvals | HE | L1 | Literature and grant summaries |
 | M72 | Accreditation & inspection | Frameworks (e.g. NAAC, NBA, AACSB, Ofsted, WASC), evidence, self-study reports | K12 HE VOC | L0 | Evidence gathering, report drafts |
+| M87 | Scholarships, financial aid & sponsorships | Aid programmes: applications, means-testing, external sponsors (govt/CSR/NGO/donor), renewal criteria (GPA/attendance), disbursement and sponsor reporting; awards post to invoices through M18 | K12 HE VOC TP GRP | L0 | Eligibility matching and award-letter drafts |
+| M88 | Digital archive, retention & statutory returns | Country regulatory returns (e.g. UDISE+, AISHE, APAAR, DfE Census, IPEDS, KHDA) and an immutable WORM archive of transcripts and records; retention periods and purge come from M06 | All | L0 | Return validation and missing-field checks |
+| M89 | Laboratory, workshop & equipment | Lab and workshop safety (chemical logs, risk checks), equipment calibration and maintenance certificates, practical/clinical/flight-hour sign-off; stock and assets stay in M57 | HE VOC K12 | L2 | Usage scheduling and safety checklists |
+| M90 | Governance, boards & policies | Governing boards, academic senate & committee agendas, packs, resolutions, minutes; institutional policy library with versioning & mandatory acknowledgement | K12 HE GRP | L1 | Minutes summaries and action-item extraction |
 
 ## Stage 6 — Campus life & services
 | ID | Module | Main features | Types | Off | AI |
@@ -114,7 +122,7 @@
 | M56 | Campus card & wallet | Cashless wallet, top-ups, access control, spending limits for parents | K12 HE | L3 | — |
 | M60 | Visitor & gate | Visitor pre-registration, badges, pickup verification, gate logs | All | L3 | — |
 | M61 | Health centre | Visits, medication, immunisation, allergies, incidents (restricted access) | All | L2 | — (no AI on health records by default) |
-| M62 | Wellbeing, behaviour & safeguarding | Incidents, behaviour points, counselling, safeguarding cases, restricted access | All | L2 | Risk signals for trained staff (human decides) |
+| M62 | Wellbeing, behaviour & safeguarding | Incidents, behaviour points, counselling, safeguarding cases, restricted access | All | L2 | Risk signals for trained staff — off by default; opt-in after a privacy impact assessment; human decides |
 | M64 | Events, clubs & activities | Events, clubs, registrations, tickets, house points | All | L2 | Event plan drafts |
 | M65 | Sports & athletics | Teams, fixtures, training, fitness records, results | K12 HE SK | L2 | — |
 | M66 | Trips & consent | Trips, risk assessments, digital consent, payments, roll calls | EY K12 | L2 | Risk assessment drafts |
@@ -122,6 +130,7 @@
 | M68 | Internships & apprenticeships | Placements, logbooks, employer reviews, hours | HE VOC | L2 | Logbook summaries |
 | M69 | International & mobility | Visas, international fees, exchange, credit transfer | HE K12 | L1 | Document checklist assistant |
 | M70 | Alumni & fundraising | Alumni network, events, donations, campaigns, endowment | K12 HE | L0 | Donor segmentation, appeal drafts |
+| M85 | Emergency, safety & crisis management | Fire/lockdown/weather drills & logs, mass emergency broadcast, offline headcount muster roll, guardian emergency reunification (links M14), crisis command log | All | L3 | Drill checklists and crisis communication drafts |
 
 ## Stage 7 — Enterprise & ecosystem
 | ID | Module | Main features | Types | Off | AI |

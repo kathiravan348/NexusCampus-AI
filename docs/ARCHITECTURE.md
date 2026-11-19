@@ -9,9 +9,9 @@ Clients ── PWA web app (staff, admin, family, learner) · white-label mobile
    ▼
 Region cell (one per data region: IN, EU, US, ME, APAC…) — identical stack, data never leaves its region
    ├─ API gateway: auth, tenant resolution, rate limits, API versions
-   ├─ App (modular monolith, FastAPI): core + one package per module (M01…M82)
+   ├─ App (modular monolith, FastAPI): core + one package per module (M01…M91)
    ├─ Workers: jobs, notifications, sync merges, reports, imports
-   ├─ AI gateway (M11): redaction, model routing, metering, evaluations → Claude API (region-pinned)
+   ├─ AI gateway (M11): redaction, capability-tier routing, metering, evaluations → Claude (default/Bedrock/Vertex), pluggable cloud or local OpenAI-compatible LLM (air-gapped)
    ├─ PostgreSQL 16 (Row-Level Security by tenant) · Redis · object storage (S3-compatible) · search
    └─ Telemetry: OpenTelemetry → logs, metrics, traces
 Nexus Control (provider platform, §9) — customers, plans, billing, licences, tenant directory (which region),
@@ -40,42 +40,67 @@ apps/control          Nexus Control (provider platform, Stage 2) — same ui-cor
 
 ## 3. Theming (C-1)
 - Tokens (`tokens.json`) → CSS variables + Tailwind theme. Components use tokens only.
-- An institution theme = a partial token set for light and dark + font choices + assets, stored per tenant and
-  applied at runtime by setting CSS variables on `<html>`. Fonts load from the font library or tenant uploads.
-- Contrast guard checks every text/background token pair (WCAG AA) before a theme can be saved.
+- An institution theme = a partial token set for light and dark + font choices + radius + density
+  (`compact` / `comfortable` / `spacious`) + assets, stored per tenant and applied at runtime by setting CSS
+  variables on `<html>`. Fonts load from the font library or tenant uploads.
+- Contrast guard checks every defined pair (WCAG 2.2 AA: ≥ 4.5:1 normal text, ≥ 3:1 large text, icons, focus rings
+  and UI borders) before a theme can be saved. Respects `prefers-reduced-motion`.
 - Inheritance: platform default → group → institution → campus; groups may lock tokens.
 
 ## 4. Texts and languages (C-2, G-1)
 - Every string = message key + ICU message in the platform catalogue (`en` source; translations as language packs).
-- Resolution order: institution/campus override → group override → terminology pack (by institution type) →
-  platform translation → platform `en`. Missing keys fall back and are reported, never shown as raw keys.
+- Terminology packs are **locale-scoped** (`terminology/<locale>/<type>`), so an English pack never overwrites another
+  language. Resolution order: institution/campus override → group override → locale terminology pack → platform
+  translation → `en` terminology pack → platform `en`. Missing keys fall back and are reported, never shown as raw keys.
 - Overrides are tenant data (versioned, audited), served as a compiled bundle per tenant + locale, cached offline.
 - Checks: pseudo-locale (long + accented) and an RTL locale run in tests and Storybook.
 
 ## 5. Offline (O)
 - **L1:** persisted query cache in IndexedDB; screens show "last synced".
 - **L2:** writes go to an **outbox** with client-generated ids and idempotency keys; replayed on reconnect;
-  server is the authority; each module declares merge rules (e.g. attendance: last mark per learner per session wins
-  with audit; payments: never merged automatically — flagged as conflict).
+  server is the authority; each module declares its merge rule (`LWW-audited`, `append-only`, or `manual-review-only`
+  — e.g. attendance: last mark per learner per session wins with audit; payments/grades/custody: flagged as conflict).
 - **L3:** the module's needed reference data is pre-synced to the device or Edge node; Edge node exposes the same API
-  locally and syncs to the region cell through the same outbox protocol.
-- Device data encrypted; remote wipe via M10; sign-out clears it.
+  locally and syncs to the region cell through the same outbox protocol. Priority sync sends safety/gate/attendance
+  before media uploads.
+- Device encryption uses WebCrypto (`AES-GCM`) with a per-user, non-extractable `CryptoKey` stored in IndexedDB, so
+  offline data survives app and phone restarts; shared campus devices support quick user switching with idle lock/PIN.
+  Sign-out is refused while the outbox holds unsynced writes (the user is asked to sync first); sign-out then deletes
+  the key and wipes that user's data. A remote revoke (`M10`) wipes immediately and reports any lost writes in M10.
 
 ## 6. Backend
 - **Modular monolith (Python, FastAPI).** One package per module with its own router, models, migrations folder and
-  events. Modules talk to each other only through the core's public interfaces or domain events (outbox table →
-  workers). No module imports another optional module.
+  events. Modules talk to each other only through the core's public interfaces or a standard domain event envelope
+  (`eventId`, `tenantId`, `moduleId`, `eventType`, `occurredAt`, `actorId`, `correlationId`, `schemaVersion`, `payload`)
+  via the outbox table → workers. No module imports another optional module.
+- **Core domain models (D25):**
+  - *Person vs. Membership:* one `Person` (identity, contact, consents) links to one or more `RoleProfile` memberships
+    (staff, guardian, learner, alumni) so a teacher who is also a parent never needs duplicate accounts.
+  - *Temporal scoping:* enrollments, role scopes, fee plans and grading schemes carry `academic_year_id` /
+    `effective_from`–`effective_to` so historical views and year-end rollovers (M86) stay exact.
+  - *Retention lifecycle:* records move `active` → `archived` (immutable) → `anonymised / crypto-shredded`, honouring
+    legal holds and statutory retention rules (retention engine in M06; statutory archive in M88; G-6).
 - **Tenancy:** every tenant table has `tenant_id`; RLS policy on `current_setting('app.tenant_id')`, set per request
   from the signed session — never from a client header. Group/campus scoping in the permission layer.
 - **Entitlements:** each request checks the module switch; disabled → `module_disabled` error and hidden in the menu.
-- **Audit:** every write (and sensitive read) emits an audit event in the same transaction.
+- **Audit:** every write (and sensitive read) emits an audit event in the same transaction into an append-only table
+  (`REVOKE UPDATE, DELETE`) with a per-tenant hash chain (`prev_hash`, `entry_hash`) and periodic signed checkpoints.
+  The hash covers ids, metadata and the **encrypted** payload only, so crypto-shredding personal data never breaks the
+  chain or its verification.
 - **Config over code:** custom fields (JSONB with schema), workflows, templates, numbering — all tenant data.
 - **Extensibility:** extension SDK basics in Stage 2 (P08, per-customer extensions); public API, webhooks and marketplace in Stage 7. Extensions never patch core code.
 
 ## 7. AI (A)
 - All AI goes through the **AI gateway**; no module calls a model directly.
-- Pipeline: entitlement + credit check → build context from API calls made **as the user** → PII redaction →
-  model call (Claude, region-pinned; model tier per feature) → restore names → cite sources → log + meter.
+- **Provider-agnostic capability tiers (D24):** features request a tier (`fast`, `balanced`, `reasoning`, `embedding`,
+  `multimodal`) rather than a vendor model id. Default SaaS provider is Claude (`anthropic` SDK, AWS Bedrock, or
+  Google Vertex AI for regional pinning G-5), with pluggable adapters for Gemini, Azure OpenAI, and OpenAI-compatible
+  local endpoints (vLLM / Ollama) for self-hosted and air-gapped installs. **Build order:** the provider interface and
+  the Claude adapter first; each other adapter is added only when a customer needs it, and only after it passes the
+  same evaluation and safety runs (A-8).
+- Pipeline: entitlement + credit check → minor-consent & sensitive-field guard (blocks M61 health, M62 safeguarding,
+  M83 vault/keys) → build context from API calls made **as the user** (plus tenant-isolated vector retrieval) →
+  PII redaction → routed model call → restore names → cite sources → log + meter.
 - Agent actions (*Act*) are proposed as a plan the user confirms; each step runs through normal APIs and audit.
 - High-stakes features (A-4) store the suggestion, the reasons and the human decision.
 - Every feature has an evaluation set in the repo and a kill switch per tenant and globally.

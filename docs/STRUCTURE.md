@@ -11,7 +11,7 @@
 ├─ brand.config.ts      platform brand names
 ├─ docs/
 │  ├─ REQUIREMENTS.md   vision, institution types, global / customisation / offline / enterprise / AI requirements
-│  ├─ MODULES.md        all modules (M01–M84, Nexus Control P01–P16): stage, types, offline level, AI
+│  ├─ MODULES.md        all modules (M01–M91, Nexus Control P01–P18): stage, types, offline level, AI
 │  ├─ PLAN.md           7 stages and the current stage's task order
 │  ├─ ARCHITECTURE.md  DECISIONS.md  STRUCTURE.md  CONTRACTS.md  COMPONENTS.md
 │  ├─ guides/           USER-GUIDE.md, API.md, DATABASE.md (living guides, AGENTS.md §7a)
