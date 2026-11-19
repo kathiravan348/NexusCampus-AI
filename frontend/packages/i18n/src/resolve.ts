@@ -16,6 +16,7 @@ import arTp from "../terminology/ar/tp.json";
 import arSk from "../terminology/ar/sk.json";
 import arOnl from "../terminology/ar/onl.json";
 import arGrp from "../terminology/ar/grp.json";
+import { parse } from "@formatjs/icu-messageformat-parser";
 import { pseudoLocalize } from "./pseudo";
 
 /** Every message key the platform knows; `en.json` is the source of truth (D8). */
@@ -51,8 +52,22 @@ export const TERMINOLOGY: Readonly<Record<string, Readonly<Record<InstitutionTyp
 export interface MissingMessage {
   key: string;
   locale: string;
-  /** `fallback-to-en`: the locale has no text for the key, so English is shown. `unknown-key`: an override names a key that does not exist, so it is ignored. */
-  reason: "fallback-to-en" | "unknown-key";
+  /**
+   * `fallback-to-en`: the locale has no text for the key, so English is shown.
+   * `unknown-key`: an override names a key that does not exist, so it is ignored.
+   * `invalid-message`: an override is not valid ICU, so it is ignored and the layer below is shown.
+   */
+  reason: "fallback-to-en" | "unknown-key" | "invalid-message";
+}
+
+/** True when `text` is valid ICU MessageFormat (react-intl would otherwise show the raw source). */
+export function isValidMessage(text: string): boolean {
+  try {
+    parse(text);
+    return true;
+  } catch {
+    return false;
+  }
 }
 
 export interface ResolveOptions {
@@ -99,8 +114,9 @@ export function resolveMessages(options: ResolveOptions): Messages {
 
   for (const layer of [options.group, options.institution, options.campus]) {
     for (const [key, text] of Object.entries(layer ?? {})) {
-      if (KEY_SET.has(key)) out[key] = text;
-      else onMissing?.({ key, locale, reason: "unknown-key" });
+      if (!KEY_SET.has(key)) onMissing?.({ key, locale, reason: "unknown-key" });
+      else if (!isValidMessage(text)) onMissing?.({ key, locale, reason: "invalid-message" });
+      else out[key] = text;
     }
   }
 

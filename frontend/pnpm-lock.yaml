@@ -123,6 +123,9 @@ importers:
 
   packages/i18n:
     dependencies:
+      '@formatjs/icu-messageformat-parser':
+        specifier: 3.5.23
+        version: 3.5.23
       react-intl:
         specifier: 12.2.0
         version: 12.2.0(@types/react@18.3.18)(react@18.3.1)

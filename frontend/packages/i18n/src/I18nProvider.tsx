@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useMemo, useRef, type ReactNode } from "react";
 import { IntlProvider } from "react-intl";
 import { applyDirection } from "./direction";
 import {
@@ -37,8 +37,11 @@ export function I18nProvider({
   onMissing,
   children,
 }: I18nProviderProps) {
+  // Latest callback without re-resolving messages when only the callback changes.
   const onMissingRef = useRef(onMissing);
-  onMissingRef.current = onMissing;
+  useLayoutEffect(() => {
+    onMissingRef.current = onMissing;
+  });
 
   const messages = useMemo(
     () =>
@@ -53,7 +56,8 @@ export function I18nProvider({
     [locale, typePack, group, institution, campus],
   );
 
-  useEffect(() => {
+  // Layout effect: set `dir` before the browser paints, so Arabic never flashes left-to-right.
+  useLayoutEffect(() => {
     applyDirection(locale);
   }, [locale]);
 

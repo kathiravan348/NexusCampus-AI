@@ -148,7 +148,17 @@ function transformArgument(src: string, start: number): Result {
 }
 
 export function pseudoLocalize(message: string): string {
-  const { text, visible } = transformText(message, 0);
+  let text = "";
+  let visible = 0;
+  let i = 0;
+  while (i < message.length) {
+    const part = transformText(message, i);
+    text += part.text;
+    visible += part.visible;
+    i = part.end;
+    // A stray "}" stops transformText; keep it and go on, so no text is ever dropped.
+    if (i < message.length) text += message[i++];
+  }
   const pad = PAD.repeat(Math.max(1, Math.ceil(visible * EXPANSION)));
   return `⟦${text}${pad}⟧`;
 }

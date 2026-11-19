@@ -35,6 +35,10 @@ describe("pseudoLocalize", () => {
     expect(out).toContain("Þáíð");
   });
 
+  it("never drops text after a stray closing brace", () => {
+    expect(pseudoLocalize("Done } then more")).toContain("Ðóñé } ţĥéñ ɱóŕé");
+  });
+
   it("leaves ICU-quoted text alone", () => {
     expect(pseudoLocalize("Use '{'braces'}'")).toContain("'{'");
   });

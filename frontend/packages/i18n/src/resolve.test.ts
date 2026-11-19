@@ -69,6 +69,23 @@ describe("resolveMessages", () => {
     });
   });
 
+  it("ignores and reports overrides that are not valid ICU, keeping the layer below", () => {
+    const onMissing = vi.fn<(m: MissingMessage) => void>();
+    const messages = resolveMessages({
+      locale: "en",
+      typePack: "ey",
+      group: { "term.learner": "Pupil" },
+      institution: { "term.learner": "Pupil {count, plural, one {x}" },
+      onMissing,
+    });
+    expect(messages["term.learner"]).toBe("Pupil");
+    expect(onMissing).toHaveBeenCalledWith({
+      key: "term.learner",
+      locale: "en",
+      reason: "invalid-message",
+    });
+  });
+
   it("pseudo-localises everything, including tenant overrides, for en-XA", () => {
     const messages = resolveMessages({ locale: "en-XA", campus: { "common.save": "Keep" } });
     expect(messages["common.save"]).toMatch(/^⟦Ķééþ·+⟧$/);

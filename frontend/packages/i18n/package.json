@@ -15,6 +15,7 @@
     "react-dom": "18.3.1"
   },
   "dependencies": {
+    "@formatjs/icu-messageformat-parser": "3.5.23",
     "react-intl": "12.2.0"
   },
   "devDependencies": {
