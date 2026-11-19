@@ -43,4 +43,4 @@
 | NEX-032 | Startup & test timings: timing harness, Vitest reporter, soft budgets, and baseline log (`AGENTS.md` §8a, D37) | — | planned | — | 012 |
 | NEX-033 | Campus Prism default theme tokens (Nexus Style refresh, D38) | A | done | Gemini | 002, 014 |
 | NEX-034 | Freeze Campus Prism palette: radius-xs 4px, border-strong fix, `brand-sky`, `hero-glow`, full freeze test (D39) | A | done | Claude | 033 |
-| NEX-035 | NexusCampus logo assets: mark, lockups, favicons, PWA icons in `public/brand/` (D40) | A | ready-for-review | Claude | 034 |
+| NEX-035 | NexusCampus logo assets: mark, lockups, favicons, PWA icons in `public/brand/` (D40) | A | done | Claude | 034 |
