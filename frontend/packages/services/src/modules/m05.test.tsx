@@ -1,7 +1,7 @@
-import { renderHook, waitFor } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import { ApiRequestError } from "../client";
 import { ADMIN, TEACHER, freshDb, signInAs, startMockServer, wrapper } from "../test-utils";
-import { useEntitlements, usePlan, useUsage } from "./m05";
+import { useEntitlements, usePlan, useSetModuleEnabled, useUsage } from "./m05";
 
 startMockServer();
 
@@ -30,5 +30,18 @@ describe("m05 hooks", () => {
     await waitFor(() => expect(result.current.isError).toBe(true));
     expect(result.current.error).toBeInstanceOf(ApiRequestError);
     expect(result.current.error).toMatchObject({ status: 403, error: { code: "forbidden" } });
+  });
+
+  it("switches an optional module on and refetches entitlements", async () => {
+    signInAs(ADMIN);
+    const { result } = renderHook(
+      () => ({ entitlements: useEntitlements(), set: useSetModuleEnabled() }),
+      { wrapper: wrapper({ db: freshDb() }) },
+    );
+    await waitFor(() => expect(result.current.entitlements.isSuccess).toBe(true));
+    const ai = () => result.current.entitlements.data!.items.find((e) => e.moduleId === "M11")!;
+    expect(ai().enabled).toBe(false);
+    await act(() => result.current.set.mutateAsync({ moduleId: "M11", enabled: true }));
+    await waitFor(() => expect(ai().enabled).toBe(true));
   });
 });

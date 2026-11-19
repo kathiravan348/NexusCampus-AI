@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Theme studio, Text & language studio, and Audit & privacy)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, and Audit & privacy)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -42,6 +42,13 @@ Available from **Users & access** in the menu to administrators and to staff who
 - **Sessions** lists signed-in devices with sign-in method and last activity. **Sign out** ends one of your own devices; administrators can **Revoke** anyone's session.
 - **Single sign-on** edits the identity provider: **Protocol**, name, **Issuer URL** (must start with https://), **Client ID**, **Email domains**, **Provision users with SCIM**, and **Enabled**. The client secret is never shown here; it is kept in the institution's key vault.
 
+## Plan & usage
+Available to administrators from **Plan & usage** in the menu. It needs an internet connection.
+
+- **Current plan** shows the plan name, **AI credits per month**, and the **Learner limit** (or **Unlimited**).
+- **Modules** lists every module and why you have it: **Core** (always on), **Plan**, **Add-on**, or **Trial** with the date it **Ends**. Use the switch to turn an optional module on or off: a switched-off module disappears from the menu for everyone at once, and its address shows a notice instead of the screen. Core modules cannot be switched off, and modules marked **Not in your plan** cannot be turned on here.
+- **Usage** shows a meter per item for this billing period — **Learners**, **Staff**, **Storage**, **AI credits**, **Text messages**, **Emails** — as used against the limit (or **Unlimited**). Meters turn amber from 80 % of the limit and red at 100 %.
+
 ## Theme studio
 Available to administrators from **Theme studio** in the menu. You can inspect the cached theme while offline, but **Save** requires an internet connection.
 
@@ -76,4 +83,4 @@ Available to administrators and auditors from **Audit & privacy** in the menu. I
 - **Compliance** shows the privacy rules that apply to your institution: deadline for data requests, the age under which someone counts as a minor, whether guardians must consent to AI and to photos and media, and the default retention period.
 
 ## Not there yet
-- Remaining module screens (plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.
+- Remaining module screens (sync centre, AI assist, data vault & access grants, notifications) and offline app install.
