@@ -37,6 +37,7 @@
 | D31 | 2026-11-19 | NEX-008 split: core/tenancy contracts stay in NEX-008; identity contracts move to new NEX-028. Contracts keep offset paging `{items,total,page,pageSize}` (D15), not NOVA's cursor paging | Task size ≤ 60 lines; no reopening D15 |
 | D32 | 2026-11-19 | Max 3 commits per task: 1 implementer commit (`NEX-###: …`), 1 reviewer commit (`review: …`, combining fixes, review note and board/task `done`), and 1 merge commit on `main`. No separate intermediate `board:` commits | Owner request; keeps git history clean and compact |
 | D33 | 2026-11-19 | Storybook stack (NEX-004): `storybook`, `@storybook/react-vite`, `@storybook/addon-a11y` pinned at `10.6.0` (matching NOVA); `a11y.test: "error"` | Proven NOVA setup; catches accessibility regressions in Storybook |
+| D34 | 2026-11-19 | `ui-core` component primitives (NEX-005): `@radix-ui/react-checkbox@1.3.11`, `@radix-ui/react-slot@1.3.3`, `@radix-ui/react-switch@1.3.7`, `class-variance-authority@0.7.1`, `clsx@2.1.1`, `lucide-react@1.47.0`, `tailwind-merge@3.7.0` (exact pins matching NOVA) | Accessible Radix primitives + CVA/tailwind-merge pattern from D6 |
 
 ## Open (decide by the Stage 1 freeze)
 - Identity: own implementation vs. Keycloak / Zitadel for SSO, SCIM and passkeys.

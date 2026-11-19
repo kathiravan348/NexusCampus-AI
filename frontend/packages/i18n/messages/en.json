@@ -37,6 +37,45 @@
   "common.back": { "message": "Back", "description": "Button or link: go to the previous screen." },
   "common.next": { "message": "Next", "description": "Button: go to the next step." },
   "common.close": { "message": "Close", "description": "Button: close a dialog or panel." },
+  "common.active": {
+    "message": "Active",
+    "description": "Status badge: active record or account."
+  },
+  "common.inactive": {
+    "message": "Inactive",
+    "description": "Status badge: inactive or archived record."
+  },
+  "common.pending": {
+    "message": "Pending",
+    "description": "Status badge: waiting for approval or completion."
+  },
+  "common.required": {
+    "message": "This field is required",
+    "description": "Validation error shown when a required form field is empty."
+  },
+  "common.optional": {
+    "message": "Optional",
+    "description": "Helper label or hint marking a non-required form field."
+  },
+  "common.selectOption": {
+    "message": "Select an option",
+    "description": "Placeholder text inside a dropdown select control."
+  },
+  "common.name": { "message": "Name", "description": "Generic form label for a record name." },
+  "common.notes": {
+    "message": "Notes",
+    "description": "Generic form label for multi-line notes or remarks."
+  },
+  "common.enabled": {
+    "message": "Enabled",
+    "description": "Toggle or status label indicating a feature is switched on."
+  },
+  "common.disabled": {
+    "message": "Disabled",
+    "description": "Toggle or status label indicating a feature is switched off."
+  },
+  "common.status": { "message": "Status", "description": "Generic label for status fields." },
+  "common.details": { "message": "Details", "description": "Generic heading for detail sections." },
   "term.learner": {
     "message": "Learner",
     "description": "Terminology: one person who studies here. Institution types rename it (e.g. Child, Student, Trainee)."
