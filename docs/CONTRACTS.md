@@ -24,3 +24,16 @@
 | ScopeKind / RoleScope | `rbac.ts` | group / institution / campus / department / class / own; `targetId` null iff `own` | NEX-010 | Stage 1 build step |
 | Role | `rbac.ts` | Non-empty unique `permissions` and `allowedScopeKinds`; `system` roles are not tenant-editable | NEX-010 | Stage 1 build step |
 | RoleAssignment | `rbac.ts` | Role for a user in one scope, optional academic year; `effectiveTo` ≥ `effectiveFrom`; scope kind ∈ role's allowed kinds checked by the server | NEX-010 | Stage 1 build step |
+| SettingScope | `studio.ts` | Layer platform / group / institution / campus; `targetId` null iff `platform` | NEX-010 | — |
+| HexColor, TokenName, AssetUrl, Density, MessageKey | `studio.ts` | `#RRGGBB`; kebab-case token names; assets `https://` or `/path` only; message keys `common.` / `term.` / `<module>.` | — | — |
+| Theme | `studio.ts` | One theme layer: partial light/dark colour maps, font ids, `radius-*` px values, density, logo/favicon/login assets, `lockedTokens` (unique); contrast checked by theme engine + server | NEX-010 | Stage 1 build step |
+| Font | `studio.ts` | Library or upload; `fileUrl` set iff `upload`; non-empty unique roles (sans / mono) and scripts | NEX-010 | Stage 1 build step |
+| TextOverride / TextOverrideRevision | `studio.ts` | Per scope + locale + message key; ICU validity checked by editor + server; revision `message: null` = removed | NEX-010 | Stage 1 build step |
+| TerminologyPack | `studio.ts` | Locale-scoped words per institution type (D28) | NEX-010 | Stage 1 build step |
+| Plan | `plan.ts` | `code` slug, `nameKey` message key, unique modules, AI credits/month, `learnerLimit` null = unlimited | NEX-010 | Stage 1 build step |
+| Entitlement | `plan.ts` | Source core / plan / addon / trial; `core` always enabled; `trial` needs `expiresAt` | NEX-010 | Stage 1 build step |
+| UsageMeter | `plan.ts` | Metric learners / staff / storage_bytes / ai_credits / sms / email; integer `used` may exceed `limit`; `limit` null = unlimited; `periodEnd` > `periodStart` | NEX-010 | Stage 1 build step |
+| AuditEvent | `compliance.ts` | Hash-chained (`prevHash` → `hash`, SHA-256 hex); changed **field names only**, never values; `grantId` iff `provider_grant`; `actorId` null iff `system`; `action` starts with its module | NEX-031 | Stage 1 build step |
+| Consent | `compliance.ts` | Purpose ai_features / media_sharing / marketing / data_processing; guardian in `givenByPersonId` for minors; `withdrawnAt` set iff withdrawn | NEX-031 | Stage 1 build step |
+| DataSubjectRequest | `compliance.ts` | Kind access / correct / delete / export; `dueAt` > `receivedAt`; `completedAt` set iff completed or rejected | NEX-031 | Stage 1 build step |
+| CompliancePack | `compliance.ts` | gdpr, uk_gdpr, ferpa, coppa, dpdp, lgpd, popia, pdpa, eu_ai_act; DSR due 1–90 days; minor age 13–21; guardian consent for AI / media | NEX-031 | Stage 1 build step |

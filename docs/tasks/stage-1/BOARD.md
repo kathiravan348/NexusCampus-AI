@@ -17,7 +17,7 @@
 | NEX-006 | ui-core port from NOVA (2/2): DataTable, AppShell, NavItem, Modal, Tabs, Toast, EmptyState, DemoBanner, SyncStatus | A | done | Gemini | 005 |
 | NEX-007 | Offline package: Dexie store, outbox with idempotency keys, sync status hook, encryption, wipe | B | done | Gemini | 001 |
 | NEX-008 | Contracts (core): primitives (Id, dates, Locale, TimeZone, Currency, Region, InstitutionType, ModuleId), ApiError, Page, DomainEvent, LocaleSettings, Group, Institution, Campus, InstitutionTypeProfile, AcademicCalendar | B | done | Gemini | 001 |
-| NEX-009 | Contracts (studio & compliance): Theme, Font, TextOverride, TerminologyPack, Plan, Entitlement, UsageMeter, AuditEvent, Consent, DataSubjectRequest, CompliancePack | B | planned | — | 008 |
+| NEX-009 | Contracts (studio & compliance): Theme, Font, TextOverride, TerminologyPack, Plan, Entitlement, UsageMeter, AuditEvent, Consent, DataSubjectRequest, CompliancePack | B | done | Claude | 008 |
 | NEX-010 | Mocks (core fixtures): 5 demo tenants (EY, K12 under 2-campus GRP, HE, TP Arabic, SK) — tenancy, calendars, people, users, roles, themes, texts, plans | B | planned | — | 009, 028 |
 | NEX-011 | Services: DATA_MODE switch, Zod validation, Query hooks, persisted cache, outbox wiring | B | planned | — | 007, 029 |
 | NEX-012 | App shell: providers, demo sign-in, persona + tenant switch, locale switch, entitlement menu, route guard, module registry | C | planned | — | 006, 011 |

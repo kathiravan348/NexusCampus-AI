@@ -7,3 +7,6 @@ export * from "./calendar";
 export * from "./person";
 export * from "./user";
 export * from "./rbac";
+export * from "./studio";
+export * from "./plan";
+export * from "./compliance";
