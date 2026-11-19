@@ -21,7 +21,7 @@
 | NEX-010 | Mocks (core fixtures): 5 demo tenants (EY, K12 under 2-campus GRP, HE, TP Arabic, SK) — tenancy, calendars, people, users, roles, themes, texts, plans | B | done | Claude | 009, 028 |
 | NEX-011 | Services: DATA_MODE switch, Zod validation, Query hooks, persisted cache, outbox wiring | B | done | Claude | 007, 029 |
 | NEX-012 | App shell: providers, demo sign-in, persona + tenant switch, locale switch, entitlement menu, route guard, module registry | C | done | Gemini | 006, 011 |
-| NEX-013 | Institution setup (M01): type profile, hierarchy, region, locale, time zone, currency, calendar | C | planned | — | 012 |
+| NEX-013 | Institution setup (M01): type profile, hierarchy, region, locale, time zone, currency, calendar | C | done | Gemini | 012 |
 | NEX-014 | Theme studio (M03): token editor, fonts, logo, live preview, contrast guard errors; derive or suggest `brand-primary-text`/`on-brand` from a new `brand-primary` (NEX-002 review) | C | planned | — | 012 |
 | NEX-015 | Text & language studio (M04): key search, per-locale overrides, in-context preview, import/export, history; validate each override with `isValidMessage` on save (NEX-003 review) | C | planned | — | 012 |
 | NEX-016 | Users, roles & permission matrix (M02): users list, invite, roles, scopes, SSO settings screen | C | planned | — | 012 |

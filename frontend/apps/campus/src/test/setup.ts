@@ -12,6 +12,15 @@ const nodeController = transferableAbortController();
 globalThis.AbortController = nodeController.constructor as typeof AbortController;
 globalThis.AbortSignal = nodeController.signal.constructor as typeof AbortSignal;
 
+// jsdom omits ResizeObserver, which Radix primitives use for form control sizing.
+if (typeof globalThis.ResizeObserver === "undefined") {
+  globalThis.ResizeObserver = class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  };
+}
+
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 afterEach(() => {
   cleanup();

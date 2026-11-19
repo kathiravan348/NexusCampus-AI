@@ -11,11 +11,15 @@ import {
   NameSchema,
   PAGE_SIZE_MAX,
   pageSchema,
+  type AcademicCalendar,
+  type Campus,
+  type LocaleSettings,
 } from "@nexus/contracts";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { queryKeys } from "../keys";
 import { useScopedQuery, useServices } from "../query";
+import { useSession } from "../session";
 
 /** One demo tenant on the sign-in screen with its personas (mock mode). */
 export const DemoTenantEntrySchema = z.strictObject({
@@ -95,4 +99,83 @@ export function useLocaleSettings(institutionId: string | null = null) {
     (client, signal) =>
       client.get("/locale-settings", LocaleSettingsSchema, { institutionId }, { signal }),
   );
+}
+
+/** Input payload for creating or updating a campus (id and tenantId are server-owned). */
+export const CampusInputSchema = CampusSchema.omit({ id: true, tenantId: true });
+export type CampusInput = z.infer<typeof CampusInputSchema>;
+
+/** Editable academic calendar payload (id, tenantId and institutionId come from the route). */
+export type CalendarInput = Omit<AcademicCalendar, "id" | "tenantId" | "institutionId">;
+
+/** Updates the institution's locale, time zone, currency and weekend days (M01, L0 online-only). */
+export function useUpdateLocaleSettings(institutionId: string | null = null) {
+  const { client } = useServices();
+  const { session } = useSession();
+  const qc = useQueryClient();
+  const path =
+    institutionId === null
+      ? "/locale-settings"
+      : `/locale-settings?institutionId=${encodeURIComponent(institutionId)}`;
+
+  return useMutation<LocaleSettings, Error, LocaleSettings>({
+    mutationFn: (body) => client.send("PUT", path, body, LocaleSettingsSchema),
+    onSuccess: async () => {
+      if (!session) return;
+      await Promise.all([
+        qc.invalidateQueries({ queryKey: queryKeys.m01.localeSettings(session, institutionId) }),
+        qc.invalidateQueries({ queryKey: queryKeys.m01.localeSettings(session, null) }),
+        qc.invalidateQueries({ queryKey: queryKeys.m01.tenant(session) }),
+      ]);
+    },
+  });
+}
+
+export interface SaveCampusVariables {
+  readonly id?: string;
+  readonly data: CampusInput;
+}
+
+/** Creates (`id` omitted) or updates (`id` set) a campus (M01, L0 online-only). */
+export function useSaveCampus() {
+  const { client } = useServices();
+  const { session } = useSession();
+  const qc = useQueryClient();
+
+  return useMutation<Campus, Error, SaveCampusVariables>({
+    mutationFn: ({ id, data }) =>
+      id
+        ? client.send("PUT", `/campuses/${encodeURIComponent(id)}`, data, CampusSchema)
+        : client.send("POST", "/campuses", data, CampusSchema),
+    onSuccess: async () => {
+      if (!session) return;
+      await qc.invalidateQueries({ queryKey: queryKeys.m01.tenant(session) });
+    },
+  });
+}
+
+export interface SaveCalendarVariables {
+  readonly calendarId: string;
+  readonly data: CalendarInput;
+}
+
+/** Updates an institution's academic calendar (M01, L0 online-only). */
+export function useSaveCalendar(institutionId: string) {
+  const { client } = useServices();
+  const { session } = useSession();
+  const qc = useQueryClient();
+
+  return useMutation<AcademicCalendar, Error, SaveCalendarVariables>({
+    mutationFn: ({ calendarId, data }) =>
+      client.send(
+        "PUT",
+        `${institutionPath(institutionId, "calendars")}/${encodeURIComponent(calendarId)}`,
+        data,
+        AcademicCalendarSchema,
+      ),
+    onSuccess: async () => {
+      if (!session) return;
+      await qc.invalidateQueries({ queryKey: queryKeys.m01.calendars(session, institutionId) });
+    },
+  });
 }

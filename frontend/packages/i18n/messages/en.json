@@ -354,5 +354,465 @@
   "m04.localeSwitch.label": {
     "message": "Language",
     "description": "Label of the language picker in the menu."
+  },
+  "m01.nav.title": {
+    "message": "Institution setup",
+    "description": "Sidebar menu item and page title for Institution setup (M01)."
+  },
+  "m01.setup.intro": {
+    "message": "Manage your institution profile, campuses, regional formats, and academic calendar.",
+    "description": "Subtitle on the Institution setup page."
+  },
+  "m01.setup.tabsLabel": {
+    "message": "Institution setup sections",
+    "description": "Accessible label for the tabs on the Institution setup page."
+  },
+  "m01.setup.tabProfile": {
+    "message": "Profile",
+    "description": "Tab label: institution type profile and residency."
+  },
+  "m01.setup.tabStructure": {
+    "message": "Structure",
+    "description": "Tab label: group, institution and campus tree."
+  },
+  "m01.setup.tabLocale": {
+    "message": "Locale & formats",
+    "description": "Tab label: languages, time zone, currency and format preview."
+  },
+  "m01.setup.tabCalendar": {
+    "message": "Calendar",
+    "description": "Tab label: academic year, periods, holidays and display calendar."
+  },
+  "m01.setup.institutionLabel": {
+    "message": "Institution",
+    "description": "Select label when a group has more than one institution."
+  },
+  "m01.setup.offlineNotice": {
+    "message": "You are offline. Changes to institution setup cannot be saved until you reconnect.",
+    "description": "Inline notice shown on the L0 Institution setup screen when offline."
+  },
+  "m01.setup.error": {
+    "message": "Could not load institution setup.",
+    "description": "Error heading when loading tenant data fails."
+  },
+  "m01.setup.empty": {
+    "message": "No institution is configured for this account.",
+    "description": "Empty state heading when no institution record exists."
+  },
+  "m01.setup.saveFailed": {
+    "message": "Changes could not be saved. Check the highlighted fields and try again.",
+    "description": "Error toast when saving a form on Institution setup fails."
+  },
+  "m01.profile.identityHeading": {
+    "message": "Institution identity",
+    "description": "Card title showing institution name, type, status and data region."
+  },
+  "m01.profile.defaultsHeading": {
+    "message": "Type profile defaults",
+    "description": "Card title showing read-only defaults for the institution type."
+  },
+  "m01.profile.name": {
+    "message": "Institution name",
+    "description": "Label for the institution's display name."
+  },
+  "m01.profile.type": {
+    "message": "Institution type",
+    "description": "Label for the institution category (preschool, K-12, university, etc.)."
+  },
+  "m01.profile.status": {
+    "message": "Status",
+    "description": "Label for the institution account status."
+  },
+  "m01.profile.region": {
+    "message": "Data region",
+    "description": "Label for the data residency region cell."
+  },
+  "m01.profile.regionNote": {
+    "message": "Fixed after creation to honour data residency rules.",
+    "description": "Read-only explanation under the institution's data region."
+  },
+  "m01.profile.structure": {
+    "message": "Academic structure",
+    "description": "Label for how the academic year is divided (terms, semesters, etc.)."
+  },
+  "m01.profile.gradingScheme": {
+    "message": "Default grading scheme",
+    "description": "Label for the institution type's default grading scheme."
+  },
+  "m01.profile.terminologyPack": {
+    "message": "Terminology pack",
+    "description": "Label for the default wording pack applied to this institution type."
+  },
+  "m01.profile.defaultModules": {
+    "message": "Default modules",
+    "description": "Label for the read-only list of modules enabled by default for this type."
+  },
+  "m01.profile.error": {
+    "message": "Could not load the institution type profile.",
+    "description": "Error heading when the type profile request fails."
+  },
+  "m01.type.ey": {
+    "message": "Early years & preschool",
+    "description": "Institution type label for early years / preschool."
+  },
+  "m01.type.k12": {
+    "message": "K–12 school",
+    "description": "Institution type label for primary and secondary school."
+  },
+  "m01.type.he": {
+    "message": "Higher education",
+    "description": "Institution type label for university or college."
+  },
+  "m01.type.voc": {
+    "message": "Vocational & technical",
+    "description": "Institution type label for vocational or technical institute."
+  },
+  "m01.type.tp": {
+    "message": "Test preparation & coaching",
+    "description": "Institution type label for test prep or coaching centre."
+  },
+  "m01.type.sk": {
+    "message": "Skills & hobby academy",
+    "description": "Institution type label for arts, music, sports or skills academy."
+  },
+  "m01.type.onl": {
+    "message": "Online academy",
+    "description": "Institution type label for an online learning provider."
+  },
+  "m01.type.grp": {
+    "message": "Multi-campus group",
+    "description": "Institution type label for a multi-institution education group."
+  },
+  "m01.status.active": {
+    "message": "Active",
+    "description": "Institution status badge: active."
+  },
+  "m01.status.trial": {
+    "message": "Trial",
+    "description": "Institution status badge: trial."
+  },
+  "m01.status.suspended": {
+    "message": "Suspended",
+    "description": "Institution status badge: suspended."
+  },
+  "m01.region.in": {
+    "message": "India (IN)",
+    "description": "Data residency region label for India."
+  },
+  "m01.region.eu": {
+    "message": "Europe (EU)",
+    "description": "Data residency region label for Europe."
+  },
+  "m01.region.us": {
+    "message": "United States (US)",
+    "description": "Data residency region label for the United States."
+  },
+  "m01.region.me": {
+    "message": "Middle East (ME)",
+    "description": "Data residency region label for the Middle East."
+  },
+  "m01.region.apac": {
+    "message": "Asia-Pacific (APAC)",
+    "description": "Data residency region label for Asia-Pacific."
+  },
+  "m01.structureKind.terms": {
+    "message": "Terms",
+    "description": "Academic structure option: terms."
+  },
+  "m01.structureKind.semesters": {
+    "message": "Semesters",
+    "description": "Academic structure option: semesters."
+  },
+  "m01.structureKind.trimesters": {
+    "message": "Trimesters",
+    "description": "Academic structure option: trimesters."
+  },
+  "m01.structureKind.rolling": {
+    "message": "Rolling",
+    "description": "Academic structure option: rolling intake / continuous."
+  },
+  "m01.structure.heading": {
+    "message": "Organisation hierarchy",
+    "description": "Card title for the group → institution → campus tree."
+  },
+  "m01.structure.groupBadge": {
+    "message": "Group",
+    "description": "Badge identifying the top-level education group."
+  },
+  "m01.structure.institutionBadge": {
+    "message": "Institution",
+    "description": "Badge identifying an institution node in the tree."
+  },
+  "m01.structure.addCampus": {
+    "message": "Add campus",
+    "description": "Button label: open modal to add a campus to an institution."
+  },
+  "m01.structure.editCampus": {
+    "message": "Edit campus",
+    "description": "Button label: open modal to edit an existing campus."
+  },
+  "m01.structure.noCampuses": {
+    "message": "No campuses added yet.",
+    "description": "Empty text inside an institution node that has zero campuses."
+  },
+  "m01.structure.inheritsTimeZone": {
+    "message": "Uses institution time zone ({timeZone})",
+    "description": "Subtitle when a campus inherits its institution's time zone."
+  },
+  "m01.structure.code": {
+    "message": "Campus code",
+    "description": "Form input label for the short uppercase campus code."
+  },
+  "m01.structure.codeHint": {
+    "message": "Uppercase letters, numbers and hyphens (max 16 characters).",
+    "description": "Helper text for the campus code input."
+  },
+  "m01.structure.name": {
+    "message": "Campus name",
+    "description": "Form input label for the campus display name."
+  },
+  "m01.structure.timeZone": {
+    "message": "Time zone override",
+    "description": "Form select label for an optional campus-specific time zone."
+  },
+  "m01.structure.timeZoneDefault": {
+    "message": "Inherit from institution",
+    "description": "Default option in campus time zone select."
+  },
+  "m01.structure.addressLine1": {
+    "message": "Address line 1",
+    "description": "Form input label for the primary street address of a campus."
+  },
+  "m01.structure.addressLine2": {
+    "message": "Address line 2",
+    "description": "Form input label for optional secondary address line of a campus."
+  },
+  "m01.structure.city": {
+    "message": "City",
+    "description": "Form input label for the campus city."
+  },
+  "m01.structure.stateRegion": {
+    "message": "State, province or emirate",
+    "description": "Form input label for optional state/province/emirate of a campus."
+  },
+  "m01.structure.postalCode": {
+    "message": "Postal code",
+    "description": "Form input label for optional postal code of a campus."
+  },
+  "m01.structure.countryCode": {
+    "message": "Country",
+    "description": "Form select label for the campus country code."
+  },
+  "m01.structure.campusSaved": {
+    "message": "Campus saved.",
+    "description": "Success toast after adding or updating a campus."
+  },
+  "m01.locale.heading": {
+    "message": "Locale & regional settings",
+    "description": "Card title for the locale, time zone, currency and weekend form."
+  },
+  "m01.locale.defaultLocale": {
+    "message": "Default language & region",
+    "description": "Select label for the institution's primary BCP 47 locale."
+  },
+  "m01.locale.supportedLocales": {
+    "message": "Supported languages",
+    "description": "Field group label for the checkboxes of supported locales."
+  },
+  "m01.locale.timeZone": {
+    "message": "Time zone",
+    "description": "Select label for the institution's IANA time zone."
+  },
+  "m01.locale.currency": {
+    "message": "Currency",
+    "description": "Select label for the institution's ISO 4217 currency."
+  },
+  "m01.locale.country": {
+    "message": "Country",
+    "description": "Select label for the institution's ISO 3166-1 country."
+  },
+  "m01.locale.weekendDays": {
+    "message": "Weekend days",
+    "description": "Field group label for choosing weekly off days."
+  },
+  "m01.locale.previewHeading": {
+    "message": "Live format preview",
+    "description": "Card title showing formatted date, number and money with current choices."
+  },
+  "m01.locale.previewDate": {
+    "message": "Today's date & time",
+    "description": "Label in the format preview card for today's formatted timestamp."
+  },
+  "m01.locale.previewNumber": {
+    "message": "Sample number",
+    "description": "Label in the format preview card for a formatted sample number."
+  },
+  "m01.locale.previewMoney": {
+    "message": "Sample amount",
+    "description": "Label in the format preview card for a formatted money amount."
+  },
+  "m01.locale.saved": {
+    "message": "Locale settings saved.",
+    "description": "Success toast after saving locale settings."
+  },
+  "m01.locale.error": {
+    "message": "Could not load locale settings.",
+    "description": "Error heading when locale settings fail to load."
+  },
+  "m01.weekday.sun": {
+    "message": "Sunday",
+    "description": "Day of week label: Sunday."
+  },
+  "m01.weekday.mon": {
+    "message": "Monday",
+    "description": "Day of week label: Monday."
+  },
+  "m01.weekday.tue": {
+    "message": "Tuesday",
+    "description": "Day of week label: Tuesday."
+  },
+  "m01.weekday.wed": {
+    "message": "Wednesday",
+    "description": "Day of week label: Wednesday."
+  },
+  "m01.weekday.thu": {
+    "message": "Thursday",
+    "description": "Day of week label: Thursday."
+  },
+  "m01.weekday.fri": {
+    "message": "Friday",
+    "description": "Day of week label: Friday."
+  },
+  "m01.weekday.sat": {
+    "message": "Saturday",
+    "description": "Day of week label: Saturday."
+  },
+  "m01.calendar.heading": {
+    "message": "Academic calendar",
+    "description": "Card title for the academic year settings form."
+  },
+  "m01.calendar.academicYear": {
+    "message": "Academic year",
+    "description": "Input label for the academic year label (e.g. 2026-27)."
+  },
+  "m01.calendar.startsOn": {
+    "message": "Year starts on",
+    "description": "Date input label for the academic year start date."
+  },
+  "m01.calendar.endsOn": {
+    "message": "Year ends on",
+    "description": "Date input label for the academic year end date."
+  },
+  "m01.calendar.displayCalendar": {
+    "message": "Display calendar",
+    "description": "Select label for the calendar system shown to users."
+  },
+  "m01.calendar.displayPreview": {
+    "message": "Year start in display calendar: {date}",
+    "description": "Helper text previewing the start date formatted in the chosen display calendar."
+  },
+  "m01.calendar.display.gregory": {
+    "message": "Gregorian",
+    "description": "Display calendar option: Gregorian."
+  },
+  "m01.calendar.display.islamicUmalqura": {
+    "message": "Hijri (Umm al-Qura)",
+    "description": "Display calendar option: Islamic Umm al-Qura (Hijri)."
+  },
+  "m01.calendar.display.hebrew": {
+    "message": "Hebrew",
+    "description": "Display calendar option: Hebrew."
+  },
+  "m01.calendar.display.indian": {
+    "message": "Indian National",
+    "description": "Display calendar option: Indian National."
+  },
+  "m01.calendar.periodsHeading": {
+    "message": "Academic periods",
+    "description": "Section title for the list of terms, semesters or blocks."
+  },
+  "m01.calendar.addPeriod": {
+    "message": "Add period",
+    "description": "Button label: add a new period row to the academic calendar."
+  },
+  "m01.calendar.periodName": {
+    "message": "Period name",
+    "description": "Input label for a period's name."
+  },
+  "m01.calendar.periodKind": {
+    "message": "Kind",
+    "description": "Select label for a period's kind (term, semester, etc.)."
+  },
+  "m01.calendar.periodStartsOn": {
+    "message": "Starts on",
+    "description": "Date input label for a period's start date."
+  },
+  "m01.calendar.periodEndsOn": {
+    "message": "Ends on",
+    "description": "Date input label for a period's end date."
+  },
+  "m01.calendar.noPeriods": {
+    "message": "No periods configured (rolling calendar).",
+    "description": "Empty text when an academic calendar has no periods."
+  },
+  "m01.calendar.removePeriod": {
+    "message": "Remove period {name}",
+    "description": "Accessible button label to delete an academic period row."
+  },
+  "m01.calendar.holidaysHeading": {
+    "message": "Holidays",
+    "description": "Section title for the list of institutional holidays."
+  },
+  "m01.calendar.addHoliday": {
+    "message": "Add holiday",
+    "description": "Button label: add a new holiday row to the academic calendar."
+  },
+  "m01.calendar.holidayDate": {
+    "message": "Date",
+    "description": "Date input label for a holiday."
+  },
+  "m01.calendar.holidayName": {
+    "message": "Holiday name",
+    "description": "Input label for a holiday's name."
+  },
+  "m01.calendar.noHolidays": {
+    "message": "No holidays added for this year.",
+    "description": "Empty text when an academic calendar has no holidays."
+  },
+  "m01.calendar.removeHoliday": {
+    "message": "Remove holiday {name}",
+    "description": "Accessible button label to delete a holiday row."
+  },
+  "m01.calendar.kind.term": {
+    "message": "Term",
+    "description": "Academic period kind option: term."
+  },
+  "m01.calendar.kind.semester": {
+    "message": "Semester",
+    "description": "Academic period kind option: semester."
+  },
+  "m01.calendar.kind.trimester": {
+    "message": "Trimester",
+    "description": "Academic period kind option: trimester."
+  },
+  "m01.calendar.kind.session": {
+    "message": "Session",
+    "description": "Academic period kind option: session."
+  },
+  "m01.calendar.kind.block": {
+    "message": "Block",
+    "description": "Academic period kind option: block."
+  },
+  "m01.calendar.saved": {
+    "message": "Academic calendar saved.",
+    "description": "Success toast after saving the academic calendar."
+  },
+  "m01.calendar.error": {
+    "message": "Could not load academic calendars.",
+    "description": "Error heading when academic calendars fail to load."
+  },
+  "m01.calendar.empty": {
+    "message": "No academic calendar found for this institution.",
+    "description": "Empty state heading when an institution has no calendars."
   }
 }
