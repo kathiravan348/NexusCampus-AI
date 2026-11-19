@@ -13,6 +13,7 @@ export default tseslint.config(
       "**/coverage/**",
       "**/storybook-static/**",
       "**/*.d.ts",
+      "**/mockServiceWorker.js",
     ],
   },
   js.configs.recommended,
