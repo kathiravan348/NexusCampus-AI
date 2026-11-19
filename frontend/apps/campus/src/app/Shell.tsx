@@ -5,6 +5,7 @@ import { House } from "lucide-react";
 import { Link, Outlet, useLocation, useOutletContext } from "react-router";
 import { LocaleSwitch } from "./LocaleSwitch";
 import type { ModuleEntry } from "./modules";
+import { PlatformMark } from "./PlatformMark";
 import { useModuleAccess } from "./RouteGuard";
 import { ShellBrand, ShellHeader } from "./ShellHeader";
 import { useRuntime } from "./TenantRuntime";
@@ -34,7 +35,15 @@ export function Shell({ modules }: { readonly modules: readonly ModuleEntry[] })
   return (
     <AppShell
       brand={<ShellBrand />}
-      title={tenantName}
+      title={
+        <span className="flex min-w-0 items-center gap-2">
+          {/* Below md the header is crowded; the institution name keeps the space. */}
+          <span className="hidden md:inline-flex">
+            <PlatformMark size="sm" />
+          </span>
+          <span className="truncate">{tenantName}</span>
+        </span>
+      }
       banner={DATA_MODE === "mock" ? <DemoBanner /> : undefined}
       actions={<ShellHeader />}
       navFooter={<LocaleSwitch />}

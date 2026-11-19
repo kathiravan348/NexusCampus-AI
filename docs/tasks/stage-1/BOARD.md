@@ -44,5 +44,5 @@
 | NEX-033 | Campus Prism default theme tokens (Nexus Style refresh, D38) | A | done | Gemini | 002, 014 |
 | NEX-034 | Freeze Campus Prism palette: radius-xs 4px, border-strong fix, `brand-sky`, `hero-glow`, full freeze test (D39) | A | done | Claude | 033 |
 | NEX-035 | NexusCampus logo assets: mark, lockups, favicons, PWA icons in `public/brand/` (D40) | A | done | Claude | 034 |
-| NEX-036 | NexusCampus logo in the app header and sign-in page (mark + name) | C | planned | — | 035 |
+| NEX-036 | NexusCampus logo in the app header and sign-in page (mark + name) | C | ready-for-review | Claude | 035 |
 | NEX-037 | Logo image corrections: SVG master, exact gradient, clean dark lockup, no baked tagline, small favicon, mono (waits for designer files) | A | planned | — | 036 |
