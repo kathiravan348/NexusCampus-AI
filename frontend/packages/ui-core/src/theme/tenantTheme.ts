@@ -89,7 +89,11 @@ export function applyTenantTheme(theme: TenantTheme, doc: Document = document): 
 
   for (const role of ["sans", "mono"] as const) {
     const id = theme.fonts?.[role];
-    if (id !== undefined) void resolveFont(id, role).load();
+    // A font that fails to load (e.g. offline) must not break the theme: the stack falls back.
+    if (id !== undefined)
+      void resolveFont(id, role)
+        .load()
+        .catch(() => undefined);
   }
 
   let style = doc.getElementById(TENANT_THEME_STYLE_ID);

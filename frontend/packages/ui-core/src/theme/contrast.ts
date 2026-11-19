@@ -1,6 +1,5 @@
 import tokens from "./tokens.json";
-
-export type ThemeMode = "light" | "dark";
+import type { ThemeName } from "./theme";
 
 /** Partial colour overrides for one theme: token name → `#RRGGBB`. */
 export type ColorOverrides = Readonly<Record<string, string>>;
@@ -19,13 +18,13 @@ export interface ContrastPair {
 }
 
 export interface ContrastFailure extends ContrastPair {
-  theme: ThemeMode;
+  theme: ThemeName;
   ratio: number;
 }
 
 export const CONTRAST_PAIRS: readonly ContrastPair[] = tokens.contrastPairs;
 
-const DEFAULT_COLORS: Readonly<Record<ThemeMode, Readonly<Record<string, string>>>> = {
+const DEFAULT_COLORS: Readonly<Record<ThemeName, Readonly<Record<string, string>>>> = {
   light: Object.fromEntries(tokens.color.tokens.map((t) => [t.name, t.value.light])),
   dark: Object.fromEntries(tokens.color.tokens.map((t) => [t.name, t.value.dark])),
 };

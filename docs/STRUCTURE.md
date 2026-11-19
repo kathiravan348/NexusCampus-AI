@@ -21,6 +21,9 @@
 ├─ frontend/            frontend monorepo (pnpm workspaces)
 │  ├─ packages/
 │  │  ├─ ui-core/       generic components + theme engine (NEX-002, 005, 006)
+│  │  │  ├─ scripts/    build-tokens (tokens.json → CSS), check-classes (lint: token-only classes)
+│  │  │  └─ src/theme/  tokens.json + generated CSS, styles.css, theme (light/dark), contrast (WCAG guard),
+│  │  │                 fonts (font library), tenantTheme (institution theme at runtime)
 │  │  ├─ ui-edu/        education components built on ui-core
 │  │  ├─ i18n/          messages, formatters, layered text overrides, RTL (NEX-003)
 │  │  ├─ offline/       IndexedDB store, outbox, sync status (NEX-007)

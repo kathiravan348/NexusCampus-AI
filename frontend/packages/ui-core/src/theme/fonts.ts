@@ -3,6 +3,15 @@
  * (no font CDN). This is the only module besides tokens.json that may name a font.
  */
 
+// Default fonts load with ui-core. Arabic uses unicode-range: it only downloads for Arabic text.
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/noto-sans-arabic/400.css";
+import "@fontsource/noto-sans-arabic/600.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+
 export type FontRole = "sans" | "mono";
 
 export interface FontDefinition {

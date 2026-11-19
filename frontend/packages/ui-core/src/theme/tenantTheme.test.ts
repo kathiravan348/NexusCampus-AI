@@ -1,5 +1,6 @@
-import { afterEach, describe, expect, it } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vitest";
 import { ThemeContrastError } from "./contrast";
+import { FONT_LIBRARY } from "./fonts";
 import {
   TENANT_THEME_STYLE_ID,
   ThemeValueError,
@@ -44,6 +45,17 @@ describe("applyTenantTheme", () => {
     expect(text).toContain("--radius-md: 4px;");
     expect(text).toContain("--density-scale: 0.875;");
     expect(declaredVars(text)).toEqual(["font-sans", "radius-md", "density-scale"]);
+  });
+
+  it("still applies when a font fails to load (e.g. offline)", async () => {
+    const spy = vi
+      .spyOn(FONT_LIBRARY["noto-sans-arabic"], "load")
+      .mockRejectedValue(new Error("network down"));
+    expect(() => applyTenantTheme({ fonts: { sans: "noto-sans-arabic" } })).not.toThrow();
+    await Promise.resolve();
+    expect(spy).toHaveBeenCalledOnce();
+    expect(styleText()).toContain("--font-sans:");
+    spy.mockRestore();
   });
 
   it("refuses a theme that fails contrast and leaves the page unchanged", () => {
