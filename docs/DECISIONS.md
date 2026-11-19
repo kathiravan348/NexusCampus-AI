@@ -36,6 +36,7 @@
 | D30 | 2026-11-19 | i18n stack (NEX-003): react-intl 12.2.0 + `@formatjs/icu-messageformat-parser` 3.5.23 (same version react-intl uses) to reject invalid ICU overrides; formatting via `Intl` only, no date-fns | One ICU engine; invalid tenant texts never reach users |
 | D31 | 2026-11-19 | NEX-008 split: core/tenancy contracts stay in NEX-008; identity contracts move to new NEX-028. Contracts keep offset paging `{items,total,page,pageSize}` (D15), not NOVA's cursor paging | Task size ≤ 60 lines; no reopening D15 |
 | D32 | 2026-11-19 | Max 3 commits per task: 1 implementer commit (`NEX-###: …`), 1 reviewer commit (`review: …`, combining fixes, review note and board/task `done`), and 1 merge commit on `main`. No separate intermediate `board:` commits | Owner request; keeps git history clean and compact |
+| D33 | 2026-11-19 | Storybook stack (NEX-004): `storybook`, `@storybook/react-vite`, `@storybook/addon-a11y` pinned at `10.6.0` (matching NOVA); `a11y.test: "error"` | Proven NOVA setup; catches accessibility regressions in Storybook |
 
 ## Open (decide by the Stage 1 freeze)
 - Identity: own implementation vs. Keycloak / Zitadel for SSO, SCIM and passkeys.
@@ -48,4 +49,4 @@
 - Licence pricing unit for self-hosted: per learner, per campus, or flat edition.
 
 ## Requests
-- NEX-004 (`@nexus/ui-storybook`): `storybook`, `@storybook/react-vite`, `@storybook/addon-a11y` at `10.6.0` (exact pins, same versions as NOVA).
+_(implementers note new dependencies or decision requests here; the planner moves them into the table)_
