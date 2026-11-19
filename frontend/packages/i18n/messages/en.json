@@ -814,5 +814,317 @@
   "m01.calendar.empty": {
     "message": "No academic calendar found for this institution.",
     "description": "Empty state heading when an institution has no calendars."
+  },
+  "common.colorPicker": {
+    "message": "Choose colour",
+    "description": "Accessible fallback label for a native colour picker input."
+  },
+  "m03.nav.title": {
+    "message": "Theme studio",
+    "description": "Sidebar menu item and page title for Theme studio (M03)."
+  },
+  "m03.studio.intro": {
+    "message": "Customise your institution's light and dark colours, fonts, spacing, and brand assets with live contrast checks.",
+    "description": "Subtitle on the Theme studio page."
+  },
+  "m03.studio.version": {
+    "message": "Version {version, number}",
+    "description": "Badge showing the saved theme version number. {version} is an integer."
+  },
+  "m03.studio.tabsLabel": {
+    "message": "Theme editor sections",
+    "description": "Accessible label for the editor tabs on the Theme studio page."
+  },
+  "m03.studio.tabColors": {
+    "message": "Colours",
+    "description": "Tab label: light and dark colour token editor."
+  },
+  "m03.studio.tabTypography": {
+    "message": "Typography & spacing",
+    "description": "Tab label: font library, layout density, and corner radius editor."
+  },
+  "m03.studio.tabAssets": {
+    "message": "Assets",
+    "description": "Tab label: institution logo and favicon URLs."
+  },
+  "m03.studio.discard": {
+    "message": "Discard changes",
+    "description": "Button label: revert unsaved draft edits in Theme studio."
+  },
+  "m03.studio.offlineNotice": {
+    "message": "You are offline. You can inspect the cached theme, but saving changes requires a connection.",
+    "description": "Inline notice shown on the L1 Theme studio screen when offline."
+  },
+  "m03.studio.saved": {
+    "message": "Theme saved (version {version, number}).",
+    "description": "Success toast after saving a theme. {version} is the new version number."
+  },
+  "m03.studio.saveFailed": {
+    "message": "Theme could not be saved. Review any contrast or locked-token errors and try again.",
+    "description": "Error toast when saving the institution theme fails."
+  },
+  "m03.studio.error": {
+    "message": "Could not load theme settings.",
+    "description": "Error heading when fetching the institution theme fails."
+  },
+  "m03.studio.empty": {
+    "message": "No theme is configured for this institution.",
+    "description": "Empty state heading when no theme layer exists for the tenant."
+  },
+  "m03.mode.label": {
+    "message": "Colour mode",
+    "description": "Accessible label for the light/dark colour mode switcher in Theme studio."
+  },
+  "m03.mode.light": {
+    "message": "Light",
+    "description": "Colour mode option: light mode tokens and preview."
+  },
+  "m03.mode.dark": {
+    "message": "Dark",
+    "description": "Colour mode option: dark mode tokens and preview."
+  },
+  "m03.colors.groupBrand": {
+    "message": "Brand",
+    "description": "Token group heading for primary and accent brand colours."
+  },
+  "m03.colors.groupSurfaces": {
+    "message": "Surfaces & borders",
+    "description": "Token group heading for background surfaces and borders."
+  },
+  "m03.colors.groupText": {
+    "message": "Text",
+    "description": "Token group heading for primary, secondary and muted text colours."
+  },
+  "m03.colors.groupStatus": {
+    "message": "Status",
+    "description": "Token group heading for success, warning, danger and info colours."
+  },
+  "m03.colors.groupCharts": {
+    "message": "Charts",
+    "description": "Token group heading for chart data series colours."
+  },
+  "m03.colors.lockedBadge": {
+    "message": "Locked by group",
+    "description": "Badge shown beside a theme token locked by the parent group."
+  },
+  "m03.colors.lockedReason": {
+    "message": "Locked by the group theme. Only a group administrator can change this token.",
+    "description": "Explanation shown under a read-only token locked by the group."
+  },
+  "m03.colors.resetToken": {
+    "message": "Reset {token} to platform default",
+    "description": "Accessible button label to restore one colour token to its platform default."
+  },
+  "m03.colors.invalidHex": {
+    "message": "Enter a valid hex colour (for example, #1F5FD1).",
+    "description": "Validation error when a hex colour input is not #RRGGBB."
+  },
+  "m03.colors.brandSuggestionTitle": {
+    "message": "Suggested brand pair ({mode})",
+    "description": "Banner heading proposing matching on-brand and brand-primary-text colours after editing brand-primary."
+  },
+  "m03.colors.brandSuggestionBody": {
+    "message": "Update on-brand ({onBrand}) and brand-primary-text ({brandText}) so buttons and links pass contrast checks.",
+    "description": "Banner text showing the suggested hex values for on-brand and brand-primary-text."
+  },
+  "m03.colors.applyBrandSuggestion": {
+    "message": "Apply suggestions",
+    "description": "Button label: apply suggested on-brand and brand-primary-text colours."
+  },
+  "m03.colors.pickerLabel": {
+    "message": "Pick colour for {token}",
+    "description": "Accessible label for the native colour picker of a specific token."
+  },
+  "m03.typography.fontsHeading": {
+    "message": "Fonts",
+    "description": "Card title for selecting sans and monospace fonts."
+  },
+  "m03.typography.sansFont": {
+    "message": "Body and UI font",
+    "description": "Select label for the institution's sans-serif interface font."
+  },
+  "m03.typography.monoFont": {
+    "message": "Numbers and code font",
+    "description": "Select label for the institution's monospace font."
+  },
+  "m03.typography.platformDefault": {
+    "message": "Platform default",
+    "description": "Select option meaning inherit the platform default font or density."
+  },
+  "m03.typography.densityHeading": {
+    "message": "Density",
+    "description": "Card title for selecting layout density."
+  },
+  "m03.typography.densityLabel": {
+    "message": "Layout density",
+    "description": "Select label for choosing compact, comfortable, or spacious spacing."
+  },
+  "m03.typography.densityCompact": {
+    "message": "Compact",
+    "description": "Density option: compact spacing for dense admin screens."
+  },
+  "m03.typography.densityComfortable": {
+    "message": "Comfortable",
+    "description": "Density option: default balanced spacing."
+  },
+  "m03.typography.densitySpacious": {
+    "message": "Spacious",
+    "description": "Density option: generous touch-friendly spacing."
+  },
+  "m03.typography.radiusHeading": {
+    "message": "Corner radius",
+    "description": "Card title for editing radius tokens."
+  },
+  "m03.typography.radiusInvalid": {
+    "message": "Enter a pixel value (for example, 8px).",
+    "description": "Validation error when a radius token is not a valid px value."
+  },
+  "m03.typography.radiusReset": {
+    "message": "Reset {token} to platform default",
+    "description": "Accessible button label to restore one radius token to its platform default."
+  },
+  "m03.assets.heading": {
+    "message": "Brand assets",
+    "description": "Card title for institution logo and favicon URL settings."
+  },
+  "m03.assets.logoUrl": {
+    "message": "Logo URL",
+    "description": "Input label for the institution logo URL."
+  },
+  "m03.assets.logoHint": {
+    "message": "Enter an https:// URL or a path starting with /.",
+    "description": "Helper text under the logo URL input."
+  },
+  "m03.assets.logoAlt": {
+    "message": "Institution logo preview",
+    "description": "Alt text for the preview image of the institution logo."
+  },
+  "m03.assets.faviconUrl": {
+    "message": "Favicon URL",
+    "description": "Input label for the institution favicon URL."
+  },
+  "m03.assets.faviconHint": {
+    "message": "Square icon shown in browser tabs (https:// URL or path starting with /).",
+    "description": "Helper text under the favicon URL input."
+  },
+  "m03.assets.faviconAlt": {
+    "message": "Institution favicon preview",
+    "description": "Alt text for the preview image of the institution favicon."
+  },
+  "m03.assets.invalidUrl": {
+    "message": "Must be an https:// URL or a path starting with /.",
+    "description": "Validation error when a logo or favicon URL does not match AssetUrlSchema."
+  },
+  "m03.assets.noPreview": {
+    "message": "No image configured",
+    "description": "Placeholder text inside an asset preview box when no URL is set."
+  },
+  "m03.contrast.heading": {
+    "message": "Contrast guard",
+    "description": "Card title for the WCAG 2.2 AA contrast validation panel."
+  },
+  "m03.contrast.allPass": {
+    "message": "All contrast pairs meet WCAG 2.2 AA requirements.",
+    "description": "Status text shown when the draft theme has zero contrast failures."
+  },
+  "m03.contrast.blockingTitle": {
+    "message": "{count, plural, one {# contrast issue blocks saving} other {# contrast issues block saving}}",
+    "description": "Alert heading showing how many failing colour pairs block saving. {count} is a number."
+  },
+  "m03.contrast.blockingHint": {
+    "message": "Fix each failing colour pair below or use a suggestion before saving.",
+    "description": "Explanation beneath the failing contrast count."
+  },
+  "m03.contrast.pairLabel": {
+    "message": "{fg} on {bg}",
+    "description": "Label naming a foreground and background token pair. {fg} and {bg} are token names."
+  },
+  "m03.contrast.ratioDetail": {
+    "message": "Current ratio {ratio}:1 · requires at least {minRatio}:1",
+    "description": "Contrast ratio detail for one failing pair. {ratio} and {minRatio} are formatted numbers."
+  },
+  "m03.contrast.useSuggestion": {
+    "message": "Use suggestion ({color})",
+    "description": "Button label: apply a suggested passing colour to fix a contrast failure."
+  },
+  "m03.preview.heading": {
+    "message": "Live preview",
+    "description": "Heading for the scoped theme preview pane."
+  },
+  "m03.preview.subtitle": {
+    "message": "Applies to this preview only until you save.",
+    "description": "Helper text clarifying that draft theme edits do not affect the whole app until saved."
+  },
+  "m03.preview.primaryAction": {
+    "message": "Primary action",
+    "description": "Sample primary button label inside the theme preview."
+  },
+  "m03.preview.secondaryAction": {
+    "message": "Secondary",
+    "description": "Sample secondary button label inside the theme preview."
+  },
+  "m03.preview.dangerAction": {
+    "message": "Delete",
+    "description": "Sample destructive button label inside the theme preview."
+  },
+  "m03.preview.cardTitle": {
+    "message": "Sample overview",
+    "description": "Sample card title inside the theme preview."
+  },
+  "m03.preview.cardBody": {
+    "message": "Preview body text and a sample link styled with your draft theme.",
+    "description": "Sample paragraph inside the theme preview card."
+  },
+  "m03.preview.sampleLink": {
+    "message": "View details",
+    "description": "Sample link text inside the theme preview card."
+  },
+  "m03.preview.statLabel": {
+    "message": "Active total",
+    "description": "Sample KPI label inside the theme preview."
+  },
+  "m03.preview.tableColName": {
+    "message": "Item",
+    "description": "Sample table column header for row name in the theme preview."
+  },
+  "m03.preview.tableColStatus": {
+    "message": "Status",
+    "description": "Sample table column header for status in the theme preview."
+  },
+  "m03.preview.tableColCount": {
+    "message": "Count",
+    "description": "Sample table column header for numeric count in the theme preview."
+  },
+  "m03.preview.tableRowOne": {
+    "message": "Morning session",
+    "description": "First sample row name in the theme preview table."
+  },
+  "m03.preview.tableRowTwo": {
+    "message": "Afternoon session",
+    "description": "Second sample row name in the theme preview table."
+  },
+  "m03.preview.formLabel": {
+    "message": "Sample field",
+    "description": "Sample input label in the theme preview form."
+  },
+  "m03.preview.formPlaceholder": {
+    "message": "Type here…",
+    "description": "Sample input placeholder in the theme preview form."
+  },
+  "m03.preview.formSelect": {
+    "message": "Category",
+    "description": "Sample select label in the theme preview form."
+  },
+  "m03.preview.formOptionOne": {
+    "message": "General",
+    "description": "First sample select option in the theme preview form."
+  },
+  "m03.preview.formOptionTwo": {
+    "message": "Priority",
+    "description": "Second sample select option in the theme preview form."
+  },
+  "m03.preview.formToggle": {
+    "message": "Include in summary",
+    "description": "Sample switch label in the theme preview form."
   }
 }

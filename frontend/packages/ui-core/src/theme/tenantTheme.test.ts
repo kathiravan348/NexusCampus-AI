@@ -90,4 +90,23 @@ describe("tenantThemeCss", () => {
   it("is empty for an empty theme", () => {
     expect(tenantThemeCss({})).toBe("");
   });
+
+  it("scopes CSS variables to a container selector when scope is provided", () => {
+    const css = tenantThemeCss(
+      {
+        light: { "brand-primary": "#0F5132" },
+        dark: { "brand-primary": "#34D399" },
+        radius: { "radius-md": "6px" },
+      },
+      '[data-theme-preview="m03"]',
+    );
+    expect(css).toContain('[data-theme-preview="m03"] {\n  --radius-md: 6px;');
+    expect(css).toContain(
+      '[data-theme-preview="m03"][data-theme="light"] {\n  --brand-primary: #0F5132;',
+    );
+    expect(css).toContain(
+      '[data-theme-preview="m03"][data-theme="dark"] {\n  --brand-primary: #34D399;',
+    );
+    expect(css).not.toContain("html");
+  });
 });
