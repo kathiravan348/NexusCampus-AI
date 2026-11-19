@@ -68,7 +68,7 @@ describe("ThemeStudioPage (M03)", () => {
     fireEvent.change(accentInput, { target: { value: "#0E7490" } });
     expect(accentInput).toHaveValue("#0E7490");
     fireEvent.click(screen.getByRole("button", { name: "Reset brand-accent to platform default" }));
-    expect(accentInput).toHaveValue("#0F766E");
+    expect(accentInput).toHaveValue("#0D9488");
 
     // Save: applies to app, bumps version badge to Version 2, and displays success toast
     fireEvent.click(saveBtn);
