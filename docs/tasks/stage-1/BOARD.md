@@ -29,7 +29,7 @@
 | NEX-018 | Plans & usage (M05): modules on/off, AI credits, usage meters | C | planned | — | 012 |
 | NEX-019 | Sync centre (M10): devices, pending queue, conflicts, remote wipe | C | planned | — | 012 |
 | NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | planned | — | 018 |
-| NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030, 032–035 |
+| NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030, 032–036 |
 | NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | planned | — | 021 |
 | NEX-023 | Data vault & access grants (M83): key status, provider access requests (approve / deny / revoke), active grants, break-glass notices, access history | C | planned | — | 012 |
 | NEX-024 | Notifications engine (M07, core): per-locale templates, channels, preferences, quiet hours, delivery log | C | planned | — | 012 |
@@ -44,3 +44,5 @@
 | NEX-033 | Campus Prism default theme tokens (Nexus Style refresh, D38) | A | done | Gemini | 002, 014 |
 | NEX-034 | Freeze Campus Prism palette: radius-xs 4px, border-strong fix, `brand-sky`, `hero-glow`, full freeze test (D39) | A | done | Claude | 033 |
 | NEX-035 | NexusCampus logo assets: mark, lockups, favicons, PWA icons in `public/brand/` (D40) | A | done | Claude | 034 |
+| NEX-036 | NexusCampus logo in the app header and sign-in page (mark + name) | C | planned | — | 035 |
+| NEX-037 | Logo image corrections: SVG master, exact gradient, clean dark lockup, no baked tagline, small favicon, mono (waits for designer files) | A | planned | — | 036 |

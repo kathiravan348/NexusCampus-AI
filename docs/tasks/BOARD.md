@@ -8,7 +8,7 @@
 
 | Stage | Name | Board | Tasks | Status |
 |---|---|---|---|---|
-| 1 | Platform foundation | [`stage-1/BOARD.md`](stage-1/BOARD.md) | NEX-001–035 (025–026 withdrawn) | **current** (prototype) |
+| 1 | Platform foundation | [`stage-1/BOARD.md`](stage-1/BOARD.md) | NEX-001–037 (025–026 withdrawn) | **current** (prototype) |
 | 2 | Nexus Control & delivery | `stage-2/BOARD.md` (created at Stage 1 freeze) | — | later |
 | 3 | Core institution operations | — | — | later |
 | 4 | Teaching & learning | — | — | later |
