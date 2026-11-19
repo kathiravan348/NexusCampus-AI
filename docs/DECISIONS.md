@@ -38,6 +38,7 @@
 | D32 | 2026-11-19 | Max 3 commits per task: 1 implementer commit (`NEX-###: …`), 1 reviewer commit (`review: …`, combining fixes, review note and board/task `done`), and 1 merge commit on `main`. No separate intermediate `board:` commits | Owner request; keeps git history clean and compact |
 | D33 | 2026-11-19 | Storybook stack (NEX-004): `storybook`, `@storybook/react-vite`, `@storybook/addon-a11y` pinned at `10.6.0` (matching NOVA); `a11y.test: "error"` | Proven NOVA setup; catches accessibility regressions in Storybook |
 | D34 | 2026-11-19 | `ui-core` component primitives (NEX-005): `@radix-ui/react-checkbox@1.3.11`, `@radix-ui/react-slot@1.3.3`, `@radix-ui/react-switch@1.3.7`, `class-variance-authority@0.7.1`, `clsx@2.1.1`, `lucide-react@1.47.0`, `tailwind-merge@3.7.0` (exact pins matching NOVA) | Accessible Radix primitives + CVA/tailwind-merge pattern from D6 |
+| D35 | 2026-11-19 | Offline storage stack (NEX-007): `dexie@4.4.7` for IndexedDB and `fake-indexeddb@6.2.8` (devDependency) for Vitest | Exact pins matching D13 and `AGENTS.md` §5 |
 
 ## Open (decide by the Stage 1 freeze)
 - Identity: own implementation vs. Keycloak / Zitadel for SSO, SCIM and passkeys.
@@ -50,4 +51,4 @@
 - Licence pricing unit for self-hosted: per learner, per campus, or flat edition.
 
 ## Requests
-- NEX-007 (`@nexus/offline` exact pins): `dexie@4.4.7` (IndexedDB store, D13), `fake-indexeddb@6.2.8` (devDependency for IndexedDB unit tests).
+_(implementers note new dependencies or decision requests here; the planner moves them into the table)_

@@ -2,6 +2,7 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import { createOfflineDb, getLastSyncedAt, type NexusOfflineDB } from "./db";
 import { enqueueWrite, flushOutbox, listOutbox, resolveConflict } from "./outbox";
 import type { OutboxEntry } from "./types";
+import { remoteRevokeWipe } from "./wipe";
 
 const dbs: NexusOfflineDB[] = [];
 function openDb(): NexusOfflineDB {
@@ -169,5 +170,36 @@ describe("outbox", () => {
     ]);
     expect(transport).toHaveBeenCalledTimes(1);
     expect(a).toEqual(b);
+  });
+
+  it("recovers entries left in syncing state after a crash and never resurrects a revoked scope", async () => {
+    const db = openDb();
+    const stuck = await enqueueWrite(db, scope, {
+      moduleId: "M17",
+      operation: "attendance.mark",
+      mergeRule: "lww-audited",
+      payload: { recovered: true },
+    });
+    const raw = await db.outbox.get(stuck.id);
+    await db.outbox.put({ ...raw!, status: "syncing" });
+
+    const recovered = await flushOutbox(db, scope, async () => ({ kind: "ok" }));
+    expect(recovered.sent).toBe(1);
+
+    // Remote revoke during an in-flight flush must not resurrect the row or lastSyncedAt
+    await enqueueWrite(db, scope, {
+      moduleId: "M17",
+      operation: "attendance.mark",
+      mergeRule: "lww-audited",
+      payload: { secret: "wiped" },
+    });
+    await flushOutbox(db, scope, async () => {
+      await remoteRevokeWipe(db, scope);
+      return { kind: "retryable", message: "network reset" };
+    });
+
+    expect(await db.outbox.count()).toBe(0);
+    expect(await db.keys.count()).toBe(0);
+    expect(await getLastSyncedAt(db, scope)).toBeNull();
   });
 });

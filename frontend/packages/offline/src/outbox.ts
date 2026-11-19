@@ -139,6 +139,15 @@ async function runFlush(
   const keyRecord = await db.keys.get(scopeKey);
   if (!keyRecord) return { sent: 0, conflicted: 0, retryable: 0, failed: 0 };
 
+  // Recover any entries left in "syncing" after a previous tab/device crash.
+  const stuck = await db.outbox.where("[scopeKey+status]").equals([scopeKey, "syncing"]).toArray();
+  if (stuck.length > 0) {
+    const recoveredAt = new Date().toISOString();
+    await db.outbox.bulkPut(
+      stuck.map((row) => ({ ...row, status: "pending" as const, updatedAt: recoveredAt })),
+    );
+  }
+
   const pending = await db.outbox
     .where("[scopeKey+status]")
     .equals([scopeKey, "pending"])
@@ -151,6 +160,9 @@ async function runFlush(
   let failed = 0;
 
   for (const row of pending) {
+    const stillHasKey = await db.keys.get(scopeKey);
+    if (!stillHasKey) break;
+
     const now = new Date().toISOString();
     const syncingRow: OutboxRecord = { ...row, status: "syncing", updatedAt: now };
     await db.outbox.put(syncingRow);
@@ -166,6 +178,17 @@ async function runFlush(
         message: err instanceof Error ? err.message : "Transport error",
       };
     }
+
+    // Never resurrect a wiped scope if remoteRevokeWipe ran while transport was in flight (O-3).
+    const [keyAfter, rowAfter] = await Promise.all([db.keys.get(scopeKey), db.outbox.get(row.id)]);
+    if (!keyAfter || !rowAfter) break;
+
+    // Never resurrect a wiped scope if remoteRevokeWipe ran while transport was in flight (O-3).
+    const [keyAfter, rowAfter] = await Promise.all([
+      db.keys.get(scopeKey),
+      db.outbox.get(row.id),
+    ]);
+    if (!keyAfter || !rowAfter) break;
 
     const doneAt = new Date().toISOString();
     if (result.kind === "ok") {
