@@ -18,16 +18,16 @@
 │  ├─ presentation/     NexusCampus-Introduction.pptx (plain-language project intro deck)
 │  ├─ tasks/            BOARD.md (index) + stage-N/ (BOARD.md + task files NEX-###.md per stage)
 │  └─ templates/        TASK.md, HANDOFF.md, REVIEW.md
-├─ frontend/            (planned, NEX-001)
+├─ frontend/            frontend monorepo (pnpm workspaces)
 │  ├─ packages/
 │  │  ├─ ui-core/       generic components + theme engine (NEX-002, 005, 006)
 │  │  ├─ ui-edu/        education components built on ui-core
 │  │  ├─ i18n/          messages, formatters, layered text overrides, RTL (NEX-003)
 │  │  ├─ offline/       IndexedDB store, outbox, sync status (NEX-007)
-│  │  ├─ ui-storybook/  Storybook (NEX-004)
-│  │  ├─ contracts/     API types + Zod schemas (NEX-008, 009)
+│  │  ├─ ui-storybook/  Storybook (planned, NEX-004)
+│  │  ├─ contracts/     API types + Zod schemas (NEX-008, 009, 027)
 │  │  ├─ mocks/         demo tenants + MSW handlers (NEX-010)
-│  │  └─ services/      data layer, mock | real, offline-aware (NEX-011)
+│  │  ├─ services/      data layer, mock | real, offline-aware (NEX-011)
 │  │  └─ ui-control/    Nexus Control components (planned, Stage 2)
 │  └─ apps/
 │     ├─ campus/        the PWA for every institution role
