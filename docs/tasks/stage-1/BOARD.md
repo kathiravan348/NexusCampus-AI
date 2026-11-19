@@ -26,7 +26,7 @@
 | NEX-015 | Text & language studio (M04): key search, per-locale overrides, in-context preview, import/export, history; validate each override with `isValidMessage` on save (NEX-003 review) | C | done | Gemini | 012 |
 | NEX-016 | Users, roles & permission matrix (M02): users list, invite, roles, scopes, SSO settings screen | C | done | Claude | 012 |
 | NEX-017 | Audit, privacy & consent (M06): audit viewer, consent records, data requests | C | done | Claude | 012 |
-| NEX-018 | Plans & usage (M05): modules on/off, AI credits, usage meters | C | ready-for-review | Claude | 012 |
+| NEX-018 | Plans & usage (M05): modules on/off, AI credits, usage meters | C | done | Claude | 012 |
 | NEX-019 | Sync centre (M10): devices, pending queue, conflicts, remote wipe | C | planned | — | 012 |
 | NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | planned | — | 018 |
 | NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030, 032–036 |
