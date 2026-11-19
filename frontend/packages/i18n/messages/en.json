@@ -1958,5 +1958,417 @@
   "m04.io.applyFailedToast": {
     "message": "Could not apply imported overrides.",
     "description": "Error toast when applying imported overrides fails."
+  },
+  "m06.nav.title": {
+    "message": "Audit & privacy",
+    "description": "Menu item and page title of the audit, privacy and consent screen (M06)."
+  },
+  "m06.privacy.intro": {
+    "message": "Review the tamper-evident audit log, consent records, data requests and the privacy rules that apply.",
+    "description": "Intro text under the audit and privacy page title."
+  },
+  "m06.privacy.tabsLabel": {
+    "message": "Audit and privacy sections",
+    "description": "Accessible label of the tab list on the audit and privacy page."
+  },
+  "m06.privacy.tabAudit": {
+    "message": "Audit log",
+    "description": "Tab: the audit log."
+  },
+  "m06.privacy.tabConsents": {
+    "message": "Consents",
+    "description": "Tab: consent records."
+  },
+  "m06.privacy.tabRequests": {
+    "message": "Data requests",
+    "description": "Tab: data subject requests (access, correction, deletion, export)."
+  },
+  "m06.privacy.tabCompliance": {
+    "message": "Compliance",
+    "description": "Tab: privacy compliance packs that apply."
+  },
+  "m06.privacy.error": {
+    "message": "Audit and privacy data could not be loaded.",
+    "description": "Error heading when audit or privacy data fails to load."
+  },
+  "m06.privacy.saveFailed": {
+    "message": "The change could not be saved. Try again.",
+    "description": "Toast shown when a privacy change fails to save."
+  },
+  "m06.audit.caption": {
+    "message": "Audit events",
+    "description": "Accessible caption of the audit log table."
+  },
+  "m06.audit.colTime": {
+    "message": "Time",
+    "description": "Audit table column: when it happened, in the institution's time zone."
+  },
+  "m06.audit.colActor": {
+    "message": "Actor",
+    "description": "Audit table column: who did it."
+  },
+  "m06.audit.colAction": {
+    "message": "Action",
+    "description": "Audit table column: what was done (action code)."
+  },
+  "m06.audit.colTarget": {
+    "message": "Target",
+    "description": "Audit table column: which record it changed."
+  },
+  "m06.audit.colDevice": {
+    "message": "Device",
+    "description": "Audit table column: device the action came from."
+  },
+  "m06.audit.filterAction": {
+    "message": "Action",
+    "description": "Filter field: exact action code."
+  },
+  "m06.audit.actionPlaceholder": {
+    "message": "e.g. m02.user.invited",
+    "description": "Placeholder of the action filter showing an example action code."
+  },
+  "m06.audit.filterActor": {
+    "message": "Actor",
+    "description": "Filter field: which user did it."
+  },
+  "m06.audit.anyone": {
+    "message": "Anyone",
+    "description": "Actor filter option: any user."
+  },
+  "m06.audit.filterFrom": {
+    "message": "From",
+    "description": "Filter field: first day to include."
+  },
+  "m06.audit.filterTo": {
+    "message": "To",
+    "description": "Filter field: last day to include."
+  },
+  "m06.audit.system": {
+    "message": "System",
+    "description": "Actor shown for automatic system events."
+  },
+  "m06.audit.providerStaff": {
+    "message": "Provider staff",
+    "description": "Actor shown for provider staff acting under an approved access grant."
+  },
+  "m06.audit.grant": {
+    "message": "Access grant {grant}",
+    "description": "Badge on audit rows done under a provider access grant, with the grant id."
+  },
+  "m06.audit.grantNotice": {
+    "message": "Done by provider staff under access grant {grant}.",
+    "description": "Notice in the audit detail for provider-grant events."
+  },
+  "m06.audit.changedFields": {
+    "message": "Changed fields",
+    "description": "Heading of the list of changed field names in the audit detail."
+  },
+  "m06.audit.namesOnly": {
+    "message": "Only field names are recorded, never the values.",
+    "description": "Explains that the audit log keeps field names but not values."
+  },
+  "m06.audit.noChanges": {
+    "message": "No fields changed.",
+    "description": "Shown when an audit event changed no fields."
+  },
+  "m06.audit.sensitive": {
+    "message": "Sensitive",
+    "description": "Badge on a changed field that holds restricted personal data."
+  },
+  "m06.audit.empty": {
+    "message": "No audit events match.",
+    "description": "Empty state of the audit table."
+  },
+  "m06.chain.check": {
+    "message": "Check this page",
+    "description": "Button: verify that the hash links of the events on this page are unbroken."
+  },
+  "m06.chain.filtered": {
+    "message": "Clear the filters to check the chain.",
+    "description": "Hint when the chain check is disabled because filters are on."
+  },
+  "m06.chain.intact": {
+    "message": "Page check: the {count, plural, one {# event is} other {# events are}} linked and intact.",
+    "description": "Result of the page chain check when every link is intact."
+  },
+  "m06.chain.broken": {
+    "message": "Page check: the chain is broken at row {row}.",
+    "description": "Result of the page chain check when a link does not match."
+  },
+  "m06.consents.caption": {
+    "message": "Consent records",
+    "description": "Accessible caption of the consents table."
+  },
+  "m06.consents.colPerson": {
+    "message": "Person",
+    "description": "Consents table column: whose consent it is."
+  },
+  "m06.consents.colPurpose": {
+    "message": "Purpose",
+    "description": "Consents table column: what the consent is for."
+  },
+  "m06.consents.colStatus": {
+    "message": "Status",
+    "description": "Consents table column: granted, withdrawn or pending."
+  },
+  "m06.consents.colGivenBy": {
+    "message": "Given by",
+    "description": "Consents table column: who gave it (a guardian for children)."
+  },
+  "m06.consents.colMethod": {
+    "message": "Method",
+    "description": "Consents table column: how it was given."
+  },
+  "m06.consents.colRecorded": {
+    "message": "Recorded",
+    "description": "Consents table column: when it was recorded (and withdrawn)."
+  },
+  "m06.consents.self": {
+    "message": "The person",
+    "description": "Shown when a person gave consent for themselves."
+  },
+  "m06.consents.filterPurpose": {
+    "message": "Purpose",
+    "description": "Filter field: consent purpose."
+  },
+  "m06.consents.allPurposes": {
+    "message": "All purposes",
+    "description": "Purpose filter option: show every purpose."
+  },
+  "m06.consents.filterStatus": {
+    "message": "Status",
+    "description": "Filter field: consent status."
+  },
+  "m06.consents.allStatuses": {
+    "message": "All statuses",
+    "description": "Status filter option: show every status."
+  },
+  "m06.consents.empty": {
+    "message": "No consent records match.",
+    "description": "Empty state of the consents table."
+  },
+  "m06.purpose.aiFeatures": {
+    "message": "AI features",
+    "description": "Consent purpose: use of AI features."
+  },
+  "m06.purpose.mediaSharing": {
+    "message": "Photos and media",
+    "description": "Consent purpose: sharing photos and media."
+  },
+  "m06.purpose.marketing": {
+    "message": "Marketing",
+    "description": "Consent purpose: marketing messages."
+  },
+  "m06.purpose.dataProcessing": {
+    "message": "Data processing",
+    "description": "Consent purpose: processing personal data."
+  },
+  "m06.consentStatus.granted": {
+    "message": "Granted",
+    "description": "Consent status: given."
+  },
+  "m06.consentStatus.withdrawn": {
+    "message": "Withdrawn",
+    "description": "Consent status: withdrawn."
+  },
+  "m06.consentStatus.pending": {
+    "message": "Pending",
+    "description": "Consent status: asked, not answered yet."
+  },
+  "m06.method.form": {
+    "message": "Form",
+    "description": "Consent method: a form."
+  },
+  "m06.method.digitalSignature": {
+    "message": "Digital signature",
+    "description": "Consent method: a digital signature."
+  },
+  "m06.method.inApp": {
+    "message": "In the app",
+    "description": "Consent method: given in the app."
+  },
+  "m06.method.paper": {
+    "message": "Paper",
+    "description": "Consent method: on paper."
+  },
+  "m06.requests.caption": {
+    "message": "Data requests",
+    "description": "Accessible caption of the data requests table."
+  },
+  "m06.requests.colPerson": {
+    "message": "Person",
+    "description": "Data requests column: whose data it is."
+  },
+  "m06.requests.colKind": {
+    "message": "Request",
+    "description": "Data requests column: kind of request."
+  },
+  "m06.requests.colStatus": {
+    "message": "Status",
+    "description": "Data requests column: where the request stands."
+  },
+  "m06.requests.colDue": {
+    "message": "Due",
+    "description": "Data requests column: legal deadline."
+  },
+  "m06.requests.received": {
+    "message": "Received",
+    "description": "Detail label: when the request arrived."
+  },
+  "m06.requests.overdue": {
+    "message": "Overdue",
+    "description": "Badge: an open request is past its deadline."
+  },
+  "m06.requests.start": {
+    "message": "Start work",
+    "description": "Button: move a received request to in progress."
+  },
+  "m06.requests.complete": {
+    "message": "Mark completed",
+    "description": "Button: complete a request in progress."
+  },
+  "m06.requests.reject": {
+    "message": "Reject",
+    "description": "Button: start rejecting a request (asks for a reason)."
+  },
+  "m06.requests.reason": {
+    "message": "Reason for rejection",
+    "description": "Text field: why the request is rejected (recorded for the requester)."
+  },
+  "m06.requests.confirmReject": {
+    "message": "Reject request",
+    "description": "Button: confirm the rejection with the reason given."
+  },
+  "m06.requests.closed": {
+    "message": "This request is closed.",
+    "description": "Shown in the detail of a completed or rejected request."
+  },
+  "m06.requests.updated": {
+    "message": "Request updated.",
+    "description": "Toast after a request moves to its next step."
+  },
+  "m06.requests.notAllowed": {
+    "message": "That step is not allowed for this request.",
+    "description": "Toast when the server refuses a status change."
+  },
+  "m06.requests.empty": {
+    "message": "No data requests.",
+    "description": "Empty state of the data requests table."
+  },
+  "m06.dsrKind.access": {
+    "message": "Access to data",
+    "description": "Data request kind: a copy of their data."
+  },
+  "m06.dsrKind.correct": {
+    "message": "Correction",
+    "description": "Data request kind: correct their data."
+  },
+  "m06.dsrKind.delete": {
+    "message": "Deletion",
+    "description": "Data request kind: delete their data."
+  },
+  "m06.dsrKind.export": {
+    "message": "Export",
+    "description": "Data request kind: export their data."
+  },
+  "m06.dsrStatus.received": {
+    "message": "Received",
+    "description": "Data request status: received, not started."
+  },
+  "m06.dsrStatus.inProgress": {
+    "message": "In progress",
+    "description": "Data request status: being worked on."
+  },
+  "m06.dsrStatus.completed": {
+    "message": "Completed",
+    "description": "Data request status: done."
+  },
+  "m06.dsrStatus.rejected": {
+    "message": "Rejected",
+    "description": "Data request status: rejected."
+  },
+  "m06.compliance.dsrDueDays": {
+    "message": "Deadline for data requests",
+    "description": "Compliance pack row: days to answer a data request."
+  },
+  "m06.compliance.minorAge": {
+    "message": "Minor until age",
+    "description": "Compliance pack row: age under which a person counts as a minor."
+  },
+  "m06.compliance.guardianAi": {
+    "message": "Guardian consent for AI",
+    "description": "Compliance pack row: whether guardians must consent to AI features for minors."
+  },
+  "m06.compliance.guardianMedia": {
+    "message": "Guardian consent for photos and media",
+    "description": "Compliance pack row: whether guardians must consent to media sharing for minors."
+  },
+  "m06.compliance.retention": {
+    "message": "Default retention",
+    "description": "Compliance pack row: how long records are kept by default."
+  },
+  "m06.compliance.days": {
+    "message": "{count, plural, one {{days} day} other {{days} days}}",
+    "description": "A number of days; {days} is the formatted number."
+  },
+  "m06.compliance.required": {
+    "message": "Required",
+    "description": "Badge: this consent is required."
+  },
+  "m06.compliance.notRequired": {
+    "message": "Not required",
+    "description": "Badge: this consent is not required."
+  },
+  "m06.compliance.empty": {
+    "message": "No compliance pack applies yet.",
+    "description": "Empty state when no compliance pack is set."
+  },
+  "m06.pack.gdpr": {
+    "message": "GDPR (EU)",
+    "description": "Compliance pack name: EU General Data Protection Regulation."
+  },
+  "m06.pack.ukGdpr": {
+    "message": "UK GDPR",
+    "description": "Compliance pack name: UK data protection law."
+  },
+  "m06.pack.ferpa": {
+    "message": "FERPA (US)",
+    "description": "Compliance pack name: US student records privacy law."
+  },
+  "m06.pack.coppa": {
+    "message": "COPPA (US)",
+    "description": "Compliance pack name: US children's online privacy law."
+  },
+  "m06.pack.dpdp": {
+    "message": "DPDP Act (India)",
+    "description": "Compliance pack name: India's Digital Personal Data Protection Act."
+  },
+  "m06.pack.lgpd": {
+    "message": "LGPD (Brazil)",
+    "description": "Compliance pack name: Brazil's data protection law."
+  },
+  "m06.pack.popia": {
+    "message": "POPIA (South Africa)",
+    "description": "Compliance pack name: South Africa's data protection law."
+  },
+  "m06.pack.pdpa": {
+    "message": "PDPA (Singapore)",
+    "description": "Compliance pack name: Singapore's data protection law."
+  },
+  "m06.pack.euAiAct": {
+    "message": "EU AI Act",
+    "description": "Compliance pack name: EU Artificial Intelligence Act."
+  },
+  "m06.permission.auditRead": {
+    "message": "See the audit log and compliance",
+    "description": "Permission description: read the audit log and compliance packs."
+  },
+  "m06.permission.consentManage": {
+    "message": "Manage consents",
+    "description": "Permission description: see and manage consent records."
+  },
+  "m06.permission.requestManage": {
+    "message": "Handle data requests",
+    "description": "Permission description: handle data subject requests (sensitive)."
   }
 }

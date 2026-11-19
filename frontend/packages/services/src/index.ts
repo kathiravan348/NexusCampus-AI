@@ -30,9 +30,11 @@ export {
 export {
   NexusQueryProvider,
   PERSIST_CACHE_KEY,
+  NO_PERSIST,
   PERSIST_MAX_AGE_MS,
   createNexusQueryClient,
   createOfflinePersister,
+  shouldPersistQuery,
   shouldRetry,
   useLastSynced,
   useScopedQuery,
@@ -55,3 +57,4 @@ export * from "./modules/m02";
 export * from "./modules/m03";
 export * from "./modules/m04";
 export * from "./modules/m05";
+export * from "./modules/m06";

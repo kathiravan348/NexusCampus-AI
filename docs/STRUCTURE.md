@@ -55,7 +55,8 @@
 │     │                 modules/m01/ (SetupPage, ProfileTab, StructureTab, CampusFormModal, LocaleTab, CalendarTab, NEX-013),
 │     │                 modules/m02/ (AccessPage, UsersTab, InviteUserModal, UserDetail, RolesTab, RoleEditorModal, SessionsTab, SsoTab, NEX-016),
 │     │                 modules/m03/ (ThemeStudioPage, ColorTokens, TypographyPanel, AssetsPanel, ThemePreview, ContrastPanel, NEX-014),
-│     │                 modules/m04/ (TextStudioPage, KeyEditor, HistoryPanel, ImportExport, NEX-015)
+│     │                 modules/m04/ (TextStudioPage, KeyEditor, HistoryPanel, ImportExport, NEX-015),
+│     │                 modules/m06/ (PrivacyPage, AuditTab, ChainCheck, ConsentsTab, DataRequestsTab, ComplianceTab, NEX-017)
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)
 ├─ backend/             product backend (planned, Stage 1 build step)
 ├─ control/             Nexus Control backend (planned, Stage 2)

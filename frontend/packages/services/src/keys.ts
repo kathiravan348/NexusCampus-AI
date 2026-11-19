@@ -49,6 +49,15 @@ export const queryKeys = {
     revisions: (s: KeyScope, key: string | null, locale: string | null = null) =>
       scoped(s, "m04", "revisions", key, locale),
   },
+  m06: {
+    /** Prefix of every M06 query below; invalidated after each M06 write. */
+    all: (s: KeyScope) => scoped(s, "m06"),
+    audit: (s: KeyScope, filters: unknown, page: number, pageSize: number) =>
+      scoped(s, "m06", "audit", filters, page, pageSize),
+    consents: (s: KeyScope) => scoped(s, "m06", "consents"),
+    dataRequests: (s: KeyScope) => scoped(s, "m06", "data-requests"),
+    compliancePacks: (s: KeyScope) => scoped(s, "m06", "compliance-packs"),
+  },
   m05: {
     plan: (s: KeyScope) => scoped(s, "m05", "plan"),
     entitlements: (s: KeyScope) => scoped(s, "m05", "entitlements"),
