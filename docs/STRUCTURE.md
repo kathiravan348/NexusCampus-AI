@@ -41,6 +41,10 @@
 │  │  │  │                 maskPerson), scenarios (empty/error/slow/offline), browser (worker), node (server)
 │  │  │  └─ src/handlers/ route (get/list/ok helpers), m01–m07, m10, m11, m83 read handlers, index
 │  │  ├─ services/      data layer, mock | real, offline-aware (NEX-011)
+│  │  │  ├─ src/          config (DATA_MODE, API_BASE), client (ApiClient, ApiRequestError), session
+│  │  │  │                 (SessionProvider, mock scenario), query (NexusQueryProvider, persisted L1 cache,
+│  │  │  │                 useLastSynced), mutation (useOutboxMutation, L2), keys (queryKeys), test-utils
+│  │  │  └─ src/modules/  m01–m05 read hooks + response schemas (screen tasks add mXX.ts)
 │  │  └─ ui-control/    Nexus Control components (planned, Stage 2)
 │  └─ apps/
 │     ├─ campus/        the PWA for every institution role

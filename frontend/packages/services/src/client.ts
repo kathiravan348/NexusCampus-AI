@@ -1,0 +1,158 @@
+import { ApiErrorSchema, type ApiError } from "@nexus/contracts";
+import { API_BASE, type DataMode } from "./config";
+
+/** Any schema with `parse` — a Zod schema from `@nexus/contracts` or a response schema built from them. */
+export interface Parser<T> {
+  parse(value: unknown): T;
+}
+
+export type ApiErrorBody = ApiError["error"];
+
+/** Every failed call: `status` 0 + `offline` = the network was unreachable; else the HTTP status. */
+export class ApiRequestError extends Error {
+  readonly status: number;
+  readonly error: ApiErrorBody;
+  readonly offline: boolean;
+
+  constructor(status: number, error: ApiErrorBody, offline = false) {
+    super(`${error.code} (${status}): ${error.message}`);
+    this.name = "ApiRequestError";
+    this.status = status;
+    this.error = error;
+    this.offline = offline;
+  }
+}
+
+export interface ClientIdentity {
+  readonly tenantId: string;
+  readonly userId: string;
+}
+
+export interface ApiClientOptions {
+  readonly mode: DataMode;
+  readonly identity: () => ClientIdentity | null;
+  /** Mock mode only: the `X-Nexus-Scenario` to send (empty / error / slow / offline). */
+  readonly scenario?: () => string | null;
+  readonly baseUrl?: string;
+  readonly fetch?: typeof fetch;
+}
+
+export type QueryParams = Readonly<Record<string, string | number | boolean | null | undefined>>;
+
+export interface RequestOptions {
+  readonly signal?: AbortSignal;
+  readonly headers?: Readonly<Record<string, string>>;
+}
+
+export type WriteMethod = "POST" | "PUT" | "PATCH" | "DELETE";
+
+export const HEADER = {
+  tenant: "X-Nexus-Tenant",
+  user: "X-Nexus-User",
+  scenario: "X-Nexus-Scenario",
+  idempotencyKey: "Idempotency-Key",
+} as const;
+
+function origin(): string {
+  const location = (globalThis as { location?: { origin?: string } }).location;
+  return location?.origin && location.origin !== "null" ? location.origin : "http://localhost";
+}
+
+async function readJson(response: Response): Promise<unknown> {
+  const text = await response.text();
+  return text === "" ? undefined : (JSON.parse(text) as unknown);
+}
+
+/** The one HTTP client: adds tenant/user/scenario headers and validates every body (D15). */
+export class ApiClient {
+  private readonly options: ApiClientOptions;
+
+  constructor(options: ApiClientOptions) {
+    this.options = options;
+  }
+
+  get<T>(path: string, schema: Parser<T>, query?: QueryParams, init?: RequestOptions): Promise<T> {
+    return this.request("GET", path, undefined, schema, query, init);
+  }
+
+  send<T>(
+    method: WriteMethod,
+    path: string,
+    body: unknown,
+    schema: Parser<T>,
+    init?: RequestOptions,
+  ): Promise<T> {
+    return this.request(method, path, body, schema, undefined, init);
+  }
+
+  private url(path: string, query?: QueryParams): string {
+    const url = new URL(`${this.options.baseUrl ?? API_BASE}${path}`, origin());
+    for (const [key, value] of Object.entries(query ?? {})) {
+      if (value !== undefined && value !== null) url.searchParams.set(key, String(value));
+    }
+    return url.toString();
+  }
+
+  private headers(hasBody: boolean, extra?: Readonly<Record<string, string>>): Headers {
+    const headers = new Headers({ Accept: "application/json", ...extra });
+    if (hasBody) headers.set("Content-Type", "application/json");
+    const identity = this.options.identity();
+    if (identity) headers.set(HEADER.tenant, identity.tenantId);
+    if (this.options.mode === "mock") {
+      if (identity) headers.set(HEADER.user, identity.userId);
+      const scenario = this.options.scenario?.() ?? null;
+      if (scenario) headers.set(HEADER.scenario, scenario);
+    }
+    return headers;
+  }
+
+  private async request<T>(
+    method: "GET" | WriteMethod,
+    path: string,
+    body: unknown,
+    schema: Parser<T>,
+    query?: QueryParams,
+    init?: RequestOptions,
+  ): Promise<T> {
+    const doFetch = this.options.fetch ?? ((...args: Parameters<typeof fetch>) => fetch(...args));
+    let response: Response;
+    try {
+      response = await doFetch(this.url(path, query), {
+        method,
+        headers: this.headers(body !== undefined, init?.headers),
+        ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
+        ...(init?.signal ? { signal: init.signal } : {}),
+      });
+    } catch (cause) {
+      if (cause instanceof DOMException && cause.name === "AbortError") throw cause;
+      throw new ApiRequestError(0, { code: "internal", message: "Network unreachable" }, true);
+    }
+
+    let json: unknown;
+    try {
+      json = await readJson(response);
+    } catch {
+      json = undefined;
+    }
+
+    if (!response.ok) {
+      const parsed = ApiErrorSchema.safeParse(json);
+      throw new ApiRequestError(
+        response.status,
+        parsed.success
+          ? parsed.data.error
+          : { code: "internal", message: `HTTP ${response.status}` },
+      );
+    }
+
+    try {
+      return schema.parse(json);
+    } catch {
+      // The server broke its contract: never hand unvalidated data to a screen.
+      throw new ApiRequestError(response.status, {
+        code: "internal",
+        message: "Response does not match its contract",
+      });
+    }
+  }
+}
