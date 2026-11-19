@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "campus",
+      "runtimeExecutable": "fnm",
+      "runtimeArgs": ["exec", "--using=24", "--", "pnpm", "--dir", "frontend", "dev"],
+      "port": 3100
+    }
+  ]
+}

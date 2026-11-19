@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "skipLibCheck": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@nexus/brand": ["../brand.config.ts"],
+      "@nexus/ui-core": ["packages/ui-core/src/index.ts"],
+      "@nexus/ui-edu": ["packages/ui-edu/src/index.ts"],
+      "@nexus/i18n": ["packages/i18n/src/index.ts"],
+      "@nexus/offline": ["packages/offline/src/index.ts"],
+      "@nexus/contracts": ["packages/contracts/src/index.ts"],
+      "@nexus/services": ["packages/services/src/index.ts"],
+      "@nexus/mocks": ["packages/mocks/src/index.ts"]
+    }
+  }
+}
