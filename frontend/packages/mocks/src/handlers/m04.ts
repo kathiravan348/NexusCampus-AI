@@ -1,14 +1,14 @@
 import { TextOverrideRevisionSchema, TextOverrideSchema, pageSchema } from "@nexus/contracts";
 import { ofTenant } from "../context";
 import { mockDb } from "../db";
-import { get, list } from "./route";
+import { get, list, param } from "./route";
 
 const M = "M04";
 
 export const m04Handlers = [
   /** Every user needs the overrides to render texts; `?locale=` keeps one locale. */
   get("/texts/overrides", { module: M }, (ctx) => {
-    const locale = ctx.url.searchParams.get("locale");
+    const locale = param(ctx.url, "locale");
     const overrides = ofTenant(mockDb.textOverrides, ctx.viewer.tenantId).filter(
       (o) => locale === null || o.locale === locale,
     );
@@ -17,7 +17,7 @@ export const m04Handlers = [
 
   /** History of this tenant's overrides; `?key=` keeps one message key. */
   get("/texts/revisions", { module: M, permission: "m04.text.manage" }, (ctx) => {
-    const key = ctx.url.searchParams.get("key");
+    const key = param(ctx.url, "key");
     const ids = new Set(
       ofTenant(mockDb.textOverrides, ctx.viewer.tenantId)
         .filter((o) => key === null || o.key === key)

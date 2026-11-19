@@ -8,14 +8,14 @@ import {
 } from "@nexus/contracts";
 import { ApiFailure, familyOf, ofTenant } from "../context";
 import { mockDb } from "../db";
-import { get, list } from "./route";
+import { get, list, param } from "./route";
 
 const M = "M06";
 const AUDIT_READ = "m06.audit.read";
 
 /** `?from=` / `?to=` as UTC instants; 400 `invalid_request` when not. */
 function instant(url: URL, key: "from" | "to"): number | null {
-  const value = url.searchParams.get(key);
+  const value = param(url, key);
   if (value === null) return null;
   const parsed = UtcDateTimeSchema.safeParse(value);
   if (!parsed.success) {
@@ -29,15 +29,17 @@ function instant(url: URL, key: "from" | "to"): number | null {
 export const m06Handlers = [
   /** Filters: `action`, `actorId`, `grantId` (exact) and `from` / `to` (inclusive, on `occurredAt`). */
   get("/audit-events", { module: M, permission: AUDIT_READ }, (ctx) => {
-    const q = ctx.url.searchParams;
+    const [action, actorId, grantId] = ["action", "actorId", "grantId"].map((k) =>
+      param(ctx.url, k),
+    );
     const from = instant(ctx.url, "from");
     const to = instant(ctx.url, "to");
     const events = ofTenant(mockDb.auditEvents, ctx.viewer.tenantId).filter((e) => {
       const at = Date.parse(e.occurredAt);
       return (
-        (q.get("action") === null || e.action === q.get("action")) &&
-        (q.get("actorId") === null || e.actorId === q.get("actorId")) &&
-        (q.get("grantId") === null || e.grantId === q.get("grantId")) &&
+        (action === null || e.action === action) &&
+        (actorId === null || e.actorId === actorId) &&
+        (grantId === null || e.grantId === grantId) &&
         (from === null || at >= from) &&
         (to === null || at <= to)
       );

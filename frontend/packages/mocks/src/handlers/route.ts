@@ -95,6 +95,12 @@ export function list<T>(ctx: RouteContext, items: readonly T[], schema: Parser<P
   return ok(schema, paginate(ctx.scenario === "empty" ? [] : items, ctx.url));
 }
 
+/** A query value, or `null` when missing or blank (a blank filter means "no filter"). */
+export function param(url: URL, key: string): string | null {
+  const value = url.searchParams.get(key)?.trim();
+  return value ? value : null;
+}
+
 /** The item or 404 `not_found` (also for another tenant's id). */
 export function found<T>(item: T | undefined): T {
   if (item === undefined) throw new ApiFailure("not_found");

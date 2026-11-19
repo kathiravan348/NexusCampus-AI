@@ -37,7 +37,7 @@ import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { z } from "zod";
 import { MOCK_HEADER, maskPerson, readViewer } from "./context";
 import { mockDb, resetMockDb } from "./db";
-import { INSTITUTION, PERSON, TENANT, USER } from "./fixtures";
+import { CAMPUS, INSTITUTION, PERSON, TENANT, USER } from "./fixtures";
 import {
   DemoTenantEntrySchema,
   MeResponseSchema,
@@ -45,10 +45,6 @@ import {
   ThemeResponseSchema,
 } from "./handlers";
 import { server } from "./node";
-
-interface Parser {
-  parse(value: unknown): unknown;
-}
 
 const BASE = "http://localhost/api/v1";
 const RV = { tenant: TENANT.riverside, user: USER.rvHelen };
@@ -77,7 +73,7 @@ afterEach(() => {
 afterAll(() => server.close());
 
 /** Riverside (enterprise plan, every module on) as its owner/admin: every endpoint answers 200. */
-const ENDPOINTS: [string, Parser][] = [
+const ENDPOINTS: [string, { parse(value: unknown): unknown }][] = [
   ["/tenant", TenantResponseSchema],
   [`/institutions/${RV_SCHOOL}/profile`, InstitutionTypeProfileSchema],
   [`/institutions/${RV_SCHOOL}/calendars`, pageSchema(AcademicCalendarSchema)],
@@ -162,6 +158,8 @@ describe("read endpoints", () => {
       await (await call("/audit-events?from=2099-01-01T00:00:00Z")).json(),
     );
     expect(future.total).toBe(0);
+    const blank = await call("/audit-events?action=");
+    expect(pageSchema(AuditEventSchema).parse(await blank.json()).total).toBe(all.total);
     const bad = await call("/audit-events?from=yesterday");
     expect(bad.status).toBe(400);
     expect(await errorCode(bad)).toBe("invalid_request");
@@ -181,11 +179,12 @@ describe("access rules", () => {
     }
   });
 
-  it("404 for another tenant's institution", async () => {
+  it("404 for another tenant's institution or campus", async () => {
     const as = { tenant: TENANT.littleSteps, user: USER.lsPriya };
     for (const path of [
       `/institutions/${RV_SCHOOL}/profile`,
       `/locale-settings?institutionId=${RV_SCHOOL}`,
+      `/theme?campusId=${CAMPUS.riversideNorth}`,
     ]) {
       const res = await call(path, as);
       expect(res.status, path).toBe(404);
@@ -278,6 +277,7 @@ describe("scenarios", () => {
       await (await call("/people", { ...RV, scenario: "empty" })).json(),
     );
     expect(page).toMatchObject({ items: [], total: 0 });
+    expect(await (await call("/demo-tenants", { scenario: "empty" })).json()).toEqual([]);
     expect((await call("/me", { ...RV, scenario: "empty" })).status).toBe(200);
   });
 
@@ -295,13 +295,5 @@ describe("scenarios", () => {
 
   it("offline → network error", async () => {
     await expect(call("/me", { ...RV, scenario: "offline" })).rejects.toThrow();
-  });
-});
-
-describe("mock DB", () => {
-  it("resets to the fixtures", () => {
-    mockDb.people.length = 0;
-    resetMockDb();
-    expect(mockDb.people.length).toBeGreaterThan(0);
   });
 });

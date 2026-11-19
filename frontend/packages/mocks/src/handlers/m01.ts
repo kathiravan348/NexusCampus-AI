@@ -14,7 +14,7 @@ import {
 import { z } from "zod";
 import { ofTenant } from "../context";
 import { mockDb } from "../db";
-import { found, get, getPublic, list, ok, type RouteContext } from "./route";
+import { found, get, getPublic, list, ok, param, type RouteContext } from "./route";
 
 const M = { module: "M01" } as const;
 
@@ -43,10 +43,10 @@ function institutionOf(ctx: RouteContext, id: string | null) {
 }
 
 export const m01Handlers = [
-  getPublic("/demo-tenants", () =>
+  getPublic("/demo-tenants", ({ scenario }) =>
     ok(
       z.array(DemoTenantEntrySchema),
-      mockDb.demoTenants.map((t) => ({
+      (scenario === "empty" ? [] : mockDb.demoTenants).map((t) => ({
         tenantId: t.tenantId,
         name: t.name,
         type: t.type,
@@ -85,6 +85,6 @@ export const m01Handlers = [
   }),
 
   get("/locale-settings", M, (ctx) =>
-    ok(LocaleSettingsSchema, institutionOf(ctx, ctx.url.searchParams.get("institutionId")).locale),
+    ok(LocaleSettingsSchema, institutionOf(ctx, param(ctx.url, "institutionId")).locale),
   ),
 ];

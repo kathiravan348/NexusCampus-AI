@@ -13,7 +13,7 @@ import {
 import { z } from "zod";
 import { ofTenant } from "../context";
 import { mockDb } from "../db";
-import { get, list, ok } from "./route";
+import { found, get, list, ok, param } from "./route";
 
 const M = { module: "M03" } as const;
 
@@ -85,8 +85,11 @@ export const m03Handlers = [
   /** `?campusId=` adds that campus's layer and its institution's; without it, all institution layers. */
   get("/theme", M, (ctx) => {
     const tenantId = ctx.viewer.tenantId;
-    const campusId = ctx.url.searchParams.get("campusId");
-    const campus = ofTenant(mockDb.campuses, tenantId).find((c) => c.id === campusId);
+    const campusId = param(ctx.url, "campusId");
+    const campus =
+      campusId === null
+        ? undefined
+        : found(ofTenant(mockDb.campuses, tenantId).find((c) => c.id === campusId));
     const layers = ofTenant(mockDb.themes, tenantId)
       .filter((t) => {
         if (t.scope.kind === "campus")
