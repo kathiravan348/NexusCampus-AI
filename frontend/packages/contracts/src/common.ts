@@ -94,3 +94,17 @@ export type DisplayCalendar = z.infer<typeof DisplayCalendarSchema>;
 /** Non-empty display name (institution, campus, period). */
 export const NameSchema = z.string().trim().min(1).max(200);
 export type Name = z.infer<typeof NameSchema>;
+
+/** Email address. Stored as entered; the server normalises before matching. */
+export const EmailSchema = z.email().max(254);
+export type Email = z.infer<typeof EmailSchema>;
+
+/** Phone number in E.164 (`+919876543210`): `+`, country code, 7–15 digits in total. */
+export const PhoneE164Schema = z.string().regex(/^\+[1-9]\d{6,14}$/, {
+  message: "Must be an E.164 phone number, e.g. +919876543210",
+});
+export type PhoneE164 = z.infer<typeof PhoneE164Schema>;
+
+/** Retention lifecycle of a record (D25, G-6): active → archived (immutable) → crypto-shredded. */
+export const RetentionStateSchema = z.enum(["active", "archived", "crypto_shredded"]);
+export type RetentionState = z.infer<typeof RetentionStateSchema>;

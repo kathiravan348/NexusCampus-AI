@@ -3,13 +3,16 @@ import {
   CountryCodeSchema,
   CurrencyCodeSchema,
   DisplayCalendarSchema,
+  EmailSchema,
   IdSchema,
   InstitutionTypeSchema,
   IsoDateSchema,
   LocaleSchema,
   MinorUnitsSchema,
   ModuleIdSchema,
+  PhoneE164Schema,
   RegionSchema,
+  RetentionStateSchema,
   TimeZoneSchema,
   UtcDateTimeSchema,
 } from "./common";
@@ -75,5 +78,20 @@ describe("primitives", () => {
     bad(ModuleIdSchema, ["M00", "M1", "m07", "X01", "M100"]);
     ok(DisplayCalendarSchema, ["gregory", "islamic-umalqura", "hebrew", "indian"]);
     bad(DisplayCalendarSchema, ["islamic"]);
+  });
+
+  it("Email, E.164 phone and retention state", () => {
+    ok(EmailSchema, ["asha.rao@example.edu", "a+b@school.example"]);
+    bad(EmailSchema, ["asha", "asha@", "@example.edu", ""]);
+    ok(PhoneE164Schema, ["+919876543210", "+971501234567", "+1234567"]);
+    bad(PhoneE164Schema, [
+      "9876543210",
+      "+0919876543210",
+      "+91 98765 43210",
+      "+123456",
+      "+1234567890123456",
+    ]);
+    ok(RetentionStateSchema, ["active", "archived", "crypto_shredded"]);
+    bad(RetentionStateSchema, ["deleted", "anonymised"]);
   });
 });

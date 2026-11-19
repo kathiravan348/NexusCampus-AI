@@ -4,3 +4,6 @@ export * from "./page";
 export * from "./event";
 export * from "./tenancy";
 export * from "./calendar";
+export * from "./person";
+export * from "./user";
+export * from "./rbac";

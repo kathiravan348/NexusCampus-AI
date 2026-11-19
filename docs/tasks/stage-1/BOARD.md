@@ -36,4 +36,4 @@
 | NEX-025 | Forms, fields & workflow builder (M08) — moved to Stage 3 (D27); re-plan there with a new ID | — | withdrawn | — | — |
 | NEX-026 | Import & migration toolkit (M09) — moved to Stage 3 (D27); re-plan there with a new ID | — | withdrawn | — | — |
 | NEX-027 | Contracts (ops): NotificationTemplate, NotificationDelivery, DeviceSync, SyncConflict, AiSettings, AiCredit, AssistAnswer, KeyStatus, AccessRequest, AccessGrant, BreakGlassNotice | B | draft | — | 008 |
-| NEX-028 | Contracts (identity): Person, RoleProfile, User, Session, SsoProvider, Role, Permission (split from NEX-008) | B | planned | — | 008 |
+| NEX-028 | Contracts (identity): Person, RoleProfile, User, Session, SsoProvider, Role, Permission (split from NEX-008) | B | ready-for-review | Claude | 008 |
