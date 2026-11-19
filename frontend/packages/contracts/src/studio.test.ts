@@ -79,6 +79,9 @@ describe("primitives", () => {
     rejects(AssetUrlSchema, [
       "http://example.edu/logo.png",
       "//evil.test/x.png",
+      "/\\evil.test/x.png",
+      "/assets\\logo.svg",
+      "https://cdn.example.edu\\@evil.test/x.png",
       "javascript:alert(1)",
       "logo.png",
       "",

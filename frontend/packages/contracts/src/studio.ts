@@ -38,11 +38,14 @@ const RadiusTokenNameSchema = z.string().regex(/^radius-[a-z0-9]+(-[a-z0-9]+)*$/
   message: "Must be a radius token name, e.g. radius-md",
 });
 
-/** Asset or font file: an `https://` URL or a same-origin path starting with `/`. */
+/**
+ * Asset or font file: an `https://` URL or a same-origin path starting with `/`. Backslashes are refused
+ * anywhere: browsers read `/\host/x` as `//host/x`, which would load the file from another origin.
+ */
 export const AssetUrlSchema = z
   .string()
   .max(2048)
-  .refine((v) => /^\/(?!\/)\S*$/.test(v) || /^https:\/\/\S+$/.test(v), {
+  .refine((v) => /^\/(?![/\\])[^\s\\]*$/.test(v) || /^https:\/\/[^\s\\]+$/.test(v), {
     message: "Must be an https:// URL or a path starting with /",
   });
 export type AssetUrl = z.infer<typeof AssetUrlSchema>;
