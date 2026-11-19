@@ -17,23 +17,26 @@
 | NEX-006 | ui-core port from NOVA (2/2): DataTable, AppShell, NavItem, Modal, Tabs, Toast, EmptyState, DemoBanner, SyncStatus | A | done | Gemini | 005 |
 | NEX-007 | Offline package: Dexie store, outbox with idempotency keys, sync status hook, encryption, wipe | B | done | Gemini | 001 |
 | NEX-008 | Contracts (core): primitives (Id, dates, Locale, TimeZone, Currency, Region, InstitutionType, ModuleId), ApiError, Page, DomainEvent, LocaleSettings, Group, Institution, Campus, InstitutionTypeProfile, AcademicCalendar | B | done | Gemini | 001 |
-| NEX-009 | Contracts (studio & compliance): Theme, Font, TextOverride, TerminologyPack, Plan, Entitlement, AuditEvent, Consent, DataSubjectRequest, CompliancePack | B | draft | — | 008 |
-| NEX-010 | Mocks: 5 demo tenants (EY, K12 under 2-campus GRP, HE, TP, SK; one Arabic), MSW handlers, empty/error/offline handlers, tests | B | draft | — | 009, 027, 028 |
-| NEX-011 | Services: DATA_MODE switch, Zod validation, Query hooks, persisted cache, outbox wiring | B | draft | — | 007, 010 |
-| NEX-012 | App shell: sign-in, persona + tenant switch, locale switch, entitlement menu, route guard, PWA install | C | draft | — | 006, 011 |
-| NEX-013 | Institution setup (M01): type profile, hierarchy, region, locale, time zone, currency, calendar | C | draft | — | 012 |
-| NEX-014 | Theme studio (M03): token editor, fonts, logo, live preview, contrast guard errors; derive or suggest `brand-primary-text`/`on-brand` from a new `brand-primary` (NEX-002 review) | C | draft | — | 012 |
-| NEX-015 | Text & language studio (M04): key search, per-locale overrides, in-context preview, import/export, history; validate each override with `isValidMessage` on save (NEX-003 review) | C | draft | — | 012 |
-| NEX-016 | Users, roles & permission matrix (M02): users list, invite, roles, scopes, SSO settings screen | C | draft | — | 012 |
-| NEX-017 | Audit, privacy & consent (M06): audit viewer, consent records, data requests | C | draft | — | 012 |
-| NEX-018 | Plans & usage (M05): modules on/off, AI credits, usage meters | C | draft | — | 012 |
-| NEX-019 | Sync centre (M10): devices, pending queue, conflicts, remote wipe | C | draft | — | 012 |
-| NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | draft | — | 018 |
-| NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | draft | — | 013–020, 023, 024 |
-| NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | draft | — | 021 |
-| NEX-023 | Data vault & access grants (M83): key status, provider access requests (approve / deny / revoke), active grants, break-glass notices, access history | C | draft | — | 012 |
-| NEX-024 | Notifications engine (M07, core): per-locale templates, channels, preferences, quiet hours, delivery log | C | draft | — | 012 |
+| NEX-009 | Contracts (studio & compliance): Theme, Font, TextOverride, TerminologyPack, Plan, Entitlement, UsageMeter, AuditEvent, Consent, DataSubjectRequest, CompliancePack | B | planned | — | 008 |
+| NEX-010 | Mocks (core fixtures): 5 demo tenants (EY, K12 under 2-campus GRP, HE, TP Arabic, SK) — tenancy, calendars, people, users, roles, themes, texts, plans | B | planned | — | 009, 028 |
+| NEX-011 | Services: DATA_MODE switch, Zod validation, Query hooks, persisted cache, outbox wiring | B | planned | — | 007, 029 |
+| NEX-012 | App shell: providers, demo sign-in, persona + tenant switch, locale switch, entitlement menu, route guard, module registry | C | planned | — | 006, 011 |
+| NEX-013 | Institution setup (M01): type profile, hierarchy, region, locale, time zone, currency, calendar | C | planned | — | 012 |
+| NEX-014 | Theme studio (M03): token editor, fonts, logo, live preview, contrast guard errors; derive or suggest `brand-primary-text`/`on-brand` from a new `brand-primary` (NEX-002 review) | C | planned | — | 012 |
+| NEX-015 | Text & language studio (M04): key search, per-locale overrides, in-context preview, import/export, history; validate each override with `isValidMessage` on save (NEX-003 review) | C | planned | — | 012 |
+| NEX-016 | Users, roles & permission matrix (M02): users list, invite, roles, scopes, SSO settings screen | C | planned | — | 012 |
+| NEX-017 | Audit, privacy & consent (M06): audit viewer, consent records, data requests | C | planned | — | 012 |
+| NEX-018 | Plans & usage (M05): modules on/off, AI credits, usage meters | C | planned | — | 012 |
+| NEX-019 | Sync centre (M10): devices, pending queue, conflicts, remote wipe | C | planned | — | 012 |
+| NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | planned | — | 018 |
+| NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030 |
+| NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | planned | — | 021 |
+| NEX-023 | Data vault & access grants (M83): key status, provider access requests (approve / deny / revoke), active grants, break-glass notices, access history | C | planned | — | 012 |
+| NEX-024 | Notifications engine (M07, core): per-locale templates, channels, preferences, quiet hours, delivery log | C | planned | — | 012 |
 | NEX-025 | Forms, fields & workflow builder (M08) — moved to Stage 3 (D27); re-plan there with a new ID | — | withdrawn | — | — |
 | NEX-026 | Import & migration toolkit (M09) — moved to Stage 3 (D27); re-plan there with a new ID | — | withdrawn | — | — |
-| NEX-027 | Contracts (ops): NotificationTemplate, NotificationDelivery, DeviceSync, SyncConflict, AiSettings, AiCredit, AssistAnswer, KeyStatus, AccessRequest, AccessGrant, BreakGlassNotice | B | draft | — | 008 |
+| NEX-027 | Contracts (ops): NotificationTemplate, NotificationDelivery, DeviceSync, SyncConflict, AiSettings, AiCredit, AssistAnswer, KeyStatus, AccessRequest, AccessGrant, BreakGlassNotice | B | planned | — | 008 |
 | NEX-028 | Contracts (identity): Person, RoleProfile, User, Session, SsoProvider, Role, Permission (split from NEX-008) | B | done | Claude | 008 |
+| NEX-029 | Mocks (MSW): in-memory mock DB, read handlers for every Stage 1 resource, permission/entitlement/masking checks, scenarios (split from NEX-010) | B | planned | — | 010, 031 |
+| NEX-030 | PWA: manifest, service worker (Workbox), offline app shell, install and update prompts (split from NEX-012) | C | planned | — | 012 |
+| NEX-031 | Mocks (ops fixtures): audit, consent, data requests, compliance packs, notifications, sync, AI, vault (split from NEX-010) | B | planned | — | 010, 027 |

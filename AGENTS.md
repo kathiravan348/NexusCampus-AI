@@ -47,7 +47,8 @@ From `in-review` the reviewer may send a task back: `changes-requested` (impleme
 3. Two tasks whose `Files` overlap may not be `in-progress` / `in-review` at the same time. Shared list files do not
    count: `frontend/pnpm-lock.yaml` (generated; rebase, re-run `pnpm install`, never hand-edit),
    `frontend/packages/*/package.json` (dependency lines), `frontend/packages/*/src/index.ts` (export lines),
-   `frontend/packages/i18n/messages/*.json` (own keys only), `docs/STRUCTURE.md`, `docs/CONTRACTS.md`,
+   `frontend/packages/i18n/messages/*.json` (own keys only), `frontend/apps/campus/src/app/modules.ts` (one line per
+   module), `frontend/packages/mocks/src/{handlers,fixtures}/index.ts` (one line per file), `docs/STRUCTURE.md`, `docs/CONTRACTS.md`,
    `docs/COMPONENTS.md`, `docs/guides/*.md`. Edit only your own lines; on a conflict rebase and keep both sides.
 4. One branch per task: `task/NEX-###`. **Max 3 commits per task** (D32):
    - Implementer: **1 commit** (`NEX-###: …`) with code, tests, maps/guides, handoff and `ready-for-review` (squash/amend before handoff).
