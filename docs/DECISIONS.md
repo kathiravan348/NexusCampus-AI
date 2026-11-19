@@ -50,4 +50,4 @@
 - Licence pricing unit for self-hosted: per learner, per campus, or flat edition.
 
 ## Requests
-_(implementers note new dependencies or decision requests here; the planner moves them into the table)_
+- NEX-007 (`@nexus/offline` exact pins): `dexie@4.4.7` (IndexedDB store, D13), `fake-indexeddb@6.2.8` (devDependency for IndexedDB unit tests).

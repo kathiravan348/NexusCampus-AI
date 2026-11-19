@@ -28,7 +28,8 @@
 │  │  │  ├─ messages/   en.json (source + translator notes), ar.json
 │  │  │  ├─ terminology/ <locale>/<type>.json: words per institution type (ey, k12, he, voc, tp, sk, onl, grp)
 │  │  │  └─ src/        resolve (layers), pseudo (en-XA), direction (RTL), format, I18nProvider, useText
-│  │  ├─ offline/       IndexedDB store, outbox, sync status (NEX-007)
+│  │  ├─ offline/       IndexedDB store, outbox, sync status, encryption, wipe (NEX-007)
+│  │  │  └─ src/        types, crypto (AES-GCM), db (Dexie), cache, outbox, wipe (+ idle lock), useSyncStatus
 │  │  ├─ ui-storybook/  Storybook: theme, tenant-theme, locale, RTL, viewport toggles, a11y (NEX-004)
 │  │  │  ├─ .storybook/ main (Vite + Tailwind + a11y), preview (globals + decorator), preview.css
 │  │  │  └─ src/        sampleThemes + foundations/ (Tokens & Texts stories)
