@@ -108,7 +108,7 @@ export const INSTITUTIONS = [
       country: "SG",
       weekendDays: [0],
     },
-    status: "trial",
+    status: "active",
     createdAt: CREATED_AT,
     updatedAt: UPDATED_AT,
   },

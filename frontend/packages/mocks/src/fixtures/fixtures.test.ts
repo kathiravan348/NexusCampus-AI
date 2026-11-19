@@ -231,7 +231,10 @@ describe("fixtures (D16)", () => {
     expect(group?.scope).toEqual({ kind: "group", targetId: F.GROUP.riverside });
     expect(group?.lockedTokens).toContain("brand-primary");
     const children = F.THEMES.filter((t) => t.tenantId === F.TENANT.riverside && t !== group);
-    for (const child of children) expect(child.light["brand-primary"]).toBeUndefined();
+    for (const child of children) {
+      expect(child.light["brand-primary"], child.id).toBeUndefined();
+      expect(child.dark["brand-primary"], child.id).toBeUndefined();
+    }
     expect(F.THEMES.find((t) => t.id === F.THEME.apex)?.fonts.sans).toBe(F.FONT.notoSansArabic);
     for (const o of F.TEXT_OVERRIDES) {
       expect(sameTenant(o.tenantId, o.scope.targetId), o.id).toBe(true);
