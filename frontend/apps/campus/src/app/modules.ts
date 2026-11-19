@@ -1,6 +1,6 @@
 import type { ModuleId } from "@nexus/contracts";
 import type { MessageKey } from "@nexus/i18n";
-import { Building2, Languages, Palette, Users, type LucideIcon } from "lucide-react";
+import { Building2, Languages, Palette, ShieldCheck, Users, type LucideIcon } from "lucide-react";
 import type { ComponentType } from "react";
 
 /** Offline level from `docs/MODULES.md`: L0 online only … L3 pre-synced reference data. */
@@ -61,5 +61,14 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m04.text.manage",
     offlineLevel: "L1",
     load: () => import("../modules/m04/TextStudioPage"),
+  },
+  {
+    moduleId: "M06",
+    path: "privacy",
+    navKey: "m06.nav.title",
+    icon: ShieldCheck,
+    permission: "m06.audit.read",
+    offlineLevel: "L0",
+    load: () => import("../modules/m06/PrivacyPage"),
   },
 ];

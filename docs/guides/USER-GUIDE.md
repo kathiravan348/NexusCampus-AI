@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Theme studio, and Text & language studio)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Theme studio, Text & language studio, and Audit & privacy)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -66,5 +66,14 @@ Available to administrators from **Text & language studio** in the menu. You can
   - **Change history** lists every version of an override. Choose **Roll back** beside an older version to restore it.
 - Under **Import & export**, choose **Export JSON** to download your institution's overrides for the selected language. To import, pick a file or paste JSON, choose **Preview changes** to see additions, updates, unchanged entries, and any rejected rows with reasons, then choose **Apply valid changes**.
 
+## Audit & privacy
+Available to administrators and auditors from **Audit & privacy** in the menu. It needs an internet connection and keeps nothing on the device.
+
+- **Audit log** lists who did what and when (in the institution's time zone). Filter by **Action**, **Actor**, **From** and **To**, and page through the results. Choose an action to see which fields changed — only field names are recorded, never the values; restricted fields are marked **Sensitive**. Actions done by provider staff under an approved access grant are highlighted with the grant id.
+- **Check this page** verifies that the events on the current page are linked and unbroken (clear the filters first). A broken link is reported with its row number.
+- **Consents** lists each person's consent per purpose (for example **AI features** or **Photos and media**), its status, who gave it (a guardian for children), how, and when. Filter by **Purpose** and **Status**.
+- **Data requests** lists access, correction, deletion and export requests with their due dates; open requests past their deadline show **Overdue**. Open a request to **Start work**, then **Mark completed** or **Reject** with a reason.
+- **Compliance** shows the privacy rules that apply to your institution: deadline for data requests, the age under which someone counts as a minor, whether guardians must consent to AI and to photos and media, and the default retention period.
+
 ## Not there yet
-- Remaining module screens (audit & privacy, plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.
+- Remaining module screens (plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.

@@ -8,6 +8,7 @@ import {
 import {
   QueryClient,
   QueryClientProvider,
+  defaultShouldDehydrateQuery,
   useQuery,
   useQueryClient,
   type QueryClientConfig,
@@ -186,11 +187,26 @@ export function NexusQueryProvider({
   return (
     <PersistQueryClientProvider
       client={queryClient}
-      persistOptions={{ persister, buster: appVersion, maxAge: PERSIST_MAX_AGE_MS }}
+      persistOptions={{
+        persister,
+        buster: appVersion,
+        maxAge: PERSIST_MAX_AGE_MS,
+        dehydrateOptions: { shouldDehydrateQuery: shouldPersistQuery },
+      }}
     >
       {inner}
     </PersistQueryClientProvider>
   );
+}
+
+/** Query `meta` for L0 data that must never be written to the device (e.g. the audit log, M06). */
+export const NO_PERSIST = { persist: false } as const;
+
+/** Persist successful queries unless they opt out with `meta: NO_PERSIST`. */
+export function shouldPersistQuery(
+  query: Parameters<typeof defaultShouldDehydrateQuery>[0],
+): boolean {
+  return defaultShouldDehydrateQuery(query) && query.meta?.["persist"] !== false;
 }
 
 /** A query for the signed-in user; disabled (never fetched) while signed out. */
