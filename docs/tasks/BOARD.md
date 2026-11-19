@@ -3,7 +3,7 @@
 > Read this first, then **only the current stage's board**. Never read boards of done or future stages.
 > Task IDs `NEX-###` are global and never reused; each task file lives in its stage folder.
 
-**Planning lock:** —
+**Planning lock:** Claude
 **Current stage:** 1 — Platform foundation → [`stage-1/BOARD.md`](stage-1/BOARD.md)
 
 | Stage | Name | Board | Tasks | Status |
