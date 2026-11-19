@@ -22,7 +22,7 @@
 │  ├─ packages/
 │  │  ├─ ui-core/       generic components + theme engine (NEX-002, 005, 006)
 │  │  │  ├─ scripts/    build-tokens (tokens.json → CSS), check-classes (lint: token-only classes)
-│  │  │  └─ src/        lib/cn, theme/ (tokens, contrast, fonts, tenantTheme), components/ (12 core & form components)
+│  │  │  └─ src/        lib/cn, theme/ (tokens, contrast, fonts, tenantTheme), components/ (21 core, form, layout, overlay & data components)
 │  │  ├─ ui-edu/        education components built on ui-core
 │  │  ├─ i18n/          messages, formatters, layered text overrides, RTL (NEX-003)
 │  │  │  ├─ messages/   en.json (source + translator notes), ar.json

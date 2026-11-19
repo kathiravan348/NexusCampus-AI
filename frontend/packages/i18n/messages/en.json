@@ -76,6 +76,110 @@
   },
   "common.status": { "message": "Status", "description": "Generic label for status fields." },
   "common.details": { "message": "Details", "description": "Generic heading for detail sections." },
+  "common.skipToContent": {
+    "message": "Skip to content",
+    "description": "Skip navigation link for keyboard and screen reader users."
+  },
+  "common.navigationMenu": {
+    "message": "Navigation menu",
+    "description": "Accessible title for the mobile navigation drawer."
+  },
+  "common.mainNavigation": {
+    "message": "Main navigation",
+    "description": "Accessible label for the primary sidebar navigation landmark."
+  },
+  "common.openMenu": {
+    "message": "Open menu",
+    "description": "Button label: open the mobile navigation drawer."
+  },
+  "common.closeMenu": {
+    "message": "Close menu",
+    "description": "Button label: close the mobile navigation drawer."
+  },
+  "common.notifications": {
+    "message": "Notifications",
+    "description": "Accessible region label for toast notifications."
+  },
+  "common.closeNotification": {
+    "message": "Close notification",
+    "description": "Button label: dismiss a toast notification."
+  },
+  "common.demoNotice": {
+    "message": "Demo data. Nothing on this screen is real.",
+    "description": "Banner notice shown on screens displaying mock prototype data."
+  },
+  "common.syncSynced": {
+    "message": "Synced",
+    "description": "Sync status: all local changes are synced with the server."
+  },
+  "common.syncPendingGeneric": {
+    "message": "Changes waiting to sync",
+    "description": "Sync status: unsynced local changes exist without a specific count."
+  },
+  "common.syncSyncing": {
+    "message": "Syncing…",
+    "description": "Sync status: local changes are currently being uploaded."
+  },
+  "common.syncConflict": {
+    "message": "{count, plural, one {# sync conflict} other {# sync conflicts}}",
+    "description": "Sync status: number of local changes with server conflicts. {count} is a number."
+  },
+  "common.syncConflictGeneric": {
+    "message": "Sync conflict",
+    "description": "Sync status: at least one sync conflict needs review without a count."
+  },
+  "common.syncOffline": {
+    "message": "Offline",
+    "description": "Sync status: compact label when the device has no network connection."
+  },
+  "common.syncOfflinePending": {
+    "message": "{count, plural, one {Offline · # pending} other {Offline · # pending}}",
+    "description": "Sync status: offline with queued local changes. {count} is a number."
+  },
+  "common.syncError": {
+    "message": "Sync error",
+    "description": "Sync status: uploading local changes failed."
+  },
+  "common.syncLastSynced": {
+    "message": "Last synced {time}",
+    "description": "Sync status secondary text showing when data last synced. {time} is a formatted timestamp."
+  },
+  "common.pagination": {
+    "message": "Pagination",
+    "description": "Accessible landmark label for table and list pagination controls."
+  },
+  "common.paginationRange": {
+    "message": "Showing {start, number}–{end, number} of {total, number}",
+    "description": "Table pagination summary showing the visible item range and total count."
+  },
+  "common.paginationPageOf": {
+    "message": "Page {page, number} of {pageCount, number}",
+    "description": "Table pagination summary showing the current page and total pages."
+  },
+  "common.rowsPerPage": {
+    "message": "Rows per page",
+    "description": "Label for the page size selector in table pagination."
+  },
+  "common.firstPage": {
+    "message": "First page",
+    "description": "Button label: jump to the first page of a table."
+  },
+  "common.previousPage": {
+    "message": "Previous page",
+    "description": "Button label: go to the previous page of a table."
+  },
+  "common.nextPage": {
+    "message": "Next page",
+    "description": "Button label: go to the next page of a table."
+  },
+  "common.lastPage": {
+    "message": "Last page",
+    "description": "Button label: jump to the last page of a table."
+  },
+  "common.pageSizeOption": {
+    "message": "{count, number}",
+    "description": "Formatted numeric option inside the rows-per-page selector. {count} is a number."
+  },
   "term.learner": {
     "message": "Learner",
     "description": "Terminology: one person who studies here. Institution types rename it (e.g. Child, Student, Trainee)."
