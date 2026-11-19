@@ -12,13 +12,14 @@
   --space-7: 28px;
   --space-14: 56px;
   --density-scale: 1;
-  --radius-xs: 3px;
+  --radius-xs: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
   --radius-pill: 999px;
   --control-height: 40px;
   --nav-item-height: 38px;
   --sidebar-width: 232px;
+  --hero-glow: radial-gradient(at 0% 0%, color-mix(in srgb, var(--brand-primary) 12%, transparent), transparent 60%), radial-gradient(at 100% 0%, color-mix(in srgb, var(--brand-accent) 12%, transparent), transparent 60%);
 }
 
 :root,
@@ -28,7 +29,7 @@
   --bg-raised: #EBF1FA;
   --bg-surface: #FFFFFF;
   --border-default: #D7E2F0;
-  --border-strong: #7E93B0;
+  --border-strong: #7389A6;
   --text-primary: #0F172A;
   --text-secondary: #2D3E55;
   --text-muted: #51637A;
@@ -37,6 +38,7 @@
   --brand-primary-subtle: #E6EFFE;
   --on-brand: #FFFFFF;
   --brand-accent: #0D9488;
+  --brand-sky: #0284C7;
   --success: #087A52;
   --success-subtle: #E3F4EC;
   --success-text: #0A6B48;
@@ -72,6 +74,7 @@
   --brand-primary-subtle: #1A315C;
   --on-brand: #FFFFFF;
   --brand-accent: #2DD4BF;
+  --brand-sky: #38BDF8;
   --success: #2BC48A;
   --success-subtle: #0F2A21;
   --success-text: #5EDBAA;
