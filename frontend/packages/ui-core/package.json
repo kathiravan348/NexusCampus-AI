@@ -7,10 +7,24 @@
   "types": "./src/index.ts",
   "scripts": {
     "typecheck": "tsc --noEmit",
-    "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
-    "test": "vitest run --passWithNoTests"
+    "lint": "node scripts/build-tokens.ts --check && eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ . && node scripts/check-classes.ts .",
+    "tokens": "node scripts/build-tokens.ts",
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.3.0",
+    "@fontsource/jetbrains-mono": "5.3.0",
+    "@fontsource/noto-sans-arabic": "5.3.0",
+    "tailwindcss": "4.3.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "7.0.1",
+    "@types/node": "20.19.43",
+    "jsdom": "26.1.0",
     "typescript": "5.7.3",
     "vitest": "3.2.7"
   }
