@@ -16,7 +16,7 @@
 | NEX-005 | ui-core port from NOVA (1/2): Button, IconButton, Badge, Card, StatCard, Skeleton, form fields — text via keys, RTL | A | draft | — | 004 |
 | NEX-006 | ui-core port from NOVA (2/2): DataTable, AppShell, NavItem, Modal, Tabs, Toast, EmptyState, DemoBanner, SyncStatus | A | draft | — | 005 |
 | NEX-007 | Offline package: Dexie store, outbox with idempotency keys, sync status hook, encryption, wipe | B | draft | — | 001 |
-| NEX-008 | Contracts (core): primitives (Id, dates, Locale, TimeZone, Currency, Region, InstitutionType, ModuleId), ApiError, Page, DomainEvent, LocaleSettings, Group, Institution, Campus, InstitutionTypeProfile, AcademicCalendar | B | ready-for-review | Claude | 001 |
+| NEX-008 | Contracts (core): primitives (Id, dates, Locale, TimeZone, Currency, Region, InstitutionType, ModuleId), ApiError, Page, DomainEvent, LocaleSettings, Group, Institution, Campus, InstitutionTypeProfile, AcademicCalendar | B | in-review | Gemini | 001 |
 | NEX-009 | Contracts (studio & compliance): Theme, Font, TextOverride, TerminologyPack, Plan, Entitlement, AuditEvent, Consent, DataSubjectRequest, CompliancePack | B | draft | — | 008 |
 | NEX-010 | Mocks: 5 demo tenants (EY, K12 under 2-campus GRP, HE, TP, SK; one Arabic), MSW handlers, empty/error/offline handlers, tests | B | draft | — | 009, 027, 028 |
 | NEX-011 | Services: DATA_MODE switch, Zod validation, Query hooks, persisted cache, outbox wiring | B | draft | — | 007, 010 |
