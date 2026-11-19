@@ -1,0 +1,141 @@
+import type { AcademicCalendar } from "@nexus/contracts";
+import { CALENDAR, INSTITUTION, TENANT } from "./ids";
+
+/** One academic year per institution: EY and K12 terms, HE semesters, TP and SK rolling (G-3). */
+export const ACADEMIC_CALENDARS = [
+  {
+    id: CALENDAR.littleSteps,
+    tenantId: TENANT.littleSteps,
+    institutionId: INSTITUTION.littleSteps,
+    academicYear: "2026-27",
+    startsOn: "2026-06-01",
+    endsOn: "2027-03-31",
+    periods: [
+      {
+        id: "per-ls-t1",
+        kind: "term",
+        name: "Term 1",
+        startsOn: "2026-06-01",
+        endsOn: "2026-09-30",
+      },
+      {
+        id: "per-ls-t2",
+        kind: "term",
+        name: "Term 2",
+        startsOn: "2026-10-12",
+        endsOn: "2026-12-23",
+      },
+      {
+        id: "per-ls-t3",
+        kind: "term",
+        name: "Term 3",
+        startsOn: "2027-01-04",
+        endsOn: "2027-03-31",
+      },
+    ],
+    holidays: [
+      { date: "2026-08-15", name: "Independence Day" },
+      { date: "2026-10-02", name: "Gandhi Jayanti" },
+    ],
+    displayCalendar: "gregory",
+  },
+  {
+    id: CALENDAR.riversideSchool,
+    tenantId: TENANT.riverside,
+    institutionId: INSTITUTION.riversideSchool,
+    academicYear: "2026-27",
+    startsOn: "2026-09-01",
+    endsOn: "2027-07-21",
+    periods: [
+      {
+        id: "per-rv-aut",
+        kind: "term",
+        name: "Autumn term",
+        startsOn: "2026-09-02",
+        endsOn: "2026-12-18",
+      },
+      {
+        id: "per-rv-spr",
+        kind: "term",
+        name: "Spring term",
+        startsOn: "2027-01-05",
+        endsOn: "2027-03-26",
+      },
+      {
+        id: "per-rv-sum",
+        kind: "term",
+        name: "Summer term",
+        startsOn: "2027-04-12",
+        endsOn: "2027-07-21",
+      },
+    ],
+    holidays: [{ date: "2027-05-03", name: "Early May bank holiday" }],
+    displayCalendar: "gregory",
+  },
+  {
+    id: CALENDAR.northbridge,
+    tenantId: TENANT.northbridge,
+    institutionId: INSTITUTION.northbridge,
+    academicYear: "2026-27",
+    startsOn: "2026-08-24",
+    endsOn: "2027-05-14",
+    periods: [
+      {
+        id: "per-nb-fall",
+        kind: "semester",
+        name: "Fall 2026",
+        startsOn: "2026-08-24",
+        endsOn: "2026-12-18",
+      },
+      {
+        id: "per-nb-spring",
+        kind: "semester",
+        name: "Spring 2027",
+        startsOn: "2027-01-19",
+        endsOn: "2027-05-14",
+      },
+    ],
+    holidays: [
+      { date: "2026-09-07", name: "Labor Day" },
+      { date: "2026-11-26", name: "Thanksgiving" },
+    ],
+    displayCalendar: "gregory",
+  },
+  {
+    id: CALENDAR.apex,
+    tenantId: TENANT.apex,
+    institutionId: INSTITUTION.apex,
+    academicYear: "2026-27",
+    startsOn: "2026-09-01",
+    endsOn: "2027-06-30",
+    periods: [
+      {
+        id: "per-ax-b1",
+        kind: "block",
+        name: "الدفعة الأولى",
+        startsOn: "2026-09-01",
+        endsOn: "2026-12-31",
+      },
+      {
+        id: "per-ax-b2",
+        kind: "block",
+        name: "الدفعة الثانية",
+        startsOn: "2027-01-10",
+        endsOn: "2027-06-30",
+      },
+    ],
+    holidays: [{ date: "2026-12-02", name: "اليوم الوطني" }],
+    displayCalendar: "islamic-umalqura",
+  },
+  {
+    id: CALENDAR.harmony,
+    tenantId: TENANT.harmony,
+    institutionId: INSTITUTION.harmony,
+    academicYear: "2026",
+    startsOn: "2026-01-01",
+    endsOn: "2026-12-31",
+    periods: [],
+    holidays: [{ date: "2026-08-09", name: "National Day" }],
+    displayCalendar: "gregory",
+  },
+] satisfies readonly AcademicCalendar[];
