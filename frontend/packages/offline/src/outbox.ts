@@ -29,6 +29,7 @@ async function decodeRecord<TPayload>(
   const serverSnapshot = row.serverSnapshot
     ? await decryptJson<unknown>(key, row.serverSnapshot)
     : undefined;
+  const lastError = row.lastError ? await decryptJson<string>(key, row.lastError) : undefined;
   return {
     id: row.id,
     idempotencyKey: row.idempotencyKey,
@@ -43,7 +44,7 @@ async function decodeRecord<TPayload>(
     attempts: row.attempts,
     createdAt: row.createdAt,
     updatedAt: row.updatedAt,
-    ...(row.lastError !== undefined ? { lastError: row.lastError } : {}),
+    ...(lastError !== undefined ? { lastError } : {}),
     ...(serverSnapshot !== undefined ? { serverSnapshot } : {}),
     payload,
   };
@@ -197,7 +198,7 @@ async function runFlush(
         ...syncingRow,
         status: "conflict",
         attempts: row.attempts + 1,
-        lastError: result.message,
+        lastError: await encryptJson(keyRecord.key, result.message),
         updatedAt: doneAt,
         ...(encryptedSnapshot !== undefined ? { serverSnapshot: encryptedSnapshot } : {}),
       });
@@ -207,7 +208,7 @@ async function runFlush(
         ...syncingRow,
         status: "pending",
         attempts: row.attempts + 1,
-        lastError: result.message,
+        lastError: await encryptJson(keyRecord.key, result.message),
         updatedAt: doneAt,
       });
       retryable += 1;
@@ -216,7 +217,7 @@ async function runFlush(
         ...syncingRow,
         status: "failed",
         attempts: row.attempts + 1,
-        lastError: result.message,
+        lastError: await encryptJson(keyRecord.key, result.message),
         updatedAt: doneAt,
       });
       failed += 1;
