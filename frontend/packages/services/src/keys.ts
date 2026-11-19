@@ -30,6 +30,15 @@ export const queryKeys = {
   },
   m02: {
     me: (s: KeyScope) => scoped(s, "m02", "me"),
+    /** Prefix of every M02 list below; invalidated after each M02 write. */
+    all: (s: KeyScope) => scoped(s, "m02"),
+    people: (s: KeyScope) => scoped(s, "m02", "people"),
+    users: (s: KeyScope) => scoped(s, "m02", "users"),
+    roles: (s: KeyScope) => scoped(s, "m02", "roles"),
+    permissions: (s: KeyScope) => scoped(s, "m02", "permissions"),
+    assignments: (s: KeyScope) => scoped(s, "m02", "assignments"),
+    sessions: (s: KeyScope) => scoped(s, "m02", "sessions"),
+    ssoProviders: (s: KeyScope) => scoped(s, "m02", "sso-providers"),
   },
   m03: {
     theme: (s: KeyScope, campusId: string | null) => scoped(s, "m03", "theme", campusId),

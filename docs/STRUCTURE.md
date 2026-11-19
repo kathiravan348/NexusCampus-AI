@@ -53,6 +53,7 @@
 │     │  └─ src/        main, App (providers), styles.css, app/ (TenantRuntime, modules, router, RouteGuard, Shell,
 │     │                 ShellHeader, PersonaSwitch, LocaleSwitch), pages/ (SignIn, Home, NotFound, ModuleOff, Forbidden),
 │     │                 modules/m01/ (SetupPage, ProfileTab, StructureTab, CampusFormModal, LocaleTab, CalendarTab, NEX-013),
+│     │                 modules/m02/ (AccessPage, UsersTab, InviteUserModal, UserDetail, RolesTab, RoleEditorModal, SessionsTab, SsoTab, NEX-016),
 │     │                 modules/m03/ (ThemeStudioPage, ColorTokens, TypographyPanel, AssetsPanel, ThemePreview, ContrastPanel, NEX-014),
 │     │                 modules/m04/ (TextStudioPage, KeyEditor, HistoryPanel, ImportExport, NEX-015)
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)

@@ -21,6 +21,12 @@ export { ColorField, type ColorFieldProps } from "./components/ColorField/ColorF
 export { Textarea, type TextareaProps } from "./components/Textarea/Textarea";
 export { Select, type SelectProps, type SelectOption } from "./components/Select/Select";
 export { Checkbox, type CheckboxProps } from "./components/Checkbox/Checkbox";
+export {
+  CheckboxMatrix,
+  type CheckboxMatrixColumn,
+  type CheckboxMatrixProps,
+  type CheckboxMatrixRow,
+} from "./components/CheckboxMatrix/CheckboxMatrix";
 export { Switch, type SwitchProps } from "./components/Switch/Switch";
 export { AppShell, type AppShellProps } from "./components/AppShell/AppShell";
 export { useAppShell, type AppShellContextValue } from "./components/AppShell/appShellContext";

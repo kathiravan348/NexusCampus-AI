@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Theme studio, and Text & language studio)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Theme studio, and Text & language studio)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -32,6 +32,16 @@ Available to administrators from **Institution setup** in the menu (requires an 
 - **Locale & formats** lets you choose the default language, supported languages, time zone, currency, country, and weekend days. **Live format preview** immediately shows today's date and time, a sample number, and a sample money amount in your chosen settings before you choose **Save**.
 - **Calendar** manages the academic year dates, **Display calendar** (Gregorian, Hijri, Hebrew, or Indian National), **Academic periods** (use **Add period** or the remove button), and **Holidays** (use **Add holiday** or the remove button). Overlapping periods or dates outside the academic year are flagged inline before saving.
 
+## Users & access
+Available from **Users & access** in the menu to administrators and to staff who may see users. You can look at cached lists while offline, but every change needs an internet connection.
+
+- **Users** lists accounts with **Name**, **Contact**, **Roles**, **Status**, and **Last sign-in**. Use **Search** and the **Status** filter to narrow the list. Contact details of children are shown as **Restricted** unless you may see restricted personal data or are the child's guardian.
+- **Invite user** asks for **Full name**, **Email**, **Role**, **Applies to** (for example **Institution**, **Campus**, or **Own records only**) and **Where**, then **Send invitation**. The new account appears as **Invited**. An email that already has an account is refused.
+- Choose a user's name to open their roles: each role shows its scope and dates. **Add a role** gives another role from a chosen date, and the remove button takes one away. **Suspend** and **Reactivate** change the account status. You cannot change your own status or remove your own last administrator role.
+- **Roles** lists **System** roles (read-only, open with **View**) and **Custom** roles. **New role** and **Edit** open a permission grid grouped by module, where you tick permissions and choose where the role **Can be given for**. Permissions that reveal restricted personal data are marked **Sensitive**.
+- **Sessions** lists signed-in devices with sign-in method and last activity. **Sign out** ends one of your own devices; administrators can **Revoke** anyone's session.
+- **Single sign-on** edits the identity provider: **Protocol**, name, **Issuer URL** (must start with https://), **Client ID**, **Email domains**, **Provision users with SCIM**, and **Enabled**. The client secret is never shown here; it is kept in the institution's key vault.
+
 ## Theme studio
 Available to administrators from **Theme studio** in the menu. You can inspect the cached theme while offline, but **Save** requires an internet connection.
 
@@ -57,4 +67,4 @@ Available to administrators from **Text & language studio** in the menu. You can
 - Under **Import & export**, choose **Export JSON** to download your institution's overrides for the selected language. To import, pick a file or paste JSON, choose **Preview changes** to see additions, updates, unchanged entries, and any rejected rows with reasons, then choose **Apply valid changes**.
 
 ## Not there yet
-- Remaining module screens (users & roles, audit & privacy, plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.
+- Remaining module screens (audit & privacy, plans & usage, sync centre, AI assist, data vault & access grants, notifications) and offline app install.
