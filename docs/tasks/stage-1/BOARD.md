@@ -9,7 +9,7 @@
 
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|
-| NEX-001 | Monorepo setup: pnpm workspaces, Vite, TS strict, ESLint, Prettier, Vitest, empty packages, app `campus` | — | in-progress | Claude | — |
+| NEX-001 | Monorepo setup: pnpm workspaces, Vite, TS strict, ESLint, Prettier, Vitest, empty packages, app `campus` | — | ready-for-review | Claude | — |
 | NEX-002 | Theme engine: Nexus Style tokens, token pipeline, runtime tenant theme (colours, fonts, radius, density) + contrast guard | A | planned | — | 001 |
 | NEX-003 | i18n engine: FormatJS, message catalogue, locale-scoped terminology packs, formatters (incl. G-3 calendars), pseudo-locale, RTL | B | planned | — | 001 |
 | NEX-004 | Storybook: theme, tenant-theme, locale, RTL, viewport toggles; a11y addon | A | draft | — | 002, 003 |
