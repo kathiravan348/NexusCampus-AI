@@ -53,3 +53,12 @@ Reviewer: ________ · Date: ________ · Browser / device: ________
 | Things to remove | |
 | Things missing for Stage 2 | |
 | Overall: ready to freeze Stage 1? (yes / after changes) | |
+
+## Freeze outcome (NEX-022, 2026-11-20)
+Owner: "all good" — every row accepted as **Works**; no change requests. Carried items:
+
+| Item | Outcome |
+|---|---|
+| Hindi / Tamil wording (machine-drafted, NEX-040) | Owner action: native-speaker review before real users; fixes go through M04 text overrides or a text task |
+| Per-screen "last synced" on L1 screens (NEX-021 finding, ARCHITECTURE §5) | Fix task **NEX-041** |
+| Everything else | Frozen as built (D43); backend build step NEX-042–065 |

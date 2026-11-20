@@ -46,16 +46,16 @@
 | D40 | 2026-11-19 | **NexusCampus logo adopted** (NEX-035): shield "N" mark in the Campus Prism gradient (`#1D4ED8` → `#0284C7` → `#0D9488`) with the "NexusCampus" wordmark and tagline. Web assets live in `frontend/apps/campus/public/brand/` and their paths in `brand.config.ts` (`brand.logo`); nothing else references logo files directly. Files are raster (PNG/ICO) converted from the Owner's artwork; an SVG master redrawn by a designer replaces them later without changing paths | Owner supplied the final logo artwork matching the frozen palette (D39) |
 | D41 | 2026-11-20 | **Logo set finalised as SVG** (NEX-037): mark, mono mark, simplified outlined-shield favicon, and horizontal / stacked lockups (light, dark, tagline) in `public/brand/`, text outlined in Inter (no font dependency). Lockup colours: "Nexus" = brand gradient `#1D4ED8` → `#0284C7` → `#0D9488`; "Campus" = teal gradient `#14B8A6` → `#0D9488`; tagline = navy `#1E3A8A` — a **logo-only** colour, not a UI token, so the D39 palette freeze is unchanged. Dark lockups use the same colours. PNG/ICO icons are rendered from the SVGs at the NEX-035 paths | Owner approved the AI-drafted mark and chose the wordmark and tagline colours |
 | D42 | 2026-11-20 | **Default languages: English, Hindi, Tamil** (NEX-040). `en` is the source; `hi` and `ta` must be complete for every message key and terminology pack (tests enforce it), in all future work. Arabic removed (texts, terminology, font, demo data). RTL support stays in code (logical CSS, `direction.ts`). More languages are added later by decision. Demo: Riverside in Hindi, Apex Coaching (Chennai) in Tamil | Owner: India-first product; three default languages |
+| D43 | 2026-11-20 | **Stage 1 frozen** (NEX-022). Contracts in `frontend/packages/contracts` are `v1`; Stage 1 screens are frozen. Changes need a new task and the Owner's OK. Owner reviewed the review build: "all good", no change requests. Build step = NEX-041–065 | Freeze before the backend is built against the contracts (PLAN loop step 3) |
+| D44 | 2026-11-20 | **Identity: Keycloak** (pinned image). One realm per region cell; each tenant is a Keycloak *organization*; institution SSO (OIDC / SAML) = an identity provider linked to that organization by email domain. Keycloak holds credentials, MFA and passkeys; NexusCampus holds `Person` / `User` / `Session` / roles. The backend is the OIDC client (authorization code + PKCE) and issues its own HttpOnly secure session cookie; SCIM 2.0 is served by the NexusCampus backend | Mature SSO, MFA and passkeys without building them; runs in SaaS cells and self-hosted |
+| D45 | 2026-11-20 | **Hosting: AWS; first data regions IN = `ap-south-1` (Mumbai) and EU = `eu-central-1` (Frankfurt)**. One region cell each; data never leaves its cell. Claude runs through AWS Bedrock in the same region (G-5). Other regions later by decision | India-first product (D42) plus GDPR customers |
+| D46 | 2026-11-20 | **Keys and secrets: HashiCorp Vault** (Transit engine for per-tenant envelope encryption, KV for service secrets); OpenBao is an accepted drop-in for self-hosted installs (same API). BYOK / HYOK via Vault-managed keys | Same tool in SaaS and self-hosted; supports BYOK / HYOK |
+| D47 | 2026-11-20 | **Search and vectors: PostgreSQL only** — full-text search (`simple` config plus trigram for Hindi / Tamil) and `pgvector` (image `pgvector/pgvector:pg16`), both under tenant RLS. Embedding tier: a multilingual embedding model on Bedrock (covers en / hi / ta), chosen and pinned in NEX-058. A dedicated engine only by later decision | Nothing extra to run or isolate; RLS covers search and RAG |
 
-## Open (decide by the Stage 1 freeze)
-- Identity: own implementation vs. Keycloak / Zitadel for SSO, SCIM and passkeys.
-- Hosting provider and the first two data regions.
-- Search engine (PostgreSQL full-text first vs. OpenSearch/Meilisearch).
-- Vector store for tenant-isolated RAG/embeddings (`pgvector` in PostgreSQL 16 with RLS vs. dedicated store).
-- Native wrapper for Stage 7 apps (Capacitor vs. React Native shell).
-- Vault / key management: HashiCorp Vault (works for self-hosted too) vs. cloud KMS per provider.
-- Billing engine for Nexus Control: build on Stripe Billing, Chargebee or open-source Lago (regional tax and gateways).
-- Licence pricing unit for self-hosted: per learner, per campus, or flat edition.
+## Open
+- Native wrapper for Stage 7 apps (Capacitor vs. React Native shell) — decide at Stage 7 design.
+- Billing engine for Nexus Control: build on Stripe Billing, Chargebee or open-source Lago (regional tax and gateways) — decide at Stage 2 design.
+- Licence pricing unit for self-hosted: per learner, per campus, or flat edition — decide at Stage 2 design.
 
 ## Requests
 _(implementers note new dependencies or decision requests here; the planner moves them into the table)_
