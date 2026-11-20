@@ -27,6 +27,10 @@ export default defineConfig({
     VitePWA({
       registerType: "prompt",
       injectRegister: false,
+      // Own worker (src/sw/sw.ts) so mock builds can host MSW in the same worker (NEX-038).
+      strategies: "injectManifest",
+      srcDir: "src/sw",
+      filename: "sw.ts",
       manifest: {
         name: brand.products.campus.name,
         short_name: brand.products.campus.short,
@@ -46,14 +50,11 @@ export default defineConfig({
           },
         ],
       },
-      workbox: {
+      injectManifest: {
         globPatterns: ["**/*.{js,css,html,woff2,svg,png,ico}"],
-        // The MSW worker is a dev/demo tool, never part of the precache.
+        // The MSW worker is a dev/demo tool, never part of the precache (mock builds import it instead).
         globIgnores: ["**/mockServiceWorker.js"],
-        navigateFallback: "/index.html",
-        navigateFallbackDenylist: [/^\/api\//],
-        // API responses are never cached by the service worker (O-3: L1 data lives in @nexus/offline).
-        runtimeCaching: [],
+        rollupFormat: "iife",
       },
     }),
   ],

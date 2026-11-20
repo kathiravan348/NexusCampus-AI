@@ -46,3 +46,4 @@
 | NEX-035 | NexusCampus logo assets: mark, lockups, favicons, PWA icons in `public/brand/` (D40) | A | done | Claude | 034 |
 | NEX-036 | NexusCampus logo in the app header and sign-in page (mark + name) | C | done | Claude | 035 |
 | NEX-037 | Logo image corrections: SVG master, exact gradient, clean dark lockup, no baked tagline, small favicon, mono (waits for designer files) | A | done | Claude | 036 |
+| NEX-038 | PWA + MSW share one service worker in mock builds (fix for NEX-030, found by NEX-021) | C | done | Claude | 030 |
