@@ -49,7 +49,7 @@
 | NEX-038 | PWA + MSW share one service worker in mock builds (fix for NEX-030, found by NEX-021) | C | done | Claude | 030 |
 | NEX-039 | Home page: intro line and a short description on every module tile (Owner request) | C | done | Claude | 012 |
 | NEX-040 | Default languages English, Hindi, Tamil; Arabic removed (D42, Owner decision) | B | done | Claude | 003, 010, 021 |
-| NEX-041 | L1 screens show "Last synced" (fix from Stage 1 review) | C | planned | — | 021 |
+| NEX-041 | L1 screens show "Last synced" (fix from Stage 1 review) | C | done | Claude | 021 |
 | NEX-042 | Backend skeleton: FastAPI, uv, backend-check, timings, OpenTelemetry, Compose (PostgreSQL 16 + pgvector, Redis) | D | planned | — | 022 |
 | NEX-043 | Region config, tenancy schema with RLS, Alembic baseline, demo seed | D | planned | — | 042 |
 | NEX-044 | Audit core: append-only hash-chained writer + domain event outbox | D | planned | — | 043 |

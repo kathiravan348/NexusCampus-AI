@@ -120,6 +120,8 @@ describe("ThemeStudioPage (M03)", () => {
     });
     expect(await screen.findByText(/You are offline/)).toBeInTheDocument();
     expect(saveBtn).toBeDisabled();
+    // Cached theme: the screen still says how old it is (O-1).
+    expect(await screen.findByTestId("last-synced")).toHaveTextContent(/^Last synced /);
 
     spy.mockReturnValue(true);
     act(() => {

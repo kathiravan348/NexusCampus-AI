@@ -8,6 +8,8 @@ import { persona, renderApp } from "../../test/renderApp";
 async function openEditor(tenant: string, id: string) {
   renderApp("/notifications", { as: persona(tenant, "admin"), modules: MODULES });
   const table = await screen.findByRole("table", { name: "Notification templates" });
+  // Wait for the screen's data (preferences → "Last synced"): its arrival re-renders the table rows.
+  await screen.findByTestId("last-synced");
   fireEvent.click(await within(table).findByRole("button", { name: `Edit template ${id}` }));
   return { table, dialog: await screen.findByRole("dialog") };
 }
