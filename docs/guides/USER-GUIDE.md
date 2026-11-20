@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, and Sync centre)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, and Nexus Assist)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -90,5 +90,12 @@ Available to everyone from **Sync centre** in the menu, also offline.
 - **Conflicts** lists changes the server could not merge. Show **Open** or **Resolved** ones and resolve with **Keep server**, **Keep device**, or **Merged**.
 - Known limit: in this prototype the wipe itself is not run on the device yet — the request is recorded and shown as **Wipe pending**.
 
+## Nexus Assist and AI settings
+Where your institution has AI on, the sparkle button at the top of the screen opens **Nexus Assist**. It is hidden where AI is off or not in your plan, and on screens AI may never read (such as the data vault).
+
+- Type **Your question** and choose **Ask**. Every answer is marked **AI-generated**, lists its numbered **Sources** (choose one to open that screen), and shows the answer quality and the credits used. Use the thumbs to note whether it helped. If nothing in your records answers the question, Assist says so and uses no credits.
+- When Assist cannot answer, it says why and what to do next: AI is **switched off**, it is **not in your plan**, you are **offline**, **AI credits have run out**, or — for a child — **a guardian's consent is needed**. Everything else keeps working.
+- Administrators open **AI settings** from the menu to switch Assist on or off, choose where it may help, pick the **Default answer quality**, and follow the **AI credits this month**. Health records and the data vault can never be opened to AI; safeguarding needs its own switch after a privacy impact assessment. Personal data is always redacted, and children always need a guardian's consent.
+
 ## Not there yet
-- Remaining module screens (AI assist, data vault & access grants, notifications) and offline app install.
+- Remaining module screens (data vault & access grants, notifications) and offline app install.

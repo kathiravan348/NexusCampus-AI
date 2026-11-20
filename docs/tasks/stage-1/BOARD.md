@@ -28,7 +28,7 @@
 | NEX-017 | Audit, privacy & consent (M06): audit viewer, consent records, data requests | C | done | Claude | 012 |
 | NEX-018 | Plans & usage (M05): modules on/off, AI credits, usage meters | C | done | Claude | 012 |
 | NEX-019 | Sync centre (M10): devices, pending queue, conflicts, remote wipe | C | done | Claude | 012 |
-| NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | planned | — | 018 |
+| NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | done | Claude | 018 |
 | NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030, 032–036 |
 | NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | planned | — | 021 |
 | NEX-023 | Data vault & access grants (M83): key status, provider access requests (approve / deny / revoke), active grants, break-glass notices, access history | C | planned | — | 012 |

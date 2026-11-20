@@ -63,6 +63,11 @@ export const queryKeys = {
     devices: (s: KeyScope) => scoped(s, "m10", "devices"),
     conflicts: (s: KeyScope) => scoped(s, "m10", "conflicts"),
   },
+  m11: {
+    all: (s: KeyScope) => scoped(s, "m11"),
+    settings: (s: KeyScope) => scoped(s, "m11", "settings"),
+    credits: (s: KeyScope) => scoped(s, "m11", "credits"),
+  },
   m05: {
     plan: (s: KeyScope) => scoped(s, "m05", "plan"),
     entitlements: (s: KeyScope) => scoped(s, "m05", "entitlements"),

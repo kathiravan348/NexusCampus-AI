@@ -4,6 +4,7 @@ import { DATA_MODE, useSession } from "@nexus/services";
 import { IconButton, SyncStatus, useToast } from "@nexus/ui-core";
 import { LogOut, Moon, Sun } from "lucide-react";
 import { useNavigate } from "react-router";
+import { AssistButton } from "../modules/m11/AssistButton";
 import { PersonaSwitch } from "./PersonaSwitch";
 import { useRuntime } from "./TenantRuntime";
 
@@ -54,6 +55,7 @@ export function ShellHeader() {
         conflictCount={sync.conflictCount}
         lastSyncedAt={formattedLastSyncedAt}
       />
+      <AssistButton />
       <IconButton
         icon={dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
         aria-label={t(dark ? "common.shell.themeLight" : "common.shell.themeDark")}

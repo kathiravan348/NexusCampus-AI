@@ -2866,5 +2866,225 @@
   "m10.permission.deviceWipe": {
     "message": "Wipe devices and resolve conflicts",
     "description": "Permission description: remote-wipe devices and resolve conflicts."
+  },
+  "m11.nav.title": {
+    "message": "AI settings",
+    "description": "Menu item and page title of the AI settings screen (M11)."
+  },
+  "m11.settings.intro": {
+    "message": "Choose whether Nexus Assist is on, where it may help, and which answer quality to use by default.",
+    "description": "Intro text on the AI settings page."
+  },
+  "m11.settings.general": {
+    "message": "General",
+    "description": "Card heading for the main AI switch and defaults."
+  },
+  "m11.settings.enabled": {
+    "message": "Nexus Assist is on",
+    "description": "Switch: turn AI help on or off for the whole institution."
+  },
+  "m11.settings.enabledHint": {
+    "message": "When off, Assist is hidden and every screen works as usual.",
+    "description": "Help text under the main AI switch."
+  },
+  "m11.settings.tier": {
+    "message": "Default answer quality",
+    "description": "Select: default capability tier for Assist answers."
+  },
+  "m11.settings.provider": {
+    "message": "AI provider: {provider}",
+    "description": "Read-only label naming the AI provider."
+  },
+  "m11.settings.cloud": {
+    "message": "cloud service",
+    "description": "Provider kind: hosted cloud service."
+  },
+  "m11.settings.local": {
+    "message": "runs on your own servers",
+    "description": "Provider kind: a local model on the institution's servers."
+  },
+  "m11.settings.alwaysOn": {
+    "message": "Personal data is always redacted before AI sees it, and children's AI use always needs a guardian's consent.",
+    "description": "Note about safeguards that cannot be switched off."
+  },
+  "m11.settings.modules": {
+    "message": "Where Assist may help",
+    "description": "Card heading for per-module AI switches."
+  },
+  "m11.settings.neverRead": {
+    "message": "AI never reads this data.",
+    "description": "Reason shown under the health and data vault switches."
+  },
+  "m11.settings.safeguardingNote": {
+    "message": "Needs the safeguarding switch below.",
+    "description": "Reason shown under the safeguarding module switch while it is locked."
+  },
+  "m11.settings.safeguarding": {
+    "message": "Allow AI for safeguarding",
+    "description": "Switch: allow AI to help with safeguarding records."
+  },
+  "m11.settings.safeguardingPia": {
+    "message": "Only switch this on after a privacy impact assessment.",
+    "description": "Warning under the safeguarding switch."
+  },
+  "m11.settings.credits": {
+    "message": "AI credits this month",
+    "description": "Card heading for the credits meter."
+  },
+  "m11.settings.creditsUsed": {
+    "message": "Used",
+    "description": "Meter label: credits used."
+  },
+  "m11.settings.creditsValue": {
+    "message": "{used} of {granted}",
+    "description": "Credits used against credits granted."
+  },
+  "m11.settings.hardCap": {
+    "message": "Assist stops when the credits run out.",
+    "description": "Note: hard cap on credits."
+  },
+  "m11.settings.softCap": {
+    "message": "Extra use is billed after the credits run out.",
+    "description": "Note: soft cap on credits."
+  },
+  "m11.settings.saved": {
+    "message": "AI settings saved.",
+    "description": "Toast after AI settings are saved."
+  },
+  "m11.settings.saveFailed": {
+    "message": "AI settings could not be saved. Try again.",
+    "description": "Toast when AI settings fail to save."
+  },
+  "m11.settings.error": {
+    "message": "AI settings could not be loaded.",
+    "description": "Error heading when AI settings fail to load."
+  },
+  "m11.module.m61": {
+    "message": "Health records",
+    "description": "Module name M61 (health; AI never reads it)."
+  },
+  "m11.module.m62": {
+    "message": "Safeguarding",
+    "description": "Module name M62 (safeguarding)."
+  },
+  "m11.tier.fast": {
+    "message": "Fast",
+    "description": "Answer quality tier: fastest and cheapest."
+  },
+  "m11.tier.balanced": {
+    "message": "Balanced",
+    "description": "Answer quality tier: balanced."
+  },
+  "m11.tier.reasoning": {
+    "message": "Thorough",
+    "description": "Answer quality tier: most careful reasoning."
+  },
+  "m11.tier.embedding": {
+    "message": "Search",
+    "description": "Answer quality tier: search and matching."
+  },
+  "m11.tier.multimodal": {
+    "message": "Images and text",
+    "description": "Answer quality tier: images and text."
+  },
+  "m11.panel.open": {
+    "message": "Open Nexus Assist",
+    "description": "Accessible label of the header button that opens Assist."
+  },
+  "m11.panel.title": {
+    "message": "Nexus Assist",
+    "description": "Title of the Assist panel (product name)."
+  },
+  "m11.panel.intro": {
+    "message": "Ask about your institution. Answers are AI-generated from your records and always list their sources.",
+    "description": "Intro text in the Assist panel."
+  },
+  "m11.panel.question": {
+    "message": "Your question",
+    "description": "Label of the question box in Assist."
+  },
+  "m11.panel.ask": {
+    "message": "Ask",
+    "description": "Button: send the question to Assist."
+  },
+  "m11.panel.answers": {
+    "message": "Answers",
+    "description": "Accessible label of the list of answers."
+  },
+  "m11.panel.aiLabel": {
+    "message": "AI-generated",
+    "description": "Badge on every AI answer."
+  },
+  "m11.panel.sources": {
+    "message": "Sources",
+    "description": "Heading of the numbered list of records an answer came from."
+  },
+  "m11.panel.meta": {
+    "message": "{tier} · {credits, plural, =0 {no credits} one {# credit} other {# credits}} used",
+    "description": "Answer quality and credits used for one answer."
+  },
+  "m11.panel.noAnswer": {
+    "message": "Nothing in your institution's records answers this, so no credits were used.",
+    "description": "Shown when Assist finds no matching records."
+  },
+  "m11.panel.helpful": {
+    "message": "Helpful",
+    "description": "Accessible label of the thumbs-up button."
+  },
+  "m11.panel.notHelpful": {
+    "message": "Not helpful",
+    "description": "Accessible label of the thumbs-down button."
+  },
+  "m11.panel.failed": {
+    "message": "Assist could not answer. Try again.",
+    "description": "Toast when an ask fails for an unexpected reason."
+  },
+  "m11.unavailable.aiOffTitle": {
+    "message": "Nexus Assist is switched off",
+    "description": "Reason title: the institution switched AI off."
+  },
+  "m11.unavailable.aiOffNext": {
+    "message": "Your administrator can switch it on in AI settings. Everything else works as usual.",
+    "description": "Next step when AI is off."
+  },
+  "m11.unavailable.notEntitledTitle": {
+    "message": "Nexus Assist is not in your plan",
+    "description": "Reason title: the plan does not include AI."
+  },
+  "m11.unavailable.notEntitledNext": {
+    "message": "Ask your administrator about adding it to the institution's plan.",
+    "description": "Next step when AI is not in the plan."
+  },
+  "m11.unavailable.offlineTitle": {
+    "message": "You are offline",
+    "description": "Reason title: no connection."
+  },
+  "m11.unavailable.offlineNext": {
+    "message": "Assist needs a connection. Your other work is saved and syncs when you are back online.",
+    "description": "Next step when offline."
+  },
+  "m11.unavailable.noCreditsTitle": {
+    "message": "AI credits have run out",
+    "description": "Reason title: no credits left."
+  },
+  "m11.unavailable.noCreditsNext": {
+    "message": "Credits renew at the start of next month, or your administrator can add more.",
+    "description": "Next step when credits run out."
+  },
+  "m11.unavailable.consentTitle": {
+    "message": "A guardian's consent is needed",
+    "description": "Reason title: a minor without guardian consent for AI."
+  },
+  "m11.unavailable.consentNext": {
+    "message": "Ask your parent or guardian to allow AI features in their consent settings.",
+    "description": "Next step for a minor without consent."
+  },
+  "m11.permission.assistUse": {
+    "message": "Use Nexus Assist",
+    "description": "Permission description: ask Nexus Assist."
+  },
+  "m11.permission.settingsManage": {
+    "message": "Manage AI settings",
+    "description": "Permission description: change AI settings."
   }
 }
