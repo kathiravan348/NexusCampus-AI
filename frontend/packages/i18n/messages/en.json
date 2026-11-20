@@ -3390,5 +3390,269 @@
   "m83.permission.grantApprove": {
     "message": "Approve provider access",
     "description": "Permission description: approve, deny and revoke provider access (sensitive)."
+  },
+  "m07.nav.title": {
+    "message": "Notifications",
+    "description": "Menu item and page title of the notifications screen (M07)."
+  },
+  "m07.notifications.intro": {
+    "message": "Choose how you hear from your institution. Administrators also edit the messages and see what was sent.",
+    "description": "Intro text on the notifications page."
+  },
+  "m07.notifications.tabsLabel": {
+    "message": "Notifications sections",
+    "description": "Accessible label of the tab list on the notifications page."
+  },
+  "m07.notifications.tabTemplates": {
+    "message": "Templates",
+    "description": "Tab: message templates."
+  },
+  "m07.notifications.tabLog": {
+    "message": "Delivery log",
+    "description": "Tab: what was sent and whether it arrived."
+  },
+  "m07.notifications.tabPrefs": {
+    "message": "My preferences",
+    "description": "Tab: the user's own notification preferences."
+  },
+  "m07.notifications.error": {
+    "message": "Notifications could not be loaded.",
+    "description": "Error heading when notification data fails to load."
+  },
+  "m07.notifications.saveFailed": {
+    "message": "The change could not be saved. Try again.",
+    "description": "Toast when a notifications change fails."
+  },
+  "m07.channel.email": {
+    "message": "Email",
+    "description": "Notification channel: email."
+  },
+  "m07.channel.sms": {
+    "message": "Text message",
+    "description": "Notification channel: SMS."
+  },
+  "m07.channel.whatsapp": {
+    "message": "WhatsApp",
+    "description": "Notification channel: WhatsApp."
+  },
+  "m07.channel.push": {
+    "message": "Phone notification",
+    "description": "Notification channel: push notification."
+  },
+  "m07.channel.inApp": {
+    "message": "In the app",
+    "description": "Notification channel: inside the app."
+  },
+  "m07.event.userInvited": {
+    "message": "Account invitation",
+    "description": "Notification event: a user is invited."
+  },
+  "m07.event.consentRequested": {
+    "message": "Consent request",
+    "description": "Notification event: a guardian is asked for consent."
+  },
+  "m07.event.announcementPublished": {
+    "message": "New announcement",
+    "description": "Notification event: an announcement is published."
+  },
+  "m07.templates.caption": {
+    "message": "Notification templates",
+    "description": "Accessible caption of the templates table."
+  },
+  "m07.templates.colEvent": {
+    "message": "Event",
+    "description": "Templates column: what triggers the message."
+  },
+  "m07.templates.colChannel": {
+    "message": "Channel",
+    "description": "Templates column: how it is sent."
+  },
+  "m07.templates.colLanguage": {
+    "message": "Language",
+    "description": "Templates column: language of this version."
+  },
+  "m07.templates.colVersion": {
+    "message": "Version",
+    "description": "Templates column: version number."
+  },
+  "m07.templates.colEnabled": {
+    "message": "On",
+    "description": "Templates column: on/off switch."
+  },
+  "m07.templates.colActions": {
+    "message": "Actions",
+    "description": "Templates column holding row actions."
+  },
+  "m07.templates.enabledLabel": {
+    "message": "Template {id} on",
+    "description": "Accessible label of a template's on/off switch."
+  },
+  "m07.templates.editLabel": {
+    "message": "Edit template {id}",
+    "description": "Accessible label of a template's edit button."
+  },
+  "m07.templates.empty": {
+    "message": "No templates yet.",
+    "description": "Empty state of the templates table."
+  },
+  "m07.editor.title": {
+    "message": "{event} · {channel}",
+    "description": "Title of the template editor: event and channel."
+  },
+  "m07.editor.language": {
+    "message": "Language",
+    "description": "Select: which language version to edit."
+  },
+  "m07.editor.addLanguage": {
+    "message": "Add a language…",
+    "description": "Select option: add a version in a missing language."
+  },
+  "m07.editor.newLanguage": {
+    "message": "New language",
+    "description": "Select: the language of the new version."
+  },
+  "m07.editor.subject": {
+    "message": "Subject",
+    "description": "Email subject line field."
+  },
+  "m07.editor.body": {
+    "message": "Message",
+    "description": "Message body field (ICU placeholders allowed)."
+  },
+  "m07.editor.invalid": {
+    "message": "Fix the message syntax, for example a missing closing brace.",
+    "description": "Field error when the ICU syntax is invalid."
+  },
+  "m07.editor.preview": {
+    "message": "Preview with sample values",
+    "description": "Heading of the message preview."
+  },
+  "m07.editor.noPreview": {
+    "message": "The preview appears once the message is valid.",
+    "description": "Shown instead of the preview while the message is invalid."
+  },
+  "m07.editor.saved": {
+    "message": "Template saved.",
+    "description": "Toast after a template is saved."
+  },
+  "m07.editor.duplicate": {
+    "message": "That language already has a version.",
+    "description": "Toast when adding a language that already exists."
+  },
+  "m07.delivery.queued": {
+    "message": "Queued",
+    "description": "Delivery status: waiting to be sent."
+  },
+  "m07.delivery.sent": {
+    "message": "Sent",
+    "description": "Delivery status: sent."
+  },
+  "m07.delivery.delivered": {
+    "message": "Delivered",
+    "description": "Delivery status: arrived."
+  },
+  "m07.delivery.failed": {
+    "message": "Failed",
+    "description": "Delivery status: could not be sent."
+  },
+  "m07.delivery.suppressed": {
+    "message": "Not sent",
+    "description": "Delivery status: skipped on purpose (preferences, quiet hours)."
+  },
+  "m07.log.caption": {
+    "message": "Delivery log",
+    "description": "Accessible caption of the delivery log table."
+  },
+  "m07.log.colTime": {
+    "message": "Time",
+    "description": "Delivery log column: when it was queued."
+  },
+  "m07.log.colRecipient": {
+    "message": "Recipient",
+    "description": "Delivery log column: who it was for."
+  },
+  "m07.log.colChannel": {
+    "message": "Channel",
+    "description": "Delivery log column: how it was sent."
+  },
+  "m07.log.colStatus": {
+    "message": "Status",
+    "description": "Delivery log column: what happened."
+  },
+  "m07.log.colReason": {
+    "message": "Reason",
+    "description": "Delivery log column: why it failed or was skipped."
+  },
+  "m07.log.filterStatus": {
+    "message": "Status",
+    "description": "Filter: delivery status."
+  },
+  "m07.log.anyStatus": {
+    "message": "Any status",
+    "description": "Status filter option: all."
+  },
+  "m07.log.filterChannel": {
+    "message": "Channel",
+    "description": "Filter: delivery channel."
+  },
+  "m07.log.anyChannel": {
+    "message": "Any channel",
+    "description": "Channel filter option: all."
+  },
+  "m07.log.empty": {
+    "message": "No messages match.",
+    "description": "Empty state of the delivery log."
+  },
+  "m07.prefs.channels": {
+    "message": "How you hear from us",
+    "description": "Card heading for channel switches."
+  },
+  "m07.prefs.notSetUp": {
+    "message": "Not set up by your institution.",
+    "description": "Shown under a channel the institution has not configured."
+  },
+  "m07.prefs.quietHours": {
+    "message": "Quiet hours",
+    "description": "Card heading for quiet hours."
+  },
+  "m07.prefs.useQuiet": {
+    "message": "Hold messages during quiet hours",
+    "description": "Switch: turn quiet hours on."
+  },
+  "m07.prefs.quietHint": {
+    "message": "Times are in {timeZone}. Urgent safety messages still arrive.",
+    "description": "Help text under the quiet hours switch."
+  },
+  "m07.prefs.from": {
+    "message": "From",
+    "description": "Time field: quiet hours start."
+  },
+  "m07.prefs.to": {
+    "message": "To",
+    "description": "Time field: quiet hours end."
+  },
+  "m07.prefs.sameTimes": {
+    "message": "Start and end must be different.",
+    "description": "Field error when quiet hours start equals end."
+  },
+  "m07.prefs.saved": {
+    "message": "Preferences saved.",
+    "description": "Toast after preferences are saved."
+  },
+  "m07.prefs.queued": {
+    "message": "Saved on this device. It will sync when you are back online.",
+    "description": "Toast when preferences were saved offline."
+  },
+  "m07.permission.templateManage": {
+    "message": "Manage notification templates",
+    "description": "Permission description: edit templates and see the delivery log."
+  },
+  "m07.permission.notificationSend": {
+    "message": "Send notifications",
+    "description": "Permission description: send notifications."
+  },
+  "m07.permission.preferenceManage": {
+    "message": "Set own notification preferences",
+    "description": "Permission description: change own channels and quiet hours."
   }
 }

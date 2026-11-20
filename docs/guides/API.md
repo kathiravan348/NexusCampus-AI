@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, M05, M06, M10, M11, and M83 write endpoints landed)
+> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, M05, M06, M10, M11, M83, and M07 write endpoints landed)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -103,3 +103,14 @@ In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request 
 | `POST /api/v1/access-grants/:id/revoke` | `m83.grant.approve` | `{}` → `AccessGrant` (`revokedAt` set; request → `revoked`) | `401`, `403`, `404`, `409 conflict` (ended or revoked); audits `m83.accessGrant.revoked` |
 
 Grant history uses `GET /api/v1/audit-events?grantId=` (M06).
+
+## Notifications (M07)
+
+| Method & path | Permission | Input / Output | Errors & audit |
+|---|---|---|---|
+| `GET /api/v1/notification-templates` | `m07.template.manage` | `?page=&pageSize=` → `Page<NotificationTemplate>` | `400`, `401`, `403` |
+| `PUT /api/v1/notification-templates/:id` | `m07.template.manage` | `{ subject, body, enabled }` → `NotificationTemplate` (version + 1) | `400 invalid_request` (invalid ICU), `401`, `403`, `404`; audits `m07.template.updated` |
+| `POST /api/v1/notification-templates` | `m07.template.manage` | `{ eventType, channel, locale, subject, body, enabled }` → `201 NotificationTemplate` | `400` (invalid ICU), `401`, `403`, `409 conflict` (event + channel + locale exists); audits `m07.template.created` |
+| `GET /api/v1/notification-deliveries` | `m07.template.manage` | `?status=&channel=&page=&pageSize=` → `Page<NotificationDelivery>` (newest first) | `400`, `401`, `403` |
+| `GET /api/v1/notification-preferences` | `m07.preference.manage` | — → `{ preferences, channels: [{ channel, available }] }` (prototype-only shape: `available` = the institution has templates for that channel; push needs a provider) | `401`, `403` |
+| `PUT /api/v1/notification-preferences` | `m07.preference.manage` (own only) | `{ channels: [{ channel, enabled }], quietHours }` → same as GET; accepts `Idempotency-Key` (outbox replay) | `400` (equal quiet-hour times), `401`, `403`; audits `m07.preference.updated` |

@@ -17,7 +17,6 @@ import {
   KeyStatusSchema,
   LocaleSettingsSchema,
   NotificationDeliverySchema,
-  NotificationPreferenceSchema,
   NotificationTemplateSchema,
   PermissionSchema,
   PersonSchema,
@@ -44,6 +43,7 @@ import {
   TenantResponseSchema,
   ThemeResponseSchema,
 } from "./handlers";
+import { PreferencesResponseSchema } from "./handlers/m07";
 import { server } from "./node";
 
 const BASE = "http://localhost/api/v1";
@@ -99,7 +99,7 @@ const ENDPOINTS: [string, { parse(value: unknown): unknown }][] = [
   ["/compliance-packs", pageSchema(CompliancePackSchema)],
   ["/notification-templates", pageSchema(NotificationTemplateSchema)],
   ["/notification-deliveries", pageSchema(NotificationDeliverySchema)],
-  ["/notification-preferences", pageSchema(NotificationPreferenceSchema)],
+  ["/notification-preferences", PreferencesResponseSchema],
   ["/devices", pageSchema(DeviceSyncSchema)],
   ["/sync-conflicts", pageSchema(SyncConflictSchema)],
   ["/ai/settings", AiSettingsSchema],
