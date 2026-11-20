@@ -1,12 +1,13 @@
+import { AUDIT_EVENTS } from "./audit";
 import { ACADEMIC_CALENDARS } from "./calendars";
 import { CAMPUSES, DEMO_TENANTS, GROUPS, INSTITUTIONS } from "./tenants";
 
 /** Format version of `demo_fixtures.json`; bump when the shape changes so the backend seed can refuse old files. */
-export const DEMO_FIXTURES_VERSION = 1;
+export const DEMO_FIXTURES_VERSION = 2;
 
 /**
- * The tenancy part of the demo data as the backend seed reads it (NEX-043): contract shapes (camelCase), plus a
- * `tenants` list with each tenant's region (a group's region, else its institution's).
+ * The demo data the backend seed reads, in contract shapes (camelCase): tenancy (NEX-043) plus each tenant's
+ * hash-chained audit log in chain order (NEX-044), and a `tenants` list with each tenant's region.
  */
 export function demoFixtures() {
   return {
@@ -21,6 +22,7 @@ export function demoFixtures() {
     institutions: INSTITUTIONS,
     campuses: CAMPUSES,
     calendars: ACADEMIC_CALENDARS,
+    auditEvents: AUDIT_EVENTS,
   };
 }
 

@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-043) · Migration: `0001_tenancy`
+> State as of: 2026-11-20 (NEX-044) · Migration: `0002_audit_outbox`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -31,8 +31,21 @@ PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in 
 All tables carry `created_at` / `updated_at` (UTC, `timestamptz`). Ids are text: demo rows keep the mock ids
 (`ten-ls`, `ins-rv`, …); new rows use `<prefix>_<ULID>` (`nexus.core.ids.new_id`).
 
+## Audit and events (core — `0002_audit_outbox`)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `audit_events` | `id`, `tenant_id`, `seq`, `occurred_at`, `actor_kind`, `actor_id`, `grant_id`, `action`, `module_id`, `target_type`, `target_id`, `device_id`, `changes` (JSONB: `[{field, sensitive}]` — names only, never values), `prev_hash`, `hash` | **Append-only:** `nexus_app` has SELECT + INSERT only; a trigger refuses UPDATE and TRUNCATE for every role, and DELETE unless the owner set `nexus.audit_maintenance = on` (dev seed reset only). Gapless `seq` per tenant; `grant_id` iff `provider_grant`; `actor_id` null iff `system`; `action` starts with its module |
+| `audit_chain_heads` | `tenant_id`, `last_seq`, `last_hash` | Locked `FOR UPDATE` by every writer, so concurrent writes never fork the chain |
+| `domain_events_outbox` | `event_id`, `tenant_id`, `module_id`, `event_type`, `occurred_at`, `actor_id`, `correlation_id`, `schema_version`, `payload` (JSONB), `published_at`, `attempts` | Envelope of `event.ts`; written in the same transaction as the change; published by workers (NEX-056) |
+
+**Hash chain:** `hash = sha256_hex(id|occurredAt|action|prevHash)` with `occurredAt` as `2026-05-04T06:00:00Z` (milliseconds
+only when not zero) and `prevHash` empty for the first row — the same input as the mocks, so seeded demo chains verify.
+It covers ids and metadata only, never personal values. Write with `nexus.core.audit.record_audit` and
+`nexus.core.events.emit_event` inside the tenant transaction; check with `nexus.core.hashchain.verify_chain`.
+
 ## Demo data
-`uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16) from
+`uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16) and their audit chains from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
 `pnpm --dir frontend --filter @nexus/mocks export:fixtures` (a mocks test fails when the file is stale). Upsert by
 id; each tenant is written inside its own tenant context. `--reset` only with `NEXUS_ENVIRONMENT=dev`.

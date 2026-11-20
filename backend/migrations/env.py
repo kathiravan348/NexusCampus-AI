@@ -9,8 +9,9 @@ from logging.config import fileConfig
 from alembic import context
 from sqlalchemy import create_engine, pool
 
+from nexus.core import audit_models as _audit  # noqa: F401  (registers the tables on Base.metadata)
 from nexus.core.models import Base
-from nexus.modules.m01 import models as _m01  # noqa: F401  (registers the tables on Base.metadata)
+from nexus.modules.m01 import models as _m01  # noqa: F401
 from nexus.settings import get_settings
 
 config = context.config
