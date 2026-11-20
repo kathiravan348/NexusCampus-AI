@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "tenants": [
     {
       "id": "ten-ls",
@@ -6086,6 +6086,258 @@
       "method": "in_app",
       "recordedAt": "2026-09-10T08:00:00Z",
       "withdrawnAt": null
+    }
+  ],
+  "themes": [
+    {
+      "id": "thm-ls",
+      "tenantId": "ten-ls",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-ls"
+      },
+      "light": {
+        "brand-primary": "#B42318",
+        "brand-primary-text": "#B42318",
+        "on-brand": "#FFFFFF"
+      },
+      "dark": {
+        "brand-primary": "#FDA29B",
+        "brand-primary-text": "#FDA29B",
+        "on-brand": "#0B1122"
+      },
+      "fonts": {
+        "sans": null,
+        "mono": null
+      },
+      "radius": {
+        "radius-md": "10px"
+      },
+      "density": "spacious",
+      "assets": {
+        "logoUrl": "/demo/little-steps/logo.svg",
+        "faviconUrl": null,
+        "loginImageUrl": null
+      },
+      "lockedTokens": [],
+      "version": 1,
+      "updatedBy": "usr-ls-priya",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "thm-rv-group",
+      "tenantId": "ten-rv",
+      "scope": {
+        "kind": "group",
+        "targetId": "grp-rv"
+      },
+      "light": {
+        "brand-primary": "#1D4ED8",
+        "brand-primary-text": "#1D4ED8",
+        "on-brand": "#FFFFFF"
+      },
+      "dark": {
+        "brand-primary": "#93C5FD",
+        "brand-primary-text": "#93C5FD",
+        "on-brand": "#0B1122"
+      },
+      "fonts": {
+        "sans": null,
+        "mono": null
+      },
+      "radius": {},
+      "density": null,
+      "assets": {
+        "logoUrl": "/demo/riverside/logo.svg",
+        "faviconUrl": "/demo/riverside/favicon.svg",
+        "loginImageUrl": null
+      },
+      "lockedTokens": [
+        "brand-primary"
+      ],
+      "version": 1,
+      "updatedBy": "usr-rv-helen",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "thm-rv-school",
+      "tenantId": "ten-rv",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-rv"
+      },
+      "light": {},
+      "dark": {},
+      "fonts": {
+        "sans": null,
+        "mono": null
+      },
+      "radius": {
+        "radius-md": "4px"
+      },
+      "density": "compact",
+      "assets": {
+        "logoUrl": null,
+        "faviconUrl": null,
+        "loginImageUrl": null
+      },
+      "lockedTokens": [],
+      "version": 1,
+      "updatedBy": "usr-rv-helen",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "thm-nb",
+      "tenantId": "ten-nb",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-nb"
+      },
+      "light": {
+        "brand-primary": "#7A1F3D",
+        "brand-primary-text": "#7A1F3D",
+        "on-brand": "#FFFFFF"
+      },
+      "dark": {
+        "brand-primary": "#F4A6C0",
+        "brand-primary-text": "#F4A6C0",
+        "on-brand": "#0B1122"
+      },
+      "fonts": {
+        "sans": "inter",
+        "mono": "jetbrains-mono"
+      },
+      "radius": {},
+      "density": null,
+      "assets": {
+        "logoUrl": null,
+        "faviconUrl": null,
+        "loginImageUrl": null
+      },
+      "lockedTokens": [],
+      "version": 1,
+      "updatedBy": "usr-nb-robert",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "thm-ax",
+      "tenantId": "ten-ax",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-ax"
+      },
+      "light": {
+        "brand-primary": "#0F766E",
+        "brand-primary-text": "#0F766E",
+        "on-brand": "#FFFFFF"
+      },
+      "dark": {
+        "brand-primary": "#5EEAD4",
+        "brand-primary-text": "#5EEAD4",
+        "on-brand": "#0B1122"
+      },
+      "fonts": {
+        "sans": "noto-sans-tamil",
+        "mono": null
+      },
+      "radius": {},
+      "density": null,
+      "assets": {
+        "logoUrl": null,
+        "faviconUrl": null,
+        "loginImageUrl": null
+      },
+      "lockedTokens": [],
+      "version": 1,
+      "updatedBy": "usr-ax-karthik",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "thm-hm",
+      "tenantId": "ten-hm",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-hm"
+      },
+      "light": {
+        "brand-primary": "#6D28D9",
+        "brand-primary-text": "#6D28D9",
+        "on-brand": "#FFFFFF"
+      },
+      "dark": {
+        "brand-primary": "#C4B5FD",
+        "brand-primary-text": "#C4B5FD",
+        "on-brand": "#0B1122"
+      },
+      "fonts": {
+        "sans": null,
+        "mono": null
+      },
+      "radius": {},
+      "density": null,
+      "assets": {
+        "logoUrl": null,
+        "faviconUrl": null,
+        "loginImageUrl": null
+      },
+      "lockedTokens": [],
+      "version": 1,
+      "updatedBy": "usr-hm-weiling",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    }
+  ],
+  "fonts": [
+    {
+      "id": "inter",
+      "family": "Inter",
+      "source": "library",
+      "roles": [
+        "sans"
+      ],
+      "scripts": [
+        "latin",
+        "cyrillic"
+      ],
+      "fileUrl": null
+    },
+    {
+      "id": "noto-sans-devanagari",
+      "family": "Noto Sans Devanagari",
+      "source": "library",
+      "roles": [
+        "sans"
+      ],
+      "scripts": [
+        "devanagari",
+        "latin"
+      ],
+      "fileUrl": null
+    },
+    {
+      "id": "noto-sans-tamil",
+      "family": "Noto Sans Tamil",
+      "source": "library",
+      "roles": [
+        "sans"
+      ],
+      "scripts": [
+        "tamil",
+        "latin"
+      ],
+      "fileUrl": null
+    },
+    {
+      "id": "jetbrains-mono",
+      "family": "JetBrains Mono",
+      "source": "library",
+      "roles": [
+        "mono"
+      ],
+      "scripts": [
+        "latin",
+        "cyrillic"
+      ],
+      "fileUrl": null
     }
   ],
   "dataSubjectRequests": [

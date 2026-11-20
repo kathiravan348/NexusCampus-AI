@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { designTokensJson } from "./design-tokens";
 import { demoFixtures, demoFixturesJson } from "./export";
 
 const EXPORTED = path.resolve(
@@ -15,5 +16,10 @@ describe("demo fixtures export (backend seed, NEX-043)", () => {
 
   it("matches the committed backend seed file (run `pnpm --filter @nexus/mocks export:fixtures`)", () => {
     expect(readFileSync(EXPORTED, "utf8").replace(/\r\n/g, "\n")).toBe(demoFixturesJson());
+  });
+
+  it("matches the committed backend design tokens (contrast guard parity, NEX-053)", () => {
+    const tokens = path.resolve(EXPORTED, "../../modules/m03/design_tokens.json");
+    expect(readFileSync(tokens, "utf8").replace(/\r\n/g, "\n")).toBe(designTokensJson());
   });
 });

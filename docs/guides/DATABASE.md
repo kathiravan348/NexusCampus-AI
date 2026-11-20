@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-052) · Migration: `0009_privacy`
+> State as of: 2026-11-20 (NEX-053) · Migration: `0010_themes_fonts`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -100,6 +100,13 @@ All three use forced RLS (`tenant_isolation`). No grant row is ever deleted; gra
 | `tenant_compliance` | `tenant_id`, `pack_code` (PK) | Which packs a tenant follows; the app only reads it. Pack rules live in code (`m06/packs.py`, = mock fixtures) |
 
 All three use forced RLS (`tenant_isolation`).
+
+## Themes and fonts (M03 — `0010_themes_fonts`, C-1, D28/D29)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `themes` | `id`, `tenant_id`, `scope_kind`, `scope_target_id`, `light`/`dark`/`radius` (JSON token maps), `fonts`, `density`, `assets` (JSON), `locked_tokens[]`, `version`, `updated_by`, `updated_at` | One layer per tenant + scope; `scope_target_id` NULL only for `platform`; forced RLS |
+| `fonts` | `id`, `tenant_id` (NULL = shared library), `family`, `source`, `roles[]`, `scripts[]`, `file_url` | Library fonts are visible to every tenant, uploads (Stage 3) only to their own; the app only reads |
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
