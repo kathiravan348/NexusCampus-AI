@@ -1,9 +1,10 @@
-"""App factory. Modules mount their routers under `/api/v1` (from NEX-047 on)."""
+"""App factory. Modules mount their routers under `/api/v1`."""
 
 import logging
 from collections.abc import AsyncIterator
 from contextlib import asynccontextmanager
 
+import httpx2
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, ConfigDict
@@ -13,6 +14,9 @@ from nexus.core.errors import ApiErrorEnvelope, install_error_handling
 from nexus.core.redis import close_redis, init_redis, ping_redis
 from nexus.core.telemetry import setup_telemetry
 from nexus.core.timing import boot_elapsed_ms, timing_line, utf8_console
+from nexus.modules.m02 import auth, me
+from nexus.modules.m02.login_state import RedisLoginStateStore
+from nexus.modules.m02.oidc import OidcClient
 from nexus.settings import Settings, get_settings
 
 log = logging.getLogger("nexus")
@@ -36,12 +40,19 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     @asynccontextmanager
     async def lifespan(_: FastAPI) -> AsyncIterator[None]:
         init_engine(cfg)
-        init_redis(cfg)
+        redis = init_redis(cfg)
+        http = httpx2.AsyncClient(timeout=10.0)
+        # Tests may install their own OIDC client / state store before startup.
+        if not hasattr(app.state, "oidc"):
+            app.state.oidc = OidcClient(cfg, http)
+        if not hasattr(app.state, "login_states"):
+            app.state.login_states = RedisLoginStateStore(redis)
         elapsed = boot_elapsed_ms()
         if elapsed is not None:
             utf8_console()  # uvicorn's reload child has its own console streams
             print(timing_line("backend:start", "backend:start", elapsed), flush=True)
         yield
+        await http.aclose()
         await close_redis()
         await dispose_engine()
 
@@ -51,8 +62,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         lifespan=lifespan,
         responses={"default": {"model": ApiErrorEnvelope}},
     )
+    app.state.settings = cfg
     install_error_handling(app)
     setup_telemetry(app, cfg)
+    app.include_router(auth.router)
+    app.include_router(me.router)
 
     @app.get("/healthz", response_model=Health, tags=["ops"])
     async def healthz() -> Health:

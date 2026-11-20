@@ -33,6 +33,21 @@ class Settings(BaseSettings):
     #: Password the baseline migration gives the `nexus_app` role.
     app_db_password: SecretStr = SecretStr("")
     redis_url: SecretStr = SecretStr("redis://127.0.0.1:56379/0")
+    # Sign-in (D44): the backend is the OIDC client of the cell's Keycloak realm.
+    keycloak_url: str = "http://127.0.0.1:58080"
+    keycloak_realm: str = "nexus-dev"
+    oidc_client_id: str = "nexus-backend"
+    oidc_client_secret: SecretStr = SecretStr("")
+    #: Public address of this API (the OIDC redirect URI is `<api_public_url>/api/v1/auth/callback`).
+    api_public_url: str = "http://127.0.0.1:8000"
+    #: The campus app; sign-in and sign-out return here.
+    app_public_url: str = "http://127.0.0.1:3100"
+    session_idle_minutes: int = 30
+    session_absolute_hours: int = 12
+    # Dev-only Keycloak setup (`nexus-keycloak-dev`): admin login and the password given to demo users.
+    keycloak_admin_user: str = "admin"
+    keycloak_admin_password: SecretStr = SecretStr("")
+    demo_user_password: SecretStr = SecretStr("")
     otel_exporter: OtelExporter = "none"
     host: str = "127.0.0.1"
     port: int = 8000

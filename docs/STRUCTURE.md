@@ -78,8 +78,10 @@
 │                       src/nexus/ main.py (app factory, /healthz, /readyz), settings.py, core/ (errors = ApiError
 │                       envelope, pagination = Page, db, redis, telemetry, timing, tenancy = tenant context + region
 │                       check, ids, models = declarative base, audit + hashchain + audit_models = append-only hash-chained
-│                       audit writer, events = domain event outbox), modules/m01/ (models), seed/ (demo.py = nexus-seed,
-│                       demo_fixtures.json exported from mocks), devtools/ (nexus-dev, nexus-compose-up,
+│                       audit writer, events = domain event outbox, sessions = session cookie + token hash, request_context =
+│                       session → tenant → transaction + CSRF), modules/m01/ (models), modules/m02/ (models, oidc,
+│                       login_state, auth = /auth/login|callback|logout, me = /me, schemas), keycloak/ (realm-dev.json), seed/ (demo.py = nexus-seed,
+│                       demo_fixtures.json exported from mocks), devtools/ (nexus-dev, nexus-compose-up, nexus-keycloak-dev,
 │                       backend-check); tests/ (tests/db: RLS, region, seed, migrations — need Compose PostgreSQL)
 ├─ control/             Nexus Control backend (planned, Stage 2)
 └─ deploy/              Compose, Helm, air-gapped bundle tooling (planned, Stage 1 build step / Stage 2)

@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-044) · Migration: `0002_audit_outbox`
+> State as of: 2026-11-20 (NEX-045) · Migration: `0003_identity`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -44,8 +44,17 @@ only when not zero) and `prevHash` empty for the first row — the same input as
 It covers ids and metadata only, never personal values. Write with `nexus.core.audit.record_audit` and
 `nexus.core.events.emit_event` inside the tenant transaction; check with `nexus.core.hashchain.verify_chain`.
 
+## Identity (M02 — `0003_identity`, D25, D44)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `people` | `id`, `tenant_id`, `legal_name`, `preferred_name`, `date_of_birth`, `is_minor`, `email`, `phone`, `preferred_locale`, `retention_state` | One human per tenant; phone E.164; retention `active` / `archived` / `crypto_shredded` |
+| `users` | `id`, `tenant_id`, `person_id`, `email`, `status`, `mfa_enabled`, `passkey_count`, `sso_only`, `last_sign_in_at`, `idp_subject` | Person in the same tenant; email unique per tenant (case-insensitive); `idp_subject` = Keycloak `sub`, pinned at first sign-in, unique per tenant. **No passwords** (Keycloak holds credentials) |
+| `role_profiles` | `id`, `tenant_id`, `person_id`, `institution_id`, `campus_id`, `kind`, `academic_year_id`, `effective_from`, `effective_to`, `status` | Membership of an institution (staff / guardian / learner / alumni / external); `effective_to ≥ effective_from` |
+| `sessions` | `id`, `tenant_id`, `user_id`, `device_id`, `device_label`, `auth_method`, `mfa_verified`, `ip_address`, `created_at`, `last_seen_at`, `expires_at`, `revoked_at`, `token_hash` | Only `sha256(token)` is stored; demo sessions have none (never usable). The app may insert and revoke, never delete |
+
 ## Demo data
-`uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16) and their audit chains from
+`uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains and identities from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
 `pnpm --dir frontend --filter @nexus/mocks export:fixtures` (a mocks test fails when the file is stale). Upsert by
 id; each tenant is written inside its own tenant context. `--reset` only with `NEXUS_ENVIRONMENT=dev`.
