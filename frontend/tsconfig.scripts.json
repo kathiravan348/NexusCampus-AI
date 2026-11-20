@@ -6,5 +6,5 @@
     "types": ["node"],
     "tsBuildInfoFile": "node_modules/.cache/tsconfig.scripts.tsbuildinfo"
   },
-  "include": ["scripts/**/*.ts"]
+  "include": ["scripts/**/*.ts", "e2e/**/*.ts"]
 }

@@ -9,7 +9,10 @@
     "preview": "node ../../scripts/time-run.ts preview:campus --ready-pattern Local: -- vite preview",
     "typecheck": "tsc --noEmit && tsc --noEmit -p src/sw",
     "test": "node ../../scripts/time-run.ts test:pkg --label test:campus -- vitest run",
-    "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ ."
+    "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
+    "review:build": "vite build --mode review",
+    "review:preview": "node ../../scripts/time-run.ts preview:campus --ready-pattern Local: -- vite preview --mode review --open",
+    "review:start": "node ../../scripts/time-run.ts review:start --sequence build:campus=review:build review:preview"
   },
   "dependencies": {
     "@hookform/resolvers": "7.0.2",
