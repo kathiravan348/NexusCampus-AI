@@ -11,6 +11,7 @@ TABLES = {
     "institutions": "institutions",
     "campuses": "campuses",
     "academic_calendars": "calendars",
+    "audit_events": "auditEvents",
 }
 
 
@@ -26,17 +27,21 @@ def counts(owner_url: str) -> dict[str, int]:
         engine.dispose()
 
 
-def test_seed_counts_match_the_mock_fixtures(test_db: DbUrls) -> None:
+def expected() -> dict[str, int]:
     fixtures = load_fixtures()
-    assert counts(test_db.owner_url) == {t: len(fixtures[key]) for t, key in TABLES.items()}
-    assert len(fixtures["tenants"]) == 5
+    return {t: len(fixtures[key]) for t, key in TABLES.items()}
 
 
-def test_seed_is_idempotent_and_reset_reloads(test_db: DbUrls) -> None:
+def test_reset_seed_counts_match_the_mock_fixtures(test_db: DbUrls) -> None:
+    # Other tests in this session append audit events; a reset brings the demo data back to the fixtures.
+    seed(test_db.owner_url, reset=True)
+    assert counts(test_db.owner_url) == expected()
+    assert expected()["tenants"] == 5
+
+
+def test_seed_is_idempotent(test_db: DbUrls) -> None:
     before = counts(test_db.owner_url)
     seed(test_db.owner_url)
-    assert counts(test_db.owner_url) == before
-    seed(test_db.owner_url, reset=True)
     assert counts(test_db.owner_url) == before
 
 

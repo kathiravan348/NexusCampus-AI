@@ -19,9 +19,18 @@ from nexus.core.timing import utf8_console
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 1
+FIXTURES_VERSION = 2
 #: Delete order for `--reset` (children first).
-TABLES_CHILD_FIRST = ("academic_calendars", "campuses", "institutions", "groups", "tenants")
+TABLES_CHILD_FIRST = (
+    "domain_events_outbox",
+    "audit_chain_heads",
+    "audit_events",
+    "academic_calendars",
+    "campuses",
+    "institutions",
+    "groups",
+    "tenants",
+)
 
 
 def load_fixtures(path: Path = FIXTURES) -> dict[str, Any]:
@@ -123,8 +132,53 @@ def seed_tenant(conn: Connection, data: dict[str, Any], tenant: dict[str, Any]) 
         )
 
 
+def seed_audit(conn: Connection, data: dict[str, Any], tenant_id: str) -> int:
+    """Appends the mock audit chain with its stored hashes (rows are never updated: insert-if-absent).
+
+    The chain head is only created when missing, so re-seeding never rewinds a chain the backend extended.
+    """
+    events = _rows(data, "auditEvents", tenant_id)
+    for seq, e in enumerate(events, start=1):
+        conn.execute(
+            text(
+                "INSERT INTO audit_events (id, tenant_id, seq, occurred_at, actor_kind, actor_id, grant_id, "
+                "action, module_id, target_type, target_id, device_id, changes, prev_hash, hash) VALUES "
+                "(:id, :t, :seq, :at, :ak, :aid, :gid, :action, :mid, :tt, :tid, :did, CAST(:ch AS jsonb), "
+                ":prev, :hash) ON CONFLICT (id) DO NOTHING"
+            ),
+            {
+                "id": e["id"],
+                "t": tenant_id,
+                "seq": seq,
+                "at": e["occurredAt"],
+                "ak": e["actorKind"],
+                "aid": e["actorId"],
+                "gid": e["grantId"],
+                "action": e["action"],
+                "mid": e["moduleId"],
+                "tt": e["targetType"],
+                "tid": e["targetId"],
+                "did": e["deviceId"],
+                "ch": json.dumps(e["changes"]),
+                "prev": e["prevHash"],
+                "hash": e["hash"],
+            },
+        )
+    if events:
+        conn.execute(
+            text(
+                "INSERT INTO audit_chain_heads (tenant_id, last_seq, last_hash) VALUES (:t, :seq, :hash) "
+                "ON CONFLICT (tenant_id) DO NOTHING"
+            ),
+            {"t": tenant_id, "seq": len(events), "hash": events[-1]["hash"]},
+        )
+    return len(events)
+
+
 def reset_tenant(conn: Connection, tenant_id: str) -> None:
     _scope(conn, tenant_id)
+    # Owner-only switch of the append-only trigger (0002_audit_outbox); dev reset only.
+    conn.execute(text("SELECT set_config('nexus.audit_maintenance', 'on', true)"))
     for table in TABLES_CHILD_FIRST:
         column = "id" if table == "tenants" else "tenant_id"
         conn.execute(text(f"DELETE FROM {table} WHERE {column} = :t"), {"t": tenant_id})  # noqa: S608
@@ -140,6 +194,7 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
                 if reset:
                     reset_tenant(conn, tenant["id"])
                 seed_tenant(conn, fixtures, tenant)
+                seed_audit(conn, fixtures, tenant["id"])
     finally:
         engine.dispose()
     return {
@@ -148,6 +203,7 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
         "institutions": len(fixtures["institutions"]),
         "campuses": len(fixtures["campuses"]),
         "academic_calendars": len(fixtures["calendars"]),
+        "audit_events": len(fixtures["auditEvents"]),
     }
 
 
