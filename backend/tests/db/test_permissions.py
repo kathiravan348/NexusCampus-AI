@@ -32,9 +32,7 @@ async def app_sessions(test_db: DbUrls) -> AsyncIterator[async_sessionmaker[Asyn
     await engine.dispose()
 
 
-async def grants_of(
-    sessions: async_sessionmaker[AsyncSession], user_id: str, today: date | None = None
-) -> Grants:
+async def grants_of(sessions: async_sessionmaker[AsyncSession], user_id: str, today: date | None = None) -> Grants:
     async with sessions() as s, s.begin():
         await bind_tenant(s, LS)
         return await load_grants(s, user_id, today)
@@ -97,9 +95,7 @@ def test_catalogue_matches_the_mocks_and_the_database(test_db: DbUrls) -> None:
     mocks = sorted((p["code"], p["sensitive"], p["descriptionKey"]) for p in load_fixtures()["permissions"])
     engine = create_engine(test_db.app_url)
     with engine.connect() as conn:
-        db = sorted(
-            tuple(r) for r in conn.execute(text("SELECT code, sensitive, description_key FROM permissions"))
-        )
+        db = sorted(tuple(r) for r in conn.execute(text("SELECT code, sensitive, description_key FROM permissions")))
     engine.dispose()
     assert ours == mocks == db
 

@@ -63,9 +63,7 @@ def test_tenant_profile_and_calendars(client: TestClient, kc: FakeKeycloak) -> N
     assert client.get("/api/v1/institutions/ins-rv/profile").status_code == 404  # another tenant
 
 
-def test_put_locale_settings_updates_and_audits(
-    client: TestClient, kc: FakeKeycloak, test_db: DbUrls
-) -> None:
+def test_put_locale_settings_updates_and_audits(client: TestClient, kc: FakeKeycloak, test_db: DbUrls) -> None:
     sign_in(client, kc)
     res = client.put("/api/v1/locale-settings", json=LOCALE, headers=csrf(client))
     assert res.status_code == 200 and res.json() == LOCALE
@@ -79,9 +77,7 @@ def test_invalid_locale_settings_report_every_field(client: TestClient, kc: Fake
     res = client.put("/api/v1/locale-settings", json=bad, headers=csrf(client))
     assert res.status_code == 400 and {"supportedLocales", "timeZone"} <= details(res)
     assert (
-        client.put(
-            "/api/v1/locale-settings", json={**LOCALE, "currency": "XYZ"}, headers=csrf(client)
-        ).status_code
+        client.put("/api/v1/locale-settings", json={**LOCALE, "currency": "XYZ"}, headers=csrf(client)).status_code
         == 400
     )
 
@@ -93,9 +89,7 @@ def test_teachers_cannot_write(client: TestClient, kc: FakeKeycloak) -> None:
     assert res.status_code == 403 and res.json()["error"]["code"] == "forbidden"
 
 
-def test_create_and_update_campus_with_unique_code(
-    client: TestClient, kc: FakeKeycloak, test_db: DbUrls
-) -> None:
+def test_create_and_update_campus_with_unique_code(client: TestClient, kc: FakeKeycloak, test_db: DbUrls) -> None:
     sign_in(client, kc)
     created = client.post("/api/v1/campuses", json=CAMPUS, headers=csrf(client))
     assert created.status_code == 201 and created.json()["code"] == "KRM"
@@ -107,10 +101,7 @@ def test_create_and_update_campus_with_unique_code(
     updated = client.put(f"/api/v1/campuses/{campus_id}", json=renamed, headers=csrf(client))
     assert updated.status_code == 200 and updated.json()["name"].endswith("North")
     assert last_action(test_db.owner_url) == "m01.campus.updated"
-    assert (
-        client.post("/api/v1/campuses", json={**CAMPUS, "code": "bad code"}, headers=csrf(client)).status_code
-        == 400
-    )
+    assert client.post("/api/v1/campuses", json={**CAMPUS, "code": "bad code"}, headers=csrf(client)).status_code == 400
 
 
 def test_another_tenants_campus_is_not_found(client: TestClient, kc: FakeKeycloak) -> None:
@@ -132,16 +123,13 @@ def test_calendar_rejects_overlaps_and_saves_valid_changes(client: TestClient, k
     ok = client.put(path, json=good, headers=csrf(client))
     assert ok.status_code == 200 and ok.json()["holidays"][-1]["name"] == "दीपावली"
     assert (
-        client.get("/api/v1/institutions/ins-ls/calendars").json()["items"][0]["holidays"][-1]["date"]
-        == "2026-11-08"
+        client.get("/api/v1/institutions/ins-ls/calendars").json()["items"][0]["holidays"][-1]["date"] == "2026-11-08"
     )
 
 
 def test_profiles_match_the_mocks() -> None:
     from pathlib import Path
 
-    source = (Path(__file__).parents[3] / "frontend/packages/mocks/src/fixtures/profiles.ts").read_text(
-        "utf-8"
-    )
+    source = (Path(__file__).parents[3] / "frontend/packages/mocks/src/fixtures/profiles.ts").read_text("utf-8")
     for p in PROFILES.values():
         assert f'type: "{p.type}"' in source and f'gradingScheme: "{p.grading_scheme}"' in source

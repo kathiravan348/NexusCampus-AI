@@ -25,6 +25,7 @@ nexus-compose-up = "nexus.devtools.compose:main"
 backend-check = "nexus.devtools.check:main"
 nexus-seed = "nexus.seed.demo:main"
 nexus-keycloak-dev = "nexus.devtools.keycloak:main"
+nexus-scim-token = "nexus.devtools.scim_token:main"
 
 [build-system]
 requires = ["hatchling==1.27.0"]
@@ -37,7 +38,7 @@ packages = ["src/nexus"]
 add-bounds = "exact"
 
 [tool.ruff]
-line-length = 110
+line-length = 120
 target-version = "py312"
 src = ["src", "tests"]
 

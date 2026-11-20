@@ -153,10 +153,7 @@ async def create_role(auth: RoleManager, body: JsonBody) -> RoleOut:
     _check_codes(data)
     role_id = new_id("rol")
     await auth.ctx.db.execute(
-        text(
-            "INSERT INTO roles (id, tenant_id, name, system, allowed_scope_kinds) "
-            "VALUES (:id, :t, :n, false, :k)"
-        ),
+        text("INSERT INTO roles (id, tenant_id, name, system, allowed_scope_kinds) VALUES (:id, :t, :n, false, :k)"),
         {
             "id": role_id,
             "t": auth.ctx.tenant.tenant_id,

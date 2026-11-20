@@ -71,9 +71,7 @@ def downgrade(owner_url: str, app_password: str, target: str = "base") -> None:
 
 def _postgres_reachable() -> bool:
     try:
-        engine = create_engine(
-            make_url(_admin_url()).set(database="postgres"), connect_args={"connect_timeout": 2}
-        )
+        engine = create_engine(make_url(_admin_url()).set(database="postgres"), connect_args={"connect_timeout": 2})
         with engine.connect():
             pass
         engine.dispose()

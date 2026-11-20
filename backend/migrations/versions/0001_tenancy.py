@@ -96,9 +96,7 @@ def upgrade() -> None:
         sa.ForeignKeyConstraint(["group_id", "tenant_id"], ["groups.id", "groups.tenant_id"]),
         sa.CheckConstraint("cardinality(supported_locales) >= 1", name="supported_locales_not_empty"),
         sa.CheckConstraint("default_locale = ANY (supported_locales)", name="default_locale_supported"),
-        sa.CheckConstraint(
-            "weekend_days <@ ARRAY[0,1,2,3,4,5,6]::smallint[]", name="weekend_days_are_weekdays"
-        ),
+        sa.CheckConstraint("weekend_days <@ ARRAY[0,1,2,3,4,5,6]::smallint[]", name="weekend_days_are_weekdays"),
         sa.CheckConstraint("updated_at >= created_at", name="updated_not_before_created"),
     )
     op.create_table(
@@ -112,9 +110,7 @@ def upgrade() -> None:
         sa.Column("address", JSONB(), nullable=False),
         *_timestamps(),
         sa.UniqueConstraint("institution_id", "code"),
-        sa.ForeignKeyConstraint(
-            ["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]
-        ),
+        sa.ForeignKeyConstraint(["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]),
         sa.CheckConstraint("code ~ '^[A-Z0-9-]{1,16}$'", name="code_format"),
     )
     op.create_table(
@@ -129,9 +125,7 @@ def upgrade() -> None:
         sa.Column("periods", JSONB(), nullable=False),
         sa.Column("holidays", JSONB(), nullable=False),
         *_timestamps(),
-        sa.ForeignKeyConstraint(
-            ["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]
-        ),
+        sa.ForeignKeyConstraint(["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]),
         sa.CheckConstraint("ends_on >= starts_on", name="year_not_reversed"),
     )
 

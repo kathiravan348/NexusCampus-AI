@@ -72,11 +72,7 @@ async def _find_institution(db: AsyncSession, institution_id: str | None) -> Ins
     if institution_id is None:
         row = (await db.execute(text(f"{_INSTITUTION} ORDER BY created_at, id LIMIT 1"))).mappings().first()
     else:
-        row = (
-            (await db.execute(text(f"{_INSTITUTION} WHERE id = :id"), {"id": institution_id}))
-            .mappings()
-            .first()
-        )
+        row = (await db.execute(text(f"{_INSTITUTION} WHERE id = :id"), {"id": institution_id})).mappings().first()
     if row is None:
         raise ApiError(404, "not_found", "Not found.")
     return _institution(row)
@@ -114,9 +110,7 @@ async def tenant(auth: Reader) -> TenantOut:
     )
 
 
-@router.get(
-    "/institutions/{institution_id}/profile", response_model=TypeProfileOut, response_model_by_alias=True
-)
+@router.get("/institutions/{institution_id}/profile", response_model=TypeProfileOut, response_model_by_alias=True)
 async def profile(institution_id: str, auth: Reader) -> TypeProfileOut:
     institution = await _find_institution(auth.ctx.db, institution_id)
     found = PROFILES.get(institution.type)
@@ -125,9 +119,7 @@ async def profile(institution_id: str, auth: Reader) -> TypeProfileOut:
     return found
 
 
-@router.get(
-    "/institutions/{institution_id}/calendars", response_model=Page[CalendarOut], response_model_by_alias=True
-)
+@router.get("/institutions/{institution_id}/calendars", response_model=Page[CalendarOut], response_model_by_alias=True)
 async def calendars(
     institution_id: str, auth: Reader, page: Annotated[PageQuery, Depends(page_query)]
 ) -> Page[CalendarOut]:
@@ -252,9 +244,7 @@ async def create_campus(auth: Manager, body: Annotated[Any, Body()]) -> CampusOu
 
 @router.put("/campuses/{campus_id}", response_model=CampusOut, response_model_by_alias=True)
 async def update_campus(campus_id: str, auth: Manager, body: Annotated[Any, Body()]) -> CampusOut:
-    exists = (
-        await auth.ctx.db.execute(text("SELECT 1 FROM campuses WHERE id = :id"), {"id": campus_id})
-    ).first()
+    exists = (await auth.ctx.db.execute(text("SELECT 1 FROM campuses WHERE id = :id"), {"id": campus_id})).first()
     if not exists:
         raise ApiError(404, "not_found", "Not found.")
     return await _save_campus(auth, campus_id, body, create=False)

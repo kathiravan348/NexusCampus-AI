@@ -122,9 +122,7 @@ async def resolve_session(db: AsyncSession, parts: CookieParts, settings: Settin
     if not secrets.compare_digest(row.token_hash, token_hash(parts.token)):
         return None
     if now - row.last_seen_at >= TOUCH_EVERY:
-        await db.execute(
-            text("UPDATE sessions SET last_seen_at = :now WHERE id = :id"), {"now": now, "id": row.id}
-        )
+        await db.execute(text("UPDATE sessions SET last_seen_at = :now WHERE id = :id"), {"now": now, "id": row.id})
     return ActiveSession(session_id=row.id, user_id=row.user_id, person_id=row.person_id)
 
 

@@ -44,10 +44,7 @@ async def test_event_is_stored_in_the_contract_envelope(app: async_sessionmaker[
         )
         row = (
             await s.execute(
-                text(
-                    "SELECT module_id, payload->>'title', published_at FROM domain_events_outbox "
-                    "WHERE event_id = :i"
-                ),
+                text("SELECT module_id, payload->>'title', published_at FROM domain_events_outbox WHERE event_id = :i"),
                 {"i": event.event_id},
             )
         ).one()
@@ -76,9 +73,7 @@ async def test_rollback_drops_the_change_its_audit_and_its_event(
             await record_audit(
                 s, AX, AuditInput(action="m01.campus.updated", actor_kind="system", target_type="campus")
             )
-            await emit_event(
-                s, AX, event_type="m01.campus.updated", actor_id=None, correlation_id="c", payload={}
-            )
+            await emit_event(s, AX, event_type="m01.campus.updated", actor_id=None, correlation_id="c", payload={})
             raise RuntimeError("boom")
     assert await counts(app) == before
 

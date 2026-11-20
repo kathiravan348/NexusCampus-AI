@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-048) · Migration: `0005_guardian_links`
+> State as of: 2026-11-20 (NEX-049) · Migration: `0006_sso_scim`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -52,6 +52,8 @@ It covers ids and metadata only, never personal values. Write with `nexus.core.a
 | `users` | `id`, `tenant_id`, `person_id`, `email`, `status`, `mfa_enabled`, `passkey_count`, `sso_only`, `last_sign_in_at`, `idp_subject` | Person in the same tenant; email unique per tenant (case-insensitive); `idp_subject` = Keycloak `sub`, pinned at first sign-in, unique per tenant. **No passwords** (Keycloak holds credentials) |
 | `role_profiles` | `id`, `tenant_id`, `person_id`, `institution_id`, `campus_id`, `kind`, `academic_year_id`, `effective_from`, `effective_to`, `status` | Membership of an institution (staff / guardian / learner / alumni / external); `effective_to ≥ effective_from` |
 | `guardian_links` (`0005`) | `tenant_id`, `guardian_person_id`, `learner_person_id` | Both people in the same tenant; a guardian sees their learners unmasked and as family (G-6) |
+| `sso_providers` (`0006`) | `id`, `tenant_id`, `institution_id`, `protocol`, `name`, `issuer_url`, `client_id`, `domains[]`, `scim_enabled`, `enabled` | `https://` issuer only; ≥ 1 domain; never a secret |
+| `scim_tokens` (`0006`) | `id`, `tenant_id`, `token_hash`, `created_at`, `revoked_at` | Only `sha256(secret)` stored; token `<tenant>.<id>.<secret>` |
 | `sessions` | `id`, `tenant_id`, `user_id`, `device_id`, `device_label`, `auth_method`, `mfa_verified`, `ip_address`, `created_at`, `last_seen_at`, `expires_at`, `revoked_at`, `token_hash` | Only `sha256(token)` is stored; demo sessions have none (never usable). The app may insert and revoke, never delete |
 
 ## Permissions and module switches (`0004_rbac_entitlements`, V-1)

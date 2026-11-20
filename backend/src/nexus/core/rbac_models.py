@@ -28,9 +28,7 @@ SCOPE_KINDS_ARRAY = "ARRAY['group', 'institution', 'campus', 'department', 'clas
 class Permission(Base):
     __tablename__ = "permissions"
     __table_args__ = (
-        CheckConstraint(
-            "code ~ '^[mp](0[1-9]|[1-9][0-9])\\.[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$'", name="code_format"
-        ),
+        CheckConstraint("code ~ '^[mp](0[1-9]|[1-9][0-9])\\.[a-z][a-z0-9_]*\\.[a-z][a-z0-9_]*$'", name="code_format"),
         CheckConstraint("code LIKE lower(module_id) || '.%'", name="code_in_module"),
     )
     code: Mapped[str] = mapped_column(String(80), primary_key=True)

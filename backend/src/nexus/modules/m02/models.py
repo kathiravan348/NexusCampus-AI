@@ -6,6 +6,7 @@ passwords here, and a session stores only the SHA-256 of its token.
 from datetime import date, datetime
 
 from sqlalchemy import (
+    ARRAY,
     Boolean,
     CheckConstraint,
     Date,
@@ -16,6 +17,7 @@ from sqlalchemy import (
     Integer,
     String,
     UniqueConstraint,
+    func,
     text,
 )
 from sqlalchemy.orm import Mapped, mapped_column
@@ -31,9 +33,7 @@ class Person(Timestamps, Base):
     __table_args__ = (
         UniqueConstraint("id", "tenant_id"),
         CheckConstraint("phone IS NULL OR phone ~ '^\\+[1-9][0-9]{6,14}$'", name="phone_e164"),
-        CheckConstraint(
-            "retention_state IN ('active', 'archived', 'crypto_shredded')", name="retention_known"
-        ),
+        CheckConstraint("retention_state IN ('active', 'archived', 'crypto_shredded')", name="retention_known"),
     )
     id: Mapped[str] = id_column(primary_key=True)
     tenant_id: Mapped[str] = mapped_column(String(ID_LENGTH), ForeignKey("tenants.id"), index=True)
@@ -137,3 +137,35 @@ class GuardianLink(Base):
 
 
 IDENTITY_TABLES = ("people", "users", "role_profiles", "sessions")
+
+
+class SsoProvider(Base):
+    __tablename__ = "sso_providers"
+    __table_args__ = (
+        ForeignKeyConstraint(["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]),
+        CheckConstraint("protocol IN ('oidc', 'saml2')", name="protocol_known"),
+        CheckConstraint("issuer_url LIKE 'https://%'", name="issuer_https"),
+        CheckConstraint("cardinality(domains) >= 1", name="has_domains"),
+    )
+    id: Mapped[str] = id_column(primary_key=True)
+    tenant_id: Mapped[str] = mapped_column(String(ID_LENGTH), ForeignKey("tenants.id"), index=True)
+    institution_id: Mapped[str | None] = mapped_column(String(ID_LENGTH))
+    protocol: Mapped[str] = mapped_column(String(16))
+    name: Mapped[str] = mapped_column(String(NAME))
+    issuer_url: Mapped[str] = mapped_column(String(2048))
+    client_id: Mapped[str] = mapped_column(String(256))
+    domains: Mapped[list[str]] = mapped_column(ARRAY(String(253)))
+    scim_enabled: Mapped[bool] = mapped_column(Boolean)
+    enabled: Mapped[bool] = mapped_column(Boolean)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+
+
+class ScimToken(Base):
+    __tablename__ = "scim_tokens"
+    __table_args__ = (CheckConstraint("token_hash ~ '^[0-9a-f]{64}$'", name="token_hash_hex"),)
+    id: Mapped[str] = id_column(primary_key=True)
+    tenant_id: Mapped[str] = mapped_column(String(ID_LENGTH), ForeignKey("tenants.id"), index=True)
+    token_hash: Mapped[str] = mapped_column(String(64), unique=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

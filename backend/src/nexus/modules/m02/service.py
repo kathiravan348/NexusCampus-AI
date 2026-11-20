@@ -53,9 +53,7 @@ def not_found() -> ApiError:
 
 
 def invalid(path: str, message: str) -> ApiError:
-    return ApiError(
-        400, "invalid_request", "The request is not valid.", [ApiErrorDetail(path=path, message=message)]
-    )
+    return ApiError(400, "invalid_request", "The request is not valid.", [ApiErrorDetail(path=path, message=message)])
 
 
 def conflict(path: str, message: str) -> ApiError:

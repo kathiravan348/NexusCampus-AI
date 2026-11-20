@@ -10,9 +10,7 @@ _client: Redis | None = None
 def init_redis(settings: Settings) -> Redis:
     global _client
     if _client is None:
-        _client = Redis.from_url(
-            settings.redis_url.get_secret_value(), socket_connect_timeout=3, socket_timeout=3
-        )
+        _client = Redis.from_url(settings.redis_url.get_secret_value(), socket_connect_timeout=3, socket_timeout=3)
     return _client
 
 
