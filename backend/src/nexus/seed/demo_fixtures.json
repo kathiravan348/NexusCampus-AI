@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "tenants": [
     {
       "id": "ten-ls",
@@ -6396,6 +6396,262 @@
       "version": 1,
       "updatedBy": "usr-ax-karthik",
       "updatedAt": "2026-08-20T10:30:00Z"
+    }
+  ],
+  "plans": [
+    {
+      "id": "pln-starter",
+      "code": "starter",
+      "nameKey": "m05.plan.starter",
+      "modules": [],
+      "aiCreditsPerMonth": 0,
+      "learnerLimit": 100
+    },
+    {
+      "id": "pln-standard",
+      "code": "standard",
+      "nameKey": "m05.plan.standard",
+      "modules": [
+        "M10",
+        "M11"
+      ],
+      "aiCreditsPerMonth": 500,
+      "learnerLimit": 2000
+    },
+    {
+      "id": "pln-enterprise",
+      "code": "enterprise",
+      "nameKey": "m05.plan.enterprise",
+      "modules": [
+        "M10",
+        "M11"
+      ],
+      "aiCreditsPerMonth": 5000,
+      "learnerLimit": null
+    }
+  ],
+  "tenantPlans": [
+    {
+      "tenantId": "ten-ls",
+      "planId": "pln-standard"
+    },
+    {
+      "tenantId": "ten-rv",
+      "planId": "pln-enterprise"
+    },
+    {
+      "tenantId": "ten-nb",
+      "planId": "pln-enterprise"
+    },
+    {
+      "tenantId": "ten-ax",
+      "planId": "pln-standard"
+    },
+    {
+      "tenantId": "ten-hm",
+      "planId": "pln-starter"
+    }
+  ],
+  "usageMeters": [
+    {
+      "tenantId": "ten-ls",
+      "metric": "learners",
+      "used": 4,
+      "limit": 2000,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ls",
+      "metric": "staff",
+      "used": 2,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ls",
+      "metric": "storage_bytes",
+      "used": 52428800,
+      "limit": 10737418240,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ls",
+      "metric": "ai_credits",
+      "used": 0,
+      "limit": 500,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ls",
+      "metric": "email",
+      "used": 120,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-rv",
+      "metric": "learners",
+      "used": 4,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-rv",
+      "metric": "staff",
+      "used": 3,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-rv",
+      "metric": "storage_bytes",
+      "used": 52428800,
+      "limit": 10737418240,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-rv",
+      "metric": "ai_credits",
+      "used": 1000,
+      "limit": 5000,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-rv",
+      "metric": "email",
+      "used": 120,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-nb",
+      "metric": "learners",
+      "used": 4,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-nb",
+      "metric": "staff",
+      "used": 3,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-nb",
+      "metric": "storage_bytes",
+      "used": 52428800,
+      "limit": 10737418240,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-nb",
+      "metric": "ai_credits",
+      "used": 1000,
+      "limit": 5000,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-nb",
+      "metric": "email",
+      "used": 120,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ax",
+      "metric": "learners",
+      "used": 4,
+      "limit": 2000,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ax",
+      "metric": "staff",
+      "used": 3,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ax",
+      "metric": "storage_bytes",
+      "used": 52428800,
+      "limit": 10737418240,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ax",
+      "metric": "ai_credits",
+      "used": 475,
+      "limit": 500,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-ax",
+      "metric": "email",
+      "used": 120,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-hm",
+      "metric": "learners",
+      "used": 4,
+      "limit": 100,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-hm",
+      "metric": "staff",
+      "used": 3,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-hm",
+      "metric": "storage_bytes",
+      "used": 52428800,
+      "limit": 10737418240,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-hm",
+      "metric": "ai_credits",
+      "used": 0,
+      "limit": 0,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-hm",
+      "metric": "email",
+      "used": 120,
+      "limit": null,
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z"
     }
   ],
   "textOverrideRevisions": [

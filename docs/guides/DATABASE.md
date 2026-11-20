@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-21 (NEX-054) · Migration: `0011_text_overrides`
+> State as of: 2026-11-21 (NEX-055) · Migration: `0012_plans_usage`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -114,6 +114,14 @@ All three use forced RLS (`tenant_isolation`).
 |---|---|---|
 | `text_overrides` | `id`, `tenant_id`, `scope_kind`, `scope_target_id`, `locale`, `key`, `message`, `version`, `updated_by`, `updated_at`, `deleted_at` | One per tenant + scope + locale + key; a delete sets `deleted_at` (id and history kept); forced RLS |
 | `text_override_revisions` | `override_id` + `version` (PK), `tenant_id`, `message` (NULL = deleted), `changed_by`, `changed_at` | Append-only for the app (SELECT, INSERT); rollback reads from here |
+
+## Plans and usage (M05 — `0012_plans_usage`)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `plans` | `id`, `code` (unique), `name_key`, `modules[]`, `ai_credits_per_month`, `learner_limit` | Platform reference data, no tenant column; the app only reads (changes: Nexus Control, Stage 2) |
+| `tenant_plans` | `tenant_id` (PK), `plan_id` | A tenant's plan; forced RLS; read-only for the app |
+| `usage_meters` | `tenant_id` + `metric` + `period_start` (PK), `period_end`, `used`, `limit` | Stored counters per period; forced RLS |
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

@@ -1,5 +1,6 @@
 """Demo rows of the module tables (Stage 1 APIs): M83 provider access (NEX-051), M06 privacy (NEX-052), M03 themes
-and the font library (NEX-053), M04 text overrides with their revisions (NEX-054). Same shapes as the mock
+and the font library (NEX-053), M04 text overrides with their revisions (NEX-054),
+M05 plans and usage (NEX-055). Same shapes as the mock
 fixtures; idempotent upserts.
 """
 
@@ -11,6 +12,8 @@ from sqlalchemy import Connection, text
 
 #: Children first, for `--reset` (the font library is shared, so it is never deleted per tenant).
 MODULE_TABLES_CHILD_FIRST = (
+    "usage_meters",
+    "tenant_plans",
     "text_override_revisions",
     "text_overrides",
     "themes",
@@ -52,10 +55,12 @@ def _upsert(conn: Connection, table: str, row: dict[str, Any], key: str = "id") 
     )
 
 
-def seed_fonts(conn: Connection, data: dict[str, Any]) -> None:
-    """The shared font library (no tenant)."""
+def seed_shared(conn: Connection, data: dict[str, Any]) -> None:
+    """Platform reference data (no tenant): the font library and the plan catalogue."""
     for font in data["fonts"]:
         _upsert(conn, "fonts", {**_snake(font), "tenant_id": None})
+    for plan in data["plans"]:
+        _upsert(conn, "plans", _snake(plan))
 
 
 def seed_modules(conn: Connection, data: dict[str, Any], tid: str) -> None:
@@ -68,6 +73,24 @@ def seed_modules(conn: Connection, data: dict[str, Any], tid: str) -> None:
             {"t": tid, "p": pack["packCode"]},
         )
     seed_texts(conn, data, tid)
+    for tp in _rows(data, "tenantPlans", tid):
+        _upsert(conn, "tenant_plans", {"tenant_id": tid, "plan_id": tp["planId"]}, key="tenant_id")
+    for meter in _rows(data, "usageMeters", tid):
+        conn.execute(
+            text(
+                'INSERT INTO usage_meters (tenant_id, metric, period_start, period_end, used, "limit") '
+                "VALUES (:t, :m, :s, :e, :u, :l) ON CONFLICT (tenant_id, metric, period_start) DO UPDATE SET "
+                'period_end = EXCLUDED.period_end, used = EXCLUDED.used, "limit" = EXCLUDED."limit"'
+            ),
+            {
+                "t": tid,
+                "m": meter["metric"],
+                "s": meter["periodStart"],
+                "e": meter["periodEnd"],
+                "u": meter["used"],
+                "l": meter["limit"],
+            },
+        )
     for theme in _rows(data, "themes", tid):
         conn.execute(
             text(

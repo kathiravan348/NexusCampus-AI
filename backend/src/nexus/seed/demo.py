@@ -18,12 +18,12 @@ from sqlalchemy import Connection, create_engine, text
 from nexus.core.tenancy import TENANT_SETTING
 from nexus.core.timing import utf8_console
 from nexus.core.vault import key_name
-from nexus.seed.modules import MODULE_TABLES_CHILD_FIRST, seed_fonts, seed_modules
+from nexus.seed.modules import MODULE_TABLES_CHILD_FIRST, seed_modules, seed_shared
 from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 11
+FIXTURES_VERSION = 12
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
     *MODULE_TABLES_CHILD_FIRST,
@@ -237,7 +237,7 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
     engine = create_engine(url)
     try:
         with engine.begin() as conn:
-            seed_fonts(conn, fixtures)
+            seed_shared(conn, fixtures)
         for tenant in fixtures["tenants"]:
             with engine.begin() as conn:
                 if reset:
