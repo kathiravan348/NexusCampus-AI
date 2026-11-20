@@ -99,6 +99,22 @@ Riverside opens in **Hindi** the same way (Helen): switch to English and back; a
 3. Offline, change **Notifications → My preferences** and save: "Saved on this device". Try **Sign out**: it is blocked
    while the change waits. Go back online: it syncs, the top bar shows "Last synced …", and sign-out works.
 
+## 4b. Real mode (backend, NEX-060–063)
+
+Every Stage 1 screen also runs on the real backend. One-time setup: `uv run --project backend nexus-compose-up`,
+`uv run --project backend alembic upgrade head`, `uv run --project backend nexus-seed`,
+`uv run --project backend nexus-keycloak-dev`. Then start `uv run --project backend nexus-dev` and
+`pnpm --dir frontend dev:real`, open `http://127.0.0.1:3100` and choose **Sign in with your institution account**
+(a seeded admin, e.g. the Little Steps administrator; password = `NEXUS_DEMO_USER_PASSWORD` in `backend/.env`).
+
+- No demo banner or persona switch; sign-out also ends the server session.
+- Nexus Assist uses the AI gateway. With `NEXUS_AI_PROVIDER=fake` (default) answers are built from the records
+  without a paid model; Little Steps has AI switched off until you turn it on (Plan & usage, then AI settings).
+- Data vault: provider requests are filed with the dev broker stub
+  (`POST /api/v1/dev/broker/tenants/<tenant>/access-requests`), then approved or denied in the screen.
+- The dev cell is India-region (D45): Little Steps and Apex sign in; the EU-region demo tenants need an EU cell.
+- `pnpm --dir frontend e2e:real` walks all of it (set `NEXUS_E2E_EMAIL` / `NEXUS_E2E_PASSWORD`).
+
 ## 5. Known limits of this build
 - Demo data only; changes last until the tab closes. There is no backend yet (Stage 1 build step).
 - Assist answers are canned demo answers with sources; no AI model is called.
