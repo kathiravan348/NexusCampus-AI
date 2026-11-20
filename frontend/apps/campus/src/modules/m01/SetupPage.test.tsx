@@ -5,7 +5,7 @@ import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AppProviders } from "../../App";
 import { MODULES } from "../../app/modules";
-import { freshDb, persona, renderApp, signInAs } from "../../test/renderApp";
+import { withInstitutionLocale, freshDb, persona, renderApp, signInAs } from "../../test/renderApp";
 import { SetupPage } from "./SetupPage";
 
 function switchTab(name: string | RegExp) {
@@ -72,15 +72,16 @@ describe("SetupPage (M01)", () => {
     expect(await within(main).findByDisplayValue("Fall 2026")).toBeInTheDocument();
   });
 
-  it("renders Apex in Arabic RTL with the Hijri display calendar", async () => {
+  it("renders Apex in Tamil with the Indian national display calendar", async () => {
+    withInstitutionLocale(TENANT.apex);
     renderApp("/setup", { as: persona(TENANT.apex, "admin"), modules: MODULES });
     expect(
-      await screen.findByRole("heading", { level: 1, name: "إعداد المؤسسة" }),
+      await screen.findByRole("heading", { level: 1, name: "நிறுவன அமைப்பு" }),
     ).toBeInTheDocument();
-    expect(document.documentElement.dir).toBe("rtl");
+    expect(document.documentElement.lang).toBe("ta-IN");
 
-    switchTab("التقويم");
-    expect(await screen.findByLabelText("تقويم العرض")).toHaveValue("islamic-umalqura");
+    switchTab("நாட்காட்டி");
+    expect(await screen.findByLabelText("காட்சி நாட்காட்டி")).toHaveValue("indian");
   });
 
   it("hides the menu item for Teacher and shows Forbidden by URL", async () => {

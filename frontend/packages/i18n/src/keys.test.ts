@@ -2,7 +2,8 @@ import { parse, TYPE, type MessageFormatElement } from "@formatjs/icu-messagefor
 import { createIntl } from "react-intl";
 import { describe, expect, it } from "vitest";
 import en from "../messages/en.json";
-import ar from "../messages/ar.json";
+import hi from "../messages/hi.json";
+import ta from "../messages/ta.json";
 import { INSTITUTION_TYPES, LOCALE_CATALOGS, MESSAGE_KEYS, TERMINOLOGY } from "./resolve";
 
 const KEY_PATTERN = /^(common|term|[mp]\d{2})\.[a-z][A-Za-z0-9]*(\.[a-z][A-Za-z0-9]*)*$/;
@@ -43,12 +44,30 @@ describe("message keys", () => {
     for (const key of MESSAGE_KEYS) expect(en[key].description.length, key).toBeGreaterThan(10);
   });
 
-  it("are all translated in Arabic, with no extra keys", () => {
-    expect(Object.keys(ar).sort()).toEqual([...MESSAGE_KEYS].sort());
+  it("are all translated in Hindi and Tamil, with no extra keys (D42)", () => {
+    expect(Object.keys(hi).sort()).toEqual([...MESSAGE_KEYS].sort());
+    expect(Object.keys(ta).sort()).toEqual([...MESSAGE_KEYS].sort());
+  });
+
+  it("keep the same placeholders as English in every translation", () => {
+    const names = (message: string) => Object.keys(sampleValuesFor(message)).sort().join();
+    for (const [locale, catalog] of Object.entries({ hi, ta } as Record<
+      string,
+      Record<string, string>
+    >)) {
+      for (const key of MESSAGE_KEYS) {
+        expect(names(catalog[key] ?? ""), `${locale} ${key}`).toBe(names(en[key].message));
+      }
+    }
+  });
+
+  it("ship exactly the default languages English, Hindi and Tamil (D42)", () => {
+    expect(Object.keys(LOCALE_CATALOGS).sort()).toEqual(["hi", "ta"]);
+    expect(Object.keys(TERMINOLOGY).sort()).toEqual(["en", "hi", "ta"]);
   });
 
   it("have a terminology pack for every institution type in every locale", () => {
-    for (const locale of ["en", "ar"]) {
+    for (const locale of ["en", "hi", "ta"]) {
       for (const type of INSTITUTION_TYPES) {
         const pack = TERMINOLOGY[locale]?.[type];
         expect(pack, `${locale}/${type}`).toBeDefined();

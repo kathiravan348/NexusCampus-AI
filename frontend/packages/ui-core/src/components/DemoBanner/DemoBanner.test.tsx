@@ -16,10 +16,10 @@ describe("DemoBanner", () => {
     );
   });
 
-  it("renders Arabic default notice in ar locale", () => {
-    renderWithI18n(<DemoBanner />, "ar");
+  it("renders Tamil default notice in ta locale", () => {
+    renderWithI18n(<DemoBanner />, "ta");
     expect(screen.getByRole("note")).toHaveTextContent(
-      "بيانات تجريبية. لا شيء على هذه الشاشة حقيقي.",
+      "டெமோ தரவு. இந்தத் திரையில் உள்ள எதுவும் உண்மையானது அல்ல.",
     );
   });
 

@@ -22,7 +22,7 @@
 │  └─ templates/        TASK.md, HANDOFF.md, REVIEW.md
 ├─ frontend/            frontend monorepo (pnpm workspaces)
 │  ├─ e2e/              Playwright (NEX-021): playwright.config (review build + dev server; desktop, 360px, pseudo),
-│  │                    helpers, smoke, rtl, pseudo, offline, a11y specs (`pnpm e2e`, not in review:check)
+│  │                    helpers, smoke, languages, pseudo, offline, a11y specs (`pnpm e2e`, not in review:check)
 │  ├─ scripts/          timing harness (NEX-032): timing-budgets, time-run (CLI: [timing] lines, --ready-pattern,
 │  │                    --exit-after-ready, --sequence), vitest-timing-reporter, measure-timings (+ time-run.test);
 │  │                    typechecked by tsconfig.scripts.json
@@ -32,7 +32,7 @@
 │  │  │  └─ src/        lib/cn, theme/ (tokens, contrast, suggest, fonts, tenantTheme), components/ (22 core, form, layout, overlay & data components)
 │  │  ├─ ui-edu/        education components built on ui-core
 │  │  ├─ i18n/          messages, formatters, layered text overrides, RTL (NEX-003, 015)
-│  │  │  ├─ messages/   en.json (source + translator notes), ar.json
+│  │  │  ├─ messages/   en.json (source + translator notes), hi.json, ta.json (D42)
 │  │  │  ├─ terminology/ <locale>/<type>.json: words per institution type (ey, k12, he, voc, tp, sk, onl, grp)
 │  │  │  └─ src/        resolve (layers), layers (explainMessage, preview), pseudo (en-XA), direction (RTL), format, I18nProvider, useText
 │  │  ├─ offline/       IndexedDB store, outbox, sync status, encryption, wipe (NEX-007)

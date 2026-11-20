@@ -4,7 +4,7 @@ import { TENANT_THEME_STYLE_ID } from "@nexus/ui-core";
 import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { App } from "./App";
-import { ADMINS, persona, renderApp } from "./test/renderApp";
+import { withInstitutionLocale, ADMINS, persona, renderApp } from "./test/renderApp";
 
 describe("campus app", () => {
   it("starts on the demo sign-in page", async () => {
@@ -18,18 +18,26 @@ describe("campus app", () => {
     "signs in as the %s admin and shows the menu and home",
     async (_tenant, admin) => {
       renderApp("/", { as: admin });
-      expect(await screen.findByRole("heading", { level: 1, name: /[,،]/ })).toBeInTheDocument();
+      expect(await screen.findByRole("heading", { level: 1, name: /,/ })).toBeInTheDocument();
       const nav = screen.getAllByRole("navigation")[0]!;
-      expect(await within(nav).findByRole("link", { name: /^(User|مستخدم)$/ })).toBeInTheDocument();
+      expect(
+        await within(nav).findByRole("link", { name: /^(User|उपयोगकर्ता|பயனர்)$/ }),
+      ).toBeInTheDocument();
       expect(screen.getByRole("note")).toBeInTheDocument();
     },
   );
 
-  it("renders Apex right to left in Arabic", async () => {
+  it("renders Apex in Tamil and Riverside in Hindi (D42)", async () => {
+    withInstitutionLocale();
     renderApp("/", { as: persona(TENANT.apex, "admin") });
-    expect(await screen.findByRole("heading", { level: 1, name: /مرحبًا/ })).toBeInTheDocument();
-    expect(document.documentElement.dir).toBe("rtl");
-    expect(document.documentElement.lang.startsWith("ar")).toBe(true);
+    expect(
+      await screen.findByRole("heading", { level: 1, name: /வரவேற்கிறோம்/ }),
+    ).toBeInTheDocument();
+    expect(document.documentElement.dir).toBe("ltr");
+    expect(document.documentElement.lang).toBe("ta-IN");
+    renderApp("/", { as: persona(TENANT.riverside, "admin") });
+    expect(await screen.findByRole("heading", { level: 1, name: /स्वागत है/ })).toBeInTheDocument();
+    expect(document.documentElement.lang).toBe("hi-IN");
   });
 
   it("applies Riverside's locked brand colour", async () => {

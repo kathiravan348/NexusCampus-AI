@@ -52,16 +52,16 @@ describe("AppShell", () => {
     expect(screen.queryByRole("dialog", { name: "Navigation menu" })).not.toBeInTheDocument();
   });
 
-  it("localizes shell chrome in Arabic RTL", () => {
+  it("localizes shell chrome in Tamil", () => {
     renderWithI18n(
       <AppShell brand={<span>Nexus</span>} nav={<NavItem>Item</NavItem>}>
         <p>Body</p>
       </AppShell>,
-      "ar",
+      "ta",
     );
 
-    expect(screen.getByRole("link", { name: "الانتقال إلى المحتوى" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "فتح القائمة" })).toBeInTheDocument();
-    expect(screen.getByRole("navigation", { name: "التنقل الرئيسي" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "உள்ளடக்கத்திற்குச் செல்" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "பட்டியைத் திற" })).toBeInTheDocument();
+    expect(screen.getByRole("navigation", { name: "முதன்மை வழிசெலுத்தல்" })).toBeInTheDocument();
   });
 });

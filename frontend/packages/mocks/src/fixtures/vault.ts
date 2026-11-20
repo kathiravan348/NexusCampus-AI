@@ -70,7 +70,7 @@ export const ACCESS_REQUESTS = [
     status: "approved",
     requestedAt: "2026-09-15T07:30:00Z",
     decidedAt: "2026-09-15T07:55:00Z",
-    decidedBy: USER.axKhalid,
+    decidedBy: USER.axKarthik,
   },
   {
     id: ACCESS_REQUEST.riversidePending,

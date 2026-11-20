@@ -38,17 +38,36 @@ describe("I18nProvider + useText", () => {
     expect(document.documentElement.dir).toBe("ltr");
   });
 
-  it("renders Arabic right-to-left with Arabic plural rules and terms", () => {
-    render(
-      <I18nProvider locale="ar-SA" typePack="ey">
+  it("renders Tamil and Hindi with their plural rules and terms (D42)", () => {
+    const { unmount } = render(
+      <I18nProvider locale="ta-IN" typePack="ey">
         <Probe />
       </I18nProvider>,
     );
-    expect(screen.getByRole("button", { name: "حفظ" })).toBeInTheDocument();
-    expect(screen.getByText("الأطفال")).toBeInTheDocument();
-    expect(screen.getByText("تغييران بانتظار المزامنة")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "சேமி" })).toBeInTheDocument();
+    expect(screen.getByText("குழந்தைகள்")).toBeInTheDocument();
+    expect(screen.getByText("2 மாற்றங்கள் ஒத்திசைக்கக் காத்திருக்கின்றன")).toBeInTheDocument();
+    expect(document.documentElement.dir).toBe("ltr");
+    expect(document.documentElement.lang).toBe("ta-IN");
+    unmount();
+    render(
+      <I18nProvider locale="hi-IN" typePack="ey">
+        <Probe />
+      </I18nProvider>,
+    );
+    expect(screen.getByRole("button", { name: "सहेजें" })).toBeInTheDocument();
+    expect(screen.getByText("बच्चे")).toBeInTheDocument();
+    expect(document.documentElement.lang).toBe("hi-IN");
+  });
+
+  it("keeps right-to-left support for a locale without a catalogue (English fallback)", () => {
+    render(
+      <I18nProvider locale="ur-PK" typePack="ey">
+        <Probe />
+      </I18nProvider>,
+    );
+    expect(screen.getByRole("button", { name: "Save" })).toBeInTheDocument();
     expect(document.documentElement.dir).toBe("rtl");
-    expect(document.documentElement.lang).toBe("ar-SA");
   });
 
   it("applies institution overrides and pseudo-localises in en-XA", () => {

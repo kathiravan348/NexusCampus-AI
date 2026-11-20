@@ -9,7 +9,7 @@ import { freshDb, persona, signInAs } from "../../test/renderApp";
 import { DataRequestsTab } from "./DataRequestsTab";
 
 function renderTab(now: Date) {
-  localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify({ [TENANT.apex]: "en" }));
+  localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify({ [TENANT.apex]: "en-IN" }));
   signInAs(persona(TENANT.apex, "admin"));
   render(
     <AppProviders

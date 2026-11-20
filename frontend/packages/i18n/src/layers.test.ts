@@ -40,18 +40,18 @@ describe("explainMessage", () => {
     expect(allLayers.resolved).toBe("House Member");
   });
 
-  it("matches resolveMessages for Arabic, fallback locales, invalid ICU, and pseudo-locale", () => {
-    const arOptions = {
-      locale: "ar-AE",
-      typePack: "tp" as const,
-      institution: { "term.learner": "متدرب" },
+  it("matches resolveMessages for Tamil, fallback locales, invalid ICU, and pseudo-locale", () => {
+    const taOptions = {
+      locale: "ta-IN",
+      typePack: "voc" as const,
+      institution: { "term.learner": "பயிற்சியாளர்" },
     };
-    const arExplained = explainMessage("term.learner", arOptions);
-    expect(arExplained.layers.platform).toBe("متعلم");
-    expect(arExplained.layers.terminology).toBe("طالب");
-    expect(arExplained.layers.institution).toBe("متدرب");
-    expect(arExplained.winner).toBe("institution");
-    expect(arExplained.resolved).toBe(resolveMessages(arOptions)["term.learner"]);
+    const taExplained = explainMessage("term.learner", taOptions);
+    expect(taExplained.layers.platform).toBe("மாணவர்");
+    expect(taExplained.layers.terminology).toBe("பயிற்சி பெறுபவர்");
+    expect(taExplained.layers.institution).toBe("பயிற்சியாளர்");
+    expect(taExplained.winner).toBe("institution");
+    expect(taExplained.resolved).toBe(resolveMessages(taOptions)["term.learner"]);
 
     const invalidOptions = {
       locale: "en",
@@ -90,10 +90,10 @@ describe("formatMessagePreview", () => {
       placeholders: ["count", "name"],
     });
 
-    const arabic = formatMessagePreview("مرحبًا، {name}", "ar-AE");
-    expect(arabic).toEqual({
+    const hindi = formatMessagePreview("स्वागत है, {name}", "hi-IN");
+    expect(hindi).toEqual({
       ok: true,
-      rendered: "مرحبًا، [name]",
+      rendered: "स्वागत है, [name]",
       placeholders: ["name"],
     });
 

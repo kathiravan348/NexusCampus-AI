@@ -95,7 +95,7 @@ export function AppShell({
           {banner && <div className="w-full">{banner}</div>}
 
           <header className="sticky top-0 z-20 flex items-center justify-between gap-3 h-14 px-4 md:px-7 border-b border-border-default bg-bg-ground/90 backdrop-blur-xs">
-            <div className="flex items-center gap-3 min-w-0">
+            <div className="flex items-center gap-3 min-w-8 shrink-100 md:min-w-0">
               <IconButton
                 icon={<Menu className="h-5 w-5" />}
                 aria-label={t("common.openMenu")}
@@ -110,7 +110,9 @@ export function AppShell({
                 </div>
               )}
             </div>
-            {actions && <div className="flex items-center gap-2 shrink-0">{actions}</div>}
+            {actions && (
+              <div className="flex min-w-0 items-center justify-end gap-2">{actions}</div>
+            )}
           </header>
 
           <main

@@ -19,11 +19,19 @@ export const FONTS: readonly Font[] = [
     fileUrl: null,
   },
   {
-    id: FONT.notoSansArabic,
-    family: "Noto Sans Arabic",
+    id: FONT.notoSansDevanagari,
+    family: "Noto Sans Devanagari",
     source: "library",
     roles: ["sans"],
-    scripts: ["arabic", "latin"],
+    scripts: ["devanagari", "latin"],
+    fileUrl: null,
+  },
+  {
+    id: FONT.notoSansTamil,
+    family: "Noto Sans Tamil",
+    source: "library",
+    roles: ["sans"],
+    scripts: ["tamil", "latin"],
     fileUrl: null,
   },
   {
@@ -131,9 +139,9 @@ export const THEMES: readonly Theme[] = [
     TENANT.apex,
     institution(INSTITUTION.apex),
     brand("#0F766E", "#5EEAD4"),
-    USER.axKhalid,
+    USER.axKarthik,
     {
-      fonts: { sans: FONT.notoSansArabic, mono: null },
+      fonts: { sans: FONT.notoSansTamil, mono: null },
     },
   ),
   theme(
@@ -201,14 +209,14 @@ export const TEXT_OVERRIDES: readonly TextOverride[] = [
     USER.rvHelen,
   ),
   override(
-    TEXT_OVERRIDE.apexLearnerAr,
+    TEXT_OVERRIDE.apexLearnerTa,
     TENANT.apex,
     institution(INSTITUTION.apex),
-    "ar-AE",
+    "ta-IN",
     "term.learner",
-    "متدرب",
+    "பயிற்சியாளர்",
     1,
-    USER.axKhalid,
+    USER.axKarthik,
   ),
 ];
 
@@ -243,10 +251,10 @@ export const TEXT_OVERRIDE_REVISIONS: readonly TextOverrideRevision[] = [
     changedAt: UPDATED_AT,
   },
   {
-    overrideId: TEXT_OVERRIDE.apexLearnerAr,
+    overrideId: TEXT_OVERRIDE.apexLearnerTa,
     version: 1,
-    message: "متدرب",
-    changedBy: USER.axKhalid,
+    message: "பயிற்சியாளர்",
+    changedBy: USER.axKarthik,
     changedAt: UPDATED_AT,
   },
 ];

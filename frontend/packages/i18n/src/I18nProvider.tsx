@@ -11,7 +11,7 @@ import {
 } from "./resolve";
 
 export interface I18nProviderProps {
-  /** BCP 47 locale of the user, e.g. `en-IN`, `ar-SA`, or the pseudo-locale `en-XA`. */
+  /** BCP 47 locale of the user, e.g. `en-IN`, `ta-IN`, or the pseudo-locale `en-XA`. */
   locale: string;
   /** Terminology pack of the institution type. */
   typePack?: InstitutionType;
@@ -56,7 +56,7 @@ export function I18nProvider({
     [locale, typePack, group, institution, campus],
   );
 
-  // Layout effect: set `dir` before the browser paints, so Arabic never flashes left-to-right.
+  // Layout effect: set `dir` before the browser paints, so a right-to-left language never flashes left-to-right.
   useLayoutEffect(() => {
     applyDirection(locale);
   }, [locale]);

@@ -13,7 +13,7 @@ describe("UsageTab", () => {
   afterEach(() => setMockScenario(null));
 
   it("shows a warning-tone AI meter at 95 % with an accessible value", async () => {
-    localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify({ [TENANT.apex]: "en" }));
+    localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify({ [TENANT.apex]: "en-IN" }));
     renderApp("/plan", { as: persona(TENANT.apex, "admin"), modules: MODULES });
     const tab = await screen.findByRole("tab", { name: "Usage" });
     fireEvent.mouseDown(tab);

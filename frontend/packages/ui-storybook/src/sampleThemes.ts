@@ -46,12 +46,12 @@ export const SAMPLE_THEMES: readonly SampleTheme[] = [
     },
   },
   {
-    id: "arabic-college",
-    label: "Al-Noor College",
-    description: "Arabic-first sans font stack and compact density.",
+    id: "tamil-college",
+    label: "Kaveri Arts College",
+    description: "Tamil-first sans font stack and compact density.",
     theme: {
       fonts: {
-        sans: "noto-sans-arabic",
+        sans: "noto-sans-tamil",
       },
       density: "compact",
     },

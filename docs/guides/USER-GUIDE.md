@@ -6,8 +6,8 @@ This guide explains each screen in plain language as it is built. Names of butto
 
 ## Signing in (prototype)
 1. Open the app to see **Sign in to a demo institution**. A yellow notice (**Demo data. Nothing on this screen is real.**) reminds you that this prototype uses fictional demo data and needs no password.
-2. Pick one of the five sample institutions (preschool, K-12 school group, university, Arabic training centre, or music academy) and choose a role button such as **Administrator**, **Teacher**, **Parent or guardian**, or **Learner**.
-3. The app opens on **Home** using that institution's colours, logo, fonts, terminology, and default language (including right-to-left layout for Arabic).
+2. Pick one of the five sample institutions (preschool, K-12 school group, university, Tamil coaching centre, or music academy) and choose a role button such as **Administrator**, **Teacher**, **Parent or guardian**, or **Learner**.
+3. The app opens on **Home** using that institution's colours, logo, fonts, terminology, and default language (English, Hindi or Tamil).
 
 ## Home and the menu
 - The menu on the side (or opened from the menu button on small screens) shows **Home** and only the modules that are switched on in your institution's plan and allowed for your role.
@@ -16,7 +16,7 @@ This guide explains each screen in plain language as it is built. Names of butto
 
 ## Switching user, institution, language, or appearance
 - **Switch user** (in the top bar) opens a window listing the demo roles for your current institution, with **Current** beside your active role. Pick another role to switch right away, or choose **Switch institution** to return to the sign-in screen.
-- **Language** (at the bottom of the menu) lets you pick any language supported by your institution. Choosing an Arabic language switches the screen to right-to-left automatically.
+- **Language** (at the bottom of the menu) lets you pick any language your institution offers. NexusCampus ships in English, Hindi and Tamil.
 - Use **Switch to dark theme** / **Switch to light theme** in the top bar to switch between light and dark colours.
 
 ## Working offline and signing out

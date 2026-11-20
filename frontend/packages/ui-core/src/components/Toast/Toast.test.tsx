@@ -57,9 +57,9 @@ describe("Toast", () => {
     expect(screen.getByText("Danger toast")).toBeInTheDocument();
   });
 
-  it("localizes close label in Arabic", () => {
+  it("localizes close label in Tamil", () => {
     render(
-      <I18nProvider locale="ar">
+      <I18nProvider locale="ta">
         <ToastProvider>
           <ToastTrigger title="Saved" tone="success" />
         </ToastProvider>
@@ -67,7 +67,7 @@ describe("Toast", () => {
     );
 
     fireEvent.click(screen.getByRole("button", { name: "Trigger success" }));
-    expect(screen.getByRole("button", { name: "إغلاق الإشعار" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "அறிவிப்பை மூடு" })).toBeInTheDocument();
   });
 
   it("throws when useToast is called outside ToastProvider", () => {

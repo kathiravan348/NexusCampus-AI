@@ -63,9 +63,8 @@ export const COMPLIANCE_PACKS = [
     retentionDaysDefault: 1825,
   },
   {
-    // Apex: no dedicated UAE pack yet, so it follows the generic GDPR-style baseline.
     code: "gdpr",
-    region: "me",
+    region: "eu",
     dsrDueDays: 30,
     minorAgeThreshold: 18,
     guardianConsentForAi: true,
@@ -79,7 +78,7 @@ export const TENANT_COMPLIANCE: Readonly<Record<string, readonly CompliancePackC
   [TENANT.littleSteps]: ["dpdp"],
   [TENANT.riverside]: ["uk_gdpr"],
   [TENANT.northbridge]: ["ferpa", "coppa"],
-  [TENANT.apex]: ["gdpr"],
+  [TENANT.apex]: ["dpdp"],
   [TENANT.harmony]: ["pdpa"],
 };
 
@@ -180,7 +179,7 @@ export const DATA_SUBJECT_REQUESTS = [
   dsr(
     "dsr-ax-correct",
     TENANT.apex,
-    PERSON.axLayla,
+    PERSON.axLakshmi,
     "correct",
     "received",
     "2026-08-10T06:00:00Z",

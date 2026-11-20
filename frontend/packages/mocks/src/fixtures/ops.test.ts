@@ -187,7 +187,7 @@ describe("ops fixtures (D16)", () => {
       expect(inDefault, tenantId).toHaveLength(F.NOTIFICATION_EVENTS.length * 2);
     }
     expect(
-      F.NOTIFICATION_TEMPLATES.some((t) => t.tenantId === F.TENANT.apex && t.locale === "ar-AE"),
+      F.NOTIFICATION_TEMPLATES.some((t) => t.tenantId === F.TENANT.apex && t.locale === "ta-IN"),
     ).toBe(true);
 
     for (const d of F.NOTIFICATION_DELIVERIES) {
@@ -259,7 +259,7 @@ describe("ops fixtures (D16)", () => {
 
     for (const a of F.ASSIST_ANSWERS) {
       expect(F.AI_SETTINGS.find((s) => s.tenantId === a.tenantId)?.enabled, a.id).toBe(true);
-      expect(a.locale, a.id).toBe(institutionOf(a.tenantId)?.locale.defaultLocale);
+      expect(institutionOf(a.tenantId)?.locale.supportedLocales, a.id).toContain(a.locale);
       for (const s of a.sources) expect(resolves(a.tenantId, s.recordId), a.id).toBe(true);
     }
   });

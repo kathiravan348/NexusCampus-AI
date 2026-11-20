@@ -3,12 +3,15 @@
  * (no font CDN). This is the only module besides tokens.json that may name a font.
  */
 
-// Default fonts load with ui-core. Arabic uses unicode-range: it only downloads for Arabic text.
+// Default fonts load with ui-core. Hindi (Devanagari) and Tamil use unicode-range: each only downloads
+// when that script is on screen (D42).
 import "@fontsource/inter/400.css";
 import "@fontsource/inter/500.css";
 import "@fontsource/inter/600.css";
-import "@fontsource/noto-sans-arabic/400.css";
-import "@fontsource/noto-sans-arabic/600.css";
+import "@fontsource/noto-sans-devanagari/400.css";
+import "@fontsource/noto-sans-devanagari/600.css";
+import "@fontsource/noto-sans-tamil/400.css";
+import "@fontsource/noto-sans-tamil/600.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/jetbrains-mono/500.css";
 
@@ -29,7 +32,8 @@ export const FONT_LIBRARY = {
     id: "inter",
     label: "Inter",
     role: "sans",
-    family: '"Inter", "Noto Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif',
+    family:
+      '"Inter", "Noto Sans Devanagari", "Noto Sans Tamil", system-ui, -apple-system, "Segoe UI", sans-serif',
     load: () =>
       Promise.all([
         import("@fontsource/inter/400.css"),
@@ -37,15 +41,26 @@ export const FONT_LIBRARY = {
         import("@fontsource/inter/600.css"),
       ]),
   },
-  "noto-sans-arabic": {
-    id: "noto-sans-arabic",
-    label: "Noto Sans Arabic",
+  "noto-sans-devanagari": {
+    id: "noto-sans-devanagari",
+    label: "Noto Sans Devanagari",
     role: "sans",
-    family: '"Noto Sans Arabic", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif',
+    family: '"Noto Sans Devanagari", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif',
     load: () =>
       Promise.all([
-        import("@fontsource/noto-sans-arabic/400.css"),
-        import("@fontsource/noto-sans-arabic/600.css"),
+        import("@fontsource/noto-sans-devanagari/400.css"),
+        import("@fontsource/noto-sans-devanagari/600.css"),
+      ]),
+  },
+  "noto-sans-tamil": {
+    id: "noto-sans-tamil",
+    label: "Noto Sans Tamil",
+    role: "sans",
+    family: '"Noto Sans Tamil", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif',
+    load: () =>
+      Promise.all([
+        import("@fontsource/noto-sans-tamil/400.css"),
+        import("@fontsource/noto-sans-tamil/600.css"),
       ]),
   },
   "jetbrains-mono": {

@@ -11,7 +11,7 @@ type As = { tenant: string; user: string };
 const RV_ADMIN: As = { tenant: TENANT.riverside, user: USER.rvHelen };
 const RV_LEARNER: As = { tenant: TENANT.riverside, user: USER.rvOliver };
 const LS_ADMIN: As = { tenant: TENANT.littleSteps, user: USER.lsPriya };
-const AX_ADMIN: As = { tenant: TENANT.apex, user: USER.axKhalid };
+const AX_ADMIN: As = { tenant: TENANT.apex, user: USER.axKarthik };
 
 function call(method: string, path: string, body: unknown, as: As) {
   return fetch(`${BASE}${path}`, {
@@ -64,7 +64,7 @@ describe("POST /assist/ask", () => {
 
     const credit = mockDb.aiCredits.find((c) => c.tenantId === TENANT.apex)!;
     Object.assign(credit, { used: credit.granted });
-    const broke = await ask("الدفعة", AX_ADMIN, "ar-AE");
+    const broke = await ask("பேட்ச்", AX_ADMIN, "ta-IN");
     expect(broke.status).toBe(429);
     expect(await detail(broke)).toBe("credits");
 

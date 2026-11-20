@@ -36,18 +36,33 @@ const EN: Record<NotificationEvent, Text> = {
   },
 };
 
-const AR: Record<NotificationEvent, Text> = {
+const HI: Record<NotificationEvent, Text> = {
   "m02.user.invited": {
-    subject: "دعوة للانضمام إلى {institution}",
-    body: "مرحبًا {name}، دعتك {institution} لتسجيل الدخول. تنتهي الدعوة في {expiresAt, date, medium}.",
+    subject: "{institution} में शामिल होने का आमंत्रण",
+    body: "नमस्ते {name}, {institution} ने आपको साइन इन करने के लिए आमंत्रित किया है। आमंत्रण {expiresAt, date, medium} को समाप्त होगा।",
   },
   "m06.consent.requested": {
-    subject: "مطلوب موافقة بشأن {learner}",
-    body: "مرحبًا {name}، يرجى مراجعة طلب الموافقة الخاص بـ {learner} والرد عليه.",
+    subject: "{learner} के लिए सहमति चाहिए",
+    body: "नमस्ते {name}, कृपया {learner} के सहमति अनुरोध को देखें और उत्तर दें।",
   },
   "m07.announcement.published": {
-    subject: "إعلان جديد: {title}",
-    body: "نشرت {institution} إعلانًا جديدًا: {title}.",
+    subject: "नई घोषणा: {title}",
+    body: "{institution} ने एक नई घोषणा की है: {title}।",
+  },
+};
+
+const TA: Record<NotificationEvent, Text> = {
+  "m02.user.invited": {
+    subject: "{institution} இல் சேர அழைப்பு",
+    body: "வணக்கம் {name}, {institution} உங்களை உள்நுழைய அழைத்துள்ளது. அழைப்பு {expiresAt, date, medium} அன்று காலாவதியாகும்.",
+  },
+  "m06.consent.requested": {
+    subject: "{learner} க்கு ஒப்புதல் தேவை",
+    body: "வணக்கம் {name}, {learner} க்கான ஒப்புதல் கோரிக்கையைப் பார்த்துப் பதிலளிக்கவும்.",
+  },
+  "m07.announcement.published": {
+    subject: "புதிய அறிவிப்பு: {title}",
+    body: "{institution} ஒரு புதிய அறிவிப்பை வெளியிட்டுள்ளது: {title}.",
   },
 };
 
@@ -73,13 +88,14 @@ const templatesFor = (tenantId: string, locale: string, texts: Record<Notificati
     })),
   );
 
-/** 3 events × email + in-app per tenant in its default locale; Apex also has English versions. */
+/** 3 events × email + in-app per tenant in its default locale; Riverside (Hindi) and Apex (Tamil) also have English. */
 export const NOTIFICATION_TEMPLATES: readonly NotificationTemplate[] = [
   ...templatesFor(TENANT.littleSteps, "en-IN", EN),
+  ...templatesFor(TENANT.riverside, "hi-IN", HI),
   ...templatesFor(TENANT.riverside, "en-GB", EN),
   ...templatesFor(TENANT.northbridge, "en-US", EN),
-  ...templatesFor(TENANT.apex, "ar-AE", AR),
-  ...templatesFor(TENANT.apex, "en", EN),
+  ...templatesFor(TENANT.apex, "ta-IN", TA),
+  ...templatesFor(TENANT.apex, "en-IN", EN),
   ...templatesFor(TENANT.harmony, "en-SG", EN),
 ];
 
@@ -158,8 +174,8 @@ export const NOTIFICATION_DELIVERIES = [
   delivery(
     "ndl-ax-01",
     TENANT.apex,
-    ["m07.announcement.published", "in_app", "ar-AE"],
-    PERSON.axLayla,
+    ["m07.announcement.published", "in_app", "ta-IN"],
+    PERSON.axLakshmi,
     "delivered",
     "2026-09-13T06:00:00Z",
     "2026-09-13T06:00:01Z",
@@ -167,8 +183,8 @@ export const NOTIFICATION_DELIVERIES = [
   delivery(
     "ndl-ax-02",
     TENANT.apex,
-    ["m07.announcement.published", "email", "en"],
-    PERSON.axOmar,
+    ["m07.announcement.published", "email", "en-IN"],
+    PERSON.axSuresh,
     "queued",
     "2026-09-15T11:58:00Z",
     null,
@@ -211,12 +227,12 @@ export const NOTIFICATION_PREFERENCES = [
     timeZone: "America/New_York",
   },
   {
-    userId: USER.axLayla,
+    userId: USER.axLakshmi,
     channel: "in_app",
     eventType: "m07.announcement.published",
     enabled: true,
     quietHours: { start: "22:00", end: "06:00" },
-    timeZone: "Asia/Dubai",
+    timeZone: "Asia/Kolkata",
   },
   {
     userId: USER.hmMei,

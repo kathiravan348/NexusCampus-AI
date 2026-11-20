@@ -1,5 +1,6 @@
 import en from "../messages/en.json";
-import ar from "../messages/ar.json";
+import hi from "../messages/hi.json";
+import ta from "../messages/ta.json";
 import enEy from "../terminology/en/ey.json";
 import enK12 from "../terminology/en/k12.json";
 import enHe from "../terminology/en/he.json";
@@ -8,14 +9,22 @@ import enTp from "../terminology/en/tp.json";
 import enSk from "../terminology/en/sk.json";
 import enOnl from "../terminology/en/onl.json";
 import enGrp from "../terminology/en/grp.json";
-import arEy from "../terminology/ar/ey.json";
-import arK12 from "../terminology/ar/k12.json";
-import arHe from "../terminology/ar/he.json";
-import arVoc from "../terminology/ar/voc.json";
-import arTp from "../terminology/ar/tp.json";
-import arSk from "../terminology/ar/sk.json";
-import arOnl from "../terminology/ar/onl.json";
-import arGrp from "../terminology/ar/grp.json";
+import hiEy from "../terminology/hi/ey.json";
+import hiK12 from "../terminology/hi/k12.json";
+import hiHe from "../terminology/hi/he.json";
+import hiVoc from "../terminology/hi/voc.json";
+import hiTp from "../terminology/hi/tp.json";
+import hiSk from "../terminology/hi/sk.json";
+import hiOnl from "../terminology/hi/onl.json";
+import hiGrp from "../terminology/hi/grp.json";
+import taEy from "../terminology/ta/ey.json";
+import taK12 from "../terminology/ta/k12.json";
+import taHe from "../terminology/ta/he.json";
+import taVoc from "../terminology/ta/voc.json";
+import taTp from "../terminology/ta/tp.json";
+import taSk from "../terminology/ta/sk.json";
+import taOnl from "../terminology/ta/onl.json";
+import taGrp from "../terminology/ta/grp.json";
 import { parse } from "@formatjs/icu-messageformat-parser";
 import { pseudoLocalize } from "./pseudo";
 
@@ -51,12 +60,13 @@ export function isKnownMessageKey(key: string): key is MessageKey {
 }
 
 /** Translations by base language. `en` is the source and needs no catalog. */
-export const LOCALE_CATALOGS: Readonly<Record<string, Catalog>> = { ar };
+export const LOCALE_CATALOGS: Readonly<Record<string, Catalog>> = { hi, ta };
 
 /** Terminology packs per base language and institution type (C-2); locale-scoped (D28). */
 export const TERMINOLOGY: Readonly<Record<string, Readonly<Record<InstitutionType, Catalog>>>> = {
   en: { ey: enEy, k12: enK12, he: enHe, voc: enVoc, tp: enTp, sk: enSk, onl: enOnl, grp: enGrp },
-  ar: { ey: arEy, k12: arK12, he: arHe, voc: arVoc, tp: arTp, sk: arSk, onl: arOnl, grp: arGrp },
+  hi: { ey: hiEy, k12: hiK12, he: hiHe, voc: hiVoc, tp: hiTp, sk: hiSk, onl: hiOnl, grp: hiGrp },
+  ta: { ey: taEy, k12: taK12, he: taHe, voc: taVoc, tp: taTp, sk: taSk, onl: taOnl, grp: taGrp },
 };
 
 export interface MissingMessage {
@@ -91,7 +101,7 @@ export function isValidMessage(text: string): boolean {
 }
 
 export interface ResolveOptions {
-  /** BCP 47 locale, e.g. `ar-SA`; `en-XA` is the pseudo-locale. */
+  /** BCP 47 locale, e.g. `ta-IN`; `en-XA` is the pseudo-locale. */
   locale: string;
   typePack?: InstitutionType;
   group?: TextOverrides;
@@ -104,7 +114,7 @@ export function isPseudoLocale(locale: string): boolean {
   return locale.toLowerCase() === PSEUDO_LOCALE.toLowerCase();
 }
 
-/** `ar-SA` → `ar`. */
+/** `ta-IN` → `ta`. */
 export function baseLanguage(locale: string): string {
   return (locale.split(/[-_]/)[0] ?? locale).toLowerCase();
 }

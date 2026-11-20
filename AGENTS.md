@@ -94,7 +94,7 @@ Pin exact versions (`package.json` no `^`/`~`; `pyproject.toml` `==`, `uv.lock`)
 - **No hardcoded text (D8).** Every visible string, label, aria-label, toast, error and placeholder uses a message key
   from `@nexus/i18n`. Keys: `<module>.<screen>.<element>` (e.g. `m17.roll.markAll`), `common.<element>` for shared
   actions/states, and `term.<concept>` for institution-type terminology. New keys get an `en` message and a description
-  for translators.
+  for translators, plus `hi` and `ta` translations (default languages English, Hindi, Tamil — D42).
 - **Theme (D7):** colours, fonts, spacing, radius only from tokens. **Never write a hex value or font name in a
   component.** Components must look right under any theme that passes the contrast guard.
 - **RTL:** use logical properties (`ms-`, `me-`, `ps-`, `pe-`, `start`, `end`), never `left`/`right`.

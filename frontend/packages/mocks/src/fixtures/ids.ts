@@ -70,14 +70,14 @@ export const PERSON = {
   nbAiden: "per-nb-aiden",
   nbNora: "per-nb-nora",
 
-  axKhalid: "per-ax-khalid",
-  axFatima: "per-ax-fatima",
-  axOmar: "per-ax-omar",
-  axLayla: "per-ax-layla",
-  axYousef: "per-ax-yousef",
-  axSara: "per-ax-sara",
-  axAhmed: "per-ax-ahmed",
-  axMariam: "per-ax-mariam",
+  axKarthik: "per-ax-karthik",
+  axMeena: "per-ax-meena",
+  axSuresh: "per-ax-suresh",
+  axLakshmi: "per-ax-lakshmi",
+  axVijay: "per-ax-vijay",
+  axDivya: "per-ax-divya",
+  axArun: "per-ax-arun",
+  axNila: "per-ax-nila",
 
   hmWeiLing: "per-hm-weiling",
   hmDaniel: "per-hm-daniel",
@@ -110,11 +110,11 @@ export const USER = {
   nbJordan: "usr-nb-jordan",
   nbSofia: "usr-nb-sofia",
 
-  axKhalid: "usr-ax-khalid",
-  axFatima: "usr-ax-fatima",
-  axOmar: "usr-ax-omar",
-  axLayla: "usr-ax-layla",
-  axAhmed: "usr-ax-ahmed",
+  axKarthik: "usr-ax-karthik",
+  axMeena: "usr-ax-meena",
+  axSuresh: "usr-ax-suresh",
+  axLakshmi: "usr-ax-lakshmi",
+  axArun: "usr-ax-arun",
 
   hmWeiLing: "usr-hm-weiling",
   hmDaniel: "usr-hm-daniel",
@@ -143,7 +143,8 @@ export const PLAN = {
 
 export const FONT = {
   inter: "inter",
-  notoSansArabic: "noto-sans-arabic",
+  notoSansDevanagari: "noto-sans-devanagari",
+  notoSansTamil: "noto-sans-tamil",
   jetbrainsMono: "jetbrains-mono",
 } as const;
 
@@ -160,5 +161,5 @@ export const TEXT_OVERRIDE = {
   riversideLearner: "txo-rv-learner",
   riversideLearners: "txo-rv-learners",
   riversideNorthClass: "txo-rv-north-class",
-  apexLearnerAr: "txo-ax-learner-ar",
+  apexLearnerTa: "txo-ax-learner-ta",
 } as const;

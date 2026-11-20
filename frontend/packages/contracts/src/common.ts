@@ -20,7 +20,7 @@ function isCanonicalLocale(value: string): boolean {
   }
 }
 
-/** BCP 47 locale in canonical form (`en-IN`, `ar-SA`); `en_IN` and `en-in` are rejected. */
+/** BCP 47 locale in canonical form (`en-IN`, `ta-IN`); `en_IN` and `en-in` are rejected. */
 export const LocaleSchema = z.string().refine(isCanonicalLocale, {
   message: "Must be a canonical BCP 47 locale, e.g. en-IN",
 });

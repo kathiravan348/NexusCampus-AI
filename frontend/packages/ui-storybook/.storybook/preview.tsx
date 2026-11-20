@@ -81,7 +81,9 @@ const preview: Preview = {
         icon: "globe",
         items: [
           { value: SOURCE_LOCALE, title: "English (LTR)" },
-          { value: "ar", title: "Arabic (RTL)" },
+          { value: "hi-IN", title: "Hindi" },
+          { value: "ta-IN", title: "Tamil" },
+          { value: "ur", title: "RTL layout check (English text)" },
           { value: PSEUDO_LOCALE, title: "Pseudo (en-XA)" },
         ],
         dynamicTitle: true,

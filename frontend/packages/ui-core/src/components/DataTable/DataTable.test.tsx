@@ -134,10 +134,10 @@ describe("DataTable", () => {
     expect(screen.getAllByRole("alert")[0]).toHaveTextContent("Failed to load");
 
     rerender(
-      <I18nProvider locale="ar">
+      <I18nProvider locale="ta">
         <DataTable columns={columns} data={[]} caption="Learners" />
       </I18nProvider>,
     );
-    expect(screen.getAllByText("لا توجد عناصر بعد")).toHaveLength(2);
+    expect(screen.getAllByText("இங்கே இன்னும் எதுவும் இல்லை")).toHaveLength(2);
   });
 });

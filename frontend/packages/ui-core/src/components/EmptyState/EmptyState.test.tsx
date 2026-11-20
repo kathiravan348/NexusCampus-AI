@@ -30,8 +30,10 @@ describe("EmptyState", () => {
     expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
   });
 
-  it("renders Arabic defaults when locale is ar", () => {
-    renderWithI18n(<EmptyState />, "ar");
-    expect(screen.getByRole("heading", { name: "لا توجد عناصر بعد" })).toBeInTheDocument();
+  it("renders Tamil defaults when locale is ta", () => {
+    renderWithI18n(<EmptyState />, "ta");
+    expect(
+      screen.getByRole("heading", { name: "இங்கே இன்னும் எதுவும் இல்லை" }),
+    ).toBeInTheDocument();
   });
 });

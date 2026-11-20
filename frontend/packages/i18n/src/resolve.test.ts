@@ -12,33 +12,42 @@ describe("resolveMessages", () => {
     expect(resolveMessages({ locale: "en" })[key]).toBe("Learner");
     // en pack beats en
     expect(resolveMessages({ locale: "en", typePack: "ey" })[key]).toBe("Child");
-    // locale beats en pack (Arabic default term), locale pack beats locale
-    expect(resolveMessages({ locale: "ar" })[key]).toBe("متعلم");
-    expect(resolveMessages({ locale: "ar", typePack: "ey" })[key]).toBe("طفل");
+    // locale beats en pack (Tamil default term), locale pack beats locale
+    expect(resolveMessages({ locale: "ta" })[key]).toBe("மாணவர்");
+    expect(resolveMessages({ locale: "ta", typePack: "ey" })[key]).toBe("குழந்தை");
     // group beats locale pack, institution beats group, campus beats institution
     const group = { [key]: "G" };
     const institution = { [key]: "I" };
     const campus = { [key]: "C" };
-    expect(resolveMessages({ locale: "ar", typePack: "ey", group })[key]).toBe("G");
-    expect(resolveMessages({ locale: "ar", typePack: "ey", group, institution })[key]).toBe("I");
-    expect(resolveMessages({ locale: "ar", typePack: "ey", group, institution, campus })[key]).toBe(
+    expect(resolveMessages({ locale: "ta", typePack: "ey", group })[key]).toBe("G");
+    expect(resolveMessages({ locale: "ta", typePack: "ey", group, institution })[key]).toBe("I");
+    expect(resolveMessages({ locale: "ta", typePack: "ey", group, institution, campus })[key]).toBe(
       "C",
     );
   });
 
-  it("never lets an English terminology pack overwrite Arabic", () => {
-    for (const type of ["ey", "k12", "he", "voc", "tp", "sk", "onl", "grp"] as const) {
-      const messages = resolveMessages({ locale: "ar-SA", typePack: type });
-      for (const key of ["term.learner", "term.teacher", "term.class", "term.guardian"] as const) {
-        expect(messages[key], `${type} ${key}`).toMatch(/[؀-ۿ]/);
+  it("never lets an English terminology pack overwrite Hindi or Tamil", () => {
+    const scripts = { "hi-IN": /[ऀ-ॿ]/, "ta-IN": /[஀-௿]/ };
+    for (const [locale, script] of Object.entries(scripts)) {
+      for (const type of ["ey", "k12", "he", "voc", "tp", "sk", "onl", "grp"] as const) {
+        const messages = resolveMessages({ locale, typePack: type });
+        for (const key of [
+          "term.learner",
+          "term.teacher",
+          "term.class",
+          "term.guardian",
+        ] as const) {
+          expect(messages[key], `${locale} ${type} ${key}`).toMatch(script);
+        }
       }
     }
   });
 
   it("uses the base language for regional locales", () => {
-    expect(baseLanguage("ar-SA")).toBe("ar");
+    expect(baseLanguage("ta-IN")).toBe("ta");
     expect(baseLanguage("en_IN")).toBe("en");
-    expect(resolveMessages({ locale: "ar-AE" })["common.save"]).toBe("حفظ");
+    expect(resolveMessages({ locale: "ta-IN" })["common.save"]).toBe("சேமி");
+    expect(resolveMessages({ locale: "hi-IN" })["common.save"]).toBe("सहेजें");
   });
 
   it("falls back to English and reports each missing key, never returning a raw key", () => {

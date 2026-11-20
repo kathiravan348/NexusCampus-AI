@@ -38,10 +38,10 @@ describe("SyncStatus", () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it("localizes labels in Arabic", () => {
-    renderWithI18n(<SyncStatus state="synced" lastSyncedAt="10:42" />, "ar");
+  it("localizes labels in Tamil", () => {
+    renderWithI18n(<SyncStatus state="synced" lastSyncedAt="10:42" />, "ta");
     const status = screen.getByRole("status");
-    expect(status).toHaveTextContent("تمت المزامنة");
-    expect(status).toHaveTextContent("آخر مزامنة 10:42");
+    expect(status).toHaveTextContent("ஒத்திசைக்கப்பட்டது");
+    expect(status).toHaveTextContent("கடைசியாக ஒத்திசைத்தது 10:42");
   });
 });

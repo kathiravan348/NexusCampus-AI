@@ -26,12 +26,12 @@ const credit = {
 const answer = {
   id: "asa_01",
   tenantId: "ten_apex",
-  question: "كم عدد الطلاب في دفعة الهندسة؟",
-  answer: "يوجد ٤٢ طالبًا في دفعة الهندسة.",
-  locale: "ar-AE",
+  question: "பொறியியல் பேட்சில் எத்தனை மாணவர்கள் உள்ளனர்?",
+  answer: "பொறியியல் பேட்சில் 42 மாணவர்கள் உள்ளனர்.",
+  locale: "ta-IN",
   aiGenerated: true,
   sources: [
-    { moduleId: "M01", recordType: "campus", recordId: "cmp_apex_main", label: "الفرع الرئيسي" },
+    { moduleId: "M01", recordType: "campus", recordId: "cmp_apex_main", label: "முதன்மை வளாகம்" },
   ],
   tier: "fast",
   creditsUsed: 2,

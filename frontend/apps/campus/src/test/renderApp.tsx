@@ -7,6 +7,7 @@ import { createMemoryRouter, RouterProvider } from "react-router";
 import { AppProviders } from "../App";
 import type { ModuleEntry } from "../app/modules";
 import { appRoutes } from "../app/router";
+import { LOCALE_STORAGE_KEY } from "../app/TenantRuntime";
 
 /** Test-only module screens: M02 people (needs `m02.user.read`) and M99 (never entitled). */
 export const TEST_MODULES: readonly ModuleEntry[] = [
@@ -47,6 +48,23 @@ export function signInAs(who: DemoPersona): void {
     SESSION_STORAGE_KEY,
     JSON.stringify({ tenantId: who.tenantId, userId: who.userId }),
   );
+}
+
+/**
+ * Drop the English pick test/setup makes, so Riverside opens in Hindi and Apex in Tamil (D42): for one
+ * tenant, or for all when no tenant is given.
+ */
+export function withInstitutionLocale(tenantId?: string): void {
+  if (tenantId === undefined) {
+    localStorage.removeItem(LOCALE_STORAGE_KEY);
+    return;
+  }
+  const picks = JSON.parse(localStorage.getItem(LOCALE_STORAGE_KEY) ?? "{}") as Record<
+    string,
+    string
+  >;
+  delete picks[tenantId];
+  localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify(picks));
 }
 
 let count = 0;

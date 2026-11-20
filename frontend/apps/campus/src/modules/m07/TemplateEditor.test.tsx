@@ -26,22 +26,22 @@ describe("TemplateEditor", () => {
     expect(within(dialog).getByRole("button", { name: "Save" })).toBeEnabled();
   });
 
-  it("adds a missing Arabic version that then appears in the table", async () => {
-    localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify({ [TENANT.apex]: "en" }));
-    const arId = templateId(TENANT.apex, "m02.user.invited", "in_app", "ar-AE");
+  it("adds a missing Tamil version that then appears in the table", async () => {
+    localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify({ [TENANT.apex]: "en-IN" }));
+    const taId = templateId(TENANT.apex, "m02.user.invited", "in_app", "ta-IN");
     mockDb.notificationTemplates.splice(
-      mockDb.notificationTemplates.findIndex((t) => t.id === arId),
+      mockDb.notificationTemplates.findIndex((t) => t.id === taId),
       1,
     );
-    const enId = templateId(TENANT.apex, "m02.user.invited", "in_app", "en");
+    const enId = templateId(TENANT.apex, "m02.user.invited", "in_app", "en-IN");
     const { table, dialog } = await openEditor(TENANT.apex, enId);
     fireEvent.change(within(dialog).getByLabelText("Language"), { target: { value: "__new__" } });
-    expect(within(dialog).getByLabelText("New language")).toHaveValue("ar-AE");
+    expect(within(dialog).getByLabelText("New language")).toHaveValue("ta-IN");
     const body = within(dialog).getByLabelText(/Message/);
-    expect(body).toHaveAttribute("dir", "rtl");
-    fireEvent.change(body, { target: { value: "مرحبًا {name}" } });
+    expect(body).toHaveAttribute("dir", "ltr");
+    fireEvent.change(body, { target: { value: "வணக்கம் {name}" } });
     fireEvent.click(within(dialog).getByRole("button", { name: "Save" }));
     expect(await screen.findByText("Template saved.")).toBeInTheDocument();
-    await waitFor(() => expect(within(table).getAllByText("ar-AE").length).toBeGreaterThan(0));
+    await waitFor(() => expect(within(table).getAllByText("ta-IN").length).toBeGreaterThan(0));
   });
 });

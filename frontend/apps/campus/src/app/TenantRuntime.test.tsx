@@ -5,7 +5,7 @@ import { fireEvent, screen, waitFor } from "@testing-library/react";
 import { Globe } from "lucide-react";
 import { describe, expect, it } from "vitest";
 import { LOCALE_STORAGE_KEY, useRuntime } from "./TenantRuntime";
-import { persona, renderApp } from "../test/renderApp";
+import { withInstitutionLocale, persona, renderApp } from "../test/renderApp";
 
 function Probe() {
   const t = useText();
@@ -55,7 +55,8 @@ describe("TenantRuntime", () => {
     expect(screen.getByTestId("class")).toHaveTextContent("Form");
   });
 
-  it("applies Arabic institution text override for Apex", async () => {
+  it("applies Tamil institution text override for Apex", async () => {
+    withInstitutionLocale(TENANT.apex);
     renderApp("/probe", {
       as: persona(TENANT.apex, "admin"),
       modules: [
@@ -71,7 +72,7 @@ describe("TenantRuntime", () => {
         },
       ],
     });
-    expect(await screen.findByTestId("learner")).toHaveTextContent("متدرب");
+    expect(await screen.findByTestId("learner")).toHaveTextContent("பயிற்சியாளர்");
   });
 
   it("scopes locale picks per tenant so another tenant keeps its default locale", async () => {
@@ -91,7 +92,7 @@ describe("TenantRuntime", () => {
         },
       ],
     });
-    expect(await screen.findByTestId("locale")).toHaveTextContent("ar-AE");
+    expect(await screen.findByTestId("locale")).toHaveTextContent("ta-IN");
     fireEvent.click(screen.getByRole("button", { name: "pick-pseudo" }));
     expect(await screen.findByTestId("locale")).toHaveTextContent("en-XA");
   });

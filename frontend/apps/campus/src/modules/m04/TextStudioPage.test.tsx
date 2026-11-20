@@ -5,7 +5,7 @@ import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AppProviders } from "../../App";
 import { MODULES } from "../../app/modules";
-import { freshDb, persona, renderApp, signInAs } from "../../test/renderApp";
+import { withInstitutionLocale, freshDb, persona, renderApp, signInAs } from "../../test/renderApp";
 import { TextStudioPage } from "./TextStudioPage";
 
 function renderStudioDirectly(as = persona(TENANT.northbridge, "admin")) {
@@ -107,27 +107,30 @@ describe("TextStudioPage (M04)", () => {
     expect(within(dialog).getByText(/Locked by the group override/)).toBeInTheDocument();
   });
 
-  it("lets Apex admin edit Arabic text in RTL and hides route from teachers", async () => {
+  it("lets Apex admin edit Tamil text and hides route from teachers", async () => {
+    withInstitutionLocale(TENANT.apex);
     renderApp("/texts", { as: persona(TENANT.apex, "admin"), modules: MODULES });
     expect(
-      await screen.findByRole("heading", { level: 1, name: "استوديو النصوص واللغات" }),
+      await screen.findByRole("heading", { level: 1, name: "உரை மற்றும் மொழி ஸ்டுடியோ" }),
     ).toBeInTheDocument();
-    expect(document.documentElement.dir).toBe("rtl");
+    expect(document.documentElement.lang).toBe("ta-IN");
 
-    const searchInput = screen.getByLabelText("البحث في المفاتيح أو النص");
+    const searchInput = screen.getByLabelText("சாவிகள் அல்லது உரையைத் தேடு");
     fireEvent.change(searchInput, { target: { value: "term.learner" } });
     const table = screen.getByRole("table");
     const learnerCell = await within(table).findByText("term.learner");
-    fireEvent.click(within(learnerCell.closest("tr")!).getByRole("button", { name: "تعديل" }));
+    fireEvent.click(within(learnerCell.closest("tr")!).getByRole("button", { name: "திருத்து" }));
 
     const dialog = await screen.findByRole("dialog");
-    const textarea = within(dialog).getByLabelText("تعديل المؤسسة");
-    expect(textarea).toHaveAttribute("dir", "rtl");
-    fireEvent.change(textarea, { target: { value: "متدرب مميز" } });
-    fireEvent.click(within(dialog).getByRole("button", { name: "حفظ" }));
+    const textarea = within(dialog).getByLabelText("நிறுவன மேலெழுதல்");
+    expect(textarea).toHaveAttribute("dir", "ltr");
+    fireEvent.change(textarea, { target: { value: "சிறந்த பயிற்சியாளர்" } });
+    fireEvent.click(within(dialog).getByRole("button", { name: "சேமி" }));
 
     await waitFor(() => {
-      expect(within(screen.getByRole("table")).getByText("متدرب مميز")).toBeInTheDocument();
+      expect(
+        within(screen.getByRole("table")).getByText("சிறந்த பயிற்சியாளர்"),
+      ).toBeInTheDocument();
     });
 
     // Teacher cannot access /texts

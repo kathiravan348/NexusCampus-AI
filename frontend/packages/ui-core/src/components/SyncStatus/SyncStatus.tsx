@@ -92,20 +92,24 @@ export function SyncStatus({
   const t = useText();
   const label = resolveLabel(t, state, pendingCount, conflictCount);
   const syncedText = lastSyncedAt ? t("common.syncLastSynced", { time: lastSyncedAt }) : null;
+  // Long labels (e.g. Tamil) truncate in a narrow header; the full text stays in the DOM and in the tooltip.
+  const title = syncedText ? `${label} · ${syncedText}` : label;
 
   const baseClass = cn(
-    "inline-flex flex-wrap items-center gap-x-2 gap-y-0.5 rounded-pill px-3 py-1 font-sans text-body-sm font-medium transition-colors max-w-full",
+    "inline-flex min-w-0 flex-wrap items-center gap-x-2 gap-y-0.5 rounded-pill px-3 py-1 font-sans text-body-sm font-medium transition-colors max-w-full",
     STATE_TONE[state],
     className,
   );
 
   const content = (
     <>
-      <span className="inline-flex items-center gap-1.5">
+      <span className="inline-flex min-w-0 max-w-full items-center gap-1.5">
         {renderStateIcon(state)}
-        <span>{label}</span>
+        <span className="truncate">{label}</span>
       </span>
-      {syncedText && <span className="text-body-sm font-normal">{syncedText}</span>}
+      {syncedText && (
+        <span className="min-w-0 max-w-full truncate text-body-sm font-normal">{syncedText}</span>
+      )}
     </>
   );
 
@@ -115,6 +119,7 @@ export function SyncStatus({
         type="button"
         aria-live="polite"
         data-state={state}
+        title={title}
         onClick={onClick}
         className={cn(
           baseClass,
@@ -127,7 +132,7 @@ export function SyncStatus({
   }
 
   return (
-    <div role="status" aria-live="polite" data-state={state} className={baseClass}>
+    <div role="status" aria-live="polite" data-state={state} className={baseClass} title={title}>
       {content}
     </div>
   );

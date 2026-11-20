@@ -44,7 +44,7 @@ const words = (text: string) =>
   new Set(
     text
       .toLowerCase()
-      .split(/[^\p{L}\p{N}]+/u)
+      .split(/[^\p{L}\p{M}\p{N}]+/u) // \p{M}: Hindi and Tamil vowel signs belong to the word
       .filter((w) => w.length > 2),
   );
 

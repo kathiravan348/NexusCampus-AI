@@ -142,7 +142,7 @@ describe("read endpoints", () => {
     expect(res.status).toBe(200);
     const body = z.array(DemoTenantEntrySchema).parse(await res.json());
     expect(body.map((t) => t.tenantId).sort()).toEqual(Object.values(TENANT).sort());
-    expect(body.find((t) => t.tenantId === TENANT.apex)?.defaultLocale).toBe("ar-AE");
+    expect(body.find((t) => t.tenantId === TENANT.apex)?.defaultLocale).toBe("ta-IN");
     for (const t of body) expect(t.personas.length).toBeGreaterThan(0);
   });
 

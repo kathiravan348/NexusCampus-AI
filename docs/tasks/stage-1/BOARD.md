@@ -48,3 +48,4 @@
 | NEX-037 | Logo image corrections: SVG master, exact gradient, clean dark lockup, no baked tagline, small favicon, mono (waits for designer files) | A | done | Claude | 036 |
 | NEX-038 | PWA + MSW share one service worker in mock builds (fix for NEX-030, found by NEX-021) | C | done | Claude | 030 |
 | NEX-039 | Home page: intro line and a short description on every module tile (Owner request) | C | done | Claude | 012 |
+| NEX-040 | Default languages English, Hindi, Tamil; Arabic removed (D42, Owner decision) | B | done | Claude | 003, 010, 021 |

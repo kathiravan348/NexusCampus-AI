@@ -19,7 +19,7 @@ fnm exec --using=24 -- pnpm --dir frontend review:start
 it in your browser (the address is printed as `Local: http://localhost:4173/`). It prints `[timing]` lines for the
 build and for "ready". Stop it with Ctrl+C.
 
-Optional — the automatic checks (smoke on every screen, Arabic right-to-left, pseudo-locale, offline, accessibility):
+Optional — the automatic checks (smoke on every screen, Hindi and Tamil, pseudo-locale, offline, accessibility):
 
 ```bash
 fnm exec --using=24 -- pnpm --dir frontend exec playwright install chromium
@@ -34,7 +34,7 @@ The HTML report lands in `frontend/playwright-report/` (open `index.html`).
 ## 2. How to move around
 - **Sign in:** pick an institution and a role on the first page. No password. **Switch persona** with the people icon
   in the top bar; **Sign out** with the arrow icon.
-- **Language:** the language picker sits at the bottom of the menu (Apex Coaching offers Arabic and English).
+- **Language:** the language picker sits at the bottom of the menu (Riverside offers Hindi and English, Apex Coaching Tamil and English).
 - **Light / dark:** the moon / sun icon in the top bar.
 - **Phone size:** narrow the browser window (or DevTools → device toolbar, 360 px). The menu moves behind the ☰ button.
 - **Offline:** DevTools → Network → "Offline", then reload. Turn it back on to see queued changes sync.
@@ -65,7 +65,7 @@ Tick each line in the feedback file as you go. "Look for" says what should be tr
 4. **Priya → Plan & usage:** modules on/off, usage meters; AI is not in this plan.
 5. **Arjun:** smaller menu; Users & access is read-only. **Sunita:** Notifications → My preferences only.
 
-### K12 group — Riverside School (en-GB, 2 campuses: North / South) · Helen (Admin), Tom (Teacher), Grace (Guardian), Oliver (Learner)
+### K12 group — Riverside School (Hindi `hi-IN` + British English, 2 campuses: North / South) · Helen (Admin), Tom (Teacher), Grace (Guardian), Oliver (Learner)
 1. **Helen → Institution setup → Structure:** the group with two campuses; edit a campus.
 2. **Helen → Text & language studio:** search a text, override it, see it change in the app; history and undo.
 3. **Helen → AI settings:** AI on/off and credits; then the ✨ Assist panel answers with sources.
@@ -79,11 +79,13 @@ Tick each line in the feedback file as you go. "Look for" says what should be tr
 3. **Robert → Sync centre:** this device, devices list, conflicts.
 4. **Jordan (Learner):** Notifications preferences and quiet hours.
 
-### TP Arabic — Apex Coaching (ar-AE, Arabic right-to-left) · Khalid (Admin), Fatima (Teacher), Layla (Guardian), Ahmed (Learner)
-1. **Khalid:** the whole app in Arabic, menu on the right, icons mirrored where they point a direction.
-2. Switch to **English** in the language picker, then back to Arabic.
-3. **Khalid → Theme studio / Text studio:** the preview follows right-to-left.
-4. **Ahmed:** Arabic notifications preferences. Look for: no English left on screen, no clipped text.
+### TP Tamil — Apex Coaching, Chennai (Tamil `ta-IN` + Indian English) · Karthik (Admin), Meena (Teacher), Lakshmi (Guardian), Arun (Learner)
+1. **Karthik:** the whole app in Tamil, Indian rupee and India time; the top bar still fits on a phone.
+2. Switch to **English** in the language picker, then back to Tamil.
+3. **Karthik → Text studio:** the "learner" override reads பயிற்சியாளர்; edit a Tamil text and see it change.
+4. **Arun:** Tamil notifications preferences. Look for: no English left on screen, no clipped text.
+
+Riverside opens in **Hindi** the same way (Helen): switch to English and back; all screens are in Hindi.
 
 ### SK — Harmony Music Academy (en-SG) · Wei Ling (Admin), Daniel (Teacher), Mei (Guardian), Rachel (Learner)
 1. **Wei Ling → Plan & usage:** a small plan — AI settings and Sync centre are off, and their menu items are hidden.
@@ -101,6 +103,7 @@ Tick each line in the feedback file as you go. "Look for" says what should be tr
 - Demo data only; changes last until the tab closes. There is no backend yet (Stage 1 build step).
 - Assist answers are canned demo answers with sources; no AI model is called.
 - E-mail / SMS / push are not sent; the delivery log is sample data.
+- Hindi and Tamil texts are first drafts (machine-written); a native speaker should review them.
 - Screens show "last synced" in the top bar only after a sync; per-screen "last synced" labels are not shown yet.
 - In review mode a new build activates straight away (the "new version" prompt only shows in real-data builds).
 - The pseudo-locale (`en-XA`, for spotting untranslated or clipped text) is only in the developer build

@@ -17,7 +17,7 @@ const theme = {
   scope: { kind: "group", targetId: "grp_riverside" },
   light: { "brand-primary": "#1A56DB", "brand-primary-text": "#FFFFFF" },
   dark: { "brand-primary": "#76A9FA" },
-  fonts: { sans: "noto-sans-arabic", mono: null },
+  fonts: { sans: "noto-sans-tamil", mono: null },
   radius: { "radius-md": "6px", "radius-lg": "10.5px" },
   density: "comfortable",
   assets: { logoUrl: "/assets/riverside/logo.svg", faviconUrl: null, loginImageUrl: null },
@@ -128,7 +128,7 @@ describe("Font", () => {
         ...font,
         id: "fnt_upload_1",
         source: "upload",
-        scripts: ["arabic"],
+        scripts: ["tamil"],
         fileUrl: "/tenant-fonts/apex/brand.woff2",
       }).success,
     ).toBe(true);
@@ -180,8 +180,8 @@ describe("TerminologyPack", () => {
     expect(
       TerminologyPackSchema.safeParse({
         type: "k12",
-        locale: "ar",
-        entries: { "term.learner": "طالب" },
+        locale: "ta",
+        entries: { "term.learner": "மாணவர்" },
       }).success,
     ).toBe(true);
     rejects(TerminologyPackSchema, [
