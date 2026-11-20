@@ -47,6 +47,12 @@ async def ping_database() -> bool:
     return True
 
 
+def sessionmaker() -> async_sessionmaker[AsyncSession]:
+    if _sessions is None:
+        raise RuntimeError("database engine is not initialised")
+    return _sessions
+
+
 async def session() -> AsyncIterator[AsyncSession]:
     """FastAPI dependency: one session per request, committed by the caller."""
     if _sessions is None:

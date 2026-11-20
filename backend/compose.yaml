@@ -34,5 +34,33 @@ services:
       timeout: 3s
       retries: 30
 
+  keycloak:
+    # Identity (D44). Dev mode with its own file database; the realm is imported on first start and demo users
+    # are added by `uv run --project backend nexus-keycloak-dev` (passwords only from backend/.env).
+    image: quay.io/keycloak/keycloak:26.4.7
+    command: ["start-dev", "--import-realm", "--health-enabled=true"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${NEXUS_KEYCLOAK_ADMIN_PASSWORD:?set NEXUS_KEYCLOAK_ADMIN_PASSWORD in backend/.env}
+      NEXUS_OIDC_CLIENT_SECRET: ${NEXUS_OIDC_CLIENT_SECRET:?set NEXUS_OIDC_CLIENT_SECRET in backend/.env}
+      KC_HOSTNAME: http://127.0.0.1:58080
+    ports:
+      - "127.0.0.1:58080:8080"
+    volumes:
+      - ./keycloak/realm-dev.json:/opt/keycloak/data/import/realm-dev.json:ro
+    mem_limit: 1g
+    healthcheck:
+      # The image has no curl: ask the management port with bash's /dev/tcp.
+      test:
+        - CMD-SHELL
+        - >-
+          exec 3<>/dev/tcp/127.0.0.1/9000 &&
+          printf 'GET /health/ready HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n' >&3 &&
+          grep -q '"UP"' <&3
+      interval: 5s
+      timeout: 5s
+      retries: 36
+      start_period: 20s
+
 volumes:
   nexus-db:

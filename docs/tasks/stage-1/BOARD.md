@@ -53,7 +53,7 @@
 | NEX-042 | Backend skeleton: FastAPI, uv, backend-check, timings, OpenTelemetry, Compose (PostgreSQL 16 + pgvector, Redis) | D | done | Claude | 022 |
 | NEX-043 | Region config, tenancy schema with RLS, Alembic baseline, demo seed | D | done | Claude | 042 |
 | NEX-044 | Audit core: append-only hash-chained writer + domain event outbox | D | done | Claude | 043 |
-| NEX-045 | Identity: Keycloak, OIDC sign-in, server sessions, /me (D44) | D | planned | — | 044 |
+| NEX-045 | Identity: Keycloak, OIDC sign-in, server sessions, /me (D44) | D | done | Claude | 044 |
 | NEX-046 | RBAC + entitlement guard: permission catalogue, scoped assignments, module switch | D | planned | — | 045 |
 | NEX-047 | Tenancy API (M01) | D | planned | — | 046 |
 | NEX-048 | Users & access API (M02): people, users, invite, roles, sessions | D | planned | — | 047 |

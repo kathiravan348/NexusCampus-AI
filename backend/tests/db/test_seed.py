@@ -12,6 +12,10 @@ TABLES = {
     "campuses": "campuses",
     "academic_calendars": "calendars",
     "audit_events": "auditEvents",
+    "people": "people",
+    "users": "users",
+    "role_profiles": "roleProfiles",
+    "sessions": "sessions",
 }
 
 

@@ -8,6 +8,7 @@ tenants' rows first and is refused outside `environment=dev`.
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -19,9 +20,13 @@ from nexus.core.timing import utf8_console
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 2
+FIXTURES_VERSION = 3
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
+    "sessions",
+    "role_profiles",
+    "users",
+    "people",
     "domain_events_outbox",
     "audit_chain_heads",
     "audit_events",
@@ -132,6 +137,27 @@ def seed_tenant(conn: Connection, data: dict[str, Any], tenant: dict[str, Any]) 
         )
 
 
+def _snake(row: dict[str, Any]) -> dict[str, Any]:
+    """Contract row (camelCase) → columns (snake_case)."""
+    return {re.sub(r"(?<!^)(?=[A-Z])", "_", key).lower(): value for key, value in row.items()}
+
+
+#: Identity tables whose contract fields map one-to-one onto columns (NEX-045).
+IDENTITY = (
+    ("people", "people"),
+    ("users", "users"),
+    ("role_profiles", "roleProfiles"),
+    ("sessions", "sessions"),
+)
+
+
+def seed_identity(conn: Connection, data: dict[str, Any], tid: str) -> None:
+    """People, users, role profiles and sessions. Demo sessions have no token hash: never usable."""
+    for table, key in IDENTITY:
+        for row in _rows(data, key, tid):
+            _upsert(conn, table, _snake(row))
+
+
 def seed_audit(conn: Connection, data: dict[str, Any], tenant_id: str) -> int:
     """Appends the mock audit chain with its stored hashes (rows are never updated: insert-if-absent).
 
@@ -194,6 +220,7 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
                 if reset:
                     reset_tenant(conn, tenant["id"])
                 seed_tenant(conn, fixtures, tenant)
+                seed_identity(conn, fixtures, tenant["id"])
                 seed_audit(conn, fixtures, tenant["id"])
     finally:
         engine.dispose()
@@ -204,6 +231,10 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
         "campuses": len(fixtures["campuses"]),
         "academic_calendars": len(fixtures["calendars"]),
         "audit_events": len(fixtures["auditEvents"]),
+        "people": len(fixtures["people"]),
+        "users": len(fixtures["users"]),
+        "role_profiles": len(fixtures["roleProfiles"]),
+        "sessions": len(fixtures["sessions"]),
     }
 
 

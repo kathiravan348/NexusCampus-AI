@@ -75,6 +75,7 @@ Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74
 | `uv run --project backend backend-check` (format 0.10s · lint 0.09s · typecheck 0.59s · test 4.30s, 19 tests) | `backend:check` | 5.08s | 3m | OK |
 | `uv run --project backend nexus-dev` to ready | `backend:start` | 1.60s | 15s | OK |
 | `uv run --project backend nexus-compose-up` (PostgreSQL + Redis healthy) | `compose:up` | 18.29s | 1m 30s | OK |
+| `nexus-compose-up` with Keycloak (NEX-045; PostgreSQL + Redis + Keycloak healthy) | `compose:up` | 32.64s | 1m 30s | OK |
 
 ## Reserved (no surface yet — fill in the task that adds it)
 
@@ -89,3 +90,4 @@ Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74
 | 2026-11-20 | NEX-032 | Harness, budgets and first baselines. |
 | 2026-11-20 | NEX-021 | `e2e` and `review:start` baselines; `e2e` moved from reserved to measured. |
 | 2026-11-20 | NEX-042 | `backend:start`, `backend:check`, `compose:up` measured (moved from reserved). |
+| 2026-11-20 | NEX-045 | `compose:up` with Keycloak: 32.64s. |
