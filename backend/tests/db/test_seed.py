@@ -16,6 +16,9 @@ TABLES = {
     "users": "users",
     "role_profiles": "roleProfiles",
     "sessions": "sessions",
+    "roles": "roles",
+    "role_assignments": "roleAssignments",
+    "entitlements": "entitlements",
 }
 
 

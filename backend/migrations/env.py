@@ -10,6 +10,7 @@ from alembic import context
 from sqlalchemy import create_engine, pool
 
 from nexus.core import audit_models as _audit  # noqa: F401  (registers the tables on Base.metadata)
+from nexus.core import rbac_models as _rbac  # noqa: F401
 from nexus.core.models import Base
 from nexus.modules.m01 import models as _m01  # noqa: F401
 from nexus.modules.m02 import models as _m02  # noqa: F401

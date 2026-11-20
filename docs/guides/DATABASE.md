@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-045) · Migration: `0003_identity`
+> State as of: 2026-11-20 (NEX-046) · Migration: `0004_rbac_entitlements`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -53,8 +53,22 @@ It covers ids and metadata only, never personal values. Write with `nexus.core.a
 | `role_profiles` | `id`, `tenant_id`, `person_id`, `institution_id`, `campus_id`, `kind`, `academic_year_id`, `effective_from`, `effective_to`, `status` | Membership of an institution (staff / guardian / learner / alumni / external); `effective_to ≥ effective_from` |
 | `sessions` | `id`, `tenant_id`, `user_id`, `device_id`, `device_label`, `auth_method`, `mfa_verified`, `ip_address`, `created_at`, `last_seen_at`, `expires_at`, `revoked_at`, `token_hash` | Only `sha256(token)` is stored; demo sessions have none (never usable). The app may insert and revoke, never delete |
 
+## Permissions and module switches (`0004_rbac_entitlements`, V-1)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `permissions` | `code`, `module_id`, `sensitive`, `description_key` | Global catalogue (no tenant); `code` = `<module>.<resource>.<action>`, in its module. App: read only. Equals `nexus.core.permissions.CATALOGUE` and the mocks (parity test) |
+| `roles` | `id`, `tenant_id`, `name`, `system`, `allowed_scope_kinds[]` | **System roles are read-only** for `nexus_app` (trigger), custom roles editable (NEX-048) |
+| `role_permissions` | `role_id`, `permission_code`, `tenant_id` | Role in the same tenant; permission must exist in the catalogue |
+| `role_assignments` | `id`, `tenant_id`, `user_id`, `role_id`, `scope_kind`, `scope_target_id`, `academic_year_id`, `effective_from`, `effective_to`, `granted_by` | Scope group / institution / campus / department / class / own (`target` null iff `own`); only assignments in force today grant anything (D25) |
+| `entitlements` | `tenant_id`, `module_id`, `enabled`, `source`, `expires_at` | Module switch: off, expired or missing = `403 module_disabled`; core modules always on; trials need `expires_at`. App: read + switch (NEX-055) |
+
+Every endpoint is guarded by `nexus.core.permissions.require(permission, module)`: module switch first, then the
+permission in some scope; services narrow to the scopes with `Grants.allows` / `Grants.scopes`. A route-walk test
+fails any non-public endpoint without a guard.
+
 ## Demo data
-`uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains and identities from
+`uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
 `pnpm --dir frontend --filter @nexus/mocks export:fixtures` (a mocks test fails when the file is stale). Upsert by
 id; each tenant is written inside its own tenant context. `--reset` only with `NEXUS_ENVIRONMENT=dev`.

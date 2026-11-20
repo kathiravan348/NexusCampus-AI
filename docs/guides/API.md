@@ -8,14 +8,15 @@ In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request 
 
 The real API (`backend/`) knows the caller only from the **session cookie** `nexus_session` (HttpOnly, Secure,
 SameSite=Lax); the tenant is never taken from a header. Unsafe methods (POST, PUT, PATCH, DELETE) must send the
-`nexus_csrf` cookie's value in `X-CSRF-Token`. Sessions end after 30 idle minutes or 12 hours.
+`nexus_csrf` cookie's value in `X-CSRF-Token`. Sessions end after 30 idle minutes or 12 hours. Every signed-in endpoint answers `403 module_disabled` when its
+module is off for the tenant, then `403 forbidden` without the permission (deny by default, NEX-046).
 
 | Method & path | Permission | Input / Output | Errors & audit |
 |---|---|---|---|
 | `GET /api/v1/auth/login` | Public | `?returnTo=/path` (same-app paths only) → `302` to Keycloak (code + PKCE S256, state, nonce) | `503 internal` if Keycloak is unreachable |
 | `GET /api/v1/auth/callback` | Public (Keycloak redirect) | `?code=&state=` → `302` to the app at `returnTo`; sets `nexus_session`, `nexus_csrf`, `nexus_device` | `400 invalid_request` (unknown or reused state), `401 unauthorized` (token, nonce), `403 forbidden` (no account, not active, no single organization), `503 internal` (tenant of another region); audits `m02.user.signedIn` |
 | `POST /api/v1/auth/logout` | Signed in + CSRF | — → `{ logoutUrl }` (Keycloak end-session page, or null); clears cookies, revokes the session | `401`, `403`; audits `m02.user.signedOut` |
-| `GET /api/v1/me` | Signed in | — → `{ user, person, roleProfiles, assignments: [], permissions: [] }` (RBAC fills the last two in NEX-046) | `401` |
+| `GET /api/v1/me` | Signed in | — → `{ user, person, roleProfiles, assignments, permissions }`; `permissions` = codes in force today (NEX-046) | `401`, `403 module_disabled` |
 
 ## Institution setup (M01)
 

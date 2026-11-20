@@ -66,11 +66,29 @@ class RoleProfileOut(Contract):
     updated_at: datetime
 
 
+class ScopeOut(Contract):
+    kind: Literal["group", "institution", "campus", "department", "class", "own"]
+    target_id: str | None
+
+
+class RoleAssignmentOut(Contract):
+    id: str
+    tenant_id: str
+    user_id: str
+    role_id: str
+    scope: ScopeOut
+    academic_year_id: str | None
+    effective_from: date
+    effective_to: date | None
+    granted_by: str
+    created_at: datetime
+
+
 class MeOut(Contract):
-    """`GET /api/v1/me`. `assignments` and `permissions` are filled by RBAC (NEX-046)."""
+    """`GET /api/v1/me`: permissions = those in force today (union over the user's assignments)."""
 
     user: UserOut
     person: PersonOut
     role_profiles: list[RoleProfileOut]
-    assignments: list[dict[str, Any]]
+    assignments: list[RoleAssignmentOut]
     permissions: list[str]

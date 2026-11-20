@@ -2,15 +2,17 @@ import { AUDIT_EVENTS } from "./audit";
 import { ACADEMIC_CALENDARS } from "./calendars";
 import { SESSIONS, USERS } from "./identity";
 import { PEOPLE } from "./people";
+import { ENTITLEMENTS } from "./plans";
+import { PERMISSIONS, ROLE_ASSIGNMENTS, ROLES } from "./rbac";
 import { ROLE_PROFILES } from "./role-profiles";
 import { CAMPUSES, DEMO_TENANTS, GROUPS, INSTITUTIONS } from "./tenants";
 
 /** Format version of `demo_fixtures.json`; bump when the shape changes so the backend seed can refuse old files. */
-export const DEMO_FIXTURES_VERSION = 3;
+export const DEMO_FIXTURES_VERSION = 4;
 
 /**
  * The demo data the backend seed reads, in contract shapes (camelCase): tenancy (NEX-043) plus each tenant's
- * hash-chained audit log in chain order (NEX-044), identity (NEX-045), and a `tenants` list with each tenant's region.
+ * hash-chained audit log in chain order (NEX-044), identity (NEX-045), RBAC and entitlements (NEX-046), and a `tenants` list with each tenant's region.
  */
 export function demoFixtures() {
   return {
@@ -30,6 +32,10 @@ export function demoFixtures() {
     users: USERS,
     roleProfiles: ROLE_PROFILES,
     sessions: SESSIONS,
+    permissions: PERMISSIONS,
+    roles: ROLES,
+    roleAssignments: ROLE_ASSIGNMENTS,
+    entitlements: ENTITLEMENTS,
   };
 }
 
