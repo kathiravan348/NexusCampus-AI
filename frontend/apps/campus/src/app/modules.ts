@@ -1,6 +1,7 @@
 import type { ModuleId } from "@nexus/contracts";
 import type { MessageKey } from "@nexus/i18n";
 import {
+  Bell,
   Building2,
   Gauge,
   KeyRound,
@@ -90,6 +91,15 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m06.audit.read",
     offlineLevel: "L0",
     load: () => import("../modules/m06/PrivacyPage"),
+  },
+  {
+    moduleId: "M07",
+    path: "notifications",
+    navKey: "m07.nav.title",
+    icon: Bell,
+    permission: "m07.preference.manage",
+    offlineLevel: "L1",
+    load: () => import("../modules/m07/NotificationsPage"),
   },
   {
     moduleId: "M10",

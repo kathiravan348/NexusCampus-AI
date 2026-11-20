@@ -32,7 +32,7 @@
 | NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | — | planned | — | 013–020, 023, 024, 030, 032–036 |
 | NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | planned | — | 021 |
 | NEX-023 | Data vault & access grants (M83): key status, provider access requests (approve / deny / revoke), active grants, break-glass notices, access history | C | done | Claude | 012 |
-| NEX-024 | Notifications engine (M07, core): per-locale templates, channels, preferences, quiet hours, delivery log | C | planned | — | 012 |
+| NEX-024 | Notifications engine (M07, core): per-locale templates, channels, preferences, quiet hours, delivery log | C | done | Claude | 012 |
 | NEX-025 | Forms, fields & workflow builder (M08) — moved to Stage 3 (D27); re-plan there with a new ID | — | withdrawn | — | — |
 | NEX-026 | Import & migration toolkit (M09) — moved to Stage 3 (D27); re-plan there with a new ID | — | withdrawn | — | — |
 | NEX-027 | Contracts (ops): NotificationTemplate, NotificationDelivery, DeviceSync, SyncConflict, AiSettings, AiCredit, AssistAnswer, KeyStatus, AccessRequest, AccessGrant, BreakGlassNotice | B | done | Claude | 008 |

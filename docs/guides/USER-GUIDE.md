@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, and Data vault & access)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -105,5 +105,12 @@ Available to the institution's owners and administrators from **Data vault & acc
 - **Keys** shows which encryption keys protect your data, who holds them, and their status — never the keys themselves. When an institution leaves, its keys are destroyed so the data can never be read again.
 - **Emergency access** lists any emergency access by Nexus, approved by two people, with when it happened, when you were told, and the report.
 
+## Notifications
+Available to everyone from **Notifications** in the menu.
+
+- **My preferences** lets you choose how you hear from the institution — **Email**, **Text message**, **WhatsApp**, **Phone notification**, or **In the app** — and set **Quiet hours** in the institution's time zone. Channels your institution has not set up are shown but cannot be switched on. You can change preferences offline: they are saved on this device and sync when you are back online.
+- Administrators also see **Templates**: each message by event, channel and language, with an on/off switch. **Edit** opens the message: pick a **Language** or **Add a language…**, change the **Subject** (email) and **Message**, and see a **Preview with sample values**. A message with broken syntax cannot be saved.
+- **Delivery log** shows what was sent to whom, by which channel, and whether it arrived, with the reason for anything that failed or was not sent. Filter by **Status** and **Channel**.
+
 ## Not there yet
-- Remaining module screens (notifications) and offline app install.
+- Offline app install.
