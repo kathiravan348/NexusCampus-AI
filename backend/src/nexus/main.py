@@ -23,6 +23,7 @@ from nexus.modules.m02.login_state import RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
 from nexus.modules.m03 import router as m03
 from nexus.modules.m04 import router as m04
+from nexus.modules.m05 import router as m05
 from nexus.modules.m06 import router as m06
 from nexus.modules.m83 import access as m83_access
 from nexus.modules.m83 import broker_stub
@@ -92,6 +93,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     scim.install_scim_errors(app)
     app.include_router(m03.router)
     app.include_router(m04.router)
+    app.include_router(m05.router)
     app.include_router(m06.router)
     app.include_router(m83_keys.router)
     app.include_router(m83_access.router)

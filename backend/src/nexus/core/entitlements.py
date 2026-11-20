@@ -1,6 +1,7 @@
 """Module switches (ARCHITECTURE §6, ideology §2.2: off = hidden, never broken). A module is on for a tenant
 when its entitlement row is enabled and not expired; core modules are always on (database CHECK). No row = not
-in the plan = off. Plan and switch endpoints come in NEX-055.
+in the plan = off. The M05 API (NEX-055) reads and switches the same rows; nothing is cached, so a switch
+applies to the next request.
 """
 
 from datetime import UTC, datetime

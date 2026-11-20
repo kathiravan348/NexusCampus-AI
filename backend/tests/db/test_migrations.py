@@ -13,6 +13,7 @@ from nexus.modules.m01 import models as _m01  # noqa: F401
 from nexus.modules.m02 import models as _m02  # noqa: F401
 from nexus.modules.m03 import models as _m03  # noqa: F401
 from nexus.modules.m04 import models as _m04  # noqa: F401
+from nexus.modules.m05 import models as _m05  # noqa: F401
 from nexus.modules.m06 import models as _m06  # noqa: F401
 from nexus.modules.m83 import models as _m83  # noqa: F401
 from tests.db.conftest import (
