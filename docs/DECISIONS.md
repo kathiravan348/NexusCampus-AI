@@ -62,5 +62,5 @@ _(implementers note new dependencies or decision requests here; the planner move
 - NEX-042 (backend skeleton), exact pins in `backend/pyproject.toml` / `uv.lock`: fastapi 0.165.0, uvicorn 0.54.0,
   pydantic 2.14.4, pydantic-settings 2.16.3, sqlalchemy[asyncio] 2.1.9, psycopg[binary] 3.3.9 (driver choice; not named in
   AGENTS §5), redis 8.1.0, opentelemetry-api/sdk 1.45.2, opentelemetry-instrumentation-fastapi 0.66b2; build hatchling
-  1.27.0; dev: ruff 0.17.6, mypy 2.4.1, pytest 9.2.0, httpx 0.28.1 (test client; Starlette now suggests `httpx2`, swap
-  needs Owner OK). Images: `pgvector/pgvector:0.8.0-pg16`, `redis:7.4.2-alpine`.
+  1.27.0; dev: ruff 0.17.6, mypy 2.4.1, pytest 9.2.0, httpx2 2.16.2 (test client; replaced httpx 0.28.1, which Starlette deprecated —
+  Owner OK 2026-11-20). Images: `pgvector/pgvector:0.8.0-pg16`, `redis:7.4.2-alpine`.
