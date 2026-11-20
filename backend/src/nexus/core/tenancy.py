@@ -48,9 +48,7 @@ async def ensure_region(session: AsyncSession, ctx: TenantContext, settings: Set
         # Unknown (or invisible) tenant: a stale or forged session, never a residency question.
         raise ApiError(401, "unauthorized", "Please sign in again.")
     if region != settings.region:
-        log.error(
-            "tenant %s refused: region %s does not match cell %s", ctx.tenant_id, region, settings.region
-        )
+        log.error("tenant %s refused: region %s does not match cell %s", ctx.tenant_id, region, settings.region)
         raise ApiError(503, "internal", "This service is not available for your institution here.")
 
 

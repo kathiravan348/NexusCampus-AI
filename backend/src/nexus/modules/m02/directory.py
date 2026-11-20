@@ -79,9 +79,7 @@ async def roles(auth: RoleManager, page: Paging) -> Page[RoleOut]:
 @router.get("/permissions", response_model=Page[PermissionOut])
 async def permissions(auth: RoleManager, page: Paging) -> Page[PermissionOut]:
     items = [
-        PermissionOut(
-            code=p.code, module_id=p.module_id, sensitive=p.sensitive, description_key=p.description_key
-        )
+        PermissionOut(code=p.code, module_id=p.module_id, sensitive=p.sensitive, description_key=p.description_key)
         for p in CATALOGUE
     ]
     return Page.of(items[page.offset : page.offset + page.page_size], len(items), page)

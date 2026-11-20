@@ -17,9 +17,7 @@ def test_readyz_is_503_when_services_are_down(client: TestClient) -> None:
     assert res.json() == {"status": "not_ready", "database": False, "redis": False}
 
 
-def test_readyz_is_200_when_database_and_redis_answer(
-    client: TestClient, monkeypatch: pytest.MonkeyPatch
-) -> None:
+def test_readyz_is_200_when_database_and_redis_answer(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
     async def up() -> bool:
         return True
 

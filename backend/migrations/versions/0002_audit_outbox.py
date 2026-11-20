@@ -53,9 +53,7 @@ def upgrade() -> None:
         sa.Column("hash", sa.String(64), nullable=False),
         sa.UniqueConstraint("tenant_id", "seq"),
         sa.CheckConstraint("seq >= 1", name="seq_positive"),
-        sa.CheckConstraint(
-            "(grant_id IS NOT NULL) = (actor_kind = 'provider_grant')", name="grant_iff_provider"
-        ),
+        sa.CheckConstraint("(grant_id IS NOT NULL) = (actor_kind = 'provider_grant')", name="grant_iff_provider"),
         sa.CheckConstraint("(actor_id IS NULL) = (actor_kind = 'system')", name="actor_iff_not_system"),
         sa.CheckConstraint("actor_kind IN ('user', 'system', 'provider_grant')", name="actor_kind_known"),
         sa.CheckConstraint("action LIKE lower(module_id) || '.%'", name="action_starts_with_module"),

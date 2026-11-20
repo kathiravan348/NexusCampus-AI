@@ -31,9 +31,7 @@ def count(conn: Connection, table: str) -> int:
 
 def test_app_role_cannot_bypass_rls(app_engine: Engine) -> None:
     with app_engine.connect() as conn:
-        row = conn.execute(
-            text("SELECT rolsuper, rolbypassrls FROM pg_roles WHERE rolname = current_user")
-        ).one()
+        row = conn.execute(text("SELECT rolsuper, rolbypassrls FROM pg_roles WHERE rolname = current_user")).one()
     assert tuple(row) == (False, False)
 
 

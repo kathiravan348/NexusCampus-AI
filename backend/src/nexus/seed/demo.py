@@ -21,9 +21,11 @@ from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 5
+FIXTURES_VERSION = 6
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
+    "scim_tokens",
+    "sso_providers",
     *RBAC_TABLES_CHILD_FIRST,
     "guardian_links",
     "sessions",
@@ -151,6 +153,7 @@ IDENTITY = (
     ("users", "users"),
     ("role_profiles", "roleProfiles"),
     ("sessions", "sessions"),
+    ("sso_providers", "ssoProviders"),
 )
 
 

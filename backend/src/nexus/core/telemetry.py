@@ -16,9 +16,7 @@ def setup_telemetry(app: FastAPI, settings: Settings) -> None:
     if settings.otel_exporter == "none":
         return
     provider = TracerProvider(
-        resource=Resource.create(
-            {"service.name": "nexus-backend", "deployment.environment": settings.environment}
-        )
+        resource=Resource.create({"service.name": "nexus-backend", "deployment.environment": settings.environment})
     )
     provider.add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
     trace.set_tracer_provider(provider)

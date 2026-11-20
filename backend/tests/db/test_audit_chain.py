@@ -18,9 +18,7 @@ from tests.db.conftest import DbUrls
 pytestmark = pytest.mark.anyio
 
 LS = TenantContext("ten-ls")
-INVITED = AuditInput(
-    action="m02.user.invited", actor_kind="user", actor_id="usr-ls-priya", target_type="user"
-)
+INVITED = AuditInput(action="m02.user.invited", actor_kind="user", actor_id="usr-ls-priya", target_type="user")
 
 
 @pytest.fixture

@@ -15,7 +15,7 @@ from nexus.core.redis import close_redis, init_redis, ping_redis
 from nexus.core.telemetry import setup_telemetry
 from nexus.core.timing import boot_elapsed_ms, timing_line, utf8_console
 from nexus.modules.m01 import router as m01
-from nexus.modules.m02 import auth, directory, me, writes
+from nexus.modules.m02 import auth, directory, me, scim, sso, writes
 from nexus.modules.m02.keycloak_admin import HttpKeycloakAdmin
 from nexus.modules.m02.login_state import RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
@@ -74,6 +74,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(m01.router)
     app.include_router(directory.router)
     app.include_router(writes.router)
+    app.include_router(sso.router)
+    app.include_router(scim.router)
+    scim.install_scim_errors(app)
 
     @app.get("/healthz", response_model=Health, tags=["ops"])
     async def healthz() -> Health:

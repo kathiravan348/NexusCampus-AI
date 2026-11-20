@@ -68,10 +68,7 @@ def upgrade() -> None:
     )
     op.bulk_insert(
         permissions,
-        [
-            {"code": c, "module_id": c[:3].upper(), "sensitive": s, "description_key": k}
-            for c, s, k in CATALOGUE
-        ],
+        [{"code": c, "module_id": c[:3].upper(), "sensitive": s, "description_key": k} for c, s, k in CATALOGUE],
     )
     op.create_table(
         "roles",
@@ -133,9 +130,7 @@ def upgrade() -> None:
             "WITH CHECK (tenant_id = current_setting('app.tenant_id', true))"
         )
     op.execute(f"GRANT SELECT ON permissions TO {APP_ROLE}")
-    op.execute(
-        f"GRANT SELECT, INSERT, UPDATE, DELETE ON roles, role_permissions, role_assignments TO {APP_ROLE}"
-    )
+    op.execute(f"GRANT SELECT, INSERT, UPDATE, DELETE ON roles, role_permissions, role_assignments TO {APP_ROLE}")
     # Entitlements are switched (UPDATE) by tenant admins (NEX-055); rows come from Nexus Control (Stage 2).
     op.execute(f"GRANT SELECT, UPDATE ON entitlements TO {APP_ROLE}")
     # System roles (shipped with the product) are read-only for everyone using the app role.

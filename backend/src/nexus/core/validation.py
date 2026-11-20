@@ -7,9 +7,7 @@ and countries by the ISO 4217 / ISO 3166-1 code lists below.
 import re
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-_LOCALE = re.compile(
-    r"^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?(-([0-9A-Za-z]{5,8}|[0-9][0-9A-Za-z]{3}))*$"
-)
+_LOCALE = re.compile(r"^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?(-([0-9A-Za-z]{5,8}|[0-9][0-9A-Za-z]{3}))*$")
 _ZONE = re.compile(r"^(UTC|[A-Z][A-Za-z_]*(/[A-Z0-9][A-Za-z0-9_+-]*){1,2})$")
 
 _ISO_4217 = """AED AFN ALL AMD ANG AOA ARS AUD AWG AZN BAM BBD BDT BGN BHD BIF BMD BND BOB BOV BRL BSD BTN BWP

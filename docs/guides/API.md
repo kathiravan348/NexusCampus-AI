@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access without SSO (NEX-048); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -35,7 +35,24 @@ In the real backend, reads need M01 switched on (any signed-in user); writes nee
 | `PUT /api/v1/campuses/:id` | `m01.institution.manage` | `CampusInput` → `200 Campus` | `400 invalid_request`, `401`, `403`, `404`; audits `m01.campus.updated` |
 | `PUT /api/v1/institutions/:id/calendars/:calendarId` | `m01.institution.manage` | `CalendarInput` → `200 AcademicCalendar` | `400 invalid_request` (overlaps, out-of-range dates), `401`, `403`, `404`; audits `m01.calendar.updated` |
 
-## Users & access (M02) — real backend (NEX-048, except SSO) and mock
+## SCIM 2.0 — real backend only (NEX-049)
+
+`/scim/v2/Users` for an institution's directory. Auth: `Authorization: Bearer <token>` issued by
+`uv run --project backend nexus-scim-token <tenantId>` (shown once; stored as a hash). Needs M02 on and an enabled SSO
+provider with `scimEnabled`. Errors use the SCIM error schema.
+
+| Method & path | Input / Output | Errors & audit |
+|---|---|---|
+| `GET /scim/v2/Users` | `?filter=userName eq "…"&startIndex=&count=` (≤ 200) → `ListResponse` | `400 invalidFilter`, `401`, `403`|
+| `GET /scim/v2/Users/:id` | → `User` (`userName` = email, `active` = status active) | `401`, `403`, `404` |
+| `POST /scim/v2/Users` | `{ userName, name?, active? }` → `201 User` (status `invited`, SSO only) | `400 invalidValue`, `409 uniqueness`; audits `m02.scim.userProvisioned` |
+| `PATCH /scim/v2/Users/:id` | PatchOp `replace` of `active` only | `400 invalidPath`; audits `m02.scim.userUpdated` / `m02.scim.userDeactivated` |
+| `DELETE /scim/v2/Users/:id` | → `204` (suspends; records stay) | `404`; audits `m02.scim.userDeactivated` |
+
+## Users & access (M02) — real backend (NEX-048, NEX-049) and mock
+
+Saving an SSO provider also creates or updates a Keycloak identity provider `<tenant>-<providerId>` linked to the
+institution's organization (no client secret until the vault, NEX-050; it stays disabled in Keycloak until then).
 
 In the real backend, invite also creates the Keycloak account (in the institution's organization) and status
 changes enable or disable it; a Keycloak failure rolls the change back (`503 internal`). Suspending a user also

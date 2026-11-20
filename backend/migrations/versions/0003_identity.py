@@ -48,9 +48,7 @@ def upgrade() -> None:
         *_timestamps(),
         sa.UniqueConstraint("id", "tenant_id"),
         sa.CheckConstraint("phone IS NULL OR phone ~ '^\\+[1-9][0-9]{6,14}$'", name="phone_e164"),
-        sa.CheckConstraint(
-            "retention_state IN ('active', 'archived', 'crypto_shredded')", name="retention_known"
-        ),
+        sa.CheckConstraint("retention_state IN ('active', 'archived', 'crypto_shredded')", name="retention_known"),
     )
     op.create_table(
         "users",
@@ -92,12 +90,8 @@ def upgrade() -> None:
         sa.Column("status", sa.String(32), nullable=False),
         *_timestamps(),
         sa.ForeignKeyConstraint(["person_id", "tenant_id"], ["people.id", "people.tenant_id"]),
-        sa.ForeignKeyConstraint(
-            ["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]
-        ),
-        sa.CheckConstraint(
-            "kind IN ('staff', 'guardian', 'learner', 'alumni', 'external')", name="kind_known"
-        ),
+        sa.ForeignKeyConstraint(["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]),
+        sa.CheckConstraint("kind IN ('staff', 'guardian', 'learner', 'alumni', 'external')", name="kind_known"),
         sa.CheckConstraint("status IN ('active', 'inactive', 'suspended')", name="status_known"),
         sa.CheckConstraint("effective_to IS NULL OR effective_to >= effective_from", name="effective_range"),
     )

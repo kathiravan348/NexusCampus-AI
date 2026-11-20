@@ -97,9 +97,7 @@ def test_custom_roles_and_read_only_system_roles(client: TestClient, kc: FakeKey
     edited = client.put(f"/api/v1/roles/{rid}", json={**role, "name": "Front desk"}, headers=csrf(client))
     assert edited.status_code == 200 and edited.json()["name"] == "Front desk"
     assert client.put(f"/api/v1/roles/{TEACHER_ROLE}", json=role, headers=csrf(client)).status_code == 409
-    unknown = client.post(
-        "/api/v1/roles", json={**role, "permissions": ["m02.user.fly"]}, headers=csrf(client)
-    )
+    unknown = client.post("/api/v1/roles", json={**role, "permissions": ["m02.user.fly"]}, headers=csrf(client))
     assert unknown.status_code == 400
     assert client.get("/api/v1/permissions").json()["total"] == 24
 
@@ -117,9 +115,7 @@ def test_assign_and_never_remove_your_own_last_admin_role(client: TestClient, kc
     assert res.status_code == 201 and res.json()["scope"] == {"kind": "institution", "targetId": "ins-ls"}
     backwards = {**body, "effectiveTo": "2026-10-01"}
     assert client.post("/api/v1/role-assignments", json=backwards, headers=csrf(client)).status_code == 400
-    assert (
-        client.delete("/api/v1/role-assignments/ra-ls-priya-admin", headers=csrf(client)).status_code == 204
-    )
+    assert client.delete("/api/v1/role-assignments/ra-ls-priya-admin", headers=csrf(client)).status_code == 204
     last = client.delete("/api/v1/role-assignments/ra-ls-priya-owner", headers=csrf(client))
     assert last.status_code == 409
 
@@ -132,9 +128,7 @@ def test_suspend_and_reactivate_others_but_never_yourself(client: TestClient, kc
     res = client.put("/api/v1/users/usr-ls-arjun/status", json={"status": "active"}, headers=csrf(client))
     assert res.json()["status"] == "active"
     assert (
-        client.put(
-            "/api/v1/users/usr-ls-priya/status", json={"status": "suspended"}, headers=csrf(client)
-        ).status_code
+        client.put("/api/v1/users/usr-ls-priya/status", json={"status": "suspended"}, headers=csrf(client)).status_code
         == 409
     )
 
@@ -155,9 +149,7 @@ def test_sessions_revoke_and_teacher_limits(client: TestClient, kc: FakeKeycloak
     assert revoked.status_code == 200 and revoked.json()["revokedAt"] is not None
 
 
-def test_minor_details_are_masked_except_for_family_and_restricted_access(
-    client: TestClient, kc: FakeKeycloak
-) -> None:
+def test_minor_details_are_masked_except_for_family_and_restricted_access(client: TestClient, kc: FakeKeycloak) -> None:
     sign_in(client, kc, **SUNITA)  # guardian of Rohan and Ishaan
     people = {p["id"]: p for p in client.get("/api/v1/people").json()["items"]}
     assert set(people) == {"per-ls-sunita", "per-ls-rohan", "per-ls-ishaan"}
@@ -165,8 +157,6 @@ def test_minor_details_are_masked_except_for_family_and_restricted_access(
     client.post("/api/v1/auth/logout", headers=csrf(client))
     sign_in(client, kc, **ARJUN)  # teacher: may read users, not restricted data
     rohan = next(
-        p
-        for p in client.get("/api/v1/people", params={"pageSize": 200}).json()["items"]
-        if p["id"] == "per-ls-rohan"
+        p for p in client.get("/api/v1/people", params={"pageSize": 200}).json()["items"] if p["id"] == "per-ls-rohan"
     )
     assert rohan["dateOfBirth"] is None and rohan["phone"] is None

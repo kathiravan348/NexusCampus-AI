@@ -99,9 +99,7 @@ def error_response(
             request_id=request_id_of(request),
         )
     )
-    return JSONResponse(
-        status_code=status, content=body.model_dump(by_alias=True, exclude_none=True, mode="json")
-    )
+    return JSONResponse(status_code=status, content=body.model_dump(by_alias=True, exclude_none=True, mode="json"))
 
 
 def _dotted(loc: Sequence[int | str]) -> str:
@@ -121,8 +119,7 @@ async def _on_validation(request: Request, exc: Exception) -> Response:
     assert isinstance(exc, RequestValidationError)
     errors: Sequence[Any] = exc.errors()
     details = [
-        ApiErrorDetail(path=_dotted(e.get("loc", ())), message=str(e.get("msg") or "Invalid value"))
-        for e in errors
+        ApiErrorDetail(path=_dotted(e.get("loc", ())), message=str(e.get("msg") or "Invalid value")) for e in errors
     ]
     return error_response(request, 400, "invalid_request", "The request is not valid.", details)
 

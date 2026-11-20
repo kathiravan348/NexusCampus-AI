@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "tenants": [
     {
       "id": "ten-ls",
@@ -5767,6 +5767,40 @@
       "tenantId": "ten-hm",
       "guardianPersonId": "per-hm-mei",
       "learnerPersonId": "per-hm-chloe"
+    }
+  ],
+  "ssoProviders": [
+    {
+      "id": "sso-rv-saml",
+      "tenantId": "ten-rv",
+      "institutionId": null,
+      "protocol": "saml2",
+      "name": "Riverside staff and pupils",
+      "issuerUrl": "https://idp.riverside.example.edu/saml",
+      "clientId": "nexus-campus-riverside",
+      "domains": [
+        "riverside.example.edu"
+      ],
+      "scimEnabled": true,
+      "enabled": true,
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "sso-nb-oidc",
+      "tenantId": "ten-nb",
+      "institutionId": "ins-nb",
+      "protocol": "oidc",
+      "name": "Northbridge NetID",
+      "issuerUrl": "https://login.northbridge.example.edu",
+      "clientId": "nexus-campus",
+      "domains": [
+        "northbridge.example.edu"
+      ],
+      "scimEnabled": false,
+      "enabled": true,
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
     }
   ]
 }

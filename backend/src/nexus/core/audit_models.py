@@ -28,9 +28,7 @@ class AuditEventRow(Base):
     __table_args__ = (
         UniqueConstraint("tenant_id", "seq"),
         CheckConstraint("seq >= 1", name="seq_positive"),
-        CheckConstraint(
-            "(grant_id IS NOT NULL) = (actor_kind = 'provider_grant')", name="grant_iff_provider"
-        ),
+        CheckConstraint("(grant_id IS NOT NULL) = (actor_kind = 'provider_grant')", name="grant_iff_provider"),
         CheckConstraint("(actor_id IS NULL) = (actor_kind = 'system')", name="actor_iff_not_system"),
         CheckConstraint("actor_kind IN ('user', 'system', 'provider_grant')", name="actor_kind_known"),
         CheckConstraint("action LIKE lower(module_id) || '.%'", name="action_starts_with_module"),
