@@ -1,0 +1,417 @@
+{
+  "version": 1,
+  "tenants": [
+    {
+      "id": "ten-ls",
+      "name": "Little Steps",
+      "type": "ey",
+      "region": "in"
+    },
+    {
+      "id": "ten-rv",
+      "name": "Riverside Education Group",
+      "type": "grp",
+      "region": "eu"
+    },
+    {
+      "id": "ten-nb",
+      "name": "Northbridge University",
+      "type": "he",
+      "region": "us"
+    },
+    {
+      "id": "ten-ax",
+      "name": "Apex Coaching",
+      "type": "tp",
+      "region": "in"
+    },
+    {
+      "id": "ten-hm",
+      "name": "Harmony Music Academy",
+      "type": "sk",
+      "region": "apac"
+    }
+  ],
+  "groups": [
+    {
+      "id": "grp-rv",
+      "tenantId": "ten-rv",
+      "name": "Riverside Education Group",
+      "region": "eu",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    }
+  ],
+  "institutions": [
+    {
+      "id": "ins-ls",
+      "tenantId": "ten-ls",
+      "groupId": null,
+      "name": "Little Steps",
+      "type": "ey",
+      "region": "in",
+      "locale": {
+        "defaultLocale": "en-IN",
+        "supportedLocales": [
+          "en-IN"
+        ],
+        "timeZone": "Asia/Kolkata",
+        "currency": "INR",
+        "country": "IN",
+        "weekendDays": [
+          0
+        ]
+      },
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "ins-rv",
+      "tenantId": "ten-rv",
+      "groupId": "grp-rv",
+      "name": "Riverside School",
+      "type": "k12",
+      "region": "eu",
+      "locale": {
+        "defaultLocale": "hi-IN",
+        "supportedLocales": [
+          "hi-IN",
+          "en-GB"
+        ],
+        "timeZone": "Europe/London",
+        "currency": "GBP",
+        "country": "GB",
+        "weekendDays": [
+          6,
+          0
+        ]
+      },
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "ins-nb",
+      "tenantId": "ten-nb",
+      "groupId": null,
+      "name": "Northbridge University",
+      "type": "he",
+      "region": "us",
+      "locale": {
+        "defaultLocale": "en-US",
+        "supportedLocales": [
+          "en-US"
+        ],
+        "timeZone": "America/New_York",
+        "currency": "USD",
+        "country": "US",
+        "weekendDays": [
+          6,
+          0
+        ]
+      },
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "ins-ax",
+      "tenantId": "ten-ax",
+      "groupId": null,
+      "name": "Apex Coaching",
+      "type": "tp",
+      "region": "in",
+      "locale": {
+        "defaultLocale": "ta-IN",
+        "supportedLocales": [
+          "ta-IN",
+          "en-IN"
+        ],
+        "timeZone": "Asia/Kolkata",
+        "currency": "INR",
+        "country": "IN",
+        "weekendDays": [
+          0
+        ]
+      },
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "ins-hm",
+      "tenantId": "ten-hm",
+      "groupId": null,
+      "name": "Harmony Music Academy",
+      "type": "sk",
+      "region": "apac",
+      "locale": {
+        "defaultLocale": "en-SG",
+        "supportedLocales": [
+          "en-SG"
+        ],
+        "timeZone": "Asia/Singapore",
+        "currency": "SGD",
+        "country": "SG",
+        "weekendDays": [
+          0
+        ]
+      },
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    }
+  ],
+  "campuses": [
+    {
+      "id": "cmp-ls-main",
+      "tenantId": "ten-ls",
+      "institutionId": "ins-ls",
+      "code": "MAIN",
+      "name": "Little Steps Indiranagar",
+      "timeZone": null,
+      "address": {
+        "line1": "12 Example Lane",
+        "city": "Bengaluru",
+        "region": "Karnataka",
+        "countryCode": "IN"
+      }
+    },
+    {
+      "id": "cmp-rv-north",
+      "tenantId": "ten-rv",
+      "institutionId": "ins-rv",
+      "code": "NORTH",
+      "name": "Riverside School North",
+      "timeZone": null,
+      "address": {
+        "line1": "1 Fictional Road",
+        "city": "Leeds",
+        "postalCode": "LS0 0AA",
+        "countryCode": "GB"
+      }
+    },
+    {
+      "id": "cmp-rv-south",
+      "tenantId": "ten-rv",
+      "institutionId": "ins-rv",
+      "code": "SOUTH",
+      "name": "Riverside School South",
+      "timeZone": null,
+      "address": {
+        "line1": "2 Sample Street",
+        "city": "Leeds",
+        "postalCode": "LS0 0BB",
+        "countryCode": "GB"
+      }
+    },
+    {
+      "id": "cmp-nb-main",
+      "tenantId": "ten-nb",
+      "institutionId": "ins-nb",
+      "code": "MAIN",
+      "name": "Northbridge Main Campus",
+      "timeZone": null,
+      "address": {
+        "line1": "100 College Avenue",
+        "city": "Albany",
+        "region": "NY",
+        "countryCode": "US"
+      }
+    },
+    {
+      "id": "cmp-ax-main",
+      "tenantId": "ten-ax",
+      "institutionId": "ins-ax",
+      "code": "CHN",
+      "name": "Apex Coaching Chennai",
+      "timeZone": null,
+      "address": {
+        "line1": "Office 0, Example Tower, Anna Salai",
+        "city": "Chennai",
+        "region": "Tamil Nadu",
+        "postalCode": "600000",
+        "countryCode": "IN"
+      }
+    },
+    {
+      "id": "cmp-hm-main",
+      "tenantId": "ten-hm",
+      "institutionId": "ins-hm",
+      "code": "MAIN",
+      "name": "Harmony Music Academy",
+      "timeZone": null,
+      "address": {
+        "line1": "8 Melody Walk",
+        "city": "Singapore",
+        "postalCode": "000000",
+        "countryCode": "SG"
+      }
+    }
+  ],
+  "calendars": [
+    {
+      "id": "cal-ls-2026",
+      "tenantId": "ten-ls",
+      "institutionId": "ins-ls",
+      "academicYear": "2026-27",
+      "startsOn": "2026-06-01",
+      "endsOn": "2027-03-31",
+      "periods": [
+        {
+          "id": "per-ls-t1",
+          "kind": "term",
+          "name": "Term 1",
+          "startsOn": "2026-06-01",
+          "endsOn": "2026-09-30"
+        },
+        {
+          "id": "per-ls-t2",
+          "kind": "term",
+          "name": "Term 2",
+          "startsOn": "2026-10-12",
+          "endsOn": "2026-12-23"
+        },
+        {
+          "id": "per-ls-t3",
+          "kind": "term",
+          "name": "Term 3",
+          "startsOn": "2027-01-04",
+          "endsOn": "2027-03-31"
+        }
+      ],
+      "holidays": [
+        {
+          "date": "2026-08-15",
+          "name": "Independence Day"
+        },
+        {
+          "date": "2026-10-02",
+          "name": "Gandhi Jayanti"
+        }
+      ],
+      "displayCalendar": "gregory"
+    },
+    {
+      "id": "cal-rv-2026",
+      "tenantId": "ten-rv",
+      "institutionId": "ins-rv",
+      "academicYear": "2026-27",
+      "startsOn": "2026-09-01",
+      "endsOn": "2027-07-21",
+      "periods": [
+        {
+          "id": "per-rv-aut",
+          "kind": "term",
+          "name": "Autumn term",
+          "startsOn": "2026-09-02",
+          "endsOn": "2026-12-18"
+        },
+        {
+          "id": "per-rv-spr",
+          "kind": "term",
+          "name": "Spring term",
+          "startsOn": "2027-01-05",
+          "endsOn": "2027-03-26"
+        },
+        {
+          "id": "per-rv-sum",
+          "kind": "term",
+          "name": "Summer term",
+          "startsOn": "2027-04-12",
+          "endsOn": "2027-07-21"
+        }
+      ],
+      "holidays": [
+        {
+          "date": "2027-05-03",
+          "name": "Early May bank holiday"
+        }
+      ],
+      "displayCalendar": "gregory"
+    },
+    {
+      "id": "cal-nb-2026",
+      "tenantId": "ten-nb",
+      "institutionId": "ins-nb",
+      "academicYear": "2026-27",
+      "startsOn": "2026-08-24",
+      "endsOn": "2027-05-14",
+      "periods": [
+        {
+          "id": "per-nb-fall",
+          "kind": "semester",
+          "name": "Fall 2026",
+          "startsOn": "2026-08-24",
+          "endsOn": "2026-12-18"
+        },
+        {
+          "id": "per-nb-spring",
+          "kind": "semester",
+          "name": "Spring 2027",
+          "startsOn": "2027-01-19",
+          "endsOn": "2027-05-14"
+        }
+      ],
+      "holidays": [
+        {
+          "date": "2026-09-07",
+          "name": "Labor Day"
+        },
+        {
+          "date": "2026-11-26",
+          "name": "Thanksgiving"
+        }
+      ],
+      "displayCalendar": "gregory"
+    },
+    {
+      "id": "cal-ax-2026",
+      "tenantId": "ten-ax",
+      "institutionId": "ins-ax",
+      "academicYear": "2026-27",
+      "startsOn": "2026-09-01",
+      "endsOn": "2027-06-30",
+      "periods": [
+        {
+          "id": "per-ax-b1",
+          "kind": "block",
+          "name": "முதல் பேட்ச்",
+          "startsOn": "2026-09-01",
+          "endsOn": "2026-12-31"
+        },
+        {
+          "id": "per-ax-b2",
+          "kind": "block",
+          "name": "இரண்டாம் பேட்ச்",
+          "startsOn": "2027-01-10",
+          "endsOn": "2027-06-30"
+        }
+      ],
+      "holidays": [
+        {
+          "date": "2027-01-15",
+          "name": "பொங்கல்"
+        }
+      ],
+      "displayCalendar": "indian"
+    },
+    {
+      "id": "cal-hm-2026",
+      "tenantId": "ten-hm",
+      "institutionId": "ins-hm",
+      "academicYear": "2026",
+      "startsOn": "2026-01-01",
+      "endsOn": "2026-12-31",
+      "periods": [],
+      "holidays": [
+        {
+          "date": "2026-08-09",
+          "name": "National Day"
+        }
+      ],
+      "displayCalendar": "gregory"
+    }
+  ]
+}

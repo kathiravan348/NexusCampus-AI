@@ -201,7 +201,7 @@ const tenant = (tenantId: string, type: InstitutionType, name: string): DemoTena
   campuses: CAMPUSES.filter((c) => c.tenantId === tenantId),
 });
 
-/** The 5 demo tenants (D16): EY, a 2-campus K12 school under a group, HE, Arabic RTL TP, SK. */
+/** The 5 demo tenants (D16): EY, a 2-campus K12 school under a group (Hindi), HE, TP (Tamil, D42), SK. */
 export const DEMO_TENANTS: readonly DemoTenant[] = [
   tenant(TENANT.littleSteps, "ey", "Little Steps"),
   tenant(TENANT.riverside, "grp", "Riverside Education Group"),

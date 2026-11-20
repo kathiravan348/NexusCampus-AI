@@ -13,7 +13,8 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
-    "test": "node ../../scripts/time-run.ts test:pkg --label test:mocks -- vitest run"
+    "test": "node ../../scripts/time-run.ts test:pkg --label test:mocks -- vitest run",
+    "export:fixtures": "node scripts/export-fixtures.ts"
   },
   "dependencies": {
     "@nexus/contracts": "workspace:*",

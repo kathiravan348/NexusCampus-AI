@@ -74,9 +74,12 @@
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)
 ├─ backend/             product backend, FastAPI modular monolith (NEX-042): pyproject.toml + uv.lock (exact pins),
 │                       compose.yaml (PostgreSQL 16 + pgvector, Redis; 127.0.0.1, mem_limit), .env.example,
+│                       alembic.ini + migrations/ (hand-written; 0001_tenancy: tenancy tables + RLS + nexus_app role),
 │                       src/nexus/ main.py (app factory, /healthz, /readyz), settings.py, core/ (errors = ApiError
-│                       envelope, pagination = Page, db, redis, telemetry, timing), modules/ (one package per
-│                       module, from NEX-043), devtools/ (nexus-dev, nexus-compose-up, backend-check); tests/
+│                       envelope, pagination = Page, db, redis, telemetry, timing, tenancy = tenant context + region
+│                       check, ids, models = declarative base), modules/m01/ (models), seed/ (demo.py = nexus-seed,
+│                       demo_fixtures.json exported from mocks), devtools/ (nexus-dev, nexus-compose-up,
+│                       backend-check); tests/ (tests/db: RLS, region, seed, migrations — need Compose PostgreSQL)
 ├─ control/             Nexus Control backend (planned, Stage 2)
 └─ deploy/              Compose, Helm, air-gapped bundle tooling (planned, Stage 1 build step / Stage 2)
 ```
