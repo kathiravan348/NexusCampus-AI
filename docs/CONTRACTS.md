@@ -9,12 +9,12 @@
 | ApiError | `error.ts` | `{ error: { code, message, details?, requestId? } }`; codes `invalid_request`, `unauthorized`, `forbidden`, `not_found`, `conflict`, `module_disabled`, `rate_limited`, `internal` | NEX-010 | every non-2xx response |
 | Page / PageQuery | `page.ts` | `{ items, total, page, pageSize }` (D15); page ≥ 1, pageSize 1–200 (default 50) | NEX-010 | every list endpoint |
 | DomainEvent | `event.ts` | Envelope for audit, notifications, webhooks, analytics, sync; `eventType` = `<module>.<entity>.<action>` starting with its `moduleId` | NEX-010 | Stage 1 build step |
-| LocaleSettings | `tenancy.ts` | default locale ∈ supported; weekend days 0–6 (Sunday = 0), unique | NEX-010 | mock: `GET /api/v1/locale-settings` |
-| Group | `tenancy.ts` | A group is the tenant; its institutions share its `tenantId` | NEX-010 | mock: `GET /api/v1/tenant` |
+| LocaleSettings | `tenancy.ts` | default locale ∈ supported; weekend days 0–6 (Sunday = 0), unique | NEX-010 | `GET`/`PUT /api/v1/locale-settings` (real: NEX-047) |
+| Group | `tenancy.ts` | A group is the tenant; its institutions share its `tenantId` | NEX-010 | `GET /api/v1/tenant` (real: NEX-047) |
 | Institution | `tenancy.ts` | `groupId` null = standalone tenant; status active / trial / suspended | NEX-010 | mock: `GET /api/v1/tenant` |
 | Campus | `tenancy.ts` | `code` A–Z 0–9 -; `timeZone` null = institution's zone; organisation address | NEX-010 | mock: `GET /api/v1/tenant` |
-| InstitutionTypeProfile | `tenancy.ts` | Defaults per type; `terminologyPack` = its own type; unique module ids | NEX-010 | mock: `GET /api/v1/institutions/:id/profile` |
-| AcademicCalendar | `calendar.ts` | Periods inside the year, not overlapping; holidays inside the year; `displayCalendar` for G-3 | NEX-010 | mock: `GET /api/v1/institutions/:id/calendars` |
+| InstitutionTypeProfile | `tenancy.ts` | Defaults per type; `terminologyPack` = its own type; unique module ids | NEX-010 | `GET /api/v1/institutions/:id/profile` (real: NEX-047) |
+| AcademicCalendar | `calendar.ts` | Periods inside the year, not overlapping; holidays inside the year; `displayCalendar` for G-3 | NEX-010 | `GET`, `PUT /api/v1/institutions/:id/calendars[/:calendarId]` (real: NEX-047) |
 | Person | `person.ts` | Identity + contact only (D25); `isMinor` drives masking (G-6); phone E.164; `retentionState` | NEX-010 | mock: `GET /api/v1/people`, mock: `GET /api/v1/me` |
 | RoleProfile | `person.ts` | Membership of an institution: kind staff / guardian / learner / alumni / external; optional campus and academic year; `effectiveTo` ≥ `effectiveFrom` | NEX-010 | mock: `GET /api/v1/me` |
 | User | `user.ts` | Sign-in account of a `Person`; status invited / active / suspended / locked; MFA, passkey count, `ssoOnly`; no password fields | NEX-010 | mock: `GET /api/v1/users`, mock: `GET /api/v1/me` |

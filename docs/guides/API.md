@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in and `GET /me` (NEX-045); everything else still MSW mock API under `/api/v1`)
+> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -18,7 +18,10 @@ module is off for the tenant, then `403 forbidden` without the permission (deny 
 | `POST /api/v1/auth/logout` | Signed in + CSRF | — → `{ logoutUrl }` (Keycloak end-session page, or null); clears cookies, revokes the session | `401`, `403`; audits `m02.user.signedOut` |
 | `GET /api/v1/me` | Signed in | — → `{ user, person, roleProfiles, assignments, permissions }`; `permissions` = codes in force today (NEX-046) | `401`, `403 module_disabled` |
 
-## Institution setup (M01)
+## Institution setup (M01) — real backend (NEX-047) and mock
+
+In the real backend, reads need M01 switched on (any signed-in user); writes need `m01.institution.manage`.
+`GET /demo-tenants` exists only in the mock.
 
 | Method & path | Permission | Input / Output | Errors & audit |
 |---|---|---|---|
