@@ -1,0 +1,38 @@
+# NexusCampus local services (dev only). Ports bind to 127.0.0.1; every service has a memory limit (AGENTS §5a).
+# Start: uv run --project backend nexus-compose-up   ·   Stop: docker compose -f backend/compose.yaml down
+# Passwords come from backend/.env (git-ignored); copy backend/.env.example first.
+name: nexuscampus
+
+services:
+  db:
+    # PostgreSQL 16 with pgvector (D47). Pinned by tag here; images are pinned by digest for installs (NEX-064).
+    image: pgvector/pgvector:0.8.0-pg16
+    environment:
+      POSTGRES_DB: nexus
+      POSTGRES_USER: nexus
+      POSTGRES_PASSWORD: ${NEXUS_DB_PASSWORD:?set NEXUS_DB_PASSWORD in backend/.env}
+    ports:
+      - "127.0.0.1:55432:5432"
+    volumes:
+      - nexus-db:/var/lib/postgresql/data
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexus -d nexus"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  redis:
+    image: redis:7.4.2-alpine
+    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "96mb"]
+    ports:
+      - "127.0.0.1:56379:6379"
+    mem_limit: 128m
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+volumes:
+  nexus-db:
