@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "node scripts/build-tokens.ts --check && eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ . && node scripts/check-classes.ts .",
     "tokens": "node scripts/build-tokens.ts",
-    "test": "vitest run"
+    "test": "node ../../scripts/time-run.ts test:pkg --label test:ui-core -- vitest run"
   },
   "peerDependencies": {
     "react": "18.3.1",
