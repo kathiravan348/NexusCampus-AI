@@ -19,7 +19,7 @@ const BASE = "http://localhost/api/v1";
 const NB_ADMIN = { tenant: TENANT.northbridge, user: USER.nbRobert };
 const RV_ADMIN = { tenant: TENANT.riverside, user: USER.rvHelen };
 const RV_TEACHER = { tenant: TENANT.riverside, user: USER.rvTom };
-const AX_ADMIN = { tenant: TENANT.apex, user: USER.axKhalid };
+const AX_ADMIN = { tenant: TENANT.apex, user: USER.axKarthik };
 
 function req(
   path: string,
@@ -161,11 +161,11 @@ describe("m04 handlers", () => {
 
   it("previews import diffs on dry run, rejects invalid apply with 400, and applies valid imports", async () => {
     const dryRes = await req("/texts/overrides/import", "POST", AX_ADMIN, {
-      locale: "ar-AE",
+      locale: "ta-IN",
       dryRun: true,
       entries: {
-        "common.save": "تخزين",
-        "term.learner": "متدرب أول",
+        "common.save": "சேமித்து வை",
+        "term.learner": "மூத்த பயிற்சியாளர்",
         "common.unknownKey": "Nope",
         "common.syncPending": "{count, plural, one {broken",
       },
@@ -173,8 +173,10 @@ describe("m04 handlers", () => {
     expect(dryRes.status).toBe(200);
     const dry = TextOverrideImportResultSchema.parse(await dryRes.json());
     expect(dry.dryRun).toBe(true);
-    expect(dry.added).toEqual([{ key: "common.save", before: null, after: "تخزين" }]);
-    expect(dry.changed).toEqual([{ key: "term.learner", before: "متدرب", after: "متدرب أول" }]);
+    expect(dry.added).toEqual([{ key: "common.save", before: null, after: "சேமித்து வை" }]);
+    expect(dry.changed).toEqual([
+      { key: "term.learner", before: "பயிற்சியாளர்", after: "மூத்த பயிற்சியாளர்" },
+    ]);
     expect(dry.rejected.map((r) => [r.key, r.reason])).toEqual([
       ["common.unknownKey", "unknown_key"],
       ["common.syncPending", "invalid_icu"],
@@ -182,7 +184,7 @@ describe("m04 handlers", () => {
     expect(dry.appliedCount).toBe(0);
 
     const invalidApply = await req("/texts/overrides/import", "POST", AX_ADMIN, {
-      locale: "ar-AE",
+      locale: "ta-IN",
       dryRun: false,
       entries: { "common.syncPending": "{count, plural, one {broken" },
     });
@@ -190,17 +192,17 @@ describe("m04 handlers", () => {
     expect(ApiErrorSchema.parse(await invalidApply.json()).error.details?.length).toBe(1);
 
     const applyRes = await req("/texts/overrides/import", "POST", AX_ADMIN, {
-      locale: "ar-AE",
+      locale: "ta-IN",
       dryRun: false,
-      entries: { "common.save": "تخزين", "term.learner": "متدرب أول" },
+      entries: { "common.save": "சேமித்து வை", "term.learner": "மூத்த பயிற்சியாளர்" },
     });
     expect(applyRes.status).toBe(200);
     const applied = TextOverrideImportResultSchema.parse(await applyRes.json());
     expect(applied.appliedCount).toBe(2);
 
-    const listRes = await req("/texts/overrides?locale=ar-AE", "GET", AX_ADMIN);
+    const listRes = await req("/texts/overrides?locale=ta-IN", "GET", AX_ADMIN);
     const page = pageSchema(TextOverrideSchema).parse(await listRes.json());
-    expect(page.items.find((o) => o.key === "common.save")?.message).toBe("تخزين");
-    expect(page.items.find((o) => o.key === "term.learner")?.message).toBe("متدرب أول");
+    expect(page.items.find((o) => o.key === "common.save")?.message).toBe("சேமித்து வை");
+    expect(page.items.find((o) => o.key === "term.learner")?.message).toBe("மூத்த பயிற்சியாளர்");
   });
 });

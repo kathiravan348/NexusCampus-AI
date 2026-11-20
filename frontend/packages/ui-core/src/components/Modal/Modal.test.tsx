@@ -34,21 +34,21 @@ describe("Modal", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
   });
 
-  it("supports controlled open state, size variants, and Arabic close label", () => {
+  it("supports controlled open state, size variants, and Tamil close label", () => {
     const onOpenChange = vi.fn();
 
     renderWithI18n(
       <Modal open onOpenChange={onOpenChange} size="xl" title="Details">
         <p>Body</p>
       </Modal>,
-      "ar",
+      "ta",
     );
 
     const dialog = screen.getByRole("dialog", { name: "Details" });
     expect(dialog).toHaveClass("max-w-6xl", "start-1/2");
     expect(dialog).not.toHaveAttribute("aria-describedby");
 
-    fireEvent.click(screen.getByRole("button", { name: "إغلاق" }));
+    fireEvent.click(screen.getByRole("button", { name: "மூடு" }));
     expect(onOpenChange).toHaveBeenCalledWith(false);
   });
 });

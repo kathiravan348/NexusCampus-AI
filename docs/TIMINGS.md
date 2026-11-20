@@ -32,7 +32,7 @@
 | `check:test` | workspace Vitest run | 2m |
 | `review:check` | format → lint → typecheck → test → build | 7m |
 | `test:pkg` | one package's `test` | 45s |
-| `e2e` | Playwright smoke / RTL / offline (NEX-021) | 3m |
+| `e2e` | Playwright smoke / languages / offline (NEX-021, NEX-040) | 3m |
 | `dev:control` | Nexus Control dev server (reserved, Stage 2) | 8s |
 | `backend:start` | FastAPI ready (reserved, Stage 1 build step) | 15s |
 | `backend:check` | backend lint + types + pytest (reserved) | 3m |

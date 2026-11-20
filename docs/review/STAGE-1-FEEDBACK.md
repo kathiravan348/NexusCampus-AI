@@ -38,7 +38,7 @@ Reviewer: ________ · Date: ________ · Browser / device: ________
 
 | Item | Works | Change | Missing | Notes |
 |---|---|---|---|---|
-| Arabic (Apex): right-to-left, nothing left in English, nothing clipped | | | | |
+| Hindi (Riverside) and Tamil (Apex): nothing left in English, nothing clipped, wording reads naturally | | | | |
 | Formats per institution (dates, numbers, currency, time zone) | | | | |
 | Offline: app opens, cached screens, "Needs a connection" screens | | | | |
 | Offline save → sign-out blocked → syncs when back online | | | | |

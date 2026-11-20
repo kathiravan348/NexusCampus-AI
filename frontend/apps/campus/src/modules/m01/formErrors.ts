@@ -24,8 +24,6 @@ export const COMMON_LOCALES: readonly string[] = [
   "en-GB",
   "en-US",
   "en-SG",
-  "ar-AE",
-  "ar-SA",
   "fr-FR",
   "de-DE",
   "es-ES",

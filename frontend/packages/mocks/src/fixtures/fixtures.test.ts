@@ -84,7 +84,7 @@ describe("fixtures (D16)", () => {
     expect(new Set(F.PERMISSIONS.map((p) => p.code)).size).toBe(F.PERMISSIONS.length);
   });
 
-  it("cover every D16 type, with one Arabic RTL tenant and a 2-campus group", () => {
+  it("cover every D16 type, with Hindi and Tamil tenants and a 2-campus group (D42)", () => {
     expect(F.DEMO_TENANTS).toHaveLength(5);
     expect(new Set(F.DEMO_TENANTS.map((t) => t.type))).toEqual(
       new Set(["ey", "grp", "he", "tp", "sk"]),
@@ -96,10 +96,12 @@ describe("fixtures (D16)", () => {
     expect(riverside?.group?.id).toBe(F.GROUP.riverside);
     expect(riverside?.campuses).toHaveLength(2);
     const apex = F.INSTITUTIONS.find((i) => i.id === F.INSTITUTION.apex);
-    expect(apex?.locale.defaultLocale).toBe("ar-AE");
-    expect(apex?.locale.weekendDays).toEqual([6, 0]);
+    expect(apex?.locale.defaultLocale).toBe("ta-IN");
+    expect(apex?.locale.supportedLocales).toEqual(["ta-IN", "en-IN"]);
+    const school = F.INSTITUTIONS.find((i) => i.id === F.INSTITUTION.riversideSchool);
+    expect(school?.locale.defaultLocale).toBe("hi-IN");
     expect(F.ACADEMIC_CALENDARS.find((c) => c.id === F.CALENDAR.apex)?.displayCalendar).toBe(
-      "islamic-umalqura",
+      "indian",
     );
   });
 
@@ -235,7 +237,7 @@ describe("fixtures (D16)", () => {
       expect(child.light["brand-primary"], child.id).toBeUndefined();
       expect(child.dark["brand-primary"], child.id).toBeUndefined();
     }
-    expect(F.THEMES.find((t) => t.id === F.THEME.apex)?.fonts.sans).toBe(F.FONT.notoSansArabic);
+    expect(F.THEMES.find((t) => t.id === F.THEME.apex)?.fonts.sans).toBe(F.FONT.notoSansTamil);
     for (const o of F.TEXT_OVERRIDES) {
       expect(sameTenant(o.tenantId, o.scope.targetId), o.id).toBe(true);
       expect(sameTenant(o.tenantId, o.updatedBy), o.id).toBe(true);

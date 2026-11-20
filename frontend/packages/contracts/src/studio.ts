@@ -95,6 +95,7 @@ export const FontScriptSchema = z.enum([
   "arabic",
   "hebrew",
   "devanagari",
+  "tamil",
   "cyrillic",
   "cjk",
 ]);

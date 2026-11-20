@@ -7,8 +7,8 @@ import { server } from "../node";
 
 const BASE = "http://localhost/api/v1";
 type As = { tenant: string; user: string };
-const AX_ADMIN: As = { tenant: TENANT.apex, user: USER.axKhalid };
-const AX_TEACHER: As = { tenant: TENANT.apex, user: USER.axFatima };
+const AX_ADMIN: As = { tenant: TENANT.apex, user: USER.axKarthik };
+const AX_TEACHER: As = { tenant: TENANT.apex, user: USER.axMeena };
 
 function patch(id: string, body: unknown, as: As = AX_ADMIN) {
   return fetch(`${BASE}/data-requests/${id}`, {

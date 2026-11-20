@@ -191,16 +191,16 @@ const TENANTS: readonly [Tenant, Row[]][] = [
   [
     tenant(
       TENANT.apex,
-      "ar-AE",
-      [USER.axKhalid, USER.axFatima, USER.axLayla],
-      [PERSON.axLayla, PERSON.axSara],
+      "ta-IN",
+      [USER.axKarthik, USER.axMeena, USER.axLakshmi],
+      [PERSON.axLakshmi, PERSON.axDivya],
       [INSTITUTION.apex, CAMPUS.apex, THEME.apex],
     ),
     [
       ...dsrRows(TENANT.apex),
       ev(
         "m83.accessRequest.approved",
-        USER.axKhalid,
+        USER.axKarthik,
         "accessRequest",
         ACCESS_REQUEST.apexApproved,
         { at: "2026-09-15T07:55:00Z" },
@@ -212,7 +212,7 @@ const TENANTS: readonly [Tenant, Row[]][] = [
         actorId: PROVIDER_STAFF.morgan,
         grantId: ACCESS_GRANT.apexActive,
         targetType: "notificationTemplate",
-        targetId: templateId(TENANT.apex, "m07.announcement.published", "email", "ar-AE"),
+        targetId: templateId(TENANT.apex, "m07.announcement.published", "email", "ta-IN"),
         at: "2026-09-15T09:05:00Z",
       },
     ],

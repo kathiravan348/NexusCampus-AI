@@ -36,12 +36,12 @@ describe("applyTenantTheme", () => {
 
   it("applies fonts, radius and density as shared variables", () => {
     applyTenantTheme({
-      fonts: { sans: "noto-sans-arabic" },
+      fonts: { sans: "noto-sans-tamil" },
       radius: { "radius-md": "4px" },
       density: "compact",
     });
     const text = styleText()!;
-    expect(text).toMatch(/html:root \{[^}]*--font-sans: "Noto Sans Arabic"/);
+    expect(text).toMatch(/html:root \{[^}]*--font-sans: "Noto Sans Tamil"/);
     expect(text).toContain("--radius-md: 4px;");
     expect(text).toContain("--density-scale: 0.875;");
     expect(declaredVars(text)).toEqual(["font-sans", "radius-md", "density-scale"]);
@@ -49,9 +49,9 @@ describe("applyTenantTheme", () => {
 
   it("still applies when a font fails to load (e.g. offline)", async () => {
     const spy = vi
-      .spyOn(FONT_LIBRARY["noto-sans-arabic"], "load")
+      .spyOn(FONT_LIBRARY["noto-sans-tamil"], "load")
       .mockRejectedValue(new Error("network down"));
-    expect(() => applyTenantTheme({ fonts: { sans: "noto-sans-arabic" } })).not.toThrow();
+    expect(() => applyTenantTheme({ fonts: { sans: "noto-sans-tamil" } })).not.toThrow();
     await Promise.resolve();
     expect(spy).toHaveBeenCalledOnce();
     expect(styleText()).toContain("--font-sans:");

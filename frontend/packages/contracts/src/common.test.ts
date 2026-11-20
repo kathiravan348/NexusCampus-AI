@@ -39,7 +39,7 @@ describe("primitives", () => {
   });
 
   it("Locale must be canonical BCP 47", () => {
-    ok(LocaleSchema, ["en", "en-IN", "ar-SA", "zh-Hant-TW", "en-XA"]);
+    ok(LocaleSchema, ["en", "en-IN", "hi-IN", "ta-IN", "zh-Hant-TW", "en-XA"]);
     bad(LocaleSchema, ["en_IN", "en-in", "EN", "x", ""]);
   });
 

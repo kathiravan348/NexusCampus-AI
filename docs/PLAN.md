@@ -38,12 +38,12 @@ Offline levels and the self-hosted install are part of each module's acceptance 
 | 3. Offline kit | 007 offline package (store, outbox, sync status) | L1/L2 building blocks with tests |
 | 4. Data layer | 008 contracts: platform core + tenancy + calendar · 028 contracts: identity (Person/RoleProfile, User, Session/SSO, roles) · 009 contracts: studio, entitlements, audit/compliance · 027 contracts: notifications, sync, AI, vault & grants · 010 mock fixtures (5 demo tenants, incl. 2-campus Group & Arabic RTL) · 031 ops fixtures · 029 MSW handlers · 011 services (offline-aware) | Demo tenants served through MSW |
 | 5. Screens | 012 app shell · 030 PWA · 013 institution setup · 014 theme studio · 015 text & language studio · 016 users, roles, permissions · 017 audit + consent · 018 plans & usage · 019 sync centre · 020 Assist + AI settings · 023 data vault & access grants · 024 notifications engine | All Stage 1 screens clickable |
-| 6. Review | 032 startup & test timings · 021 review build + walkthrough + Playwright smoke/RTL/offline check · 022 freeze | Measured start/test timings, frozen Stage 1 scope |
+| 6. Review | 032 startup & test timings · 021 review build + walkthrough + Playwright smoke/languages/offline check · 022 freeze | Measured start/test timings, frozen Stage 1 scope |
 | 7. Build | backend skeleton, region config, RLS schema, vault + per-tenant keys, identity + SSO, tenancy, theme + text services, entitlements, audit (hash-chained), notifications, sync API, provider-agnostic AI gateway — task files written at freeze | Stage 1 real, packaged as images that run in a SaaS cell and as a self-hosted Compose install |
 
 Demo tenants (mock and seed): *Little Steps* (EY), *Riverside School* (K12, under 2-campus *Riverside Education Group*, GRP),
-*Northbridge University* (HE), *Apex Coaching* (TP), *Harmony Music Academy* (SK). All fictional; one uses an RTL locale
-(Arabic) for testing; the Group exercises inherited/locked themes and text overrides.
+*Northbridge University* (HE), *Apex Coaching* (TP), *Harmony Music Academy* (SK). All fictional; Riverside runs in Hindi and Apex
+in Tamil (D42); the Group exercises inherited/locked themes and text overrides.
 
 ## Stage 2 — Nexus Control & delivery (outline; detail at Stage 1 freeze)
 Prototype `apps/control`: accounts → plans and quotes → SaaS provisioning → billing and metering → licence files →

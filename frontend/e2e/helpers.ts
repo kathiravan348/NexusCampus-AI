@@ -3,9 +3,9 @@ import { expect, type Locator, type Page } from "@playwright/test";
 /** Demo tenants and personas (mirrors `@nexus/mocks` fixtures; e2e stays independent of app source). */
 export const TENANTS = {
   littleSteps: { id: "ten-ls", name: "Little Steps", type: "EY" },
-  riverside: { id: "ten-rv", name: "Riverside School", type: "K12 (group, 2 campuses)" },
+  riverside: { id: "ten-rv", name: "Riverside School", type: "K12 (group, 2 campuses, Hindi)" },
   northbridge: { id: "ten-nb", name: "Northbridge University", type: "HE" },
-  apex: { id: "ten-ax", name: "Apex Coaching", type: "TP (Arabic)" },
+  apex: { id: "ten-ax", name: "Apex Coaching", type: "TP (Tamil)" },
   harmony: { id: "ten-hm", name: "Harmony Music Academy", type: "SK" },
 } as const;
 
@@ -13,7 +13,7 @@ export const ADMINS: Readonly<Record<keyof typeof TENANTS, string>> = {
   littleSteps: "usr-ls-priya",
   riverside: "usr-rv-helen",
   northbridge: "usr-nb-robert",
-  apex: "usr-ax-khalid",
+  apex: "usr-ax-karthik",
   harmony: "usr-hm-weiling",
 };
 
@@ -105,5 +105,7 @@ export function watchErrors(page: Page): string[] {
 /** The page's module heading once its data has loaded (no spinner left). */
 export async function expectScreenReady(page: Page) {
   await expect(page.locator("#main-content h1").first()).toBeVisible();
-  await expect(page.getByRole("status").filter({ hasText: /^Loading/ })).toHaveCount(0);
+  await expect(
+    page.getByRole("status").filter({ hasText: /^(Loading|लोड हो रहा है|ஏற்றுகிறது)/ }),
+  ).toHaveCount(0);
 }

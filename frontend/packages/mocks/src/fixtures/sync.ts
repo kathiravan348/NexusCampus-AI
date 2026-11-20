@@ -10,8 +10,8 @@ export const DEVICE = {
   rvTomPhone: "dev-rv-tom-phone",
   nbRobertMac: "dev-nb-robert-mac",
   nbElenaPhone: "dev-nb-elena-phone",
-  axKhalidPhone: "dev-ax-khalid-phone",
-  axFatimaLaptop: "dev-ax-fatima-laptop",
+  axKarthikPhone: "dev-ax-karthik-phone",
+  axMeenaLaptop: "dev-ax-meena-laptop",
   hmWeiLingPc: "dev-hm-weiling-pc",
   hmDanielTablet: "dev-hm-daniel-tablet",
 } as const;
@@ -78,8 +78,10 @@ export const DEVICE_SYNCS = [
     status: "revoked",
     revokedAt: "2026-09-07T09:00:00Z",
   }),
-  device(AX, DEVICE.axKhalidPhone, USER.axKhalid, "هاتف خالد", "android"),
-  device(AX, DEVICE.axFatimaLaptop, USER.axFatima, "حاسوب فاطمة", "web", { conflictCount: 1 }),
+  device(AX, DEVICE.axKarthikPhone, USER.axKarthik, "கார்த்திக்கின் தொலைபேசி", "android"),
+  device(AX, DEVICE.axMeenaLaptop, USER.axMeena, "மீனாவின் மடிக்கணினி", "web", {
+    conflictCount: 1,
+  }),
   device(HM, DEVICE.hmWeiLingPc, USER.hmWeiLing, "Front desk PC", "web"),
   device(HM, DEVICE.hmDanielTablet, USER.hmDaniel, "Studio iPad", "ios", {
     lastSyncAt: null,
@@ -154,7 +156,7 @@ export const SYNC_CONFLICTS = [
   conflict(
     "scf-ax-01",
     AX,
-    DEVICE.axFatimaLaptop,
+    DEVICE.axMeenaLaptop,
     "m10.conflict.emailChanged",
     "2026-09-14T08:20:00Z",
   ),

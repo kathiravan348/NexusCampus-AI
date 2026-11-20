@@ -42,7 +42,7 @@ const RV = TENANT.riverside;
 const NB = TENANT.northbridge;
 const AX = TENANT.apex;
 const HM = TENANT.harmony;
-const AR: Locale = "ar-AE";
+const TA: Locale = "ta-IN";
 
 const lsMail = (local: string) => `${local}@littlesteps.example.edu`;
 const rvMail = (local: string) => `${local}@riverside.example.edu`;
@@ -123,37 +123,37 @@ export const PEOPLE: readonly Person[] = [
     email: nbMail("nora.patel"),
   }),
 
-  // Apex Coaching (TP, UAE, Arabic first): names in Arabic script exercise RTL.
-  person(AX, PERSON.axKhalid, "خالد المنصوري", {
-    email: axMail("khalid"),
-    phone: "+971500000101",
-    preferredLocale: AR,
+  // Apex Coaching (TP, Chennai, Tamil first): names in Tamil script exercise an Indic script.
+  person(AX, PERSON.axKarthik, "கார்த்திக் சுந்தரம்", {
+    email: axMail("karthik"),
+    phone: "+919000000401",
+    preferredLocale: TA,
   }),
-  person(AX, PERSON.axFatima, "فاطمة حداد", {
-    email: axMail("fatima"),
-    phone: "+971500000102",
-    preferredLocale: AR,
+  person(AX, PERSON.axMeena, "மீனா ராஜன்", {
+    email: axMail("meena"),
+    phone: "+919000000402",
+    preferredLocale: TA,
   }),
-  person(AX, PERSON.axOmar, "Omar Saleh", {
-    email: axMail("omar"),
-    phone: "+971500000103",
+  person(AX, PERSON.axSuresh, "Suresh Kumar", {
+    email: axMail("suresh"),
+    phone: "+919000000403",
     preferredLocale: "en",
   }),
-  person(AX, PERSON.axLayla, "ليلى ناصر", {
-    email: family("layla.nasser"),
-    phone: "+971500000104",
-    preferredLocale: AR,
+  person(AX, PERSON.axLakshmi, "லட்சுமி முருகன்", {
+    email: family("lakshmi.murugan"),
+    phone: "+919000000404",
+    preferredLocale: TA,
   }),
-  minor(AX, PERSON.axYousef, "يوسف حداد", "2010-05-03", { preferredLocale: AR }),
-  minor(AX, PERSON.axSara, "سارة ناصر", "2011-01-21", { preferredLocale: AR }),
-  person(AX, PERSON.axAhmed, "أحمد كريم", {
+  minor(AX, PERSON.axVijay, "விஜய் ராஜன்", "2010-05-03", { preferredLocale: TA }),
+  minor(AX, PERSON.axDivya, "திவ்யா முருகன்", "2011-01-21", { preferredLocale: TA }),
+  person(AX, PERSON.axArun, "அருண் பிரகாஷ்", {
     dateOfBirth: "2007-08-12",
-    email: axMail("ahmed.karim"),
-    preferredLocale: AR,
+    email: axMail("arun.prakash"),
+    preferredLocale: TA,
   }),
-  person(AX, PERSON.axMariam, "مريم عزيز", {
+  person(AX, PERSON.axNila, "நிலா செல்வம்", {
     dateOfBirth: "2006-03-30",
-    email: axMail("mariam.aziz"),
+    email: axMail("nila.selvam"),
     preferredLocale: "en",
   }),
 

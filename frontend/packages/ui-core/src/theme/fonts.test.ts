@@ -4,7 +4,7 @@ import { DEFAULT_FONTS, FONT_LIBRARY, resolveFont } from "./fonts";
 
 describe("fonts", () => {
   it("resolves a known font for its role", () => {
-    expect(resolveFont("noto-sans-arabic", "sans").id).toBe("noto-sans-arabic");
+    expect(resolveFont("noto-sans-tamil", "sans").id).toBe("noto-sans-tamil");
     expect(resolveFont("jetbrains-mono", "mono").id).toBe("jetbrains-mono");
   });
 

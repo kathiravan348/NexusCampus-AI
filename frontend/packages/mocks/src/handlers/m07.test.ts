@@ -12,8 +12,8 @@ import { PreferencesResponseSchema } from "./m07";
 
 const BASE = "http://localhost/api/v1";
 type As = { tenant: string; user: string };
-const AX_ADMIN: As = { tenant: TENANT.apex, user: USER.axKhalid };
-const AX_GUARDIAN: As = { tenant: TENANT.apex, user: USER.axLayla };
+const AX_ADMIN: As = { tenant: TENANT.apex, user: USER.axKarthik };
+const AX_GUARDIAN: As = { tenant: TENANT.apex, user: USER.axLakshmi };
 
 function call(method: string, path: string, body?: unknown, as: As = AX_ADMIN) {
   return fetch(`${BASE}${path}`, {
@@ -90,7 +90,7 @@ describe("m07 write handlers", () => {
     expect(saved.channels.find((c) => c.channel === "email")?.available).toBe(true);
     expect(
       mockDb.notificationPreferences.every(
-        (p) => p.userId !== USER.axLayla || p.quietHours?.start === "21:00",
+        (p) => p.userId !== USER.axLakshmi || p.quietHours?.start === "21:00",
       ),
     ).toBe(true);
   });

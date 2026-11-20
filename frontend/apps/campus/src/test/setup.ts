@@ -1,10 +1,11 @@
 import "@testing-library/jest-dom/vitest";
 import "fake-indexeddb/auto";
-import { afterAll, afterEach, beforeAll } from "vitest";
-import { resetMockDb } from "@nexus/mocks";
+import { afterAll, afterEach, beforeAll, beforeEach } from "vitest";
+import { resetMockDb, TENANT } from "@nexus/mocks";
 import { server } from "@nexus/mocks/node";
 import { cleanup, configure } from "@testing-library/react";
 import { transferableAbortController } from "node:util";
+import { LOCALE_STORAGE_KEY } from "../app/TenantRuntime";
 
 // jsdom replaces AbortController/AbortSignal, but Node's fetch (used by MSW in tests) only accepts
 // its own signals. Put Node's classes back; browsers have one implementation, so the app is unaffected.
@@ -25,6 +26,14 @@ if (typeof globalThis.ResizeObserver === "undefined") {
 configure({ asyncUtilTimeout: 5000 });
 
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
+// Riverside opens in Hindi and Apex in Tamil (D42). Tests check behaviour in English, like a user who picked
+// English; tests about language call `withInstitutionLocale()` (test/renderApp) to get the default back.
+beforeEach(() => {
+  localStorage.setItem(
+    LOCALE_STORAGE_KEY,
+    JSON.stringify({ [TENANT.riverside]: "en-GB", [TENANT.apex]: "en-IN" }),
+  );
+});
 afterEach(() => {
   cleanup();
   server.resetHandlers();

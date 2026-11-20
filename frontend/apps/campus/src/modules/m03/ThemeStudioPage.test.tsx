@@ -6,7 +6,7 @@ import { MemoryRouter } from "react-router";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { AppProviders } from "../../App";
 import { MODULES } from "../../app/modules";
-import { freshDb, persona, renderApp, signInAs } from "../../test/renderApp";
+import { withInstitutionLocale, freshDb, persona, renderApp, signInAs } from "../../test/renderApp";
 import { ThemeStudioPage } from "./ThemeStudioPage";
 
 function renderStudioDirectly(as = persona(TENANT.northbridge, "admin")) {
@@ -88,12 +88,13 @@ describe("ThemeStudioPage (M03)", () => {
     expect(screen.getByText(/Locked by the group theme/)).toBeInTheDocument();
   });
 
-  it("renders in Arabic RTL for Apex admin and hides route from teachers", async () => {
+  it("renders in Tamil for Apex admin and hides route from teachers", async () => {
+    withInstitutionLocale(TENANT.apex);
     renderApp("/theme", { as: persona(TENANT.apex, "admin"), modules: MODULES });
     expect(
-      await screen.findByRole("heading", { level: 1, name: "استوديو المظهر" }),
+      await screen.findByRole("heading", { level: 1, name: "தீம் ஸ்டுடியோ" }),
     ).toBeInTheDocument();
-    expect(document.documentElement.dir).toBe("rtl");
+    expect(document.documentElement.lang).toBe("ta-IN");
 
     renderApp("/", { as: persona(TENANT.riverside, "teacher"), modules: MODULES });
     expect(await screen.findByRole("heading", { level: 1, name: /Welcome/ })).toBeInTheDocument();

@@ -15,11 +15,11 @@ const FONTS: readonly Font[] = [
     fileUrl: null,
   },
   {
-    id: "noto-sans-arabic",
-    family: "Noto Sans Arabic",
+    id: "noto-sans-tamil",
+    family: "Noto Sans Tamil",
     source: "library",
     roles: ["sans"],
-    scripts: ["arabic"],
+    scripts: ["tamil"],
     fileUrl: null,
   },
   {
@@ -59,9 +59,9 @@ describe("TypographyPanel", () => {
     );
 
     fireEvent.change(screen.getByLabelText("Body and UI font"), {
-      target: { value: "noto-sans-arabic" },
+      target: { value: "noto-sans-tamil" },
     });
-    expect(onSansFontChange).toHaveBeenCalledWith("noto-sans-arabic");
+    expect(onSansFontChange).toHaveBeenCalledWith("noto-sans-tamil");
 
     fireEvent.change(screen.getByLabelText("Numbers and code font"), {
       target: { value: "jetbrains-mono" },

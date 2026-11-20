@@ -115,16 +115,17 @@ export const ASSIST_ANSWERS = [
   {
     id: "asa-ax-01",
     tenantId: TENANT.apex,
-    question: "متى تنتهي الدفعة الأولى؟",
-    answer: "تنتهي الدفعة الأولى في 31 ديسمبر 2026، وتبدأ الدفعة الثانية في 10 يناير 2027.",
-    locale: "ar-AE",
+    question: "முதல் பேட்ச் எப்போது முடிகிறது?",
+    answer:
+      "முதல் பேட்ச் 31 டிசம்பர் 2026 அன்று முடிகிறது; இரண்டாம் பேட்ச் 10 ஜனவரி 2027 அன்று தொடங்குகிறது.",
+    locale: "ta-IN",
     aiGenerated: true,
     sources: [
       {
         moduleId: "M01",
         recordType: "academicCalendar",
         recordId: CALENDAR.apex,
-        label: "التقويم الأكاديمي لمركز أبكس 2026–2027",
+        label: "ஏபெக்ஸ் கோச்சிங் கல்வி நாட்காட்டி 2026–2027",
       },
     ],
     tier: "balanced",
