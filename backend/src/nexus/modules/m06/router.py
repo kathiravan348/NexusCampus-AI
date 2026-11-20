@@ -29,10 +29,10 @@ from nexus.modules.m06.service import (
 )
 
 router = APIRouter(prefix="/api/v1", tags=["m06 audit & privacy"])
-AuditReader = Annotated[Authorized, Depends(require("m06.audit.read", "M06"))]
-ConsentReader = Annotated[Authorized, Depends(require("m06.consent.manage", "M06"))]
+AuditReader = Annotated[Authorized, Depends(require("m06.audit.read", "M06"), scope="function")]
+ConsentReader = Annotated[Authorized, Depends(require("m06.consent.manage", "M06"), scope="function")]
 #: Data subject requests are restricted data (G-6): the catalogue's sensitive `m06.request.manage`.
-DsrManager = Annotated[Authorized, Depends(require("m06.request.manage", "M06"))]
+DsrManager = Annotated[Authorized, Depends(require("m06.request.manage", "M06"), scope="function")]
 Paging = Annotated[PageQuery, Depends(page_query)]
 _CONSENTS = (
     "SELECT id, tenant_id, person_id, purpose, status, given_by_person_id, method, recorded_at, withdrawn_at "

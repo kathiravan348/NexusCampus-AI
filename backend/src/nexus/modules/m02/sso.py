@@ -22,7 +22,7 @@ from nexus.modules.m02.keycloak_admin import KeycloakAdmin
 from nexus.modules.m02.service import audit, keycloak_admin, not_found
 
 router = APIRouter(prefix="/api/v1", tags=["m02 single sign-on"])
-Manager = Annotated[Authorized, Depends(require("m02.sso.manage", "M02"))]
+Manager = Annotated[Authorized, Depends(require("m02.sso.manage", "M02"), scope="function")]
 _DOMAIN = re.compile(r"^(?=.{1,253}$)([a-z0-9]([a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,63}$")
 _SELECT = (
     "SELECT id, tenant_id, institution_id, protocol, name, issuer_url, client_id, domains, scim_enabled, "

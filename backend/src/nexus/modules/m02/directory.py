@@ -28,9 +28,9 @@ from nexus.modules.m02.service import (
 
 router = APIRouter(prefix="/api/v1", tags=["m02 users & access"])
 Paging = Annotated[PageQuery, Depends(page_query)]
-Anyone = Annotated[Authorized, Depends(require(None, "M02"))]
-UserReader = Annotated[Authorized, Depends(require("m02.user.read", "M02"))]
-RoleManager = Annotated[Authorized, Depends(require("m02.role.manage", "M02"))]
+Anyone = Annotated[Authorized, Depends(require(None, "M02"), scope="function")]
+UserReader = Annotated[Authorized, Depends(require("m02.user.read", "M02"), scope="function")]
+RoleManager = Annotated[Authorized, Depends(require("m02.role.manage", "M02"), scope="function")]
 
 
 async def _page(

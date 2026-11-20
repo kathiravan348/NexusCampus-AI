@@ -19,7 +19,7 @@ from nexus.core.tenancy import TenantContext
 from nexus.core.vault import Vault, key_name
 
 router = APIRouter(prefix="/api/v1", tags=["m83 data vault"])
-Reader = Annotated[Authorized, Depends(require("m83.vault.read", "M83"))]
+Reader = Annotated[Authorized, Depends(require("m83.vault.read", "M83"), scope="function")]
 _SELECT = "SELECT id, tenant_id, purpose, custody, status, created_at, rotated_at FROM vault_keys"
 
 

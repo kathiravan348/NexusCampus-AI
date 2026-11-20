@@ -93,7 +93,7 @@ async def scim_auth(request: Request) -> AsyncIterator[ScimContext]:
 
 
 scim_auth.__nexus_guard__ = (None, "M02")  # type: ignore[attr-defined]  # route walk: own bearer auth
-Scim = Annotated[ScimContext, Depends(scim_auth)]
+Scim = Annotated[ScimContext, Depends(scim_auth, scope="function")]
 Admin = Annotated[KeycloakAdmin, Depends(keycloak_admin)]
 
 _USERS = (

@@ -19,9 +19,9 @@ from nexus.core.schemas import Contract
 from nexus.modules.m05.usage import UsageMeterOut, read_meters
 
 router = APIRouter(prefix="/api/v1", tags=["m05 plan & usage"])
-PlanReader = Annotated[Authorized, Depends(require("m05.plan.read", "M05"))]
-Anyone = Annotated[Authorized, Depends(require(None, "M05"))]
-ModuleManager = Annotated[Authorized, Depends(require("m05.module.manage", "M05"))]
+PlanReader = Annotated[Authorized, Depends(require("m05.plan.read", "M05"), scope="function")]
+Anyone = Annotated[Authorized, Depends(require(None, "M05"), scope="function")]
+ModuleManager = Annotated[Authorized, Depends(require("m05.module.manage", "M05"), scope="function")]
 Paging = Annotated[PageQuery, Depends(page_query)]
 _PLAN = (
     "SELECT p.id, p.code, p.name_key, p.modules, p.ai_credits_per_month, p.learner_limit "

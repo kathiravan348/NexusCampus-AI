@@ -38,8 +38,8 @@ from nexus.modules.m01.schemas import (
 router = APIRouter(prefix="/api/v1", tags=["m01 institution setup"])
 READ = require(None, "M01")
 MANAGE = require("m01.institution.manage", "M01")
-Reader = Annotated[Authorized, Depends(READ)]
-Manager = Annotated[Authorized, Depends(MANAGE)]
+Reader = Annotated[Authorized, Depends(READ, scope="function")]
+Manager = Annotated[Authorized, Depends(MANAGE, scope="function")]
 
 _INSTITUTION = (
     "SELECT id, tenant_id, group_id, name, type, region, status, default_locale, supported_locales, "

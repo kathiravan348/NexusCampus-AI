@@ -83,5 +83,5 @@ class IdempotencyKey(Base):
     user_id: Mapped[str] = mapped_column(String(ID_LENGTH), ForeignKey("users.id"))
     request_hash: Mapped[str] = mapped_column(String(64))
     status_code: Mapped[int] = mapped_column(Integer)
-    response: Mapped[dict[str, Any]] = mapped_column(JSONB)
+    response: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())

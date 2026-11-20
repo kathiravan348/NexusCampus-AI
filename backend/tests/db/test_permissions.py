@@ -152,3 +152,18 @@ def test_every_non_public_route_has_a_guard() -> None:
     for r in routes:
         for permission, module in _guards(r.dependant):
             assert permission is None or permission.startswith(module.lower() + "."), r.path
+
+
+def _guard_scopes(dependant: Any) -> list[str | None]:
+    found = []
+    for dep in dependant.dependencies:
+        if guard_of(dep.call) is not None and getattr(dep.call, "__qualname__", "") != "dev_only":
+            found.append(dep.scope)
+        found.extend(_guard_scopes(dep))
+    return found
+
+
+def test_guards_commit_before_the_response_is_sent() -> None:
+    """Transactional guards use `scope="function"`: the write commits before the client sees 2xx (NEX-057)."""
+    for r in api_routes(create_app()):
+        assert set(_guard_scopes(r.dependant)) <= {"function"}, r.path

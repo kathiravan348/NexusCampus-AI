@@ -23,8 +23,8 @@ from nexus.core.schemas import Contract
 
 router = APIRouter(prefix="/api/v1", tags=["m83 data vault"])
 #: Vault and provider-access records are for the institution's own admins only (D22).
-Reader = Annotated[Authorized, Depends(require("m83.vault.read", "M83"))]
-Decider = Annotated[Authorized, Depends(require("m83.grant.approve", "M83"))]
+Reader = Annotated[Authorized, Depends(require("m83.vault.read", "M83"), scope="function")]
+Decider = Annotated[Authorized, Depends(require("m83.grant.approve", "M83"), scope="function")]
 JsonBody = Annotated[Any, Body()]
 
 MAX_GRANT_HOURS = 72

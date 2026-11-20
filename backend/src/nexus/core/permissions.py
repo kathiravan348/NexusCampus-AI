@@ -21,6 +21,7 @@ from fastapi import Request
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from nexus.core import idempotency
 from nexus.core.entitlements import ensure_module_enabled
 from nexus.core.errors import ApiError
 from nexus.core.request_context import RequestContext, session_context
@@ -189,6 +190,7 @@ def require(permission: str | None, module: str) -> Callable[..., AsyncIterator[
             grants = await load_grants(ctx.db, ctx.user_id)
             if permission is not None and not grants.has(permission):
                 raise ApiError(403, "forbidden", "Your role does not allow this.")
+            await idempotency.claim(ctx.db, request, ctx.tenant.tenant_id, ctx.user_id)
             yield Authorized(ctx=ctx, grants=grants)
 
     guard.__nexus_guard__ = (permission, module)  # type: ignore[attr-defined]

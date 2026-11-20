@@ -8,10 +8,9 @@ is required for email and null for other channels (as the contract). Preference 
 from datetime import UTC, datetime
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Body, Depends, Header, Query, Request
+from fastapi import APIRouter, Body, Depends, Query
 from sqlalchemy import text
 
-from nexus.core import idempotency
 from nexus.core.audit import AuditInput, changes, record_audit
 from nexus.core.bodies import parse_body
 from nexus.core.errors import ApiError, ApiErrorDetail
@@ -24,8 +23,8 @@ from nexus.modules.m07.schemas import DeliveryOut, NewTemplateIn, PreferencesIn,
 from nexus.modules.m07.service import TEMPLATE_SELECT, preferences_out, save_preferences
 
 router = APIRouter(prefix="/api/v1", tags=["m07 notifications"])
-TemplateManager = Annotated[Authorized, Depends(require("m07.template.manage", "M07"))]
-PreferenceManager = Annotated[Authorized, Depends(require("m07.preference.manage", "M07"))]
+TemplateManager = Annotated[Authorized, Depends(require("m07.template.manage", "M07"), scope="function")]
+PreferenceManager = Annotated[Authorized, Depends(require("m07.preference.manage", "M07"), scope="function")]
 Paging = Annotated[PageQuery, Depends(page_query)]
 JsonBody = Annotated[Any, Body()]
 _DELIVERY = (
@@ -175,26 +174,13 @@ async def my_preferences(auth: PreferenceManager) -> PreferencesOut:
 
 
 @router.put("/notification-preferences", response_model=PreferencesOut)
-async def put_preferences(
-    auth: PreferenceManager,
-    request: Request,
-    body: JsonBody,
-    key: Annotated[str | None, Header(alias=idempotency.HEADER)] = None,
-) -> Any:
-    """Saves the viewer's own switches and quiet hours; a replayed `Idempotency-Key` returns the first answer."""
-    db, ctx = auth.ctx.db, auth.ctx
-    digest = idempotency.request_hash(request.method, request.url.path, body)
-    if key is not None:
-        stored = await idempotency.replayed(db, idempotency.check_key(key), digest)
-        if stored is not None:
-            return stored
+async def put_preferences(auth: PreferenceManager, body: JsonBody) -> PreferencesOut:
+    """Saves the viewer's own switches and quiet hours. The offline queue replays it with `Idempotency-Key`
+    (handled for every guarded write by `core/idempotency.py`)."""
+    ctx = auth.ctx
     data = parse_body(PreferencesIn, body)
     if data.quiet_hours is not None and data.quiet_hours.start == data.quiet_hours.end:
         raise _invalid([ApiErrorDetail(path="quietHours", message="Quiet hours need different start and end times")])
-    result = await save_preferences(db, ctx.tenant.tenant_id, ctx.user_id, data)
+    result = await save_preferences(ctx.db, ctx.tenant.tenant_id, ctx.user_id, data)
     await _audit(auth, "m07.preference.updated", "user", ctx.user_id, ["channels", "quietHours"])
-    if key is not None:
-        await idempotency.remember(
-            db, ctx.tenant.tenant_id, ctx.user_id, key, digest, result.model_dump(mode="json", by_alias=True)
-        )
     return result

@@ -19,6 +19,7 @@ from nexus.modules.m04 import models as _m04  # noqa: F401
 from nexus.modules.m05 import models as _m05  # noqa: F401
 from nexus.modules.m06 import models as _m06  # noqa: F401
 from nexus.modules.m07 import models as _m07  # noqa: F401
+from nexus.modules.m10 import models as _m10  # noqa: F401
 from nexus.modules.m83 import models as _m83  # noqa: F401
 from nexus.settings import get_settings
 

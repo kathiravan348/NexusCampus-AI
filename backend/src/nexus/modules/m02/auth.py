@@ -195,7 +195,7 @@ class LogoutOut(BaseModel):
 @router.post("/logout", response_model=LogoutOut, response_model_by_alias=True)
 async def logout(
     response: Response,
-    auth: Annotated[Authorized, Depends(require(None, "M02"))],
+    auth: Annotated[Authorized, Depends(require(None, "M02"), scope="function")],
     oidc: Annotated[OidcClient, Depends(oidc_client)],
 ) -> LogoutOut:
     ctx = auth.ctx
