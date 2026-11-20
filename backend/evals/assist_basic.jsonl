@@ -1,0 +1,5 @@
+{"id": "ax-ta-batch-end", "tenant": "ten-ax", "user": "usr-ax-karthik", "person": "per-ax-karthik", "locale": "ta-IN", "question": "முதல் பேட்ச் எப்போது முடிகிறது?", "expect": {"recordType": "academicCalendar", "recordId": "cal-ax-2026"}}
+{"id": "ax-en-currency", "tenant": "ten-ax", "user": "usr-ax-suresh", "person": "per-ax-suresh", "locale": "en-IN", "question": "Which currency and time zone does Apex Coaching use?", "expect": {"recordType": "institution", "recordId": "ins-ax"}}
+{"id": "ax-en-year", "tenant": "ten-ax", "user": "usr-ax-meena", "person": "per-ax-meena", "locale": "en-IN", "question": "When does academic year 2026-27 start and end?", "expect": {"recordType": "academicCalendar", "recordId": "cal-ax-2026"}}
+{"id": "ax-hi-languages", "tenant": "ten-ax", "user": "usr-ax-karthik", "person": "per-ax-karthik", "locale": "hi-IN", "question": "Apex Coaching कौन सी languages और currency इस्तेमाल करता है?", "expect": {"recordType": "institution", "recordId": "ins-ax"}}
+{"id": "ax-ta-none", "tenant": "ten-ax", "user": "usr-ax-karthik", "person": "per-ax-karthik", "locale": "ta-IN", "question": "பேருந்து கட்டணம் எவ்வளவு?", "expect": null}

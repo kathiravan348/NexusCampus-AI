@@ -51,6 +51,16 @@ class Settings(BaseSettings):
     #: HMAC key for provider grant credentials (NEX-051). Empty in dev/test = a random key per process;
     #: required in prod.
     grant_signing_key: SecretStr = SecretStr("")
+    # AI gateway (NEX-058, D24): `fake` (deterministic, dev/test), `anthropic` (direct API, key in `.env`) or
+    # `bedrock` (Claude on Amazon Bedrock in this cell's own AWS region, SaaS).
+    ai_provider: Literal["fake", "anthropic", "bedrock"] = "fake"
+    anthropic_api_key: SecretStr = SecretStr("")
+    #: Capability tier → model id (DECISIONS); Bedrock ids get the `anthropic.` prefix.
+    ai_model_fast: str = "claude-haiku-5-5"
+    ai_model_balanced: str = "claude-sonnet-5-5"
+    ai_model_reasoning: str = "claude-opus-5-5"
+    #: Multilingual embedding model on Bedrock (D47), pinned; dims must match `ai_chunks.embedding`.
+    ai_embedding_model: str = "cohere.embed-multilingual-v3"
     # Dev-only Keycloak setup (`nexus-keycloak-dev`): admin login and the password given to demo users.
     keycloak_admin_user: str = "admin"
     keycloak_admin_password: SecretStr = SecretStr("")

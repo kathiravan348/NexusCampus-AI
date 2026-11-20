@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-21 (NEX-057) · Migration: `0014_sync`
+> State as of: 2026-11-21 (NEX-058) · Migration: `0015_ai`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -145,6 +145,18 @@ All four use forced RLS. `domain_events_outbox` gained `next_attempt_at` and `la
 
 Both use forced RLS. `idempotency_keys.response` is now nullable (a claimed key has `status_code = 0` until its
 response is stored); the app may update and delete its keys.
+
+## AI (M11 — `0015_ai`, D47)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `ai_settings` | `tenant_id` (PK), `enabled`, `modules` (JSON), `blocked_modules[]`, `safeguarding_enabled`, `default_tier`, `provider_kind`, `provider_label`, `updated_at` | `blocked_modules` always holds M61 and M83 (CHECK); no keys |
+| `ai_credits` | `tenant_id` + `period_start` (PK), `period_end`, `granted`, `used`, `hard_cap` | Under a hard cap `used ≤ granted` (CHECK) |
+| `ai_answer_log` | `id`, `tenant_id`, `user_id`, `locale`, `tier`, `model`, `outcome`, `source_count`, `credits_used`, token counts, `created_at` | Metadata only — never question or answer text; append-only |
+| `ai_chunks` | `id`, `tenant_id`, `module_id`, `record_type`, `record_id`, `label`, `locale`, `content`, `embedding vector(1024)` | Never M61 / M83 (CHECK); one chunk per record + locale |
+
+All four use forced RLS; the `vector` extension is created by the migration (pgvector image). The dev seed indexes
+institution settings and calendars with the deterministic dev embedder.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

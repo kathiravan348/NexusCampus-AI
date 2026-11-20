@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -159,6 +159,14 @@ is sent (`Depends(…, scope="function")`).
 | `GET /api/v1/ai/credits` | `m11.settings.manage` | `?page=&pageSize=` → `Page<AiCredit>` | `400`, `401`, `403` |
 | `POST /api/v1/assist/ask` | `m11.assist.use` | `{ question, locale }` → `{ answer: AssistAnswer \| null, credits }` (mock fixture answer, always with sources; decrements credits and the `ai_credits` meter) | `403 module_disabled` (not entitled), `403 forbidden` with `details[0].path` `ai_off` or `consent` (minor without guardian consent), `429 rate_limited` path `credits`, `400`, `401` |
 | `PUT /api/v1/ai/settings` | `m11.settings.manage` | `{ enabled, modules, safeguardingEnabled, defaultTier }` → `AiSettings` | `400 invalid_request` (`modules.M61` / `modules.M83` can never be on), `401`, `403`; audits `m11.settings.updated` |
+
+Backend notes (NEX-058): `POST /assist/ask` runs the gateway pipeline: AI on (`ai_off`) → minor guardian consent
+(`consent`) → credits (`429 credits`) → retrieval in the tenant's own pgvector chunks (modules switched on and
+entitled; never M61 / M83; M62 only with safeguarding) → **no source = `answer: null`, no model call, no credit** →
+PII redaction (names, e-mails, phones) → Claude by the tenant's tier → names restored, sources cited → credits and
+the `ai_credits` meter charged together (cost fast 1 / balanced 2 / reasoning 5, capped by what is left). A refused
+answer returns `answer: null` uncharged. The log keeps metadata only. Provider: `NEXUS_AI_PROVIDER` = `fake`
+(default, tests) / `anthropic` (direct, dev key) / `bedrock` (cell region).
 
 ## Data vault & access (M83)
 

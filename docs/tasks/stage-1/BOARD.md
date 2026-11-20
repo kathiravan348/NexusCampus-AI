@@ -66,7 +66,7 @@
 | NEX-055 | Plan, entitlements and usage API (M05) | D | done | Claude | 046 |
 | NEX-056 | Notifications engine (M07): templates, preferences, outbox worker, delivery log | D | done | Claude | 046 |
 | NEX-057 | Sync API (M10): idempotent replay, devices, conflicts, remote wipe | D | done | Claude | 046 |
-| NEX-058 | AI gateway (M11): tiers, Claude adapter, guarded pipeline, pgvector retrieval, credits | D | planned | — | 052, 055 |
+| NEX-058 | AI gateway (M11): tiers, Claude adapter, guarded pipeline, pgvector retrieval, credits | D | done | Claude | 052, 055 |
 | NEX-059 | Contract parity tests: Pydantic ↔ Zod | D | planned | — | 047–058 |
 | NEX-060 | Switch to real data 1: dev proxy, sign-in, shell, M01, M02 | C | planned | — | 049, 059 |
 | NEX-061 | Switch to real data 2: M03, M04, M05 | C | planned | — | 060 |

@@ -1,6 +1,7 @@
 """Demo rows of the module tables (Stage 1 APIs): M83 provider access (NEX-051), M06 privacy (NEX-052), M03 themes
 and the font library (NEX-053), M04 text overrides with their revisions (NEX-054),
-M05 plans and usage (NEX-055), M07 notifications (NEX-056), M10 devices and conflicts (NEX-057). Same shapes as the mock
+M05 plans and usage (NEX-055), M07 notifications (NEX-056), M10 devices and conflicts (NEX-057),
+M11 AI settings, credits and the demo index (NEX-058). Same shapes as the mock
 fixtures; idempotent upserts.
 """
 
@@ -10,8 +11,14 @@ from typing import Any
 
 from sqlalchemy import Connection, text
 
+from nexus.modules.m11.retrieval import hash_embedding, vector_literal
+
 #: Children first, for `--reset` (the font library is shared, so it is never deleted per tenant).
 MODULE_TABLES_CHILD_FIRST = (
+    "ai_chunks",
+    "ai_answer_log",
+    "ai_credits",
+    "ai_settings",
     "sync_conflicts",
     "devices",
     "idempotency_keys",
@@ -51,12 +58,15 @@ def _snake(row: dict[str, Any]) -> dict[str, Any]:
     return {_CAMEL.sub("_", k).lower(): v for k, v in row.items()}
 
 
-def _upsert(conn: Connection, table: str, row: dict[str, Any], key: str = "id") -> None:
+def _upsert(
+    conn: Connection, table: str, row: dict[str, Any], key: str = "id", casts: dict[str, str] | None = None
+) -> None:
     cols = list(row)
     updates = ", ".join(f"{c} = EXCLUDED.{c}" for c in cols if c != key)
+    values = ", ".join(f"CAST(:{c} AS {casts[c]})" if casts and c in casts else f":{c}" for c in cols)
     conn.execute(
         text(
-            f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({', '.join(':' + c for c in cols)}) "  # noqa: S608
+            f"INSERT INTO {table} ({', '.join(cols)}) VALUES ({values}) "  # noqa: S608
             f"ON CONFLICT ({key}) DO UPDATE SET {updates}"
         ),
         row,
@@ -81,6 +91,7 @@ def seed_modules(conn: Connection, data: dict[str, Any], tid: str) -> None:
             {"t": tid, "p": pack["packCode"]},
         )
     seed_texts(conn, data, tid)
+    seed_ai(conn, data, tid)
     for template in _rows(data, "notificationTemplates", tid):
         _upsert(conn, "notification_templates", _snake(template))
     for delivery in _rows(data, "notificationDeliveries", tid):
@@ -184,3 +195,77 @@ def seed_preferences(conn: Connection, data: dict[str, Any], tid: str) -> None:
                 "z": p["timeZone"],
             },
         )
+
+
+def seed_ai(conn: Connection, data: dict[str, Any], tid: str) -> None:
+    """AI settings and credits, plus the dev index: institution settings and calendars (M01) as chunks, embedded
+    with the deterministic dev embedder (a real cell re-indexes with its Bedrock model)."""
+    for st in _rows(data, "aiSettings", tid):
+        _upsert(
+            conn,
+            "ai_settings",
+            {
+                "tenant_id": tid,
+                "enabled": st["enabled"],
+                "modules": json.dumps(st["modules"]),
+                "blocked_modules": st["blockedModules"],
+                "safeguarding_enabled": st["safeguardingEnabled"],
+                "default_tier": st["defaultTier"],
+                "provider_kind": st["provider"]["kind"],
+                "provider_label": st["provider"]["label"],
+                "updated_at": st["updatedAt"],
+            },
+            key="tenant_id",
+            casts={"modules": "jsonb"},
+        )
+    for c in _rows(data, "aiCredits", tid):
+        conn.execute(
+            text(
+                "INSERT INTO ai_credits (tenant_id, period_start, period_end, granted, used, hard_cap) "
+                "VALUES (:t, :s, :e, :g, :u, :h) ON CONFLICT (tenant_id, period_start) DO UPDATE SET "
+                "granted = EXCLUDED.granted, used = EXCLUDED.used, hard_cap = EXCLUDED.hard_cap"
+            ),
+            {
+                "t": tid,
+                "s": c["periodStart"],
+                "e": c["periodEnd"],
+                "g": c["granted"],
+                "u": c["used"],
+                "h": c["hardCap"],
+            },
+        )
+    names = {i["id"]: i["name"] for i in _rows(data, "institutions", tid)}
+    for inst in _rows(data, "institutions", tid):
+        loc = inst["locale"]
+        content = (
+            f"{inst['name']} uses time zone {loc['timeZone']}, currency {loc['currency']}, "
+            f"country {loc['country']}; languages {', '.join(loc['supportedLocales'])}."
+        )
+        _chunk(conn, tid, "institution", inst["id"], f"{inst['name']} settings", loc["defaultLocale"], content)
+    for cal in _rows(data, "calendars", tid):
+        periods = "; ".join(f"{p['name']} {p['startsOn']} to {p['endsOn']}" for p in cal.get("periods", []))
+        label = f"{names.get(cal['institutionId'], '')} calendar {cal['academicYear']}".strip()
+        content = f"Academic year {cal['academicYear']} runs {cal['startsOn']} to {cal['endsOn']}. Terms: {periods}."
+        _chunk(conn, tid, "academicCalendar", cal["id"], label, "und", content)
+
+
+def _chunk(conn: Connection, tid: str, record_type: str, record_id: str, label: str, locale: str, content: str) -> None:
+    conn.execute(
+        text(
+            "INSERT INTO ai_chunks (id, tenant_id, module_id, record_type, record_id, label, locale, content, "
+            "embedding) "
+            "VALUES (:id, :t, 'M01', :rt, :rid, :l, :loc, :c, CAST(:e AS vector)) "
+            "ON CONFLICT (tenant_id, module_id, record_type, record_id, locale) DO UPDATE SET label = EXCLUDED.label, "
+            "content = EXCLUDED.content, embedding = EXCLUDED.embedding"
+        ),
+        {
+            "id": f"aic-{record_id}",
+            "t": tid,
+            "rt": record_type,
+            "rid": record_id,
+            "l": label[:200],
+            "loc": locale,
+            "c": content,
+            "e": vector_literal(hash_embedding(label + "\n" + content)),
+        },
+    )
