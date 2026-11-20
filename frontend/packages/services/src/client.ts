@@ -37,6 +37,8 @@ export interface ApiClientOptions {
   readonly fetch?: typeof fetch;
   /** Real mode: the session cookie is gone or expired (`401`) — the app shows sign-in again. */
   readonly onUnauthorized?: () => void;
+  /** Real mode: this browser's registered device id, sent as `X-Device-Id` (own-device revoke check). */
+  readonly deviceId?: () => string | null;
 }
 
 export type QueryParams = Readonly<Record<string, string | number | boolean | null | undefined>>;
@@ -54,6 +56,7 @@ export const HEADER = {
   scenario: "X-Nexus-Scenario",
   idempotencyKey: "Idempotency-Key",
   csrf: "X-CSRF-Token",
+  device: "X-Device-Id",
 } as const;
 
 /** The backend's double-submit CSRF cookie (readable by the page, D44). */
@@ -122,6 +125,8 @@ export class ApiClient {
       // The tenant comes from the signed session cookie, never a header; unsafe calls echo the CSRF cookie.
       const csrf = method === "GET" ? null : readCsrfToken();
       if (csrf) headers.set(HEADER.csrf, csrf);
+      const device = this.options.deviceId?.() ?? null;
+      if (device) headers.set(HEADER.device, device);
     } else {
       if (identity) headers.set(HEADER.tenant, identity.tenantId);
       if (identity) headers.set(HEADER.user, identity.userId);

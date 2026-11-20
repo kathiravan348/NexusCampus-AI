@@ -8,7 +8,7 @@ test.skip(
   "Set NEXUS_E2E_EMAIL and NEXUS_E2E_PASSWORD (a seeded admin) to run",
 );
 
-test("@real signs in through Keycloak; setup, theme, texts and modules persist; signs out", async ({
+test("@real Keycloak sign-in; setup, theme, texts, modules, audit, requests, offline sync; device wipe", async ({
   page,
 }) => {
   await page.goto("/setup");
@@ -96,10 +96,81 @@ test("@real signs in through Keycloak; setup, theme, texts and modules persist; 
     1,
   );
 
+  // Audit & privacy (NEX-062): the page chain check of the real log.
+  await page.goto("/privacy");
+  await page.getByRole("button", { name: "Check this page" }).click();
+  await expect(page.getByText(/linked and intact/)).toBeVisible();
+
+  // Data requests (NEX-062): move an open request one step, when the tenant has one.
+  await page.getByRole("tab", { name: "Data requests" }).click();
+  const start = page.getByRole("button", { name: "Start work" });
+  const complete = page.getByRole("button", { name: "Mark completed" });
+  const people = page.getByRole("table").getByRole("button");
+  let stepped = false;
+  for (let i = 0; i < (await people.count()) && !stepped; i += 1) {
+    await people.nth(i).click();
+    for (const action of [start, complete]) {
+      if (!stepped && (await action.count()) > 0) {
+        await action.first().click();
+        await expect(page.getByText("Request updated.")).toBeVisible();
+        stepped = true;
+      }
+    }
+  }
+  test
+    .info()
+    .annotations.push({ type: "dsr", description: stepped ? "stepped" : "no open request" });
+
+  // Notifications (NEX-062): a preference saved offline syncs once, through the idempotent API.
+  const updates = async () => {
+    const res = await page.request.get("/api/v1/audit-events", {
+      params: { action: "m07.preference.updated", pageSize: "1" },
+    });
+    return ((await res.json()) as { total: number }).total;
+  };
+  const prefsBefore = await updates();
+  await page.goto("/notifications");
+  await page.getByRole("tab", { name: /preferences/i }).click();
+  const quiet = page.getByRole("switch", { name: "Hold messages during quiet hours" });
+  await page.context().setOffline(true);
+  await quiet.click();
+  await page.getByRole("button", { name: /^Save/ }).click();
+  await expect(
+    page.getByText("Saved on this device. It will sync when you are back online."),
+  ).toBeVisible();
+  await page.context().setOffline(false);
+  await expect.poll(updates, { timeout: 30_000 }).toBe(prefsBefore + 1);
+  await page.waitForTimeout(1_500);
+  expect(await updates()).toBe(prefsBefore + 1); // replayed exactly once
+  await page.reload();
+  await page.getByRole("tab", { name: /preferences/i }).click();
+  await page.getByRole("switch", { name: "Hold messages during quiet hours" }).click();
+  await page.getByRole("button", { name: /^Save/ }).click();
+  await expect(page.getByText("Preferences saved.")).toBeVisible();
+
   await page.goto("/access");
   await expect(page.getByRole("heading", { level: 1, name: "Users & access" })).toBeVisible();
-  await page.getByRole("button", { name: "Sign out" }).click();
+  // Sync centre (NEX-062): revoking this very device wipes it and signs the user out.
+  await page.goto("/sync");
+  await page.getByRole("tab", { name: "Devices", exact: true }).click();
+  const devices = (await (
+    await page.request.get("/api/v1/devices", { params: { pageSize: "200" } })
+  ).json()) as {
+    items: { id: string; label: string; status: string; userId: string }[];
+  };
+  const mine = devices.items
+    .filter((d) => d.status === "active" && d.label.startsWith("Web browser"))
+    .sort((a, b) => b.id.localeCompare(a.id))[0];
+  expect(mine).toBeDefined();
+  await page.getByRole("button", { name: `Revoke and wipe ${mine!.label}` }).click();
+  await expect(
+    page.getByText("This is the device you are using now.", { exact: false }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: "Yes, this device" }).click();
+  await page.getByRole("button", { name: "Revoke & wipe" }).last().click();
   await expect(
     page.getByRole("button", { name: "Sign in with your institution account" }),
-  ).toBeVisible();
+  ).toBeVisible({
+    timeout: 20_000,
+  });
 });

@@ -56,6 +56,16 @@ export {
   type OutboxSend,
 } from "./mutation";
 export { queryKeys, type KeyScope } from "./keys";
+export {
+  HEARTBEAT_MS,
+  HeartbeatResponseSchema,
+  heartbeat,
+  requestHeartbeat,
+  serverDeviceId,
+  storedServerDevice,
+  useDeviceHeartbeat,
+  useThisDeviceId,
+} from "./device";
 export * from "./modules/m01";
 export * from "./modules/m02";
 export * from "./modules/m03";

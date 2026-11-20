@@ -48,7 +48,7 @@
 │  │  │  ├─ src/          db (mutable mockDb, reset), context (headers, can, entitled, paginate, apiError,
 │  │  │  │                 maskPerson), scenarios (empty/error/slow/offline), browser (worker), node (server)
 │  │  │  └─ src/handlers/ route (get/list/ok helpers), m01–m07, m10, m11, m83 read handlers, index
-│  │  ├─ services/      data layer, mock | real, offline-aware (NEX-011)
+│  │  ├─ services/      data layer, mock | real, offline-aware (NEX-011); device.ts = device registry heartbeat + remote wipe (NEX-062)
 │  │  │  ├─ src/          config (DATA_MODE, API_BASE), client (ApiClient, ApiRequestError), session
 │  │  │  │                 (SessionProvider, mock scenario), query (NexusQueryProvider, persisted L1 cache,
 │  │  │  │                 useLastSynced), mutation (useOutboxMutation, L2), keys (queryKeys), test-utils

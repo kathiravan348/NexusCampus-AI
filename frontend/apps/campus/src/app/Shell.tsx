@@ -1,5 +1,5 @@
 import { useText } from "@nexus/i18n";
-import { DATA_MODE } from "@nexus/services";
+import { DATA_MODE, useDeviceHeartbeat } from "@nexus/services";
 import { AppShell, DemoBanner, NavItem } from "@nexus/ui-core";
 import { House } from "lucide-react";
 import { Link, Outlet, useLocation, useOutletContext } from "react-router";
@@ -27,6 +27,7 @@ function isActive(pathname: string, path: string): boolean {
 /** The signed-in layout: menu of the modules this user may open, header actions, page outlet. */
 export function Shell({ modules }: { readonly modules: readonly ModuleEntry[] }) {
   const t = useText();
+  useDeviceHeartbeat(); // real mode: device registry, remote wipe (NEX-062)
   const { pathname } = useLocation();
   const { tenantName } = useRuntime();
   const access = useModuleAccess();
