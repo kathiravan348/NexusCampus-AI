@@ -1,7 +1,8 @@
 import { getDirection, useText } from "@nexus/i18n";
-import { useMe } from "@nexus/services";
+import { useMe, useUsers } from "@nexus/services";
 import { Button, EmptyState, Skeleton, Tabs } from "@nexus/ui-core";
 import { WifiOff } from "lucide-react";
+import { LastSynced } from "../../app/LastSynced";
 import { useOnline } from "../../app/RouteGuard";
 import { useRuntime } from "../../app/TenantRuntime";
 import { RolesTab } from "./RolesTab";
@@ -15,6 +16,7 @@ export function AccessPage() {
   const { locale } = useRuntime();
   const online = useOnline();
   const me = useMe();
+  const users = useUsers(); // same cache as UsersTab: the screen's main data
 
   if (me.isPending) {
     return (
@@ -50,6 +52,7 @@ export function AccessPage() {
           {t("m02.nav.title")}
         </h1>
         <p className="text-body text-text-secondary">{t("m02.access.intro")}</p>
+        <LastSynced updatedAt={users.dataUpdatedAt} />
       </header>
 
       {!online && (

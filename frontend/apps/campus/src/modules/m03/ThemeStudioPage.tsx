@@ -16,6 +16,7 @@ import {
 } from "@nexus/ui-core";
 import { Palette, WifiOff } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { LastSynced } from "../../app/LastSynced";
 import { useOnline } from "../../app/RouteGuard";
 import { toTenantTheme, useRuntime } from "../../app/TenantRuntime";
 import { AssetsPanel, isValidAssetInput } from "./AssetsPanel";
@@ -238,6 +239,7 @@ export function ThemeStudioPage() {
             </Badge>
           </div>
           <p className="text-body text-text-secondary">{t("m03.studio.intro")}</p>
+          <LastSynced updatedAt={themeQuery.dataUpdatedAt} />
         </div>
         <div className="flex flex-wrap items-center gap-2">
           {isDirty && (

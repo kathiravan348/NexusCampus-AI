@@ -11,6 +11,7 @@ describe("AccessPage (M02)", () => {
       await screen.findByRole("heading", { level: 1, name: "Users & access" }),
     ).toBeInTheDocument();
     expect(screen.getByRole("note")).toBeInTheDocument();
+    expect(await screen.findByTestId("last-synced")).toHaveTextContent(/^Last synced /);
     for (const name of ["Users", "Roles", "Sessions", "Single sign-on"]) {
       expect(screen.getByRole("tab", { name })).toBeInTheDocument();
     }

@@ -150,6 +150,7 @@ describe("TextStudioPage (M04)", () => {
       window.dispatchEvent(new Event("offline"));
     });
     expect(await screen.findByText(/Cached texts can be browsed/)).toBeInTheDocument();
+    expect(await screen.findByTestId("last-synced")).toHaveTextContent(/^Last synced /);
     spy.mockReturnValue(true);
     act(() => {
       window.dispatchEvent(new Event("online"));

@@ -1,6 +1,7 @@
 import { getDirection, useText } from "@nexus/i18n";
-import { useMe } from "@nexus/services";
+import { useMe, usePreferences } from "@nexus/services";
 import { Tabs } from "@nexus/ui-core";
+import { LastSynced } from "../../app/LastSynced";
 import { useOnline } from "../../app/RouteGuard";
 import { useRuntime } from "../../app/TenantRuntime";
 import { DeliveryLogTab } from "./DeliveryLogTab";
@@ -13,6 +14,7 @@ export function NotificationsPage() {
   const { locale } = useRuntime();
   const online = useOnline();
   const me = useMe();
+  const prefs = usePreferences(); // every role has preferences: the screen's main data
   const canManage = me.data?.permissions.includes("m07.template.manage") ?? false;
 
   return (
@@ -22,6 +24,7 @@ export function NotificationsPage() {
           {t("m07.nav.title")}
         </h1>
         <p className="text-body text-text-secondary">{t("m07.notifications.intro")}</p>
+        <LastSynced updatedAt={prefs.dataUpdatedAt} />
       </header>
       <Tabs
         ariaLabel={t("m07.notifications.tabsLabel")}

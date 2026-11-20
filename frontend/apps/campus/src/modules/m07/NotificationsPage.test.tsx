@@ -20,5 +20,6 @@ describe("NotificationsPage (M07)", () => {
     renderApp("/notifications", { as: persona(TENANT.riverside, "guardian"), modules: MODULES });
     expect(await screen.findByRole("tab", { name: "My preferences" })).toBeInTheDocument();
     expect(screen.queryByRole("tab", { name: "Templates" })).not.toBeInTheDocument();
+    expect(await screen.findByTestId("last-synced")).toHaveTextContent(/^Last synced /);
   });
 });

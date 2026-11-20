@@ -15,6 +15,7 @@ import {
 import { Search, WifiOff } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { localeName } from "../../app/LocaleSwitch";
+import { LastSynced } from "../../app/LastSynced";
 import { useOnline } from "../../app/RouteGuard";
 import { overrideLayers, useRuntime } from "../../app/TenantRuntime";
 import { ImportExport } from "./ImportExport";
@@ -235,6 +236,7 @@ export function TextStudioPage() {
             {t("m04.nav.title")}
           </h1>
           <p className="text-body text-text-secondary">{t("m04.studio.intro")}</p>
+          <LastSynced updatedAt={overridesQuery.dataUpdatedAt} />
         </div>
         <div className="w-full sm:w-64">
           <Select
