@@ -1299,6 +1299,26 @@
     "message": "Unlimited",
     "description": "Shown next to a usage figure that has no limit."
   },
+  "common.pwa.install": {
+    "message": "Install app",
+    "description": "Header icon button label: install NexusCampus as an app on this device. Shown only when the browser offers installation."
+  },
+  "common.pwa.updateReady": {
+    "message": "A new version of NexusCampus is ready.",
+    "description": "Notice shown when an updated version has downloaded and is waiting to start."
+  },
+  "common.pwa.reload": {
+    "message": "Reload",
+    "description": "Button in the update notice: start the new version by reloading the page."
+  },
+  "common.pwa.later": {
+    "message": "Later",
+    "description": "Button in the update notice: hide the notice and keep using the current version."
+  },
+  "common.pwa.offlineReady": {
+    "message": "Ready to work offline",
+    "description": "One-time toast: the app files are saved on this device, so it opens without a connection."
+  },
   "m03.nav.title": {
     "message": "Theme studio",
     "description": "Sidebar menu item and page title for Theme studio (M03)."

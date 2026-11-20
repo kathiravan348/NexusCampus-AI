@@ -112,5 +112,7 @@ Available to everyone from **Notifications** in the menu.
 - Administrators also see **Templates**: each message by event, channel and language, with an on/off switch. **Edit** opens the message: pick a **Language** or **Add a language…**, change the **Subject** (email) and **Message**, and see a **Preview with sample values**. A message with broken syntax cannot be saved.
 - **Delivery log** shows what was sent to whom, by which channel, and whether it arrived, with the reason for anything that failed or was not sent. Filter by **Status** and **Channel**.
 
-## Not there yet
-- Offline app install.
+## Install the app, offline and updates
+- **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
+- **Working offline:** after the first visit, a "Ready to work offline" message confirms the app itself is saved on this device, so it opens without a connection. What data you can read offline follows each module's offline level; private settings (L0) still need a connection.
+- **Updating:** when a new version has downloaded, a notice says "A new version of NexusCampus is ready." Choose **Reload** to switch now, or **Later** to keep working; the new version starts the next time all app tabs are closed.

@@ -61,7 +61,8 @@
 │     │                 modules/m07/ (NotificationsPage, TemplatesTab, TemplateEditor, DeliveryLogTab, PreferencesTab, NEX-024),
 │     │                 modules/m10/ (SyncCentrePage, ThisDeviceTab, DevicesTab, ConflictsTab, NEX-019),
 │     │                 modules/m11/ (AiSettingsPage, AssistButton, AssistPanel, AssistUnavailable, NEX-020),
-│     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023)
+│     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023),
+│     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest + Workbox in vite.config, NEX-030)
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)
 ├─ backend/             product backend (planned, Stage 1 build step)
 ├─ control/             Nexus Control backend (planned, Stage 2)

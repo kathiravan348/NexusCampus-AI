@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router";
 import pkg from "../package.json";
 import { createAppRouter } from "./app/router";
 import { TenantRuntime } from "./app/TenantRuntime";
+import { UpdateToast } from "./pwa/UpdateToast";
 
 export interface AppProvidersProps {
   readonly children: ReactNode;
@@ -20,7 +21,10 @@ export function AppProviders({ children, db, createClient }: AppProvidersProps) 
     <SessionProvider {...(db ? { db } : {})}>
       <NexusQueryProvider appVersion={pkg.version} {...(createClient ? { createClient } : {})}>
         <TenantRuntime>
-          <ToastProvider>{children}</ToastProvider>
+          <ToastProvider>
+            {children}
+            <UpdateToast />
+          </ToastProvider>
         </TenantRuntime>
       </NexusQueryProvider>
     </SessionProvider>
