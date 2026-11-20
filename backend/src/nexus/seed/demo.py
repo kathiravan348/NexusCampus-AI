@@ -22,9 +22,12 @@ from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 7
+FIXTURES_VERSION = 8
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
+    "break_glass_notices",
+    "access_grants",
+    "access_requests",
     "vault_keys",
     "scim_tokens",
     "sso_providers",
@@ -175,6 +178,14 @@ def seed_identity(conn: Connection, data: dict[str, Any], tid: str) -> None:
     for k in _rows(data, "keyStatuses", tid):
         row = {**_snake(k), "vault_key_name": key_name(tid, k["purpose"])}
         _upsert(conn, "vault_keys", row)
+    # Provider access (NEX-051): requests before the grants that point at them.
+    for table, key in (
+        ("access_requests", "accessRequests"),
+        ("access_grants", "accessGrants"),
+        ("break_glass_notices", "breakGlassNotices"),
+    ):
+        for row in _rows(data, key, tid):
+            _upsert(conn, table, _snake(row))
 
 
 def seed_audit(conn: Connection, data: dict[str, Any], tenant_id: str) -> int:

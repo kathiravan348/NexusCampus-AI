@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -141,6 +141,23 @@ revokes their sessions.
 | `POST /api/v1/access-grants/:id/revoke` | `m83.grant.approve` | `{}` → `AccessGrant` (`revokedAt` set; request → `revoked`) | `401`, `403`, `404`, `409 conflict` (ended or revoked); audits `m83.accessGrant.revoked` |
 
 Grant history uses `GET /api/v1/audit-events?grantId=` (M06).
+
+**Provider grant credentials (NEX-051, ARCHITECTURE §10).** Provider staff never hold standing access. With an
+approved, active grant they call tenant endpoints with `Authorization: Bearer ngc1.<tenant>.<grant>.<staff>.<exp>.<sig>`
+(HMAC-signed, valid ≤ 60 min and never past the grant's end; key `NEXUS_GRANT_SIGNING_KEY`). Every `require` guard
+reloads the grant on each request: outside its window, after a revoke, for a module it does not list, or a non-GET
+on a `read` grant → `403 forbidden`; a forged or expired credential → `401`. A grant holds the non-sensitive
+permissions of its modules tenant-wide; sensitive ones (`m02.person.read_restricted`, `m06.request.manage`,
+`m83.grant.approve`) never. Each attempt is audited as `m83.accessGrant.used` / `.refused`, and every write made on a
+grant is recorded with `actorKind = provider_grant` and its `grantId`. An approved request whose grant ran out reads
+as `expired`.
+
+Dev-only access broker stub (not mounted in `prod`; replaced by P10 in Stage 2; no staff sign-in):
+
+| Method & path | Input / Output | Errors |
+|---|---|---|
+| `POST /api/v1/dev/broker/tenants/:tenantId/access-requests` | `{ staffRef, staffDisplayName, reason, modules, mode, durationHours }` → `201 AccessRequest` (`pending`); audits `m83.accessRequest.filed` | `400`, `401` (unknown tenant), `503` (other region) |
+| `POST /api/v1/dev/broker/tenants/:tenantId/access-grants/:id/credential` | `{ staffRef }` → `{ credential, expiresAt }` | `400`, `404` (unknown or another staff member's), `409 conflict` (grant not active) |
 
 ## Notifications (M07)
 

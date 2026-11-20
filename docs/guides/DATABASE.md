@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-050) · Migration: `0007_vault_keys`
+> State as of: 2026-11-20 (NEX-051) · Migration: `0008_access_grants`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -80,6 +80,16 @@ Sensitive fields are stored as `v1:<keyVersion>:<wrapped data key>:<nonce+cipher
 AES-GCM with a data key wrapped by the tenant's Vault Transit key `tenant-<tenant>-<purpose>`, the field path bound as
 associated data. Exact-match search uses blind indexes (Vault HMAC). Destroying a tenant's keys (offboarding,
 `destroy_tenant_keys`) makes those values unreadable; the audit chain still verifies.
+
+## Provider access (M83 — `0008_access_grants`, V-3/V-5)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `access_requests` | `id`, `tenant_id`, `staff_ref`, `staff_display_name`, `reason`, `modules[]`, `mode`, `duration_hours`, `status`, `requested_at`, `decided_at`, `decided_by` | 1–72 h; `decided_*` set exactly when not `pending`; the deny reason is not stored |
+| `access_grants` | `id`, `tenant_id`, `request_id` (unique), `modules[]`, `mode`, `starts_at`, `ends_at`, `revoked_at` | ends after start, ≤ 72 h; revoked only inside its window |
+| `break_glass_notices` | `id`, `tenant_id`, `category`, `approver_refs[2]`, `occurred_at`, `notified_at`, `report_url` | two different approvers; `nexus_app` may only read (created by the provider plane, Stage 2) |
+
+All three use forced RLS (`tenant_isolation`). No grant row is ever deleted; grant credentials are not stored.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

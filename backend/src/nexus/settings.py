@@ -48,6 +48,9 @@ class Settings(BaseSettings):
     vault_url: str = "http://127.0.0.1:58200"
     vault_token: SecretStr = SecretStr("")
     vault_transit_mount: str = "transit"
+    #: HMAC key for provider grant credentials (NEX-051). Empty in dev/test = a random key per process;
+    #: required in prod.
+    grant_signing_key: SecretStr = SecretStr("")
     # Dev-only Keycloak setup (`nexus-keycloak-dev`): admin login and the password given to demo users.
     keycloak_admin_user: str = "admin"
     keycloak_admin_password: SecretStr = SecretStr("")

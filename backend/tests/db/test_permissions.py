@@ -6,7 +6,6 @@ from typing import Annotated, Any
 
 import pytest
 from fastapi import Depends, FastAPI
-from fastapi.routing import APIRoute
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, text
 from sqlalchemy.exc import DBAPIError
@@ -19,6 +18,7 @@ from nexus.seed.demo import load_fixtures
 from tests.db.auth_fixtures import sign_in
 from tests.db.conftest import DbUrls
 from tests.fake_keycloak import FakeKeycloak
+from tests.routes import api_routes
 
 LS = TenantContext("ten-ls")
 ARJUN = {"email": "arjun.mehta@littlesteps.example.edu", "sub": "kc-arjun"}
@@ -146,7 +146,7 @@ def _guards(dependant: Any) -> list[tuple[str | None, str]]:
 
 def test_every_non_public_route_has_a_guard() -> None:
     app = create_app()
-    routes = [r for r in app.routes if isinstance(r, APIRoute)]
+    routes = api_routes(app)
     unguarded = [r.path for r in routes if r.path not in PUBLIC and not _guards(r.dependant)]
     assert routes and unguarded == []
     for r in routes:

@@ -21,8 +21,18 @@ TENANT_SETTING = "app.tenant_id"
 
 
 @dataclass(frozen=True)
+class ProviderActor:
+    """Provider staff acting through an approved access grant (M83, V-3)."""
+
+    grant_id: str
+    staff_ref: str
+
+
+@dataclass(frozen=True)
 class TenantContext:
     tenant_id: str
+    #: Set when the request runs on a provider grant credential: every audit row then names the grant.
+    provider: ProviderActor | None = None
 
 
 async def bind_tenant(session: AsyncSession, ctx: TenantContext) -> None:
