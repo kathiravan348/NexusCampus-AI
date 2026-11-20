@@ -17,12 +17,14 @@ from sqlalchemy import Connection, create_engine, text
 
 from nexus.core.tenancy import TENANT_SETTING
 from nexus.core.timing import utf8_console
+from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 3
+FIXTURES_VERSION = 4
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
+    *RBAC_TABLES_CHILD_FIRST,
     "sessions",
     "role_profiles",
     "users",
@@ -221,6 +223,7 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
                     reset_tenant(conn, tenant["id"])
                 seed_tenant(conn, fixtures, tenant)
                 seed_identity(conn, fixtures, tenant["id"])
+                seed_rbac(conn, fixtures, tenant["id"])
                 seed_audit(conn, fixtures, tenant["id"])
     finally:
         engine.dispose()
@@ -235,6 +238,9 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
         "users": len(fixtures["users"]),
         "role_profiles": len(fixtures["roleProfiles"]),
         "sessions": len(fixtures["sessions"]),
+        "roles": len(fixtures["roles"]),
+        "role_assignments": len(fixtures["roleAssignments"]),
+        "entitlements": len(fixtures["entitlements"]),
     }
 
 

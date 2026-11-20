@@ -38,7 +38,8 @@ def _staff_domain(data: dict[str, Any], tenant_id: str) -> str:
         for u in data["users"]
         if u["tenantId"] == tenant_id and not u["email"].endswith("@family.test")
     )
-    return domains.most_common(1)[0][0]
+    domain: str = domains.most_common(1)[0][0]
+    return domain
 
 
 async def _organizations(http: httpx2.AsyncClient, admin: str, data: dict[str, Any]) -> dict[str, str]:
@@ -76,8 +77,11 @@ async def _user_id(http: httpx2.AsyncClient, admin: str, user: dict[str, Any], p
             "firstName": name[0],
             "lastName": name[1] if len(name) > 1 else "",
             "credentials": [
-                {"type": "password", "value": get_settings().demo_user_password.get_secret_value(),
-                 "temporary": False}
+                {
+                    "type": "password",
+                    "value": get_settings().demo_user_password.get_secret_value(),
+                    "temporary": False,
+                }
             ],
         },
     )

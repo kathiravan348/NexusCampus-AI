@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "tenants": [
     {
       "id": "ten-ls",
@@ -4022,6 +4022,1679 @@
       "lastSeenAt": "2026-09-14T08:10:00Z",
       "expiresAt": "2026-09-21T07:45:00Z",
       "revokedAt": null
+    }
+  ],
+  "permissions": [
+    {
+      "code": "m01.institution.read",
+      "moduleId": "M01",
+      "sensitive": false,
+      "descriptionKey": "m01.permission.institutionRead"
+    },
+    {
+      "code": "m01.institution.manage",
+      "moduleId": "M01",
+      "sensitive": false,
+      "descriptionKey": "m01.permission.institutionManage"
+    },
+    {
+      "code": "m01.calendar.manage",
+      "moduleId": "M01",
+      "sensitive": false,
+      "descriptionKey": "m01.permission.calendarManage"
+    },
+    {
+      "code": "m02.user.read",
+      "moduleId": "M02",
+      "sensitive": false,
+      "descriptionKey": "m02.permission.userRead"
+    },
+    {
+      "code": "m02.user.invite",
+      "moduleId": "M02",
+      "sensitive": false,
+      "descriptionKey": "m02.permission.userInvite"
+    },
+    {
+      "code": "m02.role.manage",
+      "moduleId": "M02",
+      "sensitive": false,
+      "descriptionKey": "m02.permission.roleManage"
+    },
+    {
+      "code": "m02.person.read_restricted",
+      "moduleId": "M02",
+      "sensitive": true,
+      "descriptionKey": "m02.permission.personReadRestricted"
+    },
+    {
+      "code": "m02.sso.manage",
+      "moduleId": "M02",
+      "sensitive": false,
+      "descriptionKey": "m02.permission.ssoManage"
+    },
+    {
+      "code": "m03.theme.manage",
+      "moduleId": "M03",
+      "sensitive": false,
+      "descriptionKey": "m03.permission.themeManage"
+    },
+    {
+      "code": "m04.text.manage",
+      "moduleId": "M04",
+      "sensitive": false,
+      "descriptionKey": "m04.permission.textManage"
+    },
+    {
+      "code": "m05.plan.read",
+      "moduleId": "M05",
+      "sensitive": false,
+      "descriptionKey": "m05.permission.planRead"
+    },
+    {
+      "code": "m05.module.manage",
+      "moduleId": "M05",
+      "sensitive": false,
+      "descriptionKey": "m05.permission.moduleManage"
+    },
+    {
+      "code": "m06.audit.read",
+      "moduleId": "M06",
+      "sensitive": false,
+      "descriptionKey": "m06.permission.auditRead"
+    },
+    {
+      "code": "m06.consent.manage",
+      "moduleId": "M06",
+      "sensitive": false,
+      "descriptionKey": "m06.permission.consentManage"
+    },
+    {
+      "code": "m06.request.manage",
+      "moduleId": "M06",
+      "sensitive": true,
+      "descriptionKey": "m06.permission.requestManage"
+    },
+    {
+      "code": "m07.template.manage",
+      "moduleId": "M07",
+      "sensitive": false,
+      "descriptionKey": "m07.permission.templateManage"
+    },
+    {
+      "code": "m07.notification.send",
+      "moduleId": "M07",
+      "sensitive": false,
+      "descriptionKey": "m07.permission.notificationSend"
+    },
+    {
+      "code": "m07.preference.manage",
+      "moduleId": "M07",
+      "sensitive": false,
+      "descriptionKey": "m07.permission.preferenceManage"
+    },
+    {
+      "code": "m10.device.read",
+      "moduleId": "M10",
+      "sensitive": false,
+      "descriptionKey": "m10.permission.deviceRead"
+    },
+    {
+      "code": "m10.device.wipe",
+      "moduleId": "M10",
+      "sensitive": false,
+      "descriptionKey": "m10.permission.deviceWipe"
+    },
+    {
+      "code": "m11.assist.use",
+      "moduleId": "M11",
+      "sensitive": false,
+      "descriptionKey": "m11.permission.assistUse"
+    },
+    {
+      "code": "m11.settings.manage",
+      "moduleId": "M11",
+      "sensitive": false,
+      "descriptionKey": "m11.permission.settingsManage"
+    },
+    {
+      "code": "m83.vault.read",
+      "moduleId": "M83",
+      "sensitive": false,
+      "descriptionKey": "m83.permission.vaultRead"
+    },
+    {
+      "code": "m83.grant.approve",
+      "moduleId": "M83",
+      "sensitive": true,
+      "descriptionKey": "m83.permission.grantApprove"
+    }
+  ],
+  "roles": [
+    {
+      "id": "role-ls-owner",
+      "tenantId": "ten-ls",
+      "name": "Owner",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read",
+        "m83.grant.approve"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ls-admin",
+      "tenantId": "ten-ls",
+      "name": "Administrator",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution",
+        "campus"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ls-teacher",
+      "tenantId": "ten-ls",
+      "name": "Teacher",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m02.user.read",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "institution",
+        "campus",
+        "department",
+        "class"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ls-guardian",
+      "tenantId": "ten-ls",
+      "name": "Guardian",
+      "system": true,
+      "permissions": [
+        "m06.consent.manage",
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ls-learner",
+      "tenantId": "ten-ls",
+      "name": "Learner",
+      "system": true,
+      "permissions": [
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-rv-owner",
+      "tenantId": "ten-rv",
+      "name": "Owner",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read",
+        "m83.grant.approve"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-rv-admin",
+      "tenantId": "ten-rv",
+      "name": "Administrator",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution",
+        "campus"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-rv-teacher",
+      "tenantId": "ten-rv",
+      "name": "Teacher",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m02.user.read",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "institution",
+        "campus",
+        "department",
+        "class"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-rv-guardian",
+      "tenantId": "ten-rv",
+      "name": "Guardian",
+      "system": true,
+      "permissions": [
+        "m06.consent.manage",
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-rv-learner",
+      "tenantId": "ten-rv",
+      "name": "Learner",
+      "system": true,
+      "permissions": [
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-nb-owner",
+      "tenantId": "ten-nb",
+      "name": "Owner",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read",
+        "m83.grant.approve"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-nb-admin",
+      "tenantId": "ten-nb",
+      "name": "Administrator",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution",
+        "campus"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-nb-teacher",
+      "tenantId": "ten-nb",
+      "name": "Teacher",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m02.user.read",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "institution",
+        "campus",
+        "department",
+        "class"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-nb-guardian",
+      "tenantId": "ten-nb",
+      "name": "Guardian",
+      "system": true,
+      "permissions": [
+        "m06.consent.manage",
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-nb-learner",
+      "tenantId": "ten-nb",
+      "name": "Learner",
+      "system": true,
+      "permissions": [
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ax-owner",
+      "tenantId": "ten-ax",
+      "name": "Owner",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read",
+        "m83.grant.approve"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ax-admin",
+      "tenantId": "ten-ax",
+      "name": "Administrator",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution",
+        "campus"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ax-teacher",
+      "tenantId": "ten-ax",
+      "name": "Teacher",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m02.user.read",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "institution",
+        "campus",
+        "department",
+        "class"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ax-guardian",
+      "tenantId": "ten-ax",
+      "name": "Guardian",
+      "system": true,
+      "permissions": [
+        "m06.consent.manage",
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-ax-learner",
+      "tenantId": "ten-ax",
+      "name": "Learner",
+      "system": true,
+      "permissions": [
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-hm-owner",
+      "tenantId": "ten-hm",
+      "name": "Owner",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read",
+        "m83.grant.approve"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-hm-admin",
+      "tenantId": "ten-hm",
+      "name": "Administrator",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m01.institution.manage",
+        "m01.calendar.manage",
+        "m02.user.read",
+        "m02.user.invite",
+        "m02.role.manage",
+        "m02.person.read_restricted",
+        "m02.sso.manage",
+        "m03.theme.manage",
+        "m04.text.manage",
+        "m05.plan.read",
+        "m05.module.manage",
+        "m06.audit.read",
+        "m06.consent.manage",
+        "m06.request.manage",
+        "m07.template.manage",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m10.device.wipe",
+        "m11.assist.use",
+        "m11.settings.manage",
+        "m83.vault.read"
+      ],
+      "allowedScopeKinds": [
+        "group",
+        "institution",
+        "campus"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-hm-teacher",
+      "tenantId": "ten-hm",
+      "name": "Teacher",
+      "system": true,
+      "permissions": [
+        "m01.institution.read",
+        "m02.user.read",
+        "m07.notification.send",
+        "m07.preference.manage",
+        "m10.device.read",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "institution",
+        "campus",
+        "department",
+        "class"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-hm-guardian",
+      "tenantId": "ten-hm",
+      "name": "Guardian",
+      "system": true,
+      "permissions": [
+        "m06.consent.manage",
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "role-hm-learner",
+      "tenantId": "ten-hm",
+      "name": "Learner",
+      "system": true,
+      "permissions": [
+        "m07.preference.manage",
+        "m11.assist.use"
+      ],
+      "allowedScopeKinds": [
+        "own"
+      ],
+      "createdAt": "2026-01-15T09:00:00Z",
+      "updatedAt": "2026-01-15T09:00:00Z"
+    }
+  ],
+  "roleAssignments": [
+    {
+      "id": "ra-ls-priya-owner",
+      "tenantId": "ten-ls",
+      "userId": "usr-ls-priya",
+      "roleId": "role-ls-owner",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-ls"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ls-priya",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ls-priya-admin",
+      "tenantId": "ten-ls",
+      "userId": "usr-ls-priya",
+      "roleId": "role-ls-admin",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-ls"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ls-priya",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ls-arjun-teacher",
+      "tenantId": "ten-ls",
+      "userId": "usr-ls-arjun",
+      "roleId": "role-ls-teacher",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-ls-main"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ls-priya",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ls-arjun-guardian",
+      "tenantId": "ten-ls",
+      "userId": "usr-ls-arjun",
+      "roleId": "role-ls-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ls-priya",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ls-sunita-guardian",
+      "tenantId": "ten-ls",
+      "userId": "usr-ls-sunita",
+      "roleId": "role-ls-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ls-priya",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ls-deepak-guardian",
+      "tenantId": "ten-ls",
+      "userId": "usr-ls-deepak",
+      "roleId": "role-ls-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ls-priya",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-helen-owner",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-helen",
+      "roleId": "role-rv-owner",
+      "scope": {
+        "kind": "group",
+        "targetId": "grp-rv"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-helen-admin",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-helen",
+      "roleId": "role-rv-admin",
+      "scope": {
+        "kind": "group",
+        "targetId": "grp-rv"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-tom-teacher",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-tom",
+      "roleId": "role-rv-teacher",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-rv-north"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-amira-teacher",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-amira",
+      "roleId": "role-rv-teacher",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-rv-south"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-amira-guardian",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-amira",
+      "roleId": "role-rv-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-grace-guardian",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-grace",
+      "roleId": "role-rv-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-daniel-guardian",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-daniel",
+      "roleId": "role-rv-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-rv-oliver-learner",
+      "tenantId": "ten-rv",
+      "userId": "usr-rv-oliver",
+      "roleId": "role-rv-learner",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-rv-helen",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-robert-owner",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-robert",
+      "roleId": "role-nb-owner",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-nb"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-robert-admin",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-robert",
+      "roleId": "role-nb-admin",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-nb"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-elena-teacher",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-elena",
+      "roleId": "role-nb-teacher",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-nb"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-marcus-teacher",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-marcus",
+      "roleId": "role-nb-teacher",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-nb"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-marcus-guardian",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-marcus",
+      "roleId": "role-nb-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-patricia-guardian",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-patricia",
+      "roleId": "role-nb-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-jordan-learner",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-jordan",
+      "roleId": "role-nb-learner",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-nb-sofia-learner",
+      "tenantId": "ten-nb",
+      "userId": "usr-nb-sofia",
+      "roleId": "role-nb-learner",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-nb-robert",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ax-karthik-owner",
+      "tenantId": "ten-ax",
+      "userId": "usr-ax-karthik",
+      "roleId": "role-ax-owner",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-ax"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ax-karthik",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ax-karthik-admin",
+      "tenantId": "ten-ax",
+      "userId": "usr-ax-karthik",
+      "roleId": "role-ax-admin",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-ax"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ax-karthik",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ax-meena-teacher",
+      "tenantId": "ten-ax",
+      "userId": "usr-ax-meena",
+      "roleId": "role-ax-teacher",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-ax-main"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ax-karthik",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ax-meena-guardian",
+      "tenantId": "ten-ax",
+      "userId": "usr-ax-meena",
+      "roleId": "role-ax-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ax-karthik",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ax-suresh-teacher",
+      "tenantId": "ten-ax",
+      "userId": "usr-ax-suresh",
+      "roleId": "role-ax-teacher",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-ax-main"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ax-karthik",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ax-lakshmi-guardian",
+      "tenantId": "ten-ax",
+      "userId": "usr-ax-lakshmi",
+      "roleId": "role-ax-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ax-karthik",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-ax-arun-learner",
+      "tenantId": "ten-ax",
+      "userId": "usr-ax-arun",
+      "roleId": "role-ax-learner",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-ax-karthik",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-hm-weiling-owner",
+      "tenantId": "ten-hm",
+      "userId": "usr-hm-weiling",
+      "roleId": "role-hm-owner",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-hm"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-hm-weiling",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-hm-weiling-admin",
+      "tenantId": "ten-hm",
+      "userId": "usr-hm-weiling",
+      "roleId": "role-hm-admin",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-hm"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-hm-weiling",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-hm-daniel-teacher",
+      "tenantId": "ten-hm",
+      "userId": "usr-hm-daniel",
+      "roleId": "role-hm-teacher",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-hm-main"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-hm-weiling",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-hm-daniel-guardian",
+      "tenantId": "ten-hm",
+      "userId": "usr-hm-daniel",
+      "roleId": "role-hm-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-hm-weiling",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-hm-priya-teacher",
+      "tenantId": "ten-hm",
+      "userId": "usr-hm-priya",
+      "roleId": "role-hm-teacher",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-hm-main"
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-hm-weiling",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-hm-mei-guardian",
+      "tenantId": "ten-hm",
+      "userId": "usr-hm-mei",
+      "roleId": "role-hm-guardian",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-hm-weiling",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "ra-hm-rachel-learner",
+      "tenantId": "ten-hm",
+      "userId": "usr-hm-rachel",
+      "roleId": "role-hm-learner",
+      "scope": {
+        "kind": "own",
+        "targetId": null
+      },
+      "academicYearId": null,
+      "effectiveFrom": "2026-01-15",
+      "effectiveTo": null,
+      "grantedBy": "usr-hm-weiling",
+      "createdAt": "2026-01-15T09:00:00Z"
+    }
+  ],
+  "entitlements": [
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M01",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M02",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M03",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M04",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M05",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M06",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M07",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M83",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M10",
+      "enabled": true,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M11",
+      "enabled": false,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M01",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M02",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M03",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M04",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M05",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M06",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M07",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M83",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M10",
+      "enabled": true,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M11",
+      "enabled": true,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M01",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M02",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M03",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M04",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M05",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M06",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M07",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M83",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M10",
+      "enabled": true,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M11",
+      "enabled": true,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M01",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M02",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M03",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M04",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M05",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M06",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M07",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M83",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M10",
+      "enabled": true,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M11",
+      "enabled": true,
+      "source": "plan",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M01",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M02",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M03",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M04",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M05",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M06",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M07",
+      "enabled": true,
+      "source": "trial",
+      "expiresAt": "2026-10-15T00:00:00Z"
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M83",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
     }
   ]
 }

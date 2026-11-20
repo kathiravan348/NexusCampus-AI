@@ -19,7 +19,8 @@ from nexus.core import db
 from nexus.core.audit import AuditInput, record_audit
 from nexus.core.errors import ApiError
 from nexus.core.ids import new_id
-from nexus.core.request_context import RequestContext, app_settings, authenticated
+from nexus.core.permissions import Authorized, require
+from nexus.core.request_context import app_settings
 from nexus.core.sessions import (
     CSRF_COOKIE,
     DEVICE_COOKIE,
@@ -194,9 +195,10 @@ class LogoutOut(BaseModel):
 @router.post("/logout", response_model=LogoutOut, response_model_by_alias=True)
 async def logout(
     response: Response,
-    ctx: Annotated[RequestContext, Depends(authenticated)],
+    auth: Annotated[Authorized, Depends(require(None, "M02"))],
     oidc: Annotated[OidcClient, Depends(oidc_client)],
 ) -> LogoutOut:
+    ctx = auth.ctx
     await revoke_session(ctx.db, ctx.session_id)
     await record_audit(
         ctx.db,
