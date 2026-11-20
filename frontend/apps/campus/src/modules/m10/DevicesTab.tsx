@@ -1,7 +1,6 @@
 import type { DeviceSync } from "@nexus/contracts";
 import { useText } from "@nexus/i18n";
-import { getOrCreateDeviceId } from "@nexus/offline";
-import { usePeople, useRevokeDevice, useServices, useDevices, useUsers } from "@nexus/services";
+import { usePeople, useRevokeDevice, useDevices, useThisDeviceId, useUsers } from "@nexus/services";
 import {
   Badge,
   Button,
@@ -12,7 +11,7 @@ import {
   type DataTableProps,
 } from "@nexus/ui-core";
 import { MonitorSmartphone, TriangleAlert } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useOnline } from "../../app/RouteGuard";
 import { useRuntime } from "../../app/TenantRuntime";
 import { DEVICE_STATUS_KEY, DEVICE_TONE, PLATFORM_KEY, when } from "./syncShared";
@@ -23,18 +22,13 @@ export function DevicesTab({ canWipe }: { readonly canWipe: boolean }) {
   const toast = useToast();
   const { locale, timeZone } = useRuntime();
   const online = useOnline();
-  const { db } = useServices();
   const devices = useDevices();
   const users = useUsers();
   const people = usePeople();
   const revoke = useRevokeDevice();
   const [target, setTarget] = useState<DeviceSync | null>(null);
   const [confirmedOwn, setConfirmedOwn] = useState(false);
-  const [thisDeviceId, setThisDeviceId] = useState<string | null>(null);
-
-  useEffect(() => {
-    void getOrCreateDeviceId(db).then(setThisDeviceId);
-  }, [db]);
+  const thisDeviceId = useThisDeviceId();
 
   const userName = useMemo(() => {
     const person = new Map(people.data?.items.map((p) => [p.id, p.preferredName ?? p.legalName]));
@@ -140,7 +134,7 @@ export function DevicesTab({ canWipe }: { readonly canWipe: boolean }) {
       return;
     }
     try {
-      await revoke.mutateAsync(target.id);
+      await revoke.mutateAsync({ id: target.id, confirmOwnDevice: isThisDevice });
       toast.show({ tone: "success", title: t("m10.devices.revoked", { device: target.label }) });
       setTarget(null);
     } catch {

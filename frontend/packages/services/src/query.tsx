@@ -30,6 +30,7 @@ import {
   type ReactNode,
 } from "react";
 import { ApiClient, ApiRequestError } from "./client";
+import { serverDeviceId } from "./device";
 import { DATA_MODE, type DataMode } from "./config";
 import type { KeyScope } from "./keys";
 import { getMockScenario, useSession, type SessionIdentity, type SignOutGuard } from "./session";
@@ -167,6 +168,7 @@ export function NexusQueryProvider({
         identity: () => scope,
         scenario: getMockScenario,
         onUnauthorized: expire,
+        deviceId: serverDeviceId,
       }),
       scope,
       db,

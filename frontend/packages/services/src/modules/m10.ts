@@ -22,6 +22,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useCallback, useEffect, useState } from "react";
 import { z } from "zod";
 import { queryKeys } from "../keys";
+import { requestHeartbeat } from "../device";
 import { outboxTransport } from "../mutation";
 import { useScopedQuery, useServices } from "../query";
 import { useSession } from "../session";
@@ -61,10 +62,25 @@ function useM10Invalidate() {
 export function useRevokeDevice() {
   const { client } = useServices();
   const invalidate = useM10Invalidate();
-  return useMutation<DeviceSync, Error, string>({
-    mutationFn: (id) =>
-      client.send("POST", `/devices/${encodeURIComponent(id)}/revoke`, {}, DeviceSyncSchema),
-    onSuccess: invalidate,
+  return useMutation<DeviceSync, Error, string | { id: string; confirmOwnDevice: boolean }>({
+    mutationFn: (vars) => {
+      const { id, confirmOwnDevice } =
+        typeof vars === "string" ? { id: vars, confirmOwnDevice: false } : vars;
+      // Revoking this very device needs the screen's second confirmation (the backend checks it too).
+      const body = confirmOwnDevice ? { confirmOwnDevice: true } : {};
+      return client.send(
+        "POST",
+        `/devices/${encodeURIComponent(id)}/revoke`,
+        body,
+        DeviceSyncSchema,
+      );
+    },
+    onSuccess: async (device, vars) => {
+      await invalidate();
+      if (typeof vars !== "string" && vars.confirmOwnDevice && device.status === "revoke_pending") {
+        requestHeartbeat(); // this device: wipe now instead of at the next check-in
+      }
+    },
   });
 }
 

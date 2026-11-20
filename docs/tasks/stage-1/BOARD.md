@@ -70,7 +70,7 @@
 | NEX-059 | Contract parity tests: Pydantic ↔ Zod | D | done | Claude | 047–058 |
 | NEX-060 | Switch to real data 1: dev proxy, sign-in, shell, M01, M02 | C | done | Claude | 049, 059 |
 | NEX-061 | Switch to real data 2: M03, M04, M05 | C | done | Claude | 060 |
-| NEX-062 | Switch to real data 3: M06, M07, M10 | C | planned | — | 061 |
+| NEX-062 | Switch to real data 3: M06, M07, M10 | C | done | Claude | 061 |
 | NEX-063 | Switch to real data 4: M11, M83 | C | planned | — | 062 |
 | NEX-064 | Images + self-hosted Compose install | D | planned | — | 063 |
 | NEX-065 | Harden Stage 1: no-access tests (V-1…V-7), signed audit checkpoints, i18n, a11y, performance | D | planned | — | 064 |
