@@ -64,3 +64,4 @@ _(implementers note new dependencies or decision requests here; the planner move
   AGENTS §5), redis 8.1.0, opentelemetry-api/sdk 1.45.2, opentelemetry-instrumentation-fastapi 0.66b2; build hatchling
   1.27.0; dev: ruff 0.17.6, mypy 2.4.1, pytest 9.2.0, httpx2 2.16.2 (test client; replaced httpx 0.28.1, which Starlette deprecated —
   Owner OK 2026-11-20). Images: `pgvector/pgvector:0.8.0-pg16`, `redis:7.4.2-alpine`.
+- NEX-043: alembic 1.20.1 (exact pin; named in AGENTS §5).

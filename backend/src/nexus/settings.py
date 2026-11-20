@@ -1,6 +1,7 @@
 """Runtime configuration from environment variables (prefix `NEXUS_`) or `backend/.env` (git-ignored)."""
 
 from functools import lru_cache
+from pathlib import Path
 from typing import Literal
 
 from pydantic import SecretStr
@@ -11,17 +12,26 @@ Environment = Literal["dev", "test", "prod"]
 CellRegion = Literal["in", "eu"]
 OtelExporter = Literal["none", "console"]
 
+BACKEND_ROOT = Path(__file__).resolve().parents[2]
+
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_prefix="NEXUS_", env_file=".env", env_file_encoding="utf-8", extra="ignore"
+        env_prefix="NEXUS_",
+        env_file=BACKEND_ROOT / ".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
     )
 
     environment: Environment = "dev"
     region: CellRegion = "in"
-    #: SQLAlchemy URL, e.g. `postgresql+psycopg://nexus:<password>@127.0.0.1:55432/nexus`.
-    #: A secret: never logged.
-    database_url: SecretStr = SecretStr("postgresql+psycopg://nexus@127.0.0.1:55432/nexus")
+    #: App connection as `nexus_app` (no BYPASSRLS), e.g.
+    #: `postgresql+psycopg://nexus_app:<password>@127.0.0.1:55432/nexus`. Secrets: never logged.
+    database_url: SecretStr = SecretStr("postgresql+psycopg://nexus_app@127.0.0.1:55432/nexus")
+    #: Owner connection for migrations and the demo seed only (never used to serve requests).
+    migrate_database_url: SecretStr = SecretStr("postgresql+psycopg://nexus@127.0.0.1:55432/nexus")
+    #: Password the baseline migration gives the `nexus_app` role.
+    app_db_password: SecretStr = SecretStr("")
     redis_url: SecretStr = SecretStr("redis://127.0.0.1:56379/0")
     otel_exporter: OtelExporter = "none"
     host: str = "127.0.0.1"
