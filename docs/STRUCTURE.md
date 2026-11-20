@@ -66,7 +66,8 @@
 │     │                 modules/m10/ (SyncCentrePage, ThisDeviceTab, DevicesTab, ConflictsTab, NEX-019),
 │     │                 modules/m11/ (AiSettingsPage, AssistButton, AssistPanel, AssistUnavailable, NEX-020),
 │     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023),
-│     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest + Workbox in vite.config, NEX-030)
+│     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest in vite.config, NEX-030),
+│     │                 sw/ (sw.ts: Workbox injectManifest worker; mock builds host MSW in it, own tsconfig, NEX-038)
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)
 ├─ backend/             product backend (planned, Stage 1 build step)
 ├─ control/             Nexus Control backend (planned, Stage 2)

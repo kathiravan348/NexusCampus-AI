@@ -15,7 +15,9 @@ async function start(): Promise<void> {
   if (DATA_MODE === "mock") {
     // The mock API must answer before the first request; only mock builds load MSW.
     const { worker } = await import("@nexus/mocks/browser");
-    await worker.start({ onUnhandledFrame: "bypass" });
+    // Production mock builds run MSW inside the PWA worker (one worker per scope, NEX-038).
+    const url = import.meta.env.PROD ? "/sw.js" : "/mockServiceWorker.js";
+    await worker.start({ onUnhandledFrame: "bypass", serviceWorker: { url } });
     bootMark("msw-ready");
   }
 

@@ -7,7 +7,7 @@
     "dev": "node ../../scripts/time-run.ts dev:campus --ready-pattern Local: -- vite",
     "build": "node ../../scripts/time-run.ts build:campus -- vite build",
     "preview": "node ../../scripts/time-run.ts preview:campus --ready-pattern Local: -- vite preview",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p src/sw",
     "test": "node ../../scripts/time-run.ts test:pkg --label test:campus -- vitest run",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ ."
   },
@@ -24,6 +24,8 @@
     "react-dom": "18.3.1",
     "react-hook-form": "7.91.0",
     "react-router": "7.18.5",
+    "workbox-precaching": "7.4.1",
+    "workbox-routing": "7.4.1",
     "workbox-window": "7.4.1"
   },
   "devDependencies": {
