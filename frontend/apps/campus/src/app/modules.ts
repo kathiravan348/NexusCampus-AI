@@ -24,6 +24,8 @@ export interface ModuleEntry {
   /** Route path without a leading slash, e.g. `settings/institution`. */
   readonly path: string;
   readonly navKey: MessageKey;
+  /** One-line description on the home tile. */
+  readonly summaryKey: MessageKey;
   readonly icon: LucideIcon;
   /** Permission needed to open it; `null` = every user of an entitled tenant. */
   readonly permission: string | null;
@@ -42,6 +44,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M01",
     path: "setup",
     navKey: "m01.nav.title",
+    summaryKey: "m01.nav.summary",
     icon: Building2,
     permission: "m01.institution.manage",
     offlineLevel: "L0",
@@ -51,6 +54,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M02",
     path: "access",
     navKey: "m02.nav.title",
+    summaryKey: "m02.nav.summary",
     icon: Users,
     permission: "m02.user.read",
     offlineLevel: "L1",
@@ -60,6 +64,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M03",
     path: "theme",
     navKey: "m03.nav.title",
+    summaryKey: "m03.nav.summary",
     icon: Palette,
     permission: "m03.theme.manage",
     offlineLevel: "L1",
@@ -69,6 +74,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M04",
     path: "texts",
     navKey: "m04.nav.title",
+    summaryKey: "m04.nav.summary",
     icon: Languages,
     permission: "m04.text.manage",
     offlineLevel: "L1",
@@ -78,6 +84,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M05",
     path: "plan",
     navKey: "m05.nav.title",
+    summaryKey: "m05.nav.summary",
     icon: Gauge,
     permission: "m05.plan.read",
     offlineLevel: "L0",
@@ -87,6 +94,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M06",
     path: "privacy",
     navKey: "m06.nav.title",
+    summaryKey: "m06.nav.summary",
     icon: ShieldCheck,
     permission: "m06.audit.read",
     offlineLevel: "L0",
@@ -96,6 +104,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M07",
     path: "notifications",
     navKey: "m07.nav.title",
+    summaryKey: "m07.nav.summary",
     icon: Bell,
     permission: "m07.preference.manage",
     offlineLevel: "L1",
@@ -105,6 +114,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M10",
     path: "sync",
     navKey: "m10.nav.title",
+    summaryKey: "m10.nav.summary",
     icon: RefreshCw,
     permission: null,
     offlineLevel: "L3",
@@ -114,6 +124,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M11",
     path: "ai",
     navKey: "m11.nav.title",
+    summaryKey: "m11.nav.summary",
     icon: Sparkles,
     permission: "m11.settings.manage",
     offlineLevel: "L0",
@@ -123,6 +134,7 @@ export const MODULES: readonly ModuleEntry[] = [
     moduleId: "M83",
     path: "vault",
     navKey: "m83.nav.title",
+    summaryKey: "m83.nav.summary",
     icon: KeyRound,
     permission: "m83.vault.read",
     offlineLevel: "L0",

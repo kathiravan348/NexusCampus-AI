@@ -823,6 +823,10 @@
     "message": "Single sign-on settings saved.",
     "description": "Toast after SSO settings are saved."
   },
+  "m02.nav.summary": {
+    "message": "Invite people, give them roles and see who is signed in.",
+    "description": "Home tile description of the Users & access module."
+  },
   "m04.localeSwitch.label": {
     "message": "Language",
     "description": "Label of the language picker in the menu."
@@ -1287,6 +1291,10 @@
     "message": "No academic calendar found for this institution.",
     "description": "Empty state heading when an institution has no calendars."
   },
+  "m01.nav.summary": {
+    "message": "Profile, campuses, language and formats, and the school calendar.",
+    "description": "Home tile description of the Institution setup module."
+  },
   "common.colorPicker": {
     "message": "Choose colour",
     "description": "Accessible fallback label for a native colour picker input."
@@ -1318,6 +1326,10 @@
   "common.pwa.offlineReady": {
     "message": "Ready to work offline",
     "description": "One-time toast: the app files are saved on this device, so it opens without a connection."
+  },
+  "common.shell.introLine": {
+    "message": "Everything you can do at {institution}, in one place. Pick a module to get started.",
+    "description": "Intro line under the home page heading; institution = the institution's name."
   },
   "m03.nav.title": {
     "message": "Theme studio",
@@ -1626,6 +1638,10 @@
   "m03.preview.formToggle": {
     "message": "Include in summary",
     "description": "Sample switch label in the theme preview form."
+  },
+  "m03.nav.summary": {
+    "message": "Your colours, fonts and logo, with a live preview.",
+    "description": "Home tile description of the Theme studio module."
   },
   "m04.nav.title": {
     "message": "Text & language studio",
@@ -1982,6 +1998,10 @@
   "m04.io.applyFailedToast": {
     "message": "Could not apply imported overrides.",
     "description": "Error toast when applying imported overrides fails."
+  },
+  "m04.nav.summary": {
+    "message": "Change any text in the app, in every language.",
+    "description": "Home tile description of the Text & language studio module."
   },
   "m06.nav.title": {
     "message": "Audit & privacy",
@@ -2395,6 +2415,10 @@
     "message": "Handle data requests",
     "description": "Permission description: handle data subject requests (sensitive)."
   },
+  "m06.nav.summary": {
+    "message": "Audit log, consents and data requests.",
+    "description": "Home tile description of the Audit & privacy module."
+  },
   "m05.nav.title": {
     "message": "Plan & usage",
     "description": "Menu item and page title of the plan, modules and usage screen (M05)."
@@ -2602,6 +2626,10 @@
   "m05.permission.moduleManage": {
     "message": "Switch modules on or off",
     "description": "Permission description: switch optional modules on or off."
+  },
+  "m05.nav.summary": {
+    "message": "Modules in your plan, AI credits and usage.",
+    "description": "Home tile description of the Plan & usage module."
   },
   "m10.nav.title": {
     "message": "Sync centre",
@@ -2887,6 +2915,10 @@
     "message": "Wipe devices and resolve conflicts",
     "description": "Permission description: remote-wipe devices and resolve conflicts."
   },
+  "m10.nav.summary": {
+    "message": "This device, offline changes and sync conflicts.",
+    "description": "Home tile description of the Sync centre module."
+  },
   "m11.nav.title": {
     "message": "AI settings",
     "description": "Menu item and page title of the AI settings screen (M11)."
@@ -3106,6 +3138,10 @@
   "m11.permission.settingsManage": {
     "message": "Manage AI settings",
     "description": "Permission description: change AI settings."
+  },
+  "m11.nav.summary": {
+    "message": "Turn AI on or off and manage what Assist may use.",
+    "description": "Home tile description of the AI settings module."
   },
   "m83.nav.title": {
     "message": "Data vault & access",
@@ -3411,6 +3447,10 @@
     "message": "Approve provider access",
     "description": "Permission description: approve, deny and revoke provider access (sensitive)."
   },
+  "m83.nav.summary": {
+    "message": "Approve or deny access requests, grants and keys.",
+    "description": "Home tile description of the Data vault & access module."
+  },
   "m07.nav.title": {
     "message": "Notifications",
     "description": "Menu item and page title of the notifications screen (M07)."
@@ -3674,5 +3714,9 @@
   "m07.permission.preferenceManage": {
     "message": "Set own notification preferences",
     "description": "Permission description: change own channels and quiet hours."
+  },
+  "m07.nav.summary": {
+    "message": "Message templates, delivery log and your own preferences.",
+    "description": "Home tile description of the Notifications module."
   }
 }
