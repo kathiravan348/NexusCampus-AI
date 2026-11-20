@@ -25,6 +25,7 @@ from nexus.modules.m03 import router as m03
 from nexus.modules.m04 import router as m04
 from nexus.modules.m05 import router as m05
 from nexus.modules.m06 import router as m06
+from nexus.modules.m07 import router as m07
 from nexus.modules.m83 import access as m83_access
 from nexus.modules.m83 import broker_stub
 from nexus.modules.m83 import keys as m83_keys
@@ -95,6 +96,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(m04.router)
     app.include_router(m05.router)
     app.include_router(m06.router)
+    app.include_router(m07.router)
     app.include_router(m83_keys.router)
     app.include_router(m83_access.router)
     if cfg.environment != "prod":

@@ -27,6 +27,7 @@ nexus-seed = "nexus.seed.demo:main"
 nexus-keycloak-dev = "nexus.devtools.keycloak:main"
 nexus-scim-token = "nexus.devtools.scim_token:main"
 nexus-vault-dev = "nexus.devtools.vault_dev:main"
+nexus-worker = "nexus.workers.outbox:main"
 
 [build-system]
 requires = ["hatchling==1.27.0"]
