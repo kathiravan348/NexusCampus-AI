@@ -34,9 +34,9 @@
 | `test:pkg` | one package's `test` | 45s |
 | `e2e` | Playwright smoke / languages / offline (NEX-021, NEX-040) | 3m |
 | `dev:control` | Nexus Control dev server (reserved, Stage 2) | 8s |
-| `backend:start` | FastAPI ready (reserved, Stage 1 build step) | 15s |
-| `backend:check` | backend lint + types + pytest (reserved) | 3m |
-| `compose:up` | Docker Compose stack healthy (reserved) | 1m 30s |
+| `backend:start` | `nexus-dev`: FastAPI ready (NEX-042) | 15s |
+| `backend:check` | `backend-check`: ruff format + ruff lint + mypy strict + pytest (NEX-042) | 3m |
+| `compose:up` | `nexus-compose-up`: PostgreSQL + Redis healthy (NEX-042) | 1m 30s |
 
 ## Measured baselines
 
@@ -68,14 +68,19 @@ Owner PC (Windows 11, Node 24.21, pnpm), 2026-11-20, `timings:measure` (cold = b
 Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74s. In the workspace run, campus holds
 ~85% of summed file time; slowest files are the M04/M03 studio pages and M02 role/user screens (~3–3.6s each).
 
+## Backend (NEX-042)
+
+| Place | Key | Time | Budget | Status |
+|---|---|---|---|---|
+| `uv run --project backend backend-check` (format 0.10s · lint 0.09s · typecheck 0.59s · test 4.30s, 19 tests) | `backend:check` | 5.08s | 3m | OK |
+| `uv run --project backend nexus-dev` to ready | `backend:start` | 1.60s | 15s | OK |
+| `uv run --project backend nexus-compose-up` (PostgreSQL + Redis healthy) | `compose:up` | 18.29s | 1m 30s | OK |
+
 ## Reserved (no surface yet — fill in the task that adds it)
 
 | Place | Key | Cold | Warm | Budget | Measured in |
 |---|---|---|---|---|---|
 | Nexus Control dev | `dev:control` | — | — | 8s | Stage 2 |
-| FastAPI start | `backend:start` | — | — | 15s | Stage 1 build step |
-| Backend check | `backend:check` | — | — | 3m | Stage 1 build step |
-| Docker Compose up | `compose:up` | — | — | 1m 30s | Stage 1 build step |
 
 ## Change log
 
@@ -83,3 +88,4 @@ Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74
 |---|---|---|
 | 2026-11-20 | NEX-032 | Harness, budgets and first baselines. |
 | 2026-11-20 | NEX-021 | `e2e` and `review:start` baselines; `e2e` moved from reserved to measured. |
+| 2026-11-20 | NEX-042 | `backend:start`, `backend:check`, `compose:up` measured (moved from reserved). |

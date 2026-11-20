@@ -20,11 +20,12 @@ export const TIMING_BUDGETS_MS = {
   "review:check": 420_000,
   "test:pkg": 45_000,
   e2e: 180_000,
-  // Reserved for surfaces that do not exist yet (Stage 1 build step / Stage 2)
-  "dev:control": 8_000,
+  // Backend (NEX-042; read by backend/src/nexus/core/timing.py)
   "backend:start": 15_000,
   "backend:check": 180_000,
   "compose:up": 90_000,
+  // Reserved for surfaces that do not exist yet (Stage 2)
+  "dev:control": 8_000,
 } as const satisfies Record<string, number>;
 
 export type TimingKey = keyof typeof TIMING_BUDGETS_MS;

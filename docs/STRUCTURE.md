@@ -72,7 +72,11 @@
 │     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest in vite.config, NEX-030),
 │     │                 sw/ (sw.ts: Workbox injectManifest worker; mock builds host MSW in it, own tsconfig, NEX-038)
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)
-├─ backend/             product backend (planned, Stage 1 build step)
+├─ backend/             product backend, FastAPI modular monolith (NEX-042): pyproject.toml + uv.lock (exact pins),
+│                       compose.yaml (PostgreSQL 16 + pgvector, Redis; 127.0.0.1, mem_limit), .env.example,
+│                       src/nexus/ main.py (app factory, /healthz, /readyz), settings.py, core/ (errors = ApiError
+│                       envelope, pagination = Page, db, redis, telemetry, timing), modules/ (one package per
+│                       module, from NEX-043), devtools/ (nexus-dev, nexus-compose-up, backend-check); tests/
 ├─ control/             Nexus Control backend (planned, Stage 2)
 └─ deploy/              Compose, Helm, air-gapped bundle tooling (planned, Stage 1 build step / Stage 2)
 ```
