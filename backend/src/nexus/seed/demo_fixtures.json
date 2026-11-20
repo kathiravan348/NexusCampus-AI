@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "tenants": [
     {
       "id": "ten-ls",
@@ -5801,6 +5801,71 @@
       "enabled": true,
       "createdAt": "2026-01-15T09:00:00Z",
       "updatedAt": "2026-08-20T10:30:00Z"
+    }
+  ],
+  "keyStatuses": [
+    {
+      "id": "key-ls-tenant-data",
+      "tenantId": "ten-ls",
+      "purpose": "tenant_data",
+      "custody": "platform",
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "rotatedAt": null
+    },
+    {
+      "id": "key-rv-tenant-data",
+      "tenantId": "ten-rv",
+      "purpose": "tenant_data",
+      "custody": "platform",
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "rotatedAt": "2026-07-01T00:00:00Z"
+    },
+    {
+      "id": "key-rv-field-health",
+      "tenantId": "ten-rv",
+      "purpose": "field_health",
+      "custody": "platform",
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "rotatedAt": null
+    },
+    {
+      "id": "key-nb-tenant-data",
+      "tenantId": "ten-nb",
+      "purpose": "tenant_data",
+      "custody": "byok",
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "rotatedAt": "2026-06-15T00:00:00Z"
+    },
+    {
+      "id": "key-nb-field-identity",
+      "tenantId": "ten-nb",
+      "purpose": "field_identity",
+      "custody": "byok",
+      "status": "rotating",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "rotatedAt": "2026-09-15T09:00:00Z"
+    },
+    {
+      "id": "key-ax-tenant-data",
+      "tenantId": "ten-ax",
+      "purpose": "tenant_data",
+      "custody": "platform",
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "rotatedAt": null
+    },
+    {
+      "id": "key-hm-tenant-data",
+      "tenantId": "ten-hm",
+      "purpose": "tenant_data",
+      "custody": "platform",
+      "status": "active",
+      "createdAt": "2026-01-15T09:00:00Z",
+      "rotatedAt": null
     }
   ]
 }

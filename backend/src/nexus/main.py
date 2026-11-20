@@ -11,14 +11,17 @@ from pydantic import BaseModel, ConfigDict
 
 from nexus.core.db import dispose_engine, init_engine, ping_database
 from nexus.core.errors import ApiErrorEnvelope, install_error_handling
+from nexus.core.fieldcrypto import FieldCipher
 from nexus.core.redis import close_redis, init_redis, ping_redis
 from nexus.core.telemetry import setup_telemetry
 from nexus.core.timing import boot_elapsed_ms, timing_line, utf8_console
+from nexus.core.vault import HttpVault
 from nexus.modules.m01 import router as m01
 from nexus.modules.m02 import auth, directory, me, scim, sso, writes
 from nexus.modules.m02.keycloak_admin import HttpKeycloakAdmin
 from nexus.modules.m02.login_state import RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
+from nexus.modules.m83 import keys as m83_keys
 from nexus.settings import Settings, get_settings
 
 log = logging.getLogger("nexus")
@@ -47,6 +50,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         # Tests may install their own OIDC client / state store before startup.
         if not hasattr(app.state, "oidc"):
             app.state.oidc = OidcClient(cfg, http)
+        if not hasattr(app.state, "vault"):
+            app.state.vault = HttpVault(cfg, http)
+        app.state.field_cipher = FieldCipher(app.state.vault)
         if not hasattr(app.state, "keycloak_admin"):
             app.state.keycloak_admin = HttpKeycloakAdmin(cfg, http)
         if not hasattr(app.state, "login_states"):
@@ -77,6 +83,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(sso.router)
     app.include_router(scim.router)
     scim.install_scim_errors(app)
+    app.include_router(m83_keys.router)
 
     @app.get("/healthz", response_model=Health, tags=["ops"])
     async def healthz() -> Health:

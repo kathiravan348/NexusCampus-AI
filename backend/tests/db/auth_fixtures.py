@@ -8,6 +8,7 @@ from urllib.parse import parse_qs, urlparse
 import pytest
 from fastapi.testclient import TestClient
 
+from nexus.core.vault import FakeVault
 from nexus.main import create_app
 from nexus.modules.m02.keycloak_admin import FakeKeycloakAdmin
 from nexus.modules.m02.login_state import MemoryLoginStateStore
@@ -41,6 +42,7 @@ def client(test_db: DbUrls, kc: FakeKeycloak) -> Iterator[TestClient]:
     app.state.oidc = OidcClient(settings, kc.client())
     app.state.login_states = MemoryLoginStateStore()
     app.state.keycloak_admin = FakeKeycloakAdmin()
+    app.state.vault = FakeVault()
     with TestClient(
         app,
         base_url="https://testserver",  # Secure cookies are only sent back over https

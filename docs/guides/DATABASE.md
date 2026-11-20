@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-049) · Migration: `0006_sso_scim`
+> State as of: 2026-11-20 (NEX-050) · Migration: `0007_vault_keys`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -69,6 +69,17 @@ It covers ids and metadata only, never personal values. Write with `nexus.core.a
 Every endpoint is guarded by `nexus.core.permissions.require(permission, module)`: module switch first, then the
 permission in some scope; services narrow to the scopes with `Grants.allows` / `Grants.scopes`. A route-walk test
 fails any non-public endpoint without a guard.
+
+## Keys and field encryption (M83 — `0007_vault_keys`, D46)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `vault_keys` | `id`, `tenant_id`, `purpose`, `custody`, `status`, `vault_key_name`, `created_at`, `rotated_at` | One per tenant + purpose (tenant data / health / identity / finance); custody platform / BYOK / HYOK; metadata only — key material stays in Vault |
+
+Sensitive fields are stored as `v1:<keyVersion>:<wrapped data key>:<nonce+ciphertext>` (`nexus.core.fieldcrypto`):
+AES-GCM with a data key wrapped by the tenant's Vault Transit key `tenant-<tenant>-<purpose>`, the field path bound as
+associated data. Exact-match search uses blind indexes (Vault HMAC). Destroying a tenant's keys (offboarding,
+`destroy_tenant_keys`) makes those values unreadable; the audit chain still verifies.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

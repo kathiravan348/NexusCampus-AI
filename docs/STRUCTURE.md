@@ -77,10 +77,11 @@
 │                       alembic.ini + migrations/ (hand-written; 0001_tenancy: tenancy tables + RLS + nexus_app role),
 │                       src/nexus/ main.py (app factory, /healthz, /readyz), settings.py, core/ (errors = ApiError
 │                       envelope, pagination = Page, db, redis, telemetry, timing, tenancy = tenant context + region
-│                       check, ids, models = declarative base, audit + hashchain + audit_models = append-only hash-chained
+│                       check, ids, models = declarative base, vault = Transit client (+ fake), fieldcrypto = envelope
+│                       encryption + blind index, audit + hashchain + audit_models = append-only hash-chained
 │                       audit writer, events = domain event outbox, sessions = session cookie + token hash, request_context =
 │                       session → tenant → transaction + CSRF, permissions = catalogue + grants + require guard, entitlements =
-│                       module switch, rbac_models), modules/m01/ (models), modules/m02/ (models, oidc,
+│                       module switch, rbac_models), modules/m01/ (models), modules/m83/ (models, keys = key status + lifecycle), modules/m02/ (models, oidc,
 │                       login_state, auth = /auth/login|callback|logout, me = /me, schemas, directory = reads,
 │                       writes, service = masking/scope/last-admin rules, keycloak_admin, sso, scim), keycloak/ (realm-dev.json), seed/ (demo.py = nexus-seed, rbac.py,
 │                       demo_fixtures.json exported from mocks), devtools/ (nexus-dev, nexus-compose-up, nexus-keycloak-dev,
