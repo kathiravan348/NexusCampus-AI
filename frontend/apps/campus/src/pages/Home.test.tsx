@@ -8,7 +8,21 @@ describe("Home", () => {
     renderApp("/", { as: persona(TENANT.littleSteps, "admin") });
     expect(await screen.findByRole("heading", { level: 1, name: /Priya/ })).toBeInTheDocument();
     const list = await screen.findByRole("region", { name: "Your modules" });
-    expect(within(list).getByRole("link", { name: "User" })).toHaveAttribute("href", "/people");
+    expect(within(list).getByRole("link", { name: /^User/ })).toHaveAttribute("href", "/people");
+  });
+
+  it("shows an intro line with the institution and a description on every tile", async () => {
+    renderApp("/", { as: persona(TENANT.littleSteps, "admin") });
+    expect(
+      await screen.findByText(
+        /^Everything you can do at Little Steps.*Pick a module to get started\.$/,
+      ),
+    ).toBeInTheDocument();
+    const list = await screen.findByRole("region", { name: "Your modules" });
+    const tile = within(list).getByRole("link", { name: /^User/ });
+    expect(
+      within(tile).getByText("Invite people, give them roles and see who is signed in."),
+    ).toBeInTheDocument();
   });
 
   it("renders an empty state when no modules are visible for the user", async () => {

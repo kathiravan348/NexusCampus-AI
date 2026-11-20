@@ -9,6 +9,7 @@ const ONLINE_ONLY_MODULE: ModuleEntry = {
   moduleId: "M01",
   path: "online-only",
   navKey: "common.details",
+  summaryKey: "common.details",
   icon: Wifi,
   permission: null,
   offlineLevel: "L0",
