@@ -16,12 +16,16 @@
     "check:test": "node scripts/time-run.ts check:test -- vitest run",
     "check:format": "node scripts/time-run.ts check:format -- prettier --check --cache .",
     "review:check": "node scripts/time-run.ts review:check --sequence check:format check:lint check:typecheck check:test build:all=build",
-    "lint:scripts": "eslint --cache --cache-location node_modules/.cache/eslint/ scripts",
+    "lint:scripts": "eslint --cache --cache-location node_modules/.cache/eslint/ scripts e2e",
     "typecheck:scripts": "tsc -p tsconfig.scripts.json",
-    "timings:measure": "node scripts/measure-timings.ts"
+    "timings:measure": "node scripts/measure-timings.ts",
+    "review:start": "pnpm --filter campus run review:start",
+    "e2e": "node scripts/time-run.ts e2e -- playwright test -c e2e/playwright.config.ts"
   },
   "devDependencies": {
+    "@axe-core/playwright": "4.14.0",
     "@eslint/js": "9.39.5",
+    "@playwright/test": "1.65.1",
     "@testing-library/jest-dom": "7.0.1",
     "@testing-library/react": "16.3.3",
     "@types/node": "20.19.43",

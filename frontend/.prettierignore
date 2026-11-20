@@ -6,3 +6,5 @@ pnpm-lock.yaml
 packages/ui-core/src/theme/tokens.json
 packages/ui-core/src/theme/tokens.css
 apps/campus/public/mockServiceWorker.js
+test-results
+playwright-report

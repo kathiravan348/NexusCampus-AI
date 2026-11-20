@@ -59,6 +59,12 @@ Owner PC (Windows 11, Node 24.21, pnpm), 2026-11-20, `timings:measure` (cold = b
 | build:all (campus 5.8s, Storybook 7.8s, in parallel) | 7.96s | 3m | OK |
 | **total** | **1m 05.1s** | 7m | OK |
 
+| Review build | Key | Time | Budget | Status |
+|---|---|---|---|---|
+| `review:start` build step (`--mode review`) | `build:campus` | 4.90s | 45s | OK |
+| `review:start` preview ready | `preview:campus` | 0.37s | 5s | OK |
+| `pnpm e2e` (24 tests: smoke ×10, rtl ×2, pseudo ×6, offline ×2, a11y ×4; incl. review build + dev server) | `e2e` | 28.87s | 3m | OK |
+
 Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74s. In the workspace run, campus holds
 ~85% of summed file time; slowest files are the M04/M03 studio pages and M02 role/user screens (~3–3.6s each).
 
@@ -66,7 +72,6 @@ Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74
 
 | Place | Key | Cold | Warm | Budget | Measured in |
 |---|---|---|---|---|---|
-| Playwright e2e | `e2e` | — | — | 3m | NEX-021 |
 | Nexus Control dev | `dev:control` | — | — | 8s | Stage 2 |
 | FastAPI start | `backend:start` | — | — | 15s | Stage 1 build step |
 | Backend check | `backend:check` | — | — | 3m | Stage 1 build step |
@@ -77,3 +82,4 @@ Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74
 | Date | Task | Change |
 |---|---|---|
 | 2026-11-20 | NEX-032 | Harness, budgets and first baselines. |
+| 2026-11-20 | NEX-021 | `e2e` and `review:start` baselines; `e2e` moved from reserved to measured. |

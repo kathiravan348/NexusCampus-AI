@@ -17,9 +17,12 @@
 │  ├─ TIMINGS.md        soft budgets + measured start/test/check baselines (AGENTS.md §8a, NEX-032)
 │  ├─ guides/           USER-GUIDE.md, API.md, DATABASE.md (living guides, AGENTS.md §7a)
 │  ├─ presentation/     NexusCampus-Introduction.pptx (plain-language project intro deck)
+│  ├─ review/           STAGE-1-WALKTHROUGH.md (run + click path per persona/type), STAGE-1-FEEDBACK.md (NEX-021)
 │  ├─ tasks/            BOARD.md (index) + stage-N/ (BOARD.md + task files NEX-###.md per stage)
 │  └─ templates/        TASK.md, HANDOFF.md, REVIEW.md
 ├─ frontend/            frontend monorepo (pnpm workspaces)
+│  ├─ e2e/              Playwright (NEX-021): playwright.config (review build + dev server; desktop, 360px, pseudo),
+│  │                    helpers, smoke, rtl, pseudo, offline, a11y specs (`pnpm e2e`, not in review:check)
 │  ├─ scripts/          timing harness (NEX-032): timing-budgets, time-run (CLI: [timing] lines, --ready-pattern,
 │  │                    --exit-after-ready, --sequence), vitest-timing-reporter, measure-timings (+ time-run.test);
 │  │                    typechecked by tsconfig.scripts.json
