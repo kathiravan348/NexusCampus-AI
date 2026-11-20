@@ -146,7 +146,7 @@ export function NexusQueryProvider({
   createClient = createNexusQueryClient,
   persistThrottleMs,
 }: NexusQueryProviderProps) {
-  const { session, db, registerSignOutGuard } = useSession();
+  const { session, db, registerSignOutGuard, expire } = useSession();
   const tenantId = session?.tenantId ?? null;
   const userId = session?.userId ?? null;
   const scope = useMemo<SessionIdentity | null>(
@@ -162,11 +162,16 @@ export function NexusQueryProvider({
   );
   const services = useMemo<ServicesContextValue>(
     () => ({
-      client: new ApiClient({ mode, identity: () => scope, scenario: getMockScenario }),
+      client: new ApiClient({
+        mode,
+        identity: () => scope,
+        scenario: getMockScenario,
+        onUnauthorized: expire,
+      }),
       scope,
       db,
     }),
-    [mode, scope, db],
+    [mode, scope, db, expire],
   );
   const persister = useMemo(
     () => (scope ? createOfflinePersister(db, scope, persistThrottleMs) : null),

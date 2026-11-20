@@ -7,10 +7,16 @@ import { useState } from "react";
 import { personaLabelKey, useSwitchUser } from "../app/PersonaSwitch";
 import { PlatformMark } from "../app/PlatformMark";
 import { localeName } from "../app/LocaleSwitch";
+import { RealSignIn } from "../app/RealSignIn";
 import { useRuntime } from "../app/TenantRuntime";
 
-/** Demo sign-in: pick an institution and a persona; the prototype needs no password. */
+/** Real installs sign in through Keycloak (NEX-060); mock builds pick a demo persona. */
 export function SignIn() {
+  return DATA_MODE === "real" ? <RealSignIn /> : <DemoSignIn />;
+}
+
+/** Demo sign-in: pick an institution and a persona; the prototype needs no password. */
+function DemoSignIn() {
   const t = useText();
   const { locale } = useRuntime();
   const { session } = useSession();

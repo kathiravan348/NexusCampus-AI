@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm --filter campus dev",
+    "dev:real": "pnpm --filter campus dev:real",
     "storybook": "pnpm --filter @nexus/ui-storybook dev",
     "build": "node scripts/time-run.ts build:all -- pnpm -r run build",
     "typecheck": "pnpm -r run typecheck",
@@ -20,7 +21,8 @@
     "typecheck:scripts": "tsc -p tsconfig.scripts.json",
     "timings:measure": "node scripts/measure-timings.ts",
     "review:start": "pnpm --filter campus run review:start",
-    "e2e": "node scripts/time-run.ts e2e -- playwright test -c e2e/playwright.config.ts"
+    "e2e": "node scripts/time-run.ts e2e -- playwright test -c e2e/playwright.config.ts",
+    "e2e:real": "playwright test -c e2e/real/playwright.config.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

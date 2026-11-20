@@ -5,12 +5,15 @@ import {
   createElement,
   useCallback,
   useContext,
+  useEffect,
   useMemo,
   useRef,
   useState,
   type ReactNode,
 } from "react";
 import { z } from "zod";
+import { readCsrfToken } from "./client";
+import { API_BASE, DATA_MODE, type DataMode } from "./config";
 
 /** Who is signed in on this tab: the scope of every request, cache entry and outbox write. */
 export interface SessionIdentity {
@@ -24,8 +27,13 @@ export type SignOutResult =
 
 export interface SessionContextValue {
   readonly session: SessionIdentity | null;
+  /** False while real mode asks the backend who is signed in (`GET /me`); always true in mock mode. */
+  readonly ready: boolean;
   readonly db: NexusOfflineDB;
+  /** Mock: pick a demo persona. Real: the arguments are ignored — use `startRealSignIn`. */
   signIn(tenantId: string, userId: string): void;
+  /** Real mode: the backend said `401` — forget the session (local data stays until a real sign-out). */
+  expire(): void;
   signOut(): Promise<SignOutResult>;
   /** Writers of user data (the query persister) pause before sign-out wipes; returns unregister. */
   registerSignOutGuard(guard: SignOutGuard): () => void;
@@ -110,17 +118,94 @@ export interface SessionProviderProps {
   readonly children?: ReactNode;
   /** Offline store; defaults to the app's one `nexus-offline` database. */
   readonly db?: NexusOfflineDB;
+  readonly mode?: DataMode;
+  readonly fetch?: typeof fetch;
 }
 
-export function SessionProvider({ children, db }: SessionProviderProps) {
-  const offlineDb = useMemo(() => db ?? defaultDb(), [db]);
-  const [session, setSession] = useState<SessionIdentity | null>(readStoredSession);
+const RealMeSchema = z.object({ user: z.object({ id: IdSchema, tenantId: IdSchema }) });
 
-  const signIn = useCallback((tenantId: string, userId: string) => {
-    const next = { tenantId, userId };
-    writeStoredSession(next);
-    setSession(next);
-  }, []);
+/** Real mode: who the session cookie belongs to, from `GET /me`; `null` when signed out. */
+export async function fetchRealSession(
+  doFetch: typeof fetch = fetch,
+): Promise<SessionIdentity | null> {
+  try {
+    const response = await doFetch(`${API_BASE}/me`, {
+      credentials: "include",
+      headers: { Accept: "application/json" },
+    });
+    if (!response.ok) return null;
+    const parsed = RealMeSchema.safeParse(await response.json());
+    return parsed.success
+      ? { tenantId: parsed.data.user.tenantId, userId: parsed.data.user.id }
+      : null;
+  } catch {
+    return null;
+  }
+}
+
+/** Real mode: hand over to the backend's Keycloak sign-in; it comes back to `returnTo` (a path in this app). */
+export function startRealSignIn(returnTo = "/"): void {
+  const target = returnTo.startsWith("/") && !returnTo.startsWith("//") ? returnTo : "/";
+  globalThis.location.assign(`${API_BASE}/auth/login?returnTo=${encodeURIComponent(target)}`);
+}
+
+async function realSignOut(doFetch: typeof fetch): Promise<void> {
+  const csrf = readCsrfToken();
+  try {
+    await doFetch(`${API_BASE}/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+      headers: { Accept: "application/json", ...(csrf ? { "X-CSRF-Token": csrf } : {}) },
+    });
+  } catch {
+    // Offline: the cookie expires on its own; local data is already wiped.
+  }
+}
+
+export function SessionProvider({
+  children,
+  db,
+  mode = DATA_MODE,
+  fetch: doFetch,
+}: SessionProviderProps) {
+  const offlineDb = useMemo(() => db ?? defaultDb(), [db]);
+  const real = mode === "real";
+  const [session, setSession] = useState<SessionIdentity | null>(() =>
+    real ? null : readStoredSession(),
+  );
+  const [ready, setReady] = useState(!real);
+  const fetcher = useMemo(
+    () => doFetch ?? ((...args: Parameters<typeof fetch>) => fetch(...args)),
+    [doFetch],
+  );
+
+  useEffect(() => {
+    if (!real) return;
+    let live = true;
+    void fetchRealSession(fetcher).then((found) => {
+      if (!live) return;
+      setSession(found);
+      setReady(true);
+    });
+    return () => {
+      live = false;
+    };
+  }, [real, fetcher]);
+
+  const expire = useCallback(() => setSession(null), []);
+
+  const signIn = useCallback(
+    (tenantId: string, userId: string) => {
+      if (real) {
+        startRealSignIn("/");
+        return;
+      }
+      const next = { tenantId, userId };
+      writeStoredSession(next);
+      setSession(next);
+    },
+    [real],
+  );
 
   const guards = useRef(new Set<SignOutGuard>());
   const registerSignOutGuard = useCallback((guard: SignOutGuard) => {
@@ -141,14 +226,15 @@ export function SessionProvider({ children, db }: SessionProviderProps) {
         return { blocked: true, pending: result.pendingCount + result.conflictCount };
       }
     }
-    writeStoredSession(null);
+    if (real) await realSignOut(fetcher);
+    else writeStoredSession(null);
     setSession(null);
     return { blocked: false };
-  }, [offlineDb, session]);
+  }, [offlineDb, session, real, fetcher]);
 
   const value = useMemo<SessionContextValue>(
-    () => ({ session, db: offlineDb, signIn, signOut, registerSignOutGuard }),
-    [session, offlineDb, signIn, signOut, registerSignOutGuard],
+    () => ({ session, ready, db: offlineDb, signIn, expire, signOut, registerSignOutGuard }),
+    [session, ready, offlineDb, signIn, expire, signOut, registerSignOutGuard],
   );
   return createElement(SessionContext.Provider, { value }, children);
 }

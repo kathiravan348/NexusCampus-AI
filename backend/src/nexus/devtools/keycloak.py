@@ -3,6 +3,9 @@
 Idempotent. Each demo tenant becomes an organization (alias = tenant id, domain = its staff email domain);
 each demo user with an email becomes a Keycloak user (username = email, verified) with the password
 `NEXUS_DEMO_USER_PASSWORD` from backend/.env, and a member of its tenant's organization. Dev only.
+
+It also links each demo user in the dev database to its Keycloak id (`users.idp_subject`), so sign-in keeps working
+after the Keycloak container (and its users) was recreated.
 """
 
 import asyncio
@@ -11,6 +14,7 @@ from collections import Counter
 from typing import Any
 
 import httpx2
+from sqlalchemy import create_engine, text
 
 from nexus.core.timing import utf8_console
 from nexus.seed.demo import load_fixtures
@@ -100,13 +104,33 @@ async def setup() -> dict[str, int]:
         admin = f"{s.keycloak_url}/admin/realms/{s.keycloak_realm}"
         orgs = await _organizations(http, admin, data)
         members = 0
+        links: dict[str, str] = {}
         for user in data["users"]:
             kc_id = await _user_id(http, admin, user, people[user["personId"]])
+            links[user["id"]] = kc_id
             res = await http.post(f"{admin}/organizations/{orgs[user['tenantId']]}/members", json=kc_id)
             if res.status_code not in (201, 204, 409):
                 res.raise_for_status()
             members += 1
+    link_subjects(s, links)
     return {"organizations": len(orgs), "users": members}
+
+
+def link_subjects(s: Settings, links: dict[str, str]) -> None:
+    """Dev database: point each demo user at its current Keycloak id (owner connection, dev only)."""
+    engine = create_engine(s.migrate_database_url.get_secret_value())
+    try:
+        with engine.begin() as conn:
+            for user_id, subject in links.items():
+                conn.execute(
+                    text("UPDATE users SET idp_subject = NULL WHERE idp_subject = :sub AND id <> :id"),
+                    {"sub": subject, "id": user_id},
+                )
+                conn.execute(
+                    text("UPDATE users SET idp_subject = :sub WHERE id = :id"), {"sub": subject, "id": user_id}
+                )
+    finally:
+        engine.dispose()
 
 
 def main() -> None:

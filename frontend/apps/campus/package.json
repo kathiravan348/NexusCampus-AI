@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node ../../scripts/time-run.ts dev:campus --ready-pattern Local: -- vite",
+    "dev:real": "node ../../scripts/time-run.ts dev:campus --ready-pattern Local: -- vite --mode real",
     "build": "node ../../scripts/time-run.ts build:campus -- vite build",
     "preview": "node ../../scripts/time-run.ts preview:campus --ready-pattern Local: -- vite preview",
     "typecheck": "tsc --noEmit && tsc --noEmit -p src/sw",

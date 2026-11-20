@@ -331,6 +331,18 @@
     "message": "The demo institutions could not be loaded.",
     "description": "Error state on the sign-in page."
   },
+  "m02.signIn.realTitle": {
+    "message": "Sign in",
+    "description": "Sign-in page heading for a real installation (not the demo)."
+  },
+  "m02.signIn.realIntro": {
+    "message": "Use the account your institution gave you. You sign in on your institution's sign-in page and come back here.",
+    "description": "Sign-in page intro for a real installation: sign-in happens on the identity provider's page (Keycloak)."
+  },
+  "m02.signIn.realButton": {
+    "message": "Sign in with your institution account",
+    "description": "Button that opens the institution's sign-in page (real installation)."
+  },
   "m02.persona.admin": {
     "message": "Administrator",
     "description": "Demo persona role: institution administrator."

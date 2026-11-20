@@ -9,6 +9,18 @@ This guide explains each screen in plain language as it is built. Names of butto
 2. Pick one of the five sample institutions (preschool, K-12 school group, university, Tamil coaching centre, or music academy) and choose a role button such as **Administrator**, **Teacher**, **Parent or guardian**, or **Learner**.
 3. The app opens on **Home** using that institution's colours, logo, fonts, terminology, and default language (English, Hindi or Tamil).
 
+## Signing in (real installation)
+
+On a real installation there is no demo picker: choose **Sign in with your institution account**. Your
+institution's sign-in page opens (or single sign-on, if your institution set it up); after signing in you come back
+to the page you wanted. **Sign out** (top right) ends the session on the server too. If your session expires, the
+app shows the sign-in page again.
+
+Developers: start Compose, migrate and seed, run `uv run --project backend nexus-keycloak-dev` (demo users get
+`NEXUS_DEMO_USER_PASSWORD` from `backend/.env` and are linked to their database accounts), then
+`uv run --project backend nexus-dev` and `pnpm --dir frontend dev:real`, and open `http://127.0.0.1:3100`.
+`pnpm --dir frontend e2e:real` runs the same flow (set `NEXUS_E2E_EMAIL` and `NEXUS_E2E_PASSWORD`).
+
 ## Home and the menu
 - The menu on the side (or opened from the menu button on small screens) shows **Home** and only the modules that are switched on in your institution's plan and allowed for your role.
 - **Home** greets you by name and shows a tile for each module you can open. If no modules are available yet for your role, you see **No modules yet**.

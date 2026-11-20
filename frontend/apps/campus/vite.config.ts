@@ -23,6 +23,8 @@ const token = (name: string) => tokens.color.tokens.find((t) => t.name === name)
 export default defineConfig(({ mode }) => {
   // `--mode review` = the Stage 1 review build (`pnpm review:start`, e2e): production build on mock data.
   if (mode === "review") process.env["VITE_DATA_MODE"] ??= "mock";
+  // `pnpm dev:real` (NEX-060): the app talks to the backend on 127.0.0.1:8000 through the proxy below.
+  if (mode === "real") process.env["VITE_DATA_MODE"] ??= "real";
   return {
     plugins: [
       tailwindcss(),
@@ -72,6 +74,10 @@ export default defineConfig(({ mode }) => {
     server: {
       port: 3100,
       host: "127.0.0.1",
+      // Real mode (NEX-060): the backend is same-origin through this proxy, so its cookies just work.
+      ...(process.env["VITE_DATA_MODE"] === "real" || mode === "real"
+        ? { proxy: { "/api": { target: "http://127.0.0.1:8000", changeOrigin: false } } }
+        : {}),
     },
     test: {
       globals: true,
