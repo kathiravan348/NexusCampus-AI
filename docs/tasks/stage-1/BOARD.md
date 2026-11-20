@@ -40,7 +40,7 @@
 | NEX-029 | Mocks (MSW): in-memory mock DB, read handlers for every Stage 1 resource, permission/entitlement/masking checks, scenarios (split from NEX-010) | B | done | Claude | 010, 031 |
 | NEX-030 | PWA: manifest, service worker (Workbox), offline app shell, install and update prompts (split from NEX-012) | C | done | Claude | 012, 035 |
 | NEX-031 | Mocks (ops fixtures): audit, consent, data requests, compliance packs, notifications, sync, AI, vault (split from NEX-010) | B | done | Claude | 010, 027 |
-| NEX-032 | Startup & test timings: timing harness, Vitest reporter, soft budgets, and baseline log (`AGENTS.md` §8a, D37) | — | planned | — | 012 |
+| NEX-032 | Startup & test timings: timing harness, Vitest reporter, soft budgets, and baseline log (`AGENTS.md` §8a, D37) | C | done | Claude | 012 |
 | NEX-033 | Campus Prism default theme tokens (Nexus Style refresh, D38) | A | done | Gemini | 002, 014 |
 | NEX-034 | Freeze Campus Prism palette: radius-xs 4px, border-strong fix, `brand-sky`, `hero-glow`, full freeze test (D39) | A | done | Claude | 033 |
 | NEX-035 | NexusCampus logo assets: mark, lockups, favicons, PWA icons in `public/brand/` (D40) | A | done | Claude | 034 |

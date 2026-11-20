@@ -4,11 +4,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "storybook dev -p 6006",
-    "build": "storybook build -o storybook-static --quiet",
+    "dev": "node ../../scripts/time-run.ts dev:storybook --ready-pattern started -- storybook dev -p 6006",
+    "build": "node ../../scripts/time-run.ts build:storybook -- storybook build -o storybook-static --quiet",
     "typecheck": "tsc --noEmit",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
-    "test": "vitest run"
+    "test": "node ../../scripts/time-run.ts test:pkg --label test:ui-storybook -- vitest run"
   },
   "dependencies": {
     "@nexus/i18n": "workspace:*",

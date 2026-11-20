@@ -12,7 +12,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
-    "test": "vitest run"
+    "test": "node ../../scripts/time-run.ts test:pkg --label test:i18n -- vitest run"
   },
   "peerDependencies": {
     "react": "18.3.1",
