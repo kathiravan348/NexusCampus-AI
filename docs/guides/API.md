@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -189,3 +189,10 @@ Dev-only access broker stub (not mounted in `prod`; replaced by P10 in Stage 2; 
 | `GET /api/v1/notification-deliveries` | `m07.template.manage` | `?status=&channel=&page=&pageSize=` → `Page<NotificationDelivery>` (newest first) | `400`, `401`, `403` |
 | `GET /api/v1/notification-preferences` | `m07.preference.manage` | — → `{ preferences, channels: [{ channel, available }] }` (prototype-only shape: `available` = the institution has templates for that channel; push needs a provider) | `401`, `403` |
 | `PUT /api/v1/notification-preferences` | `m07.preference.manage` (own only) | `{ channels: [{ channel, enabled }], quietHours }` → same as GET; accepts `Idempotency-Key` (outbox replay) | `400` (equal quiet-hour times), `401`, `403`; audits `m07.preference.updated` |
+
+Backend notes (NEX-056): `PUT /notification-preferences` with `Idempotency-Key` stores the first answer; a replay
+with the same key and body returns it unchanged (no second audit), the same key with another body → `409 conflict`.
+Events that notify carry `payload.recipientPersonIds` and `payload.values` (`payload.urgent: true` ignores quiet
+hours). `nexus-worker` picks the template locale (person → institution default → English), applies the recipient's
+preference and quiet hours (`suppressed` with a reason), renders ICU and records one delivery per event + person +
+channel. Stage 1 channels only log (`LogChannel`); push has no provider and fails.

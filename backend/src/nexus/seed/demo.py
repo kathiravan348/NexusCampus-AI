@@ -23,7 +23,7 @@ from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 12
+FIXTURES_VERSION = 13
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
     *MODULE_TABLES_CHILD_FIRST,

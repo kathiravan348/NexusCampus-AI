@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-21 (NEX-055) · Migration: `0012_plans_usage`
+> State as of: 2026-11-21 (NEX-056) · Migration: `0013_notifications`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -122,6 +122,19 @@ All three use forced RLS (`tenant_isolation`).
 | `plans` | `id`, `code` (unique), `name_key`, `modules[]`, `ai_credits_per_month`, `learner_limit` | Platform reference data, no tenant column; the app only reads (changes: Nexus Control, Stage 2) |
 | `tenant_plans` | `tenant_id` (PK), `plan_id` | A tenant's plan; forced RLS; read-only for the app |
 | `usage_meters` | `tenant_id` + `metric` + `period_start` (PK), `period_end`, `used`, `limit` | Stored counters per period; forced RLS |
+
+## Notifications (M07 — `0013_notifications`, G-1)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `notification_templates` | `id`, `tenant_id`, `event_type`, `channel`, `locale`, `subject`, `body`, `version`, `enabled`, `updated_at` | One per tenant + event + channel + locale; `subject` only for email |
+| `notification_deliveries` | `id`, `tenant_id`, `template_id`, `recipient_person_id`, `channel`, `status`, `reason`, `queued_at`, `sent_at`, `event_id` | Unique `event_id` + person + channel (each event delivered once); `reason` exactly for failed / suppressed |
+| `notification_preferences` | `id`, `tenant_id`, `user_id`, `channel`, `event_type` (NULL = all), `enabled`, `quiet_start`, `quiet_end`, `time_zone` | One per user + channel + event (NULLs not distinct) |
+| `idempotency_keys` | `tenant_id` + `key` (PK), `user_id`, `request_hash`, `status_code`, `response` | Offline replays; append-only for the app |
+
+All four use forced RLS. `domain_events_outbox` gained `next_attempt_at` and `last_error` (retries with backoff).
+`nexus_outbox_tenants()` (SECURITY DEFINER) returns only the ids of tenants with due events, so the worker stays
+`nexus_app` under RLS and processes one tenant transaction at a time.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

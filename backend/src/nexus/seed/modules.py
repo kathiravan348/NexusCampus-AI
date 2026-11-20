@@ -1,6 +1,6 @@
 """Demo rows of the module tables (Stage 1 APIs): M83 provider access (NEX-051), M06 privacy (NEX-052), M03 themes
 and the font library (NEX-053), M04 text overrides with their revisions (NEX-054),
-M05 plans and usage (NEX-055). Same shapes as the mock
+M05 plans and usage (NEX-055), M07 notifications (NEX-056). Same shapes as the mock
 fixtures; idempotent upserts.
 """
 
@@ -12,6 +12,10 @@ from sqlalchemy import Connection, text
 
 #: Children first, for `--reset` (the font library is shared, so it is never deleted per tenant).
 MODULE_TABLES_CHILD_FIRST = (
+    "idempotency_keys",
+    "notification_preferences",
+    "notification_deliveries",
+    "notification_templates",
     "usage_meters",
     "tenant_plans",
     "text_override_revisions",
@@ -73,6 +77,11 @@ def seed_modules(conn: Connection, data: dict[str, Any], tid: str) -> None:
             {"t": tid, "p": pack["packCode"]},
         )
     seed_texts(conn, data, tid)
+    for template in _rows(data, "notificationTemplates", tid):
+        _upsert(conn, "notification_templates", _snake(template))
+    for delivery in _rows(data, "notificationDeliveries", tid):
+        _upsert(conn, "notification_deliveries", _snake(delivery))
+    seed_preferences(conn, data, tid)
     for tp in _rows(data, "tenantPlans", tid):
         _upsert(conn, "tenant_plans", {"tenant_id": tid, "plan_id": tp["planId"]}, key="tenant_id")
     for meter in _rows(data, "usageMeters", tid):
@@ -142,3 +151,32 @@ def seed_texts(conn: Connection, data: dict[str, Any], tid: str) -> None:
                     "at": r["changedAt"],
                 },
             )
+
+
+def seed_preferences(conn: Connection, data: dict[str, Any], tid: str) -> None:
+    """Preferences carry no tenant in the contract: taken from the user."""
+    users = {u["id"] for u in _rows(data, "users", tid)}
+    for p in data["notificationPreferences"]:
+        if p["userId"] not in users:
+            continue
+        quiet = p["quietHours"] or {"start": None, "end": None}
+        event = p["eventType"] or "all"
+        conn.execute(
+            text(
+                "INSERT INTO notification_preferences (id, tenant_id, user_id, channel, event_type, enabled, "
+                "quiet_start, quiet_end, time_zone) VALUES (:id, :t, :u, :c, :e, :en, :s, :q, :z) "
+                "ON CONFLICT (id) DO UPDATE SET enabled = EXCLUDED.enabled, quiet_start = EXCLUDED.quiet_start, "
+                "quiet_end = EXCLUDED.quiet_end, time_zone = EXCLUDED.time_zone"
+            ),
+            {
+                "id": f"npf-{p['userId']}-{p['channel']}-{event}".replace(".", "-"),
+                "t": tid,
+                "u": p["userId"],
+                "c": p["channel"],
+                "e": p["eventType"],
+                "en": p["enabled"],
+                "s": quiet["start"],
+                "q": quiet["end"],
+                "z": p["timeZone"],
+            },
+        )

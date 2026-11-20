@@ -82,3 +82,6 @@ class DomainEventOutboxRow(Base):
     #: Set by the worker once delivered (NEX-056); unpublished rows have NULL.
     published_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     attempts: Mapped[int] = mapped_column(Integer, server_default="0")
+    #: Retry schedule and the last failure (NEX-056, migration 0013).
+    next_attempt_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
+    last_error: Mapped[str | None] = mapped_column(String(500))
