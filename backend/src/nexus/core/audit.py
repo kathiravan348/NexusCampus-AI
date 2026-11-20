@@ -1,8 +1,9 @@
 """Audit writer (M06 core, ARCHITECTURE §6, V-3): `record_audit` appends one event to the tenant's hash
 chain in the caller's transaction, so the change and its audit commit or roll back together.
 
-Only the **names** of changed fields are recorded, never values. The tenant's chain head is locked
-`FOR UPDATE`, so concurrent writers queue up and the chain never forks.
+Only the **names** of changed fields are recorded, never values. Inside a provider grant request
+(`TenantContext.provider`), every event is recorded as `actorKind = provider_grant` with the grant's id.
+The tenant's chain head is locked `FOR UPDATE`, so concurrent writers queue up and the chain never forks.
 """
 
 import json
@@ -86,6 +87,15 @@ async def record_audit(
 ) -> AuditRecord:
     """Appends `event` to `ctx`'s chain inside the current transaction and returns the stored record."""
     await _require_context(session, ctx)
+    if ctx.provider is not None:
+        # Work done on a provider grant is always attributed to the grant, whatever the module wrote (V-3).
+        event = event.model_copy(
+            update={
+                "actor_kind": "provider_grant",
+                "actor_id": ctx.provider.staff_ref,
+                "grant_id": ctx.provider.grant_id,
+            }
+        )
     when = normalize_instant(occurred_at or datetime.now(UTC))
     await session.execute(
         text(

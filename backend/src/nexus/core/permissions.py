@@ -4,20 +4,27 @@ A grant is a permission held through a role assignment that is in force today (`
 effective_to`, D25), in one scope (group → institution → campus → department → class, or `own`). `require`
 checks the module switch first (`403 module_disabled`), then that the user holds the permission in **some**
 scope (`403 forbidden`); services narrow results to the scopes with `Grants.allows` / `Grants.scopes`.
+
+Provider staff never hold standing access (ARCHITECTURE §10): a request carrying a grant credential
+(`Authorization: Bearer ngc1.…`, M83 `grant_auth`) is let in only while its grant is active, for the grant's
+modules, read-only when the grant is `read`; it then holds every **non-sensitive** permission of those modules
+across the whole tenant. Sensitive permissions (restricted person data, data requests, grant approval) are never
+reachable on a grant.
 """
 
 from collections.abc import AsyncIterator, Callable
 from dataclasses import dataclass, field
 from datetime import date
-from typing import Annotated, Any, Literal
+from typing import Any, Literal
 
-from fastapi import Depends
+from fastapi import Request
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from nexus.core.entitlements import ensure_module_enabled
 from nexus.core.errors import ApiError
-from nexus.core.request_context import RequestContext, authenticated
+from nexus.core.request_context import RequestContext, session_context
+from nexus.modules.m83.grant_auth import credential_of, provider_context
 
 ScopeKind = Literal["group", "institution", "campus", "department", "class", "own"]
 
@@ -140,6 +147,19 @@ async def load_grants(db: AsyncSession, user_id: str, today: date | None = None)
     return Grants(user_id=user_id, by_permission={k: tuple(v) for k, v in collected.items()})
 
 
+async def provider_grants(db: AsyncSession, staff_ref: str, modules: tuple[str, ...]) -> Grants:
+    """What a provider grant holds: non-sensitive permissions of its modules, tenant-wide (RLS: own tenant)."""
+    rows = await db.execute(
+        text(
+            "SELECT 'group', id FROM groups UNION ALL SELECT 'institution', id FROM institutions "
+            "UNION ALL SELECT 'campus', id FROM campuses"
+        )
+    )
+    scopes = tuple(Scope(kind, target) for kind, target in rows.all())
+    allowed = {p.code: scopes for p in CATALOGUE if p.module_id in modules and not p.sensitive}
+    return Grants(user_id=staff_ref, by_permission=allowed)
+
+
 @dataclass(frozen=True)
 class Authorized:
     """What a guarded endpoint receives: the request context plus the caller's grants."""
@@ -155,12 +175,21 @@ def require(permission: str | None, module: str) -> Callable[..., AsyncIterator[
     if permission is not None and not permission.startswith(module.lower() + "."):
         raise ValueError(f"permission {permission!r} is not in module {module}")
 
-    async def guard(ctx: Annotated[RequestContext, Depends(authenticated)]) -> AsyncIterator[Authorized]:
-        await ensure_module_enabled(ctx.db, ctx.tenant.tenant_id, module)
-        grants = await load_grants(ctx.db, ctx.user_id)
-        if permission is not None and not grants.has(permission):
-            raise ApiError(403, "forbidden", "Your role does not allow this.")
-        yield Authorized(ctx=ctx, grants=grants)
+    async def guard(request: Request) -> AsyncIterator[Authorized]:
+        if credential_of(request) is not None:
+            async with provider_context(request, module) as (ctx, grant):
+                await ensure_module_enabled(ctx.db, ctx.tenant.tenant_id, module)
+                grants = await provider_grants(ctx.db, ctx.user_id, grant.modules)
+                if permission is not None and not grants.has(permission):
+                    raise ApiError(403, "forbidden", "This access grant does not allow this.")
+                yield Authorized(ctx=ctx, grants=grants)
+            return
+        async with session_context(request) as ctx:
+            await ensure_module_enabled(ctx.db, ctx.tenant.tenant_id, module)
+            grants = await load_grants(ctx.db, ctx.user_id)
+            if permission is not None and not grants.has(permission):
+                raise ApiError(403, "forbidden", "Your role does not allow this.")
+            yield Authorized(ctx=ctx, grants=grants)
 
     guard.__nexus_guard__ = (permission, module)  # type: ignore[attr-defined]
     return guard

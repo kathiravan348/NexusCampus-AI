@@ -21,7 +21,10 @@ from nexus.modules.m02 import auth, directory, me, scim, sso, writes
 from nexus.modules.m02.keycloak_admin import HttpKeycloakAdmin
 from nexus.modules.m02.login_state import RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
+from nexus.modules.m83 import access as m83_access
+from nexus.modules.m83 import broker_stub
 from nexus.modules.m83 import keys as m83_keys
+from nexus.modules.m83.grant_auth import GrantSigner
 from nexus.settings import Settings, get_settings
 
 log = logging.getLogger("nexus")
@@ -73,6 +76,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         responses={"default": {"model": ApiErrorEnvelope}},
     )
     app.state.settings = cfg
+    app.state.grant_signer = GrantSigner.from_settings(cfg)
     install_error_handling(app)
     setup_telemetry(app, cfg)
     app.include_router(auth.router)
@@ -84,6 +88,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(scim.router)
     scim.install_scim_errors(app)
     app.include_router(m83_keys.router)
+    app.include_router(m83_access.router)
+    if cfg.environment != "prod":
+        app.include_router(broker_stub.router)
 
     @app.get("/healthz", response_model=Health, tags=["ops"])
     async def healthz() -> Health:

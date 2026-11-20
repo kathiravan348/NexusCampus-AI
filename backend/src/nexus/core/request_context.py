@@ -8,6 +8,7 @@ from a header.
 
 import secrets
 from collections.abc import AsyncIterator
+from contextlib import asynccontextmanager
 from dataclasses import dataclass
 
 from fastapi import Request
@@ -35,6 +36,9 @@ class RequestContext:
     user_id: str
     person_id: str
     session_id: str
+    #: Set when a provider grant credential (not a user session) made the request; `user_id` is then the
+    #: provider staff reference and `person_id` / `session_id` are empty.
+    grant_id: str | None = None
 
 
 def app_settings(request: Request) -> Settings:
@@ -52,7 +56,9 @@ def check_csrf(request: Request) -> None:
         raise ApiError(403, "forbidden", "The request could not be verified. Reload the page and try again.")
 
 
-async def authenticated(request: Request) -> AsyncIterator[RequestContext]:
+@asynccontextmanager
+async def session_context(request: Request) -> AsyncIterator[RequestContext]:
+    """The signed-in user's tenant transaction (cookie session); 401 when there is none."""
     parts = parse_cookie(request.cookies.get(SESSION_COOKIE))
     if parts is None:
         raise ApiError(401, "unauthorized", "Please sign in.")
@@ -70,3 +76,8 @@ async def authenticated(request: Request) -> AsyncIterator[RequestContext]:
             person_id=active.person_id,
             session_id=active.session_id,
         )
+
+
+async def authenticated(request: Request) -> AsyncIterator[RequestContext]:
+    async with session_context(request) as ctx:
+        yield ctx
