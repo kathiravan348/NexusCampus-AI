@@ -18,19 +18,15 @@ from sqlalchemy import Connection, create_engine, text
 from nexus.core.tenancy import TENANT_SETTING
 from nexus.core.timing import utf8_console
 from nexus.core.vault import key_name
+from nexus.seed.modules import MODULE_TABLES_CHILD_FIRST, seed_fonts, seed_modules
 from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 9
+FIXTURES_VERSION = 10
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
-    "tenant_compliance",
-    "data_subject_requests",
-    "consents",
-    "break_glass_notices",
-    "access_grants",
-    "access_requests",
+    *MODULE_TABLES_CHILD_FIRST,
     "vault_keys",
     "scim_tokens",
     "sso_providers",
@@ -181,22 +177,6 @@ def seed_identity(conn: Connection, data: dict[str, Any], tid: str) -> None:
     for k in _rows(data, "keyStatuses", tid):
         row = {**_snake(k), "vault_key_name": key_name(tid, k["purpose"])}
         _upsert(conn, "vault_keys", row)
-    # Provider access (NEX-051): requests before the grants that point at them.
-    for table, key in (
-        ("access_requests", "accessRequests"),
-        ("access_grants", "accessGrants"),
-        ("break_glass_notices", "breakGlassNotices"),
-        # Privacy (NEX-052).
-        ("consents", "consents"),
-        ("data_subject_requests", "dataSubjectRequests"),
-    ):
-        for row in _rows(data, key, tid):
-            _upsert(conn, table, _snake(row))
-    for pack in _rows(data, "tenantCompliance", tid):
-        conn.execute(
-            text("INSERT INTO tenant_compliance (tenant_id, pack_code) VALUES (:t, :p) ON CONFLICT DO NOTHING"),
-            {"t": tid, "p": pack["packCode"]},
-        )
 
 
 def seed_audit(conn: Connection, data: dict[str, Any], tenant_id: str) -> int:
@@ -256,6 +236,8 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
     fixtures = data if data is not None else load_fixtures()
     engine = create_engine(url)
     try:
+        with engine.begin() as conn:
+            seed_fonts(conn, fixtures)
         for tenant in fixtures["tenants"]:
             with engine.begin() as conn:
                 if reset:
@@ -263,6 +245,7 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
                 seed_tenant(conn, fixtures, tenant)
                 seed_identity(conn, fixtures, tenant["id"])
                 seed_rbac(conn, fixtures, tenant["id"])
+                seed_modules(conn, fixtures, tenant["id"])
                 seed_audit(conn, fixtures, tenant["id"])
     finally:
         engine.dispose()

@@ -14,6 +14,11 @@ export const EXPORT_PATH = path.resolve(
   here,
   "../../../../backend/src/nexus/seed/demo_fixtures.json",
 );
+/** Theme tokens + contrast results for the backend guard (NEX-053). */
+export const TOKENS_PATH = path.resolve(
+  here,
+  "../../../../backend/src/nexus/modules/m03/design_tokens.json",
+);
 
 const server = await createServer({
   root: path.resolve(here, ".."),
@@ -27,6 +32,11 @@ try {
   };
   writeFileSync(EXPORT_PATH, mod.demoFixturesJson(), "utf8");
   console.log(`wrote ${path.relative(process.cwd(), EXPORT_PATH)}`);
+  const tokens = (await server.ssrLoadModule("/src/fixtures/design-tokens.ts")) as {
+    designTokensJson: () => string;
+  };
+  writeFileSync(TOKENS_PATH, tokens.designTokensJson(), "utf8");
+  console.log(`wrote ${path.relative(process.cwd(), TOKENS_PATH)}`);
 } finally {
   await server.close();
 }
