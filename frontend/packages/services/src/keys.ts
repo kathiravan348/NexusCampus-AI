@@ -68,6 +68,14 @@ export const queryKeys = {
     settings: (s: KeyScope) => scoped(s, "m11", "settings"),
     credits: (s: KeyScope) => scoped(s, "m11", "credits"),
   },
+  m83: {
+    all: (s: KeyScope) => scoped(s, "m83"),
+    keys: (s: KeyScope) => scoped(s, "m83", "keys"),
+    requests: (s: KeyScope) => scoped(s, "m83", "requests"),
+    grants: (s: KeyScope) => scoped(s, "m83", "grants"),
+    breakGlass: (s: KeyScope) => scoped(s, "m83", "break-glass"),
+    history: (s: KeyScope, grantId: string | null) => scoped(s, "m83", "history", grantId),
+  },
   m05: {
     plan: (s: KeyScope) => scoped(s, "m05", "plan"),
     entitlements: (s: KeyScope) => scoped(s, "m05", "entitlements"),

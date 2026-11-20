@@ -8,7 +8,7 @@ import { m06Handlers } from "./m06";
 import { m07Handlers } from "./m07";
 import { m10Handlers } from "./m10";
 import { m11Handlers } from "./m11";
-import { m83Handlers } from "./m83";
+import { m83Handlers, m83WriteHandlers } from "./m83";
 
 export { API_BASE } from "./route";
 export { DemoTenantEntrySchema, TenantResponseSchema } from "./m01";
@@ -30,4 +30,5 @@ export const handlers: HttpHandler[] = [
   ...m10Handlers,
   ...m11Handlers,
   ...m83Handlers,
+  ...m83WriteHandlers,
 ];

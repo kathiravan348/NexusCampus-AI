@@ -3086,5 +3086,309 @@
   "m11.permission.settingsManage": {
     "message": "Manage AI settings",
     "description": "Permission description: change AI settings."
+  },
+  "m83.nav.title": {
+    "message": "Data vault & access",
+    "description": "Menu item and page title of the data vault and provider access screen (M83)."
+  },
+  "m83.vault.intro": {
+    "message": "You decide when Nexus support staff may see your data, for how long, and what they did. Key material is never shown.",
+    "description": "Intro text on the data vault page."
+  },
+  "m83.vault.tabsLabel": {
+    "message": "Data vault sections",
+    "description": "Accessible label of the tab list on the data vault page."
+  },
+  "m83.vault.tabRequests": {
+    "message": "Access requests",
+    "description": "Tab: provider access requests."
+  },
+  "m83.vault.tabGrants": {
+    "message": "Grants",
+    "description": "Tab: provider access grants."
+  },
+  "m83.vault.tabKeys": {
+    "message": "Keys",
+    "description": "Tab: encryption key status."
+  },
+  "m83.vault.tabBreakGlass": {
+    "message": "Emergency access",
+    "description": "Tab: break-glass (emergency) access notices."
+  },
+  "m83.vault.pendingCount": {
+    "message": "{count, plural, one {# request waiting} other {# requests waiting}}",
+    "description": "Accessible label of the badge counting pending requests."
+  },
+  "m83.vault.error": {
+    "message": "Data vault information could not be loaded.",
+    "description": "Error heading when vault data fails to load."
+  },
+  "m83.vault.saveFailed": {
+    "message": "That did not work. Try again.",
+    "description": "Toast when a vault action fails."
+  },
+  "m83.requests.modules": {
+    "message": "Areas",
+    "description": "Request detail: which modules staff want to see."
+  },
+  "m83.requests.mode": {
+    "message": "Access",
+    "description": "Request detail: read only or read and edit."
+  },
+  "m83.requests.duration": {
+    "message": "For",
+    "description": "Request detail: how long access would last."
+  },
+  "m83.requests.hours": {
+    "message": "{count, plural, one {# hour} other {# hours}}",
+    "description": "A duration in hours."
+  },
+  "m83.requests.requested": {
+    "message": "Requested",
+    "description": "Request detail: when it was asked."
+  },
+  "m83.requests.approve": {
+    "message": "Approve…",
+    "description": "Button: open the approval dialog."
+  },
+  "m83.requests.deny": {
+    "message": "Deny",
+    "description": "Button: start denying a request."
+  },
+  "m83.requests.denyReason": {
+    "message": "Reason for denying",
+    "description": "Text field: why the request is denied."
+  },
+  "m83.requests.confirmDeny": {
+    "message": "Deny request",
+    "description": "Button: confirm the denial."
+  },
+  "m83.requests.denied": {
+    "message": "Request denied.",
+    "description": "Toast after a request is denied."
+  },
+  "m83.requests.empty": {
+    "message": "No access requests.",
+    "description": "Empty state of the requests tab."
+  },
+  "m83.requestStatus.pending": {
+    "message": "Waiting for you",
+    "description": "Request status: waiting for a decision."
+  },
+  "m83.requestStatus.approved": {
+    "message": "Approved",
+    "description": "Request status: approved."
+  },
+  "m83.requestStatus.denied": {
+    "message": "Denied",
+    "description": "Request status: denied."
+  },
+  "m83.requestStatus.expired": {
+    "message": "Expired",
+    "description": "Request status: its access has ended."
+  },
+  "m83.requestStatus.revoked": {
+    "message": "Revoked",
+    "description": "Request status: access ended early."
+  },
+  "m83.mode.read": {
+    "message": "Read only",
+    "description": "Access mode: can only look."
+  },
+  "m83.mode.edit": {
+    "message": "Read and edit",
+    "description": "Access mode: can also change data."
+  },
+  "m83.approve.title": {
+    "message": "Approve access for {staff}",
+    "description": "Title of the approval dialog."
+  },
+  "m83.approve.modules": {
+    "message": "Areas they may see",
+    "description": "Checkbox group: modules to allow (only those requested)."
+  },
+  "m83.approve.mode": {
+    "message": "Access",
+    "description": "Select: read only or read and edit (never more than requested)."
+  },
+  "m83.approve.hours": {
+    "message": "Hours",
+    "description": "Number field: how long the access lasts."
+  },
+  "m83.approve.hoursHint": {
+    "message": "At most {max} hours, as requested.",
+    "description": "Help text under the hours field."
+  },
+  "m83.approve.ack": {
+    "message": "I understand Nexus support staff will see this data until {end}.",
+    "description": "Checkbox the owner must tick before approving."
+  },
+  "m83.approve.confirm": {
+    "message": "Approve access",
+    "description": "Button: approve the request."
+  },
+  "m83.approve.done": {
+    "message": "Access approved.",
+    "description": "Toast after approving."
+  },
+  "m83.approve.widened": {
+    "message": "You can only narrow what was requested.",
+    "description": "Toast when the approval tried to widen the request."
+  },
+  "m83.grants.active": {
+    "message": "Active",
+    "description": "Grant state: currently active."
+  },
+  "m83.grants.ended": {
+    "message": "Ended",
+    "description": "Grant state: ran out."
+  },
+  "m83.grants.revokedState": {
+    "message": "Revoked",
+    "description": "Grant state: ended early."
+  },
+  "m83.grants.timeLeft": {
+    "message": "Ends in {hours} h {minutes} min",
+    "description": "Countdown until an active grant ends."
+  },
+  "m83.grants.revoke": {
+    "message": "Revoke now",
+    "description": "Button: end an active grant immediately."
+  },
+  "m83.grants.revoked": {
+    "message": "Access revoked.",
+    "description": "Toast after revoking a grant."
+  },
+  "m83.grants.history": {
+    "message": "What they did",
+    "description": "Button and list: audit events done under this grant."
+  },
+  "m83.grants.noHistory": {
+    "message": "Nothing was done under this grant.",
+    "description": "Shown when a grant has no audit events."
+  },
+  "m83.grants.empty": {
+    "message": "No provider access has been granted.",
+    "description": "Empty state of the grants tab."
+  },
+  "m83.keys.intro": {
+    "message": "Your data is encrypted with these keys. When you leave, the keys are destroyed so the data can never be read again.",
+    "description": "Explanation above the keys table."
+  },
+  "m83.keys.caption": {
+    "message": "Encryption keys",
+    "description": "Accessible caption of the keys table."
+  },
+  "m83.keys.colPurpose": {
+    "message": "Protects",
+    "description": "Keys table column: what the key protects."
+  },
+  "m83.keys.colCustody": {
+    "message": "Held by",
+    "description": "Keys table column: who holds the key."
+  },
+  "m83.keys.colStatus": {
+    "message": "Status",
+    "description": "Keys table column: key status."
+  },
+  "m83.keys.colDates": {
+    "message": "Created",
+    "description": "Keys table column: created and rotated dates."
+  },
+  "m83.keys.rotated": {
+    "message": "rotated {date}",
+    "description": "Shown after the created date when a key was rotated."
+  },
+  "m83.keys.empty": {
+    "message": "No keys.",
+    "description": "Empty state of the keys table."
+  },
+  "m83.keyPurpose.tenantData": {
+    "message": "All institution data",
+    "description": "Key purpose: the main data key."
+  },
+  "m83.keyPurpose.fieldHealth": {
+    "message": "Health fields",
+    "description": "Key purpose: health fields."
+  },
+  "m83.keyPurpose.fieldIdentity": {
+    "message": "ID document fields",
+    "description": "Key purpose: identity fields."
+  },
+  "m83.keyPurpose.fieldFinance": {
+    "message": "Finance fields",
+    "description": "Key purpose: finance fields."
+  },
+  "m83.custody.platform": {
+    "message": "Nexus vault",
+    "description": "Key custody: held in the Nexus vault."
+  },
+  "m83.custody.byok": {
+    "message": "Your key in our vault (BYOK)",
+    "description": "Key custody: bring your own key."
+  },
+  "m83.custody.hyok": {
+    "message": "Only you (HYOK)",
+    "description": "Key custody: hold your own key."
+  },
+  "m83.keyState.active": {
+    "message": "Active",
+    "description": "Key status: in use."
+  },
+  "m83.keyState.rotating": {
+    "message": "Rotating",
+    "description": "Key status: being replaced."
+  },
+  "m83.keyState.revoked": {
+    "message": "Revoked",
+    "description": "Key status: revoked."
+  },
+  "m83.keyState.destroyed": {
+    "message": "Destroyed",
+    "description": "Key status: destroyed (data unreadable)."
+  },
+  "m83.breakGlass.legalOrder": {
+    "message": "Legal order",
+    "description": "Emergency access category: a court or legal order."
+  },
+  "m83.breakGlass.securityIncident": {
+    "message": "Security incident",
+    "description": "Emergency access category: a security incident."
+  },
+  "m83.breakGlass.explain": {
+    "message": "Nexus used emergency access, approved by two people, and told you straight away.",
+    "description": "Explanation on a break-glass notice."
+  },
+  "m83.breakGlass.approvers": {
+    "message": "Approved by",
+    "description": "Notice detail: the two provider approvers."
+  },
+  "m83.breakGlass.occurred": {
+    "message": "Happened",
+    "description": "Notice detail: when it happened."
+  },
+  "m83.breakGlass.notified": {
+    "message": "You were told",
+    "description": "Notice detail: when the institution was told."
+  },
+  "m83.breakGlass.report": {
+    "message": "Read the report",
+    "description": "Link: the incident report."
+  },
+  "m83.breakGlass.reportPending": {
+    "message": "The report is being prepared.",
+    "description": "Shown when the report is not ready yet."
+  },
+  "m83.breakGlass.empty": {
+    "message": "No emergency access has happened.",
+    "description": "Empty state of the break-glass tab."
+  },
+  "m83.permission.vaultRead": {
+    "message": "See the data vault and provider access",
+    "description": "Permission description: view vault and access records."
+  },
+  "m83.permission.grantApprove": {
+    "message": "Approve provider access",
+    "description": "Permission description: approve, deny and revoke provider access (sensitive)."
   }
 }
