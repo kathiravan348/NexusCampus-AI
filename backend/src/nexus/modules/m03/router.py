@@ -25,8 +25,8 @@ from nexus.modules.m03.service import (
 )
 
 router = APIRouter(prefix="/api/v1", tags=["m03 theme studio"])
-Reader = Annotated[Authorized, Depends(require(None, "M03"))]
-Manager = Annotated[Authorized, Depends(require("m03.theme.manage", "M03"))]
+Reader = Annotated[Authorized, Depends(require(None, "M03"), scope="function")]
+Manager = Annotated[Authorized, Depends(require("m03.theme.manage", "M03"), scope="function")]
 _FONTS = "SELECT id, family, source, roles, scripts, file_url FROM fonts"
 
 

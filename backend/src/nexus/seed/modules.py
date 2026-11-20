@@ -1,6 +1,6 @@
 """Demo rows of the module tables (Stage 1 APIs): M83 provider access (NEX-051), M06 privacy (NEX-052), M03 themes
 and the font library (NEX-053), M04 text overrides with their revisions (NEX-054),
-M05 plans and usage (NEX-055), M07 notifications (NEX-056). Same shapes as the mock
+M05 plans and usage (NEX-055), M07 notifications (NEX-056), M10 devices and conflicts (NEX-057). Same shapes as the mock
 fixtures; idempotent upserts.
 """
 
@@ -12,6 +12,8 @@ from sqlalchemy import Connection, text
 
 #: Children first, for `--reset` (the font library is shared, so it is never deleted per tenant).
 MODULE_TABLES_CHILD_FIRST = (
+    "sync_conflicts",
+    "devices",
     "idempotency_keys",
     "notification_preferences",
     "notification_deliveries",
@@ -30,6 +32,8 @@ MODULE_TABLES_CHILD_FIRST = (
 )
 #: Tables whose contract fields map one-to-one onto columns, in insert order.
 PLAIN = (
+    ("devices", "devices"),
+    ("sync_conflicts", "syncConflicts"),
     ("access_requests", "accessRequests"),
     ("access_grants", "accessGrants"),
     ("break_glass_notices", "breakGlassNotices"),

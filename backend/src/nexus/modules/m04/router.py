@@ -45,8 +45,8 @@ from nexus.modules.m04.service import (
 )
 
 router = APIRouter(prefix="/api/v1", tags=["m04 text & language studio"])
-Reader = Annotated[Authorized, Depends(require(None, "M04"))]
-Manager = Annotated[Authorized, Depends(require("m04.text.manage", "M04"))]
+Reader = Annotated[Authorized, Depends(require(None, "M04"), scope="function")]
+Manager = Annotated[Authorized, Depends(require("m04.text.manage", "M04"), scope="function")]
 Paging = Annotated[PageQuery, Depends(page_query)]
 JsonBody = Annotated[Any, Body()]
 LocaleQuery = Annotated[str | None, Query()]

@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-21 (NEX-056) · Migration: `0013_notifications`
+> State as of: 2026-11-21 (NEX-057) · Migration: `0014_sync`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -135,6 +135,16 @@ All three use forced RLS (`tenant_isolation`).
 All four use forced RLS. `domain_events_outbox` gained `next_attempt_at` and `last_error` (retries with backoff).
 `nexus_outbox_tenants()` (SECURITY DEFINER) returns only the ids of tenants with due events, so the worker stays
 `nexus_app` under RLS and processes one tenant transaction at a time.
+
+## Sync (M10 — `0014_sync`, O-2/O-3)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `devices` | `id`, `tenant_id`, `user_id`, `label`, `platform`, `last_sync_at`, `pending_count`, `conflict_count`, `lost_write_count`, `status`, `revoked_at` | `revoked_at` exactly when revoked; counts ≥ 0 |
+| `sync_conflicts` | `id`, `tenant_id`, `device_id`, `module_id`, `operation`, `merge_rule`, `summary_key`, `client_version`, `server_version`, `status`, `resolution`, `created_at`, `resolved_at` | No payload column (privacy); `resolution` / `resolved_at` exactly when resolved |
+
+Both use forced RLS. `idempotency_keys.response` is now nullable (a claimed key has `status_code = 0` until its
+response is stored); the app may update and delete its keys.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

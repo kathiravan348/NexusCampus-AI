@@ -43,9 +43,9 @@ from nexus.modules.m02.service import (
 )
 
 router = APIRouter(prefix="/api/v1", tags=["m02 users & access"])
-Anyone = Annotated[Authorized, Depends(require(None, "M02"))]
-UserManager = Annotated[Authorized, Depends(require("m02.user.invite", "M02"))]
-RoleManager = Annotated[Authorized, Depends(require(ADMIN_PERMISSION, "M02"))]
+Anyone = Annotated[Authorized, Depends(require(None, "M02"), scope="function")]
+UserManager = Annotated[Authorized, Depends(require("m02.user.invite", "M02"), scope="function")]
+RoleManager = Annotated[Authorized, Depends(require(ADMIN_PERMISSION, "M02"), scope="function")]
 Admin = Annotated[KeycloakAdmin, Depends(keycloak_admin)]
 JsonBody = Annotated[Any, Body()]
 

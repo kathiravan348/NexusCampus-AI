@@ -30,7 +30,7 @@ _ASSIGNMENTS = (
 
 
 @router.get("/me", response_model=MeOut, response_model_by_alias=True)
-async def me(auth: Annotated[Authorized, Depends(require(None, "M02"))]) -> MeOut:
+async def me(auth: Annotated[Authorized, Depends(require(None, "M02"), scope="function")]) -> MeOut:
     ctx = auth.ctx
     user = (await ctx.db.execute(text(_USER), {"id": ctx.user_id})).mappings().one_or_none()
     person = (await ctx.db.execute(text(_PERSON), {"id": ctx.person_id})).mappings().one_or_none()

@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -140,7 +140,16 @@ strictest `dsrDueDays` of the tenant's packs (30 days if none); the overdue badg
 | `GET /api/v1/devices` | `m10.device.read` (all with `m10.device.wipe`, else own) | `?page=&pageSize=` → `Page<DeviceSync>` | `400`, `401`, `403` |
 | `GET /api/v1/sync-conflicts` | `m10.device.read` (for the visible devices) | `?page=&pageSize=` → `Page<SyncConflict>` (no payloads) | `400`, `401`, `403` |
 | `POST /api/v1/devices/:id/revoke` | `m10.device.wipe` | `{}` → `DeviceSync` (`revoke_pending`; pending writes counted as lost) | `401`, `403`, `404`, `409 conflict` (not active); audits `m10.device.revokeRequested` |
+| `POST /api/v1/devices` | `m10.device.read` | `{ label, platform }` → `201 DeviceSync` (the caller's device) | `400`, `401`, `403`; audits `m10.device.registered` |
+| `POST /api/v1/devices/:id/heartbeat` | `m10.device.read` (own device) | `{ pendingCount }` → `{ action: sync \| wipe, device }` (`wipe` once after a revoke; the device becomes `revoked`) | `400`, `401` (revoked device), `403`, `404`; audits `m10.device.wiped` |
 | `POST /api/v1/sync-conflicts/:id/resolve` | `m10.device.wipe` | `{ resolution: keep_server \| keep_client \| merged }` → `SyncConflict` (device `conflictCount` − 1) | `400` (missing resolution), `401`, `403`, `404`, `409 conflict` (already resolved); audits `m10.conflict.resolved` |
+
+Backend notes (NEX-057): revoke accepts `{ confirmOwnDevice }`; when `X-Device-Id` names the device being revoked
+it must be `true` (the screen's second confirmation), else `409`. **Every** guarded write accepts
+`Idempotency-Key` (1–128 printable characters): the first request is applied, replays with the same request get the
+stored response (header `Idempotent-Replay: true`), the same key with another request or while the first still runs
+→ `409 conflict`; a refused write frees its key; keys live 24 h. Guards commit their transaction before the response
+is sent (`Depends(…, scope="function")`).
 
 ## Nexus Assist (M11)
 
