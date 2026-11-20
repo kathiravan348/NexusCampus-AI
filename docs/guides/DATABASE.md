@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-051) · Migration: `0008_access_grants`
+> State as of: 2026-11-20 (NEX-052) · Migration: `0009_privacy`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -90,6 +90,16 @@ associated data. Exact-match search uses blind indexes (Vault HMAC). Destroying 
 | `break_glass_notices` | `id`, `tenant_id`, `category`, `approver_refs[2]`, `occurred_at`, `notified_at`, `report_url` | two different approvers; `nexus_app` may only read (created by the provider plane, Stage 2) |
 
 All three use forced RLS (`tenant_isolation`). No grant row is ever deleted; grant credentials are not stored.
+
+## Privacy (M06 — `0009_privacy`, G-6)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `consents` | `id`, `tenant_id`, `person_id`, `purpose`, `status`, `given_by_person_id`, `method`, `recorded_at`, `withdrawn_at` | `withdrawn_at` set exactly when withdrawn, not before `recorded_at` |
+| `data_subject_requests` | `id`, `tenant_id`, `person_id`, `kind`, `status`, `received_at`, `due_at`, `completed_at`, `handled_by`, `rejection_reason` | due after received; `completed_at` set exactly when completed or rejected; reason only when rejected |
+| `tenant_compliance` | `tenant_id`, `pack_code` (PK) | Which packs a tenant follows; the app only reads it. Pack rules live in code (`m06/packs.py`, = mock fixtures) |
+
+All three use forced RLS (`tenant_isolation`).
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

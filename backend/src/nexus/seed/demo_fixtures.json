@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "tenants": [
     {
       "id": "ten-ls",
@@ -5974,6 +5974,246 @@
       "occurredAt": "2026-09-02T03:10:00Z",
       "notifiedAt": "2026-09-02T03:12:00Z",
       "reportUrl": null
+    }
+  ],
+  "consents": [
+    {
+      "id": "cns-ls-kavya-ai-features",
+      "tenantId": "ten-ls",
+      "personId": "per-ls-kavya",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-ls-arjun",
+      "method": "digital_signature",
+      "recordedAt": "2026-06-02T05:30:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-ls-rohan-ai-features",
+      "tenantId": "ten-ls",
+      "personId": "per-ls-rohan",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-ls-sunita",
+      "method": "digital_signature",
+      "recordedAt": "2026-06-02T06:10:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-ls-ishaan-ai-features",
+      "tenantId": "ten-ls",
+      "personId": "per-ls-ishaan",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-ls-sunita",
+      "method": "digital_signature",
+      "recordedAt": "2026-06-02T06:12:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-ls-anaya-ai-features",
+      "tenantId": "ten-ls",
+      "personId": "per-ls-anaya",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-ls-deepak",
+      "method": "digital_signature",
+      "recordedAt": "2026-06-03T04:45:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-ls-kavya-media-sharing",
+      "tenantId": "ten-ls",
+      "personId": "per-ls-kavya",
+      "purpose": "media_sharing",
+      "status": "withdrawn",
+      "givenByPersonId": "per-ls-arjun",
+      "method": "digital_signature",
+      "recordedAt": "2026-06-02T05:31:00Z",
+      "withdrawnAt": "2026-09-08T11:20:00Z"
+    },
+    {
+      "id": "cns-rv-oliver-ai-features",
+      "tenantId": "ten-rv",
+      "personId": "per-rv-oliver",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-rv-grace",
+      "method": "digital_signature",
+      "recordedAt": "2026-09-01T18:00:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-rv-mia-ai-features",
+      "tenantId": "ten-rv",
+      "personId": "per-rv-mia",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-rv-grace",
+      "method": "digital_signature",
+      "recordedAt": "2026-09-01T18:02:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-rv-leo-ai-features",
+      "tenantId": "ten-rv",
+      "personId": "per-rv-leo",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-rv-amira",
+      "method": "digital_signature",
+      "recordedAt": "2026-09-02T07:40:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-rv-ella-ai-features",
+      "tenantId": "ten-rv",
+      "personId": "per-rv-ella",
+      "purpose": "ai_features",
+      "status": "granted",
+      "givenByPersonId": "per-rv-daniel",
+      "method": "digital_signature",
+      "recordedAt": "2026-09-03T19:15:00Z",
+      "withdrawnAt": null
+    },
+    {
+      "id": "cns-rv-leo-media-sharing",
+      "tenantId": "ten-rv",
+      "personId": "per-rv-leo",
+      "purpose": "media_sharing",
+      "status": "pending",
+      "givenByPersonId": "per-rv-amira",
+      "method": "in_app",
+      "recordedAt": "2026-09-10T08:00:00Z",
+      "withdrawnAt": null
+    }
+  ],
+  "dataSubjectRequests": [
+    {
+      "id": "dsr-rv-access",
+      "tenantId": "ten-rv",
+      "personId": "per-rv-grace",
+      "kind": "access",
+      "status": "completed",
+      "receivedAt": "2026-08-03T09:00:00Z",
+      "dueAt": "2026-09-02T09:00:00Z",
+      "completedAt": "2026-08-21T15:30:00Z",
+      "handledBy": "usr-rv-helen"
+    },
+    {
+      "id": "dsr-nb-export",
+      "tenantId": "ten-nb",
+      "personId": "per-nb-jordan",
+      "kind": "export",
+      "status": "in_progress",
+      "receivedAt": "2026-09-04T14:00:00Z",
+      "dueAt": "2026-10-04T14:00:00Z",
+      "completedAt": null,
+      "handledBy": "usr-nb-robert"
+    },
+    {
+      "id": "dsr-ax-correct",
+      "tenantId": "ten-ax",
+      "personId": "per-ax-lakshmi",
+      "kind": "correct",
+      "status": "received",
+      "receivedAt": "2026-08-10T06:00:00Z",
+      "dueAt": "2026-09-09T06:00:00Z",
+      "completedAt": null,
+      "handledBy": null
+    },
+    {
+      "id": "dsr-hm-delete",
+      "tenantId": "ten-hm",
+      "personId": "per-hm-marcus",
+      "kind": "delete",
+      "status": "rejected",
+      "receivedAt": "2026-07-20T02:00:00Z",
+      "dueAt": "2026-08-19T02:00:00Z",
+      "completedAt": "2026-07-28T03:00:00Z",
+      "handledBy": "usr-hm-weiling"
+    }
+  ],
+  "compliancePacks": [
+    {
+      "code": "dpdp",
+      "region": "in",
+      "dsrDueDays": 30,
+      "minorAgeThreshold": 18,
+      "guardianConsentForAi": true,
+      "guardianConsentForMedia": true,
+      "retentionDaysDefault": 1095
+    },
+    {
+      "code": "uk_gdpr",
+      "region": "eu",
+      "dsrDueDays": 30,
+      "minorAgeThreshold": 13,
+      "guardianConsentForAi": true,
+      "guardianConsentForMedia": true,
+      "retentionDaysDefault": 2190
+    },
+    {
+      "code": "ferpa",
+      "region": "us",
+      "dsrDueDays": 45,
+      "minorAgeThreshold": 18,
+      "guardianConsentForAi": false,
+      "guardianConsentForMedia": false,
+      "retentionDaysDefault": 1825
+    },
+    {
+      "code": "coppa",
+      "region": "us",
+      "dsrDueDays": 30,
+      "minorAgeThreshold": 13,
+      "guardianConsentForAi": true,
+      "guardianConsentForMedia": true,
+      "retentionDaysDefault": 365
+    },
+    {
+      "code": "pdpa",
+      "region": "apac",
+      "dsrDueDays": 30,
+      "minorAgeThreshold": 13,
+      "guardianConsentForAi": true,
+      "guardianConsentForMedia": true,
+      "retentionDaysDefault": 1825
+    },
+    {
+      "code": "gdpr",
+      "region": "eu",
+      "dsrDueDays": 30,
+      "minorAgeThreshold": 18,
+      "guardianConsentForAi": true,
+      "guardianConsentForMedia": true,
+      "retentionDaysDefault": 1825
+    }
+  ],
+  "tenantCompliance": [
+    {
+      "tenantId": "ten-ls",
+      "packCode": "dpdp"
+    },
+    {
+      "tenantId": "ten-rv",
+      "packCode": "uk_gdpr"
+    },
+    {
+      "tenantId": "ten-nb",
+      "packCode": "ferpa"
+    },
+    {
+      "tenantId": "ten-nb",
+      "packCode": "coppa"
+    },
+    {
+      "tenantId": "ten-ax",
+      "packCode": "dpdp"
+    },
+    {
+      "tenantId": "ten-hm",
+      "packCode": "pdpa"
     }
   ]
 }

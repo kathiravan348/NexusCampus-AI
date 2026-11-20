@@ -1,5 +1,6 @@
 import { AUDIT_EVENTS } from "./audit";
 import { ACADEMIC_CALENDARS } from "./calendars";
+import { COMPLIANCE_PACKS, CONSENTS, DATA_SUBJECT_REQUESTS, TENANT_COMPLIANCE } from "./compliance";
 import { SESSIONS, SSO_PROVIDERS, USERS } from "./identity";
 import { PEOPLE } from "./people";
 import { ENTITLEMENTS } from "./plans";
@@ -9,11 +10,11 @@ import { ACCESS_GRANTS, ACCESS_REQUESTS, BREAK_GLASS_NOTICES, KEY_STATUSES } fro
 import { CAMPUSES, DEMO_TENANTS, GROUPS, INSTITUTIONS } from "./tenants";
 
 /** Format version of `demo_fixtures.json`; bump when the shape changes so the backend seed can refuse old files. */
-export const DEMO_FIXTURES_VERSION = 8;
+export const DEMO_FIXTURES_VERSION = 9;
 
 /**
  * The demo data the backend seed reads, in contract shapes (camelCase): tenancy (NEX-043) plus each tenant's
- * hash-chained audit log in chain order (NEX-044), identity (NEX-045), RBAC and entitlements (NEX-046), vault keys and provider access (NEX-050/051), and a `tenants` list with each tenant's region.
+ * hash-chained audit log in chain order (NEX-044), identity (NEX-045), RBAC and entitlements (NEX-046), vault keys and provider access (NEX-050/051), privacy (NEX-052), and a `tenants` list with each tenant's region.
  */
 export function demoFixtures() {
   return {
@@ -43,6 +44,12 @@ export function demoFixtures() {
     accessRequests: ACCESS_REQUESTS,
     accessGrants: ACCESS_GRANTS,
     breakGlassNotices: BREAK_GLASS_NOTICES,
+    consents: CONSENTS,
+    dataSubjectRequests: DATA_SUBJECT_REQUESTS,
+    compliancePacks: COMPLIANCE_PACKS,
+    tenantCompliance: Object.entries(TENANT_COMPLIANCE).flatMap(([tenantId, codes]) =>
+      codes.map((packCode) => ({ tenantId, packCode })),
+    ),
   };
 }
 
