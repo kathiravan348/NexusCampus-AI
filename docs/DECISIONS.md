@@ -65,5 +65,7 @@ _(implementers note new dependencies or decision requests here; the planner move
   1.27.0; dev: ruff 0.17.6, mypy 2.4.1, pytest 9.2.0, httpx2 2.16.2 (test client; replaced httpx 0.28.1, which Starlette deprecated —
   Owner OK 2026-11-20). Images: `pgvector/pgvector:0.8.0-pg16`, `redis:7.4.2-alpine`.
 - NEX-043: alembic 1.20.1 (exact pin; named in AGENTS §5).
+- NEX-050: image `hashicorp/vault:1.20.4` (dev mode in Compose; D46). `cryptography` (via pyjwt[crypto]) now used
+  directly for AES-GCM field encryption.
 - NEX-045: pyjwt[crypto] 2.15.1 (ID-token verification); httpx2 2.16.2 moved from dev to runtime (Keycloak HTTP
   client; same package as the test client). Image `quay.io/keycloak/keycloak:26.4.7` (D44).

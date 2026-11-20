@@ -44,6 +44,10 @@ class Settings(BaseSettings):
     app_public_url: str = "http://127.0.0.1:3100"
     session_idle_minutes: int = 30
     session_absolute_hours: int = 12
+    # Keys and secrets (D46): HashiCorp Vault (or OpenBao) Transit engine.
+    vault_url: str = "http://127.0.0.1:58200"
+    vault_token: SecretStr = SecretStr("")
+    vault_transit_mount: str = "transit"
     # Dev-only Keycloak setup (`nexus-keycloak-dev`): admin login and the password given to demo users.
     keycloak_admin_user: str = "admin"
     keycloak_admin_password: SecretStr = SecretStr("")

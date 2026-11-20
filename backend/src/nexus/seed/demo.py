@@ -17,13 +17,15 @@ from sqlalchemy import Connection, create_engine, text
 
 from nexus.core.tenancy import TENANT_SETTING
 from nexus.core.timing import utf8_console
+from nexus.core.vault import key_name
 from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 6
+FIXTURES_VERSION = 7
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
+    "vault_keys",
     "scim_tokens",
     "sso_providers",
     *RBAC_TABLES_CHILD_FIRST,
@@ -170,6 +172,9 @@ def seed_identity(conn: Connection, data: dict[str, Any], tid: str) -> None:
             ),
             {"t": tid, "g": link["guardianPersonId"], "l": link["learnerPersonId"]},
         )
+    for k in _rows(data, "keyStatuses", tid):
+        row = {**_snake(k), "vault_key_name": key_name(tid, k["purpose"])}
+        _upsert(conn, "vault_keys", row)
 
 
 def seed_audit(conn: Connection, data: dict[str, Any], tenant_id: str) -> int:
