@@ -5,6 +5,7 @@ description = "NexusCampus product backend (modular monolith, FastAPI)"
 requires-python = "==3.12.*"
 dependencies = [
     "alembic==1.20.1",
+    "anthropic==1.17.0",
     "fastapi==0.165.0",
     "httpx2==2.16.2",
     "opentelemetry-api==1.45.2",
@@ -28,6 +29,7 @@ nexus-keycloak-dev = "nexus.devtools.keycloak:main"
 nexus-scim-token = "nexus.devtools.scim_token:main"
 nexus-vault-dev = "nexus.devtools.vault_dev:main"
 nexus-worker = "nexus.workers.outbox:main"
+nexus-ai-eval = "nexus.devtools.ai_eval:main"
 
 [build-system]
 requires = ["hatchling==1.27.0"]

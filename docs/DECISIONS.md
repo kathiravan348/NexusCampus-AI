@@ -65,6 +65,11 @@ _(implementers note new dependencies or decision requests here; the planner move
   1.27.0; dev: ruff 0.17.6, mypy 2.4.1, pytest 9.2.0, httpx2 2.16.2 (test client; replaced httpx 0.28.1, which Starlette deprecated —
   Owner OK 2026-11-20). Images: `pgvector/pgvector:0.8.0-pg16`, `redis:7.4.2-alpine`.
 - NEX-043: alembic 1.20.1 (exact pin; named in AGENTS §5).
+- NEX-058: `anthropic==1.17.0` (official Claude SDK; built on `httpx2`, already used). Decision rows for the
+  planner: tier → model map `fast` = `claude-haiku-5-5`, `balanced` = `claude-sonnet-5-5`, `reasoning` =
+  `claude-opus-5-5` (settings, overridable; Bedrock adds `anthropic.`); embeddings `cohere.embed-multilingual-v3`
+  on Bedrock in the cell region (1024 dims, D47) — needs `boto3` in the SaaS image (NEX-064). Direct-API calls
+  opt into server-side refusal fallbacks (`fallbacks="default"`).
 - NEX-054: no new dependency. Server ICU check = a port of `@formatjs/icu-messageformat-parser` rules
   (`m04/icu.py`); Python ICU parsers differ from formatjs on tags, apostrophes and skeletons. A parity test checks
   every catalogue message and edge cases against exported formatjs verdicts. Planner: confirm, or name a library.

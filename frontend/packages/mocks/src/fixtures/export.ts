@@ -1,4 +1,5 @@
 import { AUDIT_EVENTS } from "./audit";
+import { AI_CREDITS, AI_SETTINGS } from "./ai";
 import { ACADEMIC_CALENDARS } from "./calendars";
 import { COMPLIANCE_PACKS, CONSENTS, DATA_SUBJECT_REQUESTS, TENANT_COMPLIANCE } from "./compliance";
 import { SESSIONS, SSO_PROVIDERS, USERS } from "./identity";
@@ -17,11 +18,11 @@ import { DEVICE_SYNCS, SYNC_CONFLICTS } from "./sync";
 import { CAMPUSES, DEMO_TENANTS, GROUPS, INSTITUTIONS } from "./tenants";
 
 /** Format version of `demo_fixtures.json`; bump when the shape changes so the backend seed can refuse old files. */
-export const DEMO_FIXTURES_VERSION = 14;
+export const DEMO_FIXTURES_VERSION = 15;
 
 /**
  * The demo data the backend seed reads, in contract shapes (camelCase): tenancy (NEX-043) plus each tenant's
- * hash-chained audit log in chain order (NEX-044), identity (NEX-045), RBAC and entitlements (NEX-046), vault keys and provider access (NEX-050/051), privacy (NEX-052), themes and fonts (NEX-053), text overrides (NEX-054), plans and usage (NEX-055), notifications (NEX-056), devices (NEX-057), and a `tenants` list with each tenant's region.
+ * hash-chained audit log in chain order (NEX-044), identity (NEX-045), RBAC and entitlements (NEX-046), vault keys and provider access (NEX-050/051), privacy (NEX-052), themes and fonts (NEX-053), text overrides (NEX-054), plans and usage (NEX-055), notifications (NEX-056), devices (NEX-057), AI settings and credits (NEX-058), and a `tenants` list with each tenant's region.
  */
 export function demoFixtures() {
   return {
@@ -63,6 +64,8 @@ export function demoFixtures() {
     notificationPreferences: NOTIFICATION_PREFERENCES,
     devices: DEVICE_SYNCS,
     syncConflicts: SYNC_CONFLICTS,
+    aiSettings: AI_SETTINGS,
+    aiCredits: AI_CREDITS,
     textOverrideRevisions: TEXT_OVERRIDE_REVISIONS,
     dataSubjectRequests: DATA_SUBJECT_REQUESTS,
     compliancePacks: COMPLIANCE_PACKS,

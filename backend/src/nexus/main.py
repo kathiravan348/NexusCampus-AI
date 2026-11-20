@@ -28,6 +28,9 @@ from nexus.modules.m05 import router as m05
 from nexus.modules.m06 import router as m06
 from nexus.modules.m07 import router as m07
 from nexus.modules.m10 import router as m10
+from nexus.modules.m11 import router as m11
+from nexus.modules.m11.gateway import build_gateway
+from nexus.modules.m11.retrieval import HashEmbedder
 from nexus.modules.m83 import access as m83_access
 from nexus.modules.m83 import broker_stub
 from nexus.modules.m83 import keys as m83_keys
@@ -63,6 +66,11 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         if not hasattr(app.state, "vault"):
             app.state.vault = HttpVault(cfg, http)
         app.state.field_cipher = FieldCipher(app.state.vault)
+        # AI gateway (NEX-058): tests may install their own fake before startup.
+        if not hasattr(app.state, "ai_gateway"):
+            app.state.ai_gateway = build_gateway(cfg)
+        if not hasattr(app.state, "ai_embedder"):
+            app.state.ai_embedder = HashEmbedder()
         if not hasattr(app.state, "keycloak_admin"):
             app.state.keycloak_admin = HttpKeycloakAdmin(cfg, http)
         if not hasattr(app.state, "login_states"):
@@ -101,6 +109,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(m06.router)
     app.include_router(m07.router)
     app.include_router(m10.router)
+    app.include_router(m11.router)
     app.include_router(m83_keys.router)
     app.include_router(m83_access.router)
     if cfg.environment != "prod":

@@ -1,5 +1,5 @@
 {
-  "version": 14,
+  "version": 15,
   "tenants": [
     {
       "id": "ten-ls",
@@ -7536,6 +7536,161 @@
       "resolution": null,
       "createdAt": "2026-09-14T08:20:00Z",
       "resolvedAt": null
+    }
+  ],
+  "aiSettings": [
+    {
+      "tenantId": "ten-ls",
+      "enabled": false,
+      "modules": {},
+      "blockedModules": [
+        "M61",
+        "M62",
+        "M83"
+      ],
+      "safeguardingEnabled": false,
+      "piiRedaction": true,
+      "minorGuardianConsentRequired": true,
+      "defaultTier": "balanced",
+      "provider": {
+        "kind": "cloud",
+        "label": "Claude (Anthropic)"
+      },
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "tenantId": "ten-rv",
+      "enabled": true,
+      "modules": {
+        "M01": true,
+        "M02": true,
+        "M04": true,
+        "M07": true
+      },
+      "blockedModules": [
+        "M61",
+        "M62",
+        "M83"
+      ],
+      "safeguardingEnabled": false,
+      "piiRedaction": true,
+      "minorGuardianConsentRequired": true,
+      "defaultTier": "balanced",
+      "provider": {
+        "kind": "cloud",
+        "label": "Claude (Anthropic)"
+      },
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "tenantId": "ten-nb",
+      "enabled": true,
+      "modules": {
+        "M01": true,
+        "M02": true,
+        "M04": true,
+        "M06": true,
+        "M07": true
+      },
+      "blockedModules": [
+        "M61",
+        "M62",
+        "M83"
+      ],
+      "safeguardingEnabled": false,
+      "piiRedaction": true,
+      "minorGuardianConsentRequired": true,
+      "defaultTier": "balanced",
+      "provider": {
+        "kind": "cloud",
+        "label": "Claude (Anthropic)"
+      },
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "tenantId": "ten-ax",
+      "enabled": true,
+      "modules": {
+        "M01": true,
+        "M02": true,
+        "M04": true,
+        "M07": true
+      },
+      "blockedModules": [
+        "M61",
+        "M62",
+        "M83"
+      ],
+      "safeguardingEnabled": false,
+      "piiRedaction": true,
+      "minorGuardianConsentRequired": true,
+      "defaultTier": "balanced",
+      "provider": {
+        "kind": "local",
+        "label": "On-premise model"
+      },
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "tenantId": "ten-hm",
+      "enabled": false,
+      "modules": {},
+      "blockedModules": [
+        "M61",
+        "M62",
+        "M83"
+      ],
+      "safeguardingEnabled": false,
+      "piiRedaction": true,
+      "minorGuardianConsentRequired": true,
+      "defaultTier": "balanced",
+      "provider": {
+        "kind": "cloud",
+        "label": "Claude (Anthropic)"
+      },
+      "updatedAt": "2026-08-20T10:30:00Z"
+    }
+  ],
+  "aiCredits": [
+    {
+      "tenantId": "ten-ls",
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z",
+      "granted": 500,
+      "used": 0,
+      "hardCap": true
+    },
+    {
+      "tenantId": "ten-rv",
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z",
+      "granted": 5000,
+      "used": 1000,
+      "hardCap": true
+    },
+    {
+      "tenantId": "ten-nb",
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z",
+      "granted": 5000,
+      "used": 1000,
+      "hardCap": true
+    },
+    {
+      "tenantId": "ten-ax",
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z",
+      "granted": 500,
+      "used": 475,
+      "hardCap": true
+    },
+    {
+      "tenantId": "ten-hm",
+      "periodStart": "2026-09-01T00:00:00Z",
+      "periodEnd": "2026-10-01T00:00:00Z",
+      "granted": 0,
+      "used": 0,
+      "hardCap": true
     }
   ],
   "textOverrideRevisions": [
