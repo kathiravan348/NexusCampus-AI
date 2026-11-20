@@ -16,8 +16,8 @@ from nexus.core.permissions import CATALOGUE, Authorized, Grants, Resource, guar
 from nexus.core.tenancy import TenantContext, bind_tenant
 from nexus.main import create_app
 from nexus.seed.demo import load_fixtures
+from tests.db.auth_fixtures import sign_in
 from tests.db.conftest import DbUrls
-from tests.db.test_auth_flow import client, kc, sign_in  # noqa: F401  (fixtures)
 from tests.fake_keycloak import FakeKeycloak
 
 LS = TenantContext("ten-ls")
@@ -118,7 +118,7 @@ def add_probe_routes(app: FastAPI) -> None:
         return {"user": auth.ctx.user_id}
 
 
-def test_require_over_http(client: TestClient, kc: FakeKeycloak) -> None:  # noqa: F811
+def test_require_over_http(client: TestClient, kc: FakeKeycloak) -> None:
     add_probe_routes(client.app)  # type: ignore[arg-type]
     sign_in(client, kc, **ARJUN)
     assert client.get("/probe/invite").json()["error"]["code"] == "forbidden"
@@ -129,7 +129,7 @@ def test_require_over_http(client: TestClient, kc: FakeKeycloak) -> None:  # noq
     assert client.get("/probe/assist").json()["error"]["code"] == "module_disabled"
 
 
-def test_guardian_cannot_invite(client: TestClient, kc: FakeKeycloak) -> None:  # noqa: F811
+def test_guardian_cannot_invite(client: TestClient, kc: FakeKeycloak) -> None:
     add_probe_routes(client.app)  # type: ignore[arg-type]
     sign_in(client, kc, **SUNITA)
     assert client.get("/probe/invite").status_code == 403

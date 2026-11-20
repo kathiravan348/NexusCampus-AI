@@ -108,3 +108,7 @@ def test_db(postgres: None) -> Iterator[DbUrls]:
 def anyio_backend() -> tuple[str, dict[str, object]]:
     # psycopg's async driver needs a selector event loop (Windows defaults to the proactor loop).
     return "asyncio", {"loop_factory": asyncio.SelectorEventLoop}
+
+
+# Shared sign-in fixtures for API tests (defined in auth_fixtures.py, registered here).
+from tests.db.auth_fixtures import client, kc  # noqa: E402, F401

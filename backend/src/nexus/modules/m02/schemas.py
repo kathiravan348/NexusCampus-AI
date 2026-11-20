@@ -1,25 +1,9 @@
 """M02 response models — strict, camelCase JSON exactly as `contracts/src/user.ts` and `person.ts`."""
 
 from datetime import date, datetime
-from typing import Any, Literal
+from typing import Literal
 
-from pydantic import BaseModel, ConfigDict, field_serializer
-from pydantic.alias_generators import to_camel
-
-from nexus.core.hashchain import format_instant
-
-
-class Contract(BaseModel):
-    model_config = ConfigDict(extra="forbid", alias_generator=to_camel, populate_by_name=True, frozen=True)
-
-    @field_serializer("*", when_used="json")
-    def _instants(self, value: Any) -> Any:
-        # Contract `UtcDateTime`: `2026-05-04T06:00:00Z` (same text as the mocks and the audit hash).
-        if isinstance(value, datetime):
-            return format_instant(value)
-        if isinstance(value, date):
-            return value.isoformat()
-        return value
+from nexus.core.schemas import Contract
 
 
 class UserOut(Contract):

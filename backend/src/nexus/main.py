@@ -14,6 +14,7 @@ from nexus.core.errors import ApiErrorEnvelope, install_error_handling
 from nexus.core.redis import close_redis, init_redis, ping_redis
 from nexus.core.telemetry import setup_telemetry
 from nexus.core.timing import boot_elapsed_ms, timing_line, utf8_console
+from nexus.modules.m01 import router as m01
 from nexus.modules.m02 import auth, me
 from nexus.modules.m02.login_state import RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
@@ -67,6 +68,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     setup_telemetry(app, cfg)
     app.include_router(auth.router)
     app.include_router(me.router)
+    app.include_router(m01.router)
 
     @app.get("/healthz", response_model=Health, tags=["ops"])
     async def healthz() -> Health:
