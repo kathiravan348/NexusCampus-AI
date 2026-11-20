@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -112,6 +112,11 @@ revokes their sessions.
 | `GET /api/v1/data-requests` | `m06.request.manage` | `?page=&pageSize=` → `Page<DataSubjectRequest>` | `400`, `401`, `403` |
 | `PATCH /api/v1/data-requests/:id` | `m06.request.manage` | `{ status, reason? }` → `DataSubjectRequest` (received → in_progress → completed \| rejected; `reason` required to reject, never stored in audit) | `400 invalid_request` (missing reason), `401`, `403`, `404`, `409 conflict` (step not allowed); audits `m06.dataRequest.started` / `.completed` / `.rejected` on the hash chain |
 | `GET /api/v1/compliance-packs` | `m06.audit.read` | `?page=&pageSize=` → `Page<CompliancePack>` | `400`, `401`, `403` |
+
+Backend notes (NEX-052): the audit log is returned in chain order (`seq`), so a page can be chain-checked in the
+browser; each read of it is itself audited (`m06.auditLog.viewed`, after the page is read). A rejection reason is
+kept on the request (`rejection_reason`, not in the contract) and never written to the audit log. Due dates use the
+strictest `dsrDueDays` of the tenant's packs (30 days if none); the overdue badge = still open after `dueAt`.
 
 ## Sync centre (M10)
 
