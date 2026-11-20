@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, and Nexus Assist)
+> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, and Data vault & access)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -97,5 +97,13 @@ Where your institution has AI on, the sparkle button at the top of the screen op
 - When Assist cannot answer, it says why and what to do next: AI is **switched off**, it is **not in your plan**, you are **offline**, **AI credits have run out**, or — for a child — **a guardian's consent is needed**. Everything else keeps working.
 - Administrators open **AI settings** from the menu to switch Assist on or off, choose where it may help, pick the **Default answer quality**, and follow the **AI credits this month**. Health records and the data vault can never be opened to AI; safeguarding needs its own switch after a privacy impact assessment. Personal data is always redacted, and children always need a guardian's consent.
 
+## Data vault & access
+Available to the institution's owners and administrators from **Data vault & access** in the menu. It needs an internet connection, keeps nothing on the device, and is never shown to Nexus Assist.
+
+- **Access requests** lists requests from Nexus support staff, newest waiting ones first, with a count on the tab. Each shows who asked, why, which areas, **Read only** or **Read and edit**, and for how long (at most 72 hours). Only an owner can decide: **Approve…** lets you keep or narrow the areas, access and hours — never widen them — and you must tick that you understand staff will see the data until the shown end time. **Deny** needs a reason.
+- **Grants** shows each approved access with its start and end, a countdown while active, and **Revoke now** to end it early. **What they did** lists every action staff took under that grant.
+- **Keys** shows which encryption keys protect your data, who holds them, and their status — never the keys themselves. When an institution leaves, its keys are destroyed so the data can never be read again.
+- **Emergency access** lists any emergency access by Nexus, approved by two people, with when it happened, when you were told, and the report.
+
 ## Not there yet
-- Remaining module screens (data vault & access grants, notifications) and offline app install.
+- Remaining module screens (notifications) and offline app install.

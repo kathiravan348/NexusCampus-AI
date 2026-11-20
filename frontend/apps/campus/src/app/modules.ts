@@ -3,6 +3,7 @@ import type { MessageKey } from "@nexus/i18n";
 import {
   Building2,
   Gauge,
+  KeyRound,
   Languages,
   Palette,
   RefreshCw,
@@ -107,5 +108,15 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m11.settings.manage",
     offlineLevel: "L0",
     load: () => import("../modules/m11/AiSettingsPage"),
+  },
+  {
+    moduleId: "M83",
+    path: "vault",
+    navKey: "m83.nav.title",
+    icon: KeyRound,
+    permission: "m83.vault.read",
+    offlineLevel: "L0",
+    aiBlocked: true,
+    load: () => import("../modules/m83/VaultPage"),
   },
 ];
