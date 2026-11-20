@@ -5,6 +5,7 @@ import { IconButton, SyncStatus, useToast } from "@nexus/ui-core";
 import { LogOut, Moon, Sun } from "lucide-react";
 import { useNavigate } from "react-router";
 import { AssistButton } from "../modules/m11/AssistButton";
+import { InstallPrompt } from "../pwa/InstallPrompt";
 import { PersonaSwitch } from "./PersonaSwitch";
 import { useRuntime } from "./TenantRuntime";
 
@@ -55,6 +56,7 @@ export function ShellHeader() {
         conflictCount={sync.conflictCount}
         lastSyncedAt={formattedLastSyncedAt}
       />
+      <InstallPrompt />
       <AssistButton />
       <IconButton
         icon={dark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}

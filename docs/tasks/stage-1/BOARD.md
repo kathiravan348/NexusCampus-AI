@@ -38,7 +38,7 @@
 | NEX-027 | Contracts (ops): NotificationTemplate, NotificationDelivery, DeviceSync, SyncConflict, AiSettings, AiCredit, AssistAnswer, KeyStatus, AccessRequest, AccessGrant, BreakGlassNotice | B | done | Claude | 008 |
 | NEX-028 | Contracts (identity): Person, RoleProfile, User, Session, SsoProvider, Role, Permission (split from NEX-008) | B | done | Claude | 008 |
 | NEX-029 | Mocks (MSW): in-memory mock DB, read handlers for every Stage 1 resource, permission/entitlement/masking checks, scenarios (split from NEX-010) | B | done | Claude | 010, 031 |
-| NEX-030 | PWA: manifest, service worker (Workbox), offline app shell, install and update prompts (split from NEX-012) | C | planned | — | 012, 035 |
+| NEX-030 | PWA: manifest, service worker (Workbox), offline app shell, install and update prompts (split from NEX-012) | C | done | Claude | 012, 035 |
 | NEX-031 | Mocks (ops fixtures): audit, consent, data requests, compliance packs, notifications, sync, AI, vault (split from NEX-010) | B | done | Claude | 010, 027 |
 | NEX-032 | Startup & test timings: timing harness, Vitest reporter, soft budgets, and baseline log (`AGENTS.md` §8a, D37) | — | planned | — | 012 |
 | NEX-033 | Campus Prism default theme tokens (Nexus Style refresh, D38) | A | done | Gemini | 002, 014 |
