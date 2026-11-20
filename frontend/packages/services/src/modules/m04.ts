@@ -9,6 +9,7 @@ import {
 } from "@nexus/contracts";
 import { useQueryClient, type QueryClient } from "@tanstack/react-query";
 import { z } from "zod";
+import { DATA_MODE } from "../config";
 import { queryKeys, type KeyScope } from "../keys";
 import { idempotencyHeaders, useOutboxMutation } from "../mutation";
 import { useScopedQuery } from "../query";
@@ -109,6 +110,63 @@ export function useTextOverrides(locale: string) {
         { locale, pageSize: PAGE_SIZE_MAX },
         { signal },
       ),
+  );
+}
+
+const Messages = z.record(MessageKeySchema, z.string());
+
+/**
+ * The compiled text bundle (backend `GET /texts/bundle`, NEX-054): the tenant's active overrides for one locale, per
+ * layer. Not a frozen contract: the app derives the same shape from the overrides list in mock mode.
+ */
+export const TextBundleSchema = z.strictObject({
+  locale: LocaleSchema,
+  etag: z.string().min(1),
+  group: Messages,
+  institutions: z.record(z.string(), Messages),
+  campuses: z.record(z.string(), Messages),
+});
+export type TextBundle = z.infer<typeof TextBundleSchema>;
+
+/** The same layers from the overrides list (mock mode, and tests). */
+export function bundleFromOverrides(
+  locale: string,
+  overrides: readonly TextOverride[],
+): TextBundle {
+  const bundle: TextBundle = { locale, etag: "mock", group: {}, institutions: {}, campuses: {} };
+  for (const o of overrides) {
+    if (o.locale !== locale) continue;
+    if (o.scope.kind === "group") bundle.group[o.key] = o.message;
+    else if (o.scope.kind === "institution" && o.scope.targetId) {
+      (bundle.institutions[o.scope.targetId] ??= {})[o.key] = o.message;
+    } else if (o.scope.kind === "campus" && o.scope.targetId) {
+      (bundle.campuses[o.scope.targetId] ??= {})[o.key] = o.message;
+    }
+  }
+  return bundle;
+}
+
+/**
+ * Runtime texts for one locale. Real mode loads the compiled bundle (the browser revalidates it with its ETag, so an
+ * unchanged bundle is a `304`); it is persisted with the query cache, so texts stay right offline.
+ */
+export function useTextBundle(locale: string) {
+  return useScopedQuery(
+    (s) => queryKeys.m04.textOverrides(s, `bundle:${locale}`),
+    async (client, signal) =>
+      DATA_MODE === "real"
+        ? client.get("/texts/bundle", TextBundleSchema, { locale }, { signal })
+        : bundleFromOverrides(
+            locale,
+            (
+              await client.get(
+                "/texts/overrides",
+                TextOverridePageSchema,
+                { locale, pageSize: PAGE_SIZE_MAX },
+                { signal },
+              )
+            ).items,
+          ),
   );
 }
 

@@ -11,7 +11,8 @@ import {
   useMe,
   useSession,
   useTenant,
-  useTextOverrides,
+  useTextBundle,
+  type TextBundle,
   useTheme,
   type EffectiveTheme,
 } from "@nexus/services";
@@ -113,6 +114,19 @@ export function overrideLayers(
   return { group, institution, campus };
 }
 
+/** The layers of a compiled text bundle for one institution (and campus). */
+export function bundleLayers(
+  bundle: TextBundle | null,
+  institutionId: string | null,
+  campusId: string | null = null,
+): { group: TextOverrides; institution: TextOverrides; campus: TextOverrides } {
+  return {
+    group: bundle?.group ?? {},
+    institution: (institutionId && bundle?.institutions[institutionId]) || {},
+    campus: (campusId && bundle?.campuses[campusId]) || {},
+  };
+}
+
 /** Applies the signed-in tenant's theme, locale, terminology and text overrides (C-1, C-2, G-1). */
 export function TenantRuntime({ children }: { readonly children: ReactNode }) {
   const { session } = useSession();
@@ -143,10 +157,10 @@ export function TenantRuntime({ children }: { readonly children: ReactNode }) {
       : SOURCE_LOCALE;
   const timeZone = settings.data?.timeZone ?? "UTC";
 
-  const overrides = useTextOverrides(locale);
+  const bundle = useTextBundle(locale);
   const layers = useMemo(
-    () => overrideLayers(overrides.data?.items ?? [], institution?.id ?? null, campusId),
-    [overrides.data, institution?.id, campusId],
+    () => bundleLayers(bundle.data ?? null, institution?.id ?? null, campusId),
+    [bundle.data, institution?.id, campusId],
   );
 
   useEffect(() => {

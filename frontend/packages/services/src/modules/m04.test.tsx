@@ -7,6 +7,8 @@ import {
   useRevisions,
   useRollbackOverride,
   useSaveOverride,
+  TextBundleSchema,
+  bundleFromOverrides,
   useTextOverrides,
 } from "./m04";
 
@@ -141,6 +143,38 @@ describe("m04 hooks", () => {
       expect(
         result.current.overrides.data?.items.find((o) => o.key === "common.save")?.message,
       ).toBe("Store");
+    });
+  });
+
+  it("builds the runtime bundle layers from overrides (mock mode) like the backend bundle", () => {
+    const at = "2026-09-01T00:00:00Z";
+    const o = (
+      kind: "group" | "institution" | "campus",
+      targetId: string,
+      key: string,
+      message: string,
+    ) => ({
+      id: `tov-${key}-${kind}`,
+      tenantId: "ten-rv",
+      scope: { kind, targetId },
+      locale: "en-GB",
+      key,
+      message,
+      version: 1,
+      updatedBy: "usr-rv-helen",
+      updatedAt: at,
+    });
+    const bundle = bundleFromOverrides("en-GB", [
+      o("group", "grp-rv", "term.learner", "Pupil"),
+      o("institution", "ins-rv", "term.class", "Form"),
+      o("campus", "cmp-rv-north", "term.class", "Set"),
+    ]);
+    expect(TextBundleSchema.parse(bundle)).toEqual({
+      locale: "en-GB",
+      etag: "mock",
+      group: { "term.learner": "Pupil" },
+      institutions: { "ins-rv": { "term.class": "Form" } },
+      campuses: { "cmp-rv-north": { "term.class": "Set" } },
     });
   });
 });

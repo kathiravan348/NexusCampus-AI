@@ -69,7 +69,7 @@
 | NEX-058 | AI gateway (M11): tiers, Claude adapter, guarded pipeline, pgvector retrieval, credits | D | done | Claude | 052, 055 |
 | NEX-059 | Contract parity tests: Pydantic ↔ Zod | D | done | Claude | 047–058 |
 | NEX-060 | Switch to real data 1: dev proxy, sign-in, shell, M01, M02 | C | done | Claude | 049, 059 |
-| NEX-061 | Switch to real data 2: M03, M04, M05 | C | planned | — | 060 |
+| NEX-061 | Switch to real data 2: M03, M04, M05 | C | done | Claude | 060 |
 | NEX-062 | Switch to real data 3: M06, M07, M10 | C | planned | — | 061 |
 | NEX-063 | Switch to real data 4: M11, M83 | C | planned | — | 062 |
 | NEX-064 | Images + self-hosted Compose install | D | planned | — | 063 |
