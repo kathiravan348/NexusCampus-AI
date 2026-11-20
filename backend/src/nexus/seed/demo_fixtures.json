@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "tenants": [
     {
       "id": "ten-ls",
@@ -5695,6 +5695,78 @@
       "enabled": true,
       "source": "core",
       "expiresAt": null
+    }
+  ],
+  "guardianLinks": [
+    {
+      "tenantId": "ten-ls",
+      "guardianPersonId": "per-ls-arjun",
+      "learnerPersonId": "per-ls-kavya"
+    },
+    {
+      "tenantId": "ten-ls",
+      "guardianPersonId": "per-ls-sunita",
+      "learnerPersonId": "per-ls-rohan"
+    },
+    {
+      "tenantId": "ten-ls",
+      "guardianPersonId": "per-ls-sunita",
+      "learnerPersonId": "per-ls-ishaan"
+    },
+    {
+      "tenantId": "ten-ls",
+      "guardianPersonId": "per-ls-deepak",
+      "learnerPersonId": "per-ls-anaya"
+    },
+    {
+      "tenantId": "ten-rv",
+      "guardianPersonId": "per-rv-grace",
+      "learnerPersonId": "per-rv-oliver"
+    },
+    {
+      "tenantId": "ten-rv",
+      "guardianPersonId": "per-rv-grace",
+      "learnerPersonId": "per-rv-mia"
+    },
+    {
+      "tenantId": "ten-rv",
+      "guardianPersonId": "per-rv-amira",
+      "learnerPersonId": "per-rv-leo"
+    },
+    {
+      "tenantId": "ten-rv",
+      "guardianPersonId": "per-rv-daniel",
+      "learnerPersonId": "per-rv-ella"
+    },
+    {
+      "tenantId": "ten-nb",
+      "guardianPersonId": "per-nb-marcus",
+      "learnerPersonId": "per-nb-jordan"
+    },
+    {
+      "tenantId": "ten-nb",
+      "guardianPersonId": "per-nb-patricia",
+      "learnerPersonId": "per-nb-sofia"
+    },
+    {
+      "tenantId": "ten-ax",
+      "guardianPersonId": "per-ax-meena",
+      "learnerPersonId": "per-ax-vijay"
+    },
+    {
+      "tenantId": "ten-ax",
+      "guardianPersonId": "per-ax-lakshmi",
+      "learnerPersonId": "per-ax-divya"
+    },
+    {
+      "tenantId": "ten-hm",
+      "guardianPersonId": "per-hm-daniel",
+      "learnerPersonId": "per-hm-ethan"
+    },
+    {
+      "tenantId": "ten-hm",
+      "guardianPersonId": "per-hm-mei",
+      "learnerPersonId": "per-hm-chloe"
     }
   ]
 }

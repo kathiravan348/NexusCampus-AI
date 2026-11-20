@@ -21,10 +21,11 @@ from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 4
+FIXTURES_VERSION = 5
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
     *RBAC_TABLES_CHILD_FIRST,
+    "guardian_links",
     "sessions",
     "role_profiles",
     "users",
@@ -158,6 +159,14 @@ def seed_identity(conn: Connection, data: dict[str, Any], tid: str) -> None:
     for table, key in IDENTITY:
         for row in _rows(data, key, tid):
             _upsert(conn, table, _snake(row))
+    for link in _rows(data, "guardianLinks", tid):
+        conn.execute(
+            text(
+                "INSERT INTO guardian_links (tenant_id, guardian_person_id, learner_person_id) "
+                "VALUES (:t, :g, :l) ON CONFLICT DO NOTHING"
+            ),
+            {"t": tid, "g": link["guardianPersonId"], "l": link["learnerPersonId"]},
+        )
 
 
 def seed_audit(conn: Connection, data: dict[str, Any], tenant_id: str) -> int:

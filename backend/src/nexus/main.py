@@ -15,7 +15,8 @@ from nexus.core.redis import close_redis, init_redis, ping_redis
 from nexus.core.telemetry import setup_telemetry
 from nexus.core.timing import boot_elapsed_ms, timing_line, utf8_console
 from nexus.modules.m01 import router as m01
-from nexus.modules.m02 import auth, me
+from nexus.modules.m02 import auth, directory, me, writes
+from nexus.modules.m02.keycloak_admin import HttpKeycloakAdmin
 from nexus.modules.m02.login_state import RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
 from nexus.settings import Settings, get_settings
@@ -46,6 +47,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         # Tests may install their own OIDC client / state store before startup.
         if not hasattr(app.state, "oidc"):
             app.state.oidc = OidcClient(cfg, http)
+        if not hasattr(app.state, "keycloak_admin"):
+            app.state.keycloak_admin = HttpKeycloakAdmin(cfg, http)
         if not hasattr(app.state, "login_states"):
             app.state.login_states = RedisLoginStateStore(redis)
         elapsed = boot_elapsed_ms()
@@ -69,6 +72,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(auth.router)
     app.include_router(me.router)
     app.include_router(m01.router)
+    app.include_router(directory.router)
+    app.include_router(writes.router)
 
     @app.get("/healthz", response_model=Health, tags=["ops"])
     async def healthz() -> Health:
