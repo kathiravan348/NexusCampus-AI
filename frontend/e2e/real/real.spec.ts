@@ -8,9 +8,7 @@ test.skip(
   "Set NEXUS_E2E_EMAIL and NEXUS_E2E_PASSWORD (a seeded admin) to run",
 );
 
-test("@real Keycloak sign-in; setup, theme, texts, modules, audit, requests, offline sync; device wipe", async ({
-  page,
-}) => {
+test("@real every Stage 1 screen on real data, ending with a device wipe", async ({ page }) => {
   await page.goto("/setup");
   await page.getByRole("button", { name: "Sign in with your institution account" }).click();
 
@@ -112,7 +110,7 @@ test("@real Keycloak sign-in; setup, theme, texts, modules, audit, requests, off
     for (const action of [start, complete]) {
       if (!stepped && (await action.count()) > 0) {
         await action.first().click();
-        await expect(page.getByText("Request updated.")).toBeVisible();
+        await expect(page.getByText("Request updated.").first()).toBeVisible();
         stepped = true;
       }
     }
@@ -136,7 +134,7 @@ test("@real Keycloak sign-in; setup, theme, texts, modules, audit, requests, off
   await quiet.click();
   await page.getByRole("button", { name: /^Save/ }).click();
   await expect(
-    page.getByText("Saved on this device. It will sync when you are back online."),
+    page.getByText("Saved on this device. It will sync when you are back online.").first(),
   ).toBeVisible();
   await page.context().setOffline(false);
   await expect.poll(updates, { timeout: 30_000 }).toBe(prefsBefore + 1);
@@ -146,10 +144,80 @@ test("@real Keycloak sign-in; setup, theme, texts, modules, audit, requests, off
   await page.getByRole("tab", { name: /preferences/i }).click();
   await page.getByRole("switch", { name: "Hold messages during quiet hours" }).click();
   await page.getByRole("button", { name: /^Save/ }).click();
-  await expect(page.getByText("Preferences saved.")).toBeVisible();
+  await expect(page.getByText("Preferences saved.").first()).toBeVisible();
 
   await page.goto("/access");
   await expect(page.getByRole("heading", { level: 1, name: "Users & access" })).toBeVisible();
+  // Nexus Assist (NEX-063, backend with NEXUS_AI_PROVIDER=fake: no paid model). Little Steps has AI off, so the
+  // run switches the module and AI on, asks, and switches both back.
+  await page.goto("/plan");
+  const aiModule = page.getByRole("row", { name: /M11/ }).getByRole("switch");
+  const moduleWasOn = (await aiModule.getAttribute("aria-checked")) === "true";
+  if (!moduleWasOn) await aiModule.click();
+  await expect(page.getByRole("navigation").getByRole("link", { name: "AI settings" })).toHaveCount(
+    1,
+  );
+  await page.goto("/ai");
+  const aiOn = page.getByRole("switch", { name: "Nexus Assist is on" });
+  const calendarArea = page.getByRole("switch", { name: "Institution setup" });
+  const aiWasOn = (await aiOn.getAttribute("aria-checked")) === "true";
+  const areaWasOn = (await calendarArea.getAttribute("aria-checked")) === "true";
+  if (!aiWasOn) await aiOn.click();
+  if (!areaWasOn) await calendarArea.click();
+  await page.getByRole("button", { name: /^Save/ }).click();
+  await expect(page.getByText("AI settings saved.").first()).toBeVisible();
+  await page.reload();
+  await page.getByRole("button", { name: "Open Nexus Assist" }).click();
+  await page.getByLabel("Your question").fill("When does academic year 2026-27 start and end?");
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
+  await expect(page.getByText("AI-generated").first()).toBeVisible();
+  await expect(page.getByText("Sources").first()).toBeVisible();
+  await expect(page.getByText(/calendar 2026-27/).first()).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.goto("/ai");
+  if (!areaWasOn) await page.getByRole("switch", { name: "Institution setup" }).click();
+  if (!aiWasOn) await page.getByRole("switch", { name: "Nexus Assist is on" }).click();
+  await page.getByRole("button", { name: /^Save/ }).click();
+  await expect(page.getByText("AI settings saved.").first()).toBeVisible();
+  if (!moduleWasOn) {
+    await page.goto("/plan");
+    await page.getByRole("row", { name: /M11/ }).getByRole("switch").click();
+    await expect(
+      page.getByRole("navigation").getByRole("link", { name: "AI settings" }),
+    ).toHaveCount(0);
+  }
+
+  // Data vault & access (NEX-063): a provider request (dev broker stub) approved narrowed, then revoked.
+  const reason = `E2E support check ${Date.now()}`;
+  const filed = await page.request.post("/api/v1/dev/broker/tenants/ten-ls/access-requests", {
+    data: {
+      staffRef: "stf-e2e",
+      staffDisplayName: "E2E Support",
+      reason,
+      modules: ["M02", "M07"],
+      mode: "read",
+      durationHours: 24,
+    },
+  });
+  expect(filed.status()).toBe(201);
+  await page.goto("/vault");
+  const card = page.getByText(reason).locator("xpath=ancestor::*[.//button][1]");
+  await card.getByRole("button", { name: /^Approve/ }).click();
+  const dialog = page.getByRole("dialog");
+  await dialog.getByRole("checkbox", { name: "Notifications" }).click(); // narrow: drop M07
+  await dialog.getByLabel("Hours").fill("2");
+  await dialog
+    .getByRole("checkbox", { name: /I understand Nexus support staff will see this data/ })
+    .click();
+  await dialog.getByRole("button", { name: "Approve access" }).click();
+  await expect(page.getByText("Access approved.").first()).toBeVisible();
+  await page.getByRole("tab", { name: "Grants" }).click();
+  await page.getByRole("button", { name: "Revoke now" }).first().click();
+  await expect(page.getByText("Access revoked.").first()).toBeVisible();
+  await page.getByRole("tab", { name: "Keys" }).click();
+  await expect(page.getByRole("table", { name: "Encryption keys" })).toBeVisible();
+  await expect(page.getByText(/vault:v\d|BEGIN|-----/)).toHaveCount(0); // metadata only, never key material
+
   // Sync centre (NEX-062): revoking this very device wipes it and signs the user out.
   await page.goto("/sync");
   await page.getByRole("tab", { name: "Devices", exact: true }).click();
