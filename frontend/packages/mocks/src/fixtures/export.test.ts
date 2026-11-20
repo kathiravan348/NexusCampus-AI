@@ -3,6 +3,7 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { icuCasesJson, messageKeysJson } from "./catalogue";
 import { designTokensJson } from "./design-tokens";
+import { paritySamplesJson } from "./parity";
 import { demoFixtures, demoFixturesJson } from "./export";
 
 const EXPORTED = path.resolve(
@@ -29,5 +30,10 @@ describe("demo fixtures export (backend seed, NEX-043)", () => {
     const cases = path.resolve(EXPORTED, "../../../../tests/m04/icu_cases.json");
     expect(readFileSync(keys, "utf8").replace(/\r\n/g, "\n")).toBe(messageKeysJson());
     expect(readFileSync(cases, "utf8").replace(/\r\n/g, "\n")).toBe(icuCasesJson());
+  });
+
+  it("matches the committed contract parity samples (Pydantic models, NEX-059)", () => {
+    const samples = path.resolve(EXPORTED, "../../../../tests/parity/samples.json");
+    expect(readFileSync(samples, "utf8").replace(/\r\n/g, "\n")).toBe(paritySamplesJson());
   });
 });

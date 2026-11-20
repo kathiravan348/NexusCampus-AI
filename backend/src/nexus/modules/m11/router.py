@@ -33,6 +33,8 @@ def settings_out(row: dict[str, Any]) -> AiSettingsOut:
         modules=row["modules"],
         blocked_modules=row["blocked_modules"],
         safeguarding_enabled=row["safeguarding_enabled"],
+        pii_redaction=True,
+        minor_guardian_consent_required=True,
         default_tier=row["default_tier"],
         provider={"kind": row["provider_kind"], "label": row["provider_label"]},  # type: ignore[arg-type]
         updated_at=row["updated_at"],

@@ -151,6 +151,7 @@ async def ask(
         question=question,
         answer=redactor.restore(completion.text)[:20000],
         locale=locale,
+        ai_generated=True,
         sources=[
             SourceOut(module_id=c.module_id, record_type=c.record_type, record_id=c.record_id, label=c.label)
             for c in chunks

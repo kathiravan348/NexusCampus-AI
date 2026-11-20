@@ -22,8 +22,8 @@ class AiSettingsOut(Contract):
     modules: dict[str, bool]
     blocked_modules: list[str]
     safeguarding_enabled: bool
-    pii_redaction: Literal[True] = True
-    minor_guardian_consent_required: Literal[True] = True
+    pii_redaction: Literal[True]
+    minor_guardian_consent_required: Literal[True]
     default_tier: TierName
     provider: ProviderOut
     updated_at: datetime
@@ -58,7 +58,7 @@ class AssistAnswerOut(Contract):
     question: str
     answer: str
     locale: str
-    ai_generated: Literal[True] = True
+    ai_generated: Literal[True]
     sources: list[SourceOut]
     tier: TierName
     credits_used: int

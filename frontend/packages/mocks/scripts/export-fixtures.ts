@@ -27,6 +27,9 @@ export const KEYS_PATH = path.resolve(
 );
 export const ICU_CASES_PATH = path.resolve(here, "../../../../backend/tests/m04/icu_cases.json");
 
+/** Contract parity samples with Zod's verdicts for the backend models (NEX-059). */
+export const PARITY_PATH = path.resolve(here, "../../../../backend/tests/parity/samples.json");
+
 const server = await createServer({
   root: path.resolve(here, ".."),
   logLevel: "error",
@@ -51,6 +54,11 @@ try {
   writeFileSync(KEYS_PATH, catalogue.messageKeysJson(), "utf8");
   writeFileSync(ICU_CASES_PATH, catalogue.icuCasesJson(), "utf8");
   console.log(`wrote ${path.relative(process.cwd(), KEYS_PATH)} and the ICU cases`);
+  const parity = (await server.ssrLoadModule("/src/fixtures/parity.ts")) as {
+    paritySamplesJson: () => string;
+  };
+  writeFileSync(PARITY_PATH, parity.paritySamplesJson(), "utf8");
+  console.log(`wrote ${path.relative(process.cwd(), PARITY_PATH)}`);
 } finally {
   await server.close();
 }
