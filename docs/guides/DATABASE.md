@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-20 (NEX-053) · Migration: `0010_themes_fonts`
+> State as of: 2026-11-21 (NEX-054) · Migration: `0011_text_overrides`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -107,6 +107,13 @@ All three use forced RLS (`tenant_isolation`).
 |---|---|---|
 | `themes` | `id`, `tenant_id`, `scope_kind`, `scope_target_id`, `light`/`dark`/`radius` (JSON token maps), `fonts`, `density`, `assets` (JSON), `locked_tokens[]`, `version`, `updated_by`, `updated_at` | One layer per tenant + scope; `scope_target_id` NULL only for `platform`; forced RLS |
 | `fonts` | `id`, `tenant_id` (NULL = shared library), `family`, `source`, `roles[]`, `scripts[]`, `file_url` | Library fonts are visible to every tenant, uploads (Stage 3) only to their own; the app only reads |
+
+## Text overrides (M04 — `0011_text_overrides`, C-2, D28)
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `text_overrides` | `id`, `tenant_id`, `scope_kind`, `scope_target_id`, `locale`, `key`, `message`, `version`, `updated_by`, `updated_at`, `deleted_at` | One per tenant + scope + locale + key; a delete sets `deleted_at` (id and history kept); forced RLS |
+| `text_override_revisions` | `override_id` + `version` (PK), `tenant_id`, `message` (NULL = deleted), `changed_by`, `changed_at` | Append-only for the app (SELECT, INSERT); rollback reads from here |
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 11,
   "tenants": [
     {
       "id": "ten-ls",
@@ -6338,6 +6338,101 @@
         "cyrillic"
       ],
       "fileUrl": null
+    }
+  ],
+  "textOverrides": [
+    {
+      "id": "txo-rv-learner",
+      "tenantId": "ten-rv",
+      "scope": {
+        "kind": "group",
+        "targetId": "grp-rv"
+      },
+      "locale": "en-GB",
+      "key": "term.learner",
+      "message": "Pupil",
+      "version": 2,
+      "updatedBy": "usr-rv-helen",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "txo-rv-learners",
+      "tenantId": "ten-rv",
+      "scope": {
+        "kind": "group",
+        "targetId": "grp-rv"
+      },
+      "locale": "en-GB",
+      "key": "term.learners",
+      "message": "Pupils",
+      "version": 1,
+      "updatedBy": "usr-rv-helen",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "txo-rv-north-class",
+      "tenantId": "ten-rv",
+      "scope": {
+        "kind": "campus",
+        "targetId": "cmp-rv-north"
+      },
+      "locale": "en-GB",
+      "key": "term.class",
+      "message": "Form",
+      "version": 1,
+      "updatedBy": "usr-rv-helen",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "id": "txo-ax-learner-ta",
+      "tenantId": "ten-ax",
+      "scope": {
+        "kind": "institution",
+        "targetId": "ins-ax"
+      },
+      "locale": "ta-IN",
+      "key": "term.learner",
+      "message": "பயிற்சியாளர்",
+      "version": 1,
+      "updatedBy": "usr-ax-karthik",
+      "updatedAt": "2026-08-20T10:30:00Z"
+    }
+  ],
+  "textOverrideRevisions": [
+    {
+      "overrideId": "txo-rv-learner",
+      "version": 1,
+      "message": "Scholar",
+      "changedBy": "usr-rv-helen",
+      "changedAt": "2026-03-02T10:00:00Z"
+    },
+    {
+      "overrideId": "txo-rv-learner",
+      "version": 2,
+      "message": "Pupil",
+      "changedBy": "usr-rv-helen",
+      "changedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "overrideId": "txo-rv-learners",
+      "version": 1,
+      "message": "Pupils",
+      "changedBy": "usr-rv-helen",
+      "changedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "overrideId": "txo-rv-north-class",
+      "version": 1,
+      "message": "Form",
+      "changedBy": "usr-rv-helen",
+      "changedAt": "2026-08-20T10:30:00Z"
+    },
+    {
+      "overrideId": "txo-ax-learner-ta",
+      "version": 1,
+      "message": "பயிற்சியாளர்",
+      "changedBy": "usr-ax-karthik",
+      "changedAt": "2026-08-20T10:30:00Z"
     }
   ],
   "dataSubjectRequests": [

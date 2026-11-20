@@ -20,6 +20,13 @@ export const TOKENS_PATH = path.resolve(
   "../../../../backend/src/nexus/modules/m03/design_tokens.json",
 );
 
+/** Known message keys and formatjs ICU verdicts for the backend texts API (NEX-054). */
+export const KEYS_PATH = path.resolve(
+  here,
+  "../../../../backend/src/nexus/modules/m04/message_keys.json",
+);
+export const ICU_CASES_PATH = path.resolve(here, "../../../../backend/tests/m04/icu_cases.json");
+
 const server = await createServer({
   root: path.resolve(here, ".."),
   logLevel: "error",
@@ -37,6 +44,13 @@ try {
   };
   writeFileSync(TOKENS_PATH, tokens.designTokensJson(), "utf8");
   console.log(`wrote ${path.relative(process.cwd(), TOKENS_PATH)}`);
+  const catalogue = (await server.ssrLoadModule("/src/fixtures/catalogue.ts")) as {
+    messageKeysJson: () => string;
+    icuCasesJson: () => string;
+  };
+  writeFileSync(KEYS_PATH, catalogue.messageKeysJson(), "utf8");
+  writeFileSync(ICU_CASES_PATH, catalogue.icuCasesJson(), "utf8");
+  console.log(`wrote ${path.relative(process.cwd(), KEYS_PATH)} and the ICU cases`);
 } finally {
   await server.close();
 }
