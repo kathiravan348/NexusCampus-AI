@@ -56,7 +56,7 @@
 | NEX-045 | Identity: Keycloak, OIDC sign-in, server sessions, /me (D44) | D | done | Claude | 044 |
 | NEX-046 | RBAC + entitlement guard: permission catalogue, scoped assignments, module switch | D | done | Claude | 045 |
 | NEX-047 | Tenancy API (M01) | D | done | Claude | 046 |
-| NEX-048 | Users & access API (M02): people, users, invite, roles, sessions | D | planned | — | 047 |
+| NEX-048 | Users & access API (M02): people, users, invite, roles, sessions | D | done | Claude | 047 |
 | NEX-049 | SSO providers + SCIM 2.0 (M02) | D | planned | — | 048 |
 | NEX-050 | Vault (D46): per-tenant keys, field encryption, key status API (M83) | D | planned | — | 046 |
 | NEX-051 | Provider access (M83): requests, time-boxed grants, break-glass notices | D | planned | — | 050 |

@@ -124,4 +124,16 @@ class Session(Base):
     token_hash: Mapped[str | None] = mapped_column(String(64))
 
 
+class GuardianLink(Base):
+    __tablename__ = "guardian_links"
+    __table_args__ = (
+        ForeignKeyConstraint(["guardian_person_id", "tenant_id"], ["people.id", "people.tenant_id"]),
+        ForeignKeyConstraint(["learner_person_id", "tenant_id"], ["people.id", "people.tenant_id"]),
+        CheckConstraint("guardian_person_id <> learner_person_id", name="not_self"),
+    )
+    tenant_id: Mapped[str] = mapped_column(String(ID_LENGTH), ForeignKey("tenants.id"), index=True)
+    guardian_person_id: Mapped[str] = mapped_column(String(ID_LENGTH), primary_key=True)
+    learner_person_id: Mapped[str] = mapped_column(String(ID_LENGTH), primary_key=True)
+
+
 IDENTITY_TABLES = ("people", "users", "role_profiles", "sessions")

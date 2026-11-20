@@ -4,11 +4,11 @@ import { SESSIONS, USERS } from "./identity";
 import { PEOPLE } from "./people";
 import { ENTITLEMENTS } from "./plans";
 import { PERMISSIONS, ROLE_ASSIGNMENTS, ROLES } from "./rbac";
-import { ROLE_PROFILES } from "./role-profiles";
+import { GUARDIAN_LINKS, ROLE_PROFILES } from "./role-profiles";
 import { CAMPUSES, DEMO_TENANTS, GROUPS, INSTITUTIONS } from "./tenants";
 
 /** Format version of `demo_fixtures.json`; bump when the shape changes so the backend seed can refuse old files. */
-export const DEMO_FIXTURES_VERSION = 4;
+export const DEMO_FIXTURES_VERSION = 5;
 
 /**
  * The demo data the backend seed reads, in contract shapes (camelCase): tenancy (NEX-043) plus each tenant's
@@ -36,6 +36,7 @@ export function demoFixtures() {
     roles: ROLES,
     roleAssignments: ROLE_ASSIGNMENTS,
     entitlements: ENTITLEMENTS,
+    guardianLinks: GUARDIAN_LINKS,
   };
 }
 
