@@ -3,12 +3,12 @@
 > Read this first, then **only the current stage's board**. Never read boards of done or future stages.
 > Task IDs `NEX-###` are global and never reused; each task file lives in its stage folder.
 
-**Planning lock:** Claude (NEX-022 freeze, 2026-11-20)
+**Planning lock:** —
 **Current stage:** 1 — Platform foundation → [`stage-1/BOARD.md`](stage-1/BOARD.md)
 
 | Stage | Name | Board | Tasks | Status |
 |---|---|---|---|---|
-| 1 | Platform foundation | [`stage-1/BOARD.md`](stage-1/BOARD.md) | NEX-001–040 (025–026 withdrawn) | **current** (prototype) |
+| 1 | Platform foundation | [`stage-1/BOARD.md`](stage-1/BOARD.md) | NEX-001–065 (025–026 withdrawn) | **current** (frozen D43 · build step) |
 | 2 | Nexus Control & delivery | `stage-2/BOARD.md` (created at Stage 1 freeze) | — | later |
 | 3 | Core institution operations | — | — | later |
 | 4 | Teaching & learning | — | — | later |

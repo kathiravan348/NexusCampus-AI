@@ -3,9 +3,9 @@
 > Read at the start of every session. Update status + owner BEFORE starting work.
 > Statuses: draft · planned · in-progress · ready-for-review · in-review · changes-requested · done · withdrawn
 > A task becomes `planned` only when the planner has written its file (in this folder) from `docs/templates/TASK.md`.
-> Lanes run in parallel when `Files` do not overlap: **A** UI/theme/text · **B** data/offline · **C** screens.
+> Lanes run in parallel when `Files` do not overlap: **A** UI/theme/text · **B** data/offline · **C** screens · **D** backend / deploy.
 
-**Step:** prototype (`docs/PLAN.md` → Stage 1) · **Modules:** M01–M07, M10, M11, M83 · **Task files:** this folder
+**Step:** build — Stage 1 frozen (D43; `docs/PLAN.md` → Stage 1 step 7) · **Modules:** M01–M07, M10, M11, M83 · **Task files:** this folder
 
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|
@@ -30,7 +30,7 @@
 | NEX-019 | Sync centre (M10): devices, pending queue, conflicts, remote wipe | C | done | Claude | 012 |
 | NEX-020 | Nexus Assist (M11): Assist panel (mock answers with sources), AI settings, AI-off state | C | done | Claude | 018 |
 | NEX-021 | Review build: one-command run, walkthrough per persona and institution type, Playwright smoke/RTL/offline check, feedback checklist | C | done | Claude | 013–020, 023, 024, 030, 032–036 |
-| NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | in-progress | Claude (planner) | 021 |
+| NEX-022 | Stage 1 freeze (planner + Owner): apply feedback, write Stage 1 build-step tasks | — | done | Claude (planner) | 021 |
 | NEX-023 | Data vault & access grants (M83): key status, provider access requests (approve / deny / revoke), active grants, break-glass notices, access history | C | done | Claude | 012 |
 | NEX-024 | Notifications engine (M07, core): per-locale templates, channels, preferences, quiet hours, delivery log | C | done | Claude | 012 |
 | NEX-025 | Forms, fields & workflow builder (M08) — moved to Stage 3 (D27); re-plan there with a new ID | — | withdrawn | — | — |
@@ -49,3 +49,28 @@
 | NEX-038 | PWA + MSW share one service worker in mock builds (fix for NEX-030, found by NEX-021) | C | done | Claude | 030 |
 | NEX-039 | Home page: intro line and a short description on every module tile (Owner request) | C | done | Claude | 012 |
 | NEX-040 | Default languages English, Hindi, Tamil; Arabic removed (D42, Owner decision) | B | done | Claude | 003, 010, 021 |
+| NEX-041 | L1 screens show "Last synced" (fix from Stage 1 review) | C | planned | — | 021 |
+| NEX-042 | Backend skeleton: FastAPI, uv, backend-check, timings, OpenTelemetry, Compose (PostgreSQL 16 + pgvector, Redis) | D | planned | — | 022 |
+| NEX-043 | Region config, tenancy schema with RLS, Alembic baseline, demo seed | D | planned | — | 042 |
+| NEX-044 | Audit core: append-only hash-chained writer + domain event outbox | D | planned | — | 043 |
+| NEX-045 | Identity: Keycloak, OIDC sign-in, server sessions, /me (D44) | D | planned | — | 044 |
+| NEX-046 | RBAC + entitlement guard: permission catalogue, scoped assignments, module switch | D | planned | — | 045 |
+| NEX-047 | Tenancy API (M01) | D | planned | — | 046 |
+| NEX-048 | Users & access API (M02): people, users, invite, roles, sessions | D | planned | — | 047 |
+| NEX-049 | SSO providers + SCIM 2.0 (M02) | D | planned | — | 048 |
+| NEX-050 | Vault (D46): per-tenant keys, field encryption, key status API (M83) | D | planned | — | 046 |
+| NEX-051 | Provider access (M83): requests, time-boxed grants, break-glass notices | D | planned | — | 050 |
+| NEX-052 | Audit & privacy API (M06): audit log + chain check, consents, DSR, packs | D | planned | — | 046 |
+| NEX-053 | Theme + fonts API (M03) with server-side contrast guard | D | planned | — | 046 |
+| NEX-054 | Texts API (M04): overrides, revisions, import/export, bundles | D | planned | — | 046 |
+| NEX-055 | Plan, entitlements and usage API (M05) | D | planned | — | 046 |
+| NEX-056 | Notifications engine (M07): templates, preferences, outbox worker, delivery log | D | planned | — | 046 |
+| NEX-057 | Sync API (M10): idempotent replay, devices, conflicts, remote wipe | D | planned | — | 046 |
+| NEX-058 | AI gateway (M11): tiers, Claude adapter, guarded pipeline, pgvector retrieval, credits | D | planned | — | 052, 055 |
+| NEX-059 | Contract parity tests: Pydantic ↔ Zod | D | planned | — | 047–058 |
+| NEX-060 | Switch to real data 1: dev proxy, sign-in, shell, M01, M02 | C | planned | — | 049, 059 |
+| NEX-061 | Switch to real data 2: M03, M04, M05 | C | planned | — | 060 |
+| NEX-062 | Switch to real data 3: M06, M07, M10 | C | planned | — | 061 |
+| NEX-063 | Switch to real data 4: M11, M83 | C | planned | — | 062 |
+| NEX-064 | Images + self-hosted Compose install | D | planned | — | 063 |
+| NEX-065 | Harden Stage 1: no-access tests (V-1…V-7), signed audit checkpoints, i18n, a11y, performance | D | planned | — | 064 |

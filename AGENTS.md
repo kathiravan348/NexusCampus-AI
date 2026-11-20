@@ -9,7 +9,8 @@
 > Platform names come from `brand.config.ts` only. An institution's name, theme, fonts and texts are tenant data.
 
 ## 1. Current stage
-**Stage 1 — Platform foundation, prototype step.** Frontend only: contracts, static mocks, screens. Full plan:
+**Stage 1 — Platform foundation, build step** (frozen, D43): backend behind the frozen contracts, then screens switched
+to real data (NEX-041–065). Contracts and screens change only through a task with the Owner's OK. Full plan:
 `docs/PLAN.md`; modules: `docs/MODULES.md`. Never build a module from a later stage.
 v1 is archived at git tag `legacy-v1`: never read or copy it.
 
@@ -74,7 +75,8 @@ behaviour needs it), TanStack Table, TanStack Query (+ persisted cache), React H
 (`react-intl`, ICU), date-fns + date-fns-tz, Recharts, lucide-react, React Router, MSW, Dexie (IndexedDB),
 vite-plugin-pwa (Workbox), Storybook, Vitest + Testing Library, Playwright (e2e, offline and RTL checks).
 Backend (build step): Python 3.12 (Docker; host via uv), FastAPI, Pydantic v2, pydantic-settings, SQLAlchemy 2 +
-Alembic, PostgreSQL 16 + RLS, Redis, S3-compatible storage, OpenTelemetry; ruff, mypy `--strict`, pytest.
+Alembic, PostgreSQL 16 + RLS + pgvector (D47), Redis, S3-compatible storage, OpenTelemetry; ruff, mypy `--strict`, pytest.
+Identity: Keycloak (D44). Keys and secrets: HashiCorp Vault / OpenBao (D46). Hosting: AWS, regions IN + EU (D45).
 AI: provider-agnostic AI gateway (D14, M11) — Claude via the official `anthropic` SDK (or Bedrock/Vertex) by default,
 plus pluggable providers and OpenAI-compatible local models for air-gapped/self-hosted installs; never call a model
 outside the AI gateway.
