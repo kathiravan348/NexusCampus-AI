@@ -58,7 +58,8 @@
 │     │                 modules/m04/ (TextStudioPage, KeyEditor, HistoryPanel, ImportExport, NEX-015),
 │     │                 modules/m05/ (PlanPage, ModulesTab, UsageTab, NEX-018),
 │     │                 modules/m06/ (PrivacyPage, AuditTab, ChainCheck, ConsentsTab, DataRequestsTab, ComplianceTab, NEX-017),
-│     │                 modules/m10/ (SyncCentrePage, ThisDeviceTab, DevicesTab, ConflictsTab, NEX-019)
+│     │                 modules/m10/ (SyncCentrePage, ThisDeviceTab, DevicesTab, ConflictsTab, NEX-019),
+│     │                 modules/m11/ (AiSettingsPage, AssistButton, AssistPanel, AssistUnavailable, NEX-020)
 │     └─ control/       Nexus Control provider platform (planned, Stage 2)
 ├─ backend/             product backend (planned, Stage 1 build step)
 ├─ control/             Nexus Control backend (planned, Stage 2)

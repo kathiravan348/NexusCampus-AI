@@ -7,6 +7,7 @@ import {
   Palette,
   RefreshCw,
   ShieldCheck,
+  Sparkles,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -97,5 +98,14 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: null,
     offlineLevel: "L3",
     load: () => import("../modules/m10/SyncCentrePage"),
+  },
+  {
+    moduleId: "M11",
+    path: "ai",
+    navKey: "m11.nav.title",
+    icon: Sparkles,
+    permission: "m11.settings.manage",
+    offlineLevel: "L0",
+    load: () => import("../modules/m11/AiSettingsPage"),
   },
 ];

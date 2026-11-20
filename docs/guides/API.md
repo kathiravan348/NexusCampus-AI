@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, M05, M06, and M10 write endpoints landed)
+> State as of: 2026-11-19 (Stage 1 prototype — MSW mock API under `/api/v1`; M01, M02, M03, M04, M05, M06, M10, and M11 write endpoints landed)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -83,3 +83,12 @@ In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request 
 | `GET /api/v1/sync-conflicts` | `m10.device.read` (for the visible devices) | `?page=&pageSize=` → `Page<SyncConflict>` (no payloads) | `400`, `401`, `403` |
 | `POST /api/v1/devices/:id/revoke` | `m10.device.wipe` | `{}` → `DeviceSync` (`revoke_pending`; pending writes counted as lost) | `401`, `403`, `404`, `409 conflict` (not active); audits `m10.device.revokeRequested` |
 | `POST /api/v1/sync-conflicts/:id/resolve` | `m10.device.wipe` | `{ resolution: keep_server \| keep_client \| merged }` → `SyncConflict` (device `conflictCount` − 1) | `400` (missing resolution), `401`, `403`, `404`, `409 conflict` (already resolved); audits `m10.conflict.resolved` |
+
+## Nexus Assist (M11)
+
+| Method & path | Permission | Input / Output | Errors & audit |
+|---|---|---|---|
+| `GET /api/v1/ai/settings` | `m11.assist.use` or `m11.settings.manage` | — → `AiSettings` (no keys) | `401`, `403`, `404` |
+| `GET /api/v1/ai/credits` | `m11.settings.manage` | `?page=&pageSize=` → `Page<AiCredit>` | `400`, `401`, `403` |
+| `POST /api/v1/assist/ask` | `m11.assist.use` | `{ question, locale }` → `{ answer: AssistAnswer \| null, credits }` (mock fixture answer, always with sources; decrements credits and the `ai_credits` meter) | `403 module_disabled` (not entitled), `403 forbidden` with `details[0].path` `ai_off` or `consent` (minor without guardian consent), `429 rate_limited` path `credits`, `400`, `401` |
+| `PUT /api/v1/ai/settings` | `m11.settings.manage` | `{ enabled, modules, safeguardingEnabled, defaultTier }` → `AiSettings` | `400 invalid_request` (`modules.M61` / `modules.M83` can never be on), `401`, `403`; audits `m11.settings.updated` |
