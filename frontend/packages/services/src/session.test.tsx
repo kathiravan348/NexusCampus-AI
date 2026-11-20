@@ -1,10 +1,11 @@
 import { enqueueWrite, listOutbox } from "@nexus/offline";
-import { act, renderHook } from "@testing-library/react";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import type { ReactNode } from "react";
 import {
   MOCK_SCENARIO_KEY,
   SESSION_STORAGE_KEY,
   SessionProvider,
+  fetchRealSession,
   getMockScenario,
   readStoredSession,
   setMockScenario,
@@ -93,5 +94,41 @@ describe("mock scenario", () => {
   it("ignores an unknown stored value", () => {
     localStorage.setItem(MOCK_SCENARIO_KEY, "chaos");
     expect(getMockScenario()).toBeNull();
+  });
+
+  it("real mode: asks /me who is signed in, then signs out through the backend", async () => {
+    const urls: string[] = [];
+    const fakeFetch = (async (url: string) => {
+      urls.push(url);
+      return url.endsWith("/me")
+        ? new Response(JSON.stringify({ user: { id: "usr-ls-priya", tenantId: "ten-ls" } }), {
+            status: 200,
+          })
+        : new Response(JSON.stringify({ signedOut: true }), { status: 200 });
+    }) as unknown as typeof fetch;
+    const db = freshDb();
+    const Wrapper = ({ children }: { readonly children?: ReactNode }) => (
+      <SessionProvider db={db} mode="real" fetch={fakeFetch}>
+        {children}
+      </SessionProvider>
+    );
+    const { result } = renderHook(() => useSession(), { wrapper: Wrapper });
+    expect(result.current.ready).toBe(false);
+    await waitFor(() => expect(result.current.ready).toBe(true));
+    expect(result.current.session).toEqual({ tenantId: "ten-ls", userId: "usr-ls-priya" });
+    expect(readStoredSession()).toBeNull(); // real sessions live in the cookie, not sessionStorage
+    await act(async () => {
+      await result.current.signOut();
+    });
+    expect(result.current.session).toBeNull();
+    expect(urls.some((u) => u.endsWith("/auth/logout"))).toBe(true);
+  });
+
+  it("real mode: no session cookie means signed out", async () => {
+    expect(
+      await fetchRealSession(
+        (async () => new Response("{}", { status: 401 })) as unknown as typeof fetch,
+      ),
+    ).toBeNull();
   });
 });

@@ -1,6 +1,6 @@
 import { HttpResponse, http } from "msw";
 import { z } from "zod";
-import { ApiClient, ApiRequestError } from "./client";
+import { ApiClient, ApiRequestError, readCsrfToken } from "./client";
 import { TenantResponseSchema } from "./modules/m01";
 import { ADMIN, server, startMockServer } from "./test-utils";
 
@@ -31,13 +31,14 @@ describe("ApiClient", () => {
     expect(seen.headers?.get("X-Nexus-Scenario")).toBe("slow");
   });
 
-  it("sends only the tenant header in real mode", async () => {
+  it("sends no identity headers in real mode: the tenant comes from the session cookie", async () => {
     const seen = captureHeaders();
     const client = new ApiClient({ mode: "real", identity, scenario: () => "error" });
     await client.get("/probe", Probe);
-    expect(seen.headers?.get("X-Nexus-Tenant")).toBe(ADMIN.tenantId);
+    expect(seen.headers?.has("X-Nexus-Tenant")).toBe(false);
     expect(seen.headers?.has("X-Nexus-User")).toBe(false);
     expect(seen.headers?.has("X-Nexus-Scenario")).toBe(false);
+    expect(seen.headers?.has("X-CSRF-Token")).toBe(false);
   });
 
   it("parses a valid response with its schema", async () => {
@@ -102,5 +103,35 @@ describe("ApiClient", () => {
       status: 502,
       error: { code: "internal", message: "HTTP 502" },
     });
+  });
+
+  it("real mode: includes cookies, echoes the CSRF cookie on writes and reports 401", async () => {
+    document.cookie = "nexus_csrf=tok-123; path=/";
+    const calls: RequestInit[] = [];
+    const fakeFetch = (async (_url: string, init: RequestInit) => {
+      calls.push(init);
+      return calls.length === 1
+        ? new Response(JSON.stringify({ ok: true }), { status: 200 })
+        : new Response(
+            JSON.stringify({ error: { code: "unauthorized", message: "Please sign in." } }),
+            {
+              status: 401,
+            },
+          );
+    }) as unknown as typeof fetch;
+    const expired = vi.fn();
+    const client = new ApiClient({
+      mode: "real",
+      identity,
+      fetch: fakeFetch,
+      onUnauthorized: expired,
+    });
+    await client.send("POST", "/probe", { a: 1 }, Probe);
+    expect(calls[0]?.credentials).toBe("include");
+    expect(new Headers(calls[0]?.headers).get("X-CSRF-Token")).toBe("tok-123");
+    await expect(client.get("/probe", Probe)).rejects.toMatchObject({ status: 401 });
+    expect(expired).toHaveBeenCalledTimes(1);
+    expect(readCsrfToken("a=1; nexus_csrf=x%3Dy")).toBe("x=y");
+    document.cookie = "nexus_csrf=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
   });
 });

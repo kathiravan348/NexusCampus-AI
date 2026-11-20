@@ -35,6 +35,8 @@ export interface ApiClientOptions {
   readonly scenario?: () => string | null;
   readonly baseUrl?: string;
   readonly fetch?: typeof fetch;
+  /** Real mode: the session cookie is gone or expired (`401`) — the app shows sign-in again. */
+  readonly onUnauthorized?: () => void;
 }
 
 export type QueryParams = Readonly<Record<string, string | number | boolean | null | undefined>>;
@@ -51,7 +53,22 @@ export const HEADER = {
   user: "X-Nexus-User",
   scenario: "X-Nexus-Scenario",
   idempotencyKey: "Idempotency-Key",
+  csrf: "X-CSRF-Token",
 } as const;
+
+/** The backend's double-submit CSRF cookie (readable by the page, D44). */
+export const CSRF_COOKIE = "nexus_csrf";
+
+/** The CSRF token to echo on unsafe requests in real mode; `null` when there is no cookie. */
+export function readCsrfToken(cookies?: string): string | null {
+  const source =
+    cookies ?? (globalThis as { document?: { cookie?: string } }).document?.cookie ?? "";
+  for (const part of source.split(";")) {
+    const [name, ...rest] = part.trim().split("=");
+    if (name === CSRF_COOKIE) return decodeURIComponent(rest.join("="));
+  }
+  return null;
+}
 
 function origin(): string {
   const location = (globalThis as { location?: { origin?: string } }).location;
@@ -93,12 +110,20 @@ export class ApiClient {
     return url.toString();
   }
 
-  private headers(hasBody: boolean, extra?: Readonly<Record<string, string>>): Headers {
+  private headers(
+    method: string,
+    hasBody: boolean,
+    extra?: Readonly<Record<string, string>>,
+  ): Headers {
     const headers = new Headers({ Accept: "application/json", ...extra });
     if (hasBody) headers.set("Content-Type", "application/json");
     const identity = this.options.identity();
-    if (identity) headers.set(HEADER.tenant, identity.tenantId);
-    if (this.options.mode === "mock") {
+    if (this.options.mode === "real") {
+      // The tenant comes from the signed session cookie, never a header; unsafe calls echo the CSRF cookie.
+      const csrf = method === "GET" ? null : readCsrfToken();
+      if (csrf) headers.set(HEADER.csrf, csrf);
+    } else {
+      if (identity) headers.set(HEADER.tenant, identity.tenantId);
       if (identity) headers.set(HEADER.user, identity.userId);
       const scenario = this.options.scenario?.() ?? null;
       if (scenario) headers.set(HEADER.scenario, scenario);
@@ -119,7 +144,8 @@ export class ApiClient {
     try {
       response = await doFetch(this.url(path, query), {
         method,
-        headers: this.headers(body !== undefined, init?.headers),
+        headers: this.headers(method, body !== undefined, init?.headers),
+        credentials: this.options.mode === "real" ? "include" : "same-origin",
         ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
         ...(init?.signal ? { signal: init.signal } : {}),
       });
@@ -136,6 +162,7 @@ export class ApiClient {
     }
 
     if (!response.ok) {
+      if (response.status === 401 && this.options.mode === "real") this.options.onUnauthorized?.();
       const parsed = ApiErrorSchema.safeParse(json);
       throw new ApiRequestError(
         response.status,

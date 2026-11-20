@@ -60,8 +60,17 @@ export interface RouteGuardProps {
 
 /** No session → sign-in; module off → `ModuleOff`; no permission → `Forbidden`; L0 offline → notice. */
 export function RouteGuard({ module, children }: RouteGuardProps) {
-  const { session } = useSession();
+  const { session, ready } = useSession();
   const location = useLocation();
+  const t = useText();
+  if (!ready) {
+    // Real mode asks the backend who is signed in before deciding.
+    return (
+      <p role="status" className="text-body text-text-secondary">
+        {t("common.loading")}
+      </p>
+    );
+  }
   if (!session) return <Navigate to="/sign-in" replace state={{ from: location.pathname }} />;
   if (!module) return <>{children}</>;
   return <ModuleGuard module={module}>{children}</ModuleGuard>;

@@ -21,7 +21,8 @@
 │  ├─ tasks/            BOARD.md (index) + stage-N/ (BOARD.md + task files NEX-###.md per stage)
 │  └─ templates/        TASK.md, HANDOFF.md, REVIEW.md
 ├─ frontend/            frontend monorepo (pnpm workspaces)
-│  ├─ e2e/              Playwright (NEX-021): playwright.config (review build + dev server; desktop, 360px, pseudo),
+│  ├─ e2e/              Playwright (NEX-021): playwright.config (review build + dev server; desktop, 360px, pseudo);
+│  │                    real/ = opt-in real-data run (`pnpm e2e:real`, NEX-060),
 │  │                    helpers, smoke, languages, pseudo, offline, a11y specs (`pnpm e2e`, not in review:check)
 │  ├─ scripts/          timing harness (NEX-032): timing-budgets, time-run (CLI: [timing] lines, --ready-pattern,
 │  │                    --exit-after-ready, --sequence), vitest-timing-reporter, measure-timings (+ time-run.test);

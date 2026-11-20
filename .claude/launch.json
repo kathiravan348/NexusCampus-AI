@@ -29,6 +29,31 @@
         "--no-open"
       ],
       "port": 6006
+    },
+    {
+      "name": "campus-real",
+      "runtimeExecutable": "fnm",
+      "runtimeArgs": [
+        "exec",
+        "--using=24",
+        "--",
+        "pnpm",
+        "--dir",
+        "frontend",
+        "dev:real"
+      ],
+      "port": 3100
+    },
+    {
+      "name": "backend",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": [
+        "run",
+        "--project",
+        "backend",
+        "nexus-dev"
+      ],
+      "port": 8000
     }
   ]
 }
