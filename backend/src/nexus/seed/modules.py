@@ -1,5 +1,6 @@
 """Demo rows of the module tables (Stage 1 APIs): M83 provider access (NEX-051), M06 privacy (NEX-052), M03 themes
-and the font library (NEX-053). Same shapes as the mock fixtures; idempotent upserts.
+and the font library (NEX-053), M04 text overrides with their revisions (NEX-054). Same shapes as the mock
+fixtures; idempotent upserts.
 """
 
 import json
@@ -10,6 +11,8 @@ from sqlalchemy import Connection, text
 
 #: Children first, for `--reset` (the font library is shared, so it is never deleted per tenant).
 MODULE_TABLES_CHILD_FIRST = (
+    "text_override_revisions",
+    "text_overrides",
     "themes",
     "tenant_compliance",
     "data_subject_requests",
@@ -64,6 +67,7 @@ def seed_modules(conn: Connection, data: dict[str, Any], tid: str) -> None:
             text("INSERT INTO tenant_compliance (tenant_id, pack_code) VALUES (:t, :p) ON CONFLICT DO NOTHING"),
             {"t": tid, "p": pack["packCode"]},
         )
+    seed_texts(conn, data, tid)
     for theme in _rows(data, "themes", tid):
         conn.execute(
             text(
@@ -88,3 +92,30 @@ def seed_modules(conn: Connection, data: dict[str, Any], tid: str) -> None:
                 "at": theme["updatedAt"],
             },
         )
+
+
+def seed_texts(conn: Connection, data: dict[str, Any], tid: str) -> None:
+    """Text overrides, then their revisions (revisions carry no tenant in the contract: taken from the override)."""
+    ids = set()
+    for o in _rows(data, "textOverrides", tid):
+        ids.add(o["id"])
+        row = {k: v for k, v in _snake(o).items() if k != "scope"}
+        _upsert(
+            conn, "text_overrides", {**row, "scope_kind": o["scope"]["kind"], "scope_target_id": o["scope"]["targetId"]}
+        )
+    for r in data["textOverrideRevisions"]:
+        if r["overrideId"] in ids:
+            conn.execute(
+                text(
+                    "INSERT INTO text_override_revisions (override_id, version, tenant_id, message, changed_by, "
+                    "changed_at) VALUES (:o, :v, :t, :m, :by, :at) ON CONFLICT DO NOTHING"
+                ),
+                {
+                    "o": r["overrideId"],
+                    "v": r["version"],
+                    "t": tid,
+                    "m": r["message"],
+                    "by": r["changedBy"],
+                    "at": r["changedAt"],
+                },
+            )

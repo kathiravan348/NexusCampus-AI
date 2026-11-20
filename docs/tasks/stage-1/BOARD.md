@@ -62,7 +62,7 @@
 | NEX-051 | Provider access (M83): requests, time-boxed grants, break-glass notices | D | done | Claude | 050 |
 | NEX-052 | Audit & privacy API (M06): audit log + chain check, consents, DSR, packs | D | done | Claude | 046 |
 | NEX-053 | Theme + fonts API (M03) with server-side contrast guard | D | done | Claude | 046 |
-| NEX-054 | Texts API (M04): overrides, revisions, import/export, bundles | D | planned | — | 046 |
+| NEX-054 | Texts API (M04): overrides, revisions, import/export, bundles | D | done | Claude | 046 |
 | NEX-055 | Plan, entitlements and usage API (M05) | D | planned | — | 046 |
 | NEX-056 | Notifications engine (M07): templates, preferences, outbox worker, delivery log | D | planned | — | 046 |
 | NEX-057 | Sync API (M10): idempotent replay, devices, conflicts, remote wipe | D | planned | — | 046 |

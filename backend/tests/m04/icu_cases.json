@@ -1,0 +1,10034 @@
+[
+  {
+    "text": "",
+    "valid": true
+  },
+  {
+    "text": "Plain text",
+    "valid": true
+  },
+  {
+    "text": "Hello {name}",
+    "valid": true
+  },
+  {
+    "text": "{ name }",
+    "valid": true
+  },
+  {
+    "text": "{}",
+    "valid": false
+  },
+  {
+    "text": "{ }",
+    "valid": false
+  },
+  {
+    "text": "{name",
+    "valid": false
+  },
+  {
+    "text": "name}",
+    "valid": true
+  },
+  {
+    "text": "{a}{b}",
+    "valid": true
+  },
+  {
+    "text": "{0}",
+    "valid": true
+  },
+  {
+    "text": "{n, number}",
+    "valid": true
+  },
+  {
+    "text": "{n, number, integer}",
+    "valid": true
+  },
+  {
+    "text": "{n, number, percent}",
+    "valid": true
+  },
+  {
+    "text": "{n, number, ::currency/INR}",
+    "valid": true
+  },
+  {
+    "text": "{n, number,}",
+    "valid": false
+  },
+  {
+    "text": "{d, date}",
+    "valid": true
+  },
+  {
+    "text": "{d, date, short}",
+    "valid": true
+  },
+  {
+    "text": "{d, time, ::hhmm}",
+    "valid": true
+  },
+  {
+    "text": "{n, duration}",
+    "valid": false
+  },
+  {
+    "text": "{n, spellout}",
+    "valid": false
+  },
+  {
+    "text": "{n, plural, one {# item} other {# items}}",
+    "valid": true
+  },
+  {
+    "text": "{n, plural, =0 {none} one {one} other {#}}",
+    "valid": true
+  },
+  {
+    "text": "{n, plural, offset:1 one {x} other {y}}",
+    "valid": true
+  },
+  {
+    "text": "{n, plural, one {x}}",
+    "valid": false
+  },
+  {
+    "text": "{n, plural, one {x} one {y} other {z}}",
+    "valid": false
+  },
+  {
+    "text": "{n, plural, other {x}",
+    "valid": false
+  },
+  {
+    "text": "{n, plural,}",
+    "valid": false
+  },
+  {
+    "text": "{n, plural other {x}}",
+    "valid": false
+  },
+  {
+    "text": "{n, plural, one x other {y}}",
+    "valid": false
+  },
+  {
+    "text": "{n, plural, =x {a} other {b}}",
+    "valid": false
+  },
+  {
+    "text": "{n, selectordinal, one {#st} two {#nd} few {#rd} other {#th}}",
+    "valid": true
+  },
+  {
+    "text": "{g, select, female {She} male {He} other {They}}",
+    "valid": true
+  },
+  {
+    "text": "{g, select, female {She}}",
+    "valid": false
+  },
+  {
+    "text": "{g, select, a {{n, plural, one {#} other {# many}}} other {x}}",
+    "valid": true
+  },
+  {
+    "text": "# outside plural",
+    "valid": true
+  },
+  {
+    "text": "{g, select, a {#} other {b}}",
+    "valid": true
+  },
+  {
+    "text": "It''s fine",
+    "valid": true
+  },
+  {
+    "text": "It's fine",
+    "valid": true
+  },
+  {
+    "text": "'{literal}'",
+    "valid": true
+  },
+  {
+    "text": "'{unclosed",
+    "valid": true
+  },
+  {
+    "text": "a '' b",
+    "valid": true
+  },
+  {
+    "text": "Use '{' and '}'",
+    "valid": true
+  },
+  {
+    "text": "a } b",
+    "valid": true
+  },
+  {
+    "text": "<b>bold</b>",
+    "valid": true
+  },
+  {
+    "text": "<b>bold",
+    "valid": false
+  },
+  {
+    "text": "</b>",
+    "valid": false
+  },
+  {
+    "text": "<b>x</i>",
+    "valid": false
+  },
+  {
+    "text": "a < b",
+    "valid": true
+  },
+  {
+    "text": "<br/>",
+    "valid": true
+  },
+  {
+    "text": "<b>{n, plural, one {#} other {#}}</b>",
+    "valid": true
+  },
+  {
+    "text": "{n, plural, one {<b>#</b>} other {#}}",
+    "valid": true
+  },
+  {
+    "text": "{a, foo}",
+    "valid": false
+  },
+  {
+    "text": "{a b}",
+    "valid": false
+  },
+  {
+    "text": "{a, select, other {x}} tail",
+    "valid": true
+  },
+  {
+    "text": "{a, plural, one {{b}} other {}}",
+    "valid": true
+  },
+  {
+    "text": "x {a, select, other {y} z",
+    "valid": false
+  },
+  {
+    "text": "சொல் {name}",
+    "valid": true
+  },
+  {
+    "text": "नमस्ते {name}, {n, plural, one {# संदेश} other {# संदेश}}",
+    "valid": true
+  },
+  {
+    "text": "A guardian's consent is needed",
+    "valid": true
+  },
+  {
+    "text": "A new version of NexusCampus is ready.",
+    "valid": true
+  },
+  {
+    "text": "AI credits",
+    "valid": true
+  },
+  {
+    "text": "AI credits have run out",
+    "valid": true
+  },
+  {
+    "text": "AI credits per month",
+    "valid": true
+  },
+  {
+    "text": "AI credits this month",
+    "valid": true
+  },
+  {
+    "text": "AI features",
+    "valid": true
+  },
+  {
+    "text": "AI never reads this data.",
+    "valid": true
+  },
+  {
+    "text": "AI provider: {provider}",
+    "valid": true
+  },
+  {
+    "text": "AI settings",
+    "valid": true
+  },
+  {
+    "text": "AI settings could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "AI settings could not be saved. Try again.",
+    "valid": true
+  },
+  {
+    "text": "AI settings saved.",
+    "valid": true
+  },
+  {
+    "text": "AI के लिए अभिभावक की सहमति",
+    "valid": true
+  },
+  {
+    "text": "AI क्रेडिट",
+    "valid": true
+  },
+  {
+    "text": "AI क्रेडिट खत्म हो गए हैं",
+    "valid": true
+  },
+  {
+    "text": "AI चालू या बंद करें और तय करें कि Assist क्या उपयोग कर सकता है।",
+    "valid": true
+  },
+  {
+    "text": "AI तक पहुँचने से पहले व्यक्तिगत डेटा हमेशा छिपाया जाता है, और बच्चों के AI उपयोग के लिए हमेशा अभिभावक की सहमति चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "AI द्वारा बनाया गया",
+    "valid": true
+  },
+  {
+    "text": "AI प्रदाता: {provider}",
+    "valid": true
+  },
+  {
+    "text": "AI यह डेटा कभी नहीं पढ़ता।",
+    "valid": true
+  },
+  {
+    "text": "AI सुविधाएँ",
+    "valid": true
+  },
+  {
+    "text": "AI सेटिंग",
+    "valid": true
+  },
+  {
+    "text": "AI सेटिंग प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "AI सेटिंग लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
+    "text": "AI सेटिंग सहेजी गईं।",
+    "valid": true
+  },
+  {
+    "text": "AI सेटिंग सहेजी नहीं जा सकीं। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "AI அமைப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "AI அமைப்புகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "AI அமைப்புகளைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "AI அமைப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "AI அமைப்புகள் சேமிக்கப்பட்டன.",
+    "valid": true
+  },
+  {
+    "text": "AI அம்சங்கள்",
+    "valid": true
+  },
+  {
+    "text": "AI இந்தத் தரவை ஒருபோதும் படிக்காது.",
+    "valid": true
+  },
+  {
+    "text": "AI உருவாக்கியது",
+    "valid": true
+  },
+  {
+    "text": "AI ஐ இயக்கவும் அணைக்கவும், Assist எதைப் பயன்படுத்தலாம் என்பதை நிர்வகிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "AI க்குப் பாதுகாவலர் ஒப்புதல்",
+    "valid": true
+  },
+  {
+    "text": "AI பார்ப்பதற்கு முன் தனிப்பட்ட தரவு எப்போதும் மறைக்கப்படும்; குழந்தைகளின் AI பயன்பாட்டுக்கு எப்போதும் பாதுகாவலரின் ஒப்புதல் தேவை.",
+    "valid": true
+  },
+  {
+    "text": "AI வரவுகள்",
+    "valid": true
+  },
+  {
+    "text": "AI வரவுகள் தீர்ந்துவிட்டன",
+    "valid": true
+  },
+  {
+    "text": "AI வழங்குநர்: {provider}",
+    "valid": true
+  },
+  {
+    "text": "AI-generated",
+    "valid": true
+  },
+  {
+    "text": "Academic calendar",
+    "valid": true
+  },
+  {
+    "text": "Academic calendar saved.",
+    "valid": true
+  },
+  {
+    "text": "Academic periods",
+    "valid": true
+  },
+  {
+    "text": "Academic structure",
+    "valid": true
+  },
+  {
+    "text": "Academic year",
+    "valid": true
+  },
+  {
+    "text": "Access",
+    "valid": true
+  },
+  {
+    "text": "Access approved.",
+    "valid": true
+  },
+  {
+    "text": "Access grant {grant}",
+    "valid": true
+  },
+  {
+    "text": "Access requests",
+    "valid": true
+  },
+  {
+    "text": "Access revoked.",
+    "valid": true
+  },
+  {
+    "text": "Access to data",
+    "valid": true
+  },
+  {
+    "text": "Account invitation",
+    "valid": true
+  },
+  {
+    "text": "Action",
+    "valid": true
+  },
+  {
+    "text": "Actions",
+    "valid": true
+  },
+  {
+    "text": "Active",
+    "valid": true
+  },
+  {
+    "text": "Active sessions",
+    "valid": true
+  },
+  {
+    "text": "Active total",
+    "valid": true
+  },
+  {
+    "text": "Actor",
+    "valid": true
+  },
+  {
+    "text": "Add a language…",
+    "valid": true
+  },
+  {
+    "text": "Add a provider",
+    "valid": true
+  },
+  {
+    "text": "Add a role",
+    "valid": true
+  },
+  {
+    "text": "Add campus",
+    "valid": true
+  },
+  {
+    "text": "Add holiday",
+    "valid": true
+  },
+  {
+    "text": "Add period",
+    "valid": true
+  },
+  {
+    "text": "Add role",
+    "valid": true
+  },
+  {
+    "text": "Add-on",
+    "valid": true
+  },
+  {
+    "text": "Address line 1",
+    "valid": true
+  },
+  {
+    "text": "Address line 2",
+    "valid": true
+  },
+  {
+    "text": "Administrator",
+    "valid": true
+  },
+  {
+    "text": "Afternoon session",
+    "valid": true
+  },
+  {
+    "text": "All contrast pairs meet WCAG 2.2 AA requirements.",
+    "valid": true
+  },
+  {
+    "text": "All institution data",
+    "valid": true
+  },
+  {
+    "text": "All purposes",
+    "valid": true
+  },
+  {
+    "text": "All statuses",
+    "valid": true
+  },
+  {
+    "text": "Allow AI for safeguarding",
+    "valid": true
+  },
+  {
+    "text": "Allowed",
+    "valid": true
+  },
+  {
+    "text": "Android",
+    "valid": true
+  },
+  {
+    "text": "Answers",
+    "valid": true
+  },
+  {
+    "text": "Any channel",
+    "valid": true
+  },
+  {
+    "text": "Any status",
+    "valid": true
+  },
+  {
+    "text": "Anyone",
+    "valid": true
+  },
+  {
+    "text": "Applies to",
+    "valid": true
+  },
+  {
+    "text": "Applies to this preview only until you save.",
+    "valid": true
+  },
+  {
+    "text": "Apply suggestions",
+    "valid": true
+  },
+  {
+    "text": "Apply valid changes",
+    "valid": true
+  },
+  {
+    "text": "Approve access",
+    "valid": true
+  },
+  {
+    "text": "Approve access for {staff}",
+    "valid": true
+  },
+  {
+    "text": "Approve or deny access requests, grants and keys.",
+    "valid": true
+  },
+  {
+    "text": "Approve provider access",
+    "valid": true
+  },
+  {
+    "text": "Approved",
+    "valid": true
+  },
+  {
+    "text": "Approved by",
+    "valid": true
+  },
+  {
+    "text": "Approve…",
+    "valid": true
+  },
+  {
+    "text": "Areas",
+    "valid": true
+  },
+  {
+    "text": "Areas they may see",
+    "valid": true
+  },
+  {
+    "text": "Asia-Pacific (APAC)",
+    "valid": true
+  },
+  {
+    "text": "Ask",
+    "valid": true
+  },
+  {
+    "text": "Ask about your institution. Answers are AI-generated from your records and always list their sources.",
+    "valid": true
+  },
+  {
+    "text": "Ask your administrator about adding it to the institution's plan.",
+    "valid": true
+  },
+  {
+    "text": "Ask your parent or guardian to allow AI features in their consent settings.",
+    "valid": true
+  },
+  {
+    "text": "Assets",
+    "valid": true
+  },
+  {
+    "text": "Assist could not answer. Try again.",
+    "valid": true
+  },
+  {
+    "text": "Assist needs a connection. Your other work is saved and syncs when you are back online.",
+    "valid": true
+  },
+  {
+    "text": "Assist stops when the credits run out.",
+    "valid": true
+  },
+  {
+    "text": "Assist उत्तर नहीं दे सका। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "Assist कहाँ मदद कर सकता है",
+    "valid": true
+  },
+  {
+    "text": "Assist के लिए कनेक्शन चाहिए। आपका बाकी काम सहेजा गया है और ऑनलाइन होने पर सिंक होगा।",
+    "valid": true
+  },
+  {
+    "text": "Assist உதவக்கூடிய இடங்கள்",
+    "valid": true
+  },
+  {
+    "text": "Assist க்கு இணைப்பு தேவை. உங்கள் மற்ற பணிகள் சேமிக்கப்பட்டு, மீண்டும் ஆன்லைனுக்கு வந்ததும் ஒத்திசைக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "Assist பதிலளிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "At most {max} hours, as requested.",
+    "valid": true
+  },
+  {
+    "text": "Audit & privacy",
+    "valid": true
+  },
+  {
+    "text": "Audit and privacy data could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Audit and privacy sections",
+    "valid": true
+  },
+  {
+    "text": "Audit events",
+    "valid": true
+  },
+  {
+    "text": "Audit log",
+    "valid": true
+  },
+  {
+    "text": "Audit log, consents and data requests.",
+    "valid": true
+  },
+  {
+    "text": "Back",
+    "valid": true
+  },
+  {
+    "text": "Balanced",
+    "valid": true
+  },
+  {
+    "text": "Batch",
+    "valid": true
+  },
+  {
+    "text": "Block",
+    "valid": true
+  },
+  {
+    "text": "Body and UI font",
+    "valid": true
+  },
+  {
+    "text": "Brand",
+    "valid": true
+  },
+  {
+    "text": "Brand assets",
+    "valid": true
+  },
+  {
+    "text": "Browser",
+    "valid": true
+  },
+  {
+    "text": "COPPA (US)",
+    "valid": true
+  },
+  {
+    "text": "Calendar",
+    "valid": true
+  },
+  {
+    "text": "Campus",
+    "valid": true
+  },
+  {
+    "text": "Campus code",
+    "valid": true
+  },
+  {
+    "text": "Campus name",
+    "valid": true
+  },
+  {
+    "text": "Campus saved.",
+    "valid": true
+  },
+  {
+    "text": "Can be given for",
+    "valid": true
+  },
+  {
+    "text": "Cancel",
+    "valid": true
+  },
+  {
+    "text": "Category",
+    "valid": true
+  },
+  {
+    "text": "Change",
+    "valid": true
+  },
+  {
+    "text": "Change any text in the app, in every language.",
+    "valid": true
+  },
+  {
+    "text": "Change history",
+    "valid": true
+  },
+  {
+    "text": "Changed fields",
+    "valid": true
+  },
+  {
+    "text": "Changes",
+    "valid": true
+  },
+  {
+    "text": "Changes could not be saved. Check the highlighted fields and try again.",
+    "valid": true
+  },
+  {
+    "text": "Changes waiting to sync",
+    "valid": true
+  },
+  {
+    "text": "Channel",
+    "valid": true
+  },
+  {
+    "text": "Charts",
+    "valid": true
+  },
+  {
+    "text": "Check this page",
+    "valid": true
+  },
+  {
+    "text": "Child",
+    "valid": true
+  },
+  {
+    "text": "Children",
+    "valid": true
+  },
+  {
+    "text": "Choose JSON file",
+    "valid": true
+  },
+  {
+    "text": "Choose colour",
+    "valid": true
+  },
+  {
+    "text": "Choose how you hear from your institution. Administrators also edit the messages and see what was sent.",
+    "valid": true
+  },
+  {
+    "text": "Choose whether Nexus Assist is on, where it may help, and which answer quality to use by default.",
+    "valid": true
+  },
+  {
+    "text": "Choose…",
+    "valid": true
+  },
+  {
+    "text": "City",
+    "valid": true
+  },
+  {
+    "text": "Class",
+    "valid": true
+  },
+  {
+    "text": "Clear the filters to check the chain.",
+    "valid": true
+  },
+  {
+    "text": "Client ID",
+    "valid": true
+  },
+  {
+    "text": "Close",
+    "valid": true
+  },
+  {
+    "text": "Close menu",
+    "valid": true
+  },
+  {
+    "text": "Close notification",
+    "valid": true
+  },
+  {
+    "text": "Cohort",
+    "valid": true
+  },
+  {
+    "text": "Colour mode",
+    "valid": true
+  },
+  {
+    "text": "Colours",
+    "valid": true
+  },
+  {
+    "text": "Comfortable",
+    "valid": true
+  },
+  {
+    "text": "Compact",
+    "valid": true
+  },
+  {
+    "text": "Completed",
+    "valid": true
+  },
+  {
+    "text": "Compliance",
+    "valid": true
+  },
+  {
+    "text": "Conflict resolved.",
+    "valid": true
+  },
+  {
+    "text": "Conflicts",
+    "valid": true
+  },
+  {
+    "text": "Consent records",
+    "valid": true
+  },
+  {
+    "text": "Consent request",
+    "valid": true
+  },
+  {
+    "text": "Consents",
+    "valid": true
+  },
+  {
+    "text": "Contact",
+    "valid": true
+  },
+  {
+    "text": "Contrast guard",
+    "valid": true
+  },
+  {
+    "text": "Core",
+    "valid": true
+  },
+  {
+    "text": "Core modules are always on. Optional modules in your plan can be switched off; switched-off modules disappear from the menu for everyone.",
+    "valid": true
+  },
+  {
+    "text": "Corner radius",
+    "valid": true
+  },
+  {
+    "text": "Correction",
+    "valid": true
+  },
+  {
+    "text": "Could not apply imported overrides.",
+    "valid": true
+  },
+  {
+    "text": "Could not load academic calendars.",
+    "valid": true
+  },
+  {
+    "text": "Could not load change history.",
+    "valid": true
+  },
+  {
+    "text": "Could not load institution setup.",
+    "valid": true
+  },
+  {
+    "text": "Could not load locale settings.",
+    "valid": true
+  },
+  {
+    "text": "Could not load text overrides.",
+    "valid": true
+  },
+  {
+    "text": "Could not load the institution type profile.",
+    "valid": true
+  },
+  {
+    "text": "Could not load theme settings.",
+    "valid": true
+  },
+  {
+    "text": "Could not preview import.",
+    "valid": true
+  },
+  {
+    "text": "Could not remove text override.",
+    "valid": true
+  },
+  {
+    "text": "Could not roll back this override.",
+    "valid": true
+  },
+  {
+    "text": "Could not save text override.",
+    "valid": true
+  },
+  {
+    "text": "Count",
+    "valid": true
+  },
+  {
+    "text": "Country",
+    "valid": true
+  },
+  {
+    "text": "Course",
+    "valid": true
+  },
+  {
+    "text": "Created",
+    "valid": true
+  },
+  {
+    "text": "Credits renew at the start of next month, or your administrator can add more.",
+    "valid": true
+  },
+  {
+    "text": "Critical",
+    "valid": true
+  },
+  {
+    "text": "Currency",
+    "valid": true
+  },
+  {
+    "text": "Current",
+    "valid": true
+  },
+  {
+    "text": "Current plan",
+    "valid": true
+  },
+  {
+    "text": "Current ratio {ratio}:1 · requires at least {minRatio}:1",
+    "valid": true
+  },
+  {
+    "text": "Current text",
+    "valid": true
+  },
+  {
+    "text": "Custom",
+    "valid": true
+  },
+  {
+    "text": "Customise your institution's light and dark colours, fonts, spacing, and brand assets with live contrast checks.",
+    "valid": true
+  },
+  {
+    "text": "DPDP Act (India)",
+    "valid": true
+  },
+  {
+    "text": "DPDP अधिनियम (भारत)",
+    "valid": true
+  },
+  {
+    "text": "DPDP சட்டம் (இந்தியா)",
+    "valid": true
+  },
+  {
+    "text": "Dark",
+    "valid": true
+  },
+  {
+    "text": "Data processing",
+    "valid": true
+  },
+  {
+    "text": "Data region",
+    "valid": true
+  },
+  {
+    "text": "Data requests",
+    "valid": true
+  },
+  {
+    "text": "Data vault & access",
+    "valid": true
+  },
+  {
+    "text": "Data vault information could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Data vault sections",
+    "valid": true
+  },
+  {
+    "text": "Date",
+    "valid": true
+  },
+  {
+    "text": "Deadline for data requests",
+    "valid": true
+  },
+  {
+    "text": "Default answer quality",
+    "valid": true
+  },
+  {
+    "text": "Default grading scheme",
+    "valid": true
+  },
+  {
+    "text": "Default language & region",
+    "valid": true
+  },
+  {
+    "text": "Default modules",
+    "valid": true
+  },
+  {
+    "text": "Default retention",
+    "valid": true
+  },
+  {
+    "text": "Delete",
+    "valid": true
+  },
+  {
+    "text": "Deletion",
+    "valid": true
+  },
+  {
+    "text": "Delivered",
+    "valid": true
+  },
+  {
+    "text": "Delivery log",
+    "valid": true
+  },
+  {
+    "text": "Demo data. Nothing on this screen is real.",
+    "valid": true
+  },
+  {
+    "text": "Denied",
+    "valid": true
+  },
+  {
+    "text": "Density",
+    "valid": true
+  },
+  {
+    "text": "Deny",
+    "valid": true
+  },
+  {
+    "text": "Deny request",
+    "valid": true
+  },
+  {
+    "text": "Department",
+    "valid": true
+  },
+  {
+    "text": "Destroyed",
+    "valid": true
+  },
+  {
+    "text": "Details",
+    "valid": true
+  },
+  {
+    "text": "Device",
+    "valid": true
+  },
+  {
+    "text": "Devices",
+    "valid": true
+  },
+  {
+    "text": "Digital signature",
+    "valid": true
+  },
+  {
+    "text": "Disabled",
+    "valid": true
+  },
+  {
+    "text": "Discard changes",
+    "valid": true
+  },
+  {
+    "text": "Display calendar",
+    "valid": true
+  },
+  {
+    "text": "Done by provider staff under access grant {grant}.",
+    "valid": true
+  },
+  {
+    "text": "Download this institution's overrides for {locale} as a JSON file.",
+    "valid": true
+  },
+  {
+    "text": "Dry-run diff preview",
+    "valid": true
+  },
+  {
+    "text": "Due",
+    "valid": true
+  },
+  {
+    "text": "EU AI Act",
+    "valid": true
+  },
+  {
+    "text": "EU AI अधिनियम",
+    "valid": true
+  },
+  {
+    "text": "EU AI சட்டம்",
+    "valid": true
+  },
+  {
+    "text": "Early years & preschool",
+    "valid": true
+  },
+  {
+    "text": "Edge server",
+    "valid": true
+  },
+  {
+    "text": "Edit",
+    "valid": true
+  },
+  {
+    "text": "Edit campus",
+    "valid": true
+  },
+  {
+    "text": "Edit custom role",
+    "valid": true
+  },
+  {
+    "text": "Edit role {name}",
+    "valid": true
+  },
+  {
+    "text": "Edit template {id}",
+    "valid": true
+  },
+  {
+    "text": "Edit text override",
+    "valid": true
+  },
+  {
+    "text": "Editing language",
+    "valid": true
+  },
+  {
+    "text": "Email",
+    "valid": true
+  },
+  {
+    "text": "Email changed on both sides",
+    "valid": true
+  },
+  {
+    "text": "Email domains",
+    "valid": true
+  },
+  {
+    "text": "Emails",
+    "valid": true
+  },
+  {
+    "text": "Emergency access",
+    "valid": true
+  },
+  {
+    "text": "Enabled",
+    "valid": true
+  },
+  {
+    "text": "Encryption keys",
+    "valid": true
+  },
+  {
+    "text": "End the session on {device}",
+    "valid": true
+  },
+  {
+    "text": "Ended",
+    "valid": true
+  },
+  {
+    "text": "Ends in {hours} h {minutes} min",
+    "valid": true
+  },
+  {
+    "text": "Ends on",
+    "valid": true
+  },
+  {
+    "text": "Ends {date}",
+    "valid": true
+  },
+  {
+    "text": "Enter a pixel value (for example, 8px).",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid email address.",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid hex colour (for example, #1F5FD1).",
+    "valid": true
+  },
+  {
+    "text": "Enter an https:// URL or a path starting with /.",
+    "valid": true
+  },
+  {
+    "text": "Enter custom wording for this language…",
+    "valid": true
+  },
+  {
+    "text": "Enter lower-case domains such as riverside.example.edu",
+    "valid": true
+  },
+  {
+    "text": "Enter non-empty wording before saving.",
+    "valid": true
+  },
+  {
+    "text": "Enterprise",
+    "valid": true
+  },
+  {
+    "text": "Europe (EU)",
+    "valid": true
+  },
+  {
+    "text": "Event",
+    "valid": true
+  },
+  {
+    "text": "Everything on this device is sent.",
+    "valid": true
+  },
+  {
+    "text": "Everything you can do at {institution}, in one place. Pick a module to get started.",
+    "valid": true
+  },
+  {
+    "text": "Expired",
+    "valid": true
+  },
+  {
+    "text": "Export",
+    "valid": true
+  },
+  {
+    "text": "Export JSON",
+    "valid": true
+  },
+  {
+    "text": "Export overrides",
+    "valid": true
+  },
+  {
+    "text": "Extra use is billed after the credits run out.",
+    "valid": true
+  },
+  {
+    "text": "FERPA (US)",
+    "valid": true
+  },
+  {
+    "text": "Failed",
+    "valid": true
+  },
+  {
+    "text": "Fast",
+    "valid": true
+  },
+  {
+    "text": "Favicon URL",
+    "valid": true
+  },
+  {
+    "text": "Finance fields",
+    "valid": true
+  },
+  {
+    "text": "First page",
+    "valid": true
+  },
+  {
+    "text": "Fix each failing colour pair below or use a suggestion before saving.",
+    "valid": true
+  },
+  {
+    "text": "Fix the ICU syntax error above to see a preview.",
+    "valid": true
+  },
+  {
+    "text": "Fix the message syntax, for example a missing closing brace.",
+    "valid": true
+  },
+  {
+    "text": "Fixed after creation to honour data residency rules.",
+    "valid": true
+  },
+  {
+    "text": "Fonts",
+    "valid": true
+  },
+  {
+    "text": "For",
+    "valid": true
+  },
+  {
+    "text": "Form",
+    "valid": true
+  },
+  {
+    "text": "Friday",
+    "valid": true
+  },
+  {
+    "text": "From",
+    "valid": true
+  },
+  {
+    "text": "Full name",
+    "valid": true
+  },
+  {
+    "text": "GDPR (EU)",
+    "valid": true
+  },
+  {
+    "text": "General",
+    "valid": true
+  },
+  {
+    "text": "Give the role a name, at least one permission and at least one scope.",
+    "valid": true
+  },
+  {
+    "text": "Given by",
+    "valid": true
+  },
+  {
+    "text": "Go to home",
+    "valid": true
+  },
+  {
+    "text": "Granted",
+    "valid": true
+  },
+  {
+    "text": "Grants",
+    "valid": true
+  },
+  {
+    "text": "Gregorian",
+    "valid": true
+  },
+  {
+    "text": "Group",
+    "valid": true
+  },
+  {
+    "text": "Guardian",
+    "valid": true
+  },
+  {
+    "text": "Guardian consent for AI",
+    "valid": true
+  },
+  {
+    "text": "Guardian consent for photos and media",
+    "valid": true
+  },
+  {
+    "text": "Handle data requests",
+    "valid": true
+  },
+  {
+    "text": "Happened",
+    "valid": true
+  },
+  {
+    "text": "Health fields",
+    "valid": true
+  },
+  {
+    "text": "Health records",
+    "valid": true
+  },
+  {
+    "text": "Hebrew",
+    "valid": true
+  },
+  {
+    "text": "Held by",
+    "valid": true
+  },
+  {
+    "text": "Helpful",
+    "valid": true
+  },
+  {
+    "text": "High",
+    "valid": true
+  },
+  {
+    "text": "Higher education",
+    "valid": true
+  },
+  {
+    "text": "Hijri (Umm al-Qura)",
+    "valid": true
+  },
+  {
+    "text": "Hold messages during quiet hours",
+    "valid": true
+  },
+  {
+    "text": "Holiday name",
+    "valid": true
+  },
+  {
+    "text": "Holidays",
+    "valid": true
+  },
+  {
+    "text": "Home",
+    "valid": true
+  },
+  {
+    "text": "Hours",
+    "valid": true
+  },
+  {
+    "text": "How you hear from us",
+    "valid": true
+  },
+  {
+    "text": "I understand Nexus support staff will see this data until {end}.",
+    "valid": true
+  },
+  {
+    "text": "ID document fields",
+    "valid": true
+  },
+  {
+    "text": "Images and text",
+    "valid": true
+  },
+  {
+    "text": "Import & export",
+    "valid": true
+  },
+  {
+    "text": "Import overrides",
+    "valid": true
+  },
+  {
+    "text": "In progress",
+    "valid": true
+  },
+  {
+    "text": "In the app",
+    "valid": true
+  },
+  {
+    "text": "In-context preview",
+    "valid": true
+  },
+  {
+    "text": "Inactive",
+    "valid": true
+  },
+  {
+    "text": "Include in summary",
+    "valid": true
+  },
+  {
+    "text": "Included by",
+    "valid": true
+  },
+  {
+    "text": "India (IN)",
+    "valid": true
+  },
+  {
+    "text": "Indian National",
+    "valid": true
+  },
+  {
+    "text": "Inherit from institution",
+    "valid": true
+  },
+  {
+    "text": "Install app",
+    "valid": true
+  },
+  {
+    "text": "Institution",
+    "valid": true
+  },
+  {
+    "text": "Institution favicon preview",
+    "valid": true
+  },
+  {
+    "text": "Institution identity",
+    "valid": true
+  },
+  {
+    "text": "Institution logo preview",
+    "valid": true
+  },
+  {
+    "text": "Institution name",
+    "valid": true
+  },
+  {
+    "text": "Institution override",
+    "valid": true
+  },
+  {
+    "text": "Institution setup",
+    "valid": true
+  },
+  {
+    "text": "Institution setup sections",
+    "valid": true
+  },
+  {
+    "text": "Institution type",
+    "valid": true
+  },
+  {
+    "text": "Instructor",
+    "valid": true
+  },
+  {
+    "text": "Invalid ICU message syntax",
+    "valid": true
+  },
+  {
+    "text": "Invalid ICU message: {reason}",
+    "valid": true
+  },
+  {
+    "text": "Invalid JSON. Provide a JSON object mapping message keys to text.",
+    "valid": true
+  },
+  {
+    "text": "Invitation sent.",
+    "valid": true
+  },
+  {
+    "text": "Invite and manage users",
+    "valid": true
+  },
+  {
+    "text": "Invite people, give them roles and see who is signed in.",
+    "valid": true
+  },
+  {
+    "text": "Invite people, give them roles in a scope, review sign-in sessions and single sign-on.",
+    "valid": true
+  },
+  {
+    "text": "Invite user",
+    "valid": true
+  },
+  {
+    "text": "Invited",
+    "valid": true
+  },
+  {
+    "text": "Issuer URL",
+    "valid": true
+  },
+  {
+    "text": "Item",
+    "valid": true
+  },
+  {
+    "text": "JSON निर्यात करें",
+    "valid": true
+  },
+  {
+    "text": "JSON फ़ाइल अपलोड करें या नीचे JSON चिपकाएँ, अंतर का पूर्वावलोकन करें, फिर {locale} पर मान्य बदलाव लागू करें।",
+    "valid": true
+  },
+  {
+    "text": "JSON फ़ाइल चुनें",
+    "valid": true
+  },
+  {
+    "text": "JSON ஏற்றுமதி",
+    "valid": true
+  },
+  {
+    "text": "JSON கோப்பைத் தேர்ந்தெடு",
+    "valid": true
+  },
+  {
+    "text": "JSON கோப்பைப் பதிவேற்றவும் அல்லது கீழே JSON ஐ ஒட்டவும், வேறுபாட்டை முன்னோட்டமிடவும், பின்னர் {locale} க்குச் சரியான மாற்றங்களைப் பயன்படுத்தவும்.",
+    "valid": true
+  },
+  {
+    "text": "Keep device",
+    "valid": true
+  },
+  {
+    "text": "Keep mine",
+    "valid": true
+  },
+  {
+    "text": "Keep server",
+    "valid": true
+  },
+  {
+    "text": "Keep the server's",
+    "valid": true
+  },
+  {
+    "text": "Keys",
+    "valid": true
+  },
+  {
+    "text": "Kind",
+    "valid": true
+  },
+  {
+    "text": "K–12 school",
+    "valid": true
+  },
+  {
+    "text": "K–12 स्कूल",
+    "valid": true
+  },
+  {
+    "text": "K–12 பள்ளி",
+    "valid": true
+  },
+  {
+    "text": "LGPD (Brazil)",
+    "valid": true
+  },
+  {
+    "text": "LGPD (ब्राज़ील)",
+    "valid": true
+  },
+  {
+    "text": "LGPD (பிரேசில்)",
+    "valid": true
+  },
+  {
+    "text": "Language",
+    "valid": true
+  },
+  {
+    "text": "Last page",
+    "valid": true
+  },
+  {
+    "text": "Last seen",
+    "valid": true
+  },
+  {
+    "text": "Last sign-in",
+    "valid": true
+  },
+  {
+    "text": "Last sync",
+    "valid": true
+  },
+  {
+    "text": "Last synced {time}",
+    "valid": true
+  },
+  {
+    "text": "Later",
+    "valid": true
+  },
+  {
+    "text": "Layout density",
+    "valid": true
+  },
+  {
+    "text": "Learner",
+    "valid": true
+  },
+  {
+    "text": "Learner limit",
+    "valid": true
+  },
+  {
+    "text": "Learners",
+    "valid": true
+  },
+  {
+    "text": "Lecturer",
+    "valid": true
+  },
+  {
+    "text": "Legal order",
+    "valid": true
+  },
+  {
+    "text": "Light",
+    "valid": true
+  },
+  {
+    "text": "Live format preview",
+    "valid": true
+  },
+  {
+    "text": "Live preview",
+    "valid": true
+  },
+  {
+    "text": "Loading…",
+    "valid": true
+  },
+  {
+    "text": "Locale & formats",
+    "valid": true
+  },
+  {
+    "text": "Locale & regional settings",
+    "valid": true
+  },
+  {
+    "text": "Locale settings saved.",
+    "valid": true
+  },
+  {
+    "text": "Locked",
+    "valid": true
+  },
+  {
+    "text": "Locked by a group override",
+    "valid": true
+  },
+  {
+    "text": "Locked by group",
+    "valid": true
+  },
+  {
+    "text": "Locked by the group override. Institution administrators cannot modify or remove this wording.",
+    "valid": true
+  },
+  {
+    "text": "Locked by the group theme. Only a group administrator can change this token.",
+    "valid": true
+  },
+  {
+    "text": "Logo URL",
+    "valid": true
+  },
+  {
+    "text": "Low",
+    "valid": true
+  },
+  {
+    "text": "MFA",
+    "valid": true
+  },
+  {
+    "text": "Main navigation",
+    "valid": true
+  },
+  {
+    "text": "Manage AI settings",
+    "valid": true
+  },
+  {
+    "text": "Manage consents",
+    "valid": true
+  },
+  {
+    "text": "Manage notification templates",
+    "valid": true
+  },
+  {
+    "text": "Manage roles and assignments",
+    "valid": true
+  },
+  {
+    "text": "Manage single sign-on",
+    "valid": true
+  },
+  {
+    "text": "Manage your institution profile, campuses, regional formats, and academic calendar.",
+    "valid": true
+  },
+  {
+    "text": "Mark completed",
+    "valid": true
+  },
+  {
+    "text": "Marketing",
+    "valid": true
+  },
+  {
+    "text": "Merged",
+    "valid": true
+  },
+  {
+    "text": "Message",
+    "valid": true
+  },
+  {
+    "text": "Message cannot be empty",
+    "valid": true
+  },
+  {
+    "text": "Message key",
+    "valid": true
+  },
+  {
+    "text": "Message keys and resolved wording for the selected language",
+    "valid": true
+  },
+  {
+    "text": "Message templates, delivery log and your own preferences.",
+    "valid": true
+  },
+  {
+    "text": "Messages",
+    "valid": true
+  },
+  {
+    "text": "Method",
+    "valid": true
+  },
+  {
+    "text": "Middle East (ME)",
+    "valid": true
+  },
+  {
+    "text": "Minor until age",
+    "valid": true
+  },
+  {
+    "text": "Module",
+    "valid": true
+  },
+  {
+    "text": "Modules",
+    "valid": true
+  },
+  {
+    "text": "Modules for your role appear here once they are switched on for your institution.",
+    "valid": true
+  },
+  {
+    "text": "Modules in your plan, AI credits and usage.",
+    "valid": true
+  },
+  {
+    "text": "Monday",
+    "valid": true
+  },
+  {
+    "text": "Morning session",
+    "valid": true
+  },
+  {
+    "text": "Multi-campus group",
+    "valid": true
+  },
+  {
+    "text": "Must be an https:// URL or a path starting with /.",
+    "valid": true
+  },
+  {
+    "text": "My preferences",
+    "valid": true
+  },
+  {
+    "text": "Name",
+    "valid": true
+  },
+  {
+    "text": "Name changed on both sides",
+    "valid": true
+  },
+  {
+    "text": "Navigation menu",
+    "valid": true
+  },
+  {
+    "text": "Needs a connection",
+    "valid": true
+  },
+  {
+    "text": "Needs a decision",
+    "valid": true
+  },
+  {
+    "text": "Needs the safeguarding switch below.",
+    "valid": true
+  },
+  {
+    "text": "Never",
+    "valid": true
+  },
+  {
+    "text": "New announcement",
+    "valid": true
+  },
+  {
+    "text": "New custom role",
+    "valid": true
+  },
+  {
+    "text": "New language",
+    "valid": true
+  },
+  {
+    "text": "New role",
+    "valid": true
+  },
+  {
+    "text": "Next",
+    "valid": true
+  },
+  {
+    "text": "Next page",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist is not in your plan",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist is on",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist is switched off",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist आपकी योजना में नहीं है",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist का उपयोग करें",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist खोलें",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist चालू है",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist बंद है",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist அணைக்கப்பட்டுள்ளது",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist இயக்கத்தில் இருக்க வேண்டுமா, அது எங்கே உதவலாம், இயல்பாக எந்தத் தரமான பதிலைப் பயன்படுத்த வேண்டும் எனத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist இயக்கத்தில் உள்ளது",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist உங்கள் திட்டத்தில் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist ஐத் திற",
+    "valid": true
+  },
+  {
+    "text": "Nexus Assist ஐப் பயன்படுத்து",
+    "valid": true
+  },
+  {
+    "text": "Nexus used emergency access, approved by two people, and told you straight away.",
+    "valid": true
+  },
+  {
+    "text": "Nexus vault",
+    "valid": true
+  },
+  {
+    "text": "Nexus ने दो लोगों की स्वीकृति से आपातकालीन पहुँच का उपयोग किया और आपको तुरंत बताया।",
+    "valid": true
+  },
+  {
+    "text": "Nexus वॉल्ट",
+    "valid": true
+  },
+  {
+    "text": "Nexus ஆதரவுப் பணியாளர்கள் உங்கள் தரவை எப்போது, எவ்வளவு நேரம் பார்க்கலாம், அவர்கள் என்ன செய்தார்கள் என்பதை நீங்களே தீர்மானிக்கிறீர்கள். சாவித் தகவல் ஒருபோதும் காட்டப்படாது.",
+    "valid": true
+  },
+  {
+    "text": "Nexus பெட்டகம்",
+    "valid": true
+  },
+  {
+    "text": "NexusCampus का नया संस्करण तैयार है।",
+    "valid": true
+  },
+  {
+    "text": "NexusCampus இன் புதிய பதிப்பு தயாராக உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "No academic calendar found for this institution.",
+    "valid": true
+  },
+  {
+    "text": "No access",
+    "valid": true
+  },
+  {
+    "text": "No access requests.",
+    "valid": true
+  },
+  {
+    "text": "No active sessions.",
+    "valid": true
+  },
+  {
+    "text": "No audit events match.",
+    "valid": true
+  },
+  {
+    "text": "No campuses added yet.",
+    "valid": true
+  },
+  {
+    "text": "No compliance pack applies yet.",
+    "valid": true
+  },
+  {
+    "text": "No conflicts here.",
+    "valid": true
+  },
+  {
+    "text": "No consent records match.",
+    "valid": true
+  },
+  {
+    "text": "No data requests.",
+    "valid": true
+  },
+  {
+    "text": "No demo institutions are available.",
+    "valid": true
+  },
+  {
+    "text": "No devices registered.",
+    "valid": true
+  },
+  {
+    "text": "No emergency access has happened.",
+    "valid": true
+  },
+  {
+    "text": "No fields changed.",
+    "valid": true
+  },
+  {
+    "text": "No holidays added for this year.",
+    "valid": true
+  },
+  {
+    "text": "No image configured",
+    "valid": true
+  },
+  {
+    "text": "No institution is configured for this account.",
+    "valid": true
+  },
+  {
+    "text": "No institution overrides are set for {locale} yet. The exported file will have an empty entries object.",
+    "valid": true
+  },
+  {
+    "text": "No keys.",
+    "valid": true
+  },
+  {
+    "text": "No matching messages",
+    "valid": true
+  },
+  {
+    "text": "No messages match.",
+    "valid": true
+  },
+  {
+    "text": "No modules yet",
+    "valid": true
+  },
+  {
+    "text": "No modules.",
+    "valid": true
+  },
+  {
+    "text": "No override changes recorded for this key yet.",
+    "valid": true
+  },
+  {
+    "text": "No periods configured (rolling calendar).",
+    "valid": true
+  },
+  {
+    "text": "No provider access has been granted.",
+    "valid": true
+  },
+  {
+    "text": "No roles yet.",
+    "valid": true
+  },
+  {
+    "text": "No single sign-on provider is set up yet.",
+    "valid": true
+  },
+  {
+    "text": "No templates yet.",
+    "valid": true
+  },
+  {
+    "text": "No theme is configured for this institution.",
+    "valid": true
+  },
+  {
+    "text": "No usage recorded this period.",
+    "valid": true
+  },
+  {
+    "text": "No users match.",
+    "valid": true
+  },
+  {
+    "text": "No valid additions or changes to apply.",
+    "valid": true
+  },
+  {
+    "text": "Normal",
+    "valid": true
+  },
+  {
+    "text": "Not helpful",
+    "valid": true
+  },
+  {
+    "text": "Not in your plan",
+    "valid": true
+  },
+  {
+    "text": "Not required",
+    "valid": true
+  },
+  {
+    "text": "Not sent",
+    "valid": true
+  },
+  {
+    "text": "Not set",
+    "valid": true
+  },
+  {
+    "text": "Not set up by your institution.",
+    "valid": true
+  },
+  {
+    "text": "Notes",
+    "valid": true
+  },
+  {
+    "text": "Nothing here yet",
+    "valid": true
+  },
+  {
+    "text": "Nothing in your institution's records answers this, so no credits were used.",
+    "valid": true
+  },
+  {
+    "text": "Nothing was done under this grant.",
+    "valid": true
+  },
+  {
+    "text": "Notification templates",
+    "valid": true
+  },
+  {
+    "text": "Notifications",
+    "valid": true
+  },
+  {
+    "text": "Notifications could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Notifications sections",
+    "valid": true
+  },
+  {
+    "text": "Numbers and code font",
+    "valid": true
+  },
+  {
+    "text": "Offline",
+    "valid": true
+  },
+  {
+    "text": "On",
+    "valid": true
+  },
+  {
+    "text": "Online academy",
+    "valid": true
+  },
+  {
+    "text": "Only field names are recorded, never the values.",
+    "valid": true
+  },
+  {
+    "text": "Only switch this on after a privacy impact assessment.",
+    "valid": true
+  },
+  {
+    "text": "Only the kind of change is shown here, never its content.",
+    "valid": true
+  },
+  {
+    "text": "Only you (HYOK)",
+    "valid": true
+  },
+  {
+    "text": "Open",
+    "valid": true
+  },
+  {
+    "text": "Open Nexus Assist",
+    "valid": true
+  },
+  {
+    "text": "Open menu",
+    "valid": true
+  },
+  {
+    "text": "OpenID Connect",
+    "valid": true
+  },
+  {
+    "text": "Optional",
+    "valid": true
+  },
+  {
+    "text": "Organisation hierarchy",
+    "valid": true
+  },
+  {
+    "text": "Overdue",
+    "valid": true
+  },
+  {
+    "text": "Overridden",
+    "valid": true
+  },
+  {
+    "text": "Overridden only",
+    "valid": true
+  },
+  {
+    "text": "Override removed",
+    "valid": true
+  },
+  {
+    "text": "Overrides JSON",
+    "valid": true
+  },
+  {
+    "text": "Overrides exported for {locale}.",
+    "valid": true
+  },
+  {
+    "text": "Own records only",
+    "valid": true
+  },
+  {
+    "text": "PDPA (Singapore)",
+    "valid": true
+  },
+  {
+    "text": "PDPA (सिंगापुर)",
+    "valid": true
+  },
+  {
+    "text": "PDPA (சிங்கப்பூர்)",
+    "valid": true
+  },
+  {
+    "text": "POPIA (South Africa)",
+    "valid": true
+  },
+  {
+    "text": "POPIA (दक्षिण अफ़्रीका)",
+    "valid": true
+  },
+  {
+    "text": "POPIA (தென்னாப்பிரிக்கா)",
+    "valid": true
+  },
+  {
+    "text": "Page check: the chain is broken at row {row}.",
+    "valid": true
+  },
+  {
+    "text": "Page check: the {count, plural, one {# event is} other {# events are}} linked and intact.",
+    "valid": true
+  },
+  {
+    "text": "Page not found",
+    "valid": true
+  },
+  {
+    "text": "Page {page, number} of {pageCount, number}",
+    "valid": true
+  },
+  {
+    "text": "Pagination",
+    "valid": true
+  },
+  {
+    "text": "Paper",
+    "valid": true
+  },
+  {
+    "text": "Parent",
+    "valid": true
+  },
+  {
+    "text": "Parent or guardian",
+    "valid": true
+  },
+  {
+    "text": "Passkey",
+    "valid": true
+  },
+  {
+    "text": "Password",
+    "valid": true
+  },
+  {
+    "text": "Paste JSON mapping message keys to text…",
+    "valid": true
+  },
+  {
+    "text": "Pending",
+    "valid": true
+  },
+  {
+    "text": "Period name",
+    "valid": true
+  },
+  {
+    "text": "Permissions",
+    "valid": true
+  },
+  {
+    "text": "Person",
+    "valid": true
+  },
+  {
+    "text": "Personal data is always redacted before AI sees it, and children's AI use always needs a guardian's consent.",
+    "valid": true
+  },
+  {
+    "text": "Phone notification",
+    "valid": true
+  },
+  {
+    "text": "Phone number changed on both sides",
+    "valid": true
+  },
+  {
+    "text": "Photos and media",
+    "valid": true
+  },
+  {
+    "text": "Pick an institution and a role. This prototype uses fictional demo data and needs no password.",
+    "valid": true
+  },
+  {
+    "text": "Pick colour for {token}",
+    "valid": true
+  },
+  {
+    "text": "Placeholders are filled with sample values.",
+    "valid": true
+  },
+  {
+    "text": "Plan",
+    "valid": true
+  },
+  {
+    "text": "Plan & usage",
+    "valid": true
+  },
+  {
+    "text": "Plan and usage could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Plan sections",
+    "valid": true
+  },
+  {
+    "text": "Platform",
+    "valid": true
+  },
+  {
+    "text": "Platform default",
+    "valid": true
+  },
+  {
+    "text": "Postal code",
+    "valid": true
+  },
+  {
+    "text": "Preferences saved.",
+    "valid": true
+  },
+  {
+    "text": "Preview body text and a sample link styled with your draft theme.",
+    "valid": true
+  },
+  {
+    "text": "Preview changes",
+    "valid": true
+  },
+  {
+    "text": "Preview with sample values",
+    "valid": true
+  },
+  {
+    "text": "Previous page",
+    "valid": true
+  },
+  {
+    "text": "Primary action",
+    "valid": true
+  },
+  {
+    "text": "Priority",
+    "valid": true
+  },
+  {
+    "text": "Profile",
+    "valid": true
+  },
+  {
+    "text": "Profile, campuses, language and formats, and the school calendar.",
+    "valid": true
+  },
+  {
+    "text": "Protects",
+    "valid": true
+  },
+  {
+    "text": "Protocol",
+    "valid": true
+  },
+  {
+    "text": "Provider",
+    "valid": true
+  },
+  {
+    "text": "Provider staff",
+    "valid": true
+  },
+  {
+    "text": "Provision users with SCIM",
+    "valid": true
+  },
+  {
+    "text": "Purpose",
+    "valid": true
+  },
+  {
+    "text": "Queued",
+    "valid": true
+  },
+  {
+    "text": "Quiet hours",
+    "valid": true
+  },
+  {
+    "text": "Raised",
+    "valid": true
+  },
+  {
+    "text": "Reactivate",
+    "valid": true
+  },
+  {
+    "text": "Read and edit",
+    "valid": true
+  },
+  {
+    "text": "Read only",
+    "valid": true
+  },
+  {
+    "text": "Read the report",
+    "valid": true
+  },
+  {
+    "text": "Ready to work offline",
+    "valid": true
+  },
+  {
+    "text": "Reason",
+    "valid": true
+  },
+  {
+    "text": "Reason for denying",
+    "valid": true
+  },
+  {
+    "text": "Reason for rejection",
+    "valid": true
+  },
+  {
+    "text": "Received",
+    "valid": true
+  },
+  {
+    "text": "Recipient",
+    "valid": true
+  },
+  {
+    "text": "Recorded",
+    "valid": true
+  },
+  {
+    "text": "Reject",
+    "valid": true
+  },
+  {
+    "text": "Reject request",
+    "valid": true
+  },
+  {
+    "text": "Rejected",
+    "valid": true
+  },
+  {
+    "text": "Rejected rows",
+    "valid": true
+  },
+  {
+    "text": "Reload",
+    "valid": true
+  },
+  {
+    "text": "Remove holiday {name}",
+    "valid": true
+  },
+  {
+    "text": "Remove override",
+    "valid": true
+  },
+  {
+    "text": "Remove period {name}",
+    "valid": true
+  },
+  {
+    "text": "Remove {role}",
+    "valid": true
+  },
+  {
+    "text": "Request",
+    "valid": true
+  },
+  {
+    "text": "Request denied.",
+    "valid": true
+  },
+  {
+    "text": "Request updated.",
+    "valid": true
+  },
+  {
+    "text": "Requested",
+    "valid": true
+  },
+  {
+    "text": "Required",
+    "valid": true
+  },
+  {
+    "text": "Reset {token} to platform default",
+    "valid": true
+  },
+  {
+    "text": "Resolution",
+    "valid": true
+  },
+  {
+    "text": "Resolution layers",
+    "valid": true
+  },
+  {
+    "text": "Resolved",
+    "valid": true
+  },
+  {
+    "text": "Restricted",
+    "valid": true
+  },
+  {
+    "text": "Review the tamper-evident audit log, consent records, data requests and the privacy rules that apply.",
+    "valid": true
+  },
+  {
+    "text": "Revoke",
+    "valid": true
+  },
+  {
+    "text": "Revoke & wipe",
+    "valid": true
+  },
+  {
+    "text": "Revoke and wipe {device}",
+    "valid": true
+  },
+  {
+    "text": "Revoke and wipe {device}?",
+    "valid": true
+  },
+  {
+    "text": "Revoke now",
+    "valid": true
+  },
+  {
+    "text": "Revoked",
+    "valid": true
+  },
+  {
+    "text": "Role",
+    "valid": true
+  },
+  {
+    "text": "Role added.",
+    "valid": true
+  },
+  {
+    "text": "Role assignments",
+    "valid": true
+  },
+  {
+    "text": "Role name",
+    "valid": true
+  },
+  {
+    "text": "Role removed.",
+    "valid": true
+  },
+  {
+    "text": "Role saved.",
+    "valid": true
+  },
+  {
+    "text": "Roles",
+    "valid": true
+  },
+  {
+    "text": "Roll back",
+    "valid": true
+  },
+  {
+    "text": "Rolled back to version {version, number}.",
+    "valid": true
+  },
+  {
+    "text": "Rolling",
+    "valid": true
+  },
+  {
+    "text": "Rotating",
+    "valid": true
+  },
+  {
+    "text": "Rows per page",
+    "valid": true
+  },
+  {
+    "text": "SAML 2.0",
+    "valid": true
+  },
+  {
+    "text": "SCIM से उपयोगकर्ता बनाएँ",
+    "valid": true
+  },
+  {
+    "text": "SCIM மூலம் பயனர்களை உருவாக்கு",
+    "valid": true
+  },
+  {
+    "text": "Safeguarding",
+    "valid": true
+  },
+  {
+    "text": "Sample amount",
+    "valid": true
+  },
+  {
+    "text": "Sample field",
+    "valid": true
+  },
+  {
+    "text": "Sample number",
+    "valid": true
+  },
+  {
+    "text": "Sample overview",
+    "valid": true
+  },
+  {
+    "text": "Saturday",
+    "valid": true
+  },
+  {
+    "text": "Save",
+    "valid": true
+  },
+  {
+    "text": "Saved on this device. It will sync when you are back online.",
+    "valid": true
+  },
+  {
+    "text": "Search",
+    "valid": true
+  },
+  {
+    "text": "Search by key (e.g. term.learner) or wording…",
+    "valid": true
+  },
+  {
+    "text": "Search interface texts, customise wording per language, review history, and import or export overrides.",
+    "valid": true
+  },
+  {
+    "text": "Search keys or text",
+    "valid": true
+  },
+  {
+    "text": "Secondary",
+    "valid": true
+  },
+  {
+    "text": "Security incident",
+    "valid": true
+  },
+  {
+    "text": "See devices and sync",
+    "valid": true
+  },
+  {
+    "text": "See plan and usage",
+    "valid": true
+  },
+  {
+    "text": "See restricted personal data",
+    "valid": true
+  },
+  {
+    "text": "See the audit log and compliance",
+    "valid": true
+  },
+  {
+    "text": "See the data vault and provider access",
+    "valid": true
+  },
+  {
+    "text": "See users and people",
+    "valid": true
+  },
+  {
+    "text": "See what this device still has to send, sync it, and manage the institution's devices and conflicts.",
+    "valid": true
+  },
+  {
+    "text": "See your plan, switch optional modules on or off, and follow this period's usage.",
+    "valid": true
+  },
+  {
+    "text": "Select an option",
+    "valid": true
+  },
+  {
+    "text": "Semester",
+    "valid": true
+  },
+  {
+    "text": "Semesters",
+    "valid": true
+  },
+  {
+    "text": "Send invitation",
+    "valid": true
+  },
+  {
+    "text": "Send notifications",
+    "valid": true
+  },
+  {
+    "text": "Sending",
+    "valid": true
+  },
+  {
+    "text": "Sensitive",
+    "valid": true
+  },
+  {
+    "text": "Sent",
+    "valid": true
+  },
+  {
+    "text": "Separate domains with commas, for example riverside.example.edu",
+    "valid": true
+  },
+  {
+    "text": "Session",
+    "valid": true
+  },
+  {
+    "text": "Session ended.",
+    "valid": true
+  },
+  {
+    "text": "Sessions",
+    "valid": true
+  },
+  {
+    "text": "Set own notification preferences",
+    "valid": true
+  },
+  {
+    "text": "Show",
+    "valid": true
+  },
+  {
+    "text": "Showing {start, number}–{end, number} of {total, number}",
+    "valid": true
+  },
+  {
+    "text": "Sign in to a demo institution",
+    "valid": true
+  },
+  {
+    "text": "Sign in to {institution} as {role}",
+    "valid": true
+  },
+  {
+    "text": "Sign out",
+    "valid": true
+  },
+  {
+    "text": "Sign-in method",
+    "valid": true
+  },
+  {
+    "text": "Single sign-on",
+    "valid": true
+  },
+  {
+    "text": "Single sign-on provider",
+    "valid": true
+  },
+  {
+    "text": "Single sign-on settings saved.",
+    "valid": true
+  },
+  {
+    "text": "Skills & hobby academy",
+    "valid": true
+  },
+  {
+    "text": "Skip to content",
+    "valid": true
+  },
+  {
+    "text": "Something went wrong",
+    "valid": true
+  },
+  {
+    "text": "Source",
+    "valid": true
+  },
+  {
+    "text": "Sources",
+    "valid": true
+  },
+  {
+    "text": "Spacious",
+    "valid": true
+  },
+  {
+    "text": "Square icon shown in browser tabs (https:// URL or path starting with /).",
+    "valid": true
+  },
+  {
+    "text": "Staff",
+    "valid": true
+  },
+  {
+    "text": "Standard",
+    "valid": true
+  },
+  {
+    "text": "Start and end must be different.",
+    "valid": true
+  },
+  {
+    "text": "Start work",
+    "valid": true
+  },
+  {
+    "text": "Starter",
+    "valid": true
+  },
+  {
+    "text": "Starts on",
+    "valid": true
+  },
+  {
+    "text": "State, province or emirate",
+    "valid": true
+  },
+  {
+    "text": "Status",
+    "valid": true
+  },
+  {
+    "text": "Storage",
+    "valid": true
+  },
+  {
+    "text": "Structure",
+    "valid": true
+  },
+  {
+    "text": "Student",
+    "valid": true
+  },
+  {
+    "text": "Students",
+    "valid": true
+  },
+  {
+    "text": "Subject",
+    "valid": true
+  },
+  {
+    "text": "Suggested brand pair ({mode})",
+    "valid": true
+  },
+  {
+    "text": "Sunday",
+    "valid": true
+  },
+  {
+    "text": "Supported languages",
+    "valid": true
+  },
+  {
+    "text": "Supports ICU message syntax such as placeholders and plurals.",
+    "valid": true
+  },
+  {
+    "text": "Surfaces & borders",
+    "valid": true
+  },
+  {
+    "text": "Suspend",
+    "valid": true
+  },
+  {
+    "text": "Suspended",
+    "valid": true
+  },
+  {
+    "text": "Switch institution",
+    "valid": true
+  },
+  {
+    "text": "Switch modules on or off",
+    "valid": true
+  },
+  {
+    "text": "Switch to dark theme",
+    "valid": true
+  },
+  {
+    "text": "Switch to light theme",
+    "valid": true
+  },
+  {
+    "text": "Switch user",
+    "valid": true
+  },
+  {
+    "text": "Sync centre",
+    "valid": true
+  },
+  {
+    "text": "Sync centre sections",
+    "valid": true
+  },
+  {
+    "text": "Sync conflict",
+    "valid": true
+  },
+  {
+    "text": "Sync conflicts",
+    "valid": true
+  },
+  {
+    "text": "Sync data could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Sync error",
+    "valid": true
+  },
+  {
+    "text": "Sync now",
+    "valid": true
+  },
+  {
+    "text": "Synced",
+    "valid": true
+  },
+  {
+    "text": "Syncing…",
+    "valid": true
+  },
+  {
+    "text": "System",
+    "valid": true
+  },
+  {
+    "text": "System roles are read-only.",
+    "valid": true
+  },
+  {
+    "text": "System roles ship with the product and are read-only. Create custom roles for your own needs.",
+    "valid": true
+  },
+  {
+    "text": "Target",
+    "valid": true
+  },
+  {
+    "text": "Teacher",
+    "valid": true
+  },
+  {
+    "text": "Template saved.",
+    "valid": true
+  },
+  {
+    "text": "Template {id} on",
+    "valid": true
+  },
+  {
+    "text": "Templates",
+    "valid": true
+  },
+  {
+    "text": "Term",
+    "valid": true
+  },
+  {
+    "text": "Terminology",
+    "valid": true
+  },
+  {
+    "text": "Terminology pack",
+    "valid": true
+  },
+  {
+    "text": "Terms",
+    "valid": true
+  },
+  {
+    "text": "Test preparation & coaching",
+    "valid": true
+  },
+  {
+    "text": "Text",
+    "valid": true
+  },
+  {
+    "text": "Text & language studio",
+    "valid": true
+  },
+  {
+    "text": "Text and language studio sections",
+    "valid": true
+  },
+  {
+    "text": "Text message",
+    "valid": true
+  },
+  {
+    "text": "Text messages",
+    "valid": true
+  },
+  {
+    "text": "Text override removed.",
+    "valid": true
+  },
+  {
+    "text": "Text override saved.",
+    "valid": true
+  },
+  {
+    "text": "That did not work. Try again.",
+    "valid": true
+  },
+  {
+    "text": "That language already has a version.",
+    "valid": true
+  },
+  {
+    "text": "That step is not allowed for this request.",
+    "valid": true
+  },
+  {
+    "text": "The change could not be saved. Try again.",
+    "valid": true
+  },
+  {
+    "text": "The client secret is never shown or stored in the browser. It is set in the institution's key vault.",
+    "valid": true
+  },
+  {
+    "text": "The demo institutions could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "The device is signed out and its offline data removed the next time it connects.",
+    "valid": true
+  },
+  {
+    "text": "The highest set layer wins. Lower layers remain as fallbacks.",
+    "valid": true
+  },
+  {
+    "text": "The issuer URL must start with https://",
+    "valid": true
+  },
+  {
+    "text": "The person",
+    "valid": true
+  },
+  {
+    "text": "The preview appears once the message is valid.",
+    "valid": true
+  },
+  {
+    "text": "The report is being prepared.",
+    "valid": true
+  },
+  {
+    "text": "Theme could not be saved. Review any contrast or locked-token errors and try again.",
+    "valid": true
+  },
+  {
+    "text": "Theme editor sections",
+    "valid": true
+  },
+  {
+    "text": "Theme saved (version {version, number}).",
+    "valid": true
+  },
+  {
+    "text": "Theme studio",
+    "valid": true
+  },
+  {
+    "text": "This address does not match any page. Check the link or go back to home.",
+    "valid": true
+  },
+  {
+    "text": "This device",
+    "valid": true
+  },
+  {
+    "text": "This device, offline changes and sync conflicts.",
+    "valid": true
+  },
+  {
+    "text": "This email already has an account.",
+    "valid": true
+  },
+  {
+    "text": "This field is required",
+    "valid": true
+  },
+  {
+    "text": "This is the device you are using now. You will be signed out and its data removed.",
+    "valid": true
+  },
+  {
+    "text": "This is your account. Another administrator must change its status.",
+    "valid": true
+  },
+  {
+    "text": "This page works only online. Connect to the internet and try again.",
+    "valid": true
+  },
+  {
+    "text": "This period",
+    "valid": true
+  },
+  {
+    "text": "This request is closed.",
+    "valid": true
+  },
+  {
+    "text": "This user has no roles yet.",
+    "valid": true
+  },
+  {
+    "text": "Thorough",
+    "valid": true
+  },
+  {
+    "text": "Thursday",
+    "valid": true
+  },
+  {
+    "text": "Time",
+    "valid": true
+  },
+  {
+    "text": "Time zone",
+    "valid": true
+  },
+  {
+    "text": "Time zone override",
+    "valid": true
+  },
+  {
+    "text": "Times are in {timeZone}. Urgent safety messages still arrive.",
+    "valid": true
+  },
+  {
+    "text": "To",
+    "valid": true
+  },
+  {
+    "text": "To be added",
+    "valid": true
+  },
+  {
+    "text": "To be changed",
+    "valid": true
+  },
+  {
+    "text": "Today's date & time",
+    "valid": true
+  },
+  {
+    "text": "Trainee",
+    "valid": true
+  },
+  {
+    "text": "Trainees",
+    "valid": true
+  },
+  {
+    "text": "Trainer",
+    "valid": true
+  },
+  {
+    "text": "Trial",
+    "valid": true
+  },
+  {
+    "text": "Trimester",
+    "valid": true
+  },
+  {
+    "text": "Trimesters",
+    "valid": true
+  },
+  {
+    "text": "Try a different search term or turn off the overridden-only filter.",
+    "valid": true
+  },
+  {
+    "text": "Try again",
+    "valid": true
+  },
+  {
+    "text": "Tuesday",
+    "valid": true
+  },
+  {
+    "text": "Turn AI on or off and manage what Assist may use.",
+    "valid": true
+  },
+  {
+    "text": "Turn {module} on",
+    "valid": true
+  },
+  {
+    "text": "Tutor",
+    "valid": true
+  },
+  {
+    "text": "Type",
+    "valid": true
+  },
+  {
+    "text": "Type here…",
+    "valid": true
+  },
+  {
+    "text": "Type profile defaults",
+    "valid": true
+  },
+  {
+    "text": "Typography & spacing",
+    "valid": true
+  },
+  {
+    "text": "UK GDPR",
+    "valid": true
+  },
+  {
+    "text": "United States (US)",
+    "valid": true
+  },
+  {
+    "text": "Unknown message key",
+    "valid": true
+  },
+  {
+    "text": "Unlimited",
+    "valid": true
+  },
+  {
+    "text": "Until",
+    "valid": true
+  },
+  {
+    "text": "Update on-brand ({onBrand}) and brand-primary-text ({brandText}) so buttons and links pass contrast checks.",
+    "valid": true
+  },
+  {
+    "text": "Upload a JSON file or paste JSON below, preview the diff, then apply valid changes to {locale}.",
+    "valid": true
+  },
+  {
+    "text": "Uppercase letters, numbers and hyphens (max 16 characters).",
+    "valid": true
+  },
+  {
+    "text": "Usage",
+    "valid": true
+  },
+  {
+    "text": "Use Nexus Assist",
+    "valid": true
+  },
+  {
+    "text": "Use suggestion ({color})",
+    "valid": true
+  },
+  {
+    "text": "Used",
+    "valid": true
+  },
+  {
+    "text": "User",
+    "valid": true
+  },
+  {
+    "text": "User accounts",
+    "valid": true
+  },
+  {
+    "text": "User reactivated.",
+    "valid": true
+  },
+  {
+    "text": "User suspended.",
+    "valid": true
+  },
+  {
+    "text": "Users",
+    "valid": true
+  },
+  {
+    "text": "Users & access",
+    "valid": true
+  },
+  {
+    "text": "Users and access could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Users and access sections",
+    "valid": true
+  },
+  {
+    "text": "Uses institution time zone ({timeZone})",
+    "valid": true
+  },
+  {
+    "text": "Value must be a text string",
+    "valid": true
+  },
+  {
+    "text": "Version",
+    "valid": true
+  },
+  {
+    "text": "Version {version, number}",
+    "valid": true
+  },
+  {
+    "text": "View",
+    "valid": true
+  },
+  {
+    "text": "View details",
+    "valid": true
+  },
+  {
+    "text": "View role {name}",
+    "valid": true
+  },
+  {
+    "text": "View text override",
+    "valid": true
+  },
+  {
+    "text": "Vocational & technical",
+    "valid": true
+  },
+  {
+    "text": "Waiting",
+    "valid": true
+  },
+  {
+    "text": "Waiting for you",
+    "valid": true
+  },
+  {
+    "text": "Waiting to send",
+    "valid": true
+  },
+  {
+    "text": "Wednesday",
+    "valid": true
+  },
+  {
+    "text": "Weekend days",
+    "valid": true
+  },
+  {
+    "text": "Welcome, {name}",
+    "valid": true
+  },
+  {
+    "text": "What they did",
+    "valid": true
+  },
+  {
+    "text": "WhatsApp",
+    "valid": true
+  },
+  {
+    "text": "When off, Assist is hidden and every screen works as usual.",
+    "valid": true
+  },
+  {
+    "text": "Where",
+    "valid": true
+  },
+  {
+    "text": "Where Assist may help",
+    "valid": true
+  },
+  {
+    "text": "Wipe devices and resolve conflicts",
+    "valid": true
+  },
+  {
+    "text": "Wipe pending",
+    "valid": true
+  },
+  {
+    "text": "Wipe requested for {device}.",
+    "valid": true
+  },
+  {
+    "text": "Withdrawn",
+    "valid": true
+  },
+  {
+    "text": "Year ends on",
+    "valid": true
+  },
+  {
+    "text": "Year start in display calendar: {date}",
+    "valid": true
+  },
+  {
+    "text": "Year starts on",
+    "valid": true
+  },
+  {
+    "text": "Yes, this device",
+    "valid": true
+  },
+  {
+    "text": "You are offline",
+    "valid": true
+  },
+  {
+    "text": "You are offline. Cached texts can be browsed, but saving, removing, rolling back, or importing overrides requires a connection.",
+    "valid": true
+  },
+  {
+    "text": "You are offline. Changes stay safely on this device and send when you are back online.",
+    "valid": true
+  },
+  {
+    "text": "You are offline. Changes to institution setup cannot be saved until you reconnect.",
+    "valid": true
+  },
+  {
+    "text": "You are offline. You can inspect the cached theme, but saving changes requires a connection.",
+    "valid": true
+  },
+  {
+    "text": "You are offline. You can look at cached users, but changes need a connection.",
+    "valid": true
+  },
+  {
+    "text": "You can only narrow what was requested.",
+    "valid": true
+  },
+  {
+    "text": "You cannot remove your own last admin role.",
+    "valid": true
+  },
+  {
+    "text": "You decide when Nexus support staff may see your data, for how long, and what they did. Key material is never shown.",
+    "valid": true
+  },
+  {
+    "text": "You were told",
+    "valid": true
+  },
+  {
+    "text": "Your administrator can switch it on in AI settings. Everything else works as usual.",
+    "valid": true
+  },
+  {
+    "text": "Your colours, fonts and logo, with a live preview.",
+    "valid": true
+  },
+  {
+    "text": "Your data is encrypted with these keys. When you leave, the keys are destroyed so the data can never be read again.",
+    "valid": true
+  },
+  {
+    "text": "Your institution's plan does not include this module. Ask your administrator if you need it.",
+    "valid": true
+  },
+  {
+    "text": "Your key in our vault (BYOK)",
+    "valid": true
+  },
+  {
+    "text": "Your modules",
+    "valid": true
+  },
+  {
+    "text": "Your question",
+    "valid": true
+  },
+  {
+    "text": "Your role does not allow you to open this page. Ask your administrator if you need access.",
+    "valid": true
+  },
+  {
+    "text": "cloud service",
+    "valid": true
+  },
+  {
+    "text": "e.g. m02.user.invited",
+    "valid": true
+  },
+  {
+    "text": "https:// URL या / से शुरू होने वाला पथ दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "https:// URL या / से शुरू होने वाला पथ होना चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "https:// URL அல்லது / இல் தொடங்கும் பாதையாக இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
+    "text": "https:// URL அல்லது / இல் தொடங்கும் பாதையை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "iPhone or iPad",
+    "valid": true
+  },
+  {
+    "text": "iPhone या iPad",
+    "valid": true
+  },
+  {
+    "text": "iPhone அல்லது iPad",
+    "valid": true
+  },
+  {
+    "text": "on-brand ({onBrand}) और brand-primary-text ({brandText}) अपडेट करें ताकि बटन और लिंक कंट्रास्ट जाँच पास करें।",
+    "valid": true
+  },
+  {
+    "text": "open-ended",
+    "valid": true
+  },
+  {
+    "text": "riverside.example.edu जैसे छोटे अक्षरों वाले डोमेन दर्ज करें",
+    "valid": true
+  },
+  {
+    "text": "riverside.example.edu போன்ற சிறிய எழுத்து டொமைன்களை உள்ளிடவும்",
+    "valid": true
+  },
+  {
+    "text": "rotated {date}",
+    "valid": true
+  },
+  {
+    "text": "runs on your own servers",
+    "valid": true
+  },
+  {
+    "text": "{attempts, plural, =0 {Not tried yet} one {Tried once} other {Tried # times}} · queued {created}",
+    "valid": true
+  },
+  {
+    "text": "{attempts, plural, =0 {अभी कोशिश नहीं हुई} one {एक बार कोशिश हुई} other {# बार कोशिश हुई}} · कतार में {created}",
+    "valid": true
+  },
+  {
+    "text": "{attempts, plural, =0 {இன்னும் முயலவில்லை} one {ஒருமுறை முயன்றது} other {# முறை முயன்றது}} · வரிசையில் சேர்த்தது {created}",
+    "valid": true
+  },
+  {
+    "text": "{bg} पर {fg}",
+    "valid": true
+  },
+  {
+    "text": "{bg} மீது {fg}",
+    "valid": true
+  },
+  {
+    "text": "{count, number}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {No changes are waiting on this device.} one {# change waiting on this device will be lost.} other {# changes waiting on this device will be lost.}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {इस डिवाइस पर कोई बदलाव प्रतीक्षा में नहीं है।} one {इस डिवाइस पर प्रतीक्षा में # बदलाव खो जाएगा।} other {इस डिवाइस पर प्रतीक्षा में # बदलाव खो जाएँगे।}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {இந்தச் சாதனத்தில் எந்த மாற்றமும் காத்திருக்கவில்லை.} one {இந்தச் சாதனத்தில் காத்திருக்கும் # மாற்றம் இழக்கப்படும்.} other {இந்தச் சாதனத்தில் காத்திருக்கும் # மாற்றங்கள் இழக்கப்படும்.}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# added} other {# added}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# change is} other {# changes are}} still waiting to sync. Connect and sync before signing out.",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# change waiting to sync} other {# changes waiting to sync}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# changed} other {# changed}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# conflict} other {# conflicts}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# contrast issue blocks saving} other {# contrast issues block saving}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# hour} other {# hours}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# institution override ready to export} other {# institution overrides ready to export}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# lost} other {# lost}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# permission} other {# permissions}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# rejected} other {# rejected}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# request waiting} other {# requests waiting}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# sync conflict} other {# sync conflicts}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# unchanged} other {# unchanged}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# waiting} other {# waiting}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# अनुमति} other {# अनुमतियाँ}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# अनुरोध प्रतीक्षा में} other {# अनुरोध प्रतीक्षा में}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# अपरिवर्तित} other {# अपरिवर्तित}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# अस्वीकृत} other {# अस्वीकृत}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# कंट्रास्ट समस्या सहेजने से रोकती है} other {# कंट्रास्ट समस्याएँ सहेजने से रोकती हैं}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# खोया} other {# खोए}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# घंटा} other {# घंटे}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# जोड़ा गया} other {# जोड़े गए}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# टकराव} other {# टकराव}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# टेक्स्ट ओवरराइड लागू किया गया} other {# टेक्स्ट ओवरराइड लागू किए गए}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# प्रतीक्षा में} other {# प्रतीक्षा में}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# बदला गया} other {# बदले गए}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# बदलाव अभी भी} other {# बदलाव अभी भी}} सिंक होने की प्रतीक्षा में हैं। साइन आउट करने से पहले कनेक्ट करके सिंक करें।",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# बदलाव सिंक होने की प्रतीक्षा में} other {# बदलाव सिंक होने की प्रतीक्षा में}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# संस्थान ओवरराइड निर्यात के लिए तैयार} other {# संस्थान ओवरराइड निर्यात के लिए तैयार}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# सिंक टकराव} other {# सिंक टकराव}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# அனுமதி} other {# அனுமதிகள்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# இழந்தது} other {# இழந்தவை}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# உரை மேலெழுதல் பயன்படுத்தப்பட்டது} other {# உரை மேலெழுதல்கள் பயன்படுத்தப்பட்டன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# ஒத்திசைவு முரண்பாடு} other {# ஒத்திசைவு முரண்பாடுகள்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# காத்திருக்கிறது} other {# காத்திருக்கின்றன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# கோரிக்கை காத்திருக்கிறது} other {# கோரிக்கைகள் காத்திருக்கின்றன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# சேர்க்கப்பட்டது} other {# சேர்க்கப்பட்டன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# நிராகரிக்கப்பட்டது} other {# நிராகரிக்கப்பட்டன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# நிறுவன மேலெழுதல் ஏற்றுமதிக்குத் தயார்} other {# நிறுவன மேலெழுதல்கள் ஏற்றுமதிக்குத் தயார்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# மணி நேரம்} other {# மணி நேரங்கள்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# மாறாதது} other {# மாறாதவை}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# மாறுபாட்டுச் சிக்கல் சேமிப்பைத் தடுக்கிறது} other {# மாறுபாட்டுச் சிக்கல்கள் சேமிப்பைத் தடுக்கின்றன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# மாற்றப்பட்டது} other {# மாற்றப்பட்டன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# மாற்றம் இன்னும்} other {# மாற்றங்கள் இன்னும்}} ஒத்திசைக்கக் காத்திருக்கிறது. வெளியேறும் முன் இணைத்து ஒத்திசைக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# மாற்றம் ஒத்திசைக்கக் காத்திருக்கிறது} other {# மாற்றங்கள் ஒத்திசைக்கக் காத்திருக்கின்றன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# முரண்பாடு} other {# முரண்பாடுகள்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {Applied # text override} other {Applied # text overrides}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {Offline · # pending} other {Offline · # pending}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {{days} day} other {{days} days}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {{days} दिन} other {{days} दिन}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {{days} நாள்} other {{days} நாட்கள்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {ऑफ़लाइन · # लंबित} other {ऑफ़लाइन · # लंबित}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {ஆஃப்லைன் · # நிலுவையில்} other {ஆஃப்லைன் · # நிலுவையில்}}",
+    "valid": true
+  },
+  {
+    "text": "{date} को बदली गई",
+    "valid": true
+  },
+  {
+    "text": "{date} को समाप्त",
+    "valid": true
+  },
+  {
+    "text": "{date} அன்று மாற்றப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "{date} அன்று முடிகிறது",
+    "valid": true
+  },
+  {
+    "text": "{device} को मिटाने का अनुरोध किया गया।",
+    "valid": true
+  },
+  {
+    "text": "{device} पर सत्र समाप्त करें",
+    "valid": true
+  },
+  {
+    "text": "{device} रद्द करें और मिटाएँ",
+    "valid": true
+  },
+  {
+    "text": "{device} रद्द करें और मिटाएँ?",
+    "valid": true
+  },
+  {
+    "text": "{device} இல் அமர்வை முடி",
+    "valid": true
+  },
+  {
+    "text": "{device} ஐ அழிக்கக் கோரப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "{device} ஐத் திரும்பப் பெற்று அழி",
+    "valid": true
+  },
+  {
+    "text": "{device} ஐத் திரும்பப் பெற்று அழிக்கவா?",
+    "valid": true
+  },
+  {
+    "text": "{end} வரை Nexus ஆதரவுப் பணியாளர்கள் இந்தத் தரவைப் பார்ப்பார்கள் என்பதைப் புரிந்துகொள்கிறேன்.",
+    "valid": true
+  },
+  {
+    "text": "{event} · {channel}",
+    "valid": true
+  },
+  {
+    "text": "{fg} on {bg}",
+    "valid": true
+  },
+  {
+    "text": "{from} – {to}",
+    "valid": true
+  },
+  {
+    "text": "{granted} में से {used}",
+    "valid": true
+  },
+  {
+    "text": "{granted} இல் {used}",
+    "valid": true
+  },
+  {
+    "text": "{hours} घं {minutes} मि में समाप्त",
+    "valid": true
+  },
+  {
+    "text": "{hours} மணி {minutes} நிமிடத்தில் முடியும்",
+    "valid": true
+  },
+  {
+    "text": "{institution} में {role} के रूप में साइन इन करें",
+    "valid": true
+  },
+  {
+    "text": "{institution} में आप जो कुछ कर सकते हैं, सब एक जगह। शुरू करने के लिए एक मॉड्यूल चुनें।",
+    "valid": true
+  },
+  {
+    "text": "{institution} இல் {role} ஆக உள்நுழைக",
+    "valid": true
+  },
+  {
+    "text": "{institution} இல் நீங்கள் செய்யக்கூடிய அனைத்தும் ஒரே இடத்தில். தொடங்க ஒரு தொகுதியைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "{limit} में से {used}",
+    "valid": true
+  },
+  {
+    "text": "{limit} இல் {used}",
+    "valid": true
+  },
+  {
+    "text": "{locale} के ओवरराइड निर्यात किए गए।",
+    "valid": true
+  },
+  {
+    "text": "{locale} के लिए अभी कोई संस्थान ओवरराइड सेट नहीं है। निर्यात की गई फ़ाइल में entries ऑब्जेक्ट खाली होगा।",
+    "valid": true
+  },
+  {
+    "text": "{locale} க்கான மேலெழுதல்கள் ஏற்றுமதி செய்யப்பட்டன.",
+    "valid": true
+  },
+  {
+    "text": "{locale} க்கு இன்னும் நிறுவன மேலெழுதல்கள் அமைக்கப்படவில்லை. ஏற்றுமதி செய்த கோப்பில் entries பொருள் காலியாக இருக்கும்.",
+    "valid": true
+  },
+  {
+    "text": "{module} is off and hidden from the menu.",
+    "valid": true
+  },
+  {
+    "text": "{module} is on.",
+    "valid": true
+  },
+  {
+    "text": "{module} चालू करें",
+    "valid": true
+  },
+  {
+    "text": "{module} चालू है।",
+    "valid": true
+  },
+  {
+    "text": "{module} बंद है और मेनू से छिपा है।",
+    "valid": true
+  },
+  {
+    "text": "{module} அணைக்கப்பட்டு பட்டியிலிருந்து மறைக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "{module} இயக்கத்தில் உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "{module} ஐ இயக்கு",
+    "valid": true
+  },
+  {
+    "text": "{name} (system role)",
+    "valid": true
+  },
+  {
+    "text": "{name} (सिस्टम भूमिका)",
+    "valid": true
+  },
+  {
+    "text": "{name} (கணினிப் பங்கு)",
+    "valid": true
+  },
+  {
+    "text": "{name} காலத்தை நீக்கு",
+    "valid": true
+  },
+  {
+    "text": "{name} பங்கைத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "{name} பங்கைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "{name} விடுமுறையை நீக்கு",
+    "valid": true
+  },
+  {
+    "text": "{role} हटाएँ",
+    "valid": true
+  },
+  {
+    "text": "{role} ஐ நீக்கு",
+    "valid": true
+  },
+  {
+    "text": "{sent, plural, =0 {Nothing was sent.} one {# change sent.} other {# changes sent.}}",
+    "valid": true
+  },
+  {
+    "text": "{sent, plural, =0 {कुछ नहीं भेजा गया।} one {# बदलाव भेजा गया।} other {# बदलाव भेजे गए।}}",
+    "valid": true
+  },
+  {
+    "text": "{sent, plural, =0 {எதுவும் அனுப்பப்படவில்லை.} one {# மாற்றம் அனுப்பப்பட்டது.} other {# மாற்றங்கள் அனுப்பப்பட்டன.}}",
+    "valid": true
+  },
+  {
+    "text": "{shown, number} of {total, number} keys · {overridden, number} overridden",
+    "valid": true
+  },
+  {
+    "text": "{staff} के लिए पहुँच स्वीकृत करें",
+    "valid": true
+  },
+  {
+    "text": "{staff} க்கு அணுகலை அனுமதி",
+    "valid": true
+  },
+  {
+    "text": "{tier} · {credits, plural, =0 {no credits} one {# credit} other {# credits}} used",
+    "valid": true
+  },
+  {
+    "text": "{tier} · {credits, plural, =0 {कोई क्रेडिट नहीं} one {# क्रेडिट} other {# क्रेडिट}} उपयोग हुए",
+    "valid": true
+  },
+  {
+    "text": "{tier} · {credits, plural, =0 {வரவுகள் இல்லை} one {# வரவு} other {# வரவுகள்}} பயன்படுத்தப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "{token} के लिए रंग चुनें",
+    "valid": true
+  },
+  {
+    "text": "{token} को प्लेटफ़ॉर्म डिफ़ॉल्ट पर रीसेट करें",
+    "valid": true
+  },
+  {
+    "text": "{token} ஐத் தள இயல்புநிலைக்கு மீட்டமை",
+    "valid": true
+  },
+  {
+    "text": "{token} க்கு நிறத்தைத் தேர்ந்தெடு",
+    "valid": true
+  },
+  {
+    "text": "{total, number} में से {shown, number} कुंजियाँ · {overridden, number} ओवरराइड",
+    "valid": true
+  },
+  {
+    "text": "{total, number} में से {start, number}–{end, number} दिखाए जा रहे हैं",
+    "valid": true
+  },
+  {
+    "text": "{total, number} இல் {shown, number} சாவிகள் · {overridden, number} மேலெழுதப்பட்டவை",
+    "valid": true
+  },
+  {
+    "text": "{total, number} இல் {start, number}–{end, number} காட்டப்படுகிறது",
+    "valid": true
+  },
+  {
+    "text": "{used} of {granted}",
+    "valid": true
+  },
+  {
+    "text": "{used} of {limit}",
+    "valid": true
+  },
+  {
+    "text": "{value} GB",
+    "valid": true
+  },
+  {
+    "text": "अंतिम पृष्ठ",
+    "valid": true
+  },
+  {
+    "text": "अंतिम बार देखा गया",
+    "valid": true
+  },
+  {
+    "text": "अंतिम साइन-इन",
+    "valid": true
+  },
+  {
+    "text": "अंतिम सिंक",
+    "valid": true
+  },
+  {
+    "text": "अंतिम सिंक {time}",
+    "valid": true
+  },
+  {
+    "text": "अगला पृष्ठ",
+    "valid": true
+  },
+  {
+    "text": "अगली बार कनेक्ट होने पर डिवाइस साइन आउट होगा और उसका ऑफ़लाइन डेटा हटा दिया जाएगा।",
+    "valid": true
+  },
+  {
+    "text": "अज्ञात संदेश कुंजी",
+    "valid": true
+  },
+  {
+    "text": "अति आवश्यक",
+    "valid": true
+  },
+  {
+    "text": "अनुपालन",
+    "valid": true
+  },
+  {
+    "text": "अनुमत",
+    "valid": true
+  },
+  {
+    "text": "अनुमतियाँ",
+    "valid": true
+  },
+  {
+    "text": "अनुरोध",
+    "valid": true
+  },
+  {
+    "text": "अनुरोध अपडेट किया गया।",
+    "valid": true
+  },
+  {
+    "text": "अनुरोध अस्वीकार करें",
+    "valid": true
+  },
+  {
+    "text": "अनुरोध अस्वीकार किया गया।",
+    "valid": true
+  },
+  {
+    "text": "अनुरोध किया गया",
+    "valid": true
+  },
+  {
+    "text": "अनुरोध के अनुसार अधिकतम {max} घंटे।",
+    "valid": true
+  },
+  {
+    "text": "अपनी योजना देखें, वैकल्पिक मॉड्यूल चालू या बंद करें और इस अवधि का उपयोग देखें।",
+    "valid": true
+  },
+  {
+    "text": "अपनी संस्था की प्रोफ़ाइल, कैंपस, क्षेत्रीय प्रारूप और शैक्षणिक कैलेंडर प्रबंधित करें।",
+    "valid": true
+  },
+  {
+    "text": "अपनी संस्था के बारे में पूछें। उत्तर आपके रिकॉर्ड से AI द्वारा बनाए जाते हैं और हमेशा अपने स्रोत बताते हैं।",
+    "valid": true
+  },
+  {
+    "text": "अपनी सूचना प्राथमिकताएँ सेट करें",
+    "valid": true
+  },
+  {
+    "text": "अपने माता-पिता या अभिभावक से उनकी सहमति सेटिंग में AI सुविधाओं की अनुमति देने को कहें।",
+    "valid": true
+  },
+  {
+    "text": "अभिभावक",
+    "valid": true
+  },
+  {
+    "text": "अभिभावक की सहमति चाहिए",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई अनुपालन पैक लागू नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई कैंपस नहीं जोड़ा गया।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई टेम्पलेट नहीं।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई भूमिका नहीं।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई मॉड्यूल नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई सिंगल साइन-ऑन प्रदाता सेट नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी यहाँ कुछ नहीं है",
+    "valid": true
+  },
+  {
+    "text": "अभी रद्द करें",
+    "valid": true
+  },
+  {
+    "text": "अभी सिंक करें",
+    "valid": true
+  },
+  {
+    "text": "अमान्य ICU संदेश सिंटैक्स",
+    "valid": true
+  },
+  {
+    "text": "अमान्य ICU संदेश: {reason}",
+    "valid": true
+  },
+  {
+    "text": "अमान्य JSON। संदेश कुंजियों को टेक्स्ट से जोड़ने वाला JSON ऑब्जेक्ट दें।",
+    "valid": true
+  },
+  {
+    "text": "अलग समय क्षेत्र",
+    "valid": true
+  },
+  {
+    "text": "अवधि",
+    "valid": true
+  },
+  {
+    "text": "अवधि {name} हटाएँ",
+    "valid": true
+  },
+  {
+    "text": "अवधि का नाम",
+    "valid": true
+  },
+  {
+    "text": "अवधि जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "असीमित",
+    "valid": true
+  },
+  {
+    "text": "अस्वीकार करने का कारण",
+    "valid": true
+  },
+  {
+    "text": "अस्वीकार करें",
+    "valid": true
+  },
+  {
+    "text": "अस्वीकृत",
+    "valid": true
+  },
+  {
+    "text": "अस्वीकृत पंक्तियाँ",
+    "valid": true
+  },
+  {
+    "text": "आइटम",
+    "valid": true
+  },
+  {
+    "text": "आगे",
+    "valid": true
+  },
+  {
+    "text": "आज की तारीख और समय",
+    "valid": true
+  },
+  {
+    "text": "आप अपनी अंतिम व्यवस्थापक भूमिका नहीं हटा सकते।",
+    "valid": true
+  },
+  {
+    "text": "आप ऑफ़लाइन हैं",
+    "valid": true
+  },
+  {
+    "text": "आप ऑफ़लाइन हैं। आप कैश किए गए उपयोगकर्ता देख सकते हैं, लेकिन बदलावों के लिए कनेक्शन चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "आप ऑफ़लाइन हैं। आप कैश की गई थीम देख सकते हैं, लेकिन बदलाव सहेजने के लिए कनेक्शन चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "आप ऑफ़लाइन हैं। कैश किए गए टेक्स्ट देखे जा सकते हैं, लेकिन ओवरराइड सहेजने, हटाने, वापस लाने या आयात करने के लिए कनेक्शन चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "आप ऑफ़लाइन हैं। दोबारा कनेक्ट होने तक संस्थान सेटअप के बदलाव सहेजे नहीं जा सकते।",
+    "valid": true
+  },
+  {
+    "text": "आप ऑफ़लाइन हैं। बदलाव इस डिवाइस पर सुरक्षित रहते हैं और ऑनलाइन होने पर भेजे जाते हैं।",
+    "valid": true
+  },
+  {
+    "text": "आप केवल अनुरोधित पहुँच को कम कर सकते हैं।",
+    "valid": true
+  },
+  {
+    "text": "आप तय करते हैं कि Nexus सहायता कर्मचारी आपका डेटा कब और कितनी देर देख सकते हैं, और उन्होंने क्या किया। कुंजी सामग्री कभी नहीं दिखाई जाती।",
+    "valid": true
+  },
+  {
+    "text": "आपका डेटा इन कुंजियों से एन्क्रिप्ट है। आपके जाने पर कुंजियाँ नष्ट कर दी जाती हैं ताकि डेटा फिर कभी पढ़ा न जा सके।",
+    "valid": true
+  },
+  {
+    "text": "आपका प्रश्न",
+    "valid": true
+  },
+  {
+    "text": "आपकी ड्राफ़्ट थीम में मुख्य टेक्स्ट और एक नमूना लिंक का पूर्वावलोकन।",
+    "valid": true
+  },
+  {
+    "text": "आपकी प्रतीक्षा में",
+    "valid": true
+  },
+  {
+    "text": "आपकी भूमिका आपको यह पृष्ठ खोलने की अनुमति नहीं देती। ज़रूरत हो तो अपने व्यवस्थापक से पूछें।",
+    "valid": true
+  },
+  {
+    "text": "आपकी योजना के मॉड्यूल, AI क्रेडिट और उपयोग।",
+    "valid": true
+  },
+  {
+    "text": "आपकी योजना में नहीं",
+    "valid": true
+  },
+  {
+    "text": "आपकी संस्था की योजना में यह मॉड्यूल शामिल नहीं है। ज़रूरत हो तो अपने व्यवस्थापक से पूछें।",
+    "valid": true
+  },
+  {
+    "text": "आपकी संस्था के रिकॉर्ड में इसका उत्तर नहीं है, इसलिए कोई क्रेडिट उपयोग नहीं हुआ।",
+    "valid": true
+  },
+  {
+    "text": "आपकी संस्था के लिए चालू होते ही आपकी भूमिका के मॉड्यूल यहाँ दिखेंगे।",
+    "valid": true
+  },
+  {
+    "text": "आपकी संस्था ने इसे सेट नहीं किया है।",
+    "valid": true
+  },
+  {
+    "text": "आपके अपने सर्वर पर चलता है",
+    "valid": true
+  },
+  {
+    "text": "आपके मॉड्यूल",
+    "valid": true
+  },
+  {
+    "text": "आपके रंग, फ़ॉन्ट और लोगो, लाइव पूर्वावलोकन के साथ।",
+    "valid": true
+  },
+  {
+    "text": "आपके व्यवस्थापक इसे AI सेटिंग में चालू कर सकते हैं। बाकी सब सामान्य रूप से काम करता है।",
+    "valid": true
+  },
+  {
+    "text": "आपको बताया गया",
+    "valid": true
+  },
+  {
+    "text": "आपातकालीन पहुँच",
+    "valid": true
+  },
+  {
+    "text": "आमंत्रण भेजा गया।",
+    "valid": true
+  },
+  {
+    "text": "आमंत्रण भेजें",
+    "valid": true
+  },
+  {
+    "text": "आमंत्रित",
+    "valid": true
+  },
+  {
+    "text": "आयात और निर्यात",
+    "valid": true
+  },
+  {
+    "text": "आयात का पूर्वावलोकन नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "आयात किए गए ओवरराइड लागू नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "आरामदायक",
+    "valid": true
+  },
+  {
+    "text": "आवश्यक",
+    "valid": true
+  },
+  {
+    "text": "आवश्यक नहीं",
+    "valid": true
+  },
+  {
+    "text": "इंटरफ़ेस के टेक्स्ट खोजें, हर भाषा में शब्द बदलें, इतिहास देखें और ओवरराइड आयात या निर्यात करें।",
+    "valid": true
+  },
+  {
+    "text": "इस अनुमति के तहत कुछ नहीं किया गया।",
+    "valid": true
+  },
+  {
+    "text": "इस अनुरोध के लिए यह चरण अनुमत नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस अवधि में कोई उपयोग दर्ज नहीं हुआ।",
+    "valid": true
+  },
+  {
+    "text": "इस ईमेल का पहले से एक खाता है।",
+    "valid": true
+  },
+  {
+    "text": "इस उपयोगकर्ता की अभी कोई भूमिका नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस कुंजी के लिए अभी कोई ओवरराइड बदलाव दर्ज नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस खाते के लिए कोई संस्थान कॉन्फ़िगर नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस डिवाइस पर सहेजा गया। ऑनलाइन होने पर यह सिंक हो जाएगा।",
+    "valid": true
+  },
+  {
+    "text": "इस डिवाइस से सब कुछ भेजा जा चुका है।",
+    "valid": true
+  },
+  {
+    "text": "इस भाषा का पहले से एक संस्करण है।",
+    "valid": true
+  },
+  {
+    "text": "इस भाषा के लिए अपने शब्द दर्ज करें…",
+    "valid": true
+  },
+  {
+    "text": "इस महीने के AI क्रेडिट",
+    "valid": true
+  },
+  {
+    "text": "इस वर्ष के लिए कोई छुट्टी नहीं जोड़ी गई।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्थान के {locale} ओवरराइड JSON फ़ाइल के रूप में डाउनलोड करें।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्थान के लिए कोई थीम कॉन्फ़िगर नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्थान के लिए कोई शैक्षणिक कैलेंडर नहीं मिला।",
+    "valid": true
+  },
+  {
+    "text": "इसके लिए नीचे का सुरक्षा स्विच चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "इसे केवल गोपनीयता प्रभाव आकलन के बाद ही चालू करें।",
+    "valid": true
+  },
+  {
+    "text": "इसे संस्था की योजना में जोड़ने के बारे में अपने व्यवस्थापक से पूछें।",
+    "valid": true
+  },
+  {
+    "text": "ईमेल",
+    "valid": true
+  },
+  {
+    "text": "ईमेल डोमेन",
+    "valid": true
+  },
+  {
+    "text": "ईमेल दोनों ओर बदला गया",
+    "valid": true
+  },
+  {
+    "text": "उच्च",
+    "valid": true
+  },
+  {
+    "text": "उच्च शिक्षा",
+    "valid": true
+  },
+  {
+    "text": "उत्तर",
+    "valid": true
+  },
+  {
+    "text": "उद्देश्य",
+    "valid": true
+  },
+  {
+    "text": "उन्होंने क्या किया",
+    "valid": true
+  },
+  {
+    "text": "उपयोग",
+    "valid": true
+  },
+  {
+    "text": "उपयोग किए",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता आमंत्रित और प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता आमंत्रित करें",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता और पहुँच",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता और पहुँच के भाग",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता और पहुँच लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता और लोग देखें",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता खाते",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता निलंबित किया गया।",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता फिर से सक्रिय किया गया।",
+    "valid": true
+  },
+  {
+    "text": "उपयोगकर्ता बदलें",
+    "valid": true
+  },
+  {
+    "text": "उपयोगी",
+    "valid": true
+  },
+  {
+    "text": "उपयोगी नहीं",
+    "valid": true
+  },
+  {
+    "text": "एंटरप्राइज़",
+    "valid": true
+  },
+  {
+    "text": "एक मान्य ईमेल पता दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "एक मान्य हेक्स रंग दर्ज करें (जैसे #1F5FD1)।",
+    "valid": true
+  },
+  {
+    "text": "एक विकल्प चुनें",
+    "valid": true
+  },
+  {
+    "text": "एक संस्थान और एक भूमिका चुनें। यह प्रोटोटाइप काल्पनिक डेमो डेटा का उपयोग करता है और इसमें पासवर्ड नहीं चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "एज सर्वर",
+    "valid": true
+  },
+  {
+    "text": "एन्क्रिप्शन कुंजियाँ",
+    "valid": true
+  },
+  {
+    "text": "एशिया-प्रशांत (APAC)",
+    "valid": true
+  },
+  {
+    "text": "एसेट",
+    "valid": true
+  },
+  {
+    "text": "ऐड-ऑन",
+    "valid": true
+  },
+  {
+    "text": "ऐप इंस्टॉल करें",
+    "valid": true
+  },
+  {
+    "text": "ऐप का कोई भी टेक्स्ट, हर भाषा में बदलें।",
+    "valid": true
+  },
+  {
+    "text": "ऐप में",
+    "valid": true
+  },
+  {
+    "text": "ऑडिट और गोपनीयता",
+    "valid": true
+  },
+  {
+    "text": "ऑडिट और गोपनीयता के भाग",
+    "valid": true
+  },
+  {
+    "text": "ऑडिट और गोपनीयता डेटा लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "ऑडिट घटनाएँ",
+    "valid": true
+  },
+  {
+    "text": "ऑडिट लॉग",
+    "valid": true
+  },
+  {
+    "text": "ऑडिट लॉग और अनुपालन देखें",
+    "valid": true
+  },
+  {
+    "text": "ऑडिट लॉग, सहमतियाँ और डेटा अनुरोध।",
+    "valid": true
+  },
+  {
+    "text": "ऑनलाइन अकादमी",
+    "valid": true
+  },
+  {
+    "text": "ऑफ़लाइन",
+    "valid": true
+  },
+  {
+    "text": "ऑफ़लाइन काम करने के लिए तैयार",
+    "valid": true
+  },
+  {
+    "text": "ओवरराइड",
+    "valid": true
+  },
+  {
+    "text": "ओवरराइड JSON",
+    "valid": true
+  },
+  {
+    "text": "ओवरराइड आयात करें",
+    "valid": true
+  },
+  {
+    "text": "ओवरराइड निर्यात करें",
+    "valid": true
+  },
+  {
+    "text": "ओवरराइड हटाएँ",
+    "valid": true
+  },
+  {
+    "text": "ओवरराइड हटाया गया",
+    "valid": true
+  },
+  {
+    "text": "कंट्रास्ट गार्ड",
+    "valid": true
+  },
+  {
+    "text": "कक्षा",
+    "valid": true
+  },
+  {
+    "text": "कतार में",
+    "valid": true
+  },
+  {
+    "text": "कनेक्शन चाहिए",
+    "valid": true
+  },
+  {
+    "text": "कब उठा",
+    "valid": true
+  },
+  {
+    "text": "कब हुआ",
+    "valid": true
+  },
+  {
+    "text": "कभी नहीं",
+    "valid": true
+  },
+  {
+    "text": "कर्ता",
+    "valid": true
+  },
+  {
+    "text": "कर्मचारी",
+    "valid": true
+  },
+  {
+    "text": "कस्टम",
+    "valid": true
+  },
+  {
+    "text": "कस्टम भूमिका संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "कहाँ",
+    "valid": true
+  },
+  {
+    "text": "कागज़",
+    "valid": true
+  },
+  {
+    "text": "कानूनी आदेश",
+    "valid": true
+  },
+  {
+    "text": "काम शुरू करें",
+    "valid": true
+  },
+  {
+    "text": "कारण",
+    "valid": true
+  },
+  {
+    "text": "कार्रवाइयाँ",
+    "valid": true
+  },
+  {
+    "text": "कार्रवाई",
+    "valid": true
+  },
+  {
+    "text": "किस पर लागू",
+    "valid": true
+  },
+  {
+    "text": "किसके द्वारा शामिल",
+    "valid": true
+  },
+  {
+    "text": "किसके पास",
+    "valid": true
+  },
+  {
+    "text": "किसके लिए दी जा सकती है",
+    "valid": true
+  },
+  {
+    "text": "किसने दी",
+    "valid": true
+  },
+  {
+    "text": "किसने स्वीकृत किया",
+    "valid": true
+  },
+  {
+    "text": "किसी प्रदाता को पहुँच नहीं दी गई है।",
+    "valid": true
+  },
+  {
+    "text": "कुंजियाँ",
+    "valid": true
+  },
+  {
+    "text": "कुंजी (जैसे term.learner) या शब्दों से खोजें…",
+    "valid": true
+  },
+  {
+    "text": "कुंजी या टेक्स्ट खोजें",
+    "valid": true
+  },
+  {
+    "text": "कुछ गलत हो गया",
+    "valid": true
+  },
+  {
+    "text": "कुल सक्रिय",
+    "valid": true
+  },
+  {
+    "text": "केवल अपने रिकॉर्ड",
+    "valid": true
+  },
+  {
+    "text": "केवल आप (HYOK)",
+    "valid": true
+  },
+  {
+    "text": "केवल ओवरराइड किए गए",
+    "valid": true
+  },
+  {
+    "text": "केवल पढ़ना",
+    "valid": true
+  },
+  {
+    "text": "केवल फ़ील्ड के नाम दर्ज होते हैं, मान कभी नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कैंपस",
+    "valid": true
+  },
+  {
+    "text": "कैंपस का नाम",
+    "valid": true
+  },
+  {
+    "text": "कैंपस कोड",
+    "valid": true
+  },
+  {
+    "text": "कैंपस जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "कैंपस संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "कैंपस सहेजा गया।",
+    "valid": true
+  },
+  {
+    "text": "कैलेंडर",
+    "valid": true
+  },
+  {
+    "text": "कोई अवधि कॉन्फ़िगर नहीं (निरंतर कैलेंडर)।",
+    "valid": true
+  },
+  {
+    "text": "कोई आपातकालीन पहुँच नहीं हुई है।",
+    "valid": true
+  },
+  {
+    "text": "कोई उपयोगकर्ता मेल नहीं खाता।",
+    "valid": true
+  },
+  {
+    "text": "कोई ऑडिट घटना मेल नहीं खाती।",
+    "valid": true
+  },
+  {
+    "text": "कोई कुंजी नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई छवि कॉन्फ़िगर नहीं",
+    "valid": true
+  },
+  {
+    "text": "कोई डिवाइस पंजीकृत नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई डेटा अनुरोध नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई डेमो संस्थान उपलब्ध नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "कोई दूसरा खोज शब्द आज़माएँ या केवल-ओवरराइड फ़िल्टर बंद करें।",
+    "valid": true
+  },
+  {
+    "text": "कोई पहुँच अनुरोध नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई फ़ील्ड नहीं बदला।",
+    "valid": true
+  },
+  {
+    "text": "कोई भी",
+    "valid": true
+  },
+  {
+    "text": "कोई भी चैनल",
+    "valid": true
+  },
+  {
+    "text": "कोई भी स्थिति",
+    "valid": true
+  },
+  {
+    "text": "कोई मेल खाता संदेश नहीं",
+    "valid": true
+  },
+  {
+    "text": "कोई मॉड्यूल नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई संदेश मेल नहीं खाता।",
+    "valid": true
+  },
+  {
+    "text": "कोई सक्रिय सत्र नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई सहमति रिकॉर्ड मेल नहीं खाता।",
+    "valid": true
+  },
+  {
+    "text": "कोने की गोलाई",
+    "valid": true
+  },
+  {
+    "text": "कौशल और शौक अकादमी",
+    "valid": true
+  },
+  {
+    "text": "क्या सुरक्षित करती है",
+    "valid": true
+  },
+  {
+    "text": "क्रेडिट अगले महीने की शुरुआत में फिर मिलेंगे, या आपके व्यवस्थापक और जोड़ सकते हैं।",
+    "valid": true
+  },
+  {
+    "text": "क्रेडिट खत्म होने के बाद अतिरिक्त उपयोग का बिल बनता है।",
+    "valid": true
+  },
+  {
+    "text": "क्रेडिट खत्म होने पर Assist रुक जाता है।",
+    "valid": true
+  },
+  {
+    "text": "क्लाइंट ID",
+    "valid": true
+  },
+  {
+    "text": "क्लाइंट सीक्रेट ब्राउज़र में कभी दिखाया या संग्रहीत नहीं किया जाता। इसे संस्थान के की वॉल्ट में सेट किया जाता है।",
+    "valid": true
+  },
+  {
+    "text": "क्लाउड सेवा",
+    "valid": true
+  },
+  {
+    "text": "क्षेत्र",
+    "valid": true
+  },
+  {
+    "text": "खाता आमंत्रण",
+    "valid": true
+  },
+  {
+    "text": "खुला",
+    "valid": true
+  },
+  {
+    "text": "खुले",
+    "valid": true
+  },
+  {
+    "text": "खोज",
+    "valid": true
+  },
+  {
+    "text": "खोजें",
+    "valid": true
+  },
+  {
+    "text": "गिनती",
+    "valid": true
+  },
+  {
+    "text": "गुरुवार",
+    "valid": true
+  },
+  {
+    "text": "ग्रेगोरियन",
+    "valid": true
+  },
+  {
+    "text": "घंटे",
+    "valid": true
+  },
+  {
+    "text": "घटना",
+    "valid": true
+  },
+  {
+    "text": "घनत्व",
+    "valid": true
+  },
+  {
+    "text": "चार्ट",
+    "valid": true
+  },
+  {
+    "text": "चालू",
+    "valid": true
+  },
+  {
+    "text": "चुनी गई भाषा के लिए संदेश कुंजियाँ और लागू शब्द",
+    "valid": true
+  },
+  {
+    "text": "चुनें कि Nexus Assist चालू हो या नहीं, यह कहाँ मदद कर सकता है और डिफ़ॉल्ट रूप से किस गुणवत्ता का उत्तर दे।",
+    "valid": true
+  },
+  {
+    "text": "चुनें कि आपकी संस्था आपसे कैसे संपर्क करे। व्यवस्थापक संदेश संपादित भी करते हैं और देखते हैं कि क्या भेजा गया।",
+    "valid": true
+  },
+  {
+    "text": "चुनें…",
+    "valid": true
+  },
+  {
+    "text": "चैनल",
+    "valid": true
+  },
+  {
+    "text": "छवियाँ और टेक्स्ट",
+    "valid": true
+  },
+  {
+    "text": "छात्र",
+    "valid": true
+  },
+  {
+    "text": "छुट्टियाँ",
+    "valid": true
+  },
+  {
+    "text": "छुट्टी {name} हटाएँ",
+    "valid": true
+  },
+  {
+    "text": "छुट्टी का नाम",
+    "valid": true
+  },
+  {
+    "text": "छुट्टी जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "छेड़छाड़-प्रकट ऑडिट लॉग, सहमति रिकॉर्ड, डेटा अनुरोध और लागू गोपनीयता नियम देखें।",
+    "valid": true
+  },
+  {
+    "text": "जारीकर्ता URL",
+    "valid": true
+  },
+  {
+    "text": "जारीकर्ता URL https:// से शुरू होना चाहिए",
+    "valid": true
+  },
+  {
+    "text": "जैसे m02.user.invited",
+    "valid": true
+  },
+  {
+    "text": "जोड़े जाएँगे",
+    "valid": true
+  },
+  {
+    "text": "टकराव",
+    "valid": true
+  },
+  {
+    "text": "टकराव सुलझाया गया।",
+    "valid": true
+  },
+  {
+    "text": "टर्म",
+    "valid": true
+  },
+  {
+    "text": "टाइपोग्राफी और स्पेसिंग",
+    "valid": true
+  },
+  {
+    "text": "टिप्पणियाँ",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट ओवरराइड देखें",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट ओवरराइड लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट ओवरराइड संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट ओवरराइड सहेजा गया।",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट ओवरराइड सहेजा नहीं जा सका।",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट ओवरराइड हटाया गया।",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट ओवरराइड हटाया नहीं जा सका।",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट और भाषा स्टूडियो",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट और भाषा स्टूडियो के भाग",
+    "valid": true
+  },
+  {
+    "text": "टेक्स्ट संदेश",
+    "valid": true
+  },
+  {
+    "text": "टेम्पलेट",
+    "valid": true
+  },
+  {
+    "text": "टेम्पलेट {id} चालू",
+    "valid": true
+  },
+  {
+    "text": "टेम्पलेट {id} संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "टेम्पलेट सहेजा गया।",
+    "valid": true
+  },
+  {
+    "text": "ट्यूटर",
+    "valid": true
+  },
+  {
+    "text": "ट्राइमेस्टर",
+    "valid": true
+  },
+  {
+    "text": "डार्क",
+    "valid": true
+  },
+  {
+    "text": "डार्क थीम पर जाएँ",
+    "valid": true
+  },
+  {
+    "text": "डिजिटल हस्ताक्षर",
+    "valid": true
+  },
+  {
+    "text": "डिफ़ॉल्ट उत्तर गुणवत्ता",
+    "valid": true
+  },
+  {
+    "text": "डिफ़ॉल्ट ग्रेडिंग योजना",
+    "valid": true
+  },
+  {
+    "text": "डिफ़ॉल्ट भाषा और क्षेत्र",
+    "valid": true
+  },
+  {
+    "text": "डिफ़ॉल्ट मॉड्यूल",
+    "valid": true
+  },
+  {
+    "text": "डिफ़ॉल्ट संरक्षण अवधि",
+    "valid": true
+  },
+  {
+    "text": "डिलीवरी लॉग",
+    "valid": true
+  },
+  {
+    "text": "डिवाइस",
+    "valid": true
+  },
+  {
+    "text": "डिवाइस और सिंक देखें",
+    "valid": true
+  },
+  {
+    "text": "डिवाइस का रखें",
+    "valid": true
+  },
+  {
+    "text": "डिवाइस मिटाएँ और टकराव सुलझाएँ",
+    "valid": true
+  },
+  {
+    "text": "डेटा अनुरोध",
+    "valid": true
+  },
+  {
+    "text": "डेटा अनुरोध संभालें",
+    "valid": true
+  },
+  {
+    "text": "डेटा अनुरोधों की समय सीमा",
+    "valid": true
+  },
+  {
+    "text": "डेटा क्षेत्र",
+    "valid": true
+  },
+  {
+    "text": "डेटा तक पहुँच",
+    "valid": true
+  },
+  {
+    "text": "डेटा निवास नियमों का पालन करने के लिए बनाने के बाद तय रहता है।",
+    "valid": true
+  },
+  {
+    "text": "डेटा प्रसंस्करण",
+    "valid": true
+  },
+  {
+    "text": "डेटा वॉल्ट और पहुँच",
+    "valid": true
+  },
+  {
+    "text": "डेटा वॉल्ट और प्रदाता पहुँच देखें",
+    "valid": true
+  },
+  {
+    "text": "डेटा वॉल्ट की जानकारी लोड नहीं हो सकी।",
+    "valid": true
+  },
+  {
+    "text": "डेटा वॉल्ट के भाग",
+    "valid": true
+  },
+  {
+    "text": "डेमो डेटा। इस स्क्रीन पर कुछ भी वास्तविक नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "डेमो संस्थान में साइन इन करें",
+    "valid": true
+  },
+  {
+    "text": "डेमो संस्थान लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "डोमेन को अल्पविराम से अलग करें, जैसे riverside.example.edu",
+    "valid": true
+  },
+  {
+    "text": "तक",
+    "valid": true
+  },
+  {
+    "text": "तरीका",
+    "valid": true
+  },
+  {
+    "text": "तारीख",
+    "valid": true
+  },
+  {
+    "text": "तेज़",
+    "valid": true
+  },
+  {
+    "text": "थीम संपादक के भाग",
+    "valid": true
+  },
+  {
+    "text": "थीम सहेजी गई (संस्करण {version, number})।",
+    "valid": true
+  },
+  {
+    "text": "थीम सहेजी नहीं जा सकी। कंट्रास्ट या लॉक टोकन की त्रुटियाँ देखें और फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "थीम सेटिंग लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
+    "text": "थीम स्टूडियो",
+    "valid": true
+  },
+  {
+    "text": "दर्ज",
+    "valid": true
+  },
+  {
+    "text": "दिखाएँ",
+    "valid": true
+  },
+  {
+    "text": "दी गई",
+    "valid": true
+  },
+  {
+    "text": "देखें",
+    "valid": true
+  },
+  {
+    "text": "देखें कि इस डिवाइस से अभी क्या भेजना बाकी है, उसे सिंक करें और संस्था के डिवाइस और टकराव प्रबंधित करें।",
+    "valid": true
+  },
+  {
+    "text": "देश",
+    "valid": true
+  },
+  {
+    "text": "दोपहर का सत्र",
+    "valid": true
+  },
+  {
+    "text": "द्वितीयक",
+    "valid": true
+  },
+  {
+    "text": "नई कस्टम भूमिका",
+    "valid": true
+  },
+  {
+    "text": "नई घोषणा",
+    "valid": true
+  },
+  {
+    "text": "नई भाषा",
+    "valid": true
+  },
+  {
+    "text": "नई भूमिका",
+    "valid": true
+  },
+  {
+    "text": "नमूना फ़ील्ड",
+    "valid": true
+  },
+  {
+    "text": "नमूना मानों के साथ पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "नमूना राशि",
+    "valid": true
+  },
+  {
+    "text": "नमूना संख्या",
+    "valid": true
+  },
+  {
+    "text": "नमूना सारांश",
+    "valid": true
+  },
+  {
+    "text": "नष्ट",
+    "valid": true
+  },
+  {
+    "text": "नहीं भेजा गया",
+    "valid": true
+  },
+  {
+    "text": "नाबालिग, इस आयु तक",
+    "valid": true
+  },
+  {
+    "text": "नाम",
+    "valid": true
+  },
+  {
+    "text": "नाम दोनों ओर बदला गया",
+    "valid": true
+  },
+  {
+    "text": "निम्न",
+    "valid": true
+  },
+  {
+    "text": "नियत तिथि",
+    "valid": true
+  },
+  {
+    "text": "निरंतर",
+    "valid": true
+  },
+  {
+    "text": "निर्णय चाहिए",
+    "valid": true
+  },
+  {
+    "text": "निर्यात",
+    "valid": true
+  },
+  {
+    "text": "निलंबित",
+    "valid": true
+  },
+  {
+    "text": "निलंबित करें",
+    "valid": true
+  },
+  {
+    "text": "निष्क्रिय",
+    "valid": true
+  },
+  {
+    "text": "नेविगेशन मेनू",
+    "valid": true
+  },
+  {
+    "text": "पढ़ना और संपादित करना",
+    "valid": true
+  },
+  {
+    "text": "पता पंक्ति 1",
+    "valid": true
+  },
+  {
+    "text": "पता पंक्ति 2",
+    "valid": true
+  },
+  {
+    "text": "परीक्षण",
+    "valid": true
+  },
+  {
+    "text": "परीक्षण अंतर पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "परीक्षा तैयारी और कोचिंग",
+    "valid": true
+  },
+  {
+    "text": "पहचान दस्तावेज़ फ़ील्ड",
+    "valid": true
+  },
+  {
+    "text": "पहला पृष्ठ",
+    "valid": true
+  },
+  {
+    "text": "पहुँच",
+    "valid": true
+  },
+  {
+    "text": "पहुँच अनुमति {grant}",
+    "valid": true
+  },
+  {
+    "text": "पहुँच अनुरोध",
+    "valid": true
+  },
+  {
+    "text": "पहुँच अनुरोध स्वीकृत या अस्वीकार करें, अनुमतियाँ और कुंजियाँ।",
+    "valid": true
+  },
+  {
+    "text": "पहुँच नहीं",
+    "valid": true
+  },
+  {
+    "text": "पहुँच रद्द की गई।",
+    "valid": true
+  },
+  {
+    "text": "पहुँच स्वीकृत करें",
+    "valid": true
+  },
+  {
+    "text": "पहुँच स्वीकृत की गई।",
+    "valid": true
+  },
+  {
+    "text": "पहुँचा",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम",
+    "valid": true
+  },
+  {
+    "text": "पासकी",
+    "valid": true
+  },
+  {
+    "text": "पासवर्ड",
+    "valid": true
+  },
+  {
+    "text": "पिक्सेल मान दर्ज करें (जैसे 8px)।",
+    "valid": true
+  },
+  {
+    "text": "पिछला पृष्ठ",
+    "valid": true
+  },
+  {
+    "text": "पिन कोड",
+    "valid": true
+  },
+  {
+    "text": "पूछें",
+    "valid": true
+  },
+  {
+    "text": "पूरा",
+    "valid": true
+  },
+  {
+    "text": "पूरा चिह्नित करें",
+    "valid": true
+  },
+  {
+    "text": "पूरा नाम",
+    "valid": true
+  },
+  {
+    "text": "पूर्वावलोकन देखने के लिए ऊपर की ICU सिंटैक्स त्रुटि ठीक करें।",
+    "valid": true
+  },
+  {
+    "text": "पृष्ठ {page, number} / {pageCount, number}",
+    "valid": true
+  },
+  {
+    "text": "पृष्ठ क्रमांकन",
+    "valid": true
+  },
+  {
+    "text": "पृष्ठ जाँच: {count, plural, one {# घटना जुड़ी हुई और सुरक्षित है} other {# घटनाएँ जुड़ी हुई और सुरक्षित हैं}}।",
+    "valid": true
+  },
+  {
+    "text": "पृष्ठ जाँच: श्रृंखला पंक्ति {row} पर टूटी है।",
+    "valid": true
+  },
+  {
+    "text": "पृष्ठ नहीं मिला",
+    "valid": true
+  },
+  {
+    "text": "प्रकार",
+    "valid": true
+  },
+  {
+    "text": "प्रकार प्रोफ़ाइल के डिफ़ॉल्ट",
+    "valid": true
+  },
+  {
+    "text": "प्रगति में",
+    "valid": true
+  },
+  {
+    "text": "प्रति पृष्ठ पंक्तियाँ",
+    "valid": true
+  },
+  {
+    "text": "प्रति माह AI क्रेडिट",
+    "valid": true
+  },
+  {
+    "text": "प्रतिबंधित",
+    "valid": true
+  },
+  {
+    "text": "प्रतिबंधित व्यक्तिगत डेटा देखें",
+    "valid": true
+  },
+  {
+    "text": "प्रतीक्षा में",
+    "valid": true
+  },
+  {
+    "text": "प्रदर्शन कैलेंडर",
+    "valid": true
+  },
+  {
+    "text": "प्रदर्शन कैलेंडर में वर्ष की शुरुआत: {date}",
+    "valid": true
+  },
+  {
+    "text": "प्रदाता",
+    "valid": true
+  },
+  {
+    "text": "प्रदाता कर्मचारी",
+    "valid": true
+  },
+  {
+    "text": "प्रदाता कर्मचारी द्वारा पहुँच अनुमति {grant} के तहत किया गया।",
+    "valid": true
+  },
+  {
+    "text": "प्रदाता जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "प्रदाता पहुँच स्वीकृत करें",
+    "valid": true
+  },
+  {
+    "text": "प्रशिक्षक",
+    "valid": true
+  },
+  {
+    "text": "प्रशिक्षु",
+    "valid": true
+  },
+  {
+    "text": "प्राथमिकता",
+    "valid": true
+  },
+  {
+    "text": "प्राथमिकताएँ सहेजी गईं।",
+    "valid": true
+  },
+  {
+    "text": "प्राध्यापक",
+    "valid": true
+  },
+  {
+    "text": "प्राप्त",
+    "valid": true
+  },
+  {
+    "text": "प्राप्तकर्ता",
+    "valid": true
+  },
+  {
+    "text": "प्रारंभिक वर्ष और प्री-स्कूल",
+    "valid": true
+  },
+  {
+    "text": "प्रारूप का लाइव पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "प्रोटोकॉल",
+    "valid": true
+  },
+  {
+    "text": "प्रोफ़ाइल",
+    "valid": true
+  },
+  {
+    "text": "प्रोफ़ाइल, कैंपस, भाषा और प्रारूप, और स्कूल कैलेंडर।",
+    "valid": true
+  },
+  {
+    "text": "प्लेटफ़ॉर्म",
+    "valid": true
+  },
+  {
+    "text": "प्लेटफ़ॉर्म डिफ़ॉल्ट",
+    "valid": true
+  },
+  {
+    "text": "प्लेसहोल्डर और बहुवचन जैसे ICU संदेश सिंटैक्स समर्थित हैं।",
+    "valid": true
+  },
+  {
+    "text": "प्लेसहोल्डर नमूना मानों से भरे गए हैं।",
+    "valid": true
+  },
+  {
+    "text": "फ़ेविकॉन URL",
+    "valid": true
+  },
+  {
+    "text": "फ़ॉन्ट",
+    "valid": true
+  },
+  {
+    "text": "फ़ॉर्म",
+    "valid": true
+  },
+  {
+    "text": "फ़ोटो और मीडिया",
+    "valid": true
+  },
+  {
+    "text": "फ़ोटो और मीडिया के लिए अभिभावक की सहमति",
+    "valid": true
+  },
+  {
+    "text": "फ़ोन नंबर दोनों ओर बदला गया",
+    "valid": true
+  },
+  {
+    "text": "फ़ोन सूचना",
+    "valid": true
+  },
+  {
+    "text": "फिर से कोशिश करें",
+    "valid": true
+  },
+  {
+    "text": "फिर से लोड करें",
+    "valid": true
+  },
+  {
+    "text": "फिर से सक्रिय करें",
+    "valid": true
+  },
+  {
+    "text": "बंद",
+    "valid": true
+  },
+  {
+    "text": "बंद करें",
+    "valid": true
+  },
+  {
+    "text": "बंद होने पर Assist छिप जाता है और हर स्क्रीन सामान्य रूप से काम करती है।",
+    "valid": true
+  },
+  {
+    "text": "बच्चा",
+    "valid": true
+  },
+  {
+    "text": "बच्चे",
+    "valid": true
+  },
+  {
+    "text": "बड़े अक्षर, अंक और हाइफ़न (अधिकतम 16 वर्ण)।",
+    "valid": true
+  },
+  {
+    "text": "बदलाव",
+    "valid": true
+  },
+  {
+    "text": "बदलाव का इतिहास",
+    "valid": true
+  },
+  {
+    "text": "बदलाव का इतिहास लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "बदलाव छोड़ें",
+    "valid": true
+  },
+  {
+    "text": "बदलाव सहेजा नहीं जा सका। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "बदलाव सहेजे नहीं जा सके। चिह्नित फ़ील्ड जाँचें और फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "बदलाव सिंक होने की प्रतीक्षा में",
+    "valid": true
+  },
+  {
+    "text": "बदलावों का पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "बदली जा रही है",
+    "valid": true
+  },
+  {
+    "text": "बदले गए फ़ील्ड",
+    "valid": true
+  },
+  {
+    "text": "बदले जाएँगे",
+    "valid": true
+  },
+  {
+    "text": "बनाई गई",
+    "valid": true
+  },
+  {
+    "text": "बहु-कैंपस समूह",
+    "valid": true
+  },
+  {
+    "text": "बाद में",
+    "valid": true
+  },
+  {
+    "text": "बिना समाप्ति",
+    "valid": true
+  },
+  {
+    "text": "बुधवार",
+    "valid": true
+  },
+  {
+    "text": "बैच",
+    "valid": true
+  },
+  {
+    "text": "ब्रांड",
+    "valid": true
+  },
+  {
+    "text": "ब्रांड एसेट",
+    "valid": true
+  },
+  {
+    "text": "ब्राउज़र",
+    "valid": true
+  },
+  {
+    "text": "ब्राउज़र टैब में दिखने वाला चौकोर आइकन (https:// URL या / से शुरू होने वाला पथ)।",
+    "valid": true
+  },
+  {
+    "text": "ब्लॉक",
+    "valid": true
+  },
+  {
+    "text": "भारत (IN)",
+    "valid": true
+  },
+  {
+    "text": "भारतीय राष्ट्रीय",
+    "valid": true
+  },
+  {
+    "text": "भाषा",
+    "valid": true
+  },
+  {
+    "text": "भाषा और क्षेत्रीय सेटिंग",
+    "valid": true
+  },
+  {
+    "text": "भाषा और प्रारूप",
+    "valid": true
+  },
+  {
+    "text": "भाषा जोड़ें…",
+    "valid": true
+  },
+  {
+    "text": "भाषा सेटिंग लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
+    "text": "भाषा सेटिंग सहेजी गईं।",
+    "valid": true
+  },
+  {
+    "text": "भूमिका",
+    "valid": true
+  },
+  {
+    "text": "भूमिका {name} देखें",
+    "valid": true
+  },
+  {
+    "text": "भूमिका {name} संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "भूमिका असाइनमेंट",
+    "valid": true
+  },
+  {
+    "text": "भूमिका का नाम",
+    "valid": true
+  },
+  {
+    "text": "भूमिका को एक नाम, कम से कम एक अनुमति और कम से कम एक दायरा दें।",
+    "valid": true
+  },
+  {
+    "text": "भूमिका जोड़ी गई।",
+    "valid": true
+  },
+  {
+    "text": "भूमिका जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "भूमिका सहेजी गई।",
+    "valid": true
+  },
+  {
+    "text": "भूमिका हटाई गई।",
+    "valid": true
+  },
+  {
+    "text": "भूमिकाएँ",
+    "valid": true
+  },
+  {
+    "text": "भूमिकाएँ और असाइनमेंट प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "भेजने की प्रतीक्षा में",
+    "valid": true
+  },
+  {
+    "text": "भेजा गया",
+    "valid": true
+  },
+  {
+    "text": "भेजा जा रहा है",
+    "valid": true
+  },
+  {
+    "text": "मंगलवार",
+    "valid": true
+  },
+  {
+    "text": "मध्य पूर्व (ME)",
+    "valid": true
+  },
+  {
+    "text": "माता-पिता",
+    "valid": true
+  },
+  {
+    "text": "माता-पिता या अभिभावक",
+    "valid": true
+  },
+  {
+    "text": "मान टेक्स्ट स्ट्रिंग होना चाहिए",
+    "valid": true
+  },
+  {
+    "text": "मान्य बदलाव लागू करें",
+    "valid": true
+  },
+  {
+    "text": "मार्केटिंग",
+    "valid": true
+  },
+  {
+    "text": "मिटाना लंबित",
+    "valid": true
+  },
+  {
+    "text": "मिलाया गया",
+    "valid": true
+  },
+  {
+    "text": "मुख्य",
+    "valid": true
+  },
+  {
+    "text": "मुख्य और UI फ़ॉन्ट",
+    "valid": true
+  },
+  {
+    "text": "मुख्य कार्रवाई",
+    "valid": true
+  },
+  {
+    "text": "मुख्य नेविगेशन",
+    "valid": true
+  },
+  {
+    "text": "मुख्य मॉड्यूल हमेशा चालू रहते हैं। आपकी योजना के वैकल्पिक मॉड्यूल बंद किए जा सकते हैं; बंद मॉड्यूल सभी के मेनू से हट जाते हैं।",
+    "valid": true
+  },
+  {
+    "text": "मुद्रा",
+    "valid": true
+  },
+  {
+    "text": "मेनू खोलें",
+    "valid": true
+  },
+  {
+    "text": "मेनू बंद करें",
+    "valid": true
+  },
+  {
+    "text": "मेरा रखें",
+    "valid": true
+  },
+  {
+    "text": "मेरी प्राथमिकताएँ",
+    "valid": true
+  },
+  {
+    "text": "मैं समझता/समझती हूँ कि Nexus सहायता कर्मचारी {end} तक यह डेटा देखेंगे।",
+    "valid": true
+  },
+  {
+    "text": "मॉड्यूल",
+    "valid": true
+  },
+  {
+    "text": "मॉड्यूल चालू या बंद करें",
+    "valid": true
+  },
+  {
+    "text": "यह अनुरोध बंद है।",
+    "valid": true
+  },
+  {
+    "text": "यह अवधि",
+    "valid": true
+  },
+  {
+    "text": "यह आपका खाता है। इसकी स्थिति कोई दूसरा व्यवस्थापक ही बदल सकता है।",
+    "valid": true
+  },
+  {
+    "text": "यह ओवरराइड वापस नहीं लाया जा सका।",
+    "valid": true
+  },
+  {
+    "text": "यह काम नहीं हुआ। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "यह डिवाइस",
+    "valid": true
+  },
+  {
+    "text": "यह डिवाइस, ऑफ़लाइन बदलाव और सिंक टकराव।",
+    "valid": true
+  },
+  {
+    "text": "यह पता किसी पृष्ठ से मेल नहीं खाता। लिंक जाँचें या होम पर वापस जाएँ।",
+    "valid": true
+  },
+  {
+    "text": "यह पृष्ठ केवल ऑनलाइन काम करता है। इंटरनेट से कनेक्ट करें और फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "यह पृष्ठ जाँचें",
+    "valid": true
+  },
+  {
+    "text": "यह फ़ील्ड आवश्यक है",
+    "valid": true
+  },
+  {
+    "text": "यह वही डिवाइस है जिसका आप अभी उपयोग कर रहे हैं। आप साइन आउट हो जाएँगे और इसका डेटा हटा दिया जाएगा।",
+    "valid": true
+  },
+  {
+    "text": "यहाँ केवल बदलाव का प्रकार दिखता है, उसकी सामग्री कभी नहीं।",
+    "valid": true
+  },
+  {
+    "text": "यहाँ कोई टकराव नहीं।",
+    "valid": true
+  },
+  {
+    "text": "यहाँ लिखें…",
+    "valid": true
+  },
+  {
+    "text": "यूरोप (EU)",
+    "valid": true
+  },
+  {
+    "text": "योजना",
+    "valid": true
+  },
+  {
+    "text": "योजना और उपयोग",
+    "valid": true
+  },
+  {
+    "text": "योजना और उपयोग देखें",
+    "valid": true
+  },
+  {
+    "text": "योजना और उपयोग लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "योजना के भाग",
+    "valid": true
+  },
+  {
+    "text": "रंग",
+    "valid": true
+  },
+  {
+    "text": "रंग चुनें",
+    "valid": true
+  },
+  {
+    "text": "रंग मोड",
+    "valid": true
+  },
+  {
+    "text": "रद्द",
+    "valid": true
+  },
+  {
+    "text": "रद्द करें",
+    "valid": true
+  },
+  {
+    "text": "रद्द करें और मिटाएँ",
+    "valid": true
+  },
+  {
+    "text": "रविवार",
+    "valid": true
+  },
+  {
+    "text": "राज्य, प्रांत या अमीरात",
+    "valid": true
+  },
+  {
+    "text": "रिपोर्ट तैयार की जा रही है।",
+    "valid": true
+  },
+  {
+    "text": "रिपोर्ट पढ़ें",
+    "valid": true
+  },
+  {
+    "text": "लंबित",
+    "valid": true
+  },
+  {
+    "text": "लक्ष्य",
+    "valid": true
+  },
+  {
+    "text": "लाइट",
+    "valid": true
+  },
+  {
+    "text": "लाइट थीम पर जाएँ",
+    "valid": true
+  },
+  {
+    "text": "लाइव कंट्रास्ट जाँच के साथ अपनी संस्था के लाइट और डार्क रंग, फ़ॉन्ट, स्पेसिंग और ब्रांड एसेट अनुकूलित करें।",
+    "valid": true
+  },
+  {
+    "text": "लाइव पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "लागू",
+    "valid": true
+  },
+  {
+    "text": "लागू करने के लिए कोई मान्य जोड़ या बदलाव नहीं।",
+    "valid": true
+  },
+  {
+    "text": "लागू होने की परतें",
+    "valid": true
+  },
+  {
+    "text": "लेआउट घनत्व",
+    "valid": true
+  },
+  {
+    "text": "लॉक",
+    "valid": true
+  },
+  {
+    "text": "लोगो URL",
+    "valid": true
+  },
+  {
+    "text": "लोगों को आमंत्रित करें, उन्हें किसी दायरे में भूमिकाएँ दें, साइन-इन सत्र और सिंगल साइन-ऑन देखें।",
+    "valid": true
+  },
+  {
+    "text": "लोगों को आमंत्रित करें, उन्हें भूमिकाएँ दें और देखें कि कौन साइन इन है।",
+    "valid": true
+  },
+  {
+    "text": "लोड हो रहा है…",
+    "valid": true
+  },
+  {
+    "text": "वर्तमान",
+    "valid": true
+  },
+  {
+    "text": "वर्तमान अनुपात {ratio}:1 · कम से कम {minRatio}:1 आवश्यक",
+    "valid": true
+  },
+  {
+    "text": "वर्तमान टेक्स्ट",
+    "valid": true
+  },
+  {
+    "text": "वर्तमान योजना",
+    "valid": true
+  },
+  {
+    "text": "वर्ष शुरू होता है",
+    "valid": true
+  },
+  {
+    "text": "वर्ष समाप्त होता है",
+    "valid": true
+  },
+  {
+    "text": "वापस",
+    "valid": true
+  },
+  {
+    "text": "वापस लाएँ",
+    "valid": true
+  },
+  {
+    "text": "वापस ली गई",
+    "valid": true
+  },
+  {
+    "text": "वित्त फ़ील्ड",
+    "valid": true
+  },
+  {
+    "text": "विद्यार्थी",
+    "valid": true
+  },
+  {
+    "text": "विद्यार्थी सीमा",
+    "valid": true
+  },
+  {
+    "text": "विफल",
+    "valid": true
+  },
+  {
+    "text": "विभाग",
+    "valid": true
+  },
+  {
+    "text": "विवरण",
+    "valid": true
+  },
+  {
+    "text": "विवरण देखें",
+    "valid": true
+  },
+  {
+    "text": "विषय",
+    "valid": true
+  },
+  {
+    "text": "विस्तृत",
+    "valid": true
+  },
+  {
+    "text": "वे कौन से क्षेत्र देख सकते हैं",
+    "valid": true
+  },
+  {
+    "text": "वैकल्पिक",
+    "valid": true
+  },
+  {
+    "text": "व्यक्ति",
+    "valid": true
+  },
+  {
+    "text": "व्यवस्थापक",
+    "valid": true
+  },
+  {
+    "text": "व्यावसायिक और तकनीकी",
+    "valid": true
+  },
+  {
+    "text": "शनिवार",
+    "valid": true
+  },
+  {
+    "text": "शब्दावली",
+    "valid": true
+  },
+  {
+    "text": "शब्दावली पैक",
+    "valid": true
+  },
+  {
+    "text": "शहर",
+    "valid": true
+  },
+  {
+    "text": "शांत समय",
+    "valid": true
+  },
+  {
+    "text": "शांत समय में संदेश रोकें",
+    "valid": true
+  },
+  {
+    "text": "शिक्षक",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी",
+    "valid": true
+  },
+  {
+    "text": "शुक्रवार",
+    "valid": true
+  },
+  {
+    "text": "शुरुआत और समाप्ति अलग होनी चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "शुरू होती है",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक अवधियाँ",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक कैलेंडर",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक कैलेंडर लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक कैलेंडर सहेजा गया।",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक वर्ष",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक संरचना",
+    "valid": true
+  },
+  {
+    "text": "श्रृंखला जाँचने के लिए फ़िल्टर हटाएँ।",
+    "valid": true
+  },
+  {
+    "text": "श्रेणी",
+    "valid": true
+  },
+  {
+    "text": "संख्या और कोड फ़ॉन्ट",
+    "valid": true
+  },
+  {
+    "text": "संगठन पदानुक्रम",
+    "valid": true
+  },
+  {
+    "text": "संतुलित",
+    "valid": true
+  },
+  {
+    "text": "संदर्भ में पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "संदेश",
+    "valid": true
+  },
+  {
+    "text": "संदेश का सिंटैक्स ठीक करें, जैसे कोई छूटा हुआ बंद कोष्ठक।",
+    "valid": true
+  },
+  {
+    "text": "संदेश कुंजियों को टेक्स्ट से जोड़ने वाला JSON चिपकाएँ…",
+    "valid": true
+  },
+  {
+    "text": "संदेश कुंजी",
+    "valid": true
+  },
+  {
+    "text": "संदेश खाली नहीं हो सकता",
+    "valid": true
+  },
+  {
+    "text": "संदेश टेम्पलेट, डिलीवरी लॉग और आपकी अपनी प्राथमिकताएँ।",
+    "valid": true
+  },
+  {
+    "text": "संदेश मान्य होते ही पूर्वावलोकन दिखेगा।",
+    "valid": true
+  },
+  {
+    "text": "संपर्क",
+    "valid": true
+  },
+  {
+    "text": "संपादन की भाषा",
+    "valid": true
+  },
+  {
+    "text": "संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "संयुक्त राज्य (US)",
+    "valid": true
+  },
+  {
+    "text": "संरचना",
+    "valid": true
+  },
+  {
+    "text": "संवेदनशील",
+    "valid": true
+  },
+  {
+    "text": "संस्करण",
+    "valid": true
+  },
+  {
+    "text": "संस्करण {version, number}",
+    "valid": true
+  },
+  {
+    "text": "संस्करण {version, number} पर वापस लाया गया।",
+    "valid": true
+  },
+  {
+    "text": "संस्था का सारा डेटा",
+    "valid": true
+  },
+  {
+    "text": "संस्थान",
+    "valid": true
+  },
+  {
+    "text": "संस्थान ओवरराइड",
+    "valid": true
+  },
+  {
+    "text": "संस्थान का नाम",
+    "valid": true
+  },
+  {
+    "text": "संस्थान का प्रकार",
+    "valid": true
+  },
+  {
+    "text": "संस्थान का समय क्षेत्र उपयोग करता है ({timeZone})",
+    "valid": true
+  },
+  {
+    "text": "संस्थान की पहचान",
+    "valid": true
+  },
+  {
+    "text": "संस्थान प्रकार प्रोफ़ाइल लोड नहीं हो सकी।",
+    "valid": true
+  },
+  {
+    "text": "संस्थान फ़ेविकॉन का पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "संस्थान बदलें",
+    "valid": true
+  },
+  {
+    "text": "संस्थान लोगो का पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "संस्थान से लें",
+    "valid": true
+  },
+  {
+    "text": "संस्थान सेटअप",
+    "valid": true
+  },
+  {
+    "text": "संस्थान सेटअप के भाग",
+    "valid": true
+  },
+  {
+    "text": "संस्थान सेटअप लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "सक्रिय",
+    "valid": true
+  },
+  {
+    "text": "सक्रिय सत्र",
+    "valid": true
+  },
+  {
+    "text": "सघन",
+    "valid": true
+  },
+  {
+    "text": "सतहें और बॉर्डर",
+    "valid": true
+  },
+  {
+    "text": "सत्र",
+    "valid": true
+  },
+  {
+    "text": "सत्र समाप्त किया गया।",
+    "valid": true
+  },
+  {
+    "text": "सप्ताहांत के दिन",
+    "valid": true
+  },
+  {
+    "text": "सबसे ऊपर की सेट परत लागू होती है। नीचे की परतें विकल्प के रूप में रहती हैं।",
+    "valid": true
+  },
+  {
+    "text": "सभी उद्देश्य",
+    "valid": true
+  },
+  {
+    "text": "सभी कंट्रास्ट जोड़ियाँ WCAG 2.2 AA आवश्यकताएँ पूरी करती हैं।",
+    "valid": true
+  },
+  {
+    "text": "सभी स्थितियाँ",
+    "valid": true
+  },
+  {
+    "text": "समय",
+    "valid": true
+  },
+  {
+    "text": "समय {timeZone} में है। ज़रूरी सुरक्षा संदेश फिर भी आएँगे।",
+    "valid": true
+  },
+  {
+    "text": "समय क्षेत्र",
+    "valid": true
+  },
+  {
+    "text": "समय सीमा पार",
+    "valid": true
+  },
+  {
+    "text": "समर्थित भाषाएँ",
+    "valid": true
+  },
+  {
+    "text": "समाधान",
+    "valid": true
+  },
+  {
+    "text": "समाप्त",
+    "valid": true
+  },
+  {
+    "text": "समाप्त होती है",
+    "valid": true
+  },
+  {
+    "text": "समूह",
+    "valid": true
+  },
+  {
+    "text": "समूह ओवरराइड द्वारा लॉक",
+    "valid": true
+  },
+  {
+    "text": "समूह ओवरराइड द्वारा लॉक है। संस्थान व्यवस्थापक ये शब्द न बदल सकते हैं, न हटा सकते हैं।",
+    "valid": true
+  },
+  {
+    "text": "समूह थीम द्वारा लॉक है। केवल समूह व्यवस्थापक ही यह टोकन बदल सकता है।",
+    "valid": true
+  },
+  {
+    "text": "समूह द्वारा लॉक",
+    "valid": true
+  },
+  {
+    "text": "सर्वर का रखें",
+    "valid": true
+  },
+  {
+    "text": "सहमति अनुरोध",
+    "valid": true
+  },
+  {
+    "text": "सहमति रिकॉर्ड",
+    "valid": true
+  },
+  {
+    "text": "सहमतियाँ",
+    "valid": true
+  },
+  {
+    "text": "सहमतियाँ प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "सहेजने तक केवल इस पूर्वावलोकन पर लागू होता है।",
+    "valid": true
+  },
+  {
+    "text": "सहेजने से पहले कुछ शब्द दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "सहेजने से पहले नीचे की हर विफल रंग जोड़ी ठीक करें या सुझाव का उपयोग करें।",
+    "valid": true
+  },
+  {
+    "text": "सहेजें",
+    "valid": true
+  },
+  {
+    "text": "साइन आउट",
+    "valid": true
+  },
+  {
+    "text": "साइन-इन तरीका",
+    "valid": true
+  },
+  {
+    "text": "सामग्री पर जाएँ",
+    "valid": true
+  },
+  {
+    "text": "सामान्य",
+    "valid": true
+  },
+  {
+    "text": "सारांश में शामिल करें",
+    "valid": true
+  },
+  {
+    "text": "सिंक केंद्र",
+    "valid": true
+  },
+  {
+    "text": "सिंक केंद्र के भाग",
+    "valid": true
+  },
+  {
+    "text": "सिंक टकराव",
+    "valid": true
+  },
+  {
+    "text": "सिंक डेटा लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "सिंक त्रुटि",
+    "valid": true
+  },
+  {
+    "text": "सिंक हो गया",
+    "valid": true
+  },
+  {
+    "text": "सिंक हो रहा है…",
+    "valid": true
+  },
+  {
+    "text": "सिंगल साइन-ऑन",
+    "valid": true
+  },
+  {
+    "text": "सिंगल साइन-ऑन प्रदाता",
+    "valid": true
+  },
+  {
+    "text": "सिंगल साइन-ऑन प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "सिंगल साइन-ऑन सेटिंग सहेजी गईं।",
+    "valid": true
+  },
+  {
+    "text": "सिस्टम",
+    "valid": true
+  },
+  {
+    "text": "सिस्टम भूमिकाएँ उत्पाद के साथ आती हैं और केवल पढ़ने के लिए हैं। अपनी ज़रूरतों के लिए कस्टम भूमिकाएँ बनाएँ।",
+    "valid": true
+  },
+  {
+    "text": "सिस्टम भूमिकाएँ केवल पढ़ने के लिए हैं।",
+    "valid": true
+  },
+  {
+    "text": "सुझाई गई ब्रांड जोड़ी ({mode})",
+    "valid": true
+  },
+  {
+    "text": "सुझाव का उपयोग करें ({color})",
+    "valid": true
+  },
+  {
+    "text": "सुझाव लागू करें",
+    "valid": true
+  },
+  {
+    "text": "सुधार",
+    "valid": true
+  },
+  {
+    "text": "सुबह का सत्र",
+    "valid": true
+  },
+  {
+    "text": "सुरक्षा",
+    "valid": true
+  },
+  {
+    "text": "सुरक्षा के लिए AI की अनुमति दें",
+    "valid": true
+  },
+  {
+    "text": "सुरक्षा घटना",
+    "valid": true
+  },
+  {
+    "text": "सुलझे",
+    "valid": true
+  },
+  {
+    "text": "सूचना टेम्पलेट",
+    "valid": true
+  },
+  {
+    "text": "सूचना टेम्पलेट प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "सूचना बंद करें",
+    "valid": true
+  },
+  {
+    "text": "सूचनाएँ",
+    "valid": true
+  },
+  {
+    "text": "सूचनाएँ भेजें",
+    "valid": true
+  },
+  {
+    "text": "सूचनाएँ लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
+    "text": "सूचनाओं के भाग",
+    "valid": true
+  },
+  {
+    "text": "से",
+    "valid": true
+  },
+  {
+    "text": "सेट नहीं",
+    "valid": true
+  },
+  {
+    "text": "सेमेस्टर",
+    "valid": true
+  },
+  {
+    "text": "सोमवार",
+    "valid": true
+  },
+  {
+    "text": "स्टार्टर",
+    "valid": true
+  },
+  {
+    "text": "स्टैंडर्ड",
+    "valid": true
+  },
+  {
+    "text": "स्टोरेज",
+    "valid": true
+  },
+  {
+    "text": "स्थिति",
+    "valid": true
+  },
+  {
+    "text": "स्रोत",
+    "valid": true
+  },
+  {
+    "text": "स्वयं व्यक्ति",
+    "valid": true
+  },
+  {
+    "text": "स्वागत है, {name}",
+    "valid": true
+  },
+  {
+    "text": "स्वास्थ्य फ़ील्ड",
+    "valid": true
+  },
+  {
+    "text": "स्वास्थ्य रिकॉर्ड",
+    "valid": true
+  },
+  {
+    "text": "स्वीकृत",
+    "valid": true
+  },
+  {
+    "text": "स्वीकृत करें…",
+    "valid": true
+  },
+  {
+    "text": "हटाएँ",
+    "valid": true
+  },
+  {
+    "text": "हटाना",
+    "valid": true
+  },
+  {
+    "text": "हम आपसे कैसे संपर्क करें",
+    "valid": true
+  },
+  {
+    "text": "हमारे वॉल्ट में आपकी कुंजी (BYOK)",
+    "valid": true
+  },
+  {
+    "text": "हाँ, यही डिवाइस",
+    "valid": true
+  },
+  {
+    "text": "हिजरी (उम्म अल-क़ुरा)",
+    "valid": true
+  },
+  {
+    "text": "हिब्रू",
+    "valid": true
+  },
+  {
+    "text": "होम",
+    "valid": true
+  },
+  {
+    "text": "होम पर जाएँ",
+    "valid": true
+  },
+  {
+    "text": "ஃபேவிகான் URL",
+    "valid": true
+  },
+  {
+    "text": "அஞ்சல் குறியீடு",
+    "valid": true
+  },
+  {
+    "text": "அடர்த்தி",
+    "valid": true
+  },
+  {
+    "text": "அடுத்த பக்கம்",
+    "valid": true
+  },
+  {
+    "text": "அடுத்த மாதத் தொடக்கத்தில் வரவுகள் புதுப்பிக்கப்படும், அல்லது உங்கள் நிர்வாகி கூடுதலாகச் சேர்க்கலாம்.",
+    "valid": true
+  },
+  {
+    "text": "அடுத்த முறை இணையும்போது சாதனம் வெளியேற்றப்பட்டு அதன் ஆஃப்லைன் தரவு நீக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "அடுத்து",
+    "valid": true
+  },
+  {
+    "text": "அடையாள ஆவணப் புலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "அணுகலை அனுமதி",
+    "valid": true
+  },
+  {
+    "text": "அணுகல்",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் அனுமதி {grant}",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் அனுமதி {grant} இன் கீழ் வழங்குநர் பணியாளரால் செய்யப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் அனுமதிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் கோரிக்கைகளை அனுமதிக்கவும் மறுக்கவும், அனுமதிகள் மற்றும் சாவிகள்.",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் கோரிக்கைகள்",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் கோரிக்கைகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "அணுகல் திரும்பப் பெறப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "அணைக்கப்பட்டால் Assist மறைக்கப்படும்; ஒவ்வொரு திரையும் வழக்கம்போல் இயங்கும்.",
+    "valid": true
+  },
+  {
+    "text": "அது செயல்படவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "அந்த நபரே",
+    "valid": true
+  },
+  {
+    "text": "அந்த மொழிக்கு ஏற்கனவே ஒரு பதிப்பு உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "அனுப்பக் காத்திருக்கிறது",
+    "valid": true
+  },
+  {
+    "text": "அனுப்பப்படவில்லை",
+    "valid": true
+  },
+  {
+    "text": "அனுப்பப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "அனுப்புகிறது",
+    "valid": true
+  },
+  {
+    "text": "அனுமதிகள்",
+    "valid": true
+  },
+  {
+    "text": "அனுமதிக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "அனுமதித்தவர்கள்",
+    "valid": true
+  },
+  {
+    "text": "அனுமதி…",
+    "valid": true
+  },
+  {
+    "text": "அனைத்து நிலைகளும்",
+    "valid": true
+  },
+  {
+    "text": "அனைத்து நோக்கங்களும்",
+    "valid": true
+  },
+  {
+    "text": "அனைத்து மாறுபாட்டு இணைகளும் WCAG 2.2 AA தேவைகளைப் பூர்த்தி செய்கின்றன.",
+    "valid": true
+  },
+  {
+    "text": "அமர்வு",
+    "valid": true
+  },
+  {
+    "text": "அமர்வு முடிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "அமர்வுகள்",
+    "valid": true
+  },
+  {
+    "text": "அமெரிக்கா (US)",
+    "valid": true
+  },
+  {
+    "text": "அமைக்கப்படவில்லை",
+    "valid": true
+  },
+  {
+    "text": "அமைக்கப்பட்ட மேல் அடுக்கே பயன்படும். கீழ் அடுக்குகள் மாற்றாக இருக்கும்.",
+    "valid": true
+  },
+  {
+    "text": "அமைதி நேரத்தில் செய்திகளை நிறுத்திவை",
+    "valid": true
+  },
+  {
+    "text": "அமைதி நேரம்",
+    "valid": true
+  },
+  {
+    "text": "அறிக்கை தயாரிக்கப்படுகிறது.",
+    "valid": true
+  },
+  {
+    "text": "அறிக்கையைப் படி",
+    "valid": true
+  },
+  {
+    "text": "அறியப்படாத செய்திச் சாவி",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்பு வார்ப்புருக்களை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்பு வார்ப்புருக்கள்",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்புகளை அனுப்பு",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்புப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்பை மூடு",
+    "valid": true
+  },
+  {
+    "text": "அழிக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "அழிப்பு நிலுவையில்",
+    "valid": true
+  },
+  {
+    "text": "அழைக்கப்பட்டார்",
+    "valid": true
+  },
+  {
+    "text": "அழைப்பு அனுப்பப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "அழைப்பை அனுப்பு",
+    "valid": true
+  },
+  {
+    "text": "அவசர அணுகல்",
+    "valid": true
+  },
+  {
+    "text": "அவசர அணுகல் எதுவும் நடக்கவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அவர்கள் செய்தவை",
+    "valid": true
+  },
+  {
+    "text": "அவர்கள் பார்க்கக்கூடிய பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "ஆஃப்லைனில் வேலை செய்யத் தயார்",
+    "valid": true
+  },
+  {
+    "text": "ஆஃப்லைன்",
+    "valid": true
+  },
+  {
+    "text": "ஆசிய-பசிபிக் (APAC)",
+    "valid": true
+  },
+  {
+    "text": "ஆசிரியர்",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு தொடங்கும் நாள்",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு முடியும் நாள்",
+    "valid": true
+  },
+  {
+    "text": "ஆதரிக்கப்படும் மொழிகள்",
+    "valid": true
+  },
+  {
+    "text": "ஆன்லைன் அகாடமி",
+    "valid": true
+  },
+  {
+    "text": "ஆப்பை நிறுவு",
+    "valid": true
+  },
+  {
+    "text": "ஆம், இந்தச் சாதனம்",
+    "valid": true
+  },
+  {
+    "text": "ஆரம்பக் கல்வி மற்றும் முன்பள்ளி",
+    "valid": true
+  },
+  {
+    "text": "இங்கே இன்னும் எதுவும் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இங்கே தட்டச்சு செய்க…",
+    "valid": true
+  },
+  {
+    "text": "இங்கே முரண்பாடுகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இடஒதுக்கிகள் மாதிரி மதிப்புகளால் நிரப்பப்பட்டுள்ளன.",
+    "valid": true
+  },
+  {
+    "text": "இடஒதுக்கிகள், பன்மை போன்ற ICU செய்தி தொடரியலை ஆதரிக்கிறது.",
+    "valid": true
+  },
+  {
+    "text": "இடைநிறுத்தப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "இடைநிறுத்து",
+    "valid": true
+  },
+  {
+    "text": "இடைமுக உரைகளைத் தேடவும், ஒவ்வொரு மொழியிலும் சொற்களைத் தனிப்பயனாக்கவும், வரலாற்றைப் பார்க்கவும், மேலெழுதல்களை இறக்கவும் அல்லது ஏற்றுமதி செய்யவும்.",
+    "valid": true
+  },
+  {
+    "text": "இணக்கம்",
+    "valid": true
+  },
+  {
+    "text": "இணைக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "இணைப்பு தேவை",
+    "valid": true
+  },
+  {
+    "text": "இது உங்கள் கணக்கு. இதன் நிலையை வேறொரு நிர்வாகிதான் மாற்ற வேண்டும்.",
+    "valid": true
+  },
+  {
+    "text": "இது நீங்கள் இப்போது பயன்படுத்தும் சாதனம். நீங்கள் வெளியேற்றப்படுவீர்கள், அதன் தரவு நீக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்த அனுமதியின் கீழ் எதுவும் செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த ஆண்டுக்கு விடுமுறைகள் சேர்க்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனத்தின் {locale} மேலெழுதல்களை JSON கோப்பாகப் பதிவிறக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனத்திற்கு எந்தத் தீமும் அமைக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனத்திற்குக் கல்வி நாட்காட்டி எதுவும் கிடைக்கவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த மாத AI வரவுகள்",
+    "valid": true
+  },
+  {
+    "text": "இந்த மின்னஞ்சலுக்கு ஏற்கனவே கணக்கு உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "இந்த முகவரி எந்தப் பக்கத்துடனும் பொருந்தவில்லை. இணைப்பைச் சரிபார்க்கவும் அல்லது முகப்புக்குத் திரும்பவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்த மேலெழுதலைத் திரும்பப் பெற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த மொழிக்கான தனிப்பயன் சொற்களை உள்ளிடவும்…",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கணக்கிற்கு எந்த நிறுவனமும் அமைக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் காலத்தில் பயன்பாடு பதிவாகவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் காலம்",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கோரிக்கை மூடப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கோரிக்கைக்கு அந்தப் படி அனுமதிக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தச் சாதனத்தில் உள்ள அனைத்தும் அனுப்பப்பட்டன.",
+    "valid": true
+  },
+  {
+    "text": "இந்தச் சாதனத்தில் சேமிக்கப்பட்டது. மீண்டும் ஆன்லைனுக்கு வந்ததும் ஒத்திசைக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தச் சாதனம்",
+    "valid": true
+  },
+  {
+    "text": "இந்தச் சாதனம் இன்னும் அனுப்ப வேண்டியதைப் பார்க்கவும், ஒத்திசைக்கவும், நிறுவனத்தின் சாதனங்களையும் முரண்பாடுகளையும் நிர்வகிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தச் சாதனம், ஆஃப்லைன் மாற்றங்கள் மற்றும் ஒத்திசைவு முரண்பாடுகள்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தச் சாவிக்கு இன்னும் மேலெழுதல் மாற்றங்கள் பதிவாகவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பக்கத்தைச் சரிபார்",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பக்கம் ஆன்லைனில் மட்டுமே இயங்கும். இணையத்துடன் இணைத்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பயனருக்கு இன்னும் பங்குகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் புலம் தேவை",
+    "valid": true
+  },
+  {
+    "text": "இந்திய தேசிய நாட்காட்டி",
+    "valid": true
+  },
+  {
+    "text": "இந்தியா (IN)",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் இணக்கத் தொகுப்பு எதுவும் பொருந்தவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் ஒற்றை உள்நுழைவு வழங்குநர் அமைக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் தொகுதிகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் பங்குகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் வளாகங்கள் சேர்க்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் வார்ப்புருக்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்றைய தேதி மற்றும் நேரம்",
+    "valid": true
+  },
+  {
+    "text": "இப்போது ஒத்திசை",
+    "valid": true
+  },
+  {
+    "text": "இப்போதே திரும்பப் பெறு",
+    "valid": true
+  },
+  {
+    "text": "இயக்கத்தில்",
+    "valid": true
+  },
+  {
+    "text": "இயக்கம்",
+    "valid": true
+  },
+  {
+    "text": "இயல்புநிலை மதிப்பீட்டு முறை",
+    "valid": true
+  },
+  {
+    "text": "இயல்புநிலை மொழி மற்றும் பிராந்தியம்",
+    "valid": true
+  },
+  {
+    "text": "இயல்புநிலைச் சேமிப்புக் காலம்",
+    "valid": true
+  },
+  {
+    "text": "இயல்புநிலைத் தொகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "இயல்புநிலைப் பதில் தரம்",
+    "valid": true
+  },
+  {
+    "text": "இரண்டாம் நிலை",
+    "valid": true
+  },
+  {
+    "text": "இருண்ட",
+    "valid": true
+  },
+  {
+    "text": "இருண்ட தீமுக்கு மாறு",
+    "valid": true
+  },
+  {
+    "text": "இருவரின் ஒப்புதலுடன் Nexus அவசர அணுகலைப் பயன்படுத்தியது, உடனே உங்களுக்குத் தெரிவித்தது.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதி செய்த மேலெழுதல்களைப் பயன்படுத்த முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதி மற்றும் ஏற்றுமதி",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதியை முன்னோட்டமிட முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இலக்கு",
+    "valid": true
+  },
+  {
+    "text": "உங்களுக்காகக் காத்திருக்கிறது",
+    "valid": true
+  },
+  {
+    "text": "உங்களுக்குத் தெரிவித்தது",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் கடைசி நிர்வாகப் பங்கை நீங்களே நீக்க முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் கேள்வி",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் சொந்தச் சேவையகங்களில் இயங்குகிறது",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் தரவு இந்தச் சாவிகளால் மறையாக்கம் செய்யப்பட்டுள்ளது. நீங்கள் விலகும்போது சாவிகள் அழிக்கப்படும்; தரவை மீண்டும் ஒருபோதும் படிக்க முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் திட்டத்தின் தொகுதிகள், AI வரவுகள் மற்றும் பயன்பாடு.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் திட்டத்தில் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் திட்டத்தைப் பார்க்கவும், விருப்பத் தொகுதிகளை இயக்கவும் அல்லது அணைக்கவும், இந்தக் காலத்தின் பயன்பாட்டைக் கவனிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் தொகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிர்வாகி AI அமைப்புகளில் இதை இயக்கலாம். மற்ற அனைத்தும் வழக்கம்போல் இயங்கும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறங்கள், எழுத்துருக்கள் மற்றும் லோகோ, நேரடி முன்னோட்டத்துடன்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறுவன சுயவிவரம், வளாகங்கள், பிராந்திய வடிவங்கள் மற்றும் கல்வி நாட்காட்டியை நிர்வகிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறுவனத்தின் திட்டத்தில் இந்தத் தொகுதி இல்லை. தேவைப்பட்டால் உங்கள் நிர்வாகியிடம் கேளுங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறுவனத்திற்கு இயக்கப்பட்டதும் உங்கள் பங்கிற்கான தொகுதிகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறுவனத்தைப் பற்றிக் கேளுங்கள். பதில்கள் உங்கள் பதிவுகளிலிருந்து AI ஆல் உருவாக்கப்படுகின்றன, எப்போதும் மூலங்களைக் காட்டும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறுவனப் பதிவுகளில் இதற்குப் பதில் இல்லை, எனவே வரவுகள் பயன்படுத்தப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறுவனம் இதை அமைக்கவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் நிறுவனம் உங்களை எப்படித் தொடர்புகொள்ள வேண்டும் எனத் தேர்ந்தெடுக்கவும். நிர்வாகிகள் செய்திகளைத் திருத்தி, அனுப்பியவற்றையும் பார்க்கலாம்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் பங்கு இந்தப் பக்கத்தைத் திறக்க அனுமதிக்கவில்லை. தேவைப்பட்டால் உங்கள் நிர்வாகியிடம் கேளுங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் பெற்றோர் அல்லது பாதுகாவலரிடம் அவர்களின் ஒப்புதல் அமைப்புகளில் AI அம்சங்களை அனுமதிக்கச் சொல்லுங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் வரைவுத் தீமில் உரை மற்றும் ஒரு மாதிரி இணைப்பின் முன்னோட்டம்.",
+    "valid": true
+  },
+  {
+    "text": "உணர்திறன் மிக்கது",
+    "valid": true
+  },
+  {
+    "text": "உயர்",
+    "valid": true
+  },
+  {
+    "text": "உயர் கல்வி",
+    "valid": true
+  },
+  {
+    "text": "உருப்படி",
+    "valid": true
+  },
+  {
+    "text": "உருவாக்கியது",
+    "valid": true
+  },
+  {
+    "text": "உரை",
+    "valid": true
+  },
+  {
+    "text": "உரை மற்றும் UI எழுத்துரு",
+    "valid": true
+  },
+  {
+    "text": "உரை மற்றும் மொழி ஸ்டுடியோ",
+    "valid": true
+  },
+  {
+    "text": "உரை மற்றும் மொழி ஸ்டுடியோ பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "உரை மேலெழுதலை நீக்க முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "உரை மேலெழுதலைச் சேமிக்க முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "உரை மேலெழுதலைத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "உரை மேலெழுதலைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "உரை மேலெழுதல் சேமிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "உரை மேலெழுதல் நீக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "உரை மேலெழுதல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "உலாவி",
+    "valid": true
+  },
+  {
+    "text": "உலாவித் தாவல்களில் காட்டப்படும் சதுர ஐகான் (https:// URL அல்லது / இல் தொடங்கும் பாதை).",
+    "valid": true
+  },
+  {
+    "text": "உள்நுழைவு முறை",
+    "valid": true
+  },
+  {
+    "text": "உள்ளடக்கத்திற்குச் செல்",
+    "valid": true
+  },
+  {
+    "text": "எ.கா. m02.user.invited",
+    "valid": true
+  },
+  {
+    "text": "எங்கள் பெட்டகத்தில் உங்கள் சாவி (BYOK)",
+    "valid": true
+  },
+  {
+    "text": "எங்கே",
+    "valid": true
+  },
+  {
+    "text": "எட்ஜ் சேவையகம்",
+    "valid": true
+  },
+  {
+    "text": "எண்கள் மற்றும் குறியீட்டு எழுத்துரு",
+    "valid": true
+  },
+  {
+    "text": "எண்ணிக்கை",
+    "valid": true
+  },
+  {
+    "text": "எந்த நிலையும்",
+    "valid": true
+  },
+  {
+    "text": "எந்த வழியும்",
+    "valid": true
+  },
+  {
+    "text": "எந்தப் புலமும் மாறவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "எனது விருப்பங்கள்",
+    "valid": true
+  },
+  {
+    "text": "என்னுடையதை வை",
+    "valid": true
+  },
+  {
+    "text": "எபிரேயம்",
+    "valid": true
+  },
+  {
+    "text": "எழுத்துரு மற்றும் இடைவெளி",
+    "valid": true
+  },
+  {
+    "text": "எழுத்துருக்கள்",
+    "valid": true
+  },
+  {
+    "text": "எழுந்தது",
+    "valid": true
+  },
+  {
+    "text": "ஏதோ தவறு நடந்தது",
+    "valid": true
+  },
+  {
+    "text": "ஏற்றுகிறது…",
+    "valid": true
+  },
+  {
+    "text": "ஏற்றுமதி",
+    "valid": true
+  },
+  {
+    "text": "ஐரோப்பா (EU)",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைக்கிறது…",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைவு முரண்பாடு",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைவு முரண்பாடுகள்",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைவு மையப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைவு மையம்",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைவுத் தரவை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "ஒத்திசைவுப் பிழை",
+    "valid": true
+  },
+  {
+    "text": "ஒப்புதல் கோரிக்கை",
+    "valid": true
+  },
+  {
+    "text": "ஒப்புதல் பதிவுகள்",
+    "valid": true
+  },
+  {
+    "text": "ஒப்புதல்களை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "ஒப்புதல்கள்",
+    "valid": true
+  },
+  {
+    "text": "ஒரு நிறுவனத்தையும் ஒரு பங்கையும் தேர்ந்தெடுக்கவும். இந்த முன்மாதிரி கற்பனையான டெமோ தரவைப் பயன்படுத்துகிறது; கடவுச்சொல் தேவையில்லை.",
+    "valid": true
+  },
+  {
+    "text": "ஒரு பக்கத்திற்கான வரிசைகள்",
+    "valid": true
+  },
+  {
+    "text": "ஒரு விருப்பத்தைத் தேர்ந்தெடுக்கவும்",
+    "valid": true
+  },
+  {
+    "text": "ஒருபோதும் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "ஒற்றை உள்நுழைவு",
+    "valid": true
+  },
+  {
+    "text": "ஒற்றை உள்நுழைவு அமைப்புகள் சேமிக்கப்பட்டன.",
+    "valid": true
+  },
+  {
+    "text": "ஒற்றை உள்நுழைவு வழங்குநர்",
+    "valid": true
+  },
+  {
+    "text": "ஒற்றை உள்நுழைவை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "கடவுச்சாவி",
+    "valid": true
+  },
+  {
+    "text": "கடவுச்சொல்",
+    "valid": true
+  },
+  {
+    "text": "கடைசி உள்நுழைவு",
+    "valid": true
+  },
+  {
+    "text": "கடைசி ஒத்திசைவு",
+    "valid": true
+  },
+  {
+    "text": "கடைசிப் பக்கம்",
+    "valid": true
+  },
+  {
+    "text": "கடைசியாக ஒத்திசைத்தது {time}",
+    "valid": true
+  },
+  {
+    "text": "கடைசியாகப் பார்த்தது",
+    "valid": true
+  },
+  {
+    "text": "கட்டமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கட்டுப்படுத்தப்பட்ட தனிப்பட்ட தரவைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "கட்டுப்படுத்தப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "கணக்கு அழைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கணினி",
+    "valid": true
+  },
+  {
+    "text": "கணினிப் பங்குகளைப் படிக்க மட்டுமே முடியும்.",
+    "valid": true
+  },
+  {
+    "text": "கணினிப் பங்குகள் தயாரிப்புடன் வருகின்றன; அவற்றைப் படிக்க மட்டுமே முடியும். உங்கள் தேவைக்குத் தனிப்பயன் பங்குகளை உருவாக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர்",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர்கள்",
+    "valid": true
+  },
+  {
+    "text": "கல்வி அமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கல்வி நாட்காட்டி",
+    "valid": true
+  },
+  {
+    "text": "கல்வி நாட்காட்டி சேமிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "கல்வி நாட்காட்டிகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கல்விக் காலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "கல்வியாண்டு",
+    "valid": true
+  },
+  {
+    "text": "காகிதம்",
+    "valid": true
+  },
+  {
+    "text": "காட்சி நாட்காட்டி",
+    "valid": true
+  },
+  {
+    "text": "காட்சி நாட்காட்டியில் ஆண்டின் தொடக்கம்: {date}",
+    "valid": true
+  },
+  {
+    "text": "காட்டு",
+    "valid": true
+  },
+  {
+    "text": "காத்திருக்கிறது",
+    "valid": true
+  },
+  {
+    "text": "காரணம்",
+    "valid": true
+  },
+  {
+    "text": "காலங்கள் அமைக்கப்படவில்லை (தொடர்ச்சியான நாட்காட்டி).",
+    "valid": true
+  },
+  {
+    "text": "காலத்தின் பெயர்",
+    "valid": true
+  },
+  {
+    "text": "காலத்தைச் சேர்",
+    "valid": true
+  },
+  {
+    "text": "காலம்",
+    "valid": true
+  },
+  {
+    "text": "காலாவதியானது",
+    "valid": true
+  },
+  {
+    "text": "காலை அமர்வு",
+    "valid": true
+  },
+  {
+    "text": "கிரெகோரியன்",
+    "valid": true
+  },
+  {
+    "text": "கிளையன்ட் ID",
+    "valid": true
+  },
+  {
+    "text": "கிளையன்ட் ரகசியம் உலாவியில் ஒருபோதும் காட்டப்படுவதோ சேமிக்கப்படுவதோ இல்லை. அது நிறுவனத்தின் சாவிப் பெட்டகத்தில் அமைக்கப்படுகிறது.",
+    "valid": true
+  },
+  {
+    "text": "கீழே உள்ள பாதுகாப்பு நிலைமாற்றி தேவை.",
+    "valid": true
+  },
+  {
+    "text": "குறிப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "குறுஞ்செய்தி",
+    "valid": true
+  },
+  {
+    "text": "குறுஞ்செய்திகள்",
+    "valid": true
+  },
+  {
+    "text": "குறைவு",
+    "valid": true
+  },
+  {
+    "text": "குழந்தை",
+    "valid": true
+  },
+  {
+    "text": "குழந்தைகள்",
+    "valid": true
+  },
+  {
+    "text": "குழு",
+    "valid": true
+  },
+  {
+    "text": "குழும மேலெழுதலால் பூட்டப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "குழும மேலெழுதலால் பூட்டப்பட்டது. நிறுவன நிர்வாகிகள் இந்தச் சொற்களை மாற்றவோ நீக்கவோ முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "குழுமத் தீமால் பூட்டப்பட்டது. குழும நிர்வாகி மட்டுமே இந்த டோக்கனை மாற்ற முடியும்.",
+    "valid": true
+  },
+  {
+    "text": "குழுமத்தால் பூட்டப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "குழுமம்",
+    "valid": true
+  },
+  {
+    "text": "கூடுதல்",
+    "valid": true
+  },
+  {
+    "text": "கெடு",
+    "valid": true
+  },
+  {
+    "text": "கெடு கடந்தது",
+    "valid": true
+  },
+  {
+    "text": "கேள்",
+    "valid": true
+  },
+  {
+    "text": "கோரப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "கோரிக்கை",
+    "valid": true
+  },
+  {
+    "text": "கோரிக்கை புதுப்பிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "கோரிக்கை மறுக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "கோரிக்கையை நிராகரி",
+    "valid": true
+  },
+  {
+    "text": "கோரிக்கையை மறு",
+    "valid": true
+  },
+  {
+    "text": "கோரியதைக் குறைக்க மட்டுமே முடியும்.",
+    "valid": true
+  },
+  {
+    "text": "கோரியபடி அதிகபட்சம் {max} மணி நேரம்.",
+    "valid": true
+  },
+  {
+    "text": "சங்கிலியைச் சரிபார்க்க வடிகட்டிகளை நீக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "சட்ட உத்தரவு",
+    "valid": true
+  },
+  {
+    "text": "சந்தைப்படுத்தல்",
+    "valid": true
+  },
+  {
+    "text": "சனி",
+    "valid": true
+  },
+  {
+    "text": "சமநிலையானது",
+    "valid": true
+  },
+  {
+    "text": "சரியான மாற்றங்களைப் பயன்படுத்து",
+    "valid": true
+  },
+  {
+    "text": "சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "சரியான ஹெக்ஸ் நிறத்தை உள்ளிடவும் (எ.கா. #1F5FD1).",
+    "valid": true
+  },
+  {
+    "text": "சாதனங்களை அழித்து முரண்பாடுகளைத் தீர்",
+    "valid": true
+  },
+  {
+    "text": "சாதனங்களையும் ஒத்திசைவையும் பார்",
+    "valid": true
+  },
+  {
+    "text": "சாதனங்கள்",
+    "valid": true
+  },
+  {
+    "text": "சாதனத்தை வை",
+    "valid": true
+  },
+  {
+    "text": "சாதனம்",
+    "valid": true
+  },
+  {
+    "text": "சாதாரணம்",
+    "valid": true
+  },
+  {
+    "text": "சாவி (எ.கா. term.learner) அல்லது சொற்களால் தேடவும்…",
+    "valid": true
+  },
+  {
+    "text": "சாவிகள்",
+    "valid": true
+  },
+  {
+    "text": "சாவிகள் அல்லது உரையைத் தேடு",
+    "valid": true
+  },
+  {
+    "text": "சாவிகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "சிதைவைக் காட்டும் தணிக்கைப் பதிவு, ஒப்புதல் பதிவுகள், தரவுக் கோரிக்கைகள் மற்றும் பொருந்தும் தனியுரிமை விதிகளைப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "சிறார் வயது வரம்பு",
+    "valid": true
+  },
+  {
+    "text": "சுகாதாரப் பதிவுகள்",
+    "valid": true
+  },
+  {
+    "text": "சுகாதாரப் புலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "சுயவிவரம்",
+    "valid": true
+  },
+  {
+    "text": "சுயவிவரம், வளாகங்கள், மொழி மற்றும் வடிவங்கள், பள்ளி நாட்காட்டி.",
+    "valid": true
+  },
+  {
+    "text": "சுருக்கத்தில் சேர்",
+    "valid": true
+  },
+  {
+    "text": "சூழலில் முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "செமஸ்டர்",
+    "valid": true
+  },
+  {
+    "text": "செமஸ்டர்கள்",
+    "valid": true
+  },
+  {
+    "text": "செயலற்றது",
+    "valid": true
+  },
+  {
+    "text": "செயலியின் எந்த உரையையும் எல்லா மொழிகளிலும் மாற்றவும்.",
+    "valid": true
+  },
+  {
+    "text": "செயலியில்",
+    "valid": true
+  },
+  {
+    "text": "செயலில்",
+    "valid": true
+  },
+  {
+    "text": "செயலில் உள்ள அமர்வுகள்",
+    "valid": true
+  },
+  {
+    "text": "செயலில் உள்ள அமர்வுகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "செயல்",
+    "valid": true
+  },
+  {
+    "text": "செயல்கள்",
+    "valid": true
+  },
+  {
+    "text": "செய்தவர்",
+    "valid": true
+  },
+  {
+    "text": "செய்தி",
+    "valid": true
+  },
+  {
+    "text": "செய்தி காலியாக இருக்கக்கூடாது",
+    "valid": true
+  },
+  {
+    "text": "செய்தி சரியானதும் முன்னோட்டம் தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "செய்தி வார்ப்புருக்கள், விநியோகப் பதிவு மற்றும் உங்கள் சொந்த விருப்பங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "செய்திகள்",
+    "valid": true
+  },
+  {
+    "text": "செய்திச் சாவி",
+    "valid": true
+  },
+  {
+    "text": "செய்திச் சாவிகளை உரையுடன் இணைக்கும் JSON ஐ ஒட்டவும்…",
+    "valid": true
+  },
+  {
+    "text": "செய்தியின் தொடரியலைச் சரிசெய்யவும், எ.கா. விடுபட்ட மூடும் அடைப்புக்குறி.",
+    "valid": true
+  },
+  {
+    "text": "செவ்வாய்",
+    "valid": true
+  },
+  {
+    "text": "சேமி",
+    "valid": true
+  },
+  {
+    "text": "சேமிக்கும் முன் கீழே தோல்வியடைந்த ஒவ்வொரு நிற இணையையும் சரிசெய்யவும் அல்லது பரிந்துரையைப் பயன்படுத்தவும்.",
+    "valid": true
+  },
+  {
+    "text": "சேமிக்கும் முன் சொற்களை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "சேமிக்கும் வரை இந்த முன்னோட்டத்துக்கு மட்டுமே பொருந்தும்.",
+    "valid": true
+  },
+  {
+    "text": "சேமிப்பகம்",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கப்படுபவை",
+    "valid": true
+  },
+  {
+    "text": "சேர்த்தது",
+    "valid": true
+  },
+  {
+    "text": "சேர்ந்தது",
+    "valid": true
+  },
+  {
+    "text": "சேவையகத்தினுடையதை வை",
+    "valid": true
+  },
+  {
+    "text": "சேவையகத்தை வை",
+    "valid": true
+  },
+  {
+    "text": "சொத்துகள்",
+    "valid": true
+  },
+  {
+    "text": "சொந்த அறிவிப்பு விருப்பங்களை அமை",
+    "valid": true
+  },
+  {
+    "text": "சொந்தப் பதிவுகள் மட்டும்",
+    "valid": true
+  },
+  {
+    "text": "சொற்களஞ்சியத் தொகுப்பு",
+    "valid": true
+  },
+  {
+    "text": "சொற்களஞ்சியம்",
+    "valid": true
+  },
+  {
+    "text": "சோதனை",
+    "valid": true
+  },
+  {
+    "text": "சோதனை வேறுபாட்டு முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "ஞாயிறு",
+    "valid": true
+  },
+  {
+    "text": "டிஜிட்டல் கையொப்பம்",
+    "valid": true
+  },
+  {
+    "text": "டெமோ தரவு. இந்தத் திரையில் உள்ள எதுவும் உண்மையானது அல்ல.",
+    "valid": true
+  },
+  {
+    "text": "டெமோ நிறுவனங்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "டெமோ நிறுவனங்கள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "டெமோ நிறுவனத்தில் உள்நுழைக",
+    "valid": true
+  },
+  {
+    "text": "டொமைன்களைக் காற்புள்ளியால் பிரிக்கவும், எ.கா. riverside.example.edu",
+    "valid": true
+  },
+  {
+    "text": "தணிக்கை நிகழ்வுகள்",
+    "valid": true
+  },
+  {
+    "text": "தணிக்கை மற்றும் தனியுரிமை",
+    "valid": true
+  },
+  {
+    "text": "தணிக்கை மற்றும் தனியுரிமைத் தரவை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "தணிக்கை மற்றும் தனியுரிமைப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "தணிக்கைப் பதிவு",
+    "valid": true
+  },
+  {
+    "text": "தணிக்கைப் பதிவு, ஒப்புதல்கள் மற்றும் தரவுக் கோரிக்கைகள்.",
+    "valid": true
+  },
+  {
+    "text": "தணிக்கைப் பதிவையும் இணக்கத்தையும் பார்",
+    "valid": true
+  },
+  {
+    "text": "தனி நேர மண்டலம்",
+    "valid": true
+  },
+  {
+    "text": "தனிப்பயன்",
+    "valid": true
+  },
+  {
+    "text": "தனிப்பயன் பங்கைத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "தனியுரிமைத் தாக்க மதிப்பீட்டுக்குப் பிறகே இதை இயக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "தரவு அணுகல்",
+    "valid": true
+  },
+  {
+    "text": "தரவு வசிப்பிட விதிகளை மதிக்க உருவாக்கிய பின் மாற்ற முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "தரவுக் கோரிக்கைகளுக்கான கெடு",
+    "valid": true
+  },
+  {
+    "text": "தரவுக் கோரிக்கைகளைக் கையாள்",
+    "valid": true
+  },
+  {
+    "text": "தரவுக் கோரிக்கைகள்",
+    "valid": true
+  },
+  {
+    "text": "தரவுக் கோரிக்கைகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "தரவுச் செயலாக்கம்",
+    "valid": true
+  },
+  {
+    "text": "தரவுப் பிராந்தியம்",
+    "valid": true
+  },
+  {
+    "text": "தரவுப் பெட்டகத் தகவலை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "தரவுப் பெட்டகத்தையும் வழங்குநர் அணுகலையும் பார்",
+    "valid": true
+  },
+  {
+    "text": "தரவுப் பெட்டகப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "தரவுப் பெட்டகம் மற்றும் அணுகல்",
+    "valid": true
+  },
+  {
+    "text": "தற்போதைய",
+    "valid": true
+  },
+  {
+    "text": "தற்போதைய உரை",
+    "valid": true
+  },
+  {
+    "text": "தற்போதைய திட்டம்",
+    "valid": true
+  },
+  {
+    "text": "தற்போதைய விகிதம் {ratio}:1 · குறைந்தது {minRatio}:1 தேவை",
+    "valid": true
+  },
+  {
+    "text": "தள இயல்புநிலை",
+    "valid": true
+  },
+  {
+    "text": "தளம்",
+    "valid": true
+  },
+  {
+    "text": "தளவமைப்பு அடர்த்தி",
+    "valid": true
+  },
+  {
+    "text": "தவறான ICU செய்தி தொடரியல்",
+    "valid": true
+  },
+  {
+    "text": "தவறான ICU செய்தி: {reason}",
+    "valid": true
+  },
+  {
+    "text": "தவறான JSON. செய்திச் சாவிகளை உரையுடன் இணைக்கும் JSON பொருளை வழங்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "திங்கள்",
+    "valid": true
+  },
+  {
+    "text": "திட்டப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "திட்டம்",
+    "valid": true
+  },
+  {
+    "text": "திட்டம் மற்றும் பயன்பாடு",
+    "valid": true
+  },
+  {
+    "text": "திட்டம் மற்றும் பயன்பாட்டை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "திட்டம் மற்றும் பயன்பாட்டைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "திருத்தம்",
+    "valid": true
+  },
+  {
+    "text": "திருத்து",
+    "valid": true
+  },
+  {
+    "text": "திருத்தும் மொழி",
+    "valid": true
+  },
+  {
+    "text": "திரும்பப் பெறப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "திரும்பப் பெறு",
+    "valid": true
+  },
+  {
+    "text": "திரும்பப் பெற்று அழி",
+    "valid": true
+  },
+  {
+    "text": "திறந்தவை",
+    "valid": true
+  },
+  {
+    "text": "திறன் மற்றும் பொழுதுபோக்கு அகாடமி",
+    "valid": true
+  },
+  {
+    "text": "தீமைச் சேமிக்க முடியவில்லை. மாறுபாடு அல்லது பூட்டிய டோக்கன் பிழைகளைப் பார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "தீம் அமைப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "தீம் சேமிக்கப்பட்டது (பதிப்பு {version, number}).",
+    "valid": true
+  },
+  {
+    "text": "தீம் திருத்திப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "தீம் ஸ்டுடியோ",
+    "valid": true
+  },
+  {
+    "text": "தீர்க்கப்பட்டவை",
+    "valid": true
+  },
+  {
+    "text": "தீர்மான அடுக்குகள்",
+    "valid": true
+  },
+  {
+    "text": "தீர்வு",
+    "valid": true
+  },
+  {
+    "text": "துறை",
+    "valid": true
+  },
+  {
+    "text": "தேடல்",
+    "valid": true
+  },
+  {
+    "text": "தேடு",
+    "valid": true
+  },
+  {
+    "text": "தேதி",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த மொழிக்கான செய்திச் சாவிகளும் பயன்படும் சொற்களும்",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடு…",
+    "valid": true
+  },
+  {
+    "text": "தேர்வுத் தயாரிப்பு மற்றும் பயிற்சி",
+    "valid": true
+  },
+  {
+    "text": "தேவை",
+    "valid": true
+  },
+  {
+    "text": "தேவையில்லை",
+    "valid": true
+  },
+  {
+    "text": "தொகுதி",
+    "valid": true
+  },
+  {
+    "text": "தொகுதிகளை இயக்கு அல்லது அணை",
+    "valid": true
+  },
+  {
+    "text": "தொகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "தொகுதிகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "தொகுதிக் காலம்",
+    "valid": true
+  },
+  {
+    "text": "தொடக்கமும் முடிவும் வேறுபட வேண்டும்.",
+    "valid": true
+  },
+  {
+    "text": "தொடக்கம்",
+    "valid": true
+  },
+  {
+    "text": "தொடங்கும் நாள்",
+    "valid": true
+  },
+  {
+    "text": "தொடர்ச்சியானது",
+    "valid": true
+  },
+  {
+    "text": "தொடர்பு",
+    "valid": true
+  },
+  {
+    "text": "தொலைபேசி அறிவிப்பு",
+    "valid": true
+  },
+  {
+    "text": "தொலைபேசி எண் இரு பக்கமும் மாற்றப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "தொழில் மற்றும் தொழில்நுட்பக் கல்வி",
+    "valid": true
+  },
+  {
+    "text": "தோல்வி",
+    "valid": true
+  },
+  {
+    "text": "நகரம்",
+    "valid": true
+  },
+  {
+    "text": "நடந்தது",
+    "valid": true
+  },
+  {
+    "text": "நடைபெறுகிறது",
+    "valid": true
+  },
+  {
+    "text": "நபர்",
+    "valid": true
+  },
+  {
+    "text": "நபர்களை அழைக்கவும், ஒரு வரம்பில் அவர்களுக்குப் பங்குகளை வழங்கவும், உள்நுழைவு அமர்வுகளையும் ஒற்றை உள்நுழைவையும் பார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "நபர்களை அழைக்கவும், பங்குகளை வழங்கவும், யார் உள்நுழைந்துள்ளனர் எனப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "நாங்கள் உங்களைத் தொடர்புகொள்ளும் வழி",
+    "valid": true
+  },
+  {
+    "text": "நாடு",
+    "valid": true
+  },
+  {
+    "text": "நாட்காட்டி",
+    "valid": true
+  },
+  {
+    "text": "நாணயம்",
+    "valid": true
+  },
+  {
+    "text": "நிகழ்வு",
+    "valid": true
+  },
+  {
+    "text": "நிதிப் புலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "நிராகரி",
+    "valid": true
+  },
+  {
+    "text": "நிராகரிக்கப்பட்ட வரிசைகள்",
+    "valid": true
+  },
+  {
+    "text": "நிராகரிக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "நிராகரிப்புக்கான காரணம்",
+    "valid": true
+  },
+  {
+    "text": "நிர்வாகி",
+    "valid": true
+  },
+  {
+    "text": "நிறங்கள்",
+    "valid": true
+  },
+  {
+    "text": "நிறத்தைத் தேர்ந்தெடு",
+    "valid": true
+  },
+  {
+    "text": "நிறப் பயன்முறை",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன ஃபேவிகான் முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன அடையாளம்",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன அமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன அமைப்புப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன அமைப்பை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன நேர மண்டலத்தைப் பயன்படுத்துகிறது ({timeZone})",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன மேலெழுதல்",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன லோகோ முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன வகை",
+    "valid": true
+  },
+  {
+    "text": "நிறுவன வகை சுயவிவரத்தை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "நிறுவனத் திட்டத்தில் இதைச் சேர்ப்பது பற்றி உங்கள் நிர்வாகியிடம் கேளுங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "நிறுவனத்திடமிருந்து பெறு",
+    "valid": true
+  },
+  {
+    "text": "நிறுவனத்தின் அனைத்துத் தரவும்",
+    "valid": true
+  },
+  {
+    "text": "நிறுவனத்தை மாற்று",
+    "valid": true
+  },
+  {
+    "text": "நிறுவனப் படிநிலை",
+    "valid": true
+  },
+  {
+    "text": "நிறுவனப் பெயர்",
+    "valid": true
+  },
+  {
+    "text": "நிறுவனம்",
+    "valid": true
+  },
+  {
+    "text": "நிலுவையில்",
+    "valid": true
+  },
+  {
+    "text": "நிலை",
+    "valid": true
+  },
+  {
+    "text": "நிலையானது",
+    "valid": true
+  },
+  {
+    "text": "நீக்கம்",
+    "valid": true
+  },
+  {
+    "text": "நீக்கு",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள்",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சேமிக்கப்பட்ட உரைகளைப் பார்க்கலாம், ஆனால் மேலெழுதல்களைச் சேமிக்க, நீக்க, திரும்பப் பெற அல்லது இறக்குமதி செய்ய இணைப்பு தேவை.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சேமிக்கப்பட்ட தீமைப் பார்க்கலாம், ஆனால் மாற்றங்களைச் சேமிக்க இணைப்பு தேவை.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சேமிக்கப்பட்ட பயனர்களைப் பார்க்கலாம், ஆனால் மாற்றங்களுக்கு இணைப்பு தேவை.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். மாற்றங்கள் இந்தச் சாதனத்தில் பாதுகாப்பாக இருந்து, மீண்டும் ஆன்லைனுக்கு வந்ததும் அனுப்பப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். மீண்டும் இணையும் வரை நிறுவன அமைப்பு மாற்றங்களைச் சேமிக்க முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் மட்டும் (HYOK)",
+    "valid": true
+  },
+  {
+    "text": "நெருக்கமானது",
+    "valid": true
+  },
+  {
+    "text": "நெறிமுறை",
+    "valid": true
+  },
+  {
+    "text": "நேர மண்டலம்",
+    "valid": true
+  },
+  {
+    "text": "நேரங்கள் {timeZone} இல் உள்ளன. அவசரப் பாதுகாப்புச் செய்திகள் இருந்தாலும் வரும்.",
+    "valid": true
+  },
+  {
+    "text": "நேரடி மாறுபாட்டுச் சரிபார்ப்புடன் உங்கள் நிறுவனத்தின் வெளிர் மற்றும் இருண்ட நிறங்கள், எழுத்துருக்கள், இடைவெளி மற்றும் பிராண்ட் சொத்துகளைத் தனிப்பயனாக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "நேரடி முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "நேரம்",
+    "valid": true
+  },
+  {
+    "text": "நோக்கம்",
+    "valid": true
+  },
+  {
+    "text": "பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "பக்க எண்ணிடல்",
+    "valid": true
+  },
+  {
+    "text": "பக்கச் சரிபார்ப்பு: {count, plural, one {# நிகழ்வு இணைக்கப்பட்டு முழுமையாக உள்ளது} other {# நிகழ்வுகள் இணைக்கப்பட்டு முழுமையாக உள்ளன}}.",
+    "valid": true
+  },
+  {
+    "text": "பக்கச் சரிபார்ப்பு: சங்கிலி வரிசை {row} இல் உடைந்துள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "பக்கம் {page, number} / {pageCount, number}",
+    "valid": true
+  },
+  {
+    "text": "பக்கம் கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "பங்கின் பெயர்",
+    "valid": true
+  },
+  {
+    "text": "பங்கு",
+    "valid": true
+  },
+  {
+    "text": "பங்கு ஒதுக்கீடுகள்",
+    "valid": true
+  },
+  {
+    "text": "பங்கு சேமிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "பங்கு சேர்க்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "பங்கு நீக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "பங்குகளையும் ஒதுக்கீடுகளையும் நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "பங்குகள்",
+    "valid": true
+  },
+  {
+    "text": "பங்குக்கு ஒரு பெயர், குறைந்தது ஒரு அனுமதி மற்றும் குறைந்தது ஒரு வரம்பை வழங்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "பங்கைச் சேர்",
+    "valid": true
+  },
+  {
+    "text": "படங்கள் மற்றும் உரை",
+    "valid": true
+  },
+  {
+    "text": "படம் அமைக்கப்படவில்லை",
+    "valid": true
+  },
+  {
+    "text": "படிக்க மட்டும்",
+    "valid": true
+  },
+  {
+    "text": "படித்துத் திருத்த",
+    "valid": true
+  },
+  {
+    "text": "படிவம்",
+    "valid": true
+  },
+  {
+    "text": "பட்டியை மூடு",
+    "valid": true
+  },
+  {
+    "text": "பட்டியைத் திற",
+    "valid": true
+  },
+  {
+    "text": "பணியாளர்கள்",
+    "valid": true
+  },
+  {
+    "text": "பணியைத் தொடங்கு",
+    "valid": true
+  },
+  {
+    "text": "பதிப்பு",
+    "valid": true
+  },
+  {
+    "text": "பதிப்பு {version, number}",
+    "valid": true
+  },
+  {
+    "text": "பதிப்பு {version, number} க்குத் திரும்பியது.",
+    "valid": true
+  },
+  {
+    "text": "பதில்கள்",
+    "valid": true
+  },
+  {
+    "text": "பதிவானது",
+    "valid": true
+  },
+  {
+    "text": "பதிவுசெய்யப்பட்ட சாதனங்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பயனரை அழை",
+    "valid": true
+  },
+  {
+    "text": "பயனரை மாற்று",
+    "valid": true
+  },
+  {
+    "text": "பயனர்",
+    "valid": true
+  },
+  {
+    "text": "பயனர் இடைநிறுத்தப்பட்டார்.",
+    "valid": true
+  },
+  {
+    "text": "பயனர் கணக்குகள்",
+    "valid": true
+  },
+  {
+    "text": "பயனர் மீண்டும் செயல்படுத்தப்பட்டார்.",
+    "valid": true
+  },
+  {
+    "text": "பயனர்களை அழைத்து நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "பயனர்களையும் நபர்களையும் பார்",
+    "valid": true
+  },
+  {
+    "text": "பயனர்கள்",
+    "valid": true
+  },
+  {
+    "text": "பயனர்கள் மற்றும் அணுகலை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பயனர்கள் மற்றும் அணுகல்",
+    "valid": true
+  },
+  {
+    "text": "பயனர்கள் மற்றும் அணுகல் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "பயனில்லை",
+    "valid": true
+  },
+  {
+    "text": "பயனுள்ளது",
+    "valid": true
+  },
+  {
+    "text": "பயன்படுத்தச் சரியான சேர்ப்புகளோ மாற்றங்களோ இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பயன்படுத்தியது",
+    "valid": true
+  },
+  {
+    "text": "பயன்பாடு",
+    "valid": true
+  },
+  {
+    "text": "பயன்பாட்டில்",
+    "valid": true
+  },
+  {
+    "text": "பயிற்சி பெறுபவர்",
+    "valid": true
+  },
+  {
+    "text": "பயிற்சி பெறுபவர்கள்",
+    "valid": true
+  },
+  {
+    "text": "பயிற்றுநர்",
+    "valid": true
+  },
+  {
+    "text": "பயிற்றுவிப்பாளர்",
+    "valid": true
+  },
+  {
+    "text": "பரப்புகள் மற்றும் கரைகள்",
+    "valid": true
+  },
+  {
+    "text": "பரிந்துரைகளைப் பயன்படுத்து",
+    "valid": true
+  },
+  {
+    "text": "பரிந்துரைக்கப்பட்ட பிராண்ட் இணை ({mode})",
+    "valid": true
+  },
+  {
+    "text": "பரிந்துரையைப் பயன்படுத்து ({color})",
+    "valid": true
+  },
+  {
+    "text": "பருவங்கள்",
+    "valid": true
+  },
+  {
+    "text": "பருவம்",
+    "valid": true
+  },
+  {
+    "text": "பல வளாகக் குழுமம்",
+    "valid": true
+  },
+  {
+    "text": "பாடநெறி",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாப்பது",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாப்பு",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாப்புக்கு AI ஐ அனுமதி",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாப்புச் சம்பவம்",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாவலரின் ஒப்புதல் தேவை",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாவலர்",
+    "valid": true
+  },
+  {
+    "text": "பார்",
+    "valid": true
+  },
+  {
+    "text": "பிக்சல் மதிப்பை உள்ளிடவும் (எ.கா. 8px).",
+    "valid": true
+  },
+  {
+    "text": "பின்செல்",
+    "valid": true
+  },
+  {
+    "text": "பிராண்ட்",
+    "valid": true
+  },
+  {
+    "text": "பிராண்ட் சொத்துகள்",
+    "valid": true
+  },
+  {
+    "text": "பிறகு",
+    "valid": true
+  },
+  {
+    "text": "புகைப்படங்கள் மற்றும் ஊடகத்துக்குப் பாதுகாவலர் ஒப்புதல்",
+    "valid": true
+  },
+  {
+    "text": "புகைப்படங்கள் மற்றும் ஊடகம்",
+    "valid": true
+  },
+  {
+    "text": "புதன்",
+    "valid": true
+  },
+  {
+    "text": "புதிய அறிவிப்பு",
+    "valid": true
+  },
+  {
+    "text": "புதிய தனிப்பயன் பங்கு",
+    "valid": true
+  },
+  {
+    "text": "புதிய பங்கு",
+    "valid": true
+  },
+  {
+    "text": "புதிய மொழி",
+    "valid": true
+  },
+  {
+    "text": "புலப் பெயர்கள் மட்டுமே பதிவாகும், மதிப்புகள் ஒருபோதும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பூட்டப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "பெயர்",
+    "valid": true
+  },
+  {
+    "text": "பெயர் இரு பக்கமும் மாற்றப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "பெரிய எழுத்துகள், எண்கள் மற்றும் இணைப்புக்கோடுகள் (அதிகபட்சம் 16 எழுத்துகள்).",
+    "valid": true
+  },
+  {
+    "text": "பெறப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "பெறுநர்",
+    "valid": true
+  },
+  {
+    "text": "பெற்றோர்",
+    "valid": true
+  },
+  {
+    "text": "பெற்றோர் அல்லது பாதுகாவலர்",
+    "valid": true
+  },
+  {
+    "text": "பேட்ச்",
+    "valid": true
+  },
+  {
+    "text": "பொது",
+    "valid": true
+  },
+  {
+    "text": "பொத்தான்களும் இணைப்புகளும் மாறுபாட்டுச் சரிபார்ப்பில் தேற on-brand ({onBrand}) மற்றும் brand-primary-text ({brandText}) ஐப் புதுப்பிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் ஒப்புதல் பதிவுகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் செய்திகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் செய்திகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் தணிக்கை நிகழ்வுகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் பயனர்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்துவது",
+    "valid": true
+  },
+  {
+    "text": "பொருள்",
+    "valid": true
+  },
+  {
+    "text": "மணி நேரங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பு ஒரு உரைச் சரமாக இருக்க வேண்டும்",
+    "valid": true
+  },
+  {
+    "text": "மதிய அமர்வு",
+    "valid": true
+  },
+  {
+    "text": "மத்திய கிழக்கு (ME)",
+    "valid": true
+  },
+  {
+    "text": "மறு",
+    "valid": true
+  },
+  {
+    "text": "மறுக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "மறுப்பதற்கான காரணம்",
+    "valid": true
+  },
+  {
+    "text": "மறையாக்கச் சாவிகள்",
+    "valid": true
+  },
+  {
+    "text": "மாணவர்",
+    "valid": true
+  },
+  {
+    "text": "மாணவர் வரம்பு",
+    "valid": true
+  },
+  {
+    "text": "மாணவர்கள்",
+    "valid": true
+  },
+  {
+    "text": "மாதத்திற்கான AI வரவுகள்",
+    "valid": true
+  },
+  {
+    "text": "மாதிரி எண்",
+    "valid": true
+  },
+  {
+    "text": "மாதிரி மதிப்புகளுடன் முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "மாதிரிச் சுருக்கம்",
+    "valid": true
+  },
+  {
+    "text": "மாதிரித் தொகை",
+    "valid": true
+  },
+  {
+    "text": "மாதிரிப் புலம்",
+    "valid": true
+  },
+  {
+    "text": "மாநிலம், மாகாணம் அல்லது அமீரகம்",
+    "valid": true
+  },
+  {
+    "text": "மாறுபாட்டுக் காவல்",
+    "valid": true
+  },
+  {
+    "text": "மாற்ற வரலாறு",
+    "valid": true
+  },
+  {
+    "text": "மாற்ற வரலாற்றை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "மாற்றங்களை முன்னோட்டமிடு",
+    "valid": true
+  },
+  {
+    "text": "மாற்றங்களைக் கைவிடு",
+    "valid": true
+  },
+  {
+    "text": "மாற்றங்களைச் சேமிக்க முடியவில்லை. குறிக்கப்பட்ட புலங்களைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "மாற்றங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மாற்றங்கள் ஒத்திசைக்கக் காத்திருக்கின்றன",
+    "valid": true
+  },
+  {
+    "text": "மாற்றத்தின் வகை மட்டுமே இங்கே காட்டப்படும், அதன் உள்ளடக்கம் ஒருபோதும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "மாற்றத்தைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "மாற்றப்படுகிறது",
+    "valid": true
+  },
+  {
+    "text": "மாற்றப்படுபவை",
+    "valid": true
+  },
+  {
+    "text": "மாற்றப்பட்ட புலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மாற்றம்",
+    "valid": true
+  },
+  {
+    "text": "மிக முக்கியம்",
+    "valid": true
+  },
+  {
+    "text": "மின்னஞ்சல்",
+    "valid": true
+  },
+  {
+    "text": "மின்னஞ்சல் இரு பக்கமும் மாற்றப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "மின்னஞ்சல் டொமைன்கள்",
+    "valid": true
+  },
+  {
+    "text": "மின்னஞ்சல்கள்",
+    "valid": true
+  },
+  {
+    "text": "மீண்டும் ஏற்று",
+    "valid": true
+  },
+  {
+    "text": "மீண்டும் செயல்படுத்து",
+    "valid": true
+  },
+  {
+    "text": "மீண்டும் முயலவும்",
+    "valid": true
+  },
+  {
+    "text": "முகப்பு",
+    "valid": true
+  },
+  {
+    "text": "முகப்புக்குச் செல்",
+    "valid": true
+  },
+  {
+    "text": "முகவரி வரி 1",
+    "valid": true
+  },
+  {
+    "text": "முகவரி வரி 2",
+    "valid": true
+  },
+  {
+    "text": "முக்கியத் தொகுதிகள் எப்போதும் இயக்கத்தில் இருக்கும். உங்கள் திட்டத்தின் விருப்பத் தொகுதிகளை அணைக்கலாம்; அணைத்த தொகுதிகள் அனைவரின் பட்டியிலிருந்தும் மறையும்.",
+    "valid": true
+  },
+  {
+    "text": "முக்கியம்",
+    "valid": true
+  },
+  {
+    "text": "முடக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "முடிந்ததாகக் குறி",
+    "valid": true
+  },
+  {
+    "text": "முடிந்தது",
+    "valid": true
+  },
+  {
+    "text": "முடியும் நாள்",
+    "valid": true
+  },
+  {
+    "text": "முடிவு தேவை",
+    "valid": true
+  },
+  {
+    "text": "முடிவுத் தேதி இல்லை",
+    "valid": true
+  },
+  {
+    "text": "முதன்மை வழிசெலுத்தல்",
+    "valid": true
+  },
+  {
+    "text": "முதன்மைச் செயல்",
+    "valid": true
+  },
+  {
+    "text": "முதல்",
+    "valid": true
+  },
+  {
+    "text": "முதல் பக்கம்",
+    "valid": true
+  },
+  {
+    "text": "முந்தைய பக்கம்",
+    "valid": true
+  },
+  {
+    "text": "முன்னுரிமை",
+    "valid": true
+  },
+  {
+    "text": "முன்னோட்டத்தைப் பார்க்க மேலே உள்ள ICU தொடரியல் பிழையைச் சரிசெய்யவும்.",
+    "valid": true
+  },
+  {
+    "text": "மும்மாதப் பருவங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மும்மாதப் பருவம்",
+    "valid": true
+  },
+  {
+    "text": "முரண்பாடு தீர்க்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "முரண்பாடுகள்",
+    "valid": true
+  },
+  {
+    "text": "முறை",
+    "valid": true
+  },
+  {
+    "text": "முழுப் பெயர்",
+    "valid": true
+  },
+  {
+    "text": "முழுமையானது",
+    "valid": true
+  },
+  {
+    "text": "மூடு",
+    "valid": true
+  },
+  {
+    "text": "மூலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மூலம்",
+    "valid": true
+  },
+  {
+    "text": "மூலை வளைவு",
+    "valid": true
+  },
+  {
+    "text": "மேகக்கணிச் சேவை",
+    "valid": true
+  },
+  {
+    "text": "மேலெழுதப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "மேலெழுதலை நீக்கு",
+    "valid": true
+  },
+  {
+    "text": "மேலெழுதல் நீக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "மேலெழுதல்களை இறக்குமதி செய்",
+    "valid": true
+  },
+  {
+    "text": "மேலெழுதல்களை ஏற்றுமதி செய்",
+    "valid": true
+  },
+  {
+    "text": "மேலெழுதல்கள் JSON",
+    "valid": true
+  },
+  {
+    "text": "மேலெழுதியவை மட்டும்",
+    "valid": true
+  },
+  {
+    "text": "மொத்தம் செயலில்",
+    "valid": true
+  },
+  {
+    "text": "மொழி",
+    "valid": true
+  },
+  {
+    "text": "மொழி அமைப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "மொழி அமைப்புகள் சேமிக்கப்பட்டன.",
+    "valid": true
+  },
+  {
+    "text": "மொழி மற்றும் பிராந்திய அமைப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "மொழி மற்றும் வடிவங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மொழியைச் சேர்…",
+    "valid": true
+  },
+  {
+    "text": "யாரும்",
+    "valid": true
+  },
+  {
+    "text": "ரத்துசெய்",
+    "valid": true
+  },
+  {
+    "text": "லோகோ URL",
+    "valid": true
+  },
+  {
+    "text": "வகுப்பு",
+    "valid": true
+  },
+  {
+    "text": "வகை",
+    "valid": true
+  },
+  {
+    "text": "வகை சுயவிவர இயல்புநிலைகள்",
+    "valid": true
+  },
+  {
+    "text": "வசதியானது",
+    "valid": true
+  },
+  {
+    "text": "வடிவத்தின் நேரடி முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "வரம்பற்றது",
+    "valid": true
+  },
+  {
+    "text": "வரவுகள் தீர்ந்த பின் கூடுதல் பயன்பாட்டுக்குக் கட்டணம் விதிக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "வரவுகள் தீர்ந்ததும் Assist நின்றுவிடும்.",
+    "valid": true
+  },
+  {
+    "text": "வரவேற்கிறோம், {name}",
+    "valid": true
+  },
+  {
+    "text": "வரிசையில்",
+    "valid": true
+  },
+  {
+    "text": "வரை",
+    "valid": true
+  },
+  {
+    "text": "வளாகக் குறியீடு",
+    "valid": true
+  },
+  {
+    "text": "வளாகத்தைச் சேர்",
+    "valid": true
+  },
+  {
+    "text": "வளாகத்தைத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "வளாகப் பெயர்",
+    "valid": true
+  },
+  {
+    "text": "வளாகம்",
+    "valid": true
+  },
+  {
+    "text": "வளாகம் சேமிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "வழங்கக்கூடிய இடம்",
+    "valid": true
+  },
+  {
+    "text": "வழங்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "வழங்கியவர்",
+    "valid": true
+  },
+  {
+    "text": "வழங்குநரைச் சேர்",
+    "valid": true
+  },
+  {
+    "text": "வழங்குநர்",
+    "valid": true
+  },
+  {
+    "text": "வழங்குநர் URL",
+    "valid": true
+  },
+  {
+    "text": "வழங்குநர் URL https:// என்று தொடங்க வேண்டும்",
+    "valid": true
+  },
+  {
+    "text": "வழங்குநர் அணுகலை அனுமதி",
+    "valid": true
+  },
+  {
+    "text": "வழங்குநர் அணுகல் எதுவும் வழங்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "வழங்குநர் பணியாளர்",
+    "valid": true
+  },
+  {
+    "text": "வழி",
+    "valid": true
+  },
+  {
+    "text": "வழிசெலுத்தல் பட்டி",
+    "valid": true
+  },
+  {
+    "text": "வார இறுதி நாட்கள்",
+    "valid": true
+  },
+  {
+    "text": "வார்ப்புரு {id} இயக்கத்தில்",
+    "valid": true
+  },
+  {
+    "text": "வார்ப்புரு {id} ஐத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "வார்ப்புரு சேமிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "வார்ப்புருக்கள்",
+    "valid": true
+  },
+  {
+    "text": "விசாலமானது",
+    "valid": true
+  },
+  {
+    "text": "விடுமுறைகள்",
+    "valid": true
+  },
+  {
+    "text": "விடுமுறையின் பெயர்",
+    "valid": true
+  },
+  {
+    "text": "விடுமுறையைச் சேர்",
+    "valid": true
+  },
+  {
+    "text": "விநியோகப் பதிவு",
+    "valid": true
+  },
+  {
+    "text": "வியாழன்",
+    "valid": true
+  },
+  {
+    "text": "விரிவுரையாளர்",
+    "valid": true
+  },
+  {
+    "text": "விருப்பங்கள் சேமிக்கப்பட்டன.",
+    "valid": true
+  },
+  {
+    "text": "விருப்பத்தேர்வு",
+    "valid": true
+  },
+  {
+    "text": "விளக்கப்படங்கள்",
+    "valid": true
+  },
+  {
+    "text": "விவரங்களைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "விவரங்கள்",
+    "valid": true
+  },
+  {
+    "text": "வெளியேறு",
+    "valid": true
+  },
+  {
+    "text": "வெளியேற்று",
+    "valid": true
+  },
+  {
+    "text": "வெளிர்",
+    "valid": true
+  },
+  {
+    "text": "வெளிர் தீமுக்கு மாறு",
+    "valid": true
+  },
+  {
+    "text": "வெள்ளி",
+    "valid": true
+  },
+  {
+    "text": "வேகமானது",
+    "valid": true
+  },
+  {
+    "text": "வேறு தேடல் சொல்லை முயலவும் அல்லது மேலெழுதியவை-மட்டும் வடிகட்டியை அணைக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "வைத்திருப்பவர்",
+    "valid": true
+  },
+  {
+    "text": "ஹிஜ்ரி (உம்முல் குரா)",
+    "valid": true
+  }
+]
