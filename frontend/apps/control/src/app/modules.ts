@@ -3,6 +3,7 @@ import type { ControlMessageKey } from "@nexus/i18n/control";
 import {
   Building2,
   Gauge,
+  Handshake,
   KeyRound,
   LifeBuoy,
   Network,
@@ -131,5 +132,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: Gauge,
     permission: "ctl.usage.read",
     load: () => import("../modules/p11/UsagePage"),
+  },
+  {
+    moduleId: "P12",
+    path: "partners",
+    navKey: "p12.nav",
+    summaryKey: "p12.summary",
+    icon: Handshake,
+    permission: "ctl.deal.read",
+    load: () => import("../modules/p12/PartnersPage"),
   },
 ];

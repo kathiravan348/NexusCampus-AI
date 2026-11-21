@@ -11,3 +11,4 @@ export * from "./p07";
 export * from "./p08";
 export * from "./p09";
 export * from "./p10";
+export * from "./p12";

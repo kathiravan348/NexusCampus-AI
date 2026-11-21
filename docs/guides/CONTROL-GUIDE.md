@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -169,6 +169,14 @@ Menu **Usage** (super admin, sales, billing, support, site reliability).
   **Messages**. A metric with a cap shows a bar (amber from 80 %, red at the cap); without a cap it shows the count
   and **no cap**. Each line says whether it comes from a tenant in our cells or a self-hosted install.
 - **Metric** narrows the cards. Only counts are metered — never who. Air-gapped installs report nothing.
+
+### Partners
+
+Menu **Partners** (super admin, sales, partner users).
+
+- One card per reseller: tier (**Registered**, **Silver**, **Gold**), country, commission rate and start date, the
+  **Customers** it manages, its **Deal registrations** and its **Commissions** (**Pending**, **Payable**, **Paid**).
+- Partner users see only **Your deal registrations** for their own customers.
 
 ## Roles
 
