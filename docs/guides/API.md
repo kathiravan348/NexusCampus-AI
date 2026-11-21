@@ -262,4 +262,7 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 
 | POST | `/invoices/:id/record-transfer` | `ctl.billing.manage` | body `{ reference }` (3–64 chars, our statement reference); only `open` / `overdue` (else `409`); → `{ invoice, payment }`: invoice paid, `manual` payment added, dunning cleared, past-due subscription active (NEX-074) |
 
+| POST | `/provisioning-jobs` | `ctl.provisioning.manage` | body `ProvisioningRequest` (account visible and not self-hosted, else `404` / `409`) → `201` job, all steps `pending` (NEX-075) |
+| POST | `/provisioning-jobs/:id/advance` | `ctl.provisioning.manage` | demo: completes the next step; `create_tenant` assigns a tenant id and adds it to the account; finished job → `409` (NEX-075) |
+
 Write routes are added by each Control screen task (NEX-072+).

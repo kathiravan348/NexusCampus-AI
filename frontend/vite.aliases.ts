@@ -28,6 +28,7 @@ export const nexusAliases: Record<string, string> = {
   ),
   "@nexus/ui-core": packageEntry("ui-core"),
   "@nexus/ui-edu": packageEntry("ui-edu"),
+  "@nexus/ui-control": packageEntry("ui-control"),
   "@nexus/i18n/resolve": path.join(frontendDir, "packages", "i18n", "src", "resolve.ts"),
   "@nexus/i18n/control": path.join(frontendDir, "packages", "i18n", "src", "control.tsx"),
   "@nexus/i18n": packageEntry("i18n"),

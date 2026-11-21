@@ -886,5 +886,197 @@
   "p03.dunStage.readOnly": {
     "message": "Read-only",
     "description": "Dunning stage: the institution can still read and export everything."
+  },
+  "p04.nav": {
+    "message": "Provisioning",
+    "description": "Menu item and page title of the tenant provisioning page (P04)."
+  },
+  "p04.summary": {
+    "message": "Create trial tenants and offboard customers with a key-destruction certificate.",
+    "description": "One-line description on the Provisioning home tile."
+  },
+  "p04.tabs.label": {
+    "message": "Provisioning",
+    "description": "Accessible label of the provisioning tabs."
+  },
+  "p04.tab.new": {
+    "message": "New tenants",
+    "description": "Tab: tenant creation jobs."
+  },
+  "p04.tab.offboarding": {
+    "message": "Offboarding",
+    "description": "Tab: customers leaving, with key destruction."
+  },
+  "p04.start": {
+    "message": "Start trial tenant",
+    "description": "Button that opens the form to create a trial tenant."
+  },
+  "p04.jobTitle": {
+    "message": "{account} · {region} · {plan}",
+    "description": "Heading of a provisioning job: account, data region and plan."
+  },
+  "p04.jobSteps": {
+    "message": "Steps of {job}",
+    "description": "Accessible name of a job's step list."
+  },
+  "p04.trialDays": {
+    "message": "{days, plural, one {# day trial} other {# day trial}}",
+    "description": "Trial length of a new tenant."
+  },
+  "p04.paid": {
+    "message": "Paid from day one",
+    "description": "Shown when a new tenant has no trial."
+  },
+  "p04.tenant": {
+    "message": "Tenant {id}",
+    "description": "The id of the tenant created by the job."
+  },
+  "p04.tenantPending": {
+    "message": "Tenant not created yet",
+    "description": "Shown before the tenant exists."
+  },
+  "p04.requestedBy": {
+    "message": "Started by {name} · {date}",
+    "description": "Who started the job and when."
+  },
+  "p04.advance": {
+    "message": "Run next step",
+    "description": "Demo button that completes the next step of a job."
+  },
+  "p04.advanceLabel": {
+    "message": "Run the next step of {job}",
+    "description": "Accessible label of the run-next-step button."
+  },
+  "p04.advanced": {
+    "message": "Step done",
+    "description": "Toast after a job step completes."
+  },
+  "p04.advanceFailed": {
+    "message": "The step did not run. Try again.",
+    "description": "Toast when a job step fails to run."
+  },
+  "p04.empty": {
+    "message": "No provisioning jobs yet.",
+    "description": "Shown when there are no provisioning jobs."
+  },
+  "p04.status.pending": {
+    "message": "Waiting",
+    "description": "Job or step status: not started."
+  },
+  "p04.status.running": {
+    "message": "Running",
+    "description": "Job or step status: in progress."
+  },
+  "p04.status.done": {
+    "message": "Done",
+    "description": "Job or step status: finished."
+  },
+  "p04.status.failed": {
+    "message": "Failed",
+    "description": "Job or step status: failed."
+  },
+  "p04.step.createTenant": {
+    "message": "Create the tenant in its region cell",
+    "description": "Provisioning step."
+  },
+  "p04.step.createKeys": {
+    "message": "Create the tenant's keys in the vault",
+    "description": "Provisioning step (per-tenant encryption keys)."
+  },
+  "p04.step.applyProfile": {
+    "message": "Apply the institution type profile",
+    "description": "Provisioning step."
+  },
+  "p04.step.seed": {
+    "message": "Load starter settings",
+    "description": "Provisioning step (no personal data)."
+  },
+  "p04.step.inviteOwner": {
+    "message": "Invite the institution owner",
+    "description": "Provisioning step."
+  },
+  "p04.off.freeze": {
+    "message": "Freeze changes",
+    "description": "Offboarding step."
+  },
+  "p04.off.exportReady": {
+    "message": "Prepare the institution's encrypted export",
+    "description": "Offboarding step."
+  },
+  "p04.off.exportDownloaded": {
+    "message": "Institution downloaded its export",
+    "description": "Offboarding step."
+  },
+  "p04.off.keysDestroyed": {
+    "message": "Destroy the tenant's keys (data becomes unreadable)",
+    "description": "Offboarding step: crypto-shred."
+  },
+  "p04.off.certificate": {
+    "message": "Issue the key-destruction certificate",
+    "description": "Offboarding step."
+  },
+  "p04.off.empty": {
+    "message": "No offboarding jobs.",
+    "description": "Shown when no customer is leaving."
+  },
+  "p04.cert.title": {
+    "message": "Key-destruction certificate",
+    "description": "Heading of the signed certificate that the tenant's keys were destroyed."
+  },
+  "p04.cert.keys": {
+    "message": "Keys destroyed",
+    "description": "Label: list of destroyed key ids."
+  },
+  "p04.cert.at": {
+    "message": "Destroyed at",
+    "description": "Label: when the keys were destroyed."
+  },
+  "p04.cert.signedWith": {
+    "message": "Signed with",
+    "description": "Label: the signing key id of the certificate."
+  },
+  "p04.form.title": {
+    "message": "Start a trial tenant",
+    "description": "Title of the start-trial dialog."
+  },
+  "p04.form.account": {
+    "message": "Account",
+    "description": "Label of the account picker."
+  },
+  "p04.form.region": {
+    "message": "Data region",
+    "description": "Label of the region picker; the tenant's data never leaves it."
+  },
+  "p04.form.type": {
+    "message": "Institution type",
+    "description": "Label of the institution type picker."
+  },
+  "p04.form.plan": {
+    "message": "Plan",
+    "description": "Label of the plan picker."
+  },
+  "p04.form.trialDays": {
+    "message": "Trial days (1–60)",
+    "description": "Label of the trial length field."
+  },
+  "p04.form.model": {
+    "message": "Cell",
+    "description": "Label of the shared or dedicated cell choice."
+  },
+  "p04.form.submit": {
+    "message": "Start",
+    "description": "Button that starts the provisioning job."
+  },
+  "p04.form.started": {
+    "message": "Provisioning started",
+    "description": "Toast after a provisioning job is created."
+  },
+  "p04.form.failed": {
+    "message": "Provisioning did not start. Check the form and try again.",
+    "description": "Toast when starting provisioning fails."
+  },
+  "p04.form.noAccounts": {
+    "message": "No account can get a new trial tenant.",
+    "description": "Shown in the form when there is no suitable account."
   }
 }

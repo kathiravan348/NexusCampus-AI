@@ -15,7 +15,8 @@
     "@nexus/ui-core": "workspace:*",
     "@nexus/ui-edu": "workspace:*",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "@nexus/ui-control": "workspace:*"
   },
   "devDependencies": {
     "@storybook/addon-a11y": "10.6.0",

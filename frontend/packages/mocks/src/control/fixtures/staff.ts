@@ -153,6 +153,7 @@ export const CONTROL_ROLE_PERMISSIONS: Readonly<Record<StaffRole, readonly Contr
     ...area("usage", "read"),
   ],
   implementation: [
+    ...area("quote", "read"),
     ...area("account", "read"),
     ...area("project", "read", "manage"),
     ...area("provisioning", "read", "manage"),

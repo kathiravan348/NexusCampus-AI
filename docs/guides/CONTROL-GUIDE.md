@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -68,6 +68,20 @@ Menu **Billing** (super admin, billing).
   Card and bank numbers are never stored.
 - **Reminders:** each account's reminder stage. Reminders end at **Read-only** — the institution can still read and
   export everything; billing never deletes an institution's data.
+
+### Provisioning
+
+Menu **Provisioning** (super admin, implementation, site reliability to read).
+
+- **New tenants:** one card per job with its five steps — create the tenant in its region cell, create its keys in
+  the vault, apply the institution type profile, load starter settings, invite the institution owner — each marked
+  **Waiting**, **Running**, **Done** or **Failed**.
+- **Start trial tenant** (implementation, super admin): pick the account (leads and trials that are not
+  self-hosted), **Data region** (the tenant's data never leaves it), institution type, plan, shared or dedicated
+  cell and 1–60 trial days. In the demo, **Run next step** completes the next step; after the first one the card
+  shows the new tenant id.
+- **Offboarding:** customers leaving — their encrypted export, the destruction of their keys (the data becomes
+  unreadable) and the signed **Key-destruction certificate** with the key ids, time and signing key.
 
 ## Roles
 
