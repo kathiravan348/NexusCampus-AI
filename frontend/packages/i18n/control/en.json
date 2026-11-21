@@ -2622,5 +2622,89 @@
   "p16.reason.other": {
     "message": "Other signal",
     "description": "Fallback for a reason this screen does not know yet."
+  },
+  "p17.nav": {
+    "message": "Sandboxes",
+    "description": "Menu item and page title of demo and staging environments."
+  },
+  "p17.summary": {
+    "message": "Self-expiring sales demos and masked staging clones for testing.",
+    "description": "Home tile text for the Sandboxes page."
+  },
+  "p17.rule": {
+    "message": "A sandbox never holds real institution data: sales demos use made-up data, and staging clones are masked copies the customer approved. Every sandbox expires on its own.",
+    "description": "States the data rule for sandboxes."
+  },
+  "p17.caption": {
+    "message": "Sandboxes",
+    "description": "Table caption: list of sandboxes."
+  },
+  "p17.empty": {
+    "message": "No sandboxes.",
+    "description": "Shown when there is no sandbox."
+  },
+  "p17.col.sandbox": {
+    "message": "Sandbox",
+    "description": "Table column: kind of sandbox and its customer."
+  },
+  "p17.col.type": {
+    "message": "Institution type · region",
+    "description": "Table column: kind of institution the sandbox shows and the region it runs in."
+  },
+  "p17.col.data": {
+    "message": "Data",
+    "description": "Table column: what data the sandbox holds."
+  },
+  "p17.col.version": {
+    "message": "Version",
+    "description": "Table column: product version running in the sandbox."
+  },
+  "p17.col.status": {
+    "message": "Status",
+    "description": "Table column: sandbox state."
+  },
+  "p17.col.expires": {
+    "message": "Expires",
+    "description": "Table column: date the sandbox is removed."
+  },
+  "p17.kind.salesDemo": {
+    "message": "Sales demo",
+    "description": "Sandbox kind: demo for a prospective customer."
+  },
+  "p17.kind.stagingClone": {
+    "message": "Staging clone",
+    "description": "Sandbox kind: test copy of a customer's setup for release or extension testing."
+  },
+  "p17.noCustomer": {
+    "message": "Not tied to a customer",
+    "description": "Shown for a sales demo that belongs to no customer yet."
+  },
+  "p17.typeRegion": {
+    "message": "{type} · {region}",
+    "description": "Institution type and region. {type} e.g. Early years, {region} e.g. India."
+  },
+  "p17.data.synthetic": {
+    "message": "Synthetic data",
+    "description": "Badge: made-up demo data, no real people."
+  },
+  "p17.data.masked": {
+    "message": "Masked copy",
+    "description": "Badge: copy with every personal detail replaced, approved by the customer."
+  },
+  "p17.status.creating": {
+    "message": "Creating",
+    "description": "Sandbox state: being set up."
+  },
+  "p17.status.ready": {
+    "message": "Ready",
+    "description": "Sandbox state: can be used."
+  },
+  "p17.status.expired": {
+    "message": "Expired",
+    "description": "Sandbox state: past its end date."
+  },
+  "p17.status.deleted": {
+    "message": "Deleted",
+    "description": "Sandbox state: removed."
   }
 }
