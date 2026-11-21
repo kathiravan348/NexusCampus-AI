@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -177,6 +177,15 @@ Menu **Partners** (super admin, sales, partner users).
 - One card per reseller: tier (**Registered**, **Silver**, **Gold**), country, commission rate and start date, the
   **Customers** it manages, its **Deal registrations** and its **Commissions** (**Pending**, **Payable**, **Paid**).
 - Partner users see only **Your deal registrations** for their own customers.
+
+### Staff
+
+Menu **Staff** (super admin, security officer).
+
+- Everyone who can sign in to Nexus Control: name and work email, **Partner user** or **Inactive** when it applies,
+  roles, **Multi-factor login** (**Enrolled**, or **Missing — cannot sign in**) and last sign-in.
+- Every staff session needs multi-factor login. No role can read an institution's data — support access always needs
+  the institution's approval.
 
 ## Roles
 

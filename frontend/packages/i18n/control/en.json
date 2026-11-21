@@ -2146,5 +2146,57 @@
   "p12.ownDeals": {
     "message": "Your deal registrations",
     "description": "Heading for partner users: their own deals."
+  },
+  "p13.nav": {
+    "message": "Staff",
+    "description": "Menu item and page title of the provider staff and security page (P13)."
+  },
+  "p13.summary": {
+    "message": "Our staff and partner users, their roles and multi-factor login.",
+    "description": "One-line description on the Staff home tile."
+  },
+  "p13.statement": {
+    "message": "Every staff session needs multi-factor login. No role can read an institution's data — support access always needs the institution's approval.",
+    "description": "Statement at the top of the staff page (P13, V-1, V-3)."
+  },
+  "p13.caption": {
+    "message": "Staff",
+    "description": "Accessible caption of the staff table."
+  },
+  "p13.col.name": {
+    "message": "Name",
+    "description": "Column header: staff member."
+  },
+  "p13.col.roles": {
+    "message": "Roles",
+    "description": "Column header: roles."
+  },
+  "p13.col.mfa": {
+    "message": "Multi-factor login",
+    "description": "Column header: MFA enrolment."
+  },
+  "p13.col.lastSignIn": {
+    "message": "Last sign-in",
+    "description": "Column header: last sign-in time."
+  },
+  "p13.mfaOn": {
+    "message": "Enrolled",
+    "description": "Badge: multi-factor login is set up."
+  },
+  "p13.mfaOff": {
+    "message": "Missing — cannot sign in",
+    "description": "Badge: no multi-factor login, so the account cannot sign in."
+  },
+  "p13.inactive": {
+    "message": "Inactive",
+    "description": "Badge: the account is switched off."
+  },
+  "p13.partnerUser": {
+    "message": "Partner user",
+    "description": "Badge: this person works for a reseller partner."
+  },
+  "p13.never": {
+    "message": "Never",
+    "description": "Shown when someone never signed in."
   }
 }

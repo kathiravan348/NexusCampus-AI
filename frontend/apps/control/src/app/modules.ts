@@ -13,6 +13,7 @@ import {
   ServerCog,
   ShieldCheck,
   Tags,
+  UserCog,
   type LucideIcon,
 } from "lucide-react";
 import type { ComponentType } from "react";
@@ -141,5 +142,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: Handshake,
     permission: "ctl.deal.read",
     load: () => import("../modules/p12/PartnersPage"),
+  },
+  {
+    moduleId: "P13",
+    path: "staff",
+    navKey: "p13.nav",
+    summaryKey: "p13.summary",
+    icon: UserCog,
+    permission: "ctl.staff.read",
+    load: () => import("../modules/p13/StaffPage"),
   },
 ];
