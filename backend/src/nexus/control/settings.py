@@ -33,6 +33,19 @@ class ControlSettings(BaseSettings):
     app_db_password: SecretStr = SecretStr("")
     #: Staff sessions are short (P13).
     session_minutes: int = 60
+    # Staff sign-in (NEX-097): our own realm, never the product realm (D21). MFA is required (acr `mfa`).
+    keycloak_url: str = "http://127.0.0.1:58080"
+    keycloak_realm: str = "nexus-staff"
+    oidc_client_id: str = "nexus-control"
+    oidc_client_secret: SecretStr = SecretStr("")
+    #: This API (callback = `<api_public_url>/control/api/v1/auth/callback`).
+    api_public_url: str = "http://127.0.0.1:8100"
+    #: The Control app; sign-in and sign-out return here.
+    app_public_url: str = "http://127.0.0.1:3200"
+
+    @property
+    def secure_cookies(self) -> bool:
+        return self.environment == "prod"
 
     @property
     def dev_staff_header(self) -> bool:

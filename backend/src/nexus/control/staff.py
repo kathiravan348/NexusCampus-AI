@@ -9,7 +9,7 @@ from typing import Annotated, Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, StringConstraints
 from pydantic.alias_generators import to_camel
-from sqlalchemy import ARRAY, Boolean, Column, DateTime, MetaData, String, Table, Text, select
+from sqlalchemy import ARRAY, Boolean, Column, DateTime, MetaData, String, Table, Text, func, select, update
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 metadata = MetaData()
@@ -77,6 +77,10 @@ def utc_text(value: datetime) -> str:
 class StaffStore(Protocol):
     async def session_of(self, staff_id: str, minutes: int) -> StaffSession | None: ...
 
+    async def id_by_email(self, email: str) -> str | None: ...
+
+    async def record_sign_in(self, staff_id: str) -> None: ...
+
 
 class DbStaffStore:
     """Reads staff and role permissions as `control_app`."""
@@ -107,3 +111,16 @@ class DbStaffStore:
         )
         expires = utc_text(datetime.now(UTC) + timedelta(minutes=minutes))
         return StaffSession(staff=staff, permissions=permissions, expires_at=expires)
+
+    async def id_by_email(self, email: str) -> str | None:
+        async with self._engine.connect() as conn:
+            found = await conn.execute(
+                select(staff_users.c.id).where(func.lower(staff_users.c.work_email) == email.strip().lower())
+            )
+            return found.scalar_one_or_none()
+
+    async def record_sign_in(self, staff_id: str) -> None:
+        async with self._engine.begin() as conn:
+            await conn.execute(
+                update(staff_users).where(staff_users.c.id == staff_id).values(last_sign_in_at=datetime.now(UTC))
+            )

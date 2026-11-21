@@ -5,8 +5,10 @@ from fastapi.testclient import TestClient
 
 from nexus.control.main import create_app
 from nexus.control.seed import load_fixtures
+from nexus.control.sessions import MemorySessionStore
 from nexus.control.settings import ControlSettings
 from nexus.control.staff import StaffSession, StaffUser
+from nexus.modules.m02.login_state import MemoryLoginStateStore
 
 API = "/control/api/v1"
 
@@ -26,9 +28,20 @@ class FakeStore:
         perms = sorted({p for r in s.roles for p in self.perms.get(r, [])})
         return StaffSession(staff=s, permissions=perms, expires_at="2026-11-22T13:00:00Z")
 
+    async def id_by_email(self, email: str) -> str | None:
+        return next((s.id for s in self.staff.values() if s.work_email.lower() == email.lower()), None)
+
+    async def record_sign_in(self, staff_id: str) -> None:
+        self.signed_in = staff_id
+
 
 def client(environment: str) -> Iterator[TestClient]:
-    app = create_app(ControlSettings(environment=environment), staff_store=FakeStore())  # type: ignore[arg-type]
+    app = create_app(
+        ControlSettings(environment=environment),  # type: ignore[arg-type]
+        staff_store=FakeStore(),
+        session_store=MemorySessionStore(),
+        login_states=MemoryLoginStateStore(),
+    )
     with TestClient(app, raise_server_exceptions=False) as c:
         yield c
 
