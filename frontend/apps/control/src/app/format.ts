@@ -11,6 +11,11 @@ export function useControlFormat() {
       date: (value: string) => formatDate(value, { locale: intl, dateStyle: "medium" }),
       number: (value: number) => formatNumber(value, intl),
       money: (minor: number, currency: string) => formatMoney(minor, currency, intl),
+      /** A `YYYY-MM` month as "September 2026" in the staff member's language. */
+      month: (value: string) =>
+        new Intl.DateTimeFormat(intl, { month: "long", year: "numeric", timeZone: "UTC" }).format(
+          new Date(`${value}-01T00:00:00Z`),
+        ),
       /** Country name in the staff member's language (CLDR data, not app text). */
       country: (code: string) => {
         try {

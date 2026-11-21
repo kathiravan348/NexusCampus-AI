@@ -2466,5 +2466,161 @@
   "p15.taskOpen": {
     "message": "Open",
     "description": "Screen-reader label of the empty circle icon of an unfinished task."
+  },
+  "p16.nav": {
+    "message": "Analytics",
+    "description": "Menu item and page title of business analytics (revenue, customers, churn, customer health)."
+  },
+  "p16.summary": {
+    "message": "Revenue, customers, churn, retention and AI customer health.",
+    "description": "Home tile text for the Analytics page."
+  },
+  "p16.latest": {
+    "message": "{month}",
+    "description": "Heading over the latest month's figures. {month} is the month and year, e.g. September 2026."
+  },
+  "p16.mrr": {
+    "message": "Monthly recurring revenue",
+    "description": "Figure label and table column: subscription revenue per month (MRR)."
+  },
+  "p16.arr": {
+    "message": "Annual recurring revenue",
+    "description": "Figure label: monthly recurring revenue times 12 (ARR)."
+  },
+  "p16.active": {
+    "message": "Active customers",
+    "description": "Figure label and table column: customers with a live subscription."
+  },
+  "p16.nrr": {
+    "message": "Net revenue retention",
+    "description": "Figure label and table column: revenue kept from existing customers including upgrades; above 100% means growth."
+  },
+  "p16.churn": {
+    "message": "Gross churn",
+    "description": "Figure label: share of customers lost in the month."
+  },
+  "p16.tickets": {
+    "message": "Open tickets",
+    "description": "Figure label and table column: support tickets not yet closed."
+  },
+  "p16.pct": {
+    "message": "{value}%",
+    "description": "A percentage. {value} is a number."
+  },
+  "p16.up": {
+    "message": "+{value}% from last month",
+    "description": "Change under a figure. {value} is a positive number."
+  },
+  "p16.down": {
+    "message": "−{value}% from last month",
+    "description": "Change under a figure. {value} is a positive number; the sign shows the fall."
+  },
+  "p16.noChange": {
+    "message": "Same as last month",
+    "description": "Shown under a figure that did not change."
+  },
+  "p16.months": {
+    "message": "Last 12 months",
+    "description": "Section heading and table caption: monthly figures."
+  },
+  "p16.col.month": {
+    "message": "Month",
+    "description": "Table column: month and year."
+  },
+  "p16.col.new": {
+    "message": "New",
+    "description": "Table column: customers gained in the month."
+  },
+  "p16.col.churned": {
+    "message": "Lost",
+    "description": "Table column: customers lost in the month."
+  },
+  "p16.health": {
+    "message": "Customer health (AI estimate)",
+    "description": "Section heading and table caption: AI-estimated health of each customer."
+  },
+  "p16.aiNote": {
+    "message": "AI estimates each score from usage, billing and support signals and gives its reasons. It is a hint, not a decision — a person decides whether to act.",
+    "description": "Explains that the health score is AI-made and a person must decide."
+  },
+  "p16.col.customer": {
+    "message": "Customer",
+    "description": "Table column: customer name."
+  },
+  "p16.col.score": {
+    "message": "Score",
+    "description": "Table column: health score from 0 to 100."
+  },
+  "p16.col.risk": {
+    "message": "Churn risk",
+    "description": "Table column: how likely the customer is to leave."
+  },
+  "p16.col.reasons": {
+    "message": "Reasons",
+    "description": "Table column: why the AI gave this score."
+  },
+  "p16.risk.high": {
+    "message": "High",
+    "description": "Churn risk level."
+  },
+  "p16.risk.medium": {
+    "message": "Medium",
+    "description": "Churn risk level."
+  },
+  "p16.risk.low": {
+    "message": "Low",
+    "description": "Churn risk level."
+  },
+  "p16.reason.overdueInvoice": {
+    "message": "An invoice is overdue",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.steadyUsage": {
+    "message": "Usage is steady",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.growingUsage": {
+    "message": "Usage is growing",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.expansionWon": {
+    "message": "Recently bought more",
+    "description": "Reason for a health score: the customer upgraded or added seats."
+  },
+  "p16.reason.recentIncident": {
+    "message": "A recent security incident affected them",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.highAiUse": {
+    "message": "High use of AI features",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.lowUsage": {
+    "message": "Low usage",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.trialEndingSoon": {
+    "message": "Trial ends soon",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.nearLearnerCap": {
+    "message": "Close to the learner limit of their plan",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.openSlaBreach": {
+    "message": "A support ticket missed its target time",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.noTelemetry": {
+    "message": "No health check-in from their install",
+    "description": "Reason for a health score of a self-hosted customer."
+  },
+  "p16.reason.supportRenewalDue": {
+    "message": "Support renewal is due",
+    "description": "Reason for a health score."
+  },
+  "p16.reason.other": {
+    "message": "Other signal",
+    "description": "Fallback for a reason this screen does not know yet."
   }
 }

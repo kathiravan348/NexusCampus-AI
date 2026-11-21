@@ -31,7 +31,7 @@
 | NEX-084 | P13 Provider staff & security | C | done | Claude | 071 |
 | NEX-085 | P14 Compliance & trust operations | C | done | Claude | 071 |
 | NEX-086 | P15 Implementation projects | C | done | Claude | 071 |
-| NEX-087 | P16 Business analytics | C | in-progress | Claude | 071 |
+| NEX-087 | P16 Business analytics | C | done | Claude | 071 |
 | NEX-088 | P17 Sandbox, demo & staging environments | C | planned | — | 071 |
 | NEX-089 | P18 Tenant portability & migrations | C | draft | — | 071 |
 | NEX-090 | M84 Install agent screen in campus (self-hosted only) | C | draft | — | 070 |

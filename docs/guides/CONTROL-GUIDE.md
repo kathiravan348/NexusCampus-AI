@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085); Projects (NEX-086)).
+> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085); Projects (NEX-086); Analytics (NEX-087)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -209,6 +209,16 @@ Menu **Projects** (super admin, implementation).
 - The checklist shows "2 of 3 tasks done", each task with its due date; an open task past its date is **Overdue**.
 - **AI draft — check before sharing** marks a plan drafted by AI; a consultant checks it before the customer sees it.
 - Use **Status** to show one status only.
+
+### Analytics
+
+Menu **Analytics** (super admin, sales, billing).
+
+- The latest month: **Monthly recurring revenue**, **Annual recurring revenue**, **Active customers**, **Net revenue
+  retention**, **Gross churn** and **Open tickets**, with the change from the month before (green when it is good).
+- **Last 12 months**: revenue, customers, new and lost customers, retention and open tickets per month.
+- **Customer health (AI estimate)**: score (0–100), **Churn risk** (**High** first) and the reasons in words. It is a
+  hint from AI, not a decision — a person decides whether to act.
 
 ## Roles
 
