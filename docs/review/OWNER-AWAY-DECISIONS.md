@@ -26,6 +26,10 @@
 | 2026-11-21 | **D53: Nexus Control texts get their own catalogue** (`i18n/control/{en,hi,ta}.json`), not the institution text catalogue | Otherwise every institution could override our staff screens' texts in its Text studio, and the backend key export and campus bundle would grow. Still English/Hindi/Tamil (D42) | Move keys into `messages/*.json` |
 | 2026-11-21 | Control keeps **no persisted cache** in the browser; switching staff clears all cached answers | Provider records are commercially sensitive; nothing should stay on a shared laptop | — |
 | 2026-11-21 | Mock-only `mockHeaders` option added to the shared API client (for `X-Nexus-Staff`) | Smallest change that lets one client serve both apps; real mode ignores it | Revert in `services/src/client.ts` |
+| 2026-11-21 | **AI drafts need a person** in Control: an AI-drafted quote cannot be sent until a staff member ticks "I checked this AI draft" — enforced in the screen and the API | Matches the human-in-the-loop rule (A-1, D14) | — |
+| 2026-11-21 | Bank transfers are recorded with **our statement reference only**; no card or bank numbers anywhere in Control | Payment data stays with the gateway (Razorpay/Stripe); less to protect, lower compliance cost | — |
+| 2026-11-21 | Created `@nexus/ui-control` with its first shared component `JobSteps` (provisioning, offboarding, tenant moves) | AGENTS §6: a component used by two pages moves to a package with a story | — |
+| 2026-11-21 | Implementation staff may read the price catalogue (`ctl.quote.read`) | They pick the plan when starting a trial tenant | Remove from `CONTROL_ROLE_PERMISSIONS` |
 
 ## Follow-ups found (not done — Stage 1 screens are frozen, D43)
 

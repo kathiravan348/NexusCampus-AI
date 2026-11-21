@@ -20,7 +20,7 @@
 | NEX-073 | P02 Plans, pricing & quotes | C | done | Claude | 071 |
 | NEX-074 | P03 Subscription billing | C | done | Claude | 071 |
 | NEX-075 | P04 Tenant provisioning & offboarding | C | done | Claude | 071 |
-| NEX-076 | P05 Licence management | C | draft | — | 071 |
+| NEX-076 | P05 Licence management | C | planned | — | 071 |
 | NEX-077 | P06 Deployment registry & fleet health | C | draft | — | 071 |
 | NEX-078 | P07 Release management | C | draft | — | 071 |
 | NEX-079 | P08 Customisation & extensions | C | draft | — | 071 |
