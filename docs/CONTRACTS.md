@@ -55,3 +55,21 @@ the shape; samples are exported with the fixtures. Cross-field rules are enforce
 | AccessRequest | `vault.ts` | Provider request: opaque `staffRef`, reason, unique modules, read / edit, 1–72 h; `decidedAt` + `decidedBy` iff not pending | NEX-031 | mock: `GET /api/v1/access-requests` | `m83.access.AccessRequestOut` |
 | AccessGrant | `vault.ts` | Window `endsAt` > `startsAt`, ≤ 72 h; optional early `revokedAt` | NEX-031 | mock: `GET /api/v1/access-grants` | `m83.access.AccessGrantOut` |
 | BreakGlassNotice | `vault.ts` | Legal order / security incident; exactly 2 distinct approvers; `notifiedAt` ≥ `occurredAt`; report link https or `/path` | NEX-031 | mock: `GET /api/v1/break-glass-notices` | `m83.access.BreakGlassNoticeOut` |
+
+## Nexus Control (Stage 2, D50)
+
+Files in `frontend/packages/contracts/src/control/`. **Metadata only (V-7):** `metadataOnly.test.ts` fails if any
+control schema gains a field about an institution's learners, families or staff (counts are allowed). No backend
+model yet (control backend = Stage 2 build step), so these are not in the parity samples.
+
+| Contract | File | Rules worth knowing | Mock | Endpoint |
+|---|---|---|---|---|
+| StaffRole, StaffUser, ControlPermission, StaffSession | `control/staff.ts` | ≥ 1 unique role; `partnerId` iff role `partner`; permission `ctl.<area>.<action>`; session `mfaVerified` is always `true` (P13) | NEX-070 | — |
+| DeliveryModel, AccountStage, Account | `control/account.ts` | saas_shared / saas_dedicated / self_hosted / hybrid; unique `tenantIds`, none for self-hosted; `healthScore` 0–100 | NEX-070 | — |
+| AccountContact, Opportunity, AccountNote, Contract | `control/account.ts` | Contact = customer's commercial contact (billing / technical / executive / dpo); note ≤ 2000 chars; only `licence_perpetual` has `endDate: null`; end ≥ start | NEX-070 | — |
+| PriceUnit, CatalogueItem, RegionalPrice | `control/pricing.ts` | Kinds saas_plan / addon / ai_credit_pack / licence_edition / support; ≥ 1 price, one per country; `credits` iff AI pack (D52 units) | NEX-070 | — |
+| QuoteLine, Quote | `control/pricing.ts` | Line amount = qty × unit × (1 − discount), rounded; Σ lines = subtotal, subtotal + tax = total; number `QUO-2026-00012`; `aiDrafted` flag | NEX-070 | — |
+| Subscription | `control/billing.ts` | trialing / active / past_due / cancelled; `trialEndsAt` iff trialing; period end ≥ start | NEX-070 | — |
+| Invoice, InvoiceLine, TaxScheme | `control/billing.ts` | Totals add up (credit lines may be negative); `paidAt` iff paid; due ≥ issue; no tax when scheme `none` (D51) | NEX-070 | — |
+| Payment, CreditNote, DunningState | `control/billing.ts` | Gateways razorpay / stripe / manual; `gatewayRef` required unless manual; never card or bank numbers; dunning ends at `read_only`, never data loss (D23) | NEX-070 | — |
+| ControlUsageMetric, UsageRecord | `control/usage.ts` | Counts only; belongs to a tenant or a deployment; `periodEnd` > `periodStart`; `cap` null = none | NEX-070 | — |
