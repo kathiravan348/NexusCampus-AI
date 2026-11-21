@@ -22,7 +22,7 @@
 | NEX-075 | P04 Tenant provisioning & offboarding | C | done | Claude | 071 |
 | NEX-076 | P05 Licence management | C | done | Claude | 071 |
 | NEX-077 | P06 Deployment registry & fleet health | C | done | Claude | 071 |
-| NEX-078 | P07 Release management | C | planned | — | 071 |
+| NEX-078 | P07 Release management | C | done | Claude | 071 |
 | NEX-079 | P08 Customisation & extensions | C | draft | — | 071 |
 | NEX-080 | P09 Support desk & SLAs | C | draft | — | 071 |
 | NEX-081 | P10 Support access broker (with the M83 approval loop) | C | draft | — | 071 |

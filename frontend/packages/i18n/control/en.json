@@ -1362,5 +1362,173 @@
   "p06.ms": {
     "message": "{value} ms",
     "description": "A time in milliseconds."
+  },
+  "p07.nav": {
+    "message": "Releases",
+    "description": "Menu item and page title of the release management page (P07)."
+  },
+  "p07.summary": {
+    "message": "One release train: channels, signed releases, offline bundles and rollout rings.",
+    "description": "One-line description on the Releases home tile."
+  },
+  "p07.caption": {
+    "message": "Releases",
+    "description": "Accessible caption of the releases table."
+  },
+  "p07.col.version": {
+    "message": "Version",
+    "description": "Column header: release version."
+  },
+  "p07.col.channel": {
+    "message": "Channel",
+    "description": "Column header: release channel."
+  },
+  "p07.col.status": {
+    "message": "Status",
+    "description": "Column header: release status."
+  },
+  "p07.col.published": {
+    "message": "Published",
+    "description": "Column header: publish date."
+  },
+  "p07.col.delivery": {
+    "message": "Delivery",
+    "description": "Column header: signature and offline bundle."
+  },
+  "p07.status.draft": {
+    "message": "Draft",
+    "description": "Release status."
+  },
+  "p07.status.published": {
+    "message": "Published",
+    "description": "Release status."
+  },
+  "p07.status.withdrawn": {
+    "message": "Withdrawn",
+    "description": "Release status."
+  },
+  "p07.signed": {
+    "message": "Signed",
+    "description": "Badge: the release images are signed."
+  },
+  "p07.unsigned": {
+    "message": "Not signed",
+    "description": "Badge: the release is not signed yet."
+  },
+  "p07.bundle": {
+    "message": "Offline bundle",
+    "description": "Badge: an offline bundle exists for air-gapped sites."
+  },
+  "p07.notPublished": {
+    "message": "Not published",
+    "description": "Shown instead of a publish date for a draft."
+  },
+  "p07.aiNotes": {
+    "message": "AI-drafted notes",
+    "description": "Badge: the release notes were drafted by AI."
+  },
+  "p07.open": {
+    "message": "Details",
+    "description": "Button that shows a release's notes and rollout."
+  },
+  "p07.openLabel": {
+    "message": "Show details of {version}",
+    "description": "Accessible label of the details button."
+  },
+  "p07.detail.title": {
+    "message": "Release {version}",
+    "description": "Heading of the release detail panel."
+  },
+  "p07.detail.minUpgrade": {
+    "message": "Upgrades directly from {version} or later",
+    "description": "Oldest version that can upgrade straight to this release."
+  },
+  "p07.detail.notes": {
+    "message": "Migration notes",
+    "description": "Heading: notes about database migrations (forward-only)."
+  },
+  "p07.detail.rollout": {
+    "message": "Rollout rings",
+    "description": "Heading of the rollout list."
+  },
+  "p07.detail.noRollout": {
+    "message": "No rollout planned for this release.",
+    "description": "Shown when a release has no rollout rings."
+  },
+  "p07.ring": {
+    "message": "Ring {ring}",
+    "description": "A rollout ring, 0 = our own cell first, 3 = everyone."
+  },
+  "p07.ringTargets": {
+    "message": "{count, plural, one {# deployment} other {# deployments}}: {names}",
+    "description": "Deployments in a ring."
+  },
+  "p07.rolloutStatus.pending": {
+    "message": "Waiting",
+    "description": "Rollout status."
+  },
+  "p07.rolloutStatus.running": {
+    "message": "Running",
+    "description": "Rollout status."
+  },
+  "p07.rolloutStatus.done": {
+    "message": "Done",
+    "description": "Rollout status."
+  },
+  "p07.rolloutStatus.failed": {
+    "message": "Failed",
+    "description": "Rollout status."
+  },
+  "p07.rolloutStatus.rolledBack": {
+    "message": "Rolled back",
+    "description": "Rollout status."
+  },
+  "p07.start": {
+    "message": "Start ring",
+    "description": "Button: start the next rollout ring."
+  },
+  "p07.startLabel": {
+    "message": "Start ring {ring}",
+    "description": "Accessible label of the start-ring button."
+  },
+  "p07.started": {
+    "message": "Ring rolled out",
+    "description": "Toast after a ring is rolled out."
+  },
+  "p07.startFailed": {
+    "message": "The ring did not start. Finish the earlier rings first.",
+    "description": "Toast when a ring cannot start."
+  },
+  "p07.publish": {
+    "message": "Sign and publish",
+    "description": "Button that signs and publishes a draft release."
+  },
+  "p07.publishLabel": {
+    "message": "Sign and publish {version}",
+    "description": "Accessible label of the publish button."
+  },
+  "p07.publishTitle": {
+    "message": "Sign and publish {version}?",
+    "description": "Title of the publish dialog."
+  },
+  "p07.publishBody": {
+    "message": "Installs on the {channel} channel will see this release. Database migrations are forward-only.",
+    "description": "Text of the publish dialog."
+  },
+  "p07.publishAiWarning": {
+    "message": "AI drafted these release notes. Read them and the migration notes before publishing.",
+    "description": "Warning for AI-drafted release notes."
+  },
+  "p07.publishChecked": {
+    "message": "I reviewed the AI-drafted release notes",
+    "description": "Check box a person must tick before publishing AI-drafted notes."
+  },
+  "p07.published": {
+    "message": "Release signed and published",
+    "description": "Toast after publishing."
+  },
+  "p07.publishFailed": {
+    "message": "The release was not published. Try again.",
+    "description": "Toast when publishing fails."
   }
 }
