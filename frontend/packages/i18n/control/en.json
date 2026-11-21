@@ -1078,5 +1078,137 @@
   "p04.form.noAccounts": {
     "message": "No account can get a new trial tenant.",
     "description": "Shown in the form when there is no suitable account."
+  },
+  "p05.nav": {
+    "message": "Licences",
+    "description": "Menu item and page title of the self-hosted licences page (P05)."
+  },
+  "p05.summary": {
+    "message": "Signed licences for self-hosted installs, caps and renewals.",
+    "description": "One-line description on the Licences home tile."
+  },
+  "p05.intro": {
+    "message": "When a licence expires the install keeps working in a grace period, then becomes read-only. It never loses data.",
+    "description": "Intro line on the Licences page (rule D23)."
+  },
+  "p05.empty": {
+    "message": "No licences yet.",
+    "description": "Shown when there are no licences."
+  },
+  "p05.edition.standard": {
+    "message": "Standard",
+    "description": "Licence edition."
+  },
+  "p05.edition.enterprise": {
+    "message": "Enterprise",
+    "description": "Licence edition."
+  },
+  "p05.state.active": {
+    "message": "Active",
+    "description": "Licence state."
+  },
+  "p05.state.grace": {
+    "message": "Grace period",
+    "description": "Licence state: expired, still fully working for a few days."
+  },
+  "p05.state.readOnly": {
+    "message": "Read-only",
+    "description": "Licence state: data can be read and exported, not changed."
+  },
+  "p05.state.expired": {
+    "message": "Expired",
+    "description": "Licence state."
+  },
+  "p05.state.revoked": {
+    "message": "Revoked",
+    "description": "Licence state."
+  },
+  "p05.activation.online": {
+    "message": "Online activation",
+    "description": "The install checks the licence over the internet."
+  },
+  "p05.activation.offline": {
+    "message": "Offline activation (file)",
+    "description": "The install loads a licence file; no network needed."
+  },
+  "p05.modules": {
+    "message": "{count, plural, one {# module} other {# modules}}",
+    "description": "Number of modules in the licence."
+  },
+  "p05.learners": {
+    "message": "Learners",
+    "description": "Label of the learners-used meter."
+  },
+  "p05.learnersValue": {
+    "message": "{used} of {cap}",
+    "description": "Learners used out of the cap, e.g. 4,180 of 4,200."
+  },
+  "p05.learnerCap": {
+    "message": "Learner cap {cap}",
+    "description": "Learner cap when usage is not reported."
+  },
+  "p05.notReported": {
+    "message": "Usage not reported (air-gapped or telemetry off).",
+    "description": "Shown when an install sends no usage counts."
+  },
+  "p05.campuses": {
+    "message": "Campuses",
+    "description": "Label: campus cap."
+  },
+  "p05.expires": {
+    "message": "Expires",
+    "description": "Label: licence expiry date."
+  },
+  "p05.perpetual": {
+    "message": "Perpetual",
+    "description": "Shown instead of an expiry date for a perpetual licence."
+  },
+  "p05.supportEnds": {
+    "message": "Support and updates until",
+    "description": "Label: end of the support and update contract."
+  },
+  "p05.grace": {
+    "message": "Grace period",
+    "description": "Label: number of grace days after expiry."
+  },
+  "p05.graceDays": {
+    "message": "{days, plural, one {# day} other {# days}}",
+    "description": "Number of grace days."
+  },
+  "p05.fingerprint": {
+    "message": "File fingerprint",
+    "description": "Label: SHA-256 fingerprint of the signed licence file."
+  },
+  "p05.signingKey": {
+    "message": "Signing key",
+    "description": "Label: id of the key that signed the licence."
+  },
+  "p05.renew": {
+    "message": "Renew for a year",
+    "description": "Button: extend the licence (term) or its support (perpetual) by a year."
+  },
+  "p05.renewLabel": {
+    "message": "Renew {account} for a year",
+    "description": "Accessible label of the renew button."
+  },
+  "p05.renewed": {
+    "message": "Licence renewed — send the customer the new file",
+    "description": "Toast after a renewal."
+  },
+  "p05.renewFailed": {
+    "message": "The licence was not renewed. Try again.",
+    "description": "Toast when a renewal fails."
+  },
+  "p05.download": {
+    "message": "Download licence file",
+    "description": "Button: save the signed licence file for offline activation."
+  },
+  "p05.downloadLabel": {
+    "message": "Download the licence file for {account}",
+    "description": "Accessible label of the download button."
+  },
+  "p05.downloadFailed": {
+    "message": "The licence file could not be prepared. Try again.",
+    "description": "Toast when the licence file cannot be fetched."
   }
 }

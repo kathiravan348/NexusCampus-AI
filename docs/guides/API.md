@@ -265,4 +265,7 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 | POST | `/provisioning-jobs` | `ctl.provisioning.manage` | body `ProvisioningRequest` (account visible and not self-hosted, else `404` / `409`) → `201` job, all steps `pending` (NEX-075) |
 | POST | `/provisioning-jobs/:id/advance` | `ctl.provisioning.manage` | demo: completes the next step; `create_tenant` assigns a tenant id and adds it to the account; finished job → `409` (NEX-075) |
 
+| GET | `/licence-files/:licenceId` | `ctl.licence.issue` | the signed licence file (`nexus-licence/1`, mock signature) for offline activation; no internal fields (NEX-076) |
+| POST | `/licences/:id/renew` | `ctl.licence.issue` | term: expiry + support end +1 year; perpetual: support end +1 year; new fingerprint; revoked → `409` (NEX-076) |
+
 Write routes are added by each Control screen task (NEX-072+).
