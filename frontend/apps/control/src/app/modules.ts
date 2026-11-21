@@ -2,6 +2,7 @@ import type { ControlPermission, ModuleId } from "@nexus/contracts";
 import type { ControlMessageKey } from "@nexus/i18n/control";
 import {
   Building2,
+  ClipboardList,
   Gauge,
   Handshake,
   KeyRound,
@@ -161,5 +162,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: Scale,
     permission: "ctl.trust.read",
     load: () => import("../modules/p14/TrustPage"),
+  },
+  {
+    moduleId: "P15",
+    path: "projects",
+    navKey: "p15.nav",
+    summaryKey: "p15.summary",
+    icon: ClipboardList,
+    permission: "ctl.project.read",
+    load: () => import("../modules/p15/ProjectsPage"),
   },
 ];

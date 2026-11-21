@@ -2378,5 +2378,93 @@
   "p14.col.signed": {
     "message": "Signed",
     "description": "Table column: date the agreement was signed."
+  },
+  "p15.nav": {
+    "message": "Projects",
+    "description": "Menu item and page title of implementation projects (onboarding, data moves, installs, training)."
+  },
+  "p15.summary": {
+    "message": "Onboarding plans, data migrations, installs and training with go-live checklists.",
+    "description": "Home tile text for the Projects page."
+  },
+  "p15.filter": {
+    "message": "Status",
+    "description": "Label of the filter that shows projects of one status only."
+  },
+  "p15.all": {
+    "message": "All statuses",
+    "description": "Filter option that shows every project."
+  },
+  "p15.empty": {
+    "message": "No projects with this status.",
+    "description": "Shown when the filter matches no project."
+  },
+  "p15.kind.onboarding": {
+    "message": "Onboarding",
+    "description": "Project kind: setting up a new customer."
+  },
+  "p15.kind.migration": {
+    "message": "Data migration",
+    "description": "Project kind: moving data in from another system or between SaaS and self-hosted."
+  },
+  "p15.kind.selfHostedInstall": {
+    "message": "Self-hosted install",
+    "description": "Project kind: installing NexusCampus on the customer's own servers."
+  },
+  "p15.kind.training": {
+    "message": "Training",
+    "description": "Project kind: training the customer's staff."
+  },
+  "p15.status.planned": {
+    "message": "Planned",
+    "description": "Project state: not started."
+  },
+  "p15.status.inProgress": {
+    "message": "In progress",
+    "description": "Project state: work under way."
+  },
+  "p15.status.live": {
+    "message": "Live",
+    "description": "Project state: the customer went live; every task is done."
+  },
+  "p15.status.onHold": {
+    "message": "On hold",
+    "description": "Project state: paused."
+  },
+  "p15.meta": {
+    "message": "{kind} · lead {lead}",
+    "description": "Under the customer name. {kind} is the project kind, {lead} the consultant leading it."
+  },
+  "p15.goLive": {
+    "message": "Go-live {date}",
+    "description": "Planned or actual go-live date of the project."
+  },
+  "p15.noGoLive": {
+    "message": "Go-live date not set",
+    "description": "Shown when the project has no go-live date yet."
+  },
+  "p15.aiDraft": {
+    "message": "AI draft — check before sharing",
+    "description": "Badge: AI drafted this project plan; a consultant must check it before the customer sees it."
+  },
+  "p15.progress": {
+    "message": "{done} of {total} tasks done",
+    "description": "Checklist heading. {done} and {total} are numbers."
+  },
+  "p15.due": {
+    "message": "due {date}",
+    "description": "After a checklist task. {date} is the due date."
+  },
+  "p15.overdue": {
+    "message": "Overdue",
+    "description": "Badge on an open task past its due date."
+  },
+  "p15.taskDone": {
+    "message": "Done",
+    "description": "Screen-reader label of the tick icon of a finished task."
+  },
+  "p15.taskOpen": {
+    "message": "Open",
+    "description": "Screen-reader label of the empty circle icon of an unfinished task."
   }
 }
