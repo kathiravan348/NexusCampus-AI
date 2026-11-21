@@ -2,6 +2,7 @@ import type { ControlPermission, ModuleId } from "@nexus/contracts";
 import type { ControlMessageKey } from "@nexus/i18n/control";
 import {
   Building2,
+  Gauge,
   KeyRound,
   LifeBuoy,
   Network,
@@ -121,5 +122,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: ShieldCheck,
     permission: "ctl.broker.read",
     load: () => import("../modules/p10/AccessPage"),
+  },
+  {
+    moduleId: "P11",
+    path: "usage",
+    navKey: "p11.nav",
+    summaryKey: "p11.summary",
+    icon: Gauge,
+    permission: "ctl.usage.read",
+    load: () => import("../modules/p11/UsagePage"),
   },
 ];

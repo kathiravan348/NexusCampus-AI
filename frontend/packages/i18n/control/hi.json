@@ -496,5 +496,21 @@
   "p10.bg.notified": "संस्थान को {date} को बताया",
   "p10.bg.reportDelivered": "रिपोर्ट {date} को दी गई",
   "p10.bg.reportOwed": "संस्थान को रिपोर्ट अभी देनी है",
-  "p10.bg.empty": "कोई ब्रेक-ग्लास मामला नहीं।"
+  "p10.bg.empty": "कोई ब्रेक-ग्लास मामला नहीं।",
+  "p11.nav": "उपयोग",
+  "p11.summary": "हर ग्राहक के विद्यार्थी, स्टोरेज, AI क्रेडिट और संदेश — केवल गिनती।",
+  "p11.note": "केवल गिनती मापी जाती है — कभी यह नहीं कि कौन। एयर-गैप्ड इंस्टॉल कुछ नहीं भेजते।",
+  "p11.filter": "माप",
+  "p11.all": "सभी माप",
+  "p11.period": "अवधि {start} – {end}",
+  "p11.empty": "इस माप का कोई उपयोग नहीं।",
+  "p11.metric.learners": "विद्यार्थी",
+  "p11.metric.staff": "स्टाफ़",
+  "p11.metric.storageGb": "स्टोरेज (GB)",
+  "p11.metric.aiCredits": "AI क्रेडिट",
+  "p11.metric.messages": "संदेश",
+  "p11.source.tenant": "टेनेंट {id}",
+  "p11.source.install": "इंस्टॉल {id}",
+  "p11.valueOfCap": "{cap} में से {used}",
+  "p11.noCap": "{used} · कोई सीमा नहीं"
 }
