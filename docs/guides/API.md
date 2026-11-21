@@ -123,6 +123,8 @@ deleting keeps the row (`deleted_at`) so versions continue; rollback to a `null`
 | Method & path | Permission | Input / Output | Errors & audit |
 |---|---|---|---|
 | `GET /api/v1/audit-events` | `m06.audit.read` | `?action=&actorId=&grantId=&from=&to=&page=&pageSize=` (UTC instants, inclusive) → `Page<AuditEvent>` (field names only) | `400 invalid_request` (bad dates), `401`, `403` |
+| `GET /api/v1/audit-checkpoints` | `m06.audit.read` | `?page=&pageSize=` → `Page<AuditCheckpoint>` `{ id, tenantId, day, headSeq, headHash, signature, keyName, signedAt }`, newest first (backend-only, no UI contract) | `400`, `401`, `403` |
+| `GET /api/v1/audit-checkpoints/verify` | `m06.audit.read` | → `{ ok, checkedEvents, brokenAt, checkpoints: [{ id, day, headSeq, signatureValid, headMatches }] }`: recomputes the whole chain and checks each checkpoint's Vault signature and signed head | `401`, `403`, `503` (Vault unreachable) |
 | `GET /api/v1/consents` | `m06.consent.manage` (all with `m02.user.read`, else own family) | `?page=&pageSize=` → `Page<Consent>` | `400`, `401`, `403` |
 | `GET /api/v1/data-requests` | `m06.request.manage` | `?page=&pageSize=` → `Page<DataSubjectRequest>` | `400`, `401`, `403` |
 | `PATCH /api/v1/data-requests/:id` | `m06.request.manage` | `{ status, reason? }` → `DataSubjectRequest` (received → in_progress → completed \| rejected; `reason` required to reject, never stored in audit) | `400 invalid_request` (missing reason), `401`, `403`, `404`, `409 conflict` (step not allowed); audits `m06.dataRequest.started` / `.completed` / `.rejected` on the hash chain |
@@ -132,6 +134,12 @@ Backend notes (NEX-052): the audit log is returned in chain order (`seq`), so a 
 browser; each read of it is itself audited (`m06.auditLog.viewed`, after the page is read). A rejection reason is
 kept on the request (`rejection_reason`, not in the contract) and never written to the audit log. Due dates use the
 strictest `dsrDueDays` of the tenant's packs (30 days if none); the overdue badge = still open after `dueAt`.
+
+Signed checkpoints (NEX-065, ARCHITECTURE §6): once a UTC day the worker (`nexus-worker`, or `nexus-checkpoints` by
+hand) signs each tenant's chain head with the Ed25519 Transit key `nexus-audit-checkpoints` (never exported). Signed
+text: `nexus-audit-checkpoint|v1|<tenantId>|<day>|<headSeq>|<headHash>`. A chain segment that does not verify is never
+signed (logged, `refused`). Each signing is audited as `m06.auditCheckpoint.signed` (system actor). Verification
+catches an edited row (chain), a rewritten chain (signed head) and an edited checkpoint (signature).
 
 ## Sync centre (M10)
 

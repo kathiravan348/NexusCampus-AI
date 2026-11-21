@@ -6,17 +6,26 @@ audited (`m06.auditLog.viewed`, after the page is read, so a page never contains
 
 from typing import Annotated, Any
 
-from fastapi import APIRouter, Body, Depends, Query
+from fastapi import APIRouter, Body, Depends, Query, Request
 from sqlalchemy import text
 
 from nexus.core.audit import AuditInput, record_audit
 from nexus.core.bodies import parse_body
+from nexus.core.checkpoints import list_checkpoints, verify_checkpoints
 from nexus.core.errors import ApiError
 from nexus.core.pagination import Page, PageQuery, page_query
 from nexus.core.permissions import Authorized, require
 from nexus.modules.m02.service import family_of
 from nexus.modules.m06.packs import CompliancePackOut, packs_for
-from nexus.modules.m06.schemas import AuditEventOut, ConsentOut, DataSubjectRequestOut, DsrUpdateIn
+from nexus.modules.m06.schemas import (
+    AuditCheckpointCheckOut,
+    AuditCheckpointOut,
+    AuditEventOut,
+    AuditVerificationOut,
+    ConsentOut,
+    DataSubjectRequestOut,
+    DsrUpdateIn,
+)
 from nexus.modules.m06.service import (
     AUDIT_SELECT,
     DSR_SELECT,
@@ -71,6 +80,37 @@ async def audit_events(
         AuditInput(action="m06.auditLog.viewed", actor_kind="user", actor_id=auth.ctx.user_id, target_type="auditLog"),
     )
     return Page.of(events, int(total), page)
+
+
+@router.get("/audit-checkpoints", response_model=Page[AuditCheckpointOut])
+async def audit_checkpoints(auth: AuditReader, page: Paging) -> Page[AuditCheckpointOut]:
+    """The tenant's signed chain heads (one per day), newest first."""
+    rows = [
+        AuditCheckpointOut.model_validate(cp, from_attributes=True)
+        for cp in reversed(await list_checkpoints(auth.ctx.db))
+    ]
+    return Page.of(rows[page.offset : page.offset + page.page_size], len(rows), page)
+
+
+@router.get("/audit-checkpoints/verify", response_model=AuditVerificationOut)
+async def verify_audit_chain(auth: AuditReader, request: Request) -> AuditVerificationOut:
+    """Recomputes the whole chain and checks each checkpoint's Vault signature and signed head."""
+    report = await verify_checkpoints(auth.ctx.db, request.app.state.vault, auth.ctx.tenant.tenant_id)
+    return AuditVerificationOut(
+        ok=report.ok,
+        checked_events=report.chain.checked,
+        broken_at=report.chain.broken_at,
+        checkpoints=[
+            AuditCheckpointCheckOut(
+                id=c.checkpoint.id,
+                day=c.checkpoint.day,
+                head_seq=c.checkpoint.head_seq,
+                signature_valid=c.signature_valid,
+                head_matches=c.head_matches,
+            )
+            for c in report.checkpoints
+        ],
+    )
 
 
 @router.get("/consents", response_model=Page[ConsentOut])

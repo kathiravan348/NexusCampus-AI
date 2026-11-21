@@ -6,6 +6,8 @@ each tenant is processed in its own tenant transaction. Rows are claimed `FOR UP
 workers never take the same event. Each event runs in a savepoint: success sets `published_at`; a failure counts an
 attempt and schedules a retry with exponential backoff (30 s · 2^n, capped at 1 h); after `MAX_ATTEMPTS` the event
 is parked (`next_attempt_at` far ahead) with its last error for an operator.
+
+Once a UTC day the worker also signs every tenant's audit chain head (`core/checkpoints.py`, NEX-065).
 """
 
 import argparse
@@ -14,12 +16,15 @@ import logging
 from collections.abc import Awaitable, Callable
 from datetime import UTC, datetime, timedelta
 
+import httpx2
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from nexus.core import db
+from nexus.core.checkpoints import checkpoint_all
 from nexus.core.tenancy import TenantContext, tenant_transaction
 from nexus.core.timing import utf8_console
+from nexus.core.vault import HttpVault
 from nexus.modules.m07.channels import Channel, dev_channels
 from nexus.modules.m07.dispatch import Event, dispatch
 from nexus.settings import Settings, get_settings
@@ -105,16 +110,27 @@ async def _main(once: bool, interval: float) -> None:
     settings = get_settings()
     db.init_engine(settings)
     handler = notifications(dev_channels())
-    try:
-        while True:
-            published = await run_once(db.sessionmaker(), settings, handler)
-            if published:
-                log.info("published %d events", published)
-            if once:
-                return
-            await asyncio.sleep(interval)
-    finally:
-        await db.dispose_engine()
+    signed_day = None
+    async with httpx2.AsyncClient(timeout=10.0) as http:
+        vault = HttpVault(settings, http)
+        try:
+            while True:
+                published = await run_once(db.sessionmaker(), settings, handler)
+                if published:
+                    log.info("published %d events", published)
+                today = datetime.now(UTC).date()
+                if today != signed_day:
+                    try:
+                        signed, refused = await checkpoint_all(db.sessionmaker(), settings, vault, today)
+                        log.info("audit checkpoints for %s: %d signed, %d refused", today, signed, refused)
+                        signed_day = today
+                    except Exception:  # Vault down: the outbox keeps running, the next pass retries
+                        log.exception("audit checkpoints failed")
+                if once:
+                    return
+                await asyncio.sleep(interval)
+        finally:
+            await db.dispose_engine()
 
 
 def main() -> None:
