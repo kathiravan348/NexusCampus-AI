@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-20 (Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-21 (Stage 2 prototype: mock Nexus Control API, NEX-070. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058); the rest is still the MSW mock API under `/api/v1`)
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -221,3 +221,39 @@ Events that notify carry `payload.recipientPersonIds` and `payload.values` (`pay
 hours). `nexus-worker` picks the template locale (person → institution default → English), applies the recipient's
 preference and quiet hours (`suppressed` with a reason), renders ICU and records one delivery per event + person +
 channel. Stage 1 channels only log (`LogChannel`); push has no provider and fails.
+
+## Nexus Control — mock API (Stage 2 prototype, NEX-070, D50)
+
+**Mock only until the Stage 2 build step** (the control backend has its own database and staff SSO, D21). MSW serves
+`/control/api/v1/*` for `apps/control`. The caller is the header `X-Nexus-Staff` (a staff id; unknown, inactive or
+not MFA-enrolled → `401 unauthorized`); `X-Nexus-Scenario` works as above. Each route needs one `ctl.<area>.<action>`
+permission from the staff member's roles (`403 forbidden` otherwise). **Partner users** see only rows of the
+accounts their partner manages (others → `404 not_found`). Everything is metadata only (V-7).
+
+| Method | Path | Permission | Filters (`?field=value`) |
+|---|---|---|---|
+| GET | `/me` | — | → `StaffSession` |
+| GET | `/accounts`, `/accounts/:id` | `ctl.account.read` | stage, deliveryModel, partnerId, region |
+| GET | `/contacts`, `/notes` | `ctl.account.read` | accountId (+ kind) |
+| GET | `/opportunities[/:id]`, `/contracts[/:id]` | `ctl.account.read` | accountId, stage / kind, status |
+| GET | `/catalogue[/:id]`, `/quotes[/:id]` | `ctl.quote.read` | kind / accountId, status |
+| GET | `/subscriptions[/:id]`, `/invoices[/:id]` | `ctl.billing.read` | accountId, status |
+| GET | `/payments`, `/credit-notes`, `/dunning[/:accountId]` | `ctl.billing.read` | invoiceId, status / stage |
+| GET | `/usage` | `ctl.usage.read` | accountId, metric, tenantId, deploymentId |
+| GET | `/partners[/:id]`, `/commissions` | `ctl.partner.read` | partnerId, status |
+| GET | `/deals` | `ctl.deal.read` | partnerId, accountId, status |
+| GET | `/provisioning-jobs[/:id]`, `/offboarding-jobs[/:id]`, `/shred-certificates[/:id]` | `ctl.provisioning.read` | status, accountId, tenantId |
+| GET | `/licences[/:id]` | `ctl.licence.read` | accountId, state, edition |
+| GET | `/deployments[/:id]`, `/health-signals[/:deploymentId]` | `ctl.fleet.read` | kind, region, accountId, health, channel |
+| GET | `/releases[/:id]`, `/rollouts` | `ctl.release.read` | channel, status / releaseId |
+| GET | `/extensions[/:id]`, `/extension-compatibility` | `ctl.extension.read` | accountId / extensionId, releaseVersion, result |
+| GET | `/sandboxes[/:id]` | `ctl.sandbox.read` | kind, status, accountId |
+| GET | `/portability-jobs[/:id]` | `ctl.portability.read` | accountId, status, direction |
+| GET | `/tickets[/:id]`, `/ticket-replies`, `/sla-policies[/:slaTier]`, `/kb-articles[/:id]` | `ctl.ticket.read` | accountId, status, priority, assigneeStaffId / ticketId / locale |
+| GET | `/broker-requests[/:id]`, `/broker-sessions`, `/break-glass-cases[/:id]` | `ctl.broker.read` | accountId, status, ticketId / requestId |
+| GET | `/staff[/:id]` | `ctl.staff.read` | — |
+| GET | `/sub-processors`, `/certifications`, `/incidents[/:id]`, `/dpas` | `ctl.trust.read` | status, severity / accountId |
+| GET | `/projects[/:id]` | `ctl.project.read` | accountId, status, kind |
+| GET | `/metrics[/:month]`, `/account-health[/:accountId]` | `ctl.analytics.read` | churnRisk |
+
+Write routes are added by each Control screen task (NEX-072+).
