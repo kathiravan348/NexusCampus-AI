@@ -131,6 +131,11 @@ Nexus Control (our cloud)                         Product deployments
   Password = level 1, one-time code (TOTP) = level 2 = `acr` `mfa`; the client's minimum ACR is `mfa`, the login
   asks for it and the callback refuses any other `acr`. Sessions: random token in an HttpOnly cookie (path
   `/control`, Secure in prod), only its SHA-256 in `staff_sessions`, 60 minutes, revoked on sign-out.
+- **Billing (NEX-098, D51):** Lago runs only in our control plane (`backend/compose.billing.yaml`: own PostgreSQL,
+  Valkey, API, worker, clock; API on 127.0.0.1; no Lago UI, PDF service or product telemetry). The control backend
+  uses it only through `BillingEngine` (`nexus.control.billing`): customers carry our account id, legal name,
+  country and currency; usage is the active-learner count (`max` per period, D52), sent with an idempotent
+  transaction id. Never shipped to customers.
 - **Same images everywhere.** A deployment differs only by configuration, licence/entitlements and installed
   extensions. Customer-specific work = extension packages (P08), never a fork of the core.
 - **Provisioning (SaaS):** P04 creates the tenant in the chosen region cell, its keys in the vault, and the type
