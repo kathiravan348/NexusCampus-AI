@@ -11,7 +11,7 @@
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|
 | NEX-066 | Open-source swap: OpenBao for Vault, Valkey for Redis (D48) — **held: needs image downloads** | D | planned | — | 065 |
-| NEX-067 | Control contracts (commercial): staff, accounts, CRM, plans, quotes, billing, usage | B | planned | — | 065 |
+| NEX-067 | Control contracts (commercial): staff, accounts, CRM, plans, quotes, billing, usage | B | done | Claude | 065 |
 | NEX-068 | Control contracts (delivery): provisioning, deployments, licences, releases, extensions, sandboxes, portability, M84 | B | planned | — | 067 |
 | NEX-069 | Control contracts (operations): support desk, access broker, partners, compliance, projects, analytics | B | draft | — | 068 |
 | NEX-070 | Control mocks: fixtures (customers of the 5 demo tenants + self-hosted + partner) and MSW read handlers | B | draft | — | 069 |
