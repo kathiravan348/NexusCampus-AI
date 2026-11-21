@@ -252,6 +252,8 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 | GET | `/tickets[/:id]`, `/ticket-replies`, `/sla-policies[/:slaTier]`, `/kb-articles[/:id]` | `ctl.ticket.read` | accountId, status, priority, assigneeStaffId / ticketId / locale |
 | GET | `/broker-requests[/:id]`, `/broker-sessions`, `/break-glass-cases[/:id]` | `ctl.broker.read` | accountId, status, ticketId / requestId |
 | GET | `/staff[/:id]` | `ctl.staff.read` | — |
+| GET | `/staff-directory` | any signed-in staff | — (id + display name only, NEX-072) |
+| POST | `/notes` | `ctl.account.manage` | body `{ accountId, body }` (1–2000 chars) → `201 AccountNote`; unknown or not-visible account → `404`; bad body → `400 invalid_request` (NEX-072) |
 | GET | `/sub-processors`, `/certifications`, `/incidents[/:id]`, `/dpas` | `ctl.trust.read` | status, severity / accountId |
 | GET | `/projects[/:id]` | `ctl.project.read` | accountId, status, kind |
 | GET | `/metrics[/:month]`, `/account-health[/:accountId]` | `ctl.analytics.read` | churnRisk |

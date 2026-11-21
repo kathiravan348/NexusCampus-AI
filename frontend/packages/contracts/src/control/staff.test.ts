@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { StaffSessionSchema, StaffUserSchema } from "./staff";
+import { StaffDirectoryEntrySchema, StaffSessionSchema, StaffUserSchema } from "./staff";
 import { rejects } from "./test-utils";
 
 const staff = {
@@ -51,6 +51,18 @@ describe("StaffSession", () => {
       { ...session, mfaVerified: false },
       { ...session, permissions: ["m02.user.read"] },
       { ...session, permissions: ["ctl.account.read", "ctl.account.read"] },
+    ]);
+  });
+});
+
+describe("StaffDirectoryEntry", () => {
+  it("carries only an id and a name", () => {
+    expect(
+      StaffDirectoryEntrySchema.safeParse({ id: "stf_meera", displayName: "Meera" }).success,
+    ).toBe(true);
+    rejects(StaffDirectoryEntrySchema, [
+      { id: "stf_meera", displayName: "Meera", workEmail: "m@x.example" },
+      { id: "stf_meera", displayName: "" },
     ]);
   });
 });

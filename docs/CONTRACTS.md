@@ -64,6 +64,7 @@ model yet (control backend = Stage 2 build step), so these are not in the parity
 
 | Contract | File | Rules worth knowing | Mock | Endpoint |
 |---|---|---|---|---|
+| StaffDirectoryEntry | `control/staff.ts` | id + display name only, for owners and note authors (NEX-072) | NEX-072 | `GET /control/api/v1/staff-directory` |
 | StaffRole, StaffUser, ControlPermission, StaffSession | `control/staff.ts` | ≥ 1 unique role; `partnerId` iff role `partner`; permission `ctl.<area>.<action>`; session `mfaVerified` is always `true` (P13) | NEX-070 | — |
 | DeliveryModel, AccountStage, Account | `control/account.ts` | saas_shared / saas_dedicated / self_hosted / hybrid; unique `tenantIds`, none for self-hosted; `healthScore` 0–100 | NEX-070 | — |
 | AccountContact, Opportunity, AccountNote, Contract | `control/account.ts` | Contact = customer's commercial contact (billing / technical / executive / dpo); note ≤ 2000 chars; only `licence_perpetual` has `endDate: null`; end ≥ start | NEX-070 | — |
