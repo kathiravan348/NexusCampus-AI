@@ -16,8 +16,11 @@ recorded in its own activity log.
 
 - **Demo:** open Nexus Control, pick a staff member on **Sign in to Nexus Control**, and you see it with their roles.
   The yellow bar **Demo data. Nothing on this screen is real.** is always shown in the demo.
-- **Real installations** (later): staff single sign-on with multi-factor login. Every staff session needs
-  multi-factor login; the green shield next to your name means **Multi-factor login verified**.
+- **Real installations:** sign in with your work email and password, then the 6-digit **one-time code** from an
+  authenticator app on your phone (any TOTP app). The first time, the sign-in page shows a QR code to set the app up.
+  Every sign-in asks for a new code — a password alone never gets you in. Your session lasts at most 60 minutes.
+  The green shield next to your name means **Multi-factor login verified**. (The sign-in service is ready; the
+  screens switch to it in the next build step.)
 - **Sign out** with the arrow button at the top. Closing the browser tab also signs you out; Nexus Control keeps no
   data in the browser.
 
@@ -254,4 +257,5 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 
 ## Known limits
 
-- This is the prototype on demo data. Pages are added one module at a time.
+- The screens still run on demo data; they move to the real Control backend one page at a time (Stage 2 build).
+- Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it.

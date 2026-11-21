@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 
 interface Part {
   readonly order: number;
-  readonly section: "screens" | "flows" | "platform";
+  readonly section: "screens" | "flows" | "platform" | "control";
   readonly title: string;
   readonly intro: string;
   /** Platform tools: how to open it (command or address). */
@@ -35,6 +35,7 @@ const anchor = (s: string) =>
 const flows = parts.filter((p) => p.section === "flows");
 const screens = parts.filter((p) => p.section === "screens");
 const platform = parts.filter((p) => p.section === "platform");
+const control = parts.filter((p) => p.section === "control");
 const today = new Date().toISOString().slice(0, 10);
 const lines: string[] = [
   "# NexusCampus — User manual",
@@ -51,6 +52,10 @@ const lines: string[] = [
   "**Every screen**",
   "",
   ...screens.map((p) => `- [${p.title}](#${anchor(p.title)})`),
+  "",
+  "**Nexus Control** (our provider staff app)",
+  "",
+  ...control.map((p) => `- [${p.title}](#${anchor(p.title)})`),
   "",
   "**Platform & tools** (for support, IT and the team)",
   "",
@@ -70,6 +75,13 @@ for (const p of flows) {
 lines.push("---", "", "# Every screen", "");
 for (const p of screens) {
   lines.push(`## ${p.title}`, "");
+  for (const s of p.shots)
+    lines.push(`**${s.caption}**`, "", `![${s.caption}](screens/${s.file})`, "");
+}
+lines.push("---", "", "# Nexus Control", "");
+for (const p of control) {
+  lines.push(`## ${p.title}`, "");
+  if (p.intro) lines.push(`*${p.intro}*`, "");
   for (const s of p.shots)
     lines.push(`**${s.caption}**`, "", `![${s.caption}](screens/${s.file})`, "");
 }
@@ -99,6 +111,6 @@ lines.push(
 );
 writeFileSync(path.join(OUT, "USER-MANUAL.md"), lines.join("\n"));
 console.log(
-  `USER-MANUAL.md: ${flows.length} examples, ${screens.length} screens, ${platform.length} platform tools` +
+  `USER-MANUAL.md: ${flows.length} examples, ${screens.length} screens, ${control.length} Control pages, ${platform.length} platform tools` +
     ` (${platform.filter((p) => p.skipped).length} not captured)`,
 );

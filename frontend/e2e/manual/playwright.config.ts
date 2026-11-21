@@ -32,6 +32,15 @@ export default defineConfig({
       reuseExistingServer: false,
     },
     {
+      // Nexus Control on mock data, for the "Nexus Control" pages (NEX-099).
+      command:
+        "pnpm --filter control run review:build && pnpm --filter control exec vite preview --mode review --host 127.0.0.1 --port 4314 --strictPort",
+      cwd: "../..",
+      url: "http://127.0.0.1:4314",
+      timeout: 180_000,
+      reuseExistingServer: false,
+    },
+    {
       // The static Storybook build, for the "Component library" pages.
       command:
         "pnpm --filter ui-storybook run build && pnpm --filter campus exec vite preview --outDir ../../packages/ui-storybook/storybook-static --host 127.0.0.1 --port 4313 --strictPort",
