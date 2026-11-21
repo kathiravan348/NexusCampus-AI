@@ -4,9 +4,12 @@ A multi-tenant platform for every kind of learning institution, from play school
 institutes. It works offline, and AI features are optional. What it covers: [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md).
 Plan and stages: [`docs/PLAN.md`](docs/PLAN.md).
 
-> **Current state: Stage 1, prototype step (frontend only).** There is no backend yet. The campus app is still a bare
-> shell; the components can be seen and tried in Storybook. Screens backed by demo data arrive with tasks NEX-011 to
-> NEX-024, and a one-command review build with walkthroughs comes with NEX-021
+> **Current state: Stage 1 — Platform foundation, build step (frozen, D43).** Every Stage 1 module (M01–M07, M10, M11,
+> M83) runs in both **mock mode** (in-browser MSW + IndexedDB offline store, plus the one-command review build and
+> walkthrough in [`docs/review/STAGE-1-WALKTHROUGH.md`](docs/review/STAGE-1-WALKTHROUGH.md)) and **real backend mode**
+> (FastAPI modular monolith, PostgreSQL 16 with RLS + pgvector, Redis, Keycloak OIDC, Vault Transit field encryption,
+> outbox worker and guarded AI gateway — NEX-042 to NEX-063). Tasks NEX-064 (container images & self-hosted Compose
+> install) and NEX-065 (Stage 1 hardening) complete the stage
 > ([`docs/tasks/stage-1/BOARD.md`](docs/tasks/stage-1/BOARD.md)).
 
 ## What you need
@@ -16,10 +19,12 @@ Plan and stages: [`docs/PLAN.md`](docs/PLAN.md).
 | [fnm](https://github.com/Schniz/fnm) | any | Picks Node from `.nvmrc` |
 | Node.js | 24 | `fnm install 24` |
 | pnpm | as in `frontend/pnpm-lock.yaml` | **pnpm only.** Never `npm`, `npx` or `yarn` |
-
-Docker and Python (uv) are needed only from the Stage 1 build step onward (backend), not yet.
+| [uv](https://docs.astral.sh/uv/) | latest | Picks Python 3.12 (`backend/pyproject.toml`). **uv only.** Never `pip` |
+| Docker Compose | v2+ | Needed for real backend mode (PostgreSQL 16 + pgvector, Redis, Keycloak, Vault; binds to `127.0.0.1` with `mem_limit`) |
 
 ## First-time setup
+
+### Frontend (`frontend/`)
 
 All frontend code lives in `frontend/` (a pnpm workspace). From the repo root:
 
@@ -34,27 +39,69 @@ fnm exec --using=24 -- pnpm --dir frontend install
 In a shell where fnm already switched to Node 24 (e.g. `cd frontend` with fnm's shell hook on), you can drop the
 `fnm exec --using=24 --` prefix and run `pnpm …` from inside `frontend/`.
 
+### Backend (`backend/`, for real-data mode)
+
+From the repo root:
+
+```bash
+uv sync --project backend
+```
+
+To start the local dev backing services (PostgreSQL 16 + pgvector, Redis, Vault dev, Keycloak dev), apply migrations
+and seed the demo institutions:
+
+```bash
+uv run --project backend nexus-compose-up
+uv run --project backend alembic -c backend/alembic.ini upgrade head
+uv run --project backend nexus-seed
+uv run --project backend nexus-keycloak-dev
+```
+
+(When running `alembic` from inside `backend/`, use `uv run alembic upgrade head`.) Stop containers when done with
+`docker compose -f backend/compose.yaml down`.
+
 ## Run it
+
+### Mock mode & UI review (no backend needed)
 
 | What | Command (from the repo root) | Open |
 |---|---|---|
-| Campus app (the PWA for every role) | `fnm exec --using=24 -- pnpm --dir frontend dev` | http://127.0.0.1:3100 |
+| Campus app (dev server, mock data) | `fnm exec --using=24 -- pnpm --dir frontend dev` | http://127.0.0.1:3100 |
+| One-command review build (PWA + offline worker) | `fnm exec --using=24 -- pnpm --dir frontend review:start` | http://localhost:4173 |
 | Storybook (all UI components) | `fnm exec --using=24 -- pnpm --dir frontend storybook` | http://localhost:6006 |
 
-Storybook's toolbar switches **light / dark** theme, a sample **tenant theme**, **locale** (English, Arabic right to
-left, pseudo-locale), the **institution type** (its terminology) and the **viewport**. The a11y panel shows
-accessibility checks for each story.
+Storybook's toolbar switches **light / dark** theme, a sample **tenant theme**, **locale** (English `en`, Hindi `hi`,
+Tamil `ta`, pseudo-locale `en-XA`), **text direction** (LTR / RTL), the **institution type** (its terminology) and the
+**viewport**. The a11y panel shows accessibility checks for each story.
 
-Stop either server with `Ctrl+C`.
+Walkthrough per persona and institution type: [`docs/review/STAGE-1-WALKTHROUGH.md`](docs/review/STAGE-1-WALKTHROUGH.md).
+
+### Real backend mode (`DATA_MODE=real`)
+
+With the backend Compose stack running and seeded:
+
+| What | Command (from the repo root) | Open |
+|---|---|---|
+| FastAPI backend (`/api/v1`, `/healthz`, `/readyz`) | `uv run --project backend nexus-dev` | http://127.0.0.1:8000 |
+| Outbox & notification worker (optional) | `uv run --project backend nexus-worker` | — |
+| Campus app connected to the real backend | `fnm exec --using=24 -- pnpm --dir frontend dev:real` | http://127.0.0.1:3100 |
+
+Open `http://127.0.0.1:3100` and choose **Sign in with your institution account** (see
+[`docs/review/STAGE-1-WALKTHROUGH.md`](docs/review/STAGE-1-WALKTHROUGH.md) §4b for seeded accounts and notes).
+
+Stop any server with `Ctrl+C`.
 
 ## Check and build
+
+### Frontend
 
 ```bash
 fnm exec --using=24 -- pnpm --dir frontend review:check
 ```
 
-This runs format check, lint, typecheck, all tests (Vitest) and the production build, in that order. It must pass
-before any task is handed over. Single steps:
+This runs format check, lint, typecheck, all unit/integration tests (Vitest) and the production build, in that order,
+and logs `[timing]` lines against the soft budgets in [`docs/TIMINGS.md`](docs/TIMINGS.md). It must pass before any
+task is handed over. Single steps:
 
 | Step | Command (inside `frontend/`, Node 24 active) |
 |---|---|
@@ -65,28 +112,44 @@ before any task is handed over. Single steps:
 | Tests of one package | `pnpm --filter @nexus/mocks test` |
 | Production build | `pnpm build` (campus app → `apps/campus/dist`, Storybook → `packages/ui-storybook/storybook-static`) |
 | Preview the built app | `pnpm --filter campus preview` |
+| Playwright e2e (mock/review build) | `pnpm e2e` |
+| Playwright e2e (real backend) | `pnpm e2e:real` |
+
+### Backend
+
+```bash
+uv run --project backend backend-check
+```
+
+This runs `ruff format --check`, `ruff check`, `mypy` (`--strict`), and `pytest` with `[timing]` output.
 
 ## Where things are
 
 | Path | What |
 |---|---|
-| `frontend/apps/campus` | The campus app |
-| `frontend/packages/ui-core`, `ui-edu` | Shared components, theme engine, design tokens |
-| `frontend/packages/i18n` | Messages (`en`, `ar`), terminology, formatters, RTL |
+| `frontend/apps/campus` | The campus app (PWA for every institution role; Stage 1 modules M01–M07, M10, M11, M83) |
+| `frontend/packages/ui-core`, `ui-edu` | Shared components, Campus Prism theme engine, design tokens, WCAG contrast guard |
+| `frontend/packages/i18n` | Messages (`en`, `hi`, `ta`), terminology packs per institution type, formatters, pseudo-locale, RTL |
 | `frontend/packages/contracts` | API types + Zod schemas |
 | `frontend/packages/mocks` | Demo tenants, fixtures and the MSW mock API (`/api/v1`) |
-| `frontend/packages/services` | Data layer for screens: API client, query hooks, offline cache, outbox writes |
-| `frontend/packages/offline` | IndexedDB store, outbox, sync status |
-| `brand.config.ts` | Platform names (the only place they are written) |
-| `docs/` | Requirements, plan, decisions, maps ([`STRUCTURE.md`](docs/STRUCTURE.md)), guides |
+| `frontend/packages/services` | Data layer (`mock` \| `real`): API client, query hooks, persisted L1 cache, L2 outbox writes, device heartbeat |
+| `frontend/packages/offline` | IndexedDB store (Dexie), AES-GCM encryption, outbox, sync status, remote/idle wipe |
+| `frontend/packages/ui-storybook` | Storybook stories and visual/a11y harness |
+| `frontend/e2e` | Playwright smoke, language (`hi`, `ta`), pseudo-locale, offline, a11y and real-backend (`e2e:real`) suites |
+| `backend/` | FastAPI modular monolith, SQLAlchemy 2 + Alembic migrations, PostgreSQL RLS, Redis, Keycloak OIDC + SCIM 2.0, Vault Transit encryption, hash-chained audit & outbox worker, pgvector + guarded AI gateway |
+| `brand.config.ts` | Platform names and logo asset paths (the only place they are written) |
+| `docs/` | Requirements, plan, architecture, decisions, maps ([`STRUCTURE.md`](docs/STRUCTURE.md), [`CONTRACTS.md`](docs/CONTRACTS.md), [`COMPONENTS.md`](docs/COMPONENTS.md), [`TIMINGS.md`](docs/TIMINGS.md)) |
+| `docs/guides/` | Living guides: [`USER-GUIDE.md`](docs/guides/USER-GUIDE.md), [`API.md`](docs/guides/API.md), [`DATABASE.md`](docs/guides/DATABASE.md) |
 
 Full map: [`docs/STRUCTURE.md`](docs/STRUCTURE.md).
 
 ## Demo data
 
-All demo data is fictional (D16). There are five tenants: *Little Steps* (early years, India), *Riverside Education
-Group* with *Riverside School* on two campuses (UK), *Northbridge University* (US), *Apex Coaching* (Arabic, right to
-left, UAE) and *Harmony Music Academy* (Singapore). See `frontend/packages/mocks/src/fixtures/`.
+All demo data is fictional (D16). There are five tenants: *Little Steps* (early years, India, `en-IN`), *Riverside
+Education Group* with *Riverside School* on two campuses (K–12 group, UK, `en-GB` + Hindi `hi-IN`), *Northbridge
+University* (higher education, US, `en-US`), *Apex Coaching* (test prep, Chennai, India, Tamil `ta-IN` + `en-IN`) and
+*Harmony Music Academy* (skills academy, Singapore, `en-SG`). See `frontend/packages/mocks/src/fixtures/` and
+`backend/src/nexus/seed/`.
 
 ## Working on the code
 
