@@ -37,12 +37,12 @@ export default defineConfig({
   projects: [
     {
       name: "desktop",
-      testIgnore: [/pseudo\.spec\.ts/, /[\\/]real[\\/]/],
+      testIgnore: [/pseudo\.spec\.ts/, /[\\/](real|manual)[\\/]/],
       use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 800 } },
     },
     {
       name: "mobile-360",
-      testIgnore: [/pseudo\.spec\.ts/, /[\\/]real[\\/]/],
+      testIgnore: [/pseudo\.spec\.ts/, /[\\/](real|manual)[\\/]/],
       use: { ...devices["Desktop Chrome"], viewport: { width: 360, height: 800 }, hasTouch: true },
     },
     {
