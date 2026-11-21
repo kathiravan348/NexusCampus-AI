@@ -932,6 +932,58 @@ app,m07.permission.templateManage,Manage notification templates,Permission descr
 app,m07.permission.notificationSend,Send notifications,Permission description: send notifications.,सूचनाएँ भेजें,அறிவிப்புகளை அனுப்பு,to check
 app,m07.permission.preferenceManage,Set own notification preferences,Permission description: change own channels and quiet hours.,अपनी सूचना प्राथमिकताएँ सेट करें,சொந்த அறிவிப்பு விருப்பங்களை அமை,to check
 app,m07.nav.summary,"Message templates, delivery log and your own preferences.",Home tile description of the Notifications module.,"संदेश टेम्पलेट, डिलीवरी लॉग और आपकी अपनी प्राथमिकताएँ।","செய்தி வார்ப்புருக்கள், விநியோகப் பதிவு மற்றும் உங்கள் சொந்த விருப்பங்கள்.",to check
+app,m84.nav.title,Install & updates,Menu item and page title of the install agent on the institution's own servers.,इंस्टॉल और अपडेट,நிறுவல் & புதுப்பிப்புகள்,to check
+app,m84.nav.summary,"Licence, updates, encrypted backups and support diagnostics of your own install.",Home tile text for the install page.,"आपके अपने इंस्टॉल का लाइसेंस, अपडेट, एन्क्रिप्टेड बैकअप और सहायता डायग्नोस्टिक्स।","உங்கள் சொந்த நிறுவலின் உரிமம், புதுப்பிப்புகள், மறையாக்கப்பட்ட காப்புப்பிரதிகள் மற்றும் ஆதரவு கண்டறிதல்கள்.",to check
+app,m84.intro,"NexusCampus {version} on your own servers, {channel} channel.","Page intro. {version} e.g. 2.4.1, {channel} the update channel name.","आपके अपने सर्वर पर NexusCampus {version}, {channel} चैनल।","உங்கள் சொந்த சேவையகங்களில் NexusCampus {version}, {channel} சேனல்.",to check
+app,m84.channel.stable,stable,Update channel name inside a sentence: tested releases.,स्थिर,நிலையான,to check
+app,m84.channel.lts,long-term support,"Update channel name inside a sentence: fewer, longer-supported releases.",दीर्घकालिक सहायता,நீண்டகால ஆதரவு,to check
+app,m84.channel.preview,preview,Update channel name inside a sentence: early releases.,पूर्वावलोकन,முன்னோட்ட,to check
+app,m84.licence.title,Licence,Card heading: the licence of this install.,लाइसेंस,உரிமம்,to check
+app,m84.licence.active,Active,Licence state.,सक्रिय,செயலில்,to check
+app,m84.licence.grace,Grace period,Licence state: expired but still working for a short time.,छूट अवधि,சலுகைக் காலம்,to check
+app,m84.licence.readOnly,Read only,Licence state: data can be viewed but not changed.,केवल पढ़ने योग्य,படிக்க மட்டும்,to check
+app,m84.licence.expired,Expired,Licence state.,समाप्त,காலாவதியானது,to check
+app,m84.licence.revoked,Revoked,Licence state: withdrawn.,रद्द,திரும்பப் பெறப்பட்டது,to check
+app,m84.edition.standard,Standard edition,Licence edition.,स्टैंडर्ड संस्करण,நிலையான பதிப்பு,to check
+app,m84.edition.enterprise,Enterprise edition,Licence edition.,एंटरप्राइज़ संस्करण,நிறுவனப் பதிப்பு,to check
+app,m84.supportEnds,support until {date},After the edition. {date} is when the support contract ends.,{date} तक सहायता,{date} வரை ஆதரவு,to check
+app,m84.learners,Learners,Meter label: learners used of the licence limit.,शिक्षार्थी,கற்பவர்கள்,to check
+app,m84.campuses,Campuses,Meter label: campuses used of the licence limit.,परिसर,வளாகங்கள்,to check
+app,m84.used,{used} of {cap},Meter value. {used} and {cap} are numbers.,{cap} में से {used},{cap} இல் {used},to check
+app,m84.licence.offline,"The licence is checked on this server, without calling us.",Explains that the licence check works offline.,"लाइसेंस की जाँच इसी सर्वर पर होती है, हमसे संपर्क किए बिना।","உரிமம் இந்த சேவையகத்திலேயே சரிபார்க்கப்படுகிறது, எங்களை அழைக்காமல்.",to check
+app,m84.update.title,Updates,Card heading: available software update.,अपडेट,புதுப்பிப்புகள்,to check
+app,m84.update.none,You have the latest version.,Shown when no update is available.,आपके पास नवीनतम संस्करण है।,உங்களிடம் சமீபத்திய பதிப்பு உள்ளது.,to check
+app,m84.update.version,Version {version},Available update. {version} e.g. 2.4.2.,संस्करण {version},பதிப்பு {version},to check
+app,m84.update.security,Security fix,Badge: the update fixes a security problem.,सुरक्षा सुधार,பாதுகாப்புத் திருத்தம்,to check
+app,m84.update.signed,Signature valid,Badge: the update file is signed by us and unchanged.,हस्ताक्षर मान्य,கையொப்பம் செல்லும்,to check
+app,m84.update.badSignature,Signature not valid — do not install,Badge: the update file may have been changed.,हस्ताक्षर अमान्य — इंस्टॉल न करें,கையொப்பம் செல்லாது — நிறுவ வேண்டாம்,to check
+app,m84.update.online,Downloaded from NexusCampus,Where the update comes from: online.,NexusCampus से डाउनलोड,NexusCampus இலிருந்து பதிவிறக்கப்பட்டது,to check
+app,m84.update.offline,From an offline bundle,Where the update comes from: a signed file loaded by hand (no internet).,ऑफ़लाइन बंडल से,ஆஃப்லைன் தொகுப்பிலிருந்து,to check
+app,m84.update.covered,included in your support,The support contract covers this update.,आपकी सहायता में शामिल,உங்கள் ஆதரவில் அடங்கும்,to check
+app,m84.update.notCovered,needs a support contract,The support contract has ended; the install keeps running without updates.,सहायता अनुबंध आवश्यक,ஆதரவு ஒப்பந்தம் தேவை,to check
+app,m84.update.lastCheck,Last checked {date},When the install last looked for updates. {date} is a date.,अंतिम जाँच {date},கடைசியாகச் சரிபார்த்தது {date},to check
+app,m84.backups.title,Backups,Card heading: encrypted backups of this install.,बैकअप,காப்புப்பிரதிகள்,to check
+app,m84.backups.rule,Every backup is encrypted with your keys before it is written.,States that backups are always encrypted.,हर बैकअप लिखे जाने से पहले आपकी कुंजियों से एन्क्रिप्ट होता है।,ஒவ்வொரு காப்புப்பிரதியும் எழுதப்படும் முன் உங்கள் விசைகளால் மறையாக்கப்படுகிறது.,to check
+app,m84.backups.none,No backups yet.,Shown when there is no backup.,अभी कोई बैकअप नहीं।,இன்னும் காப்புப்பிரதி இல்லை.,to check
+app,m84.backups.backup,Encrypted backup of {date} · {size},"One backup. {date} is when it started, {size} e.g. 4,608 MB.",{date} का एन्क्रिप्टेड बैकअप · {size},{date} இன் மறையாக்கப்பட்ட காப்புப்பிரதி · {size},to check
+app,m84.backups.export,Encrypted export of {date} · {size},"One full export for moving the institution. {date} start, {size} size.",{date} का एन्क्रिप्टेड निर्यात · {size},{date} இன் மறையாக்கப்பட்ட ஏற்றுமதி · {size},to check
+app,m84.backup.running,Running,Backup state.,जारी,நடைபெறுகிறது,to check
+app,m84.backup.done,Done,Backup state.,पूरा,முடிந்தது,to check
+app,m84.backup.failed,Failed,Backup state.,विफल,தோல்வி,to check
+app,m84.sizeMb,{value} MB,A file size in megabytes. {value} is a number.,{value} MB,{value} MB,to check
+app,m84.privacy.title,Health reports & support diagnostics,Card heading: what the install sends to NexusCampus.,स्वास्थ्य रिपोर्ट और सहायता डायग्नोस्टिक्स,நல அறிக்கைகள் & ஆதரவு கண்டறிதல்கள்,to check
+app,m84.privacy.telemetryOn,"Health reports are on: counts, error rates and timings only — never names or records.","Telemetry state: on, and what it contains.","स्वास्थ्य रिपोर्ट चालू हैं: केवल गिनती, त्रुटि दर और समय — कभी नाम या रिकॉर्ड नहीं।","நல அறிக்கைகள் இயக்கத்தில்: எண்ணிக்கைகள், பிழை விகிதங்கள், நேரங்கள் மட்டும் — பெயர்களோ பதிவுகளோ ஒருபோதும் இல்லை.",to check
+app,m84.privacy.telemetryOff,Health reports are off. Nothing is sent to NexusCampus.,Telemetry state: off.,स्वास्थ्य रिपोर्ट बंद हैं। NexusCampus को कुछ नहीं भेजा जाता।,நல அறிக்கைகள் அணைக்கப்பட்டுள்ளன. NexusCampus-க்கு எதுவும் அனுப்பப்படாது.,to check
+app,m84.privacy.airGapped,This install is air-gapped: it never connects to NexusCampus.,The install has no internet connection to us at all.,यह इंस्टॉल एयर-गैप्ड है: यह कभी NexusCampus से नहीं जुड़ता।,இந்த நிறுவல் தனிமைப்படுத்தப்பட்டது: NexusCampus உடன் ஒருபோதும் இணையாது.,to check
+app,m84.privacy.bundleRule,Support diagnostics have personal data removed. Nothing is sent until an admin approves it.,Rule for diagnostic bundles.,सहायता डायग्नोस्टिक्स से व्यक्तिगत डेटा हटाया जाता है। व्यवस्थापक की स्वीकृति तक कुछ नहीं भेजा जाता।,ஆதரவு கண்டறிதல்களிலிருந்து தனிப்பட்ட தரவு நீக்கப்படுகிறது. நிர்வாகி ஒப்புதல் தரும் வரை எதுவும் அனுப்பப்படாது.,to check
+app,m84.bundle.none,No diagnostic bundles.,Shown when there is no bundle.,कोई डायग्नोस्टिक बंडल नहीं।,கண்டறிதல் தொகுப்பு இல்லை.,to check
+app,m84.bundle.forTicket,Diagnostics for ticket {ticket} · {date} · {size},"One bundle. {ticket} support ticket number, {date} creation date, {size} size.",टिकट {ticket} के लिए डायग्नोस्टिक्स · {date} · {size},டிக்கெட் {ticket} க்கான கண்டறிதல்கள் · {date} · {size},to check
+app,m84.bundle.item,Diagnostics · {date} · {size},"One bundle without a ticket. {date} creation date, {size} size.",डायग्नोस्टिक्स · {date} · {size},கண்டறிதல்கள் · {date} · {size},to check
+app,m84.bundle.generating,Being prepared,Bundle state.,तैयार हो रहा है,தயாராகிறது,to check
+app,m84.bundle.readyForReview,Waiting for your review,Bundle state: an admin must check it before it can be sent.,आपकी समीक्षा की प्रतीक्षा,உங்கள் மதிப்பாய்வுக்குக் காத்திருக்கிறது,to check
+app,m84.bundle.approved,Approved,Bundle state.,स्वीकृत,ஒப்புதல் அளிக்கப்பட்டது,to check
+app,m84.bundle.sent,Sent,Bundle state.,भेजा गया,அனுப்பப்பட்டது,to check
+app,m84.bundle.discarded,Discarded,Bundle state.,हटाया गया,நிராகரிக்கப்பட்டது,to check
 control,ctl.signIn.title,Sign in to {product},Heading of the Nexus Control sign-in page; {product} is the product name.,{product} में साइन इन करें,{product} இல் உள்நுழைக,to check
 control,ctl.signIn.intro,Demo: pick a staff member to see Nexus Control with their roles. Real sign-in uses staff single sign-on with multi-factor login.,"Text under the sign-in heading in the demo, explaining the staff picker.",डेमो: किसी स्टाफ़ सदस्य को चुनें और उनकी भूमिकाओं के साथ Nexus Control देखें। असली साइन-इन स्टाफ़ सिंगल साइन-ऑन और मल्टी-फ़ैक्टर लॉगिन से होता है।,டெமோ: ஒரு பணியாளரைத் தேர்ந்தெடுத்து அவரது பொறுப்புகளுடன் Nexus Control ஐப் பாருங்கள். உண்மையான உள்நுழைவு பணியாளர் ஒற்றை உள்நுழைவும் பல-காரணி உள்நுழைவும் பயன்படுத்தும்.,to check
 control,ctl.signIn.as,Sign in as {name},Accessible label of a button that signs in as a demo staff member; {name} is their name.,{name} के रूप में साइन इन करें,{name} ஆக உள்நுழைக,to check
@@ -1482,6 +1534,150 @@ control,p13.mfaOff,Missing — cannot sign in,"Badge: no multi-factor login, so 
 control,p13.inactive,Inactive,Badge: the account is switched off.,निष्क्रिय,செயலற்றது,to check
 control,p13.partnerUser,Partner user,Badge: this person works for a reseller partner.,पार्टनर उपयोगकर्ता,கூட்டாளர் பயனர்,to check
 control,p13.never,Never,Shown when someone never signed in.,कभी नहीं,ஒருபோதும் இல்லை,to check
+control,p14.nav,Trust,"Menu item and page title of compliance and trust operations (certifications, incidents, sub-processors, customer agreements).",विश्वास,நம்பிக்கை,to check
+control,p14.summary,"Certifications, security incidents, sub-processors and customer data agreements.",Home tile text for the Trust page.,"प्रमाणन, सुरक्षा घटनाएँ, उप-प्रोसेसर और ग्राहक डेटा समझौते।","சான்றிதழ்கள், பாதுகாப்பு சம்பவங்கள், துணை-செயலாக்குநர்கள் மற்றும் வாடிக்கையாளர் தரவு ஒப்பந்தங்கள்.",to check
+control,p14.certifications,Certifications,Card heading: security and privacy certifications of the company.,प्रमाणन,சான்றிதழ்கள்,to check
+control,p14.cert.iso27001,ISO/IEC 27001,Name of the information-security certification. Keep as is.,ISO/IEC 27001,ISO/IEC 27001,to check
+control,p14.cert.iso27701,ISO/IEC 27701,Name of the privacy certification. Keep as is.,ISO/IEC 27701,ISO/IEC 27701,to check
+control,p14.cert.soc2,SOC 2 Type II,Name of the US security audit report. Keep as is.,SOC 2 Type II,SOC 2 Type II,to check
+control,p14.cert.certIn,CERT-In empanelment,Listing by the Indian national cyber-security agency. Keep CERT-In as is.,CERT-In पैनल,CERT-In பட்டியல்,to check
+control,p14.certStatus.planned,Planned,Certification state: not started yet.,योजना में,திட்டமிடப்பட்டது,to check
+control,p14.certStatus.inAudit,In audit,Certification state: the auditor is checking us now.,ऑडिट जारी,தணிக்கையில்,to check
+control,p14.certStatus.certified,Certified,Certification state: valid certificate.,प्रमाणित,சான்றளிக்கப்பட்டது,to check
+control,p14.certStatus.lapsed,Lapsed,Certification state: the certificate expired.,समाप्त,காலாவதியானது,to check
+control,p14.validUntil,valid until {date},After a certification badge. {date} is the expiry date.,{date} तक मान्य,{date} வரை செல்லும்,to check
+control,p14.incidents,Security incidents,Section heading and table caption: list of security incidents.,सुरक्षा घटनाएँ,பாதுகாப்பு சம்பவங்கள்,to check
+control,p14.breachRule,"When personal data may be affected, the notification clock starts at detection: 6 hours to CERT-In in India, 72 hours to the authority under GDPR, and the institution without delay.",Explains the legal deadlines for reporting a data breach.,"जब व्यक्तिगत डेटा प्रभावित हो सकता है, तो पता चलते ही सूचना की घड़ी शुरू होती है: भारत में CERT-In को 6 घंटे, GDPR के तहत प्राधिकरण को 72 घंटे, और संस्थान को बिना देरी।","தனிப்பட்ட தரவு பாதிக்கப்படலாம் என்றால், கண்டறிந்த நேரத்திலிருந்து அறிவிப்புக் கடிகாரம் தொடங்கும்: இந்தியாவில் CERT-In-க்கு 6 மணி நேரம், GDPR-இன் கீழ் அதிகாரத்துக்கு 72 மணி நேரம், நிறுவனத்துக்கு தாமதமின்றி.",to check
+control,p14.col.incident,Incident,Table column: incident title.,घटना,சம்பவம்,to check
+control,p14.col.severity,Severity,Table column: how serious the incident is.,गंभीरता,தீவிரம்,to check
+control,p14.col.status,Status,Table column: incident progress.,स्थिति,நிலை,to check
+control,p14.col.breach,Breach notification,Table column: deadline and state of the legal data-breach notification.,उल्लंघन सूचना,மீறல் அறிவிப்பு,to check
+control,p14.detected,Detected {date} · {accounts},"Under the incident title. {date} is the detection date, {accounts} the affected customers.",{date} को पता चला · {accounts},{date} அன்று கண்டறியப்பட்டது · {accounts},to check
+control,p14.aiReport,AI-drafted report,Badge: AI wrote the first draft of the incident report; a security officer must check it.,AI द्वारा तैयार रिपोर्ट,AI வரைந்த அறிக்கை,to check
+control,p14.sev.sev1,Critical,"Incident severity 1, the highest.",अति गंभीर,மிகத் தீவிரம்,to check
+control,p14.sev.sev2,High,Incident severity 2.,उच्च,அதிகம்,to check
+control,p14.sev.sev3,Medium,Incident severity 3.,मध्यम,நடுத்தரம்,to check
+control,p14.sev.sev4,Low,"Incident severity 4, the lowest.",निम्न,குறைவு,to check
+control,p14.incStatus.investigating,Investigating,Incident state: still finding out what happened.,जाँच जारी,விசாரணையில்,to check
+control,p14.incStatus.contained,Contained,Incident state: stopped from spreading.,नियंत्रित,கட்டுப்படுத்தப்பட்டது,to check
+control,p14.incStatus.resolved,Resolved,Incident state: fixed.,हल,தீர்க்கப்பட்டது,to check
+control,p14.incStatus.postMortemDone,Review done,Incident state: the after-incident review is written.,समीक्षा पूरी,மதிப்பாய்வு முடிந்தது,to check
+control,p14.noBreach,No personal data affected,"Breach column when no personal data was involved, so no notification is needed.",कोई व्यक्तिगत डेटा प्रभावित नहीं,தனிப்பட்ட தரவு பாதிக்கப்படவில்லை,to check
+control,p14.notifyBy,Notify by {date},Breach column: notification still due; {date} is the deadline.,{date} तक सूचित करें,{date}க்குள் அறிவிக்கவும்,to check
+control,p14.notifiedOnTime,"Notified {date}, on time",Breach column: notification sent before the deadline; {date} is when.,"{date} को सूचित, समय पर","{date} அன்று அறிவிக்கப்பட்டது, நேரத்தில்",to check
+control,p14.notifiedLate,"Notified {date}, late",Breach column: notification sent after the deadline; {date} is when.,"{date} को सूचित, देर से","{date} அன்று அறிவிக்கப்பட்டது, தாமதமாக",to check
+control,p14.subProcessors,Sub-processors,Section heading and table caption: other companies that process data for us.,उप-प्रोसेसर,துணை-செயலாக்குநர்கள்,to check
+control,p14.col.subProcessor,Company,Table column: sub-processor name and purpose.,कंपनी,நிறுவனம்,to check
+control,p14.col.country,Country,Table column: country of the company.,देश,நாடு,to check
+control,p14.col.dpa,Agreement,Table column: whether a data-processing agreement is signed.,समझौता,ஒப்பந்தம்,to check
+control,p14.col.data,Data it can reach,Table column: which data the company could ever touch.,किस डेटा तक पहुँच,அணுகக்கூடிய தரவு,to check
+control,p14.dpaSigned,Signed,Badge: data-processing agreement signed.,हस्ताक्षरित,கையொப்பமிடப்பட்டது,to check
+control,p14.dpaMissing,Not signed,Badge: data-processing agreement missing.,हस्ताक्षर नहीं,கையொப்பமில்லை,to check
+control,p14.institutionData,Institution data (hosting),Badge: this company hosts systems that hold the data of institutions.,संस्थान डेटा (होस्टिंग),நிறுவனத் தரவு (ஹோஸ்டிங்),to check
+control,p14.businessDataOnly,Our business data only,The company never touches the data of institutions.,केवल हमारा व्यावसायिक डेटा,எங்கள் வணிகத் தரவு மட்டும்,to check
+control,p14.dpas,Customer data agreements,Section heading and table caption: data-processing agreements signed by customers.,ग्राहक डेटा समझौते,வாடிக்கையாளர் தரவு ஒப்பந்தங்கள்,to check
+control,p14.col.customer,Customer,Table column: customer name.,ग्राहक,வாடிக்கையாளர்,to check
+control,p14.col.version,Version,Table column: agreement version number.,संस्करण,பதிப்பு,to check
+control,p14.col.signed,Signed,Table column: date the agreement was signed.,हस्ताक्षर तिथि,கையொப்பத் தேதி,to check
+control,p15.nav,Projects,"Menu item and page title of implementation projects (onboarding, data moves, installs, training).",परियोजनाएँ,திட்டங்கள்,to check
+control,p15.summary,"Onboarding plans, data migrations, installs and training with go-live checklists.",Home tile text for the Projects page.,"ऑनबोर्डिंग योजनाएँ, डेटा माइग्रेशन, इंस्टॉल और प्रशिक्षण, गो-लाइव चेकलिस्ट के साथ।","அறிமுகத் திட்டங்கள், தரவு இடமாற்றம், நிறுவல் மற்றும் பயிற்சி, நேரலைச் சரிபார்ப்புப் பட்டியலுடன்.",to check
+control,p15.filter,Status,Label of the filter that shows projects of one status only.,स्थिति,நிலை,to check
+control,p15.all,All statuses,Filter option that shows every project.,सभी स्थितियाँ,அனைத்து நிலைகளும்,to check
+control,p15.empty,No projects with this status.,Shown when the filter matches no project.,इस स्थिति की कोई परियोजना नहीं।,இந்த நிலையில் திட்டம் இல்லை.,to check
+control,p15.kind.onboarding,Onboarding,Project kind: setting up a new customer.,ऑनबोर्डिंग,அறிமுகம்,to check
+control,p15.kind.migration,Data migration,Project kind: moving data in from another system or between SaaS and self-hosted.,डेटा माइग्रेशन,தரவு இடமாற்றம்,to check
+control,p15.kind.selfHostedInstall,Self-hosted install,Project kind: installing NexusCampus on the customer's own servers.,स्व-होस्टेड इंस्टॉल,சுய-ஹோஸ்ட் நிறுவல்,to check
+control,p15.kind.training,Training,Project kind: training the customer's staff.,प्रशिक्षण,பயிற்சி,to check
+control,p15.status.planned,Planned,Project state: not started.,योजना में,திட்டமிடப்பட்டது,to check
+control,p15.status.inProgress,In progress,Project state: work under way.,जारी,நடைபெறுகிறது,to check
+control,p15.status.live,Live,Project state: the customer went live; every task is done.,लाइव,நேரலை,to check
+control,p15.status.onHold,On hold,Project state: paused.,रुका हुआ,நிறுத்திவைக்கப்பட்டது,to check
+control,p15.meta,{kind} · lead {lead},"Under the customer name. {kind} is the project kind, {lead} the consultant leading it.",{kind} · प्रमुख {lead},{kind} · தலைமை {lead},to check
+control,p15.goLive,Go-live {date},Planned or actual go-live date of the project.,गो-लाइव {date},நேரலை {date},to check
+control,p15.noGoLive,Go-live date not set,Shown when the project has no go-live date yet.,गो-लाइव तिथि तय नहीं,நேரலைத் தேதி அமைக்கப்படவில்லை,to check
+control,p15.aiDraft,AI draft — check before sharing,Badge: AI drafted this project plan; a consultant must check it before the customer sees it.,AI मसौदा — साझा करने से पहले जाँचें,AI வரைவு — பகிரும் முன் சரிபார்க்கவும்,to check
+control,p15.progress,{done} of {total} tasks done,Checklist heading. {done} and {total} are numbers.,{total} में से {done} कार्य पूरे,{total} இல் {done} பணிகள் முடிந்தன,to check
+control,p15.due,due {date},After a checklist task. {date} is the due date.,नियत {date},{date} க்குள்,to check
+control,p15.overdue,Overdue,Badge on an open task past its due date.,समय से पीछे,தாமதம்,to check
+control,p15.taskDone,Done,Screen-reader label of the tick icon of a finished task.,पूरा,முடிந்தது,to check
+control,p15.taskOpen,Open,Screen-reader label of the empty circle icon of an unfinished task.,खुला,திறந்தது,to check
+control,p16.nav,Analytics,"Menu item and page title of business analytics (revenue, customers, churn, customer health).",विश्लेषण,பகுப்பாய்வு,to check
+control,p16.summary,"Revenue, customers, churn, retention and AI customer health.",Home tile text for the Analytics page.,"राजस्व, ग्राहक, छूटना, प्रतिधारण और AI ग्राहक स्वास्थ्य।","வருவாய், வாடிக்கையாளர்கள், இழப்பு, தக்கவைப்பு மற்றும் AI வாடிக்கையாளர் நலம்.",to check
+control,p16.latest,{month},"Heading over the latest month's figures. {month} is the month and year, e.g. September 2026.",{month},{month},to check
+control,p16.mrr,Monthly recurring revenue,Figure label and table column: subscription revenue per month (MRR).,मासिक आवर्ती राजस्व,மாதாந்திரத் தொடர் வருவாய்,to check
+control,p16.arr,Annual recurring revenue,Figure label: monthly recurring revenue times 12 (ARR).,वार्षिक आवर्ती राजस्व,ஆண்டுத் தொடர் வருவாய்,to check
+control,p16.active,Active customers,Figure label and table column: customers with a live subscription.,सक्रिय ग्राहक,செயலில் உள்ள வாடிக்கையாளர்கள்,to check
+control,p16.nrr,Net revenue retention,Figure label and table column: revenue kept from existing customers including upgrades; above 100% means growth.,शुद्ध राजस्व प्रतिधारण,நிகர வருவாய்த் தக்கவைப்பு,to check
+control,p16.churn,Gross churn,Figure label: share of customers lost in the month.,सकल छूटना,மொத்த இழப்பு,to check
+control,p16.tickets,Open tickets,Figure label and table column: support tickets not yet closed.,खुले टिकट,திறந்த டிக்கெட்டுகள்,to check
+control,p16.pct,{value}%,A percentage. {value} is a number.,{value}%,{value}%,to check
+control,p16.up,+{value}% from last month,Change under a figure. {value} is a positive number.,पिछले महीने से +{value}%,கடந்த மாதத்தை விட +{value}%,to check
+control,p16.down,−{value}% from last month,Change under a figure. {value} is a positive number; the sign shows the fall.,पिछले महीने से −{value}%,கடந்த மாதத்தை விட −{value}%,to check
+control,p16.noChange,Same as last month,Shown under a figure that did not change.,पिछले महीने जितना,கடந்த மாதம் போலவே,to check
+control,p16.months,Last 12 months,Section heading and table caption: monthly figures.,पिछले 12 महीने,கடந்த 12 மாதங்கள்,to check
+control,p16.col.month,Month,Table column: month and year.,महीना,மாதம்,to check
+control,p16.col.new,New,Table column: customers gained in the month.,नए,புதியவை,to check
+control,p16.col.churned,Lost,Table column: customers lost in the month.,गए,இழந்தவை,to check
+control,p16.health,Customer health (AI estimate),Section heading and table caption: AI-estimated health of each customer.,ग्राहक स्वास्थ्य (AI अनुमान),வாடிக்கையாளர் நலம் (AI மதிப்பீடு),to check
+control,p16.aiNote,"AI estimates each score from usage, billing and support signals and gives its reasons. It is a hint, not a decision — a person decides whether to act.",Explains that the health score is AI-made and a person must decide.,"AI उपयोग, बिलिंग और सहायता संकेतों से हर स्कोर का अनुमान लगाता है और कारण बताता है। यह संकेत है, निर्णय नहीं — कार्रवाई का निर्णय एक व्यक्ति करता है।","பயன்பாடு, கட்டணம் மற்றும் ஆதரவு அறிகுறிகளிலிருந்து AI ஒவ்வொரு மதிப்பெண்ணையும் மதிப்பிட்டு காரணங்களைத் தருகிறது. இது ஒரு குறிப்பு, முடிவு அல்ல — செயல்படுவதா என்பதை ஒரு நபர் முடிவு செய்கிறார்.",to check
+control,p16.col.customer,Customer,Table column: customer name.,ग्राहक,வாடிக்கையாளர்,to check
+control,p16.col.score,Score,Table column: health score from 0 to 100.,स्कोर,மதிப்பெண்,to check
+control,p16.col.risk,Churn risk,Table column: how likely the customer is to leave.,छोड़ने का जोखिम,விலகும் அபாயம்,to check
+control,p16.col.reasons,Reasons,Table column: why the AI gave this score.,कारण,காரணங்கள்,to check
+control,p16.risk.high,High,Churn risk level.,उच्च,அதிகம்,to check
+control,p16.risk.medium,Medium,Churn risk level.,मध्यम,நடுத்தரம்,to check
+control,p16.risk.low,Low,Churn risk level.,निम्न,குறைவு,to check
+control,p16.reason.overdueInvoice,An invoice is overdue,Reason for a health score.,एक चालान बकाया है,ஒரு விலைப்பட்டியல் நிலுவையில் உள்ளது,to check
+control,p16.reason.steadyUsage,Usage is steady,Reason for a health score.,उपयोग स्थिर है,பயன்பாடு சீராக உள்ளது,to check
+control,p16.reason.growingUsage,Usage is growing,Reason for a health score.,उपयोग बढ़ रहा है,பயன்பாடு வளர்கிறது,to check
+control,p16.reason.expansionWon,Recently bought more,Reason for a health score: the customer upgraded or added seats.,हाल ही में और खरीदा,சமீபத்தில் கூடுதலாக வாங்கினர்,to check
+control,p16.reason.recentIncident,A recent security incident affected them,Reason for a health score.,हाल की सुरक्षा घटना ने प्रभावित किया,சமீபத்திய பாதுகாப்புச் சம்பவம் பாதித்தது,to check
+control,p16.reason.highAiUse,High use of AI features,Reason for a health score.,AI सुविधाओं का अधिक उपयोग,AI அம்சங்களின் அதிகப் பயன்பாடு,to check
+control,p16.reason.lowUsage,Low usage,Reason for a health score.,कम उपयोग,குறைந்த பயன்பாடு,to check
+control,p16.reason.trialEndingSoon,Trial ends soon,Reason for a health score.,परीक्षण जल्द समाप्त,சோதனைக் காலம் விரைவில் முடிகிறது,to check
+control,p16.reason.nearLearnerCap,Close to the learner limit of their plan,Reason for a health score.,योजना की शिक्षार्थी सीमा के करीब,திட்டத்தின் கற்பவர் வரம்பை நெருங்குகிறது,to check
+control,p16.reason.openSlaBreach,A support ticket missed its target time,Reason for a health score.,एक सहायता टिकट लक्ष्य समय से चूका,ஒரு ஆதரவு டிக்கெட் இலக்கு நேரத்தைத் தவறவிட்டது,to check
+control,p16.reason.noTelemetry,No health check-in from their install,Reason for a health score of a self-hosted customer.,उनके इंस्टॉल से कोई स्वास्थ्य सूचना नहीं,அவர்களின் நிறுவலிலிருந்து நல அறிக்கை இல்லை,to check
+control,p16.reason.supportRenewalDue,Support renewal is due,Reason for a health score.,सहायता नवीनीकरण देय है,ஆதரவுப் புதுப்பிப்பு நிலுவையில் உள்ளது,to check
+control,p16.reason.other,Other signal,Fallback for a reason this screen does not know yet.,अन्य संकेत,பிற அறிகுறி,to check
+control,p17.nav,Sandboxes,Menu item and page title of demo and staging environments.,सैंडबॉक्स,சோதனைச் சூழல்கள்,to check
+control,p17.summary,Self-expiring sales demos and masked staging clones for testing.,Home tile text for the Sandboxes page.,अपने आप समाप्त होने वाले बिक्री डेमो और परीक्षण के लिए छिपाए गए स्टेजिंग क्लोन।,தானாக காலாவதியாகும் விற்பனை டெமோக்கள் மற்றும் சோதனைக்கான மறைக்கப்பட்ட ஸ்டேஜிங் நகல்கள்.,to check
+control,p17.rule,"A sandbox never holds real institution data: sales demos use made-up data, and staging clones are masked copies the customer approved. Every sandbox expires on its own.",States the data rule for sandboxes.,"सैंडबॉक्स में कभी असली संस्थान डेटा नहीं होता: बिक्री डेमो काल्पनिक डेटा का उपयोग करते हैं, और स्टेजिंग क्लोन ग्राहक द्वारा स्वीकृत छिपाई गई प्रतियाँ हैं। हर सैंडबॉक्स अपने आप समाप्त होता है।","சோதனைச் சூழலில் உண்மையான நிறுவனத் தரவு ஒருபோதும் இருக்காது: விற்பனை டெமோக்கள் கற்பனைத் தரவைப் பயன்படுத்துகின்றன, ஸ்டேஜிங் நகல்கள் வாடிக்கையாளர் ஒப்புதல் அளித்த மறைக்கப்பட்ட நகல்கள். ஒவ்வொன்றும் தானாக காலாவதியாகும்.",to check
+control,p17.caption,Sandboxes,Table caption: list of sandboxes.,सैंडबॉक्स,சோதனைச் சூழல்கள்,to check
+control,p17.empty,No sandboxes.,Shown when there is no sandbox.,कोई सैंडबॉक्स नहीं।,சோதனைச் சூழல் இல்லை.,to check
+control,p17.col.sandbox,Sandbox,Table column: kind of sandbox and its customer.,सैंडबॉक्स,சூழல்,to check
+control,p17.col.type,Institution type · region,Table column: kind of institution the sandbox shows and the region it runs in.,संस्थान प्रकार · क्षेत्र,நிறுவன வகை · பகுதி,to check
+control,p17.col.data,Data,Table column: what data the sandbox holds.,डेटा,தரவு,to check
+control,p17.col.version,Version,Table column: product version running in the sandbox.,संस्करण,பதிப்பு,to check
+control,p17.col.status,Status,Table column: sandbox state.,स्थिति,நிலை,to check
+control,p17.col.expires,Expires,Table column: date the sandbox is removed.,समाप्ति,காலாவதி,to check
+control,p17.kind.salesDemo,Sales demo,Sandbox kind: demo for a prospective customer.,बिक्री डेमो,விற்பனை டெமோ,to check
+control,p17.kind.stagingClone,Staging clone,Sandbox kind: test copy of a customer's setup for release or extension testing.,स्टेजिंग क्लोन,ஸ்டேஜிங் நகல்,to check
+control,p17.noCustomer,Not tied to a customer,Shown for a sales demo that belongs to no customer yet.,किसी ग्राहक से जुड़ा नहीं,எந்த வாடிக்கையாளருடனும் இணைக்கப்படவில்லை,to check
+control,p17.typeRegion,{type} · {region},"Institution type and region. {type} e.g. Early years, {region} e.g. India.",{type} · {region},{type} · {region},to check
+control,p17.data.synthetic,Synthetic data,"Badge: made-up demo data, no real people.",काल्पनिक डेटा,கற்பனைத் தரவு,to check
+control,p17.data.masked,Masked copy,"Badge: copy with every personal detail replaced, approved by the customer.",छिपाई गई प्रति,மறைக்கப்பட்ட நகல்,to check
+control,p17.status.creating,Creating,Sandbox state: being set up.,बन रहा है,உருவாக்கப்படுகிறது,to check
+control,p17.status.ready,Ready,Sandbox state: can be used.,तैयार,தயார்,to check
+control,p17.status.expired,Expired,Sandbox state: past its end date.,समाप्त,காலாவதியானது,to check
+control,p17.status.deleted,Deleted,Sandbox state: removed.,हटाया गया,நீக்கப்பட்டது,to check
+control,p18.nav,Moves,Menu item and page title of tenant moves between SaaS and self-hosted or between regions.,स्थानांतरण,இடமாற்றங்கள்,to check
+control,p18.summary,"Encrypted tenant moves between SaaS and self-hosted, and between regions.",Home tile text for the Moves page.,"SaaS और स्व-होस्टेड के बीच, और क्षेत्रों के बीच एन्क्रिप्टेड टेनेंट स्थानांतरण।","SaaS மற்றும் சுய-ஹோஸ்ட் இடையே, பகுதிகளுக்கு இடையே மறையாக்கப்பட்ட டெனன்ட் இடமாற்றங்கள்.",to check
+control,p18.rule,"Every move exports the data encrypted with the tenant's own keys; we run the steps but can never read the export. The source keys are destroyed at the end, with a signed certificate.",States the security rule for tenant moves.,"हर स्थानांतरण डेटा को टेनेंट की अपनी कुंजियों से एन्क्रिप्ट करके निर्यात करता है; हम चरण चलाते हैं पर निर्यात कभी पढ़ नहीं सकते। अंत में स्रोत कुंजियाँ नष्ट की जाती हैं, हस्ताक्षरित प्रमाणपत्र के साथ।","ஒவ்வொரு இடமாற்றமும் டெனன்டின் சொந்த விசைகளால் மறையாக்கப்பட்டு தரவை ஏற்றுமதி செய்கிறது; நாங்கள் படிகளை இயக்குகிறோம், ஆனால் ஏற்றுமதியை ஒருபோதும் படிக்க முடியாது. இறுதியில் மூல விசைகள் அழிக்கப்படுகின்றன, கையொப்பமிட்ட சான்றிதழுடன்.",to check
+control,p18.empty,No tenant moves.,Shown when there is no move.,कोई टेनेंट स्थानांतरण नहीं।,டெனன்ட் இடமாற்றம் இல்லை.,to check
+control,p18.meta,{direction} · {region} · started {date},"Under the customer name when the region stays the same. {direction} e.g. SaaS → self-hosted, {region} e.g. India (IN), {date} start date.",{direction} · {region} · {date} को शुरू,{direction} · {region} · {date} அன்று தொடங்கியது,to check
+control,p18.metaMove,{direction} · {from} → {to} · started {date},"Under the customer name for a move between regions. {from} and {to} are regions, {date} start date.",{direction} · {from} → {to} · {date} को शुरू,{direction} · {from} → {to} · {date} அன்று தொடங்கியது,to check
+control,p18.steps,Steps of move {job},Screen-reader name of the step list. {job} is the move id.,स्थानांतरण {job} के चरण,இடமாற்றம் {job} இன் படிகள்,to check
+control,p18.dir.toSelfHosted,SaaS → self-hosted,Move direction: from our cloud to the customer's own servers.,SaaS → स्व-होस्टेड,SaaS → சுய-ஹோஸ்ட்,to check
+control,p18.dir.toSaas,Self-hosted → SaaS,Move direction: from the customer's own servers to our cloud.,स्व-होस्टेड → SaaS,சுய-ஹோஸ்ட் → SaaS,to check
+control,p18.dir.region,Region move,Move direction: between two of our cloud regions.,क्षेत्र परिवर्तन,பகுதி இடமாற்றம்,to check
+control,p18.step.preflight,Pre-flight check,Move step: check everything is ready before moving.,पूर्व-जाँच,முன் சரிபார்ப்பு,to check
+control,p18.step.export,Encrypted export,Move step: export the data encrypted with the tenant's keys.,एन्क्रिप्टेड निर्यात,மறையாக்கப்பட்ட ஏற்றுமதி,to check
+control,p18.step.transfer,Transfer,Move step: copy the encrypted export to the target.,स्थानांतरण,பரிமாற்றம்,to check
+control,p18.step.import,Import,Move step: load the data at the target.,आयात,இறக்குமதி,to check
+control,p18.step.verify,Verify,Move step: check the moved data is complete.,सत्यापन,சரிபார்ப்பு,to check
+control,p18.step.cutover,Switch over,Move step: users start using the new place.,बदलाव,மாற்றம்,to check
+control,p18.step.shred,Destroy source keys,Move step: destroy the keys of the old copy so it can never be read (crypto-shred).,स्रोत कुंजियाँ नष्ट करें,மூல விசைகளை அழி,to check
 terms:ey,term.learner,Child,Word for this institution type (ey).,बच्चा,குழந்தை,to check
 terms:ey,term.learners,Children,Word for this institution type (ey).,बच्चे,குழந்தைகள்,to check
 terms:ey,term.teacher,Teacher,Word for this institution type (ey).,शिक्षक,ஆசிரியர்,to check

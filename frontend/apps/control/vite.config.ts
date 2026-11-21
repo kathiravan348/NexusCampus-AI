@@ -8,16 +8,20 @@ import { nexusAliases } from "../../vite.aliases";
 const appDir = path.dirname(fileURLToPath(import.meta.url));
 
 /** Nexus Control (Stage 2, D50): provider staff app, online only, mock mode by default in dev. */
-export default defineConfig({
-  plugins: [tailwindcss(), react()],
-  // Same brand files and MSW worker as campus; no copies to drift (D40).
-  publicDir: path.join(appDir, "..", "campus", "public"),
-  resolve: { alias: { ...nexusAliases } },
-  server: { port: 3200, host: "127.0.0.1" },
-  preview: { port: 3201, host: "127.0.0.1" },
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "./src/test/setup.ts",
-  },
+export default defineConfig(({ mode }) => {
+  // `--mode review` = the Stage 2 review build (`pnpm review:start:control`, e2e): production build on mock data.
+  if (mode === "review") process.env["VITE_DATA_MODE"] ??= "mock";
+  return {
+    plugins: [tailwindcss(), react()],
+    // Same brand files and MSW worker as campus; no copies to drift (D40).
+    publicDir: path.join(appDir, "..", "campus", "public"),
+    resolve: { alias: { ...nexusAliases } },
+    server: { port: 3200, host: "127.0.0.1" },
+    preview: { port: 3201, host: "127.0.0.1" },
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: "./src/test/setup.ts",
+    },
+  };
 });
