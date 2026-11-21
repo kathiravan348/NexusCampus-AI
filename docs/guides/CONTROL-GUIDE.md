@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype, NEX-071: sign-in, menu and home; pages arrive one by one).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -27,6 +27,21 @@ recorded in its own activity log.
 - If you open a page your roles do not include, you see **No access**. Ask a super admin if you need it.
 - **Language** (bottom of the menu): English, Hindi or Tamil. The moon/sun button switches dark and light.
 - Demo only: the staff picker at the top (tablet and wider) switches to another staff member.
+
+### Accounts
+
+Menu **Accounts** (roles with account access: super admin, sales, billing, support, implementation, security
+officer, partner).
+
+- The list shows every customer you may see: name, **Type**, **Model** (SaaS shared, SaaS dedicated, Self-hosted,
+  Hybrid), **Stage** (Lead, Trial, Customer, Churned), **Learners** (a count only), **Health** and **Renewal**.
+  Health: 70 or more **Healthy**, 50–69 **Watch**, under 50 **At risk**.
+- **Search accounts**, **Stage** and **Delivery model** narrow the list. Click a name to open the account.
+- The account page shows a **Summary** and four tabs: **Contacts** (the customer's billing, technical, executive and
+  data-protection contacts), **Opportunities**, **Contracts** and **Notes**.
+- **Notes:** sales and super admins type a note and press **Add note**. Write business notes only — never personal
+  details of the institution's learners, families or staff. Other roles read notes.
+- **Partners** see only the customers their own company manages; any other account says it does not exist.
 
 ## Roles
 

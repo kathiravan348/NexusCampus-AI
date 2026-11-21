@@ -66,5 +66,345 @@
   "ctl.shell.mfaVerified": {
     "message": "Multi-factor login verified",
     "description": "Accessible label of the shield icon next to the staff name; every staff session uses multi-factor login."
+  },
+  "p01.nav": {
+    "message": "Accounts",
+    "description": "Menu item and page title of the customer accounts page (P01)."
+  },
+  "p01.summary": {
+    "message": "Customers, contacts, deals and contracts.",
+    "description": "One-line description on the Accounts home tile."
+  },
+  "p01.list.caption": {
+    "message": "Customer accounts",
+    "description": "Accessible caption of the accounts table."
+  },
+  "p01.list.search": {
+    "message": "Search accounts",
+    "description": "Label of the search box that filters accounts by name."
+  },
+  "p01.list.filterStage": {
+    "message": "Stage",
+    "description": "Label of the filter for the account stage (lead, trial, customer, churned)."
+  },
+  "p01.list.filterModel": {
+    "message": "Delivery model",
+    "description": "Label of the filter for how the customer runs NexusCampus (SaaS or self-hosted)."
+  },
+  "p01.list.all": {
+    "message": "All",
+    "description": "Filter option that shows every value."
+  },
+  "p01.list.empty": {
+    "message": "No accounts match.",
+    "description": "Shown when no account matches the search and filters."
+  },
+  "p01.col.name": {
+    "message": "Account",
+    "description": "Column header: account (customer) name."
+  },
+  "p01.col.type": {
+    "message": "Type",
+    "description": "Column header: institution type of the customer."
+  },
+  "p01.col.model": {
+    "message": "Model",
+    "description": "Column header: delivery model."
+  },
+  "p01.col.stage": {
+    "message": "Stage",
+    "description": "Column header: account stage."
+  },
+  "p01.col.learners": {
+    "message": "Learners",
+    "description": "Column header: number of learners (a count, never names)."
+  },
+  "p01.col.health": {
+    "message": "Health",
+    "description": "Column header: account health score from 0 to 100."
+  },
+  "p01.col.renewal": {
+    "message": "Renewal",
+    "description": "Column header: next renewal date."
+  },
+  "p01.stage.lead": {
+    "message": "Lead",
+    "description": "Account stage: a prospect."
+  },
+  "p01.stage.trial": {
+    "message": "Trial",
+    "description": "Account stage: on a free trial."
+  },
+  "p01.stage.customer": {
+    "message": "Customer",
+    "description": "Account stage: paying customer."
+  },
+  "p01.stage.churned": {
+    "message": "Churned",
+    "description": "Account stage: left us."
+  },
+  "p01.model.saasShared": {
+    "message": "SaaS shared",
+    "description": "Delivery model: our shared cloud cell."
+  },
+  "p01.model.saasDedicated": {
+    "message": "SaaS dedicated",
+    "description": "Delivery model: a cloud cell only for this customer."
+  },
+  "p01.model.selfHosted": {
+    "message": "Self-hosted",
+    "description": "Delivery model: runs on the customer's own servers."
+  },
+  "p01.model.hybrid": {
+    "message": "Hybrid",
+    "description": "Delivery model: SaaS or self-hosted plus an on-campus Edge node."
+  },
+  "p01.health.score": {
+    "message": "{score} · {label}",
+    "description": "Health cell: the score and its label, e.g. 82 · Healthy."
+  },
+  "p01.health.good": {
+    "message": "Healthy",
+    "description": "Health label for a score of 70 or more."
+  },
+  "p01.health.watch": {
+    "message": "Watch",
+    "description": "Health label for a score from 50 to 69."
+  },
+  "p01.health.risk": {
+    "message": "At risk",
+    "description": "Health label for a score below 50."
+  },
+  "p01.none": {
+    "message": "—",
+    "description": "Shown in a cell that has no value."
+  },
+  "p01.detail.back": {
+    "message": "All accounts",
+    "description": "Link back from an account to the list."
+  },
+  "p01.detail.summary": {
+    "message": "Summary",
+    "description": "Heading of the account summary card."
+  },
+  "p01.detail.country": {
+    "message": "Country",
+    "description": "Label: the customer's country."
+  },
+  "p01.detail.region": {
+    "message": "Data region",
+    "description": "Label: the region where the customer's data is stored."
+  },
+  "p01.detail.owner": {
+    "message": "Account owner",
+    "description": "Label: the staff member who owns the account."
+  },
+  "p01.detail.partner": {
+    "message": "Partner",
+    "description": "Label: the reseller partner who manages the account."
+  },
+  "p01.detail.direct": {
+    "message": "Direct (no partner)",
+    "description": "Shown when no partner manages the account."
+  },
+  "p01.detail.tenants": {
+    "message": "Tenants in our cells",
+    "description": "Label: how many tenants we run for this customer."
+  },
+  "p01.detail.since": {
+    "message": "Account since",
+    "description": "Label: when the account was created."
+  },
+  "p01.detail.notFound": {
+    "message": "This account does not exist or you cannot see it.",
+    "description": "Shown when an account id is unknown or belongs to another partner."
+  },
+  "p01.tabs.label": {
+    "message": "Account details",
+    "description": "Accessible label of the account tabs."
+  },
+  "p01.tab.contacts": {
+    "message": "Contacts",
+    "description": "Tab: the customer's commercial contacts."
+  },
+  "p01.tab.opportunities": {
+    "message": "Opportunities",
+    "description": "Tab: open and closed deals."
+  },
+  "p01.tab.contracts": {
+    "message": "Contracts",
+    "description": "Tab: signed agreements."
+  },
+  "p01.tab.notes": {
+    "message": "Notes",
+    "description": "Tab: internal notes about the account."
+  },
+  "p01.contacts.caption": {
+    "message": "Contacts",
+    "description": "Accessible caption of the contacts table."
+  },
+  "p01.contacts.email": {
+    "message": "Work email",
+    "description": "Column header: work email of a customer contact."
+  },
+  "p01.contacts.phone": {
+    "message": "Phone",
+    "description": "Column header: phone of a customer contact."
+  },
+  "p01.contacts.kind": {
+    "message": "Role",
+    "description": "Column header: contact role (billing, technical, executive, data protection)."
+  },
+  "p01.contactKind.billing": {
+    "message": "Billing",
+    "description": "Contact role: pays the invoices."
+  },
+  "p01.contactKind.technical": {
+    "message": "Technical",
+    "description": "Contact role: IT person."
+  },
+  "p01.contactKind.executive": {
+    "message": "Executive",
+    "description": "Contact role: decision maker."
+  },
+  "p01.contactKind.dpo": {
+    "message": "Data protection officer",
+    "description": "Contact role: the customer's data protection officer."
+  },
+  "p01.opps.caption": {
+    "message": "Opportunities",
+    "description": "Accessible caption of the opportunities table."
+  },
+  "p01.opps.title": {
+    "message": "Deal",
+    "description": "Column header: opportunity title."
+  },
+  "p01.opps.value": {
+    "message": "Value",
+    "description": "Column header: deal value."
+  },
+  "p01.opps.close": {
+    "message": "Close date",
+    "description": "Column header: expected close date."
+  },
+  "p01.oppStage.qualify": {
+    "message": "Qualify",
+    "description": "Deal stage: checking fit."
+  },
+  "p01.oppStage.proposal": {
+    "message": "Proposal",
+    "description": "Deal stage: quote sent."
+  },
+  "p01.oppStage.negotiation": {
+    "message": "Negotiation",
+    "description": "Deal stage: agreeing terms."
+  },
+  "p01.oppStage.won": {
+    "message": "Won",
+    "description": "Deal stage: signed."
+  },
+  "p01.oppStage.lost": {
+    "message": "Lost",
+    "description": "Deal stage: not won."
+  },
+  "p01.contracts.caption": {
+    "message": "Contracts",
+    "description": "Accessible caption of the contracts table."
+  },
+  "p01.contracts.kind": {
+    "message": "Contract",
+    "description": "Column header: contract kind."
+  },
+  "p01.contracts.term": {
+    "message": "Term",
+    "description": "Column header: contract start and end."
+  },
+  "p01.contracts.value": {
+    "message": "Value",
+    "description": "Column header: contract value."
+  },
+  "p01.contracts.sla": {
+    "message": "Support level",
+    "description": "Column header: support SLA tier."
+  },
+  "p01.contracts.termRange": {
+    "message": "{start} – {end}",
+    "description": "Contract term: start date to end date."
+  },
+  "p01.contracts.perpetual": {
+    "message": "From {start}, no end",
+    "description": "Contract term of a perpetual licence."
+  },
+  "p01.contractKind.saasSubscription": {
+    "message": "SaaS subscription",
+    "description": "Contract kind."
+  },
+  "p01.contractKind.licencePerpetual": {
+    "message": "Perpetual licence",
+    "description": "Contract kind: self-hosted licence without an end date."
+  },
+  "p01.contractKind.licenceTerm": {
+    "message": "Term licence",
+    "description": "Contract kind: self-hosted licence for a fixed period."
+  },
+  "p01.contractKind.support": {
+    "message": "Support and updates",
+    "description": "Contract kind: support and update contract."
+  },
+  "p01.sla.standard": {
+    "message": "Standard",
+    "description": "Support tier."
+  },
+  "p01.sla.priority": {
+    "message": "Priority",
+    "description": "Support tier."
+  },
+  "p01.sla.enterprise": {
+    "message": "Enterprise",
+    "description": "Support tier, 24/7."
+  },
+  "p01.contractStatus.draft": {
+    "message": "Draft",
+    "description": "Contract status."
+  },
+  "p01.contractStatus.active": {
+    "message": "Active",
+    "description": "Contract status."
+  },
+  "p01.contractStatus.ended": {
+    "message": "Ended",
+    "description": "Contract status."
+  },
+  "p01.notes.label": {
+    "message": "New note",
+    "description": "Label of the box for a new internal note about the account."
+  },
+  "p01.notes.hint": {
+    "message": "Business notes only — never personal details of the institution's people.",
+    "description": "Help text under the note box (privacy rule V-7)."
+  },
+  "p01.notes.add": {
+    "message": "Add note",
+    "description": "Button that saves a new note."
+  },
+  "p01.notes.added": {
+    "message": "Note added",
+    "description": "Toast after a note is saved."
+  },
+  "p01.notes.failed": {
+    "message": "The note was not saved. Try again.",
+    "description": "Toast when saving a note fails."
+  },
+  "p01.notes.empty": {
+    "message": "No notes yet.",
+    "description": "Shown when an account has no notes."
+  },
+  "p01.notes.byline": {
+    "message": "{name} · {date}",
+    "description": "Under a note: who wrote it and when."
+  },
+  "p01.notes.readOnly": {
+    "message": "You can read notes but not add them.",
+    "description": "Shown instead of the note form without permission to add notes."
   }
 }

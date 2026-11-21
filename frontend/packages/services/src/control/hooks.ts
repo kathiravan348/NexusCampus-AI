@@ -19,12 +19,17 @@ export const controlKeys = {
 };
 
 /** GET one Control resource for the signed-in staff member; idle until someone is signed in. */
-export function useControlQuery<T>(path: string, schema: Parser<T>, query?: QueryParams) {
+export function useControlQuery<T>(
+  path: string,
+  schema: Parser<T>,
+  query?: QueryParams,
+  options: { readonly enabled?: boolean } = {},
+) {
   const { client, staffId } = useControlServices();
   return useQuery({
     queryKey: controlKeys.resource(staffId, path, query),
     queryFn: ({ signal }) => client.get(path, schema, query, { signal }),
-    enabled: staffId !== null,
+    enabled: staffId !== null && (options.enabled ?? true),
   });
 }
 

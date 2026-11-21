@@ -1,6 +1,6 @@
 import type { ControlPermission, ModuleId } from "@nexus/contracts";
 import type { ControlMessageKey } from "@nexus/i18n/control";
-import type { LucideIcon } from "lucide-react";
+import { Building2, type LucideIcon } from "lucide-react";
 import type { ComponentType } from "react";
 
 /** One Nexus Control page (P01–P18); the menu, home tile, route and guard are built from it. */
@@ -19,4 +19,14 @@ export interface ControlModuleEntry {
 /**
  * Every Control page, one line per screen task (shared list file, `AGENTS.md` §3). Keep entries in module order.
  */
-export const CONTROL_MODULES: readonly ControlModuleEntry[] = [];
+export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
+  {
+    moduleId: "P01",
+    path: "accounts",
+    navKey: "p01.nav",
+    summaryKey: "p01.summary",
+    icon: Building2,
+    permission: "ctl.account.read",
+    load: () => import("../modules/p01/AccountsPage"),
+  },
+];

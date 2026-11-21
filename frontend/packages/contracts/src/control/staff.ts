@@ -55,3 +55,10 @@ export const StaffSessionSchema = z
     path: ["permissions"],
   });
 export type StaffSession = z.infer<typeof StaffSessionSchema>;
+
+/** A colleague's name for display (owners, note authors). Any signed-in staff member may read it. */
+export const StaffDirectoryEntrySchema = z.strictObject({
+  id: IdSchema,
+  displayName: NameSchema,
+});
+export type StaffDirectoryEntry = z.infer<typeof StaffDirectoryEntrySchema>;
