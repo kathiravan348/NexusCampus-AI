@@ -8,7 +8,9 @@
   "exports": {
     ".": "./src/index.ts",
     "./browser": "./src/browser.ts",
-    "./node": "./src/node.ts"
+    "./node": "./src/node.ts",
+    "./control": "./src/control/index.ts",
+    "./control/browser": "./src/control/browser.ts"
   },
   "scripts": {
     "typecheck": "tsc --noEmit",
