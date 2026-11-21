@@ -9,6 +9,7 @@ import { p04Handlers } from "./p04";
 import { p05Handlers } from "./p05";
 import { p07Handlers } from "./p07";
 import { p09Handlers } from "./p09";
+import { p10Handlers } from "./p10";
 import { operationsHandlers } from "./operations";
 
 /** Every mock Control API handler (one line per file). Screen tasks add their write handlers here. */
@@ -24,4 +25,5 @@ export const controlHandlers: HttpHandler[] = [
   ...p05Handlers,
   ...p07Handlers,
   ...p09Handlers,
+  ...p10Handlers,
 ];

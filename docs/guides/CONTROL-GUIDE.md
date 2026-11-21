@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -145,6 +145,21 @@ Menu **Support** (super admin, support, implementation, site reliability; partne
 - **Reply** (support staff): type and **Send**, or tick **Internal note (customer does not see it)**. Answering an
   unassigned ticket assigns it to you; a reply to the customer sets **Waiting for customer**. Never paste learner,
   family or staff records — ask for a scrubbed diagnostic bundle instead.
+
+### Access requests
+
+Menu **Access requests** (super admin, support; site reliability and security officers read).
+
+- We never open an institution's data on our own. **Requests** lists every request: institution, modules and
+  **read only** or **read and edit**, hours, the status the institution set (**The institution decides**,
+  **Approved by the institution**, **Denied by the institution**, **Revoked by the institution**, **Ended**), who
+  asked and the reason.
+- **Request access** (support): pick the institution, an optional ticket, the modules (the data vault itself can
+  never be chosen), read or edit, 1–72 hours and a reason the institution will read, then **Send request**. The
+  institution's admin sees it under **Data vault & access** in their own app and approves or denies it.
+- **Sessions:** each approved, time-boxed session, who used it, its window and how many actions were recorded.
+- **Break-glass:** only for a legal order or a security incident, approved by two different people; the institution
+  is told at once and later gets a report — **Report still owed to the institution** until it is delivered.
 
 ## Roles
 

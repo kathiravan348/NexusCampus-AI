@@ -20,6 +20,7 @@ import type { HttpHandler } from "msw";
 import { sessionOf } from "../context";
 import { controlDb } from "../db";
 import { controlGet, controlOk, resourceHandlers as res } from "../route";
+import { syncedBrokerRequests } from "./p10";
 
 /** Support (P09), broker (P10), staff (P13), trust (P14), projects (P15), analytics (P16) — reads. */
 export const operationsHandlers: HttpHandler[] = [
@@ -57,7 +58,7 @@ export const operationsHandlers: HttpHandler[] = [
   ...res({
     path: "broker-requests",
     schema: BrokerRequestSchema,
-    rows: () => controlDb.brokerRequests,
+    rows: syncedBrokerRequests,
     permission: "ctl.broker.read",
     filters: ["accountId", "status", "ticketId"],
     key: "id",
