@@ -708,11 +708,19 @@
     "valid": true
   },
   {
+    "text": "Backups",
+    "valid": true
+  },
+  {
     "text": "Balanced",
     "valid": true
   },
   {
     "text": "Batch",
+    "valid": true
+  },
+  {
+    "text": "Being prepared",
     "valid": true
   },
   {
@@ -757,6 +765,10 @@
   },
   {
     "text": "Campus saved.",
+    "valid": true
+  },
+  {
+    "text": "Campuses",
     "valid": true
   },
   {
@@ -1164,6 +1176,14 @@
     "valid": true
   },
   {
+    "text": "Diagnostics for ticket {ticket} · {date} · {size}",
+    "valid": true
+  },
+  {
+    "text": "Diagnostics · {date} · {size}",
+    "valid": true
+  },
+  {
     "text": "Digital signature",
     "valid": true
   },
@@ -1176,7 +1196,15 @@
     "valid": true
   },
   {
+    "text": "Discarded",
+    "valid": true
+  },
+  {
     "text": "Display calendar",
+    "valid": true
+  },
+  {
+    "text": "Done",
     "valid": true
   },
   {
@@ -1185,6 +1213,10 @@
   },
   {
     "text": "Download this institution's overrides for {locale} as a JSON file.",
+    "valid": true
+  },
+  {
+    "text": "Downloaded from NexusCampus",
     "valid": true
   },
   {
@@ -1268,6 +1300,14 @@
     "valid": true
   },
   {
+    "text": "Encrypted backup of {date} · {size}",
+    "valid": true
+  },
+  {
+    "text": "Encrypted export of {date} · {size}",
+    "valid": true
+  },
+  {
     "text": "Encryption keys",
     "valid": true
   },
@@ -1324,11 +1364,19 @@
     "valid": true
   },
   {
+    "text": "Enterprise edition",
+    "valid": true
+  },
+  {
     "text": "Europe (EU)",
     "valid": true
   },
   {
     "text": "Event",
+    "valid": true
+  },
+  {
+    "text": "Every backup is encrypted with your keys before it is written.",
     "valid": true
   },
   {
@@ -1420,6 +1468,10 @@
     "valid": true
   },
   {
+    "text": "From an offline bundle",
+    "valid": true
+  },
+  {
     "text": "Full name",
     "valid": true
   },
@@ -1441,6 +1493,10 @@
   },
   {
     "text": "Go to home",
+    "valid": true
+  },
+  {
+    "text": "Grace period",
     "valid": true
   },
   {
@@ -1485,6 +1541,18 @@
   },
   {
     "text": "Health records",
+    "valid": true
+  },
+  {
+    "text": "Health reports & support diagnostics",
+    "valid": true
+  },
+  {
+    "text": "Health reports are off. Nothing is sent to NexusCampus.",
+    "valid": true
+  },
+  {
+    "text": "Health reports are on: counts, error rates and timings only — never names or records.",
     "valid": true
   },
   {
@@ -1589,6 +1657,10 @@
   },
   {
     "text": "Inherit from institution",
+    "valid": true
+  },
+  {
+    "text": "Install & updates",
     "valid": true
   },
   {
@@ -1756,6 +1828,10 @@
     "valid": true
   },
   {
+    "text": "Last checked {date}",
+    "valid": true
+  },
+  {
     "text": "Last page",
     "valid": true
   },
@@ -1801,6 +1877,14 @@
   },
   {
     "text": "Legal order",
+    "valid": true
+  },
+  {
+    "text": "Licence",
+    "valid": true
+  },
+  {
+    "text": "Licence, updates, encrypted backups and support diagnostics of your own install.",
     "valid": true
   },
   {
@@ -2112,11 +2196,23 @@
     "valid": true
   },
   {
+    "text": "NexusCampus {version} on your own servers, {channel} channel.",
+    "valid": true
+  },
+  {
     "text": "NexusCampus का नया संस्करण तैयार है।",
     "valid": true
   },
   {
+    "text": "NexusCampus से डाउनलोड",
+    "valid": true
+  },
+  {
     "text": "NexusCampus இன் புதிய பதிப்பு தயாராக உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "NexusCampus இலிருந்து பதிவிறக்கப்பட்டது",
     "valid": true
   },
   {
@@ -2137,6 +2233,10 @@
   },
   {
     "text": "No audit events match.",
+    "valid": true
+  },
+  {
+    "text": "No backups yet.",
     "valid": true
   },
   {
@@ -2165,6 +2265,10 @@
   },
   {
     "text": "No devices registered.",
+    "valid": true
+  },
+  {
+    "text": "No diagnostic bundles.",
     "valid": true
   },
   {
@@ -2804,6 +2908,10 @@
     "valid": true
   },
   {
+    "text": "Running",
+    "valid": true
+  },
+  {
     "text": "SAML 2.0",
     "valid": true
   },
@@ -2865,6 +2973,10 @@
   },
   {
     "text": "Secondary",
+    "valid": true
+  },
+  {
+    "text": "Security fix",
     "valid": true
   },
   {
@@ -2988,6 +3100,14 @@
     "valid": true
   },
   {
+    "text": "Signature not valid — do not install",
+    "valid": true
+  },
+  {
+    "text": "Signature valid",
+    "valid": true
+  },
+  {
     "text": "Single sign-on",
     "valid": true
   },
@@ -3033,6 +3153,10 @@
   },
   {
     "text": "Standard",
+    "valid": true
+  },
+  {
+    "text": "Standard edition",
     "valid": true
   },
   {
@@ -3085,6 +3209,10 @@
   },
   {
     "text": "Sunday",
+    "valid": true
+  },
+  {
+    "text": "Support diagnostics have personal data removed. Nothing is sent until an admin approves it.",
     "valid": true
   },
   {
@@ -3280,6 +3408,10 @@
     "valid": true
   },
   {
+    "text": "The licence is checked on this server, without calling us.",
+    "valid": true
+  },
+  {
     "text": "The person",
     "valid": true
   },
@@ -3325,6 +3457,10 @@
   },
   {
     "text": "This field is required",
+    "valid": true
+  },
+  {
+    "text": "This install is air-gapped: it never connects to NexusCampus.",
     "valid": true
   },
   {
@@ -3480,6 +3616,10 @@
     "valid": true
   },
   {
+    "text": "Updates",
+    "valid": true
+  },
+  {
     "text": "Upload a JSON file or paste JSON below, preview the diff, then apply valid changes to {locale}.",
     "valid": true
   },
@@ -3556,6 +3696,10 @@
     "valid": true
   },
   {
+    "text": "Version {version}",
+    "valid": true
+  },
+  {
     "text": "View",
     "valid": true
   },
@@ -3581,6 +3725,10 @@
   },
   {
     "text": "Waiting for you",
+    "valid": true
+  },
+  {
+    "text": "Waiting for your review",
     "valid": true
   },
   {
@@ -3688,6 +3836,10 @@
     "valid": true
   },
   {
+    "text": "You have the latest version.",
+    "valid": true
+  },
+  {
     "text": "You were told",
     "valid": true
   },
@@ -3760,11 +3912,27 @@
     "valid": true
   },
   {
+    "text": "included in your support",
+    "valid": true
+  },
+  {
+    "text": "long-term support",
+    "valid": true
+  },
+  {
+    "text": "needs a support contract",
+    "valid": true
+  },
+  {
     "text": "on-brand ({onBrand}) और brand-primary-text ({brandText}) अपडेट करें ताकि बटन और लिंक कंट्रास्ट जाँच पास करें।",
     "valid": true
   },
   {
     "text": "open-ended",
+    "valid": true
+  },
+  {
+    "text": "preview",
     "valid": true
   },
   {
@@ -3781,6 +3949,14 @@
   },
   {
     "text": "runs on your own servers",
+    "valid": true
+  },
+  {
+    "text": "stable",
+    "valid": true
+  },
+  {
+    "text": "support until {date}",
     "valid": true
   },
   {
@@ -3801,6 +3977,14 @@
   },
   {
     "text": "{bg} மீது {fg}",
+    "valid": true
+  },
+  {
+    "text": "{cap} में से {used}",
+    "valid": true
+  },
+  {
+    "text": "{cap} இல் {used}",
     "valid": true
   },
   {
@@ -4036,6 +4220,14 @@
     "valid": true
   },
   {
+    "text": "{date} का एन्क्रिप्टेड निर्यात · {size}",
+    "valid": true
+  },
+  {
+    "text": "{date} का एन्क्रिप्टेड बैकअप · {size}",
+    "valid": true
+  },
+  {
     "text": "{date} को बदली गई",
     "valid": true
   },
@@ -4044,11 +4236,27 @@
     "valid": true
   },
   {
+    "text": "{date} तक सहायता",
+    "valid": true
+  },
+  {
     "text": "{date} அன்று மாற்றப்பட்டது",
     "valid": true
   },
   {
     "text": "{date} அன்று முடிகிறது",
+    "valid": true
+  },
+  {
+    "text": "{date} இன் மறையாக்கப்பட்ட ஏற்றுமதி · {size}",
+    "valid": true
+  },
+  {
+    "text": "{date} இன் மறையாக்கப்பட்ட காப்புப்பிரதி · {size}",
+    "valid": true
+  },
+  {
+    "text": "{date} வரை ஆதரவு",
     "valid": true
   },
   {
@@ -4292,6 +4500,10 @@
     "valid": true
   },
   {
+    "text": "{used} of {cap}",
+    "valid": true
+  },
+  {
     "text": "{used} of {granted}",
     "valid": true
   },
@@ -4301,6 +4513,14 @@
   },
   {
     "text": "{value} GB",
+    "valid": true
+  },
+  {
+    "text": "{value} MB",
+    "valid": true
+  },
+  {
+    "text": "अंतिम जाँच {date}",
     "valid": true
   },
   {
@@ -4376,6 +4596,10 @@
     "valid": true
   },
   {
+    "text": "अपडेट",
+    "valid": true
+  },
+  {
     "text": "अपनी योजना देखें, वैकल्पिक मॉड्यूल चालू या बंद करें और इस अवधि का उपयोग देखें।",
     "valid": true
   },
@@ -4421,6 +4645,10 @@
   },
   {
     "text": "अभी कोई टेम्पलेट नहीं।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई बैकअप नहीं।",
     "valid": true
   },
   {
@@ -4592,7 +4820,27 @@
     "valid": true
   },
   {
+    "text": "आपकी समीक्षा की प्रतीक्षा",
+    "valid": true
+  },
+  {
+    "text": "आपकी सहायता में शामिल",
+    "valid": true
+  },
+  {
+    "text": "आपके अपने इंस्टॉल का लाइसेंस, अपडेट, एन्क्रिप्टेड बैकअप और सहायता डायग्नोस्टिक्स।",
+    "valid": true
+  },
+  {
+    "text": "आपके अपने सर्वर पर NexusCampus {version}, {channel} चैनल।",
+    "valid": true
+  },
+  {
     "text": "आपके अपने सर्वर पर चलता है",
+    "valid": true
+  },
+  {
+    "text": "आपके पास नवीनतम संस्करण है।",
     "valid": true
   },
   {
@@ -4653,6 +4901,10 @@
   },
   {
     "text": "इंटरफ़ेस के टेक्स्ट खोजें, हर भाषा में शब्द बदलें, इतिहास देखें और ओवरराइड आयात या निर्यात करें।",
+    "valid": true
+  },
+  {
+    "text": "इंस्टॉल और अपडेट",
     "valid": true
   },
   {
@@ -4828,6 +5080,10 @@
     "valid": true
   },
   {
+    "text": "एंटरप्राइज़ संस्करण",
+    "valid": true
+  },
+  {
     "text": "एक मान्य ईमेल पता दर्ज करें।",
     "valid": true
   },
@@ -4913,6 +5169,10 @@
   },
   {
     "text": "ऑफ़लाइन काम करने के लिए तैयार",
+    "valid": true
+  },
+  {
+    "text": "ऑफ़लाइन बंडल से",
     "valid": true
   },
   {
@@ -5076,6 +5336,10 @@
     "valid": true
   },
   {
+    "text": "केवल पढ़ने योग्य",
+    "valid": true
+  },
+  {
     "text": "केवल फ़ील्ड के नाम दर्ज होते हैं, मान कभी नहीं।",
     "valid": true
   },
@@ -5129,6 +5393,10 @@
   },
   {
     "text": "कोई छवि कॉन्फ़िगर नहीं",
+    "valid": true
+  },
+  {
+    "text": "कोई डायग्नोस्टिक बंडल नहीं।",
     "valid": true
   },
   {
@@ -5324,7 +5592,15 @@
     "valid": true
   },
   {
+    "text": "छूट अवधि",
+    "valid": true
+  },
+  {
     "text": "छेड़छाड़-प्रकट ऑडिट लॉग, सहमति रिकॉर्ड, डेटा अनुरोध और लागू गोपनीयता नियम देखें।",
+    "valid": true
+  },
+  {
+    "text": "जारी",
     "valid": true
   },
   {
@@ -5357,6 +5633,10 @@
   },
   {
     "text": "टाइपोग्राफी और स्पेसिंग",
+    "valid": true
+  },
+  {
+    "text": "टिकट {ticket} के लिए डायग्नोस्टिक्स · {date} · {size}",
     "valid": true
   },
   {
@@ -5429,6 +5709,10 @@
   },
   {
     "text": "ट्राइमेस्टर",
+    "valid": true
+  },
+  {
+    "text": "डायग्नोस्टिक्स · {date} · {size}",
     "valid": true
   },
   {
@@ -5560,6 +5844,10 @@
     "valid": true
   },
   {
+    "text": "तैयार हो रहा है",
+    "valid": true
+  },
+  {
     "text": "थीम संपादक के भाग",
     "valid": true
   },
@@ -5589,6 +5877,10 @@
   },
   {
     "text": "दी गई",
+    "valid": true
+  },
+  {
+    "text": "दीर्घकालिक सहायता",
     "valid": true
   },
   {
@@ -5716,6 +6008,10 @@
     "valid": true
   },
   {
+    "text": "परिसर",
+    "valid": true
+  },
+  {
     "text": "परीक्षण",
     "valid": true
   },
@@ -5809,6 +6105,10 @@
   },
   {
     "text": "पूरा नाम",
+    "valid": true
+  },
+  {
+    "text": "पूर्वावलोकन",
     "valid": true
   },
   {
@@ -6088,6 +6388,10 @@
     "valid": true
   },
   {
+    "text": "बैकअप",
+    "valid": true
+  },
+  {
     "text": "बैच",
     "valid": true
   },
@@ -6304,6 +6608,10 @@
     "valid": true
   },
   {
+    "text": "यह इंस्टॉल एयर-गैप्ड है: यह कभी NexusCampus से नहीं जुड़ता।",
+    "valid": true
+  },
+  {
     "text": "यह ओवरराइड वापस नहीं लाया जा सका।",
     "valid": true
   },
@@ -6437,6 +6745,14 @@
   },
   {
     "text": "लाइव पूर्वावलोकन",
+    "valid": true
+  },
+  {
+    "text": "लाइसेंस",
+    "valid": true
+  },
+  {
+    "text": "लाइसेंस की जाँच इसी सर्वर पर होती है, हमसे संपर्क किए बिना।",
     "valid": true
   },
   {
@@ -6724,6 +7040,10 @@
     "valid": true
   },
   {
+    "text": "संस्करण {version}",
+    "valid": true
+  },
+  {
     "text": "संस्था का सारा डेटा",
     "valid": true
   },
@@ -6900,6 +7220,14 @@
     "valid": true
   },
   {
+    "text": "सहायता अनुबंध आवश्यक",
+    "valid": true
+  },
+  {
+    "text": "सहायता डायग्नोस्टिक्स से व्यक्तिगत डेटा हटाया जाता है। व्यवस्थापक की स्वीकृति तक कुछ नहीं भेजा जाता।",
+    "valid": true
+  },
+  {
     "text": "सहेजने तक केवल इस पूर्वावलोकन पर लागू होता है।",
     "valid": true
   },
@@ -7028,6 +7356,10 @@
     "valid": true
   },
   {
+    "text": "सुरक्षा सुधार",
+    "valid": true
+  },
+  {
     "text": "सुलझे",
     "valid": true
   },
@@ -7084,11 +7416,19 @@
     "valid": true
   },
   {
+    "text": "स्टैंडर्ड संस्करण",
+    "valid": true
+  },
+  {
     "text": "स्टोरेज",
     "valid": true
   },
   {
     "text": "स्थिति",
+    "valid": true
+  },
+  {
+    "text": "स्थिर",
     "valid": true
   },
   {
@@ -7112,6 +7452,18 @@
     "valid": true
   },
   {
+    "text": "स्वास्थ्य रिपोर्ट और सहायता डायग्नोस्टिक्स",
+    "valid": true
+  },
+  {
+    "text": "स्वास्थ्य रिपोर्ट चालू हैं: केवल गिनती, त्रुटि दर और समय — कभी नाम या रिकॉर्ड नहीं।",
+    "valid": true
+  },
+  {
+    "text": "स्वास्थ्य रिपोर्ट बंद हैं। NexusCampus को कुछ नहीं भेजा जाता।",
+    "valid": true
+  },
+  {
     "text": "स्वीकृत",
     "valid": true
   },
@@ -7128,11 +7480,27 @@
     "valid": true
   },
   {
+    "text": "हटाया गया",
+    "valid": true
+  },
+  {
     "text": "हम आपसे कैसे संपर्क करें",
     "valid": true
   },
   {
     "text": "हमारे वॉल्ट में आपकी कुंजी (BYOK)",
+    "valid": true
+  },
+  {
+    "text": "हर बैकअप लिखे जाने से पहले आपकी कुंजियों से एन्क्रिप्ट होता है।",
+    "valid": true
+  },
+  {
+    "text": "हस्ताक्षर अमान्य — इंस्टॉल न करें",
+    "valid": true
+  },
+  {
+    "text": "हस्ताक्षर मान्य",
     "valid": true
   },
   {
@@ -7404,6 +7772,10 @@
     "valid": true
   },
   {
+    "text": "ஆஃப்லைன் தொகுப்பிலிருந்து",
+    "valid": true
+  },
+  {
     "text": "ஆசிய-பசிபிக் (APAC)",
     "valid": true
   },
@@ -7417,6 +7789,14 @@
   },
   {
     "text": "ஆண்டு முடியும் நாள்",
+    "valid": true
+  },
+  {
+    "text": "ஆதரவு ஒப்பந்தம் தேவை",
+    "valid": true
+  },
+  {
+    "text": "ஆதரவு கண்டறிதல்களிலிருந்து தனிப்பட்ட தரவு நீக்கப்படுகிறது. நிர்வாகி ஒப்புதல் தரும் வரை எதுவும் அனுப்பப்படாது.",
     "valid": true
   },
   {
@@ -7509,6 +7889,10 @@
   },
   {
     "text": "இந்த நிறுவனத்திற்குக் கல்வி நாட்காட்டி எதுவும் கிடைக்கவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவல் தனிமைப்படுத்தப்பட்டது: NexusCampus உடன் ஒருபோதும் இணையாது.",
     "valid": true
   },
   {
@@ -7608,6 +7992,10 @@
     "valid": true
   },
   {
+    "text": "இன்னும் காப்புப்பிரதி இல்லை.",
+    "valid": true
+  },
+  {
     "text": "இன்னும் தொகுதிகள் இல்லை",
     "valid": true
   },
@@ -7696,6 +8084,10 @@
     "valid": true
   },
   {
+    "text": "உங்களிடம் சமீபத்திய பதிப்பு உள்ளது.",
+    "valid": true
+  },
+  {
     "text": "உங்களுக்காகக் காத்திருக்கிறது",
     "valid": true
   },
@@ -7704,11 +8096,23 @@
     "valid": true
   },
   {
+    "text": "உங்கள் ஆதரவில் அடங்கும்",
+    "valid": true
+  },
+  {
     "text": "உங்கள் கடைசி நிர்வாகப் பங்கை நீங்களே நீக்க முடியாது.",
     "valid": true
   },
   {
     "text": "உங்கள் கேள்வி",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் சொந்த சேவையகங்களில் NexusCampus {version}, {channel} சேனல்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் சொந்த நிறுவலின் உரிமம், புதுப்பிப்புகள், மறையாக்கப்பட்ட காப்புப்பிரதிகள் மற்றும் ஆதரவு கண்டறிதல்கள்.",
     "valid": true
   },
   {
@@ -7788,6 +8192,10 @@
     "valid": true
   },
   {
+    "text": "உங்கள் மதிப்பாய்வுக்குக் காத்திருக்கிறது",
+    "valid": true
+  },
+  {
     "text": "உங்கள் வரைவுத் தீமில் உரை மற்றும் ஒரு மாதிரி இணைப்பின் முன்னோட்டம்.",
     "valid": true
   },
@@ -7801,6 +8209,14 @@
   },
   {
     "text": "உயர் கல்வி",
+    "valid": true
+  },
+  {
+    "text": "உரிமம்",
+    "valid": true
+  },
+  {
+    "text": "உரிமம் இந்த சேவையகத்திலேயே சரிபார்க்கப்படுகிறது, எங்களை அழைக்காமல்.",
     "valid": true
   },
   {
@@ -7984,6 +8400,10 @@
     "valid": true
   },
   {
+    "text": "ஒப்புதல் அளிக்கப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "ஒப்புதல் கோரிக்கை",
     "valid": true
   },
@@ -8032,6 +8452,10 @@
     "valid": true
   },
   {
+    "text": "ஒவ்வொரு காப்புப்பிரதியும் எழுதப்படும் முன் உங்கள் விசைகளால் மறையாக்கப்படுகிறது.",
+    "valid": true
+  },
+  {
     "text": "கடவுச்சாவி",
     "valid": true
   },
@@ -8053,6 +8477,10 @@
   },
   {
     "text": "கடைசியாக ஒத்திசைத்தது {time}",
+    "valid": true
+  },
+  {
+    "text": "கடைசியாகச் சரிபார்த்தது {date}",
     "valid": true
   },
   {
@@ -8085,6 +8513,14 @@
   },
   {
     "text": "கணினிப் பங்குகள் தயாரிப்புடன் வருகின்றன; அவற்றைப் படிக்க மட்டுமே முடியும். உங்கள் தேவைக்குத் தனிப்பயன் பங்குகளை உருவாக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "கண்டறிதல் தொகுப்பு இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "கண்டறிதல்கள் · {date} · {size}",
     "valid": true
   },
   {
@@ -8137,6 +8573,10 @@
   },
   {
     "text": "காத்திருக்கிறது",
+    "valid": true
+  },
+  {
+    "text": "காப்புப்பிரதிகள்",
     "valid": true
   },
   {
@@ -8248,6 +8688,14 @@
     "valid": true
   },
   {
+    "text": "கையொப்பம் செல்லாது — நிறுவ வேண்டாம்",
+    "valid": true
+  },
+  {
+    "text": "கையொப்பம் செல்லும்",
+    "valid": true
+  },
+  {
     "text": "கோரப்பட்டது",
     "valid": true
   },
@@ -8309,6 +8757,10 @@
   },
   {
     "text": "சரியான ஹெக்ஸ் நிறத்தை உள்ளிடவும் (எ.கா. #1F5FD1).",
+    "valid": true
+  },
+  {
+    "text": "சலுகைக் காலம்",
     "valid": true
   },
   {
@@ -8536,6 +8988,10 @@
     "valid": true
   },
   {
+    "text": "டிக்கெட் {ticket} க்கான கண்டறிதல்கள் · {date} · {size}",
+    "valid": true
+  },
+  {
     "text": "டிஜிட்டல் கையொப்பம்",
     "valid": true
   },
@@ -8601,6 +9057,10 @@
   },
   {
     "text": "தனியுரிமைத் தாக்க மதிப்பீட்டுக்குப் பிறகே இதை இயக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "தயாராகிறது",
     "valid": true
   },
   {
@@ -8896,6 +9356,18 @@
     "valid": true
   },
   {
+    "text": "நல அறிக்கைகள் & ஆதரவு கண்டறிதல்கள்",
+    "valid": true
+  },
+  {
+    "text": "நல அறிக்கைகள் அணைக்கப்பட்டுள்ளன. NexusCampus-க்கு எதுவும் அனுப்பப்படாது.",
+    "valid": true
+  },
+  {
+    "text": "நல அறிக்கைகள் இயக்கத்தில்: எண்ணிக்கைகள், பிழை விகிதங்கள், நேரங்கள் மட்டும் — பெயர்களோ பதிவுகளோ ஒருபோதும் இல்லை.",
+    "valid": true
+  },
+  {
     "text": "நாங்கள் உங்களைத் தொடர்புகொள்ளும் வழி",
     "valid": true
   },
@@ -9012,6 +9484,10 @@
     "valid": true
   },
   {
+    "text": "நிறுவனப் பதிப்பு",
+    "valid": true
+  },
+  {
     "text": "நிறுவனப் பெயர்",
     "valid": true
   },
@@ -9020,11 +9496,23 @@
     "valid": true
   },
   {
+    "text": "நிறுவல் & புதுப்பிப்புகள்",
+    "valid": true
+  },
+  {
     "text": "நிலுவையில்",
     "valid": true
   },
   {
     "text": "நிலை",
+    "valid": true
+  },
+  {
+    "text": "நிலையான",
+    "valid": true
+  },
+  {
+    "text": "நிலையான பதிப்பு",
     "valid": true
   },
   {
@@ -9065,6 +9553,10 @@
   },
   {
     "text": "நீங்கள் மட்டும் (HYOK)",
+    "valid": true
+  },
+  {
+    "text": "நீண்டகால ஆதரவு",
     "valid": true
   },
   {
@@ -9209,6 +9701,10 @@
   },
   {
     "text": "பதிப்பு {version, number} க்குத் திரும்பியது.",
+    "valid": true
+  },
+  {
+    "text": "பதிப்பு {version}",
     "valid": true
   },
   {
@@ -9360,6 +9856,10 @@
     "valid": true
   },
   {
+    "text": "பாதுகாப்புத் திருத்தம்",
+    "valid": true
+  },
+  {
     "text": "பாதுகாவலரின் ஒப்புதல் தேவை",
     "valid": true
   },
@@ -9417,6 +9917,10 @@
   },
   {
     "text": "புதிய மொழி",
+    "valid": true
+  },
+  {
+    "text": "புதுப்பிப்புகள்",
     "valid": true
   },
   {
@@ -9728,6 +10232,10 @@
     "valid": true
   },
   {
+    "text": "முன்னோட்ட",
+    "valid": true
+  },
+  {
     "text": "முன்னோட்டத்தைப் பார்க்க மேலே உள்ள ICU தொடரியல் பிழையைச் சரிசெய்யவும்.",
     "valid": true
   },
@@ -9893,6 +10401,10 @@
   },
   {
     "text": "வளாகக் குறியீடு",
+    "valid": true
+  },
+  {
+    "text": "வளாகங்கள்",
     "valid": true
   },
   {

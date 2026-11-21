@@ -76,6 +76,13 @@ export const queryKeys = {
     breakGlass: (s: KeyScope) => scoped(s, "m83", "break-glass"),
     history: (s: KeyScope, grantId: string | null) => scoped(s, "m83", "history", grantId),
   },
+  m84: {
+    all: (s: KeyScope) => scoped(s, "m84"),
+    status: (s: KeyScope) => scoped(s, "m84", "status"),
+    update: (s: KeyScope) => scoped(s, "m84", "update"),
+    backups: (s: KeyScope) => scoped(s, "m84", "backups"),
+    diagnostics: (s: KeyScope) => scoped(s, "m84", "diagnostics"),
+  },
   m07: {
     templates: (s: KeyScope) => scoped(s, "m07", "templates"),
     deliveries: (s: KeyScope, page: number, pageSize: number, filters: unknown) =>

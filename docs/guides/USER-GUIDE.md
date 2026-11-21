@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-19 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications)
+> State as of: 2026-11-22 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates for your own server)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -136,3 +136,15 @@ Your IT team runs one command: `deploy/compose/scripts/install.sh` (Windows: `in
 encryption keys, the database and the app, and prints the address to open. Running it again starts NexusCampus after a
 restart or installs an update without losing data. See `deploy/compose/README.md` for real web addresses, backups and
 removal.
+
+### Install & updates
+
+Menu **Install & updates** (administrators; only in an install on your own servers — in the demo, Apex Coaching).
+
+- **Licence**: state (**Active**, **Grace period**, **Read only**, **Expired**, **Revoked**), edition, when support ends,
+  and **Learners** and **Campuses** used of your limit. The licence is checked on your server, without calling us.
+- **Updates**: the next version, **Security fix** when it has one, **Signature valid** (never install one marked
+  **Signature not valid**), where it comes from (online or an offline bundle) and whether your support covers it.
+- **Backups**: each backup and export, always encrypted with your keys before it is written.
+- **Health reports & support diagnostics**: whether health reports (counts and timings only, never names) are on, and
+  each diagnostic bundle. Bundles have personal data removed, and nothing is sent until an admin approves it.
