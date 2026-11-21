@@ -273,4 +273,6 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 
 | POST | `/tickets/:id/replies` | `ctl.ticket.reply` | body `{ body (1–5000), internal }` → `201 TicketReply`; closed ticket → `409`; assigns an unassigned ticket to the replier; a public reply sets `waiting_customer`, an internal note opens a new ticket (NEX-080) |
 
+| POST | `/broker-requests` | `ctl.broker.request` | body `{ accountId, tenantId, ticketId, reason, modules, mode, durationHours (1–72) }`; M83 in scope or bad body → `400`; tenant not of a visible account → `404`; creates the Control row and the institution's M83 `AccessRequest`, both `pending`. Reads (`GET /broker-requests`) show the decision the institution made in M83 (NEX-081) |
+
 Write routes are added by each Control screen task (NEX-072+).

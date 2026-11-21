@@ -9,6 +9,7 @@ import {
   Receipt,
   Rocket,
   ServerCog,
+  ShieldCheck,
   Tags,
   type LucideIcon,
 } from "lucide-react";
@@ -111,5 +112,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: LifeBuoy,
     permission: "ctl.ticket.read",
     load: () => import("../modules/p09/SupportPage"),
+  },
+  {
+    moduleId: "P10",
+    path: "access",
+    navKey: "p10.nav",
+    summaryKey: "p10.summary",
+    icon: ShieldCheck,
+    permission: "ctl.broker.read",
+    load: () => import("../modules/p10/AccessPage"),
   },
 ];

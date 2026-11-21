@@ -1778,5 +1778,217 @@
   "p09.reply.readOnly": {
     "message": "You can read this ticket but not reply.",
     "description": "Shown instead of the reply form without permission."
+  },
+  "p10.nav": {
+    "message": "Access requests",
+    "description": "Menu item and page title of the support access broker (P10)."
+  },
+  "p10.summary": {
+    "message": "Ask an institution for time-limited access; the institution decides.",
+    "description": "One-line description on the Access requests home tile."
+  },
+  "p10.intro": {
+    "message": "We never open an institution's data on our own. Each request goes to the institution's admin, who approves or denies it in their own app. Access ends by itself, and every action is recorded in their activity log.",
+    "description": "Intro on the access broker page (V-1, V-3)."
+  },
+  "p10.tabs.label": {
+    "message": "Access",
+    "description": "Accessible label of the access tabs."
+  },
+  "p10.tab.requests": {
+    "message": "Requests",
+    "description": "Tab: access requests."
+  },
+  "p10.tab.sessions": {
+    "message": "Sessions",
+    "description": "Tab: approved, recorded support sessions."
+  },
+  "p10.tab.breakGlass": {
+    "message": "Break-glass",
+    "description": "Tab: emergency access cases."
+  },
+  "p10.req.caption": {
+    "message": "Access requests",
+    "description": "Accessible caption of the requests table."
+  },
+  "p10.col.account": {
+    "message": "Account",
+    "description": "Column header: customer account."
+  },
+  "p10.col.scope": {
+    "message": "Scope",
+    "description": "Column header: modules and read or edit."
+  },
+  "p10.col.duration": {
+    "message": "Duration",
+    "description": "Column header: requested duration."
+  },
+  "p10.col.status": {
+    "message": "Status",
+    "description": "Column header: request status."
+  },
+  "p10.col.requested": {
+    "message": "Requested",
+    "description": "Column header: who asked and when."
+  },
+  "p10.col.reason": {
+    "message": "Reason",
+    "description": "Column header: why access is needed."
+  },
+  "p10.scope": {
+    "message": "{modules} · {mode}",
+    "description": "Requested modules and access mode."
+  },
+  "p10.mode.read": {
+    "message": "read only",
+    "description": "Access mode: read only."
+  },
+  "p10.mode.edit": {
+    "message": "read and edit",
+    "description": "Access mode: read and change."
+  },
+  "p10.hours": {
+    "message": "{hours, plural, one {# hour} other {# hours}}",
+    "description": "A duration in hours."
+  },
+  "p10.requestedBy": {
+    "message": "{name} · {date}",
+    "description": "Who asked and when."
+  },
+  "p10.status.pending": {
+    "message": "The institution decides",
+    "description": "Request status: waiting for the institution's decision."
+  },
+  "p10.status.approved": {
+    "message": "Approved by the institution",
+    "description": "Request status."
+  },
+  "p10.status.denied": {
+    "message": "Denied by the institution",
+    "description": "Request status."
+  },
+  "p10.status.expired": {
+    "message": "Expired",
+    "description": "Request status: no decision in time."
+  },
+  "p10.status.revoked": {
+    "message": "Revoked by the institution",
+    "description": "Request status."
+  },
+  "p10.status.ended": {
+    "message": "Ended",
+    "description": "Request status: the access window is over."
+  },
+  "p10.new": {
+    "message": "Request access",
+    "description": "Button that opens the access request form."
+  },
+  "p10.form.title": {
+    "message": "Ask an institution for access",
+    "description": "Title of the request form."
+  },
+  "p10.form.note": {
+    "message": "The institution's admin sees your name, the reason, the modules and the time window, and decides.",
+    "description": "Note at the top of the request form."
+  },
+  "p10.form.account": {
+    "message": "Institution",
+    "description": "Label of the account/tenant picker."
+  },
+  "p10.form.ticket": {
+    "message": "Ticket (optional)",
+    "description": "Label of the ticket picker."
+  },
+  "p10.form.noTicket": {
+    "message": "No ticket",
+    "description": "Option: no linked ticket."
+  },
+  "p10.form.modules": {
+    "message": "Modules",
+    "description": "Label of the module check boxes; the data vault can never be chosen."
+  },
+  "p10.form.mode": {
+    "message": "Access",
+    "description": "Label of the read / edit choice."
+  },
+  "p10.form.hours": {
+    "message": "Hours (1–72)",
+    "description": "Label of the duration field; 72 hours is the legal maximum."
+  },
+  "p10.form.reason": {
+    "message": "Reason the institution will read",
+    "description": "Label of the reason box."
+  },
+  "p10.form.submit": {
+    "message": "Send request",
+    "description": "Button that sends the request to the institution."
+  },
+  "p10.form.sent": {
+    "message": "Request sent — the institution will decide",
+    "description": "Toast after sending a request."
+  },
+  "p10.form.failed": {
+    "message": "The request was not sent. Check the form and try again.",
+    "description": "Toast when sending fails."
+  },
+  "p10.form.noAccounts": {
+    "message": "No institution you can ask yet.",
+    "description": "Shown when no account has a tenant in our cells."
+  },
+  "p10.sess.caption": {
+    "message": "Support sessions",
+    "description": "Accessible caption of the sessions table."
+  },
+  "p10.sess.window": {
+    "message": "Window",
+    "description": "Column header: session start and end."
+  },
+  "p10.sess.range": {
+    "message": "{start} – {end}",
+    "description": "Session start to end."
+  },
+  "p10.sess.staff": {
+    "message": "Staff member",
+    "description": "Column header: who used the access."
+  },
+  "p10.sess.actions": {
+    "message": "Recorded actions",
+    "description": "Column header: number of recorded actions."
+  },
+  "p10.sess.endedEarly": {
+    "message": "Ended early {date}",
+    "description": "Shown when the session was closed before its end."
+  },
+  "p10.bg.note": {
+    "message": "Break-glass is only for a legal order or a security incident, needs two different approvers, and the institution is told at once and later gets a report.",
+    "description": "Note above the break-glass list (V-5)."
+  },
+  "p10.bg.legalOrder": {
+    "message": "Legal order",
+    "description": "Break-glass reason."
+  },
+  "p10.bg.securityIncident": {
+    "message": "Security incident",
+    "description": "Break-glass reason."
+  },
+  "p10.bg.approvers": {
+    "message": "Approved by {first} and {second}",
+    "description": "The two staff members who approved."
+  },
+  "p10.bg.notified": {
+    "message": "Institution told {date}",
+    "description": "When the institution was notified."
+  },
+  "p10.bg.reportDelivered": {
+    "message": "Report delivered {date}",
+    "description": "When the post-incident report reached the institution."
+  },
+  "p10.bg.reportOwed": {
+    "message": "Report still owed to the institution",
+    "description": "Shown until the post-incident report is delivered."
+  },
+  "p10.bg.empty": {
+    "message": "No break-glass cases.",
+    "description": "Shown when there are none."
   }
 }
