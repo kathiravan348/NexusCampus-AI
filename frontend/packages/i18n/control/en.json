@@ -1990,5 +1990,69 @@
   "p10.bg.empty": {
     "message": "No break-glass cases.",
     "description": "Shown when there are none."
+  },
+  "p11.nav": {
+    "message": "Usage",
+    "description": "Menu item and page title of the usage and metering page (P11)."
+  },
+  "p11.summary": {
+    "message": "Learners, storage, AI credits and messages per customer — counts only.",
+    "description": "One-line description on the Usage home tile."
+  },
+  "p11.note": {
+    "message": "Only counts are metered — never who. Air-gapped installs report nothing.",
+    "description": "Note at the top of the usage page (V-4, V-6)."
+  },
+  "p11.filter": {
+    "message": "Metric",
+    "description": "Label of the metric filter."
+  },
+  "p11.all": {
+    "message": "All metrics",
+    "description": "Filter option showing every metric."
+  },
+  "p11.period": {
+    "message": "Period {start} – {end}",
+    "description": "The metering period."
+  },
+  "p11.empty": {
+    "message": "No usage for this metric.",
+    "description": "Shown when no usage record matches."
+  },
+  "p11.metric.learners": {
+    "message": "Learners",
+    "description": "Usage metric."
+  },
+  "p11.metric.staff": {
+    "message": "Staff",
+    "description": "Usage metric."
+  },
+  "p11.metric.storageGb": {
+    "message": "Storage (GB)",
+    "description": "Usage metric: storage in gigabytes."
+  },
+  "p11.metric.aiCredits": {
+    "message": "AI credits",
+    "description": "Usage metric."
+  },
+  "p11.metric.messages": {
+    "message": "Messages",
+    "description": "Usage metric: SMS, WhatsApp and email sent."
+  },
+  "p11.source.tenant": {
+    "message": "Tenant {id}",
+    "description": "The usage comes from a tenant in our cells."
+  },
+  "p11.source.install": {
+    "message": "Install {id}",
+    "description": "The usage comes from a self-hosted install's check-in."
+  },
+  "p11.valueOfCap": {
+    "message": "{used} of {cap}",
+    "description": "Usage against its cap."
+  },
+  "p11.noCap": {
+    "message": "{used} · no cap",
+    "description": "Usage without a cap."
   }
 }

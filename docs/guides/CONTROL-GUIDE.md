@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -160,6 +160,15 @@ Menu **Access requests** (super admin, support; site reliability and security of
 - **Sessions:** each approved, time-boxed session, who used it, its window and how many actions were recorded.
 - **Break-glass:** only for a legal order or a security incident, approved by two different people; the institution
   is told at once and later gets a report — **Report still owed to the institution** until it is delivered.
+
+### Usage
+
+Menu **Usage** (super admin, sales, billing, support, site reliability).
+
+- One card per customer with the last period's **Learners**, **Staff**, **Storage (GB)**, **AI credits** and
+  **Messages**. A metric with a cap shows a bar (amber from 80 %, red at the cap); without a cap it shows the count
+  and **no cap**. Each line says whether it comes from a tenant in our cells or a self-hosted install.
+- **Metric** narrows the cards. Only counts are metered — never who. Air-gapped installs report nothing.
 
 ## Roles
 
