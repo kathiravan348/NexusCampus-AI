@@ -103,6 +103,12 @@
 │                       demo_fixtures.json exported from mocks), devtools/ (nexus-dev, nexus-compose-up, nexus-keycloak-dev,
 │                       backend-check); tests/ (tests/db: RLS, region, seed, migrations — need Compose PostgreSQL; tests/security:
 │                       V-1…V-7 no-access release gates; test_checkpoints.py)
+│                       Nexus Control backend (Stage 2): src/nexus/control/ (settings, staff, sessions, auth = staff
+│                       sign-in with MFA, main = /control/api/v1, seed + control_fixtures.json, billing/ = BillingEngine +
+│                       Lago adapter), control_migrations/ + control_alembic.ini (database nexus_control), keycloak/
+│                       realm-staff.json (nexus-staff), compose.billing.yaml (Lago, dev), src/nexus/licensing/ (licence
+│                       files: canonical JSON, Ed25519 in OpenBao, offline verify); tools nexus-control-db,
+│                       nexus-keycloak-staff-dev, nexus-lago-dev; tests/control, tests/db/control, tests/licensing
 ├─ control/             Nexus Control backend (planned, Stage 2)
 └─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,
                         vault/vault.hcl, postgres/ init, scripts/install.sh + install.ps1, README (install, upgrade,

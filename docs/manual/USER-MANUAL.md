@@ -1,7 +1,7 @@
 # NexusCampus — User manual
 
 > Pictures first. Every screenshot is taken automatically from the demo (sample data), so this manual always
-> matches the app. Updated 2026-11-21 · 78 screenshots.
+> matches the app. Updated 2026-11-21 · 106 screenshots.
 
 ## Contents
 
@@ -33,13 +33,36 @@
 - [Sync centre](#sync-centre)
 - [Data vault & access](#data-vault-access)
 - [AI settings](#ai-settings)
+- [Install & updates](#install-updates)
+
+**Nexus Control** (our provider staff app)
+
+- [Nexus Control — getting started](#nexus-control-getting-started)
+- [Nexus Control — Accounts](#nexus-control-accounts)
+- [Nexus Control — Pricing & quotes](#nexus-control-pricing-quotes)
+- [Nexus Control — Billing](#nexus-control-billing)
+- [Nexus Control — Provisioning](#nexus-control-provisioning)
+- [Nexus Control — Licences](#nexus-control-licences)
+- [Nexus Control — Fleet](#nexus-control-fleet)
+- [Nexus Control — Releases](#nexus-control-releases)
+- [Nexus Control — Extensions](#nexus-control-extensions)
+- [Nexus Control — Support](#nexus-control-support)
+- [Nexus Control — Access requests](#nexus-control-access-requests)
+- [Nexus Control — Usage](#nexus-control-usage)
+- [Nexus Control — Partners](#nexus-control-partners)
+- [Nexus Control — Staff](#nexus-control-staff)
+- [Nexus Control — Trust](#nexus-control-trust)
+- [Nexus Control — Projects](#nexus-control-projects)
+- [Nexus Control — Analytics](#nexus-control-analytics)
+- [Nexus Control — Sandboxes](#nexus-control-sandboxes)
+- [Nexus Control — Moves](#nexus-control-moves)
 
 **Platform & tools** (for support, IT and the team)
 
 - [Component library (Storybook)](#component-library-storybook)
 - [The app on the real server (dev cell)](#the-app-on-the-real-server-dev-cell)
 - [Sign-in service (Keycloak)](#sign-in-service-keycloak)
-- [Key management (Vault)](#key-management-vault)
+- [Key management (OpenBao)](#key-management-openbao)
 - [Backend API (dev cell)](#backend-api-dev-cell)
 
 ---
@@ -370,6 +393,164 @@
 
 ![AI settings](screens/109-01-ai-settings.png)
 
+## Install & updates
+
+**Install & updates**
+
+![Install & updates](screens/110-01-install-updates.png)
+
+---
+
+# Nexus Control
+
+## Nexus Control — getting started
+
+*Our own provider app. Pick a demo staff member; each role sees only its pages. No page shows institution data.*
+
+**Sign-in page: one demo staff member per role**
+
+![Sign-in page: one demo staff member per role](screens/500-01-sign-in-page-one-demo-staff-member-per-role.png)
+
+**Home: one tile per page the role may open**
+
+![Home: one tile per page the role may open](screens/500-02-home-one-tile-per-page-the-role-may-open.png)
+
+## Nexus Control — Accounts
+
+**Accounts**
+
+![Accounts](screens/510-01-accounts.png)
+
+## Nexus Control — Pricing & quotes
+
+**Pricing & quotes — Catalogue**
+
+![Pricing & quotes — Catalogue](screens/511-01-pricing-quotes-catalogue.png)
+
+**Pricing & quotes — Quotes**
+
+![Pricing & quotes — Quotes](screens/511-02-pricing-quotes-quotes.png)
+
+## Nexus Control — Billing
+
+**Billing — Invoices**
+
+![Billing — Invoices](screens/512-01-billing-invoices.png)
+
+**Billing — Subscriptions**
+
+![Billing — Subscriptions](screens/512-02-billing-subscriptions.png)
+
+**Billing — Payments**
+
+![Billing — Payments](screens/512-03-billing-payments.png)
+
+**Billing — Reminders**
+
+![Billing — Reminders](screens/512-04-billing-reminders.png)
+
+## Nexus Control — Provisioning
+
+**Provisioning — New tenants**
+
+![Provisioning — New tenants](screens/513-01-provisioning-new-tenants.png)
+
+**Provisioning — Offboarding**
+
+![Provisioning — Offboarding](screens/513-02-provisioning-offboarding.png)
+
+## Nexus Control — Licences
+
+**Licences**
+
+![Licences](screens/514-01-licences.png)
+
+## Nexus Control — Fleet
+
+**Fleet**
+
+![Fleet](screens/515-01-fleet.png)
+
+## Nexus Control — Releases
+
+**Releases**
+
+![Releases](screens/516-01-releases.png)
+
+## Nexus Control — Extensions
+
+**Extensions**
+
+![Extensions](screens/517-01-extensions.png)
+
+## Nexus Control — Support
+
+**Support**
+
+![Support](screens/518-01-support.png)
+
+## Nexus Control — Access requests
+
+**Access requests — Requests**
+
+![Access requests — Requests](screens/519-01-access-requests-requests.png)
+
+**Access requests — Sessions**
+
+![Access requests — Sessions](screens/519-02-access-requests-sessions.png)
+
+**Access requests — Break-glass**
+
+![Access requests — Break-glass](screens/519-03-access-requests-break-glass.png)
+
+## Nexus Control — Usage
+
+**Usage**
+
+![Usage](screens/520-01-usage.png)
+
+## Nexus Control — Partners
+
+**Partners**
+
+![Partners](screens/521-01-partners.png)
+
+## Nexus Control — Staff
+
+**Staff**
+
+![Staff](screens/522-01-staff.png)
+
+## Nexus Control — Trust
+
+**Trust**
+
+![Trust](screens/523-01-trust.png)
+
+## Nexus Control — Projects
+
+**Projects**
+
+![Projects](screens/524-01-projects.png)
+
+## Nexus Control — Analytics
+
+**Analytics**
+
+![Analytics](screens/525-01-analytics.png)
+
+## Nexus Control — Sandboxes
+
+**Sandboxes**
+
+![Sandboxes](screens/526-01-sandboxes.png)
+
+## Nexus Control — Moves
+
+**Moves**
+
+![Moves](screens/527-01-moves.png)
+
 ---
 
 # Platform & tools
@@ -428,7 +609,7 @@ Open: Admin console → http://127.0.0.1:58080/admin (user `admin`, password `NE
 
 ![5. Login flows (password, single sign-on, multi-factor)](screens/220-05-5-login-flows-password-single-sign-on-multi-fact.png)
 
-## Key management (Vault)
+## Key management (OpenBao)
 
 *Every institution’s encryption keys live here, never in the database. The app’s Data vault screen shows their status only.*
 

@@ -179,7 +179,8 @@ test("platform: key vault", async ({ page }) => {
   await shot(page, p, "1. Sign in to the key vault");
   await page.locator("input[type=password]").first().fill(ENV["NEXUS_VAULT_TOKEN"]);
   await page.getByRole("button", { name: /sign in/i }).click();
-  await page.waitForURL(/\/ui\/vault\/dashboard/);
+  // Vault opened a dashboard after sign-in; OpenBao 2.7 opens the secrets list. Wait for the menu either way.
+  await page.waitForURL((url) => !url.pathname.includes("/auth"));
   // The vault UI keeps its sign-in only inside the page: move by clicking, never by reloading.
   await page
     .getByRole("link", { name: /^Secrets engines$/i })

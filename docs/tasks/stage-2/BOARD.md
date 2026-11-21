@@ -43,3 +43,4 @@
 | NEX-096 | Control backend skeleton: own app, own database, health, staff `me` (D55) | D | done | Claude | 095 |
 | NEX-097 | Staff SSO with mandatory MFA: Keycloak realm `nexus-staff`, OIDC sign-in for Control, sessions (P13, D55) | D | done | Claude | 096 |
 | NEX-098 | Lago billing engine: dev stack + `BillingEngine` adapter (D51; downloads approved 2026-11-22) | D | done | Claude | 096 |
+| NEX-099 | Stage 2 docs: manual with Nexus Control, guides, presentation, owner checklist | A | done | Claude | 091, 097, 098 |
