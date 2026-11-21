@@ -1,0 +1,240 @@
+{
+  "version": 1,
+  "staff": [
+    {
+      "id": "stf-0001",
+      "displayName": "Nisha Verma",
+      "workEmail": "nisha.verma@nexuscampus.example",
+      "roles": [
+        "super_admin"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-15T05:10:00Z"
+    },
+    {
+      "id": "stf-0011",
+      "displayName": "Arjun Mehta",
+      "workEmail": "arjun.mehta@nexuscampus.example",
+      "roles": [
+        "sales"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-15T04:40:00Z"
+    },
+    {
+      "id": "stf-0013",
+      "displayName": "Farah Khan",
+      "workEmail": "farah.khan@nexuscampus.example",
+      "roles": [
+        "billing"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-14T11:00:00Z"
+    },
+    {
+      "id": "stf-0042",
+      "displayName": "A. Morgan",
+      "workEmail": "a.morgan@nexuscampus.example",
+      "roles": [
+        "support"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-15T07:20:00Z"
+    },
+    {
+      "id": "stf-0023",
+      "displayName": "Ravi Shankar",
+      "workEmail": "ravi.shankar@nexuscampus.example",
+      "roles": [
+        "implementation"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-13T09:30:00Z"
+    },
+    {
+      "id": "stf-0031",
+      "displayName": "Lena Fischer",
+      "workEmail": "lena.fischer@nexuscampus.example",
+      "roles": [
+        "release_manager"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-12T08:00:00Z"
+    },
+    {
+      "id": "stf-0019",
+      "displayName": "E. Lindqvist",
+      "workEmail": "e.lindqvist@nexuscampus.example",
+      "roles": [
+        "sre",
+        "support"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-15T02:00:00Z"
+    },
+    {
+      "id": "stf-0007",
+      "displayName": "C. Okafor",
+      "workEmail": "c.okafor@nexuscampus.example",
+      "roles": [
+        "security_officer",
+        "support"
+      ],
+      "partnerId": null,
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-14T16:00:00Z"
+    },
+    {
+      "id": "stf-0051",
+      "displayName": "Suresh Babu",
+      "workEmail": "suresh@southern-edtech.example",
+      "roles": [
+        "partner"
+      ],
+      "partnerId": "ptn-south",
+      "mfaEnrolled": true,
+      "active": true,
+      "lastSignInAt": "2026-09-10T06:00:00Z"
+    }
+  ],
+  "rolePermissions": {
+    "super_admin": [
+      "ctl.account.read",
+      "ctl.account.manage",
+      "ctl.quote.read",
+      "ctl.quote.manage",
+      "ctl.billing.read",
+      "ctl.billing.manage",
+      "ctl.provisioning.read",
+      "ctl.provisioning.manage",
+      "ctl.licence.read",
+      "ctl.licence.issue",
+      "ctl.fleet.read",
+      "ctl.release.read",
+      "ctl.release.manage",
+      "ctl.extension.read",
+      "ctl.extension.manage",
+      "ctl.ticket.read",
+      "ctl.ticket.reply",
+      "ctl.broker.read",
+      "ctl.broker.request",
+      "ctl.breakGlass.approve",
+      "ctl.usage.read",
+      "ctl.partner.read",
+      "ctl.partner.manage",
+      "ctl.deal.read",
+      "ctl.deal.submit",
+      "ctl.staff.read",
+      "ctl.staff.manage",
+      "ctl.trust.read",
+      "ctl.trust.manage",
+      "ctl.project.read",
+      "ctl.project.manage",
+      "ctl.analytics.read",
+      "ctl.sandbox.read",
+      "ctl.sandbox.manage",
+      "ctl.portability.read",
+      "ctl.portability.manage"
+    ],
+    "sales": [
+      "ctl.account.read",
+      "ctl.account.manage",
+      "ctl.quote.read",
+      "ctl.quote.manage",
+      "ctl.deal.read",
+      "ctl.partner.read",
+      "ctl.usage.read",
+      "ctl.analytics.read",
+      "ctl.sandbox.read",
+      "ctl.sandbox.manage"
+    ],
+    "billing": [
+      "ctl.account.read",
+      "ctl.quote.read",
+      "ctl.billing.read",
+      "ctl.billing.manage",
+      "ctl.usage.read",
+      "ctl.partner.read",
+      "ctl.analytics.read"
+    ],
+    "support": [
+      "ctl.account.read",
+      "ctl.ticket.read",
+      "ctl.ticket.reply",
+      "ctl.broker.read",
+      "ctl.broker.request",
+      "ctl.fleet.read",
+      "ctl.licence.read",
+      "ctl.release.read",
+      "ctl.extension.read",
+      "ctl.usage.read"
+    ],
+    "implementation": [
+      "ctl.quote.read",
+      "ctl.account.read",
+      "ctl.project.read",
+      "ctl.project.manage",
+      "ctl.provisioning.read",
+      "ctl.provisioning.manage",
+      "ctl.portability.read",
+      "ctl.portability.manage",
+      "ctl.sandbox.read",
+      "ctl.sandbox.manage",
+      "ctl.ticket.read",
+      "ctl.fleet.read",
+      "ctl.licence.read",
+      "ctl.licence.issue"
+    ],
+    "release_manager": [
+      "ctl.release.read",
+      "ctl.release.manage",
+      "ctl.extension.read",
+      "ctl.extension.manage",
+      "ctl.fleet.read",
+      "ctl.sandbox.read"
+    ],
+    "sre": [
+      "ctl.fleet.read",
+      "ctl.release.read",
+      "ctl.usage.read",
+      "ctl.ticket.read",
+      "ctl.broker.read",
+      "ctl.breakGlass.approve",
+      "ctl.provisioning.read",
+      "ctl.portability.read"
+    ],
+    "security_officer": [
+      "ctl.account.read",
+      "ctl.trust.read",
+      "ctl.trust.manage",
+      "ctl.staff.read",
+      "ctl.staff.manage",
+      "ctl.broker.read",
+      "ctl.breakGlass.approve",
+      "ctl.fleet.read"
+    ],
+    "partner": [
+      "ctl.account.read",
+      "ctl.quote.read",
+      "ctl.quote.manage",
+      "ctl.deal.read",
+      "ctl.deal.submit",
+      "ctl.ticket.read"
+    ]
+  }
+}

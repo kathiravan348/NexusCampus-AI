@@ -31,6 +31,7 @@ nexus-vault-dev = "nexus.devtools.vault_dev:main"
 nexus-worker = "nexus.workers.outbox:main"
 nexus-checkpoints = "nexus.core.checkpoints:main"
 nexus-ai-eval = "nexus.devtools.ai_eval:main"
+nexus-control-db = "nexus.devtools.control_db:main"
 
 [build-system]
 requires = ["hatchling==1.27.0"]
@@ -55,6 +56,7 @@ ignore = ["S101"]
 "src/nexus/devtools/*" = ["S603", "S607"]
 # DDL cannot bind parameters; migrations build it from constants (and one quoted password).
 "migrations/*" = ["S608"]
+"control_migrations/*" = ["S608"]
 
 [tool.mypy]
 strict = true

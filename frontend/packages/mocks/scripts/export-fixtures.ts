@@ -27,6 +27,12 @@ export const KEYS_PATH = path.resolve(
 );
 export const ICU_CASES_PATH = path.resolve(here, "../../../../backend/tests/m04/icu_cases.json");
 
+/** Staff and role permissions for the control backend seed (NEX-096). */
+export const CONTROL_PATH = path.resolve(
+  here,
+  "../../../../backend/src/nexus/control/control_fixtures.json",
+);
+
 /** Contract parity samples with Zod's verdicts for the backend models (NEX-059). */
 export const PARITY_PATH = path.resolve(here, "../../../../backend/tests/parity/samples.json");
 
@@ -59,6 +65,11 @@ try {
   };
   writeFileSync(PARITY_PATH, parity.paritySamplesJson(), "utf8");
   console.log(`wrote ${path.relative(process.cwd(), PARITY_PATH)}`);
+  const control = (await server.ssrLoadModule("/src/control/export.ts")) as {
+    controlFixturesJson: () => string;
+  };
+  writeFileSync(CONTROL_PATH, control.controlFixturesJson(), "utf8");
+  console.log(`wrote ${path.relative(process.cwd(), CONTROL_PATH)}`);
 } finally {
   await server.close();
 }
