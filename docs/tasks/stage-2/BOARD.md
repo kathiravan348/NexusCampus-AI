@@ -14,7 +14,7 @@
 | NEX-067 | Control contracts (commercial): staff, accounts, CRM, plans, quotes, billing, usage | B | done | Claude | 065 |
 | NEX-068 | Control contracts (delivery): provisioning, deployments, licences, releases, extensions, sandboxes, portability, M84 | B | done | Claude | 067 |
 | NEX-069 | Control contracts (operations): support desk, access broker, partners, compliance, projects, analytics | B | planned | — | 068 |
-| NEX-070 | Control mocks: fixtures (customers of the 5 demo tenants + self-hosted + partner) and MSW read handlers | B | draft | — | 069 |
+| NEX-070 | Control mocks: fixtures (customers of the 5 demo tenants + self-hosted + partner) and MSW read handlers | B | planned | — | 069 |
 | NEX-071 | `apps/control` + `@nexus/ui-control`: staff demo sign-in, shell, menu, role guard, services base | C | draft | — | 070 |
 | NEX-072 | P01 Accounts & CRM | C | draft | — | 071 |
 | NEX-073 | P02 Plans, pricing & quotes | C | draft | — | 071 |
