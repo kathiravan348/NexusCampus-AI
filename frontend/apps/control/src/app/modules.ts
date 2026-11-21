@@ -1,6 +1,6 @@
 import type { ControlPermission, ModuleId } from "@nexus/contracts";
 import type { ControlMessageKey } from "@nexus/i18n/control";
-import { Building2, Receipt, ServerCog, Tags, type LucideIcon } from "lucide-react";
+import { Building2, KeyRound, Receipt, ServerCog, Tags, type LucideIcon } from "lucide-react";
 import type { ComponentType } from "react";
 
 /** One Nexus Control page (P01–P18); the menu, home tile, route and guard are built from it. */
@@ -55,5 +55,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: ServerCog,
     permission: "ctl.provisioning.read",
     load: () => import("../modules/p04/ProvisioningPage"),
+  },
+  {
+    moduleId: "P05",
+    path: "licences",
+    navKey: "p05.nav",
+    summaryKey: "p05.summary",
+    icon: KeyRound,
+    permission: "ctl.licence.read",
+    load: () => import("../modules/p05/LicencesPage"),
   },
 ];

@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -82,6 +82,20 @@ Menu **Provisioning** (super admin, implementation, site reliability to read).
   shows the new tenant id.
 - **Offboarding:** customers leaving — their encrypted export, the destruction of their keys (the data becomes
   unreadable) and the signed **Key-destruction certificate** with the key ids, time and signing key.
+
+### Licences
+
+Menu **Licences** (super admin, implementation, support to read).
+
+- One card per self-hosted licence: edition (**Standard** or **Enterprise**), state (**Active**, **Grace period**,
+  **Read-only**, **Expired**, **Revoked**), **Learners** used against the cap (only when the install reports counts;
+  an air-gapped install says **Usage not reported**), expiry or **Perpetual**, **Support and updates until**, grace
+  days, campuses, modules, online or offline activation, the signing key and the file fingerprint.
+- When a licence expires the install keeps working during the grace period, then becomes read-only. It never loses
+  data.
+- **Renew for a year** (implementation, super admin): a term licence moves its expiry and support end by a year; a
+  perpetual licence moves its support end. Then **Download licence file** and send it to the customer — for an
+  air-gapped site on encrypted media.
 
 ## Roles
 
