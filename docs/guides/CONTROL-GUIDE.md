@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085)).
+> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085); Projects (NEX-086)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -199,6 +199,16 @@ Menu **Trust** (super admin, security officer).
 - **Sub-processors**: company, purpose, country, whether the agreement is signed, and whether it can ever reach
   institution data (only the hosting provider can).
 - **Customer data agreements**: the agreement version each customer signed and when.
+
+### Projects
+
+Menu **Projects** (super admin, implementation).
+
+- One card per implementation project: customer, **Status** (**Planned**, **In progress**, **Live**, **On hold**),
+  kind (**Onboarding**, **Data migration**, **Self-hosted install**, **Training**), lead consultant and go-live date.
+- The checklist shows "2 of 3 tasks done", each task with its due date; an open task past its date is **Overdue**.
+- **AI draft — check before sharing** marks a plan drafted by AI; a consultant checks it before the customer sees it.
+- Use **Status** to show one status only.
 
 ## Roles
 
