@@ -1530,5 +1530,69 @@
   "p07.publishFailed": {
     "message": "The release was not published. Try again.",
     "description": "Toast when publishing fails."
+  },
+  "p08.nav": {
+    "message": "Extensions",
+    "description": "Menu item and page title of the customer extensions page (P08)."
+  },
+  "p08.summary": {
+    "message": "Customer-specific packages and their fit with each release.",
+    "description": "One-line description on the Extensions home tile."
+  },
+  "p08.intro": {
+    "message": "Customer-specific work lives in signed extension packages, never in a copy of the product. Each one is checked against upcoming releases.",
+    "description": "Intro line on the Extensions page (rule D20)."
+  },
+  "p08.empty": {
+    "message": "No extensions yet.",
+    "description": "Shown when there are no extensions."
+  },
+  "p08.package": {
+    "message": "{code} {version}",
+    "description": "Extension code and version, e.g. nb-credit-grading 1.3.0."
+  },
+  "p08.built": {
+    "message": "Built {date}",
+    "description": "When the extension package was built."
+  },
+  "p08.signed": {
+    "message": "Signed",
+    "description": "Badge: the package is signed."
+  },
+  "p08.unsigned": {
+    "message": "Not signed",
+    "description": "Badge: the package is not signed."
+  },
+  "p08.checks": {
+    "message": "Release checks",
+    "description": "Heading of an extension's compatibility checks."
+  },
+  "p08.noChecks": {
+    "message": "Not checked against any release yet.",
+    "description": "Shown when an extension has no compatibility check."
+  },
+  "p08.checkRelease": {
+    "message": "Release {version}",
+    "description": "Label of a compatibility check for a release."
+  },
+  "p08.checkedAt": {
+    "message": "Checked {date}",
+    "description": "When the compatibility check ran."
+  },
+  "p08.result.compatible": {
+    "message": "Compatible",
+    "description": "Compatibility result."
+  },
+  "p08.result.warning": {
+    "message": "Works, needs attention",
+    "description": "Compatibility result: works now, must change soon."
+  },
+  "p08.result.incompatible": {
+    "message": "Incompatible",
+    "description": "Compatibility result: breaks with the release."
+  },
+  "p08.aiDrafted": {
+    "message": "AI-drafted check — a person must confirm it",
+    "description": "Label on a compatibility check written by AI."
   }
 }

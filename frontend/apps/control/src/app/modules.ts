@@ -4,6 +4,7 @@ import {
   Building2,
   KeyRound,
   Network,
+  Puzzle,
   Receipt,
   Rocket,
   ServerCog,
@@ -91,5 +92,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: Rocket,
     permission: "ctl.release.read",
     load: () => import("../modules/p07/ReleasesPage"),
+  },
+  {
+    moduleId: "P08",
+    path: "extensions",
+    navKey: "p08.nav",
+    summaryKey: "p08.summary",
+    icon: Puzzle,
+    permission: "ctl.extension.read",
+    load: () => import("../modules/p08/ExtensionsPage"),
   },
 ];

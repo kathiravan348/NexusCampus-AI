@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -120,6 +120,16 @@ Menu **Releases** (super admin, release manager; support, implementation and sit
 - **Sign and publish** a draft (release managers). For AI-drafted notes you must tick **I reviewed the AI-drafted
   release notes** first. **Start ring** rolls out the next ring once the earlier rings are done; the deployments in
   it then show the new version under **Fleet**.
+
+### Extensions
+
+Menu **Extensions** (super admin, release manager, support to read).
+
+- Customer-specific work lives in signed extension packages, never in a copy of the product. Each card shows the
+  package, its customer, version, build date and **Signed**.
+- **Release checks** show how the package fares with upcoming releases: **Compatible**, **Works, needs attention**
+  (with notes on what must change) or **Incompatible**. A check marked **AI-drafted check — a person must confirm
+  it** was written by AI and is only advice until a release manager confirms it.
 
 ## Roles
 
