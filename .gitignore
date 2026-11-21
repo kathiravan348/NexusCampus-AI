@@ -46,4 +46,6 @@ storybook-static/
 
 # Self-hosted install: Vault unseal key and root token (NEX-064)
 deploy/compose/.secrets/
+# Key-storage backups made by the OpenBao migration (NEX-066): encrypted, but never in git
+deploy/compose/backups/
 docs/manual/.parts/

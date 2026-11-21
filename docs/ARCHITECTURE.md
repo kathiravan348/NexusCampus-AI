@@ -13,7 +13,7 @@ Region cell (one per data region: IN, EU, US, ME, APAC…) — identical stack, 
    ├─ App (modular monolith, FastAPI): core + one package per module (M01…M91)
    ├─ Workers: jobs, notifications, sync merges, reports, imports
    ├─ AI gateway (M11): redaction, capability-tier routing, metering, evaluations → Claude (default/Bedrock/Vertex), pluggable cloud or local OpenAI-compatible LLM (air-gapped)
-   ├─ PostgreSQL 16 (Row-Level Security by tenant) · Redis · object storage (S3-compatible) · search (PostgreSQL full-text + pgvector, D47)
+   ├─ PostgreSQL 16 (Row-Level Security by tenant) · Valkey (Redis protocol, D48) · object storage (S3-compatible) · search (PostgreSQL full-text + pgvector, D47)
    └─ Telemetry: OpenTelemetry → logs, metrics, traces
 Nexus Control (provider platform, §9) — customers, plans, billing, licences, tenant directory (which region),
    fleet registry, releases, support access broker. Separate app, database and staff identity. No institution data.
@@ -110,7 +110,7 @@ apps/control          Nexus Control (provider platform, Stage 2) — same ui-cor
 - SSO (SAML/OIDC), SCIM, MFA, passkeys; sessions in secure cookies for web, tokens for apps and API. Keycloak holds
   credentials, MFA and passkeys (one realm per cell, one organization per tenant); the backend issues its own sessions
   and serves SCIM (D44).
-- Secrets in HashiCorp Vault (OpenBao for self-hosted is a drop-in); per-tenant Transit keys for field-level
+- Secrets in OpenBao (open-source fork with the Vault API, D48; raft storage in installs); per-tenant Transit keys for field-level
   encryption of health, safeguarding, ID numbers (D46).
 - CI: lint, types, tests, contract parity, i18n and a11y checks, dependency and secret scans on every task branch.
 - Infrastructure as code; blue/green deploys per region cell; backups with point-in-time recovery.

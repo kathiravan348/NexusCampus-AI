@@ -23,13 +23,14 @@ services:
       retries: 30
 
   redis:
-    image: redis:7.4.2-alpine
-    command: ["redis-server", "--save", "", "--appendonly", "no", "--maxmemory", "96mb"]
+    # Valkey (BSD-3, D48): the open-source drop-in for Redis; the app still speaks the Redis protocol.
+    image: valkey/valkey:9.0.7-alpine
+    command: ["valkey-server", "--save", "", "--appendonly", "no", "--maxmemory", "96mb"]
     ports:
       - "127.0.0.1:56379:6379"
     mem_limit: 128m
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ["CMD", "valkey-cli", "ping"]
       interval: 2s
       timeout: 3s
       retries: 30
@@ -63,18 +64,18 @@ services:
       start_period: 20s
 
   vault:
-    # Keys and secrets (D46). DEV MODE ONLY: in-memory, unsealed, root token from backend/.env. Production runs
-    # Vault (or OpenBao) in HA with auto-unseal (NEX-064 docs).
-    image: hashicorp/vault:1.20.4
-    command: ["server", "-dev", "-dev-listen-address=0.0.0.0:8200"]
+    # Keys and secrets: OpenBao (MPL-2.0, D48; the Vault API). DEV MODE ONLY: in-memory, unsealed, root token from
+    # backend/.env. Production runs OpenBao with raft storage, HA and auto-unseal (deploy/compose/README.md).
+    image: openbao/openbao:2.7.2
+    command: ["server", "-dev"]
     environment:
-      VAULT_DEV_ROOT_TOKEN_ID: ${NEXUS_VAULT_TOKEN:?set NEXUS_VAULT_TOKEN in backend/.env}
-      SKIP_SETCAP: "true"
+      BAO_DEV_ROOT_TOKEN_ID: ${NEXUS_VAULT_TOKEN:?set NEXUS_VAULT_TOKEN in backend/.env}
+      BAO_DEV_LISTEN_ADDRESS: 0.0.0.0:8200
     ports:
       - "127.0.0.1:58200:8200"
     mem_limit: 256m
     healthcheck:
-      test: ["CMD-SHELL", "VAULT_ADDR=http://127.0.0.1:8200 vault status >/dev/null"]
+      test: ["CMD-SHELL", "BAO_ADDR=http://127.0.0.1:8200 bao status >/dev/null"]
       interval: 2s
       timeout: 3s
       retries: 30

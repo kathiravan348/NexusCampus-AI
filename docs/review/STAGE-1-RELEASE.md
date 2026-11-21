@@ -99,3 +99,12 @@ same V-1 check then reports `["campuses"]`.
 | `boto3` in the SaaS image for Bedrock embeddings | Planner | Needed only for the Bedrock path |
 | Vault auto-unseal (KMS) for real installs, image registry / release pipeline | Stage 2 | Documented in `deploy/compose/README.md` |
 | Third-party penetration test | Out of scope | Stage 2 |
+
+## 9. After release: open-source key vault and cache (NEX-066, 2026-11-22)
+
+HashiCorp Vault 1.20 and Redis 7.4 were replaced by OpenBao 2.7.2 and Valkey 9.0.7 (D48; both open source, same
+APIs). Re-run on the Owner PC: `backend-check` 273 tests pass against OpenBao + Valkey (including the real Transit
+round trip, the signed audit checkpoints and V-1…V-7). The NEX-064 test install was upgraded with
+`scripts/migrate-vault-to-openbao.ps1` + `install.ps1`: all 9 tenant / checkpoint keys kept, both audit chains verify
+and the checkpoints signed by Vault verify under OpenBao. A second throwaway Vault install proved the PowerShell
+migration end to end (decrypts data encrypted under Vault).

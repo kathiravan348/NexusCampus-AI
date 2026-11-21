@@ -76,8 +76,8 @@ behaviour needs it), TanStack Table, TanStack Query (+ persisted cache), React H
 (`react-intl`, ICU), date-fns + date-fns-tz, Recharts, lucide-react, React Router, MSW, Dexie (IndexedDB),
 vite-plugin-pwa (Workbox), Storybook, Vitest + Testing Library, Playwright (e2e, offline and RTL checks).
 Backend (build step): Python 3.12 (Docker; host via uv), FastAPI, Pydantic v2, pydantic-settings, SQLAlchemy 2 +
-Alembic, PostgreSQL 16 + RLS + pgvector (D47), Redis, S3-compatible storage, OpenTelemetry; ruff, mypy `--strict`, pytest.
-Identity: Keycloak (D44). Keys and secrets: HashiCorp Vault / OpenBao (D46). Hosting: AWS, regions IN + EU (D45).
+Alembic, PostgreSQL 16 + RLS + pgvector (D47), Valkey (Redis protocol, D48), S3-compatible storage, OpenTelemetry; ruff, mypy `--strict`, pytest.
+Identity: Keycloak (D44). Keys and secrets: OpenBao (Vault API; D46, D48). Shipped infrastructure is open source only (D48). Hosting: AWS, regions IN + EU (D45).
 AI: provider-agnostic AI gateway (D14, M11) — Claude via the official `anthropic` SDK (or Bedrock/Vertex) by default,
 plus pluggable providers and OpenAI-compatible local models for air-gapped/self-hosted installs; never call a model
 outside the AI gateway.

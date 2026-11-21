@@ -1,8 +1,8 @@
 # NexusCampus — self-hosted install (Docker Compose)
 
 One set of images (`nexuscampus-api`, used for the API, the worker and migrations, and `nexuscampus-web`) runs
-both a SaaS region cell and this self-hosted install. Stage 1 ships: PostgreSQL 16 + pgvector, Redis, Keycloak
-(sign-in), HashiCorp Vault (keys), the API, the outbox worker and the web app.
+both a SaaS region cell and this self-hosted install. Stage 1 ships: PostgreSQL 16 + pgvector, Valkey (Redis protocol), Keycloak
+(sign-in), OpenBao (keys; open-source Vault API, D48), the API, the outbox worker and the web app.
 
 ## What you need
 
@@ -19,12 +19,12 @@ NEXUS_SEED=demo deploy/compose/scripts/install.sh   # with the demo institutions
 Windows PowerShell: `powershell -File deploy/compose/scripts/install.ps1 [-Seed demo]`.
 
 The script creates `deploy/compose/.env` with generated secrets (git-ignored), builds the images, starts the
-services, initialises and unseals Vault, runs the migrations (and the demo seed), and prints
+services, initialises and unseals OpenBao, runs the migrations (and the demo seed), and prints
 `[timing] compose:up: …`. Open `http://127.0.0.1:8088`. With the demo seed, sign in as
 `priya.raman@littlesteps.example.edu` with `NEXUS_DEMO_USER_PASSWORD` from `.env`. Demo data is for trying the
 product only; do not use it for a real school.
 
-**Back up `deploy/compose/.secrets/vault-init.json` offline right away.** It holds Vault's unseal key and root
+**Back up `deploy/compose/.secrets/vault-init.json` offline right away.** It holds OpenBao's unseal key and root
 token; without it, encrypted data cannot be recovered. The script never overwrites it.
 
 ## Real hostnames (TLS)
@@ -40,9 +40,26 @@ script again. Pass `X-Forwarded-For` / `X-Forwarded-Proto` headers.
 
 ## Start after a reboot, upgrade
 
-Run the install script again. It is idempotent: it unseals Vault (sealed after every restart), renews the app's
-Vault token, rebuilds or pulls the images, runs **forward-only** migrations, and restarts the app. Data is kept.
+Run the install script again. It is idempotent: it unseals OpenBao (sealed after every restart), renews the app's
+key-vault token, rebuilds or pulls the images, runs **forward-only** migrations, and restarts the app. Data is kept.
 To run released images, set `NEXUS_IMAGE_API` / `NEXUS_IMAGE_WEB` to their digests (`registry/image@sha256:…`).
+
+### Upgrading an install made before NEX-066 (HashiCorp Vault + Redis → OpenBao + Valkey)
+
+Installs made before 2026-11-22 ran HashiCorp Vault and Redis, which are not open source. NexusCampus now ships
+their open-source drop-ins, OpenBao and Valkey (D48). OpenBao stores keys in raft storage instead of Vault's file
+storage, so convert once **before** running the new install script:
+
+```bash
+deploy/compose/scripts/migrate-vault-to-openbao.sh      # Windows: deploy\compose\scripts\migrate-vault-to-openbao.ps1
+deploy/compose/scripts/install.sh                       # Windows: deploy\compose\scripts\install.ps1
+```
+
+The migration script stops the app, saves a copy of the old key storage in `deploy/compose/backups/`, converts it
+with Vault's own `operator migrate` (nothing is decrypted), and moves the old Redis cache snapshot aside (Valkey
+cannot read it; it held only sign-in sessions and caches, so people sign in again). Your unseal key and root token
+in `.secrets/vault-init.json` stay the same. Running it again does nothing. Keep the backup until the app has run
+for a while, then store it with your other backups.
 
 ## Backup and restore
 
@@ -50,9 +67,10 @@ To run released images, set `NEXUS_IMAGE_API` / `NEXUS_IMAGE_WEB` to their diges
 cd deploy/compose
 # PostgreSQL (application data and Keycloak):
 docker compose exec -T db pg_dumpall -U nexus > backup-$(date +%F).sql
-# Vault key storage (stop Vault for a consistent copy):
+# OpenBao key storage (stop it for a consistent copy; the OpenBao image itself makes the archive):
 docker compose stop vault
-docker run --rm -v nexuscampus-install_vault-data:/v -v "$PWD":/b alpine tar czf /b/vault-$(date +%F).tgz -C /v .
+docker run --rm --entrypoint sh -v nexuscampus-install_vault-data:/v -v "$PWD":/b openbao/openbao:2.7.2 \
+  -c "tar czf /b/vault-$(date +%F).tgz -C /v ."
 docker compose start vault && scripts/install.sh
 ```
 
@@ -75,10 +93,11 @@ docker compose -f deploy/compose/compose.yaml down -v     # remove everything, i
 | `worker` | nexuscampus-api (`nexus-worker`) | Delivers notifications from the event outbox |
 | `migrate` | nexuscampus-api (`alembic upgrade head`) | One-shot, every install / upgrade |
 | `db` | pgvector/pgvector (pg16) | All data, search and AI vectors (D47); Keycloak's own database |
-| `redis` | redis | Sign-in state and short-lived caches |
+| `redis` | valkey/valkey (BSD-3, D48) | Sign-in state and short-lived caches (Redis protocol) |
 | `keycloak` | keycloak | Sign-in, SSO, MFA (D44); port 8089 |
-| `vault` | hashicorp/vault | Per-tenant encryption keys (D46); never published |
+| `vault` | openbao/openbao (MPL-2.0, D48) | Per-tenant encryption keys (D46), raft storage; never published |
 
 Every service has a memory limit, a health check and (where it keeps data) a named volume; third-party images are
-pinned by digest. Production hardening beyond Stage 1 (HA, Vault auto-unseal with a KMS) is described in
+pinned by digest, and every one is open source. Production hardening beyond Stage 1 (HA, OpenBao auto-unseal with a
+KMS) is described in
 `docs/ARCHITECTURE.md` §9.
