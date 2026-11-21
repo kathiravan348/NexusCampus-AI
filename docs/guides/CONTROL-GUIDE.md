@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -107,6 +107,19 @@ Menu **Fleet** (super admin, site reliability, support, implementation, release 
   air-gapped install says **Air-gapped — never checks in**: there is no network path into it, by design.
 - **Show check-in** opens the latest check-in: uptime, error rate, response time, queue, disk and active users.
   Check-ins carry counts, rates and timings only — never personal data.
+
+### Releases
+
+Menu **Releases** (super admin, release manager; support, implementation and site reliability read).
+
+- One release train for SaaS and self-hosted. The table shows version, channel, status (**Draft**, **Published**,
+  **Withdrawn**), publish date, **Signed** and **Offline bundle** (for air-gapped sites). **AI-drafted notes** marks
+  notes written by AI.
+- **Details** shows the oldest version that can upgrade directly, the migration notes (migrations only go forward)
+  and the rollout rings: ring 0 is our own cell, ring 3 is everyone on the channel.
+- **Sign and publish** a draft (release managers). For AI-drafted notes you must tick **I reviewed the AI-drafted
+  release notes** first. **Start ring** rolls out the next ring once the earlier rings are done; the deployments in
+  it then show the new version under **Fleet**.
 
 ## Roles
 

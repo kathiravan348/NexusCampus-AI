@@ -268,4 +268,7 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 | GET | `/licence-files/:licenceId` | `ctl.licence.issue` | the signed licence file (`nexus-licence/1`, mock signature) for offline activation; no internal fields (NEX-076) |
 | POST | `/licences/:id/renew` | `ctl.licence.issue` | term: expiry + support end +1 year; perpetual: support end +1 year; new fingerprint; revoked → `409` (NEX-076) |
 
+| POST | `/releases/:id/publish` | `ctl.release.manage` | body `{ notesReviewed? }`; draft only (`409`); AI-drafted notes without `notesReviewed: true` → `400`; signs and publishes (NEX-078) |
+| POST | `/rollouts/:id/start` | `ctl.release.manage` | pending ring of a published release whose earlier rings are done (else `409`); marks it done and moves its deployments to the release version (NEX-078) |
+
 Write routes are added by each Control screen task (NEX-072+).

@@ -5,6 +5,7 @@ import {
   KeyRound,
   Network,
   Receipt,
+  Rocket,
   ServerCog,
   Tags,
   type LucideIcon,
@@ -81,5 +82,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: Network,
     permission: "ctl.fleet.read",
     load: () => import("../modules/p06/FleetPage"),
+  },
+  {
+    moduleId: "P07",
+    path: "releases",
+    navKey: "p07.nav",
+    summaryKey: "p07.summary",
+    icon: Rocket,
+    permission: "ctl.release.read",
+    load: () => import("../modules/p07/ReleasesPage"),
   },
 ];
