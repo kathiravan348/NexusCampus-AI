@@ -5,6 +5,7 @@ import {
   Building2,
   Gauge,
   KeyRound,
+  HardDrive,
   Languages,
   Palette,
   RefreshCw,
@@ -140,5 +141,15 @@ export const MODULES: readonly ModuleEntry[] = [
     offlineLevel: "L0",
     aiBlocked: true,
     load: () => import("../modules/m83/VaultPage"),
+  },
+  {
+    moduleId: "M84",
+    path: "install",
+    navKey: "m84.nav.title",
+    summaryKey: "m84.nav.summary",
+    icon: HardDrive,
+    permission: "m01.institution.manage",
+    offlineLevel: "L0",
+    load: () => import("../modules/m84/InstallPage"),
   },
 ];

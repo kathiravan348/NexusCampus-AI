@@ -3730,5 +3730,213 @@
   "m07.nav.summary": {
     "message": "Message templates, delivery log and your own preferences.",
     "description": "Home tile description of the Notifications module."
+  },
+  "m84.nav.title": {
+    "message": "Install & updates",
+    "description": "Menu item and page title of the install agent on the institution's own servers."
+  },
+  "m84.nav.summary": {
+    "message": "Licence, updates, encrypted backups and support diagnostics of your own install.",
+    "description": "Home tile text for the install page."
+  },
+  "m84.intro": {
+    "message": "NexusCampus {version} on your own servers, {channel} channel.",
+    "description": "Page intro. {version} e.g. 2.4.1, {channel} the update channel name."
+  },
+  "m84.channel.stable": {
+    "message": "stable",
+    "description": "Update channel name inside a sentence: tested releases."
+  },
+  "m84.channel.lts": {
+    "message": "long-term support",
+    "description": "Update channel name inside a sentence: fewer, longer-supported releases."
+  },
+  "m84.channel.preview": {
+    "message": "preview",
+    "description": "Update channel name inside a sentence: early releases."
+  },
+  "m84.licence.title": {
+    "message": "Licence",
+    "description": "Card heading: the licence of this install."
+  },
+  "m84.licence.active": {
+    "message": "Active",
+    "description": "Licence state."
+  },
+  "m84.licence.grace": {
+    "message": "Grace period",
+    "description": "Licence state: expired but still working for a short time."
+  },
+  "m84.licence.readOnly": {
+    "message": "Read only",
+    "description": "Licence state: data can be viewed but not changed."
+  },
+  "m84.licence.expired": {
+    "message": "Expired",
+    "description": "Licence state."
+  },
+  "m84.licence.revoked": {
+    "message": "Revoked",
+    "description": "Licence state: withdrawn."
+  },
+  "m84.edition.standard": {
+    "message": "Standard edition",
+    "description": "Licence edition."
+  },
+  "m84.edition.enterprise": {
+    "message": "Enterprise edition",
+    "description": "Licence edition."
+  },
+  "m84.supportEnds": {
+    "message": "support until {date}",
+    "description": "After the edition. {date} is when the support contract ends."
+  },
+  "m84.learners": {
+    "message": "Learners",
+    "description": "Meter label: learners used of the licence limit."
+  },
+  "m84.campuses": {
+    "message": "Campuses",
+    "description": "Meter label: campuses used of the licence limit."
+  },
+  "m84.used": {
+    "message": "{used} of {cap}",
+    "description": "Meter value. {used} and {cap} are numbers."
+  },
+  "m84.licence.offline": {
+    "message": "The licence is checked on this server, without calling us.",
+    "description": "Explains that the licence check works offline."
+  },
+  "m84.update.title": {
+    "message": "Updates",
+    "description": "Card heading: available software update."
+  },
+  "m84.update.none": {
+    "message": "You have the latest version.",
+    "description": "Shown when no update is available."
+  },
+  "m84.update.version": {
+    "message": "Version {version}",
+    "description": "Available update. {version} e.g. 2.4.2."
+  },
+  "m84.update.security": {
+    "message": "Security fix",
+    "description": "Badge: the update fixes a security problem."
+  },
+  "m84.update.signed": {
+    "message": "Signature valid",
+    "description": "Badge: the update file is signed by us and unchanged."
+  },
+  "m84.update.badSignature": {
+    "message": "Signature not valid — do not install",
+    "description": "Badge: the update file may have been changed."
+  },
+  "m84.update.online": {
+    "message": "Downloaded from NexusCampus",
+    "description": "Where the update comes from: online."
+  },
+  "m84.update.offline": {
+    "message": "From an offline bundle",
+    "description": "Where the update comes from: a signed file loaded by hand (no internet)."
+  },
+  "m84.update.covered": {
+    "message": "included in your support",
+    "description": "The support contract covers this update."
+  },
+  "m84.update.notCovered": {
+    "message": "needs a support contract",
+    "description": "The support contract has ended; the install keeps running without updates."
+  },
+  "m84.update.lastCheck": {
+    "message": "Last checked {date}",
+    "description": "When the install last looked for updates. {date} is a date."
+  },
+  "m84.backups.title": {
+    "message": "Backups",
+    "description": "Card heading: encrypted backups of this install."
+  },
+  "m84.backups.rule": {
+    "message": "Every backup is encrypted with your keys before it is written.",
+    "description": "States that backups are always encrypted."
+  },
+  "m84.backups.none": {
+    "message": "No backups yet.",
+    "description": "Shown when there is no backup."
+  },
+  "m84.backups.backup": {
+    "message": "Encrypted backup of {date} · {size}",
+    "description": "One backup. {date} is when it started, {size} e.g. 4,608 MB."
+  },
+  "m84.backups.export": {
+    "message": "Encrypted export of {date} · {size}",
+    "description": "One full export for moving the institution. {date} start, {size} size."
+  },
+  "m84.backup.running": {
+    "message": "Running",
+    "description": "Backup state."
+  },
+  "m84.backup.done": {
+    "message": "Done",
+    "description": "Backup state."
+  },
+  "m84.backup.failed": {
+    "message": "Failed",
+    "description": "Backup state."
+  },
+  "m84.sizeMb": {
+    "message": "{value} MB",
+    "description": "A file size in megabytes. {value} is a number."
+  },
+  "m84.privacy.title": {
+    "message": "Health reports & support diagnostics",
+    "description": "Card heading: what the install sends to NexusCampus."
+  },
+  "m84.privacy.telemetryOn": {
+    "message": "Health reports are on: counts, error rates and timings only — never names or records.",
+    "description": "Telemetry state: on, and what it contains."
+  },
+  "m84.privacy.telemetryOff": {
+    "message": "Health reports are off. Nothing is sent to NexusCampus.",
+    "description": "Telemetry state: off."
+  },
+  "m84.privacy.airGapped": {
+    "message": "This install is air-gapped: it never connects to NexusCampus.",
+    "description": "The install has no internet connection to us at all."
+  },
+  "m84.privacy.bundleRule": {
+    "message": "Support diagnostics have personal data removed. Nothing is sent until an admin approves it.",
+    "description": "Rule for diagnostic bundles."
+  },
+  "m84.bundle.none": {
+    "message": "No diagnostic bundles.",
+    "description": "Shown when there is no bundle."
+  },
+  "m84.bundle.forTicket": {
+    "message": "Diagnostics for ticket {ticket} · {date} · {size}",
+    "description": "One bundle. {ticket} support ticket number, {date} creation date, {size} size."
+  },
+  "m84.bundle.item": {
+    "message": "Diagnostics · {date} · {size}",
+    "description": "One bundle without a ticket. {date} creation date, {size} size."
+  },
+  "m84.bundle.generating": {
+    "message": "Being prepared",
+    "description": "Bundle state."
+  },
+  "m84.bundle.readyForReview": {
+    "message": "Waiting for your review",
+    "description": "Bundle state: an admin must check it before it can be sent."
+  },
+  "m84.bundle.approved": {
+    "message": "Approved",
+    "description": "Bundle state."
+  },
+  "m84.bundle.sent": {
+    "message": "Sent",
+    "description": "Bundle state."
+  },
+  "m84.bundle.discarded": {
+    "message": "Discarded",
+    "description": "Bundle state."
   }
 }

@@ -14,3 +14,4 @@ export * from "./notifications";
 export * from "./sync";
 export * from "./ai";
 export * from "./vault";
+export * from "./install";
