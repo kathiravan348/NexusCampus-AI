@@ -33,7 +33,7 @@
 | NEX-086 | P15 Implementation projects | C | done | Claude | 071 |
 | NEX-087 | P16 Business analytics | C | done | Claude | 071 |
 | NEX-088 | P17 Sandbox, demo & staging environments | C | done | Claude | 071 |
-| NEX-089 | P18 Tenant portability & migrations | C | in-progress | Claude | 071 |
+| NEX-089 | P18 Tenant portability & migrations | C | done | Claude | 071 |
 | NEX-090 | M84 Install agent screen in campus (self-hosted only) | C | draft | — | 070 |
 | NEX-091 | Stage 2 review build: walkthrough per provider persona, Playwright smoke for control | C | draft | — | 072–090 |
 | NEX-092 | Stage 2 freeze (planner + Owner) | — | draft | — | 091 |

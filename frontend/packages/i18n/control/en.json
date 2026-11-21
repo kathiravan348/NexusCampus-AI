@@ -2706,5 +2706,73 @@
   "p17.status.deleted": {
     "message": "Deleted",
     "description": "Sandbox state: removed."
+  },
+  "p18.nav": {
+    "message": "Moves",
+    "description": "Menu item and page title of tenant moves between SaaS and self-hosted or between regions."
+  },
+  "p18.summary": {
+    "message": "Encrypted tenant moves between SaaS and self-hosted, and between regions.",
+    "description": "Home tile text for the Moves page."
+  },
+  "p18.rule": {
+    "message": "Every move exports the data encrypted with the tenant's own keys; we run the steps but can never read the export. The source keys are destroyed at the end, with a signed certificate.",
+    "description": "States the security rule for tenant moves."
+  },
+  "p18.empty": {
+    "message": "No tenant moves.",
+    "description": "Shown when there is no move."
+  },
+  "p18.meta": {
+    "message": "{direction} · {region} · started {date}",
+    "description": "Under the customer name when the region stays the same. {direction} e.g. SaaS → self-hosted, {region} e.g. India (IN), {date} start date."
+  },
+  "p18.metaMove": {
+    "message": "{direction} · {from} → {to} · started {date}",
+    "description": "Under the customer name for a move between regions. {from} and {to} are regions, {date} start date."
+  },
+  "p18.steps": {
+    "message": "Steps of move {job}",
+    "description": "Screen-reader name of the step list. {job} is the move id."
+  },
+  "p18.dir.toSelfHosted": {
+    "message": "SaaS → self-hosted",
+    "description": "Move direction: from our cloud to the customer's own servers."
+  },
+  "p18.dir.toSaas": {
+    "message": "Self-hosted → SaaS",
+    "description": "Move direction: from the customer's own servers to our cloud."
+  },
+  "p18.dir.region": {
+    "message": "Region move",
+    "description": "Move direction: between two of our cloud regions."
+  },
+  "p18.step.preflight": {
+    "message": "Pre-flight check",
+    "description": "Move step: check everything is ready before moving."
+  },
+  "p18.step.export": {
+    "message": "Encrypted export",
+    "description": "Move step: export the data encrypted with the tenant's keys."
+  },
+  "p18.step.transfer": {
+    "message": "Transfer",
+    "description": "Move step: copy the encrypted export to the target."
+  },
+  "p18.step.import": {
+    "message": "Import",
+    "description": "Move step: load the data at the target."
+  },
+  "p18.step.verify": {
+    "message": "Verify",
+    "description": "Move step: check the moved data is complete."
+  },
+  "p18.step.cutover": {
+    "message": "Switch over",
+    "description": "Move step: users start using the new place."
+  },
+  "p18.step.shred": {
+    "message": "Destroy source keys",
+    "description": "Move step: destroy the keys of the old copy so it can never be read (crypto-shred)."
   }
 }

@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085); Projects (NEX-086); Analytics (NEX-087); Sandboxes (NEX-088)).
+> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085); Projects (NEX-086); Analytics (NEX-087); Sandboxes (NEX-088); Moves (NEX-089)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -227,6 +227,16 @@ Menu **Sandboxes** (super admin, sales, implementation; release manager reads).
 - Every **Sales demo** and **Staging clone**: customer (or **Not tied to a customer**), institution type and region,
   **Data** (**Synthetic data** for demos, **Masked copy** for staging clones), version, status and expiry date.
 - A sandbox never holds real institution data, and every sandbox expires on its own.
+
+### Moves
+
+Menu **Moves** (super admin, implementation; site reliability reads).
+
+- One card per tenant move: customer, status, direction (**SaaS → self-hosted**, **Self-hosted → SaaS**, **Region
+  move**), region(s) and start date.
+- Seven steps: **Pre-flight check**, **Encrypted export**, **Transfer**, **Import**, **Verify**, **Switch over**,
+  **Destroy source keys** — each **Waiting**, **Running**, **Done** or **Failed**.
+- The export is always encrypted with the tenant's own keys; we run the steps but never read it.
 
 ## Roles
 
