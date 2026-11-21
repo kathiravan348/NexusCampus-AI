@@ -39,3 +39,5 @@
 | NEX-092 | Stage 2 freeze (planner + Owner) | — | draft | — | 091 |
 | NEX-093 | Stage 1 small fixes: campus token classes in M04, campus test time limit (D54) | C | done | Claude | 065 |
 | NEX-094 | One-file language export / import for the Owner's Hindi & Tamil correction (D54) | A | done | Claude | 071 |
+| NEX-095 | Licence signing (Ed25519 in OpenBao) and offline verification for M84 (P05, D23, D55) | D | in-progress | Claude | 068 |
+| NEX-096 | Control backend skeleton: own app, own database, health, staff `me` (D55) | D | draft | — | 095 |
