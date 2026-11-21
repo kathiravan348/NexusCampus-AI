@@ -2198,5 +2198,185 @@
   "p13.never": {
     "message": "Never",
     "description": "Shown when someone never signed in."
+  },
+  "p14.nav": {
+    "message": "Trust",
+    "description": "Menu item and page title of compliance and trust operations (certifications, incidents, sub-processors, customer agreements)."
+  },
+  "p14.summary": {
+    "message": "Certifications, security incidents, sub-processors and customer data agreements.",
+    "description": "Home tile text for the Trust page."
+  },
+  "p14.certifications": {
+    "message": "Certifications",
+    "description": "Card heading: security and privacy certifications of the company."
+  },
+  "p14.cert.iso27001": {
+    "message": "ISO/IEC 27001",
+    "description": "Name of the information-security certification. Keep as is."
+  },
+  "p14.cert.iso27701": {
+    "message": "ISO/IEC 27701",
+    "description": "Name of the privacy certification. Keep as is."
+  },
+  "p14.cert.soc2": {
+    "message": "SOC 2 Type II",
+    "description": "Name of the US security audit report. Keep as is."
+  },
+  "p14.cert.certIn": {
+    "message": "CERT-In empanelment",
+    "description": "Listing by the Indian national cyber-security agency. Keep CERT-In as is."
+  },
+  "p14.certStatus.planned": {
+    "message": "Planned",
+    "description": "Certification state: not started yet."
+  },
+  "p14.certStatus.inAudit": {
+    "message": "In audit",
+    "description": "Certification state: the auditor is checking us now."
+  },
+  "p14.certStatus.certified": {
+    "message": "Certified",
+    "description": "Certification state: valid certificate."
+  },
+  "p14.certStatus.lapsed": {
+    "message": "Lapsed",
+    "description": "Certification state: the certificate expired."
+  },
+  "p14.validUntil": {
+    "message": "valid until {date}",
+    "description": "After a certification badge. {date} is the expiry date."
+  },
+  "p14.incidents": {
+    "message": "Security incidents",
+    "description": "Section heading and table caption: list of security incidents."
+  },
+  "p14.breachRule": {
+    "message": "When personal data may be affected, the notification clock starts at detection: 6 hours to CERT-In in India, 72 hours to the authority under GDPR, and the institution without delay.",
+    "description": "Explains the legal deadlines for reporting a data breach."
+  },
+  "p14.col.incident": {
+    "message": "Incident",
+    "description": "Table column: incident title."
+  },
+  "p14.col.severity": {
+    "message": "Severity",
+    "description": "Table column: how serious the incident is."
+  },
+  "p14.col.status": {
+    "message": "Status",
+    "description": "Table column: incident progress."
+  },
+  "p14.col.breach": {
+    "message": "Breach notification",
+    "description": "Table column: deadline and state of the legal data-breach notification."
+  },
+  "p14.detected": {
+    "message": "Detected {date} · {accounts}",
+    "description": "Under the incident title. {date} is the detection date, {accounts} the affected customers."
+  },
+  "p14.aiReport": {
+    "message": "AI-drafted report",
+    "description": "Badge: AI wrote the first draft of the incident report; a security officer must check it."
+  },
+  "p14.sev.sev1": {
+    "message": "Critical",
+    "description": "Incident severity 1, the highest."
+  },
+  "p14.sev.sev2": {
+    "message": "High",
+    "description": "Incident severity 2."
+  },
+  "p14.sev.sev3": {
+    "message": "Medium",
+    "description": "Incident severity 3."
+  },
+  "p14.sev.sev4": {
+    "message": "Low",
+    "description": "Incident severity 4, the lowest."
+  },
+  "p14.incStatus.investigating": {
+    "message": "Investigating",
+    "description": "Incident state: still finding out what happened."
+  },
+  "p14.incStatus.contained": {
+    "message": "Contained",
+    "description": "Incident state: stopped from spreading."
+  },
+  "p14.incStatus.resolved": {
+    "message": "Resolved",
+    "description": "Incident state: fixed."
+  },
+  "p14.incStatus.postMortemDone": {
+    "message": "Review done",
+    "description": "Incident state: the after-incident review is written."
+  },
+  "p14.noBreach": {
+    "message": "No personal data affected",
+    "description": "Breach column when no personal data was involved, so no notification is needed."
+  },
+  "p14.notifyBy": {
+    "message": "Notify by {date}",
+    "description": "Breach column: notification still due; {date} is the deadline."
+  },
+  "p14.notifiedOnTime": {
+    "message": "Notified {date}, on time",
+    "description": "Breach column: notification sent before the deadline; {date} is when."
+  },
+  "p14.notifiedLate": {
+    "message": "Notified {date}, late",
+    "description": "Breach column: notification sent after the deadline; {date} is when."
+  },
+  "p14.subProcessors": {
+    "message": "Sub-processors",
+    "description": "Section heading and table caption: other companies that process data for us."
+  },
+  "p14.col.subProcessor": {
+    "message": "Company",
+    "description": "Table column: sub-processor name and purpose."
+  },
+  "p14.col.country": {
+    "message": "Country",
+    "description": "Table column: country of the company."
+  },
+  "p14.col.dpa": {
+    "message": "Agreement",
+    "description": "Table column: whether a data-processing agreement is signed."
+  },
+  "p14.col.data": {
+    "message": "Data it can reach",
+    "description": "Table column: which data the company could ever touch."
+  },
+  "p14.dpaSigned": {
+    "message": "Signed",
+    "description": "Badge: data-processing agreement signed."
+  },
+  "p14.dpaMissing": {
+    "message": "Not signed",
+    "description": "Badge: data-processing agreement missing."
+  },
+  "p14.institutionData": {
+    "message": "Institution data (hosting)",
+    "description": "Badge: this company hosts systems that hold the data of institutions."
+  },
+  "p14.businessDataOnly": {
+    "message": "Our business data only",
+    "description": "The company never touches the data of institutions."
+  },
+  "p14.dpas": {
+    "message": "Customer data agreements",
+    "description": "Section heading and table caption: data-processing agreements signed by customers."
+  },
+  "p14.col.customer": {
+    "message": "Customer",
+    "description": "Table column: customer name."
+  },
+  "p14.col.version": {
+    "message": "Version",
+    "description": "Table column: agreement version number."
+  },
+  "p14.col.signed": {
+    "message": "Signed",
+    "description": "Table column: date the agreement was signed."
   }
 }

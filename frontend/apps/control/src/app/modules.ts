@@ -10,6 +10,7 @@ import {
   Puzzle,
   Receipt,
   Rocket,
+  Scale,
   ServerCog,
   ShieldCheck,
   Tags,
@@ -151,5 +152,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: UserCog,
     permission: "ctl.staff.read",
     load: () => import("../modules/p13/StaffPage"),
+  },
+  {
+    moduleId: "P14",
+    path: "trust",
+    navKey: "p14.nav",
+    summaryKey: "p14.summary",
+    icon: Scale,
+    permission: "ctl.trust.read",
+    load: () => import("../modules/p14/TrustPage"),
   },
 ];
