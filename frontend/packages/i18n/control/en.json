@@ -594,5 +594,297 @@
   "p02.send.failed": {
     "message": "The quote was not sent. Try again.",
     "description": "Toast when sending a quote fails."
+  },
+  "p03.nav": {
+    "message": "Billing",
+    "description": "Menu item and page title of the billing page (P03)."
+  },
+  "p03.summary": {
+    "message": "Subscriptions, invoices, payments and reminders.",
+    "description": "One-line description on the Billing home tile."
+  },
+  "p03.tabs.label": {
+    "message": "Billing",
+    "description": "Accessible label of the billing tabs."
+  },
+  "p03.tab.subscriptions": {
+    "message": "Subscriptions",
+    "description": "Tab: SaaS subscriptions."
+  },
+  "p03.tab.invoices": {
+    "message": "Invoices",
+    "description": "Tab: invoices."
+  },
+  "p03.tab.payments": {
+    "message": "Payments",
+    "description": "Tab: payments received."
+  },
+  "p03.tab.dunning": {
+    "message": "Reminders",
+    "description": "Tab: overdue reminders (dunning)."
+  },
+  "p03.col.account": {
+    "message": "Account",
+    "description": "Column header: customer account."
+  },
+  "p03.col.status": {
+    "message": "Status",
+    "description": "Column header: status."
+  },
+  "p03.subs.caption": {
+    "message": "Subscriptions",
+    "description": "Accessible caption of the subscriptions table."
+  },
+  "p03.subs.plan": {
+    "message": "Plan",
+    "description": "Column header: subscribed plan and add-ons."
+  },
+  "p03.subs.period": {
+    "message": "Billed",
+    "description": "Column header: monthly or annual billing."
+  },
+  "p03.subs.learners": {
+    "message": "Learners",
+    "description": "Column header: learners billed (a count)."
+  },
+  "p03.subs.current": {
+    "message": "Current period",
+    "description": "Column header: the current billing period."
+  },
+  "p03.subs.range": {
+    "message": "{start} – {end}",
+    "description": "Billing period: start date to end date."
+  },
+  "p03.subs.trialEnds": {
+    "message": "Trial ends {date}",
+    "description": "Shown for a subscription on trial."
+  },
+  "p03.subs.addons": {
+    "message": "+ {count, plural, one {# add-on} other {# add-ons}}",
+    "description": "After the plan name: how many add-ons."
+  },
+  "p03.period.monthly": {
+    "message": "Monthly",
+    "description": "Billing period."
+  },
+  "p03.period.annual": {
+    "message": "Annual",
+    "description": "Billing period."
+  },
+  "p03.subStatus.trialing": {
+    "message": "Trial",
+    "description": "Subscription status."
+  },
+  "p03.subStatus.active": {
+    "message": "Active",
+    "description": "Subscription status."
+  },
+  "p03.subStatus.pastDue": {
+    "message": "Past due",
+    "description": "Subscription status: an invoice is overdue."
+  },
+  "p03.subStatus.cancelled": {
+    "message": "Cancelled",
+    "description": "Subscription status."
+  },
+  "p03.inv.caption": {
+    "message": "Invoices",
+    "description": "Accessible caption of the invoices table."
+  },
+  "p03.inv.number": {
+    "message": "Invoice",
+    "description": "Column header: invoice number."
+  },
+  "p03.inv.dates": {
+    "message": "Issued / due",
+    "description": "Column header: issue date and due date."
+  },
+  "p03.inv.dateRange": {
+    "message": "{issued} / {due}",
+    "description": "Issue date and due date of an invoice."
+  },
+  "p03.inv.tax": {
+    "message": "Tax",
+    "description": "Column header: tax scheme and amount."
+  },
+  "p03.inv.total": {
+    "message": "Total",
+    "description": "Column header: invoice total including tax."
+  },
+  "p03.tax.gst": {
+    "message": "GST {amount}",
+    "description": "Tax cell: Goods and Services Tax amount (India, Singapore)."
+  },
+  "p03.tax.vat": {
+    "message": "VAT {amount}",
+    "description": "Tax cell: Value Added Tax amount (UK, EU)."
+  },
+  "p03.tax.none": {
+    "message": "No tax",
+    "description": "Tax cell: no tax applies (export or exempt)."
+  },
+  "p03.invStatus.draft": {
+    "message": "Draft",
+    "description": "Invoice status."
+  },
+  "p03.invStatus.open": {
+    "message": "Open",
+    "description": "Invoice status: waiting for payment, not yet due."
+  },
+  "p03.invStatus.paid": {
+    "message": "Paid",
+    "description": "Invoice status."
+  },
+  "p03.invStatus.overdue": {
+    "message": "Overdue",
+    "description": "Invoice status: past the due date."
+  },
+  "p03.invStatus.void": {
+    "message": "Void",
+    "description": "Invoice status: cancelled."
+  },
+  "p03.inv.record": {
+    "message": "Record transfer",
+    "description": "Button: record a bank transfer that pays this invoice."
+  },
+  "p03.inv.recordLabel": {
+    "message": "Record a bank transfer for {number}",
+    "description": "Accessible label of the record-transfer button."
+  },
+  "p03.record.title": {
+    "message": "Record a bank transfer for {number}",
+    "description": "Title of the record-transfer dialog."
+  },
+  "p03.record.body": {
+    "message": "Marks {total} from {account} as paid and stops any reminders.",
+    "description": "Text of the record-transfer dialog."
+  },
+  "p03.record.reference": {
+    "message": "Our bank reference",
+    "description": "Label: the reference from our bank statement (never the customer's account number)."
+  },
+  "p03.record.referenceHint": {
+    "message": "The reference on our statement only — never the customer's bank account details.",
+    "description": "Help text under the bank reference field."
+  },
+  "p03.record.confirm": {
+    "message": "Record payment",
+    "description": "Button that records the payment."
+  },
+  "p03.record.done": {
+    "message": "Payment recorded",
+    "description": "Toast after a transfer is recorded."
+  },
+  "p03.record.failed": {
+    "message": "The payment was not recorded. Try again.",
+    "description": "Toast when recording a transfer fails."
+  },
+  "p03.pay.caption": {
+    "message": "Payments",
+    "description": "Accessible caption of the payments table."
+  },
+  "p03.pay.invoice": {
+    "message": "Invoice",
+    "description": "Column header: the invoice paid."
+  },
+  "p03.pay.method": {
+    "message": "Method",
+    "description": "Column header: payment method."
+  },
+  "p03.pay.gateway": {
+    "message": "Received through",
+    "description": "Column header: payment gateway or bank."
+  },
+  "p03.pay.amount": {
+    "message": "Amount",
+    "description": "Column header: amount paid."
+  },
+  "p03.pay.date": {
+    "message": "Date",
+    "description": "Column header: payment date."
+  },
+  "p03.method.card": {
+    "message": "Card",
+    "description": "Payment method."
+  },
+  "p03.method.upi": {
+    "message": "UPI",
+    "description": "Payment method: India's Unified Payments Interface."
+  },
+  "p03.method.netbanking": {
+    "message": "Net banking",
+    "description": "Payment method."
+  },
+  "p03.method.bankTransfer": {
+    "message": "Bank transfer",
+    "description": "Payment method."
+  },
+  "p03.gateway.razorpay": {
+    "message": "Razorpay",
+    "description": "Payment gateway name (India)."
+  },
+  "p03.gateway.stripe": {
+    "message": "Stripe",
+    "description": "Payment gateway name (Europe)."
+  },
+  "p03.gateway.manual": {
+    "message": "Bank (recorded by hand)",
+    "description": "Payment received by bank transfer and recorded by our staff."
+  },
+  "p03.payStatus.pending": {
+    "message": "Pending",
+    "description": "Payment status."
+  },
+  "p03.payStatus.succeeded": {
+    "message": "Succeeded",
+    "description": "Payment status."
+  },
+  "p03.payStatus.failed": {
+    "message": "Failed",
+    "description": "Payment status."
+  },
+  "p03.payStatus.refunded": {
+    "message": "Refunded",
+    "description": "Payment status."
+  },
+  "p03.dun.caption": {
+    "message": "Reminders",
+    "description": "Accessible caption of the dunning table."
+  },
+  "p03.dun.stage": {
+    "message": "Stage",
+    "description": "Column header: reminder stage."
+  },
+  "p03.dun.overdue": {
+    "message": "Overdue",
+    "description": "Column header: overdue amount."
+  },
+  "p03.dun.next": {
+    "message": "Next step",
+    "description": "Column header: when the next reminder step happens."
+  },
+  "p03.dun.note": {
+    "message": "Reminders end at read-only access for the institution. Billing never deletes an institution's data.",
+    "description": "Note above the reminders table (rule D23)."
+  },
+  "p03.dunStage.none": {
+    "message": "No reminders",
+    "description": "Dunning stage."
+  },
+  "p03.dunStage.reminder1": {
+    "message": "First reminder",
+    "description": "Dunning stage."
+  },
+  "p03.dunStage.reminder2": {
+    "message": "Second reminder",
+    "description": "Dunning stage."
+  },
+  "p03.dunStage.finalNotice": {
+    "message": "Final notice",
+    "description": "Dunning stage."
+  },
+  "p03.dunStage.readOnly": {
+    "message": "Read-only",
+    "description": "Dunning stage: the institution can still read and export everything."
   }
 }

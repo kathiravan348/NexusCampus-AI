@@ -33,12 +33,17 @@ export interface AccountFilters {
 const ALL = { pageSize: PAGE_SIZE_MAX } as const;
 
 /** Customer accounts the staff member may see (partners: only their own), filtered on the server. */
-export function useAccounts(filters: AccountFilters = {}) {
-  return useControlQuery("/accounts", AccountPageSchema, {
-    ...ALL,
-    stage: filters.stage ?? null,
-    deliveryModel: filters.deliveryModel ?? null,
-  });
+export function useAccounts(filters: AccountFilters = {}, enabled = true) {
+  return useControlQuery(
+    "/accounts",
+    AccountPageSchema,
+    {
+      ...ALL,
+      stage: filters.stage ?? null,
+      deliveryModel: filters.deliveryModel ?? null,
+    },
+    { enabled },
+  );
 }
 
 export function useAccount(id: string) {

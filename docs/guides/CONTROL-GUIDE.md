@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -53,6 +53,21 @@ Menu **Pricing & quotes** (super admin, sales, billing, partner).
 - **Send** a draft quote (sales, super admin, partner for their own customers). A quote marked **AI draft** was
   written by AI: the dialog asks you to check every line, quantity and discount, and **Send quote** stays off until
   you tick **I checked this AI draft**.
+
+### Billing
+
+Menu **Billing** (super admin, billing).
+
+- **Invoices:** number, account, status (**Open**, **Overdue**, **Paid** …), issue and due dates, tax (**GST**,
+  **VAT** or **No tax**) and total in the invoice's currency.
+- **Record transfer** (billing staff) on an open or overdue invoice when the money arrived by bank transfer: type
+  **Our bank reference** from our statement and press **Record payment**. Never type the customer's bank account
+  details. The invoice becomes **Paid**, its reminders stop and a past-due subscription becomes active again.
+- **Subscriptions:** plan and add-ons, status, monthly or annual, learners billed and the current period.
+- **Payments:** method, the gateway (**Razorpay**, **Stripe** or **Bank (recorded by hand)**) with its reference.
+  Card and bank numbers are never stored.
+- **Reminders:** each account's reminder stage. Reminders end at **Read-only** — the institution can still read and
+  export everything; billing never deletes an institution's data.
 
 ## Roles
 

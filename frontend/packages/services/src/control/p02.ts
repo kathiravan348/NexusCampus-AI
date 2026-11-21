@@ -15,8 +15,8 @@ export const QuotePageSchema = pageSchema(QuoteSchema);
 const ALL = { pageSize: PAGE_SIZE_MAX } as const;
 
 /** Everything we sell, with prices per country (P02). */
-export function useCatalogue() {
-  return useControlQuery("/catalogue", CataloguePageSchema, ALL);
+export function useCatalogue(enabled = true) {
+  return useControlQuery("/catalogue", CataloguePageSchema, ALL, { enabled });
 }
 
 /** Quotes the staff member may see (partners: their accounts only). */
