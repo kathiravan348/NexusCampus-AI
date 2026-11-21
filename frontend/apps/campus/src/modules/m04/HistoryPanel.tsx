@@ -101,7 +101,7 @@ export function HistoryPanel({
             return (
               <li
                 key={`${rev.overrideId}-${rev.version}`}
-                className="flex flex-wrap items-start justify-between gap-3 rounded-md border border-border-default bg-bg-subtle p-3"
+                className="flex flex-wrap items-start justify-between gap-3 rounded-md border border-border-default bg-bg-raised p-3"
               >
                 <div className="min-w-0 flex-1 space-y-1">
                   <div className="flex flex-wrap items-center gap-2">
@@ -109,7 +109,7 @@ export function HistoryPanel({
                       {t("m04.history.version", { version: rev.version })}
                     </Badge>
                     {isCurrent && <Badge tone="info">{t("m04.history.current")}</Badge>}
-                    <span className="text-caption text-text-muted">
+                    <span className="text-body-sm text-text-muted">
                       {formatDateTime(rev.changedAt, { locale: dateLocale, timeZone })}
                     </span>
                   </div>

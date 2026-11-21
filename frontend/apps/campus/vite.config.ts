@@ -83,6 +83,8 @@ export default defineConfig(({ mode }) => {
       globals: true,
       environment: "jsdom",
       setupFiles: "./src/test/setup.ts",
+      // Per-test limit above the 10 s wait in setup.ts (NEX-093); soft time budgets are unchanged.
+      testTimeout: 20_000,
       alias: { "virtual:pwa-register": path.join(appDir, "src", "pwa", "pwaRegisterStub.ts") },
     },
   };
