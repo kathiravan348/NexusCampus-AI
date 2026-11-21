@@ -37,3 +37,4 @@
 |---|---|---|
 | campus `modules/m04/KeyEditor.tsx` | Class `divide-border-subtle` has no theme token (row dividers fall back to the default colour) | Use `divide-border-default` |
 | campus `modules/m04/HistoryPanel.tsx`, `ImportExport.tsx` | Class `text-caption` has no theme token (text renders at the inherited size) | Use `text-body-sm`; extend the token check to app screens like `apps/control/src/themeClasses.test.ts` |
+| campus `modules/m02/InviteUserModal.test.tsx` | Timed out once at the 5 s per-test limit during a full `review:check` run (passes alone and on re-run); the workspace test run is getting heavier | Raise the campus `testTimeout` to 10 s or split the slow flow; watch `TIMINGS.md` |
