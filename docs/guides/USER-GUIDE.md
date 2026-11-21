@@ -129,3 +129,10 @@ Available to everyone from **Notifications** in the menu.
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
 - **Working offline:** after the first visit, a "Ready to work offline" message confirms the app itself is saved on this device, so it opens without a connection. What data you can read offline follows each module's offline level; private settings (L0) still need a connection.
 - **Updating:** when a new version has downloaded, a notice says "A new version of NexusCampus is ready." Choose **Reload** to switch now, or **Later** to keep working; the new version starts the next time all app tabs are closed.
+
+## Installing NexusCampus on your own server
+
+Your IT team runs one command: `deploy/compose/scripts/install.sh` (Windows: `install.ps1`). It sets up sign-in,
+encryption keys, the database and the app, and prints the address to open. Running it again starts NexusCampus after a
+restart or installs an update without losing data. See `deploy/compose/README.md` for real web addresses, backups and
+removal.

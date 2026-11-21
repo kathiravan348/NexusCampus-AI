@@ -15,7 +15,8 @@ export default defineConfig({
   reporter: [["list"]],
   use: {
     ...devices["Desktop Chrome"],
-    baseURL: "http://127.0.0.1:3100",
+    // `NEXUS_E2E_BASE_URL` points at another install, e.g. the Compose install (http://127.0.0.1:8088).
+    baseURL: process.env["NEXUS_E2E_BASE_URL"] ?? "http://127.0.0.1:3100",
     trace: "retain-on-failure",
   },
 });

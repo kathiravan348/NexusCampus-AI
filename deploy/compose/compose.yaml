@@ -1,0 +1,173 @@
+# NexusCampus self-hosted install (NEX-064). The same images run a SaaS region cell.
+# Install / start:  deploy/compose/scripts/install.sh  (or install.ps1)   ·   Stop: docker compose -f deploy/compose/compose.yaml down
+# Ports bind to 127.0.0.1 only; put your reverse proxy (TLS) in front of the web port for real hostnames.
+# Secrets come from deploy/compose/.env (git-ignored; the install script creates it from .env.example).
+name: nexuscampus-install
+
+x-app-env: &app-env
+  NEXUS_ENVIRONMENT: prod
+  NEXUS_REGION: ${NEXUS_REGION:-in}
+  NEXUS_DATABASE_URL: postgresql+psycopg://nexus_app:${NEXUS_APP_DB_PASSWORD}@db:5432/nexus
+  NEXUS_MIGRATE_DATABASE_URL: postgresql+psycopg://nexus:${NEXUS_DB_PASSWORD}@db:5432/nexus
+  NEXUS_APP_DB_PASSWORD: ${NEXUS_APP_DB_PASSWORD}
+  NEXUS_REDIS_URL: redis://redis:6379/0
+  NEXUS_KEYCLOAK_URL: http://keycloak:8080
+  NEXUS_KEYCLOAK_REALM: nexus
+  NEXUS_OIDC_CLIENT_SECRET: ${NEXUS_OIDC_CLIENT_SECRET}
+  NEXUS_API_PUBLIC_URL: ${NEXUS_PUBLIC_URL}
+  NEXUS_APP_PUBLIC_URL: ${NEXUS_PUBLIC_URL}
+  NEXUS_VAULT_URL: http://vault:8200
+  NEXUS_VAULT_TOKEN: ${NEXUS_VAULT_TOKEN:-}
+  NEXUS_GRANT_SIGNING_KEY: ${NEXUS_GRANT_SIGNING_KEY}
+  NEXUS_AI_PROVIDER: ${NEXUS_AI_PROVIDER:-fake}
+  NEXUS_ANTHROPIC_API_KEY: ${NEXUS_ANTHROPIC_API_KEY:-}
+
+services:
+  db:
+    image: pgvector/pgvector:0.8.0-pg16@sha256:a132765ec351c65111b5b675928a3a0515a466a40f97277329db8b8209ad8bc9
+    environment:
+      POSTGRES_DB: nexus
+      POSTGRES_USER: nexus
+      POSTGRES_PASSWORD: ${NEXUS_DB_PASSWORD:?run the install script (it creates .env)}
+      KEYCLOAK_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:?}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./postgres/10-keycloak.sh:/docker-entrypoint-initdb.d/10-keycloak.sh:ro
+    mem_limit: 768m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexus -d nexus"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4.2-alpine@sha256:02419de7eddf55aa5bcf49efb74e88fa8d931b4d77c07eff8a6b2144472b6952
+    command: ["redis-server", "--save", "60", "100", "--appendonly", "no", "--maxmemory", "96mb"]
+    volumes:
+      - redis-data:/data
+    mem_limit: 128m
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  vault:
+    image: hashicorp/vault:1.20.4@sha256:268bb80aa9c6d13d65fcfa05c0c268caca068952240a8087291a6ce0b66e3a10
+    # The image entrypoint adds -config=/vault/config (where vault.hcl is mounted).
+    command: ["server"]
+    environment:
+      SKIP_SETCAP: "true"
+      VAULT_ADDR: http://127.0.0.1:8200
+    volumes:
+      - ./vault/vault.hcl:/vault/config/vault.hcl:ro
+      - vault-data:/vault/file
+    mem_limit: 256m
+    healthcheck:
+      # Healthy once Vault answers at all (sealed is fine): the install script initialises and unseals it.
+      test: ["CMD-SHELL", "vault status >/dev/null 2>&1; [ $$? -ne 1 ]"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.4.7@sha256:9409c59bdfb65dbffa20b11e6f18b8abb9281d480c7ca402f51ed3d5977e6007
+    command: ["start", "--import-realm", "--health-enabled=true"]
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD}
+      KC_HTTP_ENABLED: "true"
+      # Browsers reach Keycloak at its public address; the API talks to it inside the network.
+      KC_HOSTNAME: ${NEXUS_KEYCLOAK_PUBLIC_URL}
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+      KC_PROXY_HEADERS: xforwarded
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${NEXUS_KEYCLOAK_ADMIN_PASSWORD:?}
+      NEXUS_OIDC_CLIENT_SECRET: ${NEXUS_OIDC_CLIENT_SECRET}
+      NEXUS_PUBLIC_URL: ${NEXUS_PUBLIC_URL}
+    ports:
+      - "127.0.0.1:${NEXUS_KEYCLOAK_PORT:-8089}:8080"
+    volumes:
+      - ./keycloak/realm.json:/opt/keycloak/data/import/realm.json:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    mem_limit: 1g
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          exec 3<>/dev/tcp/127.0.0.1/9000 &&
+          printf 'GET /health/ready HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n' >&3 &&
+          grep -q '"UP"' <&3
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 30s
+    restart: unless-stopped
+
+  # One-shot: forward-only migrations (and, with the demo profile, the demo seed). Runs on every install / upgrade.
+  migrate:
+    image: ${NEXUS_IMAGE_API:-nexuscampus-api:dev}
+    build:
+      context: ../../backend
+    command: ["alembic", "upgrade", "head"]
+    environment: *app-env
+    depends_on:
+      db:
+        condition: service_healthy
+    mem_limit: 256m
+    restart: "no"
+
+  api:
+    image: ${NEXUS_IMAGE_API:-nexuscampus-api:dev}
+    environment: *app-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+      redis:
+        condition: service_healthy
+      keycloak:
+        condition: service_healthy
+      vault:
+        condition: service_healthy
+    mem_limit: 512m
+    restart: unless-stopped
+
+  worker:
+    image: ${NEXUS_IMAGE_API:-nexuscampus-api:dev}
+    command: ["nexus-worker"]
+    environment: *app-env
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD", "python", "-c", "import nexus.workers.outbox"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+    mem_limit: 256m
+    restart: unless-stopped
+
+  web:
+    image: ${NEXUS_IMAGE_WEB:-nexuscampus-web:dev}
+    build:
+      context: ../..
+      dockerfile: frontend/apps/campus/Dockerfile
+    ports:
+      - "127.0.0.1:${NEXUS_WEB_PORT:-8088}:8080"
+    depends_on:
+      api:
+        condition: service_healthy
+    mem_limit: 128m
+    restart: unless-stopped
+
+volumes:
+  db-data:
+  redis-data:
+  vault-data:

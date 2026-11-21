@@ -88,5 +88,8 @@
 │                       demo_fixtures.json exported from mocks), devtools/ (nexus-dev, nexus-compose-up, nexus-keycloak-dev,
 │                       backend-check); tests/ (tests/db: RLS, region, seed, migrations — need Compose PostgreSQL)
 ├─ control/             Nexus Control backend (planned, Stage 2)
-└─ deploy/              Compose, Helm, air-gapped bundle tooling (planned, Stage 1 build step / Stage 2)
+└─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,
+                        vault/vault.hcl, postgres/ init, scripts/install.sh + install.ps1, README (install, upgrade,
+                        backup, uninstall); images: backend/Dockerfile (api + worker), frontend/apps/campus/Dockerfile
+                        (+ nginx.conf). Helm and air-gapped bundles: Stage 2
 ```

@@ -1,0 +1,15 @@
+# Build context for the web image (repository root). Keep it small: no dependencies, outputs or secrets.
+**/node_modules
+**/dist
+**/.vite
+**/coverage
+**/.env
+**/.env.*
+!**/.env.example
+backend
+deploy
+docs
+test-results
+playwright-report
+frontend/**/storybook-static
+.git

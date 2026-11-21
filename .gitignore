@@ -43,3 +43,6 @@ Thumbs.db
 # Frontend tooling
 storybook-static/
 *.tsbuildinfo
+
+# Self-hosted install: Vault unseal key and root token (NEX-064)
+deploy/compose/.secrets/
