@@ -260,4 +260,6 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 
 | POST | `/quotes/:id/send` | `ctl.quote.manage` | body `{ checkedByHuman? }`; only `draft` (else `409 conflict`); an AI-drafted quote without `checkedByHuman: true` → `400 invalid_request`; partners only their accounts (`404`) (NEX-073) |
 
+| POST | `/invoices/:id/record-transfer` | `ctl.billing.manage` | body `{ reference }` (3–64 chars, our statement reference); only `open` / `overdue` (else `409`); → `{ invoice, payment }`: invoice paid, `manual` payment added, dunning cleared, past-due subscription active (NEX-074) |
+
 Write routes are added by each Control screen task (NEX-072+).
