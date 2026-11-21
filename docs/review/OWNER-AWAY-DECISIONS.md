@@ -9,8 +9,9 @@
 
 | # | What | Why it waits for you |
 |---|---|---|
-| 1 | **Stage 1 release approval** (`docs/review/STAGE-1-RELEASE.md`) and native-speaker review of Hindi / Tamil texts | Only you can approve a release; all automated checks pass |
-| 2 | **NEX-066 OpenBao + Valkey swap is held** | Needs two new Docker image downloads (`openbao/openbao`, `valkey/valkey`). Say "OK to pull" and it gets built next |
+| 1 | ~~Stage 1 release approval~~ — **approved 2026-11-21 (D54)** | — |
+| 1b | **Correct the Hindi / Tamil texts before production** from `docs/review/TRANSLATIONS.csv` (NEX-094), then run `pnpm --dir frontend texts:import` | You chose to do the language review yourself (D54) |
+| 2 | ~~OpenBao + Valkey image downloads~~ — **approved (D54)**, NEX-066 being built | — |
 
 ## Decisions
 
@@ -20,7 +21,7 @@
 | 2026-11-21 | **D48: OpenBao replaces HashiCorp Vault, Valkey replaces Redis** (decided; build held for downloads) | Vault 1.20 is BUSL and Redis 7.4 is RSAL/SSPL — not open source, and self-hosted installs ship them. OpenBao (MPL-2.0) and Valkey (BSD-3) are the Linux Foundation drop-ins: same API, same security, no licence cost | Withdraw NEX-066 |
 | 2026-11-21 | **D49: Owner-away mode** — Claude plans, builds, **self-reviews** and merges one task at a time; Stage 2 opened although Stage 1 release approval is pending | Your instruction. Gemini or you can re-check any task (each review note says "self-review") | Set Stage 2 back to "later" in `docs/tasks/BOARD.md` |
 | 2026-11-21 | **D50: Nexus Control frontend layout** — `apps/control` + `@nexus/ui-control`; contracts/mocks/hooks live in the existing packages under `control/`; a test blocks any learner/family/staff field in Control contracts (V-7) | Reuses the proven campus tooling; no new dependencies; privacy enforced by a test, not by memory | Re-plan NEX-067–071 |
-| 2026-11-21 | **D51: Billing engine = Lago** (open source, self-hosted in our own cloud) behind an adapter; Razorpay (India) / Stripe (EU) for payments — *provisional* | Open source, our billing data stays in our cell, no revenue-share fee (cheaper than Chargebee / Stripe Billing), GST/VAT and usage billing built in. Prototype uses mock data only, so nothing is locked in yet | Change D51 before the Stage 2 build step |
+| 2026-11-21 | **D51: Billing engine = Lago** (open source, self-hosted in our own cloud) behind an adapter; Razorpay (India) / Stripe (EU) for payments — **confirmed by you (D54)** | Open source, our billing data stays in our cell, no revenue-share fee (cheaper than Chargebee / Stripe Billing), GST/VAT and usage billing built in. Prototype uses mock data only, so nothing is locked in yet | Change D51 before the Stage 2 build step |
 | 2026-11-21 | **D52: Self-hosted licence = Standard / Enterprise editions, per active learner per year** (bands, per-campus minimum), perpetual or term — *provisional* | Same unit as SaaS so customers can compare and move between models; learner cap can be checked offline | Change D52; prices and bands are not set anywhere |
 | 2026-11-21 | **Stage 2 board** planned as NEX-066–092: 3 contract tasks, mocks, app shell, one screen task per module P01–P18, M84 screen, review build, freeze | Follows `docs/PLAN.md` Stage 2 outline and the module catalogue | Edit `docs/tasks/stage-2/BOARD.md` |
 | 2026-11-21 | **D53: Nexus Control texts get their own catalogue** (`i18n/control/{en,hi,ta}.json`), not the institution text catalogue | Otherwise every institution could override our staff screens' texts in its Text studio, and the backend key export and campus bundle would grow. Still English/Hindi/Tamil (D42) | Move keys into `messages/*.json` |

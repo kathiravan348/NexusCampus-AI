@@ -2,6 +2,9 @@
 
 > For the Owner's release approval (NEX-065). Filled on 2026-11-21 on the Owner PC (Windows 11, Docker Desktop,
 > Node 24, Python 3.12) against `main` + `task/NEX-065`. Items marked **Owner** need a person, not a test.
+>
+> **Released: approved by the Owner on 2026-11-21 (D54).** The Hindi / Tamil native review is deferred to before
+> production: the Owner corrects the texts from the single export file `docs/review/TRANSLATIONS.csv` (NEX-094).
 
 ## 1. Result at a glance
 
@@ -55,7 +58,7 @@ same V-1 check then reports `["campuses"]`.
 | Tamil on every screen (Apex, real data) | `e2e:real languages.spec.ts` | Pass: `lang="ta-IN"`, Tamil headings, no raw keys |
 | Hindi on every screen (Little Steps turns Hindi on, real data) | `e2e:real languages.spec.ts` | Pass: Hindi headings, no raw keys, back to English |
 | Hindi / Tamil default tenants, pseudo-locale, RTL (mock) | `pnpm --dir frontend e2e` | Pass (NEX-021/040) |
-| **Owner:** native-speaker review of every Hindi and Tamil text (D42) | person | **Open** — automated checks only prove the texts exist and render |
+| **Owner:** native-speaker review of every Hindi and Tamil text (D42) | person | **Deferred to before production** (D54) — Owner corrects via the text export (NEX-094) |
 
 ## 5. Performance (soft budgets, `docs/TIMINGS.md`)
 
@@ -89,8 +92,8 @@ same V-1 check then reports `["campuses"]`.
 
 | Item | Who | Note |
 |---|---|---|
-| Native-speaker review of hi / ta texts (D42) | **Owner** | Required for release |
-| Release approval and `docs/tasks/BOARD.md` stage switch | **Owner** / planner | Board is changed only by the planner at release |
+| Native-speaker review of hi / ta texts (D42) | **Owner** | Deferred to before production (D54) |
+| Release approval and `docs/tasks/BOARD.md` stage switch | **Owner** / planner | **Done** — approved 2026-11-21 (D54) |
 | SSO client secrets storage | Planner | Decision pending (NEX-049) |
 | AI tier → model map and embedding model sign-off | Planner | Pending (NEX-058); real e2e never calls a paid model |
 | `boto3` in the SaaS image for Bedrock embeddings | Planner | Needed only for the Bedrock path |

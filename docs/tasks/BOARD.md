@@ -4,12 +4,12 @@
 > Task IDs `NEX-###` are global and never reused; each task file lives in its stage folder.
 
 **Planning lock:** —
-**Current stage:** 2 — Nexus Control & delivery → [`stage-2/BOARD.md`](stage-2/BOARD.md) · Stage 1 built, release approval pending (Owner)
+**Current stage:** 2 — Nexus Control & delivery → [`stage-2/BOARD.md`](stage-2/BOARD.md)
 
 | Stage | Name | Board | Tasks | Status |
 |---|---|---|---|---|
-| 1 | Platform foundation | [`stage-1/BOARD.md`](stage-1/BOARD.md) | NEX-001–065 (025–026 withdrawn) | built — release approval pending (Owner; `review/STAGE-1-RELEASE.md`) |
-| 2 | Nexus Control & delivery | [`stage-2/BOARD.md`](stage-2/BOARD.md) | NEX-066–092 | **current** (prototype · D49) |
+| 1 | Platform foundation | [`stage-1/BOARD.md`](stage-1/BOARD.md) | NEX-001–065 (025–026 withdrawn) | **done** — released 2026-11-21 (D54) |
+| 2 | Nexus Control & delivery | [`stage-2/BOARD.md`](stage-2/BOARD.md) | NEX-066–094 | **current** (prototype · D49) |
 | 3 | Core institution operations | — | — | later |
 | 4 | Teaching & learning | — | — | later |
 | 5 | People, finance & operations | — | — | later |

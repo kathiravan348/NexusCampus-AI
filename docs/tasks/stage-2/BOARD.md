@@ -10,7 +10,7 @@
 
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|
-| NEX-066 | Open-source swap: OpenBao for Vault, Valkey for Redis (D48) — **held: needs image downloads** | D | planned | — | 065 |
+| NEX-066 | Open-source swap: OpenBao for Vault, Valkey for Redis (D48; downloads approved, D54) | D | planned | — | 065 |
 | NEX-067 | Control contracts (commercial): staff, accounts, CRM, plans, quotes, billing, usage | B | done | Claude | 065 |
 | NEX-068 | Control contracts (delivery): provisioning, deployments, licences, releases, extensions, sandboxes, portability, M84 | B | done | Claude | 067 |
 | NEX-069 | Control contracts (operations): support desk, access broker, partners, compliance, projects, analytics | B | done | Claude | 068 |
@@ -37,3 +37,5 @@
 | NEX-090 | M84 Install agent screen in campus (self-hosted only) | C | draft | — | 070 |
 | NEX-091 | Stage 2 review build: walkthrough per provider persona, Playwright smoke for control | C | draft | — | 072–090 |
 | NEX-092 | Stage 2 freeze (planner + Owner) | — | draft | — | 091 |
+| NEX-093 | Stage 1 small fixes: campus token classes in M04, campus test time limit (D54) | C | planned | — | 065 |
+| NEX-094 | One-file language export / import for the Owner's Hindi & Tamil correction (D54) | A | planned | — | 071 |
