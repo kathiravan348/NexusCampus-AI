@@ -124,6 +124,9 @@ Nexus Control (our cloud)                         Product deployments
         ▲  outbound only: licence check · update metadata · PII-free health   ▲
         └──────────────────────────── M84 install agent ─────────────────────┘
 ```
+- **Control backend (NEX-096):** `nexus.control` in the backend package, its own app (`nexus.control.main`,
+  `/control/api/v1/*`), its own database `nexus_control` with its own read-mostly role `control_app` and its own
+  migrations (`backend/control_migrations`, `nexus-control-db`). It never connects to a product database.
 - **Same images everywhere.** A deployment differs only by configuration, licence/entitlements and installed
   extensions. Customer-specific work = extension packages (P08), never a fork of the core.
 - **Provisioning (SaaS):** P04 creates the tenant in the chosen region cell, its keys in the vault, and the type
