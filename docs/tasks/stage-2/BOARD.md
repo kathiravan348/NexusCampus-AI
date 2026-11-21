@@ -26,7 +26,7 @@
 | NEX-079 | P08 Customisation & extensions | C | done | Claude | 071 |
 | NEX-080 | P09 Support desk & SLAs | C | done | Claude | 071 |
 | NEX-081 | P10 Support access broker (with the M83 approval loop) | C | done | Claude | 071 |
-| NEX-082 | P11 Usage & metering | C | draft | — | 071 |
+| NEX-082 | P11 Usage & metering | C | planned | — | 071 |
 | NEX-083 | P12 Partners & resellers | C | draft | — | 071 |
 | NEX-084 | P13 Provider staff & security | C | draft | — | 071 |
 | NEX-085 | P14 Compliance & trust operations | C | draft | — | 071 |
