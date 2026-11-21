@@ -1,0 +1,27 @@
+{
+  "publicKey": "A6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=",
+  "file": {
+    "format": "nexus-licence/1",
+    "payload": {
+      "accountId": "acc-al",
+      "activation": "offline",
+      "campusCap": 5,
+      "edition": "standard",
+      "expiresAt": "2027-01-09",
+      "graceDays": 30,
+      "id": "lic-al-2026",
+      "issuedAt": "2026-01-10T00:00:00Z",
+      "learnerCap": 1500,
+      "modules": [
+        "M01",
+        "M02",
+        "M83",
+        "M84"
+      ],
+      "signingKeyId": "nexus-licence:v1",
+      "supportEndsAt": "2027-01-09"
+    },
+    "signature": "KIgFP1sR3jrY6OxOGctgutDMj026/Ur0T4Kpdb+Cjv4FWV05Y9b+JIMxMn+X1vR1m6+LUmS/rXG0r9ZzY6E1Bg=="
+  },
+  "fingerprint": "538b925d145d668616a8b6b40259d23f402ceeefe8ed7fd4e17264669cf8beaa"
+}

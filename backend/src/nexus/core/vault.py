@@ -17,6 +17,7 @@ import httpx2
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
+from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
 from nexus.core.errors import ApiError
 from nexus.settings import Settings
@@ -51,6 +52,7 @@ class Vault(Protocol):
     async def create_signing_key(self, name: str) -> None: ...
     async def sign(self, name: str, data: bytes) -> str: ...
     async def verify(self, name: str, data: bytes, signature: str) -> bool: ...
+    async def public_keys(self, name: str) -> dict[int, bytes]: ...
 
 
 def key_name(tenant_id: str, purpose: str) -> str:
@@ -153,6 +155,14 @@ class HttpVault:
             raise ApiError(503, "internal", "The key service refused the request.")
         return bool(res.json()["data"]["valid"])
 
+    async def public_keys(self, name: str) -> dict[int, bytes]:
+        """Raw 32-byte Ed25519 public keys by version (for offline verification, e.g. licences in M84)."""
+        data = (await self._ok("GET", f"{self._base}/keys/{name}"))["data"]
+        assert isinstance(data, dict)
+        keys = data["keys"]
+        assert isinstance(keys, dict)
+        return {int(v): base64.b64decode(str(k["public_key"])) for v, k in keys.items()}
+
 
 class FakeVault:
     """In-memory Transit stand-in with real AES-GCM wrapping (tests, no container needed)."""
@@ -220,3 +230,9 @@ class FakeVault:
         except (InvalidSignature, KeyError, IndexError, ValueError):
             return False
         return True
+
+    async def public_keys(self, name: str) -> dict[int, bytes]:
+        versions = self.signing.get(name)
+        if not versions:
+            raise KeyDestroyed(name)
+        return {i + 1: k.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw) for i, k in enumerate(versions)}
