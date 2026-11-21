@@ -1,6 +1,7 @@
 import type { ControlPermission, ModuleId } from "@nexus/contracts";
 import type { ControlMessageKey } from "@nexus/i18n/control";
 import {
+  BarChart3,
   Building2,
   ClipboardList,
   Gauge,
@@ -171,5 +172,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: ClipboardList,
     permission: "ctl.project.read",
     load: () => import("../modules/p15/ProjectsPage"),
+  },
+  {
+    moduleId: "P16",
+    path: "analytics",
+    navKey: "p16.nav",
+    summaryKey: "p16.summary",
+    icon: BarChart3,
+    permission: "ctl.analytics.read",
+    load: () => import("../modules/p16/AnalyticsPage"),
   },
 ];
