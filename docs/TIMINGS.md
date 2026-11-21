@@ -37,6 +37,8 @@
 | `backend:start` | `nexus-dev`: FastAPI ready (NEX-042) | 15s |
 | `backend:check` | `backend-check`: ruff format + ruff lint + mypy strict + pytest (NEX-042) | 3m |
 | `compose:up` | `nexus-compose-up`: PostgreSQL + Redis healthy (NEX-042) | 1m 30s |
+| `api:list:p95` | p95 of every list endpoint, first page (`pageSize=50`), demo data, 20 calls each (NEX-065) | 300ms |
+| `load:4g` | cold first load of the built app to the sign-in button, 4G profile (150 ms RTT, 1.6 Mbit/s down, 750 kbit/s up) (NEX-065) | 6s |
 
 ## Measured baselines
 
@@ -78,6 +80,16 @@ Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74
 | `nexus-compose-up` with Keycloak (NEX-045; PostgreSQL + Redis + Keycloak healthy) | `compose:up` | 32.64s | 1m 30s | OK |
 | Self-hosted install `deploy/compose/scripts/install.sh` with demo seed (NEX-064; images cached, all 7 services healthy) | `compose:up` | 74.87s fresh · 17.26s re-run | 1m 30s | OK |
 
+## Real mode on demo data (NEX-065)
+
+Measured with the opt-in `e2e/real/perf.spec.ts` (`pnpm --dir frontend e2e:real perf.spec.ts`; backend `nexus-dev`,
+app `dev:real` on 3100, built app `pnpm --filter campus real:build` + `real:preview` on 3101).
+
+| Place | Key | Time | Budget | Status |
+|---|---|---|---|---|
+| 24 list endpoints × 20 calls via the dev proxy (slowest: `usage` p95 39 ms, `roles` 28 ms) | `api:list:p95` | 11–29 ms | 300ms | OK |
+| Built real-mode app, cold, 4G profile, 322 KiB transferred | `load:4g` | 2.18s | 6s | OK |
+
 ## Reserved (no surface yet — fill in the task that adds it)
 
 | Place | Key | Cold | Warm | Budget | Measured in |
@@ -93,3 +105,4 @@ Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74
 | 2026-11-20 | NEX-042 | `backend:start`, `backend:check`, `compose:up` measured (moved from reserved). |
 | 2026-11-20 | NEX-045 | `compose:up` with Keycloak: 32.64s. |
 | 2026-11-21 | NEX-064 | `compose:up` self-hosted install: 74.87s fresh with demo seed, 17.26s re-run. |
+| 2026-11-21 | NEX-065 | `api:list:p95` (300ms) and `load:4g` (6s) budgets added and measured. |

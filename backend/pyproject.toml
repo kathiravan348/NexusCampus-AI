@@ -29,6 +29,7 @@ nexus-keycloak-dev = "nexus.devtools.keycloak:main"
 nexus-scim-token = "nexus.devtools.scim_token:main"
 nexus-vault-dev = "nexus.devtools.vault_dev:main"
 nexus-worker = "nexus.workers.outbox:main"
+nexus-checkpoints = "nexus.core.checkpoints:main"
 nexus-ai-eval = "nexus.devtools.ai_eval:main"
 
 [build-system]

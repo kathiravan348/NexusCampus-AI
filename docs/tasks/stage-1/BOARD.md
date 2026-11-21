@@ -73,4 +73,4 @@
 | NEX-062 | Switch to real data 3: M06, M07, M10 | C | done | Claude | 061 |
 | NEX-063 | Switch to real data 4: M11, M83 | C | done | Claude | 062 |
 | NEX-064 | Images + self-hosted Compose install | D | done | Claude | 063 |
-| NEX-065 | Harden Stage 1: no-access tests (V-1…V-7), signed audit checkpoints, i18n, a11y, performance | D | planned | — | 064 |
+| NEX-065 | Harden Stage 1: no-access tests (V-1…V-7), signed audit checkpoints, i18n, a11y, performance | D | done | Claude | 064 |

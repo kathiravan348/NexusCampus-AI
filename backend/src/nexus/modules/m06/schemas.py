@@ -1,6 +1,6 @@
 """M06 API models: shapes of `frontend/packages/contracts/src/compliance.ts`."""
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Literal
 
 from pydantic import Field
@@ -60,3 +60,33 @@ class DataSubjectRequestOut(Contract):
 class DsrUpdateIn(Contract):
     status: DsrStatus
     reason: str | None = Field(default=None, max_length=500)
+
+
+class AuditCheckpointOut(Contract):
+    """A signed chain head (NEX-065). Backend-only operations model: no frozen UI contract (D43)."""
+
+    id: str
+    tenant_id: str
+    day: date
+    head_seq: int
+    head_hash: str
+    signature: str
+    key_name: str
+    signed_at: datetime
+
+
+class AuditCheckpointCheckOut(Contract):
+    id: str
+    day: date
+    head_seq: int
+    signature_valid: bool
+    head_matches: bool
+
+
+class AuditVerificationOut(Contract):
+    """Result of recomputing the whole chain and checking every checkpoint against it."""
+
+    ok: bool
+    checked_events: int
+    broken_at: str | None
+    checkpoints: list[AuditCheckpointCheckOut]

@@ -22,7 +22,8 @@
 │  └─ templates/        TASK.md, HANDOFF.md, REVIEW.md
 ├─ frontend/            frontend monorepo (pnpm workspaces)
 │  ├─ e2e/              Playwright (NEX-021): playwright.config (review build + dev server; desktop, 360px, pseudo);
-│  │                    real/ = opt-in real-data run (`pnpm e2e:real`, NEX-060),
+│  │                    real/ = opt-in real-data run (`pnpm e2e:real`, NEX-060: real, install; NEX-065: a11y,
+│  │                    languages, perf, helpers = Keycloak sign-in),
 │  │                    helpers, smoke, languages, pseudo, offline, a11y specs (`pnpm e2e`, not in review:check)
 │  ├─ scripts/          timing harness (NEX-032): timing-budgets, time-run (CLI: [timing] lines, --ready-pattern,
 │  │                    --exit-after-ready, --sequence), vitest-timing-reporter, measure-timings (+ time-run.test);
@@ -80,13 +81,14 @@
 │                       envelope, pagination = Page, db, redis, telemetry, timing, tenancy = tenant context + region
 │                       check, ids, models = declarative base, vault = Transit client (+ fake), fieldcrypto = envelope
 │                       encryption + blind index, audit + hashchain + audit_models = append-only hash-chained
-│                       audit writer, events = domain event outbox, sessions = session cookie + token hash, request_context =
+│                       audit writer, checkpoints = daily Ed25519-signed chain heads (`nexus-checkpoints`), events = domain event outbox, sessions = session cookie + token hash, request_context =
 │                       session → tenant → transaction + CSRF, permissions = catalogue + grants + require guard, entitlements =
 │                       module switch, rbac_models), modules/m01/ (models), modules/m03/ (models, schemas, service, router, contrast = server WCAG guard + design_tokens.json from ui-core), modules/m04/ (models, schemas, service, router, icu = formatjs-rule ICU check, bundle, message_keys.json), modules/m05/ (models, router, usage = meter readers), modules/m06/ (models, schemas, service, router, packs = compliance pack rules), modules/m07/ (models, schemas, service, router, render = ICU render, channels = adapters + LogChannel, dispatch = event to deliveries), workers/outbox.py (`nexus-worker`), core/idempotency.py (claim in the guard + IdempotencyRecorder middleware), modules/m10/ (models, service, router = devices, heartbeat / wipe, conflicts), modules/m11/ (models, schemas, router, pipeline, gateway = the only model caller, providers/claude + fake, retrieval = pgvector + embedders, redact), devtools/ai_eval.py (`nexus-ai-eval`), evals/assist_basic.jsonl, modules/m83/ (models, keys = key status + lifecycle, access = provider requests/grants/break-glass, grant_auth = grant credentials, broker_stub = dev-only provider stand-in), modules/m02/ (models, oidc,
 │                       login_state, auth = /auth/login|callback|logout, me = /me, schemas, directory = reads,
 │                       writes, service = masking/scope/last-admin rules, keycloak_admin, sso, scim), keycloak/ (realm-dev.json), seed/ (demo.py = nexus-seed, rbac.py,
 │                       demo_fixtures.json exported from mocks), devtools/ (nexus-dev, nexus-compose-up, nexus-keycloak-dev,
-│                       backend-check); tests/ (tests/db: RLS, region, seed, migrations — need Compose PostgreSQL)
+│                       backend-check); tests/ (tests/db: RLS, region, seed, migrations — need Compose PostgreSQL; tests/security:
+│                       V-1…V-7 no-access release gates; test_checkpoints.py)
 ├─ control/             Nexus Control backend (planned, Stage 2)
 └─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,
                         vault/vault.hcl, postgres/ init, scripts/install.sh + install.ps1, README (install, upgrade,

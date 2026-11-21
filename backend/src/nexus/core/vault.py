@@ -1,6 +1,7 @@
 """Vault Transit client (D46, ARCHITECTURE §10): per-tenant key-encryption keys that never leave Vault.
 
-Operations: create a key, issue a wrapped data key, unwrap it, HMAC (blind indexes), rotate, destroy (crypto-shred).
+Operations: create a key, issue a wrapped data key, unwrap it, HMAC (blind indexes), rotate, destroy (crypto-shred),
+and Ed25519 signatures (audit checkpoints, NEX-065) with a signing key that never leaves Vault either.
 Key material is never logged or returned by the API. `FakeVault` (real AES-GCM in memory) is for tests.
 """
 
@@ -13,6 +14,8 @@ from datetime import UTC, datetime
 from typing import Protocol
 
 import httpx2
+from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
 from nexus.core.errors import ApiError
@@ -45,6 +48,9 @@ class Vault(Protocol):
     async def rotate(self, name: str) -> None: ...
     async def destroy(self, name: str) -> None: ...
     async def info(self, name: str) -> KeyInfo: ...
+    async def create_signing_key(self, name: str) -> None: ...
+    async def sign(self, name: str, data: bytes) -> str: ...
+    async def verify(self, name: str, data: bytes, signature: str) -> bool: ...
 
 
 def key_name(tenant_id: str, purpose: str) -> str:
@@ -124,6 +130,29 @@ class HttpVault:
         )
         return KeyInfo(int(str(data["latest_version"])), times[0], times[-1] if len(times) > 1 else None)
 
+    async def create_signing_key(self, name: str) -> None:
+        """Creates an Ed25519 Transit key (no-op when it exists)."""
+        await self.ensure_mount()
+        res = await self._call("POST", f"{self._base}/keys/{name}", {"type": "ed25519", "exportable": False})
+        if res.status_code >= 300:
+            raise ApiError(503, "internal", "The key service could not create the signing key.")
+
+    async def sign(self, name: str, data: bytes) -> str:
+        """Ed25519 signature `vault:v<N>:<base64>` (the version names the key that signed)."""
+        payload: dict[str, object] = {"input": base64.b64encode(data).decode()}
+        body = (await self._ok("POST", f"{self._base}/sign/{name}", payload))["data"]
+        assert isinstance(body, dict)
+        return str(body["signature"])
+
+    async def verify(self, name: str, data: bytes, signature: str) -> bool:
+        payload: dict[str, object] = {"input": base64.b64encode(data).decode(), "signature": signature}
+        res = await self._call("POST", f"{self._base}/verify/{name}", payload)
+        if res.status_code == 400:  # malformed signature or unknown key version: not valid
+            return False
+        if res.status_code >= 300:
+            raise ApiError(503, "internal", "The key service refused the request.")
+        return bool(res.json()["data"]["valid"])
+
 
 class FakeVault:
     """In-memory Transit stand-in with real AES-GCM wrapping (tests, no container needed)."""
@@ -131,6 +160,7 @@ class FakeVault:
     def __init__(self) -> None:
         self.keys: dict[str, list[bytes]] = {}
         self.created: dict[str, datetime] = {}
+        self.signing: dict[str, list[Ed25519PrivateKey]] = {}
 
     async def create_key(self, name: str) -> None:
         self.keys.setdefault(name, [os.urandom(32)])
@@ -172,3 +202,21 @@ class FakeVault:
     async def info(self, name: str) -> KeyInfo:
         _, v = self._key(name)
         return KeyInfo(v, self.created[name], None)
+
+    async def create_signing_key(self, name: str) -> None:
+        self.signing.setdefault(name, [Ed25519PrivateKey.generate()])
+
+    async def sign(self, name: str, data: bytes) -> str:
+        versions = self.signing.get(name)
+        if not versions:
+            raise KeyDestroyed(name)
+        return f"vault:v{len(versions)}:" + base64.b64encode(versions[-1].sign(data)).decode()
+
+    async def verify(self, name: str, data: bytes, signature: str) -> bool:
+        try:
+            _, ver, blob = signature.split(":", 2)
+            key = self.signing[name][int(ver[1:]) - 1]
+            key.public_key().verify(base64.b64decode(blob), data)
+        except (InvalidSignature, KeyError, IndexError, ValueError):
+            return False
+        return True

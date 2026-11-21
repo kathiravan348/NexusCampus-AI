@@ -1,13 +1,15 @@
 """Tables of the audit core (migration `0002_audit_outbox`): `audit_events`, `audit_chain_heads`,
-`domain_events_outbox`. Written through `core/audit.py` and `core/events.py` only.
+`domain_events_outbox`; `audit_checkpoints` (migration `0016`). Written through `core/audit.py`, `core/events.py` and
+`core/checkpoints.py` only.
 """
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Any
 
 from sqlalchemy import (
     BigInteger,
     CheckConstraint,
+    Date,
     DateTime,
     ForeignKey,
     Integer,
@@ -85,3 +87,22 @@ class DomainEventOutboxRow(Base):
     #: Retry schedule and the last failure (NEX-056, migration 0013).
     next_attempt_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     last_error: Mapped[str | None] = mapped_column(String(500))
+
+
+class AuditCheckpointRow(Base):
+    """A tenant's chain head, signed once a day with the Vault Ed25519 key (NEX-065). Append-only."""
+
+    __tablename__ = "audit_checkpoints"
+    __table_args__ = (
+        UniqueConstraint("tenant_id", "day", name="one_checkpoint_per_day"),
+        CheckConstraint("head_seq >= 1", name="head_seq_positive"),
+        CheckConstraint("signature LIKE 'vault:v%:%'", name="signature_format"),
+    )
+    id: Mapped[str] = id_column(primary_key=True)
+    tenant_id: Mapped[str] = mapped_column(String(ID_LENGTH), ForeignKey("tenants.id"), index=True)
+    day: Mapped[date] = mapped_column(Date)
+    head_seq: Mapped[int] = mapped_column(BigInteger)
+    head_hash: Mapped[str] = mapped_column(String(HASH))
+    signature: Mapped[str] = mapped_column(String(256))
+    key_name: Mapped[str] = mapped_column(String(ID_LENGTH))
+    signed_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))

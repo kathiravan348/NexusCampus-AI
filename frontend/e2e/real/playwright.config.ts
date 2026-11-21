@@ -12,6 +12,8 @@ export default defineConfig({
   timeout: 90_000,
   expect: { timeout: 15_000 },
   retries: 0,
+  // One shared database and sign-in server: specs change shared settings (e.g. languages), so run one at a time.
+  workers: 1,
   reporter: [["list"]],
   use: {
     ...devices["Desktop Chrome"],

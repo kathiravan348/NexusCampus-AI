@@ -11,6 +11,8 @@
     "typecheck": "tsc --noEmit && tsc --noEmit -p src/sw",
     "test": "node ../../scripts/time-run.ts test:pkg --label test:campus -- vitest run",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
+    "real:build": "node ../../scripts/time-run.ts build:campus -- vite build --mode real",
+    "real:preview": "vite preview --mode real --port 3101 --strictPort",
     "review:build": "vite build --mode review",
     "review:preview": "node ../../scripts/time-run.ts preview:campus --ready-pattern Local: -- vite preview --mode review --open",
     "review:start": "node ../../scripts/time-run.ts review:start --sequence build:campus=review:build review:preview"

@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-21 (NEX-058) · Migration: `0015_ai`
+> State as of: 2026-11-21 (NEX-065) · Migration: `0016_audit_checkpoints`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -37,6 +37,7 @@ All tables carry `created_at` / `updated_at` (UTC, `timestamptz`). Ids are text:
 |---|---|---|
 | `audit_events` | `id`, `tenant_id`, `seq`, `occurred_at`, `actor_kind`, `actor_id`, `grant_id`, `action`, `module_id`, `target_type`, `target_id`, `device_id`, `changes` (JSONB: `[{field, sensitive}]` — names only, never values), `prev_hash`, `hash` | **Append-only:** `nexus_app` has SELECT + INSERT only; a trigger refuses UPDATE and TRUNCATE for every role, and DELETE unless the owner set `nexus.audit_maintenance = on` (dev seed reset only). Gapless `seq` per tenant; `grant_id` iff `provider_grant`; `actor_id` null iff `system`; `action` starts with its module |
 | `audit_chain_heads` | `tenant_id`, `last_seq`, `last_hash` | Locked `FOR UPDATE` by every writer, so concurrent writes never fork the chain |
+| `audit_checkpoints` (`0016_audit_checkpoints`, NEX-065) | `id`, `tenant_id`, `day`, `head_seq`, `head_hash`, `signature` (`vault:v<N>:…`), `key_name`, `signed_at` | One per tenant per UTC day (UNIQUE); `nexus_app` SELECT + INSERT only. `nexus_audit_tenants()` (SECURITY DEFINER) gives the job tenant ids only. Ed25519 signature over the chain head, key in Vault |
 | `domain_events_outbox` | `event_id`, `tenant_id`, `module_id`, `event_type`, `occurred_at`, `actor_id`, `correlation_id`, `schema_version`, `payload` (JSONB), `published_at`, `attempts` | Envelope of `event.ts`; written in the same transaction as the change; published by workers (NEX-056) |
 
 **Hash chain:** `hash = sha256_hex(id|occurredAt|action|prevHash)` with `occurredAt` as `2026-05-04T06:00:00Z` (milliseconds

@@ -54,6 +54,21 @@
         "nexus-dev"
       ],
       "port": 8000
+    },
+    {
+      "name": "campus-real-built",
+      "runtimeExecutable": "fnm",
+      "runtimeArgs": [
+        "exec",
+        "--using=24",
+        "--",
+        "pnpm",
+        "--dir",
+        "frontend/apps/campus",
+        "real:preview"
+      ],
+      "port": 3101,
+      "autoPort": false
     }
   ]
 }
