@@ -1,6 +1,5 @@
-import type { OffboardingStepName, ProvisioningStepName, StepStatus } from "@nexus/contracts";
-import { useControlText, type ControlMessageKey } from "@nexus/i18n/control";
-import { useMemo } from "react";
+import type { OffboardingStepName, ProvisioningStepName } from "@nexus/contracts";
+import type { ControlMessageKey } from "@nexus/i18n/control";
 
 export const PROVISIONING_STEP_KEY: Readonly<Record<ProvisioningStepName, ControlMessageKey>> = {
   create_tenant: "p04.step.createTenant",
@@ -18,23 +17,4 @@ export const OFFBOARDING_STEP_KEY: Readonly<Record<OffboardingStepName, ControlM
   certificate_issued: "p04.off.certificate",
 };
 
-export const STATUS_TONE = {
-  pending: "neutral",
-  running: "info",
-  done: "success",
-  failed: "danger",
-} as const satisfies Record<StepStatus, string>;
-
-/** Translated job/step status words for `JobSteps` and badges. */
-export function useStepStatusLabels(): Readonly<Record<StepStatus, string>> {
-  const t = useControlText();
-  return useMemo(
-    () => ({
-      pending: t("p04.status.pending"),
-      running: t("p04.status.running"),
-      done: t("p04.status.done"),
-      failed: t("p04.status.failed"),
-    }),
-    [t],
-  );
-}
+export { STATUS_TONE, useStepStatusLabels } from "../../app/jobStatus";

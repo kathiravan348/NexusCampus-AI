@@ -8,6 +8,7 @@ import {
   Gauge,
   Handshake,
   KeyRound,
+  MoveRight,
   LifeBuoy,
   Network,
   Puzzle,
@@ -191,5 +192,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: FlaskConical,
     permission: "ctl.sandbox.read",
     load: () => import("../modules/p17/SandboxesPage"),
+  },
+  {
+    moduleId: "P18",
+    path: "moves",
+    navKey: "p18.nav",
+    summaryKey: "p18.summary",
+    icon: MoveRight,
+    permission: "ctl.portability.read",
+    load: () => import("../modules/p18/MovesPage"),
   },
 ];
