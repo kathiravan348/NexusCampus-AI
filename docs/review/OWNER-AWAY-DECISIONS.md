@@ -23,3 +23,13 @@
 | 2026-11-21 | **D51: Billing engine = Lago** (open source, self-hosted in our own cloud) behind an adapter; Razorpay (India) / Stripe (EU) for payments — *provisional* | Open source, our billing data stays in our cell, no revenue-share fee (cheaper than Chargebee / Stripe Billing), GST/VAT and usage billing built in. Prototype uses mock data only, so nothing is locked in yet | Change D51 before the Stage 2 build step |
 | 2026-11-21 | **D52: Self-hosted licence = Standard / Enterprise editions, per active learner per year** (bands, per-campus minimum), perpetual or term — *provisional* | Same unit as SaaS so customers can compare and move between models; learner cap can be checked offline | Change D52; prices and bands are not set anywhere |
 | 2026-11-21 | **Stage 2 board** planned as NEX-066–092: 3 contract tasks, mocks, app shell, one screen task per module P01–P18, M84 screen, review build, freeze | Follows `docs/PLAN.md` Stage 2 outline and the module catalogue | Edit `docs/tasks/stage-2/BOARD.md` |
+| 2026-11-21 | **D53: Nexus Control texts get their own catalogue** (`i18n/control/{en,hi,ta}.json`), not the institution text catalogue | Otherwise every institution could override our staff screens' texts in its Text studio, and the backend key export and campus bundle would grow. Still English/Hindi/Tamil (D42) | Move keys into `messages/*.json` |
+| 2026-11-21 | Control keeps **no persisted cache** in the browser; switching staff clears all cached answers | Provider records are commercially sensitive; nothing should stay on a shared laptop | — |
+| 2026-11-21 | Mock-only `mockHeaders` option added to the shared API client (for `X-Nexus-Staff`) | Smallest change that lets one client serve both apps; real mode ignores it | Revert in `services/src/client.ts` |
+
+## Follow-ups found (not done — Stage 1 screens are frozen, D43)
+
+| Where | Problem | Suggested fix |
+|---|---|---|
+| campus `modules/m04/KeyEditor.tsx` | Class `divide-border-subtle` has no theme token (row dividers fall back to the default colour) | Use `divide-border-default` |
+| campus `modules/m04/HistoryPanel.tsx`, `ImportExport.tsx` | Class `text-caption` has no theme token (text renders at the inherited size) | Use `text-body-sm`; extend the token check to app screens like `apps/control/src/themeClasses.test.ts` |
