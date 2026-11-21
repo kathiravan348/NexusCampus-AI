@@ -1,6 +1,14 @@
 import type { ControlPermission, ModuleId } from "@nexus/contracts";
 import type { ControlMessageKey } from "@nexus/i18n/control";
-import { Building2, KeyRound, Receipt, ServerCog, Tags, type LucideIcon } from "lucide-react";
+import {
+  Building2,
+  KeyRound,
+  Network,
+  Receipt,
+  ServerCog,
+  Tags,
+  type LucideIcon,
+} from "lucide-react";
 import type { ComponentType } from "react";
 
 /** One Nexus Control page (P01–P18); the menu, home tile, route and guard are built from it. */
@@ -64,5 +72,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: KeyRound,
     permission: "ctl.licence.read",
     load: () => import("../modules/p05/LicencesPage"),
+  },
+  {
+    moduleId: "P06",
+    path: "fleet",
+    navKey: "p06.nav",
+    summaryKey: "p06.summary",
+    icon: Network,
+    permission: "ctl.fleet.read",
+    load: () => import("../modules/p06/FleetPage"),
   },
 ];

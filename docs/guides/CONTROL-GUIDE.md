@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -96,6 +96,17 @@ Menu **Licences** (super admin, implementation, support to read).
 - **Renew for a year** (implementation, super admin): a term licence moves its expiry and support end by a year; a
   perpetual licence moves its support end. Then **Download licence file** and send it to the customer — for an
   air-gapped site on encrypted media.
+
+### Fleet
+
+Menu **Fleet** (super admin, site reliability, support, implementation, release manager, security officer).
+
+- The top row counts deployments by health: **Healthy**, **Degraded**, **Down**, **Unknown**.
+- The table lists every **Shared cell**, **Dedicated cell**, **Self-hosted** install and **Edge node** with its
+  version and channel (**Stable**, **Long-term support**, **Preview**), health, last check-in and tenants. An
+  air-gapped install says **Air-gapped — never checks in**: there is no network path into it, by design.
+- **Show check-in** opens the latest check-in: uptime, error rate, response time, queue, disk and active users.
+  Check-ins carry counts, rates and timings only — never personal data.
 
 ## Roles
 

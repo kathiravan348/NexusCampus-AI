@@ -1210,5 +1210,157 @@
   "p05.downloadFailed": {
     "message": "The licence file could not be prepared. Try again.",
     "description": "Toast when the licence file cannot be fetched."
+  },
+  "p06.nav": {
+    "message": "Fleet",
+    "description": "Menu item and page title of the deployment registry and fleet health page (P06)."
+  },
+  "p06.summary": {
+    "message": "Every cell, install and Edge node: version, health and last check-in.",
+    "description": "One-line description on the Fleet home tile."
+  },
+  "p06.summaryLabel": {
+    "message": "Fleet health",
+    "description": "Accessible label of the health summary."
+  },
+  "p06.count": {
+    "message": "{count, plural, one {# deployment} other {# deployments}}",
+    "description": "Number of deployments in a health group."
+  },
+  "p06.caption": {
+    "message": "Deployments",
+    "description": "Accessible caption of the deployments table."
+  },
+  "p06.col.name": {
+    "message": "Deployment",
+    "description": "Column header: deployment name."
+  },
+  "p06.col.kind": {
+    "message": "Kind",
+    "description": "Column header: shared cell, dedicated cell, self-hosted or Edge."
+  },
+  "p06.col.version": {
+    "message": "Version",
+    "description": "Column header: release version and channel."
+  },
+  "p06.col.health": {
+    "message": "Health",
+    "description": "Column header: health status."
+  },
+  "p06.col.checkIn": {
+    "message": "Last check-in",
+    "description": "Column header: last outbound check-in time."
+  },
+  "p06.col.tenants": {
+    "message": "Tenants",
+    "description": "Column header: number of tenants served."
+  },
+  "p06.versionChannel": {
+    "message": "{version} · {channel}",
+    "description": "Version and release channel, e.g. 2.4.1 · Stable."
+  },
+  "p06.kind.saasSharedCell": {
+    "message": "Shared cell",
+    "description": "Deployment kind: our shared SaaS cell."
+  },
+  "p06.kind.saasDedicatedCell": {
+    "message": "Dedicated cell",
+    "description": "Deployment kind: a SaaS cell for one customer."
+  },
+  "p06.kind.selfHosted": {
+    "message": "Self-hosted",
+    "description": "Deployment kind: customer's own servers."
+  },
+  "p06.kind.edge": {
+    "message": "Edge node",
+    "description": "Deployment kind: on-campus offline server."
+  },
+  "p06.channel.stable": {
+    "message": "Stable",
+    "description": "Release channel."
+  },
+  "p06.channel.lts": {
+    "message": "Long-term support",
+    "description": "Release channel."
+  },
+  "p06.channel.preview": {
+    "message": "Preview",
+    "description": "Release channel."
+  },
+  "p06.health.healthy": {
+    "message": "Healthy",
+    "description": "Deployment health."
+  },
+  "p06.health.degraded": {
+    "message": "Degraded",
+    "description": "Deployment health: working with problems."
+  },
+  "p06.health.down": {
+    "message": "Down",
+    "description": "Deployment health: not working."
+  },
+  "p06.health.unknown": {
+    "message": "Unknown",
+    "description": "Deployment health: no telemetry."
+  },
+  "p06.airGapped": {
+    "message": "Air-gapped — never checks in",
+    "description": "Shown for an install with no network path to us (V-6)."
+  },
+  "p06.telemetryOff": {
+    "message": "Telemetry off",
+    "description": "Shown when the customer switched health telemetry off."
+  },
+  "p06.show": {
+    "message": "Show check-in",
+    "description": "Button that shows a deployment's latest check-in."
+  },
+  "p06.showLabel": {
+    "message": "Show the latest check-in of {name}",
+    "description": "Accessible label of the show-check-in button."
+  },
+  "p06.panel.title": {
+    "message": "Latest check-in: {name}",
+    "description": "Heading of the check-in panel."
+  },
+  "p06.panel.note": {
+    "message": "Check-ins carry counts, rates and timings only — never personal data.",
+    "description": "Note in the check-in panel (rule V-4)."
+  },
+  "p06.panel.none": {
+    "message": "No check-in from this deployment.",
+    "description": "Shown when a deployment sent no check-in."
+  },
+  "p06.metric.uptime": {
+    "message": "Uptime",
+    "description": "Health metric: share of time available."
+  },
+  "p06.metric.errors": {
+    "message": "Error rate",
+    "description": "Health metric: share of failed requests."
+  },
+  "p06.metric.p95": {
+    "message": "Response time (p95)",
+    "description": "Health metric: 95th percentile response time."
+  },
+  "p06.metric.queue": {
+    "message": "Queue",
+    "description": "Health metric: jobs waiting."
+  },
+  "p06.metric.disk": {
+    "message": "Disk used",
+    "description": "Health metric: disk usage."
+  },
+  "p06.metric.users": {
+    "message": "Active users",
+    "description": "Health metric: number of signed-in users (a count only)."
+  },
+  "p06.pct": {
+    "message": "{value} %",
+    "description": "A percentage value."
+  },
+  "p06.ms": {
+    "message": "{value} ms",
+    "description": "A time in milliseconds."
   }
 }
