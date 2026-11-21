@@ -127,6 +127,10 @@ Nexus Control (our cloud)                         Product deployments
 - **Control backend (NEX-096):** `nexus.control` in the backend package, its own app (`nexus.control.main`,
   `/control/api/v1/*`), its own database `nexus_control` with its own read-mostly role `control_app` and its own
   migrations (`backend/control_migrations`, `nexus-control-db`). It never connects to a product database.
+- **Staff sign-in (NEX-097):** Keycloak realm `nexus-staff` (never the product realm, D21), client `nexus-control`.
+  Password = level 1, one-time code (TOTP) = level 2 = `acr` `mfa`; the client's minimum ACR is `mfa`, the login
+  asks for it and the callback refuses any other `acr`. Sessions: random token in an HttpOnly cookie (path
+  `/control`, Secure in prod), only its SHA-256 in `staff_sessions`, 60 minutes, revoked on sign-out.
 - **Same images everywhere.** A deployment differs only by configuration, licence/entitlements and installed
   extensions. Customer-specific work = extension packages (P08), never a fork of the core.
 - **Provisioning (SaaS):** P04 creates the tenant in the chosen region cell, its keys in the vault, and the type

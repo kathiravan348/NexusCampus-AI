@@ -41,4 +41,4 @@
 | NEX-094 | One-file language export / import for the Owner's Hindi & Tamil correction (D54) | A | done | Claude | 071 |
 | NEX-095 | Licence signing (Ed25519 in OpenBao) and offline verification for M84 (P05, D23, D55) | D | done | Claude | 068 |
 | NEX-096 | Control backend skeleton: own app, own database, health, staff `me` (D55) | D | done | Claude | 095 |
-| NEX-097 | Staff SSO with mandatory MFA: Keycloak realm `nexus-staff`, OIDC sign-in for Control, sessions (P13, D55) | D | in-progress | Claude | 096 |
+| NEX-097 | Staff SSO with mandatory MFA: Keycloak realm `nexus-staff`, OIDC sign-in for Control, sessions (P13, D55) | D | done | Claude | 096 |

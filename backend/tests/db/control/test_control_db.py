@@ -41,7 +41,7 @@ def test_only_control_tables_and_read_only_app_role(control_db: tuple[str, str])
     with engine.connect() as conn:
         tables = {r[0] for r in conn.execute(text("SELECT tablename FROM pg_tables WHERE schemaname = 'public'"))}
     engine.dispose()
-    assert tables == {"staff_users", "role_permissions", "control_alembic_version"}
+    assert tables == {"staff_users", "role_permissions", "staff_sessions", "control_alembic_version"}
     app = create_engine(app_url)
     with app.connect() as conn:
         assert conn.execute(text("SELECT count(*) FROM staff_users")).scalar_one() == 9

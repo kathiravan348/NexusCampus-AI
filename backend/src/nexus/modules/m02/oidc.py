@@ -37,15 +37,29 @@ class Discovery:
 
 
 class OidcClient:
-    def __init__(self, settings: Settings, http: httpx2.AsyncClient) -> None:
+    def __init__(
+        self,
+        settings: Settings,
+        http: httpx2.AsyncClient,
+        *,
+        callback_path: str = "/api/v1/auth/callback",
+        post_logout_url: str | None = None,
+        scopes: str = SCOPES,
+        extra_auth_params: dict[str, str] | None = None,
+    ) -> None:
+        """Defaults are the product sign-in; Nexus Control passes its own callback, scopes and `acr_values`."""
         self._settings = settings
         self._http = http
+        self._callback_path = callback_path
+        self._post_logout_url = post_logout_url or settings.app_public_url.rstrip("/") + "/"
+        self._scopes = scopes
+        self._extra = dict(extra_auth_params or {})
         self._discovery: Discovery | None = None
         self._jwks: jwt.PyJWKSet | None = None
 
     @property
     def redirect_uri(self) -> str:
-        return f"{self._settings.api_public_url.rstrip('/')}/api/v1/auth/callback"
+        return f"{self._settings.api_public_url.rstrip('/')}{self._callback_path}"
 
     async def discovery(self) -> Discovery:
         if self._discovery is None:
@@ -65,12 +79,13 @@ class OidcClient:
         query = {
             "client_id": self._settings.oidc_client_id,
             "response_type": "code",
-            "scope": SCOPES,
+            "scope": self._scopes,
             "redirect_uri": self.redirect_uri,
             "state": state,
             "nonce": nonce,
             "code_challenge": code_challenge,
             "code_challenge_method": "S256",
+            **self._extra,
         }
         return f"{d.authorization_endpoint}?{urlencode(query)}"
 
@@ -120,7 +135,7 @@ class OidcClient:
             return None
         query = {
             "client_id": self._settings.oidc_client_id,
-            "post_logout_redirect_uri": self._settings.app_public_url.rstrip("/") + "/",
+            "post_logout_redirect_uri": self._post_logout_url,
         }
         if id_token_hint:
             query["id_token_hint"] = id_token_hint
