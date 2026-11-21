@@ -30,6 +30,8 @@
 │  │                    helpers, smoke, languages, pseudo, offline, a11y specs (`pnpm e2e`, not in review:check)
 │  ├─ scripts/          timing harness (NEX-032): timing-budgets, time-run (CLI: [timing] lines, --ready-pattern,
 │  │                    --exit-after-ready, --sequence), vitest-timing-reporter, measure-timings (+ time-run.test);
+│  │                    texts-export / texts-import / texts-csv (+ test): one-file Hindi & Tamil review (NEX-094,
+│  │                    `pnpm texts:export` → docs/review/TRANSLATIONS.csv, `pnpm texts:import` writes hi/ta back);
 │  │                    typechecked by tsconfig.scripts.json
 │  ├─ packages/
 │  │  ├─ ui-core/       generic components + theme engine (NEX-002, 005, 006, 014)

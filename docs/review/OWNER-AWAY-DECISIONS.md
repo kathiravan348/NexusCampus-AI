@@ -39,3 +39,4 @@
 | campus `modules/m04/KeyEditor.tsx` | ~~Class `divide-border-subtle` has no theme token~~ | **Fixed in NEX-093** (with `bg-bg-subtle`, found by the new check) |
 | campus `modules/m04/HistoryPanel.tsx`, `ImportExport.tsx` | ~~Class `text-caption` has no theme token~~ | **Fixed in NEX-093**; campus now has the token check too |
 | campus slow screen tests (`InviteUserModal`, `RolesTab`) | ~~Timed out at 5 s under full-suite load~~ | **Fixed in NEX-093**: wait 10 s, per-test limit 20 s |
+| campus `m02/InviteUserModal.test.tsx` | Failed once more under full-suite load during NEX-094 (dialog still closing after 10 s); passed on the re-run | Watch; if it repeats, make the test wait for the dialog to close before looking for the table |
