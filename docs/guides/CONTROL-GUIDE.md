@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -42,6 +42,17 @@ officer, partner).
 - **Notes:** sales and super admins type a note and press **Add note**. Write business notes only — never personal
   details of the institution's learners, families or staff. Other roles read notes.
 - **Partners** see only the customers their own company manages; any other account says it does not exist.
+
+### Pricing & quotes
+
+Menu **Pricing & quotes** (super admin, sales, billing, partner).
+
+- **Catalogue:** every plan, add-on, AI credit pack, self-hosted licence edition and support contract. Pick a
+  country under **Prices for** to see its price and tax rate; items we do not sell there say **Not sold here**.
+- **Quotes:** number, account, status (Draft, Sent, Accepted, Expired), total with tax and **Valid until**.
+- **Send** a draft quote (sales, super admin, partner for their own customers). A quote marked **AI draft** was
+  written by AI: the dialog asks you to check every line, quantity and discount, and **Send quote** stays off until
+  you tick **I checked this AI draft**.
 
 ## Roles
 

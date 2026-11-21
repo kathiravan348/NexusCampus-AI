@@ -258,4 +258,6 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 | GET | `/projects[/:id]` | `ctl.project.read` | accountId, status, kind |
 | GET | `/metrics[/:month]`, `/account-health[/:accountId]` | `ctl.analytics.read` | churnRisk |
 
+| POST | `/quotes/:id/send` | `ctl.quote.manage` | body `{ checkedByHuman? }`; only `draft` (else `409 conflict`); an AI-drafted quote without `checkedByHuman: true` → `400 invalid_request`; partners only their accounts (`404`) (NEX-073) |
+
 Write routes are added by each Control screen task (NEX-072+).

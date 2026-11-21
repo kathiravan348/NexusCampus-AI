@@ -406,5 +406,193 @@
   "p01.notes.readOnly": {
     "message": "You can read notes but not add them.",
     "description": "Shown instead of the note form without permission to add notes."
+  },
+  "p02.nav": {
+    "message": "Pricing & quotes",
+    "description": "Menu item and page title of the pricing and quotes page (P02)."
+  },
+  "p02.summary": {
+    "message": "Plans, add-ons, AI credit packs, licences and quotes.",
+    "description": "One-line description on the Pricing & quotes home tile."
+  },
+  "p02.tabs.label": {
+    "message": "Pricing and quotes",
+    "description": "Accessible label of the tabs on the pricing page."
+  },
+  "p02.tab.catalogue": {
+    "message": "Catalogue",
+    "description": "Tab: everything we sell."
+  },
+  "p02.tab.quotes": {
+    "message": "Quotes",
+    "description": "Tab: priced offers to customers."
+  },
+  "p02.catalogue.caption": {
+    "message": "Catalogue",
+    "description": "Accessible caption of the catalogue table."
+  },
+  "p02.catalogue.country": {
+    "message": "Prices for",
+    "description": "Label of the country picker that changes which prices are shown."
+  },
+  "p02.catalogue.item": {
+    "message": "Item",
+    "description": "Column header: catalogue item name."
+  },
+  "p02.catalogue.kind": {
+    "message": "Kind",
+    "description": "Column header: plan, add-on, credit pack, licence or support."
+  },
+  "p02.catalogue.price": {
+    "message": "Price",
+    "description": "Column header: price in the chosen country."
+  },
+  "p02.catalogue.priceUnit": {
+    "message": "{price} {unit}",
+    "description": "Price with its unit, e.g. ₹49.00 per learner / month."
+  },
+  "p02.catalogue.tax": {
+    "message": "Tax",
+    "description": "Column header: tax rate in the chosen country."
+  },
+  "p02.catalogue.taxRate": {
+    "message": "{rate} %",
+    "description": "Tax rate in percent."
+  },
+  "p02.catalogue.modules": {
+    "message": "Modules",
+    "description": "Column header: number of modules included."
+  },
+  "p02.catalogue.notSold": {
+    "message": "Not sold here",
+    "description": "Shown when an item has no price in the chosen country."
+  },
+  "p02.catalogue.credits": {
+    "message": "{credits, number} AI credits",
+    "description": "Size of an AI credit pack."
+  },
+  "p02.kind.saasPlan": {
+    "message": "SaaS plan",
+    "description": "Catalogue kind."
+  },
+  "p02.kind.addon": {
+    "message": "Add-on",
+    "description": "Catalogue kind."
+  },
+  "p02.kind.aiCreditPack": {
+    "message": "AI credit pack",
+    "description": "Catalogue kind."
+  },
+  "p02.kind.licenceEdition": {
+    "message": "Licence edition",
+    "description": "Catalogue kind: self-hosted licence."
+  },
+  "p02.kind.support": {
+    "message": "Support",
+    "description": "Catalogue kind: support and updates contract."
+  },
+  "p02.unit.perLearnerMonth": {
+    "message": "per learner / month",
+    "description": "Price unit."
+  },
+  "p02.unit.perLearnerYear": {
+    "message": "per learner / year",
+    "description": "Price unit."
+  },
+  "p02.unit.flatMonth": {
+    "message": "per month",
+    "description": "Price unit."
+  },
+  "p02.unit.flatYear": {
+    "message": "per year",
+    "description": "Price unit."
+  },
+  "p02.unit.perPack": {
+    "message": "per pack",
+    "description": "Price unit."
+  },
+  "p02.quotes.caption": {
+    "message": "Quotes",
+    "description": "Accessible caption of the quotes table."
+  },
+  "p02.quotes.number": {
+    "message": "Quote",
+    "description": "Column header: quote number."
+  },
+  "p02.quotes.account": {
+    "message": "Account",
+    "description": "Column header: customer account."
+  },
+  "p02.quotes.status": {
+    "message": "Status",
+    "description": "Column header: quote status."
+  },
+  "p02.quotes.total": {
+    "message": "Total",
+    "description": "Column header: quote total including tax."
+  },
+  "p02.quotes.validUntil": {
+    "message": "Valid until",
+    "description": "Column header: last day the quote can be accepted."
+  },
+  "p02.quotes.aiDraft": {
+    "message": "AI draft",
+    "description": "Badge on a quote that AI drafted; a person must check it."
+  },
+  "p02.quotes.send": {
+    "message": "Send",
+    "description": "Button that opens the send dialog for a draft quote."
+  },
+  "p02.quotes.sendLabel": {
+    "message": "Send quote {number}",
+    "description": "Accessible label of the send button for one quote."
+  },
+  "p02.quotes.empty": {
+    "message": "No quotes yet.",
+    "description": "Shown when there are no quotes."
+  },
+  "p02.status.draft": {
+    "message": "Draft",
+    "description": "Quote status."
+  },
+  "p02.status.sent": {
+    "message": "Sent",
+    "description": "Quote status."
+  },
+  "p02.status.accepted": {
+    "message": "Accepted",
+    "description": "Quote status."
+  },
+  "p02.status.expired": {
+    "message": "Expired",
+    "description": "Quote status."
+  },
+  "p02.send.title": {
+    "message": "Send quote {number}?",
+    "description": "Title of the dialog that confirms sending a quote."
+  },
+  "p02.send.body": {
+    "message": "{account} receives {total}, valid until {date}.",
+    "description": "Dialog text: who gets the quote, the total and the validity."
+  },
+  "p02.send.aiWarning": {
+    "message": "AI drafted this quote. Check every line, quantity and discount before you send it.",
+    "description": "Warning in the send dialog for an AI-drafted quote."
+  },
+  "p02.send.checked": {
+    "message": "I checked this AI draft",
+    "description": "Check box a person must tick before an AI-drafted quote can be sent."
+  },
+  "p02.send.confirm": {
+    "message": "Send quote",
+    "description": "Button that sends the quote."
+  },
+  "p02.send.done": {
+    "message": "Quote sent",
+    "description": "Toast after a quote is sent."
+  },
+  "p02.send.failed": {
+    "message": "The quote was not sent. Try again.",
+    "description": "Toast when sending a quote fails."
   }
 }
