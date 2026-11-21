@@ -38,30 +38,34 @@ New-Item -ItemType Directory -Force .secrets | Out-Null
 Invoke-Dc build migrate web
 Invoke-Dc up -d --wait db redis vault keycloak
 
-# 4. Vault: initialise once (never overwriting the key file), unseal, Transit and a Transit-only app token.
-function Get-VaultState { (& docker compose -f compose.yaml exec -T vault vault status -format=json 2>$null) -join "" }
+# 4. OpenBao (the key vault, D48): initialise once (never overwriting the key file), unseal, Transit and a Transit-only app token.
+function Get-VaultState { (& docker compose -f compose.yaml exec -T vault bao status -format=json 2>$null) -join "" }
 if ((Get-VaultState) -notmatch '"initialized":\s*true') {
   if ((Test-Path .secrets/vault-init.json) -and (Get-Item .secrets/vault-init.json).Length -gt 0) {
     throw "Vault reports 'not initialised' but .secrets/vault-init.json exists: refusing to re-initialise."
   }
-  $init = (& docker compose -f compose.yaml exec -T vault vault operator init -key-shares=1 -key-threshold=1 -format=json) -join "`n"
-  if ($LASTEXITCODE -ne 0) { throw "vault operator init failed" }
+  $init = (& docker compose -f compose.yaml exec -T vault bao operator init -key-shares=1 -key-threshold=1 -format=json) -join "`n"
+  if ($LASTEXITCODE -ne 0) { throw "bao operator init failed" }
   [System.IO.File]::WriteAllText((Join-Path (Get-Location) ".secrets/vault-init.json"), $init)
   Write-Output "Vault initialised: unseal key and root token in deploy/compose/.secrets/vault-init.json - back it up offline"
 }
 if (-not (Test-Path .secrets/vault-init.json)) { throw "Vault is initialised but .secrets/vault-init.json is missing: restore it from your backup." }
 $keys = Get-Content .secrets/vault-init.json -Raw | ConvertFrom-Json
-if ((Get-VaultState) -notmatch '"sealed":\s*false') { Invoke-Dc exec -T vault vault operator unseal $keys.unseal_keys_b64[0] | Out-Null }
-function Invoke-RootVault { & docker compose -f compose.yaml exec -T -e "VAULT_TOKEN=$($keys.root_token)" vault vault @args }
+if ((Get-VaultState) -notmatch '"sealed":\s*false') { Invoke-Dc exec -T vault bao operator unseal $keys.unseal_keys_b64[0] | Out-Null }
+function Invoke-RootVault { & docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$($keys.root_token)" vault bao @args }
 if (-not ((Invoke-RootVault secrets list) -match '^transit/')) { Invoke-RootVault secrets enable transit | Out-Null }
-@(
+$policy = @(
   'path "transit/*" { capabilities = ["create", "read", "update", "delete", "list"] }',
   'path "auth/token/renew-self" { capabilities = ["update"] }',
   'path "auth/token/lookup-self" { capabilities = ["read"] }'
-) -join "`n" | Invoke-RootVault policy write nexus-app - | Out-Null
+) -join "`n"
+# Passed base64-encoded, not piped: Windows PowerShell adds a byte-order mark to piped text, which OpenBao rejects.
+$policyB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($policy))
+& docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$($keys.root_token)" vault sh -c "echo $policyB64 | base64 -d | bao policy write nexus-app -" | Out-Null
+if ($LASTEXITCODE -ne 0) { throw "bao policy write failed" }
 $renewed = $false
 if ($env:NEXUS_VAULT_TOKEN) {
-  & docker compose -f compose.yaml exec -T -e "VAULT_TOKEN=$env:NEXUS_VAULT_TOKEN" vault vault token renew 2>$null | Out-Null
+  & docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$env:NEXUS_VAULT_TOKEN" vault bao token renew 2>$null | Out-Null
   $renewed = ($LASTEXITCODE -eq 0)
 }
 if (-not $renewed) {

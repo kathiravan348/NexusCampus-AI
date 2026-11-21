@@ -28,8 +28,8 @@ dc build migrate web
 # 3. Infrastructure.
 dc up -d --wait db redis vault keycloak
 
-# 4. Vault: initialise once, unseal, Transit engine and an app token that can only use Transit.
-vault() { dc exec -T vault vault "$@"; }
+# 4. OpenBao (the key vault, D48): initialise once, unseal, Transit engine and an app token that can only use Transit.
+vault() { dc exec -T vault bao "$@"; }
 vault_state() { vault status -format=json 2>/dev/null || true; } # exits 2 while sealed
 if ! vault_state | grep -q '"initialized": true'; then
   if [ -s .secrets/vault-init.json ]; then
@@ -49,12 +49,12 @@ fi
 unseal_key=$(tr -d '\n ' < .secrets/vault-init.json | sed -E 's/.*"unseal_keys_b64":\["([^"]+)".*/\1/')
 root_token=$(tr -d '\n ' < .secrets/vault-init.json | sed -E 's/.*"root_token":"([^"]+)".*/\1/')
 vault_state | grep -q '"sealed": false' || vault operator unseal "$unseal_key" > /dev/null
-rvault() { dc exec -T -e VAULT_TOKEN="$root_token" vault vault "$@"; }
+rvault() { dc exec -T -e BAO_TOKEN="$root_token" vault bao "$@"; }
 rvault secrets list | grep -q '^transit/' || rvault secrets enable transit > /dev/null
 printf '%s\n' 'path "transit/*" { capabilities = ["create", "read", "update", "delete", "list"] }' \
   'path "auth/token/renew-self" { capabilities = ["update"] }' \
   'path "auth/token/lookup-self" { capabilities = ["read"] }' | rvault policy write nexus-app - > /dev/null
-if [ -z "${NEXUS_VAULT_TOKEN:-}" ] || ! dc exec -T -e VAULT_TOKEN="$NEXUS_VAULT_TOKEN" vault vault token renew > /dev/null 2>&1; then
+if [ -z "${NEXUS_VAULT_TOKEN:-}" ] || ! dc exec -T -e BAO_TOKEN="$NEXUS_VAULT_TOKEN" vault bao token renew > /dev/null 2>&1; then
   NEXUS_VAULT_TOKEN=$(rvault token create -policy=nexus-app -no-default-policy -orphan -period=768h -field=token)
   set_env NEXUS_VAULT_TOKEN "$NEXUS_VAULT_TOKEN"
   export NEXUS_VAULT_TOKEN

@@ -42,32 +42,33 @@ services:
     restart: unless-stopped
 
   redis:
-    image: redis:7.4.2-alpine@sha256:02419de7eddf55aa5bcf49efb74e88fa8d931b4d77c07eff8a6b2144472b6952
-    command: ["redis-server", "--save", "60", "100", "--appendonly", "no", "--maxmemory", "96mb"]
+    # Valkey (BSD-3, D48): open-source drop-in for Redis; the service keeps its name and protocol.
+    image: valkey/valkey:9.0.7-alpine@sha256:2d04268dfa26ab31cfa3fdc538866e76438b2d00e41db41b8cb86d780ac5a416
+    command: ["valkey-server", "--save", "60", "100", "--appendonly", "no", "--maxmemory", "96mb"]
     volumes:
       - redis-data:/data
     mem_limit: 128m
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ["CMD", "valkey-cli", "ping"]
       interval: 3s
       timeout: 3s
       retries: 30
     restart: unless-stopped
 
   vault:
-    image: hashicorp/vault:1.20.4@sha256:268bb80aa9c6d13d65fcfa05c0c268caca068952240a8087291a6ce0b66e3a10
-    # The image entrypoint adds -config=/vault/config (where vault.hcl is mounted).
+    # OpenBao (MPL-2.0, D48): open-source fork of Vault, same API. The service keeps the name `vault`.
+    # The image entrypoint adds -config=/openbao/config (where vault.hcl is mounted). Raft storage on vault-data.
+    image: openbao/openbao:2.7.2@sha256:5046911075e137e154ce49ab051502f4ec7cf367d484ae4a4dce665d9b90561f
     command: ["server"]
     environment:
-      SKIP_SETCAP: "true"
-      VAULT_ADDR: http://127.0.0.1:8200
+      BAO_ADDR: http://127.0.0.1:8200
     volumes:
-      - ./vault/vault.hcl:/vault/config/vault.hcl:ro
-      - vault-data:/vault/file
+      - ./vault/vault.hcl:/openbao/config/vault.hcl:ro
+      - vault-data:/openbao/file
     mem_limit: 256m
     healthcheck:
-      # Healthy once Vault answers at all (sealed is fine): the install script initialises and unseals it.
-      test: ["CMD-SHELL", "vault status >/dev/null 2>&1; [ $$? -ne 1 ]"]
+      # Healthy once OpenBao answers at all (sealed is fine): the install script initialises and unseals it.
+      test: ["CMD-SHELL", "bao status >/dev/null 2>&1; [ $$? -ne 1 ]"]
       interval: 3s
       timeout: 3s
       retries: 30

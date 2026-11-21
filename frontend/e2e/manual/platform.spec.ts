@@ -169,7 +169,7 @@ test("platform: sign-in service admin", async ({ page }) => {
 test("platform: key vault", async ({ page }) => {
   const p = part(
     230,
-    "Key management (Vault)",
+    "Key management (OpenBao)",
     "Every institution’s encryption keys live here, never in the database. The app’s Data vault screen shows their status only.",
     `${VAULT}/ui → method Token, token \`NEXUS_VAULT_TOKEN\` in backend/.env (dev only)`,
   );
