@@ -2054,5 +2054,97 @@
   "p11.noCap": {
     "message": "{used} · no cap",
     "description": "Usage without a cap."
+  },
+  "p12.nav": {
+    "message": "Partners",
+    "description": "Menu item and page title of the partners page (P12)."
+  },
+  "p12.summary": {
+    "message": "Resellers, the customers they manage, deals and commissions.",
+    "description": "One-line description on the Partners home tile."
+  },
+  "p12.tier.registered": {
+    "message": "Registered",
+    "description": "Partner tier."
+  },
+  "p12.tier.silver": {
+    "message": "Silver",
+    "description": "Partner tier."
+  },
+  "p12.tier.gold": {
+    "message": "Gold",
+    "description": "Partner tier."
+  },
+  "p12.inactive": {
+    "message": "Inactive",
+    "description": "Badge: the partner is not active."
+  },
+  "p12.meta": {
+    "message": "{country} · {rate} % commission · since {date}",
+    "description": "Partner country, commission rate and start date."
+  },
+  "p12.customers": {
+    "message": "Customers",
+    "description": "Heading: accounts this partner manages."
+  },
+  "p12.noCustomers": {
+    "message": "No customers yet.",
+    "description": "Shown when a partner manages no account."
+  },
+  "p12.deals": {
+    "message": "Deal registrations",
+    "description": "Heading: prospects a partner registered."
+  },
+  "p12.noDeals": {
+    "message": "No deal registrations.",
+    "description": "Shown when there are none."
+  },
+  "p12.deal": {
+    "message": "{account} · until {date}",
+    "description": "A deal registration: account and expiry."
+  },
+  "p12.dealStatus.submitted": {
+    "message": "Submitted",
+    "description": "Deal status."
+  },
+  "p12.dealStatus.approved": {
+    "message": "Approved",
+    "description": "Deal status."
+  },
+  "p12.dealStatus.rejected": {
+    "message": "Rejected",
+    "description": "Deal status."
+  },
+  "p12.dealStatus.expired": {
+    "message": "Expired",
+    "description": "Deal status."
+  },
+  "p12.commissions": {
+    "message": "Commissions",
+    "description": "Heading: commissions earned."
+  },
+  "p12.noCommissions": {
+    "message": "No commissions yet.",
+    "description": "Shown when there are none."
+  },
+  "p12.commission": {
+    "message": "{amount} on invoice {invoice}",
+    "description": "A commission amount and its invoice."
+  },
+  "p12.commissionStatus.pending": {
+    "message": "Pending",
+    "description": "Commission status."
+  },
+  "p12.commissionStatus.payable": {
+    "message": "Payable",
+    "description": "Commission status: due to the partner."
+  },
+  "p12.commissionStatus.paid": {
+    "message": "Paid",
+    "description": "Commission status."
+  },
+  "p12.ownDeals": {
+    "message": "Your deal registrations",
+    "description": "Heading for partner users: their own deals."
   }
 }
