@@ -4,4 +4,17 @@ export * from "./account";
 export * from "./pricing";
 export * from "./billing";
 export * from "./usage";
-export { ControlCodeSchema, DocumentNumberSchema } from "./shared";
+export * from "./provisioning";
+export * from "./release";
+export * from "./deployment";
+export * from "./licence";
+export * from "./extension";
+export * from "./sandbox";
+export * from "./portability";
+export {
+  ControlCodeSchema,
+  DocumentNumberSchema,
+  SemverSchema,
+  StepStatusSchema,
+  type StepStatus,
+} from "./shared";

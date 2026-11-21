@@ -1,14 +1,16 @@
 import { describe, expect, it } from "vitest";
 import { z } from "zod";
+import * as install from "../install";
 import * as control from "./index";
 
 /**
  * V-7 guard (D50): Nexus Control stores only commercial and technical metadata. No control contract may carry a
- * field about an institution's learners, families or staff. Counts (`learnerCount`, `learners`) are allowed.
+ * field about an institution's learners, families or staff. Counts (`learnerCount`, `learners`, `learnersUsed`,
+ * `learnerCap`) are allowed.
  */
 const BANNED = [
   /^(student|guardian|parent|pupil|child|family)/i,
-  /^learner(?!Count$|s$|Cap$)/i,
+  /^learner(?!Count$|s$|Cap$|sUsed$)/i,
   /birth|^dob$/i,
   /address/i,
   /medical|diagnos|allerg|safeguard/i,
@@ -36,8 +38,11 @@ function personalFields(schema: z.ZodType): string[] {
   });
 }
 
-const schemas: [string, z.ZodType][] = Object.entries(control as Record<string, unknown>).flatMap(
-  ([name, value]) => (name.endsWith("Schema") && value instanceof z.ZodType ? [[name, value]] : []),
+const schemas: [string, z.ZodType][] = Object.entries({ ...control, ...install } as Record<
+  string,
+  unknown
+>).flatMap(([name, value]) =>
+  name.endsWith("Schema") && value instanceof z.ZodType ? [[name, value]] : [],
 );
 
 describe("Nexus Control contracts carry metadata only (V-7)", () => {
