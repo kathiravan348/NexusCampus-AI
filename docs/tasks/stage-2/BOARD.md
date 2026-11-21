@@ -29,7 +29,7 @@
 | NEX-082 | P11 Usage & metering | C | done | Claude | 071 |
 | NEX-083 | P12 Partners & resellers | C | done | Claude | 071 |
 | NEX-084 | P13 Provider staff & security | C | done | Claude | 071 |
-| NEX-085 | P14 Compliance & trust operations | C | in-progress | Claude | 071 |
+| NEX-085 | P14 Compliance & trust operations | C | done | Claude | 071 |
 | NEX-086 | P15 Implementation projects | C | planned | — | 071 |
 | NEX-087 | P16 Business analytics | C | draft | — | 071 |
 | NEX-088 | P17 Sandbox, demo & staging environments | C | draft | — | 071 |

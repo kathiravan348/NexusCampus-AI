@@ -104,6 +104,18 @@ export const SECURITY_INCIDENTS = [
     notifiedAt: null,
     reportAiDrafted: false,
   },
+  {
+    id: "inc-1015",
+    title: "Report-card email sent to the wrong parent group",
+    severity: "sev2",
+    status: "resolved",
+    affectedAccountIds: [ACCOUNT.sunrise],
+    personalDataAffected: true,
+    detectedAt: "2026-10-15T09:00:00Z",
+    breachNotificationDueAt: "2026-10-18T09:00:00Z",
+    notifiedAt: "2026-10-16T12:00:00Z",
+    reportAiDrafted: true,
+  },
 ] satisfies readonly SecurityIncident[];
 
 export const DPA_RECORDS = [

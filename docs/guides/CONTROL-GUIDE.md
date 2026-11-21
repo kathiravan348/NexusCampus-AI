@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084)).
+> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -186,6 +186,19 @@ Menu **Staff** (super admin, security officer).
   roles, **Multi-factor login** (**Enrolled**, or **Missing — cannot sign in**) and last sign-in.
 - Every staff session needs multi-factor login. No role can read an institution's data — support access always needs
   the institution's approval.
+
+### Trust
+
+Menu **Trust** (super admin, security officer).
+
+- **Certifications**: ISO/IEC 27001, ISO/IEC 27701, SOC 2 Type II and CERT-In empanelment with **Planned**,
+  **In audit**, **Certified** (and the expiry date) or **Lapsed**.
+- **Security incidents**: title, detection date and affected customers, severity, status and the **Breach
+  notification** clock — **No personal data affected**, **Notify by** a date, or **Notified … on time / late**.
+  Reports drafted by AI are marked; a security officer checks them.
+- **Sub-processors**: company, purpose, country, whether the agreement is signed, and whether it can ever reach
+  institution data (only the hosting provider can).
+- **Customer data agreements**: the agreement version each customer signed and when.
 
 ## Roles
 
