@@ -7,6 +7,9 @@
     "dev": "node ../../scripts/time-run.ts dev:control --ready-pattern Local: -- vite",
     "build": "node ../../scripts/time-run.ts build:control -- vite build",
     "preview": "node ../../scripts/time-run.ts preview:control --ready-pattern Local: -- vite preview",
+    "review:build": "vite build --mode review",
+    "review:preview": "node ../../scripts/time-run.ts preview:control --ready-pattern Local: -- vite preview --mode review --open",
+    "review:start": "node ../../scripts/time-run.ts review:start:control --sequence build:control=review:build review:preview",
     "typecheck": "tsc --noEmit",
     "test": "node ../../scripts/time-run.ts test:pkg --label test:control -- vitest run",
     "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ ."

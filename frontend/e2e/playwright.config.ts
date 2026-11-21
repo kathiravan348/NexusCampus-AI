@@ -7,6 +7,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 const PREVIEW = "http://127.0.0.1:4310";
 const DEV = "http://127.0.0.1:4311";
+const CONTROL = "http://127.0.0.1:4312";
 
 export default defineConfig({
   testDir: ".",
@@ -27,6 +28,14 @@ export default defineConfig({
       reuseExistingServer: false,
     },
     {
+      command:
+        "pnpm --filter control run review:build && pnpm --filter control exec vite preview --mode review --host 127.0.0.1 --port 4312 --strictPort",
+      cwd: "..",
+      url: CONTROL,
+      timeout: 180_000,
+      reuseExistingServer: false,
+    },
+    {
       command: "pnpm --filter campus exec vite --host 127.0.0.1 --port 4311 --strictPort",
       cwd: "..",
       url: DEV,
@@ -37,18 +46,27 @@ export default defineConfig({
   projects: [
     {
       name: "desktop",
-      testIgnore: [/pseudo\.spec\.ts/, /[\\/](real|manual)[\\/]/],
+      testIgnore: [/pseudo\.spec\.ts/, /control\.spec\.ts/, /[\\/](real|manual)[\\/]/],
       use: { ...devices["Desktop Chrome"], viewport: { width: 1280, height: 800 } },
     },
     {
       name: "mobile-360",
-      testIgnore: [/pseudo\.spec\.ts/, /[\\/](real|manual)[\\/]/],
+      testIgnore: [/pseudo\.spec\.ts/, /control\.spec\.ts/, /[\\/](real|manual)[\\/]/],
       use: { ...devices["Desktop Chrome"], viewport: { width: 360, height: 800 }, hasTouch: true },
     },
     {
       name: "pseudo-360",
       testMatch: /pseudo\.spec\.ts/,
       use: { ...devices["Desktop Chrome"], viewport: { width: 360, height: 800 }, baseURL: DEV },
+    },
+    {
+      name: "control",
+      testMatch: /control\.spec\.ts/,
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1280, height: 800 },
+        baseURL: CONTROL,
+      },
     },
   ],
 });

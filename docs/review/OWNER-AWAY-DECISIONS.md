@@ -11,7 +11,8 @@
 |---|---|---|
 | 1 | ~~Stage 1 release approval~~ — **approved 2026-11-21 (D54)** | — |
 | 1b | **Correct the Hindi / Tamil texts before production** from `docs/review/TRANSLATIONS.csv` (NEX-094), then run `pnpm --dir frontend texts:import` | You chose to do the language review yourself (D54) |
-| 2 | ~~OpenBao + Valkey image downloads~~ — **approved (D54)**, NEX-066 being built | — |
+| 2 | ~~OpenBao + Valkey image downloads~~ — **approved (D54)**, NEX-066 done | — |
+| 3 | **Stage 2 review** — follow `docs/review/STAGE-2-WALKTHROUGH.md` (one command), write findings in `STAGE-2-FEEDBACK.md`, then approve the Stage 2 freeze (NEX-092) | The freeze is yours (D43); every Stage 2 page (P01–P18, M84) is built and checked |
 
 ## Decisions
 
