@@ -28,3 +28,4 @@
 | `DemoBanner` | `@nexus/ui-core` | Prototype mock-data notice banner (`role="note"`) with localized default text | `Components/DemoBanner` |
 | `SyncStatus` | `@nexus/ui-core` | Props-driven offline sync indicator (`synced`, `pending`, `syncing`, `conflict`, `offline`, `error`) | `Components/SyncStatus` |
 | `DataTable` | `@nexus/ui-core` | TanStack Table with sortable columns, D15 offset pagination, mobile 360px cards, loading/empty/error states | `Components/DataTable` |
+| `JobSteps` | `@nexus/ui-control` | Ordered steps of a long-running job (provisioning, offboarding, tenant moves); status icon + status text from the caller (never colour alone), token colours, RTL-safe; used by P04 and P18 (NEX-075) | `Control/JobSteps` |

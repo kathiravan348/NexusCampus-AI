@@ -5,6 +5,7 @@
 @import "./tailwind-theme.css";
 
 @source "../../../ui-edu/src";
+@source "../../../ui-control/src";
 @source "../";
 
 body {

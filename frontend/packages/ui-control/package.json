@@ -1,0 +1,32 @@
+{
+  "name": "@nexus/ui-control",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint -c ../../eslint.config.js --cache --cache-location node_modules/.cache/eslint/ .",
+    "test": "node ../../scripts/time-run.ts test:pkg --label test:ui-control -- vitest run"
+  },
+  "peerDependencies": {
+    "react": "18.3.1"
+  },
+  "dependencies": {
+    "@nexus/ui-core": "workspace:*",
+    "lucide-react": "1.47.0"
+  },
+  "devDependencies": {
+    "@nexus/i18n": "workspace:*",
+    "@storybook/react-vite": "10.6.0",
+    "@testing-library/jest-dom": "7.0.1",
+    "@testing-library/react": "16.3.3",
+    "@types/react": "18.3.18",
+    "jsdom": "26.1.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "typescript": "5.7.3",
+    "vitest": "3.2.7"
+  }
+}
