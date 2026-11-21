@@ -24,3 +24,24 @@ export const totalsMatch = (doc: {
 }) =>
   doc.lines.reduce((sum, l) => sum + l.amountMinor, 0) === doc.subtotalMinor &&
   doc.subtotalMinor + doc.taxMinor === doc.totalMinor;
+
+/** Semantic version `MAJOR.MINOR.PATCH` with an optional pre-release, e.g. `2.4.0` or `2.5.0-rc.1`. */
+export const SemverSchema = z.string().regex(/^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$/, {
+  message: "Must be a semantic version, e.g. 2.4.0",
+});
+
+/** Status of one step in a long-running job (provisioning, offboarding, moves). */
+export const StepStatusSchema = z.enum(["pending", "running", "done", "failed"]);
+export type StepStatus = z.infer<typeof StepStatusSchema>;
+
+/** A job is `done` only when every step is done, and `failed` when any step failed. */
+export const jobStatusMatchesSteps = (job: {
+  readonly status: StepStatus;
+  readonly steps: readonly { readonly status: StepStatus }[];
+}) => {
+  const all = (s: StepStatus) => job.steps.every((step) => step.status === s);
+  const any = (s: StepStatus) => job.steps.some((step) => step.status === s);
+  if (job.status === "done") return all("done");
+  if (job.status === "failed") return any("failed");
+  return !any("failed") && !all("done");
+};
