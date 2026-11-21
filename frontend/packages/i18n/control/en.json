@@ -1594,5 +1594,189 @@
   "p08.aiDrafted": {
     "message": "AI-drafted check — a person must confirm it",
     "description": "Label on a compatibility check written by AI."
+  },
+  "p09.nav": {
+    "message": "Support",
+    "description": "Menu item and page title of the support desk (P09)."
+  },
+  "p09.summary": {
+    "message": "Tickets, replies and SLA targets for every customer.",
+    "description": "One-line description on the Support home tile."
+  },
+  "p09.list.caption": {
+    "message": "Tickets",
+    "description": "Accessible caption of the tickets table."
+  },
+  "p09.list.filter": {
+    "message": "Status",
+    "description": "Label of the ticket status filter."
+  },
+  "p09.list.all": {
+    "message": "All",
+    "description": "Filter option showing every status."
+  },
+  "p09.list.empty": {
+    "message": "No tickets match.",
+    "description": "Shown when no ticket matches the filter."
+  },
+  "p09.col.ticket": {
+    "message": "Ticket",
+    "description": "Column header: ticket number and subject."
+  },
+  "p09.col.account": {
+    "message": "Account",
+    "description": "Column header: customer account."
+  },
+  "p09.col.priority": {
+    "message": "Priority",
+    "description": "Column header: P1 (urgent) to P4 (low)."
+  },
+  "p09.col.status": {
+    "message": "Status",
+    "description": "Column header: ticket status."
+  },
+  "p09.col.sla": {
+    "message": "Respond by",
+    "description": "Column header: SLA due time."
+  },
+  "p09.col.assignee": {
+    "message": "Assigned to",
+    "description": "Column header: staff member handling the ticket."
+  },
+  "p09.unassigned": {
+    "message": "Unassigned",
+    "description": "Shown when no one handles the ticket yet."
+  },
+  "p09.breached": {
+    "message": "SLA missed",
+    "description": "Badge: the ticket missed its SLA target."
+  },
+  "p09.priority": {
+    "message": "P{level}",
+    "description": "Priority label, e.g. P2."
+  },
+  "p09.status.new": {
+    "message": "New",
+    "description": "Ticket status."
+  },
+  "p09.status.open": {
+    "message": "Open",
+    "description": "Ticket status."
+  },
+  "p09.status.waitingCustomer": {
+    "message": "Waiting for customer",
+    "description": "Ticket status."
+  },
+  "p09.status.resolved": {
+    "message": "Resolved",
+    "description": "Ticket status."
+  },
+  "p09.status.closed": {
+    "message": "Closed",
+    "description": "Ticket status."
+  },
+  "p09.sla.title": {
+    "message": "SLA targets",
+    "description": "Heading of the SLA targets table."
+  },
+  "p09.sla.caption": {
+    "message": "SLA targets by support tier",
+    "description": "Accessible caption of the SLA table."
+  },
+  "p09.sla.tier": {
+    "message": "Tier",
+    "description": "Column header: support tier."
+  },
+  "p09.sla.firstResponse": {
+    "message": "First response",
+    "description": "Column header: first response targets per priority."
+  },
+  "p09.sla.resolution": {
+    "message": "Resolution",
+    "description": "Column header: resolution targets per priority."
+  },
+  "p09.sla.hours": {
+    "message": "{value} h",
+    "description": "A duration in hours."
+  },
+  "p09.sla.perPriority": {
+    "message": "P1 {p1} · P2 {p2} · P3 {p3} · P4 {p4}",
+    "description": "Targets for the four priorities."
+  },
+  "p09.sla.allDay": {
+    "message": "24/7",
+    "description": "Badge: the tier is covered day and night."
+  },
+  "p09.detail.back": {
+    "message": "All tickets",
+    "description": "Link back from a ticket to the list."
+  },
+  "p09.detail.notFound": {
+    "message": "This ticket does not exist or you cannot see it.",
+    "description": "Shown for an unknown or not-visible ticket."
+  },
+  "p09.detail.channel": {
+    "message": "Came in by {channel}",
+    "description": "How the ticket arrived."
+  },
+  "p09.channel.portal": {
+    "message": "portal",
+    "description": "Ticket channel: the customer portal."
+  },
+  "p09.channel.email": {
+    "message": "email",
+    "description": "Ticket channel."
+  },
+  "p09.channel.phone": {
+    "message": "phone",
+    "description": "Ticket channel."
+  },
+  "p09.detail.access": {
+    "message": "Linked access request {id}",
+    "description": "The institution access request raised for this ticket (approved or denied by the institution)."
+  },
+  "p09.thread": {
+    "message": "Conversation",
+    "description": "Heading of the ticket thread."
+  },
+  "p09.from.customer": {
+    "message": "Customer",
+    "description": "Author label: the customer wrote this reply."
+  },
+  "p09.internal": {
+    "message": "Internal note",
+    "description": "Label: only our staff see this note."
+  },
+  "p09.aiDrafted": {
+    "message": "AI draft, checked by staff",
+    "description": "Label: the reply started as an AI draft that a person edited and sent."
+  },
+  "p09.reply.label": {
+    "message": "Reply",
+    "description": "Label of the reply box."
+  },
+  "p09.reply.hint": {
+    "message": "Never paste learner, family or staff records. Ask the customer for a scrubbed diagnostic bundle instead.",
+    "description": "Help text under the reply box (V-6, V-7)."
+  },
+  "p09.reply.internal": {
+    "message": "Internal note (customer does not see it)",
+    "description": "Check box: save as an internal note."
+  },
+  "p09.reply.send": {
+    "message": "Send",
+    "description": "Button that posts the reply or note."
+  },
+  "p09.reply.sent": {
+    "message": "Reply added",
+    "description": "Toast after a reply or note is posted."
+  },
+  "p09.reply.failed": {
+    "message": "The reply was not saved. Try again.",
+    "description": "Toast when posting a reply fails."
+  },
+  "p09.reply.readOnly": {
+    "message": "You can read this ticket but not reply.",
+    "description": "Shown instead of the reply form without permission."
   }
 }

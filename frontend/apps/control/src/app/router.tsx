@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter, type RouteObject } from "react-router";
 import { Home } from "../pages/Home";
 import { NotFound } from "../pages/NotFound";
+import { RouteError } from "../pages/RouteError";
 import { SignIn } from "../pages/SignIn";
 import { CONTROL_MODULES, type ControlModuleEntry } from "./modules";
 import { Shell } from "./Shell";
@@ -36,9 +37,10 @@ export function controlRoutes(
   modules: readonly ControlModuleEntry[] = CONTROL_MODULES,
 ): RouteObject[] {
   return [
-    { path: "/sign-in", element: <SignIn /> },
+    { path: "/sign-in", element: <SignIn />, errorElement: <RouteError /> },
     {
       path: "/",
+      errorElement: <RouteError />,
       element: (
         <StaffGuard>
           <Shell modules={modules} />

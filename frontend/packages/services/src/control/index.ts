@@ -9,3 +9,4 @@ export * from "./p05";
 export * from "./p06";
 export * from "./p07";
 export * from "./p08";
+export * from "./p09";
