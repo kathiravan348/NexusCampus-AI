@@ -1,0 +1,119 @@
+# Lago billing engine (D51, NEX-098) — dev stack, separate from the product and control databases.
+# Open source (AGPL-3.0), self-hosted in our control plane only; never shipped to customers.
+# Start / stop: `uv run --project backend nexus-lago-dev` (creates missing dev secrets in backend/.env first).
+# Only the API binds to 127.0.0.1; no Lago web UI (Nexus Control is the UI), no PDF service, no product telemetry.
+name: nexuscampus-billing
+
+x-lago-image: &lago-image
+  image: getlago/api:v1.57.0
+
+x-lago-env: &lago-env
+  LAGO_API_URL: http://127.0.0.1:53000
+  LAGO_FRONT_URL: http://127.0.0.1:3200
+  RAILS_ENV: production
+  RAILS_LOG_TO_STDOUT: "true"
+  DATABASE_URL: postgresql://lago:${LAGO_DB_PASSWORD:?set LAGO_DB_PASSWORD in backend/.env}@lago-db:5432/lago?search_path=public
+  REDIS_URL: redis://lago-valkey:6379
+  LAGO_REDIS_CACHE_URL: redis://lago-valkey:6379
+  SECRET_KEY_BASE: ${LAGO_SECRET_KEY_BASE:?set LAGO_SECRET_KEY_BASE}
+  LAGO_RSA_PRIVATE_KEY: ${LAGO_RSA_PRIVATE_KEY:?set LAGO_RSA_PRIVATE_KEY}
+  LAGO_ENCRYPTION_PRIMARY_KEY: ${LAGO_ENCRYPTION_PRIMARY_KEY:?set LAGO_ENCRYPTION_PRIMARY_KEY}
+  LAGO_ENCRYPTION_DETERMINISTIC_KEY: ${LAGO_ENCRYPTION_DETERMINISTIC_KEY:?set LAGO_ENCRYPTION_DETERMINISTIC_KEY}
+  LAGO_ENCRYPTION_KEY_DERIVATION_SALT: ${LAGO_ENCRYPTION_KEY_DERIVATION_SALT:?set LAGO_ENCRYPTION_KEY_DERIVATION_SALT}
+  LAGO_SIDEKIQ_WEB: "false"
+  LAGO_USE_AWS_S3: "false"
+  LAGO_USE_GCS: "false"
+  LAGO_DISABLE_SEGMENT: "true"
+  LAGO_DISABLE_SIGNUP: "true"
+  LAGO_DISABLE_PDF_GENERATION: "true"
+  LAGO_DISABLE_WALLET_REFRESH: "true"
+  LAGO_WEBHOOK_ALLOW_PRIVATE_URLS: "false"
+  LAGO_CREATE_ORG: "true"
+  LAGO_ORG_NAME: NexusCampus (dev)
+  LAGO_ORG_USER_EMAIL: billing-admin@nexuscampus.example
+  LAGO_ORG_USER_PASSWORD: ${LAGO_ORG_USER_PASSWORD:?set LAGO_ORG_USER_PASSWORD}
+  LAGO_ORG_API_KEY: ${NEXUS_CONTROL_LAGO_API_KEY:?set NEXUS_CONTROL_LAGO_API_KEY}
+
+services:
+  lago-db:
+    # PostgreSQL 15 with pg_partman, as Lago requires.
+    image: getlago/postgres-partman:15.0-alpine
+    environment:
+      POSTGRES_DB: lago
+      POSTGRES_USER: lago
+      POSTGRES_PASSWORD: ${LAGO_DB_PASSWORD:?set LAGO_DB_PASSWORD}
+    volumes:
+      - lago-db:/var/lib/postgresql/data
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lago -d lago"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  lago-valkey:
+    # Valkey (BSD-3, D48) instead of Redis; Lago speaks the Redis protocol.
+    image: valkey/valkey:9.0.7-alpine
+    command: ["valkey-server", "--save", "", "--appendonly", "no", "--maxmemory", "96mb"]
+    mem_limit: 128m
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  lago-migrate:
+    <<: *lago-image
+    command: ["./scripts/migrate.sh"]
+    environment: *lago-env
+    depends_on:
+      lago-db:
+        condition: service_healthy
+
+  lago-api:
+    <<: *lago-image
+    command: ["./scripts/start.api.sh"]
+    environment: *lago-env
+    volumes:
+      - lago-storage:/app/storage
+    ports:
+      - "127.0.0.1:53000:3000"
+    mem_limit: 1g
+    depends_on:
+      lago-migrate:
+        condition: service_completed_successfully
+      lago-valkey:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://localhost:3000/health || exit 1"]
+      interval: 5s
+      timeout: 10s
+      retries: 60
+      start_period: 30s
+
+  lago-worker:
+    <<: *lago-image
+    command: ["./scripts/start.worker.sh"]
+    environment: *lago-env
+    volumes:
+      - lago-storage:/app/storage
+    mem_limit: 1g
+    depends_on:
+      lago-migrate:
+        condition: service_completed_successfully
+      lago-valkey:
+        condition: service_healthy
+
+  lago-clock:
+    # Schedules billing runs (period ends, invoices).
+    <<: *lago-image
+    command: ["./scripts/start.clock.sh"]
+    environment: *lago-env
+    mem_limit: 512m
+    depends_on:
+      lago-migrate:
+        condition: service_completed_successfully
+
+volumes:
+  lago-db:
+  lago-storage:

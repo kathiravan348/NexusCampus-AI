@@ -42,6 +42,9 @@ class ControlSettings(BaseSettings):
     api_public_url: str = "http://127.0.0.1:8100"
     #: The Control app; sign-in and sign-out return here.
     app_public_url: str = "http://127.0.0.1:3200"
+    # Billing engine (D51, NEX-098): Lago inside our control plane only.
+    lago_api_url: str = "http://127.0.0.1:53000"
+    lago_api_key: SecretStr = SecretStr("")
 
     @property
     def secure_cookies(self) -> bool:

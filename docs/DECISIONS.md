@@ -83,3 +83,4 @@ _(implementers note new dependencies or decision requests here; the planner move
   directly for AES-GCM field encryption.
 - NEX-045: pyjwt[crypto] 2.15.1 (ID-token verification); httpx2 2.16.2 moved from dev to runtime (Keycloak HTTP
   client; same package as the test client). Image `quay.io/keycloak/keycloak:26.4.7` (D44).
+- NEX-098 (Owner approved 2026-11-22): Lago `getlago/api:v1.57.0` (sha256:24678b61b372e5ca02f9bb4687c9aec012f8ba8a3539d28c4cbe989f131f3aed, AGPL-3.0, control plane only — never in customer installs) and `getlago/postgres-partman:15.0-alpine` (sha256:27a1e3a1138a69b5a0911ce125dfa613b9ced07604a2d781b9d31141f7f96036); Lago web UI and PDF service not used.
