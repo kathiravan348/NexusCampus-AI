@@ -29,5 +29,9 @@
     "msw": "3.0.7",
     "typescript": "5.7.3",
     "vitest": "3.2.7"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./control": "./src/control/index.ts"
   }
 }

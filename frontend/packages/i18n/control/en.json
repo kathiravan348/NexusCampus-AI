@@ -1,0 +1,70 @@
+{
+  "ctl.signIn.title": {
+    "message": "Sign in to {product}",
+    "description": "Heading of the Nexus Control sign-in page; {product} is the product name."
+  },
+  "ctl.signIn.intro": {
+    "message": "Demo: pick a staff member to see Nexus Control with their roles. Real sign-in uses staff single sign-on with multi-factor login.",
+    "description": "Text under the sign-in heading in the demo, explaining the staff picker."
+  },
+  "ctl.signIn.as": {
+    "message": "Sign in as {name}",
+    "description": "Accessible label of a button that signs in as a demo staff member; {name} is their name."
+  },
+  "ctl.signIn.noStaff": {
+    "message": "No demo staff found.",
+    "description": "Shown on the sign-in page when the demo staff list is empty."
+  },
+  "ctl.role.superAdmin": {
+    "message": "Super admin",
+    "description": "Provider staff role: full access to Nexus Control (never to institution data)."
+  },
+  "ctl.role.sales": {
+    "message": "Sales",
+    "description": "Provider staff role: sales and account management."
+  },
+  "ctl.role.billing": {
+    "message": "Billing",
+    "description": "Provider staff role: invoices, payments and subscriptions."
+  },
+  "ctl.role.support": {
+    "message": "Support",
+    "description": "Provider staff role: support desk agent."
+  },
+  "ctl.role.implementation": {
+    "message": "Implementation",
+    "description": "Provider staff role: onboarding, installs and data moves."
+  },
+  "ctl.role.releaseManager": {
+    "message": "Release manager",
+    "description": "Provider staff role: releases, channels and extensions."
+  },
+  "ctl.role.sre": {
+    "message": "Site reliability",
+    "description": "Provider staff role: site reliability engineer who runs the fleet."
+  },
+  "ctl.role.securityOfficer": {
+    "message": "Security officer",
+    "description": "Provider staff role: security, compliance and staff access."
+  },
+  "ctl.role.partner": {
+    "message": "Partner",
+    "description": "Role of a reseller partner's user, who sees only the accounts their partner manages."
+  },
+  "ctl.home.intro": {
+    "message": "Run customers, licences, releases and support. Nexus Control holds business and technical records only — never an institution's learners, families or staff.",
+    "description": "Intro line on the Nexus Control home page; explains that it never holds institution data."
+  },
+  "ctl.home.noModulesBody": {
+    "message": "Pages for your roles appear here as they are added.",
+    "description": "Shown on the Nexus Control home page when no page is available for the staff member's roles."
+  },
+  "ctl.shell.rolesLabel": {
+    "message": "Roles: {roles}",
+    "description": "Under the staff member's name in the header; {roles} is a comma-separated list of role names."
+  },
+  "ctl.shell.mfaVerified": {
+    "message": "Multi-factor login verified",
+    "description": "Accessible label of the shield icon next to the staff name; every staff session uses multi-factor login."
+  }
+}

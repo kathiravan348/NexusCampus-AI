@@ -1,0 +1,19 @@
+{
+  "ctl.signIn.title": "{product} में साइन इन करें",
+  "ctl.signIn.intro": "डेमो: किसी स्टाफ़ सदस्य को चुनें और उनकी भूमिकाओं के साथ Nexus Control देखें। असली साइन-इन स्टाफ़ सिंगल साइन-ऑन और मल्टी-फ़ैक्टर लॉगिन से होता है।",
+  "ctl.signIn.as": "{name} के रूप में साइन इन करें",
+  "ctl.signIn.noStaff": "कोई डेमो स्टाफ़ नहीं मिला।",
+  "ctl.role.superAdmin": "सुपर एडमिन",
+  "ctl.role.sales": "बिक्री",
+  "ctl.role.billing": "बिलिंग",
+  "ctl.role.support": "सहायता",
+  "ctl.role.implementation": "कार्यान्वयन",
+  "ctl.role.releaseManager": "रिलीज़ मैनेजर",
+  "ctl.role.sre": "साइट विश्वसनीयता",
+  "ctl.role.securityOfficer": "सुरक्षा अधिकारी",
+  "ctl.role.partner": "पार्टनर",
+  "ctl.home.intro": "ग्राहक, लाइसेंस, रिलीज़ और सहायता चलाएँ। Nexus Control में केवल व्यावसायिक और तकनीकी रिकॉर्ड रहते हैं — किसी संस्थान के विद्यार्थियों, परिवारों या स्टाफ़ का डेटा कभी नहीं।",
+  "ctl.home.noModulesBody": "आपकी भूमिकाओं के पेज जुड़ते ही यहाँ दिखेंगे।",
+  "ctl.shell.rolesLabel": "भूमिकाएँ: {roles}",
+  "ctl.shell.mfaVerified": "मल्टी-फ़ैक्टर लॉगिन सत्यापित"
+}

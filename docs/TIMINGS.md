@@ -33,7 +33,9 @@
 | `review:check` | format → lint → typecheck → test → build | 7m |
 | `test:pkg` | one package's `test` | 45s |
 | `e2e` | Playwright smoke / languages / offline (NEX-021, NEX-040) | 3m |
-| `dev:control` | Nexus Control dev server (reserved, Stage 2) | 8s |
+| `dev:control` | Nexus Control dev server (NEX-071) | 8s |
+| `build:control` | Nexus Control production build (NEX-071) | 45s |
+| `preview:control` | Nexus Control preview server (NEX-071) | 5s |
 | `backend:start` | `nexus-dev`: FastAPI ready (NEX-042) | 15s |
 | `backend:check` | `backend-check`: ruff format + ruff lint + mypy strict + pytest (NEX-042) | 3m |
 | `compose:up` | `nexus-compose-up`: PostgreSQL + Redis healthy (NEX-042) | 1m 30s |
@@ -89,12 +91,14 @@ app `dev:real` on 3100, built app `pnpm --filter campus real:build` + `real:prev
 |---|---|---|---|---|
 | 24 list endpoints × 20 calls via the dev proxy (slowest: `usage` p95 39 ms, `roles` 28 ms) | `api:list:p95` | 11–29 ms | 300ms | OK |
 | Built real-mode app, cold, 4G profile, 322 KiB transferred | `load:4g` | 2.18s | 6s | OK |
+| Nexus Control dev server, warm, Owner PC (NEX-071) | `dev:control` | 0.36s | 8s | OK |
+| Nexus Control production build (NEX-071) | `build:control` | 3.14s | 45s | OK |
 
 ## Reserved (no surface yet — fill in the task that adds it)
 
 | Place | Key | Cold | Warm | Budget | Measured in |
 |---|---|---|---|---|---|
-| Nexus Control dev | `dev:control` | — | — | 8s | Stage 2 |
+| _(none)_ | | | | | |
 
 ## Change log
 

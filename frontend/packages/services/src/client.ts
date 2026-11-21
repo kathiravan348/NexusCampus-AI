@@ -39,6 +39,8 @@ export interface ApiClientOptions {
   readonly onUnauthorized?: () => void;
   /** Real mode: this browser's registered device id, sent as `X-Device-Id` (own-device revoke check). */
   readonly deviceId?: () => string | null;
+  /** Mock mode only: extra demo headers, e.g. Nexus Control's `X-Nexus-Staff` (NEX-071). */
+  readonly mockHeaders?: () => Readonly<Record<string, string>>;
 }
 
 export type QueryParams = Readonly<Record<string, string | number | boolean | null | undefined>>;
@@ -132,6 +134,9 @@ export class ApiClient {
       if (identity) headers.set(HEADER.user, identity.userId);
       const scenario = this.options.scenario?.() ?? null;
       if (scenario) headers.set(HEADER.scenario, scenario);
+      for (const [name, value] of Object.entries(this.options.mockHeaders?.() ?? {})) {
+        headers.set(name, value);
+      }
     }
     return headers;
   }

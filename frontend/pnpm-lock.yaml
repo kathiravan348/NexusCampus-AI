@@ -169,6 +169,76 @@ importers:
         specifier: 3.2.7
         version: 3.2.7(@types/debug@4.1.13)(@types/node@20.19.43)(jiti@2.7.0)(jsdom@26.1.0(supports-color@7.2.0))(lightningcss@1.32.0)(msw@3.0.7(@types/node@20.19.43)(supports-color@7.2.0)(typescript@5.7.3)(vite@6.4.3(@types/node@20.19.43)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.51.2)))(supports-color@7.2.0)(terser@5.51.2)
 
+  apps/control:
+    dependencies:
+      '@nexus/contracts':
+        specifier: workspace:*
+        version: link:../../packages/contracts
+      '@nexus/i18n':
+        specifier: workspace:*
+        version: link:../../packages/i18n
+      '@nexus/services':
+        specifier: workspace:*
+        version: link:../../packages/services
+      '@nexus/ui-core':
+        specifier: workspace:*
+        version: link:../../packages/ui-core
+      lucide-react:
+        specifier: 1.47.0
+        version: 1.47.0(react@18.3.1)
+      react:
+        specifier: 18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
+      react-router:
+        specifier: 7.18.5
+        version: 7.18.5(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+    devDependencies:
+      '@nexus/mocks':
+        specifier: workspace:*
+        version: link:../../packages/mocks
+      '@tailwindcss/vite':
+        specifier: 4.3.3
+        version: 4.3.3(vite@6.4.3(@types/node@20.19.43)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.51.2))
+      '@tanstack/react-query':
+        specifier: 5.106.0
+        version: 5.106.0(@types/react@18.3.18)(react@18.3.1)
+      '@testing-library/jest-dom':
+        specifier: 7.0.1
+        version: 7.0.1(@testing-library/dom@10.4.2)(vitest@3.2.7(@types/debug@4.1.13)(@types/node@20.19.43)(jiti@2.7.0)(jsdom@26.1.0(supports-color@7.2.0))(lightningcss@1.32.0)(supports-color@7.2.0)(terser@5.51.2))
+      '@testing-library/react':
+        specifier: 16.3.3
+        version: 16.3.3(@testing-library/dom@10.4.2)(@types/react-dom@18.3.5(@types/react@18.3.18))(@types/react@18.3.18)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@types/node':
+        specifier: 20.19.43
+        version: 20.19.43
+      '@types/react':
+        specifier: 18.3.18
+        version: 18.3.18
+      '@types/react-dom':
+        specifier: 18.3.5
+        version: 18.3.5(@types/react@18.3.18)
+      '@vitejs/plugin-react':
+        specifier: 4.7.0
+        version: 4.7.0(supports-color@7.2.0)(vite@6.4.3(@types/node@20.19.43)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.51.2))
+      jsdom:
+        specifier: 26.1.0
+        version: 26.1.0(supports-color@7.2.0)
+      msw:
+        specifier: 3.0.7
+        version: 3.0.7(@types/node@20.19.43)(supports-color@7.2.0)(typescript@5.7.3)(vite@6.4.3(@types/node@20.19.43)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.51.2))
+      typescript:
+        specifier: 5.7.3
+        version: 5.7.3
+      vite:
+        specifier: 6.4.3
+        version: 6.4.3(@types/node@20.19.43)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.51.2)
+      vitest:
+        specifier: 3.2.7
+        version: 3.2.7(@types/debug@4.1.13)(@types/node@20.19.43)(jiti@2.7.0)(jsdom@26.1.0(supports-color@7.2.0))(lightningcss@1.32.0)(msw@3.0.7(@types/node@20.19.43)(supports-color@7.2.0)(typescript@5.7.3)(vite@6.4.3(@types/node@20.19.43)(jiti@2.7.0)(lightningcss@1.32.0)(terser@5.51.2)))(supports-color@7.2.0)(terser@5.51.2)
+
   packages/contracts:
     dependencies:
       zod:
