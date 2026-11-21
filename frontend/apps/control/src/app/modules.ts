@@ -4,6 +4,7 @@ import {
   BarChart3,
   Building2,
   ClipboardList,
+  FlaskConical,
   Gauge,
   Handshake,
   KeyRound,
@@ -181,5 +182,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: BarChart3,
     permission: "ctl.analytics.read",
     load: () => import("../modules/p16/AnalyticsPage"),
+  },
+  {
+    moduleId: "P17",
+    path: "sandboxes",
+    navKey: "p17.nav",
+    summaryKey: "p17.summary",
+    icon: FlaskConical,
+    permission: "ctl.sandbox.read",
+    load: () => import("../modules/p17/SandboxesPage"),
   },
 ];
