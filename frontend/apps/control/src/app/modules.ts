@@ -3,6 +3,7 @@ import type { ControlMessageKey } from "@nexus/i18n/control";
 import {
   Building2,
   KeyRound,
+  LifeBuoy,
   Network,
   Puzzle,
   Receipt,
@@ -101,5 +102,14 @@ export const CONTROL_MODULES: readonly ControlModuleEntry[] = [
     icon: Puzzle,
     permission: "ctl.extension.read",
     load: () => import("../modules/p08/ExtensionsPage"),
+  },
+  {
+    moduleId: "P09",
+    path: "support",
+    navKey: "p09.nav",
+    summaryKey: "p09.summary",
+    icon: LifeBuoy,
+    permission: "ctl.ticket.read",
+    load: () => import("../modules/p09/SupportPage"),
   },
 ];

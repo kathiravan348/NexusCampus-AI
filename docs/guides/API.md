@@ -271,4 +271,6 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 | POST | `/releases/:id/publish` | `ctl.release.manage` | body `{ notesReviewed? }`; draft only (`409`); AI-drafted notes without `notesReviewed: true` → `400`; signs and publishes (NEX-078) |
 | POST | `/rollouts/:id/start` | `ctl.release.manage` | pending ring of a published release whose earlier rings are done (else `409`); marks it done and moves its deployments to the release version (NEX-078) |
 
+| POST | `/tickets/:id/replies` | `ctl.ticket.reply` | body `{ body (1–5000), internal }` → `201 TicketReply`; closed ticket → `409`; assigns an unassigned ticket to the replier; a public reply sets `waiting_customer`, an internal note opens a new ticket (NEX-080) |
+
 Write routes are added by each Control screen task (NEX-072+).

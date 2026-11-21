@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079)).
+> State as of: 2026-11-21 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -130,6 +130,21 @@ Menu **Extensions** (super admin, release manager, support to read).
 - **Release checks** show how the package fares with upcoming releases: **Compatible**, **Works, needs attention**
   (with notes on what must change) or **Incompatible**. A check marked **AI-drafted check — a person must confirm
   it** was written by AI and is only advice until a release manager confirms it.
+
+### Support
+
+Menu **Support** (super admin, support, implementation, site reliability; partners read their customers' tickets).
+
+- The ticket list shows subject and number, account, priority (**P1** urgent to **P4** low), status (**New**,
+  **Open**, **Waiting for customer**, **Resolved**, **Closed**), **Respond by** with **SLA missed** when late, and who
+  it is **Assigned to**. Filter by **Status**. Below it, **SLA targets** per support tier (hours per priority;
+  **24/7** for enterprise).
+- Open a ticket to read the conversation. **Internal note** entries are only for our staff; **AI draft, checked by
+  staff** marks replies that began as an AI draft. A **Linked access request** shows the request the institution
+  approves or denies in its own app — we never decide our own access.
+- **Reply** (support staff): type and **Send**, or tick **Internal note (customer does not see it)**. Answering an
+  unassigned ticket assigns it to you; a reply to the customer sets **Waiting for customer**. Never paste learner,
+  family or staff records — ask for a scrubbed diagnostic bundle instead.
 
 ## Roles
 

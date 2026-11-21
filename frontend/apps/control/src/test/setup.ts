@@ -10,6 +10,15 @@ const nodeController = transferableAbortController();
 globalThis.AbortController = nodeController.constructor as typeof AbortController;
 globalThis.AbortSignal = nodeController.signal.constructor as typeof AbortSignal;
 
+// jsdom omits ResizeObserver, which Radix primitives (checkbox, switch) use for sizing.
+if (typeof globalThis.ResizeObserver === "undefined") {
+  globalThis.ResizeObserver = class ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  };
+}
+
 configure({ asyncUtilTimeout: 5000 });
 
 export const server = setupServer(...controlHandlers);

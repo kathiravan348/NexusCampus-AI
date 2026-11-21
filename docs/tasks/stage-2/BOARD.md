@@ -24,7 +24,7 @@
 | NEX-077 | P06 Deployment registry & fleet health | C | done | Claude | 071 |
 | NEX-078 | P07 Release management | C | done | Claude | 071 |
 | NEX-079 | P08 Customisation & extensions | C | done | Claude | 071 |
-| NEX-080 | P09 Support desk & SLAs | C | planned | — | 071 |
+| NEX-080 | P09 Support desk & SLAs | C | done | Claude | 071 |
 | NEX-081 | P10 Support access broker (with the M83 approval loop) | C | draft | — | 071 |
 | NEX-082 | P11 Usage & metering | C | draft | — | 071 |
 | NEX-083 | P12 Partners & resellers | C | draft | — | 071 |
