@@ -6,10 +6,12 @@ export const TIMING_BUDGETS_MS = {
   // Project starts (boot to ready)
   "dev:campus": 8_000,
   "preview:campus": 5_000,
+  "preview:control": 5_000,
   "dev:storybook": 30_000,
   "boot:campus": 3_000,
   // Builds
   "build:campus": 45_000,
+  "build:control": 45_000,
   "build:storybook": 120_000,
   "build:all": 180_000,
   // Checks and tests
@@ -24,8 +26,7 @@ export const TIMING_BUDGETS_MS = {
   "backend:start": 15_000,
   "backend:check": 180_000,
   "compose:up": 90_000,
-  // Reserved for surfaces that do not exist yet (Stage 2)
-  "dev:control": 8_000,
+  "dev:control": 8_000, // Nexus Control (NEX-071)
 } as const satisfies Record<string, number>;
 
 export type TimingKey = keyof typeof TIMING_BUDGETS_MS;
