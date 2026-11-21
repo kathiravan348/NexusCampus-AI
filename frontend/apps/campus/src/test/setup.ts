@@ -23,7 +23,8 @@ if (typeof globalThis.ResizeObserver === "undefined") {
 }
 
 // Lazy module screens plus several queries can take over 1 s on a loaded machine (full workspace run).
-configure({ asyncUtilTimeout: 5000 });
+// Lazy module screens plus several queries can take seconds under a full workspace run (NEX-093: 5 s flaked).
+configure({ asyncUtilTimeout: 10_000 });
 
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 // Riverside opens in Hindi and Apex in Tamil (D42). Tests check behaviour in English, like a user who picked

@@ -169,7 +169,7 @@ export function ImportExport({
               type="file"
               accept=".json,application/json"
               onChange={handleFileChange}
-              className="block w-full text-body-sm text-text-secondary file:me-3 file:rounded-md file:border file:border-border-strong file:bg-bg-surface file:px-3 file:py-1.5 file:font-sans file:text-body-sm file:font-medium file:text-text-primary hover:file:bg-bg-subtle"
+              className="block w-full text-body-sm text-text-secondary file:me-3 file:rounded-md file:border file:border-border-strong file:bg-bg-surface file:px-3 file:py-1.5 file:font-sans file:text-body-sm file:font-medium file:text-text-primary hover:file:bg-bg-raised"
             />
           </div>
 
@@ -211,7 +211,7 @@ export function ImportExport({
           {diff && (
             <section
               aria-labelledby="m04-diff-heading"
-              className="space-y-3 rounded-md border border-border-default bg-bg-subtle p-3"
+              className="space-y-3 rounded-md border border-border-default bg-bg-raised p-3"
             >
               <h3
                 id="m04-diff-heading"
@@ -234,13 +234,13 @@ export function ImportExport({
 
               {diff.added.length > 0 && (
                 <div className="space-y-1">
-                  <h4 className="text-caption font-semibold text-text-secondary">
+                  <h4 className="text-body-sm font-semibold text-text-secondary">
                     {t("m04.io.addedHeading")}
                   </h4>
                   <ul className="space-y-1 text-body-sm">
                     {diff.added.map((row) => (
                       <li key={row.key} className="flex flex-wrap items-baseline gap-2">
-                        <code className="font-mono text-caption text-text-primary">{row.key}</code>
+                        <code className="font-mono text-body-sm text-text-primary">{row.key}</code>
                         <span dir={textDir} className="text-success-text">
                           {row.after}
                         </span>
@@ -252,13 +252,13 @@ export function ImportExport({
 
               {diff.changed.length > 0 && (
                 <div className="space-y-1">
-                  <h4 className="text-caption font-semibold text-text-secondary">
+                  <h4 className="text-body-sm font-semibold text-text-secondary">
                     {t("m04.io.changedHeading")}
                   </h4>
                   <ul className="space-y-1 text-body-sm">
                     {diff.changed.map((row) => (
                       <li key={row.key} className="flex flex-wrap items-baseline gap-2">
-                        <code className="font-mono text-caption text-text-primary">{row.key}</code>
+                        <code className="font-mono text-body-sm text-text-primary">{row.key}</code>
                         <span dir={textDir} className="text-text-muted line-through">
                           {row.before}
                         </span>
@@ -273,13 +273,13 @@ export function ImportExport({
 
               {diff.rejected.length > 0 && (
                 <div className="space-y-1">
-                  <h4 className="text-caption font-semibold text-danger-text">
+                  <h4 className="text-body-sm font-semibold text-danger-text">
                     {t("m04.io.rejectedHeading")}
                   </h4>
                   <ul className="space-y-1 text-body-sm">
                     {diff.rejected.map((row) => (
                       <li key={row.key} className="flex flex-wrap items-baseline gap-2">
-                        <code className="font-mono text-caption text-text-primary">{row.key}</code>
+                        <code className="font-mono text-body-sm text-text-primary">{row.key}</code>
                         <span className="text-danger-text">{t(REASON_KEYS[row.reason])}</span>
                       </li>
                     ))}

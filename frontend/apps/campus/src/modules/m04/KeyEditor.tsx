@@ -192,9 +192,9 @@ export function KeyEditor({
             >
               {t("m04.editor.layersHeading")}
             </h3>
-            <p className="text-caption text-text-muted">{t("m04.editor.layersHint")}</p>
+            <p className="text-body-sm text-text-muted">{t("m04.editor.layersHint")}</p>
           </div>
-          <dl className="divide-y divide-border-subtle rounded-md border border-border-default bg-bg-subtle">
+          <dl className="divide-y divide-border-default rounded-md border border-border-default bg-bg-raised">
             {MESSAGE_LAYERS.map((layer) => {
               const value = explanation.layers[layer];
               const isWinner = explanation.winner === layer;
@@ -236,7 +236,7 @@ export function KeyEditor({
 
         <section
           aria-labelledby="m04-preview-heading"
-          className="space-y-1.5 rounded-md border border-border-default bg-bg-subtle p-3"
+          className="space-y-1.5 rounded-md border border-border-default bg-bg-raised p-3"
         >
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3
@@ -246,7 +246,7 @@ export function KeyEditor({
               {t("m04.editor.previewHeading")}
             </h3>
             {preview.ok && preview.placeholders.length > 0 && (
-              <span className="text-caption text-text-muted">
+              <span className="text-body-sm text-text-muted">
                 {t("m04.editor.previewSampleNote")}
               </span>
             )}
