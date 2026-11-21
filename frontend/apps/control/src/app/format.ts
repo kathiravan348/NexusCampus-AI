@@ -11,6 +11,14 @@ export function useControlFormat() {
       date: (value: string) => formatDate(value, { locale: intl, dateStyle: "medium" }),
       number: (value: number) => formatNumber(value, intl),
       money: (minor: number, currency: string) => formatMoney(minor, currency, intl),
+      /** Country name in the staff member's language (CLDR data, not app text). */
+      country: (code: string) => {
+        try {
+          return new Intl.DisplayNames([intl], { type: "region" }).of(code) ?? code;
+        } catch {
+          return code;
+        }
+      },
     };
   }, [locale]);
 }
