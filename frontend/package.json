@@ -22,7 +22,9 @@
     "timings:measure": "node scripts/measure-timings.ts",
     "review:start": "pnpm --filter campus run review:start",
     "e2e": "node scripts/time-run.ts e2e -- playwright test -c e2e/playwright.config.ts",
-    "e2e:real": "playwright test -c e2e/real/playwright.config.ts"
+    "e2e:real": "playwright test -c e2e/real/playwright.config.ts",
+    "manual": "playwright test -c e2e/manual/playwright.config.ts && node scripts/build-manual.ts",
+    "manual:build": "node scripts/build-manual.ts"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.0",

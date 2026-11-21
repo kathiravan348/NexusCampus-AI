@@ -46,3 +46,4 @@ storybook-static/
 
 # Self-hosted install: Vault unseal key and root token (NEX-064)
 deploy/compose/.secrets/
+docs/manual/.parts/
