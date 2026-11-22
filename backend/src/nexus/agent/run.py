@@ -5,6 +5,8 @@
   backup                          encrypted backup of every table (NEX-112)
   verify-backup FILE              read the whole backup through its checks (no restore)
   restore FILE --into URL         load a backup into an EMPTY database (schema built first)
+  import-key                      ensure Transit `tenant-import` RSA-4096 key exists and print its public PEM (NEX-106)
+  export-tenant ID --to PEM       export one tenant encrypted for the destination's import PEM (NEX-106)
   diagnostics [--ticket REF]      support bundle with personal data removed, waiting for an admin's review
 
 Prints counts, sizes and versions — never people.
@@ -24,7 +26,7 @@ from sqlalchemy import create_engine
 
 from nexus.agent.backup import backup_header, restore_backup, verify_backup
 from nexus.agent.health import report_skip_reason, send_report
-from nexus.agent.jobs import run_backup, run_diagnostics
+from nexus.agent.jobs import ensure_import_key, run_backup, run_diagnostics, run_tenant_export
 from nexus.agent.licence import check_licence, load_keys
 from nexus.agent.online import OnlineCheckResult, check_online
 from nexus.agent.state import RunResult, run_once
@@ -119,6 +121,7 @@ def main() -> None:
     p.add_argument("file", nargs="?")
     p.add_argument("--every", type=int, default=3600)
     p.add_argument("--into")
+    p.add_argument("--to")
     p.add_argument("--ticket")
     args = p.parse_args()
     settings = get_settings()
@@ -137,6 +140,15 @@ def main() -> None:
             print(f"backup verified: {verify_backup(src, _unwrap(settings, path))} plaintext bytes, every chunk intact")
     elif args.mode == "restore" and args.file and args.into:
         _restore(settings, Path(args.file), args.into)
+    elif args.mode == "import-key":
+        pem = ensure_import_key(settings)
+        print(pem, end="" if pem.endswith("\n") else "\n")
+    elif args.mode == "export-tenant" and args.file and args.to:
+        done = run_tenant_export(settings, args.file, Path(args.to))
+        print(
+            f"tenant export {done['id']} ({done['tenantId']}): "
+            f"{done['tables']} tables, {done['rows']} rows, {done['bytes']} bytes, encrypted → {done['file']}"
+        )
     elif args.mode == "diagnostics":
         done = run_diagnostics(settings, args.ticket)
         print(f"diagnostics {done['id']}: {done['bytes']} bytes, waiting for an admin's review → {done['file']}")
