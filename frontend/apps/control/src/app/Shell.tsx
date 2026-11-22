@@ -1,7 +1,6 @@
 import { brand } from "@nexus/brand";
 import { isPseudoLocale, SOURCE_LOCALE } from "@nexus/i18n";
 import { useControlText } from "@nexus/i18n/control";
-import { DATA_MODE } from "@nexus/services";
 import { useControlServices, useStaffCan, useStaffSession } from "@nexus/services/control";
 import { AppShell, DemoBanner, IconButton, NavItem, Select } from "@nexus/ui-core";
 import { House, LogOut, Moon, ShieldCheck, Sun } from "lucide-react";
@@ -66,7 +65,7 @@ export function Shell({ modules }: { readonly modules: readonly ControlModuleEnt
   const t = useControlText();
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { signOut } = useControlServices();
+  const { endSession, mode: dataMode } = useControlServices();
   const { mode, setMode } = useControlRuntime();
   const session = useStaffSession();
   const can = useStaffCan();
@@ -96,7 +95,7 @@ export function Shell({ modules }: { readonly modules: readonly ControlModuleEnt
           </span>
         )
       }
-      banner={DATA_MODE === "mock" ? <DemoBanner /> : undefined}
+      banner={dataMode === "mock" ? <DemoBanner /> : undefined}
       navFooter={<LocaleSwitch />}
       actions={
         <>
@@ -107,15 +106,14 @@ export function Shell({ modules }: { readonly modules: readonly ControlModuleEnt
             size="sm"
             onClick={() => setMode(dark ? "light" : "dark")}
           />
-          {DATA_MODE === "mock" && <StaffSwitch />}
+          {dataMode === "mock" && <StaffSwitch />}
           <IconButton
             icon={<LogOut className="h-4 w-4 rtl:-scale-x-100" />}
             aria-label={t("common.shell.signOut")}
             variant="ghost"
             size="sm"
             onClick={() => {
-              signOut();
-              navigate("/sign-in", { replace: true });
+              void endSession().then(() => navigate("/sign-in", { replace: true }));
             }}
           />
         </>

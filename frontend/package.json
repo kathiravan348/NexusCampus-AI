@@ -6,6 +6,7 @@
     "dev": "pnpm --filter campus dev",
     "dev:real": "pnpm --filter campus dev:real",
     "dev:control": "pnpm --filter control dev",
+    "dev:control:real": "pnpm --filter control dev:real",
     "storybook": "pnpm --filter @nexus/ui-storybook dev",
     "build": "node scripts/time-run.ts build:all -- pnpm -r run build",
     "typecheck": "pnpm -r run typecheck",

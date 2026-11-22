@@ -19,8 +19,10 @@ recorded in its own activity log.
 - **Real installations:** sign in with your work email and password, then the 6-digit **one-time code** from an
   authenticator app on your phone (any TOTP app). The first time, the sign-in page shows a QR code to set the app up.
   Every sign-in asks for a new code — a password alone never gets you in. Your session lasts at most 60 minutes.
-  The green shield next to your name means **Multi-factor login verified**. (The sign-in service is ready; the
-  screens switch to it in the next build step.)
+  The green shield next to your name means **Multi-factor login verified**. Start with **Sign in with your work
+  account**; **Sign out** ends your session in Nexus Control and in the sign-in service.
+- **For developers:** `uv run --project backend nexus-control-dev` (Control backend, port 8100) and
+  `pnpm --dir frontend dev:control:real` (the app on port 3200, talking to it).
 - **Sign out** with the arrow button at the top. Closing the browser tab also signs you out; Nexus Control keeps no
   data in the browser.
 
