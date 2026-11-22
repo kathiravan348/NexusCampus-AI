@@ -287,7 +287,10 @@ counts, never people.
 |---|---|---|
 | GET | `/api/v1/install/status` | `InstallStatus`: version, channel, licence summary (verified offline; learners and campuses **counted**), air-gapped, health reports on / off |
 | GET | `/api/v1/install/update` | `{ offer }`: the newest verified offline bundle in `inbox/` that is newer and can upgrade from this version, or `null` |
-| GET | `/api/v1/install/backups`, `/api/v1/install/diagnostics` | empty pages until NEX-112 |
+| GET | `/api/v1/install/backups` | `BackupJob` page, newest first: every backup is encrypted (NEX-112) |
+| GET | `/api/v1/install/diagnostics` | `DiagnosticBundle` page: support bundles with personal data removed |
+| GET | `/api/v1/install/diagnostics/:id/content` | `{ id, content }` — exactly what would be sent, to read before approving |
+| POST | `/api/v1/install/diagnostics/:id/approve`, `…/discard` | only from `ready_for_review` (`409` otherwise); records the reviewing admin. Nothing is sent by this (sending: NEX-113) |
 
 ## Nexus Control — real backend (Stage 2 build, NEX-097, NEX-100, NEX-101)
 

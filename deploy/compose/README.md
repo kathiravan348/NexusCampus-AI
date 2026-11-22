@@ -86,6 +86,16 @@ that can upgrade straight to this one.
 
 ## Backup and restore
 
+**Encrypted backups by the install agent (recommended).** `nexus-agent backup` streams every table into one file
+encrypted with AES-256-GCM, with a new key from your own OpenBao for every backup (only the wrapped key is in the file;
+without your OpenBao it cannot be read). `nexus-agent verify-backup FILE` checks every byte without restoring;
+`nexus-agent restore FILE --into <URL of an empty database>` builds the schema and loads it. Copy the `.nxbk` files
+and an OpenBao backup to another place — both are needed to restore. **Support diagnostics:** `nexus-agent
+diagnostics --ticket TCK-…` writes a bundle with e-mail addresses, phone numbers, IP addresses and secrets removed;
+an administrator reads it under **Install & updates** and approves or discards it. Nothing leaves without approval.
+
+### Volume backups
+
 ```bash
 cd deploy/compose
 # PostgreSQL (application data and Keycloak):

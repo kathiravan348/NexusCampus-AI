@@ -169,4 +169,4 @@ async def test_a_manifest_signed_before_a_field_was_added_still_verifies(tmp_pat
     check = verify_bundle(out, keys)
     assert check.valid, check.problems
     assert check.release is not None and check.release.manifest.security_fix is False
-    assert base64.b64decode(document["signature"])  # a real signature, not a placeholder
+    assert base64.b64decode(str(document["signature"]))  # a real signature, not a placeholder
