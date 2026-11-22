@@ -61,6 +61,13 @@ def _iso_start(day: date) -> str:
     return f"{day.isoformat()}T00:00:00Z"
 
 
+def _billing_start(sub: Any) -> date:
+    """When Lago starts billing: a trial is free, so a trialing subscription starts at its trial end."""
+    if str(sub["status"]) == "trialing" and sub["trial_ends_at"] is not None:
+        return date.fromisoformat(str(sub["trial_ends_at"]))
+    return date.fromisoformat(str(sub["current_period_start"]))
+
+
 def _unix_seconds(instant: datetime) -> int:
     return int(instant.timestamp())
 
@@ -114,7 +121,8 @@ async def sync_to_lago(
             currency = rp.currency
             amount_minor = rp.amount_minor
             prices_by_country[country] = (currency, amount_minor)
-            # Monthly SaaS plans also support annual subscriptions (12x monthly per-learner price, D52).
+            # Monthly SaaS plans also serve annual subscriptions at 12 x the monthly per-learner price, exactly as the
+            # frozen demo invoices bill them (e.g. `inv-rv-26`: 1,460 learners x 12 months at the monthly price).
             variants: list[tuple[Interval, int]] = (
                 [("monthly", amount_minor), ("yearly", amount_minor * 12)]
                 if unit == "per_learner_month"
@@ -219,7 +227,7 @@ async def sync_to_lago(
                 account_id,
                 sub_id,
                 lago_code,
-                started_at=_iso_start(sub["current_period_start"]),
+                started_at=_iso_start(_billing_start(sub)),
             )
         except BillingUnavailable as exc:
             raise BillingUnavailable(f"subscriptions ({sub_id}): {exc}") from exc

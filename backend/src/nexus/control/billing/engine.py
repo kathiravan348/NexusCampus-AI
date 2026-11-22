@@ -82,6 +82,8 @@ class FakeBillingEngine:
     plans: dict[str, BillingPlan] = field(default_factory=dict)
     subscriptions: dict[str, tuple[str, str]] = field(default_factory=dict)
     events: dict[str, UsageEvent] = field(default_factory=dict)
+    #: Subscription id → the start date sent (`subscription_at`), to check trials are not billed.
+    started_at: dict[str, str | None] = field(default_factory=dict)
     metric: bool = False
 
     async def ensure_learner_metric(self) -> None:
@@ -99,6 +101,7 @@ class FakeBillingEngine:
         if account_id not in self.customers or plan_code not in self.plans:
             raise BillingUnavailable("unknown customer or plan")
         self.subscriptions[subscription_id] = (account_id, plan_code)
+        self.started_at[subscription_id] = started_at
 
     async def record_usage(self, event: UsageEvent) -> None:
         self.events.setdefault(event.transaction_id, event)

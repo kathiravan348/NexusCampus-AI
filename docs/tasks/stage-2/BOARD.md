@@ -62,4 +62,4 @@
 | NEX-115 | Control: P07 releases and rollouts on real data, and the agent's online update check (agent token) | D | done | Gemini | 113 |
 | NEX-116 | Control contract parity: Pydantic ⇄ Zod for every real Control response (as NEX-059) | D | done | Gemini | 115 |
 | NEX-117 | M84 online update check, signed end to end: Control stores the signed manifest, the agent verifies it | D | done | Gemini | 115, 116 |
-| NEX-118 | Lago sync part 1: per-learner plans, customers, subscriptions and learner usage → Lago (one way, idempotent) | D | ready-for-review | Gemini | 116 |
+| NEX-118 | Lago sync part 1: per-learner plans, customers, subscriptions and learner usage → Lago (one way, idempotent) | D | done | Gemini | 116 |

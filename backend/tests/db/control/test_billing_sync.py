@@ -64,6 +64,10 @@ async def test_sync_seeded_fixtures_is_idempotent_and_metadata_only(control_db: 
     assert fake.subscriptions["sub-ax"] == ("acc-ax", "standard-inr-yearly")
     assert fake.subscriptions["sub-hm"] == ("acc-hm", "starter-sgd-monthly")
     assert fake.subscriptions["sub-sr"] == ("acc-sr", "standard-inr-monthly")
+    # A trial is free: trialing subscriptions start billing in Lago at their trial end, others at the period start.
+    assert fake.started_at["sub-hm"] == "2026-09-19T00:00:00Z"
+    assert fake.started_at["sub-sr"] == "2026-10-13T00:00:00Z"
+    assert fake.started_at["sub-rv"] == "2026-04-01T00:00:00Z"
 
     # 5 SaaS learner usage records synced (use-ct-l is self-hosted with no synced tenant subscription → skipped).
     assert set(first.usage_events) == {"use-ls-l", "use-rv-l", "use-nb-l", "use-ax-l", "use-hm-l"}
