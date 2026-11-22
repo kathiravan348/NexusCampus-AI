@@ -157,11 +157,16 @@ async def test_agent_check_in_flow_rate_limit_and_token_hashing(
     engine.dispose()
     healthy = await api.post(
         f"{API}/agent/health",
-        json=sample_report(uptimePct=99, errorRatePct=1.99, p95LatencyMs=1499, diskUsedPct=89.9),
+        json=sample_report(
+            at="2099-01-01T00:00:00Z", uptimePct=99, errorRatePct=1.99, p95LatencyMs=1499, diskUsedPct=89.9
+        ),
         headers={"Authorization": f"Bearer {new_token}"},
     )
     assert healthy.status_code == 204
-    assert (await get(api, ADMIN, "/deployments/dep-ct")).json()["health"] == "healthy"
+    after = (await get(api, ADMIN, "/deployments/dep-ct")).json()
+    assert after["health"] == "healthy"
+    # An install clock in the future is capped at the server's time.
+    assert (await get(api, ADMIN, "/health-signals/dep-ct")).json()["at"] == after["lastCheckInAt"]
 
 
 @pytest.mark.anyio

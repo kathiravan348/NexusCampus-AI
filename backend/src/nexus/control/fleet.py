@@ -288,7 +288,8 @@ async def agent_health_check_in(request: Request) -> Response:
 
         signal_row: dict[str, Any] = {
             "deployment_id": deployment_id,
-            "at": datetime.fromisoformat(report.at.replace("Z", "+00:00")),
+            # A wrong install clock must not put a check-in in the future: never later than the server's time.
+            "at": min(datetime.fromisoformat(report.at.replace("Z", "+00:00")), now),
             "version": report.version,
             "uptime_pct": report.uptime_pct,
             "error_rate_pct": report.error_rate_pct,
