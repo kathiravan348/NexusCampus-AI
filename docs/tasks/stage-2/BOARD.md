@@ -60,4 +60,4 @@
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |
 | NEX-114 | M84: install agent sends PII-free health reports to Control (off when telemetry off or air-gapped) | D | done | Gemini | 113 |
 | NEX-115 | Control: P07 releases and rollouts on real data, and the agent's online update check (agent token) | D | done | Gemini | 113 |
-| NEX-116 | Control contract parity: Pydantic ⇄ Zod for every real Control response (as NEX-059) | D | planned | — | 115 |
+| NEX-116 | Control contract parity: Pydantic ⇄ Zod for every real Control response (as NEX-059) | D | ready-for-review | Gemini | 115 |

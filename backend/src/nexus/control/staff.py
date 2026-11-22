@@ -7,7 +7,7 @@ institution data (V-1, V-7).
 from datetime import UTC, datetime, timedelta
 from typing import Annotated, Literal, Protocol
 
-from pydantic import BaseModel, ConfigDict, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 from pydantic.alias_generators import to_camel
 from sqlalchemy import ARRAY, Boolean, Column, DateTime, MetaData, String, Table, Text, func, select, text, update
 from sqlalchemy.ext.asyncio import AsyncEngine
@@ -47,27 +47,44 @@ StaffRole = Literal[
 ]
 Permission = Annotated[str, StringConstraints(pattern=r"^ctl\.[a-z][a-zA-Z]*\.[a-z][a-zA-Z]*$")]
 
+# Shared Control contract scalar types matching `frontend/packages/contracts/src/{common,control/shared}.ts` (NEX-116).
+Id = Annotated[str, StringConstraints(min_length=1, max_length=128)]
+Name = Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=200)]
+Email = Annotated[str, StringConstraints(min_length=3, max_length=254, pattern=r"^[^@\s]+@[^@\s]+\.[^@\s]+$")]
+PhoneE164 = Annotated[str, StringConstraints(pattern=r"^\+[1-9]\d{6,14}$")]
+IsoDate = Annotated[str, StringConstraints(pattern=r"^\d{4}-\d{2}-\d{2}$")]
+UtcDateTime = Annotated[str, StringConstraints(pattern=r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?Z$")]
+CountryCode = Annotated[str, StringConstraints(pattern=r"^[A-Z]{2}$")]
+CurrencyCode = Annotated[str, StringConstraints(pattern=r"^[A-Z]{3}$")]
+Region = Literal["in", "eu", "us", "me", "apac"]
+InstitutionType = Literal["ey", "k12", "he", "voc", "tp", "sk", "onl", "grp"]
+ModuleId = Annotated[str, StringConstraints(pattern=r"^[MP](0[1-9]|[1-9]\d)$")]
+Semver = Annotated[str, StringConstraints(pattern=r"^\d+\.\d+\.\d+(-[0-9A-Za-z.-]+)?$")]
+ControlCode = Annotated[str, StringConstraints(pattern=r"^[a-z][a-z0-9]*(-[a-z0-9]+)*$")]
+DocumentNumber = Annotated[str, StringConstraints(pattern=r"^[A-Z]{2,5}-\d{4}-\d{3,6}$")]
+Sha256Hex = Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{64}$")]
+
 
 class _Camel(BaseModel):
     model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True, extra="forbid", frozen=True)
 
 
 class StaffUser(_Camel):
-    id: str
-    display_name: str
-    work_email: str
-    roles: list[StaffRole]
-    partner_id: str | None
+    id: Id
+    display_name: Name
+    work_email: Email
+    roles: Annotated[list[StaffRole], Field(min_length=1)]
+    partner_id: Id | None
     mfa_enrolled: bool
     active: bool
-    last_sign_in_at: str | None
+    last_sign_in_at: UtcDateTime | None
 
 
 class StaffSession(_Camel):
     staff: StaffUser
     permissions: list[Permission]
-    mfa_verified: Literal[True] = True
-    expires_at: str
+    mfa_verified: Literal[True]
+    expires_at: UtcDateTime
 
 
 def utc_text(value: datetime) -> str:
@@ -112,7 +129,7 @@ class DbStaffStore:
             last_sign_in_at=utc_text(last) if last is not None else None,
         )
         expires = utc_text(datetime.now(UTC) + timedelta(minutes=minutes))
-        return StaffSession(staff=staff, permissions=permissions, expires_at=expires)
+        return StaffSession(staff=staff, permissions=permissions, mfa_verified=True, expires_at=expires)
 
     async def id_by_email(self, email: str) -> str | None:
         async with self._engine.connect() as conn:

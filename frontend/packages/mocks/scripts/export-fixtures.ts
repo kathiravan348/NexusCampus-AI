@@ -35,6 +35,11 @@ export const CONTROL_PATH = path.resolve(
 
 /** Contract parity samples with Zod's verdicts for the backend models (NEX-059). */
 export const PARITY_PATH = path.resolve(here, "../../../../backend/tests/parity/samples.json");
+/** Control contract parity samples with Zod's verdicts (NEX-116). */
+export const CONTROL_PARITY_PATH = path.resolve(
+  here,
+  "../../../../backend/tests/parity/control_samples.json",
+);
 
 const server = await createServer({
   root: path.resolve(here, ".."),
@@ -70,6 +75,11 @@ try {
   };
   writeFileSync(CONTROL_PATH, control.controlFixturesJson(), "utf8");
   console.log(`wrote ${path.relative(process.cwd(), CONTROL_PATH)}`);
+  const controlParity = (await server.ssrLoadModule("/src/control/parity.ts")) as {
+    controlParitySamplesJson: () => string;
+  };
+  writeFileSync(CONTROL_PARITY_PATH, controlParity.controlParitySamplesJson(), "utf8");
+  console.log(`wrote ${path.relative(process.cwd(), CONTROL_PARITY_PATH)}`);
 } finally {
   await server.close();
 }

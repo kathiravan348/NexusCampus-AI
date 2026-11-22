@@ -34,7 +34,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from nexus.control.accounts import accounts
 from nexus.control.resources import CamelModel, Resource, engine_of, mount
-from nexus.control.staff import metadata
+from nexus.control.staff import Id, Name, Region, Semver, UtcDateTime, metadata
 from nexus.core.errors import ApiError, ApiErrorDetail
 
 ID = 64
@@ -105,31 +105,31 @@ deployment_agent_tokens = Table(
 
 
 class Deployment(CamelModel):
-    id: str
-    name: str
+    id: Id
+    name: Name
     kind: Literal["saas_shared_cell", "saas_dedicated_cell", "self_hosted", "edge"]
-    account_id: str | None
-    region: Literal["in", "eu", "us", "me", "apac"]
-    version: str
+    account_id: Id | None
+    region: Region
+    version: Semver
     channel: Literal["stable", "lts", "preview"]
     health: Literal["healthy", "degraded", "down", "unknown"]
-    last_check_in_at: str | None
+    last_check_in_at: UtcDateTime | None
     telemetry_enabled: bool
     air_gapped: bool
-    extension_ids: list[str]
-    tenant_count: int
+    extension_ids: list[Id]
+    tenant_count: Annotated[int, Field(ge=0)]
 
 
 class HealthSignal(CamelModel):
-    deployment_id: str
-    at: str
-    version: str
-    uptime_pct: float
-    error_rate_pct: float
-    p95_latency_ms: int
-    queue_depth: int
-    disk_used_pct: float
-    active_users: int
+    deployment_id: Id
+    at: UtcDateTime
+    version: Semver
+    uptime_pct: Annotated[float, Field(ge=0, le=100)]
+    error_rate_pct: Annotated[float, Field(ge=0, le=100)]
+    p95_latency_ms: Annotated[int, Field(ge=0)]
+    queue_depth: Annotated[int, Field(ge=0)]
+    disk_used_pct: Annotated[float, Field(ge=0, le=100)]
+    active_users: Annotated[int, Field(ge=0)]
 
 
 class HealthReport(BaseModel):

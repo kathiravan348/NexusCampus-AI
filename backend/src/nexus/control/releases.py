@@ -10,6 +10,7 @@ import time
 from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, Request
+from pydantic import Field, StringConstraints
 from sqlalchemy import (
     ARRAY,
     Boolean,
@@ -31,7 +32,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 
 from nexus.control.fleet import AgentDeployment, agent_deployment
 from nexus.control.resources import CamelModel, Resource, engine_of, mount
-from nexus.control.staff import metadata
+from nexus.control.staff import Id, Semver, UtcDateTime, metadata
 from nexus.core.errors import ApiError
 from nexus.releases.versions import VersionKey, version_key
 
@@ -82,25 +83,25 @@ rollouts = Table(
 
 
 class Release(CamelModel):
-    id: str
-    version: str
+    id: Id
+    version: Semver
     channel: Literal["stable", "lts", "preview"]
     status: Literal["draft", "published", "withdrawn"]
-    published_at: str | None
+    published_at: UtcDateTime | None
     signed: bool
     offline_bundle: bool
-    min_upgrade_from: str
-    migration_notes: str
+    min_upgrade_from: Semver
+    migration_notes: Annotated[str, StringConstraints(max_length=5000)]
     notes_ai_drafted: bool
 
 
 class Rollout(CamelModel):
-    id: str
-    release_id: str
-    ring: int
-    deployment_ids: list[str]
+    id: Id
+    release_id: Id
+    ring: Annotated[int, Field(ge=0, le=3)]
+    deployment_ids: Annotated[list[Id], Field(min_length=1)]
     status: Literal["pending", "running", "done", "failed", "rolled_back"]
-    started_at: str | None
+    started_at: UtcDateTime | None
 
 
 class AgentUpdateOffer(CamelModel):

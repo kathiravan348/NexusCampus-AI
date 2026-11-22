@@ -90,6 +90,8 @@ export const FRONTEND_ONLY = ["TerminologyPack", "Page", "PageQuery"] as const;
 
 type Json = Record<string, unknown>;
 
+export type ParityContractEntry = readonly [string, z.ZodType, readonly unknown[]];
+
 function mutations(row: Json): Json[] {
   const out: Json[] = [{ ...row, unexpectedField: 1 }];
   for (const [key, value] of Object.entries(row)) {
@@ -106,10 +108,10 @@ function mutations(row: Json): Json[] {
 
 /**
  * Valid demo rows (up to 3) and generated invalid variants of the first, each with Zod's verdict: `valid`, and
- * `shapeValid` = no issue other than a cross-field rule (`custom`). Written to `backend/tests/parity/samples.json`.
+ * `shapeValid` = no issue other than a cross-field rule (`custom`).
  */
-export function paritySamples() {
-  return CONTRACTS.map(([name, schema, rows]) => {
+export function buildParitySamples(contracts: readonly ParityContractEntry[]) {
+  return contracts.map(([name, schema, rows]) => {
     const first = rows[0] as Json;
     const samples = [...rows.slice(0, 3), ...mutations(first)].map((sample) => {
       const result = schema.safeParse(sample);
@@ -118,6 +120,11 @@ export function paritySamples() {
     });
     return { contract: name, samples };
   });
+}
+
+/** Written to `backend/tests/parity/samples.json` (NEX-059). */
+export function paritySamples() {
+  return buildParitySamples(CONTRACTS);
 }
 
 export function paritySamplesJson(): string {

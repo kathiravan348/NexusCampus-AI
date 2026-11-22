@@ -10,7 +10,7 @@ from datetime import UTC, datetime
 from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import BaseModel, ConfigDict, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints
 from sqlalchemy import (
     ARRAY,
     BigInteger,
@@ -32,7 +32,19 @@ from sqlalchemy.dialects.postgresql import JSONB
 from nexus.control.accounts import accounts
 from nexus.control.resources import CamelModel, Resource, engine_of, get_one, mount
 from nexus.control.rows import from_db
-from nexus.control.staff import metadata, staff_users
+from nexus.control.staff import (
+    ControlCode,
+    CountryCode,
+    CurrencyCode,
+    DocumentNumber,
+    Id,
+    IsoDate,
+    ModuleId,
+    Name,
+    UtcDateTime,
+    metadata,
+    staff_users,
+)
 from nexus.control.viewer import Viewer, require
 from nexus.core.errors import ApiError, ApiErrorDetail
 
@@ -165,125 +177,125 @@ usage_records = Table(
 
 
 class RegionalPrice(CamelModel):
-    country: str
-    currency: str
-    amount_minor: int
-    tax_rate_pct: float
+    country: CountryCode
+    currency: CurrencyCode
+    amount_minor: Annotated[int, Field(ge=0)]
+    tax_rate_pct: Annotated[float, Field(ge=0, le=50)]
 
 
 class CatalogueItem(CamelModel):
-    id: str
-    code: str
-    name: str
+    id: Id
+    code: ControlCode
+    name: Name
     kind: Literal["saas_plan", "addon", "ai_credit_pack", "licence_edition", "support"]
-    modules: list[str]
+    modules: list[ModuleId]
     unit: Literal["per_learner_month", "per_learner_year", "flat_month", "flat_year", "per_pack"]
-    credits: int | None
-    prices: list[RegionalPrice]
+    credits: Annotated[int, Field(ge=1)] | None
+    prices: Annotated[list[RegionalPrice], Field(min_length=1)]
     active: bool
 
 
 class QuoteLine(CamelModel):
-    item_id: str
-    quantity: int
-    unit_amount_minor: int
-    discount_pct: float
-    amount_minor: int
+    item_id: Id
+    quantity: Annotated[int, Field(ge=1)]
+    unit_amount_minor: Annotated[int, Field(ge=0)]
+    discount_pct: Annotated[float, Field(ge=0, le=100)]
+    amount_minor: Annotated[int, Field(ge=0)]
 
 
 class Quote(CamelModel):
-    id: str
-    account_id: str
-    number: str
+    id: Id
+    account_id: Id
+    number: DocumentNumber
     status: Literal["draft", "sent", "accepted", "expired"]
-    currency: str
-    lines: list[QuoteLine]
-    subtotal_minor: int
-    tax_minor: int
-    total_minor: int
-    valid_until: str
+    currency: CurrencyCode
+    lines: Annotated[list[QuoteLine], Field(min_length=1)]
+    subtotal_minor: Annotated[int, Field(ge=0)]
+    tax_minor: Annotated[int, Field(ge=0)]
+    total_minor: Annotated[int, Field(ge=0)]
+    valid_until: IsoDate
     ai_drafted: bool
-    created_by_staff_id: str
-    created_at: str
+    created_by_staff_id: Id
+    created_at: UtcDateTime
 
 
 class Subscription(CamelModel):
-    id: str
-    account_id: str
-    tenant_id: str
-    plan_item_id: str
-    addon_item_ids: list[str]
+    id: Id
+    account_id: Id
+    tenant_id: Id
+    plan_item_id: Id
+    addon_item_ids: list[Id]
     status: Literal["trialing", "active", "past_due", "cancelled"]
     period: Literal["monthly", "annual"]
-    learners: int
-    current_period_start: str
-    current_period_end: str
-    trial_ends_at: str | None
+    learners: Annotated[int, Field(ge=0)]
+    current_period_start: IsoDate
+    current_period_end: IsoDate
+    trial_ends_at: IsoDate | None
 
 
 class InvoiceLine(CamelModel):
-    description: str
-    item_id: str | None
-    quantity: int
+    description: Name
+    item_id: Id | None
+    quantity: Annotated[int, Field(ge=1)]
     amount_minor: int
 
 
 class Invoice(CamelModel):
-    id: str
-    account_id: str
-    number: str
+    id: Id
+    account_id: Id
+    number: DocumentNumber
     status: Literal["draft", "open", "paid", "overdue", "void"]
-    issue_date: str
-    due_date: str
-    currency: str
+    issue_date: IsoDate
+    due_date: IsoDate
+    currency: CurrencyCode
     tax_scheme: Literal["gst", "vat", "none"]
-    lines: list[InvoiceLine]
+    lines: Annotated[list[InvoiceLine], Field(min_length=1)]
     subtotal_minor: int
-    tax_minor: int
+    tax_minor: Annotated[int, Field(ge=0)]
     total_minor: int
-    paid_at: str | None
+    paid_at: UtcDateTime | None
 
 
 class Payment(CamelModel):
-    id: str
-    invoice_id: str
-    amount_minor: int
-    currency: str
+    id: Id
+    invoice_id: Id
+    amount_minor: Annotated[int, Field(ge=1)]
+    currency: CurrencyCode
     method: Literal["card", "upi", "netbanking", "bank_transfer"]
     gateway: Literal["razorpay", "stripe", "manual"]
-    gateway_ref: str | None
+    gateway_ref: Annotated[str, StringConstraints(min_length=1, max_length=128)] | None
     status: Literal["pending", "succeeded", "failed", "refunded"]
-    created_at: str
+    created_at: UtcDateTime
 
 
 class CreditNote(CamelModel):
-    id: str
-    invoice_id: str
-    number: str
-    amount_minor: int
-    currency: str
-    reason: str
-    issued_at: str
+    id: Id
+    invoice_id: Id
+    number: DocumentNumber
+    amount_minor: Annotated[int, Field(ge=1)]
+    currency: CurrencyCode
+    reason: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=500)]
+    issued_at: UtcDateTime
 
 
 class DunningState(CamelModel):
-    account_id: str
+    account_id: Id
     stage: Literal["none", "reminder_1", "reminder_2", "final_notice", "read_only"]
-    overdue_minor: int
-    currency: str
-    next_step_at: str | None
+    overdue_minor: Annotated[int, Field(ge=0)]
+    currency: CurrencyCode
+    next_step_at: UtcDateTime | None
 
 
 class UsageRecord(CamelModel):
-    id: str
-    account_id: str
-    deployment_id: str | None
-    tenant_id: str | None
+    id: Id
+    account_id: Id
+    deployment_id: Id | None
+    tenant_id: Id | None
     metric: Literal["learners", "staff", "storage_gb", "ai_credits", "messages"]
-    period_start: str
-    period_end: str
-    quantity: int
-    cap: int | None
+    period_start: UtcDateTime
+    period_end: UtcDateTime
+    quantity: Annotated[int, Field(ge=0)]
+    cap: Annotated[int, Field(ge=0)] | None
 
 
 #: Seed order (foreign keys): fixture key, table, model, primary key column.
