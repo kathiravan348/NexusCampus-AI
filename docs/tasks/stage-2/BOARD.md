@@ -51,10 +51,10 @@
 | NEX-104 | Release signing: signed images and offline update bundles (P07, DM-9) | D | done | Claude | 095 |
 | NEX-105 | M84 install agent core: offline licence check, update check from verified bundles, install status, Install page on real data | D | done | Claude | 103, 104 |
 | NEX-106 | Tenant export (DM-8, D58): one tenant's rows, encrypted so only the destination install can open the file | D | done | Gemini | 112 |
-| NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 111 |
+| NEX-107 | Payments (D62): Razorpay payment links for Indian invoices; signed webhook marks them paid | D | planned | — | 136 |
 | NEX-108 | Packaging: Nexus Control as a Compose stack (control backend, staff realm, billing), images we already have | D | done | Gemini | 111 |
 | NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–127, 130–136 (parity in NEX-116) | D | withdrawn | — | — |
-| NEX-110 | Harden Stage 2, security: no-access tests for Control, agent and commands; key custody; request safety | — | planned | — | 136 |
+| NEX-110 | Harden Stage 2, security: no-access tests for Control, agent and commands; key custody; request safety | — | planned | — | 136, 107 |
 | NEX-111 | Lago sync part 2: signed invoice webhooks into Control, and cancellations (part 1: NEX-118; D51) | D | done | Gemini | 118 |
 | NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | done | Claude | 105 |
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |
@@ -82,3 +82,4 @@
 | NEX-135 | P18 moves, cell side (D61): import key and tenant import on signed commands | D | planned | — | 133 |
 | NEX-136 | Control: P18 moves for real (D61) — a portability job walks the seven steps | D | planned | — | 135, 134 |
 | NEX-137 | Stage 2 release checks: Control real-mode a11y and languages, budgets, install tests, checklist | — | planned | — | 110 |
+| NEX-138 | Payments (D62): Stripe hosted payment page for EU invoices (needs the Owner's Stripe test account) | D | draft | — | 107 |
