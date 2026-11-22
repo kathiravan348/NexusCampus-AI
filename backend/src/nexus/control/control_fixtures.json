@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 5,
   "staff": [
     {
       "id": "stf-0001",
@@ -1718,6 +1718,185 @@
       "state": "active",
       "fingerprint": "a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2",
       "deploymentId": "dep-al"
+    }
+  ],
+  "deployments": [
+    {
+      "id": "dep-in-1",
+      "name": "IN shared cell 1 (Mumbai)",
+      "kind": "saas_shared_cell",
+      "accountId": null,
+      "region": "in",
+      "version": "2.4.1",
+      "channel": "stable",
+      "health": "healthy",
+      "lastCheckInAt": "2026-09-15T11:59:00Z",
+      "telemetryEnabled": true,
+      "airGapped": false,
+      "extensionIds": [],
+      "tenantCount": 312
+    },
+    {
+      "id": "dep-eu-1",
+      "name": "EU shared cell 1 (Frankfurt)",
+      "kind": "saas_shared_cell",
+      "accountId": null,
+      "region": "eu",
+      "version": "2.4.1",
+      "channel": "stable",
+      "health": "healthy",
+      "lastCheckInAt": "2026-09-15T11:59:00Z",
+      "telemetryEnabled": true,
+      "airGapped": false,
+      "extensionIds": [],
+      "tenantCount": 87
+    },
+    {
+      "id": "dep-apac-1",
+      "name": "APAC shared cell 1 (Singapore)",
+      "kind": "saas_shared_cell",
+      "accountId": null,
+      "region": "apac",
+      "version": "2.4.1",
+      "channel": "stable",
+      "health": "degraded",
+      "lastCheckInAt": "2026-09-15T11:58:00Z",
+      "telemetryEnabled": true,
+      "airGapped": false,
+      "extensionIds": [],
+      "tenantCount": 21
+    },
+    {
+      "id": "dep-us-nb",
+      "name": "Northbridge dedicated cell",
+      "kind": "saas_dedicated_cell",
+      "accountId": "acc-nb",
+      "region": "us",
+      "version": "2.4.0",
+      "channel": "stable",
+      "health": "healthy",
+      "lastCheckInAt": "2026-09-15T11:59:00Z",
+      "telemetryEnabled": true,
+      "airGapped": false,
+      "extensionIds": [
+        "ext-nb-grading"
+      ],
+      "tenantCount": 1
+    },
+    {
+      "id": "dep-ct",
+      "name": "Coastal Institute on-premise",
+      "kind": "self_hosted",
+      "accountId": "acc-ct",
+      "region": "in",
+      "version": "2.2.5",
+      "channel": "lts",
+      "health": "healthy",
+      "lastCheckInAt": "2026-09-15T06:00:00Z",
+      "telemetryEnabled": true,
+      "airGapped": false,
+      "extensionIds": [
+        "ext-ct-gate"
+      ],
+      "tenantCount": 1
+    },
+    {
+      "id": "dep-al",
+      "name": "Alpine Skills Academy (air-gapped)",
+      "kind": "self_hosted",
+      "accountId": "acc-al",
+      "region": "eu",
+      "version": "2.2.5",
+      "channel": "lts",
+      "health": "unknown",
+      "lastCheckInAt": null,
+      "telemetryEnabled": false,
+      "airGapped": true,
+      "extensionIds": [],
+      "tenantCount": 1
+    },
+    {
+      "id": "dep-edge-ax",
+      "name": "Apex Coaching Edge node (Chennai)",
+      "kind": "edge",
+      "accountId": "acc-ax",
+      "region": "in",
+      "version": "2.4.1",
+      "channel": "stable",
+      "health": "healthy",
+      "lastCheckInAt": "2026-09-15T11:55:00Z",
+      "telemetryEnabled": true,
+      "airGapped": false,
+      "extensionIds": [],
+      "tenantCount": 1
+    }
+  ],
+  "healthSignals": [
+    {
+      "deploymentId": "dep-in-1",
+      "at": "2026-09-15T11:55:00Z",
+      "version": "2.4.1",
+      "uptimePct": 99.98,
+      "errorRatePct": 0.04,
+      "p95LatencyMs": 210,
+      "queueDepth": 37,
+      "diskUsedPct": 51,
+      "activeUsers": 18400
+    },
+    {
+      "deploymentId": "dep-eu-1",
+      "at": "2026-09-15T11:55:00Z",
+      "version": "2.4.1",
+      "uptimePct": 99.99,
+      "errorRatePct": 0.02,
+      "p95LatencyMs": 160,
+      "queueDepth": 12,
+      "diskUsedPct": 72,
+      "activeUsers": 6100
+    },
+    {
+      "deploymentId": "dep-apac-1",
+      "at": "2026-09-15T11:55:00Z",
+      "version": "2.4.1",
+      "uptimePct": 99.2,
+      "errorRatePct": 1.8,
+      "p95LatencyMs": 940,
+      "queueDepth": 2,
+      "diskUsedPct": 56,
+      "activeUsers": 1200
+    },
+    {
+      "deploymentId": "dep-us-nb",
+      "at": "2026-09-15T11:55:00Z",
+      "version": "2.4.0",
+      "uptimePct": 99.97,
+      "errorRatePct": 0.05,
+      "p95LatencyMs": 230,
+      "queueDepth": 15,
+      "diskUsedPct": 51,
+      "activeUsers": 7300
+    },
+    {
+      "deploymentId": "dep-ct",
+      "at": "2026-09-15T11:55:00Z",
+      "version": "2.2.5",
+      "uptimePct": 99.9,
+      "errorRatePct": 0.1,
+      "p95LatencyMs": 320,
+      "queueDepth": 6,
+      "diskUsedPct": 54,
+      "activeUsers": 2900
+    },
+    {
+      "deploymentId": "dep-edge-ax",
+      "at": "2026-09-15T11:55:00Z",
+      "version": "2.4.1",
+      "uptimePct": 100,
+      "errorRatePct": 0,
+      "p95LatencyMs": 45,
+      "queueDepth": 0,
+      "diskUsedPct": 65,
+      "activeUsers": 210
     }
   ]
 }

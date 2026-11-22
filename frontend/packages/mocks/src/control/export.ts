@@ -4,11 +4,13 @@ import {
   ACCOUNTS,
   CATALOGUE_ITEMS,
   CONTRACTS,
+  CONTROL_ROLE_PERMISSIONS,
   CREDIT_NOTES,
+  DEPLOYMENTS,
   DUNNING_STATES,
+  HEALTH_SIGNALS,
   INVOICES,
   LICENCES,
-  CONTROL_ROLE_PERMISSIONS,
   OPPORTUNITIES,
   PARTNERS,
   PAYMENTS,
@@ -19,7 +21,7 @@ import {
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 4;
+export const CONTROL_FIXTURES_VERSION = 5;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -47,6 +49,8 @@ export function controlFixturesJson(): string {
       dunning: DUNNING_STATES,
       usage: USAGE_RECORDS,
       licences: LICENCES,
+      deployments: DEPLOYMENTS,
+      healthSignals: HEALTH_SIGNALS,
     },
     null,
     2,

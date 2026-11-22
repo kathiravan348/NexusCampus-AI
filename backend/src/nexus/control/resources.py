@@ -11,7 +11,7 @@ from typing import Annotated, Any
 from fastapi import APIRouter, Depends, Request
 from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
-from sqlalchemy import ColumnElement, Table, func, select
+from sqlalchemy import ColumnElement, Table, false, func, select
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 from nexus.control.rows import from_db
@@ -48,12 +48,18 @@ class Resource:
     order: Any = None
 
     @property
-    def scope(self) -> str:
-        return "account_id" if "account_id" in self.table.c else "id"
+    def scope(self) -> str | None:
+        if "account_id" in self.table.c:
+            return "account_id"
+        if "id" in self.table.c:
+            return "id"
+        return None
 
     def scoped(self, viewer: Viewer) -> list[ColumnElement[bool]]:
         if viewer.account_ids is None:
             return []
+        if self.scope is None:
+            return [false()]
         return [self.table.c[self.scope].in_(viewer.account_ids)]
 
     def parse(self, row: Any) -> CamelModel:
