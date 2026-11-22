@@ -20,8 +20,8 @@ Three roles: **planner** (plans, architecture, task files), **implementer** (bui
 
 | Agent | May take | Default role (Owner gives none) | Own file |
 |---|---|---|---|
-| Gemini (Antigravity) | Planner, reviewer, implementer | Planner / reviewer (review first, then plan) | `GEMINI.md` |
-| Claude (Claude Code) | Planner, reviewer, implementer | Implementer | `CLAUDE.md` |
+| Gemini (Antigravity) | Planner, reviewer, implementer | Implementer (D57) | `GEMINI.md` |
+| Claude (Claude Code) | Planner, reviewer, implementer | Planner / reviewer (review first, then plan; D57) | `CLAUDE.md` |
 | Owner (human) | Approves stage scope, freezes, decisions | — | — |
 
 - The Owner may assign any role to either agent ("Plan", "Review", "Build NEX-###").

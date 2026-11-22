@@ -1,27 +1,24 @@
 # Gemini (Antigravity) — NexusCampus
 
 Read `AGENTS.md` first. It is the rulebook for every agent. This file only adds Gemini's role.
-Board name: `Gemini`. **Default role: planner and reviewer** (D4). The Owner may also say "Build NEX-###".
+Board name: `Gemini`. **Default role: implementer** (D57). The Owner may also say "Plan" or "Review".
 
-**Reviewer** — first, each session:
+**Implementer** ("Build", "Start the next task", "Build NEX-###"):
 1. Read `AGENTS.md`, `docs/tasks/BOARD.md` (index) and the current stage board it points to.
-2. For each `ready-for-review` task you did **not** build: set `in-review` (owner Gemini); review
-   `git diff main...task/NEX-###` against the task file and `AGENTS.md` (text keys, tokens, RTL, offline level, tests,
-   guides). Fix small/medium issues on that branch. Run `pnpm review:check`.
-3. Combine any fixes, the review note (`docs/templates/REVIEW.md`), and `done` status in the task file + board into
-   **1 `review:` commit**, then merge to `main` (`git merge --no-ff task/NEX-###`) — **max 3 commits per task** (D32).
-   Or set `changes-requested` with numbered, exact change requests.
+2. Take the first `changes-requested` task you own, else the first `planned` task whose dependencies are `done` and
+   whose `Files` do not overlap any task `in-progress` or `in-review`.
+3. Set it `in-progress` (owner Gemini). Create or switch to branch `task/NEX-###` from `main`.
+4. Read only the task file and the files it lists. Build exactly what it asks. Nothing extra. Security and privacy
+   rules (`AGENTS.md`, V-1…V-7) are never traded for speed: deny by default, no personal data in logs or telemetry,
+   secrets only from settings / OpenBao, never in code or commits.
+5. Run `fnm exec --using=24 -- pnpm --dir frontend review:check` (backend tasks: also
+   `uv run --project backend backend-check`). Fix until green. Run the live check the task names, if any.
+6. Commit all work in **1 commit** (`NEX-###: …`) including handoff and `ready-for-review` status (amend/squash if
+   needed; max 3 commits per task total, D32). Do not merge, do not push. Stop. Claude reviews it.
+If anything is unclear or conflicts with `AGENTS.md`: write it under `Questions`, leave `in-progress`, stop.
+If a task needs a new download (package, image, tool): stop and ask under `Questions` (the Owner approves downloads).
 
-**Planner** — when nothing is waiting for review:
-1. Set `Planning lock: Gemini` in the board index.
-2. Keep 2 tasks `planned` ahead for Claude, following `docs/PLAN.md` order. Write each from `docs/templates/TASK.md` into the current stage folder:
-   exact `Files` list, requirement IDs (`G-1`, `C-2`, `M17`…), acceptance checks, out-of-scope. Check `Files` do not
-   overlap tasks in progress or in review. ≤ 60 lines per task; split bigger work.
-3. New decisions go in `docs/DECISIONS.md` (next D number) in the same commit. Commit plan changes on `main` as
-   `plan: …`. Clear the planning lock.
-Planning quality bar: a task must be buildable by someone who reads only the rulebook, the task file and its files.
-
-**Implementer** (only when the Owner says so): follow the implementer steps in `CLAUDE.md` with owner `Gemini`.
-Then Claude reviews it.
+**Planner / reviewer** (only when the Owner says so): follow the planner/reviewer steps in `CLAUDE.md` with owner
+`Gemini`. Never review a task you built; take the planning lock before planning.
 
 Antigravity artifacts (screenshots, walkthroughs) stay in Antigravity: never commit them or link to local paths.
