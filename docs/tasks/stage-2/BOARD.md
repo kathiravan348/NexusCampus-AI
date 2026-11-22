@@ -49,7 +49,7 @@
 | NEX-102 | Control API: catalogue & quotes (P02), billing (P03), usage (P11) on the control DB; quote send, bank transfer | D | done | Claude | 101 |
 | NEX-103 | Control API: licences (P05) — issue, store, download the signed file; P05 screen switched to real | D | done | Claude | 095, 101 |
 | NEX-104 | Release signing: signed images and offline update bundles (P07, DM-9) | D | done | Claude | 095 |
-| NEX-105 | M84 install agent core: offline licence check, update check from verified bundles, install status, Install page on real data | D | in-progress | Claude | 103, 104 |
+| NEX-105 | M84 install agent core: offline licence check, update check from verified bundles, install status, Install page on real data | D | done | Claude | 103, 104 |
 | NEX-106 | Tenant export / import between SaaS and self-hosted (P18, DM-8), encrypted with the tenant's keys | D | draft | — | 112 |
 | NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 111 |
 | NEX-108 | Packaging: control backend + staff realm + billing stack in Compose and Helm; air-gapped bundle | D | draft | — | 102, 105 |

@@ -68,6 +68,18 @@ class Settings(BaseSettings):
     otel_exporter: OtelExporter = "none"
     host: str = "127.0.0.1"
     port: int = 8000
+    # Install agent (M84, NEX-105): only a self-hosted install runs it and serves the Install & updates screen.
+    install_mode: Literal["saas", "self_hosted"] = "saas"
+    install_id: str = "ins-dev"
+    #: Holds `licence.json`, `licence-keys.json`, `release-keys.json` and `inbox/` (offline update bundles).
+    install_dir: Path = BACKEND_ROOT / "install"
+    #: The version this install runs (set by the image build).
+    app_version: str = "2.4.1"
+    release_channel: Literal["stable", "lts", "preview"] = "stable"
+    #: Air-gapped: never connects to Nexus Control (V-6); telemetry is then always off.
+    air_gapped: bool = False
+    #: PII-free health reports to Nexus Control; the institution can switch them off.
+    telemetry_enabled: bool = True
 
 
 @lru_cache

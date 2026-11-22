@@ -13,7 +13,7 @@ import hashlib
 from collections.abc import Mapping
 from dataclasses import dataclass
 from datetime import date, timedelta
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
@@ -125,13 +125,20 @@ def offline_state(terms: LicenceTerms, today: date) -> tuple[OfflineState, date 
     return "read_only", None
 
 
-def verify_licence(file: LicenceFile, public_keys: Mapping[str, bytes], today: date) -> LicenceCheck:
-    """Offline check with public keys only (key id → raw 32-byte Ed25519 key)."""
+def verify_licence(
+    file: LicenceFile, public_keys: Mapping[str, bytes], today: date, raw_payload: Mapping[str, Any] | None = None
+) -> LicenceCheck:
+    """Offline check with public keys only (key id → raw 32-byte Ed25519 key).
+
+    Pass `raw_payload` (the payload exactly as read from the file) so a licence signed before a field was added still
+    verifies: the signature covers those bytes, not this code's re-serialisation.
+    """
     raw = public_keys.get(file.payload.signing_key_id)
     if raw is None:
         return LicenceCheck(False, "unknown_key", None, None)
+    message = _PREFIX + canonical_json(dict(raw_payload)) if raw_payload is not None else signed_message(file.payload)
     try:
-        Ed25519PublicKey.from_public_bytes(raw).verify(base64.b64decode(file.signature), signed_message(file.payload))
+        Ed25519PublicKey.from_public_bytes(raw).verify(base64.b64decode(file.signature), message)
     except (InvalidSignature, ValueError):
         return LicenceCheck(False, "bad_signature", None, None)
     state, grace_end = offline_state(file.payload, today)

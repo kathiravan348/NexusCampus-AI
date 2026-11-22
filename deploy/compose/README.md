@@ -61,6 +61,14 @@ cannot read it; it held only sign-in sessions and caches, so people sign in agai
 in `.secrets/vault-init.json` stay the same. Running it again does nothing. Keep the backup until the app has run
 for a while, then store it with your other backups.
 
+### The install agent and your licence
+
+The install agent (`nexus-agent loop`, part of the install) checks your licence on this server — no internet needed —
+counts learners and campuses (numbers only), and looks for updates. Put these in the install folder
+(`NEXUS_INSTALL_DIR`): `licence.json` (from us), `licence-keys.json` and `release-keys.json` (our public keys, no
+secrets). An expired licence gives a grace period, then read-only — your data is never deleted or locked away.
+Administrators see all of it in **Install & updates**.
+
 ### Offline updates (no internet on the server)
 
 Every release comes with a signed manifest, and for servers without internet an offline bundle
@@ -71,7 +79,8 @@ the public keys file you received with your licence (it holds no secret):
 uv run --project backend nexus-release-verify nexuscampus-2.5.0.tar --keys nexus-release-keys.json
 ```
 
-It prints `valid: …` only when the signature is ours and every file is exactly as signed; otherwise it lists what is
+Or drop it into the install folder's `inbox/`: the install agent checks it the same way and offers it under
+**Install & updates** only when it verifies. It prints `valid: …` only when the signature is ours and every file is exactly as signed; otherwise it lists what is
 wrong (changed, missing or extra files, unsafe paths) and loads nothing. The manifest also names the oldest version
 that can upgrade straight to this one.
 

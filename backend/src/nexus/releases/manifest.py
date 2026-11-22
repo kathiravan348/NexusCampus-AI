@@ -7,7 +7,7 @@ signature covers the whole release. `signingKeyId` = `<vault key>:v<version>` so
 
 import base64
 from collections.abc import Mapping
-from typing import Annotated, Literal
+from typing import Annotated, Any, Literal
 
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
@@ -65,6 +65,8 @@ class ReleaseManifest(_Camel):
     #: Alembic heads this release migrates to, e.g. `{"product": "0016_…", "control": "c0005_…"}`.
     migrations: dict[str, str]
     notes_sha256: Sha256Hex
+    #: Fixes a security problem: installs show it prominently (M84 `UpdateOffer.securityFix`).
+    security_fix: bool = False
     #: Files of the offline bundle (empty for an online-only release).
     files: list[BundleFile] = []
     signing_key_id: Annotated[str, StringConstraints(min_length=1, max_length=64)]
@@ -108,15 +110,22 @@ async def sign_release(manifest: ReleaseManifest, vault: Vault, key_name: str = 
     return SignedRelease(manifest=stamped, signature=blob)
 
 
-def verify_release(signed: SignedRelease, public_keys: Mapping[str, bytes]) -> str | None:
-    """None when the signature is valid for a pinned key; else `unknown_key` or `bad_signature`."""
+def verify_release(
+    signed: SignedRelease, public_keys: Mapping[str, bytes], raw_manifest: Mapping[str, Any] | None = None
+) -> str | None:
+    """None when the signature is valid for a pinned key; else `unknown_key` or `bad_signature`.
+
+    Pass `raw_manifest` (the manifest object exactly as read from the file): the signature covers those bytes, so a
+    manifest signed before a field was added (with a default) still verifies.
+    """
     raw = public_keys.get(signed.manifest.signing_key_id)
     if raw is None:
         return "unknown_key"
+    message = (
+        _PREFIX + canonical_json(dict(raw_manifest)) if raw_manifest is not None else signed_message(signed.manifest)
+    )
     try:
-        Ed25519PublicKey.from_public_bytes(raw).verify(
-            base64.b64decode(signed.signature), signed_message(signed.manifest)
-        )
+        Ed25519PublicKey.from_public_bytes(raw).verify(base64.b64decode(signed.signature), message)
     except (InvalidSignature, ValueError):
         return "bad_signature"
     return None

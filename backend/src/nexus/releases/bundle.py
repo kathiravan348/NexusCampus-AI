@@ -7,6 +7,7 @@ changed file — or a changed manifest — makes the bundle invalid, with the re
 
 import hashlib
 import io
+import json
 import tarfile
 from collections.abc import Mapping
 from dataclasses import dataclass, field
@@ -98,11 +99,12 @@ def verify_bundle(path: Path, public_keys: Mapping[str, bytes]) -> BundleCheck:
         raw = tar.extractfile(regular[MANIFEST_NAME])
         assert raw is not None
         try:
-            release = SignedRelease.model_validate_json(raw.read())
-        except ValidationError:
+            document = json.loads(raw.read())
+            release = SignedRelease.model_validate(document)
+        except (ValidationError, ValueError):
             check.problems.append(f"{MANIFEST_NAME} is not a valid signed release")
             return check
-        problem = verify_release(release, public_keys)
+        problem = verify_release(release, public_keys, document["manifest"])
         if problem:
             check.problems.append(f"signature: {problem}")
             return check  # nothing in an unsigned manifest can be trusted

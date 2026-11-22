@@ -140,3 +140,33 @@ def test_manifest_rules() -> None:
         manifest(files=[{"path": "../a", "sha256": "0" * 64, "size": 1}])
     with pytest.raises(ValidationError):
         manifest(images=[])
+
+
+@pytest.mark.anyio
+async def test_a_manifest_signed_before_a_field_was_added_still_verifies(tmp_path: Path) -> None:
+    """Signed bytes are what counts: an older manifest without `securityFix` (added later, default false) verifies."""
+    import base64
+    import json
+
+    from nexus.licensing.canonical import canonical_json
+
+    vault = FakeVault()
+    await vault.create_signing_key("nexus-release")
+    staging = staging_dir(tmp_path)
+    old = manifest(staging, signingKeyId="nexus-release:v1").model_dump(by_alias=True)
+    del old["securityFix"]  # as an older release tool wrote it
+    token = await vault.sign("nexus-release", b"nexus-release/1\n" + canonical_json(old))
+    document = {"format": "nexus-release/1", "manifest": old, "signature": token.split(":", 2)[2]}
+    out = tmp_path / "old.tar"
+    with tarfile.open(out, "w") as tar:
+        data = json.dumps(document).encode()
+        info = tarfile.TarInfo(MANIFEST_NAME)
+        info.size = len(data)
+        tar.addfile(info, io.BytesIO(data))
+        for f in old["files"]:
+            tar.add(staging / f["path"], arcname=f["path"])
+    keys = load_public_keys(await public_key_file(vault))
+    check = verify_bundle(out, keys)
+    assert check.valid, check.problems
+    assert check.release is not None and check.release.manifest.security_fix is False
+    assert base64.b64decode(document["signature"])  # a real signature, not a placeholder
