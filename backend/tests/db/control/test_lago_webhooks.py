@@ -218,3 +218,18 @@ async def test_unsigned_wrong_key_empty_key_oversize_unknown_account_and_draft(c
         assert cnt == 0
     finally:
         _cleanup(owner_url, [lid_bad, lid_draft])
+
+
+@pytest.mark.anyio
+async def test_invoice_already_paid_on_arrival_is_stored_paid(control_db: tuple[str, str]) -> None:
+    owner_url, app_url = control_db
+    lid = "0a0b0c0d-1e2f-4a5b-8c9d-aabbccddeeff"
+    try:
+        async for c in _client(app_url, WEBHOOK_KEY):
+            raw = _invoice_event(lago_id=lid, account_id="acc-ls", payment_status="succeeded")
+            res = await c.post(URL, content=raw, headers={"X-Lago-Signature": sign_webhook(raw, WEBHOOK_KEY)})
+            assert res.status_code == 200 and res.json()["status"] == "created"
+            inv = (await c.get("/control/api/v1/invoices/inv-0a0b0c0d1e2f", headers=STAFF)).json()
+            assert inv["status"] == "paid" and inv["paidAt"] is not None
+    finally:
+        _cleanup(owner_url, [lid])

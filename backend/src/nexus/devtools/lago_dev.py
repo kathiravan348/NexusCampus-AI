@@ -20,8 +20,10 @@ from nexus.settings import BACKEND_ROOT
 
 ENV_FILE = Path(BACKEND_ROOT) / ".env"
 COMPOSE = ["docker", "compose", "-f", str(Path(BACKEND_ROOT) / "compose.billing.yaml")]
-DEV_WEBHOOK_URL = "https://control.nexuscampus.example/control/api/v1/billing/lago-webhook"
 WEBHOOK_KEY_VAR = "NEXUS_CONTROL_LAGO_WEBHOOK_KEY"
+#: Where Lago delivers webhooks. Unset in dev: the dev Lago refuses private addresses
+#: (`LAGO_WEBHOOK_ALLOW_PRIVATE_URLS=false`), so dev tests post bodies signed with the same key instead.
+WEBHOOK_URL_VAR = "NEXUS_CONTROL_LAGO_WEBHOOK_URL"
 
 
 def _rsa_pem_b64() -> str:
@@ -69,23 +71,24 @@ def _env_map(env_file: Path) -> dict[str, str]:
 
 
 def ensure_webhook(env_file: Path = ENV_FILE, lago_url: str = "http://127.0.0.1:53000") -> bool:
-    """Registers the dev HMAC webhook endpoint in Lago and writes the org HMAC key to `.env` if missing."""
+    """Writes Lago's HMAC webhook key to `.env` if missing; registers `NEXUS_CONTROL_LAGO_WEBHOOK_URL` when set."""
     env = _env_map(env_file)
     api_key = env.get("NEXUS_CONTROL_LAGO_API_KEY", "")
     if not api_key:
         return False
-    headers = {"Authorization": f"Bearer {api_key}"}
-    with httpx2.Client(timeout=15) as http:
-        res = http.get(f"{lago_url}/api/v1/webhook_endpoints", headers=headers)
-        res.raise_for_status()
-        endpoints = res.json().get("webhook_endpoints", [])
-        if not any(e.get("webhook_url") == DEV_WEBHOOK_URL and e.get("signature_algo") == "hmac" for e in endpoints):
-            created = http.post(
-                f"{lago_url}/api/v1/webhook_endpoints",
-                headers=headers,
-                json={"webhook_endpoint": {"webhook_url": DEV_WEBHOOK_URL, "signature_algo": "hmac"}},
-            )
-            created.raise_for_status()
+    if url := env.get(WEBHOOK_URL_VAR, ""):
+        headers = {"Authorization": f"Bearer {api_key}"}
+        with httpx2.Client(timeout=15) as http:
+            res = http.get(f"{lago_url}/api/v1/webhook_endpoints", headers=headers)
+            res.raise_for_status()
+            endpoints = res.json().get("webhook_endpoints", [])
+            if not any(e.get("webhook_url") == url and e.get("signature_algo") == "hmac" for e in endpoints):
+                created = http.post(
+                    f"{lago_url}/api/v1/webhook_endpoints",
+                    headers=headers,
+                    json={"webhook_endpoint": {"webhook_url": url, "signature_algo": "hmac"}},
+                )
+                created.raise_for_status()
     if env.get(WEBHOOK_KEY_VAR):
         return False
     cmd = [

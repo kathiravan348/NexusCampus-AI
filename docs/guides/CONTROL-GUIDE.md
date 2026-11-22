@@ -279,7 +279,9 @@ uv run --project backend python -m nexus.devtools.billing_sync             # pus
 - **Invoices from Lago:** Lago posts finalized invoices and payment status updates to
   `/control/api/v1/billing/lago-webhook` signed with `X-Lago-Signature` (HMAC-SHA256 using
   `NEXUS_CONTROL_LAGO_WEBHOOK_KEY`). Unsigned or mis-signed requests are refused (`401`); replayed bodies are ignored.
-  In dev, `nexus-lago-dev` registers the HMAC webhook endpoint and writes the key into `backend/.env` if missing.
+  In dev, `nexus-lago-dev` writes the key into `backend/.env` if missing (never printed) and registers the HMAC
+  endpoint only when `NEXUS_CONTROL_LAGO_WEBHOOK_URL` is set: the dev Lago refuses private addresses, so dev tests
+  post bodies signed with the same key. An invoice already paid when it arrives is stored as paid.
 - **What crosses the boundary:** account id, account name, country, currency, plan codes and learner counts only —
   never contacts, e-mail addresses, phone numbers or institution data.
 - **Skipped items:** add-ons, AI credit packs, self-hosted licences, support contracts, already-ended cancellations,

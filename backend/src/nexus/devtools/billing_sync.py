@@ -40,7 +40,8 @@ def _print_report(report: SyncReport) -> None:
     prefix = "dry-run" if report.dry_run else "synced"
     print(
         f"{prefix}: {len(report.plans)} plans, {len(report.customers)} customers, "
-        f"{len(report.subscriptions)} subscriptions, {len(report.usage_events)} usage events, "
+        f"{len(report.subscriptions)} subscriptions, {len(report.terminated)} ended, "
+        f"{len(report.usage_events)} usage events, "
         f"{len(report.skipped)} skipped"
     )
     if report.dry_run:
@@ -48,6 +49,8 @@ def _print_report(report: SyncReport) -> None:
         print(f"  customers: {', '.join(report.customers)}")
         print(f"  subscriptions: {', '.join(report.subscriptions)}")
         print(f"  usage: {', '.join(report.usage_events)}")
+    if report.terminated:
+        print(f"  ended in Lago (cancelled in Control): {', '.join(report.terminated)}")
     for item in report.skipped:
         print(f"  skipped {item.id}: {item.reason}")
 

@@ -164,13 +164,15 @@ async def _handle_invoice_created(conn: AsyncConnection, payload: dict[str, Any]
     inv_id = _invoice_id_for(lago_id)
     number = f"INV-{issue_date.year}-{seq:06d}"
     tax_scheme = tax_scheme_for(str(account.country))
+    # A payment can be settled before `invoice.created` arrives (or its update was lost): honour it here.
+    paid_at = datetime.now(UTC).replace(microsecond=0) if inv.get("payment_status") == "succeeded" else None
 
     try:
         model = Invoice(
             id=inv_id,
             account_id=str(account.id),
             number=number,
-            status="open",
+            status="paid" if paid_at else "open",
             issue_date=issue_date.isoformat(),
             due_date=due_date.isoformat(),
             currency=currency,
@@ -179,7 +181,7 @@ async def _handle_invoice_created(conn: AsyncConnection, payload: dict[str, Any]
             subtotal_minor=subtotal,
             tax_minor=tax,
             total_minor=total,
-            paid_at=None,
+            paid_at=paid_at.isoformat().replace("+00:00", "Z") if paid_at else None,
         )
     except ValidationError as exc:
         raise ApiError(422, "invalid_request", "Invoice payload does not match contract.") from exc
@@ -190,14 +192,16 @@ async def _handle_invoice_created(conn: AsyncConnection, payload: dict[str, Any]
             "INSERT INTO invoices"
             " (id, account_id, number, status, issue_date, due_date, currency, tax_scheme,"
             "  lines, subtotal_minor, tax_minor, total_minor, paid_at, lago_invoice_id)"
-            " VALUES (:id, :acc, :num, 'open', :iss, :due, :cur, :tax_scheme,"
-            "  CAST(:lines AS jsonb), :sub, :tax, :tot, NULL, :lid)"
+            " VALUES (:id, :acc, :num, :status, :iss, :due, :cur, :tax_scheme,"
+            "  CAST(:lines AS jsonb), :sub, :tax, :tot, :paid_at, :lid)"
             " ON CONFLICT (lago_invoice_id) DO NOTHING"
         ),
         {
             "id": model.id,
             "acc": model.account_id,
             "num": model.number,
+            "status": model.status,
+            "paid_at": paid_at,
             "iss": issue_date,
             "due": due_date,
             "cur": model.currency,
@@ -210,10 +214,11 @@ async def _handle_invoice_created(conn: AsyncConnection, payload: dict[str, Any]
         },
     )
     log.info(
-        "lago webhook kind=invoice.created lago_id=%s invoice_id=%s account_id=%s outcome=created",
+        "lago webhook kind=invoice.created lago_id=%s invoice_id=%s account_id=%s status=%s outcome=created",
         lago_id,
         model.id,
         model.account_id,
+        model.status,
     )
     return "created"
 
