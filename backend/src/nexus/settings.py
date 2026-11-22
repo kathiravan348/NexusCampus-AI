@@ -87,6 +87,14 @@ class Settings(BaseSettings):
     diagnostics_dir: Path | None = None
     #: Log folder the diagnostic bundle reads (scrubbed); none = no log lines.
     log_dir: Path | None = None
+    #: Nexus Control base URL for outbound PII-free health reports (NEX-114).
+    control_url: str = "https://control.nexuscampus.example"
+    #: Per-deployment bearer token issued by `nexus-control-agent-token`; empty = not paired.
+    control_agent_token: SecretStr = SecretStr("")
+    #: Local API health endpoint probed by the install agent for uptime, error rate and latency.
+    agent_probe_url: str = "http://127.0.0.1:8000/healthz"
+    #: Number of HTTP probes sent per health report.
+    agent_probes: int = 20
 
 
 @lru_cache

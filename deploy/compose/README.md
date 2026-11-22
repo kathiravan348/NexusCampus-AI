@@ -69,6 +69,12 @@ counts learners and campuses (numbers only), and looks for updates. Put these in
 secrets). An expired licence gives a grace period, then read-only — your data is never deleted or locked away.
 Administrators see all of it in **Install & updates**.
 
+**Optional health reports.** When paired with Nexus Control (`NEXUS_CONTROL_URL` and the per-deployment bearer token in
+`NEXUS_CONTROL_AGENT_TOKEN`), `nexus-agent report` — and each `once` / `loop` run — sends one PII-free health check-in
+(version, API probe uptime/error rate/p95 latency, disk use, running job count, and active user count; never names or
+records). Set `NEXUS_TELEMETRY_ENABLED=false` or `NEXUS_AIR_GAPPED=true` (or leave the token empty) to disable all
+outbound reports — no network call is made.
+
 ### Offline updates (no internet on the server)
 
 Every release comes with a signed manifest, and for servers without internet an offline bundle

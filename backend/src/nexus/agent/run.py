@@ -1,6 +1,7 @@
 """`nexus-agent` (M84) — runs only on a self-hosted install (`NEXUS_INSTALL_MODE=self_hosted`).
 
-  once | loop [--every SECONDS]   licence, counts, update offer → install status (NEX-105)
+  once | loop [--every SECONDS]   licence, counts, update offer → install status (NEX-105) + health report (NEX-114)
+  report                          measure health and send one PII-free check-in to Control (NEX-114)
   backup                          encrypted backup of every table (NEX-112)
   verify-backup FILE              read the whole backup through its checks (no restore)
   restore FILE --into URL         load a backup into an EMPTY database (schema built first)
@@ -21,6 +22,7 @@ from alembic.config import Config
 from sqlalchemy import create_engine
 
 from nexus.agent.backup import backup_header, restore_backup, verify_backup
+from nexus.agent.health import report_skip_reason, send_report
 from nexus.agent.jobs import run_backup, run_diagnostics
 from nexus.agent.state import RunResult, run_once
 from nexus.core.timing import utf8_console
@@ -42,9 +44,31 @@ def _status(settings: Settings, loop: bool, every: int) -> None:
         while True:
             with engine.begin() as conn:
                 _report(run_once(conn, settings))
+            skip = report_skip_reason(settings)
+            if skip is not None:
+                print(f"health report: {skip}")
+            else:
+                try:
+                    with engine.connect() as conn:
+                        print(f"health report: {send_report(conn, settings).message}")
+                except Exception as exc:  # a failed measurement never stops the licence and update checks
+                    print(f"health report: failed ({type(exc).__name__})")
             if not loop:
                 return
             time.sleep(max(60, every))
+    finally:
+        engine.dispose()
+
+
+def _health_report(settings: Settings) -> None:
+    skip = report_skip_reason(settings)
+    if skip is not None:
+        print(f"health report: {skip}")
+        return
+    engine = create_engine(settings.database_url.get_secret_value(), pool_pre_ping=True)
+    try:
+        with engine.connect() as conn:
+            print(f"health report: {send_report(conn, settings).message}")
     finally:
         engine.dispose()
 
@@ -84,6 +108,8 @@ def main() -> None:
         sys.exit("The install agent runs only on a self-hosted install (NEXUS_INSTALL_MODE=self_hosted).")
     if args.mode in ("once", "loop"):
         _status(settings, args.mode == "loop", args.every)
+    elif args.mode == "report":
+        _health_report(settings)
     elif args.mode == "backup":
         done = run_backup(settings)
         print(f"backup {done['id']}: {done['tables']} tables, {done['bytes']} bytes, encrypted → {done['file']}")
