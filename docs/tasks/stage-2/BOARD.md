@@ -56,5 +56,5 @@
 | NEX-109 | Contract parity for Control (Pydantic ⇄ Zod samples) and remaining screens switched to real | D | draft | — | 101–103 |
 | NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–109 |
 | NEX-111 | Lago sync: catalogue → plans, subscriptions → Lago, usage → events, Lago invoice webhooks → control DB (D51) | D | draft | — | 098, 102 |
-| NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | draft | — | 105 |
+| NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | in-progress | Claude | 105 |
 | NEX-113 | M84 PII-free health reports to Control (licence-bound agent sign-in, can be switched off) and P06 fleet signals on real data | D | draft | — | 105 |
