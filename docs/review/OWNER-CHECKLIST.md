@@ -71,7 +71,7 @@ These are not blocking the build, but real billing and the trust page need them 
   - which certifications to aim for first, and when
 - [ ] **Presentation:** fill in the contact line on the last slide of
       [`NexusCampus-Introduction.pptx`](../presentation/NexusCampus-Introduction.pptx) (it still says "[Contact name] ·
-      [email] · [website]"). Slides 7 and 13 were updated: built-in languages, and "we are here" now at stage 2.
+      [email] · [website]"). It is now a 25-slide product overview marked "work in progress": every module by stage (released, being built, planned), the technology, progress and a living-plan slide; the contact line is on the last slide.
 
 ## 5. Before production (not urgent now)
 
