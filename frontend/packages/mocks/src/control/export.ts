@@ -10,6 +10,7 @@ import {
   DUNNING_STATES,
   HEALTH_SIGNALS,
   INVOICES,
+  KNOWLEDGE_ARTICLES,
   LICENCES,
   OPPORTUNITIES,
   PARTNERS,
@@ -17,13 +18,16 @@ import {
   QUOTES,
   RELEASES,
   ROLLOUTS,
+  SLA_POLICIES,
   STAFF_USERS,
   SUBSCRIPTIONS,
+  SUPPORT_TICKETS,
+  TICKET_REPLIES,
   USAGE_RECORDS,
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 6;
+export const CONTROL_FIXTURES_VERSION = 7;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -55,6 +59,10 @@ export function controlFixturesJson(): string {
       healthSignals: HEALTH_SIGNALS,
       releases: RELEASES,
       rollouts: ROLLOUTS,
+      tickets: SUPPORT_TICKETS,
+      ticketReplies: TICKET_REPLIES,
+      slaPolicies: SLA_POLICIES,
+      kbArticles: KNOWLEDGE_ARTICLES,
     },
     null,
     2,

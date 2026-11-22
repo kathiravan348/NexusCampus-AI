@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-22 (Stage 2 build: Control backend P01–P03 + Lago webhooks & cancellations (NEX-111), P05, P06 fleet + agent check-in (NEX-113), P07 releases & rollouts + signed agent update check (NEX-115, NEX-117), P11, P13 staff SSO, M84 install agent core, encrypted backups & diagnostics, PII-free health reports, signed online update verification, and `NXTE/1` tenant export & import (NEX-105, NEX-106, NEX-112, NEX-114, NEX-117, NEX-119); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
+> State as of: 2026-11-23 (Stage 2 build: Control backend P01–P03 + Lago webhooks & cancellations (NEX-111), P05, P06 fleet + agent check-in (NEX-113), P07 releases & rollouts + signed agent update check (NEX-115, NEX-117), P09 support desk (NEX-122), P11, P13 staff SSO, M84 install agent core, encrypted backups & diagnostics, PII-free health reports, signed online update verification, and `NXTE/1` tenant export & import (NEX-105, NEX-106, NEX-112, NEX-114, NEX-117, NEX-119); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -339,6 +339,12 @@ see rows of the accounts their partner manages (others → `404`).
 | GET | `/releases`, `/releases/:id` | `ctl.release.read` | filters `channel`, `status`; not shown to partner users (NEX-115) |
 | GET | `/rollouts` | `ctl.release.read` | filters `releaseId`, `status`; not shown to partner users |
 | GET | `/agent/update` | agent bearer token | `Authorization: Bearer <token>` (same check as `/agent/health`, no cookie); returns `200 { release, manifest }` for the newest published, signed release with a stored `nexus-release/1` manifest (imported by `nexus-control-release-import`, NEX-117) on the deployment's channel newer than its version, pre-releases only on `preview`, `minUpgradeFrom` ≤ deployment version, listed in a `running` or `done` rollout — or `200 { release: null, manifest: null }`; unknown/revoked `401`, air-gapped `403`, > 1 per 60 s `429` |
+| GET | `/tickets`, `/tickets/:id` | `ctl.ticket.read` | filters `accountId`, `status`, `priority`, `assigneeStaffId`; partners see only their accounts' tickets (NEX-122) |
+| GET | `/ticket-replies` | `ctl.ticket.read` | filter `ticketId`; joined through visible tickets (never by reply id alone) |
+| POST | `/tickets/:id/replies` | `ctl.ticket.reply` | body `{ body (1–5000, trimmed), internal }` → `201 TicketReply`; invisible → `404`, closed → `409`, invalid/extra field → `400 invalid_request`; assigns unassigned tickets to replier, public reply sets `waiting_customer` (clearing `resolvedAt`), internal note moves `new` → `open` and preserves other statuses (incl. `resolved` + `resolvedAt`); logs ids only |
+| GET | `/sla-policies`, `/sla-policies/:slaTier` | `ctl.ticket.read` | response/resolution minute targets per tier; not shown to partner users |
+| GET | `/kb-articles`, `/kb-articles/:id` | `ctl.ticket.read` | filters `locale`, `slug`; not shown to partner users |
 
-Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages; rows
-without one (catalogue, payments, credit notes, health signals, releases, rollouts) are not shown to partner users.
+Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages (and ticket
+replies are joined through visible tickets); rows without one (catalogue, payments, credit notes, health signals,
+releases, rollouts, SLA policies, KB articles) are not shown to partner users.

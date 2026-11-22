@@ -12,6 +12,7 @@ import {
   DUNNING_STATES,
   HEALTH_SIGNALS,
   INVOICES,
+  KNOWLEDGE_ARTICLES,
   LICENCE_FILES,
   LICENCES,
   OPPORTUNITIES,
@@ -20,8 +21,11 @@ import {
   QUOTES,
   RELEASES,
   ROLLOUTS,
+  SLA_POLICIES,
   STAFF_USERS,
   SUBSCRIPTIONS,
+  SUPPORT_TICKETS,
+  TICKET_REPLIES,
   USAGE_RECORDS,
 } from "./fixtures";
 
@@ -62,6 +66,10 @@ const CONTROL_CONTRACTS: readonly ParityContractEntry[] = [
   ["HealthSignal", C.HealthSignalSchema, HEALTH_SIGNALS],
   ["Release", C.ReleaseSchema, RELEASES],
   ["Rollout", C.RolloutSchema, ROLLOUTS],
+  ["SupportTicket", C.SupportTicketSchema, SUPPORT_TICKETS],
+  ["TicketReply", C.TicketReplySchema, TICKET_REPLIES],
+  ["SlaPolicy", C.SlaPolicySchema, SLA_POLICIES],
+  ["KnowledgeArticle", C.KnowledgeArticleSchema, KNOWLEDGE_ARTICLES],
 ];
 
 /** Written to `backend/tests/parity/control_samples.json` (NEX-116). */

@@ -13110,6 +13110,1890 @@
           "shapeValid": false
         }
       ]
+    },
+    {
+      "contract": "SupportTicket",
+      "samples": [
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "tck-0914",
+            "number": "TCK-2026-0914",
+            "accountId": "acc-rv",
+            "subject": "North campus theme not applied on tablets",
+            "summary": "Brand colours show the platform default on iPads at the North campus.",
+            "priority": "p3",
+            "status": "waiting_customer",
+            "channel": "email",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T16:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-rv-0914",
+            "createdAt": "2026-09-14T16:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "tck-0905",
+            "number": "TCK-2026-0905",
+            "accountId": "acc-nb",
+            "subject": "Duplicate user accounts after SSO change",
+            "summary": "Institution declined access; fixed together on a customer-started screen share.",
+            "priority": "p2",
+            "status": "resolved",
+            "channel": "phone",
+            "assigneeStaffId": "stf-0007",
+            "slaDueAt": "2026-09-06T13:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-nb-0905",
+            "createdAt": "2026-09-05T12:30:00Z",
+            "resolvedAt": "2026-09-06T09:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": null,
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": 12345,
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": null,
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": 12345,
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": null,
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": 12345,
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": null,
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": 12345,
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": null,
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": 12345,
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": null,
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": 12345,
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": null,
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": 12345,
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": null,
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": 12345,
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": null,
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": 12345,
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": null,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": "yes",
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": null,
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": 12345,
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": null,
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": 12345,
+            "resolvedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "tck-0915",
+            "number": "TCK-2026-0915",
+            "accountId": "acc-ax",
+            "subject": "Notification templates fail to render",
+            "summary": "Fee reminder templates fall back to the default language for some guardians.",
+            "priority": "p2",
+            "status": "open",
+            "channel": "portal",
+            "assigneeStaffId": "stf-0042",
+            "slaDueAt": "2026-09-16T07:00:00Z",
+            "breached": false,
+            "accessRequestId": "acr-ax-0915",
+            "createdAt": "2026-09-15T07:00:00Z",
+            "resolvedAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        }
+      ]
+    },
+    {
+      "contract": "TicketReply",
+      "samples": [
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "rep-0915-2",
+            "ticketId": "tck-0915",
+            "authorKind": "staff",
+            "authorStaffId": "stf-0042",
+            "body": "Requested read access to notifications for 48 hours; waiting for your admin to approve.",
+            "internal": false,
+            "aiDrafted": true,
+            "createdAt": "2026-09-15T07:31:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "rep-0915-3",
+            "ticketId": "tck-0915",
+            "authorKind": "staff",
+            "authorStaffId": "stf-0042",
+            "body": "Same root cause as the 2.4.1 fix; Apex Edge node is on 2.4.1, the cell template cache is not.",
+            "internal": true,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T09:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": null,
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": 12345,
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": null,
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": 12345,
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": null,
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": 12345,
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": null,
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": "yes",
+            "aiDrafted": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": null,
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": "yes",
+            "createdAt": "2026-09-15T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "rep-0915-1",
+            "ticketId": "tck-0915",
+            "authorKind": "customer",
+            "authorStaffId": null,
+            "body": "Some guardians get the reminder in English although they chose Tamil.",
+            "internal": false,
+            "aiDrafted": false,
+            "createdAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "SlaPolicy",
+      "samples": [
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "slaTier": "priority",
+            "firstResponseMinutes": {
+              "p1": 60,
+              "p2": 240,
+              "p3": 480,
+              "p4": 1440
+            },
+            "resolutionMinutes": {
+              "p1": 480,
+              "p2": 1440,
+              "p3": 2880,
+              "p4": 7200
+            },
+            "twentyFourSeven": false
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "slaTier": "enterprise",
+            "firstResponseMinutes": {
+              "p1": 15,
+              "p2": 60,
+              "p3": 240,
+              "p4": 480
+            },
+            "resolutionMinutes": {
+              "p1": 240,
+              "p2": 720,
+              "p3": 1440,
+              "p4": 4320
+            },
+            "twentyFourSeven": true
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": null,
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": 12345,
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": null,
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": [],
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": null,
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": [],
+            "twentyFourSeven": false
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            }
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slaTier": "standard",
+            "firstResponseMinutes": {
+              "p1": 240,
+              "p2": 480,
+              "p3": 1440,
+              "p4": 2880
+            },
+            "resolutionMinutes": {
+              "p1": 1440,
+              "p2": 4320,
+              "p3": 7200,
+              "p4": 14400
+            },
+            "twentyFourSeven": "yes"
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "KnowledgeArticle",
+      "samples": [
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "kb-access-hi",
+            "slug": "approve-support-access",
+            "locale": "hi",
+            "title": "सहायता पहुँच कैसे काम करती है",
+            "body": "आपके एडमिन की मंज़ूरी के बाद ही हमारी टीम आपका डेटा देख सकती है।",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "kb-access-ta",
+            "slug": "approve-support-access",
+            "locale": "ta",
+            "title": "உதவி அணுகல் எப்படி செயல்படுகிறது",
+            "body": "உங்கள் நிர்வாகி அனுமதித்த பிறகே எங்கள் குழு உங்கள் தரவைப் பார்க்க முடியும்.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": null,
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": 12345,
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": null,
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": 12345,
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": null,
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": 12345,
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": null,
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": 12345,
+            "published": true,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": null,
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": "yes",
+            "updatedAt": "2026-08-01T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "kb-access",
+            "slug": "approve-support-access",
+            "locale": "en",
+            "title": "How support access works",
+            "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+            "published": true,
+            "updatedAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
     }
   ]
 }

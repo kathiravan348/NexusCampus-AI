@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-22 (Stage 2 prototype: sign-in, menu and home (NEX-071); Accounts (NEX-072); Pricing & quotes (NEX-073); Billing (NEX-074); Provisioning (NEX-075); Licences (NEX-076); Fleet (NEX-077); Releases (NEX-078); Extensions (NEX-079); Support (NEX-080); Access requests (NEX-081); Usage (NEX-082); Partners (NEX-083); Staff (NEX-084); Trust (NEX-085); Projects (NEX-086); Analytics (NEX-087); Sandboxes (NEX-088); Moves (NEX-089)).
+> State as of: 2026-11-23 (Stage 2 prototype + real Control backend for sign-in, Accounts, Pricing & quotes, Billing, Usage, Licences, Fleet, Releases, and Support P09 (NEX-122)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -148,8 +148,11 @@ Menu **Support** (super admin, support, implementation, site reliability; partne
   staff** marks replies that began as an AI draft. A **Linked access request** shows the request the institution
   approves or denies in its own app — we never decide our own access.
 - **Reply** (support staff): type and **Send**, or tick **Internal note (customer does not see it)**. Answering an
-  unassigned ticket assigns it to you; a reply to the customer sets **Waiting for customer**. Never paste learner,
+  unassigned ticket assigns it to you; a reply to the customer sets **Waiting for customer**, while an internal note
+  opens a **New** ticket and keeps other statuses unchanged. Closed tickets are read-only. Never paste learner,
   family or staff records — ask for a scrubbed diagnostic bundle instead.
+- **Partners** see only their own customers' tickets and replies; **SLA targets** and help articles are shown only to
+  our staff. In real mode (`dev:control:real`), Support reads and saves replies directly in the Control database.
 
 ### Access requests
 

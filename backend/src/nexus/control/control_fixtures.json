@@ -1,5 +1,5 @@
 {
-  "version": 6,
+  "version": 7,
   "staff": [
     {
       "id": "stf-0001",
@@ -1993,6 +1993,215 @@
       ],
       "status": "pending",
       "startedAt": null
+    }
+  ],
+  "tickets": [
+    {
+      "id": "tck-0915",
+      "number": "TCK-2026-0915",
+      "accountId": "acc-ax",
+      "subject": "Notification templates fail to render",
+      "summary": "Fee reminder templates fall back to the default language for some guardians.",
+      "priority": "p2",
+      "status": "open",
+      "channel": "portal",
+      "assigneeStaffId": "stf-0042",
+      "slaDueAt": "2026-09-16T07:00:00Z",
+      "breached": false,
+      "accessRequestId": "acr-ax-0915",
+      "createdAt": "2026-09-15T07:00:00Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "tck-0914",
+      "number": "TCK-2026-0914",
+      "accountId": "acc-rv",
+      "subject": "North campus theme not applied on tablets",
+      "summary": "Brand colours show the platform default on iPads at the North campus.",
+      "priority": "p3",
+      "status": "waiting_customer",
+      "channel": "email",
+      "assigneeStaffId": "stf-0042",
+      "slaDueAt": "2026-09-16T16:00:00Z",
+      "breached": false,
+      "accessRequestId": "acr-rv-0914",
+      "createdAt": "2026-09-14T16:00:00Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "tck-0905",
+      "number": "TCK-2026-0905",
+      "accountId": "acc-nb",
+      "subject": "Duplicate user accounts after SSO change",
+      "summary": "Institution declined access; fixed together on a customer-started screen share.",
+      "priority": "p2",
+      "status": "resolved",
+      "channel": "phone",
+      "assigneeStaffId": "stf-0007",
+      "slaDueAt": "2026-09-06T13:00:00Z",
+      "breached": false,
+      "accessRequestId": "acr-nb-0905",
+      "createdAt": "2026-09-05T12:30:00Z",
+      "resolvedAt": "2026-09-06T09:00:00Z"
+    },
+    {
+      "id": "tck-0810",
+      "number": "TCK-2026-0810",
+      "accountId": "acc-ls",
+      "subject": "Help importing the academic calendar",
+      "summary": "Calendar imported during an approved session.",
+      "priority": "p4",
+      "status": "closed",
+      "channel": "portal",
+      "assigneeStaffId": "stf-0019",
+      "slaDueAt": "2026-08-13T04:00:00Z",
+      "breached": false,
+      "accessRequestId": "acr-ls-0810",
+      "createdAt": "2026-08-10T03:50:00Z",
+      "resolvedAt": "2026-08-10T09:00:00Z"
+    },
+    {
+      "id": "tck-0912",
+      "number": "TCK-2026-0912",
+      "accountId": "acc-ct",
+      "subject": "Nightly backup slower since 2.2.5",
+      "summary": "Customer sent a scrubbed diagnostic bundle after review.",
+      "priority": "p3",
+      "status": "open",
+      "channel": "portal",
+      "assigneeStaffId": "stf-0019",
+      "slaDueAt": "2026-09-14T06:00:00Z",
+      "breached": true,
+      "accessRequestId": null,
+      "createdAt": "2026-09-12T06:00:00Z",
+      "resolvedAt": null
+    },
+    {
+      "id": "tck-0915b",
+      "number": "TCK-2026-0916",
+      "accountId": "acc-hm",
+      "subject": "What happens when the trial ends?",
+      "summary": "",
+      "priority": "p4",
+      "status": "new",
+      "channel": "email",
+      "assigneeStaffId": null,
+      "slaDueAt": "2026-09-18T03:00:00Z",
+      "breached": false,
+      "accessRequestId": null,
+      "createdAt": "2026-09-15T03:00:00Z",
+      "resolvedAt": null
+    }
+  ],
+  "ticketReplies": [
+    {
+      "id": "rep-0915-1",
+      "ticketId": "tck-0915",
+      "authorKind": "customer",
+      "authorStaffId": null,
+      "body": "Some guardians get the reminder in English although they chose Tamil.",
+      "internal": false,
+      "aiDrafted": false,
+      "createdAt": "2026-09-15T07:00:00Z"
+    },
+    {
+      "id": "rep-0915-2",
+      "ticketId": "tck-0915",
+      "authorKind": "staff",
+      "authorStaffId": "stf-0042",
+      "body": "Requested read access to notifications for 48 hours; waiting for your admin to approve.",
+      "internal": false,
+      "aiDrafted": true,
+      "createdAt": "2026-09-15T07:31:00Z"
+    },
+    {
+      "id": "rep-0915-3",
+      "ticketId": "tck-0915",
+      "authorKind": "staff",
+      "authorStaffId": "stf-0042",
+      "body": "Same root cause as the 2.4.1 fix; Apex Edge node is on 2.4.1, the cell template cache is not.",
+      "internal": true,
+      "aiDrafted": false,
+      "createdAt": "2026-09-15T09:00:00Z"
+    }
+  ],
+  "slaPolicies": [
+    {
+      "slaTier": "standard",
+      "firstResponseMinutes": {
+        "p1": 240,
+        "p2": 480,
+        "p3": 1440,
+        "p4": 2880
+      },
+      "resolutionMinutes": {
+        "p1": 1440,
+        "p2": 4320,
+        "p3": 7200,
+        "p4": 14400
+      },
+      "twentyFourSeven": false
+    },
+    {
+      "slaTier": "priority",
+      "firstResponseMinutes": {
+        "p1": 60,
+        "p2": 240,
+        "p3": 480,
+        "p4": 1440
+      },
+      "resolutionMinutes": {
+        "p1": 480,
+        "p2": 1440,
+        "p3": 2880,
+        "p4": 7200
+      },
+      "twentyFourSeven": false
+    },
+    {
+      "slaTier": "enterprise",
+      "firstResponseMinutes": {
+        "p1": 15,
+        "p2": 60,
+        "p3": 240,
+        "p4": 480
+      },
+      "resolutionMinutes": {
+        "p1": 240,
+        "p2": 720,
+        "p3": 1440,
+        "p4": 4320
+      },
+      "twentyFourSeven": true
+    }
+  ],
+  "kbArticles": [
+    {
+      "id": "kb-access",
+      "slug": "approve-support-access",
+      "locale": "en",
+      "title": "How support access works",
+      "body": "Our staff can only see your data after your admin approves a request in Data vault & access.",
+      "published": true,
+      "updatedAt": "2026-08-01T00:00:00Z"
+    },
+    {
+      "id": "kb-access-hi",
+      "slug": "approve-support-access",
+      "locale": "hi",
+      "title": "सहायता पहुँच कैसे काम करती है",
+      "body": "आपके एडमिन की मंज़ूरी के बाद ही हमारी टीम आपका डेटा देख सकती है।",
+      "published": true,
+      "updatedAt": "2026-08-01T00:00:00Z"
+    },
+    {
+      "id": "kb-access-ta",
+      "slug": "approve-support-access",
+      "locale": "ta",
+      "title": "உதவி அணுகல் எப்படி செயல்படுகிறது",
+      "body": "உங்கள் நிர்வாகி அனுமதித்த பிறகே எங்கள் குழு உங்கள் தரவைப் பார்க்க முடியும்.",
+      "published": true,
+      "updatedAt": "2026-08-01T00:00:00Z"
     }
   ]
 }
