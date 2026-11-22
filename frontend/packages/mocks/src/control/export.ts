@@ -15,13 +15,15 @@ import {
   PARTNERS,
   PAYMENTS,
   QUOTES,
+  RELEASES,
+  ROLLOUTS,
   STAFF_USERS,
   SUBSCRIPTIONS,
   USAGE_RECORDS,
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 5;
+export const CONTROL_FIXTURES_VERSION = 6;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -51,6 +53,8 @@ export function controlFixturesJson(): string {
       licences: LICENCES,
       deployments: DEPLOYMENTS,
       healthSignals: HEALTH_SIGNALS,
+      releases: RELEASES,
+      rollouts: ROLLOUTS,
     },
     null,
     2,

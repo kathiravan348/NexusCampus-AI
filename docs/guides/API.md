@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-22 (Stage 2 build: Control backend P01–P03, P05, P06 fleet + agent check-in (NEX-113), P11, P13 staff SSO, M84 install agent core, encrypted backups & diagnostics, and PII-free health reports (NEX-105, NEX-112, NEX-114); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
+> State as of: 2026-11-22 (Stage 2 build: Control backend P01–P03, P05, P06 fleet + agent check-in (NEX-113), P07 releases & rollouts + agent update check (NEX-115), P11, P13 staff SSO, M84 install agent core, encrypted backups & diagnostics, and PII-free health reports (NEX-105, NEX-112, NEX-114); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -333,6 +333,9 @@ see rows of the accounts their partner manages (others → `404`).
 | GET | `/deployments`, `/deployments/:id` | `ctl.fleet.read` | filters `kind`, `region`, `accountId`, `health`, `channel` (NEX-113) |
 | GET | `/health-signals`, `/health-signals/:deploymentId` | `ctl.fleet.read` | filter `deploymentId`; latest check-in only; not shown to partner users |
 | POST | `/agent/health` | agent bearer token | `Authorization: Bearer <token>` issued by `nexus-control-agent-token` (SHA-256 stored; no staff cookie, no CSRF); body = `HealthSignal` without `deploymentId` (strict, ≤ 4 KB); `204` upserts signal and updates deployment `version`, `lastCheckInAt` (server time), `telemetryEnabled` and derived `health` (`degraded` if uptime < 99%, error rate ≥ 2%, p95 latency ≥ 1500 ms or disk ≥ 90%, else `healthy`); unknown/revoked token `401`, air-gapped `403`, > 4 KB `413`, invalid/extra field `422`, > 1 per 60 s `429` |
+| GET | `/releases`, `/releases/:id` | `ctl.release.read` | filters `channel`, `status`; not shown to partner users (NEX-115) |
+| GET | `/rollouts` | `ctl.release.read` | filters `releaseId`, `status`; not shown to partner users |
+| GET | `/agent/update` | agent bearer token | `Authorization: Bearer <token>` (same check as `/agent/health`, no cookie); returns `200 { release }` (newest published, signed release on the deployment's channel newer than its version, pre-releases only on `preview`, `minUpgradeFrom` ≤ deployment version, listed in a `running` or `done` rollout) or `200 { release: null }`; unknown/revoked `401`, air-gapped `403`, > 1 per 60 s `429` |
 
 Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages; rows
-without one (catalogue, payments, credit notes, health signals) are not shown to partner users.
+without one (catalogue, payments, credit notes, health signals, releases, rollouts) are not shown to partner users.

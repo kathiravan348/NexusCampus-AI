@@ -1,5 +1,5 @@
 {
-  "version": 5,
+  "version": 6,
   "staff": [
     {
       "id": "stf-0001",
@@ -1897,6 +1897,102 @@
       "queueDepth": 0,
       "diskUsedPct": 65,
       "activeUsers": 210
+    }
+  ],
+  "releases": [
+    {
+      "id": "rel-225",
+      "version": "2.2.5",
+      "channel": "lts",
+      "status": "published",
+      "publishedAt": "2026-06-10T10:00:00Z",
+      "signed": true,
+      "offlineBundle": true,
+      "minUpgradeFrom": "2.0.0",
+      "migrationNotes": "Security fixes only. No schema change.",
+      "notesAiDrafted": false
+    },
+    {
+      "id": "rel-240",
+      "version": "2.4.0",
+      "channel": "stable",
+      "status": "published",
+      "publishedAt": "2026-08-04T10:00:00Z",
+      "signed": true,
+      "offlineBundle": true,
+      "minUpgradeFrom": "2.2.0",
+      "migrationNotes": "Adds notification quiet hours columns; forward-only, tested rollback plan.",
+      "notesAiDrafted": true
+    },
+    {
+      "id": "rel-241",
+      "version": "2.4.1",
+      "channel": "stable",
+      "status": "published",
+      "publishedAt": "2026-09-01T10:00:00Z",
+      "signed": true,
+      "offlineBundle": true,
+      "minUpgradeFrom": "2.2.0",
+      "migrationNotes": "Fixes Tamil fee-reminder template fallback. No schema change.",
+      "notesAiDrafted": true
+    },
+    {
+      "id": "rel-250-rc1",
+      "version": "2.5.0-rc.1",
+      "channel": "preview",
+      "status": "published",
+      "publishedAt": "2026-09-10T10:00:00Z",
+      "signed": true,
+      "offlineBundle": false,
+      "minUpgradeFrom": "2.4.0",
+      "migrationNotes": "Renames grading fields (alias kept for one release).",
+      "notesAiDrafted": true
+    },
+    {
+      "id": "rel-250",
+      "version": "2.5.0",
+      "channel": "stable",
+      "status": "draft",
+      "publishedAt": null,
+      "signed": false,
+      "offlineBundle": true,
+      "minUpgradeFrom": "2.4.0",
+      "migrationNotes": "Draft: grading field rename; extension impact check pending.",
+      "notesAiDrafted": true
+    }
+  ],
+  "rollouts": [
+    {
+      "id": "rol-241-0",
+      "releaseId": "rel-241",
+      "ring": 0,
+      "deploymentIds": [
+        "dep-eu-1"
+      ],
+      "status": "done",
+      "startedAt": "2026-09-01T12:00:00Z"
+    },
+    {
+      "id": "rol-241-1",
+      "releaseId": "rel-241",
+      "ring": 1,
+      "deploymentIds": [
+        "dep-in-1",
+        "dep-apac-1",
+        "dep-edge-ax"
+      ],
+      "status": "done",
+      "startedAt": "2026-09-03T12:00:00Z"
+    },
+    {
+      "id": "rol-241-2",
+      "releaseId": "rel-241",
+      "ring": 2,
+      "deploymentIds": [
+        "dep-us-nb"
+      ],
+      "status": "pending",
+      "startedAt": null
     }
   ]
 }
