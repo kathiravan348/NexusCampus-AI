@@ -3,11 +3,13 @@
 from dataclasses import asdict
 from typing import Any
 
+import httpx2
 import pytest
 from sqlalchemy import create_engine, text
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from nexus.control.billing.engine import BillingCustomer, BillingPlan, BillingUnavailable, FakeBillingEngine
+from nexus.control.billing.lago import LagoBillingEngine
 from nexus.control.billing.sync import sync_to_lago
 from nexus.control.seed import load_fixtures
 
@@ -172,3 +174,56 @@ async def test_billing_unavailable_stops_the_run_and_names_the_step(control_db: 
     # Stopped at plans: no customers or subscriptions were sent.
     assert failing.customers == {}
     assert failing.subscriptions == {}
+
+
+@pytest.mark.anyio
+async def test_cancelled_subscription_is_terminated_once_by_sync(control_db: tuple[str, str]) -> None:
+    owner_url, app_url = control_db
+    fake = FakeBillingEngine()
+    db = create_async_engine(app_url)
+    owner = create_engine(owner_url)
+    try:
+        async with db.connect() as conn:
+            first = await sync_to_lago(conn, fake)
+        assert "sub-ls" in fake.subscriptions and first.terminated == []
+
+        with owner.begin() as conn:
+            conn.execute(text("UPDATE subscriptions SET status = 'cancelled' WHERE id = 'sub-ls'"))
+
+        async with db.connect() as conn:
+            second = await sync_to_lago(conn, fake)
+            third = await sync_to_lago(conn, fake)
+
+        assert second.terminated == ["sub-ls"]
+        assert "sub-ls" not in fake.subscriptions
+        assert fake.terminated == ["sub-ls"]
+        assert third.terminated == []  # idempotent: already ended
+    finally:
+        with owner.begin() as conn:
+            conn.execute(text("UPDATE subscriptions SET status = 'active' WHERE id = 'sub-ls'"))
+        owner.dispose()
+        await db.dispose()
+
+
+@pytest.mark.anyio
+async def test_lago_terminate_handles_active_missing_and_error() -> None:
+    responses = [200, 404, 405, 500]
+    seen: list[tuple[str, str]] = []
+
+    def handler(req: httpx2.Request) -> httpx2.Response:
+        seen.append((req.method, req.url.path))
+        return httpx2.Response(responses.pop(0), json={})
+
+    async with httpx2.AsyncClient(transport=httpx2.MockTransport(handler)) as http:
+        lago = LagoBillingEngine("http://lago.test", "k", http)
+        assert await lago.terminate("sub-1") is True
+        assert await lago.terminate("sub-missing") is False
+        assert await lago.terminate("sub-ended") is False
+        with pytest.raises(BillingUnavailable):
+            await lago.terminate("sub-err")
+    assert seen == [
+        ("DELETE", "/api/v1/subscriptions/sub-1"),
+        ("DELETE", "/api/v1/subscriptions/sub-missing"),
+        ("DELETE", "/api/v1/subscriptions/sub-ended"),
+        ("DELETE", "/api/v1/subscriptions/sub-err"),
+    ]

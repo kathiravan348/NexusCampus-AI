@@ -45,6 +45,8 @@ class ControlSettings(BaseSettings):
     # Billing engine (D51, NEX-098): Lago inside our control plane only.
     lago_api_url: str = "http://127.0.0.1:53000"
     lago_api_key: SecretStr = SecretStr("")
+    #: Shared HMAC-SHA256 key Lago uses to sign webhooks (`X-Lago-Signature`, NEX-111); empty = refuse all (401).
+    lago_webhook_key: SecretStr = SecretStr("")
     #: Transit key that signs licence files (Ed25519, never exported; NEX-095, NEX-103). OpenBao URL and token are the
     #: product's `NEXUS_VAULT_*` settings (one OpenBao in dev).
     licence_signing_key: str = "nexus-licence"

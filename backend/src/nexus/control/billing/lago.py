@@ -137,6 +137,15 @@ class LagoBillingEngine:
             payload["billing_time"] = "anniversary"
         await self._ok("POST", "/subscriptions", json={"subscription": payload})
 
+    async def terminate(self, subscription_id: str) -> bool:
+        """Ends an active subscription in Lago; returns False when already ended or unknown."""
+        res = await self._call("DELETE", f"/subscriptions/{subscription_id}")
+        if res.status_code < 300:
+            return True
+        if res.status_code in (404, 405):
+            return False
+        raise BillingUnavailable(f"billing engine refused DELETE /subscriptions/{subscription_id} ({res.status_code})")
+
     async def record_usage(self, event: UsageEvent) -> None:
         res = await self._call(
             "POST",
