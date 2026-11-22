@@ -15,7 +15,10 @@ from typing import Protocol
 
 import httpx2
 from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import padding, rsa
 from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+from cryptography.hazmat.primitives.asymmetric.rsa import RSAPrivateKey
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 
@@ -53,6 +56,9 @@ class Vault(Protocol):
     async def sign(self, name: str, data: bytes) -> str: ...
     async def verify(self, name: str, data: bytes, signature: str) -> bool: ...
     async def public_keys(self, name: str) -> dict[int, bytes]: ...
+    async def create_import_key(self, name: str) -> None: ...
+    async def public_key_pem(self, name: str) -> str: ...
+    async def rsa_decrypt(self, name: str, blob: str) -> bytes: ...
 
 
 def key_name(tenant_id: str, purpose: str) -> str:
@@ -155,13 +161,42 @@ class HttpVault:
             raise ApiError(503, "internal", "The key service refused the request.")
         return bool(res.json()["data"]["valid"])
 
-    async def public_keys(self, name: str) -> dict[int, bytes]:
-        """Raw 32-byte Ed25519 public keys by version (for offline verification, e.g. licences in M84)."""
+    async def _key_versions(self, name: str) -> tuple[dict[str, object], str]:
         data = (await self._ok("GET", f"{self._base}/keys/{name}"))["data"]
         assert isinstance(data, dict)
         keys = data["keys"]
         assert isinstance(keys, dict)
-        return {int(v): base64.b64decode(str(k["public_key"])) for v, k in keys.items()}
+        return keys, str(data["latest_version"])
+
+    async def public_keys(self, name: str) -> dict[int, bytes]:
+        """Raw 32-byte Ed25519 public keys by version (for offline verification, e.g. licences in M84)."""
+        keys, _ = await self._key_versions(name)
+        return {int(v): base64.b64decode(str(k["public_key"])) for v, k in keys.items()}  # type: ignore[index]
+
+    async def create_import_key(self, name: str) -> None:
+        """Creates a non-exportable RSA-4096 Transit key (no-op when it exists)."""
+        await self.ensure_mount()
+        res = await self._call("POST", f"{self._base}/keys/{name}", {"type": "rsa-4096", "exportable": False})
+        if res.status_code >= 300:
+            raise ApiError(503, "internal", "The key service could not create the import key.")
+
+    async def public_key_pem(self, name: str) -> str:
+        keys, latest = await self._key_versions(name)
+        return str(keys[latest]["public_key"])  # type: ignore[index]
+
+    async def rsa_decrypt(self, name: str, blob: str) -> bytes:
+        if blob.startswith("vault:"):
+            return await self.unwrap(name, blob)
+        keys, _ = await self._key_versions(name)
+        for ver in sorted((int(v) for v in keys), reverse=True):
+            try:
+                return await self.unwrap(name, f"vault:v{ver}:{blob}")
+            except KeyDestroyed:
+                continue
+        raise KeyDestroyed(name)
+
+
+_RSA_OAEP = padding.OAEP(mgf=padding.MGF1(hashes.SHA256()), algorithm=hashes.SHA256(), label=None)
 
 
 class FakeVault:
@@ -171,6 +206,7 @@ class FakeVault:
         self.keys: dict[str, list[bytes]] = {}
         self.created: dict[str, datetime] = {}
         self.signing: dict[str, list[Ed25519PrivateKey]] = {}
+        self.rsa: dict[str, list[RSAPrivateKey]] = {}
 
     async def create_key(self, name: str) -> None:
         self.keys.setdefault(name, [os.urandom(32)])
@@ -236,3 +272,29 @@ class FakeVault:
         if not versions:
             raise KeyDestroyed(name)
         return {i + 1: k.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw) for i, k in enumerate(versions)}
+
+    async def create_import_key(self, name: str) -> None:
+        if name not in self.rsa:
+            self.rsa[name] = [rsa.generate_private_key(public_exponent=65537, key_size=4096)]
+
+    async def public_key_pem(self, name: str) -> str:
+        if not (versions := self.rsa.get(name)):
+            raise KeyDestroyed(name)
+        return versions[-1].public_key().public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo).decode("ascii")
+
+    async def rsa_decrypt(self, name: str, blob: str) -> bytes:
+        if not (versions := self.rsa.get(name)):
+            raise KeyDestroyed(name)
+        try:
+            if blob.startswith("vault:"):
+                _, ver, raw_b64 = blob.split(":", 2)
+                return versions[int(ver[1:]) - 1].decrypt(base64.b64decode(raw_b64), _RSA_OAEP)
+            raw = base64.b64decode(blob)
+        except (IndexError, ValueError) as exc:
+            raise KeyDestroyed(name) from exc
+        for key in reversed(versions):
+            try:
+                return key.decrypt(raw, _RSA_OAEP)
+            except ValueError:
+                continue
+        raise KeyDestroyed(name)

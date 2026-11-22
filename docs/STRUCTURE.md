@@ -107,8 +107,10 @@
 │                       sign-in with MFA, main = /control/api/v1, seed + control_fixtures.json, billing/ = BillingEngine +
 │                       Lago adapter), control_migrations/ + control_alembic.ini (database nexus_control), keycloak/
 │                       realm-staff.json (nexus-staff), compose.billing.yaml (Lago, dev), src/nexus/licensing/ (licence
-│                       files: canonical JSON, Ed25519 in OpenBao, offline verify); tools nexus-control-db,
-│                       nexus-keycloak-staff-dev, nexus-lago-dev; tests/control, tests/db/control, tests/licensing
+│                       files: canonical JSON, Ed25519 in OpenBao, offline verify), src/nexus/agent/ (M84 install
+│                       agent: licence, updates, state, health, online, crypto, backup, tenant_export = NXTE/1 DM-8
+│                       tenant export, diagnostics, jobs, run); tools nexus-control-db, nexus-keycloak-staff-dev,
+│                       nexus-lago-dev, nexus-agent; tests/control, tests/db/control, tests/licensing, tests/agent
 ├─ control/             Nexus Control backend (planned, Stage 2)
 └─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,
                         vault/vault.hcl, postgres/ init, scripts/install.sh + install.ps1, README (install, upgrade,
