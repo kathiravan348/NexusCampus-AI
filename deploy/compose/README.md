@@ -102,7 +102,7 @@ and an OpenBao backup to another place — both are needed to restore. **Support
 diagnostics --ticket TCK-…` writes a bundle with e-mail addresses, phone numbers, IP addresses and secrets removed;
 an administrator reads it under **Install & updates** and approves or discards it. Nothing leaves without approval.
 
-**Tenant export (moving one institution between installs, DM-8).** On the **destination** install, run
+**Tenant export & import (moving one institution between installs, DM-8).** On the **destination** install, run
 `nexus-agent import-key > destination.pem` to create its non-exportable RSA-4096 import key (`tenant-import`) in
 OpenBao and print only its public PEM. Hand `destination.pem` to the **source** install's administrator and run
 `nexus-agent export-tenant <tenant-id> --to destination.pem`. It streams only that institution's rows into one
@@ -110,6 +110,12 @@ encrypted `.nxte` file (`NXTE/1`) under a fresh 256-bit AES-GCM key wrapped with
 (nothing plain touches disk, and only the destination's OpenBao can open it). Sign-in sessions, SCIM tokens and
 cached responses are never exported: people sign in again and SCIM tokens are issued anew on the destination. The job is recorded under
 **Install & updates** with counts and file size only.
+
+On the **destination** install, run `nexus-agent import-tenant <file.nxte>` to load the institution all-or-nothing into
+an empty tenant: it checks format, `pemSha256`, exact schema revision, empty tenant, table allow-list, and platform key
+custody; loads all rows in one transaction (skipping source-signed audit checkpoints); creates fresh tenant keys in
+OpenBao and re-encrypts any field-encrypted values; records an `m84.tenant.imported` audit event; and signs today's
+checkpoint after re-verifying the entire imported audit chain.
 
 ### Volume backups
 

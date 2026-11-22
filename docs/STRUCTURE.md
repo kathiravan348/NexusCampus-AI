@@ -109,7 +109,7 @@
 │                       realm-staff.json (nexus-staff), compose.billing.yaml (Lago, dev), src/nexus/licensing/ (licence
 │                       files: canonical JSON, Ed25519 in OpenBao, offline verify), src/nexus/agent/ (M84 install
 │                       agent: licence, updates, state, health, online, crypto, backup, tenant_export = NXTE/1 DM-8
-│                       tenant export, diagnostics, jobs, run); tools nexus-control-db, nexus-keycloak-staff-dev,
+│                       tenant export, tenant_import = NXTE/1 DM-8 tenant import, diagnostics, jobs, run); tools nexus-control-db, nexus-keycloak-staff-dev,
 │                       nexus-lago-dev, nexus-agent; tests/control, tests/db/control, tests/licensing, tests/agent
 ├─ control/             Nexus Control backend (planned, Stage 2)
 ├─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,

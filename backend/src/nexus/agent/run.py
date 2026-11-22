@@ -7,6 +7,7 @@
   restore FILE --into URL         load a backup into an EMPTY database (schema built first)
   import-key                      ensure Transit `tenant-import` RSA-4096 key exists and print its public PEM (NEX-106)
   export-tenant ID --to PEM       export one tenant encrypted for the destination's import PEM (NEX-106)
+  import-tenant FILE              load an `NXTE/1` tenant export made for this install into an empty tenant (NEX-119)
   diagnostics [--ticket REF]      support bundle with personal data removed, waiting for an admin's review
 
 Prints counts, sizes and versions — never people.
@@ -30,6 +31,7 @@ from nexus.agent.jobs import ensure_import_key, run_backup, run_diagnostics, run
 from nexus.agent.licence import check_licence, load_keys
 from nexus.agent.online import OnlineCheckResult, check_online
 from nexus.agent.state import RunResult, run_once
+from nexus.agent.tenant_import import run_tenant_import
 from nexus.agent.updates import RELEASE_KEYS
 from nexus.core.timing import utf8_console
 from nexus.core.vault import HttpVault
@@ -148,6 +150,12 @@ def main() -> None:
         print(
             f"tenant export {done['id']} ({done['tenantId']}): "
             f"{done['tables']} tables, {done['rows']} rows, {done['bytes']} bytes, encrypted → {done['file']}"
+        )
+    elif args.mode == "import-tenant" and args.file:
+        imp = run_tenant_import(settings, Path(args.file))
+        print(
+            f"tenant import {imp.tenant_id}: {len(imp.counts)} tables, {imp.rows_loaded} rows, "
+            f"{imp.skipped_checkpoints} checkpoints skipped, {len(imp.keys_created)} keys created"
         )
     elif args.mode == "diagnostics":
         done = run_diagnostics(settings, args.ticket)
