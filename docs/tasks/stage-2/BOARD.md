@@ -53,8 +53,8 @@
 | NEX-106 | Tenant export (DM-8, D58): one tenant's rows, encrypted so only the destination install can open the file | D | done | Gemini | 112 |
 | NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 111 |
 | NEX-108 | Packaging: Nexus Control as a Compose stack (control backend, staff realm, billing), images we already have | D | done | Gemini | 111 |
-| NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–124 (parity done in NEX-116) | D | withdrawn | — | — |
-| NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–108, 111, 119–125 |
+| NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–126 (parity done in NEX-116) | D | withdrawn | — | — |
+| NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–108, 111, 119–126 |
 | NEX-111 | Lago sync part 2: signed invoice webhooks into Control, and cancellations (part 1: NEX-118; D51) | D | done | Gemini | 118 |
 | NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | done | Claude | 105 |
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |
@@ -67,6 +67,7 @@
 | NEX-120 | Packaging: Helm chart for large installs (needs the Owner's OK to download `helm`) | D | draft | — | 108 |
 | NEX-121 | Control on real data: P04 tenant provisioning and P18 moves (portability jobs, shred certificates) | D | draft | — | 119, 116 |
 | NEX-122 | Control on real data: P09 support desk (tickets, replies, SLA policies, knowledge base) | D | planned | — | 116, 108 |
-| NEX-123 | Control on real data: P08 extensions and P17 sandboxes | D | draft | — | 116 |
-| NEX-124 | Control on real data: P12 deals and commissions, P14 trust, P15 projects, P16 analytics | D | draft | — | 116 |
+| NEX-123 | Control on real data: P08 extensions, P15 projects and P17 sandboxes (reads) | D | planned | — | 122 |
+| NEX-124 | Control on real data: P12 deals and commissions, P16 analytics (reads) | D | planned | — | 123 |
 | NEX-125 | Control on real data: P10 access broker, requests reach the institution's M83 approval (needs a decision: how Control calls an install) | D | draft | — | 122 |
+| NEX-126 | Control on real data: P14 trust (sub-processors, certifications, security incidents, DPAs) | D | draft | — | 124 |
