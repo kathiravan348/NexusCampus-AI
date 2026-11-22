@@ -195,3 +195,14 @@ def test_app_role_read_only_and_db_checks_refuse_invalid_rows(control_db: tuple[
                 conn.exec_driver_sql(bad_sql)
     finally:
         owner_eng.dispose()
+
+
+@pytest.mark.anyio
+@pytest.mark.parametrize("path", ["/extensions", "/extension-compatibility", "/projects", "/sandboxes", "/tickets"])
+async def test_paging_one_row_at_a_time_never_repeats_or_skips(api: httpx2.AsyncClient, path: str) -> None:
+    """Lists sort by a column that may repeat; the primary key breaks ties, so pages are stable (review of NEX-123)."""
+    full = (await get(api, ADMIN, path, pageSize=200)).json()["items"]
+    walked: list[dict[str, Any]] = []
+    for page in range(1, len(full) + 1):
+        walked += (await get(api, ADMIN, path, pageSize=1, page=page)).json()["items"]
+    assert walked == full

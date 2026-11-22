@@ -73,10 +73,12 @@ async def list_page(
 ) -> Page[Any]:
     conds = [r.table.c[col] == value for col, value in filters.items() if value] + r.scoped(viewer)
     order = r.order if r.order is not None else r.table.c[r.key or "id"]
+    # The primary key breaks ties, so a page never repeats or skips a row when the sort column has duplicates.
+    tiebreak = list(r.table.primary_key.columns)
     async with engine_of(request).connect() as conn:
         total = (await conn.execute(select(func.count()).select_from(r.table).where(*conds))).scalar_one()
         rows = await conn.execute(
-            select(r.table).where(*conds).order_by(order).limit(pages.page_size).offset(pages.offset)
+            select(r.table).where(*conds).order_by(order, *tiebreak).limit(pages.page_size).offset(pages.offset)
         )
         items = [r.parse(row) for row in rows.mappings()]
     return Page[Any].of(items, total, pages)
