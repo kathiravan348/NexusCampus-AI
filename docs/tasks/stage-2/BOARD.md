@@ -58,4 +58,4 @@
 | NEX-111 | Lago sync: catalogue → plans, subscriptions → Lago, usage → events, Lago invoice webhooks → control DB (D51) | D | draft | — | 098, 102 |
 | NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | done | Claude | 105 |
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |
-| NEX-114 | M84: install agent sends PII-free health reports to Control (off when telemetry off or air-gapped) | D | planned | — | 113 |
+| NEX-114 | M84: install agent sends PII-free health reports to Control (off when telemetry off or air-gapped) | D | ready-for-review | Gemini | 113 |

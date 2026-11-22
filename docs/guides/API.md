@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-22 (Stage 2 build: Control backend P01–P03, P05, P06 fleet + agent check-in (NEX-113), P11, P13 staff SSO, M84 install agent core + encrypted backups & diagnostics (NEX-105, NEX-112); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
+> State as of: 2026-11-22 (Stage 2 build: Control backend P01–P03, P05, P06 fleet + agent check-in (NEX-113), P11, P13 staff SSO, M84 install agent core, encrypted backups & diagnostics, and PII-free health reports (NEX-105, NEX-112, NEX-114); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -291,6 +291,8 @@ counts, never people.
 | GET | `/api/v1/install/diagnostics` | `DiagnosticBundle` page: support bundles with personal data removed |
 | GET | `/api/v1/install/diagnostics/:id/content` | `{ id, content }` — exactly what would be sent, to read before approving |
 | POST | `/api/v1/install/diagnostics/:id/approve`, `…/discard` | only from `ready_for_review` (`409` otherwise); records the reviewing admin. Nothing is sent by this (sending: NEX-113) |
+
+Outbound health reports (NEX-114): `nexus-agent report` (and each `once` / `loop` run) probes `NEXUS_AGENT_PROBE_URL` (`NEXUS_AGENT_PROBES` GETs, 5 s timeout), measures `install_dir` disk use, running backups + generating diagnostics, and distinct active users in the last 15 min (`nexus_install_active_users`), and POSTs that PII-free payload to `NEXUS_CONTROL_URL/control/api/v1/agent/health` with `Authorization: Bearer <NEXUS_CONTROL_AGENT_TOKEN>` (TLS verified, 10 s timeout). Nothing is sent when `NEXUS_AIR_GAPPED=true`, `NEXUS_TELEMETRY_ENABLED=false`, or no token is set.
 
 ## Nexus Control — real backend (Stage 2 build, NEX-097, NEX-100, NEX-101)
 
