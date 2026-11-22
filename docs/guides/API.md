@@ -277,6 +277,18 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 
 Write routes are added by each Control screen task (NEX-072+).
 
+## Install & updates (M84) — real backend on a self-hosted install (NEX-105)
+
+Institution admins (`m01.institution.manage`), only when `NEXUS_INSTALL_MODE=self_hosted` and M84 is on (the install
+agent turns it on for every tenant); otherwise `403 module_disabled`. Data comes from `nexus-agent`: versions and
+counts, never people.
+
+| Method | Path | Notes |
+|---|---|---|
+| GET | `/api/v1/install/status` | `InstallStatus`: version, channel, licence summary (verified offline; learners and campuses **counted**), air-gapped, health reports on / off |
+| GET | `/api/v1/install/update` | `{ offer }`: the newest verified offline bundle in `inbox/` that is newer and can upgrade from this version, or `null` |
+| GET | `/api/v1/install/backups`, `/api/v1/install/diagnostics` | empty pages until NEX-112 |
+
 ## Nexus Control — real backend (Stage 2 build, NEX-097, NEX-100, NEX-101)
 
 Base `/control/api/v1` on the control backend (`nexus-control-dev`, port 8100; the Control app reaches it through

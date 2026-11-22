@@ -37,6 +37,7 @@ nexus-keycloak-staff-dev = "nexus.devtools.keycloak_staff:main"
 nexus-lago-dev = "nexus.devtools.lago_dev:main"
 nexus-release-bundle = "nexus.devtools.release_bundle:main"
 nexus-release-verify = "nexus.devtools.release_bundle:verify_main"
+nexus-agent = "nexus.agent.run:main"
 
 [build-system]
 requires = ["hatchling==1.27.0"]

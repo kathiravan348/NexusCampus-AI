@@ -91,6 +91,7 @@ def bundle(args: argparse.Namespace) -> None:
                 "images": images,
                 "migrations": _heads(),
                 "notesSha256": hashlib.sha256(notes).hexdigest(),
+                "securityFix": args.security_fix,
                 "files": files,
                 "signingKeyId": "pending",
             }
@@ -115,6 +116,7 @@ def main() -> None:
     p.add_argument("--image", action="append", required=True)
     p.add_argument("--out", required=True)
     p.add_argument("--online-only", action="store_true")
+    p.add_argument("--security-fix", action="store_true")
     p.add_argument("--keys")
     p.add_argument("--key", default="nexus-release")
     bundle(p.parse_args())
