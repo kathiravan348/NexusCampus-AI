@@ -45,7 +45,7 @@
 | NEX-098 | Lago billing engine: dev stack + `BillingEngine` adapter (D51; downloads approved 2026-11-22) | D | done | Claude | 096 |
 | NEX-099 | Stage 2 docs: manual with Nexus Control, guides, presentation, owner checklist | A | done | Claude | 091, 097, 098 |
 | NEX-100 | Control app real mode: staff sign-in button → `/auth/login`, `/me` from the control backend, sign-out (P13) | C | done | Claude | 097 |
-| NEX-101 | Control API: accounts, notes, staff directory (P01) on the control DB; P01 screens switched to real | D | draft | — | 096 |
+| NEX-101 | Control API: accounts, notes, staff directory (P01) on the control DB; P01 screens switched to real | D | in-progress | Claude | 096 |
 | NEX-102 | Control API: plans, quotes, subscriptions and usage on Lago (P02, P03, P11); Lago webhooks → control DB | D | draft | — | 098, 101 |
 | NEX-103 | Control API: licences (P05) — issue, store, download the signed file; P05 screen switched to real | D | draft | — | 095, 101 |
 | NEX-104 | Release signing: signed images and offline update bundles (P07, DM-9) | D | draft | — | 095 |
