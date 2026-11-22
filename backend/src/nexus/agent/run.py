@@ -14,6 +14,7 @@ import argparse
 import asyncio
 import sys
 import time
+from datetime import UTC, date, datetime
 from pathlib import Path
 
 import httpx2
@@ -24,7 +25,10 @@ from sqlalchemy import create_engine
 from nexus.agent.backup import backup_header, restore_backup, verify_backup
 from nexus.agent.health import report_skip_reason, send_report
 from nexus.agent.jobs import run_backup, run_diagnostics
+from nexus.agent.licence import check_licence, load_keys
+from nexus.agent.online import OnlineCheckResult, check_online
 from nexus.agent.state import RunResult, run_once
+from nexus.agent.updates import RELEASE_KEYS
 from nexus.core.timing import utf8_console
 from nexus.core.vault import HttpVault
 from nexus.settings import BACKEND_ROOT, Settings, get_settings
@@ -38,12 +42,26 @@ def _report(r: RunResult) -> None:
         print(f"  not offered: {reason}")
 
 
+def _check_online_updates(settings: Settings) -> OnlineCheckResult:
+    day = datetime.now(UTC).date()
+    keys_path = settings.install_dir / RELEASE_KEYS
+    try:
+        keys = load_keys(keys_path) if keys_path.exists() else {}
+    except (OSError, ValueError):
+        keys = {}
+    licence = check_licence(settings.install_dir, day, 0, 0)
+    support_ends = date.fromisoformat(licence.summary["supportEndsAt"]) if licence.summary else None
+    return check_online(settings, keys, settings.app_version, support_ends)
+
+
 def _status(settings: Settings, loop: bool, every: int) -> None:
     engine = create_engine(settings.database_url.get_secret_value(), pool_pre_ping=True)
     try:
         while True:
+            online = _check_online_updates(settings)
+            print(f"online update: {online.message}")
             with engine.begin() as conn:
-                _report(run_once(conn, settings))
+                _report(run_once(conn, settings, online=online))
             skip = report_skip_reason(settings)
             if skip is not None:
                 print(f"health report: {skip}")

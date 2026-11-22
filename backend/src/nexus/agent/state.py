@@ -13,6 +13,7 @@ from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.sql.expression import bindparam
 
 from nexus.agent.licence import check_licence, load_keys, read_only_summary
+from nexus.agent.online import OnlineCheckResult
 from nexus.agent.updates import RELEASE_KEYS, find_offer
 from nexus.settings import Settings
 
@@ -49,27 +50,41 @@ def count_and_entitle(conn: Connection) -> tuple[int, int, int]:
     return len(tenants), learners, campuses
 
 
-def run_once(conn: Connection, settings: Settings, today: date | None = None) -> RunResult:
-    """Inside one transaction (the caller commits)."""
+def run_once(
+    conn: Connection,
+    settings: Settings,
+    today: date | None = None,
+    online: OnlineCheckResult | None = None,
+) -> RunResult:
+    """Inside one transaction (the caller commits). A verified offline bundle beats an online offer."""
     day = today or datetime.now(UTC).date()
     tenants, learners, campuses = count_and_entitle(conn)
     licence = check_licence(settings.install_dir, day, learners, campuses)
     summary: dict[str, Any] = licence.summary or read_only_summary(learners, campuses, day)
     support_ends = date.fromisoformat(summary["supportEndsAt"]) if licence.summary else None
     keys_path = settings.install_dir / RELEASE_KEYS
-    offer, skipped = (
+    offline_offer, skipped = (
         (None, ["no pinned release keys"])
         if not keys_path.exists()
         else (find_offer(settings.install_dir, load_keys(keys_path), settings.app_version, support_ends))
     )
     telemetry = settings.telemetry_enabled and not settings.air_gapped
+    online_offer = online.offer if (online is not None and not settings.air_gapped) else None
+    offer = offline_offer if offline_offer is not None else online_offer
+    checked_at = datetime.now(UTC) if (online is not None and online.checked and not settings.air_gapped) else None
     stmt = text(
         "INSERT INTO install_status (id, install_id, version, channel, licence, licence_problem, air_gapped,"
         " telemetry_enabled, last_update_check_at, last_backup_at, update_offer, checked_at)"
-        " VALUES (1, :install, :version, :channel, :licence, :problem, :air, :telemetry, NULL, NULL, :offer, now())"
+        " VALUES (1, :install, :version, :channel, :licence, :problem, :air, :telemetry, :update_check, NULL,"
+        " :offer, now())"
         " ON CONFLICT (id) DO UPDATE SET install_id = EXCLUDED.install_id, version = EXCLUDED.version,"
         " channel = EXCLUDED.channel, licence = EXCLUDED.licence, licence_problem = EXCLUDED.licence_problem,"
         " air_gapped = EXCLUDED.air_gapped, telemetry_enabled = EXCLUDED.telemetry_enabled,"
+        " last_update_check_at = CASE"
+        "   WHEN EXCLUDED.air_gapped THEN NULL"
+        "   WHEN EXCLUDED.last_update_check_at IS NOT NULL THEN EXCLUDED.last_update_check_at"
+        "   ELSE install_status.last_update_check_at"
+        " END,"
         " update_offer = EXCLUDED.update_offer, checked_at = EXCLUDED.checked_at"
     ).bindparams(bindparam("licence", type_=_JSON["licence"]), bindparam("offer", type_=_JSON["offer"]))
     conn.execute(
@@ -82,6 +97,7 @@ def run_once(conn: Connection, settings: Settings, today: date | None = None) ->
             "problem": licence.problem,
             "air": settings.air_gapped,
             "telemetry": telemetry,
+            "update_check": checked_at,
             "offer": offer,
         },
     )
