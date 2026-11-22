@@ -112,8 +112,10 @@
 │                       tenant export, diagnostics, jobs, run); tools nexus-control-db, nexus-keycloak-staff-dev,
 │                       nexus-lago-dev, nexus-agent; tests/control, tests/db/control, tests/licensing, tests/agent
 ├─ control/             Nexus Control backend (planned, Stage 2)
-└─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,
-                        vault/vault.hcl, postgres/ init, scripts/install.sh + install.ps1, README (install, upgrade,
-                        backup, uninstall); images: backend/Dockerfile (api + worker), frontend/apps/campus/Dockerfile
-                        (+ nginx.conf). Helm and air-gapped bundles: Stage 2
+├─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,
+│                       vault/vault.hcl, postgres/ init, scripts/install.sh + install.ps1, README (install, upgrade,
+│                       backup, uninstall); images: backend/Dockerfile (api + worker), frontend/apps/campus/Dockerfile
+│                       (+ nginx.conf). Helm and air-gapped bundles: Stage 2
+└─ deploy/control/      Nexus Control Compose stack (NEX-108): compose.yaml (includes backend/compose.billing.yaml,
+                        internal network, only 127.0.0.1:8100 published), .env.example, scripts/install.{sh,ps1}, README
 ```

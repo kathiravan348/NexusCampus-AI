@@ -1,0 +1,221 @@
+# Nexus Control — provider plane Compose stack (NEX-108, D21, D51).
+# Install / start / upgrade:  deploy/control/scripts/install.sh  (or install.ps1)
+# Stop:                       docker compose -f deploy/control/compose.yaml down
+# Internal network only; only `control-api` publishes 127.0.0.1:8100 (put your TLS reverse proxy in front).
+# Secrets live only in deploy/control/.env (git-ignored; created by the install script from .env.example).
+name: nexuscampus-control
+
+include:
+  - path: ../../backend/compose.billing.yaml
+
+x-control-env: &control-env
+  NEXUS_CONTROL_ENVIRONMENT: ${NEXUS_CONTROL_ENVIRONMENT:-prod}
+  NEXUS_CONTROL_DATABASE_URL: postgresql+psycopg://control_app:${NEXUS_CONTROL_APP_DB_PASSWORD:?run install script}@control-db:5432/nexus_control
+  NEXUS_CONTROL_MIGRATE_DATABASE_URL: postgresql+psycopg://nexus_control:${NEXUS_CONTROL_DB_PASSWORD:?run install script}@control-db:5432/nexus_control
+  NEXUS_CONTROL_APP_DB_PASSWORD: ${NEXUS_CONTROL_APP_DB_PASSWORD:?}
+  NEXUS_CONTROL_KEYCLOAK_URL: http://staff-keycloak:8080
+  NEXUS_CONTROL_KEYCLOAK_REALM: nexus-staff
+  NEXUS_CONTROL_OIDC_CLIENT_ID: nexus-control
+  NEXUS_CONTROL_OIDC_CLIENT_SECRET: ${NEXUS_CONTROL_OIDC_CLIENT_SECRET:?}
+  NEXUS_CONTROL_API_PUBLIC_URL: ${NEXUS_CONTROL_API_PUBLIC_URL:-http://127.0.0.1:8100}
+  NEXUS_CONTROL_APP_PUBLIC_URL: ${NEXUS_CONTROL_APP_PUBLIC_URL:-http://127.0.0.1:3200}
+  NEXUS_CONTROL_LAGO_API_URL: http://lago-api:3000
+  NEXUS_CONTROL_LAGO_API_KEY: ${NEXUS_CONTROL_LAGO_API_KEY:?}
+  NEXUS_CONTROL_LAGO_WEBHOOK_KEY: ${NEXUS_CONTROL_LAGO_WEBHOOK_KEY:-}
+  NEXUS_CONTROL_LAGO_WEBHOOK_URL: ${NEXUS_CONTROL_LAGO_WEBHOOK_URL:-http://control-api:8100/control/api/v1/billing/lago-webhook}
+  NEXUS_CONTROL_LICENCE_SIGNING_KEY: nexus-licence
+  NEXUS_CONTROL_DEMO: ${NEXUS_CONTROL_DEMO:-0}
+  NEXUS_REDIS_URL: redis://valkey:6379/0
+  NEXUS_VAULT_URL: http://openbao:8200
+  NEXUS_VAULT_TOKEN: ${NEXUS_VAULT_TOKEN:-}
+
+services:
+  control-db:
+    image: pgvector/pgvector:0.8.0-pg16@sha256:a132765ec351c65111b5b675928a3a0515a466a40f97277329db8b8209ad8bc9
+    environment:
+      POSTGRES_DB: nexus_control
+      POSTGRES_USER: nexus_control
+      POSTGRES_PASSWORD: ${NEXUS_CONTROL_DB_PASSWORD:?run install script}
+      KEYCLOAK_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:?}
+    volumes:
+      - control-db-data:/var/lib/postgresql/data
+      - ../compose/postgres/10-keycloak.sh:/docker-entrypoint-initdb.d/10-keycloak.sh:ro
+    tmpfs:
+      - /tmp
+      - /var/run/postgresql
+    read_only: true
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U nexus_control -d nexus_control"]
+      interval: 3s
+      timeout: 3s
+      retries: 40
+    restart: unless-stopped
+
+  valkey:
+    # Valkey (BSD-3, D48): OIDC login-state store for staff SSO.
+    image: valkey/valkey:9.0.7-alpine@sha256:2d04268dfa26ab31cfa3fdc538866e76438b2d00e41db41b8cb86d780ac5a416
+    command: ["valkey-server", "--save", "60", "100", "--appendonly", "no", "--maxmemory", "96mb"]
+    volumes:
+      - control-valkey-data:/data
+    read_only: true
+    mem_limit: 128m
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  openbao:
+    # OpenBao (MPL-2.0, D48): Transit signing keys `nexus-licence` and `nexus-release` (Ed25519, never exported).
+    image: openbao/openbao:2.7.2@sha256:5046911075e137e154ce49ab051502f4ec7cf367d484ae4a4dce665d9b90561f
+    command: ["server"]
+    environment:
+      BAO_ADDR: http://127.0.0.1:8200
+    volumes:
+      - ../compose/vault/vault.hcl:/openbao/config/vault.hcl:ro
+      - control-openbao-data:/openbao/file
+    networks:
+      default:
+        aliases:
+          - vault
+    tmpfs:
+      - /tmp
+    read_only: true
+    mem_limit: 256m
+    healthcheck:
+      # Sealed (exit 2) is healthy at boot; the install script initialises and unseals OpenBao.
+      test: ["CMD-SHELL", "bao status >/dev/null 2>&1; [ $$? -ne 1 ]"]
+      interval: 3s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+
+  staff-keycloak:
+    # Dedicated provider-staff realm `nexus-staff` with mandatory MFA (`acr_values=mfa`, P13, D21).
+    image: quay.io/keycloak/keycloak:26.4.7@sha256:9409c59bdfb65dbffa20b11e6f18b8abb9281d480c7ca402f51ed3d5977e6007
+    command: ["start", "--import-realm", "--health-enabled=true"]
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://control-db:5432/keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: ${KEYCLOAK_DB_PASSWORD:?}
+      KC_HTTP_ENABLED: "true"
+      KC_HOSTNAME: ${NEXUS_CONTROL_KEYCLOAK_PUBLIC_URL:-http://staff-keycloak:8080}
+      KC_HOSTNAME_BACKCHANNEL_DYNAMIC: "true"
+      KC_PROXY_HEADERS: xforwarded
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: ${NEXUS_KEYCLOAK_ADMIN_PASSWORD:?}
+      NEXUS_CONTROL_OIDC_CLIENT_SECRET: ${NEXUS_CONTROL_OIDC_CLIENT_SECRET:?}
+    volumes:
+      - ../../backend/keycloak/realm-staff.json:/opt/keycloak/data/import/realm-staff.json:ro
+    depends_on:
+      control-db:
+        condition: service_healthy
+    mem_limit: 1g
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - >-
+          exec 3<>/dev/tcp/127.0.0.1/9000 &&
+          printf 'GET /health/ready HTTP/1.1\r\nHost: localhost\r\nConnection: close\r\n\r\n' >&3 &&
+          grep -q '"UP"' <&3
+      interval: 5s
+      timeout: 5s
+      retries: 60
+      start_period: 30s
+    restart: unless-stopped
+
+  # One-shot: forward-only control migrations, plus demo fixtures only when NEXUS_CONTROL_DEMO=1.
+  control-migrate:
+    image: ${NEXUS_IMAGE_API:-nexuscampus-api:dev}
+    build:
+      context: ../../backend
+    command:
+      - sh
+      - -eu
+      - -c
+      - |
+        alembic -c control_alembic.ini upgrade head
+        if [ "$$NEXUS_CONTROL_DEMO" = "1" ]; then
+          python -c "from sqlalchemy import create_engine; from nexus.control.seed import seed; from nexus.control.settings import get_control_settings; e = create_engine(get_control_settings().owner_url()); conn = e.connect(); n = seed(conn); conn.commit(); conn.close(); e.dispose(); print('control seed:', n, 'staff')"
+        fi
+    environment: *control-env
+    depends_on:
+      control-db:
+        condition: service_healthy
+    tmpfs:
+      - /tmp
+    read_only: true
+    mem_limit: 256m
+    restart: "no"
+
+  control-api:
+    image: ${NEXUS_IMAGE_API:-nexuscampus-api:dev}
+    command: ["uvicorn", "nexus.control.main:app", "--factory", "--host", "0.0.0.0", "--port", "8100", "--proxy-headers"]
+    environment: *control-env
+    ports:
+      - "127.0.0.1:${NEXUS_CONTROL_PORT:-8100}:8100"
+    depends_on:
+      control-migrate:
+        condition: service_completed_successfully
+      valkey:
+        condition: service_healthy
+      openbao:
+        condition: service_healthy
+      staff-keycloak:
+        condition: service_healthy
+      lago-api:
+        condition: service_healthy
+    tmpfs:
+      - /tmp
+    read_only: true
+    mem_limit: 512m
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8100/control/api/v1/ready', timeout=2)"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  # Overrides for the included Lago stack (`backend/compose.billing.yaml`):
+  # - No host ports published (internal network only; only control-api:8100 is published).
+  # - Private webhook URLs allowed for this stack so Lago delivers webhooks to http://control-api:8100 directly.
+  lago-db:
+    restart: unless-stopped
+
+  lago-valkey:
+    read_only: true
+    restart: unless-stopped
+
+  lago-migrate:
+    mem_limit: 512m
+    restart: "no"
+
+  lago-api:
+    ports: !reset []
+    environment:
+      LAGO_API_URL: http://lago-api:3000
+      LAGO_ORG_NAME: NexusCampus Control
+      LAGO_WEBHOOK_ALLOW_PRIVATE_URLS: "true"
+    restart: unless-stopped
+
+  lago-worker:
+    environment:
+      LAGO_API_URL: http://lago-api:3000
+      LAGO_ORG_NAME: NexusCampus Control
+      LAGO_WEBHOOK_ALLOW_PRIVATE_URLS: "true"
+    restart: unless-stopped
+
+  lago-clock:
+    environment:
+      LAGO_API_URL: http://lago-api:3000
+      LAGO_ORG_NAME: NexusCampus Control
+      LAGO_WEBHOOK_ALLOW_PRIVATE_URLS: "true"
+    restart: unless-stopped
+
+volumes:
+  control-db-data:
+  control-valkey-data:
+  control-openbao-data:
