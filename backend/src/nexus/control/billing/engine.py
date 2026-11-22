@@ -66,7 +66,9 @@ class BillingEngine(Protocol):
     async def ensure_learner_metric(self) -> None: ...
     async def upsert_customer(self, customer: BillingCustomer) -> None: ...
     async def upsert_plan(self, plan: BillingPlan) -> None: ...
-    async def subscribe(self, account_id: str, subscription_id: str, plan_code: str) -> None: ...
+    async def subscribe(
+        self, account_id: str, subscription_id: str, plan_code: str, *, started_at: str | None = None
+    ) -> None: ...
     async def record_usage(self, event: UsageEvent) -> None: ...
     async def current_usage(self, account_id: str, subscription_id: str) -> CurrentUsage: ...
     async def invoices(self, account_id: str) -> list[Invoice]: ...
@@ -80,6 +82,8 @@ class FakeBillingEngine:
     plans: dict[str, BillingPlan] = field(default_factory=dict)
     subscriptions: dict[str, tuple[str, str]] = field(default_factory=dict)
     events: dict[str, UsageEvent] = field(default_factory=dict)
+    #: Subscription id → the start date sent (`subscription_at`), to check trials are not billed.
+    started_at: dict[str, str | None] = field(default_factory=dict)
     metric: bool = False
 
     async def ensure_learner_metric(self) -> None:
@@ -91,10 +95,13 @@ class FakeBillingEngine:
     async def upsert_plan(self, plan: BillingPlan) -> None:
         self.plans[plan.code] = plan
 
-    async def subscribe(self, account_id: str, subscription_id: str, plan_code: str) -> None:
+    async def subscribe(
+        self, account_id: str, subscription_id: str, plan_code: str, *, started_at: str | None = None
+    ) -> None:
         if account_id not in self.customers or plan_code not in self.plans:
             raise BillingUnavailable("unknown customer or plan")
         self.subscriptions[subscription_id] = (account_id, plan_code)
+        self.started_at[subscription_id] = started_at
 
     async def record_usage(self, event: UsageEvent) -> None:
         self.events.setdefault(event.transaction_id, event)
