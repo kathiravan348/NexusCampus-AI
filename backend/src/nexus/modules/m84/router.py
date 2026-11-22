@@ -65,10 +65,28 @@ class UpdateOfferResponse(_Camel):
 
 class BackupJob(_Camel):
     id: str
+    kind: Literal["backup", "tenant_export"]
+    status: Literal["running", "done", "failed"]
+    encrypted: Literal[True]
+    size_bytes: int | None
+    started_at: str
+    finished_at: str | None
 
 
 class DiagnosticBundle(_Camel):
     id: str
+    status: Literal["generating", "ready_for_review", "approved", "sent", "discarded"]
+    scrubbed: Literal[True]
+    size_bytes: int | None
+    ticket_ref: str | None
+    created_at: str
+    reviewed_by: str | None
+    sent_at: str | None
+
+
+class DiagnosticContent(_Camel):
+    id: str
+    content: str
 
 
 def _utc(value: Any) -> str | None:
@@ -111,15 +129,101 @@ async def install_update(request: Request, auth: Admin) -> UpdateOfferResponse:
 async def install_backups(
     request: Request, auth: Admin, page: Annotated[PageQuery, Depends(page_query)]
 ) -> Page[BackupJob]:
-    """Encrypted backups arrive with NEX-112; until then the list is empty."""
+    """Encrypted backups made by the install agent (NEX-112), newest first."""
     await _status_row(request, auth)
-    return Page[BackupJob].of([], 0, page)
+    db = auth.ctx.db
+    total = (await db.execute(text("SELECT count(*) FROM install_backups"))).scalar_one()
+    rows = await db.execute(
+        text("SELECT * FROM install_backups ORDER BY started_at DESC LIMIT :n OFFSET :o"),
+        {"n": page.page_size, "o": page.offset},
+    )
+    items = [
+        BackupJob(
+            id=r["id"],
+            kind=r["kind"],
+            status=r["status"],
+            encrypted=True,
+            size_bytes=r["size_bytes"],
+            started_at=_utc(r["started_at"]) or "",
+            finished_at=_utc(r["finished_at"]),
+        )
+        for r in rows.mappings()
+    ]
+    return Page[BackupJob].of(items, int(total), page)
+
+
+def _bundle(r: Any) -> DiagnosticBundle:
+    return DiagnosticBundle(
+        id=r["id"],
+        status=r["status"],
+        scrubbed=True,
+        size_bytes=r["size_bytes"],
+        ticket_ref=r["ticket_ref"],
+        created_at=_utc(r["created_at"]) or "",
+        reviewed_by=r["reviewed_by"],
+        sent_at=_utc(r["sent_at"]),
+    )
 
 
 @router.get("/install/diagnostics", response_model=Page[DiagnosticBundle])
 async def install_diagnostics(
     request: Request, auth: Admin, page: Annotated[PageQuery, Depends(page_query)]
 ) -> Page[DiagnosticBundle]:
-    """Diagnostic bundles arrive with NEX-112; until then the list is empty."""
+    """Support bundles with personal data removed; nothing leaves the install until an admin approves (V-6)."""
     await _status_row(request, auth)
-    return Page[DiagnosticBundle].of([], 0, page)
+    db = auth.ctx.db
+    total = (await db.execute(text("SELECT count(*) FROM install_diagnostics"))).scalar_one()
+    rows = await db.execute(
+        text("SELECT * FROM install_diagnostics ORDER BY created_at DESC LIMIT :n OFFSET :o"),
+        {"n": page.page_size, "o": page.offset},
+    )
+    return Page[DiagnosticBundle].of([_bundle(r) for r in rows.mappings()], int(total), page)
+
+
+async def _one_bundle(request: Request, auth: Authorized, bundle_id: str) -> Any:
+    await _status_row(request, auth)
+    row = (
+        (await auth.ctx.db.execute(text("SELECT * FROM install_diagnostics WHERE id = :id"), {"id": bundle_id}))
+        .mappings()
+        .first()
+    )
+    if row is None:
+        raise ApiError(404, "not_found", "No such diagnostic bundle.")
+    return row
+
+
+@router.get("/install/diagnostics/{bundle_id}/content", response_model=DiagnosticContent)
+async def diagnostic_content(request: Request, auth: Admin, bundle_id: str) -> DiagnosticContent:
+    """Exactly what would be sent, for the admin to read before approving."""
+    row = await _one_bundle(request, auth, bundle_id)
+    folder = app_settings(request).diagnostics_dir or app_settings(request).install_dir / "diagnostics"
+    path = (folder / str(row["file_name"])).resolve()
+    if path.parent != folder.resolve() or not path.is_file():
+        raise ApiError(404, "not_found", "The bundle file is not on this install any more.")
+    return DiagnosticContent(id=row["id"], content=path.read_text(encoding="utf-8"))
+
+
+async def _decide(request: Request, auth: Authorized, bundle_id: str, status: str) -> DiagnosticBundle:
+    await _one_bundle(request, auth, bundle_id)
+    done = await auth.ctx.db.execute(
+        text(
+            "UPDATE install_diagnostics SET status = :status, reviewed_by = :by"
+            " WHERE id = :id AND status = 'ready_for_review' RETURNING *"
+        ),
+        {"status": status, "by": auth.ctx.user_id, "id": bundle_id},
+    )
+    row = done.mappings().first()
+    if row is None:
+        raise ApiError(409, "conflict", "Only a bundle waiting for review can be approved or discarded.")
+    return _bundle(row)
+
+
+@router.post("/install/diagnostics/{bundle_id}/approve", response_model=DiagnosticBundle)
+async def approve_diagnostics(request: Request, auth: Admin, bundle_id: str) -> DiagnosticBundle:
+    """The admin read it and allows it to be sent (sending: NEX-113)."""
+    return await _decide(request, auth, bundle_id, "approved")
+
+
+@router.post("/install/diagnostics/{bundle_id}/discard", response_model=DiagnosticBundle)
+async def discard_diagnostics(request: Request, auth: Admin, bundle_id: str) -> DiagnosticBundle:
+    return await _decide(request, auth, bundle_id, "discarded")
