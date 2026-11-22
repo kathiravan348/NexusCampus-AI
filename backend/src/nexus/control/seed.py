@@ -6,6 +6,7 @@ Idempotent: staff are upserted, role permissions replaced. Demo data only — re
 import json
 from datetime import datetime
 from pathlib import Path
+from typing import Any
 
 from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
@@ -15,7 +16,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from nexus.control.staff import Permission, StaffRole, StaffUser, role_permissions, staff_users
 
 FIXTURES = Path(__file__).with_name("control_fixtures.json")
-FIXTURES_VERSION = 1
+FIXTURES_VERSION = 2
 
 
 class ControlFixtures(BaseModel):
@@ -24,6 +25,13 @@ class ControlFixtures(BaseModel):
     version: int
     staff: list[StaffUser]
     role_permissions: dict[StaffRole, list[Permission]]
+    #: P01 data (NEX-101), validated by the account models when seeded.
+    partners: list[dict[str, Any]] = []
+    accounts: list[dict[str, Any]] = []
+    contacts: list[dict[str, Any]] = []
+    opportunities: list[dict[str, Any]] = []
+    contracts: list[dict[str, Any]] = []
+    notes: list[dict[str, Any]] = []
 
 
 def load_fixtures(path: Path = FIXTURES) -> ControlFixtures:
@@ -56,4 +64,9 @@ def seed(conn: Connection, data: ControlFixtures | None = None) -> int:
     pairs = [{"role": r, "permission": p} for r, perms in fixtures.role_permissions.items() for p in perms]
     if pairs:
         conn.execute(insert(role_permissions), pairs)
+    from nexus.control.accounts import seed_rows  # after staff: accounts reference owners and note authors
+
+    seed_rows(
+        conn, fixtures.model_dump(include={"partners", "accounts", "contacts", "opportunities", "contracts", "notes"})
+    )
     return len(fixtures.staff)

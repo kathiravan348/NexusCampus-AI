@@ -276,3 +276,27 @@ accounts their partner manages (others → `404 not_found`). Everything is metad
 | POST | `/broker-requests` | `ctl.broker.request` | body `{ accountId, tenantId, ticketId, reason, modules, mode, durationHours (1–72) }`; M83 in scope or bad body → `400`; tenant not of a visible account → `404`; creates the Control row and the institution's M83 `AccessRequest`, both `pending`. Reads (`GET /broker-requests`) show the decision the institution made in M83 (NEX-081) |
 
 Write routes are added by each Control screen task (NEX-072+).
+
+## Nexus Control — real backend (Stage 2 build, NEX-097, NEX-100, NEX-101)
+
+Base `/control/api/v1` on the control backend (`nexus-control-dev`, port 8100; the Control app reaches it through
+`pnpm --dir frontend dev:control:real`). Same shapes, filters and page envelope as the mock above. Every route needs a
+staff session: the `nexus_control_session` cookie from staff sign-in (password + one-time code), or — in `dev` and
+`test` only — the `X-Nexus-Staff` header. Missing session → `401`; missing permission → `403`. Partner users only
+see rows of the accounts their partner manages (others → `404`).
+
+| Method | Path | Permission | Notes |
+|---|---|---|---|
+| GET | `/health`, `/ready` | — | `ready` checks the control database (`503` when down) |
+| GET | `/auth/login?returnTo=/…` | — | redirects to the `nexus-staff` realm with PKCE and `acr_values=mfa` |
+| GET | `/auth/callback` | — | refuses `acr` ≠ `mfa`, unverified email, unknown / inactive staff; sets the HttpOnly session cookie (path `/control`, 60 min) |
+| POST | `/auth/logout` | — | revokes the session; `{ redirect }` = the sign-in service's sign-out address |
+| GET | `/me` | signed in | `StaffSession` |
+| GET | `/accounts`, `/accounts/:id` | `ctl.account.read` | filters `stage`, `deliveryModel`, `partnerId`, `region` |
+| GET | `/contacts` | `ctl.account.read` | filters `accountId`, `kind` |
+| GET | `/opportunities`, `/opportunities/:id` | `ctl.account.read` | filters `accountId`, `stage` |
+| GET | `/contracts`, `/contracts/:id` | `ctl.account.read` | filters `accountId`, `kind`, `status` |
+| GET | `/notes` | `ctl.account.read` | filter `accountId`; newest first |
+| POST | `/notes` | `ctl.account.manage` | body `{ accountId, body (1–2000, trimmed) }` → `201 AccountNote`; account not visible → `404` |
+| GET | `/staff-directory` | signed in | `{ id, displayName }` of every staff member |
+| GET | `/partners` | `ctl.partner.read` | partner names for the Accounts page |
