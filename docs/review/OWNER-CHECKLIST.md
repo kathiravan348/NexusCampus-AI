@@ -49,6 +49,9 @@ Each one can be undone; the log says how. The ones worth a conscious yes:
 
   They never leave your machine. Production secrets will live in OpenBao.
 
+- [ ] **Frozen-screen change (D56):** the backend now lets an admin read, approve or discard a support diagnostic
+      bundle (NEX-112). Showing **Review / Approve / Discard** on the frozen **Install & updates** page needs your OK.
+
 ## 3. Decide whether to push to GitHub (2 minutes)
 
 - [x] Pushed `main` to `origin` on 2026-11-22 (secret scan first: only placeholders; `backend/.env` is git-ignored).
