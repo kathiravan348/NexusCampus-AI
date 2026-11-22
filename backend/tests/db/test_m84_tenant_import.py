@@ -244,7 +244,11 @@ def test_refusals_and_atomic_rollback(test_db: DbUrls, tmp_path: Path) -> None:
         assert _tenant_count(dst_owner) == 0
 
 
-def test_field_encrypted_column_reencrypted_under_destination_key(test_db: DbUrls, tmp_path: Path) -> None:
+@pytest.mark.parametrize("key_service_down", [False, True])
+def test_field_encrypted_column_reencrypted_under_destination_key(
+    test_db: DbUrls, tmp_path: Path, key_service_down: bool
+) -> None:
+    """D59: values are encrypted before they are written; if the key service fails, nothing is written at all."""
     src_vault, dest_vault = FakeVault(), FakeVault()
     allergy_note, kname = "Severe peanut allergy — EpiPen", key_name(TENANT, "field_health")
 
@@ -274,8 +278,22 @@ def test_field_encrypted_column_reencrypted_under_destination_key(test_db: DbUrl
         )
         _, rev = _tables_and_rev(test_db.owner_url)
         with _empty_db(rev) as (dst_owner, dst_app):
-            imp = import_tenant(exported.path, dst_owner, dst_app, vault=dest_vault)
-            assert kname in imp.keys_created
+            if key_service_down:
+
+                async def _down(name: str) -> None:
+                    raise RuntimeError("key service down")
+
+                dest_vault.create_key = _down  # type: ignore[method-assign]
+                with pytest.raises(RuntimeError, match="key service down"):
+                    import_tenant(exported.path, dst_owner, dst_app, vault=dest_vault)
+                with psycopg.connect(libpq_url(dst_owner)) as pconn:
+                    assert pconn.execute("SELECT count(*) FROM tenants").fetchone() == (0,)  # rolled back: re-runnable
+                    plain = pconn.execute("SELECT count(*) FROM ai_chunks WHERE content = %s", (allergy_note,))
+                    assert plain.fetchone() == (0,)  # never written in plain
+                return
+            else:
+                imp = import_tenant(exported.path, dst_owner, dst_app, vault=dest_vault)
+                assert kname in imp.keys_created
             with psycopg.connect(libpq_url(dst_owner)) as pconn:
                 r = pconn.execute("SELECT content FROM ai_chunks WHERE id = %s", (target[0],)).fetchone()
                 assert r is not None

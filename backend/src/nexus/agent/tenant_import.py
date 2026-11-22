@@ -2,8 +2,9 @@
 
 Refuses before reading rows on format, `pemSha256`, revision, existing tenant, or table-list errors. Streams rows
 (skipping source `audit_checkpoints`) inside one owner transaction with `session_replication_role = replica` using
-explicit `information_schema` casts/adapters, committing only after the final chunk verifies and counts match. Then
-creates destination OpenBao keys, re-encrypts `decryptedColumns`, records `m84.tenant.imported`, and signs a checkpoint.
+explicit `information_schema` casts/adapters, encrypting `decryptedColumns` under this install's keys before each row is
+written, and commits only after the final chunk verifies and counts match. Then creates the remaining OpenBao keys,
+records `m84.tenant.imported`, and signs a checkpoint.
 """
 
 import asyncio
@@ -16,7 +17,6 @@ from typing import Any
 
 import httpx2
 import psycopg
-from cryptography.hazmat.primitives.serialization import Encoding, PublicFormat
 from psycopg import sql
 from psycopg.types.json import Json, Jsonb
 from sqlalchemy.ext.asyncio import async_sessionmaker, create_async_engine
@@ -39,7 +39,7 @@ from nexus.core.audit import AuditInput, record_audit
 from nexus.core.checkpoints import CHECKPOINT_KEY, create_checkpoint
 from nexus.core.fieldcrypto import FieldCipher
 from nexus.core.tenancy import TenantContext, bind_tenant
-from nexus.core.vault import FakeVault, HttpVault, KeyDestroyed, Vault, key_name
+from nexus.core.vault import HttpVault, KeyDestroyed, Vault, key_name
 from nexus.settings import Settings
 
 CHECKPOINTS_TABLE, VAULT_KEYS_TABLE, ALLOWED_CUSTODY = "audit_checkpoints", "vault_keys", "platform"
@@ -60,16 +60,9 @@ class ImportResult:
 
 
 async def _import_key_fingerprints(vault: Vault, name: str = IMPORT_KEY_NAME) -> set[str]:
-    if isinstance(vault, FakeVault):
-        return {
-            pem_fingerprint(k.public_key().public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo))
-            for k in vault.rsa.get(name, ())
-        }
+    """SHA-256 of every version of this install's import key (a file made for an older version still opens)."""
     try:
-        if isinstance(vault, HttpVault):
-            keys, _ = await vault._key_versions(name)
-            return {pem_fingerprint(str(k["public_key"])) for k in keys.values()}  # type: ignore[index]
-        return {pem_fingerprint(await vault.public_key_pem(name))}
+        return {pem_fingerprint(pem) for pem in await vault.public_key_pems(name)}
     except KeyDestroyed:
         return set()
 
@@ -159,23 +152,6 @@ def _decrypted_specs(
     return [(t, c, p, f) for (t, c), (p, f) in sorted(specs.items())]
 
 
-async def _reencrypt_columns(
-    owner_url: str, vault: Vault, tenant_id: str, dec_specs: list[tuple[str, str, str, str]]
-) -> None:
-    cipher = FieldCipher(vault)
-    with psycopg.connect(libpq_url(owner_url)) as conn:
-        for table, col, purpose, field in dec_specs:
-            fcol = sql.Identifier("id" if table == TENANTS_TABLE else "tenant_id")
-            sel = sql.SQL("SELECT ctid, {} FROM {} WHERE {} = %s AND {} IS NOT NULL").format(
-                sql.Identifier(col), sql.Identifier(table), fcol, sql.Identifier(col)
-            )
-            upd = sql.SQL("UPDATE {} SET {} = %s WHERE ctid = %s").format(sql.Identifier(table), sql.Identifier(col))
-            kname = key_name(tenant_id, purpose)
-            for ctid, plain in conn.execute(sel, (tenant_id,)).fetchall():
-                if isinstance(plain, str):
-                    conn.execute(upd, (await cipher.encrypt(kname, field, plain), ctid))
-
-
 async def _post_import_audit(app_url: str, vault: Vault, tenant_id: str) -> str | None:
     engine = create_async_engine(app_url)
     try:
@@ -216,6 +192,12 @@ async def _run_import(
             loaded, skipped_cp = 0, 0
             key_purposes: set[str] = set()
             stmt_cache: dict[tuple[str, tuple[str, ...]], sql.Composed] = {}
+            # D59: field values are encrypted under this install's keys before the row is written (never plain in
+            # the database, even if a later step fails); keys made here are idempotent and harmless on a rollback.
+            cipher, made = FieldCipher(vault), set[str]()
+            dec_by_table: dict[str, list[tuple[str, str, str]]] = {}
+            for t_name, col, purpose, field in dec_specs:
+                dec_by_table.setdefault(t_name, []).append((col, purpose, field))
 
             for table, row in decrypt_export_rows(src, data_key, header):
                 if table not in expected:
@@ -235,6 +217,13 @@ async def _run_import(
                         )
                     if row.get("status") in ("active", "rotating") and isinstance(row.get("purpose"), str):
                         key_purposes.add(str(row["purpose"]))
+                for col, purpose, field in dec_by_table.get(table, ()):
+                    if isinstance(value := row.get(col), str):
+                        kname = key_name(tenant_id, purpose)
+                        if kname not in made:
+                            await vault.create_key(kname)
+                            made.add(kname)
+                        row[col] = await cipher.encrypt(kname, field, value)
                 tcols, cols = col_types[table], list(row.keys())
                 if any(c not in tcols for c in cols):
                     raise TenantImportRefused(f"unknown column in {table}")
@@ -252,8 +241,6 @@ async def _run_import(
     keys_created = [key_name(tenant_id, p) for p in sorted(key_purposes)]
     for kname in keys_created:
         await vault.create_key(kname)
-    if dec_specs:
-        await _reencrypt_columns(owner_url, vault, tenant_id, dec_specs)
     cp_id = await _post_import_audit(app_url, vault, tenant_id)
     return ImportResult(tenant_id, expected, loaded, skipped_cp, keys_created, cp_id)
 

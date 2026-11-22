@@ -63,7 +63,7 @@
 | NEX-116 | Control contract parity: Pydantic ⇄ Zod for every real Control response (as NEX-059) | D | done | Gemini | 115 |
 | NEX-117 | M84 online update check, signed end to end: Control stores the signed manifest, the agent verifies it | D | done | Gemini | 115, 116 |
 | NEX-118 | Lago sync part 1: per-learner plans, customers, subscriptions and learner usage → Lago (one way, idempotent) | D | done | Gemini | 116 |
-| NEX-119 | Tenant import (DM-8, D58): unwrap with the import key, check schema revision, load into an empty tenant, re-encrypt fields | D | ready-for-review | Gemini | 106 |
+| NEX-119 | Tenant import (DM-8, D58): unwrap with the import key, check schema revision, load into an empty tenant, re-encrypt fields | D | done | Gemini | 106 |
 | NEX-120 | Packaging: Helm chart for large installs (needs the Owner's OK to download `helm`) | D | draft | — | 108 |
 | NEX-121 | Control on real data: P04 tenant provisioning and P18 moves (portability jobs, shred certificates) | D | draft | — | 119, 116 |
 | NEX-122 | Control on real data: P09 support desk (tickets, replies, SLA policies, knowledge base) | D | planned | — | 116, 108 |

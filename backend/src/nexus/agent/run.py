@@ -31,7 +31,7 @@ from nexus.agent.jobs import ensure_import_key, run_backup, run_diagnostics, run
 from nexus.agent.licence import check_licence, load_keys
 from nexus.agent.online import OnlineCheckResult, check_online
 from nexus.agent.state import RunResult, run_once
-from nexus.agent.tenant_import import run_tenant_import
+from nexus.agent.tenant_import import TenantImportRefused, run_tenant_import
 from nexus.agent.updates import RELEASE_KEYS
 from nexus.core.timing import utf8_console
 from nexus.core.vault import HttpVault
@@ -152,7 +152,10 @@ def main() -> None:
             f"{done['tables']} tables, {done['rows']} rows, {done['bytes']} bytes, encrypted → {done['file']}"
         )
     elif args.mode == "import-tenant" and args.file:
-        imp = run_tenant_import(settings, Path(args.file))
+        try:
+            imp = run_tenant_import(settings, Path(args.file))
+        except TenantImportRefused as exc:
+            sys.exit(f"tenant import refused: {exc}")
         print(
             f"tenant import {imp.tenant_id}: {len(imp.counts)} tables, {imp.rows_loaded} rows, "
             f"{imp.skipped_checkpoints} checkpoints skipped, {len(imp.keys_created)} keys created"

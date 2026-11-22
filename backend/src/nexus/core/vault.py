@@ -58,6 +58,7 @@ class Vault(Protocol):
     async def public_keys(self, name: str) -> dict[int, bytes]: ...
     async def create_import_key(self, name: str) -> None: ...
     async def public_key_pem(self, name: str) -> str: ...
+    async def public_key_pems(self, name: str) -> list[str]: ...
     async def rsa_decrypt(self, name: str, blob: str) -> bytes: ...
 
 
@@ -184,6 +185,11 @@ class HttpVault:
         keys, latest = await self._key_versions(name)
         return str(keys[latest]["public_key"])  # type: ignore[index]
 
+    async def public_key_pems(self, name: str) -> list[str]:
+        """Public PEM of every version of an RSA key, oldest first."""
+        keys, _ = await self._key_versions(name)
+        return [str(keys[v]["public_key"]) for v in sorted(keys, key=int)]  # type: ignore[index]
+
     async def rsa_decrypt(self, name: str, blob: str) -> bytes:
         if blob.startswith("vault:"):
             return await self.unwrap(name, blob)
@@ -281,6 +287,14 @@ class FakeVault:
         if not (versions := self.rsa.get(name)):
             raise KeyDestroyed(name)
         return versions[-1].public_key().public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo).decode("ascii")
+
+    async def public_key_pems(self, name: str) -> list[str]:
+        if not (versions := self.rsa.get(name)):
+            raise KeyDestroyed(name)
+        return [
+            k.public_key().public_bytes(Encoding.PEM, PublicFormat.SubjectPublicKeyInfo).decode("ascii")
+            for k in versions
+        ]
 
     async def rsa_decrypt(self, name: str, blob: str) -> bytes:
         if not (versions := self.rsa.get(name)):
