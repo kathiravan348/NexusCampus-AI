@@ -13,8 +13,7 @@
   - the Control backend and its own database
   - staff sign-in that always asks for a one-time code
   - the Lago billing engine
-- All work is committed and merged to `main` on your computer. **Nothing has been pushed to GitHub**: `main` is
-  about 160 commits ahead of `origin/main`.
+- All work is committed, merged and **pushed to GitHub** (`origin/main`, 2026-11-22).
 
 ## 1. Review Stage 2, then freeze it (about 45 minutes)
 
@@ -52,7 +51,7 @@ Each one can be undone; the log says how. The ones worth a conscious yes:
 
 ## 3. Decide whether to push to GitHub (2 minutes)
 
-- [ ] Push `main` to `origin` (`git push origin main`) — or tell me to, or keep it local for now.
+- [x] Pushed `main` to `origin` on 2026-11-22 (secret scan first: only placeholders; `backend/.env` is git-ignored).
 
 ## 4. Give the business inputs only you can give (when ready)
 
