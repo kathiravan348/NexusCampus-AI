@@ -1,5 +1,5 @@
 {
-  "version": 9,
+  "version": 10,
   "staff": [
     {
       "id": "stf-0001",
@@ -2606,6 +2606,128 @@
       ],
       "aiGenerated": true,
       "computedAt": "2026-09-15T00:00:00Z"
+    }
+  ],
+  "subProcessors": [
+    {
+      "id": "sp-aws",
+      "name": "Amazon Web Services",
+      "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+      "country": "US",
+      "dpaSigned": true,
+      "touchesInstitutionData": true
+    },
+    {
+      "id": "sp-razorpay",
+      "name": "Razorpay",
+      "purpose": "Card, UPI and net-banking payments for India",
+      "country": "IN",
+      "dpaSigned": true,
+      "touchesInstitutionData": false
+    },
+    {
+      "id": "sp-stripe",
+      "name": "Stripe",
+      "purpose": "Card payments for Europe",
+      "country": "IE",
+      "dpaSigned": true,
+      "touchesInstitutionData": false
+    }
+  ],
+  "certifications": [
+    {
+      "id": "crt-27001",
+      "code": "iso27001",
+      "status": "certified",
+      "validUntil": "2028-06-30"
+    },
+    {
+      "id": "crt-27701",
+      "code": "iso27701",
+      "status": "in_audit",
+      "validUntil": null
+    },
+    {
+      "id": "crt-soc2",
+      "code": "soc2",
+      "status": "planned",
+      "validUntil": null
+    },
+    {
+      "id": "crt-certin",
+      "code": "cert_in",
+      "status": "planned",
+      "validUntil": null
+    }
+  ],
+  "incidents": [
+    {
+      "id": "inc-0902",
+      "title": "Credential stuffing against Northbridge sign-in",
+      "severity": "sev2",
+      "status": "post_mortem_done",
+      "affectedAccountIds": [
+        "acc-nb"
+      ],
+      "personalDataAffected": false,
+      "detectedAt": "2026-09-02T03:00:00Z",
+      "breachNotificationDueAt": null,
+      "notifiedAt": null,
+      "reportAiDrafted": true
+    },
+    {
+      "id": "inc-0703",
+      "title": "EU cell outage, 41 minutes",
+      "severity": "sev3",
+      "status": "resolved",
+      "affectedAccountIds": [
+        "acc-rv"
+      ],
+      "personalDataAffected": false,
+      "detectedAt": "2026-07-03T08:12:00Z",
+      "breachNotificationDueAt": null,
+      "notifiedAt": null,
+      "reportAiDrafted": false
+    },
+    {
+      "id": "inc-1015",
+      "title": "Report-card email sent to the wrong parent group",
+      "severity": "sev2",
+      "status": "resolved",
+      "affectedAccountIds": [
+        "acc-sr"
+      ],
+      "personalDataAffected": true,
+      "detectedAt": "2026-10-15T09:00:00Z",
+      "breachNotificationDueAt": "2026-10-18T09:00:00Z",
+      "notifiedAt": "2026-10-16T12:00:00Z",
+      "reportAiDrafted": true
+    }
+  ],
+  "dpas": [
+    {
+      "id": "dpa-rv",
+      "accountId": "acc-rv",
+      "version": "2.1",
+      "signedAt": "2026-03-20T00:00:00Z"
+    },
+    {
+      "id": "dpa-nb",
+      "accountId": "acc-nb",
+      "version": "2.1",
+      "signedAt": "2026-06-15T00:00:00Z"
+    },
+    {
+      "id": "dpa-ax",
+      "accountId": "acc-ax",
+      "version": "2.0",
+      "signedAt": "2025-05-28T00:00:00Z"
+    },
+    {
+      "id": "dpa-ct",
+      "accountId": "acc-ct",
+      "version": "2.0",
+      "signedAt": "2025-03-10T00:00:00Z"
     }
   ]
 }

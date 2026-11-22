@@ -18409,6 +18409,1160 @@
           "shapeValid": false
         }
       ]
+    },
+    {
+      "contract": "SubProcessor",
+      "samples": [
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "sp-razorpay",
+            "name": "Razorpay",
+            "purpose": "Card, UPI and net-banking payments for India",
+            "country": "IN",
+            "dpaSigned": true,
+            "touchesInstitutionData": false
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "sp-stripe",
+            "name": "Stripe",
+            "purpose": "Card payments for Europe",
+            "country": "IE",
+            "dpaSigned": true,
+            "touchesInstitutionData": false
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": null,
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": 12345,
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": null,
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": 12345,
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": null,
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": 12345,
+            "dpaSigned": true,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": null,
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": "yes",
+            "touchesInstitutionData": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "sp-aws",
+            "name": "Amazon Web Services",
+            "purpose": "Hosting in ap-south-1 (Mumbai) and eu-central-1 (Frankfurt); Claude via Bedrock in-region",
+            "country": "US",
+            "dpaSigned": true,
+            "touchesInstitutionData": "yes"
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "Certification",
+      "samples": [
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "status": "certified",
+            "validUntil": "2028-06-30"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "crt-27701",
+            "code": "iso27701",
+            "status": "in_audit",
+            "validUntil": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "crt-soc2",
+            "code": "soc2",
+            "status": "planned",
+            "validUntil": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "status": "certified",
+            "validUntil": "2028-06-30",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "code": "iso27001",
+            "status": "certified",
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "code": "iso27001",
+            "status": "certified",
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "code": "iso27001",
+            "status": "certified",
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "status": "certified",
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": null,
+            "status": "certified",
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": 12345,
+            "status": "certified",
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "status": null,
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "status": 12345,
+            "validUntil": "2028-06-30"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "status": "certified"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "status": "certified",
+            "validUntil": null
+          },
+          "valid": false,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "crt-27001",
+            "code": "iso27001",
+            "status": "certified",
+            "validUntil": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "SecurityIncident",
+      "samples": [
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "inc-0703",
+            "title": "EU cell outage, 41 minutes",
+            "severity": "sev3",
+            "status": "resolved",
+            "affectedAccountIds": [
+              "acc-rv"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-07-03T08:12:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": false
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "inc-1015",
+            "title": "Report-card email sent to the wrong parent group",
+            "severity": "sev2",
+            "status": "resolved",
+            "affectedAccountIds": [
+              "acc-sr"
+            ],
+            "personalDataAffected": true,
+            "detectedAt": "2026-10-15T09:00:00Z",
+            "breachNotificationDueAt": "2026-10-18T09:00:00Z",
+            "notifiedAt": "2026-10-16T12:00:00Z",
+            "reportAiDrafted": true
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": null,
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": 12345,
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": null,
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": 12345,
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": null,
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": 12345,
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": null,
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": "not-a-list",
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": null,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": "yes",
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": null,
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": 12345,
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": true
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "inc-0902",
+            "title": "Credential stuffing against Northbridge sign-in",
+            "severity": "sev2",
+            "status": "post_mortem_done",
+            "affectedAccountIds": [
+              "acc-nb"
+            ],
+            "personalDataAffected": false,
+            "detectedAt": "2026-09-02T03:00:00Z",
+            "breachNotificationDueAt": null,
+            "notifiedAt": null,
+            "reportAiDrafted": "yes"
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "DpaRecord",
+      "samples": [
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dpa-nb",
+            "accountId": "acc-nb",
+            "version": "2.1",
+            "signedAt": "2026-06-15T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dpa-ax",
+            "accountId": "acc-ax",
+            "version": "2.0",
+            "signedAt": "2025-05-28T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-rv",
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "accountId": "acc-rv",
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "accountId": "acc-rv",
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": null,
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": 12345,
+            "version": "2.1",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "version": null,
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "version": 12345,
+            "signedAt": "2026-03-20T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "version": "2.1"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "version": "2.1",
+            "signedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dpa-rv",
+            "accountId": "acc-rv",
+            "version": "2.1",
+            "signedAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
     }
   ]
 }

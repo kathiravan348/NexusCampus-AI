@@ -185,6 +185,11 @@ Nexus Control (our cloud)                         Product deployments
   and `new_accounts <= active_accounts`), and `account_health` (keyed by `account_id`, 1–5 message-key reasons,
   `ai_generated = true`, score/risk CHECKs). `control_app` has `SELECT` only on all four; partners see only their
   managed accounts' deals and health, never commissions or business metrics.
+- **Compliance & trust (P14, NEX-126):** `sub_processors`, `certifications` (`valid_until` iff `status = 'certified'`),
+  `security_incidents` (unique `affected_account_ids` via `control_text_array_unique`, `breach_notification_due_at` iff
+  `personal_data_affected` and `>= detected_at`, `notified_at` only on a breach), and `dpa_records` (`version` `N.N`).
+  `control_app` has `SELECT` only on all four; partners see only their managed accounts' DPAs; incident titles are
+  never logged (V-6).
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted
