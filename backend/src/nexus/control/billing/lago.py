@@ -122,20 +122,20 @@ class LagoBillingEngine:
         else:
             await self._ok("PUT", f"/plans/{plan.code}", json=body)
 
-    async def subscribe(self, account_id: str, subscription_id: str, plan_code: str) -> None:
+    async def subscribe(
+        self, account_id: str, subscription_id: str, plan_code: str, *, started_at: str | None = None
+    ) -> None:
         if await self._exists(f"/subscriptions/{subscription_id}") is not None:
             return
-        await self._ok(
-            "POST",
-            "/subscriptions",
-            json={
-                "subscription": {
-                    "external_customer_id": account_id,
-                    "plan_code": plan_code,
-                    "external_id": subscription_id,
-                }
-            },
-        )
+        payload: dict[str, Any] = {
+            "external_customer_id": account_id,
+            "plan_code": plan_code,
+            "external_id": subscription_id,
+        }
+        if started_at is not None:
+            payload["subscription_at"] = started_at
+            payload["billing_time"] = "anniversary"
+        await self._ok("POST", "/subscriptions", json={"subscription": payload})
 
     async def record_usage(self, event: UsageEvent) -> None:
         res = await self._call(
