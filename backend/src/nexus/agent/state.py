@@ -15,6 +15,7 @@ from sqlalchemy.sql.expression import bindparam
 from nexus.agent.licence import check_licence, load_keys, read_only_summary
 from nexus.agent.online import OnlineCheckResult
 from nexus.agent.updates import RELEASE_KEYS, find_offer
+from nexus.releases.versions import version_key
 from nexus.settings import Settings
 
 _JSON = {"licence": JSONB(), "offer": JSONB()}
@@ -71,6 +72,15 @@ def run_once(
     telemetry = settings.telemetry_enabled and not settings.air_gapped
     online_offer = online.offer if (online is not None and not settings.air_gapped) else None
     offer = offline_offer if offline_offer is not None else online_offer
+    if offer is None and online is not None and online.temporary and not settings.air_gapped:
+        # A passing failure (network, 429, server error) must not wipe a verified online offer from the admin's screen.
+        previous = conn.execute(text("SELECT update_offer FROM install_status WHERE id = 1")).scalar()
+        if (
+            isinstance(previous, dict)
+            and previous.get("source") == "online"
+            and version_key(str(previous.get("version"))) > version_key(settings.app_version)
+        ):
+            offer = previous
     checked_at = datetime.now(UTC) if (online is not None and online.checked and not settings.air_gapped) else None
     stmt = text(
         "INSERT INTO install_status (id, install_id, version, channel, licence, licence_problem, air_gapped,"

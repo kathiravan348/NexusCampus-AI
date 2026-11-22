@@ -132,6 +132,26 @@ async def test_valid_signed_online_offer_verifies_and_strips_query_without_leaki
 
 
 @pytest.mark.anyio
+async def test_signed_release_of_another_channel_is_refused(tmp_path: Path) -> None:
+    vault = FakeVault()
+    signed, keys = await _sign_manifest(vault, version="2.4.1", channel="stable")
+
+    def handler(request: httpx2.Request) -> httpx2.Response:
+        body = {"release": _release_meta(channel="stable"), "manifest": json.loads(signed.to_json())}
+        return httpx2.Response(200, json=body, request=request)
+
+    res = check_online(
+        _settings(tmp_path, release_channel="lts"),
+        keys,
+        current="2.2.5",
+        support_ends=None,
+        transport=httpx2.MockTransport(handler),
+    )
+    assert res.checked is True and res.offer is None
+    assert "this install follows lts" in res.message
+
+
+@pytest.mark.anyio
 async def test_rejects_bad_signature_mismatch_older_version_min_upgrade_and_redirect(tmp_path: Path) -> None:
     vault = FakeVault()
     signed, keys = await _sign_manifest(vault, version="2.4.1", channel="stable", min_upgrade_from="2.2.0")
@@ -251,13 +271,17 @@ def test_http_errors_and_timeout_never_raise_or_leak_token(tmp_path: Path, outco
 class _StubConn:
     """Minimal DB stub for `run_once` capturing the `install_status` write parameters."""
 
-    def __init__(self) -> None:
+    def __init__(self, stored_offer: dict[str, Any] | None = None) -> None:
         self.saved: dict[str, Any] = {}
+        self.stored_offer = stored_offer
 
     def execute(self, stmt: Any, params: dict[str, Any] | None = None) -> Any:
         sql = str(stmt)
         if "nexus_audit_tenants" in sql:
             return type("R", (), {"scalars": lambda self: []})()
+        if "SELECT update_offer FROM install_status" in sql:
+            stored = self.stored_offer
+            return type("R", (), {"scalar": lambda self: stored})()
         if "INSERT INTO install_status" in sql and params is not None:
             self.saved = dict(params)
             return None
@@ -335,3 +359,29 @@ def test_offline_bundle_beats_online_and_last_update_check_set_only_after_call(t
     )
     assert conn_air.saved["update_check"] is None
     assert conn_air.saved["offer"]["source"] == "offline_bundle"
+
+
+def test_passing_failure_keeps_the_verified_online_offer(tmp_path: Path) -> None:
+    stored = {
+        "version": "2.4.1",
+        "channel": "stable",
+        "source": "online",
+        "signatureValid": True,
+        "securityFix": False,
+        "releaseNotes": "Online notes",
+        "coveredBySupport": True,
+    }
+    cfg = _settings(tmp_path, app_version="2.4.0")
+    limited = OnlineCheckResult(False, None, "rate limited (429): wait 60s before next check", temporary=True)
+    conn = _StubConn(stored_offer=stored)
+    run_once(conn, cfg, today=date(2026, 11, 22), online=limited)  # type: ignore[arg-type]
+    assert conn.saved["offer"] == stored and conn.saved["update_check"] is None
+
+    # A refusal (revoked token) clears it; so does an offer that is no longer newer than the running version.
+    revoked = OnlineCheckResult(False, None, "rejected (401): agent token invalid or revoked")
+    conn_revoked = _StubConn(stored_offer=stored)
+    run_once(conn_revoked, cfg, today=date(2026, 11, 22), online=revoked)  # type: ignore[arg-type]
+    assert conn_revoked.saved["offer"] is None
+    conn_upgraded = _StubConn(stored_offer=stored)
+    run_once(conn_upgraded, _settings(tmp_path, app_version="2.4.1"), today=date(2026, 11, 22), online=limited)  # type: ignore[arg-type]
+    assert conn_upgraded.saved["offer"] is None

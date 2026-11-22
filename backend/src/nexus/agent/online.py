@@ -29,6 +29,8 @@ class OnlineCheckResult:
     checked: bool
     offer: dict[str, Any] | None
     message: str
+    #: A passing failure (network, 429, server error, broken answer): the last verified online offer is kept.
+    temporary: bool = False
 
 
 def _verify_offer(
@@ -36,14 +38,19 @@ def _verify_offer(
     keys: Mapping[str, bytes],
     current: str,
     support_ends: date | None,
+    install_channel: str,
 ) -> OnlineCheckResult:
     if not isinstance(body, dict):
-        return OnlineCheckResult(checked=False, offer=None, message="failed: control answered with invalid JSON")
+        return OnlineCheckResult(
+            checked=False, offer=None, message="failed: control answered with invalid JSON", temporary=True
+        )
     release = body.get("release")
     if release is None:
         return OnlineCheckResult(checked=True, offer=None, message="no online update available")
     if not isinstance(release, dict):
-        return OnlineCheckResult(checked=False, offer=None, message="failed: invalid release object from control")
+        return OnlineCheckResult(
+            checked=False, offer=None, message="failed: invalid release object from control", temporary=True
+        )
 
     manifest_doc = body.get("manifest")
     if not isinstance(manifest_doc, dict) or not isinstance(manifest_doc.get("manifest"), dict):
@@ -66,6 +73,11 @@ def _verify_offer(
     ):
         return OnlineCheckResult(
             checked=True, offer=None, message="refused: signed manifest does not match release metadata"
+        )
+    # Defence in depth: whatever Control says, an install only moves within the channel it follows.
+    if m.channel != install_channel:
+        return OnlineCheckResult(
+            checked=True, offer=None, message=f"refused: {m.channel} release, this install follows {install_channel}"
         )
 
     try:
@@ -129,11 +141,13 @@ def check_online(
         with client:
             response = client.get(endpoint, headers={"Authorization": f"Bearer {token}"})
     except httpx2.TimeoutException:
-        return OnlineCheckResult(checked=False, offer=None, message="failed: control timed out")
+        return OnlineCheckResult(checked=False, offer=None, message="failed: control timed out", temporary=True)
     except httpx2.ConnectError:
-        return OnlineCheckResult(checked=False, offer=None, message="failed: could not reach control")
+        return OnlineCheckResult(checked=False, offer=None, message="failed: could not reach control", temporary=True)
     except httpx2.HTTPError as exc:
-        return OnlineCheckResult(checked=False, offer=None, message=f"failed: network error ({type(exc).__name__})")
+        return OnlineCheckResult(
+            checked=False, offer=None, message=f"failed: network error ({type(exc).__name__})", temporary=True
+        )
 
     status = response.status_code
     if status == 401:
@@ -141,12 +155,18 @@ def check_online(
     if status == 403:
         return OnlineCheckResult(checked=False, offer=None, message="rejected (403): deployment is air-gapped")
     if status == 429:
-        return OnlineCheckResult(checked=False, offer=None, message="rate limited (429): wait 60s before next check")
+        return OnlineCheckResult(
+            checked=False, offer=None, message="rate limited (429): wait 60s before next check", temporary=True
+        )
     if status != 200:
-        return OnlineCheckResult(checked=False, offer=None, message=f"failed: control answered HTTP {status}")
+        return OnlineCheckResult(
+            checked=False, offer=None, message=f"failed: control answered HTTP {status}", temporary=True
+        )
 
     try:
         body = response.json()
     except ValueError:
-        return OnlineCheckResult(checked=False, offer=None, message="failed: control answered with invalid JSON")
-    return _verify_offer(body, keys, current, support_ends)
+        return OnlineCheckResult(
+            checked=False, offer=None, message="failed: control answered with invalid JSON", temporary=True
+        )
+    return _verify_offer(body, keys, current, support_ends, settings.release_channel)
