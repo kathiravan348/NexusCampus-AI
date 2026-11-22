@@ -8,11 +8,12 @@ from pathlib import Path
 import pytest
 
 from nexus.agent.licence import LICENCE_FILE, LICENCE_KEYS, check_licence
-from nexus.agent.updates import INBOX, find_offer, version_key
+from nexus.agent.updates import INBOX, find_offer
 from nexus.core.vault import FakeVault
 from nexus.licensing.licence import LicenceTerms, issue_licence
 from nexus.releases.bundle import build_bundle, describe_files
 from nexus.releases.manifest import ReleaseManifest, load_public_keys, public_key_file, sign_release
+from nexus.releases.versions import version_key
 
 
 @pytest.fixture
@@ -128,3 +129,4 @@ async def test_offer_is_the_newest_valid_upgradable_bundle(tmp_path: Path) -> No
 
 def test_version_order() -> None:
     assert version_key("2.5.0-rc.1") < version_key("2.5.0") < version_key("2.5.1") < version_key("2.10.0")
+    assert version_key("2.5.0-rc.2") < version_key("2.5.0-rc.10") < version_key("2.5.0-rc.a")

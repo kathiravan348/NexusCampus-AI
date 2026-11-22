@@ -29,11 +29,11 @@ from sqlalchemy import (
 )
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
-from nexus.agent.updates import version_key
 from nexus.control.fleet import AgentDeployment, agent_deployment
 from nexus.control.resources import CamelModel, Resource, engine_of, mount
 from nexus.control.staff import metadata
 from nexus.core.errors import ApiError
+from nexus.releases.versions import VersionKey, version_key
 
 ID = 64
 MIN_UPDATE_INTERVAL_SECONDS = 60.0
@@ -139,7 +139,7 @@ def select_update_offer(
     """Picks the newest published, signed release eligible for `current_version` on `channel`."""
     current_key = version_key(current_version)
     best: Release | None = None
-    best_key: tuple[tuple[int, int, int], int, str] | None = None
+    best_key: VersionKey | None = None
     for rel in candidates:
         if rel.status != "published" or not rel.signed or rel.channel != channel:
             continue
