@@ -52,7 +52,7 @@
 | NEX-105 | M84 install agent core: offline licence check, update check from verified bundles, install status, Install page on real data | D | done | Claude | 103, 104 |
 | NEX-106 | Tenant export (DM-8, D58): one tenant's rows, encrypted so only the destination install can open the file | D | done | Gemini | 112 |
 | NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 111 |
-| NEX-108 | Packaging: Nexus Control as a Compose stack (control backend, staff realm, billing), images we already have | D | ready-for-review | Gemini | 111 |
+| NEX-108 | Packaging: Nexus Control as a Compose stack (control backend, staff realm, billing), images we already have | D | done | Gemini | 111 |
 | NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–124 (parity done in NEX-116) | D | withdrawn | — | — |
 | NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–108, 111, 119–124 |
 | NEX-111 | Lago sync part 2: signed invoice webhooks into Control, and cancellations (part 1: NEX-118; D51) | D | done | Gemini | 118 |

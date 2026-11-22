@@ -34,8 +34,9 @@ The script is idempotent:
 1. Copies `.env.example` → `.env` (git-ignored) and generates every missing random secret without printing any secret.
 2. Builds `nexuscampus-api` (unless `NEXUS_IMAGE_API` points to a released digest) and starts infrastructure.
 3. Initialises OpenBao once (saving the unseal key and root token to git-ignored `deploy/control/.env.vault-init.json`),
-   unseals it, creates non-exportable Ed25519 Transit keys `nexus-licence` and `nexus-release`, and issues a Transit-only
-   app token (`NEXUS_VAULT_TOKEN`).
+   unseals it, creates non-exportable Ed25519 Transit keys `nexus-licence` and `nexus-release`, and issues a least-privilege
+   app token (`NEXUS_VAULT_TOKEN`: create, read, sign and verify those two keys only; it can never delete,
+   reconfigure, rotate or export them — rotation uses the root token, below).
 4. Syncs Lago's organization HMAC key into `NEXUS_CONTROL_LAGO_WEBHOOK_KEY` and registers the HMAC webhook endpoint
    (`http://control-api:8100/control/api/v1/billing/lago-webhook`) inside the stack.
 5. Runs `control-migrate` (forward-only migrations; demo fixtures + demo Keycloak staff users only when `NEXUS_CONTROL_DEMO=1`).

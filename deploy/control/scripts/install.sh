@@ -68,8 +68,16 @@ rbao() { dc exec -T -e BAO_TOKEN="$root_token" openbao bao "$@"; }
 rbao secrets list | grep -q '^transit/' || rbao secrets enable transit > /dev/null
 rbao write -f transit/keys/nexus-licence type=ed25519 exportable=false > /dev/null
 rbao write -f transit/keys/nexus-release type=ed25519 exportable=false > /dev/null
+# Least privilege: create, read, sign and verify the two signing keys only; never delete, configure, rotate or
+# export them (a token that may change a key's settings could make it exportable).
 printf '%s\n' \
-  'path "transit/*" { capabilities = ["create", "read", "update", "delete", "list"] }' \
+  'path "transit/keys/nexus-licence" { capabilities = ["create", "read", "update"] }' \
+  'path "transit/keys/nexus-release" { capabilities = ["create", "read", "update"] }' \
+  'path "transit/sign/nexus-licence" { capabilities = ["update"] }' \
+  'path "transit/sign/nexus-release" { capabilities = ["update"] }' \
+  'path "transit/verify/nexus-licence" { capabilities = ["update"] }' \
+  'path "transit/verify/nexus-release" { capabilities = ["update"] }' \
+  'path "transit/export/*" { capabilities = ["deny"] }' \
   'path "auth/token/renew-self" { capabilities = ["update"] }' \
   'path "auth/token/lookup-self" { capabilities = ["read"] }' | rbao policy write nexus-control - > /dev/null
 cur_tok="$(get_env NEXUS_VAULT_TOKEN)"

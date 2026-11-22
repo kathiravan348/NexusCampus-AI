@@ -89,8 +89,16 @@ function Invoke-RootBao {
 if (-not ((Invoke-RootBao secrets list) -match '^transit/')) { Invoke-RootBao secrets enable transit | Out-Null }
 Invoke-RootBao write -f transit/keys/nexus-licence type=ed25519 exportable=false | Out-Null
 Invoke-RootBao write -f transit/keys/nexus-release type=ed25519 exportable=false | Out-Null
+# Least privilege: create, read, sign and verify the two signing keys only; never delete, configure, rotate or
+# export them (a token that may change a key's settings could make it exportable).
 $policy = @(
-  'path "transit/*" { capabilities = ["create", "read", "update", "delete", "list"] }',
+  'path "transit/keys/nexus-licence" { capabilities = ["create", "read", "update"] }',
+  'path "transit/keys/nexus-release" { capabilities = ["create", "read", "update"] }',
+  'path "transit/sign/nexus-licence" { capabilities = ["update"] }',
+  'path "transit/sign/nexus-release" { capabilities = ["update"] }',
+  'path "transit/verify/nexus-licence" { capabilities = ["update"] }',
+  'path "transit/verify/nexus-release" { capabilities = ["update"] }',
+  'path "transit/export/*" { capabilities = ["deny"] }',
   'path "auth/token/renew-self" { capabilities = ["update"] }',
   'path "auth/token/lookup-self" { capabilities = ["read"] }'
 ) -join "`n"
