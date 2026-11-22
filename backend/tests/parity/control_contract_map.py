@@ -21,6 +21,7 @@ from nexus.control.commercial import (
     Subscription,
     UsageRecord,
 )
+from nexus.control.delivery_extras import Extension, ExtensionCompatibility, ImplementationProject, Sandbox
 from nexus.control.fleet import Deployment, HealthSignal
 from nexus.control.licences import Licence
 from nexus.control.releases import Release, Rollout
@@ -55,4 +56,8 @@ CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "TicketReply": TicketReply,
     "SlaPolicy": SlaPolicy,
     "KnowledgeArticle": KnowledgeArticle,
+    "Extension": Extension,
+    "ExtensionCompatibility": ExtensionCompatibility,
+    "ImplementationProject": ImplementationProject,
+    "Sandbox": Sandbox,
 }

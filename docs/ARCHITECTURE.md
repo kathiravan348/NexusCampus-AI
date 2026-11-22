@@ -174,6 +174,12 @@ Nexus Control (our cloud)                         Product deployments
   on `tickets` (no deletes, no writes to SLA policies or articles). Partner viewers see only tickets for their managed
   accounts and replies joined through those visible tickets (never by reply id alone), and no SLA policies or articles.
   Staff replies run in one transaction and log ticket id, reply id, and staff id only (never reply text, V-6).
+- **Extensions, projects & sandboxes (P08, P15, P17, NEX-123):** `extensions`, `extension_compatibility` (composite PK
+  `(extension_id, release_version)`), `implementation_projects` (`tasks` JSONB with DB CHECK requiring `go_live_date`
+  and every task `done: true` when `status = 'live'`), and `sandboxes` (DB CHECKs enforcing synthetic data on
+  `sales_demo`, non-null `account_id` on `staging_clone`, and `expires_at > created_at`). `control_app` has `SELECT`
+  only on all four; partner scoping uses `Resource` (compatibility rows and unattached sandboxes are hidden from
+  partners).
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted
