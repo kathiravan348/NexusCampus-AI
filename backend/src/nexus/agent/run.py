@@ -48,8 +48,11 @@ def _status(settings: Settings, loop: bool, every: int) -> None:
             if skip is not None:
                 print(f"health report: {skip}")
             else:
-                with engine.connect() as conn:
-                    print(f"health report: {send_report(conn, settings).message}")
+                try:
+                    with engine.connect() as conn:
+                        print(f"health report: {send_report(conn, settings).message}")
+                except Exception as exc:  # a failed measurement never stops the licence and update checks
+                    print(f"health report: failed ({type(exc).__name__})")
             if not loop:
                 return
             time.sleep(max(60, every))

@@ -23,6 +23,7 @@ PROBE_TIMEOUT_SECONDS = 5.0
 REPORT_TIMEOUT_SECONDS = 10.0
 ACTIVE_USER_WINDOW = timedelta(minutes=15)
 HEALTH_ENDPOINT_PATH = "/control/api/v1/agent/health"
+LOOPBACK_HOSTS = ("localhost", "127.0.0.1", "::1")
 
 
 @dataclass(frozen=True)
@@ -63,6 +64,9 @@ def _disk_used_pct(install_dir: Path) -> float:
 def _control_health_url(base_url: str) -> str | None:
     parts = urlsplit(base_url.strip())
     if parts.scheme not in ("http", "https") or not parts.netloc:
+        return None
+    # The bearer token never travels unencrypted: plain http only to a Control on this machine (development).
+    if parts.scheme == "http" and parts.hostname not in LOOPBACK_HOSTS:
         return None
     path = parts.path.rstrip("/") + HEALTH_ENDPOINT_PATH
     # Drop any query string or fragment so nothing extra is sent or logged.
@@ -172,7 +176,9 @@ def send_report(
         return ReportResult(sent=False, message=skip)
     endpoint = _control_health_url(settings.control_url)
     if endpoint is None:
-        return ReportResult(sent=False, message="failed: invalid control URL")
+        return ReportResult(
+            sent=False, message="failed: invalid control URL (https required, http only on this machine)"
+        )
     if conn is None:
         return ReportResult(sent=False, message="failed: no database connection")
 

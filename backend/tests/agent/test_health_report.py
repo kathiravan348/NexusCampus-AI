@@ -154,6 +154,23 @@ def test_no_request_when_air_gapped_telemetry_off_or_no_token(
     assert "agt-secret-token-do-not-print" not in result.message
 
 
+def test_token_never_sent_over_plain_http_to_another_host(tmp_path: Path) -> None:
+    calls: list[str] = []
+
+    def control(request: httpx2.Request) -> httpx2.Response:
+        calls.append(str(request.url))
+        return httpx2.Response(204, request=request)
+
+    probes = httpx2.MockTransport(lambda req: httpx2.Response(200, request=req))
+    remote = _settings(tmp_path, control_url="http://control.nexuscampus.example")
+    refused = send_report(_FakeConn(), remote, probe_transport=probes, control_transport=httpx2.MockTransport(control))  # type: ignore[arg-type]
+    assert refused.sent is False and "https required" in refused.message and calls == []
+
+    local = _settings(tmp_path, control_url="http://127.0.0.1:8100")
+    sent = send_report(_FakeConn(), local, probe_transport=probes, control_transport=httpx2.MockTransport(control))  # type: ignore[arg-type]
+    assert sent.sent is True and calls == ["http://127.0.0.1:8100/control/api/v1/agent/health"]
+
+
 @pytest.mark.parametrize(
     ("outcome", "expected_fragment"),
     [
