@@ -61,6 +61,20 @@ cannot read it; it held only sign-in sessions and caches, so people sign in agai
 in `.secrets/vault-init.json` stay the same. Running it again does nothing. Keep the backup until the app has run
 for a while, then store it with your other backups.
 
+### Offline updates (no internet on the server)
+
+Every release comes with a signed manifest, and for servers without internet an offline bundle
+`nexuscampus-<version>.tar` (the images and the release notes). Before loading anything, check it on the server with
+the public keys file you received with your licence (it holds no secret):
+
+```bash
+uv run --project backend nexus-release-verify nexuscampus-2.5.0.tar --keys nexus-release-keys.json
+```
+
+It prints `valid: …` only when the signature is ours and every file is exactly as signed; otherwise it lists what is
+wrong (changed, missing or extra files, unsafe paths) and loads nothing. The manifest also names the oldest version
+that can upgrade straight to this one.
+
 ## Backup and restore
 
 ```bash

@@ -136,6 +136,11 @@ Nexus Control (our cloud)                         Product deployments
   uses it only through `BillingEngine` (`nexus.control.billing`): customers carry our account id, legal name,
   country and currency; usage is the active-learner count (`max` per period, D52), sent with an idempotent
   transaction id. Never shipped to customers.
+- **Release signing (NEX-104):** each release has a signed manifest (`nexus-release/1`: version, channel, oldest
+  version that can upgrade straight to it, each image's content id, migration heads, notes hash, and every bundled
+  file's SHA-256 and size), signed in OpenBao (`nexus-release`, Ed25519, never exported). Offline bundles are one
+  `.tar`; `nexus-release-verify` checks them with pinned public keys before anything is loaded (refuses links,
+  `..`, absolute paths, missing / extra / changed files). Image signatures with cosign can be added later.
 - **Same images everywhere.** A deployment differs only by configuration, licence/entitlements and installed
   extensions. Customer-specific work = extension packages (P08), never a fork of the core.
 - **Provisioning (SaaS):** P04 creates the tenant in the chosen region cell, its keys in the vault, and the type
