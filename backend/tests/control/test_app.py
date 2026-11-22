@@ -26,7 +26,7 @@ class FakeStore:
         if s is None or not s.active or not s.mfa_enrolled:
             return None
         perms = sorted({p for r in s.roles for p in self.perms.get(r, [])})
-        return StaffSession(staff=s, permissions=perms, expires_at="2026-11-22T13:00:00Z")
+        return StaffSession(staff=s, permissions=perms, mfa_verified=True, expires_at="2026-11-22T13:00:00Z")
 
     async def id_by_email(self, email: str) -> str | None:
         return next((s.id for s in self.staff.values() if s.work_email.lower() == email.lower()), None)

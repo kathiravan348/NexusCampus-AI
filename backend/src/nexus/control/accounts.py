@@ -9,7 +9,7 @@ from datetime import UTC, datetime
 from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import StringConstraints
+from pydantic import Field, StringConstraints
 from sqlalchemy import (
     ARRAY,
     BigInteger,
@@ -30,7 +30,20 @@ from sqlalchemy import (
 
 from nexus.control.resources import CamelModel, Resource, engine_of, get_one, mount
 from nexus.control.rows import from_db, to_db
-from nexus.control.staff import metadata, staff_users
+from nexus.control.staff import (
+    CountryCode,
+    CurrencyCode,
+    Email,
+    Id,
+    InstitutionType,
+    IsoDate,
+    Name,
+    PhoneE164,
+    Region,
+    UtcDateTime,
+    metadata,
+    staff_users,
+)
 from nexus.control.viewer import Viewer, current_viewer, require
 from nexus.core.pagination import Page, PageQuery, page_query
 
@@ -126,76 +139,76 @@ _Camel = CamelModel
 
 
 class Partner(_Camel):
-    id: str
-    name: str
-    country: str
+    id: Id
+    name: Name
+    country: CountryCode
     tier: Literal["registered", "silver", "gold"]
-    commission_pct: float
+    commission_pct: Annotated[float, Field(ge=0, le=50)]
     active: bool
-    joined_at: str
+    joined_at: UtcDateTime
 
 
 class Account(_Camel):
-    id: str
-    name: str
-    institution_type: str
-    country: str
-    region: str
+    id: Id
+    name: Name
+    institution_type: InstitutionType
+    country: CountryCode
+    region: Region
     delivery_model: Literal["saas_shared", "saas_dedicated", "self_hosted", "hybrid"]
     stage: Literal["lead", "trial", "customer", "churned"]
-    owner_staff_id: str
-    partner_id: str | None
-    tenant_ids: list[str]
-    learner_count: int
-    health_score: int
-    renewal_date: str | None
-    created_at: str
+    owner_staff_id: Id
+    partner_id: Id | None
+    tenant_ids: list[Id]
+    learner_count: Annotated[int, Field(ge=0)]
+    health_score: Annotated[int, Field(ge=0, le=100)]
+    renewal_date: IsoDate | None
+    created_at: UtcDateTime
 
 
 class AccountContact(_Camel):
-    id: str
-    account_id: str
-    name: str
-    work_email: str
-    phone: str | None
+    id: Id
+    account_id: Id
+    name: Name
+    work_email: Email
+    phone: PhoneE164 | None
     kind: Literal["billing", "technical", "executive", "dpo"]
 
 
 class Opportunity(_Camel):
-    id: str
-    account_id: str
-    title: str
+    id: Id
+    account_id: Id
+    title: Name
     stage: Literal["qualify", "proposal", "negotiation", "won", "lost"]
-    value_minor: int
-    currency: str
-    close_date: str
-    owner_staff_id: str
+    value_minor: Annotated[int, Field(ge=0)]
+    currency: CurrencyCode
+    close_date: IsoDate
+    owner_staff_id: Id
 
 
 class Contract(_Camel):
-    id: str
-    account_id: str
+    id: Id
+    account_id: Id
     kind: Literal["saas_subscription", "licence_perpetual", "licence_term", "support"]
-    start_date: str
-    end_date: str | None
+    start_date: IsoDate
+    end_date: IsoDate | None
     auto_renew: bool
-    value_minor: int
-    currency: str
+    value_minor: Annotated[int, Field(ge=0)]
+    currency: CurrencyCode
     sla_tier: Literal["standard", "priority", "enterprise"]
     status: Literal["draft", "active", "ended"]
 
 
 class AccountNote(_Camel):
-    id: str
-    account_id: str
-    author_staff_id: str
-    body: str
-    created_at: str
+    id: Id
+    account_id: Id
+    author_staff_id: Id
+    body: Annotated[str, StringConstraints(strip_whitespace=True, min_length=1, max_length=2000)]
+    created_at: UtcDateTime
 
 
 class StaffDirectoryEntry(_Camel):
-    id: str
-    display_name: str
+    id: Id
+    display_name: Name
 
 
 class NewNote(_Camel):

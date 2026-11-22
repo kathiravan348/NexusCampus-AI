@@ -119,7 +119,11 @@ def build_vector() -> dict[str, object]:
     """A fixed key (seed 0..31) and fixed terms: Ed25519 is deterministic, so the file never changes."""
     private = Ed25519PrivateKey.from_private_bytes(bytes(range(32)))
     signed = terms(signingKeyId=key_id(KEY, 1))
-    file = LicenceFile(payload=signed, signature=base64.b64encode(private.sign(signed_message(signed))).decode())
+    file = LicenceFile(
+        format="nexus-licence/1",
+        payload=signed,
+        signature=base64.b64encode(private.sign(signed_message(signed))).decode(),
+    )
     public = private.public_key().public_bytes(Encoding.Raw, PublicFormat.Raw)
     return {
         "publicKey": base64.b64encode(public).decode(),

@@ -23,13 +23,13 @@ from pydantic.alias_generators import to_camel
 from nexus.core.vault import Vault
 from nexus.licensing.canonical import canonical_json
 
-FORMAT = "nexus-licence/1"
+FORMAT: Literal["nexus-licence/1"] = "nexus-licence/1"
 _PREFIX = f"{FORMAT}\n".encode()
 
 IsoDate = Annotated[str, StringConstraints(pattern=r"^\d{4}-\d{2}-\d{2}$")]
 UtcDateTime = Annotated[str, StringConstraints(pattern=r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z$")]
 ModuleId = Annotated[str, StringConstraints(pattern=r"^[MP](0[1-9]|[1-9]\d)$")]
-Id = Annotated[str, StringConstraints(min_length=1, max_length=64)]
+Id = Annotated[str, StringConstraints(min_length=1, max_length=128)]
 
 
 class _Camel(BaseModel):
@@ -68,7 +68,7 @@ class LicenceTerms(_Camel):
 class LicenceFile(_Camel):
     """The file an install loads."""
 
-    format: Literal["nexus-licence/1"] = "nexus-licence/1"
+    format: Literal["nexus-licence/1"]
     payload: LicenceTerms
     signature: Annotated[str, StringConstraints(pattern=r"^[A-Za-z0-9+/]{86}==$")]
 
@@ -93,7 +93,7 @@ async def issue_licence(terms: LicenceTerms, vault: Vault, key_name: str) -> Lic
     _, used, blob = token.split(":", 2)
     if used != f"v{version}":  # rotated between the two calls: the payload would name the wrong key
         raise RuntimeError("signing key rotated while signing; retry")
-    return LicenceFile(payload=signed, signature=blob)
+    return LicenceFile(format=FORMAT, payload=signed, signature=blob)
 
 
 def fingerprint(file: LicenceFile) -> str:

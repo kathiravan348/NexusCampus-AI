@@ -9,6 +9,7 @@ from datetime import UTC, date, datetime
 from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, Request
+from pydantic import Field, StringConstraints
 from sqlalchemy import (
     ARRAY,
     Boolean,
@@ -29,11 +30,11 @@ from sqlalchemy import (
 from nexus.control.accounts import accounts
 from nexus.control.resources import CamelModel, Resource, engine_of, get_one, mount
 from nexus.control.settings import ControlSettings
-from nexus.control.staff import metadata, utc_text
+from nexus.control.staff import Id, IsoDate, ModuleId, Sha256Hex, UtcDateTime, metadata, utc_text
 from nexus.control.viewer import Viewer, require
 from nexus.core.errors import ApiError
 from nexus.core.vault import Vault
-from nexus.licensing.licence import LicenceFile, LicenceTerms, fingerprint, issue_licence
+from nexus.licensing.licence import FORMAT, LicenceFile, LicenceTerms, fingerprint, issue_licence
 
 ID = 64
 
@@ -67,21 +68,21 @@ licences = Table(
 
 
 class Licence(CamelModel):
-    id: str
-    account_id: str
+    id: Id
+    account_id: Id
     edition: Literal["standard", "enterprise"]
-    modules: list[str]
-    learner_cap: int
-    campus_cap: int
-    issued_at: str
-    expires_at: str | None
-    support_ends_at: str
-    grace_days: int
+    modules: Annotated[list[ModuleId], Field(min_length=1)]
+    learner_cap: Annotated[int, Field(ge=1)]
+    campus_cap: Annotated[int, Field(ge=1)]
+    issued_at: UtcDateTime
+    expires_at: IsoDate | None
+    support_ends_at: IsoDate
+    grace_days: Annotated[int, Field(ge=0, le=90)]
     activation: Literal["online", "offline"]
-    signing_key_id: str
+    signing_key_id: Annotated[str, StringConstraints(min_length=1, max_length=64)]
     state: Literal["active", "grace", "read_only", "expired", "revoked"]
-    fingerprint: str
-    deployment_id: str | None
+    fingerprint: Sha256Hex
+    deployment_id: Id | None
 
 
 SEED_TABLES: list[tuple[str, Table, type[CamelModel], str]] = [("licences", licences, Licence, "id")]
@@ -118,7 +119,7 @@ def _terms(licence: Licence, key_id: str) -> LicenceTerms:
 
 
 def _file(licence: Licence, signature: str) -> LicenceFile:
-    return LicenceFile(payload=_terms(licence, licence.signing_key_id), signature=signature)
+    return LicenceFile(format=FORMAT, payload=_terms(licence, licence.signing_key_id), signature=signature)
 
 
 def plus_year(value: str) -> str:
