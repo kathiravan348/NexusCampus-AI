@@ -53,9 +53,11 @@
 | NEX-106 | Tenant export / import between SaaS and self-hosted (P18, DM-8), encrypted with the tenant's keys | D | draft | — | 112 |
 | NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 111 |
 | NEX-108 | Packaging: control backend + staff realm + billing stack in Compose and Helm; air-gapped bundle | D | draft | — | 102, 105 |
-| NEX-109 | Contract parity for Control (Pydantic ⇄ Zod samples) and remaining screens switched to real | D | draft | — | 101–103 |
+| NEX-109 | Remaining Control screens switched to real data (parity split out: NEX-116; releases read: NEX-115) | D | draft | — | 101–103, 116 |
 | NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–109 |
 | NEX-111 | Lago sync: catalogue → plans, subscriptions → Lago, usage → events, Lago invoice webhooks → control DB (D51) | D | draft | — | 098, 102 |
 | NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | done | Claude | 105 |
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |
 | NEX-114 | M84: install agent sends PII-free health reports to Control (off when telemetry off or air-gapped) | D | planned | — | 113 |
+| NEX-115 | Control: P07 releases and rollouts on real data, and the agent's online update check (agent token) | D | planned | — | 113 |
+| NEX-116 | Control contract parity: Pydantic ⇄ Zod for every real Control response (as NEX-059) | D | planned | — | 115 |
