@@ -180,6 +180,11 @@ Nexus Control (our cloud)                         Product deployments
   `sales_demo`, non-null `account_id` on `staging_clone`, and `expires_at > created_at`). `control_app` has `SELECT`
   only on all four; partner scoping uses `Resource` (compatibility rows and unattached sandboxes are hidden from
   partners).
+- **Partners & analytics (P12, P16, NEX-124):** `deal_registrations`, `commissions` (`paid_at` iff `status = 'paid'`),
+  `business_metrics` (stored monthly snapshots keyed by `month` `YYYY-MM`, DB CHECKs for `arr_minor = mrr_minor * 12`
+  and `new_accounts <= active_accounts`), and `account_health` (keyed by `account_id`, 1–5 message-key reasons,
+  `ai_generated = true`, score/risk CHECKs). `control_app` has `SELECT` only on all four; partners see only their
+  managed accounts' deals and health, never commissions or business metrics.
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted

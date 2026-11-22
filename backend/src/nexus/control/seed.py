@@ -16,7 +16,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from nexus.control.staff import Permission, StaffRole, StaffUser, role_permissions, staff_users
 
 FIXTURES = Path(__file__).with_name("control_fixtures.json")
-FIXTURES_VERSION = 8
+FIXTURES_VERSION = 9
 
 
 class ControlFixtures(BaseModel):
@@ -59,6 +59,11 @@ class ControlFixtures(BaseModel):
     compatibility: list[dict[str, Any]] = []
     projects: list[dict[str, Any]] = []
     sandboxes: list[dict[str, Any]] = []
+    #: P12, P16 (NEX-124).
+    deals: list[dict[str, Any]] = []
+    commissions: list[dict[str, Any]] = []
+    metrics: list[dict[str, Any]] = []
+    account_health: list[dict[str, Any]] = []
 
 
 def load_fixtures(path: Path = FIXTURES) -> ControlFixtures:
@@ -115,4 +120,10 @@ def seed(conn: Connection, data: ControlFixtures | None = None) -> int:
     from nexus.control.delivery_extras import seed_rows as seed_delivery_extras
 
     seed_delivery_extras(conn, fixtures.model_dump(include={"extensions", "compatibility", "projects", "sandboxes"}))
+    from nexus.control.accounts import seed_partner_rows  # after invoices (commissions FK)
+
+    seed_partner_rows(conn, fixtures.model_dump(include={"deals", "commissions"}))
+    from nexus.control.analytics import seed_rows as seed_analytics
+
+    seed_analytics(conn, fixtures.model_dump(include={"metrics", "account_health"}))
     return len(fixtures.staff)

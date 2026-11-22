@@ -1,11 +1,15 @@
 import {
   ACCOUNT_CONTACTS,
+  ACCOUNT_HEALTH,
   ACCOUNT_NOTES,
   ACCOUNTS,
+  BUSINESS_METRICS,
   CATALOGUE_ITEMS,
+  COMMISSIONS,
   CONTRACTS,
   CONTROL_ROLE_PERMISSIONS,
   CREDIT_NOTES,
+  DEAL_REGISTRATIONS,
   DEPLOYMENTS,
   DUNNING_STATES,
   EXTENSION_COMPATIBILITY,
@@ -31,7 +35,7 @@ import {
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 8;
+export const CONTROL_FIXTURES_VERSION = 9;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -71,6 +75,10 @@ export function controlFixturesJson(): string {
       compatibility: EXTENSION_COMPATIBILITY,
       projects: IMPLEMENTATION_PROJECTS,
       sandboxes: SANDBOXES,
+      deals: DEAL_REGISTRATIONS,
+      commissions: COMMISSIONS,
+      metrics: BUSINESS_METRICS,
+      accountHealth: ACCOUNT_HEALTH,
     },
     null,
     2,
