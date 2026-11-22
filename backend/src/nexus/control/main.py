@@ -5,24 +5,24 @@ from contextlib import asynccontextmanager
 from typing import Annotated, Literal
 
 import httpx2
-from fastapi import APIRouter, FastAPI, Header, Request
+from fastapi import APIRouter, Depends, FastAPI, Request
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control import auth
-from nexus.control.sessions import SESSION_COOKIE, DbSessionStore, SessionStore
+from nexus.control import accounts, auth
+from nexus.control.sessions import DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
-from nexus.control.staff import DbStaffStore, StaffSession, StaffStore, utc_text
-from nexus.core.errors import ApiError, install_error_handling
+from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
+from nexus.control.viewer import staff_session
+from nexus.core.errors import install_error_handling
 from nexus.modules.m02.login_state import LoginStateStore, RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
 from nexus.settings import Settings, get_settings
 
 API = "/control/api/v1"
-STAFF_HEADER = "X-Nexus-Staff"
 
 
 class Health(BaseModel):
@@ -58,22 +58,8 @@ async def ready(request: Request) -> JSONResponse:
 
 
 @router.get("/me", response_model=StaffSession, response_model_by_alias=True, tags=["staff"])
-async def me(request: Request, staff: Annotated[str | None, Header(alias=STAFF_HEADER)] = None) -> StaffSession:
-    settings: ControlSettings = request.app.state.settings
-    store: StaffStore = request.app.state.staff
-    token = request.cookies.get(SESSION_COOKIE)
-    if token:  # staff SSO session (NEX-097)
-        sessions: SessionStore = request.app.state.sessions
-        opened = await sessions.resolve(token)
-        found = await store.session_of(opened.staff_id, settings.session_minutes) if opened else None
-        if opened is None or found is None:
-            raise ApiError(401, "unauthorized", "Sign in to Nexus Control.")
-        return found.model_copy(update={"expires_at": utc_text(opened.expires_at)})
-    if not settings.dev_staff_header or not staff:  # the dev header never works in prod
-        raise ApiError(401, "unauthorized", "Sign in to Nexus Control.")
-    session = await store.session_of(staff, settings.session_minutes)
-    if session is None:
-        raise ApiError(401, "unauthorized", "Sign in to Nexus Control.")
+async def me(session: Annotated[StaffSession, Depends(staff_session)]) -> StaffSession:
+    """The signed-in staff member, their roles and permissions (cookie session; dev header outside prod)."""
     return session
 
 
@@ -138,6 +124,7 @@ def create_app(
     install_error_handling(app)
     app.include_router(router)
     app.include_router(auth.router)
+    app.include_router(accounts.router)
     return app
 
 

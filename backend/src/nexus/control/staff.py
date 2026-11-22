@@ -9,7 +9,7 @@ from typing import Annotated, Literal, Protocol
 
 from pydantic import BaseModel, ConfigDict, StringConstraints
 from pydantic.alias_generators import to_camel
-from sqlalchemy import ARRAY, Boolean, Column, DateTime, MetaData, String, Table, Text, func, select, update
+from sqlalchemy import ARRAY, Boolean, Column, DateTime, MetaData, String, Table, Text, func, select, text, update
 from sqlalchemy.ext.asyncio import AsyncEngine
 
 metadata = MetaData()
@@ -81,6 +81,8 @@ class StaffStore(Protocol):
 
     async def record_sign_in(self, staff_id: str) -> None: ...
 
+    async def accounts_of_partner(self, partner_id: str) -> list[str]: ...
+
 
 class DbStaffStore:
     """Reads staff and role permissions as `control_app`."""
@@ -124,3 +126,9 @@ class DbStaffStore:
             await conn.execute(
                 update(staff_users).where(staff_users.c.id == staff_id).values(last_sign_in_at=datetime.now(UTC))
             )
+
+    async def accounts_of_partner(self, partner_id: str) -> list[str]:
+        """Accounts a partner manages (P12): a partner user sees only these."""
+        async with self._engine.connect() as conn:
+            found = await conn.execute(text("SELECT id FROM accounts WHERE partner_id = :p"), {"p": partner_id})
+            return [str(r[0]) for r in found]

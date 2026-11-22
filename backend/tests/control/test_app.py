@@ -34,6 +34,9 @@ class FakeStore:
     async def record_sign_in(self, staff_id: str) -> None:
         self.signed_in = staff_id
 
+    async def accounts_of_partner(self, partner_id: str) -> list[str]:
+        return [str(a["id"]) for a in load_fixtures().accounts if a["partnerId"] == partner_id]
+
 
 def client(environment: str) -> Iterator[TestClient]:
     app = create_app(

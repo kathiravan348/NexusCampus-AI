@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "staff": [
     {
       "id": "stf-0001",
@@ -236,5 +236,480 @@
       "ctl.deal.submit",
       "ctl.ticket.read"
     ]
-  }
+  },
+  "partners": [
+    {
+      "id": "ptn-south",
+      "name": "Southern EdTech Partners",
+      "country": "IN",
+      "tier": "silver",
+      "commissionPct": 15,
+      "active": true,
+      "joinedAt": "2025-01-10T00:00:00Z"
+    },
+    {
+      "id": "ptn-euro",
+      "name": "EuroLearn Solutions",
+      "country": "DE",
+      "tier": "registered",
+      "commissionPct": 10,
+      "active": true,
+      "joinedAt": "2025-09-01T00:00:00Z"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "acc-ls",
+      "name": "Little Steps",
+      "institutionType": "ey",
+      "country": "IN",
+      "region": "in",
+      "deliveryModel": "saas_shared",
+      "stage": "customer",
+      "ownerStaffId": "stf-0011",
+      "partnerId": null,
+      "tenantIds": [
+        "ten-ls"
+      ],
+      "learnerCount": 180,
+      "healthScore": 64,
+      "renewalDate": "2027-01-14",
+      "createdAt": "2026-01-15T09:00:00Z"
+    },
+    {
+      "id": "acc-rv",
+      "name": "Riverside Education Group",
+      "institutionType": "grp",
+      "country": "GB",
+      "region": "eu",
+      "deliveryModel": "saas_shared",
+      "stage": "customer",
+      "ownerStaffId": "stf-0011",
+      "partnerId": null,
+      "tenantIds": [
+        "ten-rv"
+      ],
+      "learnerCount": 1460,
+      "healthScore": 86,
+      "renewalDate": "2027-03-31",
+      "createdAt": "2025-04-01T09:00:00Z"
+    },
+    {
+      "id": "acc-nb",
+      "name": "Northbridge University",
+      "institutionType": "he",
+      "country": "US",
+      "region": "us",
+      "deliveryModel": "saas_dedicated",
+      "stage": "customer",
+      "ownerStaffId": "stf-0011",
+      "partnerId": null,
+      "tenantIds": [
+        "ten-nb"
+      ],
+      "learnerCount": 9800,
+      "healthScore": 72,
+      "renewalDate": "2027-06-30",
+      "createdAt": "2025-07-01T14:00:00Z"
+    },
+    {
+      "id": "acc-ax",
+      "name": "Apex Coaching",
+      "institutionType": "tp",
+      "country": "IN",
+      "region": "in",
+      "deliveryModel": "hybrid",
+      "stage": "customer",
+      "ownerStaffId": "stf-0011",
+      "partnerId": "ptn-south",
+      "tenantIds": [
+        "ten-ax"
+      ],
+      "learnerCount": 640,
+      "healthScore": 91,
+      "renewalDate": "2027-05-31",
+      "createdAt": "2025-06-01T04:30:00Z"
+    },
+    {
+      "id": "acc-hm",
+      "name": "Harmony Music Academy",
+      "institutionType": "sk",
+      "country": "SG",
+      "region": "apac",
+      "deliveryModel": "saas_shared",
+      "stage": "trial",
+      "ownerStaffId": "stf-0011",
+      "partnerId": null,
+      "tenantIds": [
+        "ten-hm"
+      ],
+      "learnerCount": 95,
+      "healthScore": 38,
+      "renewalDate": null,
+      "createdAt": "2026-08-20T02:00:00Z"
+    },
+    {
+      "id": "acc-ct",
+      "name": "Coastal Institute of Technology",
+      "institutionType": "he",
+      "country": "IN",
+      "region": "in",
+      "deliveryModel": "self_hosted",
+      "stage": "customer",
+      "ownerStaffId": "stf-0011",
+      "partnerId": null,
+      "tenantIds": [],
+      "learnerCount": 4200,
+      "healthScore": 77,
+      "renewalDate": "2027-03-31",
+      "createdAt": "2025-03-15T06:00:00Z"
+    },
+    {
+      "id": "acc-al",
+      "name": "Alpine Skills Academy",
+      "institutionType": "voc",
+      "country": "DE",
+      "region": "eu",
+      "deliveryModel": "self_hosted",
+      "stage": "customer",
+      "ownerStaffId": "stf-0011",
+      "partnerId": "ptn-euro",
+      "tenantIds": [],
+      "learnerCount": 1150,
+      "healthScore": 70,
+      "renewalDate": "2026-12-31",
+      "createdAt": "2025-11-02T09:00:00Z"
+    },
+    {
+      "id": "acc-sr",
+      "name": "Sunrise Montessori",
+      "institutionType": "ey",
+      "country": "IN",
+      "region": "in",
+      "deliveryModel": "saas_shared",
+      "stage": "trial",
+      "ownerStaffId": "stf-0011",
+      "partnerId": null,
+      "tenantIds": [
+        "ten-sr"
+      ],
+      "learnerCount": 0,
+      "healthScore": 55,
+      "renewalDate": null,
+      "createdAt": "2026-09-14T05:00:00Z"
+    },
+    {
+      "id": "acc-lt",
+      "name": "Lotus Coaching Centre",
+      "institutionType": "tp",
+      "country": "IN",
+      "region": "in",
+      "deliveryModel": "saas_shared",
+      "stage": "lead",
+      "ownerStaffId": "stf-0011",
+      "partnerId": "ptn-south",
+      "tenantIds": [],
+      "learnerCount": 0,
+      "healthScore": 50,
+      "renewalDate": null,
+      "createdAt": "2026-09-01T07:00:00Z"
+    },
+    {
+      "id": "acc-om",
+      "name": "Old Mill College",
+      "institutionType": "k12",
+      "country": "GB",
+      "region": "eu",
+      "deliveryModel": "saas_shared",
+      "stage": "churned",
+      "ownerStaffId": "stf-0011",
+      "partnerId": null,
+      "tenantIds": [],
+      "learnerCount": 0,
+      "healthScore": 0,
+      "renewalDate": null,
+      "createdAt": "2025-02-01T09:00:00Z"
+    }
+  ],
+  "contacts": [
+    {
+      "id": "con-ls-1",
+      "accountId": "acc-ls",
+      "name": "Priya Raman",
+      "workEmail": "office@littlesteps.example",
+      "phone": "+919845012345",
+      "kind": "billing"
+    },
+    {
+      "id": "con-rv-1",
+      "accountId": "acc-rv",
+      "name": "Helen Carter",
+      "workEmail": "bursar@riverside.example",
+      "phone": null,
+      "kind": "billing"
+    },
+    {
+      "id": "con-rv-2",
+      "accountId": "acc-rv",
+      "name": "Tom Ellis",
+      "workEmail": "it@riverside.example",
+      "phone": null,
+      "kind": "technical"
+    },
+    {
+      "id": "con-rv-3",
+      "accountId": "acc-rv",
+      "name": "Grace Patel",
+      "workEmail": "dpo@riverside.example",
+      "phone": null,
+      "kind": "dpo"
+    },
+    {
+      "id": "con-nb-1",
+      "accountId": "acc-nb",
+      "name": "Robert Hayes",
+      "workEmail": "it-admin@northbridge.example",
+      "phone": null,
+      "kind": "technical"
+    },
+    {
+      "id": "con-nb-2",
+      "accountId": "acc-nb",
+      "name": "Linda Moore",
+      "workEmail": "procurement@northbridge.example",
+      "phone": null,
+      "kind": "executive"
+    },
+    {
+      "id": "con-ax-1",
+      "accountId": "acc-ax",
+      "name": "Karthik Subramanian",
+      "workEmail": "accounts@apexcoaching.example",
+      "phone": "+914428001234",
+      "kind": "billing"
+    },
+    {
+      "id": "con-hm-1",
+      "accountId": "acc-hm",
+      "name": "Wei Ling Tan",
+      "workEmail": "hello@harmonymusic.example",
+      "phone": null,
+      "kind": "executive"
+    },
+    {
+      "id": "con-ct-1",
+      "accountId": "acc-ct",
+      "name": "Anand Pillai",
+      "workEmail": "sysadmin@coastaltech.example",
+      "phone": null,
+      "kind": "technical"
+    },
+    {
+      "id": "con-ct-2",
+      "accountId": "acc-ct",
+      "name": "Meena Iyer",
+      "workEmail": "dpo@coastaltech.example",
+      "phone": null,
+      "kind": "dpo"
+    },
+    {
+      "id": "con-al-1",
+      "accountId": "acc-al",
+      "name": "Jonas Weber",
+      "workEmail": "it@alpine-skills.example",
+      "phone": null,
+      "kind": "technical"
+    },
+    {
+      "id": "con-sr-1",
+      "accountId": "acc-sr",
+      "name": "Lakshmi Rao",
+      "workEmail": "director@sunrise-montessori.example",
+      "phone": null,
+      "kind": "executive"
+    },
+    {
+      "id": "con-lt-1",
+      "accountId": "acc-lt",
+      "name": "Vijay Kumar",
+      "workEmail": "vijay@lotuscoaching.example",
+      "phone": null,
+      "kind": "executive"
+    }
+  ],
+  "opportunities": [
+    {
+      "id": "opp-ax-edge",
+      "accountId": "acc-ax",
+      "title": "AI credits pack for exam season",
+      "stage": "proposal",
+      "valueMinor": 11000000,
+      "currency": "INR",
+      "closeDate": "2026-10-15",
+      "ownerStaffId": "stf-0011"
+    },
+    {
+      "id": "opp-sr-convert",
+      "accountId": "acc-sr",
+      "title": "Convert trial to Standard",
+      "stage": "qualify",
+      "valueMinor": 7056000,
+      "currency": "INR",
+      "closeDate": "2026-10-14",
+      "ownerStaffId": "stf-0011"
+    },
+    {
+      "id": "opp-lt-new",
+      "accountId": "acc-lt",
+      "title": "New customer: 300 learners",
+      "stage": "negotiation",
+      "valueMinor": 17640000,
+      "currency": "INR",
+      "closeDate": "2026-09-30",
+      "ownerStaffId": "stf-0011"
+    },
+    {
+      "id": "opp-rv-campus",
+      "accountId": "acc-rv",
+      "title": "Third campus from January",
+      "stage": "won",
+      "valueMinor": 7200000,
+      "currency": "GBP",
+      "closeDate": "2026-08-28",
+      "ownerStaffId": "stf-0011"
+    }
+  ],
+  "contracts": [
+    {
+      "id": "ctr-ls",
+      "accountId": "acc-ls",
+      "kind": "saas_subscription",
+      "startDate": "2026-01-15",
+      "endDate": "2027-01-14",
+      "autoRenew": true,
+      "valueMinor": 6264000,
+      "currency": "INR",
+      "slaTier": "standard",
+      "status": "active"
+    },
+    {
+      "id": "ctr-rv",
+      "accountId": "acc-rv",
+      "kind": "saas_subscription",
+      "startDate": "2026-04-01",
+      "endDate": "2027-03-31",
+      "autoRenew": true,
+      "valueMinor": 2628000,
+      "currency": "GBP",
+      "slaTier": "priority",
+      "status": "active"
+    },
+    {
+      "id": "ctr-nb",
+      "accountId": "acc-nb",
+      "kind": "saas_subscription",
+      "startDate": "2026-07-01",
+      "endDate": "2027-06-30",
+      "autoRenew": true,
+      "valueMinor": 35280000,
+      "currency": "USD",
+      "slaTier": "enterprise",
+      "status": "active"
+    },
+    {
+      "id": "ctr-ax",
+      "accountId": "acc-ax",
+      "kind": "saas_subscription",
+      "startDate": "2026-06-01",
+      "endDate": "2027-05-31",
+      "autoRenew": true,
+      "valueMinor": 44544000,
+      "currency": "INR",
+      "slaTier": "priority",
+      "status": "active"
+    },
+    {
+      "id": "ctr-ct-lic",
+      "accountId": "acc-ct",
+      "kind": "licence_term",
+      "startDate": "2026-04-01",
+      "endDate": "2027-03-31",
+      "autoRenew": true,
+      "valueMinor": 126000000,
+      "currency": "INR",
+      "slaTier": "standard",
+      "status": "active"
+    },
+    {
+      "id": "ctr-ct-sup",
+      "accountId": "acc-ct",
+      "kind": "support",
+      "startDate": "2026-04-01",
+      "endDate": "2027-03-31",
+      "autoRenew": true,
+      "valueMinor": 30000000,
+      "currency": "INR",
+      "slaTier": "standard",
+      "status": "active"
+    },
+    {
+      "id": "ctr-al-lic",
+      "accountId": "acc-al",
+      "kind": "licence_perpetual",
+      "startDate": "2025-12-01",
+      "endDate": null,
+      "autoRenew": false,
+      "valueMinor": 7475000,
+      "currency": "EUR",
+      "slaTier": "enterprise",
+      "status": "active"
+    },
+    {
+      "id": "ctr-al-sup",
+      "accountId": "acc-al",
+      "kind": "support",
+      "startDate": "2026-01-01",
+      "endDate": "2026-12-31",
+      "autoRenew": true,
+      "valueMinor": 350000,
+      "currency": "EUR",
+      "slaTier": "enterprise",
+      "status": "active"
+    },
+    {
+      "id": "ctr-om",
+      "accountId": "acc-om",
+      "kind": "saas_subscription",
+      "startDate": "2025-02-01",
+      "endDate": "2026-01-31",
+      "autoRenew": false,
+      "valueMinor": 1980000,
+      "currency": "GBP",
+      "slaTier": "standard",
+      "status": "ended"
+    }
+  ],
+  "notes": [
+    {
+      "id": "note-hm-1",
+      "accountId": "acc-hm",
+      "authorStaffId": "stf-0011",
+      "body": "Trial usage is low; offered a guided setup call for teachers.",
+      "createdAt": "2026-09-10T03:00:00Z"
+    },
+    {
+      "id": "note-nb-1",
+      "accountId": "acc-nb",
+      "authorStaffId": "stf-0007",
+      "body": "Security incident 2 Sep closed; report to the institution still owed.",
+      "createdAt": "2026-09-03T10:00:00Z"
+    },
+    {
+      "id": "note-al-1",
+      "accountId": "acc-al",
+      "authorStaffId": "stf-0023",
+      "body": "Air-gapped site: send update 2.2.6 as an offline bundle on encrypted media.",
+      "createdAt": "2026-08-30T08:00:00Z"
+    }
+  ]
 }

@@ -1,38 +1,11 @@
 """Control database (NEX-096): its own migrations, role and seed, in a throwaway database."""
 
-import secrets
-from collections.abc import Iterator
-
 import pytest
 from sqlalchemy import create_engine, text
-from sqlalchemy.engine import make_url
 from sqlalchemy.exc import ProgrammingError
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control.seed import seed
-from nexus.control.settings import CONTROL_APP_ROLE
 from nexus.control.staff import DbStaffStore
-from nexus.devtools.control_db import alembic_config
-from tests.db.conftest import create_test_database, drop_test_database
-
-
-@pytest.fixture(scope="module")
-def control_db(postgres: None) -> Iterator[tuple[str, str]]:
-    from alembic import command
-
-    name = f"nexus_control_test_{secrets.token_hex(4)}"
-    owner_url, password = create_test_database(name)
-    try:
-        command.upgrade(alembic_config(owner_url, password), "head")
-        engine = create_engine(owner_url)
-        with engine.begin() as conn:
-            seed(conn)
-            seed(conn)  # idempotent
-        engine.dispose()
-        app_url = make_url(owner_url).set(username=CONTROL_APP_ROLE, password=password)
-        yield owner_url, app_url.render_as_string(hide_password=False)
-    finally:
-        drop_test_database(name)
 
 
 def test_only_control_tables_and_read_only_app_role(control_db: tuple[str, str]) -> None:
@@ -41,7 +14,18 @@ def test_only_control_tables_and_read_only_app_role(control_db: tuple[str, str])
     with engine.connect() as conn:
         tables = {r[0] for r in conn.execute(text("SELECT tablename FROM pg_tables WHERE schemaname = 'public'"))}
     engine.dispose()
-    assert tables == {"staff_users", "role_permissions", "staff_sessions", "control_alembic_version"}
+    assert tables == {
+        "staff_users",
+        "role_permissions",
+        "staff_sessions",
+        "control_alembic_version",
+        "partners",
+        "accounts",
+        "account_contacts",
+        "opportunities",
+        "contracts",
+        "account_notes",
+    }
     app = create_engine(app_url)
     with app.connect() as conn:
         assert conn.execute(text("SELECT count(*) FROM staff_users")).scalar_one() == 9
