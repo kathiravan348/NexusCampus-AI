@@ -1,5 +1,5 @@
 {
-  "version": 7,
+  "version": 8,
   "staff": [
     {
       "id": "stf-0001",
@@ -2202,6 +2202,155 @@
       "body": "உங்கள் நிர்வாகி அனுமதித்த பிறகே எங்கள் குழு உங்கள் தரவைப் பார்க்க முடியும்.",
       "published": true,
       "updatedAt": "2026-08-01T00:00:00Z"
+    }
+  ],
+  "extensions": [
+    {
+      "id": "ext-nb-grading",
+      "accountId": "acc-nb",
+      "code": "nb-credit-grading",
+      "name": "Northbridge credit grading",
+      "version": "1.3.0",
+      "signed": true,
+      "builtAt": "2026-07-20T00:00:00Z"
+    },
+    {
+      "id": "ext-ct-gate",
+      "accountId": "acc-ct",
+      "code": "ct-gate-sync",
+      "name": "Coastal gate access sync",
+      "version": "0.9.2",
+      "signed": true,
+      "builtAt": "2026-05-02T00:00:00Z"
+    }
+  ],
+  "compatibility": [
+    {
+      "extensionId": "ext-nb-grading",
+      "releaseVersion": "2.5.0-rc.1",
+      "result": "warning",
+      "notes": "Reads the renamed grading fields; works through the alias, must move before 2.6.",
+      "aiDrafted": true,
+      "checkedAt": "2026-09-11T00:00:00Z"
+    },
+    {
+      "extensionId": "ext-ct-gate",
+      "releaseVersion": "2.5.0-rc.1",
+      "result": "compatible",
+      "notes": "",
+      "aiDrafted": true,
+      "checkedAt": "2026-09-11T00:00:00Z"
+    }
+  ],
+  "projects": [
+    {
+      "id": "prj-al",
+      "accountId": "acc-al",
+      "kind": "self_hosted_install",
+      "status": "live",
+      "leadStaffId": "stf-0023",
+      "goLiveDate": "2026-01-12",
+      "tasks": [
+        {
+          "title": "Hardware and network check (air-gapped)",
+          "done": true,
+          "dueDate": "2025-12-10"
+        },
+        {
+          "title": "Install from offline bundle and load licence",
+          "done": true,
+          "dueDate": "2025-12-20"
+        },
+        {
+          "title": "Train admins on backups and updates",
+          "done": true,
+          "dueDate": "2026-01-09"
+        }
+      ],
+      "planAiDrafted": false,
+      "createdAt": "2025-11-20T00:00:00Z"
+    },
+    {
+      "id": "prj-sr",
+      "accountId": "acc-sr",
+      "kind": "onboarding",
+      "status": "in_progress",
+      "leadStaffId": "stf-0023",
+      "goLiveDate": "2026-10-01",
+      "tasks": [
+        {
+          "title": "Set up institution profile and calendar",
+          "done": true,
+          "dueDate": "2026-09-16"
+        },
+        {
+          "title": "Invite teachers and import families",
+          "done": false,
+          "dueDate": "2026-09-23"
+        },
+        {
+          "title": "Theme and Tamil texts review",
+          "done": false,
+          "dueDate": "2026-09-28"
+        }
+      ],
+      "planAiDrafted": true,
+      "createdAt": "2026-09-14T06:00:00Z"
+    },
+    {
+      "id": "prj-rv-move",
+      "accountId": "acc-rv",
+      "kind": "migration",
+      "status": "planned",
+      "leadStaffId": "stf-0023",
+      "goLiveDate": null,
+      "tasks": [
+        {
+          "title": "Pre-flight check of the self-hosted move",
+          "done": false,
+          "dueDate": "2026-09-30"
+        }
+      ],
+      "planAiDrafted": true,
+      "createdAt": "2026-09-12T09:00:00Z"
+    }
+  ],
+  "sandboxes": [
+    {
+      "id": "sbx-demo-ey",
+      "kind": "sales_demo",
+      "accountId": "acc-sr",
+      "institutionType": "ey",
+      "region": "in",
+      "dataKind": "synthetic",
+      "version": "2.4.1",
+      "status": "ready",
+      "createdAt": "2026-09-10T05:00:00Z",
+      "expiresAt": "2026-09-24T05:00:00Z"
+    },
+    {
+      "id": "sbx-demo-tp",
+      "kind": "sales_demo",
+      "accountId": null,
+      "institutionType": "tp",
+      "region": "in",
+      "dataKind": "synthetic",
+      "version": "2.4.0",
+      "status": "expired",
+      "createdAt": "2026-08-01T05:00:00Z",
+      "expiresAt": "2026-08-15T05:00:00Z"
+    },
+    {
+      "id": "sbx-stg-nb",
+      "kind": "staging_clone",
+      "accountId": "acc-nb",
+      "institutionType": "he",
+      "region": "us",
+      "dataKind": "masked",
+      "version": "2.5.0-rc.1",
+      "status": "ready",
+      "createdAt": "2026-09-11T00:00:00Z",
+      "expiresAt": "2026-10-11T00:00:00Z"
     }
   ]
 }

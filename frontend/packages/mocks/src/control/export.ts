@@ -8,7 +8,10 @@ import {
   CREDIT_NOTES,
   DEPLOYMENTS,
   DUNNING_STATES,
+  EXTENSION_COMPATIBILITY,
+  EXTENSIONS,
   HEALTH_SIGNALS,
+  IMPLEMENTATION_PROJECTS,
   INVOICES,
   KNOWLEDGE_ARTICLES,
   LICENCES,
@@ -18,6 +21,7 @@ import {
   QUOTES,
   RELEASES,
   ROLLOUTS,
+  SANDBOXES,
   SLA_POLICIES,
   STAFF_USERS,
   SUBSCRIPTIONS,
@@ -27,7 +31,7 @@ import {
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 7;
+export const CONTROL_FIXTURES_VERSION = 8;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -63,6 +67,10 @@ export function controlFixturesJson(): string {
       ticketReplies: TICKET_REPLIES,
       slaPolicies: SLA_POLICIES,
       kbArticles: KNOWLEDGE_ARTICLES,
+      extensions: EXTENSIONS,
+      compatibility: EXTENSION_COMPATIBILITY,
+      projects: IMPLEMENTATION_PROJECTS,
+      sandboxes: SANDBOXES,
     },
     null,
     2,

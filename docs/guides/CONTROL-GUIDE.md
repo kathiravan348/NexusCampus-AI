@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-23 (Stage 2 prototype + real Control backend for sign-in, Accounts, Pricing & quotes, Billing, Usage, Licences, Fleet, Releases, and Support P09 (NEX-122)).
+> State as of: 2026-11-23 (Stage 2 prototype + real Control backend for sign-in, Accounts, Pricing & quotes, Billing, Usage, Licences, Fleet, Releases, Extensions (P08), Support (P09), Projects (P15), and Sandboxes (P17) (NEX-122, NEX-123)).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 

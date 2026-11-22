@@ -10,7 +10,10 @@ import {
   CREDIT_NOTES,
   DEPLOYMENTS,
   DUNNING_STATES,
+  EXTENSION_COMPATIBILITY,
+  EXTENSIONS,
   HEALTH_SIGNALS,
+  IMPLEMENTATION_PROJECTS,
   INVOICES,
   KNOWLEDGE_ARTICLES,
   LICENCE_FILES,
@@ -21,6 +24,7 @@ import {
   QUOTES,
   RELEASES,
   ROLLOUTS,
+  SANDBOXES,
   SLA_POLICIES,
   STAFF_USERS,
   SUBSCRIPTIONS,
@@ -70,6 +74,10 @@ const CONTROL_CONTRACTS: readonly ParityContractEntry[] = [
   ["TicketReply", C.TicketReplySchema, TICKET_REPLIES],
   ["SlaPolicy", C.SlaPolicySchema, SLA_POLICIES],
   ["KnowledgeArticle", C.KnowledgeArticleSchema, KNOWLEDGE_ARTICLES],
+  ["Extension", C.ExtensionSchema, EXTENSIONS],
+  ["ExtensionCompatibility", C.ExtensionCompatibilitySchema, EXTENSION_COMPATIBILITY],
+  ["ImplementationProject", C.ImplementationProjectSchema, IMPLEMENTATION_PROJECTS],
+  ["Sandbox", C.SandboxSchema, SANDBOXES],
 ];
 
 /** Written to `backend/tests/parity/control_samples.json` (NEX-116). */
