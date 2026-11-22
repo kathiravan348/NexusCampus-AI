@@ -150,7 +150,11 @@ Nexus Control (our cloud)                         Product deployments
   `.tar`; `nexus-release-verify` checks them with pinned public keys before anything is loaded (refuses links,
   `..`, absolute paths, missing / extra / changed files). Image signatures with cosign can be added later.
 - **Same images everywhere.** A deployment differs only by configuration, licence/entitlements and installed
-  extensions. Customer-specific work = extension packages (P08), never a fork of the core.
+  extensions. Customer-specific work = extension packages (P08), never a fork of the core. Small/medium self-hosted
+  sites run `deploy/compose/`; large Kubernetes installs use the zero-dependency Helm chart in
+  `deploy/helm/nexuscampus/` (NEX-120: same pinned images and digests, secrets via `existingSecret` only, restricted
+  non-root pods with `seccompProfile: RuntimeDefault` and `automountServiceAccountToken: false`, default-deny
+  `NetworkPolicy`, and switchable external PostgreSQL / Valkey / OpenBao / Keycloak).
 - **Provisioning (SaaS):** P04 creates the tenant in the chosen region cell, its keys in the vault, and the type
   profile; Nexus Control keeps only the tenant id, region, plan and counts.
 - **Licences (self-hosted):** P05 signs a licence file (Ed25519). M84 verifies it offline; expiry → grace period →

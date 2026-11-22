@@ -1,0 +1,14 @@
+NexusCampus ({{ .Release.Name }}) has been deployed to namespace {{ .Release.Namespace }}.
+
+1. Public URLs:
+   App:      {{ .Values.publicUrl }}
+   Keycloak: {{ .Values.keycloakPublicUrl }}
+
+2. Verify workloads:
+   kubectl -n {{ .Release.Namespace }} get pods
+
+{{- if .Values.openbao.enabled }}
+3. OpenBao starts sealed (same as deploy/compose):
+   kubectl -n {{ .Release.Namespace }} exec -it {{ include "nexuscampus.fullname" . }}-openbao-0 -- bao operator init -key-shares=1 -key-threshold=1
+   Store the unseal key and root token offline before unsealing.
+{{- end }}

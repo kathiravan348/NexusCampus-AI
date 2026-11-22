@@ -1,0 +1,329 @@
+{{- if .Values.networkPolicy.enabled }}
+# Default-deny all ingress and egress for every pod in this release; allow rules below open only required paths.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-default-deny
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "nexuscampus.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes:
+    - Ingress
+    - Egress
+---
+# Cluster DNS resolution for every pod in this release.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-allow-dns
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "nexuscampus.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes:
+    - Egress
+  egress:
+    - ports:
+        - protocol: UDP
+          port: 53
+        - protocol: TCP
+          port: 53
+---
+# web: accepts HTTP from ingress, talks only to api:8000.
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-web
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "web") .) | nindent 6 }}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 8080
+      {{- if .Values.networkPolicy.ingressNamespaceSelector }}
+      from:
+        - namespaceSelector:
+            {{- toYaml .Values.networkPolicy.ingressNamespaceSelector | nindent 12 }}
+      {{- end }}
+  egress:
+    - to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "api") .) | nindent 14 }}
+      ports:
+        - protocol: TCP
+          port: 8000
+---
+# api: accepts traffic only from web:8080; egress to db, valkey, openbao, keycloak (+ optional HTTPS to Control).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-api
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "api") .) | nindent 6 }}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "web") .) | nindent 14 }}
+      ports:
+        - protocol: TCP
+          port: 8000
+  egress:
+    - ports:
+        - protocol: TCP
+          port: {{ include "nexuscampus.dbPort" . }}
+      {{- if .Values.db.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "db") .) | nindent 14 }}
+      {{- end }}
+    - ports:
+        - protocol: TCP
+          port: {{ ternary 6379 (.Values.valkey.external.port | default 6379) .Values.valkey.enabled }}
+      {{- if .Values.valkey.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "valkey") .) | nindent 14 }}
+      {{- end }}
+    - ports:
+        - protocol: TCP
+          port: 8200
+      {{- if .Values.openbao.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "openbao") .) | nindent 14 }}
+      {{- end }}
+    - ports:
+        - protocol: TCP
+          port: 8080
+      {{- if .Values.keycloak.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "keycloak") .) | nindent 14 }}
+      {{- end }}
+    {{- if and .Values.control.url (not .Values.control.airGapped) }}
+    - ports:
+        - protocol: TCP
+          port: 443
+    {{- end }}
+---
+# worker & migrate: no ingress; egress to db, valkey, openbao, keycloak (+ optional HTTPS to Control).
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-worker-migrate
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "nexuscampus.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+    matchExpressions:
+      - key: app.kubernetes.io/component
+        operator: In
+        values:
+          - worker
+          - migrate
+  policyTypes:
+    - Egress
+  egress:
+    - ports:
+        - protocol: TCP
+          port: {{ include "nexuscampus.dbPort" . }}
+      {{- if .Values.db.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "db") .) | nindent 14 }}
+      {{- end }}
+    - ports:
+        - protocol: TCP
+          port: {{ ternary 6379 (.Values.valkey.external.port | default 6379) .Values.valkey.enabled }}
+      {{- if .Values.valkey.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "valkey") .) | nindent 14 }}
+      {{- end }}
+    - ports:
+        - protocol: TCP
+          port: 8200
+      {{- if .Values.openbao.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "openbao") .) | nindent 14 }}
+      {{- end }}
+    - ports:
+        - protocol: TCP
+          port: 8080
+      {{- if .Values.keycloak.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "keycloak") .) | nindent 14 }}
+      {{- end }}
+    {{- if and .Values.control.url (not .Values.control.airGapped) }}
+    - ports:
+        - protocol: TCP
+          port: 443
+    {{- end }}
+{{- if .Values.db.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-db
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "db") .) | nindent 6 }}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ include "nexuscampus.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name }}
+            matchExpressions:
+              - key: app.kubernetes.io/component
+                operator: In
+                values:
+                  - api
+                  - worker
+                  - migrate
+                  - keycloak
+      ports:
+        - protocol: TCP
+          port: 5432
+{{- end }}
+{{- if .Values.valkey.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-valkey
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "valkey") .) | nindent 6 }}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ include "nexuscampus.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name }}
+            matchExpressions:
+              - key: app.kubernetes.io/component
+                operator: In
+                values:
+                  - api
+                  - worker
+      ports:
+        - protocol: TCP
+          port: 6379
+{{- end }}
+{{- if .Values.openbao.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-openbao
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "openbao") .) | nindent 6 }}
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: {{ include "nexuscampus.name" . }}
+              app.kubernetes.io/instance: {{ .Release.Name }}
+            matchExpressions:
+              - key: app.kubernetes.io/component
+                operator: In
+                values:
+                  - api
+                  - worker
+                  - migrate
+      ports:
+        - protocol: TCP
+          port: 8200
+{{- end }}
+{{- if .Values.keycloak.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-keycloak
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+spec:
+  podSelector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "keycloak") .) | nindent 6 }}
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 8080
+      {{- if .Values.networkPolicy.ingressNamespaceSelector }}
+      from:
+        - namespaceSelector:
+            {{- toYaml .Values.networkPolicy.ingressNamespaceSelector | nindent 12 }}
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "api") .) | nindent 14 }}
+      {{- end }}
+  egress:
+    - ports:
+        - protocol: TCP
+          port: {{ include "nexuscampus.dbPort" . }}
+      {{- if .Values.db.enabled }}
+      to:
+        - podSelector:
+            matchLabels:
+              {{- include "nexuscampus.selectorLabels" (merge (dict "component" "db") .) | nindent 14 }}
+      {{- end }}
+{{- end }}
+{{- end }}

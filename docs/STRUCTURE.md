@@ -115,7 +115,11 @@
 ├─ deploy/compose/      self-hosted install (NEX-064): compose.yaml (pinned images), .env.example, keycloak/realm.json,
 │                       vault/vault.hcl, postgres/ init, scripts/install.sh + install.ps1, README (install, upgrade,
 │                       backup, uninstall); images: backend/Dockerfile (api + worker), frontend/apps/campus/Dockerfile
-│                       (+ nginx.conf). Helm and air-gapped bundles: Stage 2
+│                       (+ nginx.conf)
+├─ deploy/helm/         large self-hosted Kubernetes install (NEX-120): nexuscampus/ Helm chart (Chart.yaml, values.yaml,
+│                       values.schema.json, templates/ per service + networkpolicy + ingress + pre-install/pre-upgrade
+│                       migrate Job, README); same pinned images as compose, secrets via existingSecret only, default-deny
+│                       NetworkPolicy; verified by backend/tests/deploy/test_helm_chart.py
 └─ deploy/control/      Nexus Control Compose stack (NEX-108): compose.yaml (includes backend/compose.billing.yaml,
                         internal network, only 127.0.0.1:8100 published), .env.example, scripts/install.{sh,ps1}, README
 ```

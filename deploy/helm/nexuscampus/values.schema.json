@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NexusCampus Helm chart values",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "publicUrl",
+    "keycloakPublicUrl",
+    "region",
+    "secrets",
+    "images",
+    "api",
+    "worker",
+    "web",
+    "migrate",
+    "db",
+    "valkey",
+    "openbao",
+    "keycloak",
+    "networkPolicy",
+    "ingress"
+  ],
+  "$defs": {
+    "imageSpec": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "tag"],
+      "properties": {
+        "repository": { "type": "string", "minLength": 1 },
+        "tag": { "type": "string", "minLength": 1 },
+        "digest": { "type": "string", "pattern": "^(|sha256:[0-9a-f]{64})$" }
+      }
+    },
+    "resourceList": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cpu", "memory"],
+      "properties": {
+        "cpu": { "type": "string", "minLength": 1 },
+        "memory": { "type": "string", "minLength": 1 }
+      }
+    },
+    "resources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requests", "limits"],
+      "properties": {
+        "requests": { "$ref": "#/$defs/resourceList" },
+        "limits": { "$ref": "#/$defs/resourceList" }
+      }
+    },
+    "secretName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 253,
+      "pattern": "^[a-z0-9]([-a-z0-9.]*[a-z0-9])?$"
+    }
+  },
+  "properties": {
+    "fullnameOverride": { "type": "string", "maxLength": 63 },
+    "nameOverride": { "type": "string", "maxLength": 63 },
+    "publicUrl": { "type": "string", "pattern": "^https?://" },
+    "keycloakPublicUrl": { "type": "string", "pattern": "^https?://" },
+    "region": { "type": "string", "enum": ["in", "eu", "us", "me", "apac"] },
+    "ai": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "provider": { "type": "string", "enum": ["fake", "anthropic", "bedrock"] }
+      }
+    },
+    "control": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "url": { "type": "string", "pattern": "^(|https://.+)$" },
+        "airGapped": { "type": "boolean" },
+        "telemetryEnabled": { "type": "boolean" }
+      }
+    },
+    "secrets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["appExistingSecret", "dbExistingSecret", "keycloakExistingSecret"],
+      "properties": {
+        "appExistingSecret": { "$ref": "#/$defs/secretName" },
+        "dbExistingSecret": { "$ref": "#/$defs/secretName" },
+        "keycloakExistingSecret": { "$ref": "#/$defs/secretName" }
+      }
+    },
+    "images": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["api", "web", "db", "valkey", "openbao", "keycloak"],
+      "properties": {
+        "pullPolicy": { "type": "string", "enum": ["Always", "IfNotPresent", "Never"] },
+        "pullSecrets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name"],
+            "properties": { "name": { "$ref": "#/$defs/secretName" } }
+          }
+        },
+        "api": { "$ref": "#/$defs/imageSpec" },
+        "web": { "$ref": "#/$defs/imageSpec" },
+        "db": { "$ref": "#/$defs/imageSpec" },
+        "valkey": { "$ref": "#/$defs/imageSpec" },
+        "openbao": { "$ref": "#/$defs/imageSpec" },
+        "keycloak": { "$ref": "#/$defs/imageSpec" }
+      }
+    },
+    "api": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["replicas", "resources"],
+      "properties": {
+        "replicas": { "type": "integer", "minimum": 1 },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "worker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["replicas", "resources"],
+      "properties": {
+        "replicas": { "type": "integer", "minimum": 1 },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "web": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["replicas", "resources"],
+      "properties": {
+        "replicas": { "type": "integer", "minimum": 1 },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "migrate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "backoffLimit", "resources"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "backoffLimit": { "type": "integer", "minimum": 0, "maximum": 10 },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "db": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "database", "ownerUser", "appUser", "resources"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "database": { "type": "string", "minLength": 1 },
+        "ownerUser": { "type": "string", "minLength": 1 },
+        "appUser": { "type": "string", "minLength": 1 },
+        "keycloakDatabase": { "type": "string", "minLength": 1 },
+        "keycloakUser": { "type": "string", "minLength": 1 },
+        "storageSize": { "type": "string", "minLength": 1 },
+        "storageClassName": { "type": "string" },
+        "external": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "host": { "type": "string" },
+            "port": { "type": "integer", "minimum": 1, "maximum": 65535 }
+          }
+        },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "valkey": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "resources"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "storageSize": { "type": "string", "minLength": 1 },
+        "storageClassName": { "type": "string" },
+        "external": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "host": { "type": "string" },
+            "port": { "type": "integer", "minimum": 1, "maximum": 65535 },
+            "db": { "type": "integer", "minimum": 0, "maximum": 15 }
+          }
+        },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "openbao": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "resources"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "storageSize": { "type": "string", "minLength": 1 },
+        "storageClassName": { "type": "string" },
+        "external": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "url": { "type": "string" }
+          }
+        },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "keycloak": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled", "realm", "resources"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "replicas": { "type": "integer", "minimum": 1 },
+        "realm": { "type": "string", "minLength": 1 },
+        "adminUser": { "type": "string", "minLength": 1 },
+        "external": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "url": { "type": "string" }
+          }
+        },
+        "resources": { "$ref": "#/$defs/resources" }
+      }
+    },
+    "networkPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "ingressNamespaceSelector": { "type": "object" }
+      }
+    },
+    "ingress": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enabled"],
+      "properties": {
+        "enabled": { "type": "boolean" },
+        "className": { "type": "string" },
+        "annotations": { "type": "object", "additionalProperties": { "type": "string" } },
+        "appHost": { "type": "string" },
+        "keycloakHost": { "type": "string" },
+        "tlsSecretName": { "$ref": "#/$defs/secretName" }
+      }
+    }
+  }
+}

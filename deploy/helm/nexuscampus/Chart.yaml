@@ -1,0 +1,13 @@
+apiVersion: v2
+name: nexuscampus
+description: Self-hosted NexusCampus product stack (API, outbox worker, web PWA, forward-only migrations, and optional PostgreSQL+pgvector, Valkey, OpenBao, Keycloak).
+type: application
+version: 0.1.0
+appVersion: "2.4.1"
+keywords:
+  - education
+  - self-hosted
+  - multi-tenant
+home: https://nexuscampus.example
+sources:
+  - https://nexuscampus.example

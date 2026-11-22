@@ -1,0 +1,130 @@
+{{- if .Values.keycloak.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-keycloak
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+    app.kubernetes.io/component: keycloak
+spec:
+  replicas: {{ .Values.keycloak.replicas }}
+  selector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "keycloak") .) | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "nexuscampus.labels" . | nindent 8 }}
+        {{- include "nexuscampus.selectorLabels" (merge (dict "component" "keycloak") .) | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      {{- with .Values.images.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        runAsGroup: 1000
+        fsGroup: 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: keycloak
+          image: {{ include "nexuscampus.image" .Values.images.keycloak | quote }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          args:
+            - start
+            - --health-enabled=true
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+            - name: health
+              containerPort: 9000
+              protocol: TCP
+          env:
+            - name: KC_DB
+              value: "postgres"
+            - name: KC_DB_URL
+              value: {{ printf "jdbc:postgresql://%s:%s/%s" (include "nexuscampus.dbHost" .) (include "nexuscampus.dbPort" .) .Values.db.keycloakDatabase | quote }}
+            - name: KC_DB_USERNAME
+              value: {{ .Values.db.keycloakUser | quote }}
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.keycloakExistingSecret | quote }}
+                  key: KEYCLOAK_DB_PASSWORD
+            - name: KC_HTTP_ENABLED
+              value: "true"
+            - name: KC_HOSTNAME
+              value: {{ .Values.keycloakPublicUrl | quote }}
+            - name: KC_HOSTNAME_BACKCHANNEL_DYNAMIC
+              value: "true"
+            - name: KC_PROXY_HEADERS
+              value: "xforwarded"
+            - name: KC_BOOTSTRAP_ADMIN_USERNAME
+              value: {{ .Values.keycloak.adminUser | quote }}
+            - name: KC_BOOTSTRAP_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.keycloakExistingSecret | quote }}
+                  key: KC_BOOTSTRAP_ADMIN_PASSWORD
+            - name: NEXUS_OIDC_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: {{ .Values.secrets.keycloakExistingSecret | quote }}
+                  key: NEXUS_OIDC_CLIENT_SECRET
+            - name: NEXUS_PUBLIC_URL
+              value: {{ .Values.publicUrl | quote }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: health
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: health
+            initialDelaySeconds: 20
+            periodSeconds: 5
+            timeoutSeconds: 5
+          resources:
+            {{- toYaml .Values.keycloak.resources | nindent 12 }}
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-keycloak
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+    app.kubernetes.io/component: keycloak
+spec:
+  type: ClusterIP
+  selector:
+    {{- include "nexuscampus.selectorLabels" (merge (dict "component" "keycloak") .) | nindent 4 }}
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+      protocol: TCP
+    - name: health
+      port: 9000
+      targetPort: health
+      protocol: TCP
+{{- end }}

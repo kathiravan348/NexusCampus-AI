@@ -1,0 +1,177 @@
+# NexusCampus self-hosted Kubernetes Helm chart (NEX-120, DM-9, D48).
+# Secrets are NEVER placed here: set `secrets.*ExistingSecret` to Kubernetes Secret names created beforehand.
+# Third-party images and digests match `deploy/compose/compose.yaml` exactly.
+
+fullnameOverride: ""
+nameOverride: ""
+
+# Public addresses (TLS terminates at your Ingress or external reverse proxy).
+publicUrl: "https://campus.example.org"
+keycloakPublicUrl: "https://login.example.org"
+# Data region of this install cell (D45): in | eu | us | me | apac
+region: "in"
+
+# AI gateway (D14, D24): fake (no model) | anthropic | bedrock
+ai:
+  provider: "fake"
+
+# Optional pairing with Nexus Control (outbound HTTPS only; disabled when airGapped is true or url is empty).
+control:
+  url: ""
+  airGapped: false
+  telemetryEnabled: false
+
+# Kubernetes Secret names only (never values). See README.md for required keys.
+secrets:
+  appExistingSecret: "nexuscampus-app-secrets"
+  dbExistingSecret: "nexuscampus-db-secrets"
+  keycloakExistingSecret: "nexuscampus-keycloak-secrets"
+
+# Single place for all image names, tags and digests (identical to deploy/compose/compose.yaml).
+images:
+  pullPolicy: IfNotPresent
+  pullSecrets: []
+  api:
+    repository: "nexuscampus-api"
+    tag: "dev"
+    digest: ""
+  web:
+    repository: "nexuscampus-web"
+    tag: "dev"
+    digest: ""
+  db:
+    repository: "pgvector/pgvector"
+    tag: "0.8.0-pg16"
+    digest: "sha256:a132765ec351c65111b5b675928a3a0515a466a40f97277329db8b8209ad8bc9"
+  valkey:
+    repository: "valkey/valkey"
+    tag: "9.0.7-alpine"
+    digest: "sha256:2d04268dfa26ab31cfa3fdc538866e76438b2d00e41db41b8cb86d780ac5a416"
+  openbao:
+    repository: "openbao/openbao"
+    tag: "2.7.2"
+    digest: "sha256:5046911075e137e154ce49ab051502f4ec7cf367d484ae4a4dce665d9b90561f"
+  keycloak:
+    repository: "quay.io/keycloak/keycloak"
+    tag: "26.4.7"
+    digest: "sha256:9409c59bdfb65dbffa20b11e6f18b8abb9281d480c7ca402f51ed3d5977e6007"
+
+api:
+  replicas: 2
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "256Mi"
+    limits:
+      cpu: "1000m"
+      memory: "512Mi"
+
+worker:
+  replicas: 1
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "256Mi"
+
+web:
+  replicas: 2
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "64Mi"
+    limits:
+      cpu: "250m"
+      memory: "128Mi"
+
+migrate:
+  enabled: true
+  backoffLimit: 3
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "256Mi"
+
+# Switchable backing services: set `enabled: false` and fill `external.*` to use managed/external instances.
+db:
+  enabled: true
+  database: "nexus"
+  ownerUser: "nexus"
+  appUser: "nexus_app"
+  keycloakDatabase: "keycloak"
+  keycloakUser: "keycloak"
+  storageSize: "20Gi"
+  storageClassName: ""
+  external:
+    host: ""
+    port: 5432
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "768Mi"
+
+valkey:
+  enabled: true
+  storageSize: "1Gi"
+  storageClassName: ""
+  external:
+    host: ""
+    port: 6379
+    db: 0
+  resources:
+    requests:
+      cpu: "50m"
+      memory: "64Mi"
+    limits:
+      cpu: "250m"
+      memory: "128Mi"
+
+openbao:
+  enabled: true
+  storageSize: "2Gi"
+  storageClassName: ""
+  external:
+    url: ""
+  resources:
+    requests:
+      cpu: "100m"
+      memory: "128Mi"
+    limits:
+      cpu: "500m"
+      memory: "256Mi"
+
+keycloak:
+  enabled: true
+  replicas: 1
+  realm: "nexus"
+  adminUser: "admin"
+  external:
+    url: ""
+  resources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "1000m"
+      memory: "1Gi"
+
+networkPolicy:
+  enabled: true
+  # Optional namespace label selector for the cluster ingress controller allowed to reach web (8080) and keycloak (8080).
+  ingressNamespaceSelector: {}
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  appHost: "campus.example.org"
+  keycloakHost: "login.example.org"
+  tlsSecretName: "nexuscampus-tls"

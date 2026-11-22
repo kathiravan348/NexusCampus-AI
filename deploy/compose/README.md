@@ -155,5 +155,11 @@ docker compose -f deploy/compose/compose.yaml down -v     # remove everything, i
 
 Every service has a memory limit, a health check and (where it keeps data) a named volume; third-party images are
 pinned by digest, and every one is open source. Production hardening beyond Stage 1 (HA, OpenBao auto-unseal with a
-KMS) is described in
-`docs/ARCHITECTURE.md` §9.
+KMS) is described in `docs/ARCHITECTURE.md` §9.
+
+## Large installs (Kubernetes / Helm)
+
+Choose Docker Compose for single-server installs (up to a few thousand learners). For multi-node HA clusters, managed
+PostgreSQL / Valkey / OpenBao / Keycloak, or existing Kubernetes infrastructure, use the Helm chart in
+[`deploy/helm/nexuscampus/`](../helm/nexuscampus/README.md) — it runs the exact same pinned images with non-root pods,
+Kubernetes Secrets only (`existingSecret`), and default-deny `NetworkPolicy` rules.
