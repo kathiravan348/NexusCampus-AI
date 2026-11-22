@@ -169,6 +169,11 @@ Nexus Control (our cloud)                         Product deployments
   air-gapped `403`) and receive `{ release }` for the newest published, signed release on their channel with
   `minUpgradeFrom` ≤ current version (pre-releases on `preview` only) whose `running` or `done` rollout includes that
   deployment, or `{ release: null }`.
+- **Support desk (P09, NEX-122):** `tickets`, `ticket_replies`, `sla_policies`, and `kb_articles`. `control_app` has
+  `SELECT` on all four, `INSERT` on `ticket_replies`, and column-scoped `UPDATE (status, assignee_staff_id, resolved_at)`
+  on `tickets` (no deletes, no writes to SLA policies or articles). Partner viewers see only tickets for their managed
+  accounts and replies joined through those visible tickets (never by reply id alone), and no SLA policies or articles.
+  Staff replies run in one transaction and log ticket id, reply id, and staff id only (never reply text, V-6).
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted

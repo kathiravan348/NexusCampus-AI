@@ -16,7 +16,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from nexus.control.staff import Permission, StaffRole, StaffUser, role_permissions, staff_users
 
 FIXTURES = Path(__file__).with_name("control_fixtures.json")
-FIXTURES_VERSION = 6
+FIXTURES_VERSION = 7
 
 
 class ControlFixtures(BaseModel):
@@ -49,6 +49,11 @@ class ControlFixtures(BaseModel):
     #: P07 (NEX-115).
     releases: list[dict[str, Any]] = []
     rollouts: list[dict[str, Any]] = []
+    #: P09 (NEX-122).
+    tickets: list[dict[str, Any]] = []
+    ticket_replies: list[dict[str, Any]] = []
+    sla_policies: list[dict[str, Any]] = []
+    kb_articles: list[dict[str, Any]] = []
 
 
 def load_fixtures(path: Path = FIXTURES) -> ControlFixtures:
@@ -99,4 +104,7 @@ def seed(conn: Connection, data: ControlFixtures | None = None) -> int:
     from nexus.control.releases import seed_rows as seed_releases
 
     seed_releases(conn, fixtures.model_dump(include={"releases", "rollouts"}))
+    from nexus.control.support import seed_rows as seed_support
+
+    seed_support(conn, fixtures.model_dump(include={"tickets", "ticket_replies", "sla_policies", "kb_articles"}))
     return len(fixtures.staff)

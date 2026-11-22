@@ -25,6 +25,7 @@ from nexus.control.fleet import Deployment, HealthSignal
 from nexus.control.licences import Licence
 from nexus.control.releases import Release, Rollout
 from nexus.control.staff import StaffSession
+from nexus.control.support import KnowledgeArticle, SlaPolicy, SupportTicket, TicketReply
 from nexus.licensing.licence import LicenceFile
 
 CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
@@ -50,4 +51,8 @@ CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "HealthSignal": HealthSignal,
     "Release": Release,
     "Rollout": Rollout,
+    "SupportTicket": SupportTicket,
+    "TicketReply": TicketReply,
+    "SlaPolicy": SlaPolicy,
+    "KnowledgeArticle": KnowledgeArticle,
 }

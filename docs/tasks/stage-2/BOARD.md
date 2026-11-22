@@ -66,7 +66,7 @@
 | NEX-119 | Tenant import (DM-8, D58): unwrap with the import key, check schema revision, load into an empty tenant, re-encrypt fields | D | done | Gemini | 106 |
 | NEX-120 | Packaging: Helm chart for large installs (needs the Owner's OK to download `helm`) | D | draft | — | 108 |
 | NEX-121 | Control on real data: P04 tenant provisioning and P18 moves (portability jobs, shred certificates) | D | draft | — | 119, 116 |
-| NEX-122 | Control on real data: P09 support desk (tickets, replies, SLA policies, knowledge base) | D | planned | — | 116, 108 |
+| NEX-122 | Control on real data: P09 support desk (tickets, replies, SLA policies, knowledge base) | D | ready-for-review | Gemini | 116, 108 |
 | NEX-123 | Control on real data: P08 extensions, P15 projects and P17 sandboxes (reads) | D | planned | — | 122 |
 | NEX-124 | Control on real data: P12 deals and commissions, P16 analytics (reads) | D | planned | — | 123 |
 | NEX-125 | Control on real data: P10 access broker, requests reach the institution's M83 approval (needs a decision: how Control calls an install) | D | draft | — | 122 |

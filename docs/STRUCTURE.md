@@ -104,7 +104,7 @@
 │                       backend-check); tests/ (tests/db: RLS, region, seed, migrations — need Compose PostgreSQL; tests/security:
 │                       V-1…V-7 no-access release gates; test_checkpoints.py)
 │                       Nexus Control backend (Stage 2): src/nexus/control/ (settings, staff, sessions, auth = staff
-│                       sign-in with MFA, main = /control/api/v1, seed + control_fixtures.json, billing/ = BillingEngine +
+│                       sign-in with MFA, accounts, commercial, licences, fleet, releases, support = P09 tickets/replies/SLA/KB, main = /control/api/v1, seed + control_fixtures.json, billing/ = BillingEngine +
 │                       Lago adapter, sync, webhooks), control_migrations/ + control_alembic.ini (database nexus_control), keycloak/
 │                       realm-staff.json (nexus-staff), compose.billing.yaml (Lago, dev), src/nexus/licensing/ (licence
 │                       files: canonical JSON, Ed25519 in OpenBao, offline verify), src/nexus/agent/ (M84 install
