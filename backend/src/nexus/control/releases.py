@@ -5,6 +5,7 @@ rows). `GET /agent/update` uses the per-deployment agent bearer token (`agent_de
 published, signed release eligible for that deployment's channel, version and active/completed rollout rings.
 """
 
+import json
 import logging
 import time
 from typing import Annotated, Any, Literal
@@ -55,11 +56,14 @@ releases = Table(
     Column("min_upgrade_from", String(64), nullable=False),
     Column("migration_notes", String(5000), nullable=False),
     Column("notes_ai_drafted", Boolean, nullable=False),
+    #: Internal raw `nexus-release/1` JSON imported by `nexus-control-release-import`; never in `Release`.
+    Column("signed_manifest", Text, nullable=True),
     UniqueConstraint("channel", "version", name="uq_releases_channel_version"),
     CheckConstraint("channel IN ('stable', 'lts', 'preview')", name="releases_channel_known"),
     CheckConstraint("status IN ('draft', 'published', 'withdrawn')", name="releases_status_known"),
     CheckConstraint("(status = 'draft') = (published_at IS NULL)", name="releases_draft_no_published_at"),
     CheckConstraint("status = 'draft' OR signed", name="releases_published_must_be_signed"),
+    CheckConstraint("signed_manifest IS NULL OR signed", name="releases_signed_manifest_requires_signed"),
     CheckConstraint("channel <> 'preview' OR NOT offline_bundle", name="releases_preview_no_offline_bundle"),
     CheckConstraint(f"version ~ '{_SEMVER_RE}'", name="releases_version_semver"),
     CheckConstraint(f"min_upgrade_from ~ '{_SEMVER_RE}'", name="releases_min_upgrade_semver"),
@@ -106,6 +110,7 @@ class Rollout(CamelModel):
 
 class AgentUpdateOffer(CamelModel):
     release: Release | None
+    manifest: dict[str, Any] | None = None
 
 
 SEED_TABLES: list[tuple[str, Table, type[CamelModel], str]] = [
@@ -188,15 +193,23 @@ async def agent_update_check(
             select(releases).where(
                 releases.c.status == "published",
                 releases.c.signed.is_(True),
+                releases.c.signed_manifest.is_not(None),
                 releases.c.channel == agent.channel,
                 has_active_rollout,
             )
         )
-        candidates = [Release.model_validate(RELEASES.parse(row).model_dump()) for row in rows.mappings()]
+        candidates: list[Release] = []
+        manifests: dict[str, str] = {}
+        for row in rows.mappings():
+            rel = Release.model_validate(RELEASES.parse(row).model_dump())
+            candidates.append(rel)
+            manifests[rel.id] = str(row["signed_manifest"])
 
     offer = select_update_offer(candidates, agent.version, agent.channel)
     log.info("agent update check deployment=%s outcome=%s", agent.id, "offer" if offer else "none")
-    return AgentUpdateOffer(release=offer)
+    if offer is None:
+        return AgentUpdateOffer(release=None, manifest=None)
+    return AgentUpdateOffer(release=offer, manifest=json.loads(manifests[offer.id]))
 
 
 def seed_rows(conn: Any, data: dict[str, list[dict[str, Any]]]) -> int:

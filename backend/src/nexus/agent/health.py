@@ -61,16 +61,17 @@ def _disk_used_pct(install_dir: Path) -> float:
     return _clamp_pct((usage.used / usage.total) * 100.0)
 
 
-def _control_health_url(base_url: str) -> str | None:
-    parts = urlsplit(base_url.strip())
+def control_endpoint(base: str, path: str) -> str | None:
+    """Builds a Control API URL: https only (plain http only on loopback), with query and fragment dropped."""
+    parts = urlsplit(base.strip())
     if parts.scheme not in ("http", "https") or not parts.netloc:
         return None
     # The bearer token never travels unencrypted: plain http only to a Control on this machine (development).
     if parts.scheme == "http" and parts.hostname not in LOOPBACK_HOSTS:
         return None
-    path = parts.path.rstrip("/") + HEALTH_ENDPOINT_PATH
+    full_path = parts.path.rstrip("/") + "/" + path.lstrip("/")
     # Drop any query string or fragment so nothing extra is sent or logged.
-    return urlunsplit((parts.scheme, parts.netloc, path, "", ""))
+    return urlunsplit((parts.scheme, parts.netloc, full_path, "", ""))
 
 
 def report_skip_reason(settings: Settings) -> str | None:
@@ -174,7 +175,7 @@ def send_report(
     skip = report_skip_reason(settings)
     if skip is not None:
         return ReportResult(sent=False, message=skip)
-    endpoint = _control_health_url(settings.control_url)
+    endpoint = control_endpoint(settings.control_url, HEALTH_ENDPOINT_PATH)
     if endpoint is None:
         return ReportResult(
             sent=False, message="failed: invalid control URL (https required, http only on this machine)"
@@ -185,9 +186,9 @@ def send_report(
     payload = measure_health(conn, settings, now=now, probe_transport=probe_transport)
     token = settings.control_agent_token.get_secret_value().strip()
     client = (
-        httpx2.Client(timeout=REPORT_TIMEOUT_SECONDS, verify=True, transport=control_transport)
+        httpx2.Client(timeout=REPORT_TIMEOUT_SECONDS, verify=True, follow_redirects=False, transport=control_transport)
         if control_transport is not None
-        else httpx2.Client(timeout=REPORT_TIMEOUT_SECONDS, verify=True)
+        else httpx2.Client(timeout=REPORT_TIMEOUT_SECONDS, verify=True, follow_redirects=False)
     )
     try:
         with client:

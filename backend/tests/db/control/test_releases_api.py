@@ -98,7 +98,7 @@ async def test_agent_update_check_newest_pending_and_rate_limit(
     tok_in = issue_token(owner, "dep-in-1")
     caplog.set_level(logging.INFO, logger="nexus.control.releases")
     res_in = await api.get(f"{API}/agent/update", headers={"Authorization": f"Bearer {tok_in}"})
-    assert res_in.status_code == 200 and res_in.json() == {"release": None}
+    assert res_in.status_code == 200 and res_in.json() == {"release": None, "manifest": None}
     assert any("dep-in-1" in rec.message and "outcome=none" in rec.message for rec in caplog.records)
     assert all(tok_in not in rec.message for rec in caplog.records)
 
@@ -108,7 +108,7 @@ async def test_agent_update_check_newest_pending_and_rate_limit(
     # dep-us-nb is on 2.4.0, but its rollout of 2.4.1 (rol-241-2) is only pending → null.
     tok_nb = issue_token(owner, "dep-us-nb")
     res_nb = await api.get(f"{API}/agent/update", headers={"Authorization": f"Bearer {tok_nb}"})
-    assert res_nb.status_code == 200 and res_nb.json() == {"release": None}
+    assert res_nb.status_code == 200 and res_nb.json() == {"release": None, "manifest": None}
 
 
 @pytest.mark.anyio
@@ -119,9 +119,14 @@ async def test_agent_update_check_offers_done_and_running_and_blocks_draft_previ
     extra_deps = ("dep-t-done", "dep-t-old", "dep-t-prev", "dep-t-run")
     extra_rels = ("rel-t-242rc", "rel-t-243")
     extra_rols = ("rol-t-241-done", "rol-t-250-draft", "rol-t-242rc", "rol-t-250rc-prev", "rol-t-243-run")
+    stub_manifest = '{"format":"nexus-release/1","manifest":{"version":"stub"},"signature":"' + ("A" * 86) + '=="}'
     engine = create_engine(owner)
     try:
         with engine.begin() as conn:
+            conn.execute(
+                text("UPDATE releases SET signed_manifest = :m WHERE id IN ('rel-241', 'rel-250-rc1')"),
+                {"m": stub_manifest},
+            )
             conn.execute(
                 text(
                     "INSERT INTO deployments"
@@ -143,13 +148,14 @@ async def test_agent_update_check_offers_done_and_running_and_blocks_draft_previ
                 text(
                     "INSERT INTO releases"
                     " (id, version, channel, status, published_at, signed, offline_bundle,"
-                    "  min_upgrade_from, migration_notes, notes_ai_drafted)"
+                    "  min_upgrade_from, migration_notes, notes_ai_drafted, signed_manifest)"
                     " VALUES"
                     " ('rel-t-242rc', '2.4.2-rc.1', 'stable', 'published', '2026-09-05T10:00:00Z', true, true,"
-                    "  '2.2.0', 'Pre-release test', false),"
+                    "  '2.2.0', 'Pre-release test', false, :m),"
                     " ('rel-t-243', '2.4.3', 'stable', 'published', '2026-09-06T10:00:00Z', true, true,"
-                    "  '2.2.0', 'Patch release', false)"
-                )
+                    "  '2.2.0', 'Patch release', false, :m)"
+                ),
+                {"m": stub_manifest},
             )
             # Rollouts: done for rel-241, done for draft rel-250, done for stable pre-release, done for preview rc,
             # and running for 2.4.3.
@@ -167,22 +173,24 @@ async def test_agent_update_check_offers_done_and_running_and_blocks_draft_previ
             )
 
         # dep-t-done (2.4.0, stable): skips draft 2.5.0, skips preview 2.5.0-rc.1, skips stable pre-release 2.4.2-rc.1,
-        # and gets published signed 2.4.1 from its done rollout.
+        # and gets published signed 2.4.1 from its done rollout along with its stored manifest.
         tok_done = issue_token(owner, "dep-t-done")
         r_done = await api.get(f"{API}/agent/update", headers={"Authorization": f"Bearer {tok_done}"})
         assert r_done.status_code == 200
         assert r_done.json()["release"] == next(r for r in FIX.releases if r["id"] == "rel-241")
+        assert r_done.json()["manifest"]["format"] == "nexus-release/1"
 
         # dep-t-old (2.1.0, stable): below rel-241's minUpgradeFrom (2.2.0) → null.
         tok_old = issue_token(owner, "dep-t-old")
         r_old = await api.get(f"{API}/agent/update", headers={"Authorization": f"Bearer {tok_old}"})
-        assert r_old.status_code == 200 and r_old.json() == {"release": None}
+        assert r_old.status_code == 200 and r_old.json() == {"release": None, "manifest": None}
 
         # dep-t-prev (2.4.0, preview): gets preview pre-release 2.5.0-rc.1.
         tok_prev = issue_token(owner, "dep-t-prev")
         r_prev = await api.get(f"{API}/agent/update", headers={"Authorization": f"Bearer {tok_prev}"})
         assert r_prev.status_code == 200
         assert r_prev.json()["release"] == next(r for r in FIX.releases if r["id"] == "rel-250-rc1")
+        assert r_prev.json()["manifest"]["format"] == "nexus-release/1"
 
         # dep-t-run (2.4.0, stable): gets 2.4.3 from its running rollout.
         tok_run = issue_token(owner, "dep-t-run")
@@ -190,6 +198,7 @@ async def test_agent_update_check_offers_done_and_running_and_blocks_draft_previ
         assert r_run.status_code == 200 and r_run.json()["release"]["id"] == "rel-t-243"
     finally:
         with engine.begin() as conn:
+            conn.execute(text("UPDATE releases SET signed_manifest = NULL WHERE id IN ('rel-241', 'rel-250-rc1')"))
             conn.execute(
                 text("DELETE FROM deployment_agent_tokens WHERE deployment_id = ANY(:ids)"), {"ids": list(extra_deps)}
             )
