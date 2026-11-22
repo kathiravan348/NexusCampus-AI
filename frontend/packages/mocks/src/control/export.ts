@@ -7,6 +7,7 @@ import {
   CREDIT_NOTES,
   DUNNING_STATES,
   INVOICES,
+  LICENCES,
   CONTROL_ROLE_PERMISSIONS,
   OPPORTUNITIES,
   PARTNERS,
@@ -18,7 +19,7 @@ import {
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 3;
+export const CONTROL_FIXTURES_VERSION = 4;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -45,6 +46,7 @@ export function controlFixturesJson(): string {
       creditNotes: CREDIT_NOTES,
       dunning: DUNNING_STATES,
       usage: USAGE_RECORDS,
+      licences: LICENCES,
     },
     null,
     2,

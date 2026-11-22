@@ -12,12 +12,13 @@ from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control import accounts, auth, commercial
+from nexus.control import accounts, auth, commercial, licences
 from nexus.control.sessions import DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
 from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
 from nexus.control.viewer import staff_session
 from nexus.core.errors import install_error_handling
+from nexus.core.vault import HttpVault, Vault
 from nexus.modules.m02.login_state import LoginStateStore, RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
 from nexus.settings import Settings, get_settings
@@ -89,6 +90,7 @@ def create_app(
     session_store: SessionStore | None = None,
     http: httpx2.AsyncClient | None = None,
     login_states: LoginStateStore | None = None,
+    vault: Vault | None = None,
 ) -> FastAPI:
     """Tests pass in-memory stores and a fake Keycloak transport; otherwise the control DB, Valkey and Keycloak."""
     cfg = settings or get_control_settings()
@@ -104,6 +106,7 @@ def create_app(
         app.state.sessions = session_store or DbSessionStore(app.state.engine)
         client = http or httpx2.AsyncClient(timeout=10)
         app.state.oidc = staff_oidc(cfg, client)
+        app.state.vault = vault or HttpVault(get_settings(), client)
         if login_states is None:
             redis = Redis.from_url(get_settings().redis_url.get_secret_value(), socket_connect_timeout=3)
             app.state.login_states = RedisLoginStateStore(redis)
@@ -126,6 +129,7 @@ def create_app(
     app.include_router(auth.router)
     app.include_router(accounts.router)
     app.include_router(commercial.router)
+    app.include_router(licences.router)
     return app
 
 

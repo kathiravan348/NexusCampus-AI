@@ -14,6 +14,7 @@ from nexus.control.seed import seed
 from nexus.control.sessions import DbSessionStore
 from nexus.control.settings import CONTROL_APP_ROLE, ControlSettings
 from nexus.control.staff import DbStaffStore
+from nexus.core.vault import FakeVault
 from nexus.devtools.control_db import alembic_config
 from tests.db.conftest import create_test_database, drop_test_database
 
@@ -38,13 +39,19 @@ def control_db(postgres: None) -> Iterator[tuple[str, str]]:
 
 
 @pytest.fixture
-async def api(control_db: tuple[str, str]) -> AsyncIterator[httpx2.AsyncClient]:
+def fake_vault() -> FakeVault:
+    return FakeVault()
+
+
+@pytest.fixture
+async def api(control_db: tuple[str, str], fake_vault: FakeVault) -> AsyncIterator[httpx2.AsyncClient]:
     _, app_url = control_db
     engine = create_async_engine(app_url)
     app = create_app(ControlSettings(environment="test"))
     app.state.engine = engine  # the lifespan is not run by the ASGI transport
     app.state.staff = DbStaffStore(engine)
     app.state.sessions = DbSessionStore(engine)
+    app.state.vault = fake_vault  # real Ed25519 in memory
     async with httpx2.AsyncClient(transport=httpx2.ASGITransport(app=app), base_url="http://control.test") as c:
         yield c
     await engine.dispose()

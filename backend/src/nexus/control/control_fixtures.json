@@ -1,5 +1,5 @@
 {
-  "version": 3,
+  "version": 4,
   "staff": [
     {
       "id": "stf-0001",
@@ -1661,6 +1661,63 @@
       "periodEnd": "2026-09-01T00:00:00Z",
       "quantity": 312,
       "cap": null
+    }
+  ],
+  "licences": [
+    {
+      "id": "lic-ct-2026",
+      "accountId": "acc-ct",
+      "edition": "standard",
+      "modules": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M10",
+        "M83"
+      ],
+      "learnerCap": 4200,
+      "campusCap": 2,
+      "issuedAt": "2026-04-01T00:00:00Z",
+      "expiresAt": "2027-03-31",
+      "supportEndsAt": "2027-03-31",
+      "graceDays": 30,
+      "activation": "online",
+      "signingKeyId": "nexus-licence-2026",
+      "state": "active",
+      "fingerprint": "c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5c0a5",
+      "deploymentId": "dep-ct"
+    },
+    {
+      "id": "lic-al-perp",
+      "accountId": "acc-al",
+      "edition": "enterprise",
+      "modules": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M10",
+        "M11",
+        "M83"
+      ],
+      "learnerCap": 1200,
+      "campusCap": 1,
+      "issuedAt": "2025-12-01T00:00:00Z",
+      "expiresAt": null,
+      "supportEndsAt": "2026-12-31",
+      "graceDays": 30,
+      "activation": "offline",
+      "signingKeyId": "nexus-licence-2025",
+      "state": "active",
+      "fingerprint": "a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2a1b2",
+      "deploymentId": "dep-al"
     }
   ]
 }
