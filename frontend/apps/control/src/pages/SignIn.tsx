@@ -1,27 +1,56 @@
 import { brand } from "@nexus/brand";
 import { useControlText } from "@nexus/i18n/control";
-import { useControlServices, useDemoStaff } from "@nexus/services/control";
-import { Card, EmptyState, Skeleton } from "@nexus/ui-core";
-import { ChevronRight } from "lucide-react";
+import { controlSignInUrl, useControlServices, useDemoStaff } from "@nexus/services/control";
+import { Button, Card, EmptyState, Skeleton } from "@nexus/ui-core";
+import { ChevronRight, KeyRound } from "lucide-react";
 import { Navigate, useNavigate } from "react-router";
 import { ROLE_KEY } from "../app/roles";
 
-/** Demo sign-in: pick a staff member (real sign-in = staff SSO + MFA, Stage 2 build step). */
+function Heading() {
+  const t = useControlText();
+  return (
+    <div className="flex items-center gap-3">
+      <img src={brand.logo.mark} alt="" className="h-10 w-10" />
+      <h1 className="font-sans text-page-title font-semibold text-text-primary">
+        {t("ctl.signIn.title", { product: brand.products.control.name })}
+      </h1>
+    </div>
+  );
+}
+
+/** Real mode (NEX-100): one link to the control backend — password, then a one-time code (P13). */
+function WorkAccountSignIn() {
+  const t = useControlText();
+  return (
+    <main className="mx-auto max-w-xl space-y-6 px-4 py-10">
+      <Heading />
+      <p className="text-body text-text-secondary">{t("ctl.signIn.ssoIntro")}</p>
+      <Button asChild>
+        <a href={controlSignInUrl("/")}>
+          <KeyRound className="h-4 w-4" aria-hidden="true" />
+          {t("ctl.signIn.sso")}
+        </a>
+      </Button>
+    </main>
+  );
+}
+
+/** Sign-in: the work account in real mode; in the demo, pick a staff member. */
 export function SignIn() {
+  const { staffId, mode } = useControlServices();
+  if (staffId !== null) return <Navigate to="/" replace />;
+  return mode === "real" ? <WorkAccountSignIn /> : <DemoSignIn />;
+}
+
+function DemoSignIn() {
   const t = useControlText();
   const navigate = useNavigate();
-  const { staffId, signIn } = useControlServices();
+  const { signIn } = useControlServices();
   const demo = useDemoStaff();
-  if (staffId !== null) return <Navigate to="/" replace />;
 
   return (
     <main className="mx-auto max-w-xl space-y-6 px-4 py-10">
-      <div className="flex items-center gap-3">
-        <img src={brand.logo.mark} alt="" className="h-10 w-10" />
-        <h1 className="font-sans text-page-title font-semibold text-text-primary">
-          {t("ctl.signIn.title", { product: brand.products.control.name })}
-        </h1>
-      </div>
+      <Heading />
       <p className="text-body text-text-secondary">{t("ctl.signIn.intro")}</p>
       {demo.isPending ? (
         <Skeleton className="h-40" />

@@ -70,6 +70,18 @@
       "port": 8000
     },
     {
+      "name": "control-backend",
+      "runtimeExecutable": "uv",
+      "runtimeArgs": ["run", "--project", "backend", "--no-sync", "python", "-m", "nexus.devtools.control_dev"],
+      "port": 8100
+    },
+    {
+      "name": "control-real",
+      "runtimeExecutable": "fnm",
+      "runtimeArgs": ["exec", "--using=24", "--", "pnpm", "--dir", "frontend", "dev:control:real"],
+      "port": 3200
+    },
+    {
       "name": "campus-real-built",
       "runtimeExecutable": "fnm",
       "runtimeArgs": [

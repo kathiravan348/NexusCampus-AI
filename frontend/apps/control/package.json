@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "node ../../scripts/time-run.ts dev:control --ready-pattern Local: -- vite",
+    "dev:real": "node ../../scripts/time-run.ts dev:control --ready-pattern Local: -- vite --mode real",
     "build": "node ../../scripts/time-run.ts build:control -- vite build",
     "preview": "node ../../scripts/time-run.ts preview:control --ready-pattern Local: -- vite preview",
     "review:build": "vite build --mode review",

@@ -2774,5 +2774,13 @@
   "p18.step.shred": {
     "message": "Destroy source keys",
     "description": "Move step: destroy the keys of the old copy so it can never be read (crypto-shred)."
+  },
+  "ctl.signIn.sso": {
+    "message": "Sign in with your work account",
+    "description": "Button on the real sign-in page: goes to the staff sign-in service."
+  },
+  "ctl.signIn.ssoIntro": {
+    "message": "Use your work email and password, then the 6-digit code from your authenticator app. Every sign-in asks for a new code.",
+    "description": "Explains the two steps of staff sign-in (password, then one-time code)."
   }
 }

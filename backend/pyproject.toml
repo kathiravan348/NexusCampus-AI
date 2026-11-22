@@ -32,6 +32,7 @@ nexus-worker = "nexus.workers.outbox:main"
 nexus-checkpoints = "nexus.core.checkpoints:main"
 nexus-ai-eval = "nexus.devtools.ai_eval:main"
 nexus-control-db = "nexus.devtools.control_db:main"
+nexus-control-dev = "nexus.devtools.control_dev:main"
 nexus-keycloak-staff-dev = "nexus.devtools.keycloak_staff:main"
 nexus-lago-dev = "nexus.devtools.lago_dev:main"
 

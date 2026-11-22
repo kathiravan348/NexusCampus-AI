@@ -12,12 +12,14 @@ export interface ControlProvidersProps {
   readonly children: ReactNode;
   /** Tests pass a QueryClient factory with retries off. */
   readonly createClient?: ControlServicesProviderProps["createClient"];
+  /** Tests: data mode, fetch and navigation of the services layer (e.g. real mode against a fake backend). */
+  readonly services?: Omit<ControlServicesProviderProps, "children" | "createClient">;
 }
 
 /** Staff session + data (no persisted cache) → language, theme and texts → toasts. */
-export function ControlProviders({ children, createClient }: ControlProvidersProps) {
+export function ControlProviders({ children, createClient, services }: ControlProvidersProps) {
   return (
-    <ControlServicesProvider {...(createClient ? { createClient } : {})}>
+    <ControlServicesProvider {...services} {...(createClient ? { createClient } : {})}>
       <ControlRuntime>
         <ToastProvider>{children}</ToastProvider>
       </ControlRuntime>
