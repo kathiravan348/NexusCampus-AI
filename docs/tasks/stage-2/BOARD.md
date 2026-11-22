@@ -36,7 +36,7 @@
 | NEX-089 | P18 Tenant portability & migrations | C | done | Claude | 071 |
 | NEX-090 | M84 Install agent screen in campus (self-hosted only) | C | done | Claude | 070 |
 | NEX-091 | Stage 2 review build: walkthrough per provider persona, Playwright smoke for control | C | done | Claude | 072–090 |
-| NEX-092 | Stage 2 freeze (planner + Owner) | — | draft | — | 091 |
+| NEX-092 | Stage 2 freeze (planner + Owner) — Owner review "all good", D56 | — | done | Claude (planner) | 091 |
 | NEX-093 | Stage 1 small fixes: campus token classes in M04, campus test time limit (D54) | C | done | Claude | 065 |
 | NEX-094 | One-file language export / import for the Owner's Hindi & Tamil correction (D54) | A | done | Claude | 071 |
 | NEX-095 | Licence signing (Ed25519 in OpenBao) and offline verification for M84 (P05, D23, D55) | D | done | Claude | 068 |
@@ -44,3 +44,14 @@
 | NEX-097 | Staff SSO with mandatory MFA: Keycloak realm `nexus-staff`, OIDC sign-in for Control, sessions (P13, D55) | D | done | Claude | 096 |
 | NEX-098 | Lago billing engine: dev stack + `BillingEngine` adapter (D51; downloads approved 2026-11-22) | D | done | Claude | 096 |
 | NEX-099 | Stage 2 docs: manual with Nexus Control, guides, presentation, owner checklist | A | done | Claude | 091, 097, 098 |
+| NEX-100 | Control app real mode: staff sign-in button → `/auth/login`, `/me` from the control backend, sign-out (P13) | C | draft | — | 097 |
+| NEX-101 | Control API: accounts, notes, staff directory (P01) on the control DB; P01 screens switched to real | D | draft | — | 096 |
+| NEX-102 | Control API: plans, quotes, subscriptions and usage on Lago (P02, P03, P11); Lago webhooks → control DB | D | draft | — | 098, 101 |
+| NEX-103 | Control API: licences (P05) — issue, store, download the signed file; P05 screen switched to real | D | draft | — | 095, 101 |
+| NEX-104 | Release signing: signed images and offline update bundles (P07, DM-9) | D | draft | — | 095 |
+| NEX-105 | M84 install agent process: offline licence check, update check, encrypted backups, PII-free health | D | draft | — | 103, 104 |
+| NEX-106 | Tenant export / import between SaaS and self-hosted (P18, DM-8), encrypted with the tenant's keys | D | draft | — | 105 |
+| NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 102 |
+| NEX-108 | Packaging: control backend + staff realm + billing stack in Compose and Helm; air-gapped bundle | D | draft | — | 102, 105 |
+| NEX-109 | Contract parity for Control (Pydantic ⇄ Zod samples) and remaining screens switched to real | D | draft | — | 101–103 |
+| NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–109 |

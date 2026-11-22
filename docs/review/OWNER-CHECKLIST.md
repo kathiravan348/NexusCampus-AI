@@ -15,14 +15,14 @@
   - the Lago billing engine
 - All work is committed, merged and **pushed to GitHub** (`origin/main`, 2026-11-22).
 
-## 1. Review Stage 2, then freeze it (about 45 minutes)
+## 1. Review Stage 2, then freeze it — done 2026-11-22 ("all good", D56)
 
-- [ ] Start Nexus Control on demo data: `fnm exec --using=24 -- pnpm --dir frontend review:start:control`
-- [ ] Follow [`STAGE-2-WALKTHROUGH.md`](STAGE-2-WALKTHROUGH.md): one row per staff role, what to try, what to look for.
-- [ ] Also open the institution app (`pnpm --dir frontend review:start`), sign in as **Apex Coaching** admin, and open
+- [x] Start Nexus Control on demo data: `fnm exec --using=24 -- pnpm --dir frontend review:start:control`
+- [x] Follow [`STAGE-2-WALKTHROUGH.md`](STAGE-2-WALKTHROUGH.md): one row per staff role, what to try, what to look for.
+- [x] Also open the institution app (`pnpm --dir frontend review:start`), sign in as **Apex Coaching** admin, and open
       **Install & updates**.
-- [ ] Write anything you find in [`STAGE-2-FEEDBACK.md`](STAGE-2-FEEDBACK.md), one line each.
-- [ ] Say **"approve the Stage 2 freeze"** (NEX-092), or list what must be fixed first.
+- [x] Write anything you find in [`STAGE-2-FEEDBACK.md`](STAGE-2-FEEDBACK.md), one line each.
+- [x] Say **"approve the Stage 2 freeze"** (NEX-092), or list what must be fixed first.
 
 The pictures of every screen, including all 18 Control pages, are in
 [`docs/manual/USER-MANUAL.md`](../manual/USER-MANUAL.md) (106 screenshots), if you prefer to look before running it.
