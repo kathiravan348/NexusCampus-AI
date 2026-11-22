@@ -131,13 +131,16 @@ Nexus Control (our cloud)                         Product deployments
   Password = level 1, one-time code (TOTP) = level 2 = `acr` `mfa`; the client's minimum ACR is `mfa`, the login
   asks for it and the callback refuses any other `acr`. Sessions: random token in an HttpOnly cookie (path
   `/control`, Secure in prod), only its SHA-256 in `staff_sessions`, 60 minutes, revoked on sign-out.
-- **Billing (NEX-098, NEX-118, D51):** Lago runs only in our control plane (`backend/compose.billing.yaml`: own
+- **Billing (NEX-098, NEX-118, NEX-111, D51):** Lago runs only in our control plane (`backend/compose.billing.yaml`: own
   PostgreSQL, Valkey, API, worker, clock; API on 127.0.0.1; no Lago UI, PDF service or product telemetry). The control
   backend uses it only through `BillingEngine` (`nexus.control.billing`): customers carry our account id, legal name,
   country and currency; usage is the active-learner count (`max` per period, D52), sent with an idempotent transaction
-  id. One-way idempotent sync (`python -m nexus.devtools.billing_sync [--dry-run]`, `nexus.control.billing.sync`) reads
-  `nexus_control` as `control_app` (read-only) and pushes active per-learner SaaS plans, subscribing accounts, active /
-  trialing / past-due subscriptions and learner usage events into Lago. Never shipped to customers.
+  id. Idempotent sync (`python -m nexus.devtools.billing_sync [--dry-run]`, `nexus.control.billing.sync`) reads
+  `nexus_control` as `control_app` (read-only), pushes active per-learner SaaS plans, subscribing accounts, active /
+  trialing / past-due subscriptions and learner usage events into Lago, and terminates cancelled subscriptions via
+  `BillingEngine.terminate`. Lago pushes finalized invoices and payment status updates back through
+  `POST /control/api/v1/billing/lago-webhook` (constant-time `X-Lago-Signature` HMAC-SHA256 verification, ≤ 256 KB,
+  SHA-256 raw-body dedup in `billing_webhook_events`, internal `invoices.lago_invoice_id`). Never shipped to customers.
 - **Release signing (NEX-104):** each release has a signed manifest (`nexus-release/1`: version, channel, oldest
   version that can upgrade straight to it, each image's content id, migration heads, notes hash, and every bundled
   file's SHA-256 and size), signed in OpenBao (`nexus-release`, Ed25519, never exported). Offline bundles are one

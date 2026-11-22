@@ -11,6 +11,7 @@ import sys
 from collections.abc import Callable
 from pathlib import Path
 
+import httpx2
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
 
@@ -19,6 +20,10 @@ from nexus.settings import BACKEND_ROOT
 
 ENV_FILE = Path(BACKEND_ROOT) / ".env"
 COMPOSE = ["docker", "compose", "-f", str(Path(BACKEND_ROOT) / "compose.billing.yaml")]
+WEBHOOK_KEY_VAR = "NEXUS_CONTROL_LAGO_WEBHOOK_KEY"
+#: Where Lago delivers webhooks. Unset in dev: the dev Lago refuses private addresses
+#: (`LAGO_WEBHOOK_ALLOW_PRIVATE_URLS=false`), so dev tests post bodies signed with the same key instead.
+WEBHOOK_URL_VAR = "NEXUS_CONTROL_LAGO_WEBHOOK_URL"
 
 
 def _rsa_pem_b64() -> str:
@@ -54,6 +59,63 @@ def ensure_secrets(env_file: Path = ENV_FILE) -> list[str]:
     return missing
 
 
+def _env_map(env_file: Path) -> dict[str, str]:
+    if not env_file.exists():
+        return {}
+    out: dict[str, str] = {}
+    for line in env_file.read_text(encoding="utf-8").splitlines():
+        if "=" in line and not line.lstrip().startswith("#"):
+            k, v = line.split("=", 1)
+            out[k.strip()] = v.strip()
+    return out
+
+
+def ensure_webhook(env_file: Path = ENV_FILE, lago_url: str = "http://127.0.0.1:53000") -> bool:
+    """Writes Lago's HMAC webhook key to `.env` if missing; registers `NEXUS_CONTROL_LAGO_WEBHOOK_URL` when set."""
+    env = _env_map(env_file)
+    api_key = env.get("NEXUS_CONTROL_LAGO_API_KEY", "")
+    if not api_key:
+        return False
+    if url := env.get(WEBHOOK_URL_VAR, ""):
+        headers = {"Authorization": f"Bearer {api_key}"}
+        with httpx2.Client(timeout=15) as http:
+            res = http.get(f"{lago_url}/api/v1/webhook_endpoints", headers=headers)
+            res.raise_for_status()
+            endpoints = res.json().get("webhook_endpoints", [])
+            if not any(e.get("webhook_url") == url and e.get("signature_algo") == "hmac" for e in endpoints):
+                created = http.post(
+                    f"{lago_url}/api/v1/webhook_endpoints",
+                    headers=headers,
+                    json={"webhook_endpoint": {"webhook_url": url, "signature_algo": "hmac"}},
+                )
+                created.raise_for_status()
+    if env.get(WEBHOOK_KEY_VAR):
+        return False
+    cmd = [
+        *COMPOSE,
+        "--env-file",
+        str(env_file),
+        "exec",
+        "-T",
+        "lago-db",
+        "psql",
+        "-U",
+        "lago",
+        "-d",
+        "lago",
+        "-tAc",
+        "SELECT hmac_key FROM organizations LIMIT 1",
+    ]
+    proc = subprocess.run(cmd, capture_output=True, text=True, check=True)
+    hmac_key = proc.stdout.strip()
+    if not hmac_key:
+        return False
+    note = "# Lago webhook HMAC key, dev only (NEX-111, synced by nexus-lago-dev)"
+    with env_file.open("a", encoding="utf-8", newline="\n") as f:
+        f.write(f"\n{note}\n{WEBHOOK_KEY_VAR}={hmac_key}\n")
+    return True
+
+
 def main() -> None:
     utf8_console()
     if sys.argv[1:] == ["down"]:
@@ -65,6 +127,9 @@ def main() -> None:
         [*COMPOSE, "--env-file", str(ENV_FILE), "up", "-d", "--wait", "--wait-timeout", "300"], check=False
     ).returncode
     if code == 0:
+        wrote_key = ensure_webhook()
+        if wrote_key:
+            print(f"added to backend/.env: {WEBHOOK_KEY_VAR}")
         print("Lago API ready at http://127.0.0.1:53000 (key: NEXUS_CONTROL_LAGO_API_KEY in backend/.env)")
     sys.exit(code)
 

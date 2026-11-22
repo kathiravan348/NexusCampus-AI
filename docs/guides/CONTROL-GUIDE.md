@@ -262,21 +262,28 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 - The screens still run on demo data; they move to the real Control backend one page at a time (Stage 2 build).
 - Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it.
 
-## Operations: syncing billing to Lago (NEX-118)
+## Operations: syncing billing to Lago (NEX-118, NEX-111)
 
 Operators push Nexus Control's per-learner SaaS plans, subscribing accounts, active / trialing / past-due
-subscriptions and learner counts into Lago with:
+subscriptions, cancellations and learner counts into Lago with:
 
 ```bash
 uv run --project backend python -m nexus.devtools.billing_sync --dry-run   # preview without contacting Lago
 uv run --project backend python -m nexus.devtools.billing_sync             # push to Lago (needs NEXUS_CONTROL_LAGO_API_KEY)
 ```
 
-- **When to run:** after adding or repricing a per-learner SaaS plan, starting a subscription, or recording a new
-  period's learner counts. Re-running is safe and idempotent — plans and customers upsert, existing subscriptions are
-  kept, and each learner usage record uses its own id so nothing is counted twice.
+- **When to run:** after adding or repricing a per-learner SaaS plan, starting or cancelling a subscription, or
+  recording a new period's learner counts. Re-running is safe and idempotent — plans and customers upsert, existing
+  subscriptions are kept, cancelled subscriptions active in Lago are terminated, and each learner usage record uses
+  its own id so nothing is counted twice.
+- **Invoices from Lago:** Lago posts finalized invoices and payment status updates to
+  `/control/api/v1/billing/lago-webhook` signed with `X-Lago-Signature` (HMAC-SHA256 using
+  `NEXUS_CONTROL_LAGO_WEBHOOK_KEY`). Unsigned or mis-signed requests are refused (`401`); replayed bodies are ignored.
+  In dev, `nexus-lago-dev` writes the key into `backend/.env` if missing (never printed) and registers the HMAC
+  endpoint only when `NEXUS_CONTROL_LAGO_WEBHOOK_URL` is set: the dev Lago refuses private addresses, so dev tests
+  post bodies signed with the same key. An invoice already paid when it arrives is stored as paid.
 - **What crosses the boundary:** account id, account name, country, currency, plan codes and learner counts only —
   never contacts, e-mail addresses, phone numbers or institution data.
-- **Skipped items:** add-ons, AI credit packs, self-hosted licences, support contracts, cancelled subscriptions, and
-  accounts whose country has no regional price on their plan are skipped with their id and reason printed (never
-  guessed). Invoice webhooks back from Lago and cancellations come in part 2 (NEX-111).
+- **Skipped items:** add-ons, AI credit packs, self-hosted licences, support contracts, already-ended cancellations,
+  and accounts whose country has no regional price on their plan are skipped with their id and reason printed (never
+  guessed).

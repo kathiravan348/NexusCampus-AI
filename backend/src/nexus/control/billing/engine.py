@@ -69,6 +69,7 @@ class BillingEngine(Protocol):
     async def subscribe(
         self, account_id: str, subscription_id: str, plan_code: str, *, started_at: str | None = None
     ) -> None: ...
+    async def terminate(self, subscription_id: str) -> bool: ...
     async def record_usage(self, event: UsageEvent) -> None: ...
     async def current_usage(self, account_id: str, subscription_id: str) -> CurrentUsage: ...
     async def invoices(self, account_id: str) -> list[Invoice]: ...
@@ -81,6 +82,7 @@ class FakeBillingEngine:
     customers: dict[str, BillingCustomer] = field(default_factory=dict)
     plans: dict[str, BillingPlan] = field(default_factory=dict)
     subscriptions: dict[str, tuple[str, str]] = field(default_factory=dict)
+    terminated: list[str] = field(default_factory=list)
     events: dict[str, UsageEvent] = field(default_factory=dict)
     #: Subscription id → the start date sent (`subscription_at`), to check trials are not billed.
     started_at: dict[str, str | None] = field(default_factory=dict)
@@ -102,6 +104,13 @@ class FakeBillingEngine:
             raise BillingUnavailable("unknown customer or plan")
         self.subscriptions[subscription_id] = (account_id, plan_code)
         self.started_at[subscription_id] = started_at
+
+    async def terminate(self, subscription_id: str) -> bool:
+        if subscription_id not in self.subscriptions:
+            return False
+        del self.subscriptions[subscription_id]
+        self.terminated.append(subscription_id)
+        return True
 
     async def record_usage(self, event: UsageEvent) -> None:
         self.events.setdefault(event.transaction_id, event)

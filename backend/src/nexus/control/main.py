@@ -13,6 +13,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
 from nexus.control import accounts, auth, commercial, fleet, licences, releases
+from nexus.control.billing import webhooks
 from nexus.control.sessions import DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
 from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
@@ -130,6 +131,7 @@ def create_app(
     app.include_router(auth.router)
     app.include_router(accounts.router)
     app.include_router(commercial.router)
+    app.include_router(webhooks.router)
     app.include_router(licences.router)
     app.include_router(fleet.router)
     app.include_router(releases.router)

@@ -45,6 +45,7 @@ class SyncReport:
     plans: list[str] = field(default_factory=list)
     customers: list[str] = field(default_factory=list)
     subscriptions: list[str] = field(default_factory=list)
+    terminated: list[str] = field(default_factory=list)
     usage_events: list[str] = field(default_factory=list)
     skipped: list[SkippedItem] = field(default_factory=list)
 
@@ -158,11 +159,16 @@ async def sync_to_lago(
     accounts_by_id = {str(r["id"]): r for r in acc_rows}
 
     eligible_subs: list[Any] = []
+    cancelled_subs: list[str] = []
     subs_by_account: dict[str, list[Any]] = {}
     for sub in sub_rows:
         sub_id = str(sub["id"])
-        if str(sub["status"]) not in ACTIVE_SUB_STATUSES:
-            skipped.append(SkippedItem(sub_id, f"status {sub['status']} not synced in part 1"))
+        status = str(sub["status"])
+        if status == "cancelled":
+            cancelled_subs.append(sub_id)
+            continue
+        if status not in ACTIVE_SUB_STATUSES:
+            skipped.append(SkippedItem(sub_id, f"status {status} not synced"))
             continue
         eligible_subs.append(sub)
         subs_by_account.setdefault(str(sub["account_id"]), []).append(sub)
@@ -234,6 +240,18 @@ async def sync_to_lago(
         subscription_ids.append(sub_id)
         synced_sub_by_tenant[str(sub["tenant_id"])] = sub_id
 
+    # 4b. Cancellations (NEX-111): end any cancelled subscription still active in Lago.
+    terminated_ids: list[str] = []
+    for sub_id in cancelled_subs:
+        try:
+            ended = await target.terminate(sub_id)
+        except BillingUnavailable as exc:
+            raise BillingUnavailable(f"cancellations ({sub_id}): {exc}") from exc
+        if ended:
+            terminated_ids.append(sub_id)
+        else:
+            skipped.append(SkippedItem(sub_id, "cancelled (already ended in Lago)"))
+
     # 5. Learner usage events (idempotent by usage_record.id)
     usage_rows = (
         (
@@ -267,6 +285,7 @@ async def sync_to_lago(
         plans=plan_codes,
         customers=customer_ids,
         subscriptions=subscription_ids,
+        terminated=terminated_ids,
         usage_events=usage_ids,
         skipped=skipped,
     )
