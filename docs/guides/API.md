@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-21 (Stage 2 prototype: mock Nexus Control API, NEX-070. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058); the rest is still the MSW mock API under `/api/v1`)
+> State as of: 2026-11-22 (Stage 2 build: Control backend P01–P03, P05, P06 fleet + agent check-in (NEX-113), P11, P13 staff SSO, M84 install agent core + encrypted backups & diagnostics (NEX-105, NEX-112); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -325,9 +325,12 @@ see rows of the accounts their partner manages (others → `404`).
 | GET | `/credit-notes` | `ctl.billing.read` | filter `invoiceId` |
 | GET | `/dunning`, `/dunning/:accountId` | `ctl.billing.read` | filter `stage` |
 | GET | `/usage` | `ctl.usage.read` | filters `accountId`, `metric`, `tenantId`, `deploymentId`; counts only |
-
-Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages; rows
-without one (catalogue, payments, credit notes) are not shown to partner users.
 | GET | `/licences`, `/licences/:id` | `ctl.licence.read` | filters `accountId`, `state`, `edition` (NEX-103) |
 | GET | `/licence-files/:id` | `ctl.licence.issue` | the `nexus-licence/1` file, **really signed** (Ed25519 in OpenBao Transit, key `nexus-licence`); `signingKeyId` = `nexus-licence:v<N>`; a licence without a signed file is signed on first download; installs verify it offline with the public key |
 | POST | `/licences/:id/renew` | `ctl.licence.issue` | expiry and support end + 1 year (a perpetual licence stays perpetual), state `active`, new signed file and fingerprint in one transaction; revoked → `409` |
+| GET | `/deployments`, `/deployments/:id` | `ctl.fleet.read` | filters `kind`, `region`, `accountId`, `health`, `channel` (NEX-113) |
+| GET | `/health-signals`, `/health-signals/:deploymentId` | `ctl.fleet.read` | filter `deploymentId`; latest check-in only; not shown to partner users |
+| POST | `/agent/health` | agent bearer token | `Authorization: Bearer <token>` issued by `nexus-control-agent-token` (SHA-256 stored; no staff cookie, no CSRF); body = `HealthSignal` without `deploymentId` (strict, ≤ 4 KB); `204` upserts signal and updates deployment `version`, `lastCheckInAt` (server time), `telemetryEnabled` and derived `health` (`degraded` if uptime < 99%, error rate ≥ 2%, p95 latency ≥ 1500 ms or disk ≥ 90%, else `healthy`); unknown/revoked token `401`, air-gapped `403`, > 4 KB `413`, invalid/extra field `422`, > 1 per 60 s `429` |
+
+Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages; rows
+without one (catalogue, payments, credit notes, health signals) are not shown to partner users.

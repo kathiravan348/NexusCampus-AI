@@ -151,6 +151,11 @@ Nexus Control (our cloud)                         Product deployments
   forward-only with a tested rollback plan; extensions are re-checked against each release (P08).
 - **Telemetry:** versions, health, counts, errors without personal data; customers can switch it off (then licence
   and updates run in offline mode).
+- **Fleet registry & agent check-ins (NEX-113):** `deployments`, `health_signals` (latest check-in only) and
+  `deployment_agent_tokens` (SHA-256 only, written solely by the owner-role tool `nexus-control-agent-token`).
+  Installs report outbound to `POST /control/api/v1/agent/health` with their per-deployment bearer token (no staff
+  cookie), strict PII-free payload ≤ 4 KB, max 1 report per 60 s; air-gapped deployments are refused (`403`). Server
+  stamps `last_check_in_at` and derives `health` (`healthy` / `degraded`).
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted
