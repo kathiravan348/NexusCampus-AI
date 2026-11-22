@@ -5,7 +5,10 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.exc import ProgrammingError
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control.staff import DbStaffStore
+from nexus.control import accounts as _accounts  # noqa: F401  (registers tables)
+from nexus.control import commercial as _commercial  # noqa: F401
+from nexus.control import sessions as _sessions  # noqa: F401
+from nexus.control.staff import DbStaffStore, metadata
 
 
 def test_only_control_tables_and_read_only_app_role(control_db: tuple[str, str]) -> None:
@@ -14,18 +17,9 @@ def test_only_control_tables_and_read_only_app_role(control_db: tuple[str, str])
     with engine.connect() as conn:
         tables = {r[0] for r in conn.execute(text("SELECT tablename FROM pg_tables WHERE schemaname = 'public'"))}
     engine.dispose()
-    assert tables == {
-        "staff_users",
-        "role_permissions",
-        "staff_sessions",
-        "control_alembic_version",
-        "partners",
-        "accounts",
-        "account_contacts",
-        "opportunities",
-        "contracts",
-        "account_notes",
-    }
+    # Exactly the control models' tables (no product table can live here) and the control migration table.
+    assert tables == set(metadata.tables) | {"control_alembic_version"}
+    assert {"accounts", "invoices", "staff_sessions"} <= tables
     app = create_engine(app_url)
     with app.connect() as conn:
         assert conn.execute(text("SELECT count(*) FROM staff_users")).scalar_one() == 9

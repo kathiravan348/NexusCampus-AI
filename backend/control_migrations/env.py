@@ -9,6 +9,7 @@ from alembic import context
 from sqlalchemy import create_engine, pool
 
 from nexus.control import accounts as _accounts  # noqa: F401  (registers the P01 tables)
+from nexus.control import commercial as _commercial  # noqa: F401
 from nexus.control import sessions as _sessions  # noqa: F401
 from nexus.control.settings import get_control_settings
 from nexus.control.staff import metadata

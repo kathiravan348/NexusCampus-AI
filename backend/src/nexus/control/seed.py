@@ -16,7 +16,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from nexus.control.staff import Permission, StaffRole, StaffUser, role_permissions, staff_users
 
 FIXTURES = Path(__file__).with_name("control_fixtures.json")
-FIXTURES_VERSION = 2
+FIXTURES_VERSION = 3
 
 
 class ControlFixtures(BaseModel):
@@ -32,6 +32,15 @@ class ControlFixtures(BaseModel):
     opportunities: list[dict[str, Any]] = []
     contracts: list[dict[str, Any]] = []
     notes: list[dict[str, Any]] = []
+    #: P02, P03, P11 data (NEX-102).
+    catalogue: list[dict[str, Any]] = []
+    quotes: list[dict[str, Any]] = []
+    subscriptions: list[dict[str, Any]] = []
+    invoices: list[dict[str, Any]] = []
+    payments: list[dict[str, Any]] = []
+    credit_notes: list[dict[str, Any]] = []
+    dunning: list[dict[str, Any]] = []
+    usage: list[dict[str, Any]] = []
 
 
 def load_fixtures(path: Path = FIXTURES) -> ControlFixtures:
@@ -69,4 +78,8 @@ def seed(conn: Connection, data: ControlFixtures | None = None) -> int:
     seed_rows(
         conn, fixtures.model_dump(include={"partners", "accounts", "contacts", "opportunities", "contracts", "notes"})
     )
+    from nexus.control.commercial import seed_rows as seed_commercial  # after accounts (foreign keys)
+
+    commercial = {"catalogue", "quotes", "subscriptions", "invoices", "payments", "credit_notes", "dunning", "usage"}
+    seed_commercial(conn, fixtures.model_dump(include=commercial))
     return len(fixtures.staff)

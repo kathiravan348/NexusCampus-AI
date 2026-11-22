@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "staff": [
     {
       "id": "stf-0001",
@@ -710,6 +710,957 @@
       "authorStaffId": "stf-0023",
       "body": "Air-gapped site: send update 2.2.6 as an offline bundle on encrypted media.",
       "createdAt": "2026-08-30T08:00:00Z"
+    }
+  ],
+  "catalogue": [
+    {
+      "id": "cat-starter",
+      "code": "starter",
+      "name": "Starter",
+      "kind": "saas_plan",
+      "modules": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M10",
+        "M83"
+      ],
+      "unit": "per_learner_month",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 2900,
+          "taxRatePct": 18
+        },
+        {
+          "country": "GB",
+          "currency": "GBP",
+          "amountMinor": 90,
+          "taxRatePct": 20
+        },
+        {
+          "country": "US",
+          "currency": "USD",
+          "amountMinor": 120,
+          "taxRatePct": 0
+        },
+        {
+          "country": "SG",
+          "currency": "SGD",
+          "amountMinor": 150,
+          "taxRatePct": 9
+        },
+        {
+          "country": "DE",
+          "currency": "EUR",
+          "amountMinor": 110,
+          "taxRatePct": 19
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-standard",
+      "code": "standard",
+      "name": "Standard",
+      "kind": "saas_plan",
+      "modules": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M10",
+        "M83",
+        "M11"
+      ],
+      "unit": "per_learner_month",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 4900,
+          "taxRatePct": 18
+        },
+        {
+          "country": "GB",
+          "currency": "GBP",
+          "amountMinor": 150,
+          "taxRatePct": 20
+        },
+        {
+          "country": "US",
+          "currency": "USD",
+          "amountMinor": 190,
+          "taxRatePct": 0
+        },
+        {
+          "country": "SG",
+          "currency": "SGD",
+          "amountMinor": 230,
+          "taxRatePct": 9
+        },
+        {
+          "country": "DE",
+          "currency": "EUR",
+          "amountMinor": 170,
+          "taxRatePct": 19
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-enterprise",
+      "code": "enterprise",
+      "name": "Enterprise",
+      "kind": "saas_plan",
+      "modules": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M10",
+        "M83",
+        "M11"
+      ],
+      "unit": "per_learner_month",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 7900,
+          "taxRatePct": 18
+        },
+        {
+          "country": "GB",
+          "currency": "GBP",
+          "amountMinor": 240,
+          "taxRatePct": 20
+        },
+        {
+          "country": "US",
+          "currency": "USD",
+          "amountMinor": 300,
+          "taxRatePct": 0
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-ai-plus",
+      "code": "ai-plus",
+      "name": "AI Plus",
+      "kind": "addon",
+      "modules": [
+        "M11"
+      ],
+      "unit": "per_learner_month",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 900,
+          "taxRatePct": 18
+        },
+        {
+          "country": "GB",
+          "currency": "GBP",
+          "amountMinor": 30,
+          "taxRatePct": 20
+        },
+        {
+          "country": "US",
+          "currency": "USD",
+          "amountMinor": 35,
+          "taxRatePct": 0
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-messaging",
+      "code": "messaging",
+      "name": "SMS and WhatsApp bundle",
+      "kind": "addon",
+      "modules": [
+        "M07"
+      ],
+      "unit": "flat_month",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 150000,
+          "taxRatePct": 18
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-dedicated",
+      "code": "dedicated-cell",
+      "name": "Dedicated cell",
+      "kind": "addon",
+      "modules": [],
+      "unit": "flat_year",
+      "credits": null,
+      "prices": [
+        {
+          "country": "US",
+          "currency": "USD",
+          "amountMinor": 6000000,
+          "taxRatePct": 0
+        },
+        {
+          "country": "GB",
+          "currency": "GBP",
+          "amountMinor": 4800000,
+          "taxRatePct": 20
+        },
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 400000000,
+          "taxRatePct": 18
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-ai-10k",
+      "code": "ai-pack-10k",
+      "name": "AI credits 10,000",
+      "kind": "ai_credit_pack",
+      "modules": [],
+      "unit": "per_pack",
+      "credits": 10000,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 250000,
+          "taxRatePct": 18
+        },
+        {
+          "country": "GB",
+          "currency": "GBP",
+          "amountMinor": 2500,
+          "taxRatePct": 20
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-ai-50k",
+      "code": "ai-pack-50k",
+      "name": "AI credits 50,000",
+      "kind": "ai_credit_pack",
+      "modules": [],
+      "unit": "per_pack",
+      "credits": 50000,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 1100000,
+          "taxRatePct": 18
+        },
+        {
+          "country": "GB",
+          "currency": "GBP",
+          "amountMinor": 11000,
+          "taxRatePct": 20
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-lic-standard",
+      "code": "licence-standard",
+      "name": "Self-hosted Standard",
+      "kind": "licence_edition",
+      "modules": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M10",
+        "M83"
+      ],
+      "unit": "per_learner_year",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 30000,
+          "taxRatePct": 18
+        },
+        {
+          "country": "DE",
+          "currency": "EUR",
+          "amountMinor": 4000,
+          "taxRatePct": 19
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-lic-enterprise",
+      "code": "licence-enterprise",
+      "name": "Self-hosted Enterprise",
+      "kind": "licence_edition",
+      "modules": [
+        "M01",
+        "M02",
+        "M03",
+        "M04",
+        "M05",
+        "M06",
+        "M07",
+        "M10",
+        "M83",
+        "M11"
+      ],
+      "unit": "per_learner_year",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 50000,
+          "taxRatePct": 18
+        },
+        {
+          "country": "DE",
+          "currency": "EUR",
+          "amountMinor": 6500,
+          "taxRatePct": 19
+        }
+      ],
+      "active": true
+    },
+    {
+      "id": "cat-support-priority",
+      "code": "support-priority",
+      "name": "Priority support and updates",
+      "kind": "support",
+      "modules": [],
+      "unit": "flat_year",
+      "credits": null,
+      "prices": [
+        {
+          "country": "IN",
+          "currency": "INR",
+          "amountMinor": 30000000,
+          "taxRatePct": 18
+        },
+        {
+          "country": "DE",
+          "currency": "EUR",
+          "amountMinor": 350000,
+          "taxRatePct": 19
+        }
+      ],
+      "active": true
+    }
+  ],
+  "quotes": [
+    {
+      "id": "quo-lt-1",
+      "accountId": "acc-lt",
+      "number": "QUO-2026-00031",
+      "status": "sent",
+      "currency": "INR",
+      "lines": [
+        {
+          "itemId": "cat-standard",
+          "quantity": 3600,
+          "unitAmountMinor": 4900,
+          "discountPct": 0,
+          "amountMinor": 17640000
+        }
+      ],
+      "validUntil": "2026-09-30",
+      "aiDrafted": false,
+      "createdByStaffId": "stf-0051",
+      "createdAt": "2026-09-05T06:00:00Z",
+      "subtotalMinor": 17640000,
+      "taxMinor": 3175200,
+      "totalMinor": 20815200
+    },
+    {
+      "id": "quo-ax-ai",
+      "accountId": "acc-ax",
+      "number": "QUO-2026-00029",
+      "status": "draft",
+      "currency": "INR",
+      "lines": [
+        {
+          "itemId": "cat-ai-50k",
+          "quantity": 10,
+          "unitAmountMinor": 1100000,
+          "discountPct": 0,
+          "amountMinor": 11000000
+        }
+      ],
+      "validUntil": "2026-10-15",
+      "aiDrafted": true,
+      "createdByStaffId": "stf-0011",
+      "createdAt": "2026-09-12T09:00:00Z",
+      "subtotalMinor": 11000000,
+      "taxMinor": 1980000,
+      "totalMinor": 12980000
+    },
+    {
+      "id": "quo-sr-1",
+      "accountId": "acc-sr",
+      "number": "QUO-2026-00030",
+      "status": "draft",
+      "currency": "INR",
+      "lines": [
+        {
+          "itemId": "cat-standard",
+          "quantity": 1440,
+          "unitAmountMinor": 4900,
+          "discountPct": 10,
+          "amountMinor": 6350400
+        }
+      ],
+      "validUntil": "2026-10-14",
+      "aiDrafted": false,
+      "createdByStaffId": "stf-0011",
+      "createdAt": "2026-09-14T06:00:00Z",
+      "subtotalMinor": 6350400,
+      "taxMinor": 1143072,
+      "totalMinor": 7493472
+    }
+  ],
+  "subscriptions": [
+    {
+      "id": "sub-ls",
+      "accountId": "acc-ls",
+      "tenantId": "ten-ls",
+      "planItemId": "cat-starter",
+      "addonItemIds": [],
+      "status": "past_due",
+      "period": "monthly",
+      "learners": 180,
+      "currentPeriodStart": "2026-09-01",
+      "currentPeriodEnd": "2026-09-30",
+      "trialEndsAt": null
+    },
+    {
+      "id": "sub-rv",
+      "accountId": "acc-rv",
+      "tenantId": "ten-rv",
+      "planItemId": "cat-standard",
+      "addonItemIds": [],
+      "status": "active",
+      "period": "annual",
+      "learners": 1460,
+      "currentPeriodStart": "2026-04-01",
+      "currentPeriodEnd": "2027-03-31",
+      "trialEndsAt": null
+    },
+    {
+      "id": "sub-nb",
+      "accountId": "acc-nb",
+      "tenantId": "ten-nb",
+      "planItemId": "cat-enterprise",
+      "addonItemIds": [
+        "cat-dedicated"
+      ],
+      "status": "active",
+      "period": "annual",
+      "learners": 9800,
+      "currentPeriodStart": "2026-07-01",
+      "currentPeriodEnd": "2027-06-30",
+      "trialEndsAt": null
+    },
+    {
+      "id": "sub-ax",
+      "accountId": "acc-ax",
+      "tenantId": "ten-ax",
+      "planItemId": "cat-standard",
+      "addonItemIds": [
+        "cat-ai-plus"
+      ],
+      "status": "active",
+      "period": "annual",
+      "learners": 640,
+      "currentPeriodStart": "2026-06-01",
+      "currentPeriodEnd": "2027-05-31",
+      "trialEndsAt": null
+    },
+    {
+      "id": "sub-hm",
+      "accountId": "acc-hm",
+      "tenantId": "ten-hm",
+      "planItemId": "cat-starter",
+      "addonItemIds": [],
+      "status": "trialing",
+      "period": "monthly",
+      "learners": 95,
+      "currentPeriodStart": "2026-08-20",
+      "currentPeriodEnd": "2026-09-19",
+      "trialEndsAt": "2026-09-19"
+    },
+    {
+      "id": "sub-sr",
+      "accountId": "acc-sr",
+      "tenantId": "ten-sr",
+      "planItemId": "cat-standard",
+      "addonItemIds": [],
+      "status": "trialing",
+      "period": "monthly",
+      "learners": 0,
+      "currentPeriodStart": "2026-09-14",
+      "currentPeriodEnd": "2026-10-13",
+      "trialEndsAt": "2026-10-13"
+    }
+  ],
+  "invoices": [
+    {
+      "id": "inv-ls-08",
+      "accountId": "acc-ls",
+      "number": "INV-2026-00071",
+      "status": "paid",
+      "issueDate": "2026-08-01",
+      "dueDate": "2026-08-08",
+      "currency": "INR",
+      "taxScheme": "gst",
+      "lines": [
+        {
+          "description": "Starter, 180 learners, August",
+          "itemId": "cat-starter",
+          "quantity": 180,
+          "amountMinor": 522000
+        }
+      ],
+      "paidAt": "2026-08-05T06:30:00Z",
+      "subtotalMinor": 522000,
+      "taxMinor": 93960,
+      "totalMinor": 615960
+    },
+    {
+      "id": "inv-ls-09",
+      "accountId": "acc-ls",
+      "number": "INV-2026-00088",
+      "status": "overdue",
+      "issueDate": "2026-09-01",
+      "dueDate": "2026-09-08",
+      "currency": "INR",
+      "taxScheme": "gst",
+      "lines": [
+        {
+          "description": "Starter, 180 learners, September",
+          "itemId": "cat-starter",
+          "quantity": 180,
+          "amountMinor": 522000
+        }
+      ],
+      "paidAt": null,
+      "subtotalMinor": 522000,
+      "taxMinor": 93960,
+      "totalMinor": 615960
+    },
+    {
+      "id": "inv-rv-26",
+      "accountId": "acc-rv",
+      "number": "INV-2026-00040",
+      "status": "paid",
+      "issueDate": "2026-04-01",
+      "dueDate": "2026-04-30",
+      "currency": "GBP",
+      "taxScheme": "vat",
+      "lines": [
+        {
+          "description": "Standard, 1,460 learners, 12 months",
+          "itemId": "cat-standard",
+          "quantity": 17520,
+          "amountMinor": 2628000
+        }
+      ],
+      "paidAt": "2026-04-22T10:00:00Z",
+      "subtotalMinor": 2628000,
+      "taxMinor": 525600,
+      "totalMinor": 3153600
+    },
+    {
+      "id": "inv-nb-26",
+      "accountId": "acc-nb",
+      "number": "INV-2026-00062",
+      "status": "open",
+      "issueDate": "2026-07-01",
+      "dueDate": "2026-09-30",
+      "currency": "USD",
+      "taxScheme": "none",
+      "lines": [
+        {
+          "description": "Enterprise, 9,800 learners, 12 months",
+          "itemId": "cat-enterprise",
+          "quantity": 117600,
+          "amountMinor": 35280000
+        },
+        {
+          "description": "Dedicated cell, 12 months",
+          "itemId": "cat-dedicated",
+          "quantity": 1,
+          "amountMinor": 6000000
+        }
+      ],
+      "paidAt": null,
+      "subtotalMinor": 41280000,
+      "taxMinor": 0,
+      "totalMinor": 41280000
+    },
+    {
+      "id": "inv-ax-26",
+      "accountId": "acc-ax",
+      "number": "INV-2026-00051",
+      "status": "paid",
+      "issueDate": "2026-06-01",
+      "dueDate": "2026-06-15",
+      "currency": "INR",
+      "taxScheme": "gst",
+      "lines": [
+        {
+          "description": "Standard, 640 learners, 12 months",
+          "itemId": "cat-standard",
+          "quantity": 7680,
+          "amountMinor": 37632000
+        },
+        {
+          "description": "AI Plus, 640 learners, 12 months",
+          "itemId": "cat-ai-plus",
+          "quantity": 7680,
+          "amountMinor": 6912000
+        }
+      ],
+      "paidAt": "2026-06-09T05:00:00Z",
+      "subtotalMinor": 44544000,
+      "taxMinor": 8017920,
+      "totalMinor": 52561920
+    },
+    {
+      "id": "inv-ct-26",
+      "accountId": "acc-ct",
+      "number": "INV-2026-00021",
+      "status": "paid",
+      "issueDate": "2026-04-01",
+      "dueDate": "2026-04-30",
+      "currency": "INR",
+      "taxScheme": "gst",
+      "lines": [
+        {
+          "description": "Self-hosted Standard, 4,200 learners, 1 year",
+          "itemId": "cat-lic-standard",
+          "quantity": 4200,
+          "amountMinor": 126000000
+        },
+        {
+          "description": "Priority support and updates, 1 year",
+          "itemId": "cat-support-priority",
+          "quantity": 1,
+          "amountMinor": 30000000
+        }
+      ],
+      "paidAt": "2026-04-28T08:00:00Z",
+      "subtotalMinor": 156000000,
+      "taxMinor": 28080000,
+      "totalMinor": 184080000
+    },
+    {
+      "id": "inv-al-lic",
+      "accountId": "acc-al",
+      "number": "INV-2025-00090",
+      "status": "paid",
+      "issueDate": "2025-12-01",
+      "dueDate": "2025-12-31",
+      "currency": "EUR",
+      "taxScheme": "vat",
+      "lines": [
+        {
+          "description": "Self-hosted Enterprise, 1,150 learners, perpetual",
+          "itemId": "cat-lic-enterprise",
+          "quantity": 1150,
+          "amountMinor": 7475000
+        }
+      ],
+      "paidAt": "2025-12-20T09:00:00Z",
+      "subtotalMinor": 7475000,
+      "taxMinor": 1420250,
+      "totalMinor": 8895250
+    },
+    {
+      "id": "inv-al-sup",
+      "accountId": "acc-al",
+      "number": "INV-2026-00002",
+      "status": "paid",
+      "issueDate": "2026-01-01",
+      "dueDate": "2026-01-31",
+      "currency": "EUR",
+      "taxScheme": "vat",
+      "lines": [
+        {
+          "description": "Priority support and updates, 2026",
+          "itemId": "cat-support-priority",
+          "quantity": 1,
+          "amountMinor": 350000
+        }
+      ],
+      "paidAt": "2026-01-15T09:00:00Z",
+      "subtotalMinor": 350000,
+      "taxMinor": 66500,
+      "totalMinor": 416500
+    }
+  ],
+  "payments": [
+    {
+      "id": "pay-ls-08",
+      "invoiceId": "inv-ls-08",
+      "amountMinor": 615960,
+      "currency": "INR",
+      "method": "upi",
+      "gateway": "razorpay",
+      "gatewayRef": "pay_ls-08",
+      "status": "succeeded",
+      "createdAt": "2026-08-05T06:30:00Z"
+    },
+    {
+      "id": "pay-ls-09",
+      "invoiceId": "inv-ls-09",
+      "amountMinor": 615960,
+      "currency": "INR",
+      "method": "upi",
+      "gateway": "razorpay",
+      "gatewayRef": "pay_ls-09",
+      "status": "failed",
+      "createdAt": "2026-09-08T04:00:00Z"
+    },
+    {
+      "id": "pay-rv-26",
+      "invoiceId": "inv-rv-26",
+      "amountMinor": 3153600,
+      "currency": "GBP",
+      "method": "bank_transfer",
+      "gateway": "manual",
+      "gatewayRef": null,
+      "status": "succeeded",
+      "createdAt": "2026-04-22T10:00:00Z"
+    },
+    {
+      "id": "pay-ax-26",
+      "invoiceId": "inv-ax-26",
+      "amountMinor": 52561920,
+      "currency": "INR",
+      "method": "netbanking",
+      "gateway": "razorpay",
+      "gatewayRef": "pay_ax-26",
+      "status": "succeeded",
+      "createdAt": "2026-06-09T05:00:00Z"
+    },
+    {
+      "id": "pay-ct-26",
+      "invoiceId": "inv-ct-26",
+      "amountMinor": 184080000,
+      "currency": "INR",
+      "method": "bank_transfer",
+      "gateway": "manual",
+      "gatewayRef": null,
+      "status": "succeeded",
+      "createdAt": "2026-04-28T08:00:00Z"
+    },
+    {
+      "id": "pay-al-lic",
+      "invoiceId": "inv-al-lic",
+      "amountMinor": 8895250,
+      "currency": "EUR",
+      "method": "card",
+      "gateway": "stripe",
+      "gatewayRef": "pi_al-lic",
+      "status": "succeeded",
+      "createdAt": "2025-12-20T09:00:00Z"
+    },
+    {
+      "id": "pay-al-sup",
+      "invoiceId": "inv-al-sup",
+      "amountMinor": 416500,
+      "currency": "EUR",
+      "method": "card",
+      "gateway": "stripe",
+      "gatewayRef": "pi_al-sup",
+      "status": "succeeded",
+      "createdAt": "2026-01-15T09:00:00Z"
+    }
+  ],
+  "creditNotes": [
+    {
+      "id": "cn-rv-1",
+      "invoiceId": "inv-rv-26",
+      "number": "CN-2026-001",
+      "amountMinor": 30000,
+      "currency": "GBP",
+      "reason": "Service credit for the 3 July outage (priority SLA).",
+      "issuedAt": "2026-07-10T09:00:00Z"
+    }
+  ],
+  "dunning": [
+    {
+      "accountId": "acc-ls",
+      "stage": "reminder_1",
+      "overdueMinor": 615960,
+      "currency": "INR",
+      "nextStepAt": "2026-09-18T00:00:00Z"
+    },
+    {
+      "accountId": "acc-nb",
+      "stage": "none",
+      "overdueMinor": 0,
+      "currency": "USD",
+      "nextStepAt": null
+    }
+  ],
+  "usage": [
+    {
+      "id": "use-ls-l",
+      "accountId": "acc-ls",
+      "deploymentId": null,
+      "tenantId": "ten-ls",
+      "metric": "learners",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 180,
+      "cap": null
+    },
+    {
+      "id": "use-rv-l",
+      "accountId": "acc-rv",
+      "deploymentId": null,
+      "tenantId": "ten-rv",
+      "metric": "learners",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 1460,
+      "cap": null
+    },
+    {
+      "id": "use-rv-ai",
+      "accountId": "acc-rv",
+      "deploymentId": null,
+      "tenantId": "ten-rv",
+      "metric": "ai_credits",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 18200,
+      "cap": 25000
+    },
+    {
+      "id": "use-nb-l",
+      "accountId": "acc-nb",
+      "deploymentId": null,
+      "tenantId": "ten-nb",
+      "metric": "learners",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 9800,
+      "cap": null
+    },
+    {
+      "id": "use-nb-st",
+      "accountId": "acc-nb",
+      "deploymentId": null,
+      "tenantId": "ten-nb",
+      "metric": "storage_gb",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 1840,
+      "cap": 2000
+    },
+    {
+      "id": "use-ax-l",
+      "accountId": "acc-ax",
+      "deploymentId": null,
+      "tenantId": "ten-ax",
+      "metric": "learners",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 640,
+      "cap": null
+    },
+    {
+      "id": "use-ax-ai",
+      "accountId": "acc-ax",
+      "deploymentId": null,
+      "tenantId": "ten-ax",
+      "metric": "ai_credits",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 4750,
+      "cap": 5000
+    },
+    {
+      "id": "use-ax-msg",
+      "accountId": "acc-ax",
+      "deploymentId": null,
+      "tenantId": "ten-ax",
+      "metric": "messages",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 21400,
+      "cap": null
+    },
+    {
+      "id": "use-hm-l",
+      "accountId": "acc-hm",
+      "deploymentId": null,
+      "tenantId": "ten-hm",
+      "metric": "learners",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 95,
+      "cap": 100
+    },
+    {
+      "id": "use-ct-l",
+      "accountId": "acc-ct",
+      "deploymentId": "dep-ct",
+      "tenantId": null,
+      "metric": "learners",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 4180,
+      "cap": 4200
+    },
+    {
+      "id": "use-ct-st",
+      "accountId": "acc-ct",
+      "deploymentId": "dep-ct",
+      "tenantId": null,
+      "metric": "staff",
+      "periodStart": "2026-08-01T00:00:00Z",
+      "periodEnd": "2026-09-01T00:00:00Z",
+      "quantity": 312,
+      "cap": null
     }
   ]
 }

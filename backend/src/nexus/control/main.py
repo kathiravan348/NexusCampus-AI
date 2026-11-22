@@ -12,7 +12,7 @@ from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control import accounts, auth
+from nexus.control import accounts, auth, commercial
 from nexus.control.sessions import DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
 from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
@@ -125,6 +125,7 @@ def create_app(
     app.include_router(router)
     app.include_router(auth.router)
     app.include_router(accounts.router)
+    app.include_router(commercial.router)
     return app
 
 
