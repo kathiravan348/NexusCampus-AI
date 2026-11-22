@@ -7,10 +7,11 @@ issued by the owner-role CLI `nexus-control-agent-token`); staff cookies are nev
 
 import hashlib
 import logging
+from dataclasses import dataclass
 from datetime import UTC, datetime, timedelta
 from typing import Annotated, Any, Literal
 
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Depends, Request, Response
 from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError, field_validator
 from sqlalchemy import (
     ARRAY,
@@ -194,6 +195,17 @@ def derive_health(report: HealthReport) -> Literal["healthy", "degraded"]:
     return "healthy"
 
 
+@dataclass(frozen=True)
+class AgentDeployment:
+    """Authenticated deployment resolved from a per-deployment agent bearer token."""
+
+    id: str
+    version: str
+    channel: Literal["stable", "lts", "preview"]
+    air_gapped: bool
+    last_check_in_at: datetime | None
+
+
 def _bearer_token(request: Request) -> str | None:
     header = request.headers.get("authorization", "")
     if not header.startswith("Bearer "):
@@ -204,6 +216,41 @@ def _bearer_token(request: Request) -> str | None:
 
 def _unauthorized() -> ApiError:
     return ApiError(401, "unauthorized", "A valid agent bearer token is required.")
+
+
+async def agent_deployment(request: Request) -> AgentDeployment:
+    """Authenticates an install agent by its bearer token (SHA-256); refuses cookies, unknown and revoked tokens."""
+    token = _bearer_token(request)
+    if token is None:
+        log.info("agent auth deployment=- outcome=unauthorized")
+        raise _unauthorized()
+
+    token_hash = hash_token(token)
+    async with engine_of(request).connect() as conn:
+        found = (
+            await conn.execute(
+                select(
+                    deployments.c.id,
+                    deployments.c.version,
+                    deployments.c.channel,
+                    deployments.c.air_gapped,
+                    deployments.c.last_check_in_at,
+                    deployment_agent_tokens.c.revoked_at,
+                )
+                .join(deployments, deployments.c.id == deployment_agent_tokens.c.deployment_id)
+                .where(deployment_agent_tokens.c.token_sha256 == token_hash)
+            )
+        ).first()
+    if found is None or found.revoked_at is not None:
+        log.info("agent auth deployment=%s outcome=unauthorized", found.id if found else "-")
+        raise _unauthorized()
+    return AgentDeployment(
+        id=found.id,
+        version=found.version,
+        channel=found.channel,
+        air_gapped=found.air_gapped,
+        last_check_in_at=found.last_check_in_at,
+    )
 
 
 async def _read_bounded(request: Request, limit: int) -> bytes:
@@ -223,32 +270,13 @@ async def _read_bounded(request: Request, limit: int) -> bytes:
 
 
 @router.post("/agent/health", status_code=204)
-async def agent_health_check_in(request: Request) -> Response:
+async def agent_health_check_in(
+    request: Request,
+    agent: Annotated[AgentDeployment, Depends(agent_deployment)],
+) -> Response:
     """Outbound PII-free health check-in authenticated by a per-deployment agent bearer token."""
-    token = _bearer_token(request)
-    if token is None:
-        log.info("agent health check-in deployment=- outcome=unauthorized")
-        raise _unauthorized()
-
-    token_hash = hash_token(token)
-    async with engine_of(request).connect() as conn:
-        found = (
-            await conn.execute(
-                select(
-                    deployment_agent_tokens.c.deployment_id,
-                    deployment_agent_tokens.c.revoked_at,
-                    deployments.c.air_gapped,
-                )
-                .join(deployments, deployments.c.id == deployment_agent_tokens.c.deployment_id)
-                .where(deployment_agent_tokens.c.token_sha256 == token_hash)
-            )
-        ).first()
-    if found is None or found.revoked_at is not None:
-        log.info("agent health check-in deployment=%s outcome=unauthorized", found.deployment_id if found else "-")
-        raise _unauthorized()
-
-    deployment_id: str = found.deployment_id
-    if found.air_gapped:
+    deployment_id = agent.id
+    if agent.air_gapped:
         log.info("agent health check-in deployment=%s outcome=air_gapped", deployment_id)
         raise ApiError(403, "forbidden", "Air-gapped deployments do not send health reports.")
 

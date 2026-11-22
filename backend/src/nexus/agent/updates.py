@@ -4,7 +4,6 @@ Only a bundle that verifies completely (signature with the pinned release keys, 
 offered; of those, the newest that is newer than the running version and allows an upgrade straight from it.
 """
 
-import re
 import tarfile
 from datetime import date
 from pathlib import Path
@@ -12,20 +11,12 @@ from typing import Any
 
 from nexus.releases.bundle import verify_bundle
 from nexus.releases.manifest import SignedRelease
+from nexus.releases.versions import version_key
 
 INBOX = "inbox"
 RELEASE_KEYS = "release-keys.json"
 NOTES_FILE = "NOTES.md"
 NOTES_MAX = 5000
-
-
-def version_key(version: str) -> tuple[tuple[int, int, int], int, str]:
-    """Semver order: 2.5.0-rc.1 < 2.5.0 < 2.5.1."""
-    m = re.fullmatch(r"(\d+)\.(\d+)\.(\d+)(?:-(.+))?", version)
-    if not m:
-        raise ValueError(f"not a version: {version}")
-    major, minor, patch, pre = m.groups()
-    return (int(major), int(minor), int(patch)), (0 if pre else 1), pre or ""
 
 
 def _notes(bundle: Path) -> str:

@@ -156,6 +156,11 @@ Nexus Control (our cloud)                         Product deployments
   Installs report outbound to `POST /control/api/v1/agent/health` with their per-deployment bearer token (no staff
   cookie), strict PII-free payload ≤ 4 KB, max 1 report per 60 s; air-gapped deployments are refused (`403`). Server
   stamps `last_check_in_at` and derives `health` (`healthy` / `degraded`).
+- **Releases, rollouts & online update check (NEX-115):** `releases` and `rollouts` (read-only for `control_app`).
+  Installs query `GET /control/api/v1/agent/update` with the same per-deployment bearer token (max 1 per 60 s,
+  air-gapped `403`) and receive `{ release }` for the newest published, signed release on their channel with
+  `minUpgradeFrom` ≤ current version (pre-releases on `preview` only) whose `running` or `done` rollout includes that
+  deployment, or `{ release: null }`.
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted

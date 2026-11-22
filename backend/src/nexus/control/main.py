@@ -12,7 +12,7 @@ from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control import accounts, auth, commercial, fleet, licences
+from nexus.control import accounts, auth, commercial, fleet, licences, releases
 from nexus.control.sessions import DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
 from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
@@ -124,6 +124,7 @@ def create_app(
 
     app = FastAPI(title="Nexus Control API", version="0.1.0", lifespan=lifespan)
     app.state.settings = cfg
+    app.state.agent_update_checked_at = {}
     install_error_handling(app)
     app.include_router(router)
     app.include_router(auth.router)
@@ -131,6 +132,7 @@ def create_app(
     app.include_router(commercial.router)
     app.include_router(licences.router)
     app.include_router(fleet.router)
+    app.include_router(releases.router)
     return app
 
 
