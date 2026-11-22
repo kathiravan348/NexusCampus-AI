@@ -30,6 +30,7 @@ from nexus.control.licences import Licence
 from nexus.control.releases import Release, Rollout
 from nexus.control.staff import StaffSession
 from nexus.control.support import KnowledgeArticle, SlaPolicy, SupportTicket, TicketReply
+from nexus.control.trust import Certification, DpaRecord, SecurityIncident, SubProcessor
 from nexus.licensing.licence import LicenceFile
 
 CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
@@ -67,4 +68,8 @@ CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "Commission": Commission,
     "BusinessMetrics": BusinessMetrics,
     "AccountHealth": AccountHealth,
+    "SubProcessor": SubProcessor,
+    "Certification": Certification,
+    "SecurityIncident": SecurityIncident,
+    "DpaRecord": DpaRecord,
 }

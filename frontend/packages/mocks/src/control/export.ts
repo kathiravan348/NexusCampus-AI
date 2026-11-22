@@ -5,12 +5,14 @@ import {
   ACCOUNTS,
   BUSINESS_METRICS,
   CATALOGUE_ITEMS,
+  CERTIFICATIONS,
   COMMISSIONS,
   CONTRACTS,
   CONTROL_ROLE_PERMISSIONS,
   CREDIT_NOTES,
   DEAL_REGISTRATIONS,
   DEPLOYMENTS,
+  DPA_RECORDS,
   DUNNING_STATES,
   EXTENSION_COMPATIBILITY,
   EXTENSIONS,
@@ -26,8 +28,10 @@ import {
   RELEASES,
   ROLLOUTS,
   SANDBOXES,
+  SECURITY_INCIDENTS,
   SLA_POLICIES,
   STAFF_USERS,
+  SUB_PROCESSORS,
   SUBSCRIPTIONS,
   SUPPORT_TICKETS,
   TICKET_REPLIES,
@@ -35,7 +39,7 @@ import {
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 9;
+export const CONTROL_FIXTURES_VERSION = 10;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -79,6 +83,10 @@ export function controlFixturesJson(): string {
       commissions: COMMISSIONS,
       metrics: BUSINESS_METRICS,
       accountHealth: ACCOUNT_HEALTH,
+      subProcessors: SUB_PROCESSORS,
+      certifications: CERTIFICATIONS,
+      incidents: SECURITY_INCIDENTS,
+      dpas: DPA_RECORDS,
     },
     null,
     2,

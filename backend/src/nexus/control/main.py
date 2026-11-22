@@ -12,7 +12,18 @@ from redis.asyncio import Redis
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control import accounts, analytics, auth, commercial, delivery_extras, fleet, licences, releases, support
+from nexus.control import (
+    accounts,
+    analytics,
+    auth,
+    commercial,
+    delivery_extras,
+    fleet,
+    licences,
+    releases,
+    support,
+    trust,
+)
 from nexus.control.billing import webhooks
 from nexus.control.sessions import DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
@@ -138,6 +149,7 @@ def create_app(
     app.include_router(support.router)
     app.include_router(delivery_extras.router)
     app.include_router(analytics.router)
+    app.include_router(trust.router)
     return app
 
 
