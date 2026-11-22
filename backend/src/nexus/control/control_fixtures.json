@@ -1,5 +1,5 @@
 {
-  "version": 8,
+  "version": 9,
   "staff": [
     {
       "id": "stf-0001",
@@ -2351,6 +2351,261 @@
       "status": "ready",
       "createdAt": "2026-09-11T00:00:00Z",
       "expiresAt": "2026-10-11T00:00:00Z"
+    }
+  ],
+  "deals": [
+    {
+      "id": "deal-lt",
+      "partnerId": "ptn-south",
+      "accountId": "acc-lt",
+      "status": "approved",
+      "submittedAt": "2026-09-01T07:00:00Z",
+      "expiresAt": "2026-12-01"
+    }
+  ],
+  "commissions": [
+    {
+      "id": "com-ax-26",
+      "partnerId": "ptn-south",
+      "invoiceId": "inv-ax-26",
+      "amountMinor": 6681600,
+      "currency": "INR",
+      "status": "paid",
+      "paidAt": "2026-07-01T06:00:00Z"
+    },
+    {
+      "id": "com-al-lic",
+      "partnerId": "ptn-euro",
+      "invoiceId": "inv-al-lic",
+      "amountMinor": 747500,
+      "currency": "EUR",
+      "status": "payable",
+      "paidAt": null
+    }
+  ],
+  "metrics": [
+    {
+      "month": "2025-09",
+      "currency": "INR",
+      "mrrMinor": 180000000,
+      "arrMinor": 2160000000,
+      "activeAccounts": 330,
+      "newAccounts": 10,
+      "churnedAccounts": 0,
+      "grossChurnPct": 0,
+      "nrrPct": 104,
+      "openTickets": 30
+    },
+    {
+      "month": "2025-10",
+      "currency": "INR",
+      "mrrMinor": 186500000,
+      "arrMinor": 2238000000,
+      "activeAccounts": 338,
+      "newAccounts": 11,
+      "churnedAccounts": 1,
+      "grossChurnPct": 0.3,
+      "nrrPct": 105,
+      "openTickets": 31
+    },
+    {
+      "month": "2025-11",
+      "currency": "INR",
+      "mrrMinor": 193000000,
+      "arrMinor": 2316000000,
+      "activeAccounts": 346,
+      "newAccounts": 12,
+      "churnedAccounts": 2,
+      "grossChurnPct": 0.61,
+      "nrrPct": 106,
+      "openTickets": 32
+    },
+    {
+      "month": "2025-12",
+      "currency": "INR",
+      "mrrMinor": 199500000,
+      "arrMinor": 2394000000,
+      "activeAccounts": 354,
+      "newAccounts": 13,
+      "churnedAccounts": 0,
+      "grossChurnPct": 0,
+      "nrrPct": 107,
+      "openTickets": 33
+    },
+    {
+      "month": "2026-01",
+      "currency": "INR",
+      "mrrMinor": 206000000,
+      "arrMinor": 2472000000,
+      "activeAccounts": 362,
+      "newAccounts": 10,
+      "churnedAccounts": 1,
+      "grossChurnPct": 0.3,
+      "nrrPct": 108,
+      "openTickets": 34
+    },
+    {
+      "month": "2026-02",
+      "currency": "INR",
+      "mrrMinor": 212500000,
+      "arrMinor": 2550000000,
+      "activeAccounts": 370,
+      "newAccounts": 11,
+      "churnedAccounts": 2,
+      "grossChurnPct": 0.61,
+      "nrrPct": 104,
+      "openTickets": 35
+    },
+    {
+      "month": "2026-03",
+      "currency": "INR",
+      "mrrMinor": 219000000,
+      "arrMinor": 2628000000,
+      "activeAccounts": 378,
+      "newAccounts": 12,
+      "churnedAccounts": 0,
+      "grossChurnPct": 0,
+      "nrrPct": 105,
+      "openTickets": 36
+    },
+    {
+      "month": "2026-04",
+      "currency": "INR",
+      "mrrMinor": 225500000,
+      "arrMinor": 2706000000,
+      "activeAccounts": 386,
+      "newAccounts": 13,
+      "churnedAccounts": 1,
+      "grossChurnPct": 0.3,
+      "nrrPct": 106,
+      "openTickets": 30
+    },
+    {
+      "month": "2026-05",
+      "currency": "INR",
+      "mrrMinor": 232000000,
+      "arrMinor": 2784000000,
+      "activeAccounts": 394,
+      "newAccounts": 10,
+      "churnedAccounts": 2,
+      "grossChurnPct": 0.61,
+      "nrrPct": 107,
+      "openTickets": 31
+    },
+    {
+      "month": "2026-06",
+      "currency": "INR",
+      "mrrMinor": 238500000,
+      "arrMinor": 2862000000,
+      "activeAccounts": 402,
+      "newAccounts": 11,
+      "churnedAccounts": 0,
+      "grossChurnPct": 0,
+      "nrrPct": 108,
+      "openTickets": 32
+    },
+    {
+      "month": "2026-07",
+      "currency": "INR",
+      "mrrMinor": 245000000,
+      "arrMinor": 2940000000,
+      "activeAccounts": 410,
+      "newAccounts": 12,
+      "churnedAccounts": 1,
+      "grossChurnPct": 0.3,
+      "nrrPct": 104,
+      "openTickets": 33
+    },
+    {
+      "month": "2026-08",
+      "currency": "INR",
+      "mrrMinor": 251500000,
+      "arrMinor": 3018000000,
+      "activeAccounts": 418,
+      "newAccounts": 13,
+      "churnedAccounts": 2,
+      "grossChurnPct": 0.61,
+      "nrrPct": 105,
+      "openTickets": 34
+    }
+  ],
+  "accountHealth": [
+    {
+      "accountId": "acc-ls",
+      "score": 64,
+      "churnRisk": "medium",
+      "reasons": [
+        "p16.reason.overdueInvoice",
+        "p16.reason.steadyUsage"
+      ],
+      "aiGenerated": true,
+      "computedAt": "2026-09-15T00:00:00Z"
+    },
+    {
+      "accountId": "acc-rv",
+      "score": 86,
+      "churnRisk": "low",
+      "reasons": [
+        "p16.reason.growingUsage",
+        "p16.reason.expansionWon"
+      ],
+      "aiGenerated": true,
+      "computedAt": "2026-09-15T00:00:00Z"
+    },
+    {
+      "accountId": "acc-nb",
+      "score": 72,
+      "churnRisk": "low",
+      "reasons": [
+        "p16.reason.steadyUsage",
+        "p16.reason.recentIncident"
+      ],
+      "aiGenerated": true,
+      "computedAt": "2026-09-15T00:00:00Z"
+    },
+    {
+      "accountId": "acc-ax",
+      "score": 91,
+      "churnRisk": "low",
+      "reasons": [
+        "p16.reason.growingUsage",
+        "p16.reason.highAiUse"
+      ],
+      "aiGenerated": true,
+      "computedAt": "2026-09-15T00:00:00Z"
+    },
+    {
+      "accountId": "acc-hm",
+      "score": 38,
+      "churnRisk": "high",
+      "reasons": [
+        "p16.reason.lowUsage",
+        "p16.reason.trialEndingSoon"
+      ],
+      "aiGenerated": true,
+      "computedAt": "2026-09-15T00:00:00Z"
+    },
+    {
+      "accountId": "acc-ct",
+      "score": 77,
+      "churnRisk": "low",
+      "reasons": [
+        "p16.reason.nearLearnerCap",
+        "p16.reason.openSlaBreach"
+      ],
+      "aiGenerated": true,
+      "computedAt": "2026-09-15T00:00:00Z"
+    },
+    {
+      "accountId": "acc-al",
+      "score": 70,
+      "churnRisk": "medium",
+      "reasons": [
+        "p16.reason.noTelemetry",
+        "p16.reason.supportRenewalDue"
+      ],
+      "aiGenerated": true,
+      "computedAt": "2026-09-15T00:00:00Z"
     }
   ]
 }

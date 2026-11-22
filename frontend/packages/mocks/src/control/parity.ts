@@ -2,12 +2,16 @@ import * as C from "@nexus/contracts";
 import { type ParityContractEntry, buildParitySamples } from "../fixtures/parity";
 import {
   ACCOUNT_CONTACTS,
+  ACCOUNT_HEALTH,
   ACCOUNT_NOTES,
   ACCOUNTS,
+  BUSINESS_METRICS,
   CATALOGUE_ITEMS,
+  COMMISSIONS,
   CONTRACTS,
   CONTROL_ROLE_PERMISSIONS,
   CREDIT_NOTES,
+  DEAL_REGISTRATIONS,
   DEPLOYMENTS,
   DUNNING_STATES,
   EXTENSION_COMPATIBILITY,
@@ -78,6 +82,10 @@ const CONTROL_CONTRACTS: readonly ParityContractEntry[] = [
   ["ExtensionCompatibility", C.ExtensionCompatibilitySchema, EXTENSION_COMPATIBILITY],
   ["ImplementationProject", C.ImplementationProjectSchema, IMPLEMENTATION_PROJECTS],
   ["Sandbox", C.SandboxSchema, SANDBOXES],
+  ["DealRegistration", C.DealRegistrationSchema, DEAL_REGISTRATIONS],
+  ["Commission", C.CommissionSchema, COMMISSIONS],
+  ["BusinessMetrics", C.BusinessMetricsSchema, BUSINESS_METRICS],
+  ["AccountHealth", C.AccountHealthSchema, ACCOUNT_HEALTH],
 ];
 
 /** Written to `backend/tests/parity/control_samples.json` (NEX-116). */

@@ -16997,6 +16997,1418 @@
           "shapeValid": false
         }
       ]
+    },
+    {
+      "contract": "DealRegistration",
+      "samples": [
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": null,
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": 12345,
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": null,
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": 12345,
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": null,
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": 12345,
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": null,
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": 12345,
+            "expiresAt": "2026-12-01"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "deal-lt",
+            "partnerId": "ptn-south",
+            "accountId": "acc-lt",
+            "status": "approved",
+            "submittedAt": "2026-09-01T07:00:00Z",
+            "expiresAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "Commission",
+      "samples": [
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "com-al-lic",
+            "partnerId": "ptn-euro",
+            "invoiceId": "inv-al-lic",
+            "amountMinor": 747500,
+            "currency": "EUR",
+            "status": "payable",
+            "paidAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": null,
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": 12345,
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": null,
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": 12345,
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": null,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": "12345",
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": null,
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": 12345,
+            "status": "paid",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": null,
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": 12345,
+            "paidAt": "2026-07-01T06:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": null
+          },
+          "valid": false,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "com-ax-26",
+            "partnerId": "ptn-south",
+            "invoiceId": "inv-ax-26",
+            "amountMinor": 6681600,
+            "currency": "INR",
+            "status": "paid",
+            "paidAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "BusinessMetrics",
+      "samples": [
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "month": "2025-10",
+            "currency": "INR",
+            "mrrMinor": 186500000,
+            "arrMinor": 2238000000,
+            "activeAccounts": 338,
+            "newAccounts": 11,
+            "churnedAccounts": 1,
+            "grossChurnPct": 0.3,
+            "nrrPct": 105,
+            "openTickets": 31
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "month": "2025-11",
+            "currency": "INR",
+            "mrrMinor": 193000000,
+            "arrMinor": 2316000000,
+            "activeAccounts": 346,
+            "newAccounts": 12,
+            "churnedAccounts": 2,
+            "grossChurnPct": 0.61,
+            "nrrPct": 106,
+            "openTickets": 32
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": null,
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": 12345,
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": null,
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": 12345,
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": null,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": "12345",
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": null,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": "12345",
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": null,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": "12345",
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": null,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": "12345",
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": null,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": "12345",
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": null,
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": "12345",
+            "nrrPct": 104,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": null,
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": "12345",
+            "openTickets": 30
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "month": "2025-09",
+            "currency": "INR",
+            "mrrMinor": 180000000,
+            "arrMinor": 2160000000,
+            "activeAccounts": 330,
+            "newAccounts": 10,
+            "churnedAccounts": 0,
+            "grossChurnPct": 0,
+            "nrrPct": 104,
+            "openTickets": "12345"
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "AccountHealth",
+      "samples": [
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "accountId": "acc-rv",
+            "score": 86,
+            "churnRisk": "low",
+            "reasons": [
+              "p16.reason.growingUsage",
+              "p16.reason.expansionWon"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "accountId": "acc-nb",
+            "score": 72,
+            "churnRisk": "low",
+            "reasons": [
+              "p16.reason.steadyUsage",
+              "p16.reason.recentIncident"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": null,
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": 12345,
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": null,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": "12345",
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": null,
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": 12345,
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": null,
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": "not-a-list",
+            "aiGenerated": true,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": null,
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": "yes",
+            "computedAt": "2026-09-15T00:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ls",
+            "score": 64,
+            "churnRisk": "medium",
+            "reasons": [
+              "p16.reason.overdueInvoice",
+              "p16.reason.steadyUsage"
+            ],
+            "aiGenerated": true,
+            "computedAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
     }
   ]
 }

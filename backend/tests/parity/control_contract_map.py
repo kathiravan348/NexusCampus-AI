@@ -6,11 +6,14 @@ from nexus.control.accounts import (
     Account,
     AccountContact,
     AccountNote,
+    Commission,
     Contract,
+    DealRegistration,
     Opportunity,
     Partner,
     StaffDirectoryEntry,
 )
+from nexus.control.analytics import AccountHealth, BusinessMetrics
 from nexus.control.commercial import (
     CatalogueItem,
     CreditNote,
@@ -60,4 +63,8 @@ CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "ExtensionCompatibility": ExtensionCompatibility,
     "ImplementationProject": ImplementationProject,
     "Sandbox": Sandbox,
+    "DealRegistration": DealRegistration,
+    "Commission": Commission,
+    "BusinessMetrics": BusinessMetrics,
+    "AccountHealth": AccountHealth,
 }

@@ -134,6 +134,34 @@ account_notes = Table(
     Column("created_at", DateTime(timezone=True), nullable=False),
 )
 
+deal_registrations = Table(
+    "deal_registrations",
+    metadata,
+    Column("id", String(ID), primary_key=True),
+    Column("partner_id", String(ID), ForeignKey(partners.c.id), nullable=False, index=True),
+    Column("account_id", String(ID), ForeignKey(accounts.c.id), nullable=False, index=True),
+    Column("status", String(16), nullable=False),
+    Column("submitted_at", DateTime(timezone=True), nullable=False),
+    Column("expires_at", Date, nullable=False),
+    CheckConstraint("status IN ('submitted', 'approved', 'rejected', 'expired')", name="deals_status_known"),
+)
+
+commissions = Table(
+    "commissions",
+    metadata,
+    Column("id", String(ID), primary_key=True),
+    Column("partner_id", String(ID), ForeignKey(partners.c.id), nullable=False, index=True),
+    Column("invoice_id", String(ID), ForeignKey("invoices.id"), nullable=False, index=True),
+    Column("amount_minor", BigInteger, nullable=False),
+    Column("currency", String(3), nullable=False),
+    Column("status", String(16), nullable=False),
+    Column("paid_at", DateTime(timezone=True), nullable=True),
+    CheckConstraint("amount_minor >= 0", name="commissions_amount_non_negative"),
+    CheckConstraint("currency ~ '^[A-Z]{3}$'", name="commissions_currency_iso"),
+    CheckConstraint("status IN ('pending', 'payable', 'paid')", name="commissions_status_known"),
+    CheckConstraint("(status = 'paid') = (paid_at IS NOT NULL)", name="commissions_paid_at_matches_status"),
+)
+
 
 _Camel = CamelModel
 
@@ -146,6 +174,25 @@ class Partner(_Camel):
     commission_pct: Annotated[float, Field(ge=0, le=50)]
     active: bool
     joined_at: UtcDateTime
+
+
+class DealRegistration(_Camel):
+    id: Id
+    partner_id: Id
+    account_id: Id
+    status: Literal["submitted", "approved", "rejected", "expired"]
+    submitted_at: UtcDateTime
+    expires_at: IsoDate
+
+
+class Commission(_Camel):
+    id: Id
+    partner_id: Id
+    invoice_id: Id
+    amount_minor: Annotated[int, Field(ge=0)]
+    currency: CurrencyCode
+    status: Literal["pending", "payable", "paid"]
+    paid_at: UtcDateTime | None
 
 
 class Account(_Camel):
@@ -260,8 +307,24 @@ CONTRACTS = Resource(
     {"accountId": "account_id", "kind": "kind", "status": "status"},
 )
 PARTNERS = Resource("partners", partners, Partner, "ctl.partner.read", {}, None, order=partners.c.name)
+DEALS = Resource(
+    "deals",
+    deal_registrations,
+    DealRegistration,
+    "ctl.deal.read",
+    {"partnerId": "partner_id", "accountId": "account_id", "status": "status"},
+    None,
+)
+COMMISSIONS = Resource(
+    "commissions",
+    commissions,
+    Commission,
+    "ctl.partner.read",
+    {"partnerId": "partner_id", "status": "status"},
+    None,
+)
 
-for resource in (ACCOUNTS, CONTACTS, OPPORTUNITIES, NOTES, CONTRACTS, PARTNERS):
+for resource in (ACCOUNTS, CONTACTS, OPPORTUNITIES, NOTES, CONTRACTS, PARTNERS, DEALS, COMMISSIONS):
     mount(router, resource)
 
 
@@ -301,10 +364,25 @@ async def staff_directory(
 
 def seed_rows(conn: Any, data: dict[str, list[dict[str, Any]]]) -> int:
     """Upserts the P01 tables from the exported fixtures (camelCase JSON), in foreign-key order."""
+    return _upsert_tables(conn, data, SEED_TABLES)
+
+
+def seed_partner_rows(conn: Any, data: dict[str, list[dict[str, Any]]]) -> int:
+    """Upserts P12 deal registrations and commissions, after invoices."""
+    return _upsert_tables(
+        conn,
+        data,
+        [("deals", deal_registrations, DealRegistration), ("commissions", commissions, Commission)],
+    )
+
+
+def _upsert_tables(
+    conn: Any, data: dict[str, list[dict[str, Any]]], tables: list[tuple[str, Table, type[_Camel]]]
+) -> int:
     from sqlalchemy.dialects.postgresql import insert as pg_insert
 
     count = 0
-    for key, table, model in SEED_TABLES:
+    for key, table, model in tables:
         for raw in data.get(key, []):
             row = to_db(table, model.model_validate(raw).model_dump())
             stmt = pg_insert(table).values(row)

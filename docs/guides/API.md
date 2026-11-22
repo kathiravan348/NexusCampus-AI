@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-23 (Stage 2 build: Control backend P01–P03 + Lago webhooks & cancellations (NEX-111), P05, P06 fleet + agent check-in (NEX-113), P07 releases & rollouts + signed agent update check (NEX-115, NEX-117), P08 extensions, P09 support desk (NEX-122), P11, P13 staff SSO, P15 projects, P17 sandboxes (NEX-123), M84 install agent core, encrypted backups & diagnostics, PII-free health reports, signed online update verification, and `NXTE/1` tenant export & import (NEX-105, NEX-106, NEX-112, NEX-114, NEX-117, NEX-119); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
+> State as of: 2026-11-23 (Stage 2 build: Control backend P01–P03 + Lago webhooks & cancellations (NEX-111), P05, P06 fleet + agent check-in (NEX-113), P07 releases & rollouts + signed agent update check (NEX-115, NEX-117), P08 extensions, P09 support desk (NEX-122), P11, P12 partners/deals/commissions, P13 staff SSO, P15 projects, P16 analytics (NEX-124), P17 sandboxes (NEX-123), M84 install agent core, encrypted backups & diagnostics, PII-free health reports, signed online update verification, and `NXTE/1` tenant export & import (NEX-105, NEX-106, NEX-112, NEX-114, NEX-117, NEX-119); remaining Control routes still MSW mock. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -348,7 +348,12 @@ see rows of the accounts their partner manages (others → `404`).
 | GET | `/extension-compatibility` | `ctl.extension.read` | filters `extensionId`, `releaseVersion`, `result`; not shown to partner users |
 | GET | `/projects`, `/projects/:id` | `ctl.project.read` | filters `accountId`, `status`, `kind`; read-only |
 | GET | `/sandboxes`, `/sandboxes/:id` | `ctl.sandbox.read` | filters `kind`, `status`, `accountId`; unattached sales demos (`accountId: null`) are not shown to partner users |
+| GET | `/deals` | `ctl.deal.read` | filters `partnerId`, `accountId`, `status`; read-only (`control_app` SELECT only); partners see only their accounts' deals (NEX-124) |
+| GET | `/commissions` | `ctl.partner.read` | filters `partnerId`, `status`; not shown to partner users |
+| GET | `/metrics`, `/metrics/:month` | `ctl.analytics.read` | stored monthly business snapshots (`YYYY-MM`, ARR = 12 × MRR); not shown to partner users |
+| GET | `/account-health`, `/account-health/:accountId` | `ctl.analytics.read` | filter `churnRisk`; AI-estimated score + message-key reasons; partners see only their accounts' health |
 
 Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages (and ticket
 replies are joined through visible tickets); rows without one (catalogue, payments, credit notes, health signals,
-releases, rollouts, SLA policies, KB articles, extension compatibility, unattached sandboxes) are not shown to partner users.
+releases, rollouts, SLA policies, KB articles, extension compatibility, unattached sandboxes, commissions, business
+metrics) are not shown to partner users.
