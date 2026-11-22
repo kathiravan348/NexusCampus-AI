@@ -33,6 +33,9 @@ FORMAT = "NXTE/1"
 IMPORT_KEY_NAME = "tenant-import"
 MIN_RSA_BITS = 3072
 TENANTS_TABLE = "tenants"
+#: Never exported (D58): sign-in sessions (token hashes, IP addresses), SCIM token hashes and cached API responses.
+#: Credentials and caches do not move between installs; people sign in again and SCIM tokens are issued anew there.
+NOT_EXPORTED = ("idempotency_keys", "scim_tokens", "sessions")
 _OAEP = padding.OAEP(mgf=padding.MGF1(hashes.SHA256()), algorithm=hashes.SHA256(), label=None)
 
 
@@ -130,6 +133,7 @@ def encrypt_rows(
             "sourceInstallId": source_install_id,
             "revision": revision,
             "tables": counts,
+            "notExported": list(NOT_EXPORTED),
             "decryptedColumns": decrypted_columns or [],
             "wrappedKey": wrap_data_key(data_key, pub),
             "keyAlgorithm": "RSA-OAEP-SHA256",
@@ -186,7 +190,8 @@ def tenant_tables_and_revision(conn: psycopg.Connection) -> tuple[list[str], str
     revision = conn.execute("SELECT version_num FROM alembic_version").fetchone()
     if revision is None:
         raise RuntimeError("the database has no migration revision")
-    return [TENANTS_TABLE, *(str(r[0]) for r in rows)], str(revision[0])
+    tables = [str(r[0]) for r in rows if str(r[0]) not in NOT_EXPORTED]
+    return [TENANTS_TABLE, *tables], str(revision[0])
 
 
 def _filter_col(table: str) -> sql.Identifier:

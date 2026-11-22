@@ -107,7 +107,8 @@ an administrator reads it under **Install & updates** and approves or discards i
 OpenBao and print only its public PEM. Hand `destination.pem` to the **source** install's administrator and run
 `nexus-agent export-tenant <tenant-id> --to destination.pem`. It streams only that institution's rows into one
 encrypted `.nxte` file (`NXTE/1`) under a fresh 256-bit AES-GCM key wrapped with RSA-OAEP-SHA256 for `destination.pem`
-(nothing plain touches disk, and only the destination's OpenBao can open it). The job is recorded under
+(nothing plain touches disk, and only the destination's OpenBao can open it). Sign-in sessions, SCIM tokens and
+cached responses are never exported: people sign in again and SCIM tokens are issued anew on the destination. The job is recorded under
 **Install & updates** with counts and file size only.
 
 ### Volume backups

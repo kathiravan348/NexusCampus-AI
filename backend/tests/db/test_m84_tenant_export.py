@@ -101,6 +101,10 @@ def test_tenant_export_isolates_one_tenant_and_records_job(
     assert header.fields["sourceInstallId"] == "ins-test-export"
     assert header.fields["pemSha256"] == pem_fingerprint(pem)
     assert header.fields["tables"] == expected_counts
+    # Credentials, live sign-ins and cached responses never travel (D58).
+    assert header.fields["notExported"] == ["idempotency_keys", "scim_tokens", "sessions"]
+    assert not {"sessions", "scim_tokens", "idempotency_keys"} & set(expected_counts)
+    assert "academic_calendars" in expected_counts and "people" in expected_counts
     for name in names:
         assert name.encode("utf-8") not in raw
         assert name not in json.dumps(done)
