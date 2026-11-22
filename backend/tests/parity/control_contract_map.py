@@ -27,6 +27,7 @@ from nexus.control.commercial import (
 from nexus.control.delivery_extras import Extension, ExtensionCompatibility, ImplementationProject, Sandbox
 from nexus.control.fleet import Deployment, HealthSignal
 from nexus.control.licences import Licence
+from nexus.control.provisioning import OffboardingJob, PortabilityJob, ProvisioningJob, ShredCertificate
 from nexus.control.releases import Release, Rollout
 from nexus.control.staff import StaffSession
 from nexus.control.support import KnowledgeArticle, SlaPolicy, SupportTicket, TicketReply
@@ -72,4 +73,8 @@ CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "Certification": Certification,
     "SecurityIncident": SecurityIncident,
     "DpaRecord": DpaRecord,
+    "ProvisioningJob": ProvisioningJob,
+    "OffboardingJob": OffboardingJob,
+    "ShredCertificate": ShredCertificate,
+    "PortabilityJob": PortabilityJob,
 }

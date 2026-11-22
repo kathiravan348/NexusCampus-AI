@@ -20,6 +20,7 @@ from nexus.control import (
     delivery_extras,
     fleet,
     licences,
+    provisioning,
     releases,
     support,
     trust,
@@ -150,6 +151,7 @@ def create_app(
     app.include_router(delivery_extras.router)
     app.include_router(analytics.router)
     app.include_router(trust.router)
+    app.include_router(provisioning.router)
     return app
 
 

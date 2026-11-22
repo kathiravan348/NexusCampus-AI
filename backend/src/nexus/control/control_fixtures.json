@@ -1,5 +1,5 @@
 {
-  "version": 10,
+  "version": 11,
   "staff": [
     {
       "id": "stf-0001",
@@ -2728,6 +2728,213 @@
       "accountId": "acc-ct",
       "version": "2.0",
       "signedAt": "2025-03-10T00:00:00Z"
+    }
+  ],
+  "provisioningJobs": [
+    {
+      "id": "prv-hm",
+      "request": {
+        "accountId": "acc-hm",
+        "region": "apac",
+        "institutionType": "sk",
+        "planCode": "starter",
+        "trialDays": 30,
+        "deliveryModel": "saas_shared"
+      },
+      "steps": [
+        {
+          "name": "create_tenant",
+          "status": "done"
+        },
+        {
+          "name": "create_keys",
+          "status": "done"
+        },
+        {
+          "name": "apply_profile",
+          "status": "done"
+        },
+        {
+          "name": "seed",
+          "status": "done"
+        },
+        {
+          "name": "invite_owner",
+          "status": "done"
+        }
+      ],
+      "status": "done",
+      "tenantId": "ten-hm",
+      "requestedByStaffId": "stf-0011",
+      "createdAt": "2026-08-20T02:00:00Z"
+    },
+    {
+      "id": "prv-sr",
+      "request": {
+        "accountId": "acc-sr",
+        "region": "in",
+        "institutionType": "ey",
+        "planCode": "standard",
+        "trialDays": 30,
+        "deliveryModel": "saas_shared"
+      },
+      "steps": [
+        {
+          "name": "create_tenant",
+          "status": "done"
+        },
+        {
+          "name": "create_keys",
+          "status": "done"
+        },
+        {
+          "name": "apply_profile",
+          "status": "done"
+        },
+        {
+          "name": "seed",
+          "status": "running"
+        },
+        {
+          "name": "invite_owner",
+          "status": "pending"
+        }
+      ],
+      "status": "running",
+      "tenantId": "ten-sr",
+      "requestedByStaffId": "stf-0023",
+      "createdAt": "2026-09-14T05:05:00Z"
+    }
+  ],
+  "offboardingJobs": [
+    {
+      "id": "off-om",
+      "accountId": "acc-om",
+      "tenantId": "ten-om",
+      "steps": [
+        {
+          "name": "freeze_writes",
+          "status": "done"
+        },
+        {
+          "name": "export_ready",
+          "status": "done"
+        },
+        {
+          "name": "export_downloaded",
+          "status": "done"
+        },
+        {
+          "name": "keys_destroyed",
+          "status": "done"
+        },
+        {
+          "name": "certificate_issued",
+          "status": "done"
+        }
+      ],
+      "status": "done",
+      "shredCertificateId": "shc-om",
+      "requestedByStaffId": "stf-0023",
+      "createdAt": "2026-02-01T09:00:00Z"
+    }
+  ],
+  "shredCertificates": [
+    {
+      "id": "shc-om",
+      "tenantId": "ten-om",
+      "keyIds": [
+        "key-om-tenant-data",
+        "key-om-field-identity",
+        "key-om-field-finance"
+      ],
+      "destroyedAt": "2026-03-03T10:00:00Z",
+      "signingKeyId": "nexus-shred-2026",
+      "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+    }
+  ],
+  "portabilityJobs": [
+    {
+      "id": "mov-ct",
+      "accountId": "acc-ct",
+      "tenantId": "ten-ct",
+      "direction": "saas_to_self_hosted",
+      "fromRegion": "in",
+      "toRegion": "in",
+      "steps": [
+        {
+          "name": "preflight",
+          "status": "done"
+        },
+        {
+          "name": "export_encrypted",
+          "status": "done"
+        },
+        {
+          "name": "transfer",
+          "status": "done"
+        },
+        {
+          "name": "import",
+          "status": "done"
+        },
+        {
+          "name": "verify",
+          "status": "done"
+        },
+        {
+          "name": "cutover",
+          "status": "done"
+        },
+        {
+          "name": "shred_source",
+          "status": "done"
+        }
+      ],
+      "status": "done",
+      "encrypted": true,
+      "createdAt": "2026-03-20T04:00:00Z"
+    },
+    {
+      "id": "mov-rv",
+      "accountId": "acc-rv",
+      "tenantId": "ten-rv",
+      "direction": "saas_to_self_hosted",
+      "fromRegion": "eu",
+      "toRegion": "eu",
+      "steps": [
+        {
+          "name": "preflight",
+          "status": "running"
+        },
+        {
+          "name": "export_encrypted",
+          "status": "pending"
+        },
+        {
+          "name": "transfer",
+          "status": "pending"
+        },
+        {
+          "name": "import",
+          "status": "pending"
+        },
+        {
+          "name": "verify",
+          "status": "pending"
+        },
+        {
+          "name": "cutover",
+          "status": "pending"
+        },
+        {
+          "name": "shred_source",
+          "status": "pending"
+        }
+      ],
+      "status": "running",
+      "encrypted": true,
+      "createdAt": "2026-09-12T09:00:00Z"
     }
   ]
 }
