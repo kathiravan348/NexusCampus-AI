@@ -7,6 +7,7 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 from nexus.control import accounts as _accounts  # noqa: F401  (registers tables)
 from nexus.control import commercial as _commercial  # noqa: F401
+from nexus.control import licences as _licences  # noqa: F401
 from nexus.control import sessions as _sessions  # noqa: F401
 from nexus.control.staff import DbStaffStore, metadata
 

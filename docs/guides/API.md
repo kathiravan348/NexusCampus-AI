@@ -313,3 +313,6 @@ see rows of the accounts their partner manages (others → `404`).
 
 Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages; rows
 without one (catalogue, payments, credit notes) are not shown to partner users.
+| GET | `/licences`, `/licences/:id` | `ctl.licence.read` | filters `accountId`, `state`, `edition` (NEX-103) |
+| GET | `/licence-files/:id` | `ctl.licence.issue` | the `nexus-licence/1` file, **really signed** (Ed25519 in OpenBao Transit, key `nexus-licence`); `signingKeyId` = `nexus-licence:v<N>`; a licence without a signed file is signed on first download; installs verify it offline with the public key |
+| POST | `/licences/:id/renew` | `ctl.licence.issue` | expiry and support end + 1 year (a perpetual licence stays perpetual), state `active`, new signed file and fingerprint in one transaction; revoked → `409` |

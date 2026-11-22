@@ -57,7 +57,9 @@ class Resource:
         return [self.table.c[self.scope].in_(viewer.account_ids)]
 
     def parse(self, row: Any) -> CamelModel:
-        return self.model.model_validate(from_db(self.table, row))
+        """Only the contract's fields: internal columns (e.g. a licence's stored signature) never leave the API."""
+        fields = self.model.model_fields
+        return self.model.model_validate({k: v for k, v in from_db(self.table, row).items() if k in fields})
 
 
 async def list_page(
