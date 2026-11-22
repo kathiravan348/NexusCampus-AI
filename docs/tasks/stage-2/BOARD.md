@@ -49,10 +49,12 @@
 | NEX-102 | Control API: catalogue & quotes (P02), billing (P03), usage (P11) on the control DB; quote send, bank transfer | D | done | Claude | 101 |
 | NEX-103 | Control API: licences (P05) — issue, store, download the signed file; P05 screen switched to real | D | done | Claude | 095, 101 |
 | NEX-104 | Release signing: signed images and offline update bundles (P07, DM-9) | D | done | Claude | 095 |
-| NEX-105 | M84 install agent process: offline licence check, update check, encrypted backups, PII-free health | D | draft | — | 103, 104 |
-| NEX-106 | Tenant export / import between SaaS and self-hosted (P18, DM-8), encrypted with the tenant's keys | D | draft | — | 105 |
+| NEX-105 | M84 install agent core: offline licence check, update check from verified bundles, install status, Install page on real data | D | in-progress | Claude | 103, 104 |
+| NEX-106 | Tenant export / import between SaaS and self-hosted (P18, DM-8), encrypted with the tenant's keys | D | draft | — | 112 |
 | NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 111 |
 | NEX-108 | Packaging: control backend + staff realm + billing stack in Compose and Helm; air-gapped bundle | D | draft | — | 102, 105 |
 | NEX-109 | Contract parity for Control (Pydantic ⇄ Zod samples) and remaining screens switched to real | D | draft | — | 101–103 |
 | NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–109 |
 | NEX-111 | Lago sync: catalogue → plans, subscriptions → Lago, usage → events, Lago invoice webhooks → control DB (D51) | D | draft | — | 098, 102 |
+| NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | draft | — | 105 |
+| NEX-113 | M84 PII-free health reports to Control (licence-bound agent sign-in, can be switched off) and P06 fleet signals on real data | D | draft | — | 105 |
