@@ -55,10 +55,11 @@
 | NEX-108 | Packaging: control backend + staff realm + billing stack in Compose and Helm; air-gapped bundle | D | draft | — | 102, 105 |
 | NEX-109 | Remaining Control screens switched to real data (parity split out: NEX-116; releases read: NEX-115) | D | draft | — | 101–103, 116 |
 | NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–109 |
-| NEX-111 | Lago sync: catalogue → plans, subscriptions → Lago, usage → events, Lago invoice webhooks → control DB (D51) | D | draft | — | 098, 102 |
+| NEX-111 | Lago sync part 2: Lago invoice webhooks → control DB, cancellations, add-ons (part 1: NEX-118; D51) | D | draft | — | 098, 102, 118 |
 | NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | done | Claude | 105 |
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |
 | NEX-114 | M84: install agent sends PII-free health reports to Control (off when telemetry off or air-gapped) | D | done | Gemini | 113 |
 | NEX-115 | Control: P07 releases and rollouts on real data, and the agent's online update check (agent token) | D | done | Gemini | 113 |
 | NEX-116 | Control contract parity: Pydantic ⇄ Zod for every real Control response (as NEX-059) | D | done | Gemini | 115 |
 | NEX-117 | M84 online update check, signed end to end: Control stores the signed manifest, the agent verifies it | D | planned | — | 115, 116 |
+| NEX-118 | Lago sync part 1: per-learner plans, customers, subscriptions and learner usage → Lago (one way, idempotent) | D | planned | — | 116 |
