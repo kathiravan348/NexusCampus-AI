@@ -44,7 +44,8 @@ describe("RolesTab", () => {
 
   it("opens system roles read-only and marks sensitive permissions", async () => {
     const table = await openRoles();
-    fireEvent.click(within(table).getByRole("button", { name: "View role Owner" }));
+    // The roles load after the table renders: wait for the row (slow under full-suite load).
+    fireEvent.click(await within(table).findByRole("button", { name: "View role Owner" }));
     const dialog = await screen.findByRole("dialog", { name: "Owner (system role)" });
     const matrix = within(dialog).getByRole("table", { name: "Permissions" });
     expect(within(matrix).getAllByText("Sensitive").length).toBeGreaterThan(0);

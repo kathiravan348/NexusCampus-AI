@@ -46,7 +46,7 @@
 | NEX-099 | Stage 2 docs: manual with Nexus Control, guides, presentation, owner checklist | A | done | Claude | 091, 097, 098 |
 | NEX-100 | Control app real mode: staff sign-in button → `/auth/login`, `/me` from the control backend, sign-out (P13) | C | done | Claude | 097 |
 | NEX-101 | Control API: accounts, notes, staff directory (P01) on the control DB; P01 screens switched to real | D | done | Claude | 096 |
-| NEX-102 | Control API: catalogue & quotes (P02), billing (P03), usage (P11) on the control DB; quote send, bank transfer | D | in-progress | Claude | 101 |
+| NEX-102 | Control API: catalogue & quotes (P02), billing (P03), usage (P11) on the control DB; quote send, bank transfer | D | done | Claude | 101 |
 | NEX-103 | Control API: licences (P05) — issue, store, download the signed file; P05 screen switched to real | D | draft | — | 095, 101 |
 | NEX-104 | Release signing: signed images and offline update bundles (P07, DM-9) | D | draft | — | 095 |
 | NEX-105 | M84 install agent process: offline licence check, update check, encrypted backups, PII-free health | D | draft | — | 103, 104 |

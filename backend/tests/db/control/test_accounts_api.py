@@ -1,17 +1,11 @@
 """P01 API on the control database (NEX-101): same data and shapes as the mocks, permissions, partner scoping."""
 
-from collections.abc import AsyncIterator
 from typing import Any
 
 import httpx2
 import pytest
-from sqlalchemy.ext.asyncio import create_async_engine
 
-from nexus.control.main import create_app
 from nexus.control.seed import load_fixtures
-from nexus.control.sessions import DbSessionStore
-from nexus.control.settings import ControlSettings
-from nexus.control.staff import DbStaffStore
 
 API = "/control/api/v1"
 ADMIN, SALES, BILLING, SUPPORT, RELEASE, PARTNER = (
@@ -27,19 +21,6 @@ FIX = load_fixtures()
 
 def by_id(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
     return {r["id"]: r for r in rows}
-
-
-@pytest.fixture
-async def api(control_db: tuple[str, str]) -> AsyncIterator[httpx2.AsyncClient]:
-    _, app_url = control_db
-    engine = create_async_engine(app_url)
-    app = create_app(ControlSettings(environment="test"))
-    app.state.engine = engine  # the lifespan is not run by the ASGI transport
-    app.state.staff = DbStaffStore(engine)
-    app.state.sessions = DbSessionStore(engine)
-    async with httpx2.AsyncClient(transport=httpx2.ASGITransport(app=app), base_url="http://control.test") as c:
-        yield c
-    await engine.dispose()
 
 
 async def get(api: httpx2.AsyncClient, staff: str, path: str, **params: Any) -> httpx2.Response:

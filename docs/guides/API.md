@@ -300,3 +300,16 @@ see rows of the accounts their partner manages (others → `404`).
 | POST | `/notes` | `ctl.account.manage` | body `{ accountId, body (1–2000, trimmed) }` → `201 AccountNote`; account not visible → `404` |
 | GET | `/staff-directory` | signed in | `{ id, displayName }` of every staff member |
 | GET | `/partners` | `ctl.partner.read` | partner names for the Accounts page |
+| GET | `/catalogue`, `/catalogue/:id` | `ctl.quote.read` | filter `kind` (NEX-102) |
+| GET | `/quotes`, `/quotes/:id` | `ctl.quote.read` | filters `accountId`, `status` |
+| POST | `/quotes/:id/send` | `ctl.quote.manage` | body `{ checkedByHuman? }`; draft only (`409` otherwise); an AI-drafted quote needs `checkedByHuman: true` (`400` with `details[0].path = "checkedByHuman"`) |
+| GET | `/subscriptions`, `/subscriptions/:id` | `ctl.billing.read` | filters `accountId`, `status` |
+| GET | `/invoices`, `/invoices/:id` | `ctl.billing.read` | filters `accountId`, `status` |
+| POST | `/invoices/:id/record-transfer` | `ctl.billing.manage` | body `{ reference (3–64, our statement reference) }`; open or overdue only (`409`); one transaction: `manual` payment with the reference, invoice `paid`, dunning cleared, past-due subscriptions `active` → `{ invoice, payment }` |
+| GET | `/payments` | `ctl.billing.read` | filters `invoiceId`, `status` |
+| GET | `/credit-notes` | `ctl.billing.read` | filter `invoiceId` |
+| GET | `/dunning`, `/dunning/:accountId` | `ctl.billing.read` | filter `stage` |
+| GET | `/usage` | `ctl.usage.read` | filters `accountId`, `metric`, `tenantId`, `deploymentId`; counts only |
+
+Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages; rows
+without one (catalogue, payments, credit notes) are not shown to partner users.
