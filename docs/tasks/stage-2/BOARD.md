@@ -53,8 +53,8 @@
 | NEX-106 | Tenant export (DM-8, D58): one tenant's rows, encrypted so only the destination install can open the file | D | done | Gemini | 112 |
 | NEX-107 | Payment gateway adapters: Razorpay (IN), Stripe (EU) behind `PaymentGateway` (needs Owner accounts) | D | draft | — | 111 |
 | NEX-108 | Packaging: Nexus Control as a Compose stack (control backend, staff realm, billing), images we already have | D | done | Gemini | 111 |
-| NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–127 (parity done in NEX-116) | D | withdrawn | — | — |
-| NEX-110 | Stage 2 harden & release: V-1…V-7 for Control, security review, a11y, i18n, performance, guides | — | draft | — | 100–108, 111, 119–129 |
+| NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–127, 130–136 (parity in NEX-116) | D | withdrawn | — | — |
+| NEX-110 | Harden Stage 2, security: no-access tests for Control, agent and commands; key custody; request safety | — | planned | — | 136 |
 | NEX-111 | Lago sync part 2: signed invoice webhooks into Control, and cancellations (part 1: NEX-118; D51) | D | done | Gemini | 118 |
 | NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | done | Claude | 105 |
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |
@@ -69,8 +69,16 @@
 | NEX-122 | Control on real data: P09 support desk (tickets, replies, SLA policies, knowledge base) | D | done | Gemini | 116, 108 |
 | NEX-123 | Control on real data: P08 extensions, P15 projects and P17 sandboxes (reads) | D | done | Gemini | 122 |
 | NEX-124 | Control on real data: P12 deals and commissions, P16 analytics (reads) | D | done | Gemini | 123 |
-| NEX-125 | Control on real data: P10 access broker — a staff request reaches the institution's M83 approval as a D60 command | D | draft | — | 129, 122 |
+| NEX-125 | Control on real data: P10 access broker, Control side — a staff request becomes a signed D60 command | D | planned | — | 129, 130 |
 | NEX-126 | Control on real data: P14 trust (sub-processors, certifications, security incidents, DPAs) | D | done | Gemini | 124 |
-| NEX-127 | P04 provisioning and P18 moves run for real: Control creates tenants in a region cell and orchestrates export / import through D60 commands | D | draft | — | 129, 121, 119 |
+| NEX-127 | P04 provisioning for real, cell side: the agent creates a new institution from a signed command | D | planned | — | 131 |
 | NEX-128 | Control → deployment commands, Control side (D60): signed pull-only commands, `ping` only | D | planned | — | 121 |
 | NEX-129 | Control → deployment commands, agent side (D60): fetch, verify, run once, report; `ping` only | D | planned | — | 128 |
+| NEX-130 | Control: P07 release publishing (signed manifest required) and rollout start on real data | D | planned | — | 128 |
+| NEX-131 | M84 agent: P10 access requests arrive in M83, decisions go back to Control | D | planned | — | 125 |
+| NEX-132 | Control: P04 provisioning for real — a job queues `tenant.provision` and follows it; retry | D | planned | — | 127, 125 |
+| NEX-133 | P04 offboarding, cell side (D61): freeze, export for the institution's key, destroy keys | D | planned | — | 127 |
+| NEX-134 | Control: P04 offboarding for real (D61) — four-eyes key destruction, signed shred certificate | D | planned | — | 133, 132 |
+| NEX-135 | P18 moves, cell side (D61): import key and tenant import on signed commands | D | planned | — | 133 |
+| NEX-136 | Control: P18 moves for real (D61) — a portability job walks the seven steps | D | planned | — | 135, 134 |
+| NEX-137 | Stage 2 release checks: Control real-mode a11y and languages, budgets, install tests, checklist | — | planned | — | 110 |
