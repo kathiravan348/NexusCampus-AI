@@ -124,9 +124,12 @@ Nexus Control (our cloud)                         Product deployments
         ▲  outbound only: licence check · update metadata · PII-free health   ▲
         └──────────────────────────── M84 install agent ─────────────────────┘
 ```
-- **Control backend (NEX-096):** `nexus.control` in the backend package, its own app (`nexus.control.main`,
+- **Control backend (NEX-096, NEX-108):** `nexus.control` in the backend package, its own app (`nexus.control.main`,
   `/control/api/v1/*`), its own database `nexus_control` with its own read-mostly role `control_app` and its own
-  migrations (`backend/control_migrations`, `nexus-control-db`). It never connects to a product database.
+  migrations (`backend/control_migrations`, `nexus-control-db`). Packaged as one Compose stack in `deploy/control/`
+  (`control-db`, `control-migrate`, `control-api` on `127.0.0.1:8100`, `staff-keycloak`, `valkey`, `openbao`, and the
+  included Lago stack on the internal network only, with private Lago webhooks enabled for `control-api:8100`). It never
+  connects to a product database.
 - **Staff sign-in (NEX-097):** Keycloak realm `nexus-staff` (never the product realm, D21), client `nexus-control`.
   Password = level 1, one-time code (TOTP) = level 2 = `acr` `mfa`; the client's minimum ACR is `mfa`, the login
   asks for it and the callback refuses any other `acr`. Sessions: random token in an HttpOnly cookie (path

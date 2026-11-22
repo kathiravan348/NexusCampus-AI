@@ -19,6 +19,10 @@ WORKDIR /app
 COPY --from=build --chown=nexus:nexus /app/.venv /app/.venv
 COPY --chown=nexus:nexus alembic.ini ./
 COPY --chown=nexus:nexus migrations ./migrations
+# Control backend migrations live in the same image so `deploy/control` runs `control-migrate` and `control-api`
+# without a second backend image (NEX-108).
+COPY --chown=nexus:nexus control_alembic.ini ./
+COPY --chown=nexus:nexus control_migrations ./control_migrations
 ENV PATH=/app/.venv/bin:$PATH PYTHONUNBUFFERED=1 NEXUS_HOST=0.0.0.0 NEXUS_PORT=8000
 USER 10001
 EXPOSE 8000

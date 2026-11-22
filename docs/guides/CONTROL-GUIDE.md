@@ -262,6 +262,25 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 - The screens still run on demo data; they move to the real Control backend one page at a time (Stage 2 build).
 - Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it.
 
+## Operations: installing Nexus Control (NEX-108)
+
+Operators deploy Nexus Control (control database, API, staff sign-in with mandatory MFA, Valkey, OpenBao signing keys,
+and the self-hosted Lago billing engine) from one Docker Compose stack in `deploy/control/`:
+
+```bash
+deploy/control/scripts/install.sh                      # empty stack (production defaults)
+NEXUS_CONTROL_DEMO=1 deploy/control/scripts/install.sh # with demo staff and commercial fixtures
+```
+
+Windows PowerShell: `powershell -File deploy/control/scripts/install.ps1 [-Demo]`.
+
+- **Network exposure:** all services stay on the internal Docker network; only the Control API publishes
+  `127.0.0.1:8100`. Put a TLS reverse proxy in front in production.
+- **Secrets & keys:** generated once into git-ignored `deploy/control/.env` (never printed); OpenBao initialises
+  `nexus-licence` and `nexus-release` Ed25519 signing keys (back up `deploy/control/.env.vault-init.json` offline).
+- **Upgrades & backups:** re-running the install script runs forward-only control migrations before restarting the API.
+  See `deploy/control/README.md` for `control-db` / `lago-db` / OpenBao backup and key rotation steps.
+
 ## Operations: syncing billing to Lago (NEX-118, NEX-111)
 
 Operators push Nexus Control's per-learner SaaS plans, subscribing accounts, active / trialing / past-due
