@@ -61,3 +61,4 @@
 | NEX-114 | M84: install agent sends PII-free health reports to Control (off when telemetry off or air-gapped) | D | done | Gemini | 113 |
 | NEX-115 | Control: P07 releases and rollouts on real data, and the agent's online update check (agent token) | D | done | Gemini | 113 |
 | NEX-116 | Control contract parity: Pydantic ⇄ Zod for every real Control response (as NEX-059) | D | planned | — | 115 |
+| NEX-117 | M84 online update check, signed end to end: Control stores the signed manifest, the agent verifies it | D | planned | — | 115, 116 |
