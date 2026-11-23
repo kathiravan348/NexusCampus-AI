@@ -284,7 +284,7 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 ## Known limits
 
 - Every P01–P18 screen runs on the real Control backend in real mode (`dev:control:real`); demo mode (`dev:control`) remains available for training and offline walkthroughs.
-- Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it. Hosted payment links are live for Indian INR invoices via **Razorpay** (NEX-107); European Stripe hosted payment pages follow in NEX-138 once the Stripe test account is connected.
+- Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it. Hosted payment links are live for Indian INR invoices via **Razorpay** (NEX-107); European (EUR) invoices are paid by bank transfer, recorded by hand; a card payment page for Europe (Stripe) comes in a later stage.
 - **Staff & security** (P13) is read-only in the app; provider staff accounts and mandatory MFA are managed in the `nexus-staff` sign-in realm.
 
 ## Operations: installing Nexus Control (NEX-108, NEX-110)

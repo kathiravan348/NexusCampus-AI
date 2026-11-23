@@ -29,4 +29,4 @@
 
 - External third-party penetration test before public SaaS launch.
 - Production KMS auto-unseal for OpenBao (replaces file-stored unseal key in `vault-init.json` / `.env.vault-init.json`).
-- Stripe EU payment gateway hardening (tracked in draft NEX-138 once Owner Stripe test account is ready).
+- Stripe EU payment gateway (NEX-138) moved to a later stage (D64); D62's rules (hosted page, signed webhooks, no card data) apply when it is built.
