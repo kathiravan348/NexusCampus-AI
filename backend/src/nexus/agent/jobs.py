@@ -5,22 +5,52 @@ is recorded as `failed` and its partial file removed.
 """
 
 import asyncio
+import logging
 import secrets
+import sys
 from collections.abc import Mapping
+from concurrent.futures import ThreadPoolExecutor
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any
+from typing import Annotated, Any, Literal
 
 import httpx2
 from alembic.config import Config
 from alembic.script import ScriptDirectory
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError
+from pydantic.alias_generators import to_camel
 from sqlalchemy import Engine, create_engine, text
 
 from nexus.agent.backup import write_backup
+from nexus.agent.crypto import BackupCorrupt
 from nexus.agent.diagnostics import build_bundle
-from nexus.agent.tenant_export import ENCRYPTED_COLUMNS, IMPORT_KEY_NAME, EncryptedField, write_tenant_export
+from nexus.agent.tenant_export import (
+    ENCRYPTED_COLUMNS,
+    IMPORT_KEY_NAME,
+    EncryptedField,
+    export_header,
+    pem_fingerprint,
+    write_tenant_export,
+)
+from nexus.commands.format import CommandPayload
 from nexus.core.vault import DataKey, HttpVault, Vault
 from nexus.settings import BACKEND_ROOT, Settings
+
+log = logging.getLogger("nexus.agent.jobs")
+
+
+def _run_async(coro: Any) -> Any:
+    def _runner() -> Any:
+        if sys.platform == "win32":
+            return asyncio.run(coro, loop_factory=asyncio.SelectorEventLoop)
+        return asyncio.run(coro)
+
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        return _runner()
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        return pool.submit(_runner).result()
 
 
 def backup_dir(settings: Settings) -> Path:
@@ -29,6 +59,10 @@ def backup_dir(settings: Settings) -> Path:
 
 def diagnostics_dir(settings: Settings) -> Path:
     return settings.diagnostics_dir or settings.install_dir / "diagnostics"
+
+
+def import_dir(settings: Settings) -> Path:
+    return settings.import_dir or settings.install_dir / "imports"
 
 
 async def _data_key(vault: Vault, name: str) -> DataKey:
@@ -45,7 +79,7 @@ def fresh_data_key(settings: Settings, vault: Vault | None = None) -> DataKey:
         async with httpx2.AsyncClient(timeout=30) as http:
             return await _data_key(HttpVault(settings, http), settings.backup_key_name)
 
-    return asyncio.run(run())
+    return _run_async(run())  # type: ignore[no-any-return]
 
 
 def run_backup(settings: Settings, vault: Vault | None = None) -> dict[str, Any]:
@@ -103,7 +137,7 @@ def ensure_import_key(settings: Settings, vault: Vault | None = None) -> str:
             await v.create_import_key(IMPORT_KEY_NAME)
             return await v.public_key_pem(IMPORT_KEY_NAME)
 
-    return asyncio.run(run())
+    return _run_async(run())  # type: ignore[no-any-return]
 
 
 def run_tenant_export_pem(
@@ -213,3 +247,103 @@ def run_diagnostics(settings: Settings, ticket: str | None) -> dict[str, Any]:
         return {"id": bundle_id, "file": str(path), "bytes": len(data)}
     finally:
         app.dispose()
+
+
+class MoveCommandOutcome(ValueError):
+    """Carries a rejected or failed machine-coded result payload back to `agent.commands`."""
+
+    def __init__(self, status: Literal["rejected", "failed"], result: dict[str, Any]) -> None:
+        super().__init__(status)
+        self.status = status
+        self.result = result
+
+
+class _Camel(BaseModel):
+    model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True, extra="forbid", frozen=True)
+
+
+class ImportKeyArgs(_Camel):
+    pass
+
+
+class ImportTenantArgs(_Camel):
+    tenant_id: Annotated[str, StringConstraints(min_length=1, max_length=64, pattern=r"^[A-Za-z0-9._:-]+$")]
+    file_name: Annotated[str, StringConstraints(min_length=1, max_length=200)]
+    pem_sha256: Annotated[str, StringConstraints(pattern=r"^[0-9a-f]{64}$")]
+    expected_rows: Annotated[int, Field(ge=1)]
+
+
+def handle_tenant_import_key(
+    cmd: CommandPayload, _engine: Engine, settings: Settings, *, vault: Vault | None = None
+) -> dict[str, Any]:
+    """Agent handler for `tenant.import_key`: ensures `tenant-import` Transit key and returns public PEM + sha256."""
+    if not settings.agent_commands_enabled:
+        raise MoveCommandOutcome("rejected", {"reason": "commands_disabled"})
+    try:
+        ImportKeyArgs.model_validate(cmd.args)
+    except ValidationError:
+        raise MoveCommandOutcome("rejected", {"reason": "invalid_args"}) from None
+    pem = ensure_import_key(settings, vault=vault)
+    sha = pem_fingerprint(pem)
+    log.info("move kind=tenant.import_key pem_sha256=%s outcome=done", sha[:12])
+    return {"pem": pem, "pemSha256": sha}
+
+
+def handle_tenant_import(
+    cmd: CommandPayload, _engine: Engine, settings: Settings, *, vault: Vault | None = None
+) -> dict[str, Any]:
+    """Agent handler for `tenant.import`: validates header, runs NEX-119 import, verifies checkpoints, deletes file."""
+    if not settings.agent_commands_enabled:
+        raise MoveCommandOutcome("rejected", {"reason": "commands_disabled"})
+    try:
+        args = ImportTenantArgs.model_validate(cmd.args)
+    except ValidationError:
+        raise MoveCommandOutcome("rejected", {"reason": "invalid_args"}) from None
+    if cmd.tenant_id and cmd.tenant_id != args.tenant_id:
+        raise MoveCommandOutcome("rejected", {"reason": "invalid_args"})
+    name = args.file_name
+    if "/" in name or "\\" in name or name in (".", "..") or Path(name).name != name or Path(name).is_absolute():
+        raise MoveCommandOutcome("rejected", {"reason": "invalid_file_name"})
+    folder = import_dir(settings).resolve()
+    target = (folder / name).resolve()
+    if target.parent != folder:
+        raise MoveCommandOutcome("rejected", {"reason": "invalid_file_name"})
+    if not target.is_file():
+        raise MoveCommandOutcome("failed", {"reason": "file_not_found"})
+    try:
+        header = export_header(target)
+    except (OSError, BackupCorrupt):
+        raise MoveCommandOutcome("rejected", {"reason": "corrupt_file"}) from None
+    if header.fields.get("tenantId") != args.tenant_id:
+        raise MoveCommandOutcome("rejected", {"reason": "tenant_mismatch"})
+    if header.fields.get("pemSha256") != args.pem_sha256:
+        raise MoveCommandOutcome("rejected", {"reason": "fingerprint_mismatch"})
+    raw_tables = header.fields.get("tables")
+    header_rows = sum(raw_tables.values()) if isinstance(raw_tables, dict) else 0
+    if header_rows != args.expected_rows:
+        raise MoveCommandOutcome("rejected", {"reason": "row_count_mismatch"})
+    from nexus.agent.tenant_import import TenantImportRefused, run_tenant_import, verify_imported_tenant
+
+    try:
+        imported = run_tenant_import(settings, target, vault=vault)
+    except (TenantImportRefused, BackupCorrupt):
+        raise MoveCommandOutcome("failed", {"reason": "import_refused"}) from None
+    chain_ok, cp_ok = verify_imported_tenant(
+        settings.database_url.get_secret_value(), args.tenant_id, vault=vault, settings=settings
+    )
+    target.unlink(missing_ok=True)
+    log.info(
+        "move kind=tenant.import tenant=%s rows=%d skipped=%d chain=%s checkpoint=%s outcome=done",
+        args.tenant_id,
+        imported.rows_loaded,
+        imported.skipped_checkpoints,
+        chain_ok,
+        cp_ok,
+    )
+    return {
+        "tenantId": args.tenant_id,
+        "rows": imported.rows_loaded,
+        "checkpointsSkipped": imported.skipped_checkpoints,
+        "chainOk": chain_ok,
+        "checkpointOk": cp_ok,
+    }

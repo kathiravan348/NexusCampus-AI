@@ -9,7 +9,9 @@ records `m84.tenant.imported`, and signs a checkpoint.
 
 import asyncio
 import base64
+import sys
 from collections.abc import Mapping
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
@@ -36,7 +38,7 @@ from nexus.agent.tenant_export import (
     unwrap_export_key,
 )
 from nexus.core.audit import AuditInput, record_audit
-from nexus.core.checkpoints import CHECKPOINT_KEY, create_checkpoint
+from nexus.core.checkpoints import CHECKPOINT_KEY, create_checkpoint, verify_checkpoints
 from nexus.core.fieldcrypto import FieldCipher
 from nexus.core.tenancy import TenantContext, bind_tenant
 from nexus.core.vault import HttpVault, KeyDestroyed, Vault, key_name
@@ -245,6 +247,20 @@ async def _run_import(
     return ImportResult(tenant_id, expected, loaded, skipped_cp, keys_created, cp_id)
 
 
+def _run_async(coro: Any) -> Any:
+    def _runner() -> Any:
+        if sys.platform == "win32":
+            return asyncio.run(coro, loop_factory=asyncio.SelectorEventLoop)
+        return asyncio.run(coro)
+
+    try:
+        asyncio.get_running_loop()
+    except RuntimeError:
+        return _runner()
+    with ThreadPoolExecutor(max_workers=1) as pool:
+        return pool.submit(_runner).result()
+
+
 def import_tenant(
     path: Path,
     owner_url: str,
@@ -264,7 +280,35 @@ def import_tenant(
         async with httpx2.AsyncClient(timeout=30) as http:
             return await _run_import(path, owner_url, app_url, HttpVault(settings, http), encrypted_columns)
 
-    return asyncio.run(_go(), loop_factory=asyncio.SelectorEventLoop)
+    return _run_async(_go())  # type: ignore[no-any-return]
+
+
+def verify_imported_tenant(
+    app_url: str, tenant_id: str, *, vault: Vault | None = None, settings: Settings | None = None
+) -> tuple[bool, bool]:
+    """Re-verifies the imported tenant's audit chain and signed checkpoints; returns `(chain_ok, checkpoint_ok)`."""
+
+    async def _go() -> tuple[bool, bool]:
+        engine = create_async_engine(app_url)
+        try:
+            sessions = async_sessionmaker(engine, expire_on_commit=False)
+
+            async def _check(v: Vault) -> tuple[bool, bool]:
+                async with sessions() as session, session.begin():
+                    await bind_tenant(session, TenantContext(tenant_id))
+                    report = await verify_checkpoints(session, v, tenant_id)
+                return report.chain.ok, bool(report.checkpoints) and all(c.ok for c in report.checkpoints)
+
+            if vault is not None:
+                return await _check(vault)
+            if settings is None:
+                raise RuntimeError("vault or settings required to verify checkpoints")
+            async with httpx2.AsyncClient(timeout=30) as http:
+                return await _check(HttpVault(settings, http))
+        finally:
+            await engine.dispose()
+
+    return _run_async(_go())  # type: ignore[no-any-return]
 
 
 def run_tenant_import(

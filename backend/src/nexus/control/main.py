@@ -22,6 +22,7 @@ from nexus.control import (
     delivery_extras,
     fleet,
     licences,
+    offboarding,
     provisioning,
     releases,
     support,
@@ -156,6 +157,7 @@ def create_app(
     app.include_router(analytics.router)
     app.include_router(trust.router)
     app.include_router(provisioning.router)
+    app.include_router(offboarding.router)
     app.include_router(broker.router)
     return app
 

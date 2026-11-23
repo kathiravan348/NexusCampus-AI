@@ -153,7 +153,7 @@ def test_app_role_read_only_and_db_checks_refuse_invalid_rows(control_db: tuple[
         for stmt in (
             "UPDATE provisioning_jobs SET request_region = 'eu'",
             "DELETE FROM provisioning_jobs",
-            "UPDATE offboarding_jobs SET status = 'failed'",
+            "UPDATE offboarding_jobs SET account_id = 'acc-ax'",
             "DELETE FROM offboarding_jobs",
             "UPDATE shred_certificates SET signing_key_id = 'x'",
             "DELETE FROM shred_certificates",

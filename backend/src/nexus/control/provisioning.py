@@ -82,6 +82,14 @@ offboarding_jobs = Table(
     Column("shred_certificate_id", String(ID), nullable=True),
     Column("requested_by_staff_id", String(ID), ForeignKey(staff_users.c.id), nullable=False),
     Column("created_at", DateTime(timezone=True), nullable=False),
+    # Internal offboarding orchestration columns (NEX-134; never exposed in `OffboardingJob` contract)
+    Column("deployment_id", String(ID), ForeignKey(deployments.c.id), nullable=True),
+    Column("command_id", String(ID), ForeignKey(deployment_commands.c.id), nullable=True, index=True),
+    Column("recipient_pem", Text, nullable=True),
+    Column("recipient_pem_sha256", String(64), nullable=True),
+    Column("export_result", JSONB, nullable=True),
+    Column("approver_1_staff_id", String(ID), ForeignKey(staff_users.c.id), nullable=True),
+    Column("approver_2_staff_id", String(ID), ForeignKey(staff_users.c.id), nullable=True),
     CheckConstraint("status IN ('pending', 'running', 'done', 'failed')", name="offb_status_known"),
 )
 

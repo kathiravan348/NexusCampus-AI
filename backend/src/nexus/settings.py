@@ -82,9 +82,10 @@ class Settings(BaseSettings):
     telemetry_enabled: bool = True
     #: Transit key whose fresh data keys encrypt each backup (NEX-112); the plaintext key never touches the disk.
     backup_key_name: str = "install-backup"
-    #: Where encrypted backups and diagnostic bundles are written; default: inside `install_dir`.
+    #: Where encrypted backups, diagnostic bundles and tenant imports are stored; default: inside `install_dir`.
     backup_dir: Path | None = None
     diagnostics_dir: Path | None = None
+    import_dir: Path | None = None
     #: Log folder the diagnostic bundle reads (scrubbed); none = no log lines.
     log_dir: Path | None = None
     #: Nexus Control base URL for outbound PII-free health reports (NEX-114).

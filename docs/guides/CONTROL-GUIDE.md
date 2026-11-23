@@ -88,7 +88,10 @@ Menu **Provisioning** (super admin, implementation, site reliability to read).
   command for the region cell and the job updates automatically as the cell finishes each step (manual **Run next
   step** is demo only; failed jobs can be retried).
 - **Offboarding:** customers leaving — their encrypted export, the destruction of their keys (the data becomes
-  unreadable) and the signed **Key-destruction certificate** with the key ids, time and signing key.
+  unreadable) and the signed **Key-destruction certificate** with the key ids, time and signing key. In real mode,
+  offboarding freezes writes on the cell, creates an encrypted export for the institution's public key, waits for staff
+  to confirm the institution received the file, requires **two different staff members** to approve key destruction,
+  and issues an Ed25519-signed certificate that anyone can verify offline using our published shred-certificate keys.
 
 ### Licences
 
