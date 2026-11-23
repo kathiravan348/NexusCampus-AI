@@ -27,7 +27,7 @@ ID = 64
 MAX_BATCH = 20
 MAX_RESULT_BODY_BYTES = MAX_RESULT_BYTES + 512
 MIN_POLL_INTERVAL_SECONDS = 30.0
-ALLOWED_KINDS: frozenset[str] = frozenset({"ping", "access_request.file"})
+ALLOWED_KINDS: frozenset[str] = frozenset({"ping", "access_request.file", "tenant.provision"})
 
 log = logging.getLogger("nexus.control.commands")
 

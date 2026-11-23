@@ -27,6 +27,7 @@ from nexus.modules.m83.broker_inbox import (
     handle_access_request_file,
     mark_decisions_reported,
 )
+from nexus.provisioning.tenant import ProvisionCommandOutcome, handle_tenant_provision
 from nexus.settings import Settings
 
 COMMAND_KEYS = "command-keys.json"
@@ -59,6 +60,7 @@ def _handle_ping(_cmd: CommandPayload, _engine: Engine, settings: Settings) -> d
 HANDLERS: dict[str, CommandHandler] = {
     "ping": _handle_ping,
     "access_request.file": handle_access_request_file,
+    "tenant.provision": handle_tenant_provision,
 }
 
 
@@ -295,6 +297,15 @@ def poll_commands(
 
                 try:
                     result = handler(cmd, engine, settings)
+                except ProvisionCommandOutcome as exc:
+                    if exc.status == "rejected":
+                        rejected += 1
+                    else:
+                        failed += 1
+                    _finish_command(engine, cmd.id, exc.status, datetime.now(UTC))
+                    log.info("agent command id=%s kind=%s outcome=%s", cmd.id, cmd.kind, exc.status)
+                    _post_result(client, settings.control_url, token, cmd.id, exc.status, exc.result)
+                    continue
                 except BrokerCommandError as exc:
                     if exc.status == "rejected":
                         rejected += 1
