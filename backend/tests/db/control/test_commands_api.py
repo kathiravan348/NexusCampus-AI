@@ -168,17 +168,15 @@ async def test_commands_auth_air_gapped_and_control_app_cannot_insert(
         )
     ).status_code == 403
 
-    # control_app cannot INSERT into deployment_commands
+    # control_app cannot DELETE or overwrite signed payload/signature on deployment_commands
     app_eng = create_engine(app_url)
     try:
-        with pytest.raises(ProgrammingError), app_eng.begin() as conn:
-            conn.execute(
-                text(
-                    "INSERT INTO deployment_commands "
-                    "(id, deployment_id, kind, payload, signature, status, issued_at, expires_at) "
-                    "VALUES ('cmd-0000000000000001', 'dep-in-1', 'ping', '{}', "
-                    "repeat('A', 86) || '==', 'pending', now(), now() + interval '10 minutes')"
-                )
-            )
+        for sql in (
+            "DELETE FROM deployment_commands",
+            "UPDATE deployment_commands SET payload = '{}'",
+            "UPDATE deployment_commands SET signature = repeat('A', 86) || '=='",
+        ):
+            with pytest.raises(ProgrammingError), app_eng.begin() as conn:
+                conn.execute(text(sql))
     finally:
         app_eng.dispose()

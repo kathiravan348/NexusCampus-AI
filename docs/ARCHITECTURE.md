@@ -208,6 +208,13 @@ Nexus Control (our cloud)                         Product deployments
   only `ping` allowed so far). Agents poll `GET /control/api/v1/agent/commands` (max 1 per 30 s, max 20 rows, air-gapped
   `403`) and report one terminal result ≤ 4 KB via `POST /control/api/v1/agent/commands/{id}/result` (foreign `404`,
   replay `409`).
+- **Access broker, Control side (P10, NEX-125):** `broker_requests` (with internal `deployment_id`, DB CHECKs forbidding
+  `M83`, enforcing unique modules and `decided_at` iff non-pending), `broker_sessions` (read-only for `control_app`),
+  and `break_glass_cases` (read-only, two distinct approvers). `POST /broker-requests` resolves the tenant's dedicated
+  or regional shared cell (`409` if self-hosted or air-gapped) and atomically inserts the `pending` request plus a
+  signed `access_request.file` command (24 h TTL). `POST /agent/access-decisions` accepts decisions only from the
+  deployment that received the command (`expired` → `ended`; first decision wins; `revoked`/`ended` may follow
+  `approved`).
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted

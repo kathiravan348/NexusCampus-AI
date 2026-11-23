@@ -361,6 +361,11 @@ see rows of the accounts their partner manages (others → `404`).
 | GET | `/sub-processors`, `/certifications` | `ctl.trust.read` | list only (`control_app` SELECT only); not shown to partner users (NEX-126) |
 | GET | `/incidents`, `/incidents/:id` | `ctl.trust.read` | filters `status`, `severity`; newest detected first; not shown to partner users |
 | GET | `/dpas` | `ctl.trust.read` | filter `accountId`; partners see only their accounts' DPAs |
+| GET | `/broker-requests`, `/broker-requests/:id` | `ctl.broker.read` | filters `accountId`, `status`, `ticketId`; partners see only their accounts' requests (NEX-125) |
+| POST | `/broker-requests` | `ctl.broker.request` | body `{ accountId, tenantId, ticketId?, reason, modules, mode, durationHours }`; M83 in modules → `422`, unknown account/tenant → `404`, no reachable deployment / self-hosted / air-gapped → `409`; inserts `pending` request (`acr-` + 16 hex) and queues signed `access_request.file` D60 command for the tenant's cell (24 h TTL) → `201 BrokerRequest` |
+| GET | `/broker-sessions` | `ctl.broker.read` | filter `requestId`; read-only (`control_app` SELECT only); not shown to partner users |
+| GET | `/break-glass-cases`, `/break-glass-cases/:id` | `ctl.broker.read` | filter `accountId`; read-only (`control_app` SELECT only); partners see only their accounts' cases |
+| POST | `/agent/access-decisions` | agent bearer token | body `{ items: [{ requestId, status: approved \| denied \| expired \| revoked, decidedAt }] }` (≤ 50); updates only requests routed to the calling deployment (first decision wins; `revoked` / `ended` may follow `approved`; `expired` → `ended`); returns `{ updated, ignored }` |
 | GET | `/provisioning-jobs`, `/provisioning-jobs/:id` | `ctl.provisioning.read` | filters `status`, `tenantId`; read-only (`control_app` SELECT only); not shown to partner users; `POST /provisioning-jobs` (`405`) and `POST /provisioning-jobs/:id/advance` (`404`) are not mounted in real mode until real cell provisioning (NEX-121, NEX-127) |
 | GET | `/offboarding-jobs`, `/offboarding-jobs/:id` | `ctl.provisioning.read` | filters `accountId`, `status`, `tenantId`; partners see only their accounts' offboarding jobs |
 | GET | `/shred-certificates`, `/shred-certificates/:id` | `ctl.provisioning.read` | filter `tenantId`; signed key-destruction certificates; not shown to partner users |
@@ -369,4 +374,4 @@ see rows of the accounts their partner manages (others → `404`).
 Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages (and ticket
 replies are joined through visible tickets); rows without one (catalogue, payments, credit notes, health signals,
 releases, rollouts, SLA policies, KB articles, extension compatibility, unattached sandboxes, commissions, business
-metrics, sub-processors, certifications, security incidents, provisioning jobs, shred certificates) are not shown to partner users.
+metrics, sub-processors, certifications, security incidents, provisioning jobs, shred certificates, broker sessions) are not shown to partner users.

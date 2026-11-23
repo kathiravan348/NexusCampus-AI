@@ -3,6 +3,9 @@ import {
   ACCOUNT_HEALTH,
   ACCOUNT_NOTES,
   ACCOUNTS,
+  BREAK_GLASS_CASES,
+  BROKER_REQUESTS,
+  BROKER_SESSIONS,
   BUSINESS_METRICS,
   CATALOGUE_ITEMS,
   CERTIFICATIONS,
@@ -43,7 +46,7 @@ import {
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 11;
+export const CONTROL_FIXTURES_VERSION = 12;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -95,6 +98,9 @@ export function controlFixturesJson(): string {
       offboardingJobs: OFFBOARDING_JOBS,
       shredCertificates: SHRED_CERTIFICATES,
       portabilityJobs: PORTABILITY_JOBS,
+      brokerRequests: BROKER_REQUESTS,
+      brokerSessions: BROKER_SESSIONS,
+      breakGlassCases: BREAK_GLASS_CASES,
     },
     null,
     2,

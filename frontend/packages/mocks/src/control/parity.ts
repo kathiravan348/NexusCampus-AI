@@ -5,6 +5,9 @@ import {
   ACCOUNT_HEALTH,
   ACCOUNT_NOTES,
   ACCOUNTS,
+  BREAK_GLASS_CASES,
+  BROKER_REQUESTS,
+  BROKER_SESSIONS,
   BUSINESS_METRICS,
   CATALOGUE_ITEMS,
   CERTIFICATIONS,
@@ -102,6 +105,9 @@ const CONTROL_CONTRACTS: readonly ParityContractEntry[] = [
   ["OffboardingJob", C.OffboardingJobSchema, OFFBOARDING_JOBS],
   ["ShredCertificate", C.ShredCertificateSchema, SHRED_CERTIFICATES],
   ["PortabilityJob", C.PortabilityJobSchema, PORTABILITY_JOBS],
+  ["BrokerRequest", C.BrokerRequestSchema, BROKER_REQUESTS],
+  ["BrokerSession", C.BrokerSessionSchema, BROKER_SESSIONS],
+  ["BreakGlassCase", C.BreakGlassCaseSchema, BREAK_GLASS_CASES],
 ];
 
 /** Written to `backend/tests/parity/control_samples.json` (NEX-116). */

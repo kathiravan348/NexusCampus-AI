@@ -1,5 +1,5 @@
 {
-  "version": 11,
+  "version": 12,
   "staff": [
     {
       "id": "stf-0001",
@@ -2935,6 +2935,114 @@
       "status": "running",
       "encrypted": true,
       "createdAt": "2026-09-12T09:00:00Z"
+    }
+  ],
+  "brokerRequests": [
+    {
+      "id": "acr-ax-0915",
+      "accountId": "acc-ax",
+      "tenantId": "ten-ax",
+      "requestedByStaffId": "stf-0042",
+      "ticketId": "tck-0915",
+      "reason": "Investigate notification templates that fail to render in Arabic.",
+      "modules": [
+        "M02",
+        "M07"
+      ],
+      "mode": "read",
+      "durationHours": 48,
+      "status": "approved",
+      "requestedAt": "2026-09-15T07:30:00Z",
+      "decidedAt": "2026-09-15T07:55:00Z"
+    },
+    {
+      "id": "acr-rv-0914",
+      "accountId": "acc-rv",
+      "tenantId": "ten-rv",
+      "requestedByStaffId": "stf-0042",
+      "ticketId": "tck-0914",
+      "reason": "Check why the North campus theme does not apply on tablets.",
+      "modules": [
+        "M03"
+      ],
+      "mode": "read",
+      "durationHours": 24,
+      "status": "pending",
+      "requestedAt": "2026-09-14T16:20:00Z",
+      "decidedAt": null
+    },
+    {
+      "id": "acr-nb-0905",
+      "accountId": "acc-nb",
+      "tenantId": "ten-nb",
+      "requestedByStaffId": "stf-0007",
+      "ticketId": "tck-0905",
+      "reason": "Repair duplicated user accounts after an SSO change.",
+      "modules": [
+        "M02"
+      ],
+      "mode": "edit",
+      "durationHours": 72,
+      "status": "denied",
+      "requestedAt": "2026-09-05T13:00:00Z",
+      "decidedAt": "2026-09-05T15:45:00Z"
+    },
+    {
+      "id": "acr-ls-0810",
+      "accountId": "acc-ls",
+      "tenantId": "ten-ls",
+      "requestedByStaffId": "stf-0019",
+      "ticketId": "tck-0810",
+      "reason": "Help set up the academic calendar import.",
+      "modules": [
+        "M01"
+      ],
+      "mode": "edit",
+      "durationHours": 24,
+      "status": "ended",
+      "requestedAt": "2026-08-10T04:00:00Z",
+      "decidedAt": "2026-08-10T04:30:00Z"
+    }
+  ],
+  "brokerSessions": [
+    {
+      "id": "bss-ax-0915",
+      "requestId": "acr-ax-0915",
+      "grantId": "acg-ax-0915",
+      "staffId": "stf-0042",
+      "startsAt": "2026-09-15T08:00:00Z",
+      "endsAt": "2026-09-17T08:00:00Z",
+      "recorded": true,
+      "actionsCount": 14,
+      "endedEarlyAt": null
+    },
+    {
+      "id": "bss-ls-0810",
+      "requestId": "acr-ls-0810",
+      "grantId": "acg-ls-0810",
+      "staffId": "stf-0019",
+      "startsAt": "2026-08-10T04:30:00Z",
+      "endsAt": "2026-08-11T04:30:00Z",
+      "recorded": true,
+      "actionsCount": 31,
+      "endedEarlyAt": "2026-08-10T09:00:00Z"
+    }
+  ],
+  "breakGlassCases": [
+    {
+      "id": "bgn-nb-0902",
+      "accountId": "acc-nb",
+      "tenantId": "ten-nb",
+      "category": "security_incident",
+      "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+      "approverStaffIds": [
+        "stf-0007",
+        "stf-0019"
+      ],
+      "openedAt": "2026-09-02T03:10:00Z",
+      "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+      "closedAt": "2026-09-02T09:00:00Z",
+      "reportDeliveredAt": null
     }
   ]
 }

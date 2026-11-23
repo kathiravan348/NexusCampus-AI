@@ -23009,6 +23009,1837 @@
           "shapeValid": false
         }
       ]
+    },
+    {
+      "contract": "BrokerRequest",
+      "samples": [
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "acr-rv-0914",
+            "accountId": "acc-rv",
+            "tenantId": "ten-rv",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0914",
+            "reason": "Check why the North campus theme does not apply on tablets.",
+            "modules": [
+              "M03"
+            ],
+            "mode": "read",
+            "durationHours": 24,
+            "status": "pending",
+            "requestedAt": "2026-09-14T16:20:00Z",
+            "decidedAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "acr-nb-0905",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "requestedByStaffId": "stf-0007",
+            "ticketId": "tck-0905",
+            "reason": "Repair duplicated user accounts after an SSO change.",
+            "modules": [
+              "M02"
+            ],
+            "mode": "edit",
+            "durationHours": 72,
+            "status": "denied",
+            "requestedAt": "2026-09-05T13:00:00Z",
+            "decidedAt": "2026-09-05T15:45:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": null,
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": 12345,
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": null,
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": 12345,
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": null,
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": 12345,
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": null,
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": 12345,
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": null,
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": 12345,
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": null,
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": "not-a-list",
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": null,
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": 12345,
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": null,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": "12345",
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": null,
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": 12345,
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": null,
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": 12345,
+            "decidedAt": "2026-09-15T07:55:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": null
+          },
+          "valid": false,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "acr-ax-0915",
+            "accountId": "acc-ax",
+            "tenantId": "ten-ax",
+            "requestedByStaffId": "stf-0042",
+            "ticketId": "tck-0915",
+            "reason": "Investigate notification templates that fail to render in Arabic.",
+            "modules": [
+              "M02",
+              "M07"
+            ],
+            "mode": "read",
+            "durationHours": 48,
+            "status": "approved",
+            "requestedAt": "2026-09-15T07:30:00Z",
+            "decidedAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "BrokerSession",
+      "samples": [
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "bss-ls-0810",
+            "requestId": "acr-ls-0810",
+            "grantId": "acg-ls-0810",
+            "staffId": "stf-0019",
+            "startsAt": "2026-08-10T04:30:00Z",
+            "endsAt": "2026-08-11T04:30:00Z",
+            "recorded": true,
+            "actionsCount": 31,
+            "endedEarlyAt": "2026-08-10T09:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": null,
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": 12345,
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": null,
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": 12345,
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": null,
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": 12345,
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": null,
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": 12345,
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": null,
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": 12345,
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": null,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": "yes",
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": null,
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": "12345",
+            "endedEarlyAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bss-ax-0915",
+            "requestId": "acr-ax-0915",
+            "grantId": "acg-ax-0915",
+            "staffId": "stf-0042",
+            "startsAt": "2026-09-15T08:00:00Z",
+            "endsAt": "2026-09-17T08:00:00Z",
+            "recorded": true,
+            "actionsCount": 14,
+            "endedEarlyAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        }
+      ]
+    },
+    {
+      "contract": "BreakGlassCase",
+      "samples": [
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": null,
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": 12345,
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": null,
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": 12345,
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": null,
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": 12345,
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": null,
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": 12345,
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": null,
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": "not-a-list",
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": null,
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": 12345,
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": null,
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": 12345,
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": null,
+            "reportDeliveredAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": 12345,
+            "reportDeliveredAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "bgn-nb-0902",
+            "accountId": "acc-nb",
+            "tenantId": "ten-nb",
+            "category": "security_incident",
+            "justification": "Credential-stuffing attack on the sign-in page; needed the sign-in logs to block it.",
+            "approverStaffIds": [
+              "stf-0007",
+              "stf-0019"
+            ],
+            "openedAt": "2026-09-02T03:10:00Z",
+            "institutionNotifiedAt": "2026-09-02T03:12:00Z",
+            "closedAt": "2026-09-02T09:00:00Z",
+            "reportDeliveredAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        }
+      ]
     }
   ]
 }
