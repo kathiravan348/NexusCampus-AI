@@ -26,6 +26,7 @@
     "review:start:control": "pnpm --filter control run review:start",
     "e2e": "node scripts/time-run.ts e2e -- playwright test -c e2e/playwright.config.ts",
     "e2e:real": "playwright test -c e2e/real/playwright.config.ts",
+    "e2e:control:real": "playwright test -c e2e/real/playwright.config.ts control-a11y.spec.ts control-languages.spec.ts",
     "manual": "playwright test -c e2e/manual/playwright.config.ts && node scripts/build-manual.ts",
     "manual:build": "node scripts/build-manual.ts",
     "texts:export": "node scripts/texts-export.ts",
