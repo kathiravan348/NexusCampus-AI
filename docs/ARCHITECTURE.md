@@ -229,6 +229,14 @@ Nexus Control (our cloud)                         Product deployments
   updates `accounts` (`region`, `delivery_model`, `tenant_ids`) in one transaction and links a NEX-134 offboarding job
   for SaaS source copies (`shred_source` finishes when its shred certificate is issued). Failed jobs retry via
   `POST /portability-jobs/{id}/retry`.
+- **Payments — Razorpay for India (P03, D62, NEX-107):** `payment_links` (internal, gateway link id + short URL +
+  expiry) and `payments.lago_synced`. `POST /invoices/{id}/payment-link` (and best-effort on Lago `invoice.created`)
+  creates or reuses a Razorpay Payment Link (`https://api.razorpay.com/v1`, TLS verified, 10 s, no redirects; INR,
+  `accept_partial: false`, card/UPI/netbanking only, billing contact name+email only). `POST /billing/razorpay-webhook`
+  verifies hex HMAC-SHA256 `X-Razorpay-Signature`, dedupes on `X-Razorpay-Event-Id`, checks link ownership and exact
+  amount/currency (`422` on mismatch), settles the invoice via the helper shared with `record_transfer`, and calls
+  `BillingEngine.mark_paid(lago_invoice_id)` after commit (leaving `lago_synced = false` for `billing_sync` to retry
+  on failure). No card or UPI details ever reach NexusCampus.
 - **Pull-only signed deployment commands (D60, NEX-128):** Control never connects to a deployment. `deployment_commands`
   holds canonical `nexus-command/1` payloads signed in OpenBao Transit (`nexus-command`, Ed25519, never exported,
   `args` ≤ 2 KB, lifetime ≤ 24 h). `control_app` has `SELECT` and column-scoped `UPDATE (status, delivered_at,

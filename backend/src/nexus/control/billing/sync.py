@@ -13,7 +13,7 @@ from dataclasses import dataclass, field
 from datetime import date, datetime
 from typing import Any
 
-from sqlalchemy import select
+from sqlalchemy import select, update
 from sqlalchemy.ext.asyncio import AsyncConnection
 
 from nexus.control.accounts import accounts
@@ -26,7 +26,7 @@ from nexus.control.billing.engine import (
     Interval,
     UsageEvent,
 )
-from nexus.control.commercial import RegionalPrice, catalogue_items, subscriptions, usage_records
+from nexus.control.commercial import RegionalPrice, catalogue_items, invoices, payments, subscriptions, usage_records
 
 ACTIVE_SUB_STATUSES = ("trialing", "active", "past_due")
 PER_LEARNER_UNITS = ("per_learner_month", "per_learner_year")
@@ -47,6 +47,7 @@ class SyncReport:
     subscriptions: list[str] = field(default_factory=list)
     terminated: list[str] = field(default_factory=list)
     usage_events: list[str] = field(default_factory=list)
+    payments_marked_paid: list[str] = field(default_factory=list)
     skipped: list[SkippedItem] = field(default_factory=list)
 
 
@@ -280,6 +281,29 @@ async def sync_to_lago(
             raise BillingUnavailable(f"usage ({rec_id}): {exc}") from exc
         usage_ids.append(rec_id)
 
+    # 6. Retry externally paid invoices whose `mark_paid` call to Lago failed earlier (NEX-107).
+    unsynced = (
+        await conn.execute(
+            select(payments.c.id, invoices.c.lago_invoice_id)
+            .join(invoices, invoices.c.id == payments.c.invoice_id)
+            .where(
+                payments.c.lago_synced.is_(False),
+                payments.c.status == "succeeded",
+                invoices.c.lago_invoice_id.is_not(None),
+            )
+            .order_by(payments.c.created_at, payments.c.id)
+        )
+    ).all()
+    marked_paid: list[str] = []
+    for pay_id, lago_inv_id in unsynced:
+        try:
+            await target.mark_paid(str(lago_inv_id))
+        except BillingUnavailable as exc:
+            raise BillingUnavailable(f"payments ({pay_id}): {exc}") from exc
+        if not dry_run:
+            await conn.execute(update(payments).where(payments.c.id == pay_id).values(lago_synced=True))
+        marked_paid.append(str(pay_id))
+
     return SyncReport(
         dry_run=dry_run,
         plans=plan_codes,
@@ -287,5 +311,6 @@ async def sync_to_lago(
         subscriptions=subscription_ids,
         terminated=terminated_ids,
         usage_events=usage_ids,
+        payments_marked_paid=marked_paid,
         skipped=skipped,
     )

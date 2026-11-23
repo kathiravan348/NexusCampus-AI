@@ -51,7 +51,7 @@
 | NEX-104 | Release signing: signed images and offline update bundles (P07, DM-9) | D | done | Claude | 095 |
 | NEX-105 | M84 install agent core: offline licence check, update check from verified bundles, install status, Install page on real data | D | done | Claude | 103, 104 |
 | NEX-106 | Tenant export (DM-8, D58): one tenant's rows, encrypted so only the destination install can open the file | D | done | Gemini | 112 |
-| NEX-107 | Payments (D62): Razorpay payment links for Indian invoices; signed webhook marks them paid | D | planned | — | 136 |
+| NEX-107 | Payments (D62): Razorpay payment links for Indian invoices; signed webhook marks them paid | D | ready-for-review | Gemini | 136 |
 | NEX-108 | Packaging: Nexus Control as a Compose stack (control backend, staff realm, billing), images we already have | D | done | Gemini | 111 |
 | NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–127, 130–136 (parity in NEX-116) | D | withdrawn | — | — |
 | NEX-110 | Harden Stage 2, security: no-access tests for Control, agent and commands; key custody; request safety | — | planned | — | 136, 107 |

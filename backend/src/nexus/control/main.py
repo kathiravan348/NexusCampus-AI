@@ -30,6 +30,10 @@ from nexus.control import (
     trust,
 )
 from nexus.control.billing import webhooks
+from nexus.control.billing.engine import BillingEngine
+from nexus.control.billing.lago import LagoBillingEngine
+from nexus.control.billing.payments import PaymentGateway
+from nexus.control.billing.razorpay import RazorpayGateway
 from nexus.control.sessions import DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
 from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
@@ -108,6 +112,8 @@ def create_app(
     http: httpx2.AsyncClient | None = None,
     login_states: LoginStateStore | None = None,
     vault: Vault | None = None,
+    razorpay: PaymentGateway | None = None,
+    billing: BillingEngine | None = None,
 ) -> FastAPI:
     """Tests pass in-memory stores and a fake Keycloak transport; otherwise the control DB, Valkey and Keycloak."""
     cfg = settings or get_control_settings()
@@ -124,6 +130,11 @@ def create_app(
         client = http or httpx2.AsyncClient(timeout=10)
         app.state.oidc = staff_oidc(cfg, client)
         app.state.vault = vault or HttpVault(get_settings(), client)
+        rzp_id = cfg.razorpay_key_id.get_secret_value().strip()
+        rzp_sec = cfg.razorpay_key_secret.get_secret_value().strip()
+        app.state.razorpay = razorpay or (RazorpayGateway(rzp_id, rzp_sec) if rzp_id and rzp_sec else None)
+        lago_key = cfg.lago_api_key.get_secret_value().strip()
+        app.state.billing = billing or (LagoBillingEngine(cfg.lago_api_url, lago_key, client) if lago_key else None)
         if login_states is None:
             redis = Redis.from_url(get_settings().redis_url.get_secret_value(), socket_connect_timeout=3)
             app.state.login_states = RedisLoginStateStore(redis)

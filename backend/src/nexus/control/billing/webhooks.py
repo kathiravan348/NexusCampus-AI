@@ -11,17 +11,29 @@ import hmac
 import json
 import logging
 import re
+import secrets
 from datetime import UTC, date, datetime
 from decimal import Decimal, InvalidOperation
 from typing import Any, Literal
 
 from fastapi import APIRouter, Request
 from pydantic import ValidationError
-from sqlalchemy import CHAR, Column, DateTime, String, Table, func, select, text
+from sqlalchemy import CHAR, Column, DateTime, String, Table, func, select, text, update
 from sqlalchemy.ext.asyncio import AsyncConnection
 
 from nexus.control.accounts import accounts
-from nexus.control.commercial import Invoice, InvoiceLine
+from nexus.control.billing.engine import BillingEngine, BillingUnavailable
+from nexus.control.billing.payments import PaymentGateway
+from nexus.control.billing.razorpay import map_razorpay_method, verify_razorpay_signature
+from nexus.control.commercial import (
+    Invoice,
+    InvoiceLine,
+    ensure_razorpay_link,
+    invoices,
+    payment_links,
+    payments,
+    settle_invoice,
+)
 from nexus.control.resources import engine_of
 from nexus.control.staff import metadata
 from nexus.core.errors import ApiError
@@ -220,7 +232,11 @@ async def _handle_invoice_created(conn: AsyncConnection, payload: dict[str, Any]
         model.account_id,
         model.status,
     )
-    return "created"
+    return (
+        f"created:{model.id}"
+        if model.status == "open" and model.currency == "INR" and str(account.country).upper() == "IN"
+        else "created"
+    )
 
 
 async def _handle_payment_status_updated(conn: AsyncConnection, payload: dict[str, Any]) -> str:
@@ -294,4 +310,161 @@ async def lago_webhook(request: Request) -> dict[str, str]:
         else:
             log.info("lago webhook kind=%s outcome=ignored", kind)
             outcome = "ignored"
+
+    if outcome.startswith("created:"):
+        created_inv_id = outcome.split(":", 1)[1]
+        outcome = "created"
+        gateway: PaymentGateway | None = getattr(request.app.state, "razorpay", None)
+        if gateway is not None:
+            try:
+                async with engine_of(request).begin() as link_conn:
+                    await ensure_razorpay_link(link_conn, gateway, created_inv_id)
+            except Exception:
+                log.warning("lago webhook invoice=%s outcome=payment_link_failed", created_inv_id)
+    return {"status": outcome}
+
+
+def _rzp_entities(payload: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+    body = payload.get("payload")
+    if not isinstance(body, dict):
+        raise ApiError(422, "invalid_request", "Missing Razorpay webhook payload.")
+    pl = (body.get("payment_link") or {}).get("entity") if isinstance(body.get("payment_link"), dict) else None
+    pay = (body.get("payment") or {}).get("entity") if isinstance(body.get("payment"), dict) else None
+    return (pl if isinstance(pl, dict) else {}), (pay if isinstance(pay, dict) else {})
+
+
+@router.post("/billing/razorpay-webhook")
+async def razorpay_webhook(request: Request) -> dict[str, str]:
+    """Receives Razorpay webhooks signed with `X-Razorpay-Signature` (hex HMAC-SHA256); no staff session."""
+    raw = await _read_bounded(request, MAX_WEBHOOK_BYTES)
+    secret = request.app.state.settings.razorpay_webhook_secret.get_secret_value().strip()
+    sig = (request.headers.get("x-razorpay-signature") or "").strip()
+    if not verify_razorpay_signature(raw, sig, secret):
+        log.info("razorpay webhook outcome=unauthorized")
+        raise ApiError(401, "unauthorized", "Invalid webhook signature.")
+
+    try:
+        payload = json.loads(raw.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError) as exc:
+        raise ApiError(422, "invalid_request", "Webhook body is not valid JSON.") from exc
+    if not isinstance(payload, dict):
+        raise ApiError(422, "invalid_request", "Webhook body must be a JSON object.")
+
+    event = str(payload.get("event") or "unknown")[:64]
+    event_id = (request.headers.get("x-razorpay-event-id") or "").strip()
+    dedupe_key = (
+        hashlib.sha256(f"razorpay:{event_id}".encode()).hexdigest()
+        if event_id
+        else hashlib.sha256(b"razorpay-body:" + raw).hexdigest()
+    )
+
+    lago_sync_target: tuple[str, str] | None = None
+    async with engine_of(request).begin() as conn:
+        inserted = (
+            await conn.execute(
+                text(
+                    "INSERT INTO billing_webhook_events (id, kind)"
+                    " VALUES (:id, :kind) ON CONFLICT (id) DO NOTHING RETURNING id"
+                ),
+                {"id": dedupe_key, "kind": event},
+            )
+        ).first()
+        if inserted is None:
+            log.info("razorpay webhook event=%s outcome=duplicate", event)
+            return {"status": "duplicate"}
+
+        if event == "payment_link.paid":
+            pl_ent, pay_ent = _rzp_entities(payload)
+            link_id = str(pl_ent.get("id") or "").strip()
+            pay_id = str(pay_ent.get("id") or "").strip()
+            if not link_id or not pay_id:
+                raise ApiError(422, "invalid_request", "Missing Razorpay link or payment id.")
+            link_row = (
+                await conn.execute(
+                    select(payment_links.c.id, payment_links.c.invoice_id)
+                    .where(payment_links.c.gateway == "razorpay", payment_links.c.gateway_link_id == link_id)
+                    .with_for_update()
+                )
+            ).first()
+            if link_row is None:
+                log.warning("razorpay webhook event=%s link=%s outcome=unknown_link", event, link_id)
+                raise ApiError(422, "invalid_request", "Unknown payment link.")
+            inv_row = (
+                await conn.execute(
+                    select(
+                        invoices.c.id,
+                        invoices.c.account_id,
+                        invoices.c.total_minor,
+                        invoices.c.currency,
+                        invoices.c.lago_invoice_id,
+                    )
+                    .where(invoices.c.id == link_row.invoice_id)
+                    .with_for_update()
+                )
+            ).one()
+            amount = _int_field(pay_ent, "amount")
+            currency = str(pay_ent.get("currency") or "").upper()
+            if amount != int(inv_row.total_minor) or currency != str(inv_row.currency).upper():
+                log.warning(
+                    "razorpay webhook event=%s invoice=%s link=%s outcome=amount_mismatch", event, inv_row.id, link_id
+                )
+                raise ApiError(422, "invalid_request", "Payment amount or currency does not match invoice.")
+            new_pay_id = f"pay-rzp-{secrets.token_hex(6)}"
+            lago_inv_id = str(inv_row.lago_invoice_id) if inv_row.lago_invoice_id else None
+            settled = await settle_invoice(
+                conn,
+                invoice_id=str(inv_row.id),
+                account_id=str(inv_row.account_id),
+                amount_minor=amount,
+                currency=currency,
+                method=map_razorpay_method(str(pay_ent.get("method") or "")),
+                gateway="razorpay",
+                gateway_ref=pay_id,
+                payment_id=new_pay_id,
+                lago_synced=(lago_inv_id is None),
+            )
+            await conn.execute(update(payment_links).where(payment_links.c.id == link_row.id).values(status="paid"))
+            if settled is not None and lago_inv_id is not None:
+                lago_sync_target = (new_pay_id, lago_inv_id)
+            outcome = "paid" if settled is not None else "already_paid"
+            log.info(
+                "razorpay webhook event=%s invoice=%s link=%s payment=%s outcome=%s",
+                event,
+                inv_row.id,
+                link_id,
+                pay_id,
+                outcome,
+            )
+        elif event == "payment_link.expired":
+            pl_ent, _ = _rzp_entities(payload)
+            link_id = str(pl_ent.get("id") or "").strip()
+            if link_id:
+                await conn.execute(
+                    update(payment_links)
+                    .where(
+                        payment_links.c.gateway == "razorpay",
+                        payment_links.c.gateway_link_id == link_id,
+                        payment_links.c.status == "created",
+                    )
+                    .values(status="expired")
+                )
+            log.info("razorpay webhook event=%s link=%s outcome=expired", event, link_id or "-")
+            outcome = "expired"
+        else:
+            log.info("razorpay webhook event=%s outcome=ignored", event)
+            outcome = "ignored"
+
+    if lago_sync_target is not None:
+        pay_pk, lago_inv_id = lago_sync_target
+        billing: BillingEngine | None = getattr(request.app.state, "billing", None)
+        if billing is not None:
+            try:
+                await billing.mark_paid(lago_inv_id)
+                async with engine_of(request).begin() as sync_conn:
+                    await sync_conn.execute(update(payments).where(payments.c.id == pay_pk).values(lago_synced=True))
+                log.info("razorpay webhook payment=%s lago_invoice=%s outcome=lago_synced", pay_pk, lago_inv_id)
+            except BillingUnavailable:
+                log.warning(
+                    "razorpay webhook payment=%s lago_invoice=%s outcome=lago_sync_deferred", pay_pk, lago_inv_id
+                )
     return {"status": outcome}

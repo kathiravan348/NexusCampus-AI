@@ -5,8 +5,9 @@ invoice lines) are JSONB, validated by the models on the way in and out. Only co
 payments carry a reference, never card or bank details. Billing never deletes data (D23).
 """
 
+import logging
 import secrets
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime, timedelta
 from typing import Annotated, Any, Literal
 
 from fastapi import APIRouter, Depends, Request
@@ -25,13 +26,14 @@ from sqlalchemy import (
     Table,
     Text,
     select,
+    true,
     update,
 )
 from sqlalchemy.dialects.postgresql import JSONB
 
-from nexus.control.accounts import accounts
+from nexus.control.accounts import account_contacts, accounts
+from nexus.control.billing.payments import PaymentGateway, PaymentGatewayError, PaymentLinkRequest
 from nexus.control.resources import CamelModel, Resource, engine_of, get_one, mount
-from nexus.control.rows import from_db
 from nexus.control.staff import (
     ControlCode,
     CountryCode,
@@ -44,11 +46,13 @@ from nexus.control.staff import (
     UtcDateTime,
     metadata,
     staff_users,
+    utc_text,
 )
 from nexus.control.viewer import Viewer, require
 from nexus.core.errors import ApiError, ApiErrorDetail
 
 ID = 64
+log = logging.getLogger("nexus.control.commercial")
 
 catalogue_items = Table(
     "catalogue_items",
@@ -117,6 +121,7 @@ invoices = Table(
     Column("tax_minor", BigInteger, nullable=False),
     Column("total_minor", BigInteger, nullable=False),
     Column("paid_at", DateTime(timezone=True), nullable=True),
+    Column("lago_invoice_id", Text, nullable=True, unique=True),
     CheckConstraint("total_minor = subtotal_minor + tax_minor", name="invoices_totals_add_up"),
     CheckConstraint("(status = 'paid') = (paid_at IS NOT NULL)", name="invoices_paid_at_iff_paid"),
     CheckConstraint("due_date >= issue_date", name="invoices_due_after_issue"),
@@ -134,7 +139,21 @@ payments = Table(
     Column("gateway_ref", String(128), nullable=True),
     Column("status", String(16), nullable=False),
     Column("created_at", DateTime(timezone=True), nullable=False),
+    Column("lago_synced", Boolean, nullable=False, server_default=true()),
     CheckConstraint("gateway = 'manual' OR gateway_ref IS NOT NULL", name="payments_gateway_needs_ref"),
+)
+
+payment_links = Table(
+    "payment_links",
+    metadata,
+    Column("id", String(ID), primary_key=True),
+    Column("invoice_id", String(ID), ForeignKey(invoices.c.id), nullable=False, index=True),
+    Column("gateway", String(16), nullable=False),
+    Column("gateway_link_id", String(128), nullable=False, unique=True),
+    Column("short_url", Text, nullable=False),
+    Column("status", String(16), nullable=False),
+    Column("created_at", DateTime(timezone=True), nullable=False),
+    Column("expires_at", DateTime(timezone=True), nullable=False),
 )
 
 credit_notes = Table(
@@ -362,6 +381,163 @@ class TransferResult(CamelModel):
     payment: Payment
 
 
+class PaymentLinkOut(CamelModel):
+    url: str
+    expires_at: UtcDateTime
+
+
+async def settle_invoice(
+    conn: Any,
+    *,
+    invoice_id: str,
+    account_id: str,
+    amount_minor: int,
+    currency: str,
+    method: str,
+    gateway: str,
+    gateway_ref: str,
+    payment_id: str,
+    lago_synced: bool = True,
+    now: datetime | None = None,
+) -> tuple[dict[str, Any], dict[str, Any]] | None:
+    """Marks an open/overdue invoice paid, records one succeeded payment, clears dunning, activates past-due subs."""
+    stamp = (now or datetime.now(UTC)).replace(microsecond=0)
+    paid = await conn.execute(
+        update(invoices)
+        .where(invoices.c.id == invoice_id, invoices.c.status.in_(["open", "overdue"]))
+        .values(status="paid", paid_at=stamp)
+    )
+    if paid.rowcount != 1:
+        return None
+    payment_row: dict[str, Any] = {
+        "id": payment_id,
+        "invoice_id": invoice_id,
+        "amount_minor": amount_minor,
+        "currency": currency,
+        "method": method,
+        "gateway": gateway,
+        "gateway_ref": gateway_ref,
+        "status": "succeeded",
+        "created_at": stamp,
+        "lago_synced": lago_synced,
+    }
+    await conn.execute(payments.insert().values(payment_row))
+    await conn.execute(
+        update(dunning_states)
+        .where(dunning_states.c.account_id == account_id)
+        .values(stage="none", overdue_minor=0, next_step_at=None)
+    )
+    await conn.execute(
+        update(subscriptions)
+        .where(subscriptions.c.account_id == account_id, subscriptions.c.status == "past_due")
+        .values(status="active")
+    )
+    inv_row = dict((await conn.execute(select(invoices).where(invoices.c.id == invoice_id))).mappings().one())
+    return inv_row, payment_row
+
+
+async def ensure_razorpay_link(
+    conn: Any, gateway: PaymentGateway, invoice_id: str, *, now: datetime | None = None
+) -> tuple[str, datetime]:
+    """Reuses a live Razorpay payment link for an open/overdue IN INR invoice, or creates and stores one."""
+    stamp = (now or datetime.now(UTC)).replace(microsecond=0)
+    row = (
+        await conn.execute(
+            select(
+                invoices.c.id,
+                invoices.c.account_id,
+                invoices.c.number,
+                invoices.c.status,
+                invoices.c.currency,
+                invoices.c.total_minor,
+                invoices.c.due_date,
+                accounts.c.country,
+            )
+            .join(accounts, accounts.c.id == invoices.c.account_id)
+            .where(invoices.c.id == invoice_id)
+        )
+    ).first()
+    if row is None:
+        raise ApiError(404, "not_found", "Invoice not found.")
+    if row.status not in ("open", "overdue") or str(row.currency).upper() != "INR" or str(row.country).upper() != "IN":
+        raise ApiError(409, "conflict", "Razorpay payment links apply only to open or overdue INR invoices in India.")
+    if int(row.total_minor) <= 0:
+        raise ApiError(409, "conflict", "Invoice total must be positive.")
+
+    existing = (
+        await conn.execute(
+            select(payment_links.c.short_url, payment_links.c.expires_at)
+            .where(
+                payment_links.c.invoice_id == invoice_id,
+                payment_links.c.gateway == "razorpay",
+                payment_links.c.status == "created",
+                payment_links.c.expires_at > stamp,
+            )
+            .order_by(payment_links.c.created_at.desc())
+            .limit(1)
+        )
+    ).first()
+    if existing is not None:
+        return str(existing.short_url), existing.expires_at
+
+    contact = (
+        await conn.execute(
+            select(account_contacts.c.name, account_contacts.c.work_email)
+            .where(account_contacts.c.account_id == row.account_id, account_contacts.c.kind == "billing")
+            .limit(1)
+        )
+    ).first()
+    due: date = row.due_date
+    due_end = datetime(due.year, due.month, due.day, 23, 59, 59, tzinfo=UTC)
+    expire_by = due_end if due_end > stamp + timedelta(minutes=20) else stamp + timedelta(days=7)
+    try:
+        link = await gateway.create_link(
+            PaymentLinkRequest(
+                invoice_id=str(row.id),
+                invoice_number=str(row.number),
+                amount_minor=int(row.total_minor),
+                currency="INR",
+                expire_by=expire_by,
+                customer_name=str(contact.name) if contact else None,
+                customer_email=str(contact.work_email) if contact else None,
+            )
+        )
+    except PaymentGatewayError as exc:
+        log.warning("payment link create invoice=%s outcome=gateway_error", invoice_id)
+        raise ApiError(502, "internal", "Payment gateway could not create a payment link.") from exc
+
+    await conn.execute(
+        payment_links.insert().values(
+            id=f"plk-{secrets.token_hex(8)}",
+            invoice_id=invoice_id,
+            gateway=link.gateway,
+            gateway_link_id=link.gateway_link_id,
+            short_url=link.short_url,
+            status=link.status,
+            created_at=stamp,
+            expires_at=link.expires_at.replace(microsecond=0),
+        )
+    )
+    log.info("payment link create invoice=%s link=%s outcome=created", invoice_id, link.gateway_link_id)
+    return link.short_url, link.expires_at.replace(microsecond=0)
+
+
+@router.post("/invoices/{invoice_id}/payment-link", response_model=PaymentLinkOut, response_model_by_alias=True)
+async def create_invoice_payment_link(
+    request: Request,
+    viewer: Annotated[Viewer, Depends(require("ctl.billing.manage"))],
+    invoice_id: str,
+) -> PaymentLinkOut:
+    """Creates or reuses a Razorpay payment link for an open/overdue INR invoice of an Indian account (D62)."""
+    await get_one(request, INVOICES, viewer, invoice_id)
+    gateway: PaymentGateway | None = getattr(request.app.state, "razorpay", None)
+    if gateway is None:
+        raise ApiError(409, "conflict", "Razorpay payment links are not enabled on this install.")
+    async with engine_of(request).begin() as conn:
+        url, expires_at = await ensure_razorpay_link(conn, gateway, invoice_id)
+    return PaymentLinkOut(url=url, expires_at=utc_text(expires_at))
+
+
 def _conflict() -> ApiError:
     return ApiError(409, "conflict", "That is no longer possible in its current state.")
 
@@ -407,41 +583,25 @@ async def record_transfer(
     assert isinstance(invoice, Invoice)
     if invoice.status not in ("open", "overdue"):
         raise _conflict()
-    now = datetime.now(UTC).replace(microsecond=0)
-    payment_row: dict[str, Any] = {
-        "id": "pay-manual-" + secrets.token_hex(6),
-        "invoice_id": invoice.id,
-        "amount_minor": invoice.total_minor,
-        "currency": invoice.currency,
-        "method": "bank_transfer",
-        "gateway": "manual",
-        "gateway_ref": body.reference,
-        "status": "succeeded",
-        "created_at": now,
-    }
     async with engine_of(request).begin() as conn:
-        paid = await conn.execute(
-            update(invoices)
-            .where(invoices.c.id == invoice.id, invoices.c.status.in_(["open", "overdue"]))
-            .values(status="paid", paid_at=now)
+        settled = await settle_invoice(
+            conn,
+            invoice_id=invoice.id,
+            account_id=invoice.account_id,
+            amount_minor=invoice.total_minor,
+            currency=invoice.currency,
+            method="bank_transfer",
+            gateway="manual",
+            gateway_ref=body.reference,
+            payment_id="pay-manual-" + secrets.token_hex(6),
+            lago_synced=True,
         )
-        if paid.rowcount != 1:
+        if settled is None:
             raise _conflict()
-        await conn.execute(payments.insert().values(payment_row))
-        await conn.execute(
-            update(dunning_states)
-            .where(dunning_states.c.account_id == invoice.account_id)
-            .values(stage="none", overdue_minor=0, next_step_at=None)
-        )
-        await conn.execute(
-            update(subscriptions)
-            .where(subscriptions.c.account_id == invoice.account_id, subscriptions.c.status == "past_due")
-            .values(status="active")
-        )
-        row = (await conn.execute(select(invoices).where(invoices.c.id == invoice.id))).mappings().one()
+        row, payment_row = settled
     return TransferResult(
-        invoice=Invoice.model_validate(from_db(invoices, row)),
-        payment=Payment.model_validate(from_db(payments, payment_row)),
+        invoice=Invoice.model_validate(INVOICES.parse(row).model_dump()),
+        payment=Payment.model_validate(PAYMENTS.parse(payment_row).model_dump()),
     )
 
 
