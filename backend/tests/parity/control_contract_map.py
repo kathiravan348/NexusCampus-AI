@@ -14,6 +14,7 @@ from nexus.control.accounts import (
     StaffDirectoryEntry,
 )
 from nexus.control.analytics import AccountHealth, BusinessMetrics
+from nexus.control.broker import BreakGlassCase, BrokerRequest, BrokerSession
 from nexus.control.commercial import (
     CatalogueItem,
     CreditNote,
@@ -77,4 +78,7 @@ CONTROL_CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "OffboardingJob": OffboardingJob,
     "ShredCertificate": ShredCertificate,
     "PortabilityJob": PortabilityJob,
+    "BrokerRequest": BrokerRequest,
+    "BrokerSession": BrokerSession,
+    "BreakGlassCase": BreakGlassCase,
 }

@@ -16,7 +16,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from nexus.control.staff import Permission, StaffRole, StaffUser, role_permissions, staff_users
 
 FIXTURES = Path(__file__).with_name("control_fixtures.json")
-FIXTURES_VERSION = 11
+FIXTURES_VERSION = 12
 
 
 class ControlFixtures(BaseModel):
@@ -74,6 +74,10 @@ class ControlFixtures(BaseModel):
     offboarding_jobs: list[dict[str, Any]] = []
     shred_certificates: list[dict[str, Any]] = []
     portability_jobs: list[dict[str, Any]] = []
+    #: P10 (NEX-125).
+    broker_requests: list[dict[str, Any]] = []
+    broker_sessions: list[dict[str, Any]] = []
+    break_glass_cases: list[dict[str, Any]] = []
 
 
 def load_fixtures(path: Path = FIXTURES) -> ControlFixtures:
@@ -143,4 +147,7 @@ def seed(conn: Connection, data: ControlFixtures | None = None) -> int:
 
     prov_keys = {"provisioning_jobs", "offboarding_jobs", "shred_certificates", "portability_jobs"}
     seed_provisioning(conn, fixtures.model_dump(include=prov_keys))
+    from nexus.control.broker import seed_rows as seed_broker
+
+    seed_broker(conn, fixtures.model_dump(include={"broker_requests", "broker_sessions", "break_glass_cases"}))
     return len(fixtures.staff)

@@ -170,7 +170,9 @@ Menu **Access requests** (super admin, support; site reliability and security of
   asked and the reason.
 - **Request access** (support): pick the institution, an optional ticket, the modules (the data vault itself can
   never be chosen), read or edit, 1–72 hours and a reason the institution will read, then **Send request**. The
-  institution's admin sees it under **Data vault & access** in their own app and approves or denies it.
+  institution's admin sees it under **Data vault & access** in their own app and approves or denies it. In real mode,
+  Control queues a signed command for the institution's cell and updates the request when the cell reports the
+  institution's decision back — Control never decides access itself.
 - **Sessions:** each approved, time-boxed session, who used it, its window and how many actions were recorded.
 - **Break-glass:** only for a legal order or a security incident, approved by two different people; the institution
   is told at once and later gets a report — **Report still owed to the institution** until it is delivered.
