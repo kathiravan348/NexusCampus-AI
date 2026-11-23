@@ -343,6 +343,9 @@ async def agent_health_check_in(
                 telemetry_enabled=True,
             )
         )
+        from nexus.control.releases import advance_completed_rollouts
+
+        await advance_completed_rollouts(conn, deployment_id)
 
     log.info("agent health check-in deployment=%s outcome=ok", deployment_id)
     return Response(status_code=204)

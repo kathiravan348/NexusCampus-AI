@@ -257,11 +257,11 @@ def test_control_app_cannot_write_releases_or_rollouts_and_db_blocks_unsigned_pu
             "INSERT INTO releases (id, version, channel, status, published_at, signed, offline_bundle, "
             "min_upgrade_from, migration_notes, notes_ai_drafted) VALUES "
             "('rel-x', '2.9.0', 'stable', 'draft', NULL, false, true, '2.4.0', '', false)",
-            "UPDATE releases SET status = 'withdrawn' WHERE id = 'rel-241'",
+            "UPDATE releases SET version = '9.9.9' WHERE id = 'rel-241'",
             "DELETE FROM releases WHERE id = 'rel-241'",
             "INSERT INTO rollouts (id, release_id, ring, deployment_ids, status, started_at) VALUES "
             "('rol-x', 'rel-241', 3, ARRAY['dep-in-1'], 'pending', NULL)",
-            "UPDATE rollouts SET status = 'done' WHERE id = 'rol-241-2'",
+            "UPDATE rollouts SET ring = 3 WHERE id = 'rol-241-2'",
             "DELETE FROM rollouts WHERE id = 'rol-241-2'",
         ):
             with pytest.raises(ProgrammingError), app_eng.begin() as conn:

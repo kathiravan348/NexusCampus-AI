@@ -164,11 +164,14 @@ Nexus Control (our cloud)                         Product deployments
   Installs report outbound to `POST /control/api/v1/agent/health` with their per-deployment bearer token (no staff
   cookie), strict PII-free payload ≤ 4 KB, max 1 report per 60 s; air-gapped deployments are refused (`403`). Server
   stamps `last_check_in_at` and derives `health` (`healthy` / `degraded`).
-- **Releases, rollouts & online update check (NEX-115):** `releases` and `rollouts` (read-only for `control_app`).
-  Installs query `GET /control/api/v1/agent/update` with the same per-deployment bearer token (max 1 per 60 s,
-  air-gapped `403`) and receive `{ release }` for the newest published, signed release on their channel with
-  `minUpgradeFrom` ≤ current version (pre-releases on `preview` only) whose `running` or `done` rollout includes that
-  deployment, or `{ release: null }`.
+- **Releases, rollouts & online update check (NEX-115, NEX-130):** `releases` and `rollouts` (`control_app` has SELECT
+  plus column-scoped UPDATE on `releases(status, signed, published_at)` and `rollouts(status, started_at)`). Staff
+  with `ctl.release.manage` publish a draft via `POST /releases/{id}/publish` only when its stored `signed_manifest`
+  verifies against OpenBao's `nexus-release` public keys for that version/channel (AI-drafted notes require
+  `notesReviewed: true`, else `422`), and start a pending ring via `POST /rollouts/{id}/start` (`running`) once earlier
+  rings are `done`. When `POST /agent/health` records check-ins and every deployment in a `running` ring reports the
+  release's version or newer, that ring transitions to `done` in the same transaction. Installs query
+  `GET /control/api/v1/agent/update` with their per-deployment bearer token (max 1 per 60 s, air-gapped `403`).
 - **Support desk (P09, NEX-122):** `tickets`, `ticket_replies`, `sla_policies`, and `kb_articles`. `control_app` has
   `SELECT` on all four, `INSERT` on `ticket_replies`, and column-scoped `UPDATE (status, assignee_staff_id, resolved_at)`
   on `tickets` (no deletes, no writes to SLA policies or articles). Partner viewers see only tickets for their managed
