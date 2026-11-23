@@ -389,6 +389,9 @@ async def retry_portability_job(job_id: str, request: Request, viewer: MoveManag
             )  # fmt: skip
             steps, status = _steps_with(list(row["steps"]), **{"import": "running", "verify": "pending"})
             updates = {"command_id": cmd_id}
+        elif failed_step == "verify" and not _dst_is_cell(direction):
+            # Staff reported a failed check on a self-hosted destination: they import again and confirm it again.
+            steps, status = _steps_with(list(row["steps"]), **{"import": "pending", "verify": "pending"})
         elif failed_step == "export_encrypted" and _src_is_cell(direction) and row["recipient_pem"]:
             cmd_id = await enqueue_command(
                 conn, vault, deployment_id=str(row["source_deployment_id"]), tenant_id=tid,

@@ -300,6 +300,18 @@ async def test_saas_to_self_hosted_and_back_with_staff_confirmations(
                 f"{API}/portability-jobs/{mov1}/confirm", json={"step": "transfer"}, headers={"X-Nexus-Staff": IMPL}
             )
         ).status_code == 200
+        # Staff reports a broken chain -> Verify fails; retry sends the job back to the import step (D63)
+        r_bad = await api.post(
+            f"{API}/portability-jobs/{mov1}/confirm",
+            json={"step": "import", "rows": 50, "chainOk": False, "checkpointOk": True},
+            headers={"X-Nexus-Staff": IMPL},
+        )
+        assert r_bad.status_code == 200 and r_bad.json()["status"] == "failed"
+        assert {s["name"]: s["status"] for s in r_bad.json()["steps"]}["verify"] == "failed"
+        r_retry = await api.post(f"{API}/portability-jobs/{mov1}/retry", headers={"X-Nexus-Staff": IMPL})
+        assert r_retry.status_code == 200
+        retried = {s["name"]: s["status"] for s in r_retry.json()["steps"]}
+        assert retried["import"] == "pending" and retried["verify"] == "pending"
         assert (
             await api.post(
                 f"{API}/portability-jobs/{mov1}/confirm",

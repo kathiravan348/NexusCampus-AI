@@ -2883,6 +2883,142 @@
     "message": "Destroy source keys",
     "description": "Move step: destroy the keys of the old copy so it can never be read (crypto-shred)."
   },
+  "p18.start": {
+    "message": "Start move",
+    "description": "Button that opens the start-move dialog."
+  },
+  "p18.tenant": {
+    "message": "Tenant {id}",
+    "description": "Shows the tenant id on a move card."
+  },
+  "p18.confirm": {
+    "message": "Confirm…",
+    "description": "Button that opens the dialog to confirm the current manual staff step of a move."
+  },
+  "p18.confirmStepLabel": {
+    "message": "Confirm {step} for {job}",
+    "description": "Accessible label of the confirm-step button."
+  },
+  "p18.confirmed": {
+    "message": "Move step confirmed",
+    "description": "Toast after confirming a manual move step."
+  },
+  "p18.confirmFailed": {
+    "message": "Could not confirm the move step. Try again.",
+    "description": "Toast and error message when confirming a move step fails."
+  },
+  "p18.retry": {
+    "message": "Retry",
+    "description": "Button: retry a failed portability move."
+  },
+  "p18.retryLabel": {
+    "message": "Retry move {job}",
+    "description": "Accessible label of the retry button on a failed move."
+  },
+  "p18.retried": {
+    "message": "Move retried",
+    "description": "Toast after retrying a failed move."
+  },
+  "p18.retryFailed": {
+    "message": "Could not retry the move. Try again.",
+    "description": "Toast and error message when retrying a move fails."
+  },
+  "p18.shredOnProvisioning": {
+    "message": "Two staff members approve the source's key destruction on the Provisioning page.",
+    "description": "Note shown on a move with a SaaS cell source during the destroy-source-keys step."
+  },
+  "p18.form.title": {
+    "message": "Start a tenant move",
+    "description": "Title of the start-move dialog."
+  },
+  "p18.form.frozenNotice": {
+    "message": "The institution is frozen while the move runs: everyone can still sign in and read data, but changes are not saved until switch-over finishes.",
+    "description": "Notice inside the start-move dialog explaining that the institution is frozen during a move."
+  },
+  "p18.form.direction": {
+    "message": "Direction",
+    "description": "Label of the move direction picker."
+  },
+  "p18.form.account": {
+    "message": "Account",
+    "description": "Label of the account picker in the start-move dialog."
+  },
+  "p18.form.tenant": {
+    "message": "Tenant",
+    "description": "Label of the tenant picker or field in the start-move dialog."
+  },
+  "p18.form.toRegion": {
+    "message": "Destination region",
+    "description": "Label of the destination region picker in the start-move dialog."
+  },
+  "p18.form.submit": {
+    "message": "Start move",
+    "description": "Submit button of the start-move dialog."
+  },
+  "p18.form.started": {
+    "message": "Move started",
+    "description": "Toast after a move is created."
+  },
+  "p18.form.failed": {
+    "message": "Move did not start. Check the regions and delivery model and try again.",
+    "description": "Toast and error message when starting a move fails."
+  },
+  "p18.form.noAccounts": {
+    "message": "No account is eligible for this move direction.",
+    "description": "Shown in the start-move dialog when no account matches the chosen direction."
+  },
+  "p18.confirm.title": {
+    "message": "Confirm {step}",
+    "description": "Title of the confirm-step dialog."
+  },
+  "p18.confirm.pem": {
+    "message": "Destination public key (PEM)",
+    "description": "Label of the textarea for the destination install's RSA public key."
+  },
+  "p18.confirm.pemHint": {
+    "message": "Paste the destination install's RSA public key (at least 3072 bits) from nexus-agent import-key.",
+    "description": "Help text under the destination public key textarea."
+  },
+  "p18.confirm.fileName": {
+    "message": "Export file name",
+    "description": "Label of the plain file name input when confirming an export from a self-hosted source."
+  },
+  "p18.confirm.rows": {
+    "message": "Row count",
+    "description": "Label of the exported or imported row count input."
+  },
+  "p18.confirm.transferReady": {
+    "message": "The file is in the destination's import folder",
+    "description": "Checkbox confirming the encrypted export file has been placed in the destination's import folder."
+  },
+  "p18.confirm.chainOk": {
+    "message": "Activity log hash chain verified",
+    "description": "Checkbox confirming the imported audit hash chain verified on the self-hosted destination."
+  },
+  "p18.confirm.checkpointOk": {
+    "message": "Signed checkpoint verified",
+    "description": "Checkbox confirming a fresh signed audit checkpoint was verified on the self-hosted destination."
+  },
+  "p18.confirm.checksNote": {
+    "message": "Leave a check unticked if it failed: the move stops at Verify and can be retried from the import.",
+    "description": "Hint under the two verification checkboxes of the import step; an unticked box reports a failed check."
+  },
+  "p18.confirm.cutoverWarning": {
+    "message": "Switching over points the account to the destination and cannot be undone.",
+    "description": "Warning shown in the switch-over confirmation dialog."
+  },
+  "p18.confirm.cutoverAck": {
+    "message": "I understand switching over cannot be undone",
+    "description": "Checkbox acknowledging the irreversible switch-over step."
+  },
+  "p18.confirm.sourceDeleted": {
+    "message": "Source copy deleted",
+    "description": "Checkbox confirming the old self-hosted source copy was deleted after switch-over."
+  },
+  "p18.confirm.submit": {
+    "message": "Confirm step",
+    "description": "Submit button of the confirm-step dialog."
+  },
   "ctl.signIn.sso": {
     "message": "Sign in with your work account",
     "description": "Button on the real sign-in page: goes to the staff sign-in service."

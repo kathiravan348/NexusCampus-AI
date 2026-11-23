@@ -20,6 +20,35 @@ export const PortabilityStepNameSchema = z.enum([
 ]);
 export type PortabilityStepName = z.infer<typeof PortabilityStepNameSchema>;
 
+/** Start a tenant move between delivery models or regions (P18, DM-8, D61). */
+export const PortabilityRequestSchema = z.strictObject({
+  accountId: IdSchema,
+  tenantId: IdSchema,
+  direction: PortabilityDirectionSchema,
+  toRegion: RegionSchema,
+});
+export type PortabilityRequest = z.infer<typeof PortabilityRequestSchema>;
+
+const PlainFileNameSchema = z
+  .string()
+  .trim()
+  .min(1)
+  .max(200)
+  .refine((n) => !n.includes("/") && !n.includes("\\") && n !== "." && n !== "..", {
+    message: "Must be a plain file name without path separators",
+  });
+
+/** Confirm a manual staff step on a portability move (P18, D61). */
+export const ConfirmMoveStepSchema = z.strictObject({
+  step: PortabilityStepNameSchema,
+  pem: z.string().trim().min(64).max(1900).optional(),
+  fileName: PlainFileNameSchema.optional(),
+  rows: z.int().min(1).optional(),
+  chainOk: z.boolean().optional(),
+  checkpointOk: z.boolean().optional(),
+});
+export type ConfirmMoveStep = z.infer<typeof ConfirmMoveStepSchema>;
+
 /**
  * Moving a tenant between delivery models or regions (P18, DM-8, G-5). The export is always encrypted with the
  * tenant's keys; we orchestrate it without reading it (V-4).
