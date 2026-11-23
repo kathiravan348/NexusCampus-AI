@@ -112,4 +112,5 @@ All runs executed on this host and torn down (`docker compose ... down -v` and t
 | A clear "institution is frozen" message in the campus app (`423 tenant_frozen` banner) | **NEX-140** | Done 2026-11-23 (live: banner after sign-in on a frozen tenant) |
 | Nexus Control buttons for job retry, offboarding, the two key-destruction approvals and move confirmations | **NEX-141**, **NEX-142** | Done 2026-11-23 (live: full offboarding and two moves in the app; review fixed a stuck retry after a failed **Verify** on a self-hosted destination) |
 | One open offboarding or move per tenant: Control accepted a second job for a tenant with one running (found in the NEX-141 live check) | **NEX-143** | Done 2026-11-23 (live: a move for a tenant being offboarded is refused with a clear message) |
+| Review / Approve / Discard a support diagnostic bundle on **Install & updates** (API-only since NEX-112) | **NEX-144** | Planned (Owner, release review, D69) — before release |
 | Production KMS auto-unseal for OpenBao & external penetration test | **Owner** / Ops | Documented in `deploy/compose/README.md`, `deploy/control/README.md`, and `docs/review/STAGE-2-SECURITY.md` |

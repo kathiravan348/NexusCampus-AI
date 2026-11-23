@@ -21,9 +21,8 @@
 - [ ] Read [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md) (what was built and tested, timings, open items) and
       [`STAGE-2-SECURITY.md`](STAGE-2-SECURITY.md).
 - [ ] Confirm or change the decisions in section 2 (made while you were away; each can be undone).
-- [ ] Decide on the one gap left on a frozen screen: admins can review, approve or discard a support diagnostic
-      bundle only through the API (NEX-112). Either OK a small task for the **Review / Approve / Discard** buttons on
-      **Install & updates** before the release, or let it wait for Stage 3.
+- [x] The one gap left on a frozen screen: you chose to add **Review / Approve / Discard** for a support diagnostic
+      bundle on **Install & updates** before the release (2026-11-23, D69) → NEX-144.
 - [ ] Decide which of sections 4 and 5 must be done before the release, and which can wait (none blocks the
       software itself: they are prices, live payment keys, a Kubernetes test, trust-page facts, the deck contact line,
       the Hindi / Tamil check, and production unseal / penetration test).
