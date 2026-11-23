@@ -1,6 +1,7 @@
-"""Keycloak admin client (D44) for user lifecycle: invite (create user + join the tenant's organization) and
-enable/disable. Authenticates as the `nexus-backend` service account (client credentials); its secret comes
-only from settings (`.env` / Vault later). Tests replace it with `FakeKeycloakAdmin`.
+"""Keycloak admin client (D44) for user and organization lifecycle: ensure_organization, invite, enable/disable.
+
+Authenticates as the `nexus-backend` service account (client credentials); its secret comes only from settings
+(`.env` / Vault). Tests replace it with `FakeKeycloakAdmin`.
 """
 
 from typing import Any, Protocol
@@ -12,6 +13,8 @@ from nexus.settings import Settings
 
 
 class KeycloakAdmin(Protocol):
+    async def ensure_organization(self, *, tenant_id: str, name: str, domain: str) -> str: ...
+
     async def invite(self, *, tenant_id: str, email: str, legal_name: str) -> str: ...
 
     async def set_enabled(self, *, email: str, enabled: bool) -> None: ...
@@ -48,6 +51,39 @@ class HttpKeycloakAdmin:
         found = res.json() if res.status_code == 200 else []
         return str(found[0]["id"]) if found else None
 
+    async def _org_id(self, headers: dict[str, str], tenant_id: str) -> str | None:
+        orgs = await self._http.get(f"{self._admin}/organizations", params={"max": 500}, headers=headers)
+        if orgs.status_code != 200:
+            return None
+        org = next((o for o in orgs.json() if o.get("alias") == tenant_id), None)
+        return str(org["id"]) if org is not None else None
+
+    async def ensure_organization(self, *, tenant_id: str, name: str, domain: str) -> str:
+        """Creates the tenant's Keycloak organization if missing (idempotent by `alias = tenant_id`)."""
+        try:
+            headers = await self._headers()
+            existing = await self._org_id(headers, tenant_id)
+            if existing is not None:
+                return existing
+            res = await self._http.post(
+                f"{self._admin}/organizations",
+                headers=headers,
+                json={
+                    "name": name,
+                    "alias": tenant_id,
+                    "enabled": True,
+                    "domains": [{"name": domain, "verified": True}],
+                },
+            )
+            if res.status_code not in (201, 409):
+                raise ApiError(503, "internal", "The sign-in service could not create the organization.")
+            created = await self._org_id(headers, tenant_id)
+            if created is None:
+                raise ApiError(503, "internal", "The sign-in service could not locate the organization.")
+            return created
+        except httpx2.HTTPError as exc:
+            raise ApiError(503, "internal", "The sign-in service is not reachable.") from exc
+
     async def invite(self, *, tenant_id: str, email: str, legal_name: str) -> str:
         try:
             headers = await self._headers()
@@ -68,15 +104,10 @@ class HttpKeycloakAdmin:
             if res.status_code not in (201, 409):
                 raise ApiError(503, "internal", "The sign-in service could not create the account.")
             kc_id = await self._user_id(headers, email)
-            orgs = await self._http.get(f"{self._admin}/organizations", params={"search": tenant_id}, headers=headers)
-            org = (
-                next((o for o in orgs.json() if o.get("alias") == tenant_id), None) if orgs.status_code == 200 else None
-            )
-            if kc_id is None or org is None:
+            org_id = await self._org_id(headers, tenant_id)
+            if kc_id is None or org_id is None:
                 raise ApiError(503, "internal", "The sign-in service could not link the account.")
-            member = await self._http.post(
-                f"{self._admin}/organizations/{org['id']}/members", headers=headers, json=kc_id
-            )
+            member = await self._http.post(f"{self._admin}/organizations/{org_id}/members", headers=headers, json=kc_id)
             if member.status_code not in (201, 204, 409):
                 raise ApiError(503, "internal", "The sign-in service could not link the account.")
             return kc_id
@@ -88,7 +119,7 @@ class HttpKeycloakAdmin:
             headers = await self._headers()
             kc_id = await self._user_id(headers, email)
             if kc_id is None:
-                return  # never signed up in Keycloak: nothing to switch
+                return
             res = await self._http.put(f"{self._admin}/users/{kc_id}", headers=headers, json={"enabled": enabled})
             if res.status_code not in (200, 204):
                 raise ApiError(503, "internal", "The sign-in service could not update the account.")
@@ -96,10 +127,7 @@ class HttpKeycloakAdmin:
             raise ApiError(503, "internal", "The sign-in service is not reachable.") from exc
 
     async def upsert_identity_provider(self, *, tenant_id: str, provider: dict[str, Any]) -> None:
-        """Identity provider `<tenant>-<provider id>`, linked to the tenant's organization by email domain.
-
-        No client secret is sent (it lives in the vault, NEX-050): the Keycloak copy stays disabled until then.
-        """
+        """Identity provider `<tenant>-<provider id>`, linked to the tenant's organization by email domain."""
         alias = f"{tenant_id}-{provider['id']}"
         config: dict[str, str] = {
             "clientId": provider["clientId"],
@@ -126,13 +154,10 @@ class HttpKeycloakAdmin:
                 )
             if res.status_code not in (200, 201, 204):
                 raise ApiError(503, "internal", "The sign-in service could not save the provider.")
-            orgs = await self._http.get(f"{self._admin}/organizations", params={"search": tenant_id}, headers=headers)
-            org = (
-                next((o for o in orgs.json() if o.get("alias") == tenant_id), None) if orgs.status_code == 200 else None
-            )
-            if org is not None:
+            org_id = await self._org_id(headers, tenant_id)
+            if org_id is not None:
                 await self._http.post(
-                    f"{self._admin}/organizations/{org['id']}/identity-providers", headers=headers, json=alias
+                    f"{self._admin}/organizations/{org_id}/identity-providers", headers=headers, json=alias
                 )
         except httpx2.HTTPError as exc:
             raise ApiError(503, "internal", "The sign-in service is not reachable.") from exc
@@ -142,10 +167,17 @@ class FakeKeycloakAdmin:
     """In-memory stand-in for tests: records calls; `fail = True` simulates an outage."""
 
     def __init__(self) -> None:
+        self.organizations: dict[str, dict[str, Any]] = {}
         self.invited: list[tuple[str, str]] = []
         self.enabled: dict[str, bool] = {}
         self.providers: dict[str, dict[str, Any]] = {}
         self.fail = False
+
+    async def ensure_organization(self, *, tenant_id: str, name: str, domain: str) -> str:
+        if self.fail:
+            raise ApiError(503, "internal", "The sign-in service is not reachable.")
+        self.organizations.setdefault(tenant_id, {"name": name, "domain": domain})
+        return f"org-{tenant_id}"
 
     async def invite(self, *, tenant_id: str, email: str, legal_name: str) -> str:
         if self.fail:

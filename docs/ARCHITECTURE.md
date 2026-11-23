@@ -151,8 +151,13 @@ Nexus Control (our cloud)                         Product deployments
   `..`, absolute paths, missing / extra / changed files). Image signatures with cosign can be added later.
 - **Same images everywhere.** A deployment differs only by configuration, licence/entitlements and installed
   extensions. Customer-specific work = extension packages (P08), never a fork of the core.
-- **Provisioning (SaaS):** P04 creates the tenant in the chosen region cell, its keys in the vault, and the type
-  profile; Nexus Control keeps only the tenant id, region, plan and counts.
+- **Provisioning (SaaS, NEX-127):** P04 queues a signed `tenant.provision` command (`nexus-command/1`) for the chosen
+  region cell. The cell's agent (`nexus.provisioning.tenant.provision_tenant`, SaaS-only; self-hosted installs reject
+  it) runs five idempotent steps — `create_tenant` (`tenants` + first `institutions`), `create_keys` (OpenBao
+  `tenant_data` key), `apply_profile` (`tenant_plans` + `entitlements`), `seed` (system roles + default AI-off
+  settings, no people), and `invite_owner` (Keycloak organization + owner invite) — recording one system M06 audit
+  event per step and reporting `{ tenantId, stepsDone, failedStep?, reason? }` without logging owner PII. Nexus Control
+  keeps only the tenant id, region, plan and counts.
 - **Licences (self-hosted):** P05 signs a licence file (Ed25519). M84 verifies it offline; expiry → grace period →
   read-only mode, never data loss.
 - **Updates:** P07 publishes signed images and offline bundles; installs pull them; database migrations are

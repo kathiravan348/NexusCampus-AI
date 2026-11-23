@@ -71,7 +71,7 @@
 | NEX-124 | Control on real data: P12 deals and commissions, P16 analytics (reads) | D | done | Gemini | 123 |
 | NEX-125 | Control on real data: P10 access broker, Control side — a staff request becomes a signed D60 command | D | ready-for-review | Gemini | 129, 130 |
 | NEX-126 | Control on real data: P14 trust (sub-processors, certifications, security incidents, DPAs) | D | done | Gemini | 124 |
-| NEX-127 | P04 provisioning for real, cell side: the agent creates a new institution from a signed command | D | planned | — | 131 |
+| NEX-127 | P04 provisioning for real, cell side: the agent creates a new institution from a signed command | D | ready-for-review | Gemini | 131 |
 | NEX-128 | Control → deployment commands, Control side (D60): signed pull-only commands, `ping` only | D | ready-for-review | Gemini | 121 |
 | NEX-129 | Control → deployment commands, agent side (D60): fetch, verify, run once, report; `ping` only | D | ready-for-review | Gemini | 128 |
 | NEX-130 | Control: P07 release publishing (signed manifest required) and rollout start on real data | D | ready-for-review | Gemini | 128 |
