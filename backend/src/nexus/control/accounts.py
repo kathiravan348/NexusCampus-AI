@@ -6,10 +6,10 @@ Every list takes the page envelope (D15) and the mock's filters; partner users s
 
 import secrets
 from datetime import UTC, datetime
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import Field, StringConstraints
+from pydantic import Field, StringConstraints, model_validator
 from sqlalchemy import (
     ARRAY,
     BigInteger,
@@ -194,6 +194,12 @@ class Commission(_Camel):
     status: Literal["pending", "payable", "paid"]
     paid_at: UtcDateTime | None
 
+    @model_validator(mode="after")
+    def _paid_at_matches_status(self) -> Self:
+        if (self.status == "paid") != (self.paid_at is not None):
+            raise ValueError("paidAt must be set iff status is paid")
+        return self
+
 
 class Account(_Camel):
     id: Id
@@ -243,6 +249,14 @@ class Contract(_Camel):
     currency: CurrencyCode
     sla_tier: Literal["standard", "priority", "enterprise"]
     status: Literal["draft", "active", "ended"]
+
+    @model_validator(mode="after")
+    def _contract_dates(self) -> Self:
+        if (self.kind == "licence_perpetual") != (self.end_date is None):
+            raise ValueError("only a perpetual licence has no endDate")
+        if self.end_date is not None and self.end_date < self.start_date:
+            raise ValueError("endDate must not precede startDate")
+        return self
 
 
 class AccountNote(_Camel):

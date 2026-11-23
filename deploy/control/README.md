@@ -33,10 +33,12 @@ powershell -File deploy/control/scripts/install.ps1 -Demo  # with demo fixtures 
 The script is idempotent:
 1. Copies `.env.example` → `.env` (git-ignored) and generates every missing random secret without printing any secret.
 2. Builds `nexuscampus-api` (unless `NEXUS_IMAGE_API` points to a released digest) and starts infrastructure.
-3. Initialises OpenBao once (saving the unseal key and root token to git-ignored `deploy/control/.env.vault-init.json`),
-   unseals it, creates non-exportable Ed25519 Transit keys `nexus-licence` and `nexus-release`, and issues a least-privilege
-   app token (`NEXUS_VAULT_TOKEN`: create, read, sign and verify those two keys only; it can never delete,
-   reconfigure, rotate or export them — rotation uses the root token, below).
+3. Initialises OpenBao once (saving the unseal key to git-ignored `deploy/control/.env.vault-init.json`),
+   unseals it, creates non-exportable Ed25519 Transit keys (`nexus-licence`, `nexus-release`, `nexus-command`,
+   `nexus-shred`), issues a least-privilege app token (`NEXUS_VAULT_TOKEN`: create, read, sign and verify those four
+   keys only; `transit/export/*` denied), and **revokes the OpenBao root token immediately after setup** (stripping
+   `root_token` from `.env.vault-init.json`). Re-running the install script unseals OpenBao and renews `NEXUS_VAULT_TOKEN`
+   without needing a root token.
 4. Syncs Lago's organization HMAC key into `NEXUS_CONTROL_LAGO_WEBHOOK_KEY` and registers the HMAC webhook endpoint
    (`http://control-api:8100/control/api/v1/billing/lago-webhook`) inside the stack.
 5. Runs `control-migrate` (forward-only migrations; demo fixtures + demo Keycloak staff users only when `NEXUS_CONTROL_DEMO=1`).
@@ -90,11 +92,12 @@ Store backups encrypted off-host alongside `.env` and `.env.vault-init.json`.
 ## Keys and rotation
 
 - **Where keys live:**
-  - `nexus-licence` and `nexus-release` (Ed25519, `exportable=false`) live only inside OpenBao (`control-openbao-data` volume).
-  - OpenBao's unseal key and root token live in `deploy/control/.env.vault-init.json` (git-ignored; move to an offline vault / KMS auto-unseal in production).
-  - Database passwords, OIDC client secret, OpenBao app token, Lago API key, and Lago HMAC webhook key live in `deploy/control/.env` (git-ignored).
-- **Rotation:**
-  - **Licence / release signing keys:** `docker compose ... exec -T -e BAO_TOKEN=<root> openbao bao write -f transit/keys/nexus-licence/rotate` (or `nexus-release/rotate`); old public key versions remain available so existing signed licences and release manifests still verify offline.
+  - `nexus-licence`, `nexus-release`, `nexus-command`, and `nexus-shred` (Ed25519, `exportable=false`) live only inside OpenBao (`control-openbao-data` volume).
+  - OpenBao's unseal key lives in `deploy/control/.env.vault-init.json` (git-ignored; move to an offline vault / KMS auto-unseal in production). The initial root token is revoked immediately after install.
+  - Database passwords, OIDC client secret, OpenBao app token, Lago API key, Lago HMAC webhook key, and Razorpay keys live in `deploy/control/.env` (git-ignored).
+- **Rotation (regenerating a temporary root token):**
+  - **Temporary root token:** generate one from the unseal key only when rotating signing keys or rewriting policy (`docker compose -f deploy/control/compose.yaml --env-file deploy/control/.env exec openbao bao operator generate-root -init`, follow the OTP/unseal prompt), perform the rotation, and immediately revoke it (`bao token revoke -self`).
+  - **Licence / release / command / shred signing keys:** with the temporary root token, run `bao write -f transit/keys/<key>/rotate`; old public key versions remain available so existing signed artefacts still verify offline.
   - **OpenBao app token (`NEXUS_VAULT_TOKEN`):** re-running `install.sh` / `install.ps1` renews it automatically (or creates a fresh Transit-only token if expired).
   - **OIDC client secret / DB passwords / Lago webhook HMAC key:** update the secret in the target service (Keycloak / PostgreSQL / Lago `organizations.hmac_key`), update the matching variable in `deploy/control/.env`, and recreate `control-api` (`docker compose -f deploy/control/compose.yaml --env-file deploy/control/.env up -d --wait control-api`).
 

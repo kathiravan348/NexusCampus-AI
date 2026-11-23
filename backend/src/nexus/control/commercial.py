@@ -8,10 +8,10 @@ payments carry a reference, never card or bank details. Billing never deletes da
 import logging
 import secrets
 from datetime import UTC, date, datetime, timedelta
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 from sqlalchemy import (
     ARRAY,
     BigInteger,
@@ -237,6 +237,12 @@ class Quote(CamelModel):
     created_by_staff_id: Id
     created_at: UtcDateTime
 
+    @model_validator(mode="after")
+    def _quote_totals(self) -> Self:
+        if self.total_minor != self.subtotal_minor + self.tax_minor:
+            raise ValueError("totalMinor must equal subtotalMinor + taxMinor")
+        return self
+
 
 class Subscription(CamelModel):
     id: Id
@@ -250,6 +256,12 @@ class Subscription(CamelModel):
     current_period_start: IsoDate
     current_period_end: IsoDate
     trial_ends_at: IsoDate | None
+
+    @model_validator(mode="after")
+    def _trial_end_matches_status(self) -> Self:
+        if (self.status == "trialing") != (self.trial_ends_at is not None):
+            raise ValueError("trialEndsAt must be set iff status is trialing")
+        return self
 
 
 class InvoiceLine(CamelModel):
@@ -274,6 +286,16 @@ class Invoice(CamelModel):
     total_minor: int
     paid_at: UtcDateTime | None
 
+    @model_validator(mode="after")
+    def _invoice_rules(self) -> Self:
+        if self.total_minor != self.subtotal_minor + self.tax_minor:
+            raise ValueError("totalMinor must equal subtotalMinor + taxMinor")
+        if (self.status == "paid") != (self.paid_at is not None):
+            raise ValueError("paidAt must be set iff status is paid")
+        if self.due_date < self.issue_date:
+            raise ValueError("dueDate must not precede issueDate")
+        return self
+
 
 class Payment(CamelModel):
     id: Id
@@ -285,6 +307,12 @@ class Payment(CamelModel):
     gateway_ref: Annotated[str, StringConstraints(min_length=1, max_length=128)] | None
     status: Literal["pending", "succeeded", "failed", "refunded"]
     created_at: UtcDateTime
+
+    @model_validator(mode="after")
+    def _gateway_ref_required(self) -> Self:
+        if self.gateway != "manual" and self.gateway_ref is None:
+            raise ValueError("non-manual payment must carry gatewayRef")
+        return self
 
 
 class CreditNote(CamelModel):
@@ -315,6 +343,14 @@ class UsageRecord(CamelModel):
     period_end: UtcDateTime
     quantity: Annotated[int, Field(ge=0)]
     cap: Annotated[int, Field(ge=0)] | None
+
+    @model_validator(mode="after")
+    def _usage_rules(self) -> Self:
+        if self.deployment_id is None and self.tenant_id is None:
+            raise ValueError("a usage record belongs to a tenant or a deployment")
+        if self.period_end <= self.period_start:
+            raise ValueError("periodEnd must be after periodStart")
+        return self
 
 
 #: Seed order (foreign keys): fixture key, table, model, primary key column.

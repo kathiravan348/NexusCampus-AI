@@ -52,26 +52,42 @@ if ((Get-VaultState) -notmatch '"initialized":\s*true') {
 if (-not (Test-Path .secrets/vault-init.json)) { throw "Vault is initialised but .secrets/vault-init.json is missing: restore it from your backup." }
 $keys = Get-Content .secrets/vault-init.json -Raw | ConvertFrom-Json
 if ((Get-VaultState) -notmatch '"sealed":\s*false') { Invoke-Dc exec -T vault bao operator unseal $keys.unseal_keys_b64[0] | Out-Null }
-function Invoke-RootVault { & docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$($keys.root_token)" vault bao @args }
-if (-not ((Invoke-RootVault secrets list) -match '^transit/')) { Invoke-RootVault secrets enable transit | Out-Null }
-$policy = @(
-  'path "transit/*" { capabilities = ["create", "read", "update", "delete", "list"] }',
-  'path "auth/token/renew-self" { capabilities = ["update"] }',
-  'path "auth/token/lookup-self" { capabilities = ["read"] }'
-) -join "`n"
-# Passed base64-encoded, not piped: Windows PowerShell adds a byte-order mark to piped text, which OpenBao rejects.
-$policyB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($policy))
-& docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$($keys.root_token)" vault sh -c "echo $policyB64 | base64 -d | bao policy write nexus-app -" | Out-Null
-if ($LASTEXITCODE -ne 0) { throw "bao policy write failed" }
+$rootTok = if ($env:NEXUS_VAULT_ROOT_TOKEN) { $env:NEXUS_VAULT_ROOT_TOKEN } elseif ($keys.PSObject.Properties["root_token"]) { [string]$keys.root_token } else { "" }
 $renewed = $false
 if ($env:NEXUS_VAULT_TOKEN) {
   & docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$env:NEXUS_VAULT_TOKEN" vault bao token renew 2>$null | Out-Null
   $renewed = ($LASTEXITCODE -eq 0)
 }
-if (-not $renewed) {
-  $token = (Invoke-RootVault token create -policy=nexus-app -no-default-policy -orphan -period=768h -field=token) -join ""
-  Set-EnvValue NEXUS_VAULT_TOKEN $token
-  $env:NEXUS_VAULT_TOKEN = $token
+if (-not $renewed -or $rootTok) {
+  if (-not $rootTok) { throw "OpenBao app token expired and root token was revoked: regenerate one with 'bao operator generate-root' and set NEXUS_VAULT_ROOT_TOKEN." }
+  function Invoke-RootVault { & docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$rootTok" vault bao @args }
+  if (-not ((Invoke-RootVault secrets list) -match '^transit/')) { Invoke-RootVault secrets enable transit | Out-Null }
+  # Key custody (NEX-110, V-2): deny transit/export/* explicitly; allow only what encryption, signing, backup,
+  # import/export wrapping, and crypto-shred need.
+  $policy = @(
+    'path "transit/export/*" { capabilities = ["deny"] }',
+    'path "transit/keys/*" { capabilities = ["create", "read", "update", "delete", "list"] }',
+    'path "transit/datakey/plaintext/*" { capabilities = ["update"] }',
+    'path "transit/encrypt/*" { capabilities = ["update"] }',
+    'path "transit/decrypt/*" { capabilities = ["update"] }',
+    'path "transit/sign/*" { capabilities = ["update"] }',
+    'path "transit/verify/*" { capabilities = ["update"] }',
+    'path "auth/token/renew-self" { capabilities = ["update"] }',
+    'path "auth/token/lookup-self" { capabilities = ["read"] }'
+  ) -join "`n"
+  # Passed base64-encoded, not piped: Windows PowerShell adds a byte-order mark to piped text, which OpenBao rejects.
+  $policyB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($policy))
+  & docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$rootTok" vault sh -c "echo $policyB64 | base64 -d | bao policy write nexus-app -" | Out-Null
+  if ($LASTEXITCODE -ne 0) { throw "bao policy write failed" }
+  if (-not $renewed) {
+    $token = (Invoke-RootVault token create -policy=nexus-app -no-default-policy -orphan -period=768h -field=token) -join ""
+    Set-EnvValue NEXUS_VAULT_TOKEN $token
+    $env:NEXUS_VAULT_TOKEN = $token
+  }
+  # Revoke the OpenBao root token once setup is complete and strip it from disk (NEX-110).
+  & docker compose -f compose.yaml exec -T -e "BAO_TOKEN=$rootTok" vault bao token revoke -self 2>$null | Out-Null
+  $slim = @{ unseal_keys_b64 = @($keys.unseal_keys_b64[0]) } | ConvertTo-Json -Compress
+  [System.IO.File]::WriteAllText((Join-Path (Get-Location) ".secrets/vault-init.json"), $slim + "`n")
 }
 
 # 5. Database: forward-only migrations; demo data when asked.

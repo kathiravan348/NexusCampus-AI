@@ -237,6 +237,13 @@ Nexus Control (our cloud)                         Product deployments
   amount/currency (`422` on mismatch), settles the invoice via the helper shared with `record_transfer`, and calls
   `BillingEngine.mark_paid(lago_invoice_id)` after commit (leaving `lago_synced = false` for `billing_sync` to retry
   on failure). No card or UPI details ever reach NexusCampus.
+- **Stage 2 hardening (NEX-110, V-1–V-7):** Control staff cookies carry `HttpOnly`, `Secure` (prod), `SameSite=Strict`,
+  `Path=/control`; every browser write checks `Origin` against `NEXUS_CONTROL_APP_PUBLIC_URL` (`403` otherwise); every
+  response sets `Content-Security-Policy: default-src 'none'; frame-ancestors 'none'`, `X-Content-Type-Options: nosniff`,
+  `Referrer-Policy: no-referrer`, and `Strict-Transport-Security` (prod). Both `deploy/compose` and `deploy/control`
+  OpenBao policies explicitly deny `transit/export/*` and revoke the root token right after install (regenerated from
+  the unseal key only when needed). Automated V-tests live in `tests/security/test_control_no_access.py` and
+  `tests/security/test_command_channel.py`; summary in `docs/review/STAGE-2-SECURITY.md`.
 - **Pull-only signed deployment commands (D60, NEX-128):** Control never connects to a deployment. `deployment_commands`
   holds canonical `nexus-command/1` payloads signed in OpenBao Transit (`nexus-command`, Ed25519, never exported,
   `args` ≤ 2 KB, lifetime ≤ 24 h). `control_app` has `SELECT` and column-scoped `UPDATE (status, delivered_at,

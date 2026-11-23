@@ -54,7 +54,7 @@
 | NEX-107 | Payments (D62): Razorpay payment links for Indian invoices; signed webhook marks them paid | D | ready-for-review | Gemini | 136 |
 | NEX-108 | Packaging: Nexus Control as a Compose stack (control backend, staff realm, billing), images we already have | D | done | Gemini | 111 |
 | NEX-109 | ~~Remaining Control screens switched to real data~~ — split into NEX-121–127, 130–136 (parity in NEX-116) | D | withdrawn | — | — |
-| NEX-110 | Harden Stage 2, security: no-access tests for Control, agent and commands; key custody; request safety | — | planned | — | 136, 107 |
+| NEX-110 | Harden Stage 2, security: no-access tests for Control, agent and commands; key custody; request safety | — | ready-for-review | Gemini | 136, 107 |
 | NEX-111 | Lago sync part 2: signed invoice webhooks into Control, and cancellations (part 1: NEX-118; D51) | D | done | Gemini | 118 |
 | NEX-112 | M84 encrypted backups and support diagnostic bundles (personal data removed, admin approves before sending) | D | done | Claude | 105 |
 | NEX-113 | Control: P06 fleet on real data and the agent health check-in endpoint (per-deployment agent token) | D | done | Gemini | 103 |

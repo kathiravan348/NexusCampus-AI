@@ -72,11 +72,18 @@ def test_mfa_sign_in_creates_a_session_and_sign_out_revokes_it(control: TestClie
     assert res.headers["location"] == "https://control.test/accounts"
     cookie = res.headers["set-cookie"]
     assert SESSION_COOKIE in cookie and "HttpOnly" in cookie and "Path=/control" in cookie and "Secure" in cookie
+    assert "SameSite=strict" in cookie.lower() or "samesite=strict" in cookie.lower()
     token = res.cookies[SESSION_COOKIE]
     me = control.get(f"{API}/me", cookies={SESSION_COOKIE: token})
     assert me.status_code == 200
     assert me.json()["staff"]["displayName"] == "Nisha Verma"
-    assert control.post(f"{API}/auth/logout", cookies={SESSION_COOKIE: token}).status_code == 200
+    assert control.post(f"{API}/auth/logout", cookies={SESSION_COOKIE: token}).status_code == 403
+    assert (
+        control.post(
+            f"{API}/auth/logout", cookies={SESSION_COOKIE: token}, headers={"Origin": "https://control.test"}
+        ).status_code
+        == 200
+    )
     assert control.get(f"{API}/me", cookies={SESSION_COOKIE: token}).status_code == 401
 
 

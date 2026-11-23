@@ -8,10 +8,10 @@ for the tenant's deployment. The institution decides in M83 and its agent report
 import logging
 import secrets
 from datetime import UTC, datetime, timedelta
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, model_validator
 from sqlalchemy import ARRAY, Boolean, Column, DateTime, ForeignKey, Integer, String, Table, Text, select, update
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
@@ -93,6 +93,16 @@ class BrokerRequest(CamelModel):
     requested_at: UtcDateTime
     decided_at: UtcDateTime | None
 
+    @model_validator(mode="after")
+    def _broker_rules(self) -> Self:
+        if "M83" in self.modules:
+            raise ValueError("M83 cannot be in access broker scope")
+        if len(set(self.modules)) != len(self.modules):
+            raise ValueError("modules must be unique")
+        if (self.status == "pending") != (self.decided_at is None):
+            raise ValueError("decidedAt must be null iff status is pending")
+        return self
+
 
 class BrokerSession(CamelModel):
     id: Id
@@ -117,6 +127,12 @@ class BreakGlassCase(CamelModel):
     institution_notified_at: UtcDateTime
     closed_at: UtcDateTime | None
     report_delivered_at: UtcDateTime | None
+
+    @model_validator(mode="after")
+    def _two_approvers(self) -> Self:
+        if self.approver_staff_ids[0] == self.approver_staff_ids[1]:
+            raise ValueError("break-glass requires two distinct approvers")
+        return self
 
 
 class NewBrokerRequestInput(BaseModel):

@@ -37,7 +37,7 @@ def test_control_backend_model_matches_the_contract(contract: dict[str, Any]) ->
     model = CONTROL_CONTRACT_MODELS[contract["contract"]]
     drift = []
     for case in contract["samples"]:
-        expected = case["valid"] or case["shapeValid"]
+        expected = case["valid"]
         if accepts(model, case["sample"]) != expected:
             drift.append(("accepts" if expected is False else "rejects", case["sample"]))
     assert drift == [], (

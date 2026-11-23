@@ -5,10 +5,10 @@ by `account_id`, while `sub-processors`, `certifications`, and `incidents` have 
 rows. Never log incident titles (V-6).
 """
 
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter
-from pydantic import StringConstraints
+from pydantic import StringConstraints, model_validator
 from sqlalchemy import ARRAY, Boolean, CheckConstraint, Column, Date, DateTime, ForeignKey, String, Table, Text
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
@@ -104,6 +104,12 @@ class Certification(CamelModel):
     status: Literal["planned", "in_audit", "certified", "lapsed"]
     valid_until: IsoDate | None
 
+    @model_validator(mode="after")
+    def _valid_until_matches_status(self) -> Self:
+        if (self.status == "certified") != (self.valid_until is not None):
+            raise ValueError("validUntil must be set iff status is certified")
+        return self
+
 
 class SecurityIncident(CamelModel):
     id: Id
@@ -116,6 +122,18 @@ class SecurityIncident(CamelModel):
     breach_notification_due_at: UtcDateTime | None
     notified_at: UtcDateTime | None
     report_ai_drafted: bool
+
+    @model_validator(mode="after")
+    def _incident_rules(self) -> Self:
+        if len(set(self.affected_account_ids)) != len(self.affected_account_ids):
+            raise ValueError("affectedAccountIds must be unique")
+        if self.personal_data_affected != (self.breach_notification_due_at is not None):
+            raise ValueError("breachNotificationDueAt must be set iff personalDataAffected")
+        if self.breach_notification_due_at is not None and self.breach_notification_due_at < self.detected_at:
+            raise ValueError("breachNotificationDueAt must not precede detectedAt")
+        if self.notified_at is not None and not self.personal_data_affected:
+            raise ValueError("notifiedAt may only be set when personalDataAffected")
+        return self
 
 
 class DpaRecord(CamelModel):

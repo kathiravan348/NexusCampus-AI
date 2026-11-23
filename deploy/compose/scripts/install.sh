@@ -47,17 +47,38 @@ if [ ! -s .secrets/vault-init.json ]; then
   exit 1
 fi
 unseal_key=$(tr -d '\n ' < .secrets/vault-init.json | sed -E 's/.*"unseal_keys_b64":\["([^"]+)".*/\1/')
-root_token=$(tr -d '\n ' < .secrets/vault-init.json | sed -E 's/.*"root_token":"([^"]+)".*/\1/')
+root_token=$(tr -d '\n ' < .secrets/vault-init.json | sed -nE 's/.*"root_token":"([^"]+)".*/\1/p')
+[ -n "${NEXUS_VAULT_ROOT_TOKEN:-}" ] && root_token="$NEXUS_VAULT_ROOT_TOKEN"
 vault_state | grep -q '"sealed": false' || vault operator unseal "$unseal_key" > /dev/null
-rvault() { dc exec -T -e BAO_TOKEN="$root_token" vault bao "$@"; }
-rvault secrets list | grep -q '^transit/' || rvault secrets enable transit > /dev/null
-printf '%s\n' 'path "transit/*" { capabilities = ["create", "read", "update", "delete", "list"] }' \
-  'path "auth/token/renew-self" { capabilities = ["update"] }' \
-  'path "auth/token/lookup-self" { capabilities = ["read"] }' | rvault policy write nexus-app - > /dev/null
-if [ -z "${NEXUS_VAULT_TOKEN:-}" ] || ! dc exec -T -e BAO_TOKEN="$NEXUS_VAULT_TOKEN" vault bao token renew > /dev/null 2>&1; then
-  NEXUS_VAULT_TOKEN=$(rvault token create -policy=nexus-app -no-default-policy -orphan -period=768h -field=token)
-  set_env NEXUS_VAULT_TOKEN "$NEXUS_VAULT_TOKEN"
-  export NEXUS_VAULT_TOKEN
+app_ok=0
+if [ -n "${NEXUS_VAULT_TOKEN:-}" ] && dc exec -T -e BAO_TOKEN="$NEXUS_VAULT_TOKEN" vault bao token renew > /dev/null 2>&1; then
+  app_ok=1
+fi
+if [ "$app_ok" = "0" ] || [ -n "$root_token" ]; then
+  [ -n "$root_token" ] || { echo "OpenBao app token expired and root token was revoked: regenerate one with 'bao operator generate-root' and pass NEXUS_VAULT_ROOT_TOKEN." >&2; exit 1; }
+  rvault() { dc exec -T -e BAO_TOKEN="$root_token" vault bao "$@"; }
+  rvault secrets list | grep -q '^transit/' || rvault secrets enable transit > /dev/null
+  # Key custody (NEX-110, V-2): deny transit/export/* explicitly; allow only what encryption, signing, backup,
+  # import/export wrapping, and crypto-shred need.
+  printf '%s\n' \
+    'path "transit/export/*" { capabilities = ["deny"] }' \
+    'path "transit/keys/*" { capabilities = ["create", "read", "update", "delete", "list"] }' \
+    'path "transit/datakey/plaintext/*" { capabilities = ["update"] }' \
+    'path "transit/encrypt/*" { capabilities = ["update"] }' \
+    'path "transit/decrypt/*" { capabilities = ["update"] }' \
+    'path "transit/sign/*" { capabilities = ["update"] }' \
+    'path "transit/verify/*" { capabilities = ["update"] }' \
+    'path "auth/token/renew-self" { capabilities = ["update"] }' \
+    'path "auth/token/lookup-self" { capabilities = ["read"] }' | rvault policy write nexus-app - > /dev/null
+  if [ "$app_ok" = "0" ]; then
+    NEXUS_VAULT_TOKEN=$(rvault token create -policy=nexus-app -no-default-policy -orphan -period=768h -field=token)
+    set_env NEXUS_VAULT_TOKEN "$NEXUS_VAULT_TOKEN"
+    export NEXUS_VAULT_TOKEN
+  fi
+  # Revoke the OpenBao root token once setup is complete and strip it from disk (NEX-110).
+  rvault token revoke -self > /dev/null 2>&1 || true
+  printf '{"unseal_keys_b64":["%s"]}\n' "$unseal_key" > .secrets/vault-init.json.new
+  chmod 600 .secrets/vault-init.json.new && mv .secrets/vault-init.json.new .secrets/vault-init.json
 fi
 
 # 5. Database: forward-only migrations; demo data when asked.
