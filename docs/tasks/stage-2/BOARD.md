@@ -76,7 +76,7 @@
 | NEX-129 | Control → deployment commands, agent side (D60): fetch, verify, run once, report; `ping` only | D | ready-for-review | Gemini | 128 |
 | NEX-130 | Control: P07 release publishing (signed manifest required) and rollout start on real data | D | ready-for-review | Gemini | 128 |
 | NEX-131 | M84 agent: P10 access requests arrive in M83, decisions go back to Control | D | ready-for-review | Gemini | 125 |
-| NEX-132 | Control: P04 provisioning for real — a job queues `tenant.provision` and follows it; retry | D | ready-for-review | Gemini | 127, 125 |
+| NEX-132 | Control: P04 provisioning for real — a job queues `tenant.provision` and follows it; retry | D | done | Gemini | 127, 125 |
 | NEX-133 | P04 offboarding, cell side (D61): freeze, export for the institution's key, destroy keys | D | planned | — | 127 |
 | NEX-134 | Control: P04 offboarding for real (D61) — four-eyes key destruction, signed shred certificate | D | planned | — | 133, 132 |
 | NEX-135 | P18 moves, cell side (D61): import key and tenant import on signed commands | D | planned | — | 133 |
