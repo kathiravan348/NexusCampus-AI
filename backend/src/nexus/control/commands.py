@@ -276,6 +276,10 @@ async def report_command_result(
             .where(dc.id == command_id)
             .values(status=body.status, delivered_at=row.delivered_at or now, finished_at=now, result=body.result)
         )
+        if row.kind == "tenant.provision":
+            from nexus.control.provisioning import apply_provisioning_result
+
+            await apply_provisioning_result(conn, command_id, body.status, body.result)
 
     log.info(
         "agent command result command=%s deployment=%s kind=%s status=%s outcome=ok",

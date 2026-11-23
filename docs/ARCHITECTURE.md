@@ -198,13 +198,14 @@ Nexus Control (our cloud)                         Product deployments
   `personal_data_affected` and `>= detected_at`, `notified_at` only on a breach), and `dpa_records` (`version` `N.N`).
   `control_app` has `SELECT` only on all four; partners see only their managed accounts' DPAs; incident titles are
   never logged (V-6).
-- **Provisioning & portability reads (P04, P18, NEX-121):** `provisioning_jobs` (request stored in `request_*` columns,
-  `tenant_id` iff step 0 done), `offboarding_jobs` (`shred_certificate_id` iff step 4 done), `shred_certificates`
-  (88-char base64 Ed25519 signature), and `portability_jobs` (`encrypted = true`, `region_move` requires
-  `from_region <> to_region`). An IMMUTABLE helper `control_job_steps_valid` enforces exact ordered step names and
-  status alignment with steps. `control_app` has `SELECT` only on all four; `POST /provisioning-jobs` (`405`) and
-  `…/advance` (`404`) stay unmounted in real mode so no step claims a tenant exists before real cell provisioning
-  (NEX-127). Partners see only their accounts' offboarding and portability jobs, never provisioning jobs or shred
+- **Provisioning & portability (P04, P18, NEX-121, NEX-132):** `provisioning_jobs` (request stored in `request_*`
+  columns, internal `planned_tenant_id`/`deployment_id`/`command_id`, `tenant_id` iff step 0 done), `offboarding_jobs`
+  (`shred_certificate_id` iff step 4 done), `shred_certificates` (88-char base64 Ed25519 signature), and
+  `portability_jobs` (`encrypted = true`, `region_move` requires `from_region <> to_region`). An IMMUTABLE helper
+  `control_job_steps_valid` enforces exact ordered step names and status alignment with steps. `POST /provisioning-jobs`
+  and `POST /provisioning-jobs/{id}/retry` queue signed `tenant.provision` commands on the tenant's cell; command
+  results update steps and append `tenant_id` to `accounts.tenant_ids` once `create_tenant` finishes (`…/advance` stays
+  unserved `404`). Partners see only their accounts' offboarding and portability jobs, never provisioning jobs or shred
   certificates.
 - **Pull-only signed deployment commands (D60, NEX-128):** Control never connects to a deployment. `deployment_commands`
   holds canonical `nexus-command/1` payloads signed in OpenBao Transit (`nexus-command`, Ed25519, never exported,

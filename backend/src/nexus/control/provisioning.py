@@ -1,14 +1,11 @@
-"""P04 provisioning, offboarding & shred certificates, P18 portability moves on the control DB (NEX-121).
+"""P04 provisioning, offboarding & shred certificates, P18 portability moves on the control DB (NEX-121, NEX-132)."""
 
-Read-only resources (`control_app` has SELECT only). `POST /provisioning-jobs` and `…/advance` are intentionally not
-mounted yet so real mode never pretends a tenant was created before NEX-127. Partner scoping uses `Resource`:
-offboarding and portability scope by `account_id`, while provisioning jobs (`request_account_id`) and shred
-certificates have no `account_id` column and are hidden from partners (matching the mocks).
-"""
-
+import logging
+import secrets
+from datetime import UTC, datetime, timedelta
 from typing import Annotated, Any, Literal
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, Request
 from pydantic import Field, StringConstraints
 from sqlalchemy import (
     ARRAY,
@@ -21,13 +18,18 @@ from sqlalchemy import (
     String,
     Table,
     Text,
+    select,
+    update,
 )
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 
-from nexus.control.accounts import accounts
-from nexus.control.resources import CamelModel, Resource, mount
+from nexus.control.accounts import account_contacts, accounts
+from nexus.control.commands import deployment_commands, enqueue_command
+from nexus.control.fleet import deployments
+from nexus.control.resources import CamelModel, Resource, engine_of, mount
 from nexus.control.rows import from_db, to_db
+from nexus.control.settings import ControlSettings
 from nexus.control.staff import (
     ControlCode,
     Id,
@@ -37,10 +39,15 @@ from nexus.control.staff import (
     metadata,
     staff_users,
 )
+from nexus.control.viewer import Viewer, require
+from nexus.core.errors import ApiError
+from nexus.core.vault import Vault
 
 ID = 64
 _SIG_RE = r"^[A-Za-z0-9+/]{86}==$"
 StepStatus = Literal["pending", "running", "done", "failed"]
+PROV_STEPS = ("create_tenant", "create_keys", "apply_profile", "seed", "invite_owner")
+log = logging.getLogger("nexus.control.provisioning")
 
 provisioning_jobs = Table(
     "provisioning_jobs",
@@ -57,6 +64,10 @@ provisioning_jobs = Table(
     Column("tenant_id", String(ID), nullable=True),
     Column("requested_by_staff_id", String(ID), ForeignKey(staff_users.c.id), nullable=False),
     Column("created_at", DateTime(timezone=True), nullable=False),
+    # Internal command-tracking columns (NEX-132; never exposed in `ProvisioningJob` contract)
+    Column("planned_tenant_id", String(ID), nullable=True),
+    Column("deployment_id", String(ID), ForeignKey(deployments.c.id), nullable=True),
+    Column("command_id", String(ID), ForeignKey(deployment_commands.c.id), nullable=True, index=True),
     CheckConstraint("status IN ('pending', 'running', 'done', 'failed')", name="prov_status_known"),
 )
 
@@ -200,7 +211,6 @@ def _provisioning_to_db(raw: dict[str, Any]) -> dict[str, Any]:
 
 
 router = APIRouter(prefix="/control/api/v1", tags=["P04/P18 provisioning & moves"])
-
 PROVISIONING_JOBS = _ProvisioningResource(
     "provisioning-jobs",
     provisioning_jobs,
@@ -228,9 +238,258 @@ PORTABILITY_JOBS = Resource(
     {"accountId": "account_id", "status": "status", "direction": "direction"},
     order=portability_jobs.c.created_at.desc(),
 )
-
 for resource in (PROVISIONING_JOBS, OFFBOARDING_JOBS, SHRED_CERTIFICATES, PORTABILITY_JOBS):
     mount(router, resource)
+
+ProvisionManager = Annotated[Viewer, Depends(require("ctl.provisioning.manage"))]
+
+
+async def _resolve_cell_and_owner(conn: Any, account_id: str, delivery_model: str, region: str) -> tuple[Any, Any]:
+    if delivery_model == "saas_dedicated":
+        dep = (
+            await conn.execute(
+                select(deployments.c.id, deployments.c.air_gapped).where(
+                    deployments.c.account_id == account_id, deployments.c.kind == "saas_dedicated_cell"
+                )
+            )
+        ).first()
+    else:
+        dep = (
+            await conn.execute(
+                select(deployments.c.id, deployments.c.air_gapped).where(
+                    deployments.c.kind == "saas_shared_cell", deployments.c.region == region
+                )
+            )
+        ).first()
+    if dep is None or dep.air_gapped:
+        raise ApiError(409, "conflict", "No reachable region cell is available for provisioning.")
+    contacts = (
+        await conn.execute(
+            select(account_contacts.c.kind, account_contacts.c.name, account_contacts.c.work_email).where(
+                account_contacts.c.account_id == account_id, account_contacts.c.kind.in_(("executive", "technical"))
+            )
+        )
+    ).all()
+    owner = next((c for c in contacts if c.kind == "executive"), None) or next(
+        (c for c in contacts if c.kind == "technical"), None
+    )
+    if owner is None:
+        raise ApiError(409, "conflict", "Account needs an executive or technical contact before provisioning.")
+    return dep, owner
+
+
+@router.post("/provisioning-jobs", response_model=ProvisioningJob, response_model_by_alias=True, status_code=201)
+async def create_provisioning_job(
+    body: ProvisioningRequest, request: Request, viewer: ProvisionManager
+) -> ProvisioningJob:
+    """Queues a real `tenant.provision` command on the chosen cell and creates the pending job."""
+    if viewer.account_ids is not None and body.account_id not in viewer.account_ids:
+        raise ApiError(404, "not_found", "Account not found.")
+    cfg: ControlSettings = request.app.state.settings
+    vault: Vault = request.app.state.vault
+    now = datetime.now(UTC).replace(microsecond=0)
+    job_id = f"prv-{secrets.token_hex(8)}"
+    planned_tid = f"ten-{secrets.token_hex(6)}"
+
+    async with engine_of(request).begin() as conn:
+        acc = (
+            await conn.execute(
+                select(accounts.c.id, accounts.c.name, accounts.c.delivery_model).where(
+                    accounts.c.id == body.account_id
+                )
+            )
+        ).first()
+        if acc is None:
+            raise ApiError(404, "not_found", "Account not found.")
+        if acc.delivery_model == "self_hosted" or acc.delivery_model != body.delivery_model:
+            raise ApiError(409, "conflict", "Account delivery model does not match this provisioning request.")
+        dep, owner = await _resolve_cell_and_owner(conn, str(acc.id), body.delivery_model, body.region)
+
+        cmd_id = await enqueue_command(
+            conn,
+            vault,
+            deployment_id=str(dep.id),
+            tenant_id=planned_tid,
+            kind="tenant.provision",
+            args={
+                "tenantId": planned_tid,
+                "name": str(acc.name),
+                "institutionType": body.institution_type,
+                "region": body.region,
+                "planCode": body.plan_code,
+                "trialDays": body.trial_days,
+                "owner": {"legalName": str(owner.name), "workEmail": str(owner.work_email)},
+            },
+            issued_by=viewer.staff_id,
+            ttl=timedelta(hours=1),
+            key_name=cfg.command_signing_key,
+        )
+        steps = [{"name": n, "status": "pending"} for n in PROV_STEPS]
+        row = (
+            (
+                await conn.execute(
+                    provisioning_jobs.insert()
+                    .values(
+                        id=job_id,
+                        request_account_id=body.account_id,
+                        request_region=body.region,
+                        request_institution_type=body.institution_type,
+                        request_plan_code=body.plan_code,
+                        request_trial_days=body.trial_days,
+                        request_delivery_model=body.delivery_model,
+                        steps=steps,
+                        status="pending",
+                        tenant_id=None,
+                        requested_by_staff_id=viewer.staff_id,
+                        created_at=now,
+                        planned_tenant_id=planned_tid,
+                        deployment_id=str(dep.id),
+                        command_id=cmd_id,
+                    )
+                    .returning(provisioning_jobs)
+                )
+            )
+            .mappings()
+            .one()
+        )
+    log.info("provisioning job=%s command=%s deployment=%s outcome=queued", job_id, cmd_id, dep.id)
+    return ProvisioningJob.model_validate(PROVISIONING_JOBS.parse(row).model_dump())
+
+
+@router.post("/provisioning-jobs/{job_id}/retry", response_model=ProvisioningJob, response_model_by_alias=True)
+async def retry_provisioning_job(job_id: str, request: Request, viewer: ProvisionManager) -> ProvisioningJob:
+    """Retries a failed provisioning job by queuing a fresh signed command with the same tenant id."""
+    cfg: ControlSettings = request.app.state.settings
+    vault: Vault = request.app.state.vault
+    async with engine_of(request).begin() as conn:
+        row = (
+            (await conn.execute(select(provisioning_jobs).where(provisioning_jobs.c.id == job_id).with_for_update()))
+            .mappings()
+            .first()
+        )
+        if row is None or (viewer.account_ids is not None and row["request_account_id"] not in viewer.account_ids):
+            raise ApiError(404, "not_found", "Provisioning job not found.")
+        if row["status"] != "failed":
+            raise ApiError(409, "conflict", "Only failed provisioning jobs can be retried.")
+        acc = (
+            await conn.execute(select(accounts.c.id, accounts.c.name).where(accounts.c.id == row["request_account_id"]))
+        ).first()
+        if acc is None:
+            raise ApiError(409, "conflict", "Account not found.")
+        dep, owner = await _resolve_cell_and_owner(
+            conn, str(acc.id), str(row["request_delivery_model"]), str(row["request_region"])
+        )
+        planned_tid = str(row["planned_tenant_id"] or row["tenant_id"] or f"ten-{secrets.token_hex(6)}")
+        cmd_id = await enqueue_command(
+            conn,
+            vault,
+            deployment_id=str(dep.id),
+            tenant_id=planned_tid,
+            kind="tenant.provision",
+            args={
+                "tenantId": planned_tid,
+                "name": str(acc.name),
+                "institutionType": str(row["request_institution_type"]),
+                "region": str(row["request_region"]),
+                "planCode": str(row["request_plan_code"]),
+                "trialDays": row["request_trial_days"],
+                "owner": {"legalName": str(owner.name), "workEmail": str(owner.work_email)},
+            },
+            issued_by=viewer.staff_id,
+            ttl=timedelta(hours=1),
+            key_name=cfg.command_signing_key,
+        )
+        new_steps = [
+            {"name": s["name"], "status": "done" if s["status"] == "done" else "pending"} for s in list(row["steps"])
+        ]
+        new_status = "running" if any(s["status"] == "done" for s in new_steps) else "pending"
+        updated = (
+            (
+                await conn.execute(
+                    update(provisioning_jobs)
+                    .where(provisioning_jobs.c.id == job_id)
+                    .values(steps=new_steps, status=new_status, command_id=cmd_id)
+                    .returning(provisioning_jobs)
+                )
+            )
+            .mappings()
+            .one()
+        )
+    log.info("provisioning job=%s command=%s outcome=retried", job_id, cmd_id)
+    return ProvisioningJob.model_validate(PROVISIONING_JOBS.parse(updated).model_dump())
+
+
+async def apply_provisioning_result(conn: Any, command_id: str, cmd_status: str, result: dict[str, Any]) -> None:
+    """Applies a cell agent's `tenant.provision` command result to the linked provisioning job + account."""
+    row = (
+        (
+            await conn.execute(
+                select(provisioning_jobs).where(provisioning_jobs.c.command_id == command_id).with_for_update()
+            )
+        )
+        .mappings()
+        .first()
+    )
+    if row is None:
+        return
+    steps_done = {str(x) for x in (result.get("stepsDone") or []) if isinstance(x, str)}
+    failed_step = result.get("failedStep") if isinstance(result.get("failedStep"), str) else None
+    existing = {str(s["name"]): str(s["status"]) for s in list(row["steps"])}
+
+    updated_steps: list[dict[str, str]] = []
+    for name in PROV_STEPS:
+        if name in steps_done or existing.get(name) == "done":
+            st = "done"
+        elif name == failed_step:
+            st = "failed"
+        else:
+            st = "pending"
+        updated_steps.append({"name": name, "status": st})
+
+    if cmd_status in ("failed", "rejected") and not any(s["status"] == "failed" for s in updated_steps):
+        for step in updated_steps:
+            if step["status"] != "done":
+                step["status"] = "failed"
+                break
+
+    if all(s["status"] == "done" for s in updated_steps):
+        job_status = "done"
+    elif any(s["status"] == "failed" for s in updated_steps):
+        job_status = "failed"
+    elif any(s["status"] == "done" for s in updated_steps):
+        job_status = "running"
+    else:
+        job_status = "pending"
+
+    tenant_id = row["tenant_id"]
+    if updated_steps[0]["status"] == "done" and tenant_id is None:
+        tenant_id = row["planned_tenant_id"] or result.get("tenantId")
+    if tenant_id is not None:
+        acc_row = (
+            await conn.execute(
+                select(accounts.c.tenant_ids).where(accounts.c.id == row["request_account_id"]).with_for_update()
+            )
+        ).first()
+        if acc_row is not None and tenant_id not in list(acc_row.tenant_ids):
+            await conn.execute(
+                update(accounts)
+                .where(accounts.c.id == row["request_account_id"])
+                .values(tenant_ids=[*list(acc_row.tenant_ids), str(tenant_id)])
+            )
+
+    await conn.execute(
+        update(provisioning_jobs)
+        .where(provisioning_jobs.c.id == row["id"])
+        .values(steps=updated_steps, status=job_status, tenant_id=tenant_id)
+    )
+    done_names = [s["name"] for s in updated_steps if s["status"] == "done"]
+    log.info(
+        "provisioning job=%s command=%s status=%s steps_done=%s",
+        row["id"],
+        command_id,
+        job_status,
+        ",".join(done_names),
+    )
 
 
 def seed_rows(conn: Any, data: dict[str, list[dict[str, Any]]]) -> int:
@@ -252,7 +511,7 @@ def seed_rows(conn: Any, data: dict[str, list[dict[str, Any]]]) -> int:
             row = to_db(table, model.model_validate(raw).model_dump())
             stmt = pg_insert(table).values(row)
             conn.execute(
-                stmt.on_conflict_do_update(index_elements=["id"], set_={k: v for k, v in row.items() if k != "id"})
+                stmt.on_conflict_do_update(index_elements=[pk := "id"], set_={k: v for k, v in row.items() if k != pk})
             )
             count += 1
     return count

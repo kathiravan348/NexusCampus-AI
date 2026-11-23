@@ -84,9 +84,9 @@ Menu **Provisioning** (super admin, implementation, site reliability to read).
 - **Start trial tenant** (implementation, super admin): pick the account (leads and trials that are not
   self-hosted), **Data region** (the tenant's data never leaves it), institution type, plan, shared or dedicated
   cell and 1–60 trial days. In the demo, **Run next step** completes the next step; after the first one the card
-  shows the new tenant id. In real mode (`dev:control:real`), **Provisioning** and **Moves** show the jobs and
-  certificates from the Control database, while starting or advancing a provisioning job is disabled until Control can
-  create real tenants in a region cell.
+  shows the new tenant id. In real mode (`dev:control:real`), **Start trial tenant** queues a signed provisioning
+  command for the region cell and the job updates automatically as the cell finishes each step (manual **Run next
+  step** is demo only; failed jobs can be retried).
 - **Offboarding:** customers leaving — their encrypted export, the destruction of their keys (the data becomes
   unreadable) and the signed **Key-destruction certificate** with the key ids, time and signing key.
 
