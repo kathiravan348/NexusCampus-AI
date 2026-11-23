@@ -128,8 +128,9 @@ Menu **Releases** (super admin, release manager; support, implementation and sit
 - **Details** shows the oldest version that can upgrade directly, the migration notes (migrations only go forward)
   and the rollout rings: ring 0 is our own cell, ring 3 is everyone on the channel.
 - **Sign and publish** a draft (release managers). For AI-drafted notes you must tick **I reviewed the AI-drafted
-  release notes** first. **Start ring** rolls out the next ring once the earlier rings are done; the deployments in
-  it then show the new version under **Fleet**.
+  release notes** first. In real mode, a draft publishes only after its signed manifest has been imported and verified
+  against our release signing keys. **Start ring** starts the next ring once earlier rings are done (in real mode the
+  ring stays **Running** until every deployment in it checks in at the new version, then moves to **Done**).
 
 ### Extensions
 
