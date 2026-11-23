@@ -51,7 +51,7 @@ async def queue_command(
 
 async def sweep() -> str:
     cfg = get_control_settings()
-    engine = create_async_engine(cfg.owner_url())
+    engine = create_async_engine(cfg.app_url())  # `control_app`: the same grants as the server's sweep
     async with httpx2.AsyncClient(timeout=10) as http:
         try:
             return f"expired {await sweep_once(engine, HttpVault(get_settings(), http), cfg)}"
