@@ -1183,6 +1183,10 @@
     "message": "Offboarding did not start. Check the public key and try again.",
     "description": "Toast and error message when starting offboarding fails."
   },
+  "p04.off.form.busy": {
+    "message": "This tenant already has an offboarding or move in progress.",
+    "description": "Toast and error message when starting offboarding fails because the tenant already has an open offboarding or portability move."
+  },
   "p04.off.form.noAccounts": {
     "message": "No SaaS account with an active tenant is available to offboard.",
     "description": "Shown in the start-offboarding dialog when no account has tenants."
@@ -2962,6 +2966,10 @@
   "p18.form.failed": {
     "message": "Move did not start. Check the regions and delivery model and try again.",
     "description": "Toast and error message when starting a move fails."
+  },
+  "p18.form.busy": {
+    "message": "This tenant already has an offboarding or move in progress.",
+    "description": "Toast and error message when starting a move fails because the tenant already has an open offboarding or portability move."
   },
   "p18.form.noAccounts": {
     "message": "No account is eligible for this move direction.",

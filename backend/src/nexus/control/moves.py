@@ -20,6 +20,7 @@ from nexus.control.provisioning import PORTABILITY_JOBS, PortabilityJob, offboar
 from nexus.control.resources import CamelModel, engine_of
 from nexus.control.settings import ControlSettings
 from nexus.control.staff import Id, Region
+from nexus.control.tenant_jobs import ensure_no_open_job
 from nexus.control.viewer import Viewer, require
 from nexus.core.errors import ApiError
 from nexus.core.vault import Vault
@@ -167,6 +168,7 @@ async def create_portability_job(body: PortabilityRequest, request: Request, vie
             if _dst_is_cell(body.direction)
             else await _find_self_hosted(conn, str(acc.id))
         )
+        await ensure_no_open_job(conn, body.tenant_id)
         cmd_id = (
             await enqueue_command(
                 conn,
@@ -368,6 +370,8 @@ async def retry_portability_job(job_id: str, request: Request, viewer: MoveManag
         if failed_step is None:
             raise ApiError(409, "conflict", "No failed step found.")
         direction, tid = str(row["direction"]), str(row["tenant_id"])
+        linked_off = str(row["offboarding_job_id"]) if row["offboarding_job_id"] else None
+        await ensure_no_open_job(conn, tid, except_offboarding=linked_off, except_move=job_id)
         updates: dict[str, Any] = {}
         if failed_step == "preflight" and _dst_is_cell(direction):
             cmd_id = await enqueue_command(
