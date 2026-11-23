@@ -96,6 +96,14 @@ class StepReport:
         return out
 
 
+class StepRefused(Exception):
+    """A step that must not run on this state; `reason` is a machine code reported to Control."""
+
+    def __init__(self, reason: str) -> None:
+        super().__init__(reason)
+        self.reason = reason
+
+
 async def _bind(session: AsyncSession, tenant_id: str) -> None:
     await session.execute(text("SELECT set_config(:n, :t, true)"), {"n": TENANT_SETTING, "t": tenant_id})
 
@@ -125,6 +133,19 @@ async def _audit_once(
 
 async def _step_create_tenant(session: AsyncSession, ctx: TenantContext, args: ProvisionTenantArgs) -> None:
     now = datetime.now(UTC)
+    inst_id = f"ins-{args.tenant_id}"
+    # Re-running is only allowed for a tenant this flow created; never provision into an existing institution (D22).
+    existing = (
+        await session.execute(text("SELECT type, region FROM tenants WHERE id = :id"), {"id": args.tenant_id})
+    ).first()
+    if existing is not None:
+        ours = (
+            await session.execute(
+                text("SELECT 1 FROM institutions WHERE id = :i AND tenant_id = :t"), {"i": inst_id, "t": args.tenant_id}
+            )
+        ).first()
+        if ours is None or existing.type != args.institution_type or existing.region != args.region:
+            raise StepRefused("tenant_exists")
     await session.execute(
         text(
             "INSERT INTO tenants (id, name, type, region, created_at, updated_at) "
@@ -132,7 +153,6 @@ async def _step_create_tenant(session: AsyncSession, ctx: TenantContext, args: P
         ),
         {"id": args.tenant_id, "name": args.name, "type": args.institution_type, "region": args.region, "now": now},
     )
-    inst_id = f"ins-{args.tenant_id}"
     locale, locales, tz, currency, country, weekend = _REGION_DEFAULTS.get(args.region, _REGION_DEFAULTS["in"])
     await session.execute(
         text(
@@ -232,6 +252,22 @@ async def _step_invite_owner(
 ) -> None:
     email = args.owner.work_email.strip().lower()
     domain = email.split("@", 1)[1]
+    owner_role_id = f"rol-{args.tenant_id}-owner"
+    owners = (
+        (
+            await session.execute(
+                text(
+                    "SELECT lower(u.email) FROM role_assignments ra JOIN users u ON u.id = ra.user_id "
+                    "WHERE ra.tenant_id = :t AND ra.role_id = :r"
+                ),
+                {"t": args.tenant_id, "r": owner_role_id},
+            )
+        )
+        .scalars()
+        .all()
+    )
+    if owners and email not in owners:
+        raise StepRefused("owner_exists")  # a re-run never adds a second owner
     await keycloak.ensure_organization(tenant_id=args.tenant_id, name=args.name, domain=domain)
     existing = (await session.execute(text("SELECT id FROM users WHERE lower(email) = :e"), {"e": email})).first()
     if existing is not None:
@@ -239,7 +275,6 @@ async def _step_invite_owner(
 
     now = datetime.now(UTC)
     person_id, user_id = new_id("per"), new_id("usr")
-    owner_role_id = f"rol-{args.tenant_id}-owner"
     inst_id = f"ins-{args.tenant_id}"
     kc_id = await keycloak.invite(tenant_id=args.tenant_id, email=email, legal_name=args.owner.legal_name.strip())
     await session.execute(
@@ -316,6 +351,13 @@ async def provision_tenant(
                 async with maker() as session, session.begin():
                     await _bind(session, args.tenant_id)
                     await fn(session)
+            except StepRefused as exc:
+                report.failed_step = step_name
+                report.reason = exc.reason
+                log.info(
+                    "provision tenant=%s step=%s outcome=failed reason=%s", args.tenant_id, step_name, report.reason
+                )
+                return report
             except ApiError as exc:
                 report.failed_step = step_name
                 report.reason = "keycloak_error" if step_name == "invite_owner" else exc.code

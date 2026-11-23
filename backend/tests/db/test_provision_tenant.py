@@ -211,3 +211,41 @@ async def test_provision_failure_midway_preflight_and_self_hosted_rejection(
                     reset_tenant(conn, tid)
         finally:
             owner_eng.dispose()
+
+
+@pytest.mark.anyio
+async def test_provision_never_takes_over_an_existing_tenant_or_adds_a_second_owner(
+    test_db: DbUrls, tmp_path: Path
+) -> None:
+    _seed_plans(test_db.owner_url)
+    cfg = _settings(test_db, tmp_path)
+    vault = FakeVault()
+    kc = FakeKeycloakAdmin()
+    owner_eng = create_engine(test_db.owner_url)
+    try:
+        with owner_eng.begin() as conn:
+            conn.execute(
+                text(
+                    "INSERT INTO tenants (id, name, type, region, created_at, updated_at) "
+                    "VALUES ('ten-taken', 'Existing School', 'k12', 'in', now(), now())"
+                )
+            )
+        # A tenant this flow did not create: refused at step 1, nobody invited.
+        r_taken = await provision_tenant(cfg, vault, kc, _args(tenantId="ten-taken"))
+        assert r_taken.steps_done == [] and r_taken.failed_step == "create_tenant"
+        assert r_taken.reason == "tenant_exists" and kc.invited == []
+
+        # Its own tenant re-run with another owner e-mail: refused at invite_owner, still one owner.
+        assert (await provision_tenant(cfg, vault, kc, _args(tenantId="ten-new-02"))).failed_step is None
+        other = ProvisionOwner(legal_name="Someone Else", work_email="someone@elsewhere.example")
+        r_other = await provision_tenant(cfg, vault, kc, _args(tenantId="ten-new-02", owner=other))
+        assert r_other.failed_step == "invite_owner" and r_other.reason == "owner_exists"
+        assert kc.invited == [("ten-new-02", OWNER_EMAIL)]
+        with owner_eng.begin() as conn:
+            users = conn.execute(text("SELECT count(*) FROM users WHERE tenant_id = 'ten-new-02'")).scalar_one()
+            assert users == 1
+    finally:
+        with owner_eng.begin() as conn:
+            for tid in ("ten-taken", "ten-new-02"):
+                reset_tenant(conn, tid)
+        owner_eng.dispose()
