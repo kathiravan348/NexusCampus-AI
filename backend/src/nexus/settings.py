@@ -95,6 +95,16 @@ class Settings(BaseSettings):
     agent_probe_url: str = "http://127.0.0.1:8000/healthz"
     #: Number of HTTP probes sent per health report.
     agent_probes: int = 20
+    #: Control deployment id for this install or cell (D60, NEX-129); empty = commands off.
+    deployment_id: str = ""
+    #: Pull signed Control commands (`on` / `off`). Default: `off` on self-hosted installs, `on` on SaaS cells.
+    agent_commands: Literal["on", "off"] | None = None
+
+    @property
+    def agent_commands_enabled(self) -> bool:
+        if self.agent_commands is not None:
+            return self.agent_commands == "on"
+        return self.install_mode == "saas"
 
 
 @lru_cache
