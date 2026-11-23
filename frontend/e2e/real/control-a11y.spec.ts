@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
-import { expectScreenReady, menuPaths, setTheme } from "../helpers";
+import { expectScreenReady, menuPaths, setTheme, withFreshPage } from "../helpers";
 
 /**
  * Stage 2 real-mode accessibility & performance release checks for Nexus Control (NEX-137):
@@ -213,36 +213,39 @@ for (const theme of ["light", "dark"] as const) {
 }
 
 test("@real control-a11y: every staff role opens all permitted pages with zero axe issues", async ({
-  page,
+  browser,
 }) => {
   test.skip(!(await controlReachable()), `No Control real stack on ${CONTROL_URL}`);
   const found: string[] = [];
   for (const staff of STAFF_ROLES.filter((s) => s.id !== "stf-0001")) {
-    await page.context().setExtraHTTPHeaders({ "X-Nexus-Staff": staff.id });
-    await page.goto("/");
-    await expectScreenReady(page);
-    await expect(page.getByText(staff.displayName, { exact: true }).first()).toBeVisible();
-
-    const paths = ["/", ...(await menuPaths(page))];
-    expect(paths.length, `${staff.role} visible menu count`).toBeGreaterThanOrEqual(
-      staff.minPages + 1,
-    );
-
-    for (const path of paths) {
-      await page.goto(path);
+    // A fresh context per role: one tab cannot fully reload the dev server for all roles (`withFreshPage`).
+    const options = { baseURL: CONTROL_URL, extraHTTPHeaders: { "X-Nexus-Staff": staff.id } };
+    await withFreshPage(browser, options, async (page) => {
+      await page.goto("/");
       await expectScreenReady(page);
-      found.push(...(await axeSeriousOrCritical(page, `${staff.role}:${path}`)));
-    }
+      await expect(page.getByText(staff.displayName, { exact: true }).first()).toBeVisible();
 
-    if (staff.forbiddenPath) {
-      await page.goto(staff.forbiddenPath);
-      await expect(
-        page.locator("#main-content").getByText("No access", { exact: true }),
-      ).toBeVisible();
-      found.push(
-        ...(await axeSeriousOrCritical(page, `${staff.role}:forbidden:${staff.forbiddenPath}`)),
+      const paths = ["/", ...(await menuPaths(page))];
+      expect(paths.length, `${staff.role} visible menu count`).toBeGreaterThanOrEqual(
+        staff.minPages + 1,
       );
-    }
+
+      for (const path of paths) {
+        await page.goto(path);
+        await expectScreenReady(page);
+        found.push(...(await axeSeriousOrCritical(page, `${staff.role}:${path}`)));
+      }
+
+      if (staff.forbiddenPath) {
+        await page.goto(staff.forbiddenPath);
+        await expect(
+          page.locator("#main-content").getByText("No access", { exact: true }),
+        ).toBeVisible();
+        found.push(
+          ...(await axeSeriousOrCritical(page, `${staff.role}:forbidden:${staff.forbiddenPath}`)),
+        );
+      }
+    });
   }
   expect(found, "role-scoped serious/critical axe violations").toEqual([]);
 });

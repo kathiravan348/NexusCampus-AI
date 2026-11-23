@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import { expect, test, type Page } from "@playwright/test";
-import { expectScreenReady, menuPaths, openNav } from "../helpers";
+import { expectScreenReady, menuPaths, openNav, withFreshPage } from "../helpers";
 
 /**
  * Default languages (en, hi, ta — D42, D53) on real data in Nexus Control (NEX-137):
@@ -77,34 +77,32 @@ async function verifyEveryControlScreenIn(
 }
 
 test("@real control-languages: every Control screen renders cleanly in en, hi, and ta on real data", async ({
-  page,
+  browser,
 }) => {
   test.skip(!(await controlReachable()), `No Control real stack on ${CONTROL_URL}`);
-  await page.context().setExtraHTTPHeaders({ "X-Nexus-Staff": "stf-0001" });
-  await page.goto("/");
-  await expectScreenReady(page);
-
-  const paths = ["/", ...(await menuPaths(page)), "/accounts/acc-ls"];
-  expect(paths.length).toBeGreaterThanOrEqual(20);
-
-  // 1. English (en)
-  await selectControlLocale(page, "en");
-  await verifyEveryControlScreenIn(page, paths, "en", /[A-Za-z]/);
-
-  // 2. Hindi (hi — Devanagari)
-  await page.goto("/");
-  await expectScreenReady(page);
-  await selectControlLocale(page, "hi");
-  await verifyEveryControlScreenIn(page, paths, "hi", /[\u0900-\u097F]/);
-
-  // 3. Tamil (ta — Tamil script)
-  await page.goto("/");
-  await expectScreenReady(page);
-  await selectControlLocale(page, "ta");
-  await verifyEveryControlScreenIn(page, paths, "ta", /[\u0B80-\u0BFF]/);
-
-  // Restore English
-  await page.goto("/");
-  await expectScreenReady(page);
-  await selectControlLocale(page, "en");
+  const options = { baseURL: CONTROL_URL, extraHTTPHeaders: { "X-Nexus-Staff": "stf-0001" } };
+  const LOCALES = [
+    ["en", /[A-Za-z]/],
+    ["hi", /[\u0900-\u097F]/], // Devanagari
+    ["ta", /[\u0B80-\u0BFF]/], // Tamil script
+  ] as const;
+  // A fresh context per language: one tab cannot fully reload the dev server ~70 times (`withFreshPage`).
+  for (const [locale, script] of LOCALES) {
+    await withFreshPage(browser, options, async (page) => {
+      await page.goto("/");
+      await expectScreenReady(page);
+      const paths = ["/", ...(await menuPaths(page)), "/accounts/acc-ls"];
+      expect(paths.length).toBeGreaterThanOrEqual(20);
+      await page.goto("/");
+      await expectScreenReady(page);
+      await selectControlLocale(page, locale);
+      await verifyEveryControlScreenIn(page, paths, locale, script);
+      if (locale !== "en") {
+        // Leave the staff member's language as English for the next run.
+        await page.goto("/");
+        await expectScreenReady(page);
+        await selectControlLocale(page, "en");
+      }
+    });
+  }
 });

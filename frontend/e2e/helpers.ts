@@ -1,4 +1,10 @@
-import { expect, type Locator, type Page } from "@playwright/test";
+import {
+  expect,
+  type Browser,
+  type BrowserContextOptions,
+  type Locator,
+  type Page,
+} from "@playwright/test";
 
 /** Demo tenants and personas (mirrors `@nexus/mocks` fixtures; e2e stays independent of app source). */
 export const TENANTS = {
@@ -108,4 +114,23 @@ export async function expectScreenReady(page: Page) {
   await expect(
     page.getByRole("status").filter({ hasText: /^(Loading|लोड हो रहा है|ஏற்றுகிறது)/ }),
   ).toHaveCount(0);
+}
+
+/**
+ * Runs `fn` on a page in a new browser context, closed afterwards. One tab that fully reloads the dev server ~60 times
+ * (each load ~250 module requests) makes Chrome refuse its requests with `net::ERR_INSUFFICIENT_RESOURCES`, so long
+ * real-mode loops start fresh per staff member or language. `baseURL` must be passed: `test.use` only sets it for the
+ * default context.
+ */
+export async function withFreshPage<T>(
+  browser: Browser,
+  options: BrowserContextOptions,
+  fn: (page: Page) => Promise<T>,
+): Promise<T> {
+  const context = await browser.newContext(options);
+  try {
+    return await fn(await context.newPage());
+  } finally {
+    await context.close();
+  }
 }
