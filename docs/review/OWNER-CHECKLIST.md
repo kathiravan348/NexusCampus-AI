@@ -105,5 +105,6 @@ These are not blocking the build, but real billing and the trust page need them 
 ## What I do next, unless you say otherwise
 
 - After your release approval: mark Stage 2 released, then open the Stage 3 board (core institution operations).
-- NEX-140–143 are reviewed and merged. Gemini and Codex build; I plan and review (D68).
+- NEX-140–145 are reviewed and merged, including the diagnostic-bundle buttons and their audit events. Gemini and
+  Codex build; I plan and review (D68).
 - Anything that needs a new download, I hold and ask you first.
