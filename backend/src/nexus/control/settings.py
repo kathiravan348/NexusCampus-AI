@@ -54,6 +54,10 @@ class ControlSettings(BaseSettings):
     command_signing_key: str = "nexus-command"
     #: Transit key that signs offboarding shred certificates (Ed25519, never exported; D61, NEX-134).
     shred_signing_key: str = "nexus-shred"
+    # Payments (D62, NEX-107): Razorpay hosted payment links for Indian accounts; empty = Razorpay off.
+    razorpay_key_id: SecretStr = SecretStr("")
+    razorpay_key_secret: SecretStr = SecretStr("")
+    razorpay_webhook_secret: SecretStr = SecretStr("")
 
     @property
     def secure_cookies(self) -> bool:

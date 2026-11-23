@@ -29,7 +29,7 @@ async def _run(settings: ControlSettings, dry_run: bool) -> SyncReport:
             if dry_run
             else LagoBillingEngine(settings.lago_api_url, settings.lago_api_key.get_secret_value().strip(), http)
         )
-        async with db.connect() as conn:
+        async with db.begin() as conn:
             return await sync_to_lago(conn, engine, dry_run=dry_run)
     finally:
         await http.aclose()

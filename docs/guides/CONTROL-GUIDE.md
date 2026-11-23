@@ -70,7 +70,9 @@ Menu **Billing** (super admin, billing).
   details. The invoice becomes **Paid**, its reminders stop and a past-due subscription becomes active again.
 - **Subscriptions:** plan and add-ons, status, monthly or annual, learners billed and the current period.
 - **Payments:** method, the gateway (**Razorpay**, **Stripe** or **Bank (recorded by hand)**) with its reference.
-  Card and bank numbers are never stored.
+  Card and bank numbers are never stored. For Indian INR invoices, Nexus Control creates a hosted **Razorpay** payment
+  link (card, UPI, or netbanking only) and marks the invoice **Paid** automatically when Razorpay's signed webhook
+  arrives, clearing reminders, reactivating past-due subscriptions, and notifying Lago.
 - **Reminders:** each account's reminder stage. Reminders end at **Read-only** — the institution can still read and
   export everything; billing never deletes an institution's data.
 

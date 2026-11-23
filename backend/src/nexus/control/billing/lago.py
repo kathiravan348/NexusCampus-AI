@@ -180,3 +180,7 @@ class LagoBillingEngine:
             Invoice(i["lago_id"], i["number"], i["status"], i["currency"], int(i["total_amount_cents"]))
             for i in body.get("invoices", [])
         ]
+
+    async def mark_paid(self, lago_invoice_id: str) -> None:
+        """Marks an externally paid invoice as succeeded in Lago (NEX-107, D62)."""
+        await self._ok("PUT", f"/invoices/{lago_invoice_id}", json={"invoice": {"payment_status": "succeeded"}})

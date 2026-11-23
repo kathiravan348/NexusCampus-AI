@@ -73,6 +73,7 @@ class BillingEngine(Protocol):
     async def record_usage(self, event: UsageEvent) -> None: ...
     async def current_usage(self, account_id: str, subscription_id: str) -> CurrentUsage: ...
     async def invoices(self, account_id: str) -> list[Invoice]: ...
+    async def mark_paid(self, lago_invoice_id: str) -> None: ...
 
 
 @dataclass
@@ -86,6 +87,8 @@ class FakeBillingEngine:
     events: dict[str, UsageEvent] = field(default_factory=dict)
     #: Subscription id → the start date sent (`subscription_at`), to check trials are not billed.
     started_at: dict[str, str | None] = field(default_factory=dict)
+    paid_invoices: list[str] = field(default_factory=list)
+    fail_mark_paid: bool = False
     metric: bool = False
 
     async def ensure_learner_metric(self) -> None:
@@ -123,3 +126,9 @@ class FakeBillingEngine:
 
     async def invoices(self, account_id: str) -> list[Invoice]:
         return []
+
+    async def mark_paid(self, lago_invoice_id: str) -> None:
+        if self.fail_mark_paid:
+            raise BillingUnavailable("fake billing engine mark_paid failure")
+        if lago_invoice_id not in self.paid_invoices:
+            self.paid_invoices.append(lago_invoice_id)
