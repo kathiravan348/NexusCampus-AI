@@ -94,6 +94,7 @@ async def test_busy_rules_for_create_and_retry(
             dup_off = await api.post(f"{API}/offboarding-jobs", json=off_body, headers={"X-Nexus-Staff": IMPL})
             mov_during_off = await api.post(f"{API}/portability-jobs", json=mov_body, headers={"X-Nexus-Staff": IMPL})
         assert dup_off.status_code == 409 and dup_off.json()["error"]["message"] == BUSY_MSG
+        assert dup_off.json()["error"]["details"] == [{"path": "tenantId", "message": "open_job"}]
         assert mov_during_off.status_code == 409 and mov_during_off.json()["error"]["message"] == BUSY_MSG
         assert _cmd_count(owner_url) == cmds_before
         logged = "\n".join(r.getMessage() for r in caplog.records)

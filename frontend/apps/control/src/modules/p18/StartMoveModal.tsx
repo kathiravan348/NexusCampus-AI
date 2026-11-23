@@ -52,7 +52,9 @@ export function StartMoveModal({ onClose }: { readonly onClose: () => void }) {
   const destinationRegion: Region = toRegion || defaultRegion;
   const valid = account !== "" && resolvedTenant !== "";
   const errorText = (err: unknown) =>
-    err instanceof ApiRequestError && err.status === 409
+    err instanceof ApiRequestError &&
+    err.status === 409 &&
+    err.error.details?.some((d) => d.path === "tenantId" && d.message === "open_job")
       ? t("p18.form.busy")
       : t("p18.form.failed");
 

@@ -6,11 +6,13 @@ from sqlalchemy import select, text
 from sqlalchemy.ext.asyncio import AsyncConnection
 
 from nexus.control.provisioning import offboarding_jobs, portability_jobs
-from nexus.core.errors import ApiError
+from nexus.core.errors import ApiError, ApiErrorDetail
 
 log = logging.getLogger("nexus.control.tenant_jobs")
 OPEN_STATUSES = ("pending", "running")
 BUSY_MESSAGE = "This tenant already has an offboarding or move in progress."
+# Marks this 409 apart from the other conflicts of the same routes, so the dialogs can say why (NEX-143 review).
+BUSY_DETAIL = ApiErrorDetail(path="tenantId", message="open_job")
 
 
 async def ensure_no_open_job(
@@ -41,7 +43,7 @@ async def ensure_no_open_job(
             except_offboarding or "-",
             except_move or "-",
         )
-        raise ApiError(409, "conflict", BUSY_MESSAGE)
+        raise ApiError(409, "conflict", BUSY_MESSAGE, [BUSY_DETAIL])
 
     mov_q = select(portability_jobs.c.id).where(
         portability_jobs.c.tenant_id == tenant_id,
@@ -61,4 +63,4 @@ async def ensure_no_open_job(
             except_offboarding or "-",
             except_move or "-",
         )
-        raise ApiError(409, "conflict", BUSY_MESSAGE)
+        raise ApiError(409, "conflict", BUSY_MESSAGE, [BUSY_DETAIL])

@@ -27,6 +27,9 @@ let offCounter = 0;
 const firstApproverByJob = new Map<string, string>();
 const nowIso = () => new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
 
+/** Marks the "another offboarding or move is open" 409, as the backend (D66). */
+const OPEN_JOB = [{ path: "tenantId", message: "open_job" }];
+
 function hasOpenTenantJob(tenantId: string, exceptOffboardingId?: string): boolean {
   const open = (s: string) => s === "pending" || s === "running";
   return (
@@ -176,7 +179,7 @@ export const p04Handlers: HttpHandler[] = [
         throw new ApiFailure("not_found");
       }
       if (account.deliveryModel === "self_hosted") throw new ApiFailure("conflict");
-      if (hasOpenTenantJob(parsed.data.tenantId)) throw new ApiFailure("conflict");
+      if (hasOpenTenantJob(parsed.data.tenantId)) throw new ApiFailure("conflict", OPEN_JOB);
       offCounter += 1;
       const id = `off-new-${offCounter}`;
       firstApproverByJob.delete(id);
@@ -273,7 +276,7 @@ export const p04Handlers: HttpHandler[] = [
       const job = visibleTo(viewer, controlDb.offboardingJobs).find((j) => j.id === params["id"]);
       if (!job) throw new ApiFailure("not_found");
       if (job.status !== "failed") throw new ApiFailure("conflict");
-      if (hasOpenTenantJob(job.tenantId, job.id)) throw new ApiFailure("conflict");
+      if (hasOpenTenantJob(job.tenantId, job.id)) throw new ApiFailure("conflict", OPEN_JOB);
       let firstFailedSeen = false;
       const steps = job.steps.map((s) => {
         if (s.status === "done") return s;

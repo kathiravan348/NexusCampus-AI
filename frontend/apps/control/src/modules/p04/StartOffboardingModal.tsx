@@ -36,7 +36,9 @@ export function StartOffboardingModal({ onClose }: { readonly onClose: () => voi
     trimmedPem.length <= 1900 &&
     freezeConfirmed;
   const errorText = (err: unknown) =>
-    err instanceof ApiRequestError && err.status === 409
+    err instanceof ApiRequestError &&
+    err.status === 409 &&
+    err.error.details?.some((d) => d.path === "tenantId" && d.message === "open_job")
       ? t("p04.off.form.busy")
       : t("p04.off.form.failed");
 

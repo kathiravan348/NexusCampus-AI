@@ -18,6 +18,9 @@ import { CONTROL_API_BASE } from "../route";
 const MOVE_STEPS = PortabilityStepNameSchema.options;
 const nowIso = () => new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
 
+/** Marks the "another offboarding or move is open" 409, as the backend (D66). */
+const OPEN_JOB = [{ path: "tenantId", message: "open_job" }];
+
 function hasOpenTenantJob(tenantId: string, exceptMoveId?: string): boolean {
   const open = (s: string) => s === "pending" || s === "running";
   return (
@@ -144,7 +147,7 @@ export const p18Handlers: HttpHandler[] = [
       } else if (account.deliveryModel !== "self_hosted") {
         throw new ApiFailure("conflict");
       }
-      if (hasOpenTenantJob(tenantId)) throw new ApiFailure("conflict");
+      if (hasOpenTenantJob(tenantId)) throw new ApiFailure("conflict", OPEN_JOB);
       const nextNum =
         controlDb.portabilityJobs.filter((j) => j.id.startsWith("mov-new-")).length + 1;
       const initial = MOVE_STEPS.map((name) => ({ name, status: "pending" as StepStatus }));
@@ -269,7 +272,7 @@ export const p18Handlers: HttpHandler[] = [
       const job = visibleTo(viewer, controlDb.portabilityJobs).find((j) => j.id === params["id"]);
       if (!job) throw new ApiFailure("not_found");
       if (job.status !== "failed") throw new ApiFailure("conflict");
-      if (hasOpenTenantJob(job.tenantId, job.id)) throw new ApiFailure("conflict");
+      if (hasOpenTenantJob(job.tenantId, job.id)) throw new ApiFailure("conflict", OPEN_JOB);
       // A failed Verify on a self-hosted destination goes back to the staff import step (as the backend).
       const backToImport =
         !isDestinationCell(job.direction) &&
