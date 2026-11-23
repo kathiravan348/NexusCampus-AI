@@ -19,7 +19,7 @@ Board name: `Gemini`. **Default role: implementer** (D57). The Owner may also sa
 If anything is unclear or conflicts with `AGENTS.md`: write it under `Questions`, leave `in-progress`, stop.
 If a task needs a new download (package, image, tool): stop and ask under `Questions` (the Owner approves downloads).
 
-**Planner / reviewer** (only when the Owner says so): follow the planner/reviewer steps in `CLAUDE.md` with owner
-`Gemini`. Never review a task you built; take the planning lock before planning.
+**Build only (D68):** Gemini never plans, reviews, merges, pushes or edits rule files (`AGENTS.md`, the agent files,
+`docs/DECISIONS.md`, `docs/PLAN.md`). If asked to, it says so and stops. Scratch files stay outside the repo.
 
 Antigravity artifacts (screenshots, walkthroughs) stay in Antigravity: never commit them or link to local paths.

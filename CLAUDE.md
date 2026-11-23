@@ -26,4 +26,7 @@ Board name: `Claude`. **Default role: planner and reviewer** (D57). The Owner ma
    `plan: …`. Clear the planning lock. Push only when the Owner says so.
 
 **Implementer** (only when the Owner says so): follow the implementer steps in `GEMINI.md` with owner `Claude`.
-Then Gemini or Codex (the one the Owner names) reviews it.
+Then Codex reviews it (D68).
+
+**When Claude returns after Codex was the backup lead (D68):** read the board index, `git log --merges` since the last
+Claude commit and each review note Codex wrote; re-check anything that looks wrong and report it to the Owner.

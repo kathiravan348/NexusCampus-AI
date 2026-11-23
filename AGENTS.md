@@ -9,7 +9,7 @@
 > Platform names come from `brand.config.ts` only. An institution's name, theme, fonts and texts are tenant data.
 
 ## 1. Current stage
-**Stage 2 — Nexus Control & delivery, build step: last task NEX-143 (D66), then the Owner's release review**
+**Stage 2 — Nexus Control & delivery, build step done (NEX-140–143); next: the Owner's release review**
 (prototype NEX-066–092, frozen D56; build NEX-093–142, `docs/tasks/stage-2/BOARD.md`; NEX-138 Stripe moved to a later stage, D64). Stage 1 is
 released (D54); Stage 1 and Stage 2 contracts and screens change only through a task with the Owner's OK. Full plan: `docs/PLAN.md`; modules: `docs/MODULES.md`. Never build a module from a
 later stage.
@@ -20,18 +20,20 @@ Three roles: **planner** (plans, architecture, task files), **implementer** (bui
 
 | Agent | May take | Default role (Owner gives none) | Own file |
 |---|---|---|---|
-| Gemini (Antigravity) | Planner, reviewer, implementer | Implementer (D57) | `GEMINI.md` |
-| Claude (Claude Code) | Planner, reviewer, implementer | Planner / reviewer (review first, then plan; D57) | `CLAUDE.md` |
-| Codex (OpenAI Codex) | Planner, reviewer, implementer | Implementer (D67) | `CODEX.md` |
+| Claude (Claude Code) | Planner, reviewer, implementer | **Lead:** planner / reviewer (review first, then plan; D57) | `CLAUDE.md` |
+| Codex (OpenAI Codex) | Planner, reviewer, implementer | Implementer; **backup lead** while Claude is unavailable (D68) | `CODEX.md` |
+| Gemini (Antigravity) | **Implementer only** (D68) | Implementer | `GEMINI.md` |
 | Owner (human) | Approves stage scope, freezes, decisions | — | — |
 
-- The Owner may assign any role to any agent ("Plan", "Review", "Build NEX-###").
-- **The builder never reviews its own task.** Gemini- or Codex-built → Claude reviews; Claude-built → Gemini or Codex
-  reviews (the one the Owner names). Claude is the default approver (D67).
+- The Owner may give Claude or Codex any role ("Plan", "Review", "Build NEX-###"); Gemini only builds (D68).
+- **Lead (D68):** Claude plans, reviews and merges. When the Owner says Claude is unavailable, Codex is the lead with
+  the same authority (`CODEX.md`) until the Owner says Claude is back; Claude then reads the merges made meanwhile.
+- **The builder never reviews its own task.** Gemini-built → the lead (Claude, or Codex as backup lead); Codex-built →
+  Claude; Claude-built → Codex.
 - **One planner at a time.** The planner checks the board index (`docs/tasks/BOARD.md`) first: if `Planning lock` names
   another agent, it does not plan. Otherwise it sets `Planning lock: <agent>` before editing plan docs or task scope,
   and clears it when done.
-- Only the agent acting as planner or reviewer edits `AGENTS.md`, the agent files, `docs/REQUIREMENTS.md`,
+- Only the lead acting as planner or reviewer edits `AGENTS.md`, the agent files, `docs/REQUIREMENTS.md`,
   `docs/MODULES.md`, `docs/PLAN.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md` and task scope.
 - An implementer never changes a plan. If a task is unclear or wrong: stop, write it under `Questions` in the task file.
 - **Taking over:** set yourself as owner, read `Questions`, `Handoff` and branch commits, continue on the same branch.
