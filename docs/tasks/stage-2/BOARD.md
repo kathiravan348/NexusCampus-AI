@@ -89,4 +89,4 @@
 | NEX-142 | Control P18 buttons: start a move, confirm its staff steps, retry (D65) | C | done | Gemini | 136, 139 |
 | NEX-143 | Control: one open offboarding or move per tenant (D66; refuse a second start or retry with 409) | D | done | Gemini | 141, 142 |
 | NEX-144 | Install & updates: Review, Approve and Discard a support diagnostic bundle (D69, Owner OK) | C | done | Codex | 112, 105 |
-| NEX-145 | Audit log: approving or discarding a support diagnostic bundle is an audit event (E-3, V-6) | D | planned | — | 144 |
+| NEX-145 | Audit log: approving or discarding a support diagnostic bundle is an audit event (E-3, V-6) | D | ready-for-review | Codex | 144 |

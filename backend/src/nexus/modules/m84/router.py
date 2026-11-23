@@ -12,6 +12,7 @@ from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
 from sqlalchemy import text
 
+from nexus.core.audit import AuditInput, changes, record_audit
 from nexus.core.entitlements import ensure_module_enabled
 from nexus.core.errors import ApiError
 from nexus.core.pagination import Page, PageQuery, page_query
@@ -203,7 +204,9 @@ async def diagnostic_content(request: Request, auth: Admin, bundle_id: str) -> D
     return DiagnosticContent(id=row["id"], content=path.read_text(encoding="utf-8"))
 
 
-async def _decide(request: Request, auth: Authorized, bundle_id: str, status: str) -> DiagnosticBundle:
+async def _decide(
+    request: Request, auth: Authorized, bundle_id: str, status: Literal["approved", "discarded"]
+) -> DiagnosticBundle:
     await _one_bundle(request, auth, bundle_id)
     done = await auth.ctx.db.execute(
         text(
@@ -215,6 +218,18 @@ async def _decide(request: Request, auth: Authorized, bundle_id: str, status: st
     row = done.mappings().first()
     if row is None:
         raise ApiError(409, "conflict", "Only a bundle waiting for review can be approved or discarded.")
+    await record_audit(
+        auth.ctx.db,
+        auth.ctx.tenant,
+        AuditInput(
+            action=f"m84.diagnosticBundle.{status}",
+            actor_kind="user",
+            actor_id=auth.ctx.user_id,
+            target_type="diagnosticBundle",
+            target_id=bundle_id,
+            changes=changes("status"),
+        ),
+    )
     return _bundle(row)
 
 

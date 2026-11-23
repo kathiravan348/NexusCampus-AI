@@ -123,3 +123,4 @@ app `dev:real` on 3100, built app `pnpm --filter campus real:build` + `real:prev
 | 2026-11-21 | NEX-064 | `compose:up` self-hosted install: 74.87s fresh with demo seed, 17.26s re-run. |
 | 2026-11-21 | NEX-065 | `api:list:p95` (300ms) and `load:4g` (6s) budgets added and measured. |
 | 2026-11-23 | NEX-137 | Control & agent real-mode budgets (`control:backend:start`, `control:compose:up`, `control:api:list:p95`, `agent:api:p95`, `control:load:4g`, `preview:control`) added and measured. |
+| 2026-11-23 | NEX-145 | `backend:check` passed 515 tests in 3m 09.4s total, 9.4s over the 3m soft budget while the frontend gate and live checks also ran. |
