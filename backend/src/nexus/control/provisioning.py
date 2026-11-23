@@ -14,6 +14,7 @@ from sqlalchemy import (
     Column,
     DateTime,
     ForeignKey,
+    Integer,
     SmallInteger,
     String,
     Table,
@@ -118,6 +119,16 @@ portability_jobs = Table(
     Column("status", String(16), nullable=False),
     Column("encrypted", Boolean, nullable=False),
     Column("created_at", DateTime(timezone=True), nullable=False),
+    # Internal move orchestration columns (NEX-136; never exposed in `PortabilityJob` contract)
+    Column("requested_by_staff_id", String(ID), ForeignKey(staff_users.c.id), nullable=True),
+    Column("source_deployment_id", String(ID), ForeignKey(deployments.c.id), nullable=True),
+    Column("destination_deployment_id", String(ID), ForeignKey(deployments.c.id), nullable=True),
+    Column("command_id", String(ID), ForeignKey(deployment_commands.c.id), nullable=True, index=True),
+    Column("recipient_pem", Text, nullable=True),
+    Column("recipient_pem_sha256", String(64), nullable=True),
+    Column("file_name", String(200), nullable=True),
+    Column("expected_rows", Integer, nullable=True),
+    Column("offboarding_job_id", String(ID), ForeignKey(offboarding_jobs.c.id), nullable=True, index=True),
     CheckConstraint("encrypted = true", name="port_encrypted_true"),
 )
 

@@ -382,4 +382,7 @@ async def apply_offboarding_result(
             .where(offboarding_jobs.c.id == job_id)
             .values(steps=steps, status=status, shred_certificate_id=cert_id)
         )
+        from nexus.control.moves import on_offboarding_certificate_issued
+
+        await on_offboarding_certificate_issued(conn, job_id)
         log.info("offboarding job=%s step=certificate_issued cert=%s outcome=done", job_id, cert_id)
