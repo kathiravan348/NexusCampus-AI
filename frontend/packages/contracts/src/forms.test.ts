@@ -1,6 +1,9 @@
 import { describe, expect, it } from "vitest";
 import {
   CustomFieldDefinitionSchema,
+  CustomFieldKeySchema,
+  NumberingSubjectSchema,
+  WorkflowSubjectSchema,
   CustomFieldValuesSchema,
   FormDefinitionSchema,
   LocalizedLabelSchema,
@@ -226,4 +229,13 @@ describe("numbering formats", () => {
     (attrs) =>
       expect(NumberingFormatSchema.safeParse({ ...numbering, ...attrs }).success).toBe(false),
   );
+});
+
+describe("shared M08 enums and keys", () => {
+  it("exports the field key format and the workflow and numbering subjects", () => {
+    expect(CustomFieldKeySchema.safeParse("bloodGroup").success).toBe(true);
+    expect(CustomFieldKeySchema.safeParse("Blood group").success).toBe(false);
+    expect(WorkflowSubjectSchema.options).toContain("fee_concession");
+    expect(NumberingSubjectSchema.options).toContain("receipt");
+  });
 });

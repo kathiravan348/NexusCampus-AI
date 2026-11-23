@@ -1,7 +1,9 @@
 import { z } from "zod";
 import { IdSchema, LocaleSchema, NameSchema, UtcDateTimeSchema } from "./common";
 
-const FieldKeySchema = z.string().regex(/^[a-z][a-zA-Z0-9]{1,39}$/);
+/** Key of a custom field or choice option, e.g. `bloodGroup` (NEX-148 / NEX-149 records carry values by key). */
+export const CustomFieldKeySchema = z.string().regex(/^[a-z][a-zA-Z0-9]{1,39}$/);
+const FieldKeySchema = CustomFieldKeySchema;
 const timestamps = { createdAt: UtcDateTimeSchema, updatedAt: UtcDateTimeSchema };
 const timestampIssue = {
   message: "updatedAt must be on or after createdAt",
@@ -122,6 +124,15 @@ export const FormDefinitionSchema = z
   .refine(timestampsInOrder, timestampIssue);
 export type FormDefinition = z.infer<typeof FormDefinitionSchema>;
 
+export const WorkflowSubjectSchema = z.enum([
+  "application",
+  "leave_request",
+  "document_request",
+  "fee_concession",
+  "record_change",
+]);
+export type WorkflowSubject = z.infer<typeof WorkflowSubjectSchema>;
+
 const WorkflowStepSchema = z
   .strictObject({
     id: IdSchema,
@@ -138,13 +149,7 @@ export const WorkflowDefinitionSchema = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
-    subject: z.enum([
-      "application",
-      "leave_request",
-      "document_request",
-      "fee_concession",
-      "record_change",
-    ]),
+    subject: WorkflowSubjectSchema,
     name: NameSchema,
     steps: z
       .array(WorkflowStepSchema)
@@ -163,10 +168,19 @@ export type WorkflowDefinition = z.infer<typeof WorkflowDefinitionSchema>;
 const NUMBERING_PATTERN =
   /^(?:[A-Za-z0-9/_-]|\{(?:YYYY|YY|CAMPUS)\})*\{SEQ:[1-9]\}(?:[A-Za-z0-9/_-]|\{(?:YYYY|YY|CAMPUS)\})*$/;
 
+export const NumberingSubjectSchema = z.enum([
+  "learner",
+  "application",
+  "receipt",
+  "invoice",
+  "certificate",
+]);
+export type NumberingSubject = z.infer<typeof NumberingSubjectSchema>;
+
 export const NumberingFormatSchema = z.strictObject({
   id: IdSchema,
   tenantId: IdSchema,
-  subject: z.enum(["learner", "application", "receipt", "invoice", "certificate"]),
+  subject: NumberingSubjectSchema,
   pattern: z.string().max(60).regex(NUMBERING_PATTERN, {
     message: "Use letters, digits, /, _, -, date or campus tokens, and exactly one {SEQ:1–9}",
   }),
