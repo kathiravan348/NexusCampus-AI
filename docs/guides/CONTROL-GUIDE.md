@@ -87,13 +87,21 @@ Menu **Provisioning** (super admin, implementation, site reliability to read).
   self-hosted), **Data region** (the tenant's data never leaves it), institution type, plan, shared or dedicated
   cell and 1–60 trial days. In the demo, **Run next step** completes the next step; after the first one the card
   shows the new tenant id. In real mode (`dev:control:real`), **Start trial tenant** queues a signed provisioning
-  command for the region cell and the job updates automatically as the cell finishes each step (manual **Run next
-  step** is demo only; failed jobs can be retried).
+  command for the region cell and the job updates automatically as the cell finishes each step (**Run next
+  step** is hidden in real mode). A failed provisioning job shows **Retry**, which sends a fresh signed command.
 - **Offboarding:** customers leaving — their encrypted export, the destruction of their keys (the data becomes
-  unreadable) and the signed **Key-destruction certificate** with the key ids, time and signing key. In real mode,
-  offboarding freezes writes on the cell, creates an encrypted export for the institution's public key, waits for staff
-  to confirm the institution received the file, requires **two different staff members** to approve key destruction,
-  and issues an Ed25519-signed certificate that anyone can verify offline using our published shred-certificate keys.
+  unreadable) and the signed **Key-destruction certificate** with the key ids, time and signing key.
+  - **Start offboarding** (implementation, super admin): pick the **Account** and **Tenant**, paste the
+    **Institution public key (PEM)** (RSA at least 3072 bits), tick **The institution's data will be frozen**, and
+    press **Start offboarding**. In real mode this freezes writes on the cell and creates the encrypted export for the
+    institution's public key (in the demo, freeze and export finish right away).
+  - **Export received**: once the encrypted export is ready and handed to the institution, press **Export received**.
+  - **Approve key destruction**: once the export receipt is confirmed, press **Approve key destruction** and confirm in
+    the dialog. Two different staff members must approve: the first approval shows **First approval recorded. A second
+    staff member must now approve.** (the same person cannot approve twice), and the second queues key destruction
+    (**Second approval recorded. Key destruction is now queued.**) and issues the Ed25519-signed **Key-destruction
+    certificate** that anyone can verify offline using our published shred-certificate keys.
+  - **Retry**: a failed offboarding job shows **Retry** to re-queue the failed step's command.
 - **When a cell does not answer:** every instruction Control sends to a region cell is valid for a limited time. If the
   cell has not carried it out in time, the step that waited is marked **failed** (within about a minute, even if the
   cell is offline), and a failed provisioning, offboarding or move job can be retried, which sends a fresh
@@ -285,10 +293,10 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 
 - Every P01–P18 screen runs on the real Control backend in real mode (`dev:control:real`); demo mode (`dev:control`) remains available for training and offline walkthroughs.
 - Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it. Hosted payment links are live for Indian INR invoices via **Razorpay** (NEX-107); European (EUR) invoices are paid by bank transfer, recorded by hand; a card payment page for Europe (Stripe) comes in a later stage.
-- Provisioning, offboarding and moves start from their pages, and the pages follow each job's steps. The later staff
-  actions — **retry** a failed job, confirm the institution received its export, the two approvals before keys are
-  destroyed, and confirming a move's manual steps — are Control API calls for now (`docs/guides/API.md`): the screens
-  were frozen before these actions existed (D56). **Run next step** works in demo mode only.
+- Provisioning and offboarding steps — **Start trial tenant**, **Start offboarding**, **Export received**, the two
+  **Approve key destruction** approvals, and **Retry** — run from the **Provisioning** page (**Run next step** works in
+  demo mode only). Starting a move, confirming a move's manual steps and retrying a failed move are Control API calls
+  until the Moves buttons land (`docs/guides/API.md`).
 - **Staff & security** (P13) is read-only in the app; provider staff accounts and mandatory MFA are managed in the `nexus-staff` sign-in realm.
 
 ## Operations: installing Nexus Control (NEX-108, NEX-110)

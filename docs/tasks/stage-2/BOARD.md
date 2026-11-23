@@ -85,5 +85,5 @@
 | NEX-138 | ~~Payments (D62): Stripe hosted payment page for EU invoices~~ — moved to a later stage (D64); EU invoices are paid by bank transfer meanwhile | D | withdrawn | — | — |
 | NEX-139 | Control: an expired command fails its job step, so staff can retry (D63; also when the cell is silent) | D | done | Claude | 136, 107 |
 | NEX-140 | Campus app: one banner when the institution is frozen (`423 tenant_frozen`; D65) | C | done | Gemini | 133 |
-| NEX-141 | Control P04 buttons: retry, start offboarding, export received, two key-destruction approvals (D65) | C | planned | — | 134, 139 |
+| NEX-141 | Control P04 buttons: retry, start offboarding, export received, two key-destruction approvals (D65) | C | done | Gemini | 134, 139 |
 | NEX-142 | Control P18 buttons: start a move, confirm its staff steps, retry (D65) | C | planned | — | 136, 139 |

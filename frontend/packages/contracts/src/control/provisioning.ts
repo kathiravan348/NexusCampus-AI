@@ -64,6 +64,14 @@ export const ProvisioningJobSchema = z
   });
 export type ProvisioningJob = z.infer<typeof ProvisioningJobSchema>;
 
+/** Start offboarding a SaaS tenant (P04, D61): freeze writes and export for the institution's public key. */
+export const OffboardingRequestSchema = z.strictObject({
+  accountId: IdSchema,
+  tenantId: IdSchema,
+  recipientPem: z.string().trim().min(64).max(1900),
+});
+export type OffboardingRequest = z.infer<typeof OffboardingRequestSchema>;
+
 /**
  * Leaving: freeze, hand the institution its export, destroy its keys (crypto-shred, V-2) and issue a certificate.
  * `shredCertificateId` is set iff the certificate step is done.

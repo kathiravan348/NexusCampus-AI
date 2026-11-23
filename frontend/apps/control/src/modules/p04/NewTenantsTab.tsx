@@ -1,7 +1,10 @@
 import { useControlText } from "@nexus/i18n/control";
+import { DATA_MODE } from "@nexus/services";
 import {
   useAdvanceJob,
+  useControlServices,
   useProvisioningJobs,
+  useRetryProvisioning,
   useStaffCan,
   useStaffDirectory,
 } from "@nexus/services/control";
@@ -14,19 +17,22 @@ import { useAccountNames } from "../../app/names";
 import { PROVISIONING_STEP_KEY, STATUS_TONE, useStepStatusLabels } from "./labels";
 import { StartTrialModal } from "./StartTrialModal";
 
-/** Tenant creation jobs and their steps; staff with `ctl.provisioning.manage` start and advance them. */
+/** Tenant creation jobs and their steps; staff with `ctl.provisioning.manage` start, advance (demo) and retry them. */
 export function NewTenantsTab() {
   const t = useControlText();
   const fmt = useControlFormat();
   const toast = useToast();
   const can = useStaffCan();
+  const { mode } = useControlServices();
   const jobs = useProvisioningJobs();
   const advance = useAdvanceJob();
+  const retry = useRetryProvisioning();
   const accounts = useAccountNames();
   const names = useStaffDirectory();
   const statusLabels = useStepStatusLabels();
   const [starting, setStarting] = useState(false);
   const canManage = can("ctl.provisioning.manage");
+  const isDemo = DATA_MODE !== "real" && mode !== "real";
 
   return (
     <div className="space-y-4">
@@ -35,6 +41,11 @@ export function NewTenantsTab() {
           <Plus className="me-1 h-4 w-4" aria-hidden="true" />
           {t("p04.start")}
         </Button>
+      )}
+      {retry.isError && (
+        <p role="alert" className="text-body-sm text-danger-text">
+          {t("p04.retryFailed")}
+        </p>
       )}
       {jobs.isPending ? (
         <Skeleton className="h-48" />
@@ -79,24 +90,44 @@ export function NewTenantsTab() {
                         date: fmt.date(job.createdAt),
                       })}
                     </span>
-                    {canManage && job.status !== "done" && job.status !== "failed" && (
-                      <Button
-                        size="sm"
-                        variant="secondary"
-                        aria-label={t("p04.advanceLabel", { job: job.id })}
-                        disabled={advance.isPending}
-                        onClick={() =>
-                          advance.mutate(job.id, {
-                            onSuccess: () =>
-                              toast.show({ tone: "success", title: t("p04.advanced") }),
-                            onError: () =>
-                              toast.show({ tone: "danger", title: t("p04.advanceFailed") }),
-                          })
-                        }
-                      >
-                        {t("p04.advance")}
-                      </Button>
-                    )}
+                    <div className="flex flex-wrap items-center gap-2">
+                      {isDemo && canManage && job.status !== "done" && job.status !== "failed" && (
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          aria-label={t("p04.advanceLabel", { job: job.id })}
+                          disabled={advance.isPending}
+                          onClick={() =>
+                            advance.mutate(job.id, {
+                              onSuccess: () =>
+                                toast.show({ tone: "success", title: t("p04.advanced") }),
+                              onError: () =>
+                                toast.show({ tone: "danger", title: t("p04.advanceFailed") }),
+                            })
+                          }
+                        >
+                          {t("p04.advance")}
+                        </Button>
+                      )}
+                      {canManage && job.status === "failed" && (
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          aria-label={t("p04.retryLabel", { job: job.id })}
+                          disabled={retry.isPending}
+                          onClick={() =>
+                            retry.mutate(job.id, {
+                              onSuccess: () =>
+                                toast.show({ tone: "success", title: t("p04.retried") }),
+                              onError: () =>
+                                toast.show({ tone: "danger", title: t("p04.retryFailed") }),
+                            })
+                          }
+                        >
+                          {t("p04.retry")}
+                        </Button>
+                      )}
+                    </div>
                   </div>
                 </div>
               </Card>
