@@ -1,8 +1,9 @@
-"""Agent side of Control -> deployment signed commands (D60, NEX-129).
+"""Agent side of Control -> deployment signed commands (D60, NEX-129, NEX-131).
 
 Polls `GET /control/api/v1/agent/commands` through `control_endpoint` (HTTPS only, loopback HTTP in dev, no redirects,
 <= 64 KB), verifies each `nexus-command/1` signature against `install_dir/command-keys.json`, checks deployment id and
-replay table `agent_commands`, executes allowed kinds (`ping` here), and reports results back to Control.
+replay table `agent_commands`, executes allowed kinds (`ping`, `access_request.file`), reports command results, and
+syncs M83 access decisions back to Control via `POST /control/api/v1/agent/access-decisions`.
 """
 
 import json
@@ -15,20 +16,28 @@ from typing import Any
 
 import httpx2
 from sqlalchemy import Engine, text
+from sqlalchemy.exc import SQLAlchemyError
 
 from nexus.agent.health import control_endpoint
 from nexus.agent.licence import load_keys
 from nexus.commands.format import CommandPayload, CommandVerificationError, verify_command
+from nexus.modules.m83.broker_inbox import (
+    BrokerCommandError,
+    collect_pending_decisions,
+    handle_access_request_file,
+    mark_decisions_reported,
+)
 from nexus.settings import Settings
 
 COMMAND_KEYS = "command-keys.json"
 COMMANDS_ENDPOINT_PATH = "/control/api/v1/agent/commands"
+DECISIONS_ENDPOINT_PATH = "/control/api/v1/agent/access-decisions"
 COMMAND_TIMEOUT_SECONDS = 10.0
 MAX_RESPONSE_BYTES = 65536
+MAX_DECISIONS_BATCH = 50
 _SAFE_CMD_ID = re.compile(r"^cmd-[0-9a-f]{16}$")
 
 log = logging.getLogger("nexus.agent.commands")
-
 CommandHandler = Callable[[CommandPayload, Engine, Settings], dict[str, Any]]
 
 
@@ -40,13 +49,17 @@ class CommandsRunResult:
     rejected: int
     skipped: int
     message: str
+    decisions_reported: int = 0
 
 
 def _handle_ping(_cmd: CommandPayload, _engine: Engine, settings: Settings) -> dict[str, Any]:
     return {"version": settings.app_version}
 
 
-HANDLERS: dict[str, CommandHandler] = {"ping": _handle_ping}
+HANDLERS: dict[str, CommandHandler] = {
+    "ping": _handle_ping,
+    "access_request.file": handle_access_request_file,
+}
 
 
 def commands_skip_reason(settings: Settings) -> str | None:
@@ -90,28 +103,18 @@ def _read_capped(response: httpx2.Response, limit: int) -> bytes | None:
 
 
 def _post_result(
-    client: httpx2.Client,
-    base_url: str,
-    token: str,
-    cmd_id: str,
-    status: str,
-    result: dict[str, Any],
+    client: httpx2.Client, base_url: str, token: str, cmd_id: str, status: str, result: dict[str, Any]
 ) -> None:
     url = control_endpoint(base_url, f"{COMMANDS_ENDPOINT_PATH}/{cmd_id}/result")
     if url is None:
         return
     try:
-        client.post(
-            url,
-            json={"status": status, "result": result},
-            headers={"Authorization": f"Bearer {token}"},
-        )
+        client.post(url, json={"status": status, "result": result}, headers={"Authorization": f"Bearer {token}"})
     except httpx2.HTTPError:
         log.info("agent command report command=%s status=%s outcome=network_error", cmd_id, status)
 
 
 def _claim_command(engine: Engine, cmd_id: str, kind: str, now: datetime) -> bool:
-    """Inserts `cmd_id` into `agent_commands`; returns False if this id was already seen (replay guard)."""
     with engine.begin() as conn:
         inserted = conn.execute(
             text(
@@ -132,6 +135,48 @@ def _finish_command(engine: Engine, cmd_id: str, status: str, now: datetime) -> 
         )
 
 
+def report_access_decisions(
+    engine: Engine | None,
+    settings: Settings,
+    *,
+    now: datetime | None = None,
+    transport: httpx2.BaseTransport | None = None,
+) -> int:
+    """Posts changed M83 decisions for command-filed requests to Control (ids, statuses, times only)."""
+    if engine is None or commands_skip_reason(settings) is not None:
+        return 0
+    url = control_endpoint(settings.control_url, DECISIONS_ENDPOINT_PATH)
+    if url is None:
+        return 0
+    try:
+        pending = collect_pending_decisions(engine)
+    except SQLAlchemyError:
+        return 0
+    if not pending:
+        return 0
+
+    token = settings.control_agent_token.get_secret_value().strip()
+    client = (
+        httpx2.Client(timeout=COMMAND_TIMEOUT_SECONDS, verify=True, follow_redirects=False, transport=transport)
+        if transport is not None
+        else httpx2.Client(timeout=COMMAND_TIMEOUT_SECONDS, verify=True, follow_redirects=False)
+    )
+    reported = 0
+    stamp = (now or datetime.now(UTC)).astimezone(UTC)
+    with client:
+        for i in range(0, len(pending), MAX_DECISIONS_BATCH):
+            chunk = pending[i : i + MAX_DECISIONS_BATCH]
+            try:
+                resp = client.post(url, json={"items": chunk}, headers={"Authorization": f"Bearer {token}"})
+            except httpx2.HTTPError:
+                break
+            if resp.status_code == 200:
+                mark_decisions_reported(engine, chunk, stamp)
+                reported += len(chunk)
+                log.info("agent access decisions reported=%d", len(chunk))
+    return reported
+
+
 def poll_commands(
     engine: Engine | None,
     settings: Settings,
@@ -140,7 +185,7 @@ def poll_commands(
     transport: httpx2.BaseTransport | None = None,
     handlers: dict[str, CommandHandler] | None = None,
 ) -> CommandsRunResult:
-    """Fetches, verifies, executes once, and reports signed Control commands. Never raises."""
+    """Fetches, verifies, executes once, reports signed Control commands, and syncs M83 decisions."""
     skip = commands_skip_reason(settings)
     if skip is not None:
         return CommandsRunResult(0, 0, 0, 0, 0, skip)
@@ -186,7 +231,8 @@ def poll_commands(
             if status_code == 403:
                 return CommandsRunResult(0, 0, 0, 0, 0, "rejected (403): deployment is air-gapped on Control")
             if status_code == 429:
-                return CommandsRunResult(0, 0, 0, 0, 0, "rate limited (429): wait 30s before next poll")
+                decisions = report_access_decisions(engine, settings, now=now, transport=transport)
+                return CommandsRunResult(0, 0, 0, 0, 0, "rate limited (429): wait 30s before next poll", decisions)
             if status_code != 200:
                 return CommandsRunResult(0, 0, 0, 0, 0, f"failed: control answered HTTP {status_code}")
 
@@ -249,6 +295,17 @@ def poll_commands(
 
                 try:
                     result = handler(cmd, engine, settings)
+                except BrokerCommandError as exc:
+                    if exc.status == "rejected":
+                        rejected += 1
+                    else:
+                        failed += 1
+                    _finish_command(engine, cmd.id, exc.status, datetime.now(UTC))
+                    log.info(
+                        "agent command id=%s kind=%s outcome=%s reason=%s", cmd.id, cmd.kind, exc.status, exc.reason
+                    )
+                    _post_result(client, settings.control_url, token, cmd.id, exc.status, {"reason": exc.reason})
+                    continue
                 except Exception as exc:
                     failed += 1
                     _finish_command(engine, cmd.id, "failed", datetime.now(UTC))
@@ -261,11 +318,14 @@ def poll_commands(
                 log.info("agent command id=%s kind=%s outcome=done", cmd.id, cmd.kind)
                 _post_result(client, settings.control_url, token, cmd.id, "done", result)
 
-            msg = (
-                f"{len(items)} fetched: {done} done, {failed} failed, {rejected} rejected, {skipped} skipped"
-                if items
-                else "no pending commands"
-            )
-            return CommandsRunResult(len(items), done, failed, rejected, skipped, msg)
+        decisions = report_access_decisions(engine, settings, now=now, transport=transport)
+        msg = (
+            f"{len(items)} fetched: {done} done, {failed} failed, {rejected} rejected, {skipped} skipped"
+            if items
+            else "no pending commands"
+        )
+        if decisions:
+            msg += f"; {decisions} decisions reported"
+        return CommandsRunResult(len(items), done, failed, rejected, skipped, msg, decisions)
     except Exception as exc:
         return CommandsRunResult(0, 0, 0, 0, 0, f"failed: unexpected error ({type(exc).__name__})")

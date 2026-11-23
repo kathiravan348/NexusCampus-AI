@@ -13,14 +13,14 @@ from pydantic import Field, StringConstraints
 from sqlalchemy import text
 
 from nexus.core import db
-from nexus.core.audit import AuditInput, changes, record_audit
 from nexus.core.bodies import Issue, parse_body
 from nexus.core.errors import ApiError, ApiErrorDetail
 from nexus.core.ids import new_id
 from nexus.core.request_context import app_settings
 from nexus.core.schemas import Contract
 from nexus.core.tenancy import TenantContext, tenant_transaction
-from nexus.modules.m83.access import MAX_GRANT_HOURS, AccessRequestOut, Mode, ModuleId, Text, request_out
+from nexus.modules.m83.access import MAX_GRANT_HOURS, AccessRequestOut, Mode, ModuleId, Text
+from nexus.modules.m83.broker_inbox import InboxAccessRequest, file_access_request
 from nexus.modules.m83.grant_auth import credential_expiry, signer_of
 
 router = APIRouter(prefix="/api/v1/dev/broker", tags=["m83 dev broker stub"])
@@ -66,39 +66,17 @@ def _no_duplicates(raw: dict[str, Any]) -> list[Issue]:
 async def file_request(tenant_id: str, _: DevOnly, request: Request, body: JsonBody) -> AccessRequestOut:
     data = parse_body(FileRequestIn, body, _no_duplicates)
     ctx = TenantContext(tenant_id)
+    req = InboxAccessRequest(
+        request_id=new_id("acr"),
+        staff_ref=data.staff_ref,
+        staff_display_name=data.staff_display_name,
+        reason=data.reason,
+        modules=data.modules,
+        mode=data.mode,
+        duration_hours=data.duration_hours,
+    )
     async with tenant_transaction(db.sessionmaker(), ctx, app_settings(request)) as session:
-        request_id = new_id("acr")
-        await session.execute(
-            text(
-                "INSERT INTO access_requests (id, tenant_id, staff_ref, staff_display_name, reason, modules, mode, "
-                "duration_hours, status, requested_at) VALUES (:id, :t, :s, :n, :r, :m, :mode, :h, 'pending', :at)"
-            ),
-            {
-                "id": request_id,
-                "t": tenant_id,
-                "s": data.staff_ref,
-                "n": data.staff_display_name,
-                "r": data.reason,
-                "m": data.modules,
-                "mode": data.mode,
-                "h": data.duration_hours,
-                "at": datetime.now(UTC),
-            },
-        )
-        await record_audit(
-            session,
-            ctx,
-            AuditInput(
-                action="m83.accessRequest.filed",
-                actor_kind="system",
-                target_type="accessRequest",
-                target_id=request_id,
-                changes=changes("modules", "mode", "durationHours", "reason"),
-            ),
-        )
-        filed = await request_out(session, request_id)
-    assert filed is not None
-    return filed
+        return await file_access_request(session, ctx, req)
 
 
 @router.post("/tenants/{tenant_id}/access-grants/{grant_id}/credential", response_model=CredentialOut)
