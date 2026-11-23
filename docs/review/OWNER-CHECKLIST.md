@@ -11,9 +11,9 @@
 - **Stage 3** (core institution operations) is open: [`../tasks/stage-3/BOARD.md`](../tasks/stage-3/BOARD.md). The
   first two contract tasks are planned (NEX-146 academic structure, NEX-147 fields, forms, workflows, numbering).
 
-## 0. Approve the Stage 3 module list and order (D71)
+## 0. Approve the Stage 3 module list and order — approved 2026-11-23 (D72)
 
-- [ ] Read the Stage 3 plan in [`PLAN.md`](../PLAN.md) (Stage 3 detail) and the board: contracts → demo data → one
+- [x] Read the Stage 3 plan in [`PLAN.md`](../PLAN.md) (Stage 3 detail) and the board: contracts → demo data → one
       screen task per module → review build → freeze. Say **"approve the Stage 3 plan"**, or what to change (a module
       to drop, add or move). The screen tasks are planned only after your OK.
 
@@ -102,5 +102,5 @@ These are not blocking the build, but real billing and the trust page need them 
 ## What I do next, unless you say otherwise
 
 - Gemini and Codex build NEX-146 and NEX-147 (they do not overlap); I review and merge them (D68).
-- After your OK on the Stage 3 plan: write the next tasks two ahead, contracts first, then demo data and screens.
+- Write the next Stage 3 tasks two ahead in board order (D72): contracts first, then demo data and screens.
 - Anything that needs a new download, I hold and ask you first.

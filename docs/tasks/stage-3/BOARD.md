@@ -7,7 +7,7 @@
 > `draft` rows have no task file yet; the planner writes them 2 ahead (`AGENTS.md` §3.5).
 
 **Step:** design → prototype (`docs/PLAN.md` → Stage 3, D71) · **Modules:** M08, M09, M12–M28, M86 ·
-**Module list and order:** waiting for the Owner's OK (D71) before the screen tasks are planned.
+**Module list and order:** approved by the Owner 2026-11-23 (D72).
 
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|
