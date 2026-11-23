@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   OffboardingJobSchema,
+  OffboardingRequestSchema,
   ProvisioningJobSchema,
   ProvisioningRequestSchema,
 } from "./provisioning";
@@ -105,6 +106,29 @@ describe("OffboardingJob", () => {
     rejects(OffboardingJobSchema, [
       off(["done", "done", "running", "pending", "pending"], "shc_1", "running"),
       off(Array(5).fill("done"), null, "done"),
+    ]);
+  });
+});
+
+describe("OffboardingRequest", () => {
+  const samplePem = `-----BEGIN PUBLIC KEY-----\n${"MIIBojANBgkqhkiG9w0BAQEFAAOCAY8A".repeat(4)}\n-----END PUBLIC KEY-----`;
+  const offReq = {
+    accountId: "acc-ls",
+    tenantId: "ten-ls",
+    recipientPem: samplePem,
+  };
+
+  it("accepts a valid offboarding request", () => {
+    expect(OffboardingRequestSchema.safeParse(offReq).success).toBe(true);
+  });
+
+  it("rejects short or overlong PEMs, empty ids and extra fields", () => {
+    rejects(OffboardingRequestSchema, [
+      { ...offReq, accountId: "" },
+      { ...offReq, tenantId: "" },
+      { ...offReq, recipientPem: "short-pem" },
+      { ...offReq, recipientPem: "A".repeat(1901) },
+      { ...offReq, extra: true },
     ]);
   });
 });

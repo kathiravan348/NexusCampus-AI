@@ -1079,6 +1079,114 @@
     "message": "No account can get a new trial tenant.",
     "description": "Shown in the form when there is no suitable account."
   },
+  "p04.retry": {
+    "message": "Retry",
+    "description": "Button: retry a failed provisioning or offboarding job."
+  },
+  "p04.retryLabel": {
+    "message": "Retry {job}",
+    "description": "Accessible label of the retry button on a failed job."
+  },
+  "p04.retried": {
+    "message": "Job retried",
+    "description": "Toast after a failed job is retried."
+  },
+  "p04.retryFailed": {
+    "message": "Could not retry the job. Try again.",
+    "description": "Toast and error message when retrying a job fails."
+  },
+  "p04.off.start": {
+    "message": "Start offboarding",
+    "description": "Button that opens the start-offboarding dialog."
+  },
+  "p04.off.confirmDownload": {
+    "message": "Export received",
+    "description": "Button: confirm that the institution received its encrypted export."
+  },
+  "p04.off.confirmDownloadLabel": {
+    "message": "Confirm export received for {job}",
+    "description": "Accessible label of the export-received button."
+  },
+  "p04.off.downloadConfirmed": {
+    "message": "Export receipt confirmed",
+    "description": "Toast after confirming the export was received."
+  },
+  "p04.off.approveDestroy": {
+    "message": "Approve key destruction",
+    "description": "Button that opens the confirm dialog to approve destroying the tenant's keys."
+  },
+  "p04.off.approveDestroyLabel": {
+    "message": "Approve key destruction for {job}",
+    "description": "Accessible label of the approve-key-destruction button."
+  },
+  "p04.off.approveTitle": {
+    "message": "Approve key destruction for {account}?",
+    "description": "Title of the confirm dialog for four-eyes key destruction."
+  },
+  "p04.off.approveBody": {
+    "message": "Destroying the encryption keys of {tenant} makes its data permanently unreadable and cannot be undone. Two different staff members must approve before key destruction runs.",
+    "description": "Warning body of the key-destruction confirmation dialog."
+  },
+  "p04.off.approveConfirm": {
+    "message": "Approve key destruction",
+    "description": "Confirm button inside the key-destruction dialog."
+  },
+  "p04.off.approvedFirst": {
+    "message": "First approval recorded. A second staff member must now approve.",
+    "description": "Toast after the first of two staff members approves key destruction."
+  },
+  "p04.off.approvedQueued": {
+    "message": "Second approval recorded. Key destruction is now queued.",
+    "description": "Toast after the second staff member approves and key destruction is queued."
+  },
+  "p04.off.approveSameStaff": {
+    "message": "A second, different staff member must approve key destruction.",
+    "description": "Error message when the same staff member tries to give both approvals."
+  },
+  "p04.off.actionFailed": {
+    "message": "The offboarding step could not be updated. Try again.",
+    "description": "Error message when an offboarding action fails."
+  },
+  "p04.off.form.title": {
+    "message": "Start offboarding",
+    "description": "Title of the start-offboarding dialog."
+  },
+  "p04.off.form.account": {
+    "message": "Account",
+    "description": "Label of the account picker in the start-offboarding dialog."
+  },
+  "p04.off.form.tenant": {
+    "message": "Tenant",
+    "description": "Label of the tenant picker in the start-offboarding dialog."
+  },
+  "p04.off.form.pem": {
+    "message": "Institution public key (PEM)",
+    "description": "Label of the textarea where staff paste the institution's RSA public key."
+  },
+  "p04.off.form.pemHint": {
+    "message": "Paste the institution's RSA public key (at least 3072 bits) used to wrap the encrypted export.",
+    "description": "Help text under the public key textarea."
+  },
+  "p04.off.form.freezeConfirm": {
+    "message": "The institution's data will be frozen",
+    "description": "Required checkbox acknowledging that the institution's data will be frozen."
+  },
+  "p04.off.form.submit": {
+    "message": "Start offboarding",
+    "description": "Submit button of the start-offboarding dialog."
+  },
+  "p04.off.form.started": {
+    "message": "Offboarding started",
+    "description": "Toast after an offboarding job is created."
+  },
+  "p04.off.form.failed": {
+    "message": "Offboarding did not start. Check the public key and try again.",
+    "description": "Toast and error message when starting offboarding fails."
+  },
+  "p04.off.form.noAccounts": {
+    "message": "No SaaS account with an active tenant is available to offboard.",
+    "description": "Shown in the start-offboarding dialog when no account has tenants."
+  },
   "p05.nav": {
     "message": "Licences",
     "description": "Menu item and page title of the self-hosted licences page (P05)."
