@@ -6,7 +6,7 @@ PostgreSQL with the database (and app role) swapped, so one Compose PostgreSQL s
 
 from functools import lru_cache
 
-from pydantic import SecretStr
+from pydantic import Field, SecretStr
 from pydantic_settings import BaseSettings, SettingsConfigDict
 from sqlalchemy.engine import make_url
 
@@ -54,6 +54,8 @@ class ControlSettings(BaseSettings):
     command_signing_key: str = "nexus-command"
     #: Transit key that signs offboarding shred certificates (Ed25519, never exported; D61, NEX-134).
     shred_signing_key: str = "nexus-shred"
+    #: Seconds between sweeps that expire overdue commands and fail the steps that waited (D63, NEX-139); 0 = off.
+    command_sweep_seconds: int = Field(default=60, ge=0)
     # Payments (D62, NEX-107): Razorpay hosted payment links for Indian accounts; empty = Razorpay off.
     razorpay_key_id: SecretStr = SecretStr("")
     razorpay_key_secret: SecretStr = SecretStr("")

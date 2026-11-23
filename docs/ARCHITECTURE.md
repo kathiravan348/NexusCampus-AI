@@ -220,8 +220,8 @@ Nexus Control (our cloud)                         Product deployments
   writes local `NXTE/1` file without uploading to Control), and `tenant.destroy_keys` (frozen + matching latest on-disk
   export `pemSha256` + two distinct `approvedBy` staff ids → `destroy_tenant_keys`).
 - **Offboarding, Control side (P04, D61, NEX-134):** `POST /offboarding-jobs` (`{accountId, tenantId, recipientPem}`,
-  RSA ≥ 3072) queues `tenant.freeze`; its result queues `tenant.export` (clearing the stored PEM while keeping its
-  SHA-256 fingerprint). `POST /offboarding-jobs/{id}/confirm-download` marks `export_downloaded`;
+  RSA ≥ 3072) queues `tenant.freeze`; its result queues `tenant.export` (the stored PEM is kept until the export succeeds,
+  then cleared; its SHA-256 fingerprint stays). `POST /offboarding-jobs/{id}/confirm-download` marks `export_downloaded`;
   `POST /offboarding-jobs/{id}/approve-destroy` records two distinct staff approvers (`offb_two_distinct_approvers`
   CHECK) and queues `tenant.destroy_keys` with both ids and the fingerprint. On completion Control signs canonical
   `{id, tenantId, keyIds, destroyedAt}` with OpenBao Transit `nexus-shred` (Ed25519, never exported), stores the
@@ -256,6 +256,13 @@ Nexus Control (our cloud)                         Product deployments
   only `ping` allowed so far). Agents poll `GET /control/api/v1/agent/commands` (max 1 per 30 s, max 20 rows, air-gapped
   `403`) and report one terminal result ≤ 4 KB via `POST /control/api/v1/agent/commands/{id}/result` (foreign `404`,
   replay `409`).
+- **Command expiry (D63, NEX-139):** `control.command_expiry.expire_commands` is the one path that marks overdue
+  `pending` / `delivered` commands `expired` (`FOR UPDATE SKIP LOCKED`, ≤ 100 per run) and fails what waited:
+  provisioning, offboarding and move steps through their result handlers (`{"reason": "command_expired"}`), a
+  pending broker request → `expired`. It runs on the agent's fetch, on a late result, every
+  `NEXUS_CONTROL_COMMAND_SWEEP_SECONDS` (default 60, `0` = off) in the Control app's lifespan, and from
+  `nexus-control-command sweep`. Staff retry failed jobs (`…/retry` on provisioning, offboarding and moves); nothing
+  is retried automatically.
 - **Access broker, Control side (P10, NEX-125):** `broker_requests` (with internal `deployment_id`, DB CHECKs forbidding
   `M83`, enforcing unique modules and `decided_at` iff non-pending), `broker_sessions` (read-only for `control_app`),
   and `break_glass_cases` (read-only, two distinct approvers). `POST /broker-requests` resolves the tenant's dedicated

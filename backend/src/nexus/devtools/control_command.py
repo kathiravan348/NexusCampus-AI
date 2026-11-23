@@ -1,5 +1,6 @@
 """`uv run --project backend nexus-control-command <ping|provision> <deployment-id> ...`: signs and queues a D60
 command on the control database (owner connection + OpenBao Transit key `nexus-command`, NEX-128, NEX-127).
+`nexus-control-command sweep` expires overdue commands once and fails the job steps that waited (D63, NEX-139).
 """
 
 import argparse
@@ -11,6 +12,7 @@ from typing import Any
 import httpx2
 from sqlalchemy.ext.asyncio import create_async_engine
 
+from nexus.control.command_expiry import sweep_once
 from nexus.control.commands import enqueue_command
 from nexus.control.settings import get_control_settings
 from nexus.core.timing import utf8_console
@@ -47,12 +49,24 @@ async def queue_command(
             await engine.dispose()
 
 
+async def sweep() -> str:
+    cfg = get_control_settings()
+    engine = create_async_engine(cfg.owner_url())
+    async with httpx2.AsyncClient(timeout=10) as http:
+        try:
+            return f"expired {await sweep_once(engine, HttpVault(get_settings(), http), cfg)}"
+        finally:
+            await engine.dispose()
+
+
 def main(argv: list[str] | None = None) -> None:
     utf8_console()
     parser = argparse.ArgumentParser(prog="nexus-control-command")
     sub = parser.add_subparsers(dest="kind", required=True)
     ping_p = sub.add_parser("ping", help="Queue a signed ping command (expires in 10 min)")
     ping_p.add_argument("deployment_id", help="Target deployment id (e.g. dep-in-1)")
+
+    sub.add_parser("sweep", help="Expire overdue commands once and fail the job steps that waited (D63)")
 
     prov_p = sub.add_parser("provision", help="Dev only: queue a signed tenant.provision command")
     prov_p.add_argument("deployment_id", help="Target cell deployment id (e.g. dep-in-1)")
@@ -66,7 +80,9 @@ def main(argv: list[str] | None = None) -> None:
     prov_p.add_argument("--owner-email", required=True)
     args = parser.parse_args(argv)
 
-    if args.kind == "ping":
+    if args.kind == "sweep":
+        coro = sweep()
+    elif args.kind == "ping":
         coro = queue_command(args.deployment_id, "ping", {})
     else:
         payload: dict[str, Any] = {

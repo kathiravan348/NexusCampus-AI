@@ -94,6 +94,11 @@ Menu **Provisioning** (super admin, implementation, site reliability to read).
   offboarding freezes writes on the cell, creates an encrypted export for the institution's public key, waits for staff
   to confirm the institution received the file, requires **two different staff members** to approve key destruction,
   and issues an Ed25519-signed certificate that anyone can verify offline using our published shred-certificate keys.
+- **When a cell does not answer:** every instruction Control sends to a region cell is valid for a limited time. If the
+  cell has not carried it out in time, the step that waited is marked **failed** (within about a minute, even if the
+  cell is offline), and a failed provisioning, offboarding or move job can be retried, which sends a fresh
+  instruction. A support access request whose instruction expired shows as **expired**; file a new one. Nothing is
+  retried automatically: a person decides.
 
 ### Licences
 
