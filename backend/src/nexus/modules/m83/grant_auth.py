@@ -167,7 +167,7 @@ async def provider_context(request: Request, module: str) -> AsyncIterator[tuple
         ends_at=row["ends_at"],
     )
     ctx = TenantContext(claims.tenant_id, provider=ProviderActor(grant_id=grant.id, staff_ref=grant.staff_ref))
-    async with tenant_transaction(sessions, ctx, settings) as session:
+    async with tenant_transaction(sessions, ctx, settings, write=request.method not in SAFE_METHODS) as session:
         yield (
             RequestContext(
                 tenant=ctx, db=session, user_id=grant.staff_ref, person_id="", session_id="", grant_id=grant.id

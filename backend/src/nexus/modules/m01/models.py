@@ -3,13 +3,14 @@ the migration `0001_tenancy` creates them with Row-Level Security by `tenant_id`
 models with the migrated database, so the two never drift.
 """
 
-from datetime import date
+from datetime import date, datetime
 from typing import Any
 
 from sqlalchemy import (
     ARRAY,
     CheckConstraint,
     Date,
+    DateTime,
     ForeignKey,
     ForeignKeyConstraint,
     SmallInteger,
@@ -35,6 +36,7 @@ class Tenant(Timestamps, Base):
     name: Mapped[str] = mapped_column(String(NAME))
     type: Mapped[str] = mapped_column(String(ENUM))
     region: Mapped[str] = mapped_column(String(ENUM))
+    frozen_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
 
 
 class Group(Timestamps, Base):

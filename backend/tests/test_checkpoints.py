@@ -196,6 +196,18 @@ async def test_checkpoint_job_signs_every_tenant_once_a_day(
         assert rows == 0  # RLS: one tenant's checkpoints are not visible to another (Riverside is EU)
 
 
+@pytest.mark.anyio
+async def test_checkpoint_job_still_signs_a_frozen_tenant(
+    sessions: async_sessionmaker[AsyncSession], fresh_db: DbUrls
+) -> None:
+    owner_sql(fresh_db.owner_url, "UPDATE tenants SET frozen_at = now() WHERE id = 'ten-ls'")
+    settings = Settings(environment="test", region="in", database_url=fresh_db.app_url)  # type: ignore[arg-type]
+    await checkpoint_all(sessions, settings, FakeVault(), DAY1)
+    async with sessions() as s, s.begin():
+        await bind_tenant(s, LS)
+        assert (await s.execute(text("SELECT count(*) FROM audit_checkpoints"))).scalar_one() == 1
+
+
 def test_checkpoint_api_lists_and_verifies(client: TestClient, kc: FakeKeycloak, test_db: DbUrls) -> None:  # noqa: F811
     asyncio.run(_sign_ls(test_db.app_url, client.app.state.vault), loop_factory=asyncio.SelectorEventLoop)  # type: ignore[attr-defined]
     sign_in(client, kc)

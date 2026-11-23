@@ -65,7 +65,9 @@ async def session_context(request: Request) -> AsyncIterator[RequestContext]:
     check_csrf(request)
     settings = app_settings(request)
     ctx = TenantContext(parts.tenant_id)
-    async with tenant_transaction(db.sessionmaker(), ctx, settings) as session:
+    async with tenant_transaction(
+        db.sessionmaker(), ctx, settings, write=request.method not in SAFE_METHODS
+    ) as session:
         active = await resolve_session(session, parts, settings)
         if active is None:
             raise ApiError(401, "unauthorized", "Please sign in again.")

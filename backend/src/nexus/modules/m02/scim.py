@@ -26,7 +26,7 @@ from nexus.core.entitlements import module_enabled
 from nexus.core.errors import ApiError
 from nexus.core.hashchain import format_instant
 from nexus.core.ids import new_id
-from nexus.core.request_context import app_settings
+from nexus.core.request_context import SAFE_METHODS, app_settings
 from nexus.core.tenancy import TenantContext, tenant_transaction
 from nexus.modules.m02.keycloak_admin import KeycloakAdmin
 from nexus.modules.m02.service import keycloak_admin
@@ -73,7 +73,12 @@ async def scim_auth(request: Request) -> AsyncIterator[ScimContext]:
         raise ScimError(401, "A valid SCIM bearer token is required.")
     tenant_id, token_id, secret = parts
     try:
-        async with tenant_transaction(core_db.sessionmaker(), TenantContext(tenant_id), app_settings(request)) as s:
+        async with tenant_transaction(
+            core_db.sessionmaker(),
+            TenantContext(tenant_id),
+            app_settings(request),
+            write=request.method not in SAFE_METHODS,
+        ) as s:
             row = (
                 await s.execute(
                     text("SELECT token_hash FROM scim_tokens WHERE id = :id AND revoked_at IS NULL"),

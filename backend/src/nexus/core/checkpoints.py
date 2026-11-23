@@ -199,6 +199,8 @@ async def checkpoint_all(
     signed = refused = 0
     for tenant_id in tenants:
         try:
+            # Not `write=True`: a frozen tenant (D61) still gets its signed checkpoint, so the chain head at the
+            # freeze is anchored too; checkpoints guard the record, they are not institution data (review NEX-133).
             async with tenant_transaction(sessions, TenantContext(tenant_id), settings) as session:
                 _, created = await create_checkpoint(session, vault, TenantContext(tenant_id), day)
             signed += int(created)

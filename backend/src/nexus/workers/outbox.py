@@ -22,6 +22,7 @@ from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from nexus.core import db
 from nexus.core.checkpoints import checkpoint_all
+from nexus.core.errors import ApiError
 from nexus.core.tenancy import TenantContext, tenant_transaction
 from nexus.core.timing import utf8_console
 from nexus.core.vault import HttpVault
@@ -52,7 +53,7 @@ async def process_tenant(
 ) -> tuple[int, int]:
     """Publishes this tenant's due events; returns `(published, failed)`."""
     published = failed = 0
-    async with tenant_transaction(sessions, TenantContext(tenant_id), settings) as session:
+    async with tenant_transaction(sessions, TenantContext(tenant_id), settings, write=True) as session:
         rows = await session.execute(
             text(
                 "SELECT event_id, event_type, payload, attempts FROM domain_events_outbox WHERE published_at IS NULL "
@@ -99,6 +100,9 @@ async def run_once(sessions: async_sessionmaker[AsyncSession], settings: Setting
     for tenant_id in tenants:
         try:
             published, _ = await process_tenant(sessions, settings, tenant_id, handler)
+        except ApiError as exc:
+            log.info("tenant %s skipped (%s)", tenant_id, exc.code)
+            continue
         except Exception:  # e.g. a tenant of another region: skipped, logged by the region check
             log.exception("tenant %s skipped", tenant_id)
             continue
