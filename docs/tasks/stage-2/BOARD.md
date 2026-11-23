@@ -80,6 +80,6 @@
 | NEX-133 | P04 offboarding, cell side (D61): freeze, export for the institution's key, destroy keys | D | ready-for-review | Gemini | 127 |
 | NEX-134 | Control: P04 offboarding for real (D61) — four-eyes key destruction, signed shred certificate | D | ready-for-review | Gemini | 133, 132 |
 | NEX-135 | P18 moves, cell side (D61): import key and tenant import on signed commands | D | ready-for-review | Gemini | 133 |
-| NEX-136 | Control: P18 moves for real (D61) — a portability job walks the seven steps | D | ready-for-review | Gemini | 135, 134 |
+| NEX-136 | Control: P18 moves for real (D61) — a portability job walks the seven steps | D | done | Gemini | 135, 134 |
 | NEX-137 | Stage 2 release checks: Control real-mode a11y and languages, budgets, install tests, checklist | — | planned | — | 110 |
 | NEX-138 | Payments (D62): Stripe hosted payment page for EU invoices (needs the Owner's Stripe test account) | D | draft | — | 107 |

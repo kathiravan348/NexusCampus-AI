@@ -425,3 +425,82 @@ async def test_saas_to_self_hosted_and_back_with_staff_confirmations(
                 )
         finally:
             eng.dispose()
+
+
+@pytest.mark.anyio
+async def test_region_move_checks_the_destination_pem_and_retries_a_failed_export(
+    api: httpx2.AsyncClient, control_db: tuple[str, str]
+) -> None:
+    owner_url, _ = control_db
+    in_tok = issue_token(owner_url, "dep-in-1")
+    eu_tok = issue_token(owner_url, "dep-eu-1")
+    pem = _rsa_pem()
+    sha = pem_fingerprint(pem)
+    job_id = None
+
+    async def answer(token: str, cmd_id: str, status: str, result: dict[str, Any]) -> None:
+        res = await api.post(
+            f"{API}/agent/commands/{cmd_id}/result",
+            json={"status": status, "result": result},
+            headers={"Authorization": f"Bearer {token}"},
+        )
+        assert res.status_code == 200, res.text
+
+    async def job() -> dict[str, Any]:
+        return (await api.get(f"{API}/portability-jobs/{job_id}", headers={"X-Nexus-Staff": IMPL})).json()  # type: ignore[no-any-return]
+
+    try:
+        created = await api.post(
+            f"{API}/portability-jobs",
+            json={"accountId": "acc-ls", "tenantId": "ten-ls", "direction": "region_move", "toRegion": "eu"},
+            headers={"X-Nexus-Staff": IMPL},
+        )
+        assert created.status_code == 201, created.text
+        job_id = created.json()["id"]
+
+        # A PEM whose reported fingerprint is not its own fails preflight; a retry asks the cell again.
+        c1 = await _fetch_last_cmd(api, eu_tok)
+        await answer(eu_tok, c1["id"], "done", {"pem": pem, "pemSha256": "0" * 64})
+        assert (await job())["steps"][0]["status"] == "failed"
+        assert (
+            await api.post(f"{API}/portability-jobs/{job_id}/retry", headers={"X-Nexus-Staff": IMPL})
+        ).status_code == 200
+        c2 = await _fetch_last_cmd(api, eu_tok)
+        assert c2["kind"] == "tenant.import_key" and c2["id"] != c1["id"]
+        await answer(eu_tok, c2["id"], "done", {"pem": pem, "pemSha256": sha})
+
+        # Freeze done, export failed: the retry re-queues freeze and then the export for the same PEM.
+        c3 = await _fetch_last_cmd(api, in_tok)
+        await answer(in_tok, c3["id"], "done", {"tenantId": "ten-ls", "frozenAt": "2026-11-23T06:00:00Z"})
+        c4 = await _fetch_last_cmd(api, in_tok)
+        assert c4["kind"] == "tenant.export"
+        await answer(in_tok, c4["id"], "failed", {"reason": "db_error"})
+        assert (await job())["status"] == "failed"
+        assert (
+            await api.post(f"{API}/portability-jobs/{job_id}/retry", headers={"X-Nexus-Staff": IMPL})
+        ).status_code == 200
+        c5 = await _fetch_last_cmd(api, in_tok)
+        assert c5["kind"] == "tenant.freeze"
+        await answer(in_tok, c5["id"], "done", {"tenantId": "ten-ls", "frozenAt": "2026-11-23T06:00:00Z"})
+        c6 = await _fetch_last_cmd(api, in_tok)
+        assert c6["kind"] == "tenant.export" and c6["args"]["recipientPem"] == pem
+        await answer(in_tok, c6["id"], "done", {"fileName": "exp-ls.nxte", "pemSha256": sha, "rows": 81})
+        assert (await job())["steps"][1]["status"] == "done"
+        eng = create_engine(owner_url)
+        try:
+            with eng.connect() as conn:
+                kept = conn.execute(
+                    text("SELECT recipient_pem FROM portability_jobs WHERE id = :id"), {"id": job_id}
+                ).scalar_one()
+                assert kept is None  # cleared once the export succeeded
+        finally:
+            eng.dispose()
+    finally:
+        eng = create_engine(owner_url)
+        try:
+            with eng.begin() as conn:
+                if job_id:
+                    conn.execute(text("DELETE FROM portability_jobs WHERE id = :id"), {"id": job_id})
+                conn.execute(text("DELETE FROM deployment_commands WHERE kind LIKE 'tenant.%'"))
+        finally:
+            eng.dispose()

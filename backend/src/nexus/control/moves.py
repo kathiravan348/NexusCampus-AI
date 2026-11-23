@@ -82,6 +82,17 @@ def _dst_is_cell(direction: str) -> bool:
     return direction in ("region_move", "self_hosted_to_saas")
 
 
+def _usable_pem(pem: Any, sha: Any) -> bool:
+    """The destination's PEM is an RSA key of the required size and its reported fingerprint is its own."""
+    if not isinstance(pem, str) or not isinstance(sha, str):
+        return False
+    try:
+        load_rsa_public_key(pem)
+    except ValueError:
+        return False
+    return pem_fingerprint(pem) == sha
+
+
 def _is_plain_filename(name: str) -> bool:
     return bool(name) and "/" not in name and "\\" not in name and name not in (".", "..") and Path(name).name == name
 
@@ -424,7 +435,7 @@ async def apply_move_result(
 
     if kind == "tenant.import_key":
         pem, sha = result.get("pem"), result.get("pemSha256")
-        if cmd_status != "done" or not isinstance(pem, str) or not isinstance(sha, str):
+        if cmd_status != "done" or not _usable_pem(pem, sha):
             steps, status = _steps_with(cur, preflight="failed")
             await conn.execute(
                 update(portability_jobs).where(portability_jobs.c.id == job_id).values(steps=steps, status=status)
@@ -464,7 +475,7 @@ async def apply_move_result(
         await conn.execute(
             update(portability_jobs)
             .where(portability_jobs.c.id == job_id)
-            .values(command_id=exp_cmd, recipient_pem=None)
+            .values(command_id=exp_cmd)  # PEM kept until the export succeeds, so a failed export can retry
         )
         log.info("move job=%s step=export_encrypted outcome=export_queued", job_id)
     elif kind == "tenant.export":
@@ -479,7 +490,7 @@ async def apply_move_result(
         steps, status = _steps_with(cur, export_encrypted="done" if ok else "failed")
         vals: dict[str, Any] = {"steps": steps, "status": status}
         if ok:
-            vals.update({"file_name": fname, "expected_rows": rows_n})
+            vals.update({"file_name": fname, "expected_rows": rows_n, "recipient_pem": None})
         await conn.execute(update(portability_jobs).where(portability_jobs.c.id == job_id).values(**vals))
         log.info("move job=%s step=export_encrypted outcome=%s", job_id, "done" if ok else "failed")
     elif kind == "tenant.import":
