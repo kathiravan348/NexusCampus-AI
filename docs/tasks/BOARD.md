@@ -9,7 +9,7 @@
 | Stage | Name | Board | Tasks | Status |
 |---|---|---|---|---|
 | 1 | Platform foundation | [`stage-1/BOARD.md`](stage-1/BOARD.md) | NEX-001–065 (025–026 withdrawn) | **done** — released 2026-11-21 (D54) |
-| 2 | Nexus Control & delivery | [`stage-2/BOARD.md`](stage-2/BOARD.md) | NEX-066–139 | **current** — frozen 2026-11-22 (D56); build step in progress |
+| 2 | Nexus Control & delivery | [`stage-2/BOARD.md`](stage-2/BOARD.md) | NEX-066–139 | **current** — frozen 2026-11-22 (D56); build step done (NEX-138 moved out, D64); waiting for the Owner's release review |
 | 3 | Core institution operations | — | — | later |
 | 4 | Teaching & learning | — | — | later |
 | 5 | People, finance & operations | — | — | later |

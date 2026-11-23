@@ -1,19 +1,24 @@
 # Owner checklist
 
-> Everything that waits for you, in one place, in the order that saves the most time. State as of 2026-11-22.
+> Everything that waits for you, in one place, in the order that saves the most time. State as of 2026-11-23.
 > Tick a box when done. Details behind each item are linked; the full decision log is
 > [`OWNER-AWAY-DECISIONS.md`](OWNER-AWAY-DECISIONS.md).
 
 ## Where things stand
 
 - **Stage 1** (platform foundation) is released (D54).
-- **Stage 2** (Nexus Control and delivery): every page is built on demo data, P01–P18 in Nexus Control plus
-  **Install & updates** (M84) in the institution app. The build step has started (D55):
-  - licence signing with offline checking
-  - the Control backend and its own database
-  - staff sign-in that always asks for a one-time code
-  - the Lago billing engine
-- All work is committed, merged and **pushed to GitHub** (`origin/main`, 2026-11-22).
+- **Stage 2** (Nexus Control and delivery) is **built**: every Nexus Control page (P01–P18) runs on its own backend
+  and database, the install agent (M84) runs self-hosted installs, and provisioning, offboarding, moves, the access
+  broker and Razorpay payment links for India work end to end. Every task is done or withdrawn (Stripe for Europe
+  moved to a later stage, D64). It waits for your release review below.
+- All work is committed, merged and **pushed to GitHub** (`origin/main`, 2026-11-23).
+
+## 0. Approve the Stage 2 release (when the items below suit you)
+
+- [ ] Read [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md) (what was built and tested, timings, open items) and
+      [`STAGE-2-SECURITY.md`](STAGE-2-SECURITY.md).
+- [ ] Decide which of sections 4 and 5 must be done before the release, and which can wait.
+- [ ] Say **"approve the Stage 2 release"**. I then mark Stage 2 released and open the Stage 3 board.
 
 ## 1. Review Stage 2, then freeze it — done 2026-11-22 ("all good", D56)
 
@@ -64,14 +69,18 @@ These are not blocking the build, but real billing and the trust page need them 
   - per active learner per year, and the bands (D52)
   - the per-campus minimum
   - support and update fee for perpetual licences
-- [ ] **Payment gateways:** your Razorpay (India) and Stripe (Europe) accounts. The adapters come in a later build
-      task; no keys are needed yet.
+- [ ] **Payment gateways:** Razorpay payment links for Indian invoices are built and tested with test-mode keys
+      (NEX-107). For real payments: your live Razorpay keys and a public web address for its payment notices
+      (webhook). Stripe for Europe moved to a later stage (D64): a Stripe test account is only needed when the first
+      EU customer signs; until then EU invoices are paid by bank transfer.
+- [ ] **Kubernetes test (optional):** switch on Docker Desktop Kubernetes (or give a staging cluster) so the Helm
+      chart (NEX-120) can be installed for real once; lint and template checks already pass.
 - [ ] **Trust page facts:**
   - the real list of sub-processors (who hosts, who processes payments)
   - which certifications to aim for first, and when
 - [ ] **Presentation:** fill in the contact line on the last slide of
       [`NexusCampus-Introduction.pptx`](../presentation/NexusCampus-Introduction.pptx) (it still says "[Contact name] ·
-      [email] · [website]"). It is now a 25-slide product overview marked "work in progress": every module by stage (released, being built, planned), the technology, progress and a living-plan slide; the contact line is on the last slide.
+      [email] · [website]"). It is now a 25-slide product overview marked "work in progress": every module by stage (released, in review, planned), the technology, progress and a living-plan slide; the contact line is on the last slide.
 
 ## 5. Before production (not urgent now)
 
@@ -87,6 +96,8 @@ These are not blocking the build, but real billing and the trust page need them 
 
 ## What I do next, unless you say otherwise
 
-- Connect the Control screens to the real backend, starting with sign-in, then Accounts and Billing on Lago.
-- Licences API and storage, release signing, then the M84 install agent itself.
+- After your release approval: mark Stage 2 released, then open the Stage 3 board (core institution operations).
+- Possible small fixes before or after release, each only with your OK: show a clear "institution is frozen" message
+  in the app (today a general error), and buttons in Nexus Control for retry, export received, the two key-destruction
+  approvals and move confirmations (today API calls; the screens are frozen, D56).
 - Anything that needs a new download, I hold and ask you first.

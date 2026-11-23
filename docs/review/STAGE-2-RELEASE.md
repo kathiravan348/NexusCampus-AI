@@ -4,6 +4,9 @@
 > Node 24, Python 3.12, PostgreSQL 16 + pgvector, OpenBao 2.7.2, Valkey 9.0.7, Keycloak 26.4.7, Lago 1.44.0) against
 > `task/NEX-137` (stacked on `NEX-121..136, 107, 110`; Helm chart on `task/NEX-120`). Items marked **Owner** need a
 > person or external credentials, not a local test.
+> **Updated 2026-11-23 after review:** all Stage 2 tasks were reviewed (fixes in NEX-120, 127, 128, 129, 133, 136),
+> merged and pushed to `main`; NEX-139 (expired instructions fail their job step, D63) was added and NEX-138 (Stripe)
+> moved to a later stage (D64). The check rows below show the results on merged `main`.
 
 ## 1. Result at a glance
 
@@ -12,8 +15,8 @@
 | No-access & command-channel gates V-1…V-7 (NEX-110, must pass) | **Pass** — 19 Control & command-channel security tests + 17 Stage 1 V-tests; broken-guard fixture turns the route walk red |
 | Control contract parity (Pydantic ⇄ frozen Zod, incl. cross-field rules) | **Pass** — all 46 Control contract models match Zod's exact verdict (`expected = case["valid"]`) |
 | OpenBao key custody & root-token revocation (NEX-110) | **Pass** — `transit/export/*` denied (`403`); root token revoked and stripped from disk after `deploy/compose` and `deploy/control` setup |
-| Backend checks (`uv run --project backend backend-check`) | **Pass** — 497 tests (ruff format, ruff lint, mypy `--strict` on 311 files, pytest) in `1m 25.7s` |
-| Frontend checks (`pnpm --dir frontend review:check`) | **Pass** — format, lint, typecheck, Vitest workspace tests, production + Storybook builds in `1m 12.0s` |
+| Backend checks (`uv run --project backend backend-check`) | **Pass** — 510 tests (ruff format, ruff lint, mypy `--strict`, pytest) in `1m 32.2s` on merged `main` |
+| Frontend checks (`pnpm --dir frontend review:check`) | **Pass** — format, lint, typecheck, Vitest workspace tests, production + Storybook builds in `1m 13.3s` on merged `main` |
 | Real-mode Control accessibility (WCAG 2.2 AA, axe, every role) | **Pass** — `e2e:control:real` (`control-a11y.spec.ts`): sign-in + all 20 screens in light & dark + all 9 staff roles + forbidden routes, 0 serious/critical issues |
 | Real-mode Control languages en / hi / ta (D42, D53) | **Pass** (automated, `control-languages.spec.ts`: all 20 screens in `en`, `hi`, `ta`, 0 raw/missing keys); **Owner**: native-speaker review open |
 | Performance budgets (soft, `docs/TIMINGS.md`) | **Pass** — 41 Control list endpoints p95 `8.5–18.5 ms` (`12.0 ms` overall, budget `300 ms`); agent calls `8.2–70.4 ms` (budget `300 ms`); Control 4G cold load `2.37 s` (budget `6 s`) |
@@ -27,7 +30,7 @@
 | **P01** Accounts & CRM | Accounts, contacts, opportunities, contracts, notes; partner scoping | NEX-072, NEX-101 | `tests/db/control/test_accounts_api.py`, `test_control_no_access.py::test_V1_partner_scoping_on_every_control_list`, `control-a11y.spec.ts` | **Pass** |
 | **P02** Pricing & quotes | Catalogue, regional prices, quotes, AI-draft human-review gate | NEX-073, NEX-102 | `tests/db/control/test_commercial_api.py`, `control-a11y.spec.ts` | **Pass** |
 | **P03** Billing & dunning | Subscriptions, invoices, payments, credit notes, reminders, Lago sync & webhooks, Razorpay INR links (D51, D62) | NEX-074, NEX-102, NEX-118, NEX-111, NEX-107 | `tests/db/control/test_commercial_api.py`, `test_billing_sync.py`, `test_lago_webhooks.py`, `test_razorpay_payments.py` + live Razorpay Test Mode API (`plink_U3WVITB4nOOJba`) | **Pass** (INR live; EU Stripe is draft NEX-138) |
-| **P04** Provisioning & offboarding | 5-step cell provisioning (`tenant.provision`), 4-step offboarding (`tenant.freeze`/`export`/`destroy_keys`), four-eyes key destruction, OpenBao-signed `nexus-shred` certificates (D60, D61) | NEX-075, NEX-121, NEX-127, NEX-132, NEX-133, NEX-134 | `tests/db/test_tenant_provisioning.py`, `test_tenant_offboarding_commands.py`, `tests/db/control/test_provisioning_writes.py`, `test_offboarding_writes.py` | **Pass** |
+| **P04** Provisioning & offboarding | 5-step cell provisioning (`tenant.provision`), 4-step offboarding (`tenant.freeze`/`export`/`destroy_keys`), four-eyes key destruction, OpenBao-signed `nexus-shred` certificates, expired instructions fail their step and staff retry (D60, D61, D63) | NEX-075, NEX-121, NEX-127, NEX-132, NEX-133, NEX-134, NEX-139 | `tests/db/test_provision_tenant.py`, `test_tenant_offboarding_commands.py`, `tests/db/control/test_provisioning_writes.py`, `test_offboarding_writes.py`, `test_command_expiry.py` | **Pass** |
 | **P05** Licensing | Offline-verifiable Ed25519 `nexus-licence` files, 1-year renewal, grace & read-only enforcement | NEX-076, NEX-098, NEX-103, NEX-104 | `tests/licensing/test_licence_file.py`, `tests/db/control/test_licences_api.py`, `tests/agent/test_agent_licence.py` | **Pass** |
 | **P06** Fleet & deployments | Cells, dedicated & self-hosted deployments, per-deployment hashed bearer token, PII-free health check-ins, pull-only signed D60 command queue (`nexus-command/1`) | NEX-077, NEX-113, NEX-128 | `tests/db/control/test_fleet_api.py`, `test_commands_api.py`, `tests/security/test_command_channel.py` | **Pass** |
 | **P07** Releases & rollouts | Signed release manifests (`nexus-release`), offline air-gapped bundles, publish gate (AI-notes review + verified manifest), ring 0→3 rollouts auto-completing on health check-in | NEX-078, NEX-105, NEX-115, NEX-117, NEX-130 | `tests/db/control/test_releases_api.py`, `test_release_import.py`, `test_release_writes.py` | **Pass** |
@@ -41,7 +44,7 @@
 | **P15** Implementation projects | Onboarding, migration, self-hosted install & training projects with tasks and AI-drafted plan flag | NEX-086, NEX-123 | `tests/db/control/test_delivery_extras_api.py`, `control-a11y.spec.ts` | **Pass** |
 | **P16** Business analytics | Monthly ARR/NRR/customer metrics and AI-estimated account churn-risk health scores | NEX-087, NEX-124 | `tests/db/control/test_partners_analytics_api.py`, `control-a11y.spec.ts` | **Pass** |
 | **P17** Sandboxes | Synthetic sales demos and masked staging clones with automatic expiry | NEX-088, NEX-123 | `tests/db/control/test_delivery_extras_api.py`, `control-a11y.spec.ts` | **Pass** |
-| **P18** Portability & moves | 7-step moves (`saas_to_self_hosted`, `self_hosted_to_saas`, `region_move`) orchestrating source/target cell commands and linked NEX-134 four-eyes shred certificate (D61) | NEX-089, NEX-121, NEX-135, NEX-136 | `tests/db/test_tenant_move_commands.py`, `tests/db/control/test_moves_writes.py` | **Pass** |
+| **P18** Portability & moves | 7-step moves (`saas_to_self_hosted`, `self_hosted_to_saas`, `region_move`) orchestrating source/target cell commands and linked NEX-134 four-eyes shred certificate (D61, D63) | NEX-089, NEX-121, NEX-135, NEX-136, NEX-139 | `tests/db/test_tenant_move_commands.py`, `tests/db/control/test_moves_writes.py` | **Pass** |
 | **M84** Install agent | Licence verification, offline & online signed updates, PII-free health check-in, encrypted backups, redacted diagnostics, NXTE/1 tenant export & import, D60 command runner | NEX-091, NEX-104..106, NEX-112, NEX-114, NEX-117, NEX-119, NEX-129, NEX-131, NEX-133, NEX-135 | `tests/agent/*`, `tests/db/test_tenant_export.py`, `test_tenant_import.py`, `test_agent_broker.py` | **Pass** |
 
 ## 3. Security hardening summary (NEX-110, `docs/review/STAGE-2-SECURITY.md`)
@@ -100,4 +103,6 @@ All runs executed on this host and torn down (`docker compose ... down -v` and t
 | Payment gateways: Razorpay live webhook secret & Stripe EU test/live account (D62) | **Owner** | Razorpay INR payment links (`NEX-107`) verified live against Razorpay Test Mode API (`plink_U3WVITB4nOOJba`) and locally signed webhooks; connect a public webhook URL for live Razorpay delivery, Stripe for EU invoices (**NEX-138**) moved to a later stage (D64): provide a Stripe test account when the first EU customer signs; EU invoices are paid by bank transfer until then |
 | Kubernetes cluster for live Helm chart install test (NEX-120) | **Owner** | `helm lint` and `helm template` pass; run `helm install` against a staging or Docker Desktop Kubernetes cluster when enabled |
 | Presentation deck contact line (`docs/presentation/NexusCampus-Introduction.pptx`, NEX-093) | **Owner** | Replace the placeholder contact line on the closing slide with final company contact details before sharing externally |
+| A clear "institution is frozen" message in the campus app: the frontend error contract has no `tenant_frozen` code yet, so a refused change shows the general error (needs a Stage 1 contract change) | **Owner** decides | Proposed as a small follow-up task |
+| Nexus Control buttons for job retry, export received, the two key-destruction approvals and move confirmations (API-only today; screens frozen, D56) | **Owner** decides | Proposed as a follow-up task (UI change needs your OK) |
 | Production KMS auto-unseal for OpenBao & external penetration test | **Owner** / Ops | Documented in `deploy/compose/README.md`, `deploy/control/README.md`, and `docs/review/STAGE-2-SECURITY.md` |

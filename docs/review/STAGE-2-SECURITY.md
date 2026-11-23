@@ -25,6 +25,18 @@
 - **`deploy/compose` (product):** fresh `install.ps1` (`93.10s`) created `vault-init.json` without `root_token` (`HAS_ROOT_TOKEN=False`), `NEXUS_VAULT_TOKEN` created & encrypted with `smoke-k1` (`exit 0`), `transit/export/encryption-key/smoke-k1` returned `permission denied` (`exit 2`), idempotent re-run succeeded without root token (`8.78s`, `exit 0`); torn down with `down -v`.
 - **`deploy/control` (Control):** fresh `install.ps1` (`60.83s`) created `.env.vault-init.json` without `root_token` (`CTRL_HAS_ROOT_TOKEN=False`), `NEXUS_VAULT_TOKEN` signed with `nexus-licence`, `nexus-command`, `nexus-shred` (`exit 0`), `transit/export/signing-key/nexus-licence` returned `permission denied` (`exit 2`), idempotent re-run succeeded without root token (`22.77s`, `exit 0`); torn down with `down -v`.
 
+## Review follow-ups (Claude, 2026-11-23)
+
+- **D22, NEX-127:** a signed `tenant.provision` can no longer provision into an existing tenant or add a second owner
+  (`tenant_exists`, `owner_exists`); test `test_provision_never_takes_over_an_existing_tenant_or_adds_a_second_owner`.
+- **V-6, NEX-128 / NEX-129:** a late command result keeps the command `expired`; the agent reads Control's command
+  list with a streamed 64 KB cap.
+- **V-2, NEX-133:** the daily signed audit checkpoint still runs for a frozen tenant, so the chain head at the freeze
+  is anchored.
+- **NEX-136:** Control checks the destination's RSA key and recomputes its fingerprint instead of trusting the cell.
+- **D63, NEX-139:** expired commands fail the step that waited (one path, `SKIP LOCKED`, savepoint per row); the
+  sweep and its CLI run as `control_app`.
+
 ## Open items (outside Stage 2 build scope)
 
 - External third-party penetration test before public SaaS launch.

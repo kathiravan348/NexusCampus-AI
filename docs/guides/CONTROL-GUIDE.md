@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-23 (Stage 2 complete through NEX-137: Nexus Control prototype + real Control backend for all P01–P18 pages, M84 install agent & D60 signed pull-only commands, P04 provisioning & four-eyes offboarding with signed shred certificates, P07 release publishing & rollouts, P10 access broker, P18 7-step portability moves, D62 Razorpay INR payment links, OpenBao root-token revocation, and NEX-110/137 security & release checks).
+> State as of: 2026-11-23 (Stage 2 complete through NEX-139: Nexus Control prototype + real Control backend for all P01–P18 pages, M84 install agent & D60 signed pull-only commands, P04 provisioning & four-eyes offboarding with signed shred certificates, P07 release publishing & rollouts, P10 access broker, P18 7-step portability moves, D62 Razorpay INR payment links, OpenBao root-token revocation, NEX-110/137 security & release checks, and D63 expiry of unanswered cell instructions with retry; Stripe for Europe moved to a later stage, D64).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -285,6 +285,10 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 
 - Every P01–P18 screen runs on the real Control backend in real mode (`dev:control:real`); demo mode (`dev:control`) remains available for training and offline walkthroughs.
 - Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it. Hosted payment links are live for Indian INR invoices via **Razorpay** (NEX-107); European (EUR) invoices are paid by bank transfer, recorded by hand; a card payment page for Europe (Stripe) comes in a later stage.
+- Provisioning, offboarding and moves start from their pages, and the pages follow each job's steps. The later staff
+  actions — **retry** a failed job, confirm the institution received its export, the two approvals before keys are
+  destroyed, and confirming a move's manual steps — are Control API calls for now (`docs/guides/API.md`): the screens
+  were frozen before these actions existed (D56). **Run next step** works in demo mode only.
 - **Staff & security** (P13) is read-only in the app; provider staff accounts and mandatory MFA are managed in the `nexus-staff` sign-in realm.
 
 ## Operations: installing Nexus Control (NEX-108, NEX-110)

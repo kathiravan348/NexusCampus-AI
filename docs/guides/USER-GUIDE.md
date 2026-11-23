@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-22 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates for your own server)
+> State as of: 2026-11-22 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates for your own server, support access requests from Nexus, leaving or moving an institution)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -113,10 +113,25 @@ Where your institution has AI on, the sparkle button at the top of the screen op
 ## Data vault & access
 Available to the institution's owners and administrators from **Data vault & access** in the menu. It needs an internet connection, keeps nothing on the device, and is never shown to Nexus Assist.
 
+- Requests reach you through your institution's own server: Nexus never connects in and can never approve a request
+  itself. When you decide, only the decision (approved, denied, ended) and its time go back to Nexus — never your data.
 - **Access requests** lists requests from Nexus support staff, newest waiting ones first, with a count on the tab. Each shows who asked, why, which areas, **Read only** or **Read and edit**, and for how long (at most 72 hours). Only an owner can decide: **Approve…** lets you keep or narrow the areas, access and hours — never widen them — and you must tick that you understand staff will see the data until the shown end time. **Deny** needs a reason.
 - **Grants** shows each approved access with its start and end, a countdown while active, and **Revoke now** to end it early. **What they did** lists every action staff took under that grant.
 - **Keys** shows which encryption keys protect your data, who holds them, and their status — never the keys themselves. When an institution leaves, its keys are destroyed so the data can never be read again.
 - **Emergency access** lists any emergency access by Nexus, approved by two people, with when it happened, when you were told, and the report.
+
+## When your institution leaves or moves
+Done by Nexus staff with your institution's owner, never by one person alone.
+
+- **Frozen:** first your institution is frozen. Everyone can still sign in and read everything, but nothing can be
+  changed. A change you try to save is refused; for now the app shows its general error message.
+- **Your export:** a complete copy of your data is made on your institution's server, locked with a key only you (or
+  your new server) hold. It never passes through Nexus.
+- **Leaving:** after you confirm you received the file, two different Nexus staff members must approve before your
+  encryption keys are destroyed; from then on the old copy can never be read again. You receive a signed
+  **Key-destruction certificate** that anyone can check without asking us.
+- **Moving** (to another region, to your own servers, or back to the cloud): your export is loaded into the new place
+  and checked against your activity log before you switch over; the old copy is then destroyed the same way.
 
 ## Notifications
 Available to everyone from **Notifications** in the menu.
@@ -135,7 +150,14 @@ Available to everyone from **Notifications** in the menu.
 Your IT team runs one command: `deploy/compose/scripts/install.sh` (Windows: `install.ps1`). It sets up sign-in,
 encryption keys, the database and the app, and prints the address to open. Running it again starts NexusCampus after a
 restart or installs an update without losing data. See `deploy/compose/README.md` for real web addresses, backups and
-removal.
+removal. Large sites that run Kubernetes can use the Helm chart instead (`deploy/helm/nexuscampus/README.md`).
+
+- After setup, the master key of the key vault is switched off; your IT team keeps only the unlock key and can create a
+  new master key with it when they need one.
+- Your server never accepts connections from Nexus. If your IT team pairs it with Nexus (optional), it only sends
+  health counts and fetches signed updates. Signed instructions from Nexus (for example a support access request)
+  are **off** until your institution switches them on (`NEXUS_AGENT_COMMANDS=on`), and never reach an install with no
+  internet.
 
 ### Install & updates
 

@@ -59,7 +59,7 @@ test("control: getting started", async ({ page }) => {
   const p = part(
     500,
     "Nexus Control — getting started",
-    "Our own provider app. Pick a demo staff member; each role sees only its pages. No page shows institution data.",
+    "Our own provider app. Pick a demo staff member; each role sees only its pages. No page shows institution data. On the real backend, staff sign in with their work account and a one-time code.",
   );
   await page.goto(`${CONTROL}/sign-in`);
   await expect(page.getByRole("button", { name: /Sign in as/ }).first()).toBeVisible();
@@ -68,6 +68,36 @@ test("control: getting started", async ({ page }) => {
   await shot(page, p, "Home: one tile per page the role may open");
   save(p);
 });
+
+/** One plain-language line per page (menu name in English), as in docs/guides/CONTROL-GUIDE.md. */
+const INTROS: Readonly<Record<string, string>> = {
+  Accounts:
+    "Every customer: contacts, contracts, notes and health, and the opportunities in progress.",
+  "Pricing & quotes":
+    "The price list per learner and add-ons, and quotes that are drafted, sent and accepted.",
+  Billing:
+    "Subscriptions, invoices, payments and reminders. Indian invoices get a Razorpay payment link; European invoices are paid by bank transfer for now.",
+  Provisioning:
+    "Start a new institution in its region, and offboard one that leaves: frozen, exported for its own key, keys destroyed after two staff approve, with a signed certificate.",
+  Licences: "Signed licence files for institutions that run NexusCampus on their own servers.",
+  Fleet:
+    "Every cloud cell and own-server install, with its version and health (counts and timings only).",
+  Releases:
+    "New versions: a release is published only with a signed manifest, then rolled out ring by ring.",
+  Extensions: "Customer-specific extensions and whether each one works with the next release.",
+  Support: "Tickets, replies and response times, plus the help articles.",
+  "Access requests":
+    "Ask an institution for time-limited access to help it. The institution decides in its own app; we never approve ourselves.",
+  Usage: "Learners, campuses and AI credits used against each plan.",
+  Partners: "Resellers, their registered deals and commissions.",
+  Staff: "Our staff, their roles and two-step sign-in status.",
+  Trust: "Sub-processors, certifications, security incidents and data-processing agreements.",
+  Projects: "Implementation projects for new customers, from kick-off to go-live.",
+  Analytics: "Revenue, growth, churn and support load per month.",
+  Sandboxes: "Demo, trial and staging environments, always with sample data and an expiry date.",
+  Moves:
+    "Move an institution to another region, to its own servers or back to the cloud, in seven checked steps.",
+};
 
 test("control: every page", async ({ page }) => {
   await signIn(page, "Nisha Verma");
@@ -79,7 +109,7 @@ test("control: every page", async ({ page }) => {
     );
   let order = 510;
   for (const link of links.filter((l) => l.href && l.href !== "/")) {
-    const p = part(order++, `Nexus Control — ${link.name}`, "");
+    const p = part(order++, `Nexus Control — ${link.name}`, INTROS[link.name] ?? "");
     await page.goto(`${CONTROL}${link.href}`);
     await ready(page);
     const tabs = page.getByRole("tab");

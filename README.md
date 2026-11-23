@@ -4,13 +4,14 @@ A multi-tenant platform for every kind of learning institution, from play school
 institutes. It works offline, and AI features are optional. What it covers: [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md).
 Plan and stages: [`docs/PLAN.md`](docs/PLAN.md).
 
-> **Current state: Stage 1 — Platform foundation, build step (frozen, D43).** Every Stage 1 module (M01–M07, M10, M11,
-> M83) runs in both **mock mode** (in-browser MSW + IndexedDB offline store, plus the one-command review build and
-> walkthrough in [`docs/review/STAGE-1-WALKTHROUGH.md`](docs/review/STAGE-1-WALKTHROUGH.md)) and **real backend mode**
-> (FastAPI modular monolith, PostgreSQL 16 with RLS + pgvector, Redis, Keycloak OIDC, Vault Transit field encryption,
-> outbox worker and guarded AI gateway — NEX-042 to NEX-063). Tasks NEX-064 (container images & self-hosted Compose
-> install) and NEX-065 (Stage 1 hardening) complete the stage
-> ([`docs/tasks/stage-1/BOARD.md`](docs/tasks/stage-1/BOARD.md)).
+> **Current state: Stage 2 — Nexus Control & delivery, built; waiting for the Owner's release review.** Stage 1
+> (M01–M07, M10, M11, M83) was released on 2026-11-21. Stage 2 adds **Nexus Control**, our own provider app (P01–P18:
+> accounts, pricing, billing with Lago and Razorpay links for India, provisioning, licences, fleet, releases, support,
+> the access broker and more) on its own backend and database, and the **M84 install agent** for self-hosted installs,
+> with signed pull-only commands, offboarding with a signed key-destruction certificate, tenant moves, Compose and Helm
+> packaging. Every Stage 2 task is done or withdrawn
+> ([`docs/tasks/stage-2/BOARD.md`](docs/tasks/stage-2/BOARD.md)); release checklist and Owner items:
+> [`docs/review/STAGE-2-RELEASE.md`](docs/review/STAGE-2-RELEASE.md).
 
 ## What you need
 
@@ -20,7 +21,7 @@ Plan and stages: [`docs/PLAN.md`](docs/PLAN.md).
 | Node.js | 24 | `fnm install 24` |
 | pnpm | as in `frontend/pnpm-lock.yaml` | **pnpm only.** Never `npm`, `npx` or `yarn` |
 | [uv](https://docs.astral.sh/uv/) | latest | Picks Python 3.12 (`backend/pyproject.toml`). **uv only.** Never `pip` |
-| Docker Compose | v2+ | Needed for real backend mode (PostgreSQL 16 + pgvector, Redis, Keycloak, Vault; binds to `127.0.0.1` with `mem_limit`) |
+| Docker Compose | v2+ | Needed for real backend mode (PostgreSQL 16 + pgvector, Valkey, Keycloak, OpenBao; binds to `127.0.0.1` with `mem_limit`) |
 
 ## First-time setup
 
@@ -47,7 +48,7 @@ From the repo root:
 uv sync --project backend
 ```
 
-To start the local dev backing services (PostgreSQL 16 + pgvector, Redis, Vault dev, Keycloak dev), apply migrations
+To start the local dev backing services (PostgreSQL 16 + pgvector, Valkey, OpenBao dev, Keycloak dev), apply migrations
 and seed the demo institutions:
 
 ```bash
@@ -89,6 +90,23 @@ With the backend Compose stack running and seeded:
 Open `http://127.0.0.1:3100` and choose **Sign in with your institution account** (see
 [`docs/review/STAGE-1-WALKTHROUGH.md`](docs/review/STAGE-1-WALKTHROUGH.md) §4b for seeded accounts and notes).
 
+### Nexus Control (our provider app, Stage 2)
+
+| What | Command (from the repo root) | Open |
+|---|---|---|
+| Control app, demo data (no backend) | `fnm exec --using=24 -- pnpm --dir frontend dev:control` | http://127.0.0.1:3200 |
+| Control review build | `fnm exec --using=24 -- pnpm --dir frontend review:start:control` | http://127.0.0.1:3201 |
+| Control database: migrate + seed (once) | `uv run --project backend nexus-control-db` | — |
+| Staff sign-in realm with MFA (once) | `uv run --project backend nexus-keycloak-staff-dev` | — |
+| Control backend | `uv run --project backend nexus-control-dev` | http://127.0.0.1:8100 |
+| Control app on the real backend | `fnm exec --using=24 -- pnpm --dir frontend dev:control:real` | http://127.0.0.1:3200 |
+
+Run the Control backend with `nexus-control-dev` (or Docker), not plain `uvicorn`: on Windows plain `uvicorn` picks an
+event loop the database driver cannot use. What each page does: [`docs/guides/CONTROL-GUIDE.md`](docs/guides/CONTROL-GUIDE.md).
+The install agent for self-hosted installs is `uv run --project backend nexus-agent --help`; Control's signed
+commands: `uv run --project backend nexus-control-command --help`. Production installs: `deploy/compose/` (product),
+`deploy/helm/nexuscampus/` (large Kubernetes sites) and `deploy/control/` (Nexus Control).
+
 Stop any server with `Ctrl+C`.
 
 ## Check and build
@@ -114,6 +132,7 @@ task is handed over. Single steps:
 | Preview the built app | `pnpm --filter campus preview` |
 | Playwright e2e (mock/review build) | `pnpm e2e` |
 | Playwright e2e (real backend) | `pnpm e2e:real` |
+| Control a11y + languages on the real stack | `pnpm e2e:control:real` |
 
 ### Backend
 
@@ -127,7 +146,8 @@ This runs `ruff format --check`, `ruff check`, `mypy` (`--strict`), and `pytest`
 
 | Path | What |
 |---|---|
-| `frontend/apps/campus` | The campus app (PWA for every institution role; Stage 1 modules M01–M07, M10, M11, M83) |
+| `frontend/apps/campus` | The campus app (PWA for every institution role; Stage 1 modules M01–M07, M10, M11, M83; M84 Install & updates) |
+| `frontend/apps/control` | Nexus Control, our provider app (P01–P18), with its own `@nexus/ui-control` package |
 | `frontend/packages/ui-core`, `ui-edu` | Shared components, Campus Prism theme engine, design tokens, WCAG contrast guard |
 | `frontend/packages/i18n` | Messages (`en`, `hi`, `ta`), terminology packs per institution type, formatters, pseudo-locale, RTL |
 | `frontend/packages/contracts` | API types + Zod schemas |
@@ -136,10 +156,11 @@ This runs `ruff format --check`, `ruff check`, `mypy` (`--strict`), and `pytest`
 | `frontend/packages/offline` | IndexedDB store (Dexie), AES-GCM encryption, outbox, sync status, remote/idle wipe |
 | `frontend/packages/ui-storybook` | Storybook stories and visual/a11y harness |
 | `frontend/e2e` | Playwright smoke, language (`hi`, `ta`), pseudo-locale, offline, a11y and real-backend (`e2e:real`) suites |
-| `backend/` | FastAPI modular monolith, SQLAlchemy 2 + Alembic migrations, PostgreSQL RLS, Redis, Keycloak OIDC + SCIM 2.0, Vault Transit encryption, hash-chained audit & outbox worker, pgvector + guarded AI gateway |
+| `backend/` | FastAPI modular monolith, SQLAlchemy 2 + Alembic migrations, PostgreSQL RLS, Valkey, Keycloak OIDC + SCIM 2.0, OpenBao Transit encryption, hash-chained audit & outbox worker, pgvector + guarded AI gateway |
 | `brand.config.ts` | Platform names and logo asset paths (the only place they are written) |
 | `docs/` | Requirements, plan, architecture, decisions, maps ([`STRUCTURE.md`](docs/STRUCTURE.md), [`CONTRACTS.md`](docs/CONTRACTS.md), [`COMPONENTS.md`](docs/COMPONENTS.md), [`TIMINGS.md`](docs/TIMINGS.md)) |
-| `docs/guides/` | Living guides: [`USER-GUIDE.md`](docs/guides/USER-GUIDE.md), [`API.md`](docs/guides/API.md), [`DATABASE.md`](docs/guides/DATABASE.md) |
+| `deploy/` | Production installs: `compose/` (product), `helm/` (product on Kubernetes), `control/` (Nexus Control) |
+| `docs/guides/` | Living guides: [`USER-GUIDE.md`](docs/guides/USER-GUIDE.md), [`CONTROL-GUIDE.md`](docs/guides/CONTROL-GUIDE.md), [`API.md`](docs/guides/API.md), [`DATABASE.md`](docs/guides/DATABASE.md); picture manual [`docs/manual/USER-MANUAL.md`](docs/manual/USER-MANUAL.md) |
 
 Full map: [`docs/STRUCTURE.md`](docs/STRUCTURE.md).
 

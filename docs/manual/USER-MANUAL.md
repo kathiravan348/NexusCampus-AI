@@ -1,7 +1,7 @@
 # NexusCampus — User manual
 
 > Pictures first. Every screenshot is taken automatically from the demo (sample data), so this manual always
-> matches the app. Updated 2026-11-21 · 106 screenshots.
+> matches the app. Updated 2026-11-23 · 106 screenshots.
 
 ## Contents
 
@@ -405,7 +405,7 @@
 
 ## Nexus Control — getting started
 
-*Our own provider app. Pick a demo staff member; each role sees only its pages. No page shows institution data.*
+*Our own provider app. Pick a demo staff member; each role sees only its pages. No page shows institution data. On the real backend, staff sign in with their work account and a one-time code.*
 
 **Sign-in page: one demo staff member per role**
 
@@ -417,11 +417,15 @@
 
 ## Nexus Control — Accounts
 
+*Every customer: contacts, contracts, notes and health, and the opportunities in progress.*
+
 **Accounts**
 
 ![Accounts](screens/510-01-accounts.png)
 
 ## Nexus Control — Pricing & quotes
+
+*The price list per learner and add-ons, and quotes that are drafted, sent and accepted.*
 
 **Pricing & quotes — Catalogue**
 
@@ -432,6 +436,8 @@
 ![Pricing & quotes — Quotes](screens/511-02-pricing-quotes-quotes.png)
 
 ## Nexus Control — Billing
+
+*Subscriptions, invoices, payments and reminders. Indian invoices get a Razorpay payment link; European invoices are paid by bank transfer for now.*
 
 **Billing — Invoices**
 
@@ -451,6 +457,8 @@
 
 ## Nexus Control — Provisioning
 
+*Start a new institution in its region, and offboard one that leaves: frozen, exported for its own key, keys destroyed after two staff approve, with a signed certificate.*
+
 **Provisioning — New tenants**
 
 ![Provisioning — New tenants](screens/513-01-provisioning-new-tenants.png)
@@ -461,11 +469,15 @@
 
 ## Nexus Control — Licences
 
+*Signed licence files for institutions that run NexusCampus on their own servers.*
+
 **Licences**
 
 ![Licences](screens/514-01-licences.png)
 
 ## Nexus Control — Fleet
+
+*Every cloud cell and own-server install, with its version and health (counts and timings only).*
 
 **Fleet**
 
@@ -473,11 +485,15 @@
 
 ## Nexus Control — Releases
 
+*New versions: a release is published only with a signed manifest, then rolled out ring by ring.*
+
 **Releases**
 
 ![Releases](screens/516-01-releases.png)
 
 ## Nexus Control — Extensions
+
+*Customer-specific extensions and whether each one works with the next release.*
 
 **Extensions**
 
@@ -485,11 +501,15 @@
 
 ## Nexus Control — Support
 
+*Tickets, replies and response times, plus the help articles.*
+
 **Support**
 
 ![Support](screens/518-01-support.png)
 
 ## Nexus Control — Access requests
+
+*Ask an institution for time-limited access to help it. The institution decides in its own app; we never approve ourselves.*
 
 **Access requests — Requests**
 
@@ -505,11 +525,15 @@
 
 ## Nexus Control — Usage
 
+*Learners, campuses and AI credits used against each plan.*
+
 **Usage**
 
 ![Usage](screens/520-01-usage.png)
 
 ## Nexus Control — Partners
+
+*Resellers, their registered deals and commissions.*
 
 **Partners**
 
@@ -517,11 +541,15 @@
 
 ## Nexus Control — Staff
 
+*Our staff, their roles and two-step sign-in status.*
+
 **Staff**
 
 ![Staff](screens/522-01-staff.png)
 
 ## Nexus Control — Trust
+
+*Sub-processors, certifications, security incidents and data-processing agreements.*
 
 **Trust**
 
@@ -529,11 +557,15 @@
 
 ## Nexus Control — Projects
 
+*Implementation projects for new customers, from kick-off to go-live.*
+
 **Projects**
 
 ![Projects](screens/524-01-projects.png)
 
 ## Nexus Control — Analytics
+
+*Revenue, growth, churn and support load per month.*
 
 **Analytics**
 
@@ -541,11 +573,15 @@
 
 ## Nexus Control — Sandboxes
 
+*Demo, trial and staging environments, always with sample data and an expiry date.*
+
 **Sandboxes**
 
 ![Sandboxes](screens/526-01-sandboxes.png)
 
 ## Nexus Control — Moves
+
+*Move an institution to another region, to its own servers or back to the cloud, in seven checked steps.*
 
 **Moves**
 

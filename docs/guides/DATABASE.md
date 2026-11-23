@@ -1,6 +1,7 @@
 # Database
 
-> State as of: 2026-11-21 (NEX-065) · Migration: `0016_audit_checkpoints`
+> State as of: 2026-11-23 (Stage 2 through NEX-139) · Migrations: product `0022_tenant_freeze`, Nexus Control
+> `c0021_payment_links`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
 `backend/tests/db/test_migrations.py` proves the SQLAlchemy models equal the migrated schema.
@@ -9,7 +10,8 @@ PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in 
 - **Owner** (`NEXUS_MIGRATE_DATABASE_URL`): runs migrations and the demo seed only.
 - **`nexus_app`** (`NEXUS_DATABASE_URL`): the API's role — `LOGIN`, no superuser, **no `BYPASSRLS`**. Created by
   `0001_tenancy`; its password comes from `NEXUS_APP_DB_PASSWORD`. It may read and write tenant tables but cannot
-  create or delete tenants (provisioning is Nexus Control, Stage 2).
+  create or delete tenants: a SaaS cell's install agent creates them with the owner role on a signed command from
+  Nexus Control (`tenant.provision`, NEX-127).
 - **Row-Level Security** is enabled and **forced** on every table below. Policy `tenant_isolation`:
   `tenant_id = current_setting('app.tenant_id', true)` (on `tenants`: `id = …`) for reads and writes. Without a
   tenant context no rows match.
@@ -159,8 +161,61 @@ response is stored); the app may update and delete its keys.
 All four use forced RLS; the `vector` extension is created by the migration (pgvector image). The dev seed indexes
 institution settings and calendars with the deterministic dev embedder.
 
+## Install agent (M84 — `0017`–`0020`, NEX-105, NEX-112, NEX-114, NEX-129)
+
+Install-wide tables (no `tenant_id`, no RLS) holding versions, counts and file names only — never institution data
+(V-7).
+
+| Table | Key columns | Rules |
+|---|---|---|
+| `install_status` (`0017`) | `id` (always 1), `install_id`, `version`, `channel`, `licence` (JSON), `licence_problem`, `air_gapped`, `telemetry_enabled`, `last_update_check_at`, `last_backup_at`, `update_offer` (JSON), `checked_at` | One row (CHECK `id = 1`); air-gapped means no telemetry and no online update check (CHECK) |
+| `install_backups` (`0018`) | `id`, `kind` (`backup` / `tenant_export`), `status`, `encrypted`, `size_bytes`, `started_at`, `finished_at`, `file_name` | Always encrypted (CHECK); finished iff not running; size when done |
+| `install_diagnostics` (`0018`) | `id`, `status` (`generating` → `ready_for_review` → `approved` → `sent` / `discarded`), `scrubbed`, `size_bytes`, `ticket_ref`, `created_at`, `reviewed_by`, `sent_at`, `file_name` | Always scrubbed of personal data (CHECK); approved or sent needs a reviewer; `sent_at` iff sent |
+| `agent_commands` (`0020`) | `id` (Control's `cmd-…`), `kind`, `received_at`, `status` (`running` / `done` / `failed` / `rejected`), `finished_at` | The replay guard for signed Control commands (D60): an id is inserted before the command runs, so it never runs twice; finished iff not running |
+| `broker_reports` (`0021`) | `request_id`, `last_status`, `reported_at` | Which M83 decisions on command-filed access requests were already reported to Control (NEX-131); `reported_at` iff `last_status` |
+
+`nexus_app` may read, insert and update these tables. Three owner-owned `SECURITY DEFINER` functions give it one
+narrow capability each: `nexus_install_entitle()` switches on the core `M84` module for the tenant in context
+(`0017`); `nexus_install_active_users(since)` returns one install-wide count of active users for health reports
+(`0019`); `nexus_broker_request_statuses(ids)` returns only request id, status and decision time for command-filed
+access requests (`0021`) — never reason, modules or people.
+
+## Tenant freeze (M01 — `0022_tenant_freeze`, D61, NEX-133)
+
+`tenants.frozen_at` (nullable): set once by the owner role when an institution is offboarded or moved. A frozen tenant
+refuses every write with `423 tenant_frozen` (one shared guard in `tenant_transaction(write=True)`, used by API writes,
+SCIM, provider access and the outbox worker); reads, the export and the daily audit checkpoint keep working. `nexus_app`
+has column `UPDATE` on `tenants (name, type, region, updated_at)` only, so the app can never unfreeze a tenant.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
 `pnpm --dir frontend --filter @nexus/mocks export:fixtures` (a mocks test fails when the file is stale). Upsert by
 id; each tenant is written inside its own tenant context. `--reset` only with `NEXUS_ENVIRONMENT=dev`.
+
+## Nexus Control database (`nexus_control`, `backend/control_migrations/`, D55)
+
+Our own provider database, separate from every institution database (D22, V-1). Migrations `c0001`–`c0021`; the
+owner role migrates and seeds (`uv run --project backend nexus-control-db`); the Control API runs as **`control_app`**,
+which gets `SELECT` on what it shows and only the `INSERT` / column `UPDATE` grants listed below. No table holds
+learner, family, health or ID data: the schema walk in `tests/security/test_control_no_access.py` fails on any such
+column. The only personal data are staff, account contacts and the documented D60 command exceptions.
+
+| Area (migrations) | Tables | Writes allowed to `control_app` and key rules |
+|---|---|---|
+| Staff & sessions (`c0001`, `c0002`; P13) | `staff_users`, `role_permissions`, `staff_sessions` | `UPDATE (last_sign_in_at)`; sessions `INSERT` + `UPDATE (revoked_at)`, token stored as a hash only |
+| Accounts & CRM (`c0003`; P01) | `accounts`, `account_contacts`, `account_notes`, `contracts`, `opportunities`, `account_health` | notes `INSERT`; `accounts` `UPDATE (tenant_ids, region, delivery_model)` for provisioning and moves |
+| Commercial & billing (`c0004`, `c0009`, `c0021`; P02, P03, P11) | `catalogue_items`, `quotes`, `subscriptions`, `invoices`, `credit_notes`, `payments`, `payment_links`, `dunning_states`, `usage_records`, `billing_webhook_events` | quote / subscription `UPDATE (status)`; invoices `INSERT` + `UPDATE (status, paid_at)`; payments `INSERT` + `UPDATE (lago_synced)`; payment links `INSERT` + `UPDATE (status)`; webhook events `INSERT` (dedupe by event id); money = minor units + currency |
+| Licences (`c0005`; P05) | `licences` | column `UPDATE` of issue and expiry dates, state and signing fields only; signed in OpenBao, no key stored |
+| Fleet & agents (`c0006`; P06) | `deployments`, `health_signals`, `deployment_agent_tokens` | `UPDATE (version, health, last_check_in_at, telemetry_enabled)`; health signals `INSERT` / `UPDATE` (counts and timings only); agent tokens stored as SHA-256 |
+| Releases (`c0007`, `c0008`, `c0016`; P07) | `releases`, `rollouts` | `UPDATE (status, signed, published_at)` and `(status, started_at)`; `releases.signed_manifest` is internal and must verify before publishing |
+| Support (`c0010`; P09) | `tickets`, `ticket_replies`, `sla_policies`, `kb_articles` | replies `INSERT`; tickets `UPDATE (status, assignee_staff_id, resolved_at)` |
+| Extensions, projects, sandboxes (`c0011`; P08, P15, P17) | `extensions`, `extension_compatibility`, `implementation_projects`, `sandboxes` | read only |
+| Partners & analytics (`c0012`; P12, P16) | `partners`, `deal_registrations`, `commissions`, `business_metrics` | read only; partners see only their accounts' rows |
+| Trust (`c0013`; P14) | `sub_processors`, `certifications`, `security_incidents`, `dpa_records` | read only; breach deadline set iff personal data affected (CHECK) |
+| Provisioning, offboarding, moves (`c0014`, `c0018`–`c0020`; P04, P18) | `provisioning_jobs`, `offboarding_jobs`, `shred_certificates`, `portability_jobs` | jobs `INSERT` + column `UPDATE` of steps, status and their command; step names, order and status checked by `control_job_steps_valid` (CHECK); two different approvers before key destruction (CHECK); shred certificates `INSERT` only, 88-character Ed25519 signature |
+| Commands (`c0015`, `c0017`; D60, D63) | `deployment_commands` | `INSERT` + `UPDATE (status, delivered_at, finished_at, result)` — never the signed `payload` or `signature`; lifetime ≤ 24 h (CHECK); `result` ≤ 4 KB; overdue rows become `expired` and fail the step that waited (NEX-139) |
+| Access broker (`c0017`; P10) | `broker_requests`, `broker_sessions`, `break_glass_cases` | requests `INSERT` + `UPDATE (status, decided_at)`; never `M83` in scope (CHECK); sessions and break-glass read only |
+
+The demo rows come from `backend/src/nexus/control/control_fixtures.json` (exported from the frontend mocks; fixtures
+version checked on seed).
