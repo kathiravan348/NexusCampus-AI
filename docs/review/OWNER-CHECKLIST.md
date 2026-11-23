@@ -1,32 +1,29 @@
 # Owner checklist
 
-> Everything that waits for you, in one place, in the order that saves the most time. State as of 2026-11-23.
+> Everything that waits for you, in one place, in the order that saves the most time. State as of 2026-11-23 (Stage 2 released).
 > Tick a box when done. Details behind each item are linked; the full decision log is
 > [`OWNER-AWAY-DECISIONS.md`](OWNER-AWAY-DECISIONS.md).
 
 ## Where things stand
 
-- **Stage 1** (platform foundation) is released (D54).
-- **Stage 2** (Nexus Control and delivery) is **built**: every Nexus Control page (P01–P18) runs on its own backend
-  and database, the install agent (M84) runs self-hosted installs, and provisioning, offboarding, moves, the access
-  broker and Razorpay payment links for India work end to end. The last tasks are done and merged: the
-  frozen-institution banner, the Control job buttons (NEX-140–142, D65) and one open offboarding or move per tenant
-  (NEX-143, D66). Stripe for Europe moved to a later stage (D64).
-- **Release review started 2026-11-23:** every automated check was re-run on the final `main` and passes (backend,
-  frontend, browser checks on demo and real data, accessibility, languages, speed). Results:
-  [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md). It now waits for your decisions in section 0.
+- **Stage 1** (platform foundation) released 2026-11-21 (D54); **Stage 2** (Nexus Control and delivery) released
+  2026-11-23 (D70). Results: [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md).
+- **Stage 3** (core institution operations) is open: [`../tasks/stage-3/BOARD.md`](../tasks/stage-3/BOARD.md). The
+  first two contract tasks are planned (NEX-146 academic structure, NEX-147 fields, forms, workflows, numbering).
 
-## 0. Approve the Stage 2 release (when the items below suit you)
+## 0. Approve the Stage 3 module list and order (D71)
 
-- [ ] Read [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md) (what was built and tested, timings, open items) and
-      [`STAGE-2-SECURITY.md`](STAGE-2-SECURITY.md).
-- [ ] Confirm or change the decisions in section 2 (made while you were away; each can be undone).
-- [x] The one gap left on a frozen screen: you chose to add **Review / Approve / Discard** for a support diagnostic
-      bundle on **Install & updates** before the release (2026-11-23, D69) → NEX-144.
-- [ ] Decide which of sections 4 and 5 must be done before the release, and which can wait (none blocks the
-      software itself: they are prices, live payment keys, a Kubernetes test, trust-page facts, the deck contact line,
-      the Hindi / Tamil check, and production unseal / penetration test).
-- [ ] Say **"approve the Stage 2 release"**. I then mark Stage 2 released and open the Stage 3 board.
+- [ ] Read the Stage 3 plan in [`PLAN.md`](../PLAN.md) (Stage 3 detail) and the board: contracts → demo data → one
+      screen task per module → review build → freeze. Say **"approve the Stage 3 plan"**, or what to change (a module
+      to drop, add or move). The screen tasks are planned only after your OK.
+
+## Stage 2 release — approved 2026-11-23 (D70)
+
+- [x] Read [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md) and [`STAGE-2-SECURITY.md`](STAGE-2-SECURITY.md).
+- [x] Decisions made while you were away (section 2) confirmed with the release.
+- [x] Diagnostic-bundle buttons and their audit events added before the release (D69, NEX-144, NEX-145).
+- [x] Sections 4 and 5 stay open as Owner items before the first production customer; none blocks Stage 3.
+- [x] "Approve Stage 2" → Stage 2 released, Stage 3 board opened.
 
 ## 1. Review Stage 2, then freeze it — done 2026-11-22 ("all good", D56)
 
@@ -40,29 +37,29 @@
 The pictures of every screen, including all 18 Control pages, are in
 [`docs/manual/USER-MANUAL.md`](../manual/USER-MANUAL.md) (106 screenshots), if you prefer to look before running it.
 
-## 2. Confirm or change the decisions made while you were away (about 15 minutes)
+## 2. Decisions made while you were away — confirmed with the Stage 2 release (D70)
 
 Each one can be undone; the log says how. The ones worth a conscious yes:
 
-- [ ] **D55: the Stage 2 build started before the freeze.** Changes from your review become fix tasks.
-- [ ] **Staff sign-in = our own Keycloak realm `nexus-staff` with password + one-time code (TOTP) at every
+- [x] **D55: the Stage 2 build started before the freeze.** Changes from your review become fix tasks.
+- [x] **Staff sign-in = our own Keycloak realm `nexus-staff` with password + one-time code (TOTP) at every
       sign-in.** Passkeys can be added later.
-- [ ] **Lago set-up:**
+- [x] **Lago set-up:**
   - version 1.57.0, with its own database
   - no Lago web screens and no PDF service
   - Lago's usage tracking is off
   - reachable only from inside our own systems
 
   Nexus Control is the only billing screen.
-- [ ] **Apex Coaching is the demo "own server" institution** for the Install & updates page.
-- [ ] Implementation staff may read the price list (they need it to start trial tenants).
-- [ ] Dev-only secrets were generated into your git-ignored `backend/.env`:
+- [x] **Apex Coaching is the demo "own server" institution** for the Install & updates page.
+- [x] Implementation staff may read the price list (they need it to start trial tenants).
+- [x] Dev-only secrets were generated into your git-ignored `backend/.env`:
   - the staff sign-in client secret
   - Lago passwords and keys
 
   They never leave your machine. Production secrets will live in OpenBao.
 
-- [ ] **Frozen-screen change (D56):** the backend now lets an admin read, approve or discard a support diagnostic
+- [x] **Frozen-screen change (D56):** the backend now lets an admin read, approve or discard a support diagnostic
       bundle (NEX-112). Showing **Review / Approve / Discard** on the frozen **Install & updates** page needs your OK.
 
 ## 3. Decide whether to push to GitHub (2 minutes)
@@ -104,7 +101,6 @@ These are not blocking the build, but real billing and the trust page need them 
 
 ## What I do next, unless you say otherwise
 
-- After your release approval: mark Stage 2 released, then open the Stage 3 board (core institution operations).
-- NEX-140–145 are reviewed and merged, including the diagnostic-bundle buttons and their audit events. Gemini and
-  Codex build; I plan and review (D68).
+- Gemini and Codex build NEX-146 and NEX-147 (they do not overlap); I review and merge them (D68).
+- After your OK on the Stage 3 plan: write the next tasks two ahead, contracts first, then demo data and screens.
 - Anything that needs a new download, I hold and ask you first.

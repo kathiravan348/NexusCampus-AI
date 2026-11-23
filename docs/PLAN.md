@@ -14,7 +14,7 @@
 | 6 | Campus life & services | M52–M56, M60–M62, M64–M70, M85 | Transport, hostel, canteen, store, wallet, gate, emergency & crisis (L3), health, wellbeing, events, sports, trips, placement, internships, international, alumni |
 | 7 | Enterprise & ecosystem | M73–M82 | Groups/franchises, BI, integrations and public API, marketplace, white-label apps, website builder, Edge node, IoT, ESG, trust centre; certifications |
 
-**Current: Stage 2 — frozen 2026-11-22 (D56); release review: all tasks done, waiting for the Owner's approval (NEX-144/145, D69; NEX-140–143 done, D65/D66; Stripe moved out: D64), then the Owner's release review.** Stage 1 released 2026-11-21 (D54). Do not build modules of a later stage.
+**Current: Stage 3 — design → prototype (D71), `docs/tasks/stage-3/BOARD.md`.** Stage 1 released 2026-11-21 (D54), Stage 2 released 2026-11-23 (D70). Do not build modules of a later stage.
 Why Control is Stage 2: the first paying customer (SaaS or self-hosted) needs provisioning, billing or licensing,
 updates and support before any school module ships to them.
 
@@ -44,6 +44,14 @@ Offline levels and the self-hosted install are part of each module's acceptance 
 Demo tenants (mock and seed): *Little Steps* (EY), *Riverside School* (K12, under 2-campus *Riverside Education Group*, GRP),
 *Northbridge University* (HE), *Apex Coaching* (TP), *Harmony Music Academy* (SK). All fictional; Riverside runs in Hindi and Apex
 in Tamil (D42); the Group exercises inherited/locked themes and text overrides.
+
+## Stage 3 — Core institution operations (detail, D71)
+| Step | Tasks | What exists after |
+|---|---|---|
+| 1. Contracts | 146 academic structure (M15) · 147 fields, forms, workflows, numbering (M08) · 148 learners & families (M13, M14) · 149 admissions & import (M12, M09) · 150 timetable & attendance (M16, M17) · 151 fees & accounting (M18, M19) · 152 assessment, exams, reports, documents (M20–M23) · 153 communication, portals, dashboards, rollover (M24–M28, M86) | Strict shapes for every Stage 3 module, neutral across institution types |
+| 2. Data layer | 154–155 fixtures for the 5 demo tenants and the Group · 156–159 MSW handlers + services | Demo institutions with classes, learners, families, timetables, fees and marks served through MSW |
+| 3. Screens | 160–178: one task per module (M15, M08, M09, M13+M14, M12, M16, M17, M18, M19, M20, M21, M22, M23, M24, M25, M26, M27, M28, M86) with its offline level and its AI helper mocked behind M11 | Every Stage 3 screen clickable in demo mode, per persona and institution type |
+| 4. Review | 179 review build + walkthrough · 180 freeze | Frozen Stage 3 scope; build tasks planned at the freeze |
 
 ## Stage 2 — Nexus Control & delivery (outline; detail at Stage 1 freeze)
 Prototype `apps/control`: accounts → plans and quotes → SaaS provisioning → billing and metering → licence files →

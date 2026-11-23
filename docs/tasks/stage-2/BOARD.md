@@ -6,7 +6,7 @@
 > Lanes: **A** UI/theme/text · **B** contracts/mocks · **C** screens · **D** backend / deploy.
 > `draft` rows have no task file yet; the planner writes them 2 ahead (`AGENTS.md` §3.5).
 
-**Step:** prototype (`docs/PLAN.md` → Stage 2) · **Modules:** P01–P18, M84 · **Owner-away mode:** D49
+**Step:** **released 2026-11-23 (D70)** — prototype, freeze (D56) and build done (`docs/PLAN.md` → Stage 2) · **Modules:** P01–P18, M84 · **Owner-away mode:** D49
 
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|

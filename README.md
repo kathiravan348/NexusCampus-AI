@@ -4,14 +4,14 @@ A multi-tenant platform for every kind of learning institution, from play school
 institutes. It works offline, and AI features are optional. What it covers: [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md).
 Plan and stages: [`docs/PLAN.md`](docs/PLAN.md).
 
-> **Current state: Stage 2 — Nexus Control & delivery, built; waiting for the Owner's release approval.**
-> Stage 1 (M01–M07, M10, M11, M83) was released on 2026-11-21. Stage 2 adds **Nexus Control**, our own provider app (P01–P18:
+> **Current state: Stage 3 — Core institution operations, design → prototype (contracts first).**
+> Stage 1 (M01–M07, M10, M11, M83) was released on 2026-11-21 and Stage 2 on 2026-11-23. Stage 2 added **Nexus Control**, our own provider app (P01–P18:
 > accounts, pricing, billing with Lago and Razorpay links for India, provisioning, licences, fleet, releases, support,
 > the access broker and more) on its own backend and database, and the **M84 install agent** for self-hosted installs,
 > with signed pull-only commands, offboarding with a signed key-destruction certificate, tenant moves, Compose and Helm
-> packaging. Left: the Owner's release approval
-> ([`docs/tasks/stage-2/BOARD.md`](docs/tasks/stage-2/BOARD.md)); release checklist and Owner items:
-> [`docs/review/STAGE-2-RELEASE.md`](docs/review/STAGE-2-RELEASE.md).
+> packaging ([`docs/review/STAGE-2-RELEASE.md`](docs/review/STAGE-2-RELEASE.md)). Stage 3 adds admissions, learner
+> and family records, timetable, attendance, fees, assessment, reports, communication, portals and year-end rollover
+> ([`docs/tasks/stage-3/BOARD.md`](docs/tasks/stage-3/BOARD.md)).
 
 ## What you need
 

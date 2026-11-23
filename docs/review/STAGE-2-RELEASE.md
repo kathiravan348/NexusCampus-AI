@@ -1,5 +1,7 @@
 # Stage 2 — release checklist
 
+> **Released 2026-11-23 — approved by the Owner (D70).** Open Owner items before the first production customer: §7.
+
 > For the Owner's release approval (NEX-137). Filled on 2026-11-23 on the Owner PC (Windows 11, Docker Desktop,
 > Node 24, Python 3.12, PostgreSQL 16 + pgvector, OpenBao 2.7.2, Valkey 9.0.7, Keycloak 26.4.7, Lago 1.57.0) against
 > `task/NEX-137` (stacked on `NEX-121..136, 107, 110`; Helm chart on `task/NEX-120`). Items marked **Owner** need a
