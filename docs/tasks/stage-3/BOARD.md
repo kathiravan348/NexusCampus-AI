@@ -11,7 +11,7 @@
 
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|
-| NEX-146 | Contracts (M15): programs, year levels, class groups, subjects, subject offerings | B | ready-for-review | Codex | 008, 028 |
+| NEX-146 | Contracts (M15): programs, year levels, class groups, subjects, subject offerings | B | done | Codex | 008, 028 |
 | NEX-147 | Contracts (M08): custom fields and values, forms, approval workflows, numbering formats | B | planned | — | 008 |
 | NEX-148 | Contracts (M13, M14): learner records, households, guardians, custody and pickup rights | B | draft | — | 146, 147 |
 | NEX-149 | Contracts (M12, M09): enquiries, applications, offers, waitlist; import jobs and column mappings | B | draft | — | 148 |
