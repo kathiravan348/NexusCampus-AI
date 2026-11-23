@@ -108,7 +108,7 @@
 │                       Lago adapter, sync, webhooks), control_migrations/ + control_alembic.ini (database nexus_control), keycloak/
 │                       realm-staff.json (nexus-staff), compose.billing.yaml (Lago, dev), src/nexus/commands/ (nexus-command/1 canonical sign/verify), src/nexus/licensing/ (licence
 │                       files: canonical JSON, Ed25519 in OpenBao, offline verify), src/nexus/agent/ (M84 install
-│                       agent: licence, updates, state, health, online, crypto, backup, tenant_export = NXTE/1 DM-8
+│                       agent: licence, updates, state, health, online, commands (D60 pull-verify-run-report), crypto, backup, tenant_export = NXTE/1 DM-8
 │                       tenant export, tenant_import = NXTE/1 DM-8 tenant import, diagnostics, jobs, run); tools nexus-control-db, nexus-keycloak-staff-dev,
 │                       nexus-lago-dev, nexus-agent; tests/control, tests/db/control, tests/licensing, tests/agent
 ├─ control/             Nexus Control backend (planned, Stage 2)

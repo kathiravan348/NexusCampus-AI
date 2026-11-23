@@ -74,3 +74,16 @@ class InstallDiagnosticRow(Base):
     reviewed_by: Mapped[str | None] = mapped_column(String(128))
     sent_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     file_name: Mapped[str | None] = mapped_column(String(200))
+
+
+class AgentCommandRow(Base):
+    __tablename__ = "agent_commands"
+    __table_args__ = (
+        CheckConstraint("status IN ('running', 'done', 'failed', 'rejected')", name="agent_commands_status"),
+        CheckConstraint("(status = 'running') = (finished_at IS NULL)", name="agent_commands_finished"),
+    )
+    id: Mapped[str] = mapped_column(String(64), primary_key=True)
+    kind: Mapped[str] = mapped_column(String(64))
+    received_at: Mapped[datetime] = mapped_column(DateTime(timezone=True))
+    status: Mapped[str] = mapped_column(String(16))
+    finished_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

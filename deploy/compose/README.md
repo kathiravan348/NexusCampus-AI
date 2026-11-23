@@ -77,6 +77,13 @@ checks Control for a newer release and offers it only after verifying its `nexus
 `release-keys.json` (a verified offline bundle in `inbox/` always takes precedence). Set `NEXUS_TELEMETRY_ENABLED=false`
 or `NEXUS_AIR_GAPPED=true` (or leave the token empty) to disable all outbound calls — no network request is made.
 
+**Optional signed Control commands (D60).** Self-hosted installs keep Control commands **off** by default
+(`NEXUS_AGENT_COMMANDS=off`). To allow this install to pull signed work items (`nexus-agent commands`, also run in
+`nexus-agent loop`), set `NEXUS_AGENT_COMMANDS=on`, set `NEXUS_DEPLOYMENT_ID` to your Control deployment id, pin
+Control's public keys in `NEXUS_INSTALL_DIR/command-keys.json`, and configure `NEXUS_CONTROL_URL` and
+`NEXUS_CONTROL_AGENT_TOKEN`. Every command is verified offline with the pinned keys, matched to this deployment id,
+recorded so it can never run twice, and restricted to the agent's allow-list. Air-gapped installs never pull commands.
+
 ### Offline updates (no internet on the server)
 
 Every release comes with a signed manifest, and for servers without internet an offline bundle

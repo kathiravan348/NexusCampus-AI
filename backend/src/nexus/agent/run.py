@@ -1,7 +1,9 @@
-"""`nexus-agent` (M84) — runs only on a self-hosted install (`NEXUS_INSTALL_MODE=self_hosted`).
+"""`nexus-agent` (M84) — runs on self-hosted installs (`NEXUS_INSTALL_MODE=self_hosted`), plus `commands` on SaaS cells.
 
   once | loop [--every SECONDS]   licence, counts, update offer → install status (NEX-105) + health report (NEX-114)
+                                  (`loop` also polls signed Control commands after the health report, NEX-129)
   report                          measure health and send one PII-free check-in to Control (NEX-114)
+  commands                        poll, verify, run once and report signed Control commands (D60, NEX-129)
   backup                          encrypted backup of every table (NEX-112)
   verify-backup FILE              read the whole backup through its checks (no restore)
   restore FILE --into URL         load a backup into an EMPTY database (schema built first)
@@ -26,6 +28,7 @@ from alembic.config import Config
 from sqlalchemy import create_engine
 
 from nexus.agent.backup import backup_header, restore_backup, verify_backup
+from nexus.agent.commands import commands_skip_reason, poll_commands
 from nexus.agent.health import report_skip_reason, send_report
 from nexus.agent.jobs import ensure_import_key, run_backup, run_diagnostics, run_tenant_export
 from nexus.agent.licence import check_licence, load_keys
@@ -77,7 +80,24 @@ def _status(settings: Settings, loop: bool, every: int) -> None:
                     print(f"health report: failed ({type(exc).__name__})")
             if not loop:
                 return
+            cmd_skip = commands_skip_reason(settings)
+            if cmd_skip is not None:
+                print(f"commands: {cmd_skip}")
+            else:
+                print(f"commands: {poll_commands(engine, settings).message}")
             time.sleep(max(60, every))
+    finally:
+        engine.dispose()
+
+
+def _commands(settings: Settings) -> None:
+    skip = commands_skip_reason(settings)
+    if skip is not None:
+        print(f"commands: {skip}")
+        return
+    engine = create_engine(settings.database_url.get_secret_value(), pool_pre_ping=True)
+    try:
+        print(f"commands: {poll_commands(engine, settings).message}")
     finally:
         engine.dispose()
 
@@ -127,6 +147,9 @@ def main() -> None:
     p.add_argument("--ticket")
     args = p.parse_args()
     settings = get_settings()
+    if args.mode == "commands":
+        _commands(settings)
+        return
     if settings.install_mode != "self_hosted":
         sys.exit("The install agent runs only on a self-hosted install (NEXUS_INSTALL_MODE=self_hosted).")
     if args.mode in ("once", "loop"):
