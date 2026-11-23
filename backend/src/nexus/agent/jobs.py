@@ -14,7 +14,7 @@ from typing import Any
 import httpx2
 from alembic.config import Config
 from alembic.script import ScriptDirectory
-from sqlalchemy import create_engine, text
+from sqlalchemy import Engine, create_engine, text
 
 from nexus.agent.backup import write_backup
 from nexus.agent.diagnostics import build_bundle
@@ -106,16 +106,18 @@ def ensure_import_key(settings: Settings, vault: Vault | None = None) -> str:
     return asyncio.run(run())
 
 
-def run_tenant_export(
+def run_tenant_export_pem(
     settings: Settings,
     tenant_id: str,
-    dest_pem_path: Path,
+    dest_pem: str,
     vault: Vault | None = None,
     encrypted_columns: Mapping[tuple[str, str], EncryptedField] = ENCRYPTED_COLUMNS,
+    *,
+    app_engine: Engine | None = None,
 ) -> dict[str, Any]:
-    """Exports one tenant into an `NXTE/1` file encrypted for `dest_pem_path` and records the job."""
+    """Exports one tenant into an `NXTE/1` file encrypted for `dest_pem` and records the job."""
     started = datetime.now(UTC).replace(microsecond=0)
-    app = create_engine(settings.database_url.get_secret_value())
+    app = app_engine or create_engine(settings.database_url.get_secret_value())
     pending = "exp-pending-" + started.strftime("%Y%m%d%H%M%S") + "-" + secrets.token_hex(2)
     try:
         with app.begin() as conn:
@@ -127,7 +129,6 @@ def run_tenant_export(
                 {"id": pending, "at": started},
             )
         try:
-            dest_pem = dest_pem_path.read_text(encoding="utf-8")
             result = write_tenant_export(
                 settings.migrate_database_url.get_secret_value(),
                 backup_dir(settings),
@@ -157,6 +158,7 @@ def run_tenant_export(
             "id": result.id,
             "tenantId": result.tenant_id,
             "file": str(result.path),
+            "fileName": result.path.name,
             "bytes": result.file_bytes,
             "tables": len(result.counts),
             "rows": sum(result.counts.values()),
@@ -164,7 +166,20 @@ def run_tenant_export(
             "pemSha256": result.pem_sha256,
         }
     finally:
-        app.dispose()
+        if app_engine is None:
+            app.dispose()
+
+
+def run_tenant_export(
+    settings: Settings,
+    tenant_id: str,
+    dest_pem_path: Path,
+    vault: Vault | None = None,
+    encrypted_columns: Mapping[tuple[str, str], EncryptedField] = ENCRYPTED_COLUMNS,
+) -> dict[str, Any]:
+    """Exports one tenant into an `NXTE/1` file encrypted for `dest_pem_path` and records the job."""
+    dest_pem = dest_pem_path.read_text(encoding="utf-8")
+    return run_tenant_export_pem(settings, tenant_id, dest_pem, vault=vault, encrypted_columns=encrypted_columns)
 
 
 def migration_heads() -> dict[str, str]:

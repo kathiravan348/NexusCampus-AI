@@ -24,6 +24,7 @@ ApiErrorCode = Literal[
     "not_found",
     "conflict",
     "module_disabled",
+    "tenant_frozen",
     "rate_limited",
     "internal",
 ]
@@ -75,6 +76,7 @@ _STATUS_CODES: dict[int, ApiErrorCode] = {
     405: "invalid_request",
     409: "conflict",
     422: "invalid_request",
+    423: "tenant_frozen",
     429: "rate_limited",
 }
 

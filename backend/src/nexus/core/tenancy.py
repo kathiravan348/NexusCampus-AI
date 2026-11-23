@@ -13,6 +13,7 @@ from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker
 
 from nexus.core.errors import ApiError
+from nexus.core.freeze import ensure_not_frozen
 from nexus.settings import Settings
 
 log = logging.getLogger("nexus.tenancy")
@@ -64,10 +65,19 @@ async def ensure_region(session: AsyncSession, ctx: TenantContext, settings: Set
 
 @asynccontextmanager
 async def tenant_transaction(
-    sessions: async_sessionmaker[AsyncSession], ctx: TenantContext, settings: Settings
+    sessions: async_sessionmaker[AsyncSession],
+    ctx: TenantContext,
+    settings: Settings,
+    *,
+    write: bool = False,
 ) -> AsyncIterator[AsyncSession]:
-    """One transaction scoped to `ctx`, region-checked; commits on success, rolls back on error."""
+    """One transaction scoped to `ctx`, region-checked; commits on success, rolls back on error.
+
+    When `write=True`, refuses a frozen tenant with `423 tenant_frozen` (`core/freeze.py`).
+    """
     async with sessions() as session, session.begin():
         await bind_tenant(session, ctx)
         await ensure_region(session, ctx, settings)
+        if write:
+            await ensure_not_frozen(session, ctx.tenant_id)
         yield session

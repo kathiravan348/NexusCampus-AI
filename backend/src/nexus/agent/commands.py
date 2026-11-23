@@ -21,6 +21,12 @@ from sqlalchemy.exc import SQLAlchemyError
 from nexus.agent.health import control_endpoint
 from nexus.agent.licence import load_keys
 from nexus.commands.format import CommandPayload, CommandVerificationError, verify_command
+from nexus.core.freeze import (
+    OffboardingCommandOutcome,
+    handle_tenant_destroy_keys,
+    handle_tenant_export,
+    handle_tenant_freeze,
+)
 from nexus.modules.m83.broker_inbox import (
     BrokerCommandError,
     collect_pending_decisions,
@@ -61,6 +67,9 @@ HANDLERS: dict[str, CommandHandler] = {
     "ping": _handle_ping,
     "access_request.file": handle_access_request_file,
     "tenant.provision": handle_tenant_provision,
+    "tenant.freeze": handle_tenant_freeze,
+    "tenant.export": handle_tenant_export,
+    "tenant.destroy_keys": handle_tenant_destroy_keys,
 }
 
 
@@ -283,7 +292,7 @@ def poll_commands(
 
                 try:
                     result = handler(cmd, engine, settings)
-                except ProvisionCommandOutcome as exc:
+                except (ProvisionCommandOutcome, OffboardingCommandOutcome) as exc:
                     if exc.status == "rejected":
                         rejected += 1
                     else:

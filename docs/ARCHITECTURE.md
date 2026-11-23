@@ -207,6 +207,13 @@ Nexus Control (our cloud)                         Product deployments
   results update steps and append `tenant_id` to `accounts.tenant_ids` once `create_tenant` finishes (`…/advance` stays
   unserved `404`). Partners see only their accounts' offboarding and portability jobs, never provisioning jobs or shred
   certificates.
+- **Offboarding, cell side (P04, D61, NEX-133):** `tenants.frozen_at` (owner-writable only; `nexus_app` gets
+  column-scoped `UPDATE` excluding `frozen_at`). The shared write guard in `core/tenancy.tenant_transaction(..., write=True)`
+  (`core/freeze.ensure_not_frozen`, used by API unsafe methods, SCIM, provider grants, outbox worker, and checkpoints)
+  refuses writes to frozen tenants with `423 tenant_frozen` while reads and exports keep working. SaaS cells accept
+  signed `tenant.freeze` (idempotent, audits `m01.tenant.frozen`), `tenant.export` (frozen only, RSA ≥ 3072 PEM,
+  writes local `NXTE/1` file without uploading to Control), and `tenant.destroy_keys` (frozen + matching latest on-disk
+  export `pemSha256` + two distinct `approvedBy` staff ids → `destroy_tenant_keys`).
 - **Pull-only signed deployment commands (D60, NEX-128):** Control never connects to a deployment. `deployment_commands`
   holds canonical `nexus-command/1` payloads signed in OpenBao Transit (`nexus-command`, Ed25519, never exported,
   `args` ≤ 2 KB, lifetime ≤ 24 h). `control_app` has `SELECT` and column-scoped `UPDATE (status, delivered_at,

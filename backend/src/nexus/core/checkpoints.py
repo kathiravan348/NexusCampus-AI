@@ -199,7 +199,7 @@ async def checkpoint_all(
     signed = refused = 0
     for tenant_id in tenants:
         try:
-            async with tenant_transaction(sessions, TenantContext(tenant_id), settings) as session:
+            async with tenant_transaction(sessions, TenantContext(tenant_id), settings, write=True) as session:
                 _, created = await create_checkpoint(session, vault, TenantContext(tenant_id), day)
             signed += int(created)
         except ChainBroken as exc:

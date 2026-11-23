@@ -107,10 +107,18 @@ async def destroy_tenant_keys(db: AsyncSession, ctx: TenantContext, vault: Vault
 
     The audit chain keeps verifying (its hash never covers encrypted values, ARCHITECTURE §6).
     """
-    rows = (await db.execute(text("SELECT id, vault_key_name FROM vault_keys WHERE status <> 'destroyed'"))).all()
+    rows = (
+        await db.execute(
+            text("SELECT id, vault_key_name FROM vault_keys WHERE tenant_id = :t AND status <> 'destroyed'"),
+            {"t": ctx.tenant_id},
+        )
+    ).all()
     for row in rows:
         await vault.destroy(row.vault_key_name)
         cipher.forget(row.vault_key_name)
-        await db.execute(text("UPDATE vault_keys SET status = 'destroyed' WHERE id = :id"), {"id": row.id})
+        await db.execute(
+            text("UPDATE vault_keys SET status = 'destroyed' WHERE id = :id AND tenant_id = :t"),
+            {"id": row.id, "t": ctx.tenant_id},
+        )
         await _audit(db, ctx, "m83.key.destroyed", row.id, ["status"])
     return len(rows)
