@@ -1,6 +1,6 @@
 # NexusCampus — Agent Rulebook
 
-> Every agent reads this file first, every session, then its own file: `CLAUDE.md` or `GEMINI.md`.
+> Every agent reads this file first, every session, then its own file: `CLAUDE.md`, `GEMINI.md` or `CODEX.md`.
 > Keep it short: details live in `docs/`.
 > NexusCampus = a global, enterprise, multi-tenant platform for every learning institution, from play school to
 > university and all private institutes, with offline support and optional AI (`docs/REQUIREMENTS.md`).
@@ -22,12 +22,15 @@ Three roles: **planner** (plans, architecture, task files), **implementer** (bui
 |---|---|---|---|
 | Gemini (Antigravity) | Planner, reviewer, implementer | Implementer (D57) | `GEMINI.md` |
 | Claude (Claude Code) | Planner, reviewer, implementer | Planner / reviewer (review first, then plan; D57) | `CLAUDE.md` |
+| Codex (OpenAI Codex) | Planner, reviewer, implementer | Implementer (D67) | `CODEX.md` |
 | Owner (human) | Approves stage scope, freezes, decisions | — | — |
 
-- The Owner may assign any role to either agent ("Plan", "Review", "Build NEX-###").
-- **The builder never reviews its own task.** Claude-built → Gemini reviews; Gemini-built → Claude reviews.
-- **One planner at a time.** The planner sets `Planning lock: <agent>` in the board index (`docs/tasks/BOARD.md`) before editing plan
-  docs or task scope, and clears it when done.
+- The Owner may assign any role to any agent ("Plan", "Review", "Build NEX-###").
+- **The builder never reviews its own task.** Gemini- or Codex-built → Claude reviews; Claude-built → Gemini or Codex
+  reviews (the one the Owner names). Claude is the default approver (D67).
+- **One planner at a time.** The planner checks the board index (`docs/tasks/BOARD.md`) first: if `Planning lock` names
+  another agent, it does not plan. Otherwise it sets `Planning lock: <agent>` before editing plan docs or task scope,
+  and clears it when done.
 - Only the agent acting as planner or reviewer edits `AGENTS.md`, the agent files, `docs/REQUIREMENTS.md`,
   `docs/MODULES.md`, `docs/PLAN.md`, `docs/ARCHITECTURE.md`, `docs/DECISIONS.md` and task scope.
 - An implementer never changes a plan. If a task is unclear or wrong: stop, write it under `Questions` in the task file.
@@ -59,6 +62,10 @@ From `in-review` the reviewer may send a task back: `changes-requested` (impleme
 5. Planner priority: review `ready-for-review` tasks first, then plan. Keep 2 tasks `planned` ahead.
 6. The reviewer fixes small/medium issues directly; for larger problems writes exact change requests.
 7. Only the reviewer merges to `main`, after all checks pass. Never push to `main` otherwise.
+8. **Parallel builders (D67):** when two implementers work at the same time, each works in its own checkout folder
+   (`git worktree add ../NexusCampus-AI-<agent> main`, then `pnpm install` and a local copy of `backend/.env`, never
+   committed), so no agent switches branches under another. Live checks share one dev stack (same databases and ports):
+   one agent at a time; reset what you changed afterwards.
 
 ## 4. Token-saving rules (mandatory)
 - Read only: this file, the board index, the current stage board, your task file, and the files the task lists.

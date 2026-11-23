@@ -7,7 +7,8 @@ Board name: `Gemini`. **Default role: implementer** (D57). The Owner may also sa
 1. Read `AGENTS.md`, `docs/tasks/BOARD.md` (index) and the current stage board it points to.
 2. Take the first `changes-requested` task you own, else the first `planned` task whose dependencies are `done` and
    whose `Files` do not overlap any task `in-progress` or `in-review`.
-3. Set it `in-progress` (owner Gemini). Create or switch to branch `task/NEX-###` from `main`.
+3. Set it `in-progress` (owner Gemini). Create or switch to branch `task/NEX-###` from `main` (own worktree when
+   Codex builds at the same time, `AGENTS.md` §3.8).
 4. Read only the task file and the files it lists. Build exactly what it asks. Nothing extra. Security and privacy
    rules (`AGENTS.md`, V-1…V-7) are never traded for speed: deny by default, no personal data in logs or telemetry,
    secrets only from settings / OpenBao, never in code or commits.

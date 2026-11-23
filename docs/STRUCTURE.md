@@ -5,8 +5,9 @@
 ```
 /
 ├─ AGENTS.md            rulebook (all agents)
-├─ CLAUDE.md            Claude's role (default implementer)
-├─ GEMINI.md            Gemini's role (default planner / reviewer)
+├─ CLAUDE.md            Claude's role (default planner / reviewer)
+├─ GEMINI.md            Gemini's role (default implementer)
+├─ CODEX.md             Codex's role (default implementer)
 ├─ START-HERE.md        first-run steps (delete after setup)
 ├─ brand.config.ts      platform brand names
 ├─ docs/
