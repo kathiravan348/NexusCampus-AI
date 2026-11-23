@@ -18,6 +18,7 @@ import { ROLE_PROFILES } from "./role-profiles";
 import { FONTS, TEXT_OVERRIDE_REVISIONS, TEXT_OVERRIDES, THEMES } from "./studio";
 import { DEVICE_SYNCS, SYNC_CONFLICTS } from "./sync";
 import { CAMPUSES, GROUPS, INSTITUTIONS } from "./tenants";
+import { INSTALLS } from "./install";
 import { ACCESS_GRANTS, ACCESS_REQUESTS, BREAK_GLASS_NOTICES, KEY_STATUSES } from "./vault";
 
 const DOMAIN_EVENT = {
@@ -83,6 +84,18 @@ const CONTRACTS: readonly (readonly [string, z.ZodType, readonly unknown[]])[] =
   ["AccessRequest", C.AccessRequestSchema, ACCESS_REQUESTS],
   ["AccessGrant", C.AccessGrantSchema, ACCESS_GRANTS],
   ["BreakGlassNotice", C.BreakGlassNoticeSchema, BREAK_GLASS_NOTICES],
+  [
+    "DiagnosticBundle",
+    C.DiagnosticBundleSchema,
+    Object.values(INSTALLS).flatMap((i) => i.diagnostics),
+  ],
+  [
+    "DiagnosticContent",
+    C.DiagnosticContentSchema,
+    Object.values(INSTALLS).flatMap((i) =>
+      Object.entries(i.diagnosticContent).map(([id, content]) => ({ id, content })),
+    ),
+  ],
 ];
 
 /** Contracts with no backend response model of their own (`docs/CONTRACTS.md`: "frontend only"). */

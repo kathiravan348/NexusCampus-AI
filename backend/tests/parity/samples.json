@@ -21182,6 +21182,408 @@
           "shapeValid": true
         }
       ]
+    },
+    {
+      "contract": "DiagnosticBundle",
+      "samples": [
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null,
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": null,
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": 12345,
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": null,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": "yes",
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": null,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": "12345",
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": null,
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": 12345,
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": null,
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": 12345,
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "sentAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "status": "ready_for_review",
+            "scrubbed": true,
+            "sizeBytes": 18874368,
+            "ticketRef": "TCK-2291",
+            "createdAt": "2026-09-14T10:30:00Z",
+            "reviewedBy": null,
+            "sentAt": null
+          },
+          "valid": true,
+          "shapeValid": true
+        }
+      ]
+    },
+    {
+      "contract": "DiagnosticContent",
+      "samples": [
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "content": "{\n  \"format\": \"nexus-diagnostics/1\",\n  \"id\": \"dgn-0914\",\n  \"createdAt\": \"2026-09-14T10:30:00Z\",\n  \"ticketRef\": \"TCK-2291\",\n  \"settings\": {\n    \"installMode\": \"self_hosted\",\n    \"region\": \"in\",\n    \"databaseUrl\": \"[removed]\",\n    \"logLevel\": \"info\"\n  },\n  \"migrations\": [\n    \"0022\"\n  ],\n  \"installStatus\": {\n    \"version\": \"2.4.1\",\n    \"channel\": \"stable\",\n    \"airGapped\": false\n  },\n  \"logs\": [\n    \"2026-09-14T10:12:03Z INFO request path=/api/v1/install/status status=200 ms=12\",\n    \"2026-09-14T10:14:41Z WARN backup slow ms=48210\",\n    \"2026-09-14T10:15:02Z INFO user=[removed] email=[removed] signed in\"\n  ]\n}"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "content": "{\n  \"format\": \"nexus-diagnostics/1\",\n  \"id\": \"dgn-0914\",\n  \"createdAt\": \"2026-09-14T10:30:00Z\",\n  \"ticketRef\": \"TCK-2291\",\n  \"settings\": {\n    \"installMode\": \"self_hosted\",\n    \"region\": \"in\",\n    \"databaseUrl\": \"[removed]\",\n    \"logLevel\": \"info\"\n  },\n  \"migrations\": [\n    \"0022\"\n  ],\n  \"installStatus\": {\n    \"version\": \"2.4.1\",\n    \"channel\": \"stable\",\n    \"airGapped\": false\n  },\n  \"logs\": [\n    \"2026-09-14T10:12:03Z INFO request path=/api/v1/install/status status=200 ms=12\",\n    \"2026-09-14T10:14:41Z WARN backup slow ms=48210\",\n    \"2026-09-14T10:15:02Z INFO user=[removed] email=[removed] signed in\"\n  ]\n}",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "content": "{\n  \"format\": \"nexus-diagnostics/1\",\n  \"id\": \"dgn-0914\",\n  \"createdAt\": \"2026-09-14T10:30:00Z\",\n  \"ticketRef\": \"TCK-2291\",\n  \"settings\": {\n    \"installMode\": \"self_hosted\",\n    \"region\": \"in\",\n    \"databaseUrl\": \"[removed]\",\n    \"logLevel\": \"info\"\n  },\n  \"migrations\": [\n    \"0022\"\n  ],\n  \"installStatus\": {\n    \"version\": \"2.4.1\",\n    \"channel\": \"stable\",\n    \"airGapped\": false\n  },\n  \"logs\": [\n    \"2026-09-14T10:12:03Z INFO request path=/api/v1/install/status status=200 ms=12\",\n    \"2026-09-14T10:14:41Z WARN backup slow ms=48210\",\n    \"2026-09-14T10:15:02Z INFO user=[removed] email=[removed] signed in\"\n  ]\n}"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "content": "{\n  \"format\": \"nexus-diagnostics/1\",\n  \"id\": \"dgn-0914\",\n  \"createdAt\": \"2026-09-14T10:30:00Z\",\n  \"ticketRef\": \"TCK-2291\",\n  \"settings\": {\n    \"installMode\": \"self_hosted\",\n    \"region\": \"in\",\n    \"databaseUrl\": \"[removed]\",\n    \"logLevel\": \"info\"\n  },\n  \"migrations\": [\n    \"0022\"\n  ],\n  \"installStatus\": {\n    \"version\": \"2.4.1\",\n    \"channel\": \"stable\",\n    \"airGapped\": false\n  },\n  \"logs\": [\n    \"2026-09-14T10:12:03Z INFO request path=/api/v1/install/status status=200 ms=12\",\n    \"2026-09-14T10:14:41Z WARN backup slow ms=48210\",\n    \"2026-09-14T10:15:02Z INFO user=[removed] email=[removed] signed in\"\n  ]\n}"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "content": "{\n  \"format\": \"nexus-diagnostics/1\",\n  \"id\": \"dgn-0914\",\n  \"createdAt\": \"2026-09-14T10:30:00Z\",\n  \"ticketRef\": \"TCK-2291\",\n  \"settings\": {\n    \"installMode\": \"self_hosted\",\n    \"region\": \"in\",\n    \"databaseUrl\": \"[removed]\",\n    \"logLevel\": \"info\"\n  },\n  \"migrations\": [\n    \"0022\"\n  ],\n  \"installStatus\": {\n    \"version\": \"2.4.1\",\n    \"channel\": \"stable\",\n    \"airGapped\": false\n  },\n  \"logs\": [\n    \"2026-09-14T10:12:03Z INFO request path=/api/v1/install/status status=200 ms=12\",\n    \"2026-09-14T10:14:41Z WARN backup slow ms=48210\",\n    \"2026-09-14T10:15:02Z INFO user=[removed] email=[removed] signed in\"\n  ]\n}"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "content": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "dgn-0914",
+            "content": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
     }
   ]
 }

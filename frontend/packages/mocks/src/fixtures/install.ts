@@ -22,6 +22,35 @@ export interface DemoInstall {
   readonly update: UpdateOffer | null;
   readonly backups: readonly BackupJob[];
   readonly diagnostics: readonly DiagnosticBundle[];
+  /** What each bundle would send (`nexus-diagnostics/1`, personal data already removed), by bundle id. */
+  readonly diagnosticContent: Readonly<Record<string, string>>;
+}
+
+/** A scrubbed `nexus-diagnostics/1` bundle as the install agent writes it (NEX-112): settings, versions, log lines. */
+function demoBundleText(id: string, ticketRef: string | null, createdAt: string): string {
+  return JSON.stringify(
+    {
+      format: "nexus-diagnostics/1",
+      id,
+      createdAt,
+      ticketRef,
+      settings: {
+        installMode: "self_hosted",
+        region: "in",
+        databaseUrl: "[removed]",
+        logLevel: "info",
+      },
+      migrations: ["0022"],
+      installStatus: { version: "2.4.1", channel: "stable", airGapped: false },
+      logs: [
+        "2026-09-14T10:12:03Z INFO request path=/api/v1/install/status status=200 ms=12",
+        "2026-09-14T10:14:41Z WARN backup slow ms=48210",
+        "2026-09-14T10:15:02Z INFO user=[removed] email=[removed] signed in",
+      ],
+    },
+    null,
+    2,
+  );
 }
 
 export const INSTALLS: Readonly<Record<string, DemoInstall>> = {
@@ -88,5 +117,8 @@ export const INSTALLS: Readonly<Record<string, DemoInstall>> = {
         sentAt: null,
       },
     ],
+    diagnosticContent: {
+      "dgn-0914": demoBundleText("dgn-0914", "TCK-2291", "2026-09-14T10:30:00Z"),
+    },
   },
 };

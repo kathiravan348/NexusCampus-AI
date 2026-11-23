@@ -1,6 +1,11 @@
-import { InstallStatusSchema } from "@nexus/contracts";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import {
+  DiagnosticBundleSchema,
+  DiagnosticContentSchema,
+  InstallStatusSchema,
+} from "@nexus/contracts";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { MOCK_HEADER } from "../context";
+import { resetMockDb } from "../db";
 import { DEMO_PERSONAS, TENANT } from "../fixtures";
 import { server } from "../node";
 
@@ -16,6 +21,7 @@ function as(tenantId: string, role: string) {
 
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 afterAll(() => server.close());
+afterEach(() => resetMockDb());
 
 describe("M84 install handlers", () => {
   it("answers the Apex admin with a valid install status", async () => {
@@ -30,6 +36,44 @@ describe("M84 install handlers", () => {
     });
     expect(other.status).toBe(403);
     const teacher = await fetch(`${BASE}/install/backups`, { headers: as(TENANT.apex, "teacher") });
+    expect(teacher.status).toBe(403);
+  });
+
+  it("returns a waiting bundle's text, then approves it once (409 the second time)", async () => {
+    const admin = as(TENANT.apex, "admin");
+    const content = await fetch(`${BASE}/install/diagnostics/dgn-0914/content`, { headers: admin });
+    expect(content.status).toBe(200);
+    expect(DiagnosticContentSchema.parse(await content.json()).content).toContain(
+      "nexus-diagnostics/1",
+    );
+    const approve = () =>
+      fetch(`${BASE}/install/diagnostics/dgn-0914/approve`, { method: "POST", headers: admin });
+    const first = await approve();
+    expect(first.status).toBe(200);
+    const approved = DiagnosticBundleSchema.parse(await first.json());
+    expect(approved.status).toBe("approved");
+    expect(approved.reviewedBy).not.toBeNull();
+    expect((await approve()).status).toBe(409);
+    const discardAfter = await fetch(`${BASE}/install/diagnostics/dgn-0914/discard`, {
+      method: "POST",
+      headers: admin,
+    });
+    expect(discardAfter.status).toBe(409);
+  });
+
+  it("discards a waiting bundle; refuses unknown ids and users without the permission", async () => {
+    const admin = as(TENANT.apex, "admin");
+    const discard = await fetch(`${BASE}/install/diagnostics/dgn-0914/discard`, {
+      method: "POST",
+      headers: admin,
+    });
+    expect(DiagnosticBundleSchema.parse(await discard.json()).status).toBe("discarded");
+    const unknown = await fetch(`${BASE}/install/diagnostics/dgn-nope/content`, { headers: admin });
+    expect(unknown.status).toBe(404);
+    const teacher = await fetch(`${BASE}/install/diagnostics/dgn-0914/approve`, {
+      method: "POST",
+      headers: as(TENANT.apex, "teacher"),
+    });
     expect(teacher.status).toBe(403);
   });
 });

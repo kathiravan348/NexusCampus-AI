@@ -122,3 +122,13 @@ export const DiagnosticBundleSchema = z
     path: ["sentAt"],
   });
 export type DiagnosticBundle = z.infer<typeof DiagnosticBundleSchema>;
+
+/**
+ * Exactly the text a support diagnostic bundle would send, for the admin to read before approving or discarding it
+ * (V-6, NEX-144). `GET /api/v1/install/diagnostics/:id/content`.
+ */
+export const DiagnosticContentSchema = z.strictObject({
+  id: z.string(),
+  content: z.string(),
+});
+export type DiagnosticContent = z.infer<typeof DiagnosticContentSchema>;

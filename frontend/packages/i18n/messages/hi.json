@@ -985,5 +985,20 @@
   "m84.bundle.readyForReview": "आपकी समीक्षा की प्रतीक्षा",
   "m84.bundle.approved": "स्वीकृत",
   "m84.bundle.sent": "भेजा गया",
-  "m84.bundle.discarded": "हटाया गया"
+  "m84.bundle.discarded": "हटाया गया",
+  "m84.bundle.review": "समीक्षा करें",
+  "m84.bundle.reviewLabel": "बंडल {id} की समीक्षा करें",
+  "m84.bundle.reviewTitle": "सहायता डायग्नोस्टिक्स की समीक्षा",
+  "m84.bundle.reviewIntro": "स्वीकृत करने पर Nexus सहायता को ठीक यही मिलता है। व्यक्तिगत डेटा हटा दिया गया है। आपकी स्वीकृति के बिना आपके इंस्टॉल से कुछ भी बाहर नहीं जाता, और कोई भी चुनाव पूर्ववत नहीं किया जा सकता।",
+  "m84.bundle.content": "बंडल की सामग्री",
+  "m84.bundle.loadFailed": "बंडल लोड नहीं हो सका। फिर से कोशिश करें।",
+  "m84.bundle.needsConnection": "बंडल की समीक्षा के लिए आपके इंस्टॉल से कनेक्शन चाहिए।",
+  "m84.bundle.approve": "भेजने की स्वीकृति दें",
+  "m84.bundle.discard": "हटाएँ",
+  "m84.bundle.discardConfirm": "यह बंडल हटाएँ? यह कभी नहीं भेजा जाएगा।",
+  "m84.bundle.discardYes": "हाँ, हटाएँ",
+  "m84.bundle.approvedDone": "बंडल भेजने के लिए स्वीकृत",
+  "m84.bundle.discardedDone": "बंडल हटाया गया",
+  "m84.bundle.decideConflict": "किसी ने पहले ही इस बंडल की समीक्षा कर दी है। इसे बंद करके सूची देखें।",
+  "m84.bundle.decideFailed": "बंडल अपडेट नहीं हो सका। फिर से कोशिश करें।"
 }

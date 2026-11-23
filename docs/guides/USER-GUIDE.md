@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-23 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates for your own server, support access requests from Nexus, leaving or moving an institution)
+> State as of: 2026-11-23 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review for your own server, support access requests from Nexus, leaving or moving an institution)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -171,3 +171,7 @@ Menu **Install & updates** (administrators; only in an install on your own serve
 - **Backups**: each backup and export, always encrypted with your keys before it is written.
 - **Health reports & support diagnostics**: whether health reports (counts and timings only, never names) are on, and
   each diagnostic bundle. Bundles have personal data removed, and nothing is sent until an admin approves it.
+  - On a bundle **Waiting for your review**, press **Review**: it shows exactly the text Nexus support would receive.
+    Then press **Approve sending**, or **Discard** and confirm with **Yes, discard**. Neither can be undone. If another
+    admin decided first, the window says so; close it and check the list. Reviewing needs a connection to your
+    install.
