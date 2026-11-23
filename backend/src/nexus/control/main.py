@@ -16,6 +16,7 @@ from nexus.control import (
     accounts,
     analytics,
     auth,
+    commands,
     commercial,
     delivery_extras,
     fleet,
@@ -138,6 +139,7 @@ def create_app(
     app = FastAPI(title="Nexus Control API", version="0.1.0", lifespan=lifespan)
     app.state.settings = cfg
     app.state.agent_update_checked_at = {}
+    app.state.agent_commands_checked_at = {}
     install_error_handling(app)
     app.include_router(router)
     app.include_router(auth.router)
@@ -147,6 +149,7 @@ def create_app(
     app.include_router(licences.router)
     app.include_router(fleet.router)
     app.include_router(releases.router)
+    app.include_router(commands.router)
     app.include_router(support.router)
     app.include_router(delivery_extras.router)
     app.include_router(analytics.router)
