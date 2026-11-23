@@ -293,6 +293,60 @@ async def approve_destroy(job_id: str, request: Request, viewer: ProvisionManage
     return _parse_job(updated)
 
 
+@router.post("/offboarding-jobs/{job_id}/retry", response_model=OffboardingJob, response_model_by_alias=True)
+async def retry_offboarding(job_id: str, request: Request, viewer: ProvisionManager) -> OffboardingJob:
+    """Re-queues the failed step's signed command (D63): freeze, export for the stored PEM, or the approved destroy."""
+    cfg: ControlSettings = request.app.state.settings
+    vault: Vault = request.app.state.vault
+    async with engine_of(request).begin() as conn:
+        row = await _lock_job(conn, job_id, viewer)
+        st = {str(s["name"]): str(s["status"]) for s in list(row["steps"])}
+        failed = next((name for name in OFFB_STEPS if st[name] == "failed"), None)
+        tenant_id = str(row["tenant_id"])
+        if row["status"] != "failed" or not row["deployment_id"]:
+            raise ApiError(409, "conflict", "Only a failed offboarding job can be retried.")
+        args: dict[str, Any]
+        if failed == "freeze_writes":
+            kind, args = "tenant.freeze", {"tenantId": tenant_id}
+        elif failed == "export_ready" and row["recipient_pem"]:
+            kind, args = "tenant.export", {"tenantId": tenant_id, "recipientPem": str(row["recipient_pem"])}
+        elif failed == "keys_destroyed" and row["approver_1_staff_id"] and row["approver_2_staff_id"]:
+            approvers = [str(row["approver_1_staff_id"]), str(row["approver_2_staff_id"])]
+            pem_sha = str(row["recipient_pem_sha256"])
+            kind, args = (
+                "tenant.destroy_keys",
+                {"tenantId": tenant_id, "exportPemSha256": pem_sha, "approvedBy": approvers},
+            )
+        else:
+            raise ApiError(409, "conflict", "This offboarding step cannot be retried; start a new offboarding job.")
+        cmd_id = await enqueue_command(
+            conn,
+            vault,
+            deployment_id=str(row["deployment_id"]),
+            tenant_id=tenant_id,
+            kind=kind,
+            args=args,
+            issued_by=viewer.staff_id,
+            ttl=timedelta(hours=1),
+            key_name=cfg.command_signing_key,
+        )
+        steps, status = _steps_with(list(row["steps"]), **{failed: "running"})
+        updated = (
+            (
+                await conn.execute(
+                    update(offboarding_jobs)
+                    .where(offboarding_jobs.c.id == job_id)
+                    .values(steps=steps, status=status, command_id=cmd_id)
+                    .returning(offboarding_jobs)
+                )
+            )
+            .mappings()
+            .one()
+        )
+    log.info("offboarding job=%s step=%s staff=%s command=%s outcome=retried", job_id, failed, viewer.staff_id, cmd_id)
+    return _parse_job(updated)
+
+
 async def apply_offboarding_result(
     conn: Any, vault: Vault, cfg: ControlSettings, command_id: str, kind: str, cmd_status: str, result: dict[str, Any]
 ) -> None:
@@ -332,7 +386,7 @@ async def apply_offboarding_result(
         await conn.execute(
             update(offboarding_jobs)
             .where(offboarding_jobs.c.id == job_id)
-            .values(steps=steps, status=status, command_id=exp_cmd, recipient_pem=None)
+            .values(steps=steps, status=status, command_id=exp_cmd)  # PEM kept until the export succeeds (D63)
         )
         log.info("offboarding job=%s step=freeze_writes outcome=done next_command=%s", job_id, exp_cmd)
     elif kind == "tenant.export":
@@ -341,7 +395,12 @@ async def apply_offboarding_result(
         await conn.execute(
             update(offboarding_jobs)
             .where(offboarding_jobs.c.id == job_id)
-            .values(steps=steps, status=status, export_result=result if ok else None)
+            .values(
+                steps=steps,
+                status=status,
+                export_result=result if ok else None,
+                recipient_pem=None if ok else row["recipient_pem"],
+            )
         )
         log.info("offboarding job=%s step=export_ready outcome=%s", job_id, "done" if ok else "failed")
     elif kind == "tenant.destroy_keys":

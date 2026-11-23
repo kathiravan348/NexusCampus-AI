@@ -1,5 +1,7 @@
 """Control backend app factory: `uvicorn nexus.control.main:app --port 8100` (dev)."""
 
+import asyncio
+import contextlib
 from collections.abc import AsyncIterator, Awaitable, Callable
 from contextlib import asynccontextmanager
 from typing import Annotated, Literal
@@ -35,6 +37,7 @@ from nexus.control.billing.engine import BillingEngine
 from nexus.control.billing.lago import LagoBillingEngine
 from nexus.control.billing.payments import PaymentGateway
 from nexus.control.billing.razorpay import RazorpayGateway
+from nexus.control.command_expiry import sweep_loop
 from nexus.control.sessions import SESSION_COOKIE, DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
 from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
@@ -141,9 +144,16 @@ def create_app(
             app.state.login_states = RedisLoginStateStore(redis)
         else:
             app.state.login_states = login_states
+        sweeper: asyncio.Task[None] | None = None
+        if app.state.engine is not None and cfg.command_sweep_seconds > 0:
+            sweeper = asyncio.create_task(sweep_loop(app.state.engine, app.state.vault, cfg))
         try:
             yield
         finally:
+            if sweeper is not None:
+                sweeper.cancel()
+                with contextlib.suppress(asyncio.CancelledError):
+                    await sweeper
             if http is None:
                 await client.aclose()
             if redis is not None:

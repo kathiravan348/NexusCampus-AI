@@ -194,11 +194,9 @@ async def fetch_agent_commands(
     now = datetime.now(UTC)
     dc = deployment_commands.c
     async with engine_of(request).begin() as conn:
-        await conn.execute(
-            update(deployment_commands)
-            .where(dc.deployment_id == agent.id, dc.status.in_(("pending", "delivered")), dc.expires_at <= now)
-            .values(status="expired")
-        )
+        from nexus.control.command_expiry import expire_commands
+
+        await expire_commands(conn, request.app.state.vault, request.app.state.settings, now, deployment_id=agent.id)
         rows = (
             await conn.execute(
                 select(dc.id, dc.payload, dc.signature, dc.status)
@@ -272,8 +270,10 @@ async def report_command_result(
             )
             raise ApiError(409, "conflict", "Command already has a final status.")
         if row.expires_at <= now:
-            await conn.execute(update(deployment_commands).where(dc.id == command_id).values(status="expired"))
-            await conn.commit()  # keep `expired` although the request ends in 409 (review NEX-128)
+            from nexus.control.command_expiry import expire_commands
+
+            await expire_commands(conn, request.app.state.vault, request.app.state.settings, now, command_id=command_id)
+            await conn.commit()  # keep `expired` (and the failed job step) although the request ends in 409
             log.info(
                 "agent command result command=%s deployment=%s kind=%s status=expired outcome=conflict",
                 command_id,
@@ -287,46 +287,11 @@ async def report_command_result(
             .where(dc.id == command_id)
             .values(status=body.status, delivered_at=row.delivered_at or now, finished_at=now, result=body.result)
         )
-        if row.kind == "tenant.provision":
-            from nexus.control.provisioning import apply_provisioning_result
+        from nexus.control.command_expiry import apply_command_result
 
-            await apply_provisioning_result(conn, command_id, body.status, body.result)
-        elif row.kind in ("tenant.freeze", "tenant.export", "tenant.destroy_keys"):
-            from nexus.control.offboarding import apply_offboarding_result
-
-            await apply_offboarding_result(
-                conn,
-                request.app.state.vault,
-                request.app.state.settings,
-                command_id,
-                row.kind,
-                body.status,
-                body.result,
-            )
-            if row.kind in ("tenant.freeze", "tenant.export"):
-                from nexus.control.moves import apply_move_result
-
-                await apply_move_result(
-                    conn,
-                    request.app.state.vault,
-                    request.app.state.settings,
-                    command_id,
-                    row.kind,
-                    body.status,
-                    body.result,
-                )
-        elif row.kind in ("tenant.import_key", "tenant.import"):
-            from nexus.control.moves import apply_move_result
-
-            await apply_move_result(
-                conn,
-                request.app.state.vault,
-                request.app.state.settings,
-                command_id,
-                row.kind,
-                body.status,
-                body.result,
-            )
+        await apply_command_result(
+            conn, request.app.state.vault, request.app.state.settings, command_id, row.kind, body.status, body.result
+        )
 
     log.info(
         "agent command result command=%s deployment=%s kind=%s status=%s outcome=ok",
