@@ -262,6 +262,7 @@ async def report_command_result(
             raise ApiError(409, "conflict", "Command already has a final status.")
         if row.expires_at <= now:
             await conn.execute(update(deployment_commands).where(dc.id == command_id).values(status="expired"))
+            await conn.commit()  # keep `expired` although the request ends in 409 (review NEX-128)
             log.info(
                 "agent command result command=%s deployment=%s kind=%s status=expired outcome=conflict",
                 command_id,

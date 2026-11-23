@@ -141,6 +141,39 @@ async def test_commands_fetch_deliver_result_isolation_and_expiry(
 
 
 @pytest.mark.anyio
+async def test_late_result_is_refused_and_the_command_stays_expired(
+    api: httpx2.AsyncClient, control_db: tuple[str, str]
+) -> None:
+    owner, _ = control_db
+    tok = issue_token(owner, "dep-in-1")
+    late_id = await _enqueue_owner(owner, FakeVault(), "dep-in-1")
+    eng = create_engine(owner)
+    try:
+        with eng.begin() as conn:
+            past = datetime.now(UTC) - timedelta(minutes=20)
+            conn.execute(
+                text(
+                    "UPDATE deployment_commands SET status = 'delivered', delivered_at = :iss, "
+                    "issued_at = :iss, expires_at = :exp WHERE id = :id"
+                ),
+                {"iss": past, "exp": past + timedelta(minutes=5), "id": late_id},
+            )
+        r_late = await api.post(
+            f"{API}/agent/commands/{late_id}/result",
+            headers={"Authorization": f"Bearer {tok}"},
+            json={"status": "done", "result": {}},
+        )
+        assert r_late.status_code == 409
+        with eng.connect() as conn:
+            status = conn.execute(
+                text("SELECT status FROM deployment_commands WHERE id = :id"), {"id": late_id}
+            ).scalar_one()
+            assert status == "expired"
+    finally:
+        eng.dispose()
+
+
+@pytest.mark.anyio
 async def test_commands_auth_air_gapped_and_control_app_cannot_insert(
     api: httpx2.AsyncClient, control_db: tuple[str, str]
 ) -> None:
