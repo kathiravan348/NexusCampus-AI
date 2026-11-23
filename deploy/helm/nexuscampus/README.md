@@ -59,8 +59,10 @@ kubectl -n nexuscampus exec -it nexuscampus-openbao-0 -- bao operator init -key-
 kubectl -n nexuscampus exec -it nexuscampus-openbao-0 -- bao operator unseal
 ```
 
-Enable the `transit` engine, create a least-privilege token (denying `transit/export/*`), store it in
-`nexuscampus-app-secrets` (`NEXUS_VAULT_TOKEN`), and restart `api` and `worker`. For HA clusters, configure KMS
+Enable the `transit` engine, create a least-privilege token (denying `transit/export/*`, as the `nexus-app` policy in
+`deploy/compose/scripts/install.sh`), store it in `nexuscampus-app-secrets` (`NEXUS_VAULT_TOKEN`), and restart `api`
+and `worker`. Then revoke the root token (`bao token revoke -self` with it) and keep only the unseal key; when an
+operator needs root again, create a new one with `bao operator generate-root` and the unseal key (as Compose). For HA clusters, configure KMS
 auto-unseal or switch `openbao.enabled=false` and point `openbao.external.url` at your existing OpenBao/Vault.
 
 ## 4. Using external / managed services
