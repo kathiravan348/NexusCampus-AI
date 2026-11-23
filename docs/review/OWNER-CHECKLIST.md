@@ -9,8 +9,9 @@
 - **Stage 1** (platform foundation) is released (D54).
 - **Stage 2** (Nexus Control and delivery) is **built**: every Nexus Control page (P01–P18) runs on its own backend
   and database, the install agent (M84) runs self-hosted installs, and provisioning, offboarding, moves, the access
-  broker and Razorpay payment links for India work end to end. Every task is done or withdrawn (Stripe for Europe
-  moved to a later stage, D64). It waits for your release review below.
+  broker and Razorpay payment links for India work end to end. Three last tasks are planned (NEX-140–142: the
+  frozen-institution banner and Control job buttons, D65); Stripe for Europe moved to a later stage (D64). Then it
+  waits for your release review below.
 - All work is committed, merged and **pushed to GitHub** (`origin/main`, 2026-11-23).
 
 ## 0. Approve the Stage 2 release (when the items below suit you)
@@ -97,7 +98,6 @@ These are not blocking the build, but real billing and the trust page need them 
 ## What I do next, unless you say otherwise
 
 - After your release approval: mark Stage 2 released, then open the Stage 3 board (core institution operations).
-- Possible small fixes before or after release, each only with your OK: show a clear "institution is frozen" message
-  in the app (today a general error), and buttons in Nexus Control for retry, export received, the two key-destruction
-  approvals and move confirmations (today API calls; the screens are frozen, D56).
+- NEX-140–142 (your OK, D65) are planned for Gemini: the "institution is frozen" banner and the Nexus Control buttons
+  for offboarding and move actions. I review and merge them before the release.
 - Anything that needs a new download, I hold and ask you first.

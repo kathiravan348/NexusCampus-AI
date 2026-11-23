@@ -4,12 +4,12 @@ A multi-tenant platform for every kind of learning institution, from play school
 institutes. It works offline, and AI features are optional. What it covers: [`docs/REQUIREMENTS.md`](docs/REQUIREMENTS.md).
 Plan and stages: [`docs/PLAN.md`](docs/PLAN.md).
 
-> **Current state: Stage 2 — Nexus Control & delivery, built; waiting for the Owner's release review.** Stage 1
-> (M01–M07, M10, M11, M83) was released on 2026-11-21. Stage 2 adds **Nexus Control**, our own provider app (P01–P18:
+> **Current state: Stage 2 — Nexus Control & delivery, built; last tasks NEX-140–142, then release review.**
+> Stage 1 (M01–M07, M10, M11, M83) was released on 2026-11-21. Stage 2 adds **Nexus Control**, our own provider app (P01–P18:
 > accounts, pricing, billing with Lago and Razorpay links for India, provisioning, licences, fleet, releases, support,
 > the access broker and more) on its own backend and database, and the **M84 install agent** for self-hosted installs,
 > with signed pull-only commands, offboarding with a signed key-destruction certificate, tenant moves, Compose and Helm
-> packaging. Every Stage 2 task is done or withdrawn
+> packaging. Left: the frozen-institution banner and Control buttons for job actions (NEX-140–142)
 > ([`docs/tasks/stage-2/BOARD.md`](docs/tasks/stage-2/BOARD.md)); release checklist and Owner items:
 > [`docs/review/STAGE-2-RELEASE.md`](docs/review/STAGE-2-RELEASE.md).
 
