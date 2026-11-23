@@ -83,8 +83,7 @@ async def test_lists_filters_details_paging_and_writes_not_mounted(api: httpx2.A
         prefix = path.rsplit("/", 1)[0]
         assert (await get(api, IMPL, f"{prefix}/missing-id")).status_code == 404
 
-    # Writes are NOT mounted yet (NEX-127): POST /provisioning-jobs -> 405, POST .../advance -> 404.
-    assert (await api.post(f"{API}/provisioning-jobs", json={}, headers={"X-Nexus-Staff": IMPL})).status_code == 405
+    # Manual advance is never served in real mode (NEX-132): POST .../advance -> 404.
     assert (
         await api.post(f"{API}/provisioning-jobs/prv-sr/advance", headers={"X-Nexus-Staff": IMPL})
     ).status_code == 404
@@ -152,7 +151,7 @@ def test_app_role_read_only_and_db_checks_refuse_invalid_rows(control_db: tuple[
     app_eng = create_engine(app_url)
     try:
         for stmt in (
-            "UPDATE provisioning_jobs SET status = 'done'",
+            "UPDATE provisioning_jobs SET request_region = 'eu'",
             "DELETE FROM provisioning_jobs",
             "UPDATE offboarding_jobs SET status = 'failed'",
             "DELETE FROM offboarding_jobs",
