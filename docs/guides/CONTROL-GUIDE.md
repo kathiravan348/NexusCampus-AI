@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-23 (Stage 2 prototype + real Control backend for sign-in, Accounts, Pricing & quotes, Billing, Usage, Provisioning & Moves reads (NEX-121), Licences, Fleet, Releases, Extensions (P08), Support (P09), Partners/deals/commissions (P12), Trust (P14), Projects (P15), Analytics (P16), and Sandboxes (P17) (NEX-122–124, NEX-126)).
+> State as of: 2026-11-23 (Stage 2 complete through NEX-137: Nexus Control prototype + real Control backend for all P01–P18 pages, M84 install agent & D60 signed pull-only commands, P04 provisioning & four-eyes offboarding with signed shred certificates, P07 release publishing & rollouts, P10 access broker, P18 7-step portability moves, D62 Razorpay INR payment links, OpenBao root-token revocation, and NEX-110/137 security & release checks).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -278,10 +278,11 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 
 ## Known limits
 
-- The screens still run on demo data; they move to the real Control backend one page at a time (Stage 2 build).
-- Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it.
+- Every P01–P18 screen runs on the real Control backend in real mode (`dev:control:real`); demo mode (`dev:control`) remains available for training and offline walkthroughs.
+- Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it. Hosted payment links are live for Indian INR invoices via **Razorpay** (NEX-107); European Stripe hosted payment pages follow in NEX-138 once the Stripe test account is connected.
+- **Staff & security** (P13) is read-only in the app; provider staff accounts and mandatory MFA are managed in the `nexus-staff` sign-in realm.
 
-## Operations: installing Nexus Control (NEX-108)
+## Operations: installing Nexus Control (NEX-108, NEX-110)
 
 Operators deploy Nexus Control (control database, API, staff sign-in with mandatory MFA, Valkey, OpenBao signing keys,
 and the self-hosted Lago billing engine) from one Docker Compose stack in `deploy/control/`:
@@ -296,7 +297,9 @@ Windows PowerShell: `powershell -File deploy/control/scripts/install.ps1 [-Demo]
 - **Network exposure:** all services stay on the internal Docker network; only the Control API publishes
   `127.0.0.1:8100`. Put a TLS reverse proxy in front in production.
 - **Secrets & keys:** generated once into git-ignored `deploy/control/.env` (never printed); OpenBao initialises
-  `nexus-licence` and `nexus-release` Ed25519 signing keys (back up `deploy/control/.env.vault-init.json` offline).
+  the four non-exportable Ed25519 signing keys (`nexus-licence`, `nexus-release`, `nexus-command`, `nexus-shred`),
+  revokes the OpenBao root token after setup, and keeps only the unseal key in `deploy/control/.env.vault-init.json`
+  (back it up offline).
 - **Upgrades & backups:** re-running the install script runs forward-only control migrations before restarting the API.
   See `deploy/control/README.md` for `control-db` / `lago-db` / OpenBao backup and key rotation steps.
 

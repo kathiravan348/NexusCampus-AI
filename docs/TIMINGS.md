@@ -41,6 +41,11 @@
 | `compose:up` | `nexus-compose-up`: PostgreSQL + Redis healthy (NEX-042) | 1m 30s |
 | `api:list:p95` | p95 of every list endpoint, first page (`pageSize=50`), demo data, 20 calls each (NEX-065) | 300ms |
 | `load:4g` | cold first load of the built app to the sign-in button, 4G profile (150 ms RTT, 1.6 Mbit/s down, 750 kbit/s up) (NEX-065) | 6s |
+| `control:backend:start` | `nexus-control-dev`: Control FastAPI ready (NEX-137) | 15s |
+| `control:compose:up` | `deploy/control/scripts/install.{sh,ps1}`: Control Compose stack healthy (NEX-137) | 1m 30s |
+| `control:api:list:p95` | p95 of every Control list endpoint (41 endpoints × 20 calls, demo data) (NEX-137) | 300ms |
+| `agent:api:p95` | M84 agent `/agent/health`, `/agent/update`, `/agent/commands` p95 (NEX-137) | 300ms |
+| `control:load:4g` | cold first load of built Control app to sign-in on 4G profile (NEX-137) | 6s |
 
 ## Measured baselines
 
@@ -93,6 +98,13 @@ app `dev:real` on 3100, built app `pnpm --filter campus real:build` + `real:prev
 | Built real-mode app, cold, 4G profile, 322 KiB transferred | `load:4g` | 2.18s | 6s | OK |
 | Nexus Control dev server, warm, Owner PC (NEX-071) | `dev:control` | 0.36s | 8s | OK |
 | Nexus Control production build (NEX-071) | `build:control` | 3.14s | 45s | OK |
+| Nexus Control preview server (NEX-137) | `preview:control` | 0.32s | 5s | OK |
+| Nexus Control backend (`nexus-control-dev`) to ready (NEX-137) | `control:backend:start` | 1.07s | 15s | OK |
+| 41 Control list endpoints × 20 calls via dev proxy (slowest: `accounts` p95 18.5 ms, overall p95 12.0 ms) (NEX-137) | `control:api:list:p95` | 8.5–18.5 ms | 300ms | OK |
+| M84 agent calls: `/agent/health` p95 70.4 ms, `/agent/update` p95 12.5 ms, `/agent/commands` p95 8.2 ms (NEX-137) | `agent:api:p95` | 8.2–70.4 ms | 300ms | OK |
+| Built real-mode Control app, cold, 4G profile, 356 KiB transferred (NEX-137) | `control:load:4g` | 2.37s | 6s | OK |
+| Control Compose install `deploy/control/scripts/install.ps1` (OpenBao root revoked, NEX-110/137) | `control:compose:up` | 60.83s fresh · 22.77s re-run | 1m 30s | OK |
+| Product Compose install `deploy/compose/scripts/install.ps1` (OpenBao root revoked, NEX-110/137) | `compose:up` | 93.10s fresh (with image build) · 8.78s re-run | 1m 30s | OK |
 
 ## Reserved (no surface yet — fill in the task that adds it)
 
@@ -110,3 +122,4 @@ app `dev:real` on 3100, built app `pnpm --filter campus real:build` + `real:prev
 | 2026-11-20 | NEX-045 | `compose:up` with Keycloak: 32.64s. |
 | 2026-11-21 | NEX-064 | `compose:up` self-hosted install: 74.87s fresh with demo seed, 17.26s re-run. |
 | 2026-11-21 | NEX-065 | `api:list:p95` (300ms) and `load:4g` (6s) budgets added and measured. |
+| 2026-11-23 | NEX-137 | Control & agent real-mode budgets (`control:backend:start`, `control:compose:up`, `control:api:list:p95`, `agent:api:p95`, `control:load:4g`, `preview:control`) added and measured. |
