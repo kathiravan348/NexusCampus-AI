@@ -87,3 +87,4 @@
 | NEX-140 | Campus app: one banner when the institution is frozen (`423 tenant_frozen`; D65) | C | done | Gemini | 133 |
 | NEX-141 | Control P04 buttons: retry, start offboarding, export received, two key-destruction approvals (D65) | C | done | Gemini | 134, 139 |
 | NEX-142 | Control P18 buttons: start a move, confirm its staff steps, retry (D65) | C | done | Gemini | 136, 139 |
+| NEX-143 | Control: one open offboarding or move per tenant (D66; refuse a second start or retry with 409) | D | planned | — | 141, 142 |
