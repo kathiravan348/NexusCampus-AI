@@ -15,7 +15,7 @@ from nexus.agent.jobs import run_backup, run_diagnostics
 from nexus.agent.state import run_once
 from nexus.core.vault import FakeVault
 from nexus.settings import Settings
-from tests.db.auth_fixtures import sign_in
+from tests.db.auth_fixtures import PRIYA, sign_in
 from tests.db.conftest import DbUrls, create_test_database, drop_test_database, migrate
 from tests.fake_keycloak import FakeKeycloak
 
@@ -101,8 +101,28 @@ def test_diagnostics_are_reviewed_before_anything_leaves(
     assert '"installStatus"' in content and "password" not in content.lower()
     approved = client.post(f"/api/v1/install/diagnostics/{made['id']}/approve", headers=csrf)
     assert approved.status_code == 200, approved.text
-    assert approved.json()["status"] == "approved" and approved.json()["reviewedBy"]
+    assert approved.json()["status"] == "approved" and approved.json()["reviewedBy"] == PRIYA["user"]
     assert client.post(f"/api/v1/install/diagnostics/{made['id']}/discard", headers=csrf).status_code == 409
+    second = run_diagnostics(settings, "TCK-2292")
+    discarded = client.post(f"/api/v1/install/diagnostics/{second['id']}/discard", headers=csrf)
+    assert discarded.status_code == 200, discarded.text
+    assert discarded.json()["status"] == "discarded"
+    for status, bundle in (("approved", made), ("discarded", second)):
+        action = f"m84.diagnosticBundle.{status}"
+        audit = client.get("/api/v1/audit-events", params={"action": action})
+        assert audit.status_code == 200, audit.text
+        assert audit.json()["total"] == 1
+        (event,) = audit.json()["items"]
+        assert event["action"] == action
+        assert event["moduleId"] == "M84"
+        assert event["actorKind"] == "user" and event["actorId"] == PRIYA["user"]
+        assert event["targetType"] == "diagnosticBundle" and event["targetId"] == bundle["id"]
+        assert event["changes"] == [{"field": "status", "sensitive": False}]
+        assert "TCK-229" not in audit.text and "installStatus" not in audit.text
+        assert Path(bundle["file"]).name not in audit.text
+    verification = client.get("/api/v1/audit-checkpoints/verify")
+    assert verification.status_code == 200, verification.text
+    assert verification.json()["ok"] is True
     client.cookies.clear()
     sign_in(client, kc, **ARJUN)
     assert client.get(f"/api/v1/install/diagnostics/{made['id']}/content").status_code == 403

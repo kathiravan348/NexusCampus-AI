@@ -5,7 +5,7 @@ import {
 } from "@nexus/contracts";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { MOCK_HEADER } from "../context";
-import { resetMockDb } from "../db";
+import { mockDb, resetMockDb } from "../db";
 import { DEMO_PERSONAS, TENANT } from "../fixtures";
 import { server } from "../node";
 
@@ -22,6 +22,10 @@ function as(tenantId: string, role: string) {
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 afterAll(() => server.close());
 afterEach(() => resetMockDb());
+
+function bundleAudit() {
+  return mockDb.auditEvents.filter((event) => event.moduleId === "M84");
+}
 
 describe("M84 install handlers", () => {
   it("answers the Apex admin with a valid install status", async () => {
@@ -52,13 +56,25 @@ describe("M84 install handlers", () => {
     expect(first.status).toBe(200);
     const approved = DiagnosticBundleSchema.parse(await first.json());
     expect(approved.status).toBe("approved");
-    expect(approved.reviewedBy).not.toBeNull();
+    const actorId = admin[MOCK_HEADER.user];
+    expect(approved.reviewedBy).toBe(actorId);
     expect((await approve()).status).toBe(409);
     const discardAfter = await fetch(`${BASE}/install/diagnostics/dgn-0914/discard`, {
       method: "POST",
       headers: admin,
     });
     expect(discardAfter.status).toBe(409);
+    expect(bundleAudit()).toEqual([
+      expect.objectContaining({
+        tenantId: TENANT.apex,
+        action: "m84.diagnosticBundle.approved",
+        actorKind: "user",
+        actorId,
+        targetType: "diagnosticBundle",
+        targetId: approved.id,
+        changes: [{ field: "status", sensitive: false }],
+      }),
+    ]);
   });
 
   it("discards a waiting bundle; refuses unknown ids and users without the permission", async () => {
@@ -75,5 +91,16 @@ describe("M84 install handlers", () => {
       headers: as(TENANT.apex, "teacher"),
     });
     expect(teacher.status).toBe(403);
+    expect(bundleAudit()).toEqual([
+      expect.objectContaining({
+        tenantId: TENANT.apex,
+        action: "m84.diagnosticBundle.discarded",
+        actorKind: "user",
+        actorId: admin[MOCK_HEADER.user],
+        targetType: "diagnosticBundle",
+        targetId: "dgn-0914",
+        changes: [{ field: "status", sensitive: false }],
+      }),
+    ]);
   });
 });

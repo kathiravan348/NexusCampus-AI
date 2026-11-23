@@ -10,7 +10,7 @@ import { z } from "zod";
 import { ApiFailure } from "../context";
 import { mockDb } from "../db";
 import { get, list, ok, type RouteContext } from "./route";
-import { json, writeRoute } from "./write";
+import { appendAudit, json, writeRoute } from "./write";
 
 /**
  * Install agent (M84): answered by the install itself in production. Institution admins only (install
@@ -34,7 +34,7 @@ function bundleOf(ctx: RouteContext) {
 
 /** As the backend `_decide`: only a bundle waiting for review, reviewer = the signed-in admin (NEX-112, NEX-144). */
 function decide(status: "approved" | "discarded") {
-  return (ctx: RouteContext) => {
+  return async (ctx: RouteContext) => {
     const install = installOf(ctx);
     const bundle = bundleOf(ctx);
     if (bundle.status !== "ready_for_review") throw new ApiFailure("conflict");
@@ -47,7 +47,14 @@ function decide(status: "approved" | "discarded") {
       ...install,
       diagnostics: install.diagnostics.map((b) => (b.id === updated.id ? updated : b)),
     };
-    return Promise.resolve(json(updated));
+    await appendAudit(ctx.viewer, {
+      module: "M84",
+      action: `m84.diagnosticBundle.${status}`,
+      targetType: "diagnosticBundle",
+      targetId: bundle.id,
+      fields: ["status"],
+    });
+    return json(updated);
   };
 }
 
