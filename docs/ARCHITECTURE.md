@@ -190,6 +190,14 @@ Nexus Control (our cloud)                         Product deployments
   `personal_data_affected` and `>= detected_at`, `notified_at` only on a breach), and `dpa_records` (`version` `N.N`).
   `control_app` has `SELECT` only on all four; partners see only their managed accounts' DPAs; incident titles are
   never logged (V-6).
+- **Provisioning & portability reads (P04, P18, NEX-121):** `provisioning_jobs` (request stored in `request_*` columns,
+  `tenant_id` iff step 0 done), `offboarding_jobs` (`shred_certificate_id` iff step 4 done), `shred_certificates`
+  (88-char base64 Ed25519 signature), and `portability_jobs` (`encrypted = true`, `region_move` requires
+  `from_region <> to_region`). An IMMUTABLE helper `control_job_steps_valid` enforces exact ordered step names and
+  status alignment with steps. `control_app` has `SELECT` only on all four; `POST /provisioning-jobs` (`405`) and
+  `…/advance` (`404`) stay unmounted in real mode so no step claims a tenant exists before real cell provisioning
+  (NEX-127). Partners see only their accounts' offboarding and portability jobs, never provisioning jobs or shred
+  certificates.
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted

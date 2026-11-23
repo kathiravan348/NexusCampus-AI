@@ -19563,6 +19563,3452 @@
           "shapeValid": false
         }
       ]
+    },
+    {
+      "contract": "ProvisioningJob",
+      "samples": [
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "prv-sr",
+            "request": {
+              "accountId": "acc-sr",
+              "region": "in",
+              "institutionType": "ey",
+              "planCode": "standard",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "running"
+              },
+              {
+                "name": "invite_owner",
+                "status": "pending"
+              }
+            ],
+            "status": "running",
+            "tenantId": "ten-sr",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-09-14T05:05:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": null,
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": [],
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": null,
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": "not-a-list",
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": null,
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": 12345,
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": null,
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": 12345,
+            "requestedByStaffId": "stf-0011",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": null,
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": 12345,
+            "createdAt": "2026-08-20T02:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "prv-hm",
+            "request": {
+              "accountId": "acc-hm",
+              "region": "apac",
+              "institutionType": "sk",
+              "planCode": "starter",
+              "trialDays": 30,
+              "deliveryModel": "saas_shared"
+            },
+            "steps": [
+              {
+                "name": "create_tenant",
+                "status": "done"
+              },
+              {
+                "name": "create_keys",
+                "status": "done"
+              },
+              {
+                "name": "apply_profile",
+                "status": "done"
+              },
+              {
+                "name": "seed",
+                "status": "done"
+              },
+              {
+                "name": "invite_owner",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "tenantId": "ten-hm",
+            "requestedByStaffId": "stf-0011",
+            "createdAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "OffboardingJob",
+      "samples": [
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": null,
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": 12345,
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": null,
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": 12345,
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": null,
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": "not-a-list",
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": null,
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": 12345,
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": null,
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": 12345,
+            "requestedByStaffId": "stf-0023",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": null,
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": 12345,
+            "createdAt": "2026-02-01T09:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "off-om",
+            "accountId": "acc-om",
+            "tenantId": "ten-om",
+            "steps": [
+              {
+                "name": "freeze_writes",
+                "status": "done"
+              },
+              {
+                "name": "export_ready",
+                "status": "done"
+              },
+              {
+                "name": "export_downloaded",
+                "status": "done"
+              },
+              {
+                "name": "keys_destroyed",
+                "status": "done"
+              },
+              {
+                "name": "certificate_issued",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "shredCertificateId": "shc-om",
+            "requestedByStaffId": "stf-0023",
+            "createdAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "ShredCertificate",
+      "samples": [
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": null,
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": 12345,
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": null,
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": "not-a-list",
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": null,
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": 12345,
+            "signingKeyId": "nexus-shred-2026",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": null,
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": 12345,
+            "signature": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=="
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "shc-om",
+            "tenantId": "ten-om",
+            "keyIds": [
+              "key-om-tenant-data",
+              "key-om-field-identity",
+              "key-om-field-finance"
+            ],
+            "destroyedAt": "2026-03-03T10:00:00Z",
+            "signingKeyId": "nexus-shred-2026",
+            "signature": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
+    },
+    {
+      "contract": "PortabilityJob",
+      "samples": [
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "mov-rv",
+            "accountId": "acc-rv",
+            "tenantId": "ten-rv",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "eu",
+            "toRegion": "eu",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "running"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "pending"
+              },
+              {
+                "name": "transfer",
+                "status": "pending"
+              },
+              {
+                "name": "import",
+                "status": "pending"
+              },
+              {
+                "name": "verify",
+                "status": "pending"
+              },
+              {
+                "name": "cutover",
+                "status": "pending"
+              },
+              {
+                "name": "shred_source",
+                "status": "pending"
+              }
+            ],
+            "status": "running",
+            "encrypted": true,
+            "createdAt": "2026-09-12T09:00:00Z"
+          },
+          "valid": true,
+          "shapeValid": true
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z",
+            "unexpectedField": 1
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": null,
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": 12345,
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": null,
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": 12345,
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": null,
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": 12345,
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": null,
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": 12345,
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": null,
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": 12345,
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": null,
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": 12345,
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": null,
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": "not-a-list",
+            "status": "done",
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": null,
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": 12345,
+            "encrypted": true,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": null,
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": "yes",
+            "createdAt": "2026-03-20T04:00:00Z"
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": null
+          },
+          "valid": false,
+          "shapeValid": false
+        },
+        {
+          "sample": {
+            "id": "mov-ct",
+            "accountId": "acc-ct",
+            "tenantId": "ten-ct",
+            "direction": "saas_to_self_hosted",
+            "fromRegion": "in",
+            "toRegion": "in",
+            "steps": [
+              {
+                "name": "preflight",
+                "status": "done"
+              },
+              {
+                "name": "export_encrypted",
+                "status": "done"
+              },
+              {
+                "name": "transfer",
+                "status": "done"
+              },
+              {
+                "name": "import",
+                "status": "done"
+              },
+              {
+                "name": "verify",
+                "status": "done"
+              },
+              {
+                "name": "cutover",
+                "status": "done"
+              },
+              {
+                "name": "shred_source",
+                "status": "done"
+              }
+            ],
+            "status": "done",
+            "encrypted": true,
+            "createdAt": 12345
+          },
+          "valid": false,
+          "shapeValid": false
+        }
+      ]
     }
   ]
 }

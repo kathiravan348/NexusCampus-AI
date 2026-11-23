@@ -65,7 +65,7 @@
 | NEX-118 | Lago sync part 1: per-learner plans, customers, subscriptions and learner usage → Lago (one way, idempotent) | D | done | Gemini | 116 |
 | NEX-119 | Tenant import (DM-8, D58): unwrap with the import key, check schema revision, load into an empty tenant, re-encrypt fields | D | done | Gemini | 106 |
 | NEX-120 | Packaging: Helm chart for large self-hosted installs (product stack; Helm v4.3.1 approved) | D | planned | — | 108 |
-| NEX-121 | Control on real data: P04 provisioning and P18 moves — reads (jobs, offboarding, shred certificates) | D | planned | — | 126 |
+| NEX-121 | Control on real data: P04 provisioning and P18 moves — reads (jobs, offboarding, shred certificates) | D | done | Gemini | 126 |
 | NEX-122 | Control on real data: P09 support desk (tickets, replies, SLA policies, knowledge base) | D | done | Gemini | 116, 108 |
 | NEX-123 | Control on real data: P08 extensions, P15 projects and P17 sandboxes (reads) | D | done | Gemini | 122 |
 | NEX-124 | Control on real data: P12 deals and commissions, P16 analytics (reads) | D | done | Gemini | 123 |

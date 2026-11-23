@@ -21,14 +21,18 @@ import {
   INVOICES,
   KNOWLEDGE_ARTICLES,
   LICENCES,
+  OFFBOARDING_JOBS,
   OPPORTUNITIES,
   PARTNERS,
   PAYMENTS,
+  PORTABILITY_JOBS,
+  PROVISIONING_JOBS,
   QUOTES,
   RELEASES,
   ROLLOUTS,
   SANDBOXES,
   SECURITY_INCIDENTS,
+  SHRED_CERTIFICATES,
   SLA_POLICIES,
   STAFF_USERS,
   SUB_PROCESSORS,
@@ -39,7 +43,7 @@ import {
 } from "./fixtures";
 
 /** Bump when the exported shape changes; the control backend seed checks it (NEX-096). */
-export const CONTROL_FIXTURES_VERSION = 10;
+export const CONTROL_FIXTURES_VERSION = 11;
 
 /**
  * Staff, role permissions (NEX-096) and the account data P01 reads (NEX-101) for the control backend seed:
@@ -87,6 +91,10 @@ export function controlFixturesJson(): string {
       certifications: CERTIFICATIONS,
       incidents: SECURITY_INCIDENTS,
       dpas: DPA_RECORDS,
+      provisioningJobs: PROVISIONING_JOBS,
+      offboardingJobs: OFFBOARDING_JOBS,
+      shredCertificates: SHRED_CERTIFICATES,
+      portabilityJobs: PORTABILITY_JOBS,
     },
     null,
     2,
