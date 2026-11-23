@@ -1,12 +1,16 @@
 # Stage 2 — release checklist
 
 > For the Owner's release approval (NEX-137). Filled on 2026-11-23 on the Owner PC (Windows 11, Docker Desktop,
-> Node 24, Python 3.12, PostgreSQL 16 + pgvector, OpenBao 2.7.2, Valkey 9.0.7, Keycloak 26.4.7, Lago 1.44.0) against
+> Node 24, Python 3.12, PostgreSQL 16 + pgvector, OpenBao 2.7.2, Valkey 9.0.7, Keycloak 26.4.7, Lago 1.57.0) against
 > `task/NEX-137` (stacked on `NEX-121..136, 107, 110`; Helm chart on `task/NEX-120`). Items marked **Owner** need a
 > person or external credentials, not a local test.
 > **Updated 2026-11-23 after review:** all Stage 2 tasks were reviewed (fixes in NEX-120, 127, 128, 129, 133, 136),
 > merged and pushed to `main`; NEX-139 (expired instructions fail their job step, D63) was added and NEX-138 (Stripe)
 > moved to a later stage (D64). The check rows below show the results on merged `main`.
+> **Final run for the release review, 2026-11-23 evening:** `main` after NEX-140–143 (frozen banner, Control job
+> buttons, one open job per tenant; D65, D66) and the e2e fixes (`28443c5`). Every automated check below was re-run
+> on that commit; the install, upgrade and backup runs (§6) are from NEX-137 — `deploy/` and both migration folders
+> have not changed since, except the Helm chart (NEX-120) and one README.
 
 ## 1. Result at a glance
 
@@ -15,10 +19,12 @@
 | No-access & command-channel gates V-1…V-7 (NEX-110, must pass) | **Pass** — 19 Control & command-channel security tests + 17 Stage 1 V-tests; broken-guard fixture turns the route walk red |
 | Control contract parity (Pydantic ⇄ frozen Zod, incl. cross-field rules) | **Pass** — all 46 Control contract models match Zod's exact verdict (`expected = case["valid"]`) |
 | OpenBao key custody & root-token revocation (NEX-110) | **Pass** — `transit/export/*` denied (`403`); root token revoked and stripped from disk after `deploy/compose` and `deploy/control` setup |
-| Backend checks (`uv run --project backend backend-check`) | **Pass** — 510 tests (ruff format, ruff lint, mypy `--strict`, pytest) in `1m 32.2s` on merged `main` |
-| Frontend checks (`pnpm --dir frontend review:check`) | **Pass** — format, lint, typecheck, Vitest workspace tests, production + Storybook builds in `1m 13.3s` on merged `main` |
+| Backend checks (`uv run --project backend backend-check`) | **Pass** — 513 tests (ruff format, ruff lint, mypy `--strict`, pytest) in `3m 11.8s` (run alongside the frontend check; ~2m 10s alone) |
+| Frontend checks (`pnpm --dir frontend review:check`) | **Pass** — format, lint, typecheck, Vitest workspace tests, production + Storybook builds in `1m 43.2s` |
 | Real-mode Control accessibility (WCAG 2.2 AA, axe, every role) | **Pass** — `e2e:control:real` (`control-a11y.spec.ts`): sign-in + all 20 screens in light & dark + all 9 staff roles + forbidden routes, 0 serious/critical issues |
 | Real-mode Control languages en / hi / ta (D42, D53) | **Pass** (automated, `control-languages.spec.ts`: all 20 screens in `en`, `hi`, `ta`, 0 raw/missing keys); **Owner**: native-speaker review open |
+| Browser checks on demo data (`pnpm --dir frontend e2e`: campus desktop / 360 px / pseudo-locale, Control every role) | **Pass** — 35 tests in `52.9s` (the release run found the Control project also picking up the user-manual capture spec; fixed in `e2e/playwright.config.ts`) |
+| Stage 1 regression on real data (`e2e:real`: every Stage 1 screen, a11y light/dark, Tamil and Hindi, Keycloak sign-in, perf) | **Pass** — 8 tests; `api:list:p95` `21 ms`, campus `load:4g` `2.24 s` (budget `6 s`) |
 | Performance budgets (soft, `docs/TIMINGS.md`) | **Pass** — 41 Control list endpoints p95 `8.5–18.5 ms` (`12.0 ms` overall, budget `300 ms`); agent calls `8.2–70.4 ms` (budget `300 ms`); Control 4G cold load `2.37 s` (budget `6 s`) |
 | Packaging: `deploy/control` & `deploy/compose` install, upgrade, backup/restore, export/import | **Pass** — Control install `60.8 s` / upgrade `22.8 s` / backup+restore `4.8 s`; product install `93.1 s` (cold build) / upgrade `8.8 s` / backup+restore + tenant export/import verified; torn down (`down -v`) |
 | Packaging: Helm chart (`deploy/helm/nexuscampus`, NEX-120) | **Pass** (`helm lint --strict` + `helm template` + `test_helm_chart.py` 3/3 pass); **Owner**: live Kubernetes cluster install open (`no cluster` on dev PC) |
@@ -30,7 +36,7 @@
 | **P01** Accounts & CRM | Accounts, contacts, opportunities, contracts, notes; partner scoping | NEX-072, NEX-101 | `tests/db/control/test_accounts_api.py`, `test_control_no_access.py::test_V1_partner_scoping_on_every_control_list`, `control-a11y.spec.ts` | **Pass** |
 | **P02** Pricing & quotes | Catalogue, regional prices, quotes, AI-draft human-review gate | NEX-073, NEX-102 | `tests/db/control/test_commercial_api.py`, `control-a11y.spec.ts` | **Pass** |
 | **P03** Billing & dunning | Subscriptions, invoices, payments, credit notes, reminders, Lago sync & webhooks, Razorpay INR links (D51, D62) | NEX-074, NEX-102, NEX-118, NEX-111, NEX-107 | `tests/db/control/test_commercial_api.py`, `test_billing_sync.py`, `test_lago_webhooks.py`, `test_razorpay_payments.py` + live Razorpay Test Mode API (`plink_U3WVITB4nOOJba`) | **Pass** (INR live; EU Stripe is draft NEX-138) |
-| **P04** Provisioning & offboarding | 5-step cell provisioning (`tenant.provision`), 4-step offboarding (`tenant.freeze`/`export`/`destroy_keys`), four-eyes key destruction, OpenBao-signed `nexus-shred` certificates, expired instructions fail their step and staff retry (D60, D61, D63) | NEX-075, NEX-121, NEX-127, NEX-132, NEX-133, NEX-134, NEX-139 | `tests/db/test_provision_tenant.py`, `test_tenant_offboarding_commands.py`, `tests/db/control/test_provisioning_writes.py`, `test_offboarding_writes.py`, `test_command_expiry.py` | **Pass** |
+| **P04** Provisioning & offboarding | 5-step cell provisioning (`tenant.provision`), 4-step offboarding (`tenant.freeze`/`export`/`destroy_keys`), four-eyes key destruction, OpenBao-signed `nexus-shred` certificates, expired instructions fail their step and staff retry (D60, D61, D63) | NEX-075, NEX-121, NEX-127, NEX-132, NEX-133, NEX-134, NEX-139, NEX-140, NEX-141, NEX-143 | `tests/db/test_provision_tenant.py`, `test_tenant_offboarding_commands.py`, `tests/db/control/test_provisioning_writes.py`, `test_offboarding_writes.py`, `test_command_expiry.py` | **Pass** |
 | **P05** Licensing | Offline-verifiable Ed25519 `nexus-licence` files, 1-year renewal, grace & read-only enforcement | NEX-076, NEX-098, NEX-103, NEX-104 | `tests/licensing/test_licence_file.py`, `tests/db/control/test_licences_api.py`, `tests/agent/test_agent_licence.py` | **Pass** |
 | **P06** Fleet & deployments | Cells, dedicated & self-hosted deployments, per-deployment hashed bearer token, PII-free health check-ins, pull-only signed D60 command queue (`nexus-command/1`) | NEX-077, NEX-113, NEX-128 | `tests/db/control/test_fleet_api.py`, `test_commands_api.py`, `tests/security/test_command_channel.py` | **Pass** |
 | **P07** Releases & rollouts | Signed release manifests (`nexus-release`), offline air-gapped bundles, publish gate (AI-notes review + verified manifest), ring 0→3 rollouts auto-completing on health check-in | NEX-078, NEX-105, NEX-115, NEX-117, NEX-130 | `tests/db/control/test_releases_api.py`, `test_release_import.py`, `test_release_writes.py` | **Pass** |
@@ -44,7 +50,7 @@
 | **P15** Implementation projects | Onboarding, migration, self-hosted install & training projects with tasks and AI-drafted plan flag | NEX-086, NEX-123 | `tests/db/control/test_delivery_extras_api.py`, `control-a11y.spec.ts` | **Pass** |
 | **P16** Business analytics | Monthly ARR/NRR/customer metrics and AI-estimated account churn-risk health scores | NEX-087, NEX-124 | `tests/db/control/test_partners_analytics_api.py`, `control-a11y.spec.ts` | **Pass** |
 | **P17** Sandboxes | Synthetic sales demos and masked staging clones with automatic expiry | NEX-088, NEX-123 | `tests/db/control/test_delivery_extras_api.py`, `control-a11y.spec.ts` | **Pass** |
-| **P18** Portability & moves | 7-step moves (`saas_to_self_hosted`, `self_hosted_to_saas`, `region_move`) orchestrating source/target cell commands and linked NEX-134 four-eyes shred certificate (D61, D63) | NEX-089, NEX-121, NEX-135, NEX-136, NEX-139 | `tests/db/test_tenant_move_commands.py`, `tests/db/control/test_moves_writes.py` | **Pass** |
+| **P18** Portability & moves | 7-step moves (`saas_to_self_hosted`, `self_hosted_to_saas`, `region_move`) orchestrating source/target cell commands and linked NEX-134 four-eyes shred certificate (D61, D63) | NEX-089, NEX-121, NEX-135, NEX-136, NEX-139, NEX-142, NEX-143 | `tests/db/test_tenant_move_commands.py`, `tests/db/control/test_moves_writes.py`, `test_one_open_job.py`, `p18/*.test.tsx` | **Pass** |
 | **M84** Install agent | Licence verification, offline & online signed updates, PII-free health check-in, encrypted backups, redacted diagnostics, NXTE/1 tenant export & import, D60 command runner | NEX-091, NEX-104..106, NEX-112, NEX-114, NEX-117, NEX-119, NEX-129, NEX-131, NEX-133, NEX-135 | `tests/agent/*`, `tests/db/test_tenant_export.py`, `test_tenant_import.py`, `test_agent_broker.py` | **Pass** |
 
 ## 3. Security hardening summary (NEX-110, `docs/review/STAGE-2-SECURITY.md`)
@@ -75,11 +81,11 @@
 | `dev:control` (Control Vite dev server ready) | `0.32 s` | `8 s` | OK |
 | `build:control` (Control production build) | `3.54 s` | `45 s` | OK |
 | `preview:control` (Control preview server ready) | `0.32 s` | `5 s` | OK |
-| `control:api:list:p95` (41 Control list endpoints × 20 calls, demo data) | `8.5–18.5 ms` (`12.0 ms` overall; slowest `accounts` `18.5 ms`) | `300 ms` | OK |
+| `control:api:list:p95` (41 Control list endpoints × 20 calls, demo data) | `19 ms` overall (release run; NEX-137: `8.5–18.5 ms` per endpoint) | `300 ms` | OK |
 | `agent:api:p95` (`/agent/health` `70.4 ms`, `/agent/update` `12.5 ms`, `/agent/commands` `8.2 ms`) | `8.2–70.4 ms` | `300 ms` | OK |
-| `control:load:4g` (built Control app, cold, 150 ms RTT, 1.6 Mbit/s down, 356 KiB) | `2.37 s` | `6 s` | OK |
-| `review:check` (frontend format, lint, typecheck, test, build) | `1m 12.0s` | `7 min` | OK |
-| `backend:check` (backend format, lint, mypy strict, 497 pytest tests) | `1m 25.7s` | `3 min` | OK |
+| `control:load:4g` (built Control app, cold, 150 ms RTT, 1.6 Mbit/s down, 356 KiB) | `2.48 s` (release run) | `6 s` | OK |
+| `review:check` (frontend format, lint, typecheck, test, build) | `1m 43.2s` (release run) | `7 min` | OK |
+| `backend:check` (backend format, lint, mypy strict, 513 pytest tests) | `3m 11.8s` alongside `review:check`; `2m 09s` alone (NEX-143 review) | `3 min` | WARN when both run at once — soft budget; the database tests grew with NEX-139–143 |
 
 ## 6. Packaging, install, upgrade, backup/restore, and portability runs
 

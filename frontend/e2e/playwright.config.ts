@@ -62,6 +62,8 @@ export default defineConfig({
     {
       name: "control",
       testMatch: /control\.spec\.ts/,
+      // `e2e/manual/control.spec.ts` captures the user manual with its own config and server (port 4314).
+      testIgnore: /[\\/](real|manual)[\\/]/,
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1280, height: 800 },

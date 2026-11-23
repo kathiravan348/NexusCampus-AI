@@ -95,6 +95,13 @@
       ],
       "port": 3101,
       "autoPort": false
+    },
+    {
+      "name": "control-real-built",
+      "runtimeExecutable": "fnm",
+      "runtimeArgs": ["exec", "--using=24", "--", "pnpm", "--dir", "frontend/apps/control", "exec", "vite", "preview", "--mode", "real"],
+      "port": 3201,
+      "autoPort": false
     }
   ]
 }

@@ -9,16 +9,24 @@
 - **Stage 1** (platform foundation) is released (D54).
 - **Stage 2** (Nexus Control and delivery) is **built**: every Nexus Control page (P01–P18) runs on its own backend
   and database, the install agent (M84) runs self-hosted installs, and provisioning, offboarding, moves, the access
-  broker and Razorpay payment links for India work end to end. Three last tasks are planned (NEX-140–142: the
-  frozen-institution banner and Control job buttons, D65); Stripe for Europe moved to a later stage (D64). Then it
-  waits for your release review below.
-- All work is committed, merged and **pushed to GitHub** (`origin/main`, 2026-11-23).
+  broker and Razorpay payment links for India work end to end. The last tasks are done and merged: the
+  frozen-institution banner, the Control job buttons (NEX-140–142, D65) and one open offboarding or move per tenant
+  (NEX-143, D66). Stripe for Europe moved to a later stage (D64).
+- **Release review started 2026-11-23:** every automated check was re-run on the final `main` and passes (backend,
+  frontend, browser checks on demo and real data, accessibility, languages, speed). Results:
+  [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md). It now waits for your decisions in section 0.
 
 ## 0. Approve the Stage 2 release (when the items below suit you)
 
 - [ ] Read [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md) (what was built and tested, timings, open items) and
       [`STAGE-2-SECURITY.md`](STAGE-2-SECURITY.md).
-- [ ] Decide which of sections 4 and 5 must be done before the release, and which can wait.
+- [ ] Confirm or change the decisions in section 2 (made while you were away; each can be undone).
+- [ ] Decide on the one gap left on a frozen screen: admins can review, approve or discard a support diagnostic
+      bundle only through the API (NEX-112). Either OK a small task for the **Review / Approve / Discard** buttons on
+      **Install & updates** before the release, or let it wait for Stage 3.
+- [ ] Decide which of sections 4 and 5 must be done before the release, and which can wait (none blocks the
+      software itself: they are prices, live payment keys, a Kubernetes test, trust-page facts, the deck contact line,
+      the Hindi / Tamil check, and production unseal / penetration test).
 - [ ] Say **"approve the Stage 2 release"**. I then mark Stage 2 released and open the Stage 3 board.
 
 ## 1. Review Stage 2, then freeze it — done 2026-11-22 ("all good", D56)
@@ -98,6 +106,5 @@ These are not blocking the build, but real billing and the trust page need them 
 ## What I do next, unless you say otherwise
 
 - After your release approval: mark Stage 2 released, then open the Stage 3 board (core institution operations).
-- NEX-140–142 (your OK, D65) are planned for Gemini: the "institution is frozen" banner and the Nexus Control buttons
-  for offboarding and move actions. I review and merge them before the release.
+- NEX-140–143 are reviewed and merged. Gemini and Codex build; I plan and review (D68).
 - Anything that needs a new download, I hold and ask you first.
