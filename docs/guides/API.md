@@ -377,6 +377,9 @@ see rows of the accounts their partner manages (others → `404`).
 | GET | `/shred-certificates`, `/shred-certificates/:id` | `ctl.provisioning.read` | filter `tenantId`; signed key-destruction certificates; not shown to partner users |
 | GET | `/shred-certificate-keys` | public (no auth) | `{ keyId: base64Ed25519PublicKey }` for offline verification of `ShredCertificate` signatures (NEX-134) |
 | GET | `/portability-jobs`, `/portability-jobs/:id` | `ctl.portability.read` | filters `accountId`, `status`, `direction`; encrypted exports always; partners see only their accounts' moves |
+| POST | `/portability-jobs` | `ctl.portability.manage` | body `{ accountId, tenantId, direction, toRegion }`; region move with same region → `422`; queues `tenant.import_key` immediately when destination is a SaaS cell → `201 PortabilityJob` (all 7 steps `pending`, NEX-136) |
+| POST | `/portability-jobs/:id/confirm` | `ctl.portability.manage` | body `{ step, pem?, fileName?, rows?, chainOk?, checkpointOk? }`; confirms the current pending staff step (`preflight`/`export_encrypted`/`import` for self-hosted, `transfer`, `cutover` updating account region/delivery model/tenants in one tx and starting a NEX-134 offboarding job for SaaS source, `shred_source` for self-hosted source); wrong step or cell-managed step → `409` (NEX-136) |
+| POST | `/portability-jobs/:id/retry` | `ctl.portability.manage` | failed portability jobs only (`409` otherwise); re-queues or resets from the failed step → `200 PortabilityJob` (NEX-136) |
 
 Partner scoping follows the mocks: rows with an account are visible when it is one the partner manages (and ticket
 replies are joined through visible tickets); rows without one (catalogue, payments, credit notes, health signals,

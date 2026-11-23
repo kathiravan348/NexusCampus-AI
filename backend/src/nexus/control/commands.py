@@ -28,7 +28,16 @@ MAX_BATCH = 20
 MAX_RESULT_BODY_BYTES = MAX_RESULT_BYTES + 512
 MIN_POLL_INTERVAL_SECONDS = 30.0
 ALLOWED_KINDS: frozenset[str] = frozenset(
-    {"ping", "access_request.file", "tenant.provision", "tenant.freeze", "tenant.export", "tenant.destroy_keys"}
+    {
+        "ping",
+        "access_request.file",
+        "tenant.provision",
+        "tenant.freeze",
+        "tenant.export",
+        "tenant.destroy_keys",
+        "tenant.import_key",
+        "tenant.import",
+    }
 )
 
 log = logging.getLogger("nexus.control.commands")
@@ -285,6 +294,30 @@ async def report_command_result(
             from nexus.control.offboarding import apply_offboarding_result
 
             await apply_offboarding_result(
+                conn,
+                request.app.state.vault,
+                request.app.state.settings,
+                command_id,
+                row.kind,
+                body.status,
+                body.result,
+            )
+            if row.kind in ("tenant.freeze", "tenant.export"):
+                from nexus.control.moves import apply_move_result
+
+                await apply_move_result(
+                    conn,
+                    request.app.state.vault,
+                    request.app.state.settings,
+                    command_id,
+                    row.kind,
+                    body.status,
+                    body.result,
+                )
+        elif row.kind in ("tenant.import_key", "tenant.import"):
+            from nexus.control.moves import apply_move_result
+
+            await apply_move_result(
                 conn,
                 request.app.state.vault,
                 request.app.state.settings,

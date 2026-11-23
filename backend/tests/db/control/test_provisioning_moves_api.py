@@ -157,7 +157,7 @@ def test_app_role_read_only_and_db_checks_refuse_invalid_rows(control_db: tuple[
             "DELETE FROM offboarding_jobs",
             "UPDATE shred_certificates SET signing_key_id = 'x'",
             "DELETE FROM shred_certificates",
-            "UPDATE portability_jobs SET status = 'done'",
+            "UPDATE portability_jobs SET direction = 'region_move'",
             "DELETE FROM portability_jobs",
         ):
             with pytest.raises(ProgrammingError), app_eng.begin() as conn:

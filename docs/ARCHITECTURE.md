@@ -222,6 +222,13 @@ Nexus Control (our cloud)                         Product deployments
   `{id, tenantId, keyIds, destroyedAt}` with OpenBao Transit `nexus-shred` (Ed25519, never exported), stores the
   `shred_certificates` row, and marks the job `done`. `GET /shred-certificate-keys` (public) publishes the public keys
   for offline verification.
+- **Portability moves (P18, D61, NEX-136):** `POST /portability-jobs` creates a 7-step job (`preflight` →
+  `export_encrypted` → `transfer` → `import` → `verify` → `cutover` → `shred_source`); cell steps run via signed D60
+  commands (`tenant.import_key`, `tenant.freeze`, `tenant.export`, `tenant.import` verifying `chainOk` & `checkpointOk`),
+  while self-hosted steps, file transfer, and cutover are confirmed via `POST /portability-jobs/{id}/confirm`. Cutover
+  updates `accounts` (`region`, `delivery_model`, `tenant_ids`) in one transaction and links a NEX-134 offboarding job
+  for SaaS source copies (`shred_source` finishes when its shred certificate is issued). Failed jobs retry via
+  `POST /portability-jobs/{id}/retry`.
 - **Pull-only signed deployment commands (D60, NEX-128):** Control never connects to a deployment. `deployment_commands`
   holds canonical `nexus-command/1` payloads signed in OpenBao Transit (`nexus-command`, Ed25519, never exported,
   `args` ≤ 2 KB, lifetime ≤ 24 h). `control_app` has `SELECT` and column-scoped `UPDATE (status, delivered_at,

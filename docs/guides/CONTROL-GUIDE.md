@@ -255,7 +255,10 @@ Menu **Moves** (super admin, implementation; site reliability reads).
   move**), region(s) and start date.
 - Seven steps: **Pre-flight check**, **Encrypted export**, **Transfer**, **Import**, **Verify**, **Switch over**,
   **Destroy source keys** — each **Waiting**, **Running**, **Done** or **Failed**.
-- The export is always encrypted with the tenant's own keys; we run the steps but never read it.
+- The export is always encrypted with the tenant's own keys; we run the steps but never read it. In real mode, cell
+  steps run as signed commands (`tenant.import_key`, `tenant.freeze`, `tenant.export`, `tenant.import`), staff confirm
+  file placement, self-hosted steps and cutover, and **Destroy source keys** finishes once the source cell's four-eyes
+  key-destruction certificate is issued.
 
 ## Roles
 
