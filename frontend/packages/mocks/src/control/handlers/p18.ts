@@ -16,7 +16,6 @@ import { controlDb } from "../db";
 import { CONTROL_API_BASE } from "../route";
 
 const MOVE_STEPS = PortabilityStepNameSchema.options;
-let moveCounter = 0;
 const nowIso = () => new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
 
 function isSourceCell(direction: PortabilityDirection): boolean {
@@ -136,10 +135,7 @@ export const p18Handlers: HttpHandler[] = [
         throw new ApiFailure("conflict");
       }
       const nextNum =
-        controlDb.portabilityJobs.filter((j) => j.id.startsWith("mov-new-")).length +
-        1 +
-        (moveCounter - moveCounter);
-      moveCounter += 1;
+        controlDb.portabilityJobs.filter((j) => j.id.startsWith("mov-new-")).length + 1;
       const initial = MOVE_STEPS.map((name) => ({ name, status: "pending" as StepStatus }));
       const { steps, status } = advanceDemoCellSteps(initial, direction);
       const job = PortabilityJobSchema.parse({
@@ -262,8 +258,14 @@ export const p18Handlers: HttpHandler[] = [
       const job = visibleTo(viewer, controlDb.portabilityJobs).find((j) => j.id === params["id"]);
       if (!job) throw new ApiFailure("not_found");
       if (job.status !== "failed") throw new ApiFailure("conflict");
+      // A failed Verify on a self-hosted destination goes back to the staff import step (as the backend).
+      const backToImport =
+        !isDestinationCell(job.direction) &&
+        job.steps.some((s) => s.name === "verify" && s.status === "failed");
       const reset = job.steps.map((s) =>
-        s.status === "failed" ? { ...s, status: "pending" as StepStatus } : s,
+        s.status === "failed" || (backToImport && s.name === "import")
+          ? { ...s, status: "pending" as StepStatus }
+          : s,
       );
       const { steps, status } = advanceDemoCellSteps(reset, job.direction);
       const updated = PortabilityJobSchema.parse({

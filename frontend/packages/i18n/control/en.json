@@ -2891,6 +2891,10 @@
     "message": "Signed checkpoint verified",
     "description": "Checkbox confirming a fresh signed audit checkpoint was verified on the self-hosted destination."
   },
+  "p18.confirm.checksNote": {
+    "message": "Leave a check unticked if it failed: the move stops at Verify and can be retried from the import.",
+    "description": "Hint under the two verification checkboxes of the import step; an unticked box reports a failed check."
+  },
   "p18.confirm.cutoverWarning": {
     "message": "Switching over points the account to the destination and cannot be undone.",
     "description": "Warning shown in the switch-over confirmation dialog."

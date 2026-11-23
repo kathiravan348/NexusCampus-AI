@@ -90,7 +90,8 @@ export function ConfirmStepModal({
     valid = acknowledged;
     payload = { step };
   } else if (step === "import") {
-    valid = validRows && chainOk && checkpointOk;
+    // An unticked check is a real answer: Verify fails and the move can be retried from the import (D63).
+    valid = validRows;
     payload = { step, rows: parsedRows, chainOk, checkpointOk };
   } else if (step === "cutover") {
     valid = acknowledged;
@@ -184,6 +185,7 @@ export function ConfirmStepModal({
               checked={checkpointOk}
               onCheckedChange={(v) => setCheckpointOk(v === true)}
             />
+            <p className="text-body-sm text-text-secondary">{t("p18.confirm.checksNote")}</p>
           </>
         )}
         {step === "cutover" && (

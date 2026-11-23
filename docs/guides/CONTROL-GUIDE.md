@@ -271,7 +271,8 @@ Menu **Moves** (super admin, implementation; site reliability reads).
   - **Encrypted export** (moving from self-hosted): enter **Export file name** and **Row count**.
   - **Transfer**: tick **The file is in the destination's import folder**.
   - **Import** (moving to self-hosted): enter **Row count** and tick **Activity log hash chain verified** and **Signed
-    checkpoint verified**.
+    checkpoint verified**. Leave a check unticked if it failed: the move stops at **Verify**, and **Retry** sends it
+    back to **Import** so you can import again and confirm it again.
   - **Switch over**: tick **I understand switching over cannot be undone**.
   - **Destroy source keys** (moving from self-hosted): tick **Source copy deleted**. When the source is one of our SaaS
     cells, the card notes **Two staff members approve the source's key destruction on the Provisioning page.** and

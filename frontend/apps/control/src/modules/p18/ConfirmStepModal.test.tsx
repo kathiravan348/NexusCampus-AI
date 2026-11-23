@@ -121,6 +121,18 @@ describe("ConfirmStepModal", () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
+  it("reports a failed check on import: the move stops at Verify", async () => {
+    renderStep(makeJob("saas_to_self_hosted", "import"), "import");
+    const dialog = await screen.findByRole("dialog", { name: "Confirm Import" });
+    fireEvent.change(within(dialog).getByLabelText("Row count"), { target: { value: "81" } });
+    fireEvent.click(within(dialog).getByRole("checkbox", { name: "Signed checkpoint verified" }));
+    fireEvent.click(within(dialog).getByRole("button", { name: "Confirm step" }));
+    expect(await screen.findByText("Move step confirmed")).toBeInTheDocument();
+    const job = controlDb.portabilityJobs.find((j) => j.id === "mov-test")!;
+    expect(job.status).toBe("failed");
+    expect(job.steps.find((s) => s.name === "verify")?.status).toBe("failed");
+  });
+
   it("asks only for the irreversible warning tick on cutover and source-deleted tick on shred_source", async () => {
     const first = renderStep(makeJob("self_hosted_to_saas", "cutover"), "cutover");
     const cutoverDialog = await screen.findByRole("dialog", { name: "Confirm Switch over" });
