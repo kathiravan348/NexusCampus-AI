@@ -3946,5 +3946,65 @@
   "m84.bundle.discarded": {
     "message": "Discarded",
     "description": "Bundle state."
+  },
+  "m84.bundle.review": {
+    "message": "Review",
+    "description": "Button on a bundle waiting for review: opens what it would send."
+  },
+  "m84.bundle.reviewLabel": {
+    "message": "Review bundle {id}",
+    "description": "Accessible name of the Review button. {id} bundle id."
+  },
+  "m84.bundle.reviewTitle": {
+    "message": "Review support diagnostics",
+    "description": "Title of the dialog that shows a bundle before it is approved or discarded."
+  },
+  "m84.bundle.reviewIntro": {
+    "message": "This is exactly what Nexus support receives if you approve it. Personal data has been removed. Nothing leaves your install until you approve, and neither choice can be undone.",
+    "description": "Dialog intro above the bundle text."
+  },
+  "m84.bundle.content": {
+    "message": "Bundle content",
+    "description": "Accessible name of the read-only box with the bundle text."
+  },
+  "m84.bundle.loadFailed": {
+    "message": "The bundle could not be loaded. Try again.",
+    "description": "Shown in the dialog when the bundle text does not load."
+  },
+  "m84.bundle.needsConnection": {
+    "message": "Reviewing a bundle needs a connection to your install.",
+    "description": "Shown instead of the Review button while offline."
+  },
+  "m84.bundle.approve": {
+    "message": "Approve sending",
+    "description": "Button: allow the bundle to be sent to Nexus support."
+  },
+  "m84.bundle.discard": {
+    "message": "Discard",
+    "description": "Button: delete the bundle without sending it."
+  },
+  "m84.bundle.discardConfirm": {
+    "message": "Discard this bundle? It will never be sent.",
+    "description": "Second question after pressing Discard."
+  },
+  "m84.bundle.discardYes": {
+    "message": "Yes, discard",
+    "description": "Button confirming the discard."
+  },
+  "m84.bundle.approvedDone": {
+    "message": "Bundle approved for sending",
+    "description": "Toast after approving."
+  },
+  "m84.bundle.discardedDone": {
+    "message": "Bundle discarded",
+    "description": "Toast after discarding."
+  },
+  "m84.bundle.decideConflict": {
+    "message": "Someone has already reviewed this bundle. Close this and check the list.",
+    "description": "Shown when another admin approved or discarded the bundle first."
+  },
+  "m84.bundle.decideFailed": {
+    "message": "The bundle could not be updated. Try again.",
+    "description": "Shown when approving or discarding fails for another reason."
   }
 }

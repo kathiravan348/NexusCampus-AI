@@ -596,6 +596,10 @@
     "valid": true
   },
   {
+    "text": "Approve sending",
+    "valid": true
+  },
+  {
     "text": "Approved",
     "valid": true
   },
@@ -741,6 +745,18 @@
   },
   {
     "text": "Browser",
+    "valid": true
+  },
+  {
+    "text": "Bundle approved for sending",
+    "valid": true
+  },
+  {
+    "text": "Bundle content",
+    "valid": true
+  },
+  {
+    "text": "Bundle discarded",
     "valid": true
   },
   {
@@ -1192,7 +1208,15 @@
     "valid": true
   },
   {
+    "text": "Discard",
+    "valid": true
+  },
+  {
     "text": "Discard changes",
+    "valid": true
+  },
+  {
+    "text": "Discard this bundle? It will never be sent.",
     "valid": true
   },
   {
@@ -2836,7 +2860,23 @@
     "valid": true
   },
   {
+    "text": "Review",
+    "valid": true
+  },
+  {
+    "text": "Review bundle {id}",
+    "valid": true
+  },
+  {
+    "text": "Review support diagnostics",
+    "valid": true
+  },
+  {
     "text": "Review the tamper-evident audit log, consent records, data requests and the privacy rules that apply.",
+    "valid": true
+  },
+  {
+    "text": "Reviewing a bundle needs a connection to your install.",
     "valid": true
   },
   {
@@ -3132,6 +3172,10 @@
     "valid": true
   },
   {
+    "text": "Someone has already reviewed this bundle. Close this and check the list.",
+    "valid": true
+  },
+  {
     "text": "Something went wrong",
     "valid": true
   },
@@ -3388,6 +3432,14 @@
     "valid": true
   },
   {
+    "text": "The bundle could not be loaded. Try again.",
+    "valid": true
+  },
+  {
+    "text": "The bundle could not be updated. Try again.",
+    "valid": true
+  },
+  {
     "text": "The change could not be saved. Try again.",
     "valid": true
   },
@@ -3469,6 +3521,10 @@
   },
   {
     "text": "This institution is frozen",
+    "valid": true
+  },
+  {
+    "text": "This is exactly what Nexus support receives if you approve it. Personal data has been removed. Nothing leaves your install until you approve, and neither choice can be undone.",
     "valid": true
   },
   {
@@ -3801,6 +3857,10 @@
   },
   {
     "text": "Year starts on",
+    "valid": true
+  },
+  {
+    "text": "Yes, discard",
     "valid": true
   },
   {
@@ -5308,6 +5368,10 @@
     "valid": true
   },
   {
+    "text": "किसी ने पहले ही इस बंडल की समीक्षा कर दी है। इसे बंद करके सूची देखें।",
+    "valid": true
+  },
+  {
     "text": "किसी प्रदाता को पहुँच नहीं दी गई है।",
     "valid": true
   },
@@ -6312,6 +6376,34 @@
     "valid": true
   },
   {
+    "text": "बंडल {id} की समीक्षा करें",
+    "valid": true
+  },
+  {
+    "text": "बंडल अपडेट नहीं हो सका। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "बंडल की समीक्षा के लिए आपके इंस्टॉल से कनेक्शन चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "बंडल की सामग्री",
+    "valid": true
+  },
+  {
+    "text": "बंडल भेजने के लिए स्वीकृत",
+    "valid": true
+  },
+  {
+    "text": "बंडल लोड नहीं हो सका। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "बंडल हटाया गया",
+    "valid": true
+  },
+  {
     "text": "बंद",
     "valid": true
   },
@@ -6512,6 +6604,10 @@
     "valid": true
   },
   {
+    "text": "भेजने की स्वीकृति दें",
+    "valid": true
+  },
+  {
     "text": "भेजा गया",
     "valid": true
   },
@@ -6653,6 +6749,10 @@
   },
   {
     "text": "यह फ़ील्ड आवश्यक है",
+    "valid": true
+  },
+  {
+    "text": "यह बंडल हटाएँ? यह कभी नहीं भेजा जाएगा।",
     "valid": true
   },
   {
@@ -7196,6 +7296,10 @@
     "valid": true
   },
   {
+    "text": "समीक्षा करें",
+    "valid": true
+  },
+  {
     "text": "समूह",
     "valid": true
   },
@@ -7237,6 +7341,10 @@
   },
   {
     "text": "सहायता अनुबंध आवश्यक",
+    "valid": true
+  },
+  {
+    "text": "सहायता डायग्नोस्टिक्स की समीक्षा",
     "valid": true
   },
   {
@@ -7484,6 +7592,10 @@
     "valid": true
   },
   {
+    "text": "स्वीकृत करने पर Nexus सहायता को ठीक यही मिलता है। व्यक्तिगत डेटा हटा दिया गया है। आपकी स्वीकृति के बिना आपके इंस्टॉल से कुछ भी बाहर नहीं जाता, और कोई भी चुनाव पूर्ववत नहीं किया जा सकता।",
+    "valid": true
+  },
+  {
     "text": "स्वीकृत करें…",
     "valid": true
   },
@@ -7521,6 +7633,10 @@
   },
   {
     "text": "हाँ, यही डिवाइस",
+    "valid": true
+  },
+  {
+    "text": "हाँ, हटाएँ",
     "valid": true
   },
   {
@@ -7625,6 +7741,10 @@
   },
   {
     "text": "அந்த மொழிக்கு ஏற்கனவே ஒரு பதிப்பு உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "அனுப்ப ஒப்புதல் அளி",
     "valid": true
   },
   {
@@ -7812,6 +7932,10 @@
     "valid": true
   },
   {
+    "text": "ஆதரவு கண்டறிதல் தரவின் மதிப்பாய்வு",
+    "valid": true
+  },
+  {
     "text": "ஆதரவு கண்டறிதல்களிலிருந்து தனிப்பட்ட தரவு நீக்கப்படுகிறது. நிர்வாகி ஒப்புதல் தரும் வரை எதுவும் அனுப்பப்படாது.",
     "valid": true
   },
@@ -7829,6 +7953,10 @@
   },
   {
     "text": "ஆம், இந்தச் சாதனம்",
+    "valid": true
+  },
+  {
+    "text": "ஆம், நிராகரி",
     "valid": true
   },
   {
@@ -7981,6 +8109,14 @@
   },
   {
     "text": "இந்தச் சாவிக்கு இன்னும் மேலெழுதல் மாற்றங்கள் பதிவாகவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தத் தொகுப்பை நிராகரிக்கவா? இது ஒருபோதும் அனுப்பப்படாது.",
+    "valid": true
+  },
+  {
+    "text": "இந்தத் தொகுப்பை யாரோ ஏற்கனவே மதிப்பாய்வு செய்துவிட்டார். இதை மூடிவிட்டுப் பட்டியலைப் பாருங்கள்.",
     "valid": true
   },
   {
@@ -9320,6 +9456,34 @@
     "valid": true
   },
   {
+    "text": "தொகுப்பின் உள்ளடக்கம்",
+    "valid": true
+  },
+  {
+    "text": "தொகுப்பு {id}-ஐ மதிப்பாய்வு செய்",
+    "valid": true
+  },
+  {
+    "text": "தொகுப்பு அனுப்ப ஒப்புதல் பெற்றது",
+    "valid": true
+  },
+  {
+    "text": "தொகுப்பு நிராகரிக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "தொகுப்பை ஏற்ற முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "தொகுப்பை மதிப்பாய்வு செய்ய உங்கள் நிறுவலுடன் இணைப்பு தேவை.",
+    "valid": true
+  },
+  {
+    "text": "தொகுப்பைப் புதுப்பிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
     "text": "தொடக்கமும் முடிவும் வேறுபட வேண்டும்.",
     "valid": true
   },
@@ -9573,6 +9737,10 @@
   },
   {
     "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். மீண்டும் இணையும் வரை நிறுவன அமைப்பு மாற்றங்களைச் சேமிக்க முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஒப்புதல் அளித்தால் Nexus ஆதரவுக் குழுவுக்குச் செல்வது சரியாக இதுதான். தனிப்பட்ட தரவு நீக்கப்பட்டுள்ளது. நீங்கள் ஒப்புதல் அளிக்கும் வரை உங்கள் நிறுவலிலிருந்து எதுவும் வெளியே செல்லாது; எந்தத் தேர்வையும் திரும்பப் பெற முடியாது.",
     "valid": true
   },
   {
@@ -10025,6 +10193,10 @@
   },
   {
     "text": "மணி நேரங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பாய்வு செய்",
     "valid": true
   },
   {

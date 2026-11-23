@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   BackupJobSchema,
   DiagnosticBundleSchema,
+  DiagnosticContentSchema,
   InstallStatusSchema,
   LicenceSummarySchema,
   UpdateOfferSchema,
@@ -134,6 +135,25 @@ describe("DiagnosticBundle", () => {
       { ...bundle, status: "sent", sentAt: "2026-11-21T03:10:00Z" },
       { ...bundle, status: "approved" },
       { ...bundle, reviewedBy: "usr_admin" },
+    ]);
+  });
+});
+
+describe("DiagnosticContent", () => {
+  it("accepts the id and text of a bundle, also an empty text", () => {
+    expect(
+      DiagnosticContentSchema.safeParse({ id: "dgn-1", content: '{"format":"x"}' }).success,
+    ).toBe(true);
+    expect(DiagnosticContentSchema.safeParse({ id: "dgn-1", content: "" }).success).toBe(true);
+  });
+
+  it("rejects a missing or non-text content, an empty id and extra fields", () => {
+    rejects(DiagnosticContentSchema, [
+      { id: "dgn-1" },
+      { id: "dgn-1", content: null },
+      { id: "dgn-1", content: 42 },
+      { id: "", content: "x" },
+      { id: "dgn-1", content: "x", file: "/var/x" },
     ]);
   });
 });

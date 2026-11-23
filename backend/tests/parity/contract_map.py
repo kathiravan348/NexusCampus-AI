@@ -26,6 +26,7 @@ from nexus.modules.m10.service import ConflictOut, DeviceOut
 from nexus.modules.m11.schemas import AiCreditOut, AiSettingsOut, AssistAnswerOut
 from nexus.modules.m83.access import AccessGrantOut, AccessRequestOut, BreakGlassNoticeOut
 from nexus.modules.m83.keys import KeyStatusOut
+from nexus.modules.m84.router import DiagnosticBundle, DiagnosticContent
 
 CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "ApiError": ApiErrorEnvelope,
@@ -67,4 +68,6 @@ CONTRACT_MODELS: dict[str, type[BaseModel]] = {
     "AccessRequest": AccessRequestOut,
     "AccessGrant": AccessGrantOut,
     "BreakGlassNotice": BreakGlassNoticeOut,
+    "DiagnosticBundle": DiagnosticBundle,
+    "DiagnosticContent": DiagnosticContent,
 }

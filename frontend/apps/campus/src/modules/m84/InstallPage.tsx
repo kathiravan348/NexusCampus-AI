@@ -13,9 +13,12 @@ import {
   useInstallStatus,
   useUpdateOffer,
 } from "@nexus/services";
-import { Badge, type BadgeProps, Card, EmptyState, Meter, Skeleton } from "@nexus/ui-core";
+import { Badge, type BadgeProps, Button, Card, EmptyState, Meter, Skeleton } from "@nexus/ui-core";
 import { ShieldCheck } from "lucide-react";
+import { useState } from "react";
+import { useOnline } from "../../app/RouteGuard";
 import { useRuntime } from "../../app/TenantRuntime";
+import { BundleReviewModal } from "./BundleReviewModal";
 
 type Tone = NonNullable<BadgeProps["tone"]>;
 
@@ -61,6 +64,8 @@ export function InstallPage() {
   const update = useUpdateOffer();
   const backups = useBackups();
   const bundles = useDiagnosticBundles();
+  const online = useOnline();
+  const [reviewing, setReviewing] = useState<DiagnosticBundle | null>(null);
 
   if (status.isPending) return <Skeleton className="h-64" />;
   if (status.isError) return <EmptyState tone="error" />;
@@ -194,12 +199,26 @@ export function InstallPage() {
                   <Badge tone={BUNDLE_STATUS[b.status].tone}>
                     {t(BUNDLE_STATUS[b.status].key)}
                   </Badge>
+                  {b.status === "ready_for_review" &&
+                    (online ? (
+                      <Button
+                        size="sm"
+                        variant="secondary"
+                        aria-label={t("m84.bundle.reviewLabel", { id: b.id })}
+                        onClick={() => setReviewing(b)}
+                      >
+                        {t("m84.bundle.review")}
+                      </Button>
+                    ) : (
+                      <span className="text-text-secondary">{t("m84.bundle.needsConnection")}</span>
+                    ))}
                 </li>
               ))}
             </ul>
           )}
         </div>
       </Card>
+      <BundleReviewModal bundle={reviewing} onClose={() => setReviewing(null)} />
     </div>
   );
 }

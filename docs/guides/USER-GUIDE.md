@@ -171,3 +171,7 @@ Menu **Install & updates** (administrators; only in an install on your own serve
 - **Backups**: each backup and export, always encrypted with your keys before it is written.
 - **Health reports & support diagnostics**: whether health reports (counts and timings only, never names) are on, and
   each diagnostic bundle. Bundles have personal data removed, and nothing is sent until an admin approves it.
+  - On a bundle **Waiting for your review**, press **Review**: it shows exactly the text Nexus support would receive.
+    Then press **Approve sending**, or **Discard** and confirm with **Yes, discard**. Neither can be undone. If another
+    admin decided first, the window says so; close it and check the list. Reviewing needs a connection to your
+    install.
