@@ -19,6 +19,7 @@ from sqlalchemy import Engine, text
 from sqlalchemy.exc import SQLAlchemyError
 
 from nexus.agent.health import control_endpoint
+from nexus.agent.jobs import MoveCommandOutcome, handle_tenant_import, handle_tenant_import_key
 from nexus.agent.licence import load_keys
 from nexus.commands.format import CommandPayload, CommandVerificationError, verify_command
 from nexus.core.freeze import (
@@ -70,6 +71,8 @@ HANDLERS: dict[str, CommandHandler] = {
     "tenant.freeze": handle_tenant_freeze,
     "tenant.export": handle_tenant_export,
     "tenant.destroy_keys": handle_tenant_destroy_keys,
+    "tenant.import_key": handle_tenant_import_key,
+    "tenant.import": handle_tenant_import,
 }
 
 
@@ -292,7 +295,7 @@ def poll_commands(
 
                 try:
                     result = handler(cmd, engine, settings)
-                except (ProvisionCommandOutcome, OffboardingCommandOutcome) as exc:
+                except (ProvisionCommandOutcome, OffboardingCommandOutcome, MoveCommandOutcome) as exc:
                     if exc.status == "rejected":
                         rejected += 1
                     else:

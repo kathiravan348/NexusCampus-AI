@@ -122,7 +122,10 @@ On the **destination** install, run `nexus-agent import-tenant <file.nxte>` to l
 an empty tenant: it checks format, `pemSha256`, exact schema revision, empty tenant, table allow-list, and platform key
 custody; loads all rows in one transaction (skipping source-signed audit checkpoints); creates fresh tenant keys in
 OpenBao and re-encrypts any field-encrypted values; records an `m84.tenant.imported` audit event; and signs today's
-checkpoint after re-verifying the entire imported audit chain.
+checkpoint after re-verifying the entire imported audit chain. When Control commands are enabled (`NEXUS_AGENT_COMMANDS=on`,
+default on SaaS cells), Control can also orchestrate moves via signed `tenant.import_key` (returns only the public PEM and
+fingerprint) and `tenant.import` (loads a plain filename placed in `NEXUS_IMPORT_DIR`, default `NEXUS_INSTALL_DIR/imports`,
+verifies the audit chain and checkpoints, and removes the file once imported).
 
 ### Volume backups
 
