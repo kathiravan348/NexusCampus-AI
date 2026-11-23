@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { PortabilityJobSchema, ShredCertificateSchema } from "./portability";
+import {
+  ConfirmMoveStepSchema,
+  PortabilityJobSchema,
+  PortabilityRequestSchema,
+  ShredCertificateSchema,
+} from "./portability";
 import { SandboxSchema } from "./sandbox";
 import { rejects } from "./test-utils";
 
@@ -35,6 +40,59 @@ describe("PortabilityJob", () => {
       { ...job, direction: "region_move" },
       { ...job, steps: job.steps.slice(0, 6) },
       { ...job, status: "done" },
+    ]);
+  });
+});
+
+describe("PortabilityRequest and ConfirmMoveStep", () => {
+  const samplePem = `-----BEGIN PUBLIC KEY-----\n${"MIIBojANBgkqhkiG9w0BAQEFAAOCAY8A".repeat(4)}\n-----END PUBLIC KEY-----`;
+  const req = {
+    accountId: "acc-ls",
+    tenantId: "ten-ls",
+    direction: "region_move",
+    toRegion: "eu",
+  };
+
+  it("accepts valid portability requests and step confirmations", () => {
+    expect(PortabilityRequestSchema.safeParse(req).success).toBe(true);
+    expect(ConfirmMoveStepSchema.safeParse({ step: "preflight", pem: samplePem }).success).toBe(
+      true,
+    );
+    expect(
+      ConfirmMoveStepSchema.safeParse({
+        step: "export_encrypted",
+        fileName: "ten-ls.nxte",
+        rows: 81,
+      }).success,
+    ).toBe(true);
+    expect(ConfirmMoveStepSchema.safeParse({ step: "transfer" }).success).toBe(true);
+    expect(
+      ConfirmMoveStepSchema.safeParse({
+        step: "import",
+        rows: 81,
+        chainOk: true,
+        checkpointOk: true,
+      }).success,
+    ).toBe(true);
+    expect(ConfirmMoveStepSchema.safeParse({ step: "cutover" }).success).toBe(true);
+    expect(ConfirmMoveStepSchema.safeParse({ step: "shred_source" }).success).toBe(true);
+  });
+
+  it("rejects bad directions, path traversal file names, zero rows and extra fields", () => {
+    rejects(PortabilityRequestSchema, [
+      { ...req, accountId: "" },
+      { ...req, direction: "invalid" },
+      { ...req, toRegion: "mars" },
+      { ...req, extra: 1 },
+    ]);
+    rejects(ConfirmMoveStepSchema, [
+      { step: "unknown" },
+      { step: "preflight", pem: "too-short" },
+      { step: "export_encrypted", fileName: "../secret.nxte", rows: 10 },
+      { step: "export_encrypted", fileName: "dir/file.nxte", rows: 10 },
+      { step: "export_encrypted", fileName: "..", rows: 10 },
+      { step: "import", rows: 0 },
+      { step: "transfer", extra: true },
     ]);
   });
 });

@@ -262,10 +262,21 @@ Menu **Moves** (super admin, implementation; site reliability reads).
   move**), region(s) and start date.
 - Seven steps: **Pre-flight check**, **Encrypted export**, **Transfer**, **Import**, **Verify**, **Switch over**,
   **Destroy source keys** — each **Waiting**, **Running**, **Done** or **Failed**.
-- The export is always encrypted with the tenant's own keys; we run the steps but never read it. In real mode, cell
-  steps run as signed commands (`tenant.import_key`, `tenant.freeze`, `tenant.export`, `tenant.import`), staff confirm
-  file placement, self-hosted steps and cutover, and **Destroy source keys** finishes once the source cell's four-eyes
-  key-destruction certificate is issued.
+- The export is always encrypted with the tenant's own keys; we run the steps but never read it.
+- **Start move** (implementation, super admin): pick the **Direction**, **Account**, **Tenant** and **Destination
+  region**, then press **Start move** (the dialog reminds you that the institution is frozen while the move runs).
+- **Confirm…**: when a move reaches a manual staff step for its direction, press **Confirm…** to enter only what that
+  step needs:
+  - **Pre-flight check** (moving to self-hosted): paste **Destination public key (PEM)**.
+  - **Encrypted export** (moving from self-hosted): enter **Export file name** and **Row count**.
+  - **Transfer**: tick **The file is in the destination's import folder**.
+  - **Import** (moving to self-hosted): enter **Row count** and tick **Activity log hash chain verified** and **Signed
+    checkpoint verified**.
+  - **Switch over**: tick **I understand switching over cannot be undone**.
+  - **Destroy source keys** (moving from self-hosted): tick **Source copy deleted**. When the source is one of our SaaS
+    cells, the card notes **Two staff members approve the source's key destruction on the Provisioning page.** and
+    finishes once that signed **Key-destruction certificate** is issued.
+- **Retry**: a failed move shows **Retry** to re-queue or reset from the failed step.
 
 ## Roles
 
@@ -285,10 +296,10 @@ Menu **Moves** (super admin, implementation; site reliability reads).
 
 - Every P01–P18 screen runs on the real Control backend in real mode (`dev:control:real`); demo mode (`dev:control`) remains available for training and offline walkthroughs.
 - Billing runs on Lago, our open-source billing engine inside our own systems; customers never see it. Hosted payment links are live for Indian INR invoices via **Razorpay** (NEX-107); European (EUR) invoices are paid by bank transfer, recorded by hand; a card payment page for Europe (Stripe) comes in a later stage.
-- Provisioning, offboarding and moves start from their pages, and the pages follow each job's steps. The later staff
-  actions — **retry** a failed job, confirm the institution received its export, the two approvals before keys are
-  destroyed, and confirming a move's manual steps — are Control API calls for now (`docs/guides/API.md`): the screens
-  were frozen before these actions existed (D56). **Run next step** works in demo mode only.
+- **Moves** (P18) runs from the **Moves** page: staff start a move, confirm each manual step (**Confirm…**) and
+  **Retry** a failed move (copying the encrypted `.nxte` file between deployments remains a step a staff member
+  confirms, D61). Provisioning and offboarding actions on the **Provisioning** page are added in NEX-141 (**Run next
+  step** works in demo mode only).
 - **Staff & security** (P13) is read-only in the app; provider staff accounts and mandatory MFA are managed in the `nexus-staff` sign-in realm.
 
 ## Operations: installing Nexus Control (NEX-108, NEX-110)
