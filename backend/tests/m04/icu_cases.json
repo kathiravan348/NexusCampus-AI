@@ -1748,6 +1748,10 @@
     "valid": true
   },
   {
+    "text": "It is being moved or is leaving NexusCampus. You can still sign in and read everything, but changes are not saved.",
+    "valid": true
+  },
+  {
     "text": "Item",
     "valid": true
   },
@@ -3464,6 +3468,10 @@
     "valid": true
   },
   {
+    "text": "This institution is frozen",
+    "valid": true
+  },
+  {
     "text": "This is the device you are using now. You will be signed out and its data removed.",
     "valid": true
   },
@@ -4981,6 +4989,10 @@
   },
   {
     "text": "इसे संस्था की योजना में जोड़ने के बारे में अपने व्यवस्थापक से पूछें।",
+    "valid": true
+  },
+  {
+    "text": "इसे स्थानांतरित किया जा रहा है या यह NexusCampus छोड़ रहा है। आप अभी भी साइन इन कर सकते हैं और सब कुछ पढ़ सकते हैं, लेकिन बदलाव सहेजे नहीं जाते।",
     "valid": true
   },
   {
@@ -6648,6 +6660,10 @@
     "valid": true
   },
   {
+    "text": "यह संस्थान फ़्रीज़ किया गया है",
+    "valid": true
+  },
+  {
     "text": "यहाँ केवल बदलाव का प्रकार दिखता है, उसकी सामग्री कभी नहीं।",
     "valid": true
   },
@@ -7864,6 +7880,10 @@
     "valid": true
   },
   {
+    "text": "இது இடமாற்றம் செய்யப்படுகிறது அல்லது NexusCampus-ஐ விட்டு வெளியேறுகிறது. நீங்கள் தொடர்ந்து உள்நுழைந்து அனைத்தையும் படிக்கலாம், ஆனால் மாற்றங்கள் சேமிக்கப்படாது.",
+    "valid": true
+  },
+  {
     "text": "இது உங்கள் கணக்கு. இதன் நிலையை வேறொரு நிர்வாகிதான் மாற்ற வேண்டும்.",
     "valid": true
   },
@@ -7889,6 +7909,10 @@
   },
   {
     "text": "இந்த நிறுவனத்திற்குக் கல்வி நாட்காட்டி எதுவும் கிடைக்கவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனம் முடக்கப்பட்டுள்ளது",
     "valid": true
   },
   {

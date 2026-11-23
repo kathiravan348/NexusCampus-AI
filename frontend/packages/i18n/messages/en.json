@@ -135,6 +135,14 @@
     "message": "Demo data. Nothing on this screen is real.",
     "description": "Banner notice shown on screens displaying mock prototype data."
   },
+  "common.tenantFrozen.title": {
+    "message": "This institution is frozen",
+    "description": "Warning banner title shown across the app when the institution is frozen for offboarding or a move."
+  },
+  "common.tenantFrozen.body": {
+    "message": "It is being moved or is leaving NexusCampus. You can still sign in and read everything, but changes are not saved.",
+    "description": "Warning banner body explaining that a frozen institution allows reading data but refuses saving changes."
+  },
   "common.syncSynced": {
     "message": "Synced",
     "description": "Sync status: all local changes are synced with the server."

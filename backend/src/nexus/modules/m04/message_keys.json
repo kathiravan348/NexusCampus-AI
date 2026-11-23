@@ -80,6 +80,8 @@
   "common.syncPendingGeneric",
   "common.syncSynced",
   "common.syncSyncing",
+  "common.tenantFrozen.body",
+  "common.tenantFrozen.title",
   "common.unlimited",
   "m01.calendar.academicYear",
   "m01.calendar.addHoliday",

@@ -37,6 +37,8 @@ export interface ApiClientOptions {
   readonly fetch?: typeof fetch;
   /** Real mode: the session cookie is gone or expired (`401`) — the app shows sign-in again. */
   readonly onUnauthorized?: () => void;
+  /** Real and mock mode: a change was refused with `423 tenant_frozen` (D61, NEX-140). */
+  readonly onTenantFrozen?: () => void;
   /** Real mode: this browser's registered device id, sent as `X-Device-Id` (own-device revoke check). */
   readonly deviceId?: () => string | null;
   /** Mock mode only: extra demo headers, e.g. Nexus Control's `X-Nexus-Staff` (NEX-071). */
@@ -174,6 +176,9 @@ export class ApiClient {
     if (!response.ok) {
       if (response.status === 401 && this.options.mode === "real") this.options.onUnauthorized?.();
       const parsed = ApiErrorSchema.safeParse(json);
+      if (response.status === 423 && parsed.success && parsed.data.error.code === "tenant_frozen") {
+        this.options.onTenantFrozen?.();
+      }
       throw new ApiRequestError(
         response.status,
         parsed.success

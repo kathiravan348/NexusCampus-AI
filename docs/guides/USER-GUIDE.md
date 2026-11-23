@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-22 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates for your own server, support access requests from Nexus, leaving or moving an institution)
+> State as of: 2026-11-23 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates for your own server, support access requests from Nexus, leaving or moving an institution)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -124,7 +124,8 @@ Available to the institution's owners and administrators from **Data vault & acc
 Done by Nexus staff with your institution's owner, never by one person alone.
 
 - **Frozen:** first your institution is frozen. Everyone can still sign in and read everything, but nothing can be
-  changed. A change you try to save is refused; for now the app shows its general error message.
+  changed. A change you try to save is refused and a banner at the top of the screen shows **This institution is frozen**
+  — **It is being moved or is leaving NexusCampus. You can still sign in and read everything, but changes are not saved.**
 - **Your export:** a complete copy of your data is made on your institution's server, locked with a key only you (or
   your new server) hold. It never passes through Nexus.
 - **Leaving:** after you confirm you received the file, two different Nexus staff members must approve before your

@@ -24,6 +24,7 @@ const STATUS: Readonly<Record<ApiErrorCode, number>> = {
   module_disabled: 403,
   not_found: 404,
   conflict: 409,
+  tenant_frozen: 423,
   rate_limited: 429,
   internal: 500,
 };
@@ -35,6 +36,7 @@ const MESSAGE: Readonly<Record<ApiErrorCode, string>> = {
   module_disabled: "This module is not part of the institution's plan.",
   not_found: "Not found.",
   conflict: "The record changed in the meantime.",
+  tenant_frozen: "This institution is frozen. Changes are not saved.",
   rate_limited: "Too many requests. Try again shortly.",
   internal: "Something went wrong.",
 };

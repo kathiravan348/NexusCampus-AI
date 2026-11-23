@@ -3,7 +3,8 @@ import { IdSchema } from "./common";
 
 /**
  * Error codes every endpoint may return. `module_disabled`: the institution's plan does not include
- * the module (ARCHITECTURE §6); `conflict`: a version or uniqueness clash; `rate_limited`: per-tenant limit.
+ * the module (ARCHITECTURE §6); `conflict`: a version or uniqueness clash; `tenant_frozen` (423): the
+ * institution is frozen for offboarding or a move (reads still work, D61); `rate_limited`: per-tenant limit.
  */
 export const ApiErrorCodeSchema = z.enum([
   "invalid_request",
@@ -11,6 +12,7 @@ export const ApiErrorCodeSchema = z.enum([
   "forbidden",
   "not_found",
   "conflict",
+  "tenant_frozen",
   "module_disabled",
   "rate_limited",
   "internal",
