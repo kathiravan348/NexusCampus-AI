@@ -27,7 +27,9 @@ ID = 64
 MAX_BATCH = 20
 MAX_RESULT_BODY_BYTES = MAX_RESULT_BYTES + 512
 MIN_POLL_INTERVAL_SECONDS = 30.0
-ALLOWED_KINDS: frozenset[str] = frozenset({"ping", "access_request.file", "tenant.provision"})
+ALLOWED_KINDS: frozenset[str] = frozenset(
+    {"ping", "access_request.file", "tenant.provision", "tenant.freeze", "tenant.export", "tenant.destroy_keys"}
+)
 
 log = logging.getLogger("nexus.control.commands")
 
@@ -279,6 +281,18 @@ async def report_command_result(
             from nexus.control.provisioning import apply_provisioning_result
 
             await apply_provisioning_result(conn, command_id, body.status, body.result)
+        elif row.kind in ("tenant.freeze", "tenant.export", "tenant.destroy_keys"):
+            from nexus.control.offboarding import apply_offboarding_result
+
+            await apply_offboarding_result(
+                conn,
+                request.app.state.vault,
+                request.app.state.settings,
+                command_id,
+                row.kind,
+                body.status,
+                body.result,
+            )
 
     log.info(
         "agent command result command=%s deployment=%s kind=%s status=%s outcome=ok",

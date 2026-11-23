@@ -214,6 +214,14 @@ Nexus Control (our cloud)                         Product deployments
   signed `tenant.freeze` (idempotent, audits `m01.tenant.frozen`), `tenant.export` (frozen only, RSA ≥ 3072 PEM,
   writes local `NXTE/1` file without uploading to Control), and `tenant.destroy_keys` (frozen + matching latest on-disk
   export `pemSha256` + two distinct `approvedBy` staff ids → `destroy_tenant_keys`).
+- **Offboarding, Control side (P04, D61, NEX-134):** `POST /offboarding-jobs` (`{accountId, tenantId, recipientPem}`,
+  RSA ≥ 3072) queues `tenant.freeze`; its result queues `tenant.export` (clearing the stored PEM while keeping its
+  SHA-256 fingerprint). `POST /offboarding-jobs/{id}/confirm-download` marks `export_downloaded`;
+  `POST /offboarding-jobs/{id}/approve-destroy` records two distinct staff approvers (`offb_two_distinct_approvers`
+  CHECK) and queues `tenant.destroy_keys` with both ids and the fingerprint. On completion Control signs canonical
+  `{id, tenantId, keyIds, destroyedAt}` with OpenBao Transit `nexus-shred` (Ed25519, never exported), stores the
+  `shred_certificates` row, and marks the job `done`. `GET /shred-certificate-keys` (public) publishes the public keys
+  for offline verification.
 - **Pull-only signed deployment commands (D60, NEX-128):** Control never connects to a deployment. `deployment_commands`
   holds canonical `nexus-command/1` payloads signed in OpenBao Transit (`nexus-command`, Ed25519, never exported,
   `args` ≤ 2 KB, lifetime ≤ 24 h). `control_app` has `SELECT` and column-scoped `UPDATE (status, delivered_at,

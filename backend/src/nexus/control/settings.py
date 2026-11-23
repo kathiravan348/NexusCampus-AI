@@ -52,6 +52,8 @@ class ControlSettings(BaseSettings):
     licence_signing_key: str = "nexus-licence"
     #: Transit key that signs Control -> deployment commands (`nexus-command/1`, Ed25519, never exported; D60, NEX-128).
     command_signing_key: str = "nexus-command"
+    #: Transit key that signs offboarding shred certificates (Ed25519, never exported; D61, NEX-134).
+    shred_signing_key: str = "nexus-shred"
 
     @property
     def secure_cookies(self) -> bool:

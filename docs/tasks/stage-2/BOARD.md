@@ -78,7 +78,7 @@
 | NEX-131 | M84 agent: P10 access requests arrive in M83, decisions go back to Control | D | ready-for-review | Gemini | 125 |
 | NEX-132 | Control: P04 provisioning for real — a job queues `tenant.provision` and follows it; retry | D | ready-for-review | Gemini | 127, 125 |
 | NEX-133 | P04 offboarding, cell side (D61): freeze, export for the institution's key, destroy keys | D | ready-for-review | Gemini | 127 |
-| NEX-134 | Control: P04 offboarding for real (D61) — four-eyes key destruction, signed shred certificate | D | planned | — | 133, 132 |
+| NEX-134 | Control: P04 offboarding for real (D61) — four-eyes key destruction, signed shred certificate | D | ready-for-review | Gemini | 133, 132 |
 | NEX-135 | P18 moves, cell side (D61): import key and tenant import on signed commands | D | planned | — | 133 |
 | NEX-136 | Control: P18 moves for real (D61) — a portability job walks the seven steps | D | planned | — | 135, 134 |
 | NEX-137 | Stage 2 release checks: Control real-mode a11y and languages, budgets, install tests, checklist | — | planned | — | 110 |
