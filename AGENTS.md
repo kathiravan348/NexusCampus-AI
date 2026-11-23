@@ -26,9 +26,8 @@ Three roles: **planner** (plans, architecture, task files), **implementer** (bui
 | Owner (human) | Approves stage scope, freezes, decisions | — | — |
 
 - The Owner may assign any role to any agent ("Plan", "Review", "Build NEX-###").
-- **The builder never reviews its own task.** The Owner can assign any other agent to review. Codex has the same
-  authority as Claude to fix, approve and merge an assigned task. Claude remains the default reviewer for tasks
-  built by Gemini or Codex. For Claude-built tasks, the Owner names Gemini or Codex (D68).
+- **The builder never reviews its own task.** Gemini- or Codex-built → Claude reviews; Claude-built → Gemini or Codex
+  reviews (the one the Owner names). Claude is the default approver (D67).
 - **One planner at a time.** The planner checks the board index (`docs/tasks/BOARD.md`) first: if `Planning lock` names
   another agent, it does not plan. Otherwise it sets `Planning lock: <agent>` before editing plan docs or task scope,
   and clears it when done.

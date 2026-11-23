@@ -14,14 +14,12 @@ Board name: `Codex`. **Default role: implementer** (D67). The Owner may also say
 5. Run `fnm exec --using=24 -- pnpm --dir frontend review:check` (backend tasks: also
    `uv run --project backend backend-check`). Fix until green. Run the live check the task names, if any.
 6. Commit all work in **1 commit** (`NEX-###: …`) including handoff and `ready-for-review` status (amend/squash if
-   needed; max 3 commits per task total, D32). Do not merge, do not push. Stop for the reviewer named by the Owner
-   or for Claude if no reviewer was named (D68).
+   needed; max 3 commits per task total, D32). Do not merge, do not push. Stop. Claude reviews it.
 If anything is unclear or conflicts with `AGENTS.md`: write it under `Questions`, leave `in-progress`, stop.
 If a task needs a new download (package, image, tool) or network access beyond the dev stack: stop and ask under
 `Questions` (the Owner approves downloads).
 
 **Planner / reviewer** (only when the Owner says so): follow the planner/reviewer steps in `CLAUDE.md` with owner
-`Codex`. On an assigned review, Codex can request changes, fix issues, approve and merge after all checks pass (D68).
-Never review a task you built; take the planning lock before planning and check it is free first.
+`Codex`. Never review a task you built; take the planning lock before planning and check it is free first.
 
 Codex's own files (session logs, `.codex/` settings) stay out of the repo: never commit them or link to local paths.

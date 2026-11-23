@@ -5,8 +5,7 @@ Board name: `Claude`. **Default role: planner and reviewer** (D57). The Owner ma
 
 **Reviewer** — first, each session:
 1. Read `AGENTS.md`, `docs/tasks/BOARD.md` (index) and the current stage board it points to.
-2. For each `ready-for-review` task you did **not** build, review it if assigned to you or if no reviewer is assigned
-   (D68). Set `in-review` (owner Claude); review
+2. For each `ready-for-review` task you did **not** build (Gemini's or Codex's): set `in-review` (owner Claude); review
    `git diff main...task/NEX-###` against the task file and `AGENTS.md` (security and privacy first: V-1…V-7,
    deny-by-default permissions, no personal data in logs or telemetry; then text keys, tokens, offline level, tests,
    guides). Run the checks yourself: `fnm exec --using=24 -- pnpm --dir frontend review:check` and, for backend work,

@@ -15,8 +15,7 @@ Board name: `Gemini`. **Default role: implementer** (D57). The Owner may also sa
 5. Run `fnm exec --using=24 -- pnpm --dir frontend review:check` (backend tasks: also
    `uv run --project backend backend-check`). Fix until green. Run the live check the task names, if any.
 6. Commit all work in **1 commit** (`NEX-###: …`) including handoff and `ready-for-review` status (amend/squash if
-   needed; max 3 commits per task total, D32). Do not merge, do not push. Stop for the reviewer named by the Owner
-   or for Claude if no reviewer was named (D68).
+   needed; max 3 commits per task total, D32). Do not merge, do not push. Stop. Claude reviews it.
 If anything is unclear or conflicts with `AGENTS.md`: write it under `Questions`, leave `in-progress`, stop.
 If a task needs a new download (package, image, tool): stop and ask under `Questions` (the Owner approves downloads).
 
