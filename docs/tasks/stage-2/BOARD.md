@@ -88,4 +88,4 @@
 | NEX-141 | Control P04 buttons: retry, start offboarding, export received, two key-destruction approvals (D65) | C | done | Gemini | 134, 139 |
 | NEX-142 | Control P18 buttons: start a move, confirm its staff steps, retry (D65) | C | done | Gemini | 136, 139 |
 | NEX-143 | Control: one open offboarding or move per tenant (D66; refuse a second start or retry with 409) | D | done | Gemini | 141, 142 |
-| NEX-144 | Install & updates: Review, Approve and Discard a support diagnostic bundle (D69, Owner OK) | C | ready-for-review | Claude | 112, 105 |
+| NEX-144 | Install & updates: Review, Approve and Discard a support diagnostic bundle (D69, Owner OK) | C | done | Codex | 112, 105 |

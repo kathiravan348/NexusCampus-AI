@@ -8,8 +8,9 @@ import {
   pageSchema,
   type DiagnosticBundle,
 } from "@nexus/contracts";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { onlineManager, useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
+import { ApiRequestError } from "../client";
 import { queryKeys } from "../keys";
 import { NO_PERSIST, useServices } from "../query";
 
@@ -61,6 +62,7 @@ export function useDiagnosticContent(id: string | null) {
       ),
     enabled: scope !== null && id !== null,
     meta: NO_PERSIST,
+    gcTime: 0,
     staleTime: 0,
   });
 }
@@ -69,16 +71,26 @@ export function useDiagnosticContent(id: string | null) {
 function useDecideBundle(decision: "approve" | "discard") {
   const { client, scope } = useServices();
   const qc = useQueryClient();
+  const refresh = async () => {
+    if (scope) await qc.invalidateQueries({ queryKey: queryKeys.m84.diagnostics(scope) });
+  };
   return useMutation<DiagnosticBundle, Error, string>({
-    mutationFn: (id) =>
-      client.send(
+    networkMode: "always",
+    retry: false,
+    mutationFn: async (id) => {
+      if (!onlineManager.isOnline() || globalThis.navigator?.onLine === false) {
+        throw new ApiRequestError(0, { code: "internal", message: "Network unreachable" }, true);
+      }
+      return client.send(
         "POST",
         `/install/diagnostics/${encodeURIComponent(id)}/${decision}`,
         {},
         DiagnosticBundleSchema,
-      ),
-    onSuccess: async () => {
-      if (scope) await qc.invalidateQueries({ queryKey: queryKeys.m84.diagnostics(scope) });
+      );
+    },
+    onSuccess: refresh,
+    onError: (error) => {
+      if (error instanceof ApiRequestError && error.status === 409) void refresh();
     },
   });
 }

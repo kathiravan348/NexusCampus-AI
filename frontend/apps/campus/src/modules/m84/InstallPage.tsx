@@ -8,17 +8,34 @@ import {
   type MessageKey,
 } from "@nexus/i18n";
 import {
+  ApiRequestError,
+  useApproveBundle,
   useBackups,
   useDiagnosticBundles,
+  useDiagnosticContent,
+  useDiscardBundle,
   useInstallStatus,
   useUpdateOffer,
 } from "@nexus/services";
-import { Badge, type BadgeProps, Button, Card, EmptyState, Meter, Skeleton } from "@nexus/ui-core";
+import {
+  Badge,
+  type BadgeProps,
+  Button,
+  Card,
+  EmptyState,
+  Meter,
+  Skeleton,
+  useToast,
+} from "@nexus/ui-core";
 import { ShieldCheck } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useOnline } from "../../app/RouteGuard";
 import { useRuntime } from "../../app/TenantRuntime";
-import { BundleReviewModal } from "./BundleReviewModal";
+import {
+  BundleReviewModal,
+  type BundleDecision,
+  type BundleDecisionError,
+} from "./BundleReviewModal";
 
 type Tone = NonNullable<BadgeProps["tone"]>;
 
@@ -50,6 +67,7 @@ const MB = 1024 * 1024;
 /** Install agent (M84, L0): licence, updates, backups and diagnostics of an install on the institution's servers. */
 export function InstallPage() {
   const t = useText();
+  const toast = useToast();
   const { locale, timeZone } = useRuntime();
   const fmtLocale = isPseudoLocale(locale) ? SOURCE_LOCALE : locale;
   const date = (value: string) => formatDate(value, { locale: fmtLocale, timeZone });
@@ -65,7 +83,38 @@ export function InstallPage() {
   const backups = useBackups();
   const bundles = useDiagnosticBundles();
   const online = useOnline();
-  const [reviewing, setReviewing] = useState<DiagnosticBundle | null>(null);
+  const [reviewing, setReviewing] = useState<string | null>(null);
+  const reviewButton = useRef<HTMLButtonElement | null>(null);
+  const diagnosticsCard = useRef<HTMLDivElement>(null);
+  const content = useDiagnosticContent(reviewing);
+  const approve = useApproveBundle();
+  const discard = useDiscardBundle();
+
+  const closeReview = () => {
+    setReviewing(null);
+    requestAnimationFrame(() => {
+      const target = reviewButton.current?.isConnected
+        ? reviewButton.current
+        : diagnosticsCard.current;
+      target?.focus();
+    });
+  };
+
+  const decide = async (decision: BundleDecision): Promise<BundleDecisionError | null> => {
+    if (!reviewing) return "other";
+    try {
+      await (decision === "approve" ? approve : discard).mutateAsync(reviewing);
+      toast.show({
+        tone: "success",
+        title: t(decision === "approve" ? "m84.bundle.approvedDone" : "m84.bundle.discardedDone"),
+      });
+      return null;
+    } catch (error) {
+      if (error instanceof ApiRequestError && error.status === 409) return "conflict";
+      if (error instanceof ApiRequestError && error.offline) return "offline";
+      return "other";
+    }
+  };
 
   if (status.isPending) return <Skeleton className="h-64" />;
   if (status.isError) return <EmptyState tone="error" />;
@@ -172,7 +221,7 @@ export function InstallPage() {
         )}
       </Card>
 
-      <Card headingAs="h2" title={t("m84.privacy.title")}>
+      <Card ref={diagnosticsCard} tabIndex={-1} headingAs="h2" title={t("m84.privacy.title")}>
         <div className="space-y-3 text-body-sm">
           <p className="flex items-start gap-2">
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-success" aria-hidden="true" />
@@ -205,7 +254,10 @@ export function InstallPage() {
                         size="sm"
                         variant="secondary"
                         aria-label={t("m84.bundle.reviewLabel", { id: b.id })}
-                        onClick={() => setReviewing(b)}
+                        onClick={(event) => {
+                          reviewButton.current = event.currentTarget;
+                          setReviewing(b.id);
+                        }}
                       >
                         {t("m84.bundle.review")}
                       </Button>
@@ -218,7 +270,22 @@ export function InstallPage() {
           )}
         </div>
       </Card>
-      <BundleReviewModal bundle={reviewing} onClose={() => setReviewing(null)} />
+      {reviewing && (
+        <BundleReviewModal
+          content={content.data?.content}
+          loadError={
+            content.isError
+              ? content.error instanceof ApiRequestError && content.error.offline
+                ? "offline"
+                : "other"
+              : null
+          }
+          pendingDecision={approve.isPending ? "approve" : discard.isPending ? "discard" : null}
+          onRetry={() => void content.refetch()}
+          onDecide={decide}
+          onClose={closeReview}
+        />
+      )}
     </div>
   );
 }

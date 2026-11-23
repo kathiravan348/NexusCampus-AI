@@ -145,14 +145,16 @@ describe("DiagnosticContent", () => {
       DiagnosticContentSchema.safeParse({ id: "dgn-1", content: '{"format":"x"}' }).success,
     ).toBe(true);
     expect(DiagnosticContentSchema.safeParse({ id: "dgn-1", content: "" }).success).toBe(true);
+    expect(DiagnosticContentSchema.safeParse({ id: "", content: "" }).success).toBe(true);
   });
 
-  it("rejects a missing or non-text content, an empty id and extra fields", () => {
+  it("rejects missing or non-string fields and extra fields", () => {
     rejects(DiagnosticContentSchema, [
       { id: "dgn-1" },
+      { content: "x" },
       { id: "dgn-1", content: null },
       { id: "dgn-1", content: 42 },
-      { id: "", content: "x" },
+      { id: 42, content: "x" },
       { id: "dgn-1", content: "x", file: "/var/x" },
     ]);
   });

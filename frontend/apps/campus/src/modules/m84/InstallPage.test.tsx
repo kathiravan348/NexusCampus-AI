@@ -1,8 +1,8 @@
 import { TENANT } from "@nexus/mocks";
 import { server } from "@nexus/mocks/node";
-import { fireEvent, screen, within } from "@testing-library/react";
+import { fireEvent, screen, waitFor, within } from "@testing-library/react";
 import { HttpResponse, http } from "msw";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { MODULES } from "../../app/modules";
 import { persona, renderApp } from "../../test/renderApp";
 
@@ -59,13 +59,19 @@ describe("InstallPage (M84)", () => {
   });
 
   it("keeps the dialog open with a clear message when someone reviewed the bundle first (409)", async () => {
+    let conflicted = false;
+    const refreshed = vi.fn();
     server.use(
-      http.post("*/api/v1/install/diagnostics/:id/approve", () =>
-        HttpResponse.json(
+      http.get("*/api/v1/install/diagnostics", () => {
+        if (conflicted) refreshed();
+      }),
+      http.post("*/api/v1/install/diagnostics/:id/approve", () => {
+        conflicted = true;
+        return HttpResponse.json(
           { error: { code: "conflict", message: "Already reviewed." } },
           { status: 409 },
-        ),
-      ),
+        );
+      }),
     );
     const dialog = await openReview();
     fireEvent.click(within(dialog).getByRole("button", { name: "Approve sending" }));
@@ -73,5 +79,23 @@ describe("InstallPage (M84)", () => {
       "Someone has already reviewed this bundle. Close this and check the list.",
     );
     expect(screen.getByRole("dialog", { name: "Review support diagnostics" })).toBeInTheDocument();
+    expect(within(dialog).getByRole("button", { name: "Approve sending" })).toBeDisabled();
+    await waitFor(() => expect(refreshed).toHaveBeenCalled());
+  });
+
+  it("refuses a decision when the connection drops before the write", async () => {
+    const send = vi.fn();
+    server.use(http.post("*/api/v1/install/diagnostics/:id/approve", () => send()));
+    const dialog = await openReview();
+    const connection = vi.spyOn(navigator, "onLine", "get").mockReturnValue(false);
+    try {
+      fireEvent.click(within(dialog).getByRole("button", { name: "Approve sending" }));
+      expect(await within(dialog).findByRole("alert")).toHaveTextContent(
+        "Reviewing a bundle needs a connection to your install.",
+      );
+      expect(send).not.toHaveBeenCalled();
+    } finally {
+      connection.mockRestore();
+    }
   });
 });

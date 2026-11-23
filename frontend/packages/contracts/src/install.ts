@@ -128,7 +128,7 @@ export type DiagnosticBundle = z.infer<typeof DiagnosticBundleSchema>;
  * (V-6, NEX-144). `GET /api/v1/install/diagnostics/:id/content`.
  */
 export const DiagnosticContentSchema = z.strictObject({
-  id: IdSchema,
+  id: z.string(),
   content: z.string(),
 });
 export type DiagnosticContent = z.infer<typeof DiagnosticContentSchema>;
