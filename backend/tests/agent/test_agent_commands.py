@@ -204,3 +204,17 @@ def test_skip_conditions_and_transport_guards(tmp_path: Path) -> None:
         assert calls == 1
     finally:
         eng.dispose()
+
+
+def test_oversized_command_list_is_refused_without_running_anything(tmp_path: Path) -> None:
+    def huge(req: httpx2.Request) -> httpx2.Response:
+        return httpx2.Response(200, content=b'{"items": [' + b" " * 70_000 + b"]}")
+
+    (tmp_path / COMMAND_KEYS).write_text(json.dumps({"nexus-command:v1": "A" * 44}), encoding="utf-8")
+    eng = _sqlite_engine()
+    try:
+        res = poll_commands(eng, _settings(tmp_path), transport=httpx2.MockTransport(huge))
+        assert res.message == "refused: command list exceeds 64 KB"
+        assert res.fetched == 0
+    finally:
+        eng.dispose()

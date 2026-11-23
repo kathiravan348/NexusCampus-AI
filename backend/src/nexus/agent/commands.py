@@ -76,6 +76,19 @@ def _extract_safe_id(raw: Any) -> str | None:
     return None
 
 
+def _read_capped(response: httpx2.Response, limit: int) -> bytes | None:
+    """Reads a streamed body up to `limit` bytes; None (and the stream closed) when Control sends more."""
+    buf = bytearray()
+    try:
+        for chunk in response.iter_bytes():
+            buf.extend(chunk)
+            if len(buf) > limit:
+                return None
+    finally:
+        response.close()
+    return bytes(buf)
+
+
 def _post_result(
     client: httpx2.Client,
     base_url: str,
@@ -156,7 +169,8 @@ def poll_commands(
     try:
         with client:
             try:
-                response = client.get(endpoint, headers={"Authorization": f"Bearer {token}"})
+                request = client.build_request("GET", endpoint, headers={"Authorization": f"Bearer {token}"})
+                response = client.send(request, stream=True)
             except httpx2.TimeoutException:
                 return CommandsRunResult(0, 0, 0, 0, 0, "failed: control timed out")
             except httpx2.ConnectError:
@@ -176,8 +190,8 @@ def poll_commands(
             if status_code != 200:
                 return CommandsRunResult(0, 0, 0, 0, 0, f"failed: control answered HTTP {status_code}")
 
-            raw_body = response.content
-            if len(raw_body) > MAX_RESPONSE_BYTES:
+            raw_body = _read_capped(response, MAX_RESPONSE_BYTES)
+            if raw_body is None:
                 return CommandsRunResult(0, 0, 0, 0, 0, "refused: command list exceeds 64 KB")
             try:
                 payload = json.loads(raw_body.decode("utf-8"))

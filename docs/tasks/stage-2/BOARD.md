@@ -73,7 +73,7 @@
 | NEX-126 | Control on real data: P14 trust (sub-processors, certifications, security incidents, DPAs) | D | done | Gemini | 124 |
 | NEX-127 | P04 provisioning for real, cell side: the agent creates a new institution from a signed command | D | planned | — | 131 |
 | NEX-128 | Control → deployment commands, Control side (D60): signed pull-only commands, `ping` only | D | ready-for-review | Gemini | 121 |
-| NEX-129 | Control → deployment commands, agent side (D60): fetch, verify, run once, report; `ping` only | D | ready-for-review | Gemini | 128 |
+| NEX-129 | Control → deployment commands, agent side (D60): fetch, verify, run once, report; `ping` only | D | done | Gemini | 128 |
 | NEX-130 | Control: P07 release publishing (signed manifest required) and rollout start on real data | D | planned | — | 128 |
 | NEX-131 | M84 agent: P10 access requests arrive in M83, decisions go back to Control | D | planned | — | 125 |
 | NEX-132 | Control: P04 provisioning for real — a job queues `tenant.provision` and follows it; retry | D | planned | — | 127, 125 |
