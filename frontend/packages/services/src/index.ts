@@ -43,6 +43,7 @@ export {
   useLastSynced,
   useScopedQuery,
   useServices,
+  useTenantFrozen,
   type NexusQueryProviderProps,
   type OfflinePersister,
   type ServicesContextValue,

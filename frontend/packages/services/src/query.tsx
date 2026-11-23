@@ -26,6 +26,7 @@ import {
   useContext,
   useMemo,
   useEffect,
+  useState,
   useSyncExternalStore,
   type ReactNode,
 } from "react";
@@ -119,6 +120,7 @@ export interface ServicesContextValue {
   readonly client: ApiClient;
   readonly scope: KeyScope | null;
   readonly db: NexusOfflineDB;
+  readonly tenantFrozen: boolean;
 }
 
 const ServicesContext = createContext<ServicesContextValue | null>(null);
@@ -127,6 +129,11 @@ export function useServices(): ServicesContextValue {
   const value = useContext(ServicesContext);
   if (!value) throw new Error("useServices must be used inside <NexusQueryProvider>");
   return value;
+}
+
+/** True after a write in the current session was refused with `423 tenant_frozen` (resets on sign-out / user switch). */
+export function useTenantFrozen(): boolean {
+  return useServices().tenantFrozen;
 }
 
 export interface NexusQueryProviderProps {
@@ -154,6 +161,12 @@ export function NexusQueryProvider({
     () => (tenantId !== null && userId !== null ? { tenantId, userId } : null),
     [tenantId, userId],
   );
+  const scopeKey = scope ? `${scope.tenantId}:${scope.userId}` : null;
+  const [frozenScopeKey, setFrozenScopeKey] = useState<string | null>(null);
+  useEffect(() => {
+    setFrozenScopeKey(null);
+  }, [scopeKey]);
+  const tenantFrozen = scopeKey !== null && frozenScopeKey === scopeKey;
 
   const queryClient = useMemo(
     () => createClient(),
@@ -161,19 +174,28 @@ export function NexusQueryProvider({
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [scope],
   );
-  const services = useMemo<ServicesContextValue>(
-    () => ({
-      client: new ApiClient({
+  const client = useMemo(
+    () =>
+      new ApiClient({
         mode,
         identity: () => scope,
         scenario: getMockScenario,
         onUnauthorized: expire,
+        onTenantFrozen: () => {
+          if (scopeKey) setFrozenScopeKey(scopeKey);
+        },
         deviceId: serverDeviceId,
       }),
+    [mode, scope, scopeKey, expire],
+  );
+  const services = useMemo<ServicesContextValue>(
+    () => ({
+      client,
       scope,
       db,
+      tenantFrozen,
     }),
-    [mode, scope, db, expire],
+    [client, scope, db, tenantFrozen],
   );
   const persister = useMemo(
     () => (scope ? createOfflinePersister(db, scope, persistThrottleMs) : null),

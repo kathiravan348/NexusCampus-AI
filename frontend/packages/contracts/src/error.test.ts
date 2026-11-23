@@ -24,6 +24,7 @@ describe("ApiError", () => {
       "unauthorized",
       "forbidden",
       "conflict",
+      "tenant_frozen",
       "module_disabled",
       "rate_limited",
       "internal",

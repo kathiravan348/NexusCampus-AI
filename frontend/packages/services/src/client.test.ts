@@ -134,4 +134,35 @@ describe("ApiClient", () => {
     expect(readCsrfToken("a=1; nexus_csrf=x%3Dy")).toBe("x=y");
     document.cookie = "nexus_csrf=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
   });
+
+  it("calls onTenantFrozen only on a 423 tenant_frozen response, not on 403 or 409", async () => {
+    const responses = [
+      { status: 403, body: { error: { code: "forbidden", message: "No access." } } },
+      { status: 409, body: { error: { code: "conflict", message: "Changed." } } },
+      { status: 423, body: { error: { code: "conflict", message: "Wrong code on 423." } } },
+      { status: 423, body: { error: { code: "tenant_frozen", message: "Frozen." } } },
+    ];
+    let idx = 0;
+    const fakeFetch = (async () => {
+      const next = responses[idx++]!;
+      return new Response(JSON.stringify(next.body), { status: next.status });
+    }) as unknown as typeof fetch;
+    const frozen = vi.fn();
+    const client = new ApiClient({
+      mode: "mock",
+      identity,
+      fetch: fakeFetch,
+      onTenantFrozen: frozen,
+    });
+    await expect(client.send("POST", "/probe", {}, Probe)).rejects.toMatchObject({ status: 403 });
+    await expect(client.send("POST", "/probe", {}, Probe)).rejects.toMatchObject({ status: 409 });
+    await expect(client.send("POST", "/probe", {}, Probe)).rejects.toMatchObject({ status: 423 });
+    expect(frozen).not.toHaveBeenCalled();
+
+    await expect(client.send("POST", "/probe", {}, Probe)).rejects.toMatchObject({
+      status: 423,
+      error: { code: "tenant_frozen" },
+    });
+    expect(frozen).toHaveBeenCalledTimes(1);
+  });
 });

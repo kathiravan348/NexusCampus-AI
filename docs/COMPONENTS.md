@@ -25,6 +25,7 @@
 | `Tabs` | `@nexus/ui-core` | Accessible Radix tabs with scrollable tab list and active logical underline | `Components/Tabs` |
 | `ToastProvider` | `@nexus/ui-core` | Radix toast notifications (`info`, `success`, `warning`, `danger`) with `useToast` hook | `Components/Toast` |
 | `EmptyState` | `@nexus/ui-core` | Centered empty or error state with localized fallback headings and optional action | `Components/EmptyState` |
+| `Banner` | `@nexus/ui-core` | Full-width status banner (`role="status"`, tones `info` and `warning`) with title and body text | `Components/Banner` |
 | `DemoBanner` | `@nexus/ui-core` | Prototype mock-data notice banner (`role="note"`) with localized default text | `Components/DemoBanner` |
 | `SyncStatus` | `@nexus/ui-core` | Props-driven offline sync indicator (`synced`, `pending`, `syncing`, `conflict`, `offline`, `error`) | `Components/SyncStatus` |
 | `DataTable` | `@nexus/ui-core` | TanStack Table with sortable columns, D15 offset pagination, mobile 360px cards, loading/empty/error states | `Components/DataTable` |

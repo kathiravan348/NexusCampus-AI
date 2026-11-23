@@ -33,6 +33,8 @@
   "common.notifications": "सूचनाएँ",
   "common.closeNotification": "सूचना बंद करें",
   "common.demoNotice": "डेमो डेटा। इस स्क्रीन पर कुछ भी वास्तविक नहीं है।",
+  "common.tenantFrozen.title": "यह संस्थान फ़्रीज़ किया गया है",
+  "common.tenantFrozen.body": "इसे स्थानांतरित किया जा रहा है या यह NexusCampus छोड़ रहा है। आप अभी भी साइन इन कर सकते हैं और सब कुछ पढ़ सकते हैं, लेकिन बदलाव सहेजे नहीं जाते।",
   "common.syncSynced": "सिंक हो गया",
   "common.syncPendingGeneric": "बदलाव सिंक होने की प्रतीक्षा में",
   "common.syncSyncing": "सिंक हो रहा है…",

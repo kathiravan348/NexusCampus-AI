@@ -49,6 +49,7 @@ export {
   type ToastTone,
 } from "./components/Toast/toastContext";
 export { EmptyState, type EmptyStateProps } from "./components/EmptyState/EmptyState";
+export { Banner, type BannerProps, type BannerTone } from "./components/Banner/Banner";
 export { DemoBanner, type DemoBannerProps } from "./components/DemoBanner/DemoBanner";
 export {
   SyncStatus,

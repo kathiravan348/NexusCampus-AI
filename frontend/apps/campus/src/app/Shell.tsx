@@ -1,6 +1,6 @@
 import { useText } from "@nexus/i18n";
-import { DATA_MODE, useDeviceHeartbeat } from "@nexus/services";
-import { AppShell, DemoBanner, NavItem } from "@nexus/ui-core";
+import { DATA_MODE, useDeviceHeartbeat, useTenantFrozen } from "@nexus/services";
+import { AppShell, Banner, DemoBanner, NavItem } from "@nexus/ui-core";
 import { House } from "lucide-react";
 import { Link, Outlet, useLocation, useOutletContext } from "react-router";
 import { LocaleSwitch } from "./LocaleSwitch";
@@ -32,6 +32,19 @@ export function Shell({ modules }: { readonly modules: readonly ModuleEntry[] })
   const { tenantName } = useRuntime();
   const access = useModuleAccess();
   const visibleModules = modules.filter((m) => access.isVisible(m));
+  const tenantFrozen = useTenantFrozen();
+  const isMock = DATA_MODE === "mock";
+  const banner =
+    isMock || tenantFrozen ? (
+      <>
+        {isMock && <DemoBanner />}
+        {tenantFrozen && (
+          <Banner tone="warning" title={t("common.tenantFrozen.title")}>
+            {t("common.tenantFrozen.body")}
+          </Banner>
+        )}
+      </>
+    ) : undefined;
 
   return (
     <AppShell
@@ -45,7 +58,7 @@ export function Shell({ modules }: { readonly modules: readonly ModuleEntry[] })
           <span className="truncate">{tenantName}</span>
         </span>
       }
-      banner={DATA_MODE === "mock" ? <DemoBanner /> : undefined}
+      banner={banner}
       actions={<ShellHeader />}
       navFooter={<LocaleSwitch />}
       nav={

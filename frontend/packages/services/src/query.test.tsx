@@ -1,12 +1,20 @@
 import { getCached } from "@nexus/offline";
 import { useQueryClient } from "@tanstack/react-query";
 import { act, renderHook, waitFor } from "@testing-library/react";
+import { HttpResponse, http } from "msw";
+import { z } from "zod";
 import { ApiRequestError } from "./client";
 import { queryKeys } from "./keys";
 import { useTenant } from "./modules/m01";
-import { PERSIST_CACHE_KEY, shouldRetry, useLastSynced, useServices } from "./query";
+import {
+  PERSIST_CACHE_KEY,
+  shouldRetry,
+  useLastSynced,
+  useServices,
+  useTenantFrozen,
+} from "./query";
 import { setMockScenario, useSession } from "./session";
-import { ADMIN, TEACHER, freshDb, signInAs, startMockServer, wrapper } from "./test-utils";
+import { ADMIN, TEACHER, freshDb, server, signInAs, startMockServer, wrapper } from "./test-utils";
 
 startMockServer();
 
@@ -120,5 +128,44 @@ describe("NexusQueryProvider", () => {
     const quiet = vi.spyOn(console, "error").mockImplementation(() => undefined);
     expect(() => renderHook(() => useServices())).toThrow(/NexusQueryProvider/);
     quiet.mockRestore();
+  });
+
+  it("sets useTenantFrozen on 423 tenant_frozen and resets it on sign-out or user switch", async () => {
+    server.use(
+      http.post("*/api/v1/freeze-probe", () =>
+        HttpResponse.json(
+          { error: { code: "tenant_frozen", message: "Institution is frozen." } },
+          { status: 423 },
+        ),
+      ),
+    );
+    const db = freshDb();
+    signInAs(ADMIN);
+    const { result } = renderHook(
+      () => ({
+        frozen: useTenantFrozen(),
+        services: useServices(),
+        session: useSession(),
+      }),
+      { wrapper: wrapper({ db }) },
+    );
+    expect(result.current.frozen).toBe(false);
+
+    await act(async () => {
+      await result.current.services.client
+        .send("POST", "/freeze-probe", {}, z.strictObject({ ok: z.boolean() }))
+        .catch(() => undefined);
+    });
+    expect(result.current.frozen).toBe(true);
+
+    await act(async () => {
+      await result.current.session.signOut();
+    });
+    expect(result.current.frozen).toBe(false);
+
+    act(() => {
+      result.current.session.signIn(ADMIN.tenantId, ADMIN.userId);
+    });
+    expect(result.current.frozen).toBe(false);
   });
 });
