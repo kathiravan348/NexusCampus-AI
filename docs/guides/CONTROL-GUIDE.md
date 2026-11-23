@@ -114,6 +114,9 @@ Menu **Fleet** (super admin, site reliability, support, implementation, release 
   air-gapped install says **Air-gapped — never checks in**: there is no network path into it, by design.
 - **Show check-in** opens the latest check-in: uptime, error rate, response time, queue, disk and active users.
   Check-ins carry counts, rates and timings only — never personal data.
+- **Signed commands:** Nexus Control never connects into a cell or self-hosted install. Instead, each connected install
+  polls for signed work items with its own deployment token and reports back when done. Air-gapped installs never
+  receive commands.
 
 ### Releases
 

@@ -50,6 +50,8 @@ class ControlSettings(BaseSettings):
     #: Transit key that signs licence files (Ed25519, never exported; NEX-095, NEX-103). OpenBao URL and token are the
     #: product's `NEXUS_VAULT_*` settings (one OpenBao in dev).
     licence_signing_key: str = "nexus-licence"
+    #: Transit key that signs Control -> deployment commands (`nexus-command/1`, Ed25519, never exported; D60, NEX-128).
+    command_signing_key: str = "nexus-command"
 
     @property
     def secure_cookies(self) -> bool:

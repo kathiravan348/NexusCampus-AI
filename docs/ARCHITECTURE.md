@@ -198,6 +198,13 @@ Nexus Control (our cloud)                         Product deployments
   `…/advance` (`404`) stay unmounted in real mode so no step claims a tenant exists before real cell provisioning
   (NEX-127). Partners see only their accounts' offboarding and portability jobs, never provisioning jobs or shred
   certificates.
+- **Pull-only signed deployment commands (D60, NEX-128):** Control never connects to a deployment. `deployment_commands`
+  holds canonical `nexus-command/1` payloads signed in OpenBao Transit (`nexus-command`, Ed25519, never exported,
+  `args` ≤ 2 KB, lifetime ≤ 24 h). `control_app` has `SELECT` and column-scoped `UPDATE (status, delivered_at,
+  finished_at, result)` only; commands are signed and queued by owner tooling (`nexus-control-command ping <dep>`,
+  only `ping` allowed so far). Agents poll `GET /control/api/v1/agent/commands` (max 1 per 30 s, max 20 rows, air-gapped
+  `403`) and report one terminal result ≤ 4 KB via `POST /control/api/v1/agent/commands/{id}/result` (foreign `404`,
+  replay `409`).
 
 ## 10. Data vault and provider access
 - **Keys:** per-tenant data keys wrapped by a key-encryption key in the vault (KMS/HSM). Dedicated / self-hosted
