@@ -90,7 +90,7 @@ async def callback(
         max_age=settings.session_minutes * 60,
         httponly=True,
         secure=settings.secure_cookies,
-        samesite="lax",
+        samesite="strict",
         path="/control",
     )
     return response

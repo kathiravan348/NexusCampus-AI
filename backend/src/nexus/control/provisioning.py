@@ -3,10 +3,10 @@
 import logging
 import secrets
 from datetime import UTC, datetime, timedelta
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import Field, StringConstraints
+from pydantic import Field, StringConstraints, model_validator
 from sqlalchemy import (
     ARRAY,
     Boolean,
@@ -147,6 +147,18 @@ class ProvisioningStep(CamelModel):
     status: StepStatus
 
 
+def _check_job_steps(steps: list[Any], expected: tuple[str, ...], status: str) -> None:
+    if [s.name for s in steps] != list(expected):
+        raise ValueError("steps must list every step once in order")
+    statuses = [s.status for s in steps]
+    if status == "done" and any(s != "done" for s in statuses):
+        raise ValueError("done job must have every step done")
+    if status == "failed" and "failed" not in statuses:
+        raise ValueError("failed job must have a failed step")
+    if status in ("pending", "running") and ("failed" in statuses or all(s == "done" for s in statuses)):
+        raise ValueError("pending/running status contradicts steps")
+
+
 class ProvisioningJob(CamelModel):
     id: Id
     request: ProvisioningRequest
@@ -155,6 +167,13 @@ class ProvisioningJob(CamelModel):
     tenant_id: Id | None
     requested_by_staff_id: Id
     created_at: UtcDateTime
+
+    @model_validator(mode="after")
+    def _prov_rules(self) -> Self:
+        _check_job_steps(self.steps, PROV_STEPS, self.status)
+        if (self.steps[0].status == "done") != (self.tenant_id is not None):
+            raise ValueError("tenantId must be set iff create_tenant is done")
+        return self
 
 
 class OffboardingStep(CamelModel):
@@ -171,6 +190,14 @@ class OffboardingJob(CamelModel):
     shred_certificate_id: Id | None
     requested_by_staff_id: Id
     created_at: UtcDateTime
+
+    @model_validator(mode="after")
+    def _offb_rules(self) -> Self:
+        expected = ("freeze_writes", "export_ready", "export_downloaded", "keys_destroyed", "certificate_issued")
+        _check_job_steps(self.steps, expected, self.status)
+        if (self.steps[-1].status == "done") != (self.shred_certificate_id is not None):
+            raise ValueError("shredCertificateId must be set iff certificate_issued is done")
+        return self
 
 
 class ShredCertificate(CamelModel):
@@ -198,6 +225,14 @@ class PortabilityJob(CamelModel):
     status: StepStatus
     encrypted: Literal[True]
     created_at: UtcDateTime
+
+    @model_validator(mode="after")
+    def _port_rules(self) -> Self:
+        expected = ("preflight", "export_encrypted", "transfer", "import", "verify", "cutover", "shred_source")
+        _check_job_steps(self.steps, expected, self.status)
+        if self.direction == "region_move" and self.from_region == self.to_region:
+            raise ValueError("region_move requires two different regions")
+        return self
 
 
 class _ProvisioningResource(Resource):

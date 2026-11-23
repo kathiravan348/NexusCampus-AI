@@ -242,7 +242,7 @@ async def test_agent_update_rejects_bad_revoked_cookie_and_airgapped(
 
 def test_select_update_offer_never_offers_unsigned_or_withdrawn() -> None:
     base = next(r for r in FIX.releases if r["id"] == "rel-241")
-    unsigned = Release.model_validate({**base, "id": "rel-u", "version": "2.4.9", "signed": False})
+    unsigned = Release.model_validate(base).model_copy(update={"id": "rel-u", "version": "2.4.9", "signed": False})
     withdrawn = Release.model_validate({**base, "id": "rel-w", "version": "2.4.8", "status": "withdrawn"})
     assert select_update_offer([unsigned, withdrawn], "2.4.0", "stable") is None
 

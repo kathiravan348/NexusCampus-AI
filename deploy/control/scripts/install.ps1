@@ -82,38 +82,53 @@ if ((Get-BaoState) -notmatch '"initialized":\s*true') {
 if (-not (Test-Path .env.vault-init.json)) { throw "Missing deploy/control/.env.vault-init.json" }
 $keys = Get-Content .env.vault-init.json -Raw | ConvertFrom-Json
 if ((Get-BaoState) -notmatch '"sealed":\s*false') { Invoke-Dc exec -T openbao bao operator unseal $keys.unseal_keys_b64[0] | Out-Null }
-function Invoke-RootBao {
-  & docker compose -f compose.yaml --env-file .env exec -T -e "BAO_TOKEN=$($keys.root_token)" openbao bao @args
-  if ($LASTEXITCODE -ne 0) { throw "bao $args failed" }
-}
-if (-not ((Invoke-RootBao secrets list) -match '^transit/')) { Invoke-RootBao secrets enable transit | Out-Null }
-Invoke-RootBao write -f transit/keys/nexus-licence type=ed25519 exportable=false | Out-Null
-Invoke-RootBao write -f transit/keys/nexus-release type=ed25519 exportable=false | Out-Null
-# Least privilege: create, read, sign and verify the two signing keys only; never delete, configure, rotate or
-# export them (a token that may change a key's settings could make it exportable).
-$policy = @(
-  'path "transit/keys/nexus-licence" { capabilities = ["create", "read", "update"] }',
-  'path "transit/keys/nexus-release" { capabilities = ["create", "read", "update"] }',
-  'path "transit/sign/nexus-licence" { capabilities = ["update"] }',
-  'path "transit/sign/nexus-release" { capabilities = ["update"] }',
-  'path "transit/verify/nexus-licence" { capabilities = ["update"] }',
-  'path "transit/verify/nexus-release" { capabilities = ["update"] }',
-  'path "transit/export/*" { capabilities = ["deny"] }',
-  'path "auth/token/renew-self" { capabilities = ["update"] }',
-  'path "auth/token/lookup-self" { capabilities = ["read"] }'
-) -join "`n"
-$policyB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($policy))
-& docker compose -f compose.yaml --env-file .env exec -T -e "BAO_TOKEN=$($keys.root_token)" openbao sh -c "echo $policyB64 | base64 -d | bao policy write nexus-control -" | Out-Null
-if ($LASTEXITCODE -ne 0) { throw "bao policy write failed" }
+$rootTok = if ($env:NEXUS_VAULT_ROOT_TOKEN) { $env:NEXUS_VAULT_ROOT_TOKEN } elseif ($keys.PSObject.Properties["root_token"]) { [string]$keys.root_token } else { "" }
 $curTok = Get-EnvValue NEXUS_VAULT_TOKEN
 $renewed = $false
 if ($curTok) {
   & docker compose -f compose.yaml --env-file .env exec -T -e "BAO_TOKEN=$curTok" openbao bao token renew 2>$null | Out-Null
   $renewed = ($LASTEXITCODE -eq 0)
 }
-if (-not $renewed) {
-  $tok = (Invoke-RootBao token create -policy=nexus-control -no-default-policy -orphan -period=768h -field=token) -join ""
-  Set-EnvValue NEXUS_VAULT_TOKEN $tok.Trim()
+if (-not $renewed -or $rootTok) {
+  if (-not $rootTok) { throw "OpenBao app token expired and root token was revoked: regenerate one with 'bao operator generate-root' and set NEXUS_VAULT_ROOT_TOKEN." }
+  function Invoke-RootBao {
+    & docker compose -f compose.yaml --env-file .env exec -T -e "BAO_TOKEN=$rootTok" openbao bao @args
+    if ($LASTEXITCODE -ne 0) { throw "bao $args failed" }
+  }
+  if (-not ((Invoke-RootBao secrets list) -match '^transit/')) { Invoke-RootBao secrets enable transit | Out-Null }
+  foreach ($k in @("nexus-licence","nexus-release","nexus-command","nexus-shred")) {
+    Invoke-RootBao write -f "transit/keys/$k" type=ed25519 exportable=false | Out-Null
+  }
+  # Least privilege: create, read, sign and verify the four Ed25519 signing keys only; never delete, configure,
+  # rotate or export them (NEX-110).
+  $policy = @(
+    'path "transit/keys/nexus-licence" { capabilities = ["create", "read", "update"] }',
+    'path "transit/keys/nexus-release" { capabilities = ["create", "read", "update"] }',
+    'path "transit/keys/nexus-command" { capabilities = ["create", "read", "update"] }',
+    'path "transit/keys/nexus-shred" { capabilities = ["create", "read", "update"] }',
+    'path "transit/sign/nexus-licence" { capabilities = ["update"] }',
+    'path "transit/sign/nexus-release" { capabilities = ["update"] }',
+    'path "transit/sign/nexus-command" { capabilities = ["update"] }',
+    'path "transit/sign/nexus-shred" { capabilities = ["update"] }',
+    'path "transit/verify/nexus-licence" { capabilities = ["update"] }',
+    'path "transit/verify/nexus-release" { capabilities = ["update"] }',
+    'path "transit/verify/nexus-command" { capabilities = ["update"] }',
+    'path "transit/verify/nexus-shred" { capabilities = ["update"] }',
+    'path "transit/export/*" { capabilities = ["deny"] }',
+    'path "auth/token/renew-self" { capabilities = ["update"] }',
+    'path "auth/token/lookup-self" { capabilities = ["read"] }'
+  ) -join "`n"
+  $policyB64 = [Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($policy))
+  & docker compose -f compose.yaml --env-file .env exec -T -e "BAO_TOKEN=$rootTok" openbao sh -c "echo $policyB64 | base64 -d | bao policy write nexus-control -" | Out-Null
+  if ($LASTEXITCODE -ne 0) { throw "bao policy write failed" }
+  if (-not $renewed) {
+    $tok = (Invoke-RootBao token create -policy=nexus-control -no-default-policy -orphan -period=768h -field=token) -join ""
+    Set-EnvValue NEXUS_VAULT_TOKEN $tok.Trim()
+  }
+  # Revoke the OpenBao root token once setup is complete and strip it from disk (NEX-110).
+  & docker compose -f compose.yaml --env-file .env exec -T -e "BAO_TOKEN=$rootTok" openbao bao token revoke -self 2>$null | Out-Null
+  $slim = @{ unseal_keys_b64 = @($keys.unseal_keys_b64[0]) } | ConvertTo-Json -Compress
+  [System.IO.File]::WriteAllText((Join-Path (Get-Location) ".env.vault-init.json"), $slim + "`n")
 }
 
 # 5. Lago HMAC webhook key sync & endpoint registration (never printed).

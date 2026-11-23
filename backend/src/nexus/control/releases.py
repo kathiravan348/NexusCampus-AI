@@ -4,10 +4,10 @@ import json
 import logging
 import time
 from datetime import UTC, datetime
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError
+from pydantic import BaseModel, ConfigDict, Field, StringConstraints, ValidationError, model_validator
 from sqlalchemy import (
     ARRAY,
     Boolean,
@@ -98,6 +98,16 @@ class Release(CamelModel):
     migration_notes: Annotated[str, StringConstraints(max_length=5000)]
     notes_ai_drafted: bool
 
+    @model_validator(mode="after")
+    def _release_rules(self) -> Self:
+        if (self.status == "draft") != (self.published_at is None):
+            raise ValueError("publishedAt is set iff the release is not a draft")
+        if self.status != "draft" and not self.signed:
+            raise ValueError("only signed releases can be published")
+        if self.channel == "preview" and self.offline_bundle:
+            raise ValueError("preview releases have no offline bundle")
+        return self
+
 
 class Rollout(CamelModel):
     id: Id
@@ -106,6 +116,14 @@ class Rollout(CamelModel):
     deployment_ids: Annotated[list[Id], Field(min_length=1)]
     status: Literal["pending", "running", "done", "failed", "rolled_back"]
     started_at: UtcDateTime | None
+
+    @model_validator(mode="after")
+    def _rollout_rules(self) -> Self:
+        if len(set(self.deployment_ids)) != len(self.deployment_ids):
+            raise ValueError("deploymentIds must not contain duplicates")
+        if (self.status == "pending") != (self.started_at is None):
+            raise ValueError("startedAt is set iff the rollout has started")
+        return self
 
 
 class AgentUpdateOffer(CamelModel):

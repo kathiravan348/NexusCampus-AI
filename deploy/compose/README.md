@@ -24,8 +24,14 @@ services, initialises and unseals OpenBao, runs the migrations (and the demo see
 `priya.raman@littlesteps.example.edu` with `NEXUS_DEMO_USER_PASSWORD` from `.env`. Demo data is for trying the
 product only; do not use it for a real school.
 
-**Back up `deploy/compose/.secrets/vault-init.json` offline right away.** It holds OpenBao's unseal key and root
-token; without it, encrypted data cannot be recovered. The script never overwrites it.
+**Back up `deploy/compose/.secrets/vault-init.json` offline right away.** It holds OpenBao's unseal key; without it,
+OpenBao cannot be unsealed after a restart and encrypted data cannot be recovered. The install script never overwrites
+it, denies `transit/export/*` in the `nexus-app` policy, and **revokes the OpenBao root token immediately after setup**
+(stripping `root_token` from `vault-init.json`). Re-running the install script unseals OpenBao and renews the app token
+without needing a root token. If an operator ever needs a temporary root token (for example, if the app token expired
+while offline), generate one with the unseal key (`docker compose -f compose.yaml exec vault bao operator generate-root -init`,
+then supply the unseal key and decode), pass `NEXUS_VAULT_ROOT_TOKEN=<token>` when running `install.sh` / `install.ps1`,
+and the script will revoke it again as soon as it finishes.
 
 ## Real hostnames (TLS)
 

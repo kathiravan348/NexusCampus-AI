@@ -62,28 +62,47 @@ if ! bao_state | grep -q '"initialized": true'; then
 fi
 [ -s .env.vault-init.json ] || { echo "Missing deploy/control/.env.vault-init.json" >&2; exit 1; }
 unseal_key=$(tr -d '\n ' < .env.vault-init.json | sed -E 's/.*"unseal_keys_b64":\["([^"]+)".*/\1/')
-root_token=$(tr -d '\n ' < .env.vault-init.json | sed -E 's/.*"root_token":"([^"]+)".*/\1/')
+root_token=$(tr -d '\n ' < .env.vault-init.json | sed -nE 's/.*"root_token":"([^"]+)".*/\1/p')
+[ -n "${NEXUS_VAULT_ROOT_TOKEN:-}" ] && root_token="$NEXUS_VAULT_ROOT_TOKEN"
 bao_state | grep -q '"sealed": false' || bao_exec operator unseal "$unseal_key" > /dev/null
-rbao() { dc exec -T -e BAO_TOKEN="$root_token" openbao bao "$@"; }
-rbao secrets list | grep -q '^transit/' || rbao secrets enable transit > /dev/null
-rbao write -f transit/keys/nexus-licence type=ed25519 exportable=false > /dev/null
-rbao write -f transit/keys/nexus-release type=ed25519 exportable=false > /dev/null
-# Least privilege: create, read, sign and verify the two signing keys only; never delete, configure, rotate or
-# export them (a token that may change a key's settings could make it exportable).
-printf '%s\n' \
-  'path "transit/keys/nexus-licence" { capabilities = ["create", "read", "update"] }' \
-  'path "transit/keys/nexus-release" { capabilities = ["create", "read", "update"] }' \
-  'path "transit/sign/nexus-licence" { capabilities = ["update"] }' \
-  'path "transit/sign/nexus-release" { capabilities = ["update"] }' \
-  'path "transit/verify/nexus-licence" { capabilities = ["update"] }' \
-  'path "transit/verify/nexus-release" { capabilities = ["update"] }' \
-  'path "transit/export/*" { capabilities = ["deny"] }' \
-  'path "auth/token/renew-self" { capabilities = ["update"] }' \
-  'path "auth/token/lookup-self" { capabilities = ["read"] }' | rbao policy write nexus-control - > /dev/null
 cur_tok="$(get_env NEXUS_VAULT_TOKEN)"
-if [ -z "$cur_tok" ] || ! dc exec -T -e BAO_TOKEN="$cur_tok" openbao bao token renew > /dev/null 2>&1; then
-  new_tok=$(rbao token create -policy=nexus-control -no-default-policy -orphan -period=768h -field=token)
-  set_env NEXUS_VAULT_TOKEN "$new_tok"
+app_ok=0
+if [ -n "$cur_tok" ] && dc exec -T -e BAO_TOKEN="$cur_tok" openbao bao token renew > /dev/null 2>&1; then
+  app_ok=1
+fi
+if [ "$app_ok" = "0" ] || [ -n "$root_token" ]; then
+  [ -n "$root_token" ] || { echo "OpenBao app token expired and root token was revoked: regenerate one with 'bao operator generate-root' and pass NEXUS_VAULT_ROOT_TOKEN." >&2; exit 1; }
+  rbao() { dc exec -T -e BAO_TOKEN="$root_token" openbao bao "$@"; }
+  rbao secrets list | grep -q '^transit/' || rbao secrets enable transit > /dev/null
+  for k in nexus-licence nexus-release nexus-command nexus-shred; do
+    rbao write -f "transit/keys/$k" type=ed25519 exportable=false > /dev/null
+  done
+  # Least privilege: create, read, sign and verify the four Ed25519 signing keys only; never delete, configure,
+  # rotate or export them (NEX-110).
+  printf '%s\n' \
+    'path "transit/keys/nexus-licence" { capabilities = ["create", "read", "update"] }' \
+    'path "transit/keys/nexus-release" { capabilities = ["create", "read", "update"] }' \
+    'path "transit/keys/nexus-command" { capabilities = ["create", "read", "update"] }' \
+    'path "transit/keys/nexus-shred" { capabilities = ["create", "read", "update"] }' \
+    'path "transit/sign/nexus-licence" { capabilities = ["update"] }' \
+    'path "transit/sign/nexus-release" { capabilities = ["update"] }' \
+    'path "transit/sign/nexus-command" { capabilities = ["update"] }' \
+    'path "transit/sign/nexus-shred" { capabilities = ["update"] }' \
+    'path "transit/verify/nexus-licence" { capabilities = ["update"] }' \
+    'path "transit/verify/nexus-release" { capabilities = ["update"] }' \
+    'path "transit/verify/nexus-command" { capabilities = ["update"] }' \
+    'path "transit/verify/nexus-shred" { capabilities = ["update"] }' \
+    'path "transit/export/*" { capabilities = ["deny"] }' \
+    'path "auth/token/renew-self" { capabilities = ["update"] }' \
+    'path "auth/token/lookup-self" { capabilities = ["read"] }' | rbao policy write nexus-control - > /dev/null
+  if [ "$app_ok" = "0" ]; then
+    new_tok=$(rbao token create -policy=nexus-control -no-default-policy -orphan -period=768h -field=token)
+    set_env NEXUS_VAULT_TOKEN "$new_tok"
+  fi
+  # Revoke the OpenBao root token once setup is complete and strip it from disk (NEX-110).
+  rbao token revoke -self > /dev/null 2>&1 || true
+  printf '{"unseal_keys_b64":["%s"]}\n' "$unseal_key" > .env.vault-init.json.new
+  chmod 600 .env.vault-init.json.new && mv .env.vault-init.json.new .env.vault-init.json
 fi
 
 # 5. Lago HMAC webhook registration & key sync (never printed).

@@ -1,11 +1,12 @@
 """Control backend app factory: `uvicorn nexus.control.main:app --port 8100` (dev)."""
 
-from collections.abc import AsyncIterator
+from collections.abc import AsyncIterator, Awaitable, Callable
 from contextlib import asynccontextmanager
 from typing import Annotated, Literal
+from urllib.parse import urlparse
 
 import httpx2
-from fastapi import APIRouter, Depends, FastAPI, Request
+from fastapi import APIRouter, Depends, FastAPI, Request, Response
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from redis.asyncio import Redis
@@ -34,11 +35,11 @@ from nexus.control.billing.engine import BillingEngine
 from nexus.control.billing.lago import LagoBillingEngine
 from nexus.control.billing.payments import PaymentGateway
 from nexus.control.billing.razorpay import RazorpayGateway
-from nexus.control.sessions import DbSessionStore, SessionStore
+from nexus.control.sessions import SESSION_COOKIE, DbSessionStore, SessionStore
 from nexus.control.settings import ControlSettings, get_control_settings
 from nexus.control.staff import DbStaffStore, StaffSession, StaffStore
 from nexus.control.viewer import staff_session
-from nexus.core.errors import install_error_handling
+from nexus.core.errors import error_response, install_error_handling
 from nexus.core.vault import HttpVault, Vault
 from nexus.modules.m02.login_state import LoginStateStore, RedisLoginStateStore
 from nexus.modules.m02.oidc import OidcClient
@@ -155,6 +156,7 @@ def create_app(
     app.state.agent_update_checked_at = {}
     app.state.agent_commands_checked_at = {}
     install_error_handling(app)
+    _install_request_safety(app, cfg)
     app.include_router(router)
     app.include_router(auth.router)
     app.include_router(accounts.router)
@@ -173,6 +175,44 @@ def create_app(
     app.include_router(moves.router)
     app.include_router(broker.router)
     return app
+
+
+def _origin_of(url: str) -> str:
+    parsed = urlparse(url)
+    return f"{parsed.scheme.lower()}://{parsed.netloc.lower()}" if parsed.scheme and parsed.netloc else ""
+
+
+_SAFE_METHODS = frozenset({"GET", "HEAD", "OPTIONS"})
+_NON_BROWSER_WRITE_PREFIXES = (
+    f"{API}/agent/",
+    f"{API}/billing/lago-webhook",
+    f"{API}/billing/razorpay-webhook",
+)
+
+
+def _install_request_safety(app: FastAPI, cfg: ControlSettings) -> None:
+    expected_origin = _origin_of(cfg.app_public_url)
+
+    @app.middleware("http")
+    async def request_safety(request: Request, call_next: Callable[[Request], Awaitable[Response]]) -> Response:
+        if request.method not in _SAFE_METHODS and not request.url.path.startswith(_NON_BROWSER_WRITE_PREFIXES):
+            origin = (request.headers.get("origin") or "").strip()
+            needs_origin = bool(origin) or SESSION_COOKIE in request.cookies or cfg.environment == "prod"
+            if needs_origin and (not origin or _origin_of(origin) != expected_origin):
+                response: Response = error_response(request, 403, "forbidden", "Cross-origin write refused.")
+                _add_security_headers(response, cfg.environment == "prod")
+                return response
+        response = await call_next(request)
+        _add_security_headers(response, cfg.environment == "prod")
+        return response
+
+
+def _add_security_headers(response: Response, prod: bool) -> None:
+    response.headers.setdefault("Content-Security-Policy", "default-src 'none'; frame-ancestors 'none'")
+    response.headers.setdefault("X-Content-Type-Options", "nosniff")
+    response.headers.setdefault("Referrer-Policy", "no-referrer")
+    if prod:
+        response.headers.setdefault("Strict-Transport-Security", "max-age=31536000; includeSubDomains")
 
 
 def app() -> FastAPI:

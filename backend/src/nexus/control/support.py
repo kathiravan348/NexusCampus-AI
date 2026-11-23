@@ -8,10 +8,10 @@ one staff reply and updates ticket status/assignee/resolved_at atomically; logs 
 import logging
 import secrets
 from datetime import UTC, datetime
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter, Depends, Request
-from pydantic import Field, StrictBool, StringConstraints
+from pydantic import Field, StrictBool, StringConstraints, model_validator
 from sqlalchemy import (
     Boolean,
     CheckConstraint,
@@ -135,6 +135,16 @@ class SupportTicket(CamelModel):
     created_at: UtcDateTime
     resolved_at: UtcDateTime | None
 
+    @model_validator(mode="after")
+    def _ticket_rules(self) -> Self:
+        if (self.status in ("resolved", "closed")) != (self.resolved_at is not None):
+            raise ValueError("resolvedAt must be set iff status is resolved or closed")
+        if self.sla_due_at <= self.created_at:
+            raise ValueError("slaDueAt must be after createdAt")
+        if self.status != "new" and self.assignee_staff_id is None:
+            raise ValueError("assigneeStaffId is required once ticket leaves new")
+        return self
+
 
 class TicketReply(CamelModel):
     id: Id
@@ -145,6 +155,14 @@ class TicketReply(CamelModel):
     internal: bool
     ai_drafted: bool
     created_at: UtcDateTime
+
+    @model_validator(mode="after")
+    def _reply_rules(self) -> Self:
+        if (self.author_kind == "staff") != (self.author_staff_id is not None):
+            raise ValueError("authorStaffId must be set iff authorKind is staff")
+        if self.author_kind != "staff" and (self.internal or self.ai_drafted):
+            raise ValueError("customer replies cannot be internal or aiDrafted")
+        return self
 
 
 class SlaMinutes(CamelModel):

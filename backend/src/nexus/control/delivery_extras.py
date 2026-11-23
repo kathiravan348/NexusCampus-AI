@@ -5,10 +5,10 @@ Read-only resources (`control_app` has SELECT only). Partner scoping uses the sh
 `extension-compatibility` has no `account_id` or `id`, so partners see none.
 """
 
-from typing import Annotated, Any, Literal
+from typing import Annotated, Any, Literal, Self
 
 from fastapi import APIRouter
-from pydantic import Field, StringConstraints
+from pydantic import Field, StringConstraints, model_validator
 from sqlalchemy import Boolean, CheckConstraint, Column, Date, DateTime, ForeignKey, String, Table
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -151,6 +151,12 @@ class ImplementationProject(CamelModel):
     tasks: Annotated[list[ProjectTask], Field(min_length=1)]
     plan_ai_drafted: bool
     created_at: UtcDateTime
+
+    @model_validator(mode="after")
+    def _live_project_complete(self) -> Self:
+        if self.status == "live" and (self.go_live_date is None or not all(t.done for t in self.tasks)):
+            raise ValueError("a live project has a go-live date and every task done")
+        return self
 
 
 class Sandbox(CamelModel):
