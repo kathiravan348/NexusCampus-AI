@@ -22,6 +22,7 @@ from nexus.control.provisioning import OFFBOARDING_JOBS, OffboardingJob, offboar
 from nexus.control.resources import CamelModel, engine_of
 from nexus.control.settings import ControlSettings
 from nexus.control.staff import Id, utc_text
+from nexus.control.tenant_jobs import ensure_no_open_job
 from nexus.control.viewer import Viewer, require
 from nexus.core.errors import ApiError
 from nexus.core.vault import Vault
@@ -165,6 +166,7 @@ async def create_offboarding_job(
         if body.tenant_id not in list(acc.tenant_ids):
             raise ApiError(404, "not_found", "Tenant does not belong to this account.")
         dep_id = await _resolve_cell(conn, str(acc.id), str(acc.delivery_model), str(acc.region))
+        await ensure_no_open_job(conn, body.tenant_id)
         cmd_id = await enqueue_command(
             conn,
             vault,
@@ -319,6 +321,7 @@ async def retry_offboarding(job_id: str, request: Request, viewer: ProvisionMana
             )
         else:
             raise ApiError(409, "conflict", "This offboarding step cannot be retried; start a new offboarding job.")
+        await ensure_no_open_job(conn, tenant_id, except_offboarding=job_id)
         cmd_id = await enqueue_command(
             conn,
             vault,

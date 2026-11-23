@@ -176,6 +176,24 @@ describe("P18 Moves", () => {
     expect(screen.queryByRole("button", { name: /Retry move/ })).not.toBeInTheDocument();
   });
 
+  it("shows the busy message on 409 when the tenant already has an open move or offboarding", async () => {
+    renderAt(STAFF.implementation);
+    fireEvent.click(await screen.findByRole("button", { name: "Start move" }));
+    const startModal = await screen.findByRole("dialog", { name: "Start a tenant move" });
+    const account = within(startModal).getByRole("combobox", { name: "Account" });
+    await within(account).findByRole("option", { name: "Riverside Education Group" });
+    // Riverside (ten-rv) already has mov-rv running in demo fixtures.
+    fireEvent.change(account, { target: { value: "acc-rv" } });
+    fireEvent.change(within(startModal).getByRole("combobox", { name: "Destination region" }), {
+      target: { value: "in" },
+    });
+    fireEvent.click(within(startModal).getByRole("button", { name: "Start move" }));
+
+    expect(await within(startModal).findByRole("alert")).toHaveTextContent(
+      "This tenant already has an offboarding or move in progress.",
+    );
+  });
+
   it("is hidden from billing", async () => {
     renderAt(STAFF.billing);
     expect(await screen.findByRole("heading", { name: "No access" })).toBeInTheDocument();

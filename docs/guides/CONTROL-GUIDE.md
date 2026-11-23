@@ -1,6 +1,6 @@
 # Nexus Control — guide for our staff
 
-> State as of: 2026-11-23 (Stage 2 complete through NEX-139: Nexus Control prototype + real Control backend for all P01–P18 pages, M84 install agent & D60 signed pull-only commands, P04 provisioning & four-eyes offboarding with signed shred certificates, P07 release publishing & rollouts, P10 access broker, P18 7-step portability moves, D62 Razorpay INR payment links, OpenBao root-token revocation, NEX-110/137 security & release checks, and D63 expiry of unanswered cell instructions with retry; Stripe for Europe moved to a later stage, D64).
+> State as of: 2026-11-23 (Stage 2 complete through NEX-143: Nexus Control prototype + real Control backend for all P01–P18 pages, M84 install agent & D60 signed pull-only commands, P04 provisioning & four-eyes offboarding with signed shred certificates, P07 release publishing & rollouts, P10 access broker, P18 7-step portability moves, D66 one open offboarding or move per tenant, D62 Razorpay INR payment links, OpenBao root-token revocation, NEX-110/137 security & release checks, and D63 expiry of unanswered cell instructions with retry; Stripe for Europe moved to a later stage, D64).
 > Plain language for provider staff: sales, billing, support, implementation, release managers, site reliability,
 > security officers and partners. Default English texts are in **bold**.
 
@@ -102,6 +102,7 @@ Menu **Provisioning** (super admin, implementation, site reliability to read).
     (**Second approval recorded. Key destruction is now queued.**) and issues the Ed25519-signed **Key-destruction
     certificate** that anyone can verify offline using our published shred-certificate keys.
   - **Retry**: a failed offboarding job shows **Retry** to re-queue the failed step's command.
+  - Only one offboarding or move can run for a tenant at a time: starting or retrying another while one is in progress is refused with **This tenant already has an offboarding or move in progress.** (a failed job does not block starting a new one).
 - **When a cell does not answer:** every instruction Control sends to a region cell is valid for a limited time. If the
   cell has not carried it out in time, the step that waited is marked **failed** (within about a minute, even if the
   cell is offline), and a failed provisioning, offboarding or move job can be retried, which sends a fresh
@@ -286,6 +287,7 @@ Menu **Moves** (super admin, implementation; site reliability reads).
     cells, the card notes **Two staff members approve the source's key destruction on the Provisioning page.** and
     finishes once that signed **Key-destruction certificate** is issued.
 - **Retry**: a failed move shows **Retry** to re-queue or reset from the failed step.
+- Only one offboarding or move can run for a tenant at a time: starting or retrying another while one is in progress is refused with **This tenant already has an offboarding or move in progress.** (a failed job does not block starting a new one).
 
 ## Roles
 

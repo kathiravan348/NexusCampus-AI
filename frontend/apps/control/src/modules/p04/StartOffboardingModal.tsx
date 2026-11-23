@@ -1,4 +1,5 @@
 import { useControlText } from "@nexus/i18n/control";
+import { ApiRequestError } from "@nexus/services";
 import { useAccounts, useStartOffboarding } from "@nexus/services/control";
 import { Button, Checkbox, EmptyState, Modal, Select, Textarea, useToast } from "@nexus/ui-core";
 import { useMemo, useState } from "react";
@@ -34,6 +35,10 @@ export function StartOffboardingModal({ onClose }: { readonly onClose: () => voi
     trimmedPem.length >= 64 &&
     trimmedPem.length <= 1900 &&
     freezeConfirmed;
+  const errorText = (err: unknown) =>
+    err instanceof ApiRequestError && err.status === 409
+      ? t("p04.off.form.busy")
+      : t("p04.off.form.failed");
 
   return (
     <Modal
@@ -62,7 +67,7 @@ export function StartOffboardingModal({ onClose }: { readonly onClose: () => voi
                     toast.show({ tone: "success", title: t("p04.off.form.started") });
                     onClose();
                   },
-                  onError: () => toast.show({ tone: "danger", title: t("p04.off.form.failed") }),
+                  onError: (err) => toast.show({ tone: "danger", title: errorText(err) }),
                 },
               )
             }
@@ -107,7 +112,7 @@ export function StartOffboardingModal({ onClose }: { readonly onClose: () => voi
           />
           {start.isError && (
             <p role="alert" className="text-body-sm text-danger-text">
-              {t("p04.off.form.failed")}
+              {errorText(start.error)}
             </p>
           )}
         </div>

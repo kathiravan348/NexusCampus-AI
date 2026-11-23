@@ -5,6 +5,7 @@ import {
   type Region,
 } from "@nexus/contracts";
 import { useControlText } from "@nexus/i18n/control";
+import { ApiRequestError } from "@nexus/services";
 import { useAccounts, useStartMove } from "@nexus/services/control";
 import { Button, EmptyState, Input, Modal, Select, useToast } from "@nexus/ui-core";
 import { useMemo, useState } from "react";
@@ -50,6 +51,10 @@ export function StartMoveModal({ onClose }: { readonly onClose: () => void }) {
 
   const destinationRegion: Region = toRegion || defaultRegion;
   const valid = account !== "" && resolvedTenant !== "";
+  const errorText = (err: unknown) =>
+    err instanceof ApiRequestError && err.status === 409
+      ? t("p18.form.busy")
+      : t("p18.form.failed");
 
   return (
     <Modal
@@ -79,7 +84,7 @@ export function StartMoveModal({ onClose }: { readonly onClose: () => void }) {
                     toast.show({ tone: "success", title: t("p18.form.started") });
                     onClose();
                   },
-                  onError: () => toast.show({ tone: "danger", title: t("p18.form.failed") }),
+                  onError: (err) => toast.show({ tone: "danger", title: errorText(err) }),
                 },
               )
             }
@@ -145,7 +150,7 @@ export function StartMoveModal({ onClose }: { readonly onClose: () => void }) {
         )}
         {start.isError && (
           <p role="alert" className="text-body-sm text-danger-text">
-            {t("p18.form.failed")}
+            {errorText(start.error)}
           </p>
         )}
       </div>

@@ -64,4 +64,25 @@ describe("StartOffboardingModal", () => {
     );
     expect(onClose).not.toHaveBeenCalled();
   });
+
+  it("shows the busy message on 409 when the tenant already has an open move or offboarding", async () => {
+    const { onClose } = renderModal();
+    const dialog = await screen.findByRole("dialog", { name: "Start offboarding" });
+    const account = within(dialog).getByRole("combobox", { name: "Account" });
+    await within(account).findByRole("option", { name: "Riverside Education Group" });
+    // Riverside (ten-rv) already has mov-rv running in demo fixtures.
+    fireEvent.change(account, { target: { value: "acc-rv" } });
+    fireEvent.change(within(dialog).getByLabelText("Institution public key (PEM)"), {
+      target: { value: VALID_PEM },
+    });
+    fireEvent.click(
+      within(dialog).getByRole("checkbox", { name: "The institution's data will be frozen" }),
+    );
+    fireEvent.click(within(dialog).getByRole("button", { name: "Start offboarding" }));
+
+    expect(await within(dialog).findByRole("alert")).toHaveTextContent(
+      "This tenant already has an offboarding or move in progress.",
+    );
+    expect(onClose).not.toHaveBeenCalled();
+  });
 });
