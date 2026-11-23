@@ -150,14 +150,19 @@ Nexus Control (our cloud)                         Product deployments
   `.tar`; `nexus-release-verify` checks them with pinned public keys before anything is loaded (refuses links,
   `..`, absolute paths, missing / extra / changed files). Image signatures with cosign can be added later.
 - **Same images everywhere.** A deployment differs only by configuration, licence/entitlements and installed
-  extensions. Customer-specific work = extension packages (P08), never a fork of the core.
+  extensions. Customer-specific work = extension packages (P08), never a fork of the core. Small/medium self-hosted
+  sites run `deploy/compose/`; large Kubernetes installs use the zero-dependency Helm chart in
+  `deploy/helm/nexuscampus/` (NEX-120: same pinned images and digests, secrets via `existingSecret` only, restricted
+  non-root pods with `seccompProfile: RuntimeDefault` and `automountServiceAccountToken: false`, default-deny
+  `NetworkPolicy`, and switchable external PostgreSQL / Valkey / OpenBao / Keycloak).
 - **Provisioning (SaaS, NEX-127):** P04 queues a signed `tenant.provision` command (`nexus-command/1`) for the chosen
   region cell. The cell's agent (`nexus.provisioning.tenant.provision_tenant`, SaaS-only; self-hosted installs reject
   it) runs five idempotent steps — `create_tenant` (`tenants` + first `institutions`), `create_keys` (OpenBao
   `tenant_data` key), `apply_profile` (`tenant_plans` + `entitlements`), `seed` (system roles + default AI-off
   settings, no people), and `invite_owner` (Keycloak organization + owner invite) — recording one system M06 audit
-  event per step and reporting `{ tenantId, stepsDone, failedStep?, reason? }` without logging owner PII. Nexus Control
-  keeps only the tenant id, region, plan and counts.
+  event per step and reporting `{ tenantId, stepsDone, failedStep?, reason? }` without logging owner PII. A re-run
+  never provisions into a tenant this flow did not create or adds a second owner. Nexus Control keeps only the
+  tenant id, region, plan and counts.
 - **Licences (self-hosted):** P05 signs a licence file (Ed25519). M84 verifies it offline; expiry → grace period →
   read-only mode, never data loss.
 - **Updates:** P07 publishes signed images and offline bundles; installs pull them; database migrations are

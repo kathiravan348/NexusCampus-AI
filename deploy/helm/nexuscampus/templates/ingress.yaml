@@ -1,0 +1,46 @@
+{{- if .Values.ingress.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+  {{- with .Values.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className | quote }}
+  {{- end }}
+  tls:
+    - secretName: {{ .Values.ingress.tlsSecretName | quote }}
+      hosts:
+        - {{ .Values.ingress.appHost | quote }}
+        {{- if and .Values.keycloak.enabled .Values.ingress.keycloakHost }}
+        - {{ .Values.ingress.keycloakHost | quote }}
+        {{- end }}
+  rules:
+    - host: {{ .Values.ingress.appHost | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "nexuscampus.fullname" . }}-web
+                port:
+                  number: 8080
+    {{- if and .Values.keycloak.enabled .Values.ingress.keycloakHost }}
+    - host: {{ .Values.ingress.keycloakHost | quote }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "nexuscampus.fullname" . }}-keycloak
+                port:
+                  number: 8080
+    {{- end }}
+{{- end }}

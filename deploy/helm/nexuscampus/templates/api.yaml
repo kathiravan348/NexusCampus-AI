@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-api
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+    app.kubernetes.io/component: api
+spec:
+  replicas: {{ .Values.api.replicas }}
+  selector:
+    matchLabels:
+      {{- include "nexuscampus.selectorLabels" (merge (dict "component" "api") .) | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "nexuscampus.labels" . | nindent 8 }}
+        {{- include "nexuscampus.selectorLabels" (merge (dict "component" "api") .) | nindent 8 }}
+    spec:
+      automountServiceAccountToken: false
+      {{- with .Values.images.pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: api
+          image: {{ include "nexuscampus.image" .Values.images.api | quote }}
+          imagePullPolicy: {{ .Values.images.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          env:
+            {{- include "nexuscampus.appEnv" . | nindent 12 }}
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            capabilities:
+              drop:
+                - ALL
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            timeoutSeconds: 3
+          resources:
+            {{- toYaml .Values.api.resources | nindent 12 }}
+          volumeMounts:
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: tmp
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "nexuscampus.fullname" . }}-api
+  labels:
+    {{- include "nexuscampus.labels" . | nindent 4 }}
+    app.kubernetes.io/component: api
+spec:
+  type: ClusterIP
+  selector:
+    {{- include "nexuscampus.selectorLabels" (merge (dict "component" "api") .) | nindent 4 }}
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+      protocol: TCP
