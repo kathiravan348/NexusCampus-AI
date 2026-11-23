@@ -9,6 +9,7 @@ export * from "./person";
 export * from "./user";
 export * from "./rbac";
 export * from "./studio";
+export * from "./forms";
 export * from "./plan";
 export * from "./compliance";
 export * from "./notification";
