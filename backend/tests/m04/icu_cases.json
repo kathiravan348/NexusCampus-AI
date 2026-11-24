@@ -720,6 +720,10 @@
     "valid": true
   },
   {
+    "text": "All kinds",
+    "valid": true
+  },
+  {
     "text": "All learners",
     "valid": true
   },
@@ -741,6 +745,10 @@
   },
   {
     "text": "Allowed",
+    "valid": true
+  },
+  {
+    "text": "Already revoked. Close this dialog and reload to see the latest status.",
     "valid": true
   },
   {
@@ -1012,6 +1020,10 @@
     "valid": true
   },
   {
+    "text": "Back to issued documents",
+    "valid": true
+  },
+  {
     "text": "Back to learners",
     "valid": true
   },
@@ -1061,6 +1073,10 @@
   },
   {
     "text": "Body and UI font",
+    "valid": true
+  },
+  {
+    "text": "Bonafide certificate",
     "valid": true
   },
   {
@@ -1213,6 +1229,10 @@
   },
   {
     "text": "Channel",
+    "valid": true
+  },
+  {
+    "text": "Character certificate",
     "valid": true
   },
   {
@@ -1373,6 +1393,10 @@
   },
   {
     "text": "Completed",
+    "valid": true
+  },
+  {
+    "text": "Completion certificate",
     "valid": true
   },
   {
@@ -1792,6 +1816,10 @@
     "valid": true
   },
   {
+    "text": "Digital certificate",
+    "valid": true
+  },
+  {
     "text": "Digital signature",
     "valid": true
   },
@@ -1828,7 +1856,23 @@
     "valid": true
   },
   {
+    "text": "Document kind",
+    "valid": true
+  },
+  {
+    "text": "Document number",
+    "valid": true
+  },
+  {
     "text": "Document request",
+    "valid": true
+  },
+  {
+    "text": "Document revoked",
+    "valid": true
+  },
+  {
+    "text": "Document unavailable",
     "valid": true
   },
   {
@@ -1857,6 +1901,10 @@
   },
   {
     "text": "Draft",
+    "valid": true
+  },
+  {
+    "text": "Drawn signature",
     "valid": true
   },
   {
@@ -2053,6 +2101,10 @@
   },
   {
     "text": "Enter a pixel value (for example, 8px).",
+    "valid": true
+  },
+  {
+    "text": "Enter a revocation reason.",
     "valid": true
   },
   {
@@ -2804,6 +2856,18 @@
     "valid": true
   },
   {
+    "text": "Issued documents",
+    "valid": true
+  },
+  {
+    "text": "Issued documents could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Issued on",
+    "valid": true
+  },
+  {
     "text": "Issued on {date}",
     "valid": true
   },
@@ -3013,6 +3077,10 @@
   },
   {
     "text": "Legal order",
+    "valid": true
+  },
+  {
+    "text": "Letter",
     "valid": true
   },
   {
@@ -3716,6 +3784,10 @@
     "valid": true
   },
   {
+    "text": "No issued documents to show",
+    "valid": true
+  },
+  {
     "text": "No journal entries yet.",
     "valid": true
   },
@@ -4020,6 +4092,10 @@
     "valid": true
   },
   {
+    "text": "One-time passcode",
+    "valid": true
+  },
+  {
     "text": "Online",
     "valid": true
   },
@@ -4065,6 +4141,10 @@
   },
   {
     "text": "Open admissions",
+    "valid": true
+  },
+  {
+    "text": "Open an issued document to inspect its verification code, signatures and status.",
     "valid": true
   },
   {
@@ -4117,6 +4197,10 @@
   },
   {
     "text": "Other",
+    "valid": true
+  },
+  {
+    "text": "Other document",
     "valid": true
   },
   {
@@ -4484,6 +4568,10 @@
     "valid": true
   },
   {
+    "text": "Public verification will show this document as invalid. Revocation cannot be undone.",
+    "valid": true
+  },
+  {
     "text": "Publish",
     "valid": true
   },
@@ -4561,6 +4649,10 @@
   },
   {
     "text": "Reason for rejection",
+    "valid": true
+  },
+  {
+    "text": "Reason must be {max} characters or fewer.",
     "valid": true
   },
   {
@@ -4812,6 +4904,10 @@
     "valid": true
   },
   {
+    "text": "Revocation reason",
+    "valid": true
+  },
+  {
     "text": "Revoke",
     "valid": true
   },
@@ -4825,6 +4921,10 @@
   },
   {
     "text": "Revoke and wipe {device}?",
+    "valid": true
+  },
+  {
+    "text": "Revoke document",
     "valid": true
   },
   {
@@ -5216,6 +5316,10 @@
     "valid": true
   },
   {
+    "text": "Signatures",
+    "valid": true
+  },
+  {
     "text": "Single choice",
     "valid": true
   },
@@ -5285,6 +5389,10 @@
   },
   {
     "text": "Staff child",
+    "valid": true
+  },
+  {
+    "text": "Staff letter",
     "valid": true
   },
   {
@@ -5624,6 +5732,10 @@
     "valid": true
   },
   {
+    "text": "The document could not be revoked.",
+    "valid": true
+  },
+  {
     "text": "The enquiry could not be saved. Try again.",
     "valid": true
   },
@@ -5916,6 +6028,10 @@
     "valid": true
   },
   {
+    "text": "Transcript",
+    "valid": true
+  },
+  {
     "text": "Transfer certificate",
     "valid": true
   },
@@ -6144,6 +6260,10 @@
     "valid": true
   },
   {
+    "text": "Verification code",
+    "valid": true
+  },
+  {
     "text": "Verified",
     "valid": true
   },
@@ -6173,6 +6293,10 @@
   },
   {
     "text": "View admissions",
+    "valid": true
+  },
+  {
+    "text": "View and verify issued certificates and letters.",
     "valid": true
   },
   {
@@ -6912,6 +7036,10 @@
     "valid": true
   },
   {
+    "text": "{count} / {max}",
+    "valid": true
+  },
+  {
     "text": "{count} min / week",
     "valid": true
   },
@@ -7529,6 +7657,10 @@
   },
   {
     "text": "अन्य",
+    "valid": true
+  },
+  {
+    "text": "अन्य दस्तावेज़",
     "valid": true
   },
   {
@@ -8396,6 +8528,10 @@
     "valid": true
   },
   {
+    "text": "एक बार का पासकोड",
+    "valid": true
+  },
+  {
     "text": "एक मान्य ईमेल पता दर्ज करें।",
     "valid": true
   },
@@ -8644,6 +8780,10 @@
     "valid": true
   },
   {
+    "text": "कर्मचारी पत्र",
+    "valid": true
+  },
+  {
     "text": "कर्मचारी संतान",
     "valid": true
   },
@@ -8685,6 +8825,10 @@
   },
   {
     "text": "कारण",
+    "valid": true
+  },
+  {
+    "text": "कारण {max} या उससे कम अक्षरों का होना चाहिए।",
     "valid": true
   },
   {
@@ -9216,6 +9360,10 @@
     "valid": true
   },
   {
+    "text": "चरित्र प्रमाणपत्र",
+    "valid": true
+  },
+  {
     "text": "चार्ट",
     "valid": true
   },
@@ -9400,7 +9548,23 @@
     "valid": true
   },
   {
+    "text": "जारी किए गए दस्तावेज़",
+    "valid": true
+  },
+  {
     "text": "जारी किए गए दस्तावेज़ देखें",
+    "valid": true
+  },
+  {
+    "text": "जारी किए गए दस्तावेज़ लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "जारी किए गए प्रमाणपत्र और पत्र देखें व सत्यापित करें।",
+    "valid": true
+  },
+  {
+    "text": "जारी दस्तावेज़ों की सूची पर वापस जाएँ",
     "valid": true
   },
   {
@@ -9409,6 +9573,10 @@
   },
   {
     "text": "जारी होने की तारीख: {date}",
+    "valid": true
+  },
+  {
+    "text": "जारी होने की तारीख़",
     "valid": true
   },
   {
@@ -9545,6 +9713,10 @@
   },
   {
     "text": "डिग्री",
+    "valid": true
+  },
+  {
+    "text": "डिजिटल प्रमाणपत्र",
     "valid": true
   },
   {
@@ -9756,11 +9928,35 @@
     "valid": true
   },
   {
+    "text": "दस्तावेज़ उपलब्ध नहीं है",
+    "valid": true
+  },
+  {
+    "text": "दस्तावेज़ का प्रकार",
+    "valid": true
+  },
+  {
     "text": "दस्तावेज़ जारी करें",
     "valid": true
   },
   {
+    "text": "दस्तावेज़ निरस्त करें",
+    "valid": true
+  },
+  {
+    "text": "दस्तावेज़ निरस्त किया गया",
+    "valid": true
+  },
+  {
+    "text": "दस्तावेज़ निरस्त नहीं हो सका।",
+    "valid": true
+  },
+  {
     "text": "दस्तावेज़ लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "दस्तावेज़ संख्या",
     "valid": true
   },
   {
@@ -9769,6 +9965,10 @@
   },
   {
     "text": "दिखाएँ",
+    "valid": true
+  },
+  {
+    "text": "दिखाने के लिए कोई जारी दस्तावेज़ नहीं है",
     "valid": true
   },
   {
@@ -9948,6 +10148,18 @@
     "valid": true
   },
   {
+    "text": "निरस्त करें",
+    "valid": true
+  },
+  {
+    "text": "निरस्तीकरण का कारण",
+    "valid": true
+  },
+  {
+    "text": "निरस्तीकरण का कारण दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "निर्णय चाहिए",
     "valid": true
   },
@@ -10017,6 +10229,10 @@
   },
   {
     "text": "पता पंक्ति 2",
+    "valid": true
+  },
+  {
+    "text": "पत्र",
     "valid": true
   },
   {
@@ -10105,6 +10321,10 @@
   },
   {
     "text": "पहला पृष्ठ",
+    "valid": true
+  },
+  {
+    "text": "पहले से निरस्त है। नवीनतम स्थिति देखने के लिए यह संवाद बंद करें और पृष्ठ फिर से लोड करें।",
     "valid": true
   },
   {
@@ -10264,6 +10484,10 @@
     "valid": true
   },
   {
+    "text": "पूर्णता प्रमाणपत्र",
+    "valid": true
+  },
+  {
     "text": "पूर्व छात्र",
     "valid": true
   },
@@ -10365,6 +10589,10 @@
   },
   {
     "text": "प्रतिबंधित व्यक्तिगत डेटा देखें",
+    "valid": true
+  },
+  {
+    "text": "प्रतिलिपि",
     "valid": true
   },
   {
@@ -11652,6 +11880,10 @@
     "valid": true
   },
   {
+    "text": "वास्तविक छात्र प्रमाणपत्र",
+    "valid": true
+  },
+  {
     "text": "विकल्प",
     "valid": true
   },
@@ -12204,6 +12436,14 @@
     "valid": true
   },
   {
+    "text": "सत्यापन कोड",
+    "valid": true
+  },
+  {
+    "text": "सत्यापन कोड, हस्ताक्षर और स्थिति देखने के लिए जारी दस्तावेज़ खोलें।",
+    "valid": true
+  },
+  {
     "text": "सत्यापन समस्याएँ लोड नहीं हो सकीं।",
     "valid": true
   },
@@ -12269,6 +12509,10 @@
   },
   {
     "text": "सभी पंक्तियों के लिए सक्रिय खाते चुनें।",
+    "valid": true
+  },
+  {
+    "text": "सभी प्रकार",
     "valid": true
   },
   {
@@ -12497,6 +12741,10 @@
   },
   {
     "text": "सार्वजनिक फ़ॉर्म",
+    "valid": true
+  },
+  {
+    "text": "सार्वजनिक सत्यापन में यह दस्तावेज़ अमान्य दिखेगा। निरस्तीकरण को पूर्ववत नहीं किया जा सकता।",
     "valid": true
   },
   {
@@ -12812,6 +13060,14 @@
     "valid": true
   },
   {
+    "text": "हस्तलिखित हस्ताक्षर",
+    "valid": true
+  },
+  {
+    "text": "हस्ताक्षर",
+    "valid": true
+  },
+  {
     "text": "हस्ताक्षर अमान्य — इंस्टॉल न करें",
     "valid": true
   },
@@ -13069,6 +13325,10 @@
   },
   {
     "text": "அனைத்து வகுப்புக் குழுக்களும்",
+    "valid": true
+  },
+  {
+    "text": "அனைத்து வகைகளும்",
     "valid": true
   },
   {
@@ -13368,6 +13628,14 @@
     "valid": true
   },
   {
+    "text": "ஆவண எண்",
+    "valid": true
+  },
+  {
+    "text": "ஆவண வகை",
+    "valid": true
+  },
+  {
     "text": "ஆவணக் கோரிக்கை",
     "valid": true
   },
@@ -13385,6 +13653,22 @@
   },
   {
     "text": "ஆவணங்கள் எதுவும் பதிவு செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "ஆவணத்தை ரத்து செய்",
+    "valid": true
+  },
+  {
+    "text": "ஆவணத்தை ரத்து செய்ய முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "ஆவணம் கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "ஆவணம் ரத்து செய்யப்பட்டது",
     "valid": true
   },
   {
@@ -14096,6 +14380,10 @@
     "valid": true
   },
   {
+    "text": "உண்மைநிலைச் சான்றிதழ்",
+    "valid": true
+  },
+  {
     "text": "உயர்",
     "valid": true
   },
@@ -14284,6 +14572,10 @@
     "valid": true
   },
   {
+    "text": "ஏற்கனவே ரத்து செய்யப்பட்டது. தற்போதைய நிலையைக் காண இந்த உரையாடலை மூடிவிட்டுப் பக்கத்தை மீண்டும் ஏற்றவும்.",
+    "valid": true
+  },
+  {
     "text": "ஏற்கப்பட்டது",
     "valid": true
   },
@@ -14408,6 +14700,10 @@
     "valid": true
   },
   {
+    "text": "ஒருமுறை கடவுச்சொல்",
+    "valid": true
+  },
+  {
     "text": "ஒற்றை உள்நுழைவு",
     "valid": true
   },
@@ -14453,6 +14749,10 @@
   },
   {
     "text": "கடவுச்சொல்",
+    "valid": true
+  },
+  {
+    "text": "கடிதம்",
     "valid": true
   },
   {
@@ -14808,6 +15108,10 @@
     "valid": true
   },
   {
+    "text": "காட்டுவதற்கு வழங்கப்பட்ட ஆவணங்கள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "காத்திருக்கிறது",
     "valid": true
   },
@@ -14833,6 +15137,10 @@
   },
   {
     "text": "காரணம்",
+    "valid": true
+  },
+  {
+    "text": "காரணம் {max} எழுத்துகள் அல்லது அதற்குக் குறைவாக இருக்க வேண்டும்.",
     "valid": true
   },
   {
@@ -15056,6 +15364,14 @@
     "valid": true
   },
   {
+    "text": "கையால் இட்ட கையொப்பம்",
+    "valid": true
+  },
+  {
+    "text": "கையொப்பங்கள்",
+    "valid": true
+  },
+  {
     "text": "கையொப்பம் செல்லாது — நிறுவ வேண்டாம்",
     "valid": true
   },
@@ -15165,6 +15481,14 @@
   },
   {
     "text": "சரிபார்க்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "சரிபார்ப்புக் குறியீடு",
+    "valid": true
+  },
+  {
+    "text": "சரிபார்ப்புக் குறியீடு, கையொப்பங்கள் மற்றும் நிலையைக் காண வழங்கப்பட்ட ஆவணத்தைத் திறக்கவும்.",
     "valid": true
   },
   {
@@ -16224,6 +16548,10 @@
     "valid": true
   },
   {
+    "text": "நன்னடத்தைச் சான்றிதழ்",
+    "valid": true
+  },
+  {
     "text": "நபர்",
     "valid": true
   },
@@ -16393,6 +16721,10 @@
   },
   {
     "text": "நிறைவடைந்தது",
+    "valid": true
+  },
+  {
+    "text": "நிறைவுச் சான்றிதழ்",
     "valid": true
   },
   {
@@ -16741,6 +17073,10 @@
   },
   {
     "text": "பணியாளர் {number}",
+    "valid": true
+  },
+  {
+    "text": "பணியாளர் கடிதம்",
     "valid": true
   },
   {
@@ -17104,6 +17440,10 @@
     "valid": true
   },
   {
+    "text": "பிற ஆவணம்",
+    "valid": true
+  },
+  {
     "text": "பிறகு",
     "valid": true
   },
@@ -17256,6 +17596,10 @@
     "valid": true
   },
   {
+    "text": "பொதுச் சரிபார்ப்பில் இந்த ஆவணம் செல்லாததாகக் காட்டப்படும். ரத்து செய்ததை மாற்ற முடியாது.",
+    "valid": true
+  },
+  {
     "text": "பொதுப் படிவம்",
     "valid": true
   },
@@ -17365,6 +17709,10 @@
   },
   {
     "text": "மதிப்பெண் அறிக்கைப் பட்டியலுக்குத் திரும்புக",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண் சான்றுப் படி",
     "valid": true
   },
   {
@@ -17593,6 +17941,10 @@
   },
   {
     "text": "மின்னஞ்சல்கள்",
+    "valid": true
+  },
+  {
+    "text": "மின்னணுச் சான்றிதழ்",
     "valid": true
   },
   {
@@ -17908,7 +18260,19 @@
     "valid": true
   },
   {
+    "text": "ரத்து செய்",
+    "valid": true
+  },
+  {
     "text": "ரத்து செய்யப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "ரத்து செய்வதற்கான காரணத்தை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "ரத்து செய்வதற்கான காரணம்",
     "valid": true
   },
   {
@@ -18184,7 +18548,27 @@
     "valid": true
   },
   {
+    "text": "வழங்கப்பட்ட ஆவணங்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "வழங்கப்பட்ட ஆவணங்களைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "வழங்கப்பட்ட ஆவணங்கள்",
+    "valid": true
+  },
+  {
+    "text": "வழங்கப்பட்ட ஆவணப் பட்டியலுக்குத் திரும்புக",
+    "valid": true
+  },
+  {
+    "text": "வழங்கப்பட்ட சான்றிதழ்களையும் கடிதங்களையும் பார்த்துச் சரிபார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "வழங்கப்பட்ட நாள்",
     "valid": true
   },
   {
