@@ -20,6 +20,17 @@ export const STAGE3_PERMISSIONS: readonly Permission[] = [
   perm("m14.family.manage", "m14.permission.familyManage"),
   perm("m15.structure.read", "m15.permission.structureRead"),
   perm("m15.structure.manage", "m15.permission.structureManage"),
+  perm("m09.import.read", "m09.permission.importRead"),
+  perm("m09.import.manage", "m09.permission.importManage"),
+  perm("m12.admissions.read", "m12.permission.admissionsRead"),
+  perm("m12.admissions.manage", "m12.permission.admissionsManage"),
+  perm("m16.timetable.read", "m16.permission.timetableRead"),
+  perm("m16.timetable.manage", "m16.permission.timetableManage"),
+  perm("m17.attendance.read", "m17.permission.attendanceRead"),
+  perm("m17.attendance.mark", "m17.permission.attendanceMark", true),
+  perm("m17.leave.decide", "m17.permission.leaveDecide", true),
+  perm("m86.rollover.read", "m86.permission.rolloverRead"),
+  perm("m86.rollover.manage", "m86.permission.rolloverManage"),
 ];
 
 const all = STAGE3_PERMISSIONS.map((permission) => permission.code);
@@ -27,12 +38,30 @@ const all = STAGE3_PERMISSIONS.map((permission) => permission.code);
 export const STAGE3_ROLE_PERMISSIONS: Record<SystemRoleKey, PermissionCode[]> = {
   owner: [...all],
   admin: [...all],
-  teacher: ["m08.config.read", "m13.learner.read", "m14.family.read", "m15.structure.read"],
-  guardian: ["m15.structure.read"],
-  learner: ["m15.structure.read"],
+  teacher: [
+    "m08.config.read",
+    "m13.learner.read",
+    "m14.family.read",
+    "m15.structure.read",
+    "m16.timetable.read",
+    "m17.attendance.read",
+    "m17.attendance.mark",
+  ],
+  guardian: ["m15.structure.read", "m16.timetable.read"],
+  learner: ["m15.structure.read", "m16.timetable.read"],
 };
 
-const modules: readonly ModuleId[] = ["M08", "M13", "M14", "M15"];
+const modules: readonly ModuleId[] = [
+  "M08",
+  "M09",
+  "M12",
+  "M13",
+  "M14",
+  "M15",
+  "M16",
+  "M17",
+  "M86",
+];
 
 export const STAGE3_ENTITLEMENTS: readonly Entitlement[] = DEMO_TENANTS.flatMap(({ tenantId }) =>
   modules.map((moduleId) => ({

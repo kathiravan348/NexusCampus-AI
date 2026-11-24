@@ -1116,6 +1116,10 @@
     "valid": true
   },
   {
+    "text": "Decide leave requests",
+    "valid": true
+  },
+  {
     "text": "Default answer quality",
     "valid": true
   },
@@ -1988,6 +1992,10 @@
     "valid": true
   },
   {
+    "text": "Manage admissions",
+    "valid": true
+  },
+  {
     "text": "Manage consents",
     "valid": true
   },
@@ -1997,6 +2005,10 @@
   },
   {
     "text": "Manage forms, fields and workflows",
+    "valid": true
+  },
+  {
+    "text": "Manage imports",
     "valid": true
   },
   {
@@ -2016,7 +2028,19 @@
     "valid": true
   },
   {
+    "text": "Manage timetables",
+    "valid": true
+  },
+  {
+    "text": "Manage year-end rollover",
+    "valid": true
+  },
+  {
     "text": "Manage your institution profile, campuses, regional formats, and academic calendar.",
+    "valid": true
+  },
+  {
+    "text": "Mark attendance",
     "valid": true
   },
   {
@@ -3788,6 +3812,14 @@
     "valid": true
   },
   {
+    "text": "View admissions",
+    "valid": true
+  },
+  {
+    "text": "View attendance",
+    "valid": true
+  },
+  {
     "text": "View details",
     "valid": true
   },
@@ -3797,6 +3829,10 @@
   },
   {
     "text": "View forms, fields and workflows",
+    "valid": true
+  },
+  {
+    "text": "View import jobs",
     "valid": true
   },
   {
@@ -3817,6 +3853,14 @@
   },
   {
     "text": "View text override",
+    "valid": true
+  },
+  {
+    "text": "View timetables",
+    "valid": true
+  },
+  {
+    "text": "View year-end rollover",
     "valid": true
   },
   {
@@ -4992,7 +5036,15 @@
     "valid": true
   },
   {
+    "text": "आयात कार्य देखें",
+    "valid": true
+  },
+  {
     "text": "आयात किए गए ओवरराइड लागू नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "आयात प्रबंधित करें",
     "valid": true
   },
   {
@@ -5185,6 +5237,14 @@
   },
   {
     "text": "उपयोगी नहीं",
+    "valid": true
+  },
+  {
+    "text": "उपस्थिति दर्ज करें",
+    "valid": true
+  },
+  {
+    "text": "उपस्थिति देखें",
     "valid": true
   },
   {
@@ -5701,6 +5761,10 @@
   },
   {
     "text": "छुट्टी का नाम",
+    "valid": true
+  },
+  {
+    "text": "छुट्टी के अनुरोधों पर निर्णय लें",
     "valid": true
   },
   {
@@ -6321,6 +6385,14 @@
   },
   {
     "text": "प्रदाता पहुँच स्वीकृत करें",
+    "valid": true
+  },
+  {
+    "text": "प्रवेश प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "प्रवेश रिकॉर्ड देखें",
     "valid": true
   },
   {
@@ -6992,6 +7064,14 @@
     "valid": true
   },
   {
+    "text": "वर्षांत कक्षा परिवर्तन देखें",
+    "valid": true
+  },
+  {
+    "text": "वर्षांत कक्षा परिवर्तन प्रबंधित करें",
+    "valid": true
+  },
+  {
     "text": "वापस",
     "valid": true
   },
@@ -7357,6 +7437,14 @@
   },
   {
     "text": "समय सीमा पार",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी देखें",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी प्रबंधित करें",
     "valid": true
   },
   {
@@ -8000,6 +8088,14 @@
     "valid": true
   },
   {
+    "text": "ஆண்டு இறுதி வகுப்பு மாற்றங்களை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு இறுதி வகுப்பு மாற்றங்களைப் பார்",
+    "valid": true
+  },
+  {
     "text": "ஆண்டு தொடங்கும் நாள்",
     "valid": true
   },
@@ -8313,6 +8409,14 @@
   },
   {
     "text": "இறக்குமதி மற்றும் ஏற்றுமதி",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணிகளைப் பார்",
     "valid": true
   },
   {
@@ -8844,6 +8948,14 @@
     "valid": true
   },
   {
+    "text": "கால அட்டவணைகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணைகளைப் பார்",
+    "valid": true
+  },
+  {
     "text": "காலங்கள் அமைக்கப்படவில்லை (தொடர்ச்சியான நாட்காட்டி).",
     "valid": true
   },
@@ -9209,6 +9321,14 @@
   },
   {
     "text": "சேர்க்கப்படுபவை",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைப் பதிவுகளைப் பார்",
     "valid": true
   },
   {
@@ -10712,6 +10832,14 @@
     "valid": true
   },
   {
+    "text": "வருகைப் பதிவுகளைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "வருகையைப் பதிவு செய்",
+    "valid": true
+  },
+  {
     "text": "வரை",
     "valid": true
   },
@@ -10813,6 +10941,10 @@
   },
   {
     "text": "விசாலமானது",
+    "valid": true
+  },
+  {
+    "text": "விடுப்புக் கோரிக்கைகள் மீது முடிவெடு",
     "valid": true
   },
   {

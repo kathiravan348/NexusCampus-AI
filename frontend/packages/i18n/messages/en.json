@@ -3763,6 +3763,50 @@
     "message": "Manage academic structure",
     "description": "Permission description: Manage programmes, year levels, class groups, subjects and subject offerings."
   },
+  "m09.permission.importRead": {
+    "message": "View import jobs",
+    "description": "Permission description: View import jobs, column mappings and validation issues."
+  },
+  "m09.permission.importManage": {
+    "message": "Manage imports",
+    "description": "Permission description: Manage import jobs and column mappings."
+  },
+  "m12.permission.admissionsRead": {
+    "message": "View admissions",
+    "description": "Permission description: View enquiries, applications, admission offers and waitlists."
+  },
+  "m12.permission.admissionsManage": {
+    "message": "Manage admissions",
+    "description": "Permission description: Manage enquiries, applications, admission offers and waitlists."
+  },
+  "m16.permission.timetableRead": {
+    "message": "View timetables",
+    "description": "Permission description: View rooms, bell schedules and timetable slots. Staff can also view teacher load."
+  },
+  "m16.permission.timetableManage": {
+    "message": "Manage timetables",
+    "description": "Permission description: Manage rooms, bell schedules and timetable slots."
+  },
+  "m17.permission.attendanceRead": {
+    "message": "View attendance",
+    "description": "Permission description: View attendance sessions and marks."
+  },
+  "m17.permission.attendanceMark": {
+    "message": "Mark attendance",
+    "description": "Permission description: Record attendance marks and view private mark notes."
+  },
+  "m17.permission.leaveDecide": {
+    "message": "Decide leave requests",
+    "description": "Permission description: View and decide learner leave requests across the institution."
+  },
+  "m86.permission.rolloverRead": {
+    "message": "View year-end rollover",
+    "description": "Permission description: View year-end rollover runs and promotion decisions."
+  },
+  "m86.permission.rolloverManage": {
+    "message": "Manage year-end rollover",
+    "description": "Permission description: Manage year-end rollover runs and promotion decisions."
+  },
   "m07.permission.templateManage": {
     "message": "Manage notification templates",
     "description": "Permission description: edit templates and see the delivery log."
