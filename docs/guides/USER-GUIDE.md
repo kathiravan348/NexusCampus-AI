@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -34,7 +34,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure and Timetable show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable and Fees show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -202,6 +202,15 @@ Available from **Timetable** in the menu to administrators, teachers, parents/gu
 Open the session while connected to make its roster available offline. Offline marks show **Waiting to sync**. They sync when the connection returns with **Attendance** open. **Last synced** shows when the session list was last refreshed.
 
 Staff with viewing access can read attendance. Marking requires marking permission. **Submitted** and **Locked** sessions are read-only.
+
+## Fees
+Available from **Fees** in the menu to fee administrators, parents/guardians, and learners. Staff without fee access see **No access**. Cached invoices and payments stay readable offline (showing **Last synced …** under the heading), and manual receipts can be recorded offline and synced when the connection returns.
+
+- **Invoices** lists each invoice with its invoice number, learner name (when directory details are available), due date, **Total**, **Paid**, **Balance**, and status badge (**Draft**, **Issued**, **Part paid**, **Paid**, **Void**, or **Written off**). Use **Filter by status** to narrow the list, and choose any invoice to **Show lines** and inspect its line items. Parents/guardians and learners see only their own family's invoices.
+- **Payments** lists recorded receipts with the receipt number, amount, payment method, received date and time in your institution's time zone, and status badge. Parents/guardians and learners see only payments for their own family's invoices.
+- **Plans & refunds** is shown only to staff who may view fees. It lists **Fee heads**, **Fee plans** (lines and instalments), **Concessions** (type, mode, and value), and **Refunds** (amount and status). Personal reasons on concessions and refunds are never shown here.
+- Staff allowed to manage fees see **Record payment** to record a **Cash**, **Cheque**, or **Bank transfer** receipt against one or more open (**Issued** or **Part paid**) invoices for one learner, then choose **Record receipt**. An amount above the selected remaining balance is refused inline. While offline, a recorded receipt stays queued as **Waiting to sync** on the invoice and under **Payments**, and syncs once when the connection returns with **Fees** open. Online card and UPI payments are not captured here.
+- When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.

@@ -292,6 +292,10 @@
     "valid": true
   },
   {
+    "text": "A queued payment could not sync. Check the open invoices and try again.",
+    "valid": true
+  },
+  {
     "text": "A required value is missing.",
     "valid": true
   },
@@ -696,6 +700,18 @@
     "valid": true
   },
   {
+    "text": "Amount ({currency})",
+    "valid": true
+  },
+  {
+    "text": "Amount exceeds the remaining balance of the selected invoices.",
+    "valid": true
+  },
+  {
+    "text": "Amount: {amount}",
+    "valid": true
+  },
+  {
     "text": "Android",
     "valid": true
   },
@@ -916,6 +932,10 @@
     "valid": true
   },
   {
+    "text": "Award credit",
+    "valid": true
+  },
+  {
     "text": "Back",
     "valid": true
   },
@@ -932,7 +952,15 @@
     "valid": true
   },
   {
+    "text": "Balance",
+    "valid": true
+  },
+  {
     "text": "Balanced",
+    "valid": true
+  },
+  {
+    "text": "Bank transfer",
     "valid": true
   },
   {
@@ -1060,6 +1088,14 @@
     "valid": true
   },
   {
+    "text": "Card",
+    "valid": true
+  },
+  {
+    "text": "Cash",
+    "valid": true
+  },
+  {
     "text": "Category",
     "valid": true
   },
@@ -1108,6 +1144,10 @@
     "valid": true
   },
   {
+    "text": "Cheque",
+    "valid": true
+  },
+  {
     "text": "Child",
     "valid": true
   },
@@ -1133,6 +1173,10 @@
   },
   {
     "text": "Choose a file with a plain file name (up to 200 characters).",
+    "valid": true
+  },
+  {
+    "text": "Choose cash, cheque or bank transfer.",
     "valid": true
   },
   {
@@ -1236,6 +1280,10 @@
     "valid": true
   },
   {
+    "text": "Concessions",
+    "valid": true
+  },
+  {
     "text": "Condition",
     "valid": true
   },
@@ -1320,11 +1368,27 @@
     "valid": true
   },
   {
+    "text": "Could not load fee plans and refunds.",
+    "valid": true
+  },
+  {
+    "text": "Could not load fee records.",
+    "valid": true
+  },
+  {
     "text": "Could not load institution setup.",
     "valid": true
   },
   {
+    "text": "Could not load invoices.",
+    "valid": true
+  },
+  {
     "text": "Could not load locale settings.",
+    "valid": true
+  },
+  {
+    "text": "Could not load payments.",
     "valid": true
   },
   {
@@ -1344,6 +1408,10 @@
     "valid": true
   },
   {
+    "text": "Could not record this payment. Check your entries and try again.",
+    "valid": true
+  },
+  {
     "text": "Could not remove text override.",
     "valid": true
   },
@@ -1353,6 +1421,10 @@
   },
   {
     "text": "Could not save text override.",
+    "valid": true
+  },
+  {
+    "text": "Could not save the payment receipt. Try again.",
     "valid": true
   },
   {
@@ -1628,6 +1700,10 @@
     "valid": true
   },
   {
+    "text": "Discount: {amount}",
+    "valid": true
+  },
+  {
     "text": "Display calendar",
     "valid": true
   },
@@ -1681,6 +1757,10 @@
   },
   {
     "text": "Due",
+    "valid": true
+  },
+  {
+    "text": "Due {date}",
     "valid": true
   },
   {
@@ -1876,6 +1956,14 @@
     "valid": true
   },
   {
+    "text": "Enter a valid positive amount.",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid received date and time.",
+    "valid": true
+  },
+  {
     "text": "Enter a valid time (HH:MM).",
     "valid": true
   },
@@ -2016,11 +2104,39 @@
     "valid": true
   },
   {
+    "text": "Fee heads",
+    "valid": true
+  },
+  {
+    "text": "Fee invoices",
+    "valid": true
+  },
+  {
+    "text": "Fee lines",
+    "valid": true
+  },
+  {
+    "text": "Fee payments",
+    "valid": true
+  },
+  {
+    "text": "Fee plans",
+    "valid": true
+  },
+  {
+    "text": "Fees",
+    "valid": true
+  },
+  {
     "text": "Fees collected",
     "valid": true
   },
   {
     "text": "Fees outstanding",
+    "valid": true
+  },
+  {
+    "text": "Fees sections",
     "valid": true
   },
   {
@@ -2065,6 +2181,10 @@
   },
   {
     "text": "Fixed after creation to honour data residency rules.",
+    "valid": true
+  },
+  {
+    "text": "Fixed amount",
     "valid": true
   },
   {
@@ -2240,6 +2360,10 @@
     "valid": true
   },
   {
+    "text": "Hide lines",
+    "valid": true
+  },
+  {
     "text": "High",
     "valid": true
   },
@@ -2388,6 +2512,10 @@
     "valid": true
   },
   {
+    "text": "Instalments",
+    "valid": true
+  },
+  {
     "text": "Institution",
     "valid": true
   },
@@ -2468,7 +2596,23 @@
     "valid": true
   },
   {
+    "text": "Invoice lines",
+    "valid": true
+  },
+  {
+    "text": "Invoices",
+    "valid": true
+  },
+  {
+    "text": "Invoices, payment receipts, fee plans and refunds.",
+    "valid": true
+  },
+  {
     "text": "Issue documents",
+    "valid": true
+  },
+  {
+    "text": "Issued",
     "valid": true
   },
   {
@@ -2888,6 +3032,10 @@
     "valid": true
   },
   {
+    "text": "Merit",
+    "valid": true
+  },
+  {
     "text": "Message",
     "valid": true
   },
@@ -2985,6 +3133,10 @@
   },
   {
     "text": "Navigation menu",
+    "valid": true
+  },
+  {
+    "text": "Need-based",
     "valid": true
   },
   {
@@ -3208,6 +3360,10 @@
     "valid": true
   },
   {
+    "text": "No concessions recorded.",
+    "valid": true
+  },
+  {
     "text": "No conflicts here.",
     "valid": true
   },
@@ -3241,6 +3397,14 @@
   },
   {
     "text": "No enrolments recorded.",
+    "valid": true
+  },
+  {
+    "text": "No fee heads configured yet.",
+    "valid": true
+  },
+  {
+    "text": "No fee plans configured yet.",
     "valid": true
   },
   {
@@ -3281,6 +3445,10 @@
   },
   {
     "text": "No institution overrides are set for {locale} yet. The exported file will have an empty entries object.",
+    "valid": true
+  },
+  {
+    "text": "No invoices match",
     "valid": true
   },
   {
@@ -3336,6 +3504,10 @@
     "valid": true
   },
   {
+    "text": "No payments recorded yet",
+    "valid": true
+  },
+  {
     "text": "No periods configured (rolling calendar).",
     "valid": true
   },
@@ -3345,6 +3517,10 @@
   },
   {
     "text": "No provider access has been granted.",
+    "valid": true
+  },
+  {
+    "text": "No refunds recorded.",
     "valid": true
   },
   {
@@ -3425,6 +3601,10 @@
   },
   {
     "text": "No year levels or class groups yet.",
+    "valid": true
+  },
+  {
+    "text": "Non-refundable",
     "valid": true
   },
   {
@@ -3524,11 +3704,19 @@
     "valid": true
   },
   {
+    "text": "Offline — receipt will queue as Waiting to sync until you reconnect.",
+    "valid": true
+  },
+  {
     "text": "On",
     "valid": true
   },
   {
     "text": "On leave",
+    "valid": true
+  },
+  {
+    "text": "One or more selected invoices are not open for payment.",
     "valid": true
   },
   {
@@ -3541,6 +3729,10 @@
   },
   {
     "text": "Online academy",
+    "valid": true
+  },
+  {
+    "text": "Online gateway",
     "valid": true
   },
   {
@@ -3577,6 +3769,10 @@
   },
   {
     "text": "Open capacity",
+    "valid": true
+  },
+  {
+    "text": "Open invoices",
     "valid": true
   },
   {
@@ -3692,6 +3888,10 @@
     "valid": true
   },
   {
+    "text": "Paid",
+    "valid": true
+  },
+  {
     "text": "Paper",
     "valid": true
   },
@@ -3708,6 +3908,10 @@
     "valid": true
   },
   {
+    "text": "Part paid",
+    "valid": true
+  },
+  {
     "text": "Passkey",
     "valid": true
   },
@@ -3720,11 +3924,31 @@
     "valid": true
   },
   {
+    "text": "Payment method",
+    "valid": true
+  },
+  {
+    "text": "Payment receipt recorded.",
+    "valid": true
+  },
+  {
+    "text": "Payments",
+    "valid": true
+  },
+  {
     "text": "Pending",
     "valid": true
   },
   {
     "text": "Pending leave requests",
+    "valid": true
+  },
+  {
+    "text": "Pending offline receipt",
+    "valid": true
+  },
+  {
+    "text": "Percentage",
     "valid": true
   },
   {
@@ -3809,6 +4033,10 @@
   },
   {
     "text": "Plan sections",
+    "valid": true
+  },
+  {
+    "text": "Plans & refunds",
     "valid": true
   },
   {
@@ -3976,7 +4204,19 @@
     "valid": true
   },
   {
+    "text": "Receipt saved offline. Waiting to sync.",
+    "valid": true
+  },
+  {
     "text": "Received",
+    "valid": true
+  },
+  {
+    "text": "Received at",
+    "valid": true
+  },
+  {
+    "text": "Received {date}",
     "valid": true
   },
   {
@@ -3984,7 +4224,19 @@
     "valid": true
   },
   {
+    "text": "Record a cash, cheque or bank-transfer receipt against open invoices for one learner.",
+    "valid": true
+  },
+  {
     "text": "Record change",
+    "valid": true
+  },
+  {
+    "text": "Record payment",
+    "valid": true
+  },
+  {
+    "text": "Record receipt",
     "valid": true
   },
   {
@@ -3996,7 +4248,19 @@
     "valid": true
   },
   {
+    "text": "Recorded receipts will appear here.",
+    "valid": true
+  },
+  {
     "text": "Referral",
+    "valid": true
+  },
+  {
+    "text": "Refundable",
+    "valid": true
+  },
+  {
+    "text": "Refunds",
     "valid": true
   },
   {
@@ -4096,6 +4360,10 @@
     "valid": true
   },
   {
+    "text": "Reversed",
+    "valid": true
+  },
+  {
     "text": "Review",
     "valid": true
   },
@@ -4105,6 +4373,10 @@
   },
   {
     "text": "Review enquiries and follow each application through to an offer or a waitlist place.",
+    "valid": true
+  },
+  {
+    "text": "Review fee invoices and payment receipts, and record manual payments.",
     "valid": true
   },
   {
@@ -4288,6 +4560,10 @@
     "valid": true
   },
   {
+    "text": "Scholarship",
+    "valid": true
+  },
+  {
     "text": "School stage",
     "valid": true
   },
@@ -4384,6 +4660,18 @@
     "valid": true
   },
   {
+    "text": "Select at least one open invoice.",
+    "valid": true
+  },
+  {
+    "text": "Selected balance: {amount}",
+    "valid": true
+  },
+  {
+    "text": "Selected invoices must use the same currency.",
+    "valid": true
+  },
+  {
     "text": "Semester",
     "valid": true
   },
@@ -4444,7 +4732,15 @@
     "valid": true
   },
   {
+    "text": "Show lines",
+    "valid": true
+  },
+  {
     "text": "Showing {start, number}–{end, number} of {total, number}",
+    "valid": true
+  },
+  {
+    "text": "Sibling",
     "valid": true
   },
   {
@@ -4548,6 +4844,10 @@
     "valid": true
   },
   {
+    "text": "Staff child",
+    "valid": true
+  },
+  {
     "text": "Staff member {number}",
     "valid": true
   },
@@ -4633,6 +4933,10 @@
   },
   {
     "text": "Submitted on {date}",
+    "valid": true
+  },
+  {
+    "text": "Succeeded",
     "valid": true
   },
   {
@@ -4741,6 +5045,14 @@
   },
   {
     "text": "Target",
+    "valid": true
+  },
+  {
+    "text": "Tax {rate}",
+    "valid": true
+  },
+  {
+    "text": "Tax: {amount}",
     "valid": true
   },
   {
@@ -4956,6 +5268,10 @@
     "valid": true
   },
   {
+    "text": "There are no open invoices available for payment.",
+    "valid": true
+  },
+  {
     "text": "This address does not match any page. Check the link or go back to home.",
     "valid": true
   },
@@ -5100,6 +5416,10 @@
     "valid": true
   },
   {
+    "text": "Total",
+    "valid": true
+  },
+  {
     "text": "Total rows",
     "valid": true
   },
@@ -5156,6 +5476,10 @@
     "valid": true
   },
   {
+    "text": "Try another status filter or check back when invoices are issued.",
+    "valid": true
+  },
+  {
     "text": "Tuesday",
     "valid": true
   },
@@ -5189,6 +5513,10 @@
   },
   {
     "text": "UK GDPR",
+    "valid": true
+  },
+  {
+    "text": "UPI",
     "valid": true
   },
   {
@@ -5472,6 +5800,10 @@
     "valid": true
   },
   {
+    "text": "Void",
+    "valid": true
+  },
+  {
     "text": "Waiting",
     "valid": true
   },
@@ -5501,6 +5833,10 @@
   },
   {
     "text": "Walk-in",
+    "valid": true
+  },
+  {
+    "text": "Wallet",
     "valid": true
   },
   {
@@ -5581,6 +5917,10 @@
   },
   {
     "text": "Workflows & numbering",
+    "valid": true
+  },
+  {
+    "text": "Written off",
     "valid": true
   },
   {
@@ -6484,6 +6824,10 @@
     "valid": true
   },
   {
+    "text": "{value}%",
+    "valid": true
+  },
+  {
     "text": "अंक",
     "valid": true
   },
@@ -6632,6 +6976,10 @@
     "valid": true
   },
   {
+    "text": "अनुरोधित",
+    "valid": true
+  },
+  {
     "text": "अन्य",
     "valid": true
   },
@@ -6740,6 +7088,10 @@
     "valid": true
   },
   {
+    "text": "अभी कोई भुगतान दर्ज नहीं है",
+    "valid": true
+  },
+  {
     "text": "अभी कोई भूमिका नहीं।",
     "valid": true
   },
@@ -6761,6 +7113,14 @@
   },
   {
     "text": "अभी कोई शिक्षार्थी नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई शुल्क योजना कॉन्फ़िगर नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई शुल्क शीर्ष कॉन्फ़िगर नहीं है।",
     "valid": true
   },
   {
@@ -6861,6 +7221,10 @@
   },
   {
     "text": "अस्वीकृत पंक्तियाँ",
+    "valid": true
+  },
+  {
+    "text": "आंशिक भुगतान",
     "valid": true
   },
   {
@@ -7105,6 +7469,10 @@
   },
   {
     "text": "आवश्यक नहीं",
+    "valid": true
+  },
+  {
+    "text": "आवश्यकता आधारित",
     "valid": true
   },
   {
@@ -7428,6 +7796,10 @@
     "valid": true
   },
   {
+    "text": "एक शिक्षार्थी के खुले चालानों के लिए नकद, चेक या बैंक ट्रांसफ़र रसीद दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "एक संस्थान और एक भूमिका चुनें। यह प्रोटोटाइप काल्पनिक डेमो डेटा का उपयोग करता है और इसमें पासवर्ड नहीं चाहिए।",
     "valid": true
   },
@@ -7504,6 +7876,10 @@
     "valid": true
   },
   {
+    "text": "ऑनलाइन गेटवे",
+    "valid": true
+  },
+  {
     "text": "ऑफ़लाइन",
     "valid": true
   },
@@ -7513,6 +7889,10 @@
   },
   {
     "text": "ऑफ़लाइन बंडल से",
+    "valid": true
+  },
+  {
+    "text": "ऑफ़लाइन — कनेक्शन लौटने तक रसीद सिंक होने की प्रतीक्षा में रहेगी।",
     "valid": true
   },
   {
@@ -7596,6 +7976,10 @@
     "valid": true
   },
   {
+    "text": "कतार में रखा गया भुगतान सिंक नहीं हो सका। खुले चालान जाँचें और फिर प्रयास करें।",
+    "valid": true
+  },
+  {
     "text": "कनेक्शन चाहिए",
     "valid": true
   },
@@ -7612,6 +7996,18 @@
     "valid": true
   },
   {
+    "text": "कम से कम एक खुला चालान चुनें।",
+    "valid": true
+  },
+  {
+    "text": "कर {rate}",
+    "valid": true
+  },
+  {
+    "text": "कर: {amount}",
+    "valid": true
+  },
+  {
     "text": "कर्ता",
     "valid": true
   },
@@ -7621,6 +8017,10 @@
   },
   {
     "text": "कर्मचारी {number}",
+    "valid": true
+  },
+  {
+    "text": "कर्मचारी संतान",
     "valid": true
   },
   {
@@ -7664,6 +8064,10 @@
     "valid": true
   },
   {
+    "text": "कार्ड",
+    "valid": true
+  },
+  {
     "text": "कार्य सारांश",
     "valid": true
   },
@@ -7701,6 +8105,10 @@
   },
   {
     "text": "कालांश",
+    "valid": true
+  },
+  {
+    "text": "किश्तें",
     "valid": true
   },
   {
@@ -7753,6 +8161,10 @@
   },
   {
     "text": "कुछ गलत हो गया",
+    "valid": true
+  },
+  {
+    "text": "कुल",
     "valid": true
   },
   {
@@ -7825,6 +8237,10 @@
   },
   {
     "text": "कोई अनुमोदन कार्यप्रवाह नहीं है",
+    "valid": true
+  },
+  {
+    "text": "कोई अन्य स्थिति फ़िल्टर चुनें या चालान जारी होने पर फिर देखें।",
     "valid": true
   },
   {
@@ -7924,6 +8340,10 @@
     "valid": true
   },
   {
+    "text": "कोई मेल खाता चालान नहीं है",
+    "valid": true
+  },
+  {
     "text": "कोई मेल खाता संदेश नहीं",
     "valid": true
   },
@@ -7933,6 +8353,14 @@
   },
   {
     "text": "कोई मॉड्यूल नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई रिफ़ंड दर्ज नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "कोई रियायत दर्ज नहीं है।",
     "valid": true
   },
   {
@@ -8048,6 +8476,10 @@
     "valid": true
   },
   {
+    "text": "खुले चालान",
+    "valid": true
+  },
+  {
     "text": "खेल",
     "valid": true
   },
@@ -8096,7 +8528,27 @@
     "valid": true
   },
   {
+    "text": "चयनित शेष: {amount}",
+    "valid": true
+  },
+  {
     "text": "चार्ट",
+    "valid": true
+  },
+  {
+    "text": "चालान",
+    "valid": true
+  },
+  {
+    "text": "चालान मदें",
+    "valid": true
+  },
+  {
+    "text": "चालान लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "चालान, भुगतान रसीदें, शुल्क योजनाएँ और रिफ़ंड।",
     "valid": true
   },
   {
@@ -8140,7 +8592,15 @@
     "valid": true
   },
   {
+    "text": "चुने गए एक या अधिक चालान भुगतान के लिए खुले नहीं हैं।",
+    "valid": true
+  },
+  {
     "text": "चुने गए एक या अधिक शिक्षक इस संस्था के लिए मान्य नहीं हैं।",
+    "valid": true
+  },
+  {
+    "text": "चुने गए सभी चालानों की मुद्रा एक ही होनी चाहिए।",
     "valid": true
   },
   {
@@ -8153,6 +8613,10 @@
   },
   {
     "text": "चुनें…",
+    "valid": true
+  },
+  {
+    "text": "चेक",
     "valid": true
   },
   {
@@ -8173,6 +8637,10 @@
   },
   {
     "text": "छात्र",
+    "valid": true
+  },
+  {
+    "text": "छात्रवृत्ति",
     "valid": true
   },
   {
@@ -8197,6 +8665,10 @@
   },
   {
     "text": "छूट अवधि",
+    "valid": true
+  },
+  {
+    "text": "छूट: {amount}",
     "valid": true
   },
   {
@@ -8548,6 +9020,10 @@
     "valid": true
   },
   {
+    "text": "दर्ज की गई रसीदें यहाँ दिखाई देंगी।",
+    "valid": true
+  },
+  {
     "text": "दवा",
     "valid": true
   },
@@ -8596,6 +9072,10 @@
     "valid": true
   },
   {
+    "text": "देय तिथि {date}",
+    "valid": true
+  },
+  {
     "text": "देर से आए",
     "valid": true
   },
@@ -8641,6 +9121,14 @@
   },
   {
     "text": "नई भूमिका",
+    "valid": true
+  },
+  {
+    "text": "नकद",
+    "valid": true
+  },
+  {
+    "text": "नकद, चेक या बैंक ट्रांसफ़र चुनें।",
     "valid": true
   },
   {
@@ -8737,6 +9225,10 @@
   },
   {
     "text": "निलंबित करें",
+    "valid": true
+  },
+  {
+    "text": "निश्चित राशि",
     "valid": true
   },
   {
@@ -8928,6 +9420,10 @@
     "valid": true
   },
   {
+    "text": "पुरस्कार क्रेडिट",
+    "valid": true
+  },
+  {
     "text": "पुस्तकालय",
     "valid": true
   },
@@ -9080,6 +9576,10 @@
     "valid": true
   },
   {
+    "text": "प्रतिशत",
+    "valid": true
+  },
+  {
     "text": "प्रतीक्षा में",
     "valid": true
   },
@@ -9204,7 +9704,19 @@
     "valid": true
   },
   {
+    "text": "प्राप्त {date}",
+    "valid": true
+  },
+  {
     "text": "प्राप्तकर्ता",
+    "valid": true
+  },
+  {
+    "text": "प्राप्ति की मान्य तिथि और समय दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "प्राप्ति तिथि व समय",
     "valid": true
   },
   {
@@ -9400,6 +9912,10 @@
     "valid": true
   },
   {
+    "text": "बट्टे खाते में डाला गया",
+    "valid": true
+  },
+  {
     "text": "बड़े अक्षर",
     "valid": true
   },
@@ -9484,6 +10000,10 @@
     "valid": true
   },
   {
+    "text": "बैंक ट्रांसफ़र",
+    "valid": true
+  },
+  {
     "text": "बैकअप",
     "valid": true
   },
@@ -9553,6 +10073,42 @@
   },
   {
     "text": "भाषा सेटिंग सहेजी गईं।",
+    "valid": true
+  },
+  {
+    "text": "भुगतान",
+    "valid": true
+  },
+  {
+    "text": "भुगतान किया गया",
+    "valid": true
+  },
+  {
+    "text": "भुगतान के लिए कोई खुला चालान उपलब्ध नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "भुगतान दर्ज करें",
+    "valid": true
+  },
+  {
+    "text": "भुगतान पूर्ण",
+    "valid": true
+  },
+  {
+    "text": "भुगतान माध्यम",
+    "valid": true
+  },
+  {
+    "text": "भुगतान रसीद दर्ज हो गई।",
+    "valid": true
+  },
+  {
+    "text": "भुगतान रसीद सहेजी नहीं जा सकी। फिर प्रयास करें।",
+    "valid": true
+  },
+  {
+    "text": "भुगतान लोड नहीं हो सके।",
     "valid": true
   },
   {
@@ -9628,6 +10184,14 @@
     "valid": true
   },
   {
+    "text": "मदें छिपाएँ",
+    "valid": true
+  },
+  {
+    "text": "मदें दिखाएँ",
+    "valid": true
+  },
+  {
     "text": "मध्य पूर्व (ME)",
     "valid": true
   },
@@ -9665,6 +10229,10 @@
   },
   {
     "text": "मान्य तिथि (YYYY-MM-DD) दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "मान्य धनात्मक राशि दर्ज करें।",
     "valid": true
   },
   {
@@ -9824,6 +10392,10 @@
     "valid": true
   },
   {
+    "text": "यह भुगतान दर्ज नहीं हो सका। अपनी प्रविष्टियाँ जाँचें और फिर प्रयास करें।",
+    "valid": true
+  },
+  {
     "text": "यह वही डिवाइस है जिसका आप अभी उपयोग कर रहे हैं। आप साइन आउट हो जाएँगे और इसका डेटा हटा दिया जाएगा।",
     "valid": true
   },
@@ -9856,6 +10428,10 @@
     "valid": true
   },
   {
+    "text": "योग्यता",
+    "valid": true
+  },
+  {
     "text": "योजना",
     "valid": true
   },
@@ -9873,6 +10449,10 @@
   },
   {
     "text": "योजना के भाग",
+    "valid": true
+  },
+  {
+    "text": "योजनाएँ और रिफ़ंड",
     "valid": true
   },
   {
@@ -9912,7 +10492,27 @@
     "valid": true
   },
   {
+    "text": "रसीद ऑफ़लाइन सहेजी गई। सिंक होने की प्रतीक्षा में।",
+    "valid": true
+  },
+  {
+    "text": "रसीद दर्ज करें",
+    "valid": true
+  },
+  {
     "text": "राज्य, प्रांत या अमीरात",
+    "valid": true
+  },
+  {
+    "text": "राशि ({currency})",
+    "valid": true
+  },
+  {
+    "text": "राशि चुने गए चालानों के शेष से अधिक है।",
+    "valid": true
+  },
+  {
+    "text": "राशि: {amount}",
     "valid": true
   },
   {
@@ -9936,6 +10536,14 @@
     "valid": true
   },
   {
+    "text": "रिफ़ंड",
+    "valid": true
+  },
+  {
+    "text": "रियायतें",
+    "valid": true
+  },
+  {
     "text": "रोल नंबर {roll}",
     "valid": true
   },
@@ -9949,6 +10557,10 @@
   },
   {
     "text": "लंबित अवकाश अनुरोध",
+    "valid": true
+  },
+  {
+    "text": "लंबित ऑफ़लाइन रसीद",
     "valid": true
   },
   {
@@ -10088,6 +10700,10 @@
     "valid": true
   },
   {
+    "text": "वापस किया गया",
+    "valid": true
+  },
+  {
     "text": "वापस लाएँ",
     "valid": true
   },
@@ -10097,6 +10713,14 @@
   },
   {
     "text": "वापस ली गई",
+    "valid": true
+  },
+  {
+    "text": "वापसी योग्य",
+    "valid": true
+  },
+  {
+    "text": "वापसी योग्य नहीं",
     "valid": true
   },
   {
@@ -10193,6 +10817,10 @@
   },
   {
     "text": "वैकल्पिक। 1 से 2,000 के बीच पूर्ण संख्या।",
+    "valid": true
+  },
+  {
+    "text": "वॉलेट",
     "valid": true
   },
   {
@@ -10308,6 +10936,18 @@
     "valid": true
   },
   {
+    "text": "शुल्क",
+    "valid": true
+  },
+  {
+    "text": "शुल्क अनुभाग",
+    "valid": true
+  },
+  {
+    "text": "शुल्क अभिलेख लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
     "text": "शुल्क और भुगतान देखें",
     "valid": true
   },
@@ -10316,11 +10956,43 @@
     "valid": true
   },
   {
+    "text": "शुल्क चालान",
+    "valid": true
+  },
+  {
+    "text": "शुल्क चालान और भुगतान रसीदें देखें तथा मैनुअल भुगतान दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "शुल्क भुगतान",
+    "valid": true
+  },
+  {
+    "text": "शुल्क मदें",
+    "valid": true
+  },
+  {
+    "text": "शुल्क योजनाएँ",
+    "valid": true
+  },
+  {
+    "text": "शुल्क योजनाएँ और रिफ़ंड लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
     "text": "शुल्क रियायत",
     "valid": true
   },
   {
+    "text": "शुल्क शीर्ष",
+    "valid": true
+  },
+  {
     "text": "शुल्क शेष",
+    "valid": true
+  },
+  {
+    "text": "शेष",
     "valid": true
   },
   {
@@ -10608,6 +11280,10 @@
     "valid": true
   },
   {
+    "text": "सफल",
+    "valid": true
+  },
+  {
     "text": "सबसे ऊपर की सेट परत लागू होती है। नीचे की परतें विकल्प के रूप में रहती हैं।",
     "valid": true
   },
@@ -10793,6 +11469,10 @@
   },
   {
     "text": "सहेजें",
+    "valid": true
+  },
+  {
+    "text": "सहोदर",
     "valid": true
   },
   {
@@ -11248,6 +11928,10 @@
     "valid": true
   },
   {
+    "text": "அட்டை",
+    "valid": true
+  },
+  {
     "text": "அணுகலை அனுமதி",
     "valid": true
   },
@@ -11536,6 +12220,10 @@
     "valid": true
   },
   {
+    "text": "ஆஃப்லைன் — இணைப்பு திரும்பும் வரை ரசீது ஒத்திசைவுக்காகக் காத்திருக்கும்.",
+    "valid": true
+  },
+  {
     "text": "ஆசிய-பசிபிக் (APAC)",
     "valid": true
   },
@@ -11601,6 +12289,10 @@
   },
   {
     "text": "ஆன்லைன் அகாடமி",
+    "valid": true
+  },
+  {
+    "text": "ஆன்லைன் நுழைவாயில்",
     "valid": true
   },
   {
@@ -11832,6 +12524,10 @@
     "valid": true
   },
   {
+    "text": "இந்தக் கட்டணத்தைப் பதிவு செய்ய முடியவில்லை. உங்கள் உள்ளீடுகளைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
     "text": "இந்தக் கணக்கிற்கு எந்த நிறுவனமும் அமைக்கப்படவில்லை.",
     "valid": true
   },
@@ -11969,6 +12665,18 @@
   },
   {
     "text": "இன்னும் ஒற்றை உள்நுழைவு வழங்குநர் அமைக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் கட்டணங்கள் பதிவு செய்யப்படவில்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் கட்டணத் தலைப்புகள் அமைக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் கட்டணத் திட்டங்கள் அமைக்கப்படவில்லை.",
     "valid": true
   },
   {
@@ -12272,6 +12980,10 @@
     "valid": true
   },
   {
+    "text": "உடன்பிறந்தவர்",
+    "valid": true
+  },
+  {
     "text": "உடல்நலக் குறிப்புகள்",
     "valid": true
   },
@@ -12548,6 +13260,10 @@
     "valid": true
   },
   {
+    "text": "ஒரு கற்பவரின் திறந்த பட்டியல்களுக்கு பணம், காசோலை அல்லது வங்கிப் பரிமாற்ற ரசீதைப் பதிவு செய்யவும்.",
+    "valid": true
+  },
+  {
     "text": "ஒரு நிறுவனத்தையும் ஒரு பங்கையும் தேர்ந்தெடுக்கவும். இந்த முன்மாதிரி கற்பனையான டெமோ தரவைப் பயன்படுத்துகிறது; கடவுச்சொல் தேவையில்லை.",
     "valid": true
   },
@@ -12636,7 +13352,31 @@
     "valid": true
   },
   {
+    "text": "கட்டண இனங்கள்",
+    "valid": true
+  },
+  {
     "text": "கட்டண நிலுவைகள்",
+    "valid": true
+  },
+  {
+    "text": "கட்டண முறை",
+    "valid": true
+  },
+  {
+    "text": "கட்டண ரசீது பதிவு செய்யப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "கட்டண ரசீதுகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கட்டண ரசீதுகள்",
+    "valid": true
+  },
+  {
+    "text": "கட்டண ரசீதைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.",
     "valid": true
   },
   {
@@ -12648,11 +13388,59 @@
     "valid": true
   },
   {
+    "text": "கட்டணங்கள்",
+    "valid": true
+  },
+  {
     "text": "கட்டணச் சலுகை",
     "valid": true
   },
   {
+    "text": "கட்டணத் தலைப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "கட்டணத் திட்டங்களையும் பணம் திரும்பப்பெறுதலையும் ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கட்டணத் திட்டங்கள்",
+    "valid": true
+  },
+  {
     "text": "கட்டணப் பட்டியல்",
+    "valid": true
+  },
+  {
+    "text": "கட்டணப் பட்டியல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கட்டணப் பட்டியல்களையும் கட்டண ரசீதுகளையும் பார்வையிட்டு, நேரடி கட்டணங்களைப் பதிவு செய்யுங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "கட்டணப் பட்டியல்கள்",
+    "valid": true
+  },
+  {
+    "text": "கட்டணப் பட்டியல்கள், கட்டண ரசீதுகள், கட்டணத் திட்டங்கள் மற்றும் பணம் திரும்பப்பெறுதல்.",
+    "valid": true
+  },
+  {
+    "text": "கட்டணப் பதிவுகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கட்டணப் பிரிவுகள்",
+    "valid": true
+  },
+  {
+    "text": "கட்டணம் செலுத்த திறந்த பட்டியல்கள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "கட்டணம் பதிவு செய்",
     "valid": true
   },
   {
@@ -12772,6 +13560,10 @@
     "valid": true
   },
   {
+    "text": "கல்வி உதவித்தொகை",
+    "valid": true
+  },
+  {
     "text": "கல்வி நாட்காட்டி",
     "valid": true
   },
@@ -12821,6 +13613,10 @@
   },
   {
     "text": "காகிதம்",
+    "valid": true
+  },
+  {
+    "text": "காசோலை",
     "valid": true
   },
   {
@@ -13000,6 +13796,10 @@
     "valid": true
   },
   {
+    "text": "குறைந்தது ஒரு திறந்த பட்டியலையாவது தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "குறைந்தபட்சம்",
     "valid": true
   },
@@ -13132,6 +13932,10 @@
     "valid": true
   },
   {
+    "text": "சதவீதம்",
+    "valid": true
+  },
+  {
     "text": "சந்திப்பு நேரங்களையும் முன்பதிவுகளையும் பார்",
     "valid": true
   },
@@ -13180,6 +13984,10 @@
     "valid": true
   },
   {
+    "text": "சரியான நேர்மறைத் தொகையை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
     "text": "சரியான பெயரை உள்ளிடவும்.",
     "valid": true
   },
@@ -13197,6 +14005,14 @@
   },
   {
     "text": "சரியான ஹெக்ஸ் நிறத்தை உள்ளிடவும் (எ.கா. #1F5FD1).",
+    "valid": true
+  },
+  {
+    "text": "சலுகைகள்",
+    "valid": true
+  },
+  {
+    "text": "சலுகைகள் எதுவும் பதிவு செய்யப்படவில்லை.",
     "valid": true
   },
   {
@@ -13384,7 +14200,23 @@
     "valid": true
   },
   {
+    "text": "செலுத்த வேண்டிய நாள் {date}",
+    "valid": true
+  },
+  {
     "text": "செலுத்தப்படாத கட்டணப் பட்டியல்கள்",
+    "valid": true
+  },
+  {
+    "text": "செலுத்தப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "செலுத்திய தொகைகள்",
+    "valid": true
+  },
+  {
+    "text": "செலுத்தியது",
     "valid": true
   },
   {
@@ -13548,6 +14380,10 @@
     "valid": true
   },
   {
+    "text": "தகுதி",
+    "valid": true
+  },
+  {
     "text": "தணிக்கை நிகழ்வுகள்",
     "valid": true
   },
@@ -13688,6 +14524,18 @@
     "valid": true
   },
   {
+    "text": "தள்ளுபடி செய்யப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "தள்ளுபடி: {amount}",
+    "valid": true
+  },
+  {
+    "text": "தவணைகள்",
+    "valid": true
+  },
+  {
     "text": "தவறான ICU செய்தி தொடரியல்",
     "valid": true
   },
@@ -13721,6 +14569,10 @@
   },
   {
     "text": "திங்கள்",
+    "valid": true
+  },
+  {
+    "text": "திட்டங்கள் & பணம் திரும்பப்பெறுதல்",
     "valid": true
   },
   {
@@ -13764,6 +14616,14 @@
     "valid": true
   },
   {
+    "text": "திரும்பப் பெற இயலாதது",
+    "valid": true
+  },
+  {
+    "text": "திரும்பப் பெறக்கூடியது",
+    "valid": true
+  },
+  {
     "text": "திரும்பப் பெறப்பட்டது",
     "valid": true
   },
@@ -13777,6 +14637,10 @@
   },
   {
     "text": "திரும்பப் பெற்று அழி",
+    "valid": true
+  },
+  {
+    "text": "திறந்த கட்டணப் பட்டியல்கள்",
     "valid": true
   },
   {
@@ -13868,6 +14732,18 @@
     "valid": true
   },
   {
+    "text": "தேர்ந்தெடுத்த நிலுவை: {amount}",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த பட்டியல்களில் ஒன்று அல்லது அதற்கு மேற்பட்டவை கட்டணத்திற்குத் திறக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த பட்டியல்கள் அனைத்தும் ஒரே நாணயத்தில் இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
     "text": "தேர்ந்தெடுத்த பாட ஒதுக்கீடு இந்த நிறுவனத்திற்குச் செல்லாது.",
     "valid": true
   },
@@ -13905,6 +14781,10 @@
   },
   {
     "text": "தேவை",
+    "valid": true
+  },
+  {
+    "text": "தேவை அடிப்படையிலானது",
     "valid": true
   },
   {
@@ -13961,6 +14841,18 @@
   },
   {
     "text": "தொகுப்பைப் புதுப்பிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "தொகை ({currency})",
+    "valid": true
+  },
+  {
+    "text": "தொகை தேர்ந்தெடுத்த பட்டியல்களின் மீதமுள்ள நிலுவையை விட அதிகம்.",
+    "valid": true
+  },
+  {
+    "text": "தொகை: {amount}",
     "valid": true
   },
   {
@@ -14240,7 +15132,15 @@
     "valid": true
   },
   {
+    "text": "நிலுவை",
+    "valid": true
+  },
+  {
     "text": "நிலுவைக் கட்டணம்",
+    "valid": true
+  },
+  {
+    "text": "நிலுவையிலுள்ள ஆஃப்லைன் ரசீது",
     "valid": true
   },
   {
@@ -14257,6 +15157,10 @@
   },
   {
     "text": "நிலையான",
+    "valid": true
+  },
+  {
+    "text": "நிலையான தொகை",
     "valid": true
   },
   {
@@ -14392,6 +15296,10 @@
     "valid": true
   },
   {
+    "text": "பகுதி செலுத்தப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "பகுதிகள்",
     "valid": true
   },
@@ -14512,11 +15420,31 @@
     "valid": true
   },
   {
+    "text": "பட்டியல் விவரங்கள்",
+    "valid": true
+  },
+  {
     "text": "பட்டியை மூடு",
     "valid": true
   },
   {
     "text": "பட்டியைத் திற",
+    "valid": true
+  },
+  {
+    "text": "பணம்",
+    "valid": true
+  },
+  {
+    "text": "பணம் திரும்பப்பெறுதல்",
+    "valid": true
+  },
+  {
+    "text": "பணம் திரும்பப்பெறுதல் எதுவும் பதிவு செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பணம், காசோலை அல்லது வங்கிப் பரிமாற்றத்தைத் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
   {
@@ -14529,6 +15457,10 @@
   },
   {
     "text": "பணியாளர் {number}",
+    "valid": true
+  },
+  {
+    "text": "பணியாளர் குழந்தை",
     "valid": true
   },
   {
@@ -14577,6 +15509,10 @@
   },
   {
     "text": "பதிவு செய்யப்பட்ட CSV மற்றும் Excel இறக்குமதிப் பணிகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "பதிவு செய்யப்பட்ட ரசீதுகள் இங்கே தோன்றும்.",
     "valid": true
   },
   {
@@ -14952,6 +15888,18 @@
     "valid": true
   },
   {
+    "text": "பெற்ற சரியான நாளையும் நேரத்தையும் உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "பெற்ற நாள் {date}",
+    "valid": true
+  },
+  {
+    "text": "பெற்ற நாள் மற்றும் நேரம்",
+    "valid": true
+  },
+  {
     "text": "பெற்றோர்",
     "valid": true
   },
@@ -14981,6 +15929,10 @@
   },
   {
     "text": "பொருந்தும் ஒப்புதல் பதிவுகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் கட்டணப் பட்டியல்கள் இல்லை",
     "valid": true
   },
   {
@@ -15236,6 +16188,10 @@
     "valid": true
   },
   {
+    "text": "மின்னணுப் பணப்பை",
+    "valid": true
+  },
+  {
     "text": "மீண்டும் ஏற்று",
     "valid": true
   },
@@ -15468,6 +16424,10 @@
     "valid": true
   },
   {
+    "text": "மொத்தம்",
+    "valid": true
+  },
+  {
     "text": "மொத்தம் செயலில்",
     "valid": true
   },
@@ -15501,6 +16461,14 @@
   },
   {
     "text": "ரசீது",
+    "valid": true
+  },
+  {
+    "text": "ரசீது ஆஃப்லைனில் சேமிக்கப்பட்டது. ஒத்திசைவுக்காகக் காத்திருக்கிறது.",
+    "valid": true
+  },
+  {
+    "text": "ரசீதைப் பதிவு செய்",
     "valid": true
   },
   {
@@ -15564,6 +16532,10 @@
     "valid": true
   },
   {
+    "text": "வங்கிப் பரிமாற்றம்",
+    "valid": true
+  },
+  {
     "text": "வசதியானது",
     "valid": true
   },
@@ -15612,6 +16584,14 @@
     "valid": true
   },
   {
+    "text": "வரி {rate}",
+    "valid": true
+  },
+  {
+    "text": "வரி: {amount}",
+    "valid": true
+  },
+  {
     "text": "வரிசை {row}",
     "valid": true
   },
@@ -15633,6 +16613,10 @@
   },
   {
     "text": "வரிசையில்",
+    "valid": true
+  },
+  {
+    "text": "வரிசையில் உள்ள கட்டணத்தை ஒத்திசைக்க முடியவில்லை. திறந்த பட்டியல்களைச் சரிபார்த்து மீண்டும் முயலவும்.",
     "valid": true
   },
   {
@@ -15896,6 +16880,10 @@
     "valid": true
   },
   {
+    "text": "விருது வரவு",
+    "valid": true
+  },
+  {
     "text": "விருப்பங்கள்",
     "valid": true
   },
@@ -15960,6 +16948,14 @@
     "valid": true
   },
   {
+    "text": "விவரங்களை மறை",
+    "valid": true
+  },
+  {
+    "text": "விவரங்களைக் காட்டு",
+    "valid": true
+  },
+  {
     "text": "விவரங்களைப் பார்",
     "valid": true
   },
@@ -15969,6 +16965,14 @@
   },
   {
     "text": "வீட்டு முகவரி",
+    "valid": true
+  },
+  {
+    "text": "வெற்றி",
+    "valid": true
+  },
+  {
+    "text": "வெளியிடப்பட்டது",
     "valid": true
   },
   {
@@ -15997,6 +17001,10 @@
   },
   {
     "text": "வேறு தேடல் சொல்லை முயலவும் அல்லது மேலெழுதியவை-மட்டும் வடிகட்டியை அணைக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "வேறு நிலை வடிகட்டியைத் தேர்ந்தெடுக்கவும் அல்லது பட்டியல்கள் வெளியிடப்பட்ட பிறகு பார்க்கவும்.",
     "valid": true
   },
   {

@@ -23,10 +23,7 @@ const timestamps = {
 };
 const validTimestampOrder = ({ createdAt, updatedAt }: { createdAt: string; updatedAt: string }) =>
   Date.parse(updatedAt) >= Date.parse(createdAt);
-const timestampOrderIssue = {
-  message: "updatedAt is before createdAt",
-  path: ["updatedAt"],
-};
+const timestampOrderIssue = { message: "updatedAt is before createdAt", path: ["updatedAt"] };
 
 /** Chargeable fee head (tuition, lab, exam). Country tax rules are applied on the server. */
 export const FeeHeadSchema = z.strictObject({
@@ -59,14 +56,10 @@ function hasUniqueFeeHeads(plan: { lines: readonly FeePlanLine[] }): boolean {
 }
 
 function hasAscendingDueDates(plan: { instalments: readonly FeePlanInstalment[] }): boolean {
-  for (let i = 1; i < plan.instalments.length; i += 1) {
+  return plan.instalments.every((item, i) => {
     const previous = plan.instalments[i - 1];
-    const current = plan.instalments[i];
-    if (previous !== undefined && current !== undefined && current.dueOn <= previous.dueOn) {
-      return false;
-    }
-  }
-  return true;
+    return previous === undefined || item.dueOn > previous.dueOn;
+  });
 }
 
 function hasFullInstalmentShare(plan: { instalments: readonly FeePlanInstalment[] }): boolean {
@@ -89,10 +82,7 @@ export const FeePlanSchema = z
     instalments: z.array(FeePlanInstalmentSchema).min(1).max(24),
     ...timestamps,
   })
-  .refine(hasUniqueFeeHeads, {
-    message: "lines has duplicate feeHeadId",
-    path: ["lines"],
-  })
+  .refine(hasUniqueFeeHeads, { message: "lines has duplicate feeHeadId", path: ["lines"] })
   .refine(hasAscendingDueDates, {
     message: "instalment dueOn dates must be strictly ascending",
     path: ["instalments"],
@@ -211,10 +201,7 @@ export const FeeInvoiceSchema = z
     message: "total does not match sum of lines (amount - discount + tax)",
     path: ["total"],
   })
-  .refine((invoice) => invoice.paid <= invoice.total, {
-    message: "paid exceeds total",
-    path: ["paid"],
-  })
+  .refine((inv) => inv.paid <= inv.total, { message: "paid exceeds total", path: ["paid"] })
   .refine(invoiceStatusMatchesPaid, {
     message: "status does not agree with paid amount",
     path: ["status"],
@@ -236,6 +223,11 @@ export type FeePaymentMethod = z.infer<typeof FeePaymentMethodSchema>;
 export const FeePaymentStatusSchema = z.enum(["pending", "succeeded", "failed", "reversed"]);
 export type FeePaymentStatus = z.infer<typeof FeePaymentStatusSchema>;
 
+function hasUniqueInvoiceIds(payment: { invoiceIds: readonly string[] }): boolean {
+  return new Set(payment.invoiceIds).size === payment.invoiceIds.length;
+}
+const uniqueInvoiceIdsIssue = { message: "invoiceIds has duplicates", path: ["invoiceIds"] };
+
 /** Payment against one or more fee invoices in one currency. Supports offline capture (M18 L2). */
 export const FeePaymentSchema = z
   .strictObject({
@@ -254,19 +246,27 @@ export const FeePaymentSchema = z
     /** Device id when captured offline (M18 L2); null for online payments. */
     deviceId: IdSchema.nullable(),
   })
-  .refine((payment) => new Set(payment.invoiceIds).size === payment.invoiceIds.length, {
-    message: "invoiceIds has duplicates",
-    path: ["invoiceIds"],
-  });
+  .refine(hasUniqueInvoiceIds, uniqueInvoiceIdsIssue);
 export type FeePayment = z.infer<typeof FeePaymentSchema>;
+
+/** Manual cash, cheque or bank-transfer receipt input (M18, L2 offline-capable). */
+export const FeePaymentInputSchema = z
+  .strictObject({
+    invoiceIds: z.array(IdSchema).min(1).max(20),
+    currency: CurrencyCodeSchema,
+    amount: PositiveMinorUnitsSchema,
+    method: z.enum(["cash", "cheque", "bank_transfer"]),
+    receivedAt: UtcDateTimeSchema,
+    deviceId: IdSchema.nullable(),
+  })
+  .refine(hasUniqueInvoiceIds, uniqueInvoiceIdsIssue);
+export type FeePaymentInput = z.infer<typeof FeePaymentInputSchema>;
 
 export const FeeRefundStatusSchema = z.enum(["requested", "approved", "paid", "rejected"]);
 export type FeeRefundStatus = z.infer<typeof FeeRefundStatusSchema>;
 
-function validDecidedAt(r: { createdAt: string; decidedAt: string | null }): boolean {
-  if (r.decidedAt === null) return true;
-  return Date.parse(r.decidedAt) >= Date.parse(r.createdAt);
-}
+const validDecidedAt = (r: { createdAt: string; decidedAt: string | null }) =>
+  r.decidedAt === null || Date.parse(r.decidedAt) >= Date.parse(r.createdAt);
 
 /** Refund against a fee payment, in minor units of the linked payment's currency. */
 export const FeeRefundSchema = z
