@@ -103,10 +103,11 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-172 | Codex · gpt-6.2-astra / high (screen) → Gemini · gemini-4-neon-xhigh | 20:13; question answered, restarted 20:17; Codex usage limit (until 23:52) after round 1, red on Prettier only; reviewer formatted, changes-requested (remaining build) → Gemini 20:48 | green | done — fix: list / view typed as `IssuedDocumentRead` | `3e1802a`, pushed |
 | NEX-173 | Gemini · gemini-4-neon-xhigh (screen) | 21:48 (Codex at usage limit) | green | done — no fixes | `36c1590`, pushed |
 | NEX-174 | Gemini · gemini-4-neon-xhigh (screen) | 22:43 (Codex at usage limit) | green | done — no fixes | merged 23:4x, pushed |
-| NEX-175 | Gemini · gemini-4-neon-xhigh (screen) | 23:38 (Codex at usage limit) | running | — | — |
+| NEX-175 | Gemini · gemini-4-neon-xhigh (screen) | 23:38 (Codex at usage limit) | green | done — no fixes | `d53fc80`, pushed |
+| NEX-176 | Codex · gpt-6.2-astra / high (screen) | 00:2x (Owner: Codex) | running | — | — |
 
-Planned next: NEX-176 (M27 staff portal; after NEX-175), NEX-177 (M28 dashboards; after NEX-176) and NEX-178
-(M86 rollover, read-only per D76; after NEX-177).
+Planned next: NEX-177 (M28 dashboards; after NEX-176) and NEX-178
+(M86 rollover, read-only per D76; after NEX-177); then NEX-179 (review build).
 Each remaining screen task shares `modules.ts` with the running one, so one builder waits.
 Owner (23:59): give the next task, NEX-176, to Codex (`gpt-6.2-astra` / `high`) once NEX-175 is merged. Codex's usage
 limit ended 23:52. If Codex hits a usage limit again, or fails twice, use Gemini (tick step 4).
