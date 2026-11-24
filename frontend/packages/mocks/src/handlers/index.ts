@@ -6,8 +6,12 @@ import { m04Handlers } from "./m04";
 import { m05Handlers } from "./m05";
 import { m06Handlers } from "./m06";
 import { m07Handlers } from "./m07";
+import { m08Handlers } from "./m08";
 import { m10Handlers } from "./m10";
 import { m11Handlers } from "./m11";
+import { m13Handlers } from "./m13";
+import { m14Handlers } from "./m14";
+import { m15Handlers } from "./m15";
 import { m83Handlers, m83WriteHandlers } from "./m83";
 import { m84Handlers } from "./m84";
 
@@ -19,7 +23,7 @@ export type { MeResponse } from "./m02";
 export { EffectiveThemeSchema, ThemeResponseSchema } from "./m03";
 export type { EffectiveTheme, ThemeResponse } from "./m03";
 
-/** Every Stage 1 read handler (one line per module file). Screen tasks add their write handlers here. */
+/** Mock API handlers, grouped by module. */
 export const handlers: HttpHandler[] = [
   ...m01Handlers,
   ...m02Handlers,
@@ -28,8 +32,12 @@ export const handlers: HttpHandler[] = [
   ...m05Handlers,
   ...m06Handlers,
   ...m07Handlers,
+  ...m08Handlers,
   ...m10Handlers,
   ...m11Handlers,
+  ...m13Handlers,
+  ...m14Handlers,
+  ...m15Handlers,
   ...m83Handlers,
   ...m84Handlers,
   ...m83WriteHandlers,

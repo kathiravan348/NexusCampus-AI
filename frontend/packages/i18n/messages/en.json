@@ -3723,6 +3723,46 @@
     "message": "Saved on this device. It will sync when you are back online.",
     "description": "Toast when preferences were saved offline."
   },
+  "m08.permission.configRead": {
+    "message": "View forms, fields and workflows",
+    "description": "Permission description: View configuration for custom fields, forms, workflows and numbering formats."
+  },
+  "m08.permission.configManage": {
+    "message": "Manage forms, fields and workflows",
+    "description": "Permission description: Manage configuration for custom fields, forms, workflows and numbering formats."
+  },
+  "m13.permission.learnerRead": {
+    "message": "View learner records",
+    "description": "Permission description: View learner records across the institution."
+  },
+  "m13.permission.learnerReadRestricted": {
+    "message": "View restricted learner data",
+    "description": "Permission description: View restricted learner data such as health flags and sensitive custom fields."
+  },
+  "m13.permission.learnerManage": {
+    "message": "Manage learner records",
+    "description": "Permission description: Manage learner records across the institution."
+  },
+  "m14.permission.familyRead": {
+    "message": "View family records",
+    "description": "Permission description: View households, guardian relationships and authorised pickups."
+  },
+  "m14.permission.familyReadRestricted": {
+    "message": "View restricted family data",
+    "description": "Permission description: View restricted family data such as court order notes."
+  },
+  "m14.permission.familyManage": {
+    "message": "Manage family records",
+    "description": "Permission description: Manage households, guardian relationships and authorised pickups."
+  },
+  "m15.permission.structureRead": {
+    "message": "View academic structure",
+    "description": "Permission description: View programmes, year levels, class groups, subjects and subject offerings."
+  },
+  "m15.permission.structureManage": {
+    "message": "Manage academic structure",
+    "description": "Permission description: Manage programmes, year levels, class groups, subjects and subject offerings."
+  },
   "m07.permission.templateManage": {
     "message": "Manage notification templates",
     "description": "Permission description: edit templates and see the delivery log."

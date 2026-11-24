@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   AuthorisedPickupSchema,
   GuardianRelationshipSchema,
+  GuardianRelationshipViewSchema,
   HouseholdSchema,
   type AuthorisedPickup,
   type GuardianRelationship,
@@ -94,6 +95,18 @@ describe("GuardianRelationship", () => {
     ]) {
       expect(GuardianRelationshipSchema.safeParse({ ...mother, ...changes }).success).toBe(false);
     }
+  });
+});
+
+describe("GuardianRelationshipView", () => {
+  it("accepts a masked note on a court-restricted pickup", () => {
+    const masked = { ...father, courtOrderNote: null };
+    expect(GuardianRelationshipViewSchema.parse(masked)).toEqual(masked);
+  });
+
+  it("rejects a court note on a pickup with no court restriction", () => {
+    const unexpectedNote = { ...mother, courtOrderNote: father.courtOrderNote };
+    expect(GuardianRelationshipViewSchema.safeParse(unexpectedNote).success).toBe(false);
   });
 });
 

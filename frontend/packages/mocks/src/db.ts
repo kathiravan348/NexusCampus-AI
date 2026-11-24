@@ -18,8 +18,12 @@ function createDb() {
     users: clone(F.USERS),
     sessions: clone(F.SESSIONS),
     ssoProviders: clone(F.SSO_PROVIDERS),
-    permissions: clone(F.PERMISSIONS),
-    roles: clone(F.ROLES),
+    permissions: [...clone(F.PERMISSIONS), ...clone(F.STAGE3_PERMISSIONS)],
+    roles: clone(F.ROLES).map((role) => {
+      const key = F.SYSTEM_ROLE_KEYS.find((key) => role.id === F.roleId(role.tenantId, key));
+      if (role.system && key) role.permissions.push(...F.STAGE3_ROLE_PERMISSIONS[key]);
+      return role;
+    }),
     roleAssignments: clone(F.ROLE_ASSIGNMENTS),
     demoTenants: clone(F.DEMO_TENANTS),
     demoPersonas: clone(F.DEMO_PERSONAS),
@@ -29,7 +33,11 @@ function createDb() {
     textOverrideRevisions: clone(F.TEXT_OVERRIDE_REVISIONS),
     plans: clone(F.PLANS),
     tenantPlans: { ...F.TENANT_PLANS } as Record<string, string>,
-    entitlements: [...clone(F.ENTITLEMENTS), ...clone(F.INSTALL_ENTITLEMENTS)],
+    entitlements: [
+      ...clone(F.ENTITLEMENTS),
+      ...clone(F.INSTALL_ENTITLEMENTS),
+      ...clone(F.STAGE3_ENTITLEMENTS),
+    ],
     installs: structuredClone(F.INSTALLS) as Record<string, F.DemoInstall>,
     usageMeters: clone(F.USAGE_METERS),
     auditEvents: clone(F.AUDIT_EVENTS),
@@ -48,6 +56,21 @@ function createDb() {
     accessRequests: clone(F.ACCESS_REQUESTS),
     accessGrants: clone(F.ACCESS_GRANTS),
     breakGlassNotices: clone(F.BREAK_GLASS_NOTICES),
+    programs: clone(F.PROGRAMS),
+    yearLevels: clone(F.YEAR_LEVELS),
+    classGroups: clone(F.CLASS_GROUPS),
+    subjects: clone(F.SUBJECTS),
+    subjectOfferings: clone(F.SUBJECT_OFFERINGS),
+    learners: clone(F.LEARNERS),
+    enrolments: clone(F.ENROLMENTS),
+    learnerDocuments: clone(F.LEARNER_DOCUMENTS),
+    households: clone(F.HOUSEHOLDS),
+    guardianRelationships: clone(F.GUARDIAN_RELATIONSHIPS),
+    authorisedPickups: clone(F.AUTHORISED_PICKUPS),
+    customFieldDefinitions: clone(F.CUSTOM_FIELD_DEFINITIONS),
+    formDefinitions: clone(F.FORM_DEFINITIONS),
+    workflowDefinitions: clone(F.WORKFLOW_DEFINITIONS),
+    numberingFormats: clone(F.NUMBERING_FORMATS),
   };
 }
 
