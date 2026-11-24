@@ -17,7 +17,7 @@
 | NEX-149 | Contracts (M12, M09): enquiries, applications, offers, waitlist; import jobs and column mappings | B | planned | — | 148 |
 | NEX-150 | Contracts (M16, M17): rooms, timetable slots, teacher load; attendance sessions, marks, leave requests | B | done | Gemini | 146 |
 | NEX-151 | Contracts (M18, M19): fee plans, instalments, concessions, invoices, payments, refunds; ledger and budgets | B | planned | — | 148 |
-| NEX-152 | Contracts (M20–M23): grading schemes, marks, rubrics; exams and seating; report cards; documents and e-sign | B | planned | — | 148 |
+| NEX-152 | Contracts (M20–M23): grading schemes, marks, rubrics; exams and seating; report cards; documents and e-sign | B | ready-for-review | Codex | 148 |
 | NEX-153 | Contracts (M24–M28, M86): messages, notices, meetings; portal homes; dashboards; rollover runs | B | planned | — | 148 |
 | NEX-154 | Fixtures: academic structure, learners and families for the 5 demo tenants and the Group | B | draft | — | 146–148 |
 | NEX-155 | Fixtures: admissions, timetable, attendance, fees, marks and messages | B | draft | — | 149–154 |
