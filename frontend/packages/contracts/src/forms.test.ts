@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   CustomFieldDefinitionSchema,
   CustomFieldKeySchema,
+  CustomFieldInputSchema,
   NumberingSubjectSchema,
   WorkflowSubjectSchema,
   CustomFieldValuesSchema,
@@ -122,6 +123,44 @@ describe("custom field definitions", () => {
     { extra: true },
   ])("rejects invalid field attributes %j", (attrs) => {
     expect(CustomFieldDefinitionSchema.safeParse({ ...field, ...attrs }).success).toBe(false);
+  });
+});
+
+describe("custom field inputs", () => {
+  const input = {
+    entity: field.entity,
+    key: field.key,
+    label,
+    type: "choice",
+    required: true,
+    sensitive: false,
+    order: 2,
+    options: [option],
+  };
+
+  it("accepts writable attributes and rejects server-owned attributes", () => {
+    expect(CustomFieldInputSchema.parse(input)).toEqual(input);
+    for (const key of ["tenantId", "id", "archived", "createdAt", "updatedAt"]) {
+      expect(
+        CustomFieldInputSchema.safeParse({ ...input, [key]: field[key as keyof typeof field] })
+          .success,
+      ).toBe(false);
+    }
+  });
+
+  it("applies the definition's choice and numeric refinements to writes", () => {
+    expect(CustomFieldInputSchema.safeParse({ ...input, type: "text" }).success).toBe(false);
+    expect(CustomFieldInputSchema.safeParse({ ...input, options: undefined }).success).toBe(false);
+    expect(CustomFieldInputSchema.safeParse({ ...input, min: 1 }).success).toBe(false);
+    expect(
+      CustomFieldInputSchema.safeParse({
+        ...input,
+        type: "number",
+        options: undefined,
+        min: 2,
+        max: 1,
+      }).success,
+    ).toBe(false);
   });
 });
 

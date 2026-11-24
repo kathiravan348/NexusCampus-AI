@@ -1,5 +1,12 @@
-import { renderHook, waitFor } from "@testing-library/react";
-import { useCustomFields, useForms, useNumberingFormats, useWorkflows } from "../index";
+import { mockDb } from "@nexus/mocks";
+import { act, renderHook, waitFor } from "@testing-library/react";
+import {
+  useCreateCustomField,
+  useCustomFields,
+  useForms,
+  useNumberingFormats,
+  useWorkflows,
+} from "../index";
 import { ADMIN, freshDb, signInAs, startMockServer, wrapper } from "../test-utils";
 
 startMockServer();
@@ -30,5 +37,40 @@ describe("M08 hooks", () => {
         { tenantId: ADMIN.tenantId },
       ]);
     });
+  });
+});
+
+it("refreshes both the filtered and unfiltered field lists after creation", async () => {
+  signInAs(ADMIN);
+  const { result } = renderHook(
+    () => ({
+      create: useCreateCustomField(),
+      staff: useCustomFields("staff"),
+      all: useCustomFields(),
+    }),
+    { wrapper: wrapper({ db: freshDb() }) },
+  );
+  await waitFor(() =>
+    expect(result.current.staff.isSuccess && result.current.all.isSuccess).toBe(true),
+  );
+  const locale = mockDb.institutions.find((row) => row.tenantId === ADMIN.tenantId)!.locale
+    .defaultLocale;
+  await act(async () => {
+    await result.current.create.mutateAsync({
+      key: "staffPref",
+      entity: "staff",
+      label: { [locale]: "Preference" },
+      type: "text",
+      required: false,
+      sensitive: false,
+      order: 1,
+    });
+  });
+  await waitFor(() => {
+    for (const list of [result.current.staff, result.current.all]) {
+      expect(list.data?.items).toContainEqual(
+        expect.objectContaining({ key: "staffPref", tenantId: ADMIN.tenantId }),
+      );
+    }
   });
 });

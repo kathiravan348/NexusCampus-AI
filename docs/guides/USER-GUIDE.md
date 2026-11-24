@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Academic structure, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Academic structure, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -140,6 +140,14 @@ Available to everyone from **Notifications** in the menu.
 - **My preferences** lets you choose how you hear from the institution — **Email**, **Text message**, **WhatsApp**, **Phone notification**, or **In the app** — and set **Quiet hours** in the institution's time zone. Channels your institution has not set up are shown but cannot be switched on. You can change preferences offline: they are saved on this device and sync when you are back online.
 - Administrators also see **Templates**: each message by event, channel and language, with an on/off switch. **Edit** opens the message: pick a **Language** or **Add a language…**, change the **Subject** (email) and **Message**, and see a **Preview with sample values**. A message with broken syntax cannot be saved.
 - **Delivery log** shows what was sent to whom, by which channel, and whether it arrived, with the reason for anything that failed or was not sent. Filter by **Status** and **Channel**.
+
+## Forms and fields
+
+Open **Forms & fields** in the demo menu. Under **Fields**, choose a **Record type** to see its fields in order. Each card shows the field type and whether it is **Required** or **Optional**. Sensitive fields also carry a **Sensitive** badge. Older fields that have been archived appear under **Archived**.
+
+If you manage configuration, choose **Add custom field**. Pick the record type, enter a unique **Field key**, and give the field a label in the institution’s default language. You can add labels in the other supported languages. For **Single choice** or **Multiple choice**, use **Add option** and enter a distinct option key and a label for each choice. For **Number**, you can set a **Minimum** and **Maximum**. Choose **Save** to see the new field in its record type.
+
+**Forms** shows how many fields each form contains. **Workflows & numbering** shows the number of steps in each approval workflow and the numbering patterns used by the institution. Cached lists remain available offline with **Last synced** under the heading. Adding a field requires a connection. **Ask Assist** is available online when your institution has enabled Assist and you have access to it.
 
 ## Learners and families
 Available from **Learners** and **Families** in the menu. Administrators and teachers see learners and households across their institution; parents/guardians and learners see only their own family. Cached lists and opened profiles stay readable offline, showing **Last synced …** under the heading. If your role has no access, the screen shows **No access**.
