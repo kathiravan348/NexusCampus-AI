@@ -92,10 +92,11 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-159 | Codex · gpt-6.2-sol / medium | 11:43, question answered, restarted 11:47 | green | done — no fixes | `ce7f068`, pushed |
 | NEX-161 | Codex · gpt-6.2-astra / high (screen) | 12:42, question answered, restarted 12:50 | green | done — no fixes (backend key export regenerated at merge) | `d4afc81`, pushed |
 | NEX-162 | Gemini · gemini-4-neon-xhigh (screen) | 13:12 | green | done — no fixes | `fe58ffe`, pushed |
-| NEX-164 | Codex · gpt-6.2-astra / high (screen) | 13:43 | running | — | — |
+| NEX-164 | Codex · gpt-6.2-astra / high (screen) | 13:43 | green | done — no fixes | `acfc8c6`, pushed |
+| NEX-165 | Gemini · gemini-4-neon-xhigh (screen) | 14:2x | running | — | — |
 
-Planned next: NEX-165 (M16 timetable screens) and NEX-166 (M17 attendance roll call, outbox L2).
-Gemini waits (13:45) — every remaining screen task shares `modules.ts` with NEX-164. Screen tasks each add one entry to `modules.ts` and
+Planned next: NEX-166 (M17 attendance roll call, outbox L2) and NEX-167 (M18 fees, offline receipts L2; after NEX-166).
+Codex waits (14:2x) — every remaining screen task shares `modules.ts` with NEX-165. Screen tasks each add one entry to `modules.ts` and
 `m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
 Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both,
 and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_keys.json` or `icu_cases.json` conflict.
