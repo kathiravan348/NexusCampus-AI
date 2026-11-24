@@ -6607,6 +6607,138 @@
     "message": "Manage exams",
     "description": "Permission description: Manage exams."
   },
+  "m22.nav.title": {
+    "message": "Report cards",
+    "description": "Navigation and page title."
+  },
+  "m22.nav.summary": {
+    "message": "View term results and report cards.",
+    "description": "Home tile description."
+  },
+  "m22.page.intro": {
+    "message": "Open a report card to see subject grades and remarks.",
+    "description": "Introduction to the report card list."
+  },
+  "m22.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Open the AI assistant."
+  },
+  "m22.page.failed": {
+    "message": "Report cards could not be loaded.",
+    "description": "Report card read error."
+  },
+  "m22.filter.group": {
+    "message": "Class group",
+    "description": "Label for the class group filter."
+  },
+  "m22.filter.allGroups": {
+    "message": "All class groups",
+    "description": "Option to clear the class group filter."
+  },
+  "m22.filter.learner": {
+    "message": "Learner",
+    "description": "Label for the learner filter."
+  },
+  "m22.filter.allLearners": {
+    "message": "All learners",
+    "description": "Option to clear the learner filter."
+  },
+  "m22.list.empty": {
+    "message": "No report cards to show",
+    "description": "Empty list after applying access rules and filters."
+  },
+  "m22.list.term": {
+    "message": "Term",
+    "description": "Term label when the academic period has no display name."
+  },
+  "m22.list.publishedAt": {
+    "message": "Published {date}",
+    "description": "Publication date and time in the institution’s time zone."
+  },
+  "m22.status.draft": {
+    "message": "Draft",
+    "description": "Report card awaiting approval."
+  },
+  "m22.status.approved": {
+    "message": "Approved",
+    "description": "Report card approved for publication."
+  },
+  "m22.status.published": {
+    "message": "Published",
+    "description": "Report card available to its family."
+  },
+  "m22.status.withdrawn": {
+    "message": "Withdrawn",
+    "description": "Report card withdrawn from family view."
+  },
+  "m22.view.back": {
+    "message": "Back to report cards",
+    "description": "Return to the list."
+  },
+  "m22.view.unavailable": {
+    "message": "Report card unavailable",
+    "description": "A card link does not match an accessible card."
+  },
+  "m22.view.subject": {
+    "message": "Subject",
+    "description": "Subject label when its name is unavailable."
+  },
+  "m22.view.grade": {
+    "message": "Grade",
+    "description": "Grade for one subject."
+  },
+  "m22.view.marks": {
+    "message": "Marks",
+    "description": "Subject mark as a percentage."
+  },
+  "m22.view.percent": {
+    "message": "{value}%",
+    "description": "Subject mark as a percentage. {value} is a localized number."
+  },
+  "m22.view.noMark": {
+    "message": "—",
+    "description": "Placeholder for an unrecorded percentage."
+  },
+  "m22.view.overall": {
+    "message": "Overall remark",
+    "description": "Heading for the overall report card remark."
+  },
+  "m22.action.approve": {
+    "message": "Approve",
+    "description": "Action to approve a draft."
+  },
+  "m22.action.publish": {
+    "message": "Publish",
+    "description": "Action to publish an approved report card."
+  },
+  "m22.action.withdraw": {
+    "message": "Withdraw",
+    "description": "Action to withdraw a published report card."
+  },
+  "m22.confirm.approve": {
+    "message": "Approve this draft for publication?",
+    "description": "Approval confirmation."
+  },
+  "m22.confirm.publish": {
+    "message": "Publish this report card so the learner and their guardians can see it?",
+    "description": "Publication confirmation explaining family visibility."
+  },
+  "m22.confirm.withdraw": {
+    "message": "Withdraw this report card from family view? This is the final status.",
+    "description": "Withdrawal confirmation explaining the terminal state."
+  },
+  "m22.action.saved": {
+    "message": "Report card status updated",
+    "description": "Success message after changing status."
+  },
+  "m22.action.failed": {
+    "message": "The report card could not be updated.",
+    "description": "Generic status update failure."
+  },
+  "m22.action.conflict": {
+    "message": "The status has changed. Close this dialog to see the latest status.",
+    "description": "Status changed before confirmation."
+  },
   "m22.permission.reportsRead": {
     "message": "View report cards",
     "description": "Permission description: View report cards."

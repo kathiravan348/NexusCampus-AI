@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -239,6 +239,15 @@ Open **Exams** to check exam arrangements. **Last synced** shows when the hall t
 - In **Seating**, choose an **Exam** and a **Paper** to see the seats grouped by room. Each seat shows the learner’s name when available, or their learner number.
 - Staff with permission to manage exams can choose **Generate seating plan** and confirm the replacement. It fills the assigned rooms in order for learners enrolled on the paper date. If the rooms have too few seats, the existing assignments stay in place. Generation is available for **Planned** and **Scheduled** exams and shows **Needs a connection** when offline.
 - **Hall tickets & re-evaluation** shows ticket numbers, issue dates and **Revoked** tickets, plus original marks, revised marks when available, and each request’s status. Parents, guardians and learners see only their own family records. Family tickets use the label **Exam** and family requests use **Paper**.
+
+## Report cards
+
+Open **Report cards** and select a **Term** row to see subject grades, marks and remarks. A dash means a mark has not been recorded. **Back to report cards** returns to the list.
+
+- Staff can filter by **Class group** and **Learner**. Staff with publishing permission can select **Approve** on a draft, **Publish** on an approved card, or **Withdraw** on a published card. Confirm the action in the dialog. Withdrawal is final.
+- Guardians and learners see their own family's **Published** cards. Guardians with more than one child can choose a **Learner**. Withdrawing a card removes it from the family's list when it next syncs.
+- Previously loaded cards are readable offline. **Last synced** shows when the list was last refreshed. Status changes require a connection.
+- **Ask Assist** is available online when your institution enables AI and your role allows it.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.

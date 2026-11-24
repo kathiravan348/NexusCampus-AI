@@ -4,6 +4,11 @@ import { IdSchema, IsoDateSchema, UtcDateTimeSchema } from "./common";
 export const ReportCardStatusSchema = z.enum(["draft", "approved", "published", "withdrawn"]);
 export type ReportCardStatus = z.infer<typeof ReportCardStatusSchema>;
 
+export const ReportCardStatusInputSchema = z.strictObject({
+  status: z.enum(["approved", "published", "withdrawn"]),
+});
+export type ReportCardStatusInput = z.infer<typeof ReportCardStatusInputSchema>;
+
 const ReportCardLineSchema = z.strictObject({
   subjectId: IdSchema,
   grade: z.string().trim().min(1).max(8),
