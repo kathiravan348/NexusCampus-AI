@@ -3723,6 +3723,238 @@
     "message": "Saved on this device. It will sync when you are back online.",
     "description": "Toast when preferences were saved offline."
   },
+  "m08.nav.title": {
+    "message": "Forms & fields",
+    "description": "Module menu and page header — title."
+  },
+  "m08.nav.summary": {
+    "message": "Browse custom fields, forms, approval workflows and numbering formats.",
+    "description": "Module menu and page header — summary."
+  },
+  "m08.config.fields": {
+    "message": "Fields",
+    "description": "Configuration page control — fields."
+  },
+  "m08.config.forms": {
+    "message": "Forms",
+    "description": "Configuration page control — forms."
+  },
+  "m08.config.workflows": {
+    "message": "Workflows & numbering",
+    "description": "Configuration page control — workflows."
+  },
+  "m08.config.askAssist": {
+    "message": "Ask Assist",
+    "description": "Configuration page control — askAssist."
+  },
+  "m08.entity.learner": {
+    "message": "Learner",
+    "description": "Record type in the field selector — learner."
+  },
+  "m08.entity.guardian": {
+    "message": "Guardian",
+    "description": "Record type in the field selector — guardian."
+  },
+  "m08.entity.staff": {
+    "message": "Staff",
+    "description": "Record type in the field selector — staff."
+  },
+  "m08.entity.enquiry": {
+    "message": "Enquiry",
+    "description": "Record type in the field selector — enquiry."
+  },
+  "m08.entity.application": {
+    "message": "Application",
+    "description": "Record type in the field selector — application."
+  },
+  "m08.type.text": {
+    "message": "Short text",
+    "description": "Custom field data type — text."
+  },
+  "m08.type.longText": {
+    "message": "Long text",
+    "description": "Custom field data type — long_text."
+  },
+  "m08.type.number": {
+    "message": "Number",
+    "description": "Custom field data type — number."
+  },
+  "m08.type.date": {
+    "message": "Date",
+    "description": "Custom field data type — date."
+  },
+  "m08.type.choice": {
+    "message": "Single choice",
+    "description": "Custom field data type — choice."
+  },
+  "m08.type.multiChoice": {
+    "message": "Multiple choice",
+    "description": "Custom field data type — multi_choice."
+  },
+  "m08.type.boolean": {
+    "message": "Yes or no",
+    "description": "Custom field data type — boolean."
+  },
+  "m08.type.email": {
+    "message": "Email",
+    "description": "Custom field data type — email."
+  },
+  "m08.type.phone": {
+    "message": "Phone",
+    "description": "Custom field data type — phone."
+  },
+  "m08.field.entity": {
+    "message": "Record type",
+    "description": "Fields tab and field editor — entity."
+  },
+  "m08.field.type": {
+    "message": "Field type",
+    "description": "Fields tab and field editor — type."
+  },
+  "m08.field.required": {
+    "message": "Required",
+    "description": "Fields tab and field editor — required."
+  },
+  "m08.field.optional": {
+    "message": "Optional",
+    "description": "Fields tab and field editor — optional."
+  },
+  "m08.field.sensitive": {
+    "message": "Sensitive",
+    "description": "Fields tab and field editor — sensitive."
+  },
+  "m08.field.archived": {
+    "message": "Archived",
+    "description": "Fields tab and field editor — archived."
+  },
+  "m08.field.add": {
+    "message": "Add custom field",
+    "description": "Fields tab and field editor — add."
+  },
+  "m08.field.empty": {
+    "message": "No fields for this record type",
+    "description": "Fields tab and field editor — empty."
+  },
+  "m08.forms.empty": {
+    "message": "No forms",
+    "description": "Forms tab — empty."
+  },
+  "m08.forms.count": {
+    "message": "{count, plural, one {# field} other {# fields}}",
+    "description": "Forms tab — count. {count} is a number."
+  },
+  "m08.workflows.heading": {
+    "message": "Approval workflows",
+    "description": "Approval workflows section — heading."
+  },
+  "m08.workflows.empty": {
+    "message": "No approval workflows",
+    "description": "Approval workflows section — empty."
+  },
+  "m08.workflows.steps": {
+    "message": "{count, plural, one {# step} other {# steps}}",
+    "description": "Approval workflows section — steps. {count} is a number."
+  },
+  "m08.numbering.heading": {
+    "message": "Numbering formats",
+    "description": "Numbering formats section — heading."
+  },
+  "m08.numbering.empty": {
+    "message": "No numbering formats",
+    "description": "Numbering formats section — empty."
+  },
+  "m08.subject.application": {
+    "message": "Application",
+    "description": "Subject of a workflow or numbering format — application."
+  },
+  "m08.subject.leaveRequest": {
+    "message": "Leave request",
+    "description": "Subject of a workflow or numbering format — leave_request."
+  },
+  "m08.subject.documentRequest": {
+    "message": "Document request",
+    "description": "Subject of a workflow or numbering format — document_request."
+  },
+  "m08.subject.feeConcession": {
+    "message": "Fee concession",
+    "description": "Subject of a workflow or numbering format — fee_concession."
+  },
+  "m08.subject.recordChange": {
+    "message": "Record change",
+    "description": "Subject of a workflow or numbering format — record_change."
+  },
+  "m08.subject.learner": {
+    "message": "Learner",
+    "description": "Subject of a workflow or numbering format — learner."
+  },
+  "m08.subject.receipt": {
+    "message": "Receipt",
+    "description": "Subject of a workflow or numbering format — receipt."
+  },
+  "m08.subject.invoice": {
+    "message": "Invoice",
+    "description": "Subject of a workflow or numbering format — invoice."
+  },
+  "m08.subject.certificate": {
+    "message": "Certificate",
+    "description": "Subject of a workflow or numbering format — certificate."
+  },
+  "m08.dialog.key": {
+    "message": "Field key",
+    "description": "Add custom field dialog — key."
+  },
+  "m08.dialog.keyHint": {
+    "message": "Use 2–40 letters or digits, starting with a lowercase English letter.",
+    "description": "Add custom field dialog — keyHint."
+  },
+  "m08.dialog.label": {
+    "message": "Label ({locale})",
+    "description": "Add custom field dialog — label. {locale} is a supported language tag."
+  },
+  "m08.dialog.labelHint": {
+    "message": "Enter a label of up to 120 characters.",
+    "description": "Add custom field dialog — labelHint."
+  },
+  "m08.dialog.duplicate": {
+    "message": "A field with this key already exists for this record type.",
+    "description": "Add custom field dialog — duplicate."
+  },
+  "m08.dialog.options": {
+    "message": "Options",
+    "description": "Add custom field dialog — options."
+  },
+  "m08.dialog.option": {
+    "message": "Option {count, number}",
+    "description": "Add custom field dialog — option. {count} is a number."
+  },
+  "m08.dialog.optionKey": {
+    "message": "Option key",
+    "description": "Add custom field dialog — optionKey."
+  },
+  "m08.dialog.optionsHint": {
+    "message": "Give each option a different valid key and at least one label. Add at least one option.",
+    "description": "Add custom field dialog — optionsHint."
+  },
+  "m08.dialog.addOption": {
+    "message": "Add option",
+    "description": "Add custom field dialog — addOption."
+  },
+  "m08.dialog.removeOption": {
+    "message": "Remove option",
+    "description": "Add custom field dialog — removeOption."
+  },
+  "m08.dialog.min": {
+    "message": "Minimum",
+    "description": "Add custom field dialog — min."
+  },
+  "m08.dialog.max": {
+    "message": "Maximum",
+    "description": "Add custom field dialog — max."
+  },
+  "m08.dialog.boundsHint": {
+    "message": "Enter valid numbers. The maximum must be at least the minimum.",
+    "description": "Add custom field dialog — boundsHint."
+  },
   "m08.permission.configRead": {
     "message": "View forms, fields and workflows",
     "description": "Permission description: View configuration for custom fields, forms, workflows and numbering formats."

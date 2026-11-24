@@ -50,31 +50,29 @@ export type CustomFieldType = z.infer<typeof CustomFieldTypeSchema>;
 
 const FieldOptionSchema = z.strictObject({ value: FieldKeySchema, label: LocalizedLabelSchema });
 
-export const CustomFieldDefinitionSchema = z
-  .strictObject({
-    id: IdSchema,
-    tenantId: IdSchema,
-    entity: ConfigEntitySchema,
-    key: FieldKeySchema,
-    label: LocalizedLabelSchema,
-    type: CustomFieldTypeSchema,
-    required: z.boolean(),
-    /** Sensitive values are personal data. Keep them out of logs and require consent for exports. */
-    sensitive: z.boolean(),
-    options: z
-      .array(FieldOptionSchema)
-      .min(1)
-      .max(100)
-      .refine((options) => hasUniqueValues(options.map((option) => option.value)), {
-        message: "Option values must be unique",
-      })
-      .optional(),
-    min: z.number().optional(),
-    max: z.number().optional(),
-    order: z.int().nonnegative(),
-    archived: z.boolean(),
-    ...timestamps,
-  })
+const customFieldFields = {
+  entity: ConfigEntitySchema,
+  key: FieldKeySchema,
+  label: LocalizedLabelSchema,
+  type: CustomFieldTypeSchema,
+  required: z.boolean(),
+  /** Sensitive values are personal data. Keep them out of logs and require consent for exports. */
+  sensitive: z.boolean(),
+  options: z
+    .array(FieldOptionSchema)
+    .min(1)
+    .max(100)
+    .refine((options) => hasUniqueValues(options.map((option) => option.value)), {
+      message: "Option values must be unique",
+    })
+    .optional(),
+  min: z.number().optional(),
+  max: z.number().optional(),
+  order: z.int().nonnegative(),
+};
+
+export const CustomFieldInputSchema = z
+  .strictObject(customFieldFields)
   .refine((field) => (field.options !== undefined) === fieldUsesOptions(field.type), {
     message: "Options are required for choice fields and only allowed on those fields",
     path: ["options"],
@@ -89,8 +87,15 @@ export const CustomFieldDefinitionSchema = z
   .refine((field) => field.min === undefined || field.max === undefined || field.min <= field.max, {
     message: "max must be greater than or equal to min",
     path: ["max"],
-  })
-  .refine(timestampsInOrder, timestampIssue);
+  });
+export type CustomFieldInput = z.infer<typeof CustomFieldInputSchema>;
+
+export const CustomFieldDefinitionSchema = CustomFieldInputSchema.safeExtend({
+  id: IdSchema,
+  tenantId: IdSchema,
+  archived: z.boolean(),
+  ...timestamps,
+}).refine(timestampsInOrder, timestampIssue);
 export type CustomFieldDefinition = z.infer<typeof CustomFieldDefinitionSchema>;
 
 function fieldUsesOptions(type: CustomFieldType) {

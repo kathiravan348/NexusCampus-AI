@@ -240,11 +240,27 @@
     "valid": true
   },
   {
+    "text": "120 எழுத்துகளுக்குள் ஒரு பெயரை உள்ளிடுங்கள்.",
+    "valid": true
+  },
+  {
     "text": "200 எழுத்துகளுக்குள் ஒரு பெயரை உள்ளிடவும்.",
     "valid": true
   },
   {
+    "text": "2–40 अंग्रेज़ी अक्षर या अंक लिखें। पहला अक्षर छोटा होना चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "2–40 ஆங்கில எழுத்துகள் அல்லது இலக்கங்களைப் பயன்படுத்துங்கள். முதல் எழுத்து சிறிய ஆங்கில எழுத்தாக இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
     "text": "A class group with this code already exists for this academic year.",
+    "valid": true
+  },
+  {
+    "text": "A field with this key already exists for this record type.",
     "valid": true
   },
   {
@@ -528,7 +544,15 @@
     "valid": true
   },
   {
+    "text": "Add custom field",
+    "valid": true
+  },
+  {
     "text": "Add holiday",
+    "valid": true
+  },
+  {
+    "text": "Add option",
     "valid": true
   },
   {
@@ -632,6 +656,10 @@
     "valid": true
   },
   {
+    "text": "Application",
+    "valid": true
+  },
+  {
     "text": "Applies to",
     "valid": true
   },
@@ -645,6 +673,10 @@
   },
   {
     "text": "Apply valid changes",
+    "valid": true
+  },
+  {
+    "text": "Approval workflows",
     "valid": true
   },
   {
@@ -677,6 +709,10 @@
   },
   {
     "text": "Approve…",
+    "valid": true
+  },
+  {
+    "text": "Archived",
     "valid": true
   },
   {
@@ -849,6 +885,10 @@
   },
   {
     "text": "Brand assets",
+    "valid": true
+  },
+  {
+    "text": "Browse custom fields, forms, approval workflows and numbering formats.",
     "valid": true
   },
   {
@@ -1408,6 +1448,10 @@
     "valid": true
   },
   {
+    "text": "Document request",
+    "valid": true
+  },
+  {
     "text": "Documents",
     "valid": true
   },
@@ -1552,6 +1596,10 @@
     "valid": true
   },
   {
+    "text": "Enquiry",
+    "valid": true
+  },
+  {
     "text": "Enrolled",
     "valid": true
   },
@@ -1561,6 +1609,10 @@
   },
   {
     "text": "Enrolments could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Enter a label of up to 120 characters.",
     "valid": true
   },
   {
@@ -1605,6 +1657,10 @@
   },
   {
     "text": "Enter non-empty wording before saving.",
+    "valid": true
+  },
+  {
+    "text": "Enter valid numbers. The maximum must be at least the minimum.",
     "valid": true
   },
   {
@@ -1688,11 +1744,27 @@
     "valid": true
   },
   {
+    "text": "Fee concession",
+    "valid": true
+  },
+  {
     "text": "Fees collected",
     "valid": true
   },
   {
     "text": "Fees outstanding",
+    "valid": true
+  },
+  {
+    "text": "Field key",
+    "valid": true
+  },
+  {
+    "text": "Field type",
+    "valid": true
+  },
+  {
+    "text": "Fields",
     "valid": true
   },
   {
@@ -1732,6 +1804,14 @@
     "valid": true
   },
   {
+    "text": "Forms",
+    "valid": true
+  },
+  {
+    "text": "Forms & fields",
+    "valid": true
+  },
+  {
     "text": "Foster carer",
     "valid": true
   },
@@ -1761,6 +1841,10 @@
   },
   {
     "text": "General",
+    "valid": true
+  },
+  {
+    "text": "Give each option a different valid key and at least one label. Add at least one option.",
     "valid": true
   },
   {
@@ -2064,6 +2148,10 @@
     "valid": true
   },
   {
+    "text": "Invoice",
+    "valid": true
+  },
+  {
     "text": "Issue documents",
     "valid": true
   },
@@ -2160,6 +2248,10 @@
     "valid": true
   },
   {
+    "text": "Label ({locale})",
+    "valid": true
+  },
+  {
     "text": "Language",
     "valid": true
   },
@@ -2221,6 +2313,10 @@
   },
   {
     "text": "Learners could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Leave request",
     "valid": true
   },
   {
@@ -2305,6 +2401,10 @@
   },
   {
     "text": "Logo URL",
+    "valid": true
+  },
+  {
+    "text": "Long text",
     "valid": true
   },
   {
@@ -2404,6 +2504,10 @@
     "valid": true
   },
   {
+    "text": "Maximum",
+    "valid": true
+  },
+  {
     "text": "Medical",
     "valid": true
   },
@@ -2452,6 +2556,10 @@
     "valid": true
   },
   {
+    "text": "Minimum",
+    "valid": true
+  },
+  {
     "text": "Minor until age",
     "valid": true
   },
@@ -2485,6 +2593,10 @@
   },
   {
     "text": "Multi-campus group",
+    "valid": true
+  },
+  {
+    "text": "Multiple choice",
     "valid": true
   },
   {
@@ -2672,6 +2784,10 @@
     "valid": true
   },
   {
+    "text": "No approval workflows",
+    "valid": true
+  },
+  {
     "text": "No audit events match.",
     "valid": true
   },
@@ -2736,6 +2852,14 @@
     "valid": true
   },
   {
+    "text": "No fields for this record type",
+    "valid": true
+  },
+  {
+    "text": "No forms",
+    "valid": true
+  },
+  {
     "text": "No guardians recorded.",
     "valid": true
   },
@@ -2785,6 +2909,10 @@
   },
   {
     "text": "No modules.",
+    "valid": true
+  },
+  {
+    "text": "No numbering formats",
     "valid": true
   },
   {
@@ -2916,6 +3044,14 @@
     "valid": true
   },
   {
+    "text": "Number",
+    "valid": true
+  },
+  {
+    "text": "Numbering formats",
+    "valid": true
+  },
+  {
     "text": "Numbers and code font",
     "valid": true
   },
@@ -2976,11 +3112,23 @@
     "valid": true
   },
   {
+    "text": "Option key",
+    "valid": true
+  },
+  {
+    "text": "Option {count, number}",
+    "valid": true
+  },
+  {
     "text": "Optional",
     "valid": true
   },
   {
     "text": "Optional. Whole number from 1 to 2,000.",
+    "valid": true
+  },
+  {
+    "text": "Options",
     "valid": true
   },
   {
@@ -3320,11 +3468,23 @@
     "valid": true
   },
   {
+    "text": "Receipt",
+    "valid": true
+  },
+  {
     "text": "Received",
     "valid": true
   },
   {
     "text": "Recipient",
+    "valid": true
+  },
+  {
+    "text": "Record change",
+    "valid": true
+  },
+  {
+    "text": "Record type",
     "valid": true
   },
   {
@@ -3353,6 +3513,10 @@
   },
   {
     "text": "Remove holiday {name}",
+    "valid": true
+  },
+  {
+    "text": "Remove option",
     "valid": true
   },
   {
@@ -3688,6 +3852,10 @@
     "valid": true
   },
   {
+    "text": "Short text",
+    "valid": true
+  },
+  {
     "text": "Show",
     "valid": true
   },
@@ -3725,6 +3893,10 @@
   },
   {
     "text": "Signature valid",
+    "valid": true
+  },
+  {
+    "text": "Single choice",
     "valid": true
   },
   {
@@ -4348,6 +4520,10 @@
     "valid": true
   },
   {
+    "text": "Use 2–40 letters or digits, starting with a lowercase English letter.",
+    "valid": true
+  },
+  {
     "text": "Use Nexus Assist",
     "valid": true
   },
@@ -4600,6 +4776,10 @@
     "valid": true
   },
   {
+    "text": "Workflows & numbering",
+    "valid": true
+  },
+  {
     "text": "Year ends on",
     "valid": true
   },
@@ -4617,6 +4797,10 @@
   },
   {
     "text": "Yes",
+    "valid": true
+  },
+  {
+    "text": "Yes or no",
     "valid": true
   },
   {
@@ -4856,6 +5040,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# field} other {# fields}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# hour} other {# hours}}",
     "valid": true
   },
@@ -4881,6 +5069,10 @@
   },
   {
     "text": "{count, plural, one {# request waiting} other {# requests waiting}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# step} other {# steps}}",
     "valid": true
   },
   {
@@ -4928,6 +5120,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# चरण} other {# चरण}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# जोड़ा गया} other {# जोड़े गए}}",
     "valid": true
   },
@@ -4941,6 +5137,10 @@
   },
   {
     "text": "{count, plural, one {# प्रतीक्षा में} other {# प्रतीक्षा में}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# फ़ील्ड} other {# फ़ील्ड}}",
     "valid": true
   },
   {
@@ -5000,7 +5200,15 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# படி} other {# படிகள்}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# பாடவேளை / வாரம்} other {# பாடவேளைகள் / வாரம்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# புலம்} other {# புலங்கள்}}",
     "valid": true
   },
   {
@@ -5456,6 +5664,14 @@
     "valid": true
   },
   {
+    "text": "अधिकतम",
+    "valid": true
+  },
+  {
+    "text": "अधिकतम 120 वर्णों का लेबल दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "अधिकतम 200 अक्षरों का नाम दर्ज करें।",
     "valid": true
   },
@@ -5465,6 +5681,10 @@
   },
   {
     "text": "अधिकृत व्यक्ति लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "अनिवार्य",
     "valid": true
   },
   {
@@ -5481,6 +5701,10 @@
   },
   {
     "text": "अनुमतियाँ",
+    "valid": true
+  },
+  {
+    "text": "अनुमोदन कार्यप्रवाह",
     "valid": true
   },
   {
@@ -5640,6 +5864,10 @@
     "valid": true
   },
   {
+    "text": "अवकाश अनुरोध",
+    "valid": true
+  },
+  {
     "text": "अवकाश पर",
     "valid": true
   },
@@ -5661,6 +5889,10 @@
   },
   {
     "text": "असत्यापित",
+    "valid": true
+  },
+  {
+    "text": "असिस्ट से पूछें",
     "valid": true
   },
   {
@@ -5876,6 +6108,10 @@
     "valid": true
   },
   {
+    "text": "आवेदन",
+    "valid": true
+  },
+  {
     "text": "आहार संबंधी",
     "valid": true
   },
@@ -5933,6 +6169,14 @@
   },
   {
     "text": "इस महीने के AI क्रेडिट",
+    "valid": true
+  },
+  {
+    "text": "इस रिकॉर्ड प्रकार के लिए कोई फ़ील्ड नहीं है",
+    "valid": true
+  },
+  {
+    "text": "इस रिकॉर्ड प्रकार में यह कुंजी पहले से उपयोग में है।",
     "valid": true
   },
   {
@@ -6116,6 +6360,10 @@
     "valid": true
   },
   {
+    "text": "एक विकल्प",
+    "valid": true
+  },
+  {
     "text": "एक विकल्प चुनें",
     "valid": true
   },
@@ -6232,6 +6480,10 @@
     "valid": true
   },
   {
+    "text": "कई विकल्प",
+    "valid": true
+  },
+  {
     "text": "कक्षा",
     "valid": true
   },
@@ -6284,6 +6536,14 @@
     "valid": true
   },
   {
+    "text": "कस्टम फ़ील्ड जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "कस्टम फ़ील्ड, फ़ॉर्म, अनुमोदन कार्यप्रवाह और क्रमांकन प्रारूप देखें।",
+    "valid": true
+  },
+  {
     "text": "कस्टम भूमिका संपादित करें",
     "valid": true
   },
@@ -6325,6 +6585,10 @@
   },
   {
     "text": "कार्यक्रम, वर्ष स्तर, कक्षा समूह, विषय और शैक्षणिक वर्ष की पेशकश देखें।",
+    "valid": true
+  },
+  {
+    "text": "कार्यप्रवाह और क्रमांकन",
     "valid": true
   },
   {
@@ -6448,6 +6712,10 @@
     "valid": true
   },
   {
+    "text": "कोई अनुमोदन कार्यप्रवाह नहीं है",
+    "valid": true
+  },
+  {
     "text": "कोई अभिभावक दर्ज नहीं है।",
     "valid": true
   },
@@ -6469,6 +6737,10 @@
   },
   {
     "text": "कोई कुंजी नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई क्रमांकन प्रारूप नहीं है",
     "valid": true
   },
   {
@@ -6513,6 +6785,10 @@
   },
   {
     "text": "कोई फ़ील्ड नहीं बदला।",
+    "valid": true
+  },
+  {
+    "text": "कोई फ़ॉर्म नहीं है",
     "valid": true
   },
   {
@@ -6573,6 +6849,10 @@
   },
   {
     "text": "क्या सुरक्षित करती है",
+    "valid": true
+  },
+  {
+    "text": "क्रमांकन प्रारूप",
     "valid": true
   },
   {
@@ -6749,6 +7029,10 @@
   },
   {
     "text": "छेड़छाड़-प्रकट ऑडिट लॉग, सहमति रिकॉर्ड, डेटा अनुरोध और लागू गोपनीयता नियम देखें।",
+    "valid": true
+  },
+  {
+    "text": "छोटा पाठ",
     "valid": true
   },
   {
@@ -7056,6 +7340,10 @@
     "valid": true
   },
   {
+    "text": "दस्तावेज़ अनुरोध",
+    "valid": true
+  },
+  {
     "text": "दस्तावेज़ जारी करें",
     "valid": true
   },
@@ -7224,6 +7512,10 @@
     "valid": true
   },
   {
+    "text": "न्यूनतम",
+    "valid": true
+  },
+  {
     "text": "पढ़ना और संपादित करना",
     "valid": true
   },
@@ -7373,6 +7665,10 @@
   },
   {
     "text": "पिन कोड",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ",
     "valid": true
   },
   {
@@ -7592,6 +7888,18 @@
     "valid": true
   },
   {
+    "text": "फ़ील्ड",
+    "valid": true
+  },
+  {
+    "text": "फ़ील्ड का प्रकार",
+    "valid": true
+  },
+  {
+    "text": "फ़ील्ड की कुंजी",
+    "valid": true
+  },
+  {
     "text": "फ़ेविकॉन URL",
     "valid": true
   },
@@ -7601,6 +7909,10 @@
   },
   {
     "text": "फ़ॉर्म",
+    "valid": true
+  },
+  {
+    "text": "फ़ॉर्म और फ़ील्ड",
     "valid": true
   },
   {
@@ -7765,6 +8077,10 @@
   },
   {
     "text": "बिना समाप्ति",
+    "valid": true
+  },
+  {
+    "text": "बीजक",
     "valid": true
   },
   {
@@ -7937,6 +8253,10 @@
   },
   {
     "text": "मान्य बदलाव लागू करें",
+    "valid": true
+  },
+  {
+    "text": "मान्य संख्याएँ लिखें। अधिकतम मान न्यूनतम से कम नहीं होना चाहिए।",
     "valid": true
   },
   {
@@ -8144,7 +8464,19 @@
     "valid": true
   },
   {
+    "text": "रसीद",
+    "valid": true
+  },
+  {
     "text": "राज्य, प्रांत या अमीरात",
+    "valid": true
+  },
+  {
+    "text": "रिकॉर्ड का प्रकार",
+    "valid": true
+  },
+  {
+    "text": "रिकॉर्ड में बदलाव",
     "valid": true
   },
   {
@@ -8157,6 +8489,10 @@
   },
   {
     "text": "रोल नंबर {roll}",
+    "valid": true
+  },
+  {
+    "text": "लंबा पाठ",
     "valid": true
   },
   {
@@ -8225,6 +8561,10 @@
   },
   {
     "text": "लेखा अभिलेख प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "लेबल ({locale})",
     "valid": true
   },
   {
@@ -8301,6 +8641,26 @@
   },
   {
     "text": "वापस ली गई",
+    "valid": true
+  },
+  {
+    "text": "विकल्प",
+    "valid": true
+  },
+  {
+    "text": "विकल्प {count, number}",
+    "valid": true
+  },
+  {
+    "text": "विकल्प की कुंजी",
+    "valid": true
+  },
+  {
+    "text": "विकल्प जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "विकल्प हटाएँ",
     "valid": true
   },
   {
@@ -8476,6 +8836,10 @@
     "valid": true
   },
   {
+    "text": "शुल्क रियायत",
+    "valid": true
+  },
+  {
     "text": "शैक्षणिक अवधियाँ",
     "valid": true
   },
@@ -8524,11 +8888,19 @@
     "valid": true
   },
   {
+    "text": "संख्या",
+    "valid": true
+  },
+  {
     "text": "संख्या और कोड फ़ॉन्ट",
     "valid": true
   },
   {
     "text": "संगठन पदानुक्रम",
+    "valid": true
+  },
+  {
+    "text": "संग्रहीत",
     "valid": true
   },
   {
@@ -9144,6 +9516,10 @@
     "valid": true
   },
   {
+    "text": "हर विकल्प को एक अलग मान्य कुंजी और कम से कम एक लेबल दें। कम से कम एक विकल्प जोड़ें।",
+    "valid": true
+  },
+  {
     "text": "हस्ताक्षर अमान्य — इंस्टॉल न करें",
     "valid": true
   },
@@ -9153,6 +9529,10 @@
   },
   {
     "text": "हाँ",
+    "valid": true
+  },
+  {
+    "text": "हाँ या नहीं",
     "valid": true
   },
   {
@@ -9193,6 +9573,10 @@
   },
   {
     "text": "அங்கீகரிக்கப்பட்டவர்கள் எவரும் பதிவு செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அசிஸ்டிடம் கேளுங்கள்",
     "valid": true
   },
   {
@@ -9273,6 +9657,10 @@
   },
   {
     "text": "அணைக்கப்பட்டால் Assist மறைக்கப்படும்; ஒவ்வொரு திரையும் வழக்கம்போல் இயங்கும்.",
+    "valid": true
+  },
+  {
+    "text": "அதிகபட்சம்",
     "valid": true
   },
   {
@@ -9536,6 +9924,10 @@
     "valid": true
   },
   {
+    "text": "ஆம் அல்லது இல்லை",
+    "valid": true
+  },
+  {
     "text": "ஆம், இந்தச் சாதனம்",
     "valid": true
   },
@@ -9553,6 +9945,10 @@
   },
   {
     "text": "ஆரம்பக் கல்வி மற்றும் முன்பள்ளி",
+    "valid": true
+  },
+  {
+    "text": "ஆவணக் கோரிக்கை",
     "valid": true
   },
   {
@@ -9765,6 +10161,14 @@
   },
   {
     "text": "இந்தப் பக்கம் ஆன்லைனில் மட்டுமே இயங்கும். இணையத்துடன் இணைத்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பதிவு வகைக்குப் புலங்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பதிவு வகையில் இதே குறியீட்டுடன் ஏற்கெனவே ஒரு புலம் உள்ளது.",
     "valid": true
   },
   {
@@ -10156,6 +10560,18 @@
     "valid": true
   },
   {
+    "text": "எண்",
+    "valid": true
+  },
+  {
+    "text": "எண் வடிவங்கள்",
+    "valid": true
+  },
+  {
+    "text": "எண் வடிவங்கள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "எண்கள் மற்றும் குறியீட்டு எழுத்துரு",
     "valid": true
   },
@@ -10264,6 +10680,14 @@
     "valid": true
   },
   {
+    "text": "ஒப்புதல் நடைமுறைகள்",
+    "valid": true
+  },
+  {
+    "text": "ஒப்புதல் நடைமுறைகள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "ஒப்புதல் பதிவுகள்",
     "valid": true
   },
@@ -10312,11 +10736,19 @@
     "valid": true
   },
   {
+    "text": "ஒற்றைத் தேர்வு",
+    "valid": true
+  },
+  {
     "text": "ஒவ்வாமை",
     "valid": true
   },
   {
     "text": "ஒவ்வொரு காப்புப்பிரதியும் எழுதப்படும் முன் உங்கள் விசைகளால் மறையாக்கப்படுகிறது.",
+    "valid": true
+  },
+  {
+    "text": "ஒவ்வொரு விருப்பத்திற்கும் தனித்துவமான செல்லுபடியாகும் குறியீடும் குறைந்தது ஒரு பெயரும் தேவை. குறைந்தது ஒரு விருப்பத்தைச் சேருங்கள்.",
     "valid": true
   },
   {
@@ -10360,7 +10792,19 @@
     "valid": true
   },
   {
+    "text": "கட்டணச் சலுகை",
+    "valid": true
+  },
+  {
+    "text": "கட்டணப் பட்டியல்",
+    "valid": true
+  },
+  {
     "text": "கட்டமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கட்டாயம்",
     "valid": true
   },
   {
@@ -10508,6 +10952,10 @@
     "valid": true
   },
   {
+    "text": "கவனமாகக் கையாள வேண்டியது",
+    "valid": true
+  },
+  {
     "text": "காகிதம்",
     "valid": true
   },
@@ -10525,6 +10973,10 @@
   },
   {
     "text": "காத்திருக்கிறது",
+    "valid": true
+  },
+  {
+    "text": "காப்பகத்தில் உள்ளவை",
     "valid": true
   },
   {
@@ -10629,6 +11081,10 @@
   },
   {
     "text": "குறுஞ்செய்திகள்",
+    "valid": true
+  },
+  {
+    "text": "குறைந்தபட்சம்",
     "valid": true
   },
   {
@@ -10844,6 +11300,10 @@
     "valid": true
   },
   {
+    "text": "சிறு உரை",
+    "valid": true
+  },
+  {
     "text": "சுகாதாரப் பதிவுகள்",
     "valid": true
   },
@@ -10961,6 +11421,10 @@
   },
   {
     "text": "செலுத்தப்படாத கட்டணப் பட்டியல்கள்",
+    "valid": true
+  },
+  {
+    "text": "செல்லுபடியாகும் எண்களை உள்ளிடுங்கள். அதிகபட்ச மதிப்பு குறைந்தபட்ச மதிப்புக்குச் சமமாகவோ அதிகமாகவோ இருக்க வேண்டும்.",
     "valid": true
   },
   {
@@ -11137,6 +11601,14 @@
   },
   {
     "text": "தனிப்பயன் பங்கைத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "தனிப்பயன் புலங்கள், படிவங்கள், ஒப்புதல் நடைமுறைகள் மற்றும் எண் வடிவங்களைப் பாருங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "தனிப்பயன் புலத்தைச் சேர்",
     "valid": true
   },
   {
@@ -11504,6 +11976,10 @@
     "valid": true
   },
   {
+    "text": "நடைமுறைகளும் எண் வடிவங்களும்",
+    "valid": true
+  },
+  {
     "text": "நபர்",
     "valid": true
   },
@@ -11744,6 +12220,10 @@
     "valid": true
   },
   {
+    "text": "நீண்ட உரை",
+    "valid": true
+  },
+  {
     "text": "நீண்டகால ஆதரவு",
     "valid": true
   },
@@ -11872,6 +12352,18 @@
     "valid": true
   },
   {
+    "text": "படிவங்களும் புலங்களும்",
+    "valid": true
+  },
+  {
+    "text": "படிவங்கள்",
+    "valid": true
+  },
+  {
+    "text": "படிவங்கள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "படிவங்கள், புலங்கள் மற்றும் பணிப்பாய்வுகளை நிர்வகி",
     "valid": true
   },
@@ -11904,6 +12396,10 @@
     "valid": true
   },
   {
+    "text": "பணியாளர்",
+    "valid": true
+  },
+  {
     "text": "பணியாளர்கள்",
     "valid": true
   },
@@ -11933,6 +12429,14 @@
   },
   {
     "text": "பதிவானது",
+    "valid": true
+  },
+  {
+    "text": "பதிவின் வகை",
+    "valid": true
+  },
+  {
+    "text": "பதிவு மாற்றம்",
     "valid": true
   },
   {
@@ -12049,6 +12553,10 @@
   },
   {
     "text": "பருவம்",
+    "valid": true
+  },
+  {
+    "text": "பல தேர்வுகள்",
     "valid": true
   },
   {
@@ -12204,6 +12712,18 @@
     "valid": true
   },
   {
+    "text": "புலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "புலத்தின் குறியீடு",
+    "valid": true
+  },
+  {
+    "text": "புலத்தின் வகை",
+    "valid": true
+  },
+  {
     "text": "புலப் பெயர்கள் மட்டுமே பதிவாகும், மதிப்புகள் ஒருபோதும் இல்லை.",
     "valid": true
   },
@@ -12213,6 +12733,10 @@
   },
   {
     "text": "பெயர்",
+    "valid": true
+  },
+  {
+    "text": "பெயர் ({locale})",
     "valid": true
   },
   {
@@ -12700,6 +13224,10 @@
     "valid": true
   },
   {
+    "text": "ரசீது",
+    "valid": true
+  },
+  {
     "text": "ரத்துசெய்",
     "valid": true
   },
@@ -12904,11 +13432,19 @@
     "valid": true
   },
   {
+    "text": "விசாரணை",
+    "valid": true
+  },
+  {
     "text": "விசாலமானது",
     "valid": true
   },
   {
     "text": "விடுப்பில்",
+    "valid": true
+  },
+  {
+    "text": "விடுப்பு விண்ணப்பம்",
     "valid": true
   },
   {
@@ -12928,6 +13464,10 @@
     "valid": true
   },
   {
+    "text": "விண்ணப்பம்",
+    "valid": true
+  },
+  {
     "text": "விநியோகப் பதிவு",
     "valid": true
   },
@@ -12940,7 +13480,19 @@
     "valid": true
   },
   {
+    "text": "விருப்பங்கள்",
+    "valid": true
+  },
+  {
     "text": "விருப்பங்கள் சேமிக்கப்பட்டன.",
+    "valid": true
+  },
+  {
+    "text": "விருப்பத்தின் குறியீடு",
+    "valid": true
+  },
+  {
+    "text": "விருப்பத்திற்குரியது",
     "valid": true
   },
   {
@@ -12952,7 +13504,19 @@
     "valid": true
   },
   {
+    "text": "விருப்பத்தை அகற்று",
+    "valid": true
+  },
+  {
+    "text": "விருப்பத்தைச் சேர்",
+    "valid": true
+  },
+  {
     "text": "விருப்பப் பாடம்",
+    "valid": true
+  },
+  {
+    "text": "விருப்பம் {count, number}",
     "valid": true
   },
   {
