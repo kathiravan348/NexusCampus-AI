@@ -167,6 +167,19 @@ export const queryKeys = {
     issuedDocuments: (s: KeyScope, learnerId: string | null) =>
       scoped(s, "m23", "issued-documents", learnerId),
   },
+  m24: {
+    messageThreads: (s: KeyScope) => scoped(s, "m24", "message-threads"),
+    threadMessages: (s: KeyScope, threadId: string | null) =>
+      scoped(s, "m24", "message-threads", threadId, "messages"),
+    notices: (s: KeyScope) => scoped(s, "m24", "notices"),
+    meetingSlots: (s: KeyScope, staffProfileId: string | null) =>
+      scoped(s, "m24", "meeting-slots", staffProfileId),
+    meetingBookings: (s: KeyScope) => scoped(s, "m24", "meeting-bookings"),
+  },
+  m28: {
+    roleHome: (s: KeyScope) => scoped(s, "m28", "me", "home"),
+    dashboardKpis: (s: KeyScope) => scoped(s, "m28", "dashboards", "kpis"),
+  },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),
     keys: (s: KeyScope) => scoped(s, "m83", "keys"),

@@ -41,6 +41,13 @@ export const STAGE3_PERMISSIONS: readonly Permission[] = [
   perm("m22.reports.publish", "m22.permission.reportsPublish", true),
   perm("m23.documents.read", "m23.permission.documentsRead", true),
   perm("m23.documents.issue", "m23.permission.documentsIssue", true),
+  perm("m24.messages.read", "m24.permission.messagesRead", true),
+  perm("m24.messages.send", "m24.permission.messagesSend", true),
+  perm("m24.notices.read", "m24.permission.noticesRead"),
+  perm("m24.notices.publish", "m24.permission.noticesPublish"),
+  perm("m24.meetings.read", "m24.permission.meetingsRead", true),
+  perm("m24.meetings.manage", "m24.permission.meetingsManage", true),
+  perm("m28.dashboards.read", "m28.permission.dashboardsRead"),
   perm("m86.rollover.read", "m86.permission.rolloverRead"),
   perm("m86.rollover.manage", "m86.permission.rolloverManage"),
 ];
@@ -62,9 +69,26 @@ export const STAGE3_ROLE_PERMISSIONS: Record<SystemRoleKey, PermissionCode[]> = 
     "m20.marks.enter",
     "m21.exams.read",
     "m22.reports.read",
+    "m24.messages.read",
+    "m24.messages.send",
+    "m24.notices.read",
+    "m24.meetings.read",
   ],
-  guardian: ["m15.structure.read", "m16.timetable.read"],
-  learner: ["m15.structure.read", "m16.timetable.read"],
+  guardian: [
+    "m15.structure.read",
+    "m16.timetable.read",
+    "m24.messages.read",
+    "m24.messages.send",
+    "m24.notices.read",
+    "m24.meetings.read",
+  ],
+  learner: [
+    "m15.structure.read",
+    "m16.timetable.read",
+    "m24.messages.read",
+    "m24.messages.send",
+    "m24.notices.read",
+  ],
 };
 
 const modules: readonly ModuleId[] = [
@@ -82,6 +106,11 @@ const modules: readonly ModuleId[] = [
   "M21",
   "M22",
   "M23",
+  "M24",
+  "M25",
+  "M26",
+  "M27",
+  "M28",
   "M86",
 ];
 

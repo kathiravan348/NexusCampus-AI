@@ -22,6 +22,8 @@ import { m20Handlers } from "./m20";
 import { m21Handlers } from "./m21";
 import { m22Handlers } from "./m22";
 import { m23Handlers } from "./m23";
+import { m24Handlers } from "./m24";
+import { m28Handlers } from "./m28";
 import { m83Handlers, m83WriteHandlers } from "./m83";
 import { m84Handlers } from "./m84";
 
@@ -58,6 +60,8 @@ export const handlers: HttpHandler[] = [
   ...m21Handlers,
   ...m22Handlers,
   ...m23Handlers,
+  ...m24Handlers,
+  ...m28Handlers,
   ...m83Handlers,
   ...m84Handlers,
   ...m83WriteHandlers,
