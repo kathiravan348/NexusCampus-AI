@@ -102,6 +102,7 @@ describe("DryRunReportSchema", () => {
 
   it.each([
     { messageKey: "Devi Example" },
+    { messageKey: "imports.badDate" },
     { value: "Devi Example" },
     { rowNumber: 0 },
     { code: "Missing name" },

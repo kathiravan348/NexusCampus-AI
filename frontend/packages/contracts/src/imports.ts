@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { IdSchema, UtcDateTimeSchema } from "./common";
 import { CustomFieldKeySchema } from "./forms";
+import { MessageKeySchema } from "./studio";
 
 export const ImportEntitySchema = z.enum([
   "learner",
@@ -126,8 +127,8 @@ export const ImportRowIssueSchema = z.strictObject({
   column: z.string().min(1).max(120).nullable(),
   severity: ImportRowIssueSeveritySchema,
   code: z.string().regex(/^[a-z_]{3,40}$/),
-  /** Localized message key. Keep imported cell values out of issues (V-7). */
-  messageKey: z.string().regex(/^[a-z][a-zA-Z0-9]*(\.[a-zA-Z0-9_]+)+$/),
+  /** Catalogue message key (e.g. `m09.import.required`). Keep imported cell values out of issues (V-7). */
+  messageKey: MessageKeySchema,
 });
 export type ImportRowIssue = z.infer<typeof ImportRowIssueSchema>;
 
