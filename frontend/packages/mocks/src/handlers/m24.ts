@@ -3,20 +3,34 @@ import {
   MeetingSlotSchema,
   MessageThreadSchema,
   NoticeSchema,
+  ThreadMessageInputSchema,
   ThreadMessageSchema,
   pageSchema,
 } from "@nexus/contracts";
-import { familyOf, ofTenant, type Viewer } from "../context";
+import { HttpResponse, http } from "msw";
+import {
+  ApiFailure,
+  entitled,
+  failureResponse,
+  familyOf,
+  ofTenant,
+  readViewer,
+  type Viewer,
+} from "../context";
 import { mockDb } from "../db";
 import { SYSTEM_ROLE_KEYS, roleId } from "../fixtures";
-import { found, get, list, param } from "./route";
+import { applyScenario, readScenario } from "../scenarios";
+import { API_BASE, found, get, list, param } from "./route";
 
 const M = { module: "M24" } as const;
 export const MESSAGES_READ = "m24.messages.read";
+const MESSAGES_SEND = "m24.messages.send";
 export const NOTICES_READ = "m24.notices.read";
 const NOTICES_PUBLISH = "m24.notices.publish";
 const MEETINGS_READ = "m24.meetings.read";
 const MEETINGS_MANAGE = "m24.meetings.manage";
+
+const receipts = new Map<string, string>();
 
 export function viewerThreads(viewer: Viewer) {
   return ofTenant(mockDb.messageThreads, viewer.tenantId).filter((thread) =>
@@ -89,6 +103,64 @@ export const m24Handlers = [
       (row) => row.threadId === thread.id,
     );
     return list(ctx, messages, pageSchema(ThreadMessageSchema));
+  }),
+  http.post(`*${API_BASE}/message-threads/:id/messages`, async ({ request, params }) => {
+    const early = await applyScenario(readScenario(request));
+    if (early) return early;
+    try {
+      const viewer = readViewer(request);
+      const { tenantId, personId } = viewer;
+      if (!entitled(tenantId, "M24")) throw new ApiFailure("module_disabled");
+      if (!viewer.permissions.has(MESSAGES_SEND)) throw new ApiFailure("forbidden");
+      const thread = found(viewerThreads(viewer).find((row) => row.id === params["id"]));
+      const key = request.headers.get("Idempotency-Key");
+      const receipt = key ? JSON.stringify([tenantId, key]) : null;
+      const raw: unknown = await request.json().catch(() => undefined);
+      // No await between looking up the receipt and appending the message.
+      const previousId = receipt && receipts.get(receipt);
+      if (previousId) {
+        const previous = mockDb.threadMessages.find(
+          (row) => row.id === previousId && row.tenantId === tenantId && row.threadId === thread.id,
+        );
+        if (previous) return HttpResponse.json(previous, { status: 201 });
+      }
+      if (thread.archived) {
+        throw new ApiFailure("conflict", [{ path: "archived", message: "Thread is archived" }]);
+      }
+      const parsed = ThreadMessageInputSchema.safeParse(raw);
+      if (!parsed.success) {
+        throw new ApiFailure(
+          "invalid_request",
+          parsed.error.issues.map((issue) => ({
+            path: String(issue.path[0] ?? "body"),
+            message: "Invalid message body",
+          })),
+        );
+      }
+      const sentAt = new Date().toISOString();
+      const message = ThreadMessageSchema.parse({
+        id: crypto.randomUUID(),
+        tenantId,
+        threadId: thread.id,
+        senderPersonId: personId,
+        body: parsed.data.body,
+        attachmentIds: [],
+        sentAt,
+        editedAt: null,
+        readByPersonIds: [personId],
+        deviceId: null,
+      });
+      mockDb.threadMessages.push(message);
+      thread.lastMessageAt = sentAt;
+      if (Date.parse(sentAt) >= Date.parse(thread.updatedAt)) {
+        thread.updatedAt = sentAt;
+      }
+      if (receipt) receipts.set(receipt, message.id);
+      return HttpResponse.json(message, { status: 201 });
+    } catch (error) {
+      if (error instanceof ApiFailure) return failureResponse(error);
+      throw error;
+    }
   }),
   get("/notices", { ...M, permission: NOTICES_READ }, (ctx) =>
     list(ctx, viewerNotices(ctx.viewer, new Date()), pageSchema(NoticeSchema)),

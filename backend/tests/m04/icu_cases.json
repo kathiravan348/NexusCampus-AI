@@ -976,6 +976,10 @@
     "valid": true
   },
   {
+    "text": "Attended",
+    "valid": true
+  },
+  {
     "text": "Audit & privacy",
     "valid": true
   },
@@ -1025,6 +1029,10 @@
   },
   {
     "text": "Back to learners",
+    "valid": true
+  },
+  {
+    "text": "Back to messages",
     "valid": true
   },
   {
@@ -1080,6 +1088,10 @@
     "valid": true
   },
   {
+    "text": "Booked",
+    "valid": true
+  },
+  {
     "text": "Brand",
     "valid": true
   },
@@ -1089,6 +1101,10 @@
   },
   {
     "text": "Break",
+    "valid": true
+  },
+  {
+    "text": "Broadcast",
     "valid": true
   },
   {
@@ -1169,6 +1185,10 @@
   },
   {
     "text": "Cancel",
+    "valid": true
+  },
+  {
+    "text": "Cancelled",
     "valid": true
   },
   {
@@ -1385,6 +1405,10 @@
   },
   {
     "text": "Comfortable",
+    "valid": true
+  },
+  {
+    "text": "Communication sections",
     "valid": true
   },
   {
@@ -1828,6 +1852,10 @@
     "valid": true
   },
   {
+    "text": "Direct message",
+    "valid": true
+  },
+  {
     "text": "Disabled",
     "valid": true
   },
@@ -1980,6 +2008,10 @@
     "valid": true
   },
   {
+    "text": "Edited",
+    "valid": true
+  },
+  {
     "text": "Editing language",
     "valid": true
   },
@@ -2101,6 +2133,10 @@
   },
   {
     "text": "Enter a pixel value (for example, 8px).",
+    "valid": true
+  },
+  {
+    "text": "Enter a reply before sending.",
     "valid": true
   },
   {
@@ -2697,6 +2733,10 @@
   },
   {
     "text": "Importing",
+    "valid": true
+  },
+  {
+    "text": "In person",
     "valid": true
   },
   {
@@ -3332,6 +3372,22 @@
     "valid": true
   },
   {
+    "text": "Meeting bookings",
+    "valid": true
+  },
+  {
+    "text": "Meeting bookings could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Meetings",
+    "valid": true
+  },
+  {
+    "text": "Member",
+    "valid": true
+  },
+  {
     "text": "Members",
     "valid": true
   },
@@ -3360,11 +3416,31 @@
     "valid": true
   },
   {
+    "text": "Message must be {max} characters or fewer.",
+    "valid": true
+  },
+  {
     "text": "Message templates, delivery log and your own preferences.",
     "valid": true
   },
   {
+    "text": "Message threads",
+    "valid": true
+  },
+  {
+    "text": "Message threads could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Messages",
+    "valid": true
+  },
+  {
+    "text": "Messages & notices",
+    "valid": true
+  },
+  {
+    "text": "Messages could not be loaded.",
     "valid": true
   },
   {
@@ -3457,6 +3533,10 @@
   },
   {
     "text": "Needs a decision",
+    "valid": true
+  },
+  {
+    "text": "Needs acknowledgement",
     "valid": true
   },
   {
@@ -3824,7 +3904,23 @@
     "valid": true
   },
   {
+    "text": "No meeting bookings to show",
+    "valid": true
+  },
+  {
+    "text": "No message threads yet",
+    "valid": true
+  },
+  {
+    "text": "No messages in this thread yet",
+    "valid": true
+  },
+  {
     "text": "No messages match.",
+    "valid": true
+  },
+  {
+    "text": "No messages yet",
     "valid": true
   },
   {
@@ -3833,6 +3929,10 @@
   },
   {
     "text": "No modules.",
+    "valid": true
+  },
+  {
+    "text": "No notices to show",
     "valid": true
   },
   {
@@ -3964,6 +4064,10 @@
     "valid": true
   },
   {
+    "text": "No-show",
+    "valid": true
+  },
+  {
     "text": "Non-refundable",
     "valid": true
   },
@@ -4024,6 +4128,10 @@
     "valid": true
   },
   {
+    "text": "Notices could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Notification templates",
     "valid": true
   },
@@ -4081,6 +4189,10 @@
   },
   {
     "text": "On leave",
+    "valid": true
+  },
+  {
+    "text": "One or more replies could not be sent.",
     "valid": true
   },
   {
@@ -4384,6 +4496,10 @@
     "valid": true
   },
   {
+    "text": "Phone call",
+    "valid": true
+  },
+  {
     "text": "Phone notification",
     "valid": true
   },
@@ -4624,11 +4740,19 @@
     "valid": true
   },
   {
+    "text": "Read message threads, notices and meeting bookings.",
+    "valid": true
+  },
+  {
     "text": "Read only",
     "valid": true
   },
   {
     "text": "Read the report",
+    "valid": true
+  },
+  {
+    "text": "Read your threads, reply to messages, check notices and view meeting bookings.",
     "valid": true
   },
   {
@@ -4789,6 +4913,10 @@
   },
   {
     "text": "Remove {role}",
+    "valid": true
+  },
+  {
+    "text": "Reply",
     "valid": true
   },
   {
@@ -5084,6 +5212,10 @@
     "valid": true
   },
   {
+    "text": "Schedule unavailable",
+    "valid": true
+  },
+  {
     "text": "Scheduled",
     "valid": true
   },
@@ -5229,6 +5361,10 @@
   },
   {
     "text": "Send notifications",
+    "valid": true
+  },
+  {
+    "text": "Send reply",
     "valid": true
   },
   {
@@ -5389,6 +5525,10 @@
   },
   {
     "text": "Staff child",
+    "valid": true
+  },
+  {
+    "text": "Staff group",
     "valid": true
   },
   {
@@ -5928,11 +6068,27 @@
     "valid": true
   },
   {
+    "text": "This thread is archived and can no longer receive replies.",
+    "valid": true
+  },
+  {
+    "text": "This thread is archived. Replies are closed.",
+    "valid": true
+  },
+  {
     "text": "This user has no roles yet.",
     "valid": true
   },
   {
     "text": "Thorough",
+    "valid": true
+  },
+  {
+    "text": "Thread messages",
+    "valid": true
+  },
+  {
+    "text": "Thread unavailable",
     "valid": true
   },
   {
@@ -6280,6 +6436,10 @@
     "valid": true
   },
   {
+    "text": "Video call",
+    "valid": true
+  },
+  {
     "text": "View",
     "valid": true
   },
@@ -6569,6 +6729,10 @@
   },
   {
     "text": "Yes, this device",
+    "valid": true
+  },
+  {
+    "text": "You",
     "valid": true
   },
   {
@@ -7696,6 +7860,10 @@
     "valid": true
   },
   {
+    "text": "अपने संवाद पढ़ें, संदेशों का उत्तर दें, सूचनाएँ जाँचें और बैठक बुकिंग देखें।",
+    "valid": true
+  },
+  {
     "text": "अपने संस्थान की खाता सूची, जर्नल प्रविष्टियाँ और बजट देखें।",
     "valid": true
   },
@@ -7817,6 +7985,14 @@
   },
   {
     "text": "अभी कोई शुल्क शीर्ष कॉन्फ़िगर नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई संदेश नहीं है",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई संदेश संवाद नहीं है",
     "valid": true
   },
   {
@@ -7945,6 +8121,10 @@
   },
   {
     "text": "आज की तारीख और समय",
+    "valid": true
+  },
+  {
+    "text": "आप",
     "valid": true
   },
   {
@@ -8340,6 +8520,10 @@
     "valid": true
   },
   {
+    "text": "इस संवाद में अभी कोई संदेश नहीं है",
+    "valid": true
+  },
+  {
     "text": "इस संस्था का कार्यक्रम चुनें।",
     "valid": true
   },
@@ -8413,6 +8597,10 @@
   },
   {
     "text": "उत्तर",
+    "valid": true
+  },
+  {
+    "text": "उत्तर भेजें",
     "valid": true
   },
   {
@@ -8537,6 +8725,10 @@
   },
   {
     "text": "एक मान्य हेक्स रंग दर्ज करें (जैसे #1F5FD1)।",
+    "valid": true
+  },
+  {
+    "text": "एक या अधिक उत्तर भेजे नहीं जा सके।",
     "valid": true
   },
   {
@@ -8785,6 +8977,10 @@
   },
   {
     "text": "कर्मचारी संतान",
+    "valid": true
+  },
+  {
+    "text": "कर्मचारी समूह",
     "valid": true
   },
   {
@@ -9972,7 +10168,15 @@
     "valid": true
   },
   {
+    "text": "दिखाने के लिए कोई बैठक बुकिंग नहीं है",
+    "valid": true
+  },
+  {
     "text": "दिखाने के लिए कोई रिपोर्ट कार्ड नहीं है",
+    "valid": true
+  },
+  {
+    "text": "दिखाने के लिए कोई सूचना नहीं है",
     "valid": true
   },
   {
@@ -10380,6 +10584,10 @@
     "valid": true
   },
   {
+    "text": "पावती आवश्यक है",
+    "valid": true
+  },
+  {
     "text": "पासकी",
     "valid": true
   },
@@ -10732,6 +10940,10 @@
     "valid": true
   },
   {
+    "text": "प्रसारण",
+    "valid": true
+  },
+  {
     "text": "प्रस्ताव",
     "valid": true
   },
@@ -10885,6 +11097,10 @@
   },
   {
     "text": "फ़ोन (+91)",
+    "valid": true
+  },
+  {
+    "text": "फ़ोन कॉल",
     "valid": true
   },
   {
@@ -11068,6 +11284,10 @@
     "valid": true
   },
   {
+    "text": "बुक किया गया",
+    "valid": true
+  },
+  {
     "text": "बुधवार",
     "valid": true
   },
@@ -11096,6 +11316,14 @@
     "valid": true
   },
   {
+    "text": "बैठक बुकिंग",
+    "valid": true
+  },
+  {
+    "text": "बैठक बुकिंग लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
     "text": "बैठक योजना केवल नियोजित या निर्धारित परीक्षाओं के लिए बनाई जा सकती है।",
     "valid": true
   },
@@ -11109,6 +11337,10 @@
   },
   {
     "text": "बैठक व्यवस्था",
+    "valid": true
+  },
+  {
+    "text": "बैठकें",
     "valid": true
   },
   {
@@ -11264,11 +11496,23 @@
     "valid": true
   },
   {
+    "text": "भेजने से पहले उत्तर दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "भेजा गया",
     "valid": true
   },
   {
     "text": "भेजा जा रहा है",
+    "valid": true
+  },
+  {
+    "text": "भेजा नहीं गया",
+    "valid": true
+  },
+  {
+    "text": "भेजे जाने की प्रतीक्षा में",
     "valid": true
   },
   {
@@ -11517,6 +11761,14 @@
   },
   {
     "text": "यह शिक्षार्थी रिकॉर्ड मौजूद नहीं है या आपकी पहुँच से बाहर है।",
+    "valid": true
+  },
+  {
+    "text": "यह संवाद संग्रहीत है और अब इसमें उत्तर नहीं भेजे जा सकते।",
+    "valid": true
+  },
+  {
+    "text": "यह संवाद संग्रहीत है। उत्तर देना बंद है।",
     "valid": true
   },
   {
@@ -11968,6 +12220,10 @@
     "valid": true
   },
   {
+    "text": "वीडियो कॉल",
+    "valid": true
+  },
+  {
     "text": "वे कौन से क्षेत्र देख सकते हैं",
     "valid": true
   },
@@ -11993,6 +12249,10 @@
   },
   {
     "text": "व्यक्ति",
+    "valid": true
+  },
+  {
+    "text": "व्यक्तिगत भेंट",
     "valid": true
   },
   {
@@ -12236,6 +12496,10 @@
     "valid": true
   },
   {
+    "text": "संचार अनुभाग",
+    "valid": true
+  },
+  {
     "text": "संतुलित",
     "valid": true
   },
@@ -12249,6 +12513,14 @@
   },
   {
     "text": "संदेश",
+    "valid": true
+  },
+  {
+    "text": "संदेश {max} या उससे कम अक्षरों का होना चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "संदेश और सूचनाएँ",
     "valid": true
   },
   {
@@ -12277,6 +12549,26 @@
   },
   {
     "text": "संदेश मान्य होते ही पूर्वावलोकन दिखेगा।",
+    "valid": true
+  },
+  {
+    "text": "संदेश लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "संदेश संवाद",
+    "valid": true
+  },
+  {
+    "text": "संदेश संवाद लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "संदेश संवाद, सूचनाएँ और बैठक बुकिंग देखें।",
+    "valid": true
+  },
+  {
+    "text": "संदेशों पर वापस जाएँ",
     "valid": true
   },
   {
@@ -12316,6 +12608,10 @@
     "valid": true
   },
   {
+    "text": "संपादित",
+    "valid": true
+  },
+  {
     "text": "संपादित करें",
     "valid": true
   },
@@ -12325,6 +12621,14 @@
   },
   {
     "text": "संरचना",
+    "valid": true
+  },
+  {
+    "text": "संवाद उपलब्ध नहीं है",
+    "valid": true
+  },
+  {
+    "text": "संवाद के संदेश",
     "valid": true
   },
   {
@@ -12553,6 +12857,10 @@
   },
   {
     "text": "समय-सारणी अनुभाग",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी उपलब्ध नहीं है",
     "valid": true
   },
   {
@@ -12813,6 +13121,10 @@
   },
   {
     "text": "सिस्टम भूमिकाएँ केवल पढ़ने के लिए हैं।",
+    "valid": true
+  },
+  {
+    "text": "सीधा संदेश",
     "valid": true
   },
   {
@@ -13289,6 +13601,10 @@
   },
   {
     "text": "அனுப்புகிறது",
+    "valid": true
+  },
+  {
+    "text": "அனுப்புவதற்கு முன் பதிலை உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -13780,6 +14096,18 @@
     "valid": true
   },
   {
+    "text": "இந்த உரையாடலில் இன்னும் செய்திகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இந்த உரையாடல் காப்பகப்படுத்தப்பட்டது. பதில்கள் மூடப்பட்டுள்ளன.",
+    "valid": true
+  },
+  {
+    "text": "இந்த உரையாடல் காப்பகப்படுத்தப்பட்டது; இனி பதில்களைப் பெற முடியாது.",
+    "valid": true
+  },
+  {
     "text": "இந்த நிறுவனத்தின் {locale} மேலெழுதல்களை JSON கோப்பாகப் பதிவிறக்கவும்.",
     "valid": true
   },
@@ -14048,6 +14376,14 @@
     "valid": true
   },
   {
+    "text": "இன்னும் செய்தி உரையாடல்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் செய்திகள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "இன்னும் தொகுதிகள் இல்லை",
     "valid": true
   },
@@ -14256,6 +14592,10 @@
     "valid": true
   },
   {
+    "text": "உங்கள் உரையாடல்களைப் படிக்கவும், செய்திகளுக்குப் பதிலளிக்கவும், அறிவிப்புகளைச் சரிபார்க்கவும், சந்திப்பு முன்பதிவுகளைப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
     "text": "உங்கள் கடைசி நிர்வாகப் பங்கை நீங்களே நீக்க முடியாது.",
     "valid": true
   },
@@ -14452,6 +14792,18 @@
     "valid": true
   },
   {
+    "text": "உரையாடல் கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "உரையாடல் செய்திகள்",
+    "valid": true
+  },
+  {
+    "text": "உறுப்பினர்",
+    "valid": true
+  },
+  {
     "text": "உறுப்பினர்கள்",
     "valid": true
   },
@@ -14640,6 +14992,10 @@
     "valid": true
   },
   {
+    "text": "ஒன்று அல்லது அதற்கு மேற்பட்ட பதில்களை அனுப்ப முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "ஒப்படைப்பு",
     "valid": true
   },
@@ -14653,6 +15009,10 @@
   },
   {
     "text": "ஒப்புதல் கோரிக்கை",
+    "valid": true
+  },
+  {
+    "text": "ஒப்புதல் தேவை",
     "valid": true
   },
   {
@@ -14721,6 +15081,10 @@
   },
   {
     "text": "ஒற்றைத் தேர்வு",
+    "valid": true
+  },
+  {
+    "text": "ஒலிபரப்பு",
     "valid": true
   },
   {
@@ -15100,6 +15464,14 @@
     "valid": true
   },
   {
+    "text": "காட்ட அறிவிப்புகள் எதுவும் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "காட்ட சந்திப்பு முன்பதிவுகள் எதுவும் இல்லை",
+    "valid": true
+  },
+  {
     "text": "காட்டு",
     "valid": true
   },
@@ -15109,6 +15481,10 @@
   },
   {
     "text": "காட்டுவதற்கு வழங்கப்பட்ட ஆவணங்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "காணொளி அழைப்பு",
     "valid": true
   },
   {
@@ -15129,6 +15505,10 @@
   },
   {
     "text": "காப்பகத்தில் உள்ளவை",
+    "valid": true
+  },
+  {
+    "text": "காப்பகப்படுத்தப்பட்டது",
     "valid": true
   },
   {
@@ -15452,7 +15832,19 @@
     "valid": true
   },
   {
+    "text": "சந்திப்பு முன்பதிவுகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "சந்திப்பு முன்பதிவுகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "சந்திப்பு முன்பதிவுகள்",
+    "valid": true
+  },
+  {
+    "text": "சந்திப்புகள்",
     "valid": true
   },
   {
@@ -15692,6 +16084,22 @@
     "valid": true
   },
   {
+    "text": "செய்தி {max} எழுத்துகள் அல்லது அதற்குக் குறைவாக இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
+    "text": "செய்தி உரையாடல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "செய்தி உரையாடல்கள்",
+    "valid": true
+  },
+  {
+    "text": "செய்தி உரையாடல்கள், அறிவிப்புகள் மற்றும் சந்திப்பு முன்பதிவுகளைப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
     "text": "செய்தி காலியாக இருக்கக்கூடாது",
     "valid": true
   },
@@ -15704,11 +16112,23 @@
     "valid": true
   },
   {
+    "text": "செய்திகளுக்குத் திரும்புக",
+    "valid": true
+  },
+  {
     "text": "செய்திகளை அனுப்பு",
     "valid": true
   },
   {
+    "text": "செய்திகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "செய்திகள்",
+    "valid": true
+  },
+  {
+    "text": "செய்திகள் & அறிவிப்புகள்",
     "valid": true
   },
   {
@@ -16152,6 +16572,10 @@
     "valid": true
   },
   {
+    "text": "திருத்தப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "திருத்தம்",
     "valid": true
   },
@@ -16492,6 +16916,10 @@
     "valid": true
   },
   {
+    "text": "தொடர்புப் பிரிவுகள்",
+    "valid": true
+  },
+  {
     "text": "தொலைபேசி",
     "valid": true
   },
@@ -16501,6 +16929,10 @@
   },
   {
     "text": "தொலைபேசி அறிவிப்பு",
+    "valid": true
+  },
+  {
+    "text": "தொலைபேசி அழைப்பு",
     "valid": true
   },
   {
@@ -16784,6 +17216,10 @@
     "valid": true
   },
   {
+    "text": "நீங்கள்",
+    "valid": true
+  },
+  {
     "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள்",
     "valid": true
   },
@@ -16876,6 +17312,10 @@
     "valid": true
   },
   {
+    "text": "நேர அட்டவணை கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
     "text": "நேர மண்டலம்",
     "valid": true
   },
@@ -16889,6 +17329,10 @@
   },
   {
     "text": "நேரடி முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "நேரடிச் செய்தி",
     "valid": true
   },
   {
@@ -16969,6 +17413,10 @@
   },
   {
     "text": "பங்குக்கு ஒரு பெயர், குறைந்தது ஒரு அனுமதி மற்றும் குறைந்தது ஒரு வரம்பை வழங்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "பங்கேற்றார்",
     "valid": true
   },
   {
@@ -17084,6 +17532,10 @@
     "valid": true
   },
   {
+    "text": "பணியாளர் குழு",
+    "valid": true
+  },
+  {
     "text": "பணியாளர் சுயவிவரங்கள் எதுவும் இல்லை.",
     "valid": true
   },
@@ -17113,6 +17565,14 @@
   },
   {
     "text": "பதிப்பு {version}",
+    "valid": true
+  },
+  {
+    "text": "பதில்",
+    "valid": true
+  },
+  {
+    "text": "பதில் அனுப்பு",
     "valid": true
   },
   {
@@ -18105,6 +18565,10 @@
   },
   {
     "text": "முன்னோட்டம் தயார்",
+    "valid": true
+  },
+  {
+    "text": "முன்பதிவு செய்யப்பட்டது",
     "valid": true
   },
   {

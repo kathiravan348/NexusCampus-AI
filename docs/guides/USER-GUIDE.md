@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -257,6 +257,15 @@ Open **Issued documents** to check certificates and letters issued by your insti
 - Staff with permission to issue documents can choose **Revoke** on an active document, enter a **Revocation reason** (required, up to 300 characters), and confirm with **Revoke document**. Public verification then shows the document as invalid, and revocation cannot be undone.
 - Parents, guardians, and learners see only their own family's issued documents, never staff letters and never the revocation reason. Guardians with more than one child can filter by **Learner**. Staff without permission see **No access**.
 - Previously loaded documents remain readable offline and **Last synced** shows when the list was last updated. **Revoke** is disabled offline with **You are offline**.
+
+## Messages and notices
+
+Open **Messages & notices** from the menu to read message threads, check notices, and view meeting bookings. Only the tabs allowed for your role appear (**Messages**, **Notices**, and **Meetings**); roles with none of these permissions see **No access**. Previously loaded lists and opened threads remain readable offline, and **Last synced** shows when your thread list was last updated.
+
+- **Messages** lists the threads you take part in, newest first, showing the subject, kind (**Direct message**, **Class group**, **Staff group**, or **Broadcast**), last message date, and an **Archived** badge when replies are closed. Select a thread to read messages oldest first (**You** marks your own messages, **Edited** marks edited messages, and **Member** appears when another participant's name is unavailable). Choose **Back to messages** to return to the list.
+- When your role allows sending messages on an active thread, enter a **Reply** (required, up to 4,000 characters) and choose **Send reply**. Replies sent while offline appear at the end of the thread with a **Waiting to send** badge and send once when your connection returns with **Messages & notices** open; a reply that could not be sent shows **Not sent**. **Archived** threads have no reply box.
+- **Notices** displays each notice visible to your role as plain text with its title, publish date, and **Needs acknowledgement** badge where required. Staff with permission to publish notices also see each notice's status badge (**Draft**, **Scheduled**, **Published**, or **Withdrawn**).
+- **Meetings** lists scheduled meeting bookings read-only with the learner's name (or learner number when directory details are unavailable), date, time range, meeting mode (**In person**, **Video call**, or **Phone call**), location where set, and status (**Booked**, **Cancelled**, **Attended**, or **No-show**). Private booking notes are never shown here.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.

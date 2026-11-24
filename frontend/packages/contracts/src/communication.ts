@@ -85,6 +85,13 @@ export const ThreadMessageSchema = z
   });
 export type ThreadMessage = z.infer<typeof ThreadMessageSchema>;
 
+/** Reply payload posted to a thread (M24). `body` is personal data (G-6, V-7). */
+export const ThreadMessageInputSchema = z.strictObject({
+  /** Personal data (G-6, V-7); never log or emit in telemetry. */
+  body: z.string().trim().min(1).max(4000),
+});
+export type ThreadMessageInput = z.infer<typeof ThreadMessageInputSchema>;
+
 export const NoticeAudienceKindSchema = z.enum(["everyone", "class_groups", "roles", "people"]);
 export type NoticeAudienceKind = z.infer<typeof NoticeAudienceKindSchema>;
 
