@@ -97,6 +97,7 @@
 │     │                 modules/m22/ (ReportCardsPage, ReportCardList, ReportCardView, StatusDialog, NEX-171),
 │     │                 modules/m23/ (DocumentsPage, DocumentList, DocumentView, RevokeDialog, NEX-172),
 │     │                 modules/m24/ (MessagesPage, ThreadList, ThreadView, NoticesTab, MeetingsTab, NEX-173),
+│     │                 modules/m25/ (FamilyPortalPage, ChildSwitcher, HomeCards, NEX-174),
 │     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023),
 │     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest in vite.config, NEX-030),
 │     │                 sw/ (sw.ts: Workbox injectManifest worker; mock builds host MSW in it, own tsconfig, NEX-038)

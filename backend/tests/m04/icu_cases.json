@@ -1268,6 +1268,10 @@
     "valid": true
   },
   {
+    "text": "Check updates for your children and jump to their attendance, fees, report cards and documents.",
+    "valid": true
+  },
+  {
     "text": "Cheque",
     "valid": true
   },
@@ -1276,7 +1280,15 @@
     "valid": true
   },
   {
+    "text": "Child pages",
+    "valid": true
+  },
+  {
     "text": "Children",
+    "valid": true
+  },
+  {
+    "text": "Children and quick links",
     "valid": true
   },
   {
@@ -2328,7 +2340,15 @@
     "valid": true
   },
   {
+    "text": "Family",
+    "valid": true
+  },
+  {
     "text": "Family details are not available for this learner.",
+    "valid": true
+  },
+  {
+    "text": "Family home could not be loaded.",
     "valid": true
   },
   {
@@ -2777,6 +2797,10 @@
   },
   {
     "text": "Indian National",
+    "valid": true
+  },
+  {
+    "text": "Info",
     "valid": true
   },
   {
@@ -5312,6 +5336,10 @@
     "valid": true
   },
   {
+    "text": "See your children's summary counts and open their pages.",
+    "valid": true
+  },
+  {
     "text": "See your plan, switch optional modules on or off, and follow this period's usage.",
     "valid": true
   },
@@ -5629,6 +5657,10 @@
   },
   {
     "text": "Suggested brand pair ({mode})",
+    "valid": true
+  },
+  {
+    "text": "Summary cards",
     "valid": true
   },
   {
@@ -6165,6 +6197,10 @@
   },
   {
     "text": "Total rows",
+    "valid": true
+  },
+  {
+    "text": "Totals for all your children",
     "valid": true
   },
   {
@@ -7852,6 +7888,14 @@
     "valid": true
   },
   {
+    "text": "अपने बच्चों का सारांश और उनके पृष्ठ देखें।",
+    "valid": true
+  },
+  {
+    "text": "अपने बच्चों से जुड़े अपडेट देखें और उनकी उपस्थिति, शुल्क, रिपोर्ट कार्ड और दस्तावेज़ खोलें।",
+    "valid": true
+  },
+  {
     "text": "अपने माता-पिता या अभिभावक से उनकी सहमति सेटिंग में AI सुविधाओं की अनुमति देने को कहें।",
     "valid": true
   },
@@ -8249,6 +8293,10 @@
   },
   {
     "text": "आपके व्यवस्थापक इसे AI सेटिंग में चालू कर सकते हैं। बाकी सब सामान्य रूप से काम करता है।",
+    "valid": true
+  },
+  {
+    "text": "आपके सभी बच्चों का कुल योग",
     "valid": true
   },
   {
@@ -9508,6 +9556,10 @@
     "valid": true
   },
   {
+    "text": "गंभीर",
+    "valid": true
+  },
+  {
     "text": "गतिविधि",
     "valid": true
   },
@@ -9737,6 +9789,10 @@
   },
   {
     "text": "जर्नल प्रविष्टि दर्ज हो गई।",
+    "valid": true
+  },
+  {
+    "text": "जानकारी",
     "valid": true
   },
   {
@@ -10449,6 +10505,10 @@
   },
   {
     "text": "परिवार",
+    "valid": true
+  },
+  {
+    "text": "परिवार पृष्ठ लोड नहीं हो सका।",
     "valid": true
   },
   {
@@ -11189,6 +11249,14 @@
   },
   {
     "text": "बच्चे",
+    "valid": true
+  },
+  {
+    "text": "बच्चे और त्वरित लिंक",
+    "valid": true
+  },
+  {
+    "text": "बच्चे के पृष्ठ",
     "valid": true
   },
   {
@@ -13044,6 +13112,10 @@
     "valid": true
   },
   {
+    "text": "सारांश कार्ड",
+    "valid": true
+  },
+  {
     "text": "सारांश में शामिल करें",
     "valid": true
   },
@@ -14588,6 +14660,10 @@
     "valid": true
   },
   {
+    "text": "உங்கள் அனைத்து குழந்தைகளுக்குமான மொத்த எண்ணிக்கை",
+    "valid": true
+  },
+  {
     "text": "உங்கள் ஆதரவில் அடங்கும்",
     "valid": true
   },
@@ -14597,6 +14673,14 @@
   },
   {
     "text": "உங்கள் கடைசி நிர்வாகப் பங்கை நீங்களே நீக்க முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் குழந்தைகளின் சுருக்க எண்ணிக்கைகளையும் பக்கங்களையும் பார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் குழந்தைகளுக்கான புதுப்பிப்புகளைப் பார்த்து, வருகை, கட்டணம், மதிப்பெண் அறிக்கைகள் மற்றும் ஆவணங்களைத் திறக்கவும்.",
     "valid": true
   },
   {
@@ -15608,6 +15692,10 @@
     "valid": true
   },
   {
+    "text": "குடும்ப முகப்பை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "குடும்பங்களின் கட்டுப்படுத்தப்பட்ட தரவைப் பார்",
     "valid": true
   },
@@ -15637,6 +15725,10 @@
   },
   {
     "text": "குடும்பப் பதிவுகளைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "குடும்பம்",
     "valid": true
   },
   {
@@ -15692,7 +15784,15 @@
     "valid": true
   },
   {
+    "text": "குழந்தை பக்கங்கள்",
+    "valid": true
+  },
+  {
     "text": "குழந்தைகள்",
+    "valid": true
+  },
+  {
+    "text": "குழந்தைகள் மற்றும் விரைவு இணைப்புகள்",
     "valid": true
   },
   {
@@ -16016,6 +16116,10 @@
     "valid": true
   },
   {
+    "text": "சுருக்க அட்டைகள்",
+    "valid": true
+  },
+  {
     "text": "சுருக்கத்தில் சேர்",
     "valid": true
   },
@@ -16333,6 +16437,10 @@
   },
   {
     "text": "டொமைன்களைக் காற்புள்ளியால் பிரிக்கவும், எ.கா. riverside.example.edu",
+    "valid": true
+  },
+  {
+    "text": "தகவல்",
     "valid": true
   },
   {
