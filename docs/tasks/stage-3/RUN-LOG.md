@@ -47,8 +47,18 @@ Claude then reviews `git diff main...task/NEX-###`, re-runs `review:check`, writ
 ## Task log
 | Task | Builder · model | Started | Checks | Review | Merged / pushed |
 |---|---|---|---|---|---|
-| NEX-148 | Codex · gpt-6.2-sol (default) | 08:20 | in progress (round 3) | — | — |
-| NEX-150 | Gemini · gemini-4-neon-high (default) | 08:14 | in progress | — | — |
+| NEX-148 | Codex · default (gpt-6.2-sol) | 08:20 | green on round 3 | done — no fixes | `aa7a067`, pushed |
+| NEX-150 | Gemini · default (gemini-4-neon-high) | 08:14 | green on round 3 | done — no fixes | `ce5a025`, pushed |
+| NEX-149 | Codex · gpt-6.2-sol / medium | 08:5x | running | — | — |
+| NEX-151 | Gemini · gemini-4-neon-high | 09:0x | restarted after a planner answer (`Fee` prefix: Stage 2 `Invoice*` / `Payment*` exports clash) | — | — |
+
+Planned next: NEX-152 (M20–M23), NEX-153 (M24–M28, M86).
+
+## Lessons (harness)
+- Two `review:check` runs at once make UI tests time out (5 s); the harness now takes a shared lock
+  (`../NexusCampus-AI-orchestrator/checks.lock`) so only one check suite runs at a time.
+- Codex `workspace-write` keeps `.git` read-only and hides fnm/pnpm, so the harness — not the builder — runs checks and
+  commits. Planner answers in a task's Questions are marked "answered by the planner" so the harness continues.
 
 ## Waiting for the Owner
 _(nothing yet)_
