@@ -8,6 +8,7 @@ const ReportCardLineSchema = z.strictObject({
   subjectId: IdSchema,
   grade: z.string().trim().min(1).max(8),
   marksPercent: z.number().min(0).max(100).nullable(),
+  /** Personal data (V-7). */
   remark: z.string().max(300).nullable(),
 });
 
@@ -20,6 +21,7 @@ export const ReportCardSchema = z
     periodId: IdSchema.nullable(),
     templateId: IdSchema,
     lines: z.array(ReportCardLineSchema).min(1).max(60),
+    /** Personal data (V-7). */
     overallRemark: z.string().max(1000).nullable(),
     status: ReportCardStatusSchema,
     publishedAt: UtcDateTimeSchema.nullable(),
@@ -73,7 +75,8 @@ export const IssuedDocumentSchema = z
     signatures: z.array(DocumentSignatureSchema).max(5),
     verificationCode: z.string().regex(/^[A-Z0-9]{10,16}$/),
     revoked: z.boolean(),
-    revokedReason: z.string().trim().min(1).nullable(),
+    /** Internal only; never shown on the public verification page (V-7). */
+    revokedReason: z.string().trim().min(1).max(300).nullable(),
   })
   .refine((document) => document.revoked === (document.revokedReason !== null), {
     message: "revokedReason is set exactly when revoked is true",

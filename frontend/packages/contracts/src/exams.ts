@@ -98,6 +98,7 @@ export const RevaluationRequestSchema = z
     tenantId: IdSchema,
     examPaperId: IdSchema,
     learnerId: IdSchema,
+    /** Personal data (V-7); keep out of logs. */
     reason: z.string().max(300),
     status: RevaluationRequestStatusSchema,
     oldMarks: ExamMarksSchema,

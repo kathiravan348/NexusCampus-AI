@@ -10,7 +10,7 @@ const timestampOrderIssue = {
 };
 
 const PercentSchema = z.number().min(0).max(100);
-const RubricCodeSchema = z.string().trim().min(1);
+const RubricCodeSchema = z.string().trim().min(1).max(20);
 
 export const GradeBandSchema = z
   .strictObject({
