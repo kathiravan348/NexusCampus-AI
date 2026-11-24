@@ -6067,6 +6067,166 @@
     "message": "Manage fees and payments",
     "description": "Permission description: Manage fees and payments."
   },
+  "m19.nav.title": {
+    "message": "Accounting",
+    "description": "Module title for the account and journal screens."
+  },
+  "m19.nav.summary": {
+    "message": "Review balances and post journal entries.",
+    "description": "Menu description for accounting."
+  },
+  "m19.page.intro": {
+    "message": "Review the chart of accounts, journal entries and budgets for your institution.",
+    "description": "Intro for the accounting page."
+  },
+  "m19.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button opening Assist."
+  },
+  "m19.page.accounts": {
+    "message": "Accounts",
+    "description": "Tab for the chart of accounts."
+  },
+  "m19.page.journal": {
+    "message": "Journal",
+    "description": "Tab for journal entries."
+  },
+  "m19.page.budgets": {
+    "message": "Budgets",
+    "description": "Tab for budgets."
+  },
+  "m19.page.error": {
+    "message": "Could not load accounting records.",
+    "description": "Error when a list cannot be loaded."
+  },
+  "m19.accounts.empty": {
+    "message": "No ledger accounts yet.",
+    "description": "Empty state for the account tree."
+  },
+  "m19.kind.asset": {
+    "message": "Asset",
+    "description": "Account kind for assets."
+  },
+  "m19.kind.liability": {
+    "message": "Liability",
+    "description": "Account kind for liabilities."
+  },
+  "m19.kind.equity": {
+    "message": "Equity",
+    "description": "Account kind for equity."
+  },
+  "m19.kind.income": {
+    "message": "Income",
+    "description": "Account kind for income."
+  },
+  "m19.kind.expense": {
+    "message": "Expense",
+    "description": "Account kind for expenses."
+  },
+  "m19.journal.postEntry": {
+    "message": "Post entry",
+    "description": "Button and title for the manual journal form."
+  },
+  "m19.journal.empty": {
+    "message": "No journal entries yet.",
+    "description": "Empty state for journal entries."
+  },
+  "m19.journal.totalDebit": {
+    "message": "Total debit",
+    "description": "Journal entry or form summary for the debit tally."
+  },
+  "m19.journal.totalCredit": {
+    "message": "Total credit",
+    "description": "Form summary for the credit tally."
+  },
+  "m19.source.manual": {
+    "message": "Manual",
+    "description": "Journal entry posted by a person."
+  },
+  "m19.source.fees": {
+    "message": "Fees",
+    "description": "Journal activity from the fees module."
+  },
+  "m19.source.payroll": {
+    "message": "Payroll",
+    "description": "Journal activity from payroll."
+  },
+  "m19.source.import": {
+    "message": "Import",
+    "description": "Journal activity from an import."
+  },
+  "m19.account.unavailable": {
+    "message": "Account unavailable",
+    "description": "Shown when an account cannot be identified from the available records."
+  },
+  "m19.budgets.empty": {
+    "message": "No budgets yet.",
+    "description": "Empty state for accounting budgets."
+  },
+  "m19.line.label": {
+    "message": "Line {ordinal}",
+    "description": "Heading for a line of the journal form. ordinal is the number of this line."
+  },
+  "m19.line.account": {
+    "message": "Account",
+    "description": "Message for the account selector in a journal line."
+  },
+  "m19.line.debit": {
+    "message": "Debit",
+    "description": "Journal line debit amount."
+  },
+  "m19.line.credit": {
+    "message": "Credit",
+    "description": "Journal line credit amount."
+  },
+  "m19.post.submit": {
+    "message": "Post",
+    "description": "Submit button for the journal entry."
+  },
+  "m19.post.institution": {
+    "message": "Institution",
+    "description": "Select the institution whose accounts to use."
+  },
+  "m19.post.postedOn": {
+    "message": "Posting date",
+    "description": "Day the entry is posted to the journal."
+  },
+  "m19.post.reference": {
+    "message": "Reference",
+    "description": "Reference for the journal entry."
+  },
+  "m19.post.currency": {
+    "message": "Currency",
+    "description": "Code for the currency used by all journal lines."
+  },
+  "m19.post.currencyErr": {
+    "message": "Enter a three-letter currency code.",
+    "description": "Validation hint for an invalid currency code."
+  },
+  "m19.post.removeLine": {
+    "message": "Remove line",
+    "description": "Delete this line from the form."
+  },
+  "m19.post.addLine": {
+    "message": "Add line",
+    "description": "Add another line to the form."
+  },
+  "m19.post.balanceError": {
+    "message": "Enter one amount per line and make the debit and credit totals match.",
+    "description": "Displayed when amounts are invalid or the journal contains unequal totals."
+  },
+  "m19.post.lineError": {
+    "message": "Choose active accounts for all lines.",
+    "description": "Generic field error for a rejected ledger account."
+  },
+  "m19.post.failed": {
+    "message": "Could not post the entry. Check your details and try again.",
+    "description": "Generic failure shown without personal or financial data."
+  },
+  "m19.post.success": {
+    "message": "Journal entry posted.",
+    "description": "Completion toast after a journal entry is posted."
+  },
   "m19.permission.accountsRead": {
     "message": "View accounting records",
     "description": "Permission description: View accounting records."
@@ -6474,5 +6634,25 @@
   "m84.bundle.decideFailed": {
     "message": "The bundle could not be updated. Try again.",
     "description": "Shown when approving or discarding fails for another reason."
+  },
+  "m19.budgets.title": {
+    "message": "Budget",
+    "description": "Heading for each accounting budget."
+  },
+  "m19.budgets.total": {
+    "message": "Total",
+    "description": "Sum of the budget's individual lines."
+  },
+  "m19.status.draft": {
+    "message": "Draft",
+    "description": "Budget status before approval."
+  },
+  "m19.status.approved": {
+    "message": "Approved",
+    "description": "Budget status after approval."
+  },
+  "m19.status.closed": {
+    "message": "Closed",
+    "description": "Budget status after closure."
   }
 }

@@ -33,7 +33,7 @@
 | NEX-165 | M16 Timetable & scheduling | C | done | Gemini | 157 |
 | NEX-166 | M17 Attendance (offline L2, mobile first) | C | done | Codex | 157 |
 | NEX-167 | M18 Fees & payments | C | done | Gemini | 158 |
-| NEX-168 | M19 Accounting | C | planned | — | 158, 167 |
+| NEX-168 | M19 Accounting | C | in-progress | Codex | 158, 167 |
 | NEX-169 | M20 Assessment & gradebook | C | planned | — | 158, 168 |
 | NEX-170 | M21 Exams (in person) | C | draft | — | 158 |
 | NEX-171 | M22 Report cards & transcripts | C | draft | — | 158 |

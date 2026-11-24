@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   BudgetSchema,
+  JournalEntryInputSchema,
   JournalEntrySchema,
   LedgerAccountSchema,
   type Budget,
@@ -182,4 +183,22 @@ const allRecords = [
 it.each(allRecords)("$name rejects extra keys and requires tenantId", ({ schema, row }) => {
   expect(schema.safeParse({ ...row, extra: true }).success).toBe(false);
   expect(schema.safeParse({ ...row, tenantId: undefined }).success).toBe(false);
+});
+
+describe("JournalEntryInput", () => {
+  const { institutionId, postedOn, reference, currency, lines } = balancedJournalEntry;
+  const input = { institutionId, postedOn, reference, currency, lines };
+
+  it("shares the line and balance checks with the complete entry", () => {
+    expect(JournalEntryInputSchema.parse(input)).toEqual(input);
+    expect(JournalEntryInputSchema.safeParse({ ...input, lines: [lines[0]] }).success).toBe(false);
+    const invalid = input.lines.map((l) => ({ ...l, credit: 0 }));
+    expect(JournalEntryInputSchema.safeParse({ ...input, lines: invalid }).success).toBe(false);
+  });
+
+  it("requires descriptive fields and rejects server-supplied fields", () => {
+    expect(JournalEntryInputSchema.safeParse({ ...input, reference: "" }).success).toBe(false);
+    expect(JournalEntryInputSchema.safeParse({ ...input, ...scope }).success).toBe(false);
+    expect(JournalEntryInputSchema.safeParse({ ...input, source: "manual" }).success).toBe(false);
+  });
 });

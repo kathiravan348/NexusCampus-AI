@@ -528,7 +528,23 @@
     "valid": true
   },
   {
+    "text": "Account",
+    "valid": true
+  },
+  {
     "text": "Account invitation",
+    "valid": true
+  },
+  {
+    "text": "Account unavailable",
+    "valid": true
+  },
+  {
+    "text": "Accounting",
+    "valid": true
+  },
+  {
+    "text": "Accounts",
     "valid": true
   },
   {
@@ -593,6 +609,10 @@
   },
   {
     "text": "Add holiday",
+    "valid": true
+  },
+  {
+    "text": "Add line",
     "valid": true
   },
   {
@@ -832,6 +852,10 @@
     "valid": true
   },
   {
+    "text": "Asset",
+    "valid": true
+  },
+  {
     "text": "Assets",
     "valid": true
   },
@@ -1020,6 +1044,14 @@
     "valid": true
   },
   {
+    "text": "Budget",
+    "valid": true
+  },
+  {
+    "text": "Budgets",
+    "valid": true
+  },
+  {
     "text": "Bundle approved for sending",
     "valid": true
   },
@@ -1176,6 +1208,10 @@
     "valid": true
   },
   {
+    "text": "Choose active accounts for all lines.",
+    "valid": true
+  },
+  {
     "text": "Choose cash, cheque or bank transfer.",
     "valid": true
   },
@@ -1233,6 +1269,10 @@
   },
   {
     "text": "Close notification",
+    "valid": true
+  },
+  {
+    "text": "Closed",
     "valid": true
   },
   {
@@ -1364,6 +1404,10 @@
     "valid": true
   },
   {
+    "text": "Could not load accounting records.",
+    "valid": true
+  },
+  {
     "text": "Could not load change history.",
     "valid": true
   },
@@ -1401,6 +1445,10 @@
   },
   {
     "text": "Could not load theme settings.",
+    "valid": true
+  },
+  {
+    "text": "Could not post the entry. Check your details and try again.",
     "valid": true
   },
   {
@@ -1465,6 +1513,10 @@
   },
   {
     "text": "Created {date}",
+    "valid": true
+  },
+  {
+    "text": "Credit",
     "valid": true
   },
   {
@@ -1565,6 +1617,10 @@
   },
   {
     "text": "Deadline for data requests",
+    "valid": true
+  },
+  {
+    "text": "Debit",
     "valid": true
   },
   {
@@ -1932,6 +1988,10 @@
     "valid": true
   },
   {
+    "text": "Enter a three-letter currency code.",
+    "valid": true
+  },
+  {
     "text": "Enter a valid code starting with a letter or number.",
     "valid": true
   },
@@ -1992,6 +2052,10 @@
     "valid": true
   },
   {
+    "text": "Enter one amount per line and make the debit and credit totals match.",
+    "valid": true
+  },
+  {
     "text": "Enter valid numbers. The maximum must be at least the minimum.",
     "valid": true
   },
@@ -2001,6 +2065,10 @@
   },
   {
     "text": "Enterprise edition",
+    "valid": true
+  },
+  {
+    "text": "Equity",
     "valid": true
   },
   {
@@ -2037,6 +2105,10 @@
   },
   {
     "text": "Excused",
+    "valid": true
+  },
+  {
+    "text": "Expense",
     "valid": true
   },
   {
@@ -2432,6 +2504,10 @@
     "valid": true
   },
   {
+    "text": "Import",
+    "valid": true
+  },
+  {
     "text": "Import & export",
     "valid": true
   },
@@ -2489,6 +2565,10 @@
   },
   {
     "text": "Included by",
+    "valid": true
+  },
+  {
+    "text": "Income",
     "valid": true
   },
   {
@@ -2656,6 +2736,14 @@
     "valid": true
   },
   {
+    "text": "Journal",
+    "valid": true
+  },
+  {
+    "text": "Journal entry posted.",
+    "valid": true
+  },
+  {
     "text": "Keep device",
     "valid": true
   },
@@ -2820,6 +2908,10 @@
     "valid": true
   },
   {
+    "text": "Liability",
+    "valid": true
+  },
+  {
     "text": "Library",
     "valid": true
   },
@@ -2833,6 +2925,10 @@
   },
   {
     "text": "Light",
+    "valid": true
+  },
+  {
+    "text": "Line {ordinal}",
     "valid": true
   },
   {
@@ -2981,6 +3077,10 @@
   },
   {
     "text": "Manage your institution profile, campuses, regional formats, and academic calendar.",
+    "valid": true
+  },
+  {
+    "text": "Manual",
     "valid": true
   },
   {
@@ -3340,6 +3440,10 @@
     "valid": true
   },
   {
+    "text": "No budgets yet.",
+    "valid": true
+  },
+  {
     "text": "No campuses added yet.",
     "valid": true
   },
@@ -3452,6 +3556,10 @@
     "valid": true
   },
   {
+    "text": "No journal entries yet.",
+    "valid": true
+  },
+  {
     "text": "No keys.",
     "valid": true
   },
@@ -3465,6 +3573,10 @@
   },
   {
     "text": "No learners yet",
+    "valid": true
+  },
+  {
+    "text": "No ledger accounts yet.",
     "valid": true
   },
   {
@@ -3936,6 +4048,10 @@
     "valid": true
   },
   {
+    "text": "Payroll",
+    "valid": true
+  },
+  {
     "text": "Pending",
     "valid": true
   },
@@ -4052,7 +4168,19 @@
     "valid": true
   },
   {
+    "text": "Post",
+    "valid": true
+  },
+  {
+    "text": "Post entry",
+    "valid": true
+  },
+  {
     "text": "Postal code",
+    "valid": true
+  },
+  {
+    "text": "Posting date",
     "valid": true
   },
   {
@@ -4252,6 +4380,10 @@
     "valid": true
   },
   {
+    "text": "Reference",
+    "valid": true
+  },
+  {
     "text": "Referral",
     "valid": true
   },
@@ -4301,6 +4433,10 @@
   },
   {
     "text": "Remove holiday {name}",
+    "valid": true
+  },
+  {
+    "text": "Remove line",
     "valid": true
   },
   {
@@ -4368,6 +4504,10 @@
     "valid": true
   },
   {
+    "text": "Review balances and post journal entries.",
+    "valid": true
+  },
+  {
     "text": "Review bundle {id}",
     "valid": true
   },
@@ -4389,6 +4529,10 @@
   },
   {
     "text": "Review support diagnostics",
+    "valid": true
+  },
+  {
+    "text": "Review the chart of accounts, journal entries and budgets for your institution.",
     "valid": true
   },
   {
@@ -5417,6 +5561,14 @@
   },
   {
     "text": "Total",
+    "valid": true
+  },
+  {
+    "text": "Total credit",
+    "valid": true
+  },
+  {
+    "text": "Total debit",
     "valid": true
   },
   {
@@ -7016,6 +7168,10 @@
     "valid": true
   },
   {
+    "text": "अपने संस्थान की खाता सूची, जर्नल प्रविष्टियाँ और बजट देखें।",
+    "valid": true
+  },
+  {
     "text": "अपने संस्थान खाते से साइन इन करें",
     "valid": true
   },
@@ -7072,6 +7228,10 @@
     "valid": true
   },
   {
+    "text": "अभी कोई जर्नल प्रविष्टि नहीं है।",
+    "valid": true
+  },
+  {
     "text": "अभी कोई टेम्पलेट नहीं।",
     "valid": true
   },
@@ -7081,6 +7241,14 @@
   },
   {
     "text": "अभी कोई प्रस्ताव नहीं है",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई बजट नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई बही खाता नहीं है।",
     "valid": true
   },
   {
@@ -7389,6 +7557,14 @@
   },
   {
     "text": "आमंत्रित",
+    "valid": true
+  },
+  {
+    "text": "आय",
+    "valid": true
+  },
+  {
+    "text": "आयात",
     "valid": true
   },
   {
@@ -8168,6 +8344,14 @@
     "valid": true
   },
   {
+    "text": "कुल क्रेडिट",
+    "valid": true
+  },
+  {
+    "text": "कुल डेबिट",
+    "valid": true
+  },
+  {
     "text": "कुल पंक्तियाँ",
     "valid": true
   },
@@ -8424,6 +8608,10 @@
     "valid": true
   },
   {
+    "text": "क्रेडिट",
+    "valid": true
+  },
+  {
     "text": "क्रेडिट अगले महीने की शुरुआत में फिर मिलेंगे, या आपके व्यवस्थापक और जोड़ सकते हैं।",
     "valid": true
   },
@@ -8464,7 +8652,23 @@
     "valid": true
   },
   {
+    "text": "खाता",
+    "valid": true
+  },
+  {
     "text": "खाता आमंत्रण",
+    "valid": true
+  },
+  {
+    "text": "खाता उपलब्ध नहीं है",
+    "valid": true
+  },
+  {
+    "text": "खाते",
+    "valid": true
+  },
+  {
+    "text": "खाते देखें और जर्नल प्रविष्टियाँ दर्ज करें।",
     "valid": true
   },
   {
@@ -8704,6 +8908,14 @@
     "valid": true
   },
   {
+    "text": "जर्नल",
+    "valid": true
+  },
+  {
+    "text": "जर्नल प्रविष्टि दर्ज हो गई।",
+    "valid": true
+  },
+  {
     "text": "जारी",
     "valid": true
   },
@@ -8940,6 +9152,10 @@
     "valid": true
   },
   {
+    "text": "डेबिट",
+    "valid": true
+  },
+  {
     "text": "डेमो डेटा। इस स्क्रीन पर कुछ भी वास्तविक नहीं है।",
     "valid": true
   },
@@ -8973,6 +9189,10 @@
   },
   {
     "text": "तिथि (MM/DD/YYYY)",
+    "valid": true
+  },
+  {
+    "text": "तीन अक्षरों वाला मुद्रा कोड दर्ज करें।",
     "valid": true
   },
   {
@@ -9013,6 +9233,10 @@
   },
   {
     "text": "दर्ज",
+    "valid": true
+  },
+  {
+    "text": "दर्ज करें",
     "valid": true
   },
   {
@@ -9073,6 +9297,10 @@
   },
   {
     "text": "देय तिथि {date}",
+    "valid": true
+  },
+  {
+    "text": "देयता",
     "valid": true
   },
   {
@@ -9252,7 +9480,19 @@
     "valid": true
   },
   {
+    "text": "पंक्ति {ordinal}",
+    "valid": true
+  },
+  {
     "text": "पंक्ति {row}",
+    "valid": true
+  },
+  {
+    "text": "पंक्ति जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "पंक्ति हटाएँ",
     "valid": true
   },
   {
@@ -9428,6 +9668,10 @@
     "valid": true
   },
   {
+    "text": "पूँजी",
+    "valid": true
+  },
+  {
     "text": "पूछताछ",
     "valid": true
   },
@@ -9600,6 +9844,10 @@
     "valid": true
   },
   {
+    "text": "प्रत्येक पंक्ति में एक राशि भरें। कुल डेबिट और कुल क्रेडिट बराबर होने चाहिए।",
+    "valid": true
+  },
+  {
     "text": "प्रदर्शन कैलेंडर",
     "valid": true
   },
@@ -9641,6 +9889,18 @@
   },
   {
     "text": "प्रयोगशाला",
+    "valid": true
+  },
+  {
+    "text": "प्रविष्टि की तारीख",
+    "valid": true
+  },
+  {
+    "text": "प्रविष्टि दर्ज करें",
+    "valid": true
+  },
+  {
+    "text": "प्रविष्टि दर्ज नहीं हो सकी। विवरण जाँचें और फिर प्रयास करें।",
     "valid": true
   },
   {
@@ -9729,6 +9989,10 @@
   },
   {
     "text": "प्रारंभिक वर्ष और प्री-स्कूल",
+    "valid": true
+  },
+  {
+    "text": "प्रारूप",
     "valid": true
   },
   {
@@ -9909,6 +10173,10 @@
   },
   {
     "text": "बच्चे",
+    "valid": true
+  },
+  {
+    "text": "बजट",
     "valid": true
   },
   {
@@ -10320,6 +10588,10 @@
     "valid": true
   },
   {
+    "text": "मैन्युअल",
+    "valid": true
+  },
+  {
     "text": "मॉड्यूल",
     "valid": true
   },
@@ -10616,11 +10888,19 @@
     "valid": true
   },
   {
+    "text": "लेखा",
+    "valid": true
+  },
+  {
     "text": "लेखा अभिलेख देखें",
     "valid": true
   },
   {
     "text": "लेखा अभिलेख प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "लेखा रिकॉर्ड लोड नहीं हो सके।",
     "valid": true
   },
   {
@@ -10808,6 +11088,10 @@
     "valid": true
   },
   {
+    "text": "वेतन",
+    "valid": true
+  },
+  {
     "text": "वेबसाइट",
     "valid": true
   },
@@ -10825,6 +11109,10 @@
   },
   {
     "text": "व्यक्ति",
+    "valid": true
+  },
+  {
+    "text": "व्यय",
     "valid": true
   },
   {
@@ -11064,6 +11352,10 @@
     "valid": true
   },
   {
+    "text": "संदर्भ",
+    "valid": true
+  },
+  {
     "text": "संदर्भ में पूर्वावलोकन",
     "valid": true
   },
@@ -11097,6 +11389,10 @@
   },
   {
     "text": "संदेश मान्य होते ही पूर्वावलोकन दिखेगा।",
+    "valid": true
+  },
+  {
+    "text": "संपत्ति",
     "valid": true
   },
   {
@@ -11301,6 +11597,10 @@
   },
   {
     "text": "सभी को उपस्थित चिह्नित करें",
+    "valid": true
+  },
+  {
+    "text": "सभी पंक्तियों के लिए सक्रिय खाते चुनें।",
     "valid": true
   },
   {
@@ -11880,6 +12180,10 @@
     "valid": true
   },
   {
+    "text": "அங்கீகரிக்கப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "அங்கீகரிக்கப்பட்டவர்களை ஏற்ற முடியவில்லை.",
     "valid": true
   },
@@ -12053,6 +12357,10 @@
   },
   {
     "text": "அனைத்து மாறுபாட்டு இணைகளும் WCAG 2.2 AA தேவைகளைப் பூர்த்தி செய்கின்றன.",
+    "valid": true
+  },
+  {
+    "text": "அனைத்து வரிகளுக்கும் செயல்பாட்டில் உள்ள கணக்குகளைத் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
   {
@@ -12784,6 +13092,10 @@
     "valid": true
   },
   {
+    "text": "இறக்குமதி",
+    "valid": true
+  },
+  {
     "text": "இறக்குமதி ஆகிறது",
     "valid": true
   },
@@ -12936,6 +13248,10 @@
     "valid": true
   },
   {
+    "text": "உங்கள் நிறுவனத்தின் கணக்குப் பட்டியல், பதிவேடு மற்றும் வரவுசெலவுத் திட்டங்களைப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
     "text": "உங்கள் நிறுவனத்தின் திட்டத்தில் இந்தத் தொகுதி இல்லை. தேவைப்பட்டால் உங்கள் நிர்வாகியிடம் கேளுங்கள்.",
     "valid": true
   },
@@ -13085,6 +13401,10 @@
   },
   {
     "text": "உள்ளடக்கத்திற்குச் செல்",
+    "valid": true
+  },
+  {
+    "text": "ஊதியப் பட்டியல்",
     "valid": true
   },
   {
@@ -13312,6 +13632,10 @@
     "valid": true
   },
   {
+    "text": "ஒவ்வொரு வரியிலும் ஒரு தொகையை மட்டும் உள்ளிடவும். மொத்தப் பற்றும் மொத்த வரவும் சமமாக இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
     "text": "ஒவ்வொரு விருப்பத்திற்கும் தனித்துவமான செல்லுபடியாகும் குறியீடும் குறைந்தது ஒரு பெயரும் தேவை. குறைந்தது ஒரு விருப்பத்தைச் சேருங்கள்.",
     "valid": true
   },
@@ -13464,7 +13788,31 @@
     "valid": true
   },
   {
+    "text": "கணக்கியல்",
+    "valid": true
+  },
+  {
+    "text": "கணக்கியல் பதிவுகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கணக்கு",
+    "valid": true
+  },
+  {
     "text": "கணக்கு அழைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கணக்கு கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "கணக்குகளைப் பார்க்கவும், பதிவேட்டில் மாற்றங்களைப் பதிவு செய்யவும்.",
+    "valid": true
+  },
+  {
+    "text": "கணக்குகள்",
     "valid": true
   },
   {
@@ -13573,6 +13921,10 @@
   },
   {
     "text": "கல்வி நாட்காட்டிகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கல்வி நிறுவனம்",
     "valid": true
   },
   {
@@ -13776,6 +14128,10 @@
     "valid": true
   },
   {
+    "text": "குறிப்பு",
+    "valid": true
+  },
+  {
     "text": "குறிப்பு (விருப்பத்திற்குரியது)",
     "valid": true
   },
@@ -13857,6 +14213,10 @@
   },
   {
     "text": "கேள்",
+    "valid": true
+  },
+  {
+    "text": "கைமுறை",
     "valid": true
   },
   {
@@ -14200,6 +14560,10 @@
     "valid": true
   },
   {
+    "text": "செலவு",
+    "valid": true
+  },
+  {
     "text": "செலுத்த வேண்டிய நாள் {date}",
     "valid": true
   },
@@ -14317,6 +14681,10 @@
   },
   {
     "text": "சேவையகத்தை வை",
+    "valid": true
+  },
+  {
+    "text": "சொத்து",
     "valid": true
   },
   {
@@ -15504,6 +15872,10 @@
     "valid": true
   },
   {
+    "text": "பதிவிடவும்",
+    "valid": true
+  },
+  {
     "text": "பதிவின் வகை",
     "valid": true
   },
@@ -15516,6 +15888,10 @@
     "valid": true
   },
   {
+    "text": "பதிவு தேதி",
+    "valid": true
+  },
+  {
     "text": "பதிவு மாற்றம்",
     "valid": true
   },
@@ -15524,7 +15900,27 @@
     "valid": true
   },
   {
+    "text": "பதிவேடு",
+    "valid": true
+  },
+  {
+    "text": "பதிவேட்டில் பதிவு சேர்க்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "பதிவேட்டில் பதிவுகள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
     "text": "பதிவேற்றப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "பதிவைச் சேர்க்க முடியவில்லை. விவரங்களைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "பதிவைச் சேர்க்கவும்",
     "valid": true
   },
   {
@@ -15645,6 +16041,10 @@
   },
   {
     "text": "பருவம்",
+    "valid": true
+  },
+  {
+    "text": "பற்று",
     "valid": true
   },
   {
@@ -15916,6 +16316,10 @@
     "valid": true
   },
   {
+    "text": "பேரேட்டில் கணக்குகள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
     "text": "பொது",
     "valid": true
   },
@@ -15965,6 +16369,10 @@
   },
   {
     "text": "பொருள்",
+    "valid": true
+  },
+  {
+    "text": "பொறுப்பு",
     "valid": true
   },
   {
@@ -16260,6 +16668,10 @@
     "valid": true
   },
   {
+    "text": "முடிவடைந்தது",
+    "valid": true
+  },
+  {
     "text": "முடிவு தேவை",
     "valid": true
   },
@@ -16376,7 +16788,15 @@
     "valid": true
   },
   {
+    "text": "மூன்று எழுத்துகளைக் கொண்ட நாணயக் குறியீட்டை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
     "text": "மூலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மூலதனம்",
     "valid": true
   },
   {
@@ -16420,7 +16840,15 @@
     "valid": true
   },
   {
+    "text": "மொத்த வரவு",
+    "valid": true
+  },
+  {
     "text": "மொத்த வரிசைகள்",
+    "valid": true
+  },
+  {
+    "text": "மொத்தப் பற்று",
     "valid": true
   },
   {
@@ -16572,6 +17000,10 @@
     "valid": true
   },
   {
+    "text": "வரவு",
+    "valid": true
+  },
+  {
     "text": "வரவுகள் தீர்ந்த பின் கூடுதல் பயன்பாட்டுக்குக் கட்டணம் விதிக்கப்படும்.",
     "valid": true
   },
@@ -16580,7 +17012,23 @@
     "valid": true
   },
   {
+    "text": "வரவுசெலவுத் திட்டங்கள்",
+    "valid": true
+  },
+  {
+    "text": "வரவுசெலவுத் திட்டங்கள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "வரவுசெலவுத் திட்டம்",
+    "valid": true
+  },
+  {
     "text": "வரவேற்கிறோம், {name}",
+    "valid": true
+  },
+  {
+    "text": "வரி {ordinal}",
     "valid": true
   },
   {
@@ -16617,6 +17065,14 @@
   },
   {
     "text": "வரிசையில் உள்ள கட்டணத்தை ஒத்திசைக்க முடியவில்லை. திறந்த பட்டியல்களைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "வரியை அகற்றவும்",
+    "valid": true
+  },
+  {
+    "text": "வரியைச் சேர்க்கவும்",
     "valid": true
   },
   {
@@ -16657,6 +17113,10 @@
   },
   {
     "text": "வருகையைப் பதிவு செய்ய வகுப்புக் குழுவையும் அமர்வையும் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "வருமானம்",
     "valid": true
   },
   {
