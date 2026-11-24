@@ -484,6 +484,10 @@
     "valid": true
   },
   {
+    "text": "Active learners",
+    "valid": true
+  },
+  {
     "text": "Active sessions",
     "valid": true
   },
@@ -549,6 +553,10 @@
   },
   {
     "text": "Afternoon session",
+    "valid": true
+  },
+  {
+    "text": "Alerts",
     "valid": true
   },
   {
@@ -729,6 +737,14 @@
   },
   {
     "text": "At most {max} hours, as requested.",
+    "valid": true
+  },
+  {
+    "text": "Attendance",
+    "valid": true
+  },
+  {
+    "text": "Attendance rate",
     "valid": true
   },
   {
@@ -1568,6 +1584,14 @@
     "valid": true
   },
   {
+    "text": "Fees collected",
+    "valid": true
+  },
+  {
+    "text": "Fees outstanding",
+    "valid": true
+  },
+  {
     "text": "Finance fields",
     "valid": true
   },
@@ -1944,6 +1968,10 @@
     "valid": true
   },
   {
+    "text": "Key metrics",
+    "valid": true
+  },
+  {
     "text": "Keys",
     "valid": true
   },
@@ -2153,6 +2181,10 @@
   },
   {
     "text": "Manage learner records",
+    "valid": true
+  },
+  {
+    "text": "Manage meeting bookings",
     "valid": true
   },
   {
@@ -2636,6 +2668,10 @@
     "valid": true
   },
   {
+    "text": "Notices",
+    "valid": true
+  },
+  {
     "text": "Notification templates",
     "valid": true
   },
@@ -2689,6 +2725,10 @@
   },
   {
     "text": "Open Nexus Assist",
+    "valid": true
+  },
+  {
+    "text": "Open admissions",
     "valid": true
   },
   {
@@ -2813,6 +2853,10 @@
   },
   {
     "text": "Pending",
+    "valid": true
+  },
+  {
+    "text": "Pending leave requests",
     "valid": true
   },
   {
@@ -2957,6 +3001,10 @@
   },
   {
     "text": "Provision users with SCIM",
+    "valid": true
+  },
+  {
+    "text": "Publish notices",
     "valid": true
   },
   {
@@ -3321,6 +3369,10 @@
   },
   {
     "text": "Send invitation",
+    "valid": true
+  },
+  {
+    "text": "Send messages",
     "valid": true
   },
   {
@@ -3956,6 +4008,14 @@
     "valid": true
   },
   {
+    "text": "Unpaid invoices",
+    "valid": true
+  },
+  {
+    "text": "Unread messages",
+    "valid": true
+  },
+  {
     "text": "Until",
     "valid": true
   },
@@ -4100,7 +4160,19 @@
     "valid": true
   },
   {
+    "text": "View leadership dashboards",
+    "valid": true
+  },
+  {
     "text": "View learner records",
+    "valid": true
+  },
+  {
+    "text": "View meeting slots and bookings",
+    "valid": true
+  },
+  {
+    "text": "View notices",
     "valid": true
   },
   {
@@ -4129,6 +4201,10 @@
   },
   {
     "text": "View year-end rollover",
+    "valid": true
+  },
+  {
+    "text": "View your message threads",
     "valid": true
   },
   {
@@ -5060,6 +5136,10 @@
     "valid": true
   },
   {
+    "text": "अपठित संदेश",
+    "valid": true
+  },
+  {
     "text": "अपडेट",
     "valid": true
   },
@@ -5081,6 +5161,10 @@
   },
   {
     "text": "अपने माता-पिता या अभिभावक से उनकी सहमति सेटिंग में AI सुविधाओं की अनुमति देने को कहें।",
+    "valid": true
+  },
+  {
+    "text": "अपने संदेश संवाद देखें",
     "valid": true
   },
   {
@@ -5581,6 +5665,14 @@
   },
   {
     "text": "उपयोगी नहीं",
+    "valid": true
+  },
+  {
+    "text": "उपस्थिति",
+    "valid": true
+  },
+  {
+    "text": "उपस्थिति दर",
     "valid": true
   },
   {
@@ -6157,6 +6249,10 @@
   },
   {
     "text": "चुनें…",
+    "valid": true
+  },
+  {
+    "text": "चेतावनियाँ",
     "valid": true
   },
   {
@@ -6784,6 +6880,10 @@
     "valid": true
   },
   {
+    "text": "प्रक्रिया में प्रवेश आवेदन",
+    "valid": true
+  },
+  {
     "text": "प्रगति पत्र देखें",
     "valid": true
   },
@@ -6845,6 +6945,10 @@
   },
   {
     "text": "प्रमाणपत्र",
+    "valid": true
+  },
+  {
+    "text": "प्रमुख मापदंड",
     "valid": true
   },
   {
@@ -7016,6 +7120,14 @@
     "valid": true
   },
   {
+    "text": "बकाया शुल्क",
+    "valid": true
+  },
+  {
+    "text": "बकाया शुल्क बिल",
+    "valid": true
+  },
+  {
     "text": "बच्चा",
     "valid": true
   },
@@ -7101,6 +7213,14 @@
   },
   {
     "text": "बैच कार्यक्रम",
+    "valid": true
+  },
+  {
+    "text": "बैठक की बुकिंग प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "बैठक के समय और बुकिंग देखें",
     "valid": true
   },
   {
@@ -7460,6 +7580,10 @@
     "valid": true
   },
   {
+    "text": "लंबित अवकाश अनुरोध",
+    "valid": true
+  },
+  {
     "text": "लक्ष्य",
     "valid": true
   },
@@ -7565,6 +7689,10 @@
   },
   {
     "text": "वर्षांत कक्षा परिवर्तन प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "वसूला गया शुल्क",
     "valid": true
   },
   {
@@ -7804,6 +7932,10 @@
     "valid": true
   },
   {
+    "text": "संदेश भेजें",
+    "valid": true
+  },
+  {
     "text": "संदेश मान्य होते ही पूर्वावलोकन दिखेगा।",
     "valid": true
   },
@@ -7849,6 +7981,10 @@
   },
   {
     "text": "संस्था का सारा डेटा",
+    "valid": true
+  },
+  {
+    "text": "संस्था नेतृत्व के डैशबोर्ड देखें",
     "valid": true
   },
   {
@@ -7909,6 +8045,10 @@
   },
   {
     "text": "सक्रिय",
+    "valid": true
+  },
+  {
+    "text": "सक्रिय शिक्षार्थी",
     "valid": true
   },
   {
@@ -8205,6 +8345,14 @@
   },
   {
     "text": "सूचनाएँ",
+    "valid": true
+  },
+  {
+    "text": "सूचनाएँ देखें",
+    "valid": true
+  },
+  {
+    "text": "सूचनाएँ प्रकाशित करें",
     "valid": true
   },
   {
@@ -8557,6 +8705,14 @@
   },
   {
     "text": "அறிவிப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்புகளை வெளியிடு",
+    "valid": true
+  },
+  {
+    "text": "அறிவிப்புகளைப் பார்",
     "valid": true
   },
   {
@@ -9041,6 +9197,10 @@
   },
   {
     "text": "உங்கள் கேள்வி",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் செய்தி உரையாடல்களைப் பார்",
     "valid": true
   },
   {
@@ -9772,6 +9932,14 @@
     "valid": true
   },
   {
+    "text": "சந்திப்பு நேரங்களையும் முன்பதிவுகளையும் பார்",
+    "valid": true
+  },
+  {
+    "text": "சந்திப்பு முன்பதிவுகளை நிர்வகி",
+    "valid": true
+  },
+  {
     "text": "சந்தைப்படுத்தல்",
     "valid": true
   },
@@ -9896,6 +10064,10 @@
     "valid": true
   },
   {
+    "text": "செயலிலுள்ள சேர்க்கை விண்ணப்பங்கள்",
+    "valid": true
+  },
+  {
     "text": "செயலில்",
     "valid": true
   },
@@ -9905,6 +10077,10 @@
   },
   {
     "text": "செயலில் உள்ள அமர்வுகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "செயலில் உள்ள கற்பவர்கள்",
     "valid": true
   },
   {
@@ -9940,6 +10116,10 @@
     "valid": true
   },
   {
+    "text": "செய்திகளை அனுப்பு",
+    "valid": true
+  },
+  {
     "text": "செய்திகள்",
     "valid": true
   },
@@ -9953,6 +10133,10 @@
   },
   {
     "text": "செய்தியின் தொடரியலைச் சரிசெய்யவும், எ.கா. விடுபட்ட மூடும் அடைப்புக்குறி.",
+    "valid": true
+  },
+  {
+    "text": "செலுத்தப்படாத கட்டணப் பட்டியல்கள்",
     "valid": true
   },
   {
@@ -10576,6 +10760,10 @@
     "valid": true
   },
   {
+    "text": "நிறுவனத் தலைமைப் பலகைகளைப் பார்",
+    "valid": true
+  },
+  {
     "text": "நிறுவனத் திட்டத்தில் இதைச் சேர்ப்பது பற்றி உங்கள் நிர்வாகியிடம் கேளுங்கள்.",
     "valid": true
   },
@@ -10609,6 +10797,14 @@
   },
   {
     "text": "நிறுவல் & புதுப்பிப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "நிலுவைக் கட்டணம்",
+    "valid": true
+  },
+  {
+    "text": "நிலுவையிலுள்ள விடுப்புக் கோரிக்கைகள்",
     "valid": true
   },
   {
@@ -10781,6 +10977,10 @@
   },
   {
     "text": "படிக்க மட்டும்",
+    "valid": true
+  },
+  {
+    "text": "படிக்காத செய்திகள்",
     "valid": true
   },
   {
@@ -11364,6 +11564,10 @@
     "valid": true
   },
   {
+    "text": "முக்கிய அளவீடுகள்",
+    "valid": true
+  },
+  {
     "text": "முக்கியத் தொகுதிகள் எப்போதும் இயக்கத்தில் இருக்கும். உங்கள் திட்டத்தின் விருப்பத் தொகுதிகளை அணைக்கலாம்; அணைத்த தொகுதிகள் அனைவரின் பட்டியிலிருந்தும் மறையும்.",
     "valid": true
   },
@@ -11580,6 +11784,10 @@
     "valid": true
   },
   {
+    "text": "வசூலிக்கப்பட்ட கட்டணம்",
+    "valid": true
+  },
+  {
     "text": "வடிவத்தின் நேரடி முன்னோட்டம்",
     "valid": true
   },
@@ -11605,6 +11813,14 @@
   },
   {
     "text": "வரிசையில்",
+    "valid": true
+  },
+  {
+    "text": "வருகை",
+    "valid": true
+  },
+  {
+    "text": "வருகை விகிதம்",
     "valid": true
   },
   {
@@ -11769,6 +11985,10 @@
   },
   {
     "text": "விளக்கப்படங்கள்",
+    "valid": true
+  },
+  {
+    "text": "விழிப்பூட்டல்கள்",
     "valid": true
   },
   {

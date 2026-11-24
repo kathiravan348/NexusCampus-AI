@@ -4115,6 +4115,82 @@
     "message": "Issue documents",
     "description": "Permission description: Issue documents."
   },
+  "m24.permission.messagesRead": {
+    "message": "View your message threads",
+    "description": "Permission to read threads the viewer participates in."
+  },
+  "m24.permission.messagesSend": {
+    "message": "Send messages",
+    "description": "Permission to send messages."
+  },
+  "m24.permission.noticesRead": {
+    "message": "View notices",
+    "description": "Permission to read notices visible to the viewer."
+  },
+  "m24.permission.noticesPublish": {
+    "message": "Publish notices",
+    "description": "Permission to publish and view institution notices."
+  },
+  "m24.permission.meetingsRead": {
+    "message": "View meeting slots and bookings",
+    "description": "Permission to view meeting slots and bookings visible to the viewer."
+  },
+  "m24.permission.meetingsManage": {
+    "message": "Manage meeting bookings",
+    "description": "Permission to manage and view institution meeting bookings."
+  },
+  "m28.permission.dashboardsRead": {
+    "message": "View leadership dashboards",
+    "description": "Permission to view leadership dashboards."
+  },
+  "m28.card.attendance": {
+    "message": "Attendance",
+    "description": "Home card for absences this week or today's attendance sessions, depending on role."
+  },
+  "m28.card.fees": {
+    "message": "Unpaid invoices",
+    "description": "Home card counting invoices with a balance due."
+  },
+  "m28.card.messages": {
+    "message": "Unread messages",
+    "description": "Home card counting unread messages."
+  },
+  "m28.card.notices": {
+    "message": "Notices",
+    "description": "Home card counting notices visible to the viewer."
+  },
+  "m28.card.leave": {
+    "message": "Pending leave requests",
+    "description": "Staff home card counting pending learner leave requests."
+  },
+  "m28.card.kpi": {
+    "message": "Key metrics",
+    "description": "Leadership home card for dashboard metrics."
+  },
+  "m28.card.alerts": {
+    "message": "Alerts",
+    "description": "Leadership home card counting items that need attention."
+  },
+  "m28.kpi.attendance": {
+    "message": "Attendance rate",
+    "description": "Dashboard percentage of attendance marks recorded as present, late or remote."
+  },
+  "m28.kpi.collected": {
+    "message": "Fees collected",
+    "description": "Dashboard total paid against fee invoices in the institution currency."
+  },
+  "m28.kpi.outstanding": {
+    "message": "Fees outstanding",
+    "description": "Dashboard total balance due on fee invoices in the institution currency."
+  },
+  "m28.kpi.admissions": {
+    "message": "Open admissions",
+    "description": "Dashboard count of admission applications awaiting a final outcome."
+  },
+  "m28.kpi.learners": {
+    "message": "Active learners",
+    "description": "Dashboard count of enrolled learners, including those on leave."
+  },
   "m86.permission.rolloverRead": {
     "message": "View year-end rollover",
     "description": "Permission description: View year-end rollover runs and promotion decisions."

@@ -109,6 +109,11 @@ function createDb() {
     revaluationRequests: clone(F.REVALUATION_REQUESTS),
     reportCards: clone(F.REPORT_CARDS),
     issuedDocuments: clone(F.ISSUED_DOCUMENTS),
+    messageThreads: clone(F.MESSAGE_THREADS),
+    threadMessages: clone(F.THREAD_MESSAGES),
+    notices: clone(F.NOTICES),
+    meetingSlots: clone(F.MEETING_SLOTS),
+    meetingBookings: clone(F.MEETING_BOOKINGS),
   };
 }
 
