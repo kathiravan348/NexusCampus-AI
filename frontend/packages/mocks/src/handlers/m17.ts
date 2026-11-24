@@ -1,12 +1,25 @@
 import {
+  AttendanceMarkInputSchema,
   AttendanceMarkSchema,
+  AttendanceRosterEntrySchema,
   AttendanceSessionSchema,
   LeaveRequestSchema,
   pageSchema,
+  type AttendanceSession,
 } from "@nexus/contracts";
-import { ApiFailure, familyOf, ofTenant, type Viewer } from "../context";
+import { HttpResponse, http } from "msw";
+import {
+  ApiFailure,
+  entitled,
+  failureResponse,
+  familyOf,
+  ofTenant,
+  readViewer,
+  type Viewer,
+} from "../context";
 import { mockDb } from "../db";
-import { found, get, list, param } from "./route";
+import { applyScenario, readScenario } from "../scenarios";
+import { API_BASE, found, get, list, param } from "./route";
 
 const M = { module: "M17" } as const;
 const READ = "m17.attendance.read";
@@ -29,6 +42,37 @@ function familyLearners(viewer: Viewer): Set<string> {
   if (learners.size === 0) throw new ApiFailure("forbidden");
   return learners;
 }
+
+function sessionFor(viewer: Viewer, id: unknown) {
+  return found(ofTenant(mockDb.attendanceSessions, viewer.tenantId).find((row) => row.id === id));
+}
+
+function rosterFor(session: AttendanceSession) {
+  if (!session.classGroupId) return [];
+  const learners = new Set(ofTenant(mockDb.learners, session.tenantId).map((row) => row.id));
+  const placements = ofTenant(mockDb.enrolments, session.tenantId)
+    .filter(
+      (row) =>
+        learners.has(row.learnerId) &&
+        row.classGroupId === session.classGroupId &&
+        row.effectiveFrom <= session.date &&
+        (row.effectiveTo === null || row.effectiveTo >= session.date),
+    )
+    .sort(
+      (a, b) =>
+        Number(a.rollNumber === null) - Number(b.rollNumber === null) ||
+        (a.rollNumber ?? "").localeCompare(b.rollNumber ?? "", "en", { numeric: true }) ||
+        a.learnerId.localeCompare(b.learnerId),
+    );
+  const seen = new Set<string>();
+  return placements.flatMap(({ learnerId, rollNumber }) => {
+    if (seen.has(learnerId)) return [];
+    seen.add(learnerId);
+    return [{ learnerId, rollNumber }];
+  });
+}
+
+const receipts = new Map<string, string>();
 
 export const m17Handlers = [
   get("/attendance-sessions", { ...M, permission: READ }, (ctx) => {
@@ -56,6 +100,80 @@ export const m17Handlers = [
       )
       .map((row) => (showNote ? row : { ...row, note: null }));
     return list(ctx, marks, pageSchema(AttendanceMarkSchema));
+  }),
+  get("/attendance-sessions/:id/roster", { ...M, permission: READ }, (ctx) => {
+    if (!isStaff(ctx.viewer)) throw new ApiFailure("forbidden");
+    return list(
+      ctx,
+      rosterFor(sessionFor(ctx.viewer, ctx.params["id"])),
+      pageSchema(AttendanceRosterEntrySchema),
+    );
+  }),
+  http.post(`*${API_BASE}/attendance-sessions/:id/marks`, async ({ request, params }) => {
+    const early = await applyScenario(readScenario(request));
+    if (early) return early;
+    try {
+      const viewer = readViewer(request);
+      const { tenantId } = viewer;
+      if (!entitled(tenantId, "M17")) throw new ApiFailure("module_disabled");
+      if (!viewer.permissions.has(MARK)) throw new ApiFailure("forbidden");
+      const today = new Date().toISOString().slice(0, 10);
+      const staff = ofTenant(mockDb.roleProfiles, tenantId).find(
+        (row) =>
+          row.kind === "staff" &&
+          row.personId === viewer.personId &&
+          (!("status" in row) || row.status === "active") &&
+          row.effectiveFrom <= today &&
+          (row.effectiveTo === null || row.effectiveTo >= today),
+      );
+      if (!staff) throw new ApiFailure("forbidden");
+      const session = sessionFor(viewer, params["id"]);
+      const key = request.headers.get("Idempotency-Key");
+      const receipt = key ? JSON.stringify([tenantId, key]) : null;
+      const raw: unknown = await request.json().catch(() => undefined);
+      // No await between looking up the receipt and appending the mark.
+      const previousId = receipt && receipts.get(receipt);
+      if (previousId) {
+        const previous = mockDb.attendanceMarks.find(
+          (row) => row.id === previousId && row.tenantId === tenantId,
+        );
+        if (previous) return HttpResponse.json(previous, { status: 201 });
+      }
+      if (session.status !== "open") {
+        throw new ApiFailure("conflict", [{ path: "status", message: "Session is closed" }]);
+      }
+      const parsed = AttendanceMarkInputSchema.safeParse(raw);
+      if (!parsed.success) {
+        throw new ApiFailure(
+          "invalid_request",
+          parsed.error.issues.map((issue) => ({
+            path: String(issue.path[0] ?? ""),
+            message: "Invalid attendance mark",
+          })),
+        );
+      }
+      if (!rosterFor(session).some((row) => row.learnerId === parsed.data.learnerId)) {
+        throw new ApiFailure("invalid_request", [
+          { path: "learnerId", message: "Outside the session roster" },
+        ]);
+      }
+      const mark = AttendanceMarkSchema.parse({
+        ...parsed.data,
+        id: crypto.randomUUID(),
+        tenantId,
+        sessionId: session.id,
+        method: "manual",
+        markedAt: new Date().toISOString(),
+        markedByStaffProfileId: staff.id,
+        deviceId: null,
+      });
+      mockDb.attendanceMarks.push(mark);
+      if (receipt) receipts.set(receipt, mark.id);
+      return HttpResponse.json(mark, { status: 201 });
+    } catch (error) {
+      if (error instanceof ApiFailure) return failureResponse(error);
+      throw error;
+    }
   }),
   get("/leave-requests", M, (ctx) => {
     const { viewer } = ctx;

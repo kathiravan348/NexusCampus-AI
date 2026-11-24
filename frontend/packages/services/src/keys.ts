@@ -123,6 +123,8 @@ export const queryKeys = {
   m17: {
     attendanceSessions: (s: KeyScope, classGroupId: string | null) =>
       scoped(s, "m17", "attendance-sessions", classGroupId),
+    attendanceRoster: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m17", "attendance-sessions", sessionId, "roster"),
     attendanceMarks: (s: KeyScope, sessionId: string | null) =>
       scoped(s, "m17", "attendance-sessions", sessionId, "marks"),
     leaveRequests: (s: KeyScope) => scoped(s, "m17", "leave-requests"),
