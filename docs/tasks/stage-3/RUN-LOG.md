@@ -86,12 +86,15 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-155 | Gemini · gemini-4-neon-high | 09:45 | green | done — no fixes | `0fff900`, pushed |
 | NEX-156 | Codex · gpt-6.2-sol / medium | 09:45, restarted 10:08 | not run by the harness (answered questions misread as open); reviewer ran them: green | done — fix: locked demo user in `m14.test.ts`; backend key export | `4915913`, pushed |
 | NEX-157 | Codex · gpt-6.2-sol / medium | 10:5x | green | done — no fixes | `eda6b25`, pushed |
-| NEX-158 | Codex · gpt-6.2-sol / medium | 11:15 | running | — | — |
-| NEX-160 | Gemini · gemini-4-neon-xhigh (screen) | 11:0x | running | — | — |
+| NEX-158 | Codex · gpt-6.2-sol / medium | 11:15 | green | done — no fixes | `88e57fa`, pushed |
+| NEX-160 | Gemini · gemini-4-neon-xhigh (screen) | 11:0x | green | done — no fixes (backend key export regenerated at merge) | `3470608`, pushed |
+| NEX-163 | Gemini · gemini-4-neon-xhigh (screen) | 11:43 | running | — | — |
+| NEX-159 | Codex · gpt-6.2-sol / medium | 11:43, question answered, restarted 11:47 | running | — | — |
 
-Planned next: NEX-163 (M13 + M14 screens, Gemini after NEX-160 — both edit `modules.ts` and the message files),
-NEX-159 (M24 + M28 handlers, needs 158; M86 reads were done in NEX-157). Handler tasks 157–159 share the registry files, so they run one at a time.
-Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both.
+Planned next: NEX-161 (M08 screens) and NEX-162 (M09 screens). Screen tasks each add one entry to `modules.ts` and
+`m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
+Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both,
+and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_keys.json` or `icu_cases.json` conflict.
 
 ## Lessons (harness)
 - Two `review:check` runs at once — or the agents' own CPU use — make some UI tests time out (5 s). Checks take a
@@ -106,6 +109,10 @@ Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in di
 
 - The harness checked each Questions line on its own, so a question answered on the following lines still looked
   open and the build was committed without checks (NEX-156). `open_questions` now reads each question as a block.
+
+- Task branches are checked out in the builder worktrees, so `review:` commits are made there (builder not alive).
+- A planner answer written only on `main` conflicts with the branch's own Questions line when the harness merges
+  `main` (merge output is silenced): copy the same answer onto the branch too, so the merge is clean (NEX-159).
 
 ## Waiting for the Owner
 _(nothing yet)_
