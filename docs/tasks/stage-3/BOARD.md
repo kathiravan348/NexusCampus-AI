@@ -40,7 +40,7 @@
 | NEX-172 | M23 Documents & e-signature | C | done | Gemini | 158, 171 |
 | NEX-173 | M24 Communication hub | C | planned | — | 159, 172 |
 | NEX-174 | M25 Family portal | C | planned | — | 159, 173 |
-| NEX-175 | M26 Learner portal | C | draft | — | 159 |
+| NEX-175 | M26 Learner portal | C | planned | — | 159, 174 |
 | NEX-176 | M27 Staff portal | C | draft | — | 159 |
 | NEX-177 | M28 Dashboards & role homes | C | draft | — | 159 |
 | NEX-178 | M86 Year-end rollover & promotion | C | draft | — | 159 |
