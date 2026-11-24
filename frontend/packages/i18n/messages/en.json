@@ -5655,6 +5655,410 @@
     "message": "Decide leave requests",
     "description": "Permission description: View and decide learner leave requests across the institution."
   },
+  "m18.nav.title": {
+    "message": "Fees",
+    "description": "Navigation label and page heading for the Fees & payments module (M18)."
+  },
+  "m18.nav.summary": {
+    "message": "Invoices, payment receipts, fee plans and refunds.",
+    "description": "Home tile summary for the Fees & payments module."
+  },
+  "m18.page.intro": {
+    "message": "Review fee invoices and payment receipts, and record manual payments.",
+    "description": "Introductory subtitle under the Fees page heading."
+  },
+  "m18.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button label opening Nexus Assist from the Fees page header."
+  },
+  "m18.page.recordPayment": {
+    "message": "Record payment",
+    "description": "Button label opening the manual payment receipt dialog."
+  },
+  "m18.page.tabsLabel": {
+    "message": "Fees sections",
+    "description": "Accessible label for the tab list on the Fees page."
+  },
+  "m18.page.tabInvoices": {
+    "message": "Invoices",
+    "description": "Tab label showing fee invoices."
+  },
+  "m18.page.tabPayments": {
+    "message": "Payments",
+    "description": "Tab label showing recorded and pending fee payment receipts."
+  },
+  "m18.page.tabPlans": {
+    "message": "Plans & refunds",
+    "description": "Staff-only tab label showing fee heads, plans, concessions and refunds."
+  },
+  "m18.page.error": {
+    "message": "Could not load fee records.",
+    "description": "Error heading when the Fees page fails to load."
+  },
+  "m18.invoices.filterStatus": {
+    "message": "Filter by status",
+    "description": "Select label to filter fee invoices by status."
+  },
+  "m18.invoices.allStatuses": {
+    "message": "All statuses",
+    "description": "Select option showing invoices of every status."
+  },
+  "m18.invoices.listLabel": {
+    "message": "Fee invoices",
+    "description": "Accessible label for the list of fee invoices."
+  },
+  "m18.invoices.dueOn": {
+    "message": "Due {date}",
+    "description": "Invoice due date label. {date} is a formatted calendar date."
+  },
+  "m18.invoices.total": {
+    "message": "Total",
+    "description": "Label for the invoice total amount."
+  },
+  "m18.invoices.paid": {
+    "message": "Paid",
+    "description": "Label for the amount already paid on an invoice."
+  },
+  "m18.invoices.balance": {
+    "message": "Balance",
+    "description": "Label for the remaining unpaid balance on an invoice."
+  },
+  "m18.invoices.showLines": {
+    "message": "Show lines",
+    "description": "Button hint indicating the invoice row can be expanded to inspect lines."
+  },
+  "m18.invoices.hideLines": {
+    "message": "Hide lines",
+    "description": "Button hint indicating the expanded invoice lines can be collapsed."
+  },
+  "m18.invoices.linesHeading": {
+    "message": "Invoice lines",
+    "description": "Subheading above the line items of an expanded invoice."
+  },
+  "m18.invoices.lineAmount": {
+    "message": "Amount: {amount}",
+    "description": "Base amount of one invoice line. {amount} is formatted money."
+  },
+  "m18.invoices.lineDiscount": {
+    "message": "Discount: {amount}",
+    "description": "Discount on one invoice line. {amount} is formatted money."
+  },
+  "m18.invoices.lineTax": {
+    "message": "Tax: {amount}",
+    "description": "Tax on one invoice line. {amount} is formatted money."
+  },
+  "m18.invoices.empty": {
+    "message": "No invoices match",
+    "description": "Empty state heading when no fee invoices match the current filter."
+  },
+  "m18.invoices.emptyBody": {
+    "message": "Try another status filter or check back when invoices are issued.",
+    "description": "Empty state helper text when no fee invoices are listed."
+  },
+  "m18.invoices.error": {
+    "message": "Could not load invoices.",
+    "description": "Error heading when loading fee invoices fails."
+  },
+  "m18.invoiceStatus.draft": {
+    "message": "Draft",
+    "description": "Invoice status: not yet issued."
+  },
+  "m18.invoiceStatus.issued": {
+    "message": "Issued",
+    "description": "Invoice status: issued with no payment yet."
+  },
+  "m18.invoiceStatus.partPaid": {
+    "message": "Part paid",
+    "description": "Invoice status: partially paid with a balance remaining."
+  },
+  "m18.invoiceStatus.paid": {
+    "message": "Paid",
+    "description": "Invoice status: paid in full."
+  },
+  "m18.invoiceStatus.void": {
+    "message": "Void",
+    "description": "Invoice status: cancelled."
+  },
+  "m18.invoiceStatus.writtenOff": {
+    "message": "Written off",
+    "description": "Invoice status: unpaid balance written off."
+  },
+  "m18.payments.listLabel": {
+    "message": "Fee payments",
+    "description": "Accessible label for the list of fee payment receipts."
+  },
+  "m18.payments.receivedAt": {
+    "message": "Received {date}",
+    "description": "When a payment was received in the institution time zone. {date} is a formatted date and time."
+  },
+  "m18.payments.pendingReceipt": {
+    "message": "Pending offline receipt",
+    "description": "Heading for a payment queued offline before the server assigns a receipt number."
+  },
+  "m18.payments.empty": {
+    "message": "No payments recorded yet",
+    "description": "Empty state heading when no fee payments exist."
+  },
+  "m18.payments.emptyBody": {
+    "message": "Recorded receipts will appear here.",
+    "description": "Empty state helper text when no fee payments exist."
+  },
+  "m18.payments.error": {
+    "message": "Could not load payments.",
+    "description": "Error heading when loading fee payments fails."
+  },
+  "m18.method.cash": {
+    "message": "Cash",
+    "description": "Payment method: cash."
+  },
+  "m18.method.cheque": {
+    "message": "Cheque",
+    "description": "Payment method: cheque."
+  },
+  "m18.method.bankTransfer": {
+    "message": "Bank transfer",
+    "description": "Payment method: direct bank transfer."
+  },
+  "m18.method.card": {
+    "message": "Card",
+    "description": "Payment method: debit or credit card."
+  },
+  "m18.method.upi": {
+    "message": "UPI",
+    "description": "Payment method: Unified Payments Interface."
+  },
+  "m18.method.wallet": {
+    "message": "Wallet",
+    "description": "Payment method: digital wallet."
+  },
+  "m18.method.gateway": {
+    "message": "Online gateway",
+    "description": "Payment method: online payment gateway."
+  },
+  "m18.paymentStatus.pending": {
+    "message": "Pending",
+    "description": "Payment status: pending confirmation."
+  },
+  "m18.paymentStatus.succeeded": {
+    "message": "Succeeded",
+    "description": "Payment status: settled and applied."
+  },
+  "m18.paymentStatus.failed": {
+    "message": "Failed",
+    "description": "Payment status: payment failed."
+  },
+  "m18.paymentStatus.reversed": {
+    "message": "Reversed",
+    "description": "Payment status: payment was reversed."
+  },
+  "m18.payment.waitingToSync": {
+    "message": "Waiting to sync",
+    "description": "Badge shown on an offline receipt or affected invoice until it syncs."
+  },
+  "m18.payment.queuedToast": {
+    "message": "Receipt saved offline. Waiting to sync.",
+    "description": "Toast shown after queueing a manual payment while offline."
+  },
+  "m18.payment.replayFailed": {
+    "message": "A queued payment could not sync. Check the open invoices and try again.",
+    "description": "Generic alert when a queued offline receipt fails to replay without exposing personal data."
+  },
+  "m18.plans.error": {
+    "message": "Could not load fee plans and refunds.",
+    "description": "Error heading when the Plans & refunds tab fails to load."
+  },
+  "m18.plans.headsTitle": {
+    "message": "Fee heads",
+    "description": "Card title for chargeable fee heads."
+  },
+  "m18.plans.headsEmpty": {
+    "message": "No fee heads configured yet.",
+    "description": "Empty text when an institution has no fee heads."
+  },
+  "m18.plans.taxRate": {
+    "message": "Tax {rate}",
+    "description": "Tax rate displayed for a fee head. {rate} is a formatted percentage."
+  },
+  "m18.plans.refundable": {
+    "message": "Refundable",
+    "description": "Badge indicating a fee head is refundable."
+  },
+  "m18.plans.nonRefundable": {
+    "message": "Non-refundable",
+    "description": "Badge indicating a fee head is not refundable."
+  },
+  "m18.plans.plansTitle": {
+    "message": "Fee plans",
+    "description": "Card title for fee plans."
+  },
+  "m18.plans.plansEmpty": {
+    "message": "No fee plans configured yet.",
+    "description": "Empty text when an institution has no fee plans."
+  },
+  "m18.plans.planLines": {
+    "message": "Fee lines",
+    "description": "Subheading for the fee heads and amounts in a fee plan."
+  },
+  "m18.plans.instalments": {
+    "message": "Instalments",
+    "description": "Subheading for the due dates and shares of a fee plan."
+  },
+  "m18.plans.percentValue": {
+    "message": "{value}%",
+    "description": "Formatted percentage value. {value} is a localized number."
+  },
+  "m18.plans.concessionsTitle": {
+    "message": "Concessions",
+    "description": "Card title for fee concessions."
+  },
+  "m18.plans.concessionsEmpty": {
+    "message": "No concessions recorded.",
+    "description": "Empty text when there are no concessions."
+  },
+  "m18.plans.refundsTitle": {
+    "message": "Refunds",
+    "description": "Card title for fee refunds."
+  },
+  "m18.plans.refundsEmpty": {
+    "message": "No refunds recorded.",
+    "description": "Empty text when there are no refunds."
+  },
+  "m18.concessionKind.sibling": {
+    "message": "Sibling",
+    "description": "Concession kind: sibling discount."
+  },
+  "m18.concessionKind.merit": {
+    "message": "Merit",
+    "description": "Concession kind: academic or merit concession."
+  },
+  "m18.concessionKind.needBased": {
+    "message": "Need-based",
+    "description": "Concession kind: financial need concession."
+  },
+  "m18.concessionKind.staffChild": {
+    "message": "Staff child",
+    "description": "Concession kind: discount for a staff member's child."
+  },
+  "m18.concessionKind.scholarship": {
+    "message": "Scholarship",
+    "description": "Concession kind: scholarship."
+  },
+  "m18.concessionKind.awardCredit": {
+    "message": "Award credit",
+    "description": "Concession kind: credit from an award."
+  },
+  "m18.concessionKind.other": {
+    "message": "Other",
+    "description": "Concession kind: other concession."
+  },
+  "m18.concessionMode.percent": {
+    "message": "Percentage",
+    "description": "Concession mode: percentage discount."
+  },
+  "m18.concessionMode.fixed": {
+    "message": "Fixed amount",
+    "description": "Concession mode: fixed currency amount discount."
+  },
+  "m18.refundStatus.requested": {
+    "message": "Requested",
+    "description": "Refund status: waiting for decision."
+  },
+  "m18.refundStatus.approved": {
+    "message": "Approved",
+    "description": "Refund status: approved and awaiting payout."
+  },
+  "m18.refundStatus.paid": {
+    "message": "Paid",
+    "description": "Refund status: refund paid out."
+  },
+  "m18.refundStatus.rejected": {
+    "message": "Rejected",
+    "description": "Refund status: refund request declined."
+  },
+  "m18.recordDialog.title": {
+    "message": "Record payment",
+    "description": "Modal title for recording a manual fee payment receipt."
+  },
+  "m18.recordDialog.description": {
+    "message": "Record a cash, cheque or bank-transfer receipt against open invoices for one learner.",
+    "description": "Modal description explaining manual payment recording."
+  },
+  "m18.recordDialog.learner": {
+    "message": "Learner",
+    "description": "Select label choosing which learner's open invoices to pay."
+  },
+  "m18.recordDialog.invoices": {
+    "message": "Open invoices",
+    "description": "Fieldset legend for selecting one or more open invoices."
+  },
+  "m18.recordDialog.noOpenInvoices": {
+    "message": "There are no open invoices available for payment.",
+    "description": "Shown inside the dialog when no issued or part-paid invoices exist."
+  },
+  "m18.recordDialog.selectedBalance": {
+    "message": "Selected balance: {amount}",
+    "description": "Combined remaining balance of the checked invoices. {amount} is formatted money."
+  },
+  "m18.recordDialog.amount": {
+    "message": "Amount ({currency})",
+    "description": "Input label for the received payment amount in major currency units. {currency} is an ISO 4217 code."
+  },
+  "m18.recordDialog.method": {
+    "message": "Payment method",
+    "description": "Select label for choosing cash, cheque or bank transfer."
+  },
+  "m18.recordDialog.receivedAt": {
+    "message": "Received at",
+    "description": "Date and time input label for when the payment was received."
+  },
+  "m18.recordDialog.offlineHint": {
+    "message": "Offline — receipt will queue as Waiting to sync until you reconnect.",
+    "description": "Status text in the modal footer while offline."
+  },
+  "m18.recordDialog.submit": {
+    "message": "Record receipt",
+    "description": "Submit button label for saving a manual payment receipt."
+  },
+  "m18.recordDialog.created": {
+    "message": "Payment receipt recorded.",
+    "description": "Success toast after recording an online fee payment."
+  },
+  "m18.recordDialog.invoicesRequired": {
+    "message": "Select at least one open invoice.",
+    "description": "Validation error when no open invoice is checked."
+  },
+  "m18.recordDialog.invalidInvoices": {
+    "message": "One or more selected invoices are not open for payment.",
+    "description": "Validation error returned when selected invoices cannot accept payment."
+  },
+  "m18.recordDialog.currencyMismatch": {
+    "message": "Selected invoices must use the same currency.",
+    "description": "Validation error when selected invoices have different currencies."
+  },
+  "m18.recordDialog.amountInvalid": {
+    "message": "Enter a valid positive amount.",
+    "description": "Validation error when the payment amount is zero, negative or malformed."
+  },
+  "m18.recordDialog.amountExceedsBalance": {
+    "message": "Amount exceeds the remaining balance of the selected invoices.",
+    "description": "Validation error when the entered amount is greater than the remaining balance."
+  },
+  "m18.recordDialog.invalidMethod": {
+    "message": "Choose cash, cheque or bank transfer.",
+    "description": "Validation error when an unsupported payment method is submitted."
+  },
+  "m18.recordDialog.invalidDate": {
+    "message": "Enter a valid received date and time.",
+    "description": "Validation error when the received date and time is missing or invalid."
+  },
+  "m18.recordDialog.invalidRequest": {
+    "message": "Could not record this payment. Check your entries and try again.",
+    "description": "Fallback validation error when the server rejects a payment request."
+  },
+  "m18.recordDialog.saveFailed": {
+    "message": "Could not save the payment receipt. Try again.",
+    "description": "Generic error shown when saving a payment fails unexpectedly."
+  },
   "m18.permission.feesRead": {
     "message": "View fees and payments",
     "description": "Permission description: View fees and payments."

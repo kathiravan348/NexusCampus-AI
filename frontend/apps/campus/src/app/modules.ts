@@ -20,6 +20,7 @@ import {
   ShieldCheck,
   Sparkles,
   Users,
+  Wallet,
   type LucideIcon,
 } from "lucide-react";
 import type { ComponentType } from "react";
@@ -218,6 +219,16 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m17.attendance.read",
     offlineLevel: "L2",
     load: () => import("../modules/m17/AttendancePage"),
+  },
+  {
+    moduleId: "M18",
+    path: "fees",
+    navKey: "m18.nav.title",
+    summaryKey: "m18.nav.summary",
+    icon: Wallet,
+    permission: null,
+    offlineLevel: "L2",
+    load: () => import("../modules/m18/FeesPage"),
   },
   {
     moduleId: "M83",

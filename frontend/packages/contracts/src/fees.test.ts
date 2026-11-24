@@ -3,6 +3,7 @@ import {
   ConcessionSchema,
   FeeHeadSchema,
   FeeInvoiceSchema,
+  FeePaymentInputSchema,
   FeePaymentSchema,
   FeePlanSchema,
   FeeRefundSchema,
@@ -10,6 +11,7 @@ import {
   type FeeHead,
   type FeeInvoice,
   type FeePayment,
+  type FeePaymentInput,
   type FeePlan,
   type FeeRefund,
 } from "./index";
@@ -26,13 +28,12 @@ const tuitionHead: FeeHead = {
   active: true,
 };
 const labHead: FeeHead = {
-  ...scope,
+  ...tuitionHead,
   id: "fee-head-lab",
   code: "LAB",
   name: "Science lab fee",
   taxRateBasisPoints: 1800,
   refundable: true,
-  active: true,
 };
 const k12FeePlan: FeePlan = {
   ...scope,
@@ -84,13 +85,7 @@ const issuedInvoice: FeeInvoice = {
       discount: 240_000,
       tax: 0,
     },
-    {
-      feeHeadId: labHead.id,
-      description: "Term 1 Lab",
-      amount: 200_000,
-      discount: 0,
-      tax: 36_000,
-    },
+    { feeHeadId: labHead.id, description: "Term 1 Lab", amount: 200_000, discount: 0, tax: 36_000 },
   ],
   total: 2_396_000,
   paid: 0,
@@ -136,8 +131,7 @@ describe("FeeHead", () => {
   });
 
   it.each([-1, 10_001, 18.5])("rejects taxRateBasisPoints %s", (taxRateBasisPoints) => {
-    const row = { ...labHead, taxRateBasisPoints };
-    expect(FeeHeadSchema.safeParse(row).success).toBe(false);
+    expect(FeeHeadSchema.safeParse({ ...labHead, taxRateBasisPoints }).success).toBe(false);
   });
 });
 
@@ -149,22 +143,23 @@ describe("FeePlan", () => {
   });
 
   it("rejects instalment shares != 10000 and non-ascending dueOn", () => {
-    const badShares = [
-      { code: "TERM-1", dueOn: "2026-04-15", sharePercentBasisPoints: 4000 },
-      { code: "TERM-2", dueOn: "2026-08-15", sharePercentBasisPoints: 3000 },
-      { code: "TERM-3", dueOn: "2026-12-15", sharePercentBasisPoints: 2500 },
+    const bad = [
+      [
+        { code: "TERM-1", dueOn: "2026-04-15", sharePercentBasisPoints: 4000 },
+        { code: "TERM-2", dueOn: "2026-08-15", sharePercentBasisPoints: 3000 },
+        { code: "TERM-3", dueOn: "2026-12-15", sharePercentBasisPoints: 2500 },
+      ],
+      [
+        { code: "TERM-1", dueOn: "2026-08-15", sharePercentBasisPoints: 5000 },
+        { code: "TERM-2", dueOn: "2026-04-15", sharePercentBasisPoints: 5000 },
+      ],
+      [
+        { code: "TERM-1", dueOn: "2026-04-15", sharePercentBasisPoints: 5000 },
+        { code: "TERM-2", dueOn: "2026-04-15", sharePercentBasisPoints: 5000 },
+      ],
     ];
-    const outOfOrder = [
-      { code: "TERM-1", dueOn: "2026-08-15", sharePercentBasisPoints: 5000 },
-      { code: "TERM-2", dueOn: "2026-04-15", sharePercentBasisPoints: 5000 },
-    ];
-    const sameDate = [
-      { code: "TERM-1", dueOn: "2026-04-15", sharePercentBasisPoints: 5000 },
-      { code: "TERM-2", dueOn: "2026-04-15", sharePercentBasisPoints: 5000 },
-    ];
-    for (const instalments of [badShares, outOfOrder, sameDate]) {
-      const row = { ...k12FeePlan, instalments };
-      expect(FeePlanSchema.safeParse(row).success).toBe(false);
+    for (const instalments of bad) {
+      expect(FeePlanSchema.safeParse({ ...k12FeePlan, instalments }).success).toBe(false);
     }
   });
 
@@ -173,8 +168,8 @@ describe("FeePlan", () => {
       { feeHeadId: tuitionHead.id, amount: 3_000_000 },
       { feeHeadId: tuitionHead.id, amount: 3_000_000 },
     ];
-    const floatLines = [{ feeHeadId: tuitionHead.id, amount: 1500.5 }];
     expect(FeePlanSchema.safeParse({ ...k12FeePlan, lines: dupLines }).success).toBe(false);
+    const floatLines = [{ feeHeadId: tuitionHead.id, amount: 1500.5 }];
     expect(FeePlanSchema.safeParse({ ...k12FeePlan, lines: floatLines }).success).toBe(false);
   });
 });
@@ -225,9 +220,7 @@ describe("FeeInvoice", () => {
       { ...issuedInvoice, lines: [{ ...line, amount: 100.25 }], total: 100.25 },
       { ...issuedInvoice, lines: [{ ...line, discount: 101 }], total: 0 },
     ];
-    for (const row of cases) {
-      expect(FeeInvoiceSchema.safeParse(row).success).toBe(false);
-    }
+    for (const row of cases) expect(FeeInvoiceSchema.safeParse(row).success).toBe(false);
   });
 });
 
@@ -252,20 +245,52 @@ describe("FeePayment and FeeRefund", () => {
   });
 
   it("rejects invalid payments and refund decisions", () => {
-    const dupInv = { ...upiPayment, invoiceIds: [partPaidInvoice.id, partPaidInvoice.id] };
-    expect(FeePaymentSchema.safeParse(dupInv).success).toBe(false);
-    expect(FeePaymentSchema.safeParse({ ...upiPayment, amount: 0 }).success).toBe(false);
-    expect(FeePaymentSchema.safeParse({ ...upiPayment, amount: 99.5 }).success).toBe(false);
-    expect(FeeRefundSchema.safeParse({ ...approvedRefund, amount: 0 }).success).toBe(false);
+    const badPayments = [
+      { ...upiPayment, invoiceIds: [partPaidInvoice.id, partPaidInvoice.id] },
+      { ...upiPayment, amount: 0 },
+      { ...upiPayment, amount: 99.5 },
+    ];
+    for (const row of badPayments) expect(FeePaymentSchema.safeParse(row).success).toBe(false);
     const badRefunds = [
+      { ...approvedRefund, amount: 0 },
       { ...approvedRefund, decidedAt: null },
       { ...approvedRefund, decidedByStaffProfileId: null },
       { ...approvedRefund, status: "requested" as const },
       { ...approvedRefund, decidedAt: "2026-04-06T08:59:59Z" },
     ];
-    for (const row of badRefunds) {
-      expect(FeeRefundSchema.safeParse(row).success).toBe(false);
+    for (const row of badRefunds) expect(FeeRefundSchema.safeParse(row).success).toBe(false);
+  });
+});
+
+describe("FeePaymentInput", () => {
+  const cashInput: FeePaymentInput = {
+    invoiceIds: [issuedInvoice.id, partPaidInvoice.id],
+    currency: "INR",
+    amount: 500_000,
+    method: "cash",
+    receivedAt: "2026-04-05T10:30:00Z",
+    deviceId: null,
+  };
+
+  it("accepts cash, cheque and bank transfer inputs with nullable deviceId", () => {
+    for (const method of ["cash", "cheque", "bank_transfer"] as const) {
+      expect(FeePaymentInputSchema.parse({ ...cashInput, method })).toMatchObject({ method });
     }
+    const offline = { ...cashInput, deviceId: "device-front-desk-1" };
+    expect(FeePaymentInputSchema.parse(offline)).toEqual(offline);
+  });
+
+  it("rejects online methods, duplicates, empty invoices, bad amounts and extra keys", () => {
+    const bad = [
+      ...["card", "upi", "wallet", "gateway"].map((method) => ({ ...cashInput, method })),
+      { ...cashInput, invoiceIds: [issuedInvoice.id, issuedInvoice.id] },
+      { ...cashInput, invoiceIds: [] },
+      { ...cashInput, amount: 0 },
+      { ...cashInput, amount: 12.5 },
+      { ...cashInput, receivedAt: "2026-04-05T10:30:00+05:30" },
+      { ...cashInput, extra: true },
+    ];
+    for (const row of bad) expect(FeePaymentInputSchema.safeParse(row).success).toBe(false);
   });
 });
 
