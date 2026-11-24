@@ -105,10 +105,11 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-174 | Gemini · gemini-4-neon-xhigh (screen) | 22:43 (Codex at usage limit) | green | done — no fixes | merged 23:4x, pushed |
 | NEX-175 | Gemini · gemini-4-neon-xhigh (screen) | 23:38 (Codex at usage limit) | green | done — no fixes | `d53fc80`, pushed |
 | NEX-176 | Codex · gpt-6.2-astra / high (screen) | 00:2x (Owner: Codex) | green | done — no fixes | merged 00:4x, pushed |
-| NEX-177 | Codex · gpt-6.2-astra / high (screen) | 00:43 | running | — | — |
+| NEX-177 | Codex · gpt-6.2-astra / high (screen) | 00:43 | green | done — no fixes | `4ac5dc4`, pushed |
+| NEX-178 | Codex · gpt-6.2-astra / high (screen) | 01:13 | running | — | — |
 
-Planned next: NEX-178 (M86 rollover, read-only per D76; after NEX-177) and NEX-179 (review build: persona smoke +
-walkthrough; after NEX-178 — the reviewer runs `pnpm --dir frontend e2e`, builders cannot).
+Planned next: NEX-179 (review build: persona smoke +
+walkthrough; after NEX-178, running — the reviewer runs `pnpm --dir frontend e2e`, builders cannot).
 Each remaining screen task shares `modules.ts` with the running one, so one builder waits.
 Owner (23:59): give the next task, NEX-176, to Codex (`gpt-6.2-astra` / `high`) once NEX-175 is merged. Codex's usage
 limit ended 23:52. If Codex hits a usage limit again, or fails twice, use Gemini (tick step 4).
