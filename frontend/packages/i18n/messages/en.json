@@ -3755,6 +3755,274 @@
     "message": "Manage family records",
     "description": "Permission description: Manage households, guardian relationships and authorised pickups."
   },
+  "m15.nav.title": {
+    "message": "Academic structure",
+    "description": "Menu item and page title of the academic structure screen (M15)."
+  },
+  "m15.nav.summary": {
+    "message": "Programs, year levels, class groups, subjects and offerings.",
+    "description": "Home tile description of the academic structure module."
+  },
+  "m15.structure.intro": {
+    "message": "Browse programs, year levels, class groups, subjects and academic-year offerings.",
+    "description": "Intro text under the academic structure page title."
+  },
+  "m15.structure.tabsLabel": {
+    "message": "Academic structure sections",
+    "description": "Accessible label of the tab list on the academic structure page."
+  },
+  "m15.structure.tabPrograms": {
+    "message": "Programs & classes",
+    "description": "Tab: programs, year levels and class groups."
+  },
+  "m15.structure.tabSubjects": {
+    "message": "Subjects",
+    "description": "Tab: subjects and academic-year subject offerings."
+  },
+  "m15.structure.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button on the academic structure page that opens Nexus Assist."
+  },
+  "m15.structure.error": {
+    "message": "Academic structure could not be loaded.",
+    "description": "Error heading when academic structure data fails to load."
+  },
+  "m15.programs.addClassGroup": {
+    "message": "Add class group",
+    "description": "Button: open the dialog to create a new class group."
+  },
+  "m15.programs.empty": {
+    "message": "No programs yet",
+    "description": "Empty state title when the institution has no programs."
+  },
+  "m15.programs.emptyBody": {
+    "message": "Programs and class groups for this institution will appear here.",
+    "description": "Empty state description when the institution has no programs."
+  },
+  "m15.programs.noYearLevel": {
+    "message": "No year level",
+    "description": "Heading and option label for class groups or batches not linked to a year level."
+  },
+  "m15.programs.noYearLevels": {
+    "message": "No year levels or class groups yet.",
+    "description": "Shown inside a program card that has neither year levels nor class groups."
+  },
+  "m15.programs.noClassGroups": {
+    "message": "No class groups in this year level yet.",
+    "description": "Shown under a year level that has no class groups."
+  },
+  "m15.programs.capacity": {
+    "message": "Capacity: {capacity}",
+    "description": "Class group capacity line. {capacity} is a formatted number."
+  },
+  "m15.programs.capacityOpen": {
+    "message": "Open capacity",
+    "description": "Shown on a class group card when no capacity limit is set."
+  },
+  "m15.programKind.earlyYears": {
+    "message": "Early years",
+    "description": "Program kind badge: early years or preschool."
+  },
+  "m15.programKind.schoolStage": {
+    "message": "School stage",
+    "description": "Program kind badge: K-12 school stage."
+  },
+  "m15.programKind.degree": {
+    "message": "Degree",
+    "description": "Program kind badge: higher education degree."
+  },
+  "m15.programKind.diploma": {
+    "message": "Diploma",
+    "description": "Program kind badge: diploma program."
+  },
+  "m15.programKind.certificate": {
+    "message": "Certificate",
+    "description": "Program kind badge: certificate program."
+  },
+  "m15.programKind.course": {
+    "message": "Course",
+    "description": "Program kind badge: rolling or standalone course."
+  },
+  "m15.programKind.batchProgram": {
+    "message": "Batch program",
+    "description": "Program kind badge: coaching or test-prep batch program."
+  },
+  "m15.classGroupKind.section": {
+    "message": "Section",
+    "description": "Class group type: school section."
+  },
+  "m15.classGroupKind.batch": {
+    "message": "Batch",
+    "description": "Class group type: coaching or course batch."
+  },
+  "m15.classGroupKind.cohort": {
+    "message": "Cohort",
+    "description": "Class group type: higher-education cohort."
+  },
+  "m15.classGroupKind.group": {
+    "message": "Group",
+    "description": "Class group type: general learning group."
+  },
+  "m15.subjects.listTitle": {
+    "message": "Subjects",
+    "description": "Card heading for the institution's subject list."
+  },
+  "m15.subjects.offeringsTitle": {
+    "message": "Subject offerings",
+    "description": "Card heading for subject offerings per academic year."
+  },
+  "m15.subjects.academicYear": {
+    "message": "Academic year",
+    "description": "Label of the academic-year filter for subject offerings."
+  },
+  "m15.subjects.allYears": {
+    "message": "All academic years",
+    "description": "Filter option showing subject offerings across every academic year."
+  },
+  "m15.subjects.credits": {
+    "message": "{credits} credits",
+    "description": "Subject credit count. {credits} is a formatted number."
+  },
+  "m15.subjects.weeklyPeriods": {
+    "message": "{count, plural, one {# period / week} other {# periods / week}}",
+    "description": "Weekly period count on a subject offering. {count} is a number."
+  },
+  "m15.subjects.empty": {
+    "message": "No subjects yet",
+    "description": "Empty state when the institution has no subjects."
+  },
+  "m15.subjects.offeringsEmpty": {
+    "message": "No subject offerings for this academic year.",
+    "description": "Empty state when no subject offerings match the selected academic year."
+  },
+  "m15.subjects.offeringsError": {
+    "message": "Subject offerings could not be loaded.",
+    "description": "Error state when loading subject offerings fails."
+  },
+  "m15.subjectKind.core": {
+    "message": "Core",
+    "description": "Subject type badge: core subject."
+  },
+  "m15.subjectKind.elective": {
+    "message": "Elective",
+    "description": "Subject type badge: elective subject."
+  },
+  "m15.subjectKind.language": {
+    "message": "Language",
+    "description": "Subject type badge: language subject."
+  },
+  "m15.subjectKind.activity": {
+    "message": "Activity",
+    "description": "Subject type badge: activity subject."
+  },
+  "m15.subjectKind.lab": {
+    "message": "Lab",
+    "description": "Subject type badge: practical lab subject."
+  },
+  "m15.subjectKind.project": {
+    "message": "Project",
+    "description": "Subject type badge: project subject."
+  },
+  "m15.addDialog.title": {
+    "message": "Add class group",
+    "description": "Title of the dialog for creating a class group."
+  },
+  "m15.addDialog.description": {
+    "message": "Create a class group under a program and academic year.",
+    "description": "Description under the add class group dialog title."
+  },
+  "m15.addDialog.program": {
+    "message": "Program",
+    "description": "Form field: program the class group belongs to."
+  },
+  "m15.addDialog.academicYear": {
+    "message": "Academic year",
+    "description": "Form field: academic year the class group runs in."
+  },
+  "m15.addDialog.yearLevel": {
+    "message": "Year level",
+    "description": "Form field: optional year level within the chosen program."
+  },
+  "m15.addDialog.campus": {
+    "message": "Campus",
+    "description": "Form field: optional campus for the class group."
+  },
+  "m15.addDialog.campusNone": {
+    "message": "No specific campus",
+    "description": "Option when the class group is not tied to one campus."
+  },
+  "m15.addDialog.kind": {
+    "message": "Type",
+    "description": "Form field: kind of class group (section, batch, cohort or group)."
+  },
+  "m15.addDialog.code": {
+    "message": "Code",
+    "description": "Form field: unique academic code for the class group."
+  },
+  "m15.addDialog.codeHint": {
+    "message": "Letters, numbers, dots, hyphens or underscores (up to 32 characters).",
+    "description": "Help text under the class group code field."
+  },
+  "m15.addDialog.name": {
+    "message": "Name",
+    "description": "Form field: display name of the class group."
+  },
+  "m15.addDialog.capacity": {
+    "message": "Capacity",
+    "description": "Form field: optional maximum learner count for the class group."
+  },
+  "m15.addDialog.capacityHint": {
+    "message": "Optional. Whole number from 1 to 2,000.",
+    "description": "Help text under the capacity field."
+  },
+  "m15.addDialog.submit": {
+    "message": "Create class group",
+    "description": "Submit button inside the add class group dialog."
+  },
+  "m15.addDialog.created": {
+    "message": "Class group created.",
+    "description": "Success toast after creating a class group."
+  },
+  "m15.addDialog.codeInvalid": {
+    "message": "Enter a valid code starting with a letter or number.",
+    "description": "Field error when the class group code does not match the academic code rules."
+  },
+  "m15.addDialog.nameInvalid": {
+    "message": "Enter a name up to 200 characters.",
+    "description": "Field error when the class group name exceeds the maximum length."
+  },
+  "m15.addDialog.capacityInvalid": {
+    "message": "Enter a whole number between 1 and 2,000.",
+    "description": "Field error when capacity is not an integer between 1 and 2,000."
+  },
+  "m15.addDialog.duplicateCode": {
+    "message": "A class group with this code already exists for this academic year.",
+    "description": "Error when the server returns a conflict for a duplicate class group code."
+  },
+  "m15.addDialog.invalidProgram": {
+    "message": "The selected program is not valid for this institution.",
+    "description": "Error when the server rejects the chosen program id as invalid."
+  },
+  "m15.addDialog.invalidYearLevel": {
+    "message": "The selected year level does not belong to this program.",
+    "description": "Error when the server rejects the chosen year level id."
+  },
+  "m15.addDialog.invalidAcademicYear": {
+    "message": "The selected academic year is not valid for this institution.",
+    "description": "Error when the server rejects the chosen academic year id."
+  },
+  "m15.addDialog.invalidCampus": {
+    "message": "The selected campus is not valid for this institution.",
+    "description": "Error when the server rejects the chosen campus id."
+  },
+  "m15.addDialog.invalidRequest": {
+    "message": "This request is not valid. Check your selections and try again.",
+    "description": "Generic form error when the server returns invalid_request."
+  },
+  "m15.addDialog.saveFailed": {
+    "message": "The class group could not be created. Try again.",
+    "description": "Error shown when creating a class group fails unexpectedly."
+  },
   "m15.permission.structureRead": {
     "message": "View academic structure",
     "description": "Permission description: View programmes, year levels, class groups, subjects and subject offerings."

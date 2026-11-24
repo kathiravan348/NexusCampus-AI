@@ -1,12 +1,14 @@
 import { describe, expect, it } from "vitest";
 import {
   AcademicCodeSchema,
+  ClassGroupInputSchema,
   ClassGroupSchema,
   ProgramSchema,
   SubjectOfferingSchema,
   SubjectSchema,
   YearLevelSchema,
   type ClassGroup,
+  type ClassGroupInput,
   type Program,
   type Subject,
   type SubjectOffering,
@@ -131,6 +133,50 @@ describe("ClassGroup", () => {
 
   it.each([0, 2001, 1.5])("rejects capacity %s", (capacity) => {
     expect(ClassGroupSchema.safeParse({ ...section, capacity }).success).toBe(false);
+  });
+});
+
+describe("ClassGroupInput", () => {
+  const input: ClassGroupInput = {
+    campusId: section.campusId,
+    academicYearId: section.academicYearId,
+    programId: section.programId,
+    yearLevelId: section.yearLevelId,
+    kind: section.kind,
+    code: section.code,
+    name: section.name,
+    capacity: section.capacity,
+    homeroomStaffProfileId: section.homeroomStaffProfileId,
+  };
+
+  it("accepts full input and batches without optional links", () => {
+    expect(ClassGroupInputSchema.parse(input)).toEqual(input);
+    const batch: ClassGroupInput = {
+      ...input,
+      kind: "batch",
+      campusId: null,
+      yearLevelId: null,
+      capacity: null,
+      homeroomStaffProfileId: null,
+    };
+    expect(ClassGroupInputSchema.parse(batch)).toEqual(batch);
+  });
+
+  it.each([
+    { id: section.id },
+    { tenantId: section.tenantId },
+    { institutionId: section.institutionId },
+    { createdAt: section.createdAt },
+    { updatedAt: section.updatedAt },
+    { extra: true },
+  ])("rejects server-owned or extra field %j", (extra) => {
+    expect(ClassGroupInputSchema.safeParse({ ...input, ...extra }).success).toBe(false);
+  });
+
+  it("rejects malformed code and out-of-range capacity", () => {
+    expect(ClassGroupInputSchema.safeParse({ ...input, code: "bad code" }).success).toBe(false);
+    expect(ClassGroupInputSchema.safeParse({ ...input, capacity: 0 }).success).toBe(false);
+    expect(ClassGroupInputSchema.safeParse({ ...input, capacity: 2001 }).success).toBe(false);
   });
 });
 
