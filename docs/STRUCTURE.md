@@ -84,6 +84,7 @@
 │     │                 modules/m09/ (ImportsPage, ImportJobView, NewImportDialog, NEX-162),
 │     │                 modules/m10/ (SyncCentrePage, ThisDeviceTab, DevicesTab, ConflictsTab, NEX-019),
 │     │                 modules/m11/ (AiSettingsPage, AssistButton, AssistPanel, AssistUnavailable, NEX-020),
+│     │                 modules/m12/ (AdmissionsPage, EnquiriesTab, ApplicationsTab, OffersTab, AddEnquiryDialog, NEX-164),
 │     │                 modules/m13/ (LearnersPage, LearnerProfile, NEX-163),
 │     │                 modules/m14/ (FamiliesPage, GuardianList, NEX-163),
 │     │                 modules/m15/ (StructurePage, ProgramsTab, SubjectsTab, AddClassGroupDialog, NEX-160),

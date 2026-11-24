@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Academic structure, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -156,6 +156,16 @@ Available to administrators from **Import data** in the menu. It requires an int
 - A job view shows **Job summary** (status, counts, and **Rollback available until** for **Completed** imports), **Column mappings** (each source column, target field or **Skipped**, and transform), and **Dry-run issues** (row number, column name, **Error** or **Warning**, and issue description — cell values are never shown).
 - Staff allowed to manage imports see **New import** to pick a **Record type** and a `.csv` or `.xlsx` **Spreadsheet file**, then choose **Register import**. Unsupported file types are rejected inline. Only the record type, file name and format are recorded in this prototype; file contents stay on your device because parsing runs on the server.
 - When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
+
+## Admissions
+
+Open **Admissions** to follow an enquiry through the admissions process. Your role determines whether you can view the records and add enquiries.
+
+- In **Enquiries**, use **Filter by status** to narrow the list. Choose a learner’s name to open their contact phone or email. Lost enquiries show the recorded reason.
+- To record an enquiry, select **Add enquiry**, enter the learner and contact names, and provide a phone number with country code or an email address. Choose the source and, if known, the campus, program and follow-up date. Select **Save** to add the enquiry with status **New**.
+- **Applications** shows each application number, program, status and submission date. The applicant’s name appears when your directory access allows it.
+- **Offers & waitlist** shows offers with their class group, status and expiry date. The waitlist shows applications in position order.
+- While offline, you can read previously loaded records and see **Last synced**. Adding an enquiry requires a connection. When available, **Ask Assist** opens the helper. Staff make admissions decisions.
 
 ## Learners and families
 Available from **Learners** and **Families** in the menu. Administrators and teachers see learners and households across their institution; parents/guardians and learners see only their own family. Cached lists and opened profiles stay readable offline, showing **Last synced …** under the heading. If your role has no access, the screen shows **No access**.

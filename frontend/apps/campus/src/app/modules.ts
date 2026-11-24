@@ -3,6 +3,7 @@ import type { MessageKey } from "@nexus/i18n";
 import {
   Bell,
   Building2,
+  ClipboardList,
   FileUp,
   Gauge,
   GraduationCap,
@@ -155,6 +156,16 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m11.settings.manage",
     offlineLevel: "L0",
     load: () => import("../modules/m11/AiSettingsPage"),
+  },
+  {
+    moduleId: "M12",
+    path: "admissions",
+    navKey: "m12.nav.title",
+    summaryKey: "m12.nav.summary",
+    icon: ClipboardList,
+    permission: "m12.admissions.read",
+    offlineLevel: "L1",
+    load: () => import("../modules/m12/AdmissionsPage"),
   },
   {
     moduleId: "M13",

@@ -484,6 +484,10 @@
     "valid": true
   },
   {
+    "text": "Accepted",
+    "valid": true
+  },
+  {
     "text": "Access",
     "valid": true
   },
@@ -572,6 +576,10 @@
     "valid": true
   },
   {
+    "text": "Add enquiry",
+    "valid": true
+  },
+  {
     "text": "Add holiday",
     "valid": true
   },
@@ -609,6 +617,18 @@
   },
   {
     "text": "Admission date",
+    "valid": true
+  },
+  {
+    "text": "Admissions",
+    "valid": true
+  },
+  {
+    "text": "Admissions records could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Admissions sections",
     "valid": true
   },
   {
@@ -681,6 +701,14 @@
   },
   {
     "text": "Application",
+    "valid": true
+  },
+  {
+    "text": "Applications",
+    "valid": true
+  },
+  {
+    "text": "Applied",
     "valid": true
   },
   {
@@ -956,6 +984,10 @@
     "valid": true
   },
   {
+    "text": "Campaign",
+    "valid": true
+  },
+  {
     "text": "Campus",
     "valid": true
   },
@@ -1184,7 +1216,27 @@
     "valid": true
   },
   {
+    "text": "Contact email",
+    "valid": true
+  },
+  {
+    "text": "Contact name",
+    "valid": true
+  },
+  {
+    "text": "Contact person: {name}",
+    "valid": true
+  },
+  {
+    "text": "Contact phone",
+    "valid": true
+  },
+  {
     "text": "Contact priority {priority}",
+    "valid": true
+  },
+  {
+    "text": "Contacted",
     "valid": true
   },
   {
@@ -1392,6 +1444,10 @@
     "valid": true
   },
   {
+    "text": "Declined",
+    "valid": true
+  },
+  {
     "text": "Default answer quality",
     "valid": true
   },
@@ -1548,6 +1604,10 @@
     "valid": true
   },
   {
+    "text": "Draft",
+    "valid": true
+  },
+  {
     "text": "Dry run ready",
     "valid": true
   },
@@ -1680,7 +1740,15 @@
     "valid": true
   },
   {
+    "text": "Enquiries",
+    "valid": true
+  },
+  {
     "text": "Enquiry",
+    "valid": true
+  },
+  {
+    "text": "Enquiry added",
     "valid": true
   },
   {
@@ -1704,6 +1772,14 @@
     "valid": true
   },
   {
+    "text": "Enter a phone number or an email address.",
+    "valid": true
+  },
+  {
+    "text": "Enter a phone number or email address so staff can follow up.",
+    "valid": true
+  },
+  {
     "text": "Enter a pixel value (for example, 8px).",
     "valid": true
   },
@@ -1716,7 +1792,15 @@
     "valid": true
   },
   {
+    "text": "Enter a valid follow-up date.",
+    "valid": true
+  },
+  {
     "text": "Enter a valid hex colour (for example, #1F5FD1).",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid name.",
     "valid": true
   },
   {
@@ -1789,6 +1873,10 @@
   },
   {
     "text": "Expired",
+    "valid": true
+  },
+  {
+    "text": "Expires on {date}",
     "valid": true
   },
   {
@@ -1872,6 +1960,10 @@
     "valid": true
   },
   {
+    "text": "Filter by status",
+    "valid": true
+  },
+  {
     "text": "Finance fields",
     "valid": true
   },
@@ -1893,6 +1985,14 @@
   },
   {
     "text": "Fixed after creation to honour data residency rules.",
+    "valid": true
+  },
+  {
+    "text": "Follow up on {date}",
+    "valid": true
+  },
+  {
+    "text": "Follow-up date",
     "valid": true
   },
   {
@@ -2176,6 +2276,10 @@
     "valid": true
   },
   {
+    "text": "Include the country code, starting with +.",
+    "valid": true
+  },
+  {
     "text": "Included by",
     "valid": true
   },
@@ -2428,6 +2532,10 @@
     "valid": true
   },
   {
+    "text": "Learner name",
+    "valid": true
+  },
+  {
     "text": "Learner not found",
     "valid": true
   },
@@ -2537,6 +2645,10 @@
   },
   {
     "text": "Long text",
+    "valid": true
+  },
+  {
+    "text": "Lost",
     "valid": true
   },
   {
@@ -2780,6 +2892,10 @@
     "valid": true
   },
   {
+    "text": "New",
+    "valid": true
+  },
+  {
     "text": "New announcement",
     "valid": true
   },
@@ -2932,6 +3048,10 @@
     "valid": true
   },
   {
+    "text": "No applications yet",
+    "valid": true
+  },
+  {
     "text": "No approval workflows",
     "valid": true
   },
@@ -3052,6 +3172,10 @@
     "valid": true
   },
   {
+    "text": "No matching enquiries",
+    "valid": true
+  },
+  {
     "text": "No matching messages",
     "valid": true
   },
@@ -3069,6 +3193,10 @@
   },
   {
     "text": "No numbering formats",
+    "valid": true
+  },
+  {
+    "text": "No offers yet",
     "valid": true
   },
   {
@@ -3217,6 +3345,18 @@
   },
   {
     "text": "Numbers and code font",
+    "valid": true
+  },
+  {
+    "text": "Offered",
+    "valid": true
+  },
+  {
+    "text": "Offers",
+    "valid": true
+  },
+  {
+    "text": "Offers & waitlist",
     "valid": true
   },
   {
@@ -3504,6 +3644,10 @@
     "valid": true
   },
   {
+    "text": "Position {position}",
+    "valid": true
+  },
+  {
     "text": "Postal code",
     "valid": true
   },
@@ -3588,6 +3732,10 @@
     "valid": true
   },
   {
+    "text": "Public form",
+    "valid": true
+  },
+  {
     "text": "Publish notices",
     "valid": true
   },
@@ -3665,6 +3813,10 @@
   },
   {
     "text": "Recorded",
+    "valid": true
+  },
+  {
+    "text": "Referral",
     "valid": true
   },
   {
@@ -3765,6 +3917,10 @@
   },
   {
     "text": "Review bundle {id}",
+    "valid": true
+  },
+  {
+    "text": "Review enquiries and follow each application through to an offer or a waitlist place.",
     "valid": true
   },
   {
@@ -4004,6 +4160,18 @@
     "valid": true
   },
   {
+    "text": "Select a campus in this institution.",
+    "valid": true
+  },
+  {
+    "text": "Select a program in this institution.",
+    "valid": true
+  },
+  {
+    "text": "Select an enquiry source.",
+    "valid": true
+  },
+  {
     "text": "Select an option",
     "valid": true
   },
@@ -4236,6 +4404,14 @@
     "valid": true
   },
   {
+    "text": "Submitted",
+    "valid": true
+  },
+  {
+    "text": "Submitted on {date}",
+    "valid": true
+  },
+  {
     "text": "Suggested brand pair ({mode})",
     "valid": true
   },
@@ -4376,6 +4552,10 @@
     "valid": true
   },
   {
+    "text": "Test scheduled",
+    "valid": true
+  },
+  {
     "text": "Text",
     "valid": true
   },
@@ -4444,6 +4624,10 @@
     "valid": true
   },
   {
+    "text": "The enquiry could not be saved. Try again.",
+    "valid": true
+  },
+  {
     "text": "The highest set layer wins. Lower layers remain as fallbacks.",
     "valid": true
   },
@@ -4493,6 +4677,10 @@
   },
   {
     "text": "The selected year level does not belong to this program.",
+    "valid": true
+  },
+  {
+    "text": "The waitlist is empty",
     "valid": true
   },
   {
@@ -4628,6 +4816,10 @@
     "valid": true
   },
   {
+    "text": "Track enquiries, applications and offers.",
+    "valid": true
+  },
+  {
     "text": "Trainee",
     "valid": true
   },
@@ -4709,6 +4901,14 @@
   },
   {
     "text": "UK GDPR",
+    "valid": true
+  },
+  {
+    "text": "Unassigned",
+    "valid": true
+  },
+  {
+    "text": "Under review",
     "valid": true
   },
   {
@@ -4968,6 +5168,10 @@
     "valid": true
   },
   {
+    "text": "Visit booked",
+    "valid": true
+  },
+  {
     "text": "Vocational & technical",
     "valid": true
   },
@@ -4988,7 +5192,23 @@
     "valid": true
   },
   {
+    "text": "Waitlist",
+    "valid": true
+  },
+  {
+    "text": "Waitlisted",
+    "valid": true
+  },
+  {
+    "text": "Walk-in",
+    "valid": true
+  },
+  {
     "text": "Warning",
+    "valid": true
+  },
+  {
+    "text": "Website",
     "valid": true
   },
   {
@@ -5564,6 +5784,14 @@
     "valid": true
   },
   {
+    "text": "{date} को जमा किया गया",
+    "valid": true
+  },
+  {
+    "text": "{date} को फिर संपर्क करें",
+    "valid": true
+  },
+  {
     "text": "{date} को बदली गई",
     "valid": true
   },
@@ -5573,6 +5801,10 @@
   },
   {
     "text": "{date} को समाप्त",
+    "valid": true
+  },
+  {
+    "text": "{date} तक मान्य",
     "valid": true
   },
   {
@@ -5948,6 +6180,14 @@
     "valid": true
   },
   {
+    "text": "अगले संपर्क की तारीख",
+    "valid": true
+  },
+  {
+    "text": "अगले संपर्क की मान्य तारीख दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "अज्ञात संदेश कुंजी",
     "valid": true
   },
@@ -6088,11 +6328,19 @@
     "valid": true
   },
   {
+    "text": "अभियान",
+    "valid": true
+  },
+  {
     "text": "अभी कोई अनुपालन पैक लागू नहीं है।",
     "valid": true
   },
   {
     "text": "अभी कोई आयात कार्य नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई आवेदन नहीं है",
     "valid": true
   },
   {
@@ -6109,6 +6357,10 @@
   },
   {
     "text": "अभी कोई परिवार नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई प्रस्ताव नहीं है",
     "valid": true
   },
   {
@@ -6192,6 +6444,10 @@
     "valid": true
   },
   {
+    "text": "अवधि समाप्त",
+    "valid": true
+  },
+  {
     "text": "असत्यापित",
     "valid": true
   },
@@ -6229,6 +6485,10 @@
   },
   {
     "text": "आगे",
+    "valid": true
+  },
+  {
+    "text": "आगे संपर्क करने के लिए फ़ोन नंबर या ईमेल पता दर्ज करें।",
     "valid": true
   },
   {
@@ -6452,6 +6712,10 @@
     "valid": true
   },
   {
+    "text": "आवंटित नहीं",
+    "valid": true
+  },
+  {
     "text": "आवश्यक",
     "valid": true
   },
@@ -6461,6 +6725,10 @@
   },
   {
     "text": "आवेदन",
+    "valid": true
+  },
+  {
+    "text": "आवेदन किया गया",
     "valid": true
   },
   {
@@ -6561,6 +6829,14 @@
   },
   {
     "text": "इस शैक्षणिक वर्ष के लिए कोई विषय पेशकश नहीं।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्था का कार्यक्रम चुनें।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्था का परिसर चुनें।",
     "valid": true
   },
   {
@@ -6956,6 +7232,10 @@
     "valid": true
   },
   {
+    "text": "कार्यक्रम स्थल",
+    "valid": true
+  },
+  {
     "text": "कार्यक्रम, वर्ष स्तर, कक्षा समूह, विषय और पेशकश।",
     "valid": true
   },
@@ -7192,6 +7472,10 @@
     "valid": true
   },
   {
+    "text": "कोई मेल खाती पूछताछ नहीं है",
+    "valid": true
+  },
+  {
     "text": "कोई मॉड्यूल नहीं।",
     "valid": true
   },
@@ -7237,6 +7521,10 @@
   },
   {
     "text": "क्या सुरक्षित करती है",
+    "valid": true
+  },
+  {
+    "text": "क्रमांक {position}",
     "valid": true
   },
   {
@@ -7448,6 +7736,10 @@
     "valid": true
   },
   {
+    "text": "जमा किया गया",
+    "valid": true
+  },
+  {
     "text": "जारी",
     "valid": true
   },
@@ -7561,6 +7853,10 @@
   },
   {
     "text": "ट्राइमेस्टर",
+    "valid": true
+  },
+  {
+    "text": "ठुकराया गया",
     "valid": true
   },
   {
@@ -7804,11 +8100,19 @@
     "valid": true
   },
   {
+    "text": "देश का कोड + से शुरू करते हुए दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "दोपहर का सत्र",
     "valid": true
   },
   {
     "text": "द्वितीयक",
+    "valid": true
+  },
+  {
+    "text": "नई",
     "valid": true
   },
   {
@@ -8000,6 +8304,10 @@
     "valid": true
   },
   {
+    "text": "परीक्षा निर्धारित",
+    "valid": true
+  },
+  {
     "text": "परीक्षाएँ और परीक्षा अभिलेख देखें",
     "valid": true
   },
@@ -8109,6 +8417,30 @@
   },
   {
     "text": "पूछताछ",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ का स्रोत चुनें।",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ की समीक्षा करें और हर आवेदन के प्रस्ताव या प्रतीक्षा सूची तक की स्थिति देखें।",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ जोड़ दी गई",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ सहेजी नहीं जा सकी। फिर प्रयास करें।",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ, आवेदनों और प्रस्तावों की स्थिति देखें।",
     "valid": true
   },
   {
@@ -8236,6 +8568,22 @@
     "valid": true
   },
   {
+    "text": "प्रतीक्षा सूची",
+    "valid": true
+  },
+  {
+    "text": "प्रतीक्षा सूची खाली है",
+    "valid": true
+  },
+  {
+    "text": "प्रतीक्षा सूची में",
+    "valid": true
+  },
+  {
+    "text": "प्रत्यक्ष भेंट",
+    "valid": true
+  },
+  {
     "text": "प्रदर्शन कैलेंडर",
     "valid": true
   },
@@ -8276,6 +8624,14 @@
     "valid": true
   },
   {
+    "text": "प्रवेश",
+    "valid": true
+  },
+  {
+    "text": "प्रवेश अनुभाग",
+    "valid": true
+  },
+  {
     "text": "प्रवेश तिथि",
     "valid": true
   },
@@ -8288,11 +8644,27 @@
     "valid": true
   },
   {
+    "text": "प्रवेश रिकॉर्ड लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
     "text": "प्रशिक्षक",
     "valid": true
   },
   {
     "text": "प्रशिक्षु",
+    "valid": true
+  },
+  {
+    "text": "प्रस्ताव",
+    "valid": true
+  },
+  {
+    "text": "प्रस्ताव और प्रतीक्षा सूची",
+    "valid": true
+  },
+  {
+    "text": "प्रस्ताव दिया गया",
     "valid": true
   },
   {
@@ -8424,6 +8796,10 @@
     "valid": true
   },
   {
+    "text": "फ़ोन नंबर या ईमेल पता दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "फ़ोन सूचना",
     "valid": true
   },
@@ -8473,6 +8849,10 @@
   },
   {
     "text": "बंद करें",
+    "valid": true
+  },
+  {
+    "text": "बंद हुई",
     "valid": true
   },
   {
@@ -8696,6 +9076,10 @@
     "valid": true
   },
   {
+    "text": "भेंट तय है",
+    "valid": true
+  },
+  {
     "text": "भेजने की प्रतीक्षा में",
     "valid": true
   },
@@ -8720,6 +9104,10 @@
     "valid": true
   },
   {
+    "text": "मसौदा",
+    "valid": true
+  },
+  {
     "text": "माता",
     "valid": true
   },
@@ -8741,6 +9129,14 @@
   },
   {
     "text": "मानचित्रित",
+    "valid": true
+  },
+  {
+    "text": "मान्य ईमेल पता दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "मान्य नाम दर्ज करें।",
     "valid": true
   },
   {
@@ -8960,6 +9356,10 @@
     "valid": true
   },
   {
+    "text": "रद्द किया गया",
+    "valid": true
+  },
+  {
     "text": "रविवार",
     "valid": true
   },
@@ -9144,6 +9544,10 @@
     "valid": true
   },
   {
+    "text": "वापस लिया गया",
+    "valid": true
+  },
+  {
     "text": "वापस ली गई",
     "valid": true
   },
@@ -9173,6 +9577,10 @@
   },
   {
     "text": "विद्यार्थी",
+    "valid": true
+  },
+  {
+    "text": "विद्यार्थी का नाम",
     "valid": true
   },
   {
@@ -9217,6 +9625,10 @@
   },
   {
     "text": "वे कौन से क्षेत्र देख सकते हैं",
+    "valid": true
+  },
+  {
+    "text": "वेबसाइट",
     "valid": true
   },
   {
@@ -9456,7 +9868,27 @@
     "valid": true
   },
   {
+    "text": "संपर्क ईमेल",
+    "valid": true
+  },
+  {
+    "text": "संपर्क किया गया",
+    "valid": true
+  },
+  {
     "text": "संपर्क प्राथमिकता {priority}",
+    "valid": true
+  },
+  {
+    "text": "संपर्क फ़ोन",
+    "valid": true
+  },
+  {
+    "text": "संपर्क व्यक्ति का नाम",
+    "valid": true
+  },
+  {
+    "text": "संपर्क व्यक्ति: {name}",
     "valid": true
   },
   {
@@ -9668,6 +10100,10 @@
     "valid": true
   },
   {
+    "text": "समीक्षाधीन",
+    "valid": true
+  },
+  {
     "text": "समूह",
     "valid": true
   },
@@ -9768,6 +10204,10 @@
     "valid": true
   },
   {
+    "text": "सार्वजनिक फ़ॉर्म",
+    "valid": true
+  },
+  {
     "text": "सिंक केंद्र",
     "valid": true
   },
@@ -9809,6 +10249,10 @@
   },
   {
     "text": "सिंगल साइन-ऑन सेटिंग सहेजी गईं।",
+    "valid": true
+  },
+  {
+    "text": "सिफ़ारिश",
     "valid": true
   },
   {
@@ -9961,6 +10405,10 @@
   },
   {
     "text": "स्थिति",
+    "valid": true
+  },
+  {
+    "text": "स्थिति के अनुसार छाँटें",
     "valid": true
   },
   {
@@ -10552,6 +11000,10 @@
     "valid": true
   },
   {
+    "text": "இணையதளம்",
+    "valid": true
+  },
+  {
     "text": "இது இடமாற்றம் செய்யப்படுகிறது அல்லது NexusCampus-ஐ விட்டு வெளியேறுகிறது. நீங்கள் தொடர்ந்து உள்நுழைந்து அனைத்தையும் படிக்கலாம், ஆனால் மாற்றங்கள் சேமிக்கப்படாது.",
     "valid": true
   },
@@ -10561,6 +11013,14 @@
   },
   {
     "text": "இது நீங்கள் இப்போது பயன்படுத்தும் சாதனம். நீங்கள் வெளியேற்றப்படுவீர்கள், அதன் தரவு நீக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "இதுவரை சேர்க்கைச் சலுகைகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இதுவரை விண்ணப்பங்கள் இல்லை",
     "valid": true
   },
   {
@@ -10585,6 +11045,14 @@
   },
   {
     "text": "இந்த நிறுவனத்தின் {locale} மேலெழுதல்களை JSON கோப்பாகப் பதிவிறக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனத்தின் பாடத்திட்டத்தைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனத்தின் வளாகத்தைத் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
   {
@@ -11240,6 +11708,10 @@
     "valid": true
   },
   {
+    "text": "ஏற்கப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "ஏற்றுகிறது…",
     "valid": true
   },
@@ -11249,6 +11721,10 @@
   },
   {
     "text": "ஐரோப்பா (EU)",
+    "valid": true
+  },
+  {
+    "text": "ஒதுக்கப்படவில்லை",
     "valid": true
   },
   {
@@ -11377,6 +11853,10 @@
   },
   {
     "text": "கடைசி ஒத்திசைவு",
+    "valid": true
+  },
+  {
+    "text": "கடைசி நாள்: {date}",
     "valid": true
   },
   {
@@ -11600,6 +12080,18 @@
     "valid": true
   },
   {
+    "text": "காத்திருப்புப் பட்டியலில்",
+    "valid": true
+  },
+  {
+    "text": "காத்திருப்புப் பட்டியல்",
+    "valid": true
+  },
+  {
+    "text": "காத்திருப்புப் பட்டியல் காலியாக உள்ளது",
+    "valid": true
+  },
+  {
     "text": "காப்பகத்தில் உள்ளவை",
     "valid": true
   },
@@ -11776,6 +12268,10 @@
     "valid": true
   },
   {
+    "text": "கைவிடப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "கொள்ளளவு",
     "valid": true
   },
@@ -11852,6 +12348,14 @@
     "valid": true
   },
   {
+    "text": "சமர்ப்பிக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "சமர்ப்பித்த நாள்: {date}",
+    "valid": true
+  },
+  {
     "text": "சரிபார்க்கப்படவில்லை",
     "valid": true
   },
@@ -11861,6 +12365,10 @@
   },
   {
     "text": "சரிபார்ப்புச் சிக்கல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "சரியான பெயரை உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -12104,6 +12612,14 @@
     "valid": true
   },
   {
+    "text": "சேர்க்கை முடிந்தது",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கை வழங்கப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "சேர்க்கைகளை ஏற்ற முடியவில்லை.",
     "valid": true
   },
@@ -12120,11 +12636,27 @@
     "valid": true
   },
   {
+    "text": "சேர்க்கைச் சலுகைகளும் காத்திருப்புப் பட்டியலும்",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைச் சலுகைகள்",
+    "valid": true
+  },
+  {
     "text": "சேர்க்கைத் தேதி",
     "valid": true
   },
   {
+    "text": "சேர்க்கைப் பதிவுகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "சேர்க்கைப் பதிவுகளைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைப் பிரிவுகள்",
     "valid": true
   },
   {
@@ -12512,6 +13044,10 @@
     "valid": true
   },
   {
+    "text": "தேர்வு திட்டமிடப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "தேர்வுகளை நிர்வகி",
     "valid": true
   },
@@ -12604,7 +13140,27 @@
     "valid": true
   },
   {
+    "text": "தொடர்பு எண்",
+    "valid": true
+  },
+  {
+    "text": "தொடர்பு நபரின் பெயர்",
+    "valid": true
+  },
+  {
+    "text": "தொடர்பு நபர்: {name}",
+    "valid": true
+  },
+  {
+    "text": "தொடர்பு மின்னஞ்சல்",
+    "valid": true
+  },
+  {
     "text": "தொடர்பு முன்னுரிமை {priority}",
+    "valid": true
+  },
+  {
+    "text": "தொடர்புகொள்ளப்பட்டது",
     "valid": true
   },
   {
@@ -12625,6 +13181,10 @@
   },
   {
     "text": "தொலைபேசி எண் சரியான வடிவத்தில் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "தொலைபேசி எண்ணையோ மின்னஞ்சல் முகவரியையோ உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -12688,7 +13248,15 @@
     "valid": true
   },
   {
+    "text": "நாட்டுக் குறியீட்டை + உடன் தொடங்கி உள்ளிடவும்.",
+    "valid": true
+  },
+  {
     "text": "நாணயம்",
+    "valid": true
+  },
+  {
+    "text": "நிகழ்ச்சி",
     "valid": true
   },
   {
@@ -12844,6 +13412,10 @@
     "valid": true
   },
   {
+    "text": "நிலையின் அடிப்படையில் வடிகட்டவும்",
+    "valid": true
+  },
+  {
     "text": "நீக்கம்",
     "valid": true
   },
@@ -12945,6 +13517,10 @@
   },
   {
     "text": "நேரம்",
+    "valid": true
+  },
+  {
+    "text": "நேரில்",
     "valid": true
   },
   {
@@ -13092,6 +13668,10 @@
     "valid": true
   },
   {
+    "text": "பணியாளர்கள் மீண்டும் தொடர்புகொள்ள ஒரு தொலைபேசி எண்ணையோ மின்னஞ்சல் முகவரியையோ உள்ளிடவும்.",
+    "valid": true
+  },
+  {
     "text": "பணியைத் தொடங்கு",
     "valid": true
   },
@@ -13232,6 +13812,14 @@
     "valid": true
   },
   {
+    "text": "பரிசீலனையில்",
+    "valid": true
+  },
+  {
+    "text": "பரிந்துரை",
+    "valid": true
+  },
+  {
     "text": "பரிந்துரைகளைப் பயன்படுத்து",
     "valid": true
   },
@@ -13348,6 +13936,10 @@
     "valid": true
   },
   {
+    "text": "பிரசாரம்",
+    "valid": true
+  },
+  {
     "text": "பிராண்ட்",
     "valid": true
   },
@@ -13357,6 +13949,10 @@
   },
   {
     "text": "பிரிவு",
+    "valid": true
+  },
+  {
+    "text": "பிற",
     "valid": true
   },
   {
@@ -13413,6 +14009,10 @@
   },
   {
     "text": "புதிய மொழி",
+    "valid": true
+  },
+  {
+    "text": "புதியது",
     "valid": true
   },
   {
@@ -13492,6 +14092,10 @@
     "valid": true
   },
   {
+    "text": "பொதுப் படிவம்",
+    "valid": true
+  },
+  {
     "text": "பொத்தான்களும் இணைப்புகளும் மாறுபாட்டுச் சரிபார்ப்பில் தேற on-brand ({onBrand}) மற்றும் brand-primary-text ({brandText}) ஐப் புதுப்பிக்கவும்.",
     "valid": true
   },
@@ -13517,6 +14121,10 @@
   },
   {
     "text": "பொருந்தும் பயனர்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் விசாரணைகள் இல்லை",
     "valid": true
   },
   {
@@ -13597,6 +14205,14 @@
   },
   {
     "text": "மாணவர்",
+    "valid": true
+  },
+  {
+    "text": "மாணவர் சேர்க்கை",
+    "valid": true
+  },
+  {
+    "text": "மாணவர் பெயர்",
     "valid": true
   },
   {
@@ -13733,6 +14349,18 @@
   },
   {
     "text": "மீண்டும் செயல்படுத்து",
+    "valid": true
+  },
+  {
+    "text": "மீண்டும் தொடர்புகொள்ள வேண்டிய நாள்",
+    "valid": true
+  },
+  {
+    "text": "மீண்டும் தொடர்புகொள்ள வேண்டிய நாள்: {date}",
+    "valid": true
+  },
+  {
+    "text": "மீண்டும் தொடர்புகொள்ளச் சரியான நாளை உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -13976,6 +14604,10 @@
     "valid": true
   },
   {
+    "text": "ரத்து செய்யப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "ரத்துசெய்",
     "valid": true
   },
@@ -14052,6 +14684,10 @@
     "valid": true
   },
   {
+    "text": "வரிசை எண் {position}",
+    "valid": true
+  },
+  {
     "text": "வரிசை எண் {roll}",
     "valid": true
   },
@@ -14068,6 +14704,10 @@
     "valid": true
   },
   {
+    "text": "வருகை முன்பதிவு செய்யப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "வருகை விகிதம்",
     "valid": true
   },
@@ -14081,6 +14721,10 @@
   },
   {
     "text": "வரை",
+    "valid": true
+  },
+  {
+    "text": "வரைவு",
     "valid": true
   },
   {
@@ -14192,6 +14836,38 @@
     "valid": true
   },
   {
+    "text": "விசாரணை சேர்க்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "விசாரணை வந்த வழி",
+    "valid": true
+  },
+  {
+    "text": "விசாரணை வந்த வழியைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "விசாரணைகளைப் பார்வையிட்டு, ஒவ்வொரு விண்ணப்பத்திற்கும் சேர்க்கைச் சலுகை அல்லது காத்திருப்புப் பட்டியலில் இடம் கிடைக்கும் வரை அதன் நிலையைக் கண்காணிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "விசாரணைகள்",
+    "valid": true
+  },
+  {
+    "text": "விசாரணைகள், விண்ணப்பங்கள் மற்றும் சேர்க்கைச் சலுகைகளைக் கண்காணிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "விசாரணையைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "விசாரணையைச் சேர்க்கவும்",
+    "valid": true
+  },
+  {
     "text": "விசாலமானது",
     "valid": true
   },
@@ -14220,7 +14896,15 @@
     "valid": true
   },
   {
+    "text": "விண்ணப்பங்கள்",
+    "valid": true
+  },
+  {
     "text": "விண்ணப்பம்",
+    "valid": true
+  },
+  {
+    "text": "விண்ணப்பிக்கப்பட்டது",
     "valid": true
   },
   {

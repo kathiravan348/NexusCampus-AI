@@ -36,31 +36,46 @@ export type EnquirySource = z.infer<typeof EnquirySourceSchema>;
 export const EnquiryStatusSchema = z.enum(["new", "contacted", "visit_booked", "applied", "lost"]);
 export type EnquiryStatus = z.infer<typeof EnquiryStatusSchema>;
 
+const enquiryInputFields = {
+  source: EnquirySourceSchema,
+  campusId: IdSchema.nullable(),
+  contactName: NameSchema,
+  contactPhone: PhoneE164Schema.nullable(),
+  contactEmail: EmailSchema.nullable(),
+  learnerName: NameSchema,
+  programId: IdSchema.nullable(),
+  followUpOn: IsoDateSchema.nullable(),
+};
+
+function hasContactMethod(enquiry: { contactPhone: string | null; contactEmail: string | null }) {
+  return enquiry.contactPhone !== null || enquiry.contactEmail !== null;
+}
+
+const contactMethodIssue = {
+  message: "A contact phone or email is required",
+  path: ["contactPhone"],
+};
+
+export const EnquiryInputSchema = z
+  .strictObject(enquiryInputFields)
+  .refine(hasContactMethod, contactMethodIssue);
+export type EnquiryInput = z.infer<typeof EnquiryInputSchema>;
+
 /** Contact details are personal data (V-7). Lead scores are advisory and a person decides. */
 export const EnquirySchema = z
   .strictObject({
+    ...enquiryInputFields,
     id: IdSchema,
     tenantId: IdSchema,
     institutionId: IdSchema,
-    campusId: IdSchema.nullable(),
-    source: EnquirySourceSchema,
     campaignCode: AcademicCodeSchema.nullable(),
-    contactName: NameSchema,
-    contactPhone: PhoneE164Schema.nullable(),
-    contactEmail: EmailSchema.nullable(),
-    learnerName: NameSchema,
-    programId: IdSchema.nullable(),
     status: EnquiryStatusSchema,
     lostReason: z.string().trim().min(1).max(300).nullable(),
     assignedStaffProfileId: IdSchema.nullable(),
-    followUpOn: IsoDateSchema.nullable(),
     createdAt: UtcDateTimeSchema,
     updatedAt: UtcDateTimeSchema,
   })
-  .refine((enquiry) => enquiry.contactPhone !== null || enquiry.contactEmail !== null, {
-    message: "A contact phone or email is required",
-    path: ["contactPhone"],
-  })
+  .refine(hasContactMethod, contactMethodIssue)
   .refine((enquiry) => (enquiry.lostReason !== null) === (enquiry.status === "lost"), {
     message: "lostReason is set exactly when the enquiry is lost",
     path: ["lostReason"],
