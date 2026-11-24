@@ -3,6 +3,7 @@ import type { MessageKey } from "@nexus/i18n";
 import {
   Award,
   Bell,
+  BriefcaseBusiness,
   Building2,
   CalendarClock,
   ClipboardCheck,
@@ -316,6 +317,16 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: null,
     offlineLevel: "L2",
     load: () => import("../modules/m26/LearnerPortalPage"),
+  },
+  {
+    moduleId: "M27",
+    path: "staff",
+    navKey: "m27.nav.title",
+    summaryKey: "m27.nav.summary",
+    icon: BriefcaseBusiness,
+    permission: null,
+    offlineLevel: "L2",
+    load: () => import("../modules/m27/StaffPortalPage"),
   },
   {
     moduleId: "M83",

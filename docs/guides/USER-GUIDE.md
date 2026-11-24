@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Learners, and Families)
+> State as of: 2026-11-25 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -282,6 +282,16 @@ Open **My portal** from the menu to see your own home page. Only learner account
 - **Summary cards:** each card shows a heading (such as **Attendance**, **Unpaid invoices**, **Unread messages**, and **Notices**), a count in your institution's number format when present, and any severity label (**Info**, **Warning**, or **Critical**). Select a card to open its module page.
 - **Quick links:** opens **Timetable**, **Attendance**, **Report cards**, **Issued documents**, and **Messages & notices**, showing only the pages available in your menu.
 - Previously loaded home data remains readable offline with **Last synced** under the heading. Opening **My portal** offline without cached data shows **Your portal could not be loaded.** When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
+
+## Staff portal
+
+Open **Staff portal** from the menu to see your teaching day. Guardians, learners and institution leaders see **No access**.
+
+- **Attendance** shows how many attendance sessions you have today. **Pending leave requests** shows requests awaiting a decision for your classes. Select either card to open the corresponding attendance page.
+- When available, **Unread messages** and **Notices** show counts and open the corresponding page.
+- **Quick links** opens the teaching tools available in your menu, including **Attendance**, **Timetable**, **Gradebook** and **Messages & notices**.
+- Choose **Daily briefing** to open **Nexus Assist**. You can ask “What should I review today?” This button appears while you are online if your institution enables Assist and your role has access.
+- Offline, you can read the last summary saved on this device. **Last synced** shows when it was fetched. If you open the portal offline before a summary has been saved, you see **Staff portal could not be loaded.**
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.

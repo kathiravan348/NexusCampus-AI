@@ -7227,6 +7227,34 @@
     "message": "Quick links",
     "description": "Heading and accessible navigation label for quick links to learner module pages."
   },
+  "m27.nav.title": {
+    "message": "Staff portal",
+    "description": "Navigation label and page heading for the staff portal."
+  },
+  "m27.nav.summary": {
+    "message": "See today’s summary and open your teaching tools.",
+    "description": "Home tile description for the staff portal."
+  },
+  "m27.page.intro": {
+    "message": "Check today’s attendance sessions, pending leave requests and communication updates.",
+    "description": "Introduction below the staff portal heading."
+  },
+  "m27.page.briefing": {
+    "message": "Daily briefing",
+    "description": "Button that opens Nexus Assist from the staff portal."
+  },
+  "m27.page.briefingHint": {
+    "message": "Try asking “What should I review today?”",
+    "description": "Suggested question to ask in the staff daily briefing."
+  },
+  "m27.page.failed": {
+    "message": "Staff portal could not be loaded.",
+    "description": "Error when the staff home is unavailable and there is no cached copy."
+  },
+  "m27.links.title": {
+    "message": "Quick links",
+    "description": "Heading and accessible navigation label for links to staff tools."
+  },
   "m28.permission.dashboardsRead": {
     "message": "View leadership dashboards",
     "description": "Permission to view leadership dashboards."
