@@ -4,12 +4,14 @@ import {
   BellScheduleSchema,
   RoomSchema,
   TeacherLoadSchema,
+  TimetableSlotInputSchema,
   TimetableSlotSchema,
   type BellPeriod,
   type BellSchedule,
   type Room,
   type TeacherLoad,
   type TimetableSlot,
+  type TimetableSlotInput,
 } from "./index";
 
 const scope = { tenantId: "tenant-school", institutionId: "institution-school" };
@@ -129,53 +131,46 @@ describe("BellSchedule", () => {
 
   it("rejects empty periods and more than 20 periods", () => {
     expect(BellScheduleSchema.safeParse({ ...k12BellSchedule, periods: [] }).success).toBe(false);
-    const tooMany: BellPeriod[] = Array.from({ length: 21 }, (_, idx) => {
-      const startTotal = idx * 30;
-      const startH = String(Math.floor(startTotal / 60)).padStart(2, "0");
-      const startM = String(startTotal % 60).padStart(2, "0");
-      const endTotal = (idx + 1) * 30;
-      const endH = String(Math.floor(endTotal / 60)).padStart(2, "0");
-      const endM = String(endTotal % 60).padStart(2, "0");
-      return {
-        code: `P${idx + 1}`,
-        label: `Slot ${idx + 1}`,
-        start: `${startH}:${startM}`,
-        end: `${endH}:${endM}`,
-        isBreak: false,
-      };
-    });
-    const schedule = { ...k12BellSchedule, periods: tooMany };
-    expect(BellScheduleSchema.safeParse(schedule).success).toBe(false);
+    const pad = (n: number) => String(n).padStart(2, "0");
+    const fmt = (mins: number) => `${pad(Math.floor(mins / 60))}:${pad(mins % 60)}`;
+    const tooMany: BellPeriod[] = Array.from({ length: 21 }, (_, idx) => ({
+      code: `P${idx + 1}`,
+      label: `Slot ${idx + 1}`,
+      start: fmt(idx * 30),
+      end: fmt((idx + 1) * 30),
+      isBreak: false,
+    }));
+    expect(BellScheduleSchema.safeParse({ ...k12BellSchedule, periods: tooMany }).success).toBe(
+      false,
+    );
   });
 
   it("rejects bell period with end <= start", () => {
     const equal = { ...firstPeriod, start: "09:00", end: "09:00" };
     const reversed = { ...firstPeriod, start: "09:30", end: "09:00" };
-    const badSchedule = { ...k12BellSchedule, periods: [equal] };
     expect(BellPeriodSchema.safeParse(equal).success).toBe(false);
     expect(BellPeriodSchema.safeParse(reversed).success).toBe(false);
-    expect(BellScheduleSchema.safeParse(badSchedule).success).toBe(false);
+    expect(BellScheduleSchema.safeParse({ ...k12BellSchedule, periods: [equal] }).success).toBe(
+      false,
+    );
   });
 
-  it("rejects overlapping bell periods", () => {
-    const periods: BellPeriod[] = [
+  it("rejects overlapping or non-ascending bell periods and extra keys", () => {
+    const overlap: BellPeriod[] = [
       { code: "P1", label: "Period 1", start: "08:00", end: "08:45", isBreak: false },
       { code: "P2", label: "Period 2", start: "08:30", end: "09:15", isBreak: false },
     ];
-    expect(BellScheduleSchema.safeParse({ ...k12BellSchedule, periods }).success).toBe(false);
-  });
-
-  it("rejects non-ascending start times", () => {
-    const periods: BellPeriod[] = [
+    const reversed: BellPeriod[] = [
       { code: "P2", label: "Period 2", start: "09:00", end: "09:45", isBreak: false },
       { code: "P1", label: "Period 1", start: "08:00", end: "08:45", isBreak: false },
     ];
-    expect(BellScheduleSchema.safeParse({ ...k12BellSchedule, periods }).success).toBe(false);
-  });
-
-  it("rejects extra keys on a bell period", () => {
-    const badPeriod = { ...firstPeriod, extra: true };
-    expect(BellPeriodSchema.safeParse(badPeriod).success).toBe(false);
+    expect(BellScheduleSchema.safeParse({ ...k12BellSchedule, periods: overlap }).success).toBe(
+      false,
+    );
+    expect(BellScheduleSchema.safeParse({ ...k12BellSchedule, periods: reversed }).success).toBe(
+      false,
+    );
+    expect(BellPeriodSchema.safeParse({ ...firstPeriod, extra: true }).success).toBe(false);
   });
 });
 
@@ -198,33 +193,57 @@ describe("TimetableSlot", () => {
     expect(TimetableSlotSchema.parse(row)).toEqual(row);
   });
 
-  it("rejects end <= start", () => {
-    const equal = { ...universityLectureSlot, start: "10:00", end: "10:00" };
-    const reversed = { ...universityLectureSlot, start: "11:00", end: "10:30" };
-    expect(TimetableSlotSchema.safeParse(equal).success).toBe(false);
-    expect(TimetableSlotSchema.safeParse(reversed).success).toBe(false);
-  });
-
-  it.each([0, 8, 2.5])("rejects weekday %s", (weekday) => {
-    const row = { ...universityLectureSlot, weekday };
-    expect(TimetableSlotSchema.safeParse(row).success).toBe(false);
-  });
-
-  it("rejects duplicate or more than 10 staff profiles", () => {
-    const dup = { ...coachingBatchSlot, staffProfileIds: ["staff-1", "staff-1"] };
-    expect(TimetableSlotSchema.safeParse(dup).success).toBe(false);
+  it("rejects end <= start, invalid weekdays, bad staff lists or inverted dates", () => {
     const eleven = Array.from({ length: 11 }, (_, idx) => `staff-${idx}`);
-    const tooMany = { ...coachingBatchSlot, staffProfileIds: eleven };
-    expect(TimetableSlotSchema.safeParse(tooMany).success).toBe(false);
+    const invalid = [
+      { ...universityLectureSlot, start: "10:00", end: "10:00" },
+      { ...universityLectureSlot, start: "11:00", end: "10:30" },
+      { ...universityLectureSlot, weekday: 0 },
+      { ...universityLectureSlot, weekday: 8 },
+      { ...universityLectureSlot, weekday: 2.5 },
+      { ...coachingBatchSlot, staffProfileIds: ["staff-1", "staff-1"] },
+      { ...coachingBatchSlot, staffProfileIds: eleven },
+      { ...universityLectureSlot, effectiveFrom: "2026-08-10", effectiveTo: "2026-08-09" },
+    ];
+    for (const row of invalid) {
+      expect(TimetableSlotSchema.safeParse(row).success).toBe(false);
+    }
   });
+});
 
-  it("rejects effectiveTo before effectiveFrom", () => {
-    const row = {
-      ...universityLectureSlot,
-      effectiveFrom: "2026-08-10",
-      effectiveTo: "2026-08-09",
-    };
-    expect(TimetableSlotSchema.safeParse(row).success).toBe(false);
+describe("TimetableSlotInput", () => {
+  const validInput: TimetableSlotInput = {
+    academicYearId: universityLectureSlot.academicYearId,
+    periodId: universityLectureSlot.periodId,
+    subjectOfferingId: universityLectureSlot.subjectOfferingId,
+    weekday: 2,
+    start: "09:00",
+    end: "09:50",
+    roomId: labRoom.id,
+    staffProfileIds: ["staff-prof-raman"],
+    effectiveFrom: "2026-08-01",
+    effectiveTo: null,
+  };
+
+  it("accepts valid input and rejects server-set fields or rule violations", () => {
+    expect(TimetableSlotInputSchema.parse(validInput)).toEqual(validInput);
+    expect(
+      TimetableSlotInputSchema.safeParse({ ...validInput, roomId: null, staffProfileIds: [] })
+        .success,
+    ).toBe(true);
+    const invalidCases = [
+      { ...validInput, id: "slot-1" },
+      { ...validInput, tenantId: "ten-1" },
+      { ...validInput, ...timestamps },
+      { ...validInput, extra: true },
+      { ...validInput, weekday: 8 },
+      { ...validInput, end: "09:00" },
+      { ...validInput, staffProfileIds: ["s-1", "s-1"] },
+      { ...validInput, effectiveTo: "2026-07-31" },
+    ];
+    for (const candidate of invalidCases) {
+      expect(TimetableSlotInputSchema.safeParse(candidate).success).toBe(false);
+    }
   });
 });
 
@@ -249,14 +268,13 @@ describe("TeacherLoad", () => {
   });
 
   it("rejects invalid counts and extra keys", () => {
-    const negPeriods = { ...overloadedTeacher, weeklyPeriods: -1 };
-    const negMinutes = { ...overloadedTeacher, weeklyMinutes: -1 };
-    const zeroMax = { ...overloadedTeacher, maxWeeklyPeriods: 0 };
-    const extraKey = { ...overloadedTeacher, extra: true };
-    expect(TeacherLoadSchema.safeParse(negPeriods).success).toBe(false);
-    expect(TeacherLoadSchema.safeParse(negMinutes).success).toBe(false);
-    expect(TeacherLoadSchema.safeParse(zeroMax).success).toBe(false);
-    expect(TeacherLoadSchema.safeParse(extraKey).success).toBe(false);
+    const invalid = [
+      { ...overloadedTeacher, weeklyPeriods: -1 },
+      { ...overloadedTeacher, weeklyMinutes: -1 },
+      { ...overloadedTeacher, maxWeeklyPeriods: 0 },
+      { ...overloadedTeacher, extra: true },
+    ];
+    for (const row of invalid) expect(TeacherLoadSchema.safeParse(row).success).toBe(false);
   });
 });
 

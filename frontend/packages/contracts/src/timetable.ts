@@ -97,6 +97,55 @@ export const BellScheduleSchema = z
   .refine(timestampsInOrder, timestampIssue);
 export type BellSchedule = z.infer<typeof BellScheduleSchema>;
 
+function slotEndsAfterStart(slot: { start: string; end: string }) {
+  return slot.end > slot.start;
+}
+
+function slotHasUniqueStaff(slot: { staffProfileIds: readonly string[] }) {
+  return hasUniqueIds(slot.staffProfileIds);
+}
+
+function slotEffectiveDatesInOrder(slot: { effectiveFrom: string; effectiveTo: string | null }) {
+  return slot.effectiveTo === null || slot.effectiveTo >= slot.effectiveFrom;
+}
+
+const slotEndIssue = {
+  message: "Slot end must be after start",
+  path: ["end"],
+};
+const slotStaffIssue = {
+  message: "staffProfileIds has duplicates",
+  path: ["staffProfileIds"],
+};
+const slotEffectiveIssue = {
+  message: "effectiveTo must be on or after effectiveFrom",
+  path: ["effectiveTo"],
+};
+
+const timetableSlotFields = {
+  /** AcademicCalendar id. */
+  academicYearId: IdSchema,
+  /** AcademicPeriod id, or null for the whole academic year. */
+  periodId: IdSchema.nullable(),
+  subjectOfferingId: IdSchema,
+  /** ISO weekday: 1 = Monday through 7 = Sunday. */
+  weekday: z.int().min(1).max(7),
+  start: TimeOfDaySchema,
+  end: TimeOfDaySchema,
+  roomId: IdSchema.nullable(),
+  staffProfileIds: z.array(IdSchema).max(10),
+  effectiveFrom: IsoDateSchema,
+  effectiveTo: IsoDateSchema.nullable(),
+};
+
+/** Input for creating a timetable slot; id, tenantId and timestamps are server-set. */
+export const TimetableSlotInputSchema = z
+  .strictObject(timetableSlotFields)
+  .refine(slotEndsAfterStart, slotEndIssue)
+  .refine(slotHasUniqueStaff, slotStaffIssue)
+  .refine(slotEffectiveDatesInOrder, slotEffectiveIssue);
+export type TimetableSlotInput = z.infer<typeof TimetableSlotInputSchema>;
+
 /**
  * Scheduled timetable slot for a subject offering (M16, D25).
  * Room, teacher and class clashes are server checks, not schema rules.
@@ -105,33 +154,12 @@ export const TimetableSlotSchema = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
-    /** AcademicCalendar id. */
-    academicYearId: IdSchema,
-    /** AcademicPeriod id, or null for the whole academic year. */
-    periodId: IdSchema.nullable(),
-    subjectOfferingId: IdSchema,
-    /** ISO weekday: 1 = Monday through 7 = Sunday. */
-    weekday: z.int().min(1).max(7),
-    start: TimeOfDaySchema,
-    end: TimeOfDaySchema,
-    roomId: IdSchema.nullable(),
-    staffProfileIds: z.array(IdSchema).max(10),
-    effectiveFrom: IsoDateSchema,
-    effectiveTo: IsoDateSchema.nullable(),
+    ...timetableSlotFields,
     ...timestamps,
   })
-  .refine((slot) => slot.end > slot.start, {
-    message: "Slot end must be after start",
-    path: ["end"],
-  })
-  .refine((slot) => hasUniqueIds(slot.staffProfileIds), {
-    message: "staffProfileIds has duplicates",
-    path: ["staffProfileIds"],
-  })
-  .refine((slot) => slot.effectiveTo === null || slot.effectiveTo >= slot.effectiveFrom, {
-    message: "effectiveTo must be on or after effectiveFrom",
-    path: ["effectiveTo"],
-  })
+  .refine(slotEndsAfterStart, slotEndIssue)
+  .refine(slotHasUniqueStaff, slotStaffIssue)
+  .refine(slotEffectiveDatesInOrder, slotEffectiveIssue)
   .refine(timestampsInOrder, timestampIssue);
 export type TimetableSlot = z.infer<typeof TimetableSlotSchema>;
 

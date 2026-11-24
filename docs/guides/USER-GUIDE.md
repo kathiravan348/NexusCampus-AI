@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -34,7 +34,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families and Academic structure show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure and Timetable show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -182,6 +182,15 @@ Available from **Academic structure** in the menu to administrators, teachers, p
 - **Programs & classes** lists each program (with its type and code), its year levels in order, and the class groups in each year level (code, type, and capacity). Batches not linked to a year level appear under **No year level**.
 - Administrators see **Add class group** to create a class group by picking **Program**, **Academic year**, optional **Year level** and **Campus**, **Type**, **Code**, **Name**, and optional **Capacity**, then choosing **Create class group**. A duplicate code in the same academic year is refused. While offline, **Add class group** is disabled with **You are offline**.
 - **Subjects** lists the institution's subjects (name, code, type, and credits where used) and **Subject offerings**, which can be filtered by **Academic year** (or **All academic years**).
+- When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
+
+## Timetable
+Available from **Timetable** in the menu to administrators, teachers, parents/guardians, and learners. Cached schedules, rooms, bell schedules, and teacher load stay readable offline (showing **Last synced …** under the heading), while adding a slot requires an internet connection.
+
+- **Week** lets you pick a **Class group** to see its weekly schedule (a weekday-by-time grid on larger screens, and one card list per weekday on small screens). Each slot shows the subject name, start and end time, and room code (or **No room**). Parents/guardians and learners see only their own family's class groups.
+- Administrators see **Add slot** to open **Add timetable slot** and pick a **Subject offering**, **Weekday**, **Start time**, **End time**, optional **Room**, **Teachers**, and **Effective from** date, then choose **Add slot**. Room, teacher, and class group clashes are checked automatically and reported on the clashing field. While offline, **Add slot** is disabled with **You are offline**.
+- **Rooms & bells** lists each room (name, code, type, capacity or **—**, and **Inactive** when out of service) alongside the institution's **Bell schedules** (period labels, start and end times, and **Break** badges).
+- **Teacher load** is shown to staff only and displays each teacher's weekly periods, weekly minutes, maximum weekly period limit (or **No limit**), and an **Overloaded** badge when over the limit. Staff who cannot view the full directory see numbered staff labels for colleagues.
 - When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
 
 ## Install the app, offline and updates
