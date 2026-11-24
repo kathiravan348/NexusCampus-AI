@@ -5,9 +5,13 @@ import {
   TeacherLoadSchema,
   TimetableSlotSchema,
   pageSchema,
+  type TimetableSlot,
+  type TimetableSlotInput,
 } from "@nexus/contracts";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryKeys } from "../keys";
-import { useScopedQuery } from "../query";
+import { useScopedQuery, useServices } from "../query";
+import { useSession } from "../session";
 
 const all = { pageSize: PAGE_SIZE_MAX };
 const RoomPage = pageSchema(RoomSchema);
@@ -48,4 +52,18 @@ export function useTeacherLoad(academicYearId: string | null = null) {
     (s) => queryKeys.m16.teacherLoad(s, academicYearId),
     (c, signal) => c.get("/teacher-load", TeacherLoadPage, { ...all, academicYearId }, { signal }),
   );
+}
+
+/** Creates a timetable slot (M16, L1: online save) and invalidates all M16 queries for the session. */
+export function useCreateTimetableSlot() {
+  const { client } = useServices();
+  const { session } = useSession();
+  const qc = useQueryClient();
+  return useMutation<TimetableSlot, Error, TimetableSlotInput>({
+    mutationFn: (body) => client.send("POST", "/timetable-slots", body, TimetableSlotSchema),
+    onSuccess: async () => {
+      if (!session) return;
+      await qc.invalidateQueries({ queryKey: queryKeys.m16.rooms(session).slice(0, -1) });
+    },
+  });
 }

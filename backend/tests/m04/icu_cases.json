@@ -296,6 +296,10 @@
     "valid": true
   },
   {
+    "text": "A selected teacher is already scheduled at this day and time.",
+    "valid": true
+  },
+  {
     "text": "AI credits",
     "valid": true
   },
@@ -593,6 +597,14 @@
   },
   {
     "text": "Add role",
+    "valid": true
+  },
+  {
+    "text": "Add slot",
+    "valid": true
+  },
+  {
+    "text": "Add timetable slot",
     "valid": true
   },
   {
@@ -924,6 +936,10 @@
     "valid": true
   },
   {
+    "text": "Bell schedules",
+    "valid": true
+  },
+  {
     "text": "Birth certificate",
     "valid": true
   },
@@ -941,6 +957,10 @@
   },
   {
     "text": "Brand assets",
+    "valid": true
+  },
+  {
+    "text": "Break",
     "valid": true
   },
   {
@@ -1021,6 +1041,10 @@
   },
   {
     "text": "Capacity: {capacity}",
+    "valid": true
+  },
+  {
+    "text": "Capacity: {value}",
     "valid": true
   },
   {
@@ -1120,7 +1144,15 @@
     "valid": true
   },
   {
+    "text": "Class group",
+    "valid": true
+  },
+  {
     "text": "Class group created.",
+    "valid": true
+  },
+  {
+    "text": "Classroom",
     "valid": true
   },
   {
@@ -1680,6 +1712,10 @@
     "valid": true
   },
   {
+    "text": "Effective from",
+    "valid": true
+  },
+  {
     "text": "Elective",
     "valid": true
   },
@@ -1721,6 +1757,14 @@
   },
   {
     "text": "End the session on {device}",
+    "valid": true
+  },
+  {
+    "text": "End time",
+    "valid": true
+  },
+  {
+    "text": "End time must be after start time.",
     "valid": true
   },
   {
@@ -1788,6 +1832,10 @@
     "valid": true
   },
   {
+    "text": "Enter a valid date (YYYY-MM-DD).",
+    "valid": true
+  },
+  {
     "text": "Enter a valid email address.",
     "valid": true
   },
@@ -1801,6 +1849,10 @@
   },
   {
     "text": "Enter a valid name.",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid time (HH:MM).",
     "valid": true
   },
   {
@@ -2109,6 +2161,10 @@
   },
   {
     "text": "Guardians could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Hall",
     "valid": true
   },
   {
@@ -2580,6 +2636,10 @@
     "valid": true
   },
   {
+    "text": "Library",
+    "valid": true
+  },
+  {
     "text": "Licence",
     "valid": true
   },
@@ -2757,6 +2817,10 @@
   },
   {
     "text": "Marks",
+    "valid": true
+  },
+  {
+    "text": "Max: {max} / week",
     "valid": true
   },
   {
@@ -3068,7 +3132,15 @@
     "valid": true
   },
   {
+    "text": "No bell schedules yet",
+    "valid": true
+  },
+  {
     "text": "No campuses added yet.",
+    "valid": true
+  },
+  {
+    "text": "No class groups available",
     "valid": true
   },
   {
@@ -3172,6 +3244,10 @@
     "valid": true
   },
   {
+    "text": "No limit",
+    "valid": true
+  },
+  {
     "text": "No matching enquiries",
     "valid": true
   },
@@ -3220,11 +3296,27 @@
     "valid": true
   },
   {
+    "text": "No room",
+    "valid": true
+  },
+  {
+    "text": "No rooms yet",
+    "valid": true
+  },
+  {
     "text": "No single sign-on provider is set up yet.",
     "valid": true
   },
   {
+    "text": "No slots are scheduled for this class group.",
+    "valid": true
+  },
+  {
     "text": "No specific campus",
+    "valid": true
+  },
+  {
+    "text": "No staff profiles available.",
     "valid": true
   },
   {
@@ -3236,11 +3328,19 @@
     "valid": true
   },
   {
+    "text": "No teacher load recorded yet",
+    "valid": true
+  },
+  {
     "text": "No templates yet.",
     "valid": true
   },
   {
     "text": "No theme is configured for this institution.",
+    "valid": true
+  },
+  {
+    "text": "No timetable slots yet",
     "valid": true
   },
   {
@@ -3372,6 +3472,14 @@
     "valid": true
   },
   {
+    "text": "One or more selected teachers are not valid for this institution.",
+    "valid": true
+  },
+  {
+    "text": "Online",
+    "valid": true
+  },
+  {
     "text": "Online academy",
     "valid": true
   },
@@ -3449,6 +3557,10 @@
   },
   {
     "text": "Overdue",
+    "valid": true
+  },
+  {
+    "text": "Overloaded",
     "valid": true
   },
   {
@@ -4020,6 +4132,22 @@
     "valid": true
   },
   {
+    "text": "Room",
+    "valid": true
+  },
+  {
+    "text": "Rooms",
+    "valid": true
+  },
+  {
+    "text": "Rooms & bells",
+    "valid": true
+  },
+  {
+    "text": "Rooms and bell schedules could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Rotating",
     "valid": true
   },
@@ -4077,6 +4205,10 @@
   },
   {
     "text": "Saved on this device. It will sync when you are back online.",
+    "valid": true
+  },
+  {
+    "text": "Schedule a subject offering into the weekly timetable. Room, teacher and class clashes are checked automatically.",
     "valid": true
   },
   {
@@ -4324,6 +4456,10 @@
     "valid": true
   },
   {
+    "text": "Sports",
+    "valid": true
+  },
+  {
     "text": "Spreadsheet file",
     "valid": true
   },
@@ -4336,6 +4472,10 @@
     "valid": true
   },
   {
+    "text": "Staff member {number}",
+    "valid": true
+  },
+  {
     "text": "Standard",
     "valid": true
   },
@@ -4345,6 +4485,10 @@
   },
   {
     "text": "Start and end must be different.",
+    "valid": true
+  },
+  {
+    "text": "Start time",
     "valid": true
   },
   {
@@ -4389,6 +4533,10 @@
   },
   {
     "text": "Subject",
+    "valid": true
+  },
+  {
+    "text": "Subject offering",
     "valid": true
   },
   {
@@ -4517,6 +4665,18 @@
   },
   {
     "text": "Teacher",
+    "valid": true
+  },
+  {
+    "text": "Teacher load",
+    "valid": true
+  },
+  {
+    "text": "Teacher load could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Teachers",
     "valid": true
   },
   {
@@ -4676,7 +4836,23 @@
     "valid": true
   },
   {
+    "text": "The selected room is not valid for this institution.",
+    "valid": true
+  },
+  {
+    "text": "The selected subject offering is not valid for this institution.",
+    "valid": true
+  },
+  {
     "text": "The selected year level does not belong to this program.",
+    "valid": true
+  },
+  {
+    "text": "The timetable slot could not be added. Check your entries and try again.",
+    "valid": true
+  },
+  {
+    "text": "The timetable slot could not be saved. Try again.",
     "valid": true
   },
   {
@@ -4701,6 +4877,10 @@
   },
   {
     "text": "This address does not match any page. Check the link or go back to home.",
+    "valid": true
+  },
+  {
+    "text": "This class group already has a slot at this day and time.",
     "valid": true
   },
   {
@@ -4764,7 +4944,15 @@
     "valid": true
   },
   {
+    "text": "This room is already booked at this day and time.",
+    "valid": true
+  },
+  {
     "text": "This row has a validation issue.",
+    "valid": true
+  },
+  {
+    "text": "This slot clashes with an existing timetable slot.",
     "valid": true
   },
   {
@@ -4793,6 +4981,26 @@
   },
   {
     "text": "Times are in {timeZone}. Urgent safety messages still arrive.",
+    "valid": true
+  },
+  {
+    "text": "Timetable",
+    "valid": true
+  },
+  {
+    "text": "Timetable could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Timetable sections",
+    "valid": true
+  },
+  {
+    "text": "Timetable slot added.",
+    "valid": true
+  },
+  {
+    "text": "Timetable slots could not be loaded.",
     "valid": true
   },
   {
@@ -5160,6 +5368,10 @@
     "valid": true
   },
   {
+    "text": "View weekly schedules by class group, check rooms and bell times, and monitor teacher load.",
+    "valid": true
+  },
+  {
     "text": "View year-end rollover",
     "valid": true
   },
@@ -5216,7 +5428,23 @@
     "valid": true
   },
   {
+    "text": "Week",
+    "valid": true
+  },
+  {
+    "text": "Weekday",
+    "valid": true
+  },
+  {
     "text": "Weekend days",
+    "valid": true
+  },
+  {
+    "text": "Weekly class schedules, rooms, bell schedules and teacher load.",
+    "valid": true
+  },
+  {
+    "text": "Weekly timetable",
     "valid": true
   },
   {
@@ -5628,6 +5856,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# पीरियड / सप्ताह} other {# पीरियड / सप्ताह}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# प्रतीक्षा में} other {# प्रतीक्षा में}}",
     "valid": true
   },
@@ -5757,6 +5989,18 @@
   },
   {
     "text": "{count, plural, one {ஆஃப்லைன் · # நிலுவையில்} other {ஆஃப்லைன் · # நிலுவையில்}}",
+    "valid": true
+  },
+  {
+    "text": "{count} min / week",
+    "valid": true
+  },
+  {
+    "text": "{count} मिनट / सप्ताह",
+    "valid": true
+  },
+  {
+    "text": "{count} நிமிடம் / வாரம்",
     "valid": true
   },
   {
@@ -6060,6 +6304,10 @@
     "valid": true
   },
   {
+    "text": "{start}–{end}",
+    "valid": true
+  },
+  {
     "text": "{tier} · {credits, plural, =0 {no credits} one {# credit} other {# credits}} used",
     "valid": true
   },
@@ -6196,6 +6444,10 @@
     "valid": true
   },
   {
+    "text": "अतिभारित",
+    "valid": true
+  },
+  {
     "text": "अतिरिक्त विवरण",
     "valid": true
   },
@@ -6209,6 +6461,10 @@
   },
   {
     "text": "अधिकतम 200 अक्षरों का नाम दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "अधिकतम: {max} / सप्ताह",
     "valid": true
   },
   {
@@ -6344,11 +6600,19 @@
     "valid": true
   },
   {
+    "text": "अभी कोई कक्ष नहीं है",
+    "valid": true
+  },
+  {
     "text": "अभी कोई कार्यक्रम नहीं",
     "valid": true
   },
   {
     "text": "अभी कोई कैंपस नहीं जोड़ा गया।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई घंटी समय-सारणी नहीं है",
     "valid": true
   },
   {
@@ -6384,7 +6648,15 @@
     "valid": true
   },
   {
+    "text": "अभी कोई शिक्षक कार्यभार दर्ज नहीं है",
+    "valid": true
+  },
+  {
     "text": "अभी कोई शिक्षार्थी नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई समय-सारणी स्लॉट नहीं है",
     "valid": true
   },
   {
@@ -6417,6 +6689,10 @@
   },
   {
     "text": "अलग समय क्षेत्र",
+    "valid": true
+  },
+  {
+    "text": "अवकाश",
     "valid": true
   },
   {
@@ -6764,6 +7040,14 @@
     "valid": true
   },
   {
+    "text": "इस कक्षा समूह का इस दिन और समय पर पहले से एक स्लॉट है।",
+    "valid": true
+  },
+  {
+    "text": "इस कक्षा समूह के लिए कोई स्लॉट निर्धारित नहीं है।",
+    "valid": true
+  },
+  {
     "text": "इस कार्य के लिए अभी कोई स्तंभ मानचित्रण सहेजा नहीं गया है।",
     "valid": true
   },
@@ -7084,6 +7368,10 @@
     "valid": true
   },
   {
+    "text": "ऑनलाइन",
+    "valid": true
+  },
+  {
     "text": "ऑनलाइन अकादमी",
     "valid": true
   },
@@ -7132,7 +7420,27 @@
     "valid": true
   },
   {
+    "text": "कक्ष",
+    "valid": true
+  },
+  {
+    "text": "कक्ष और घंटी समय-सारणी लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "कक्ष व घंटी",
+    "valid": true
+  },
+  {
     "text": "कक्षा",
+    "valid": true
+  },
+  {
+    "text": "कक्षा समूह",
+    "valid": true
+  },
+  {
+    "text": "कक्षा समूह के अनुसार साप्ताहिक समय-सारणी देखें, कक्ष व घंटी का समय जांचें, और शिक्षक कार्यभार देखें।",
     "valid": true
   },
   {
@@ -7177,6 +7485,10 @@
   },
   {
     "text": "कर्मचारी",
+    "valid": true
+  },
+  {
+    "text": "कर्मचारी {number}",
     "valid": true
   },
   {
@@ -7400,6 +7712,14 @@
     "valid": true
   },
   {
+    "text": "कोई कक्ष नहीं",
+    "valid": true
+  },
+  {
+    "text": "कोई कक्षा समूह उपलब्ध नहीं है",
+    "valid": true
+  },
+  {
     "text": "कोई कुंजी नहीं।",
     "valid": true
   },
@@ -7492,6 +7812,10 @@
     "valid": true
   },
   {
+    "text": "कोई शिक्षक प्रोफ़ाइल उपलब्ध नहीं है।",
+    "valid": true
+  },
+  {
     "text": "कोई शिक्षार्थी मेल नहीं खाता",
     "valid": true
   },
@@ -7505,6 +7829,10 @@
   },
   {
     "text": "कोई सहमति रिकॉर्ड मेल नहीं खाता।",
+    "valid": true
+  },
+  {
+    "text": "कोई सीमा नहीं",
     "valid": true
   },
   {
@@ -7564,6 +7892,10 @@
     "valid": true
   },
   {
+    "text": "क्षमता: {value}",
+    "valid": true
+  },
+  {
     "text": "क्षेत्र",
     "valid": true
   },
@@ -7577,6 +7909,10 @@
   },
   {
     "text": "खुले",
+    "valid": true
+  },
+  {
+    "text": "खेल",
     "valid": true
   },
   {
@@ -7601,6 +7937,10 @@
   },
   {
     "text": "ग्रेगोरियन",
+    "valid": true
+  },
+  {
+    "text": "घंटी समय-सारणी",
     "valid": true
   },
   {
@@ -7632,6 +7972,10 @@
     "valid": true
   },
   {
+    "text": "चुना गया कक्ष इस संस्था के लिए मान्य नहीं है।",
+    "valid": true
+  },
+  {
     "text": "चुना गया कार्यक्रम इस संस्था के लिए मान्य नहीं है।",
     "valid": true
   },
@@ -7644,11 +7988,23 @@
     "valid": true
   },
   {
+    "text": "चुना गया विषय आवंटन इस संस्था के लिए मान्य नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "चुना गया शिक्षक इस दिन और समय पर पहले से निर्धारित है।",
+    "valid": true
+  },
+  {
     "text": "चुना गया शैक्षणिक वर्ष इस संस्था के लिए मान्य नहीं है।",
     "valid": true
   },
   {
     "text": "चुनी गई भाषा के लिए संदेश कुंजियाँ और लागू शब्द",
+    "valid": true
+  },
+  {
+    "text": "चुने गए एक या अधिक शिक्षक इस संस्था के लिए मान्य नहीं हैं।",
     "valid": true
   },
   {
@@ -8416,6 +8772,10 @@
     "valid": true
   },
   {
+    "text": "पुस्तकालय",
+    "valid": true
+  },
+  {
     "text": "पूछताछ",
     "valid": true
   },
@@ -8612,6 +8972,10 @@
     "valid": true
   },
   {
+    "text": "प्रभावी तिथि",
+    "valid": true
+  },
+  {
     "text": "प्रमाणपत्र",
     "valid": true
   },
@@ -8685,6 +9049,10 @@
   },
   {
     "text": "प्राप्तकर्ता",
+    "valid": true
+  },
+  {
+    "text": "प्रारंभ समय",
     "valid": true
   },
   {
@@ -9136,6 +9504,10 @@
     "valid": true
   },
   {
+    "text": "मान्य तिथि (YYYY-MM-DD) दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "मान्य नाम दर्ज करें।",
     "valid": true
   },
@@ -9149,6 +9521,10 @@
   },
   {
     "text": "मान्य संख्याएँ लिखें। अधिकतम मान न्यूनतम से कम नहीं होना चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "मान्य समय (HH:MM) दर्ज करें।",
     "valid": true
   },
   {
@@ -9252,6 +9628,10 @@
     "valid": true
   },
   {
+    "text": "यह कक्ष इस दिन और समय पर पहले से बुक है।",
+    "valid": true
+  },
+  {
     "text": "यह काम नहीं हुआ। फिर से कोशिश करें।",
     "valid": true
   },
@@ -9293,6 +9673,10 @@
   },
   {
     "text": "यह संस्थान फ़्रीज़ किया गया है",
+    "valid": true
+  },
+  {
+    "text": "यह स्लॉट किसी मौजूदा समय-सारणी स्लॉट से टकराता है।",
     "valid": true
   },
   {
@@ -9612,6 +9996,10 @@
     "valid": true
   },
   {
+    "text": "विषय आवंटन",
+    "valid": true
+  },
+  {
     "text": "विषय पेशकश",
     "valid": true
   },
@@ -9677,6 +10065,14 @@
   },
   {
     "text": "शिक्षक",
+    "valid": true
+  },
+  {
+    "text": "शिक्षक कार्यभार",
+    "valid": true
+  },
+  {
+    "text": "शिक्षक कार्यभार लोड नहीं हो सका।",
     "valid": true
   },
   {
@@ -10032,11 +10428,23 @@
     "valid": true
   },
   {
+    "text": "सप्ताह",
+    "valid": true
+  },
+  {
+    "text": "सप्ताह का दिन",
+    "valid": true
+  },
+  {
     "text": "सप्ताहांत के दिन",
     "valid": true
   },
   {
     "text": "सबसे ऊपर की सेट परत लागू होती है। नीचे की परतें विकल्प के रूप में रहती हैं।",
+    "valid": true
+  },
+  {
+    "text": "सभागार",
     "valid": true
   },
   {
@@ -10072,11 +10480,43 @@
     "valid": true
   },
   {
+    "text": "समय-सारणी",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी अनुभाग",
+    "valid": true
+  },
+  {
     "text": "समय-सारणी देखें",
     "valid": true
   },
   {
     "text": "समय-सारणी प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी लोड नहीं हो सकी।",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी स्लॉट जोड़ा गया।",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी स्लॉट जोड़ा नहीं जा सका। अपनी प्रविष्टियाँ जाँचें और फिर प्रयास करें।",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी स्लॉट जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी स्लॉट लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "समय-सारणी स्लॉट सहेजा नहीं जा सका। फिर प्रयास करें।",
     "valid": true
   },
   {
@@ -10093,6 +10533,14 @@
   },
   {
     "text": "समाप्त होती है",
+    "valid": true
+  },
+  {
+    "text": "समाप्ति समय",
+    "valid": true
+  },
+  {
+    "text": "समाप्ति समय प्रारंभ समय के बाद होना चाहिए।",
     "valid": true
   },
   {
@@ -10185,6 +10633,18 @@
   },
   {
     "text": "साइन-इन तरीका",
+    "valid": true
+  },
+  {
+    "text": "साप्ताहिक कक्षा समय-सारणी, कक्ष, घंटी समय-सारणी और शिक्षक कार्यभार।",
+    "valid": true
+  },
+  {
+    "text": "साप्ताहिक समय-सारणी",
+    "valid": true
+  },
+  {
+    "text": "साप्ताहिक समय-सारणी में एक विषय स्लॉट निर्धारित करें। कक्ष, शिक्षक और कक्षा टकराव की जाँच स्वतः होती है।",
     "valid": true
   },
   {
@@ -10424,6 +10884,10 @@
     "valid": true
   },
   {
+    "text": "स्लॉट जोड़ें",
+    "valid": true
+  },
+  {
     "text": "स्वयं व्यक्ति",
     "valid": true
   },
@@ -10644,6 +11108,14 @@
     "valid": true
   },
   {
+    "text": "அதிகபட்சம்: {max} / வாரம்",
+    "valid": true
+  },
+  {
+    "text": "அதிகப் பணிச்சுமை",
+    "valid": true
+  },
+  {
     "text": "அது செயல்படவில்லை. மீண்டும் முயலவும்.",
     "valid": true
   },
@@ -10788,6 +11260,26 @@
     "valid": true
   },
   {
+    "text": "அறை",
+    "valid": true
+  },
+  {
+    "text": "அறை இல்லை",
+    "valid": true
+  },
+  {
+    "text": "அறைகள்",
+    "valid": true
+  },
+  {
+    "text": "அறைகள் & மணிகள்",
+    "valid": true
+  },
+  {
+    "text": "அறைகள் மற்றும் மணி அட்டவணைகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "அழிக்கப்பட்டது",
     "valid": true
   },
@@ -10852,6 +11344,18 @@
     "valid": true
   },
   {
+    "text": "ஆசிரியர் பணிச்சுமை",
+    "valid": true
+  },
+  {
+    "text": "ஆசிரியர் பணிச்சுமையை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "ஆசிரியர்கள்",
+    "valid": true
+  },
+  {
     "text": "ஆண்டு இறுதி வகுப்பு மாற்றங்களை நிர்வகி",
     "valid": true
   },
@@ -10889,6 +11393,10 @@
   },
   {
     "text": "ஆதரிக்கப்படும் மொழிகள்",
+    "valid": true
+  },
+  {
+    "text": "ஆன்லைன்",
     "valid": true
   },
   {
@@ -10988,6 +11496,10 @@
     "valid": true
   },
   {
+    "text": "இடைவேளை",
+    "valid": true
+  },
+  {
     "text": "இணக்கம்",
     "valid": true
   },
@@ -11029,6 +11541,10 @@
   },
   {
     "text": "இந்த அனுமதியின் கீழ் எதுவும் செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த அறை இந்த நாளிலும் நேரத்திலும் ஏற்கனவே ஒதுக்கப்பட்டுள்ளது.",
     "valid": true
   },
   {
@@ -11076,6 +11592,10 @@
     "valid": true
   },
   {
+    "text": "இந்த நேரம் ஏற்கனவே உள்ள கால அட்டவணை நேரத்துடன் மோதுகிறது.",
+    "valid": true
+  },
+  {
     "text": "இந்த மாத AI வரவுகள்",
     "valid": true
   },
@@ -11093,6 +11613,14 @@
   },
   {
     "text": "இந்த மொழிக்கான தனிப்பயன் சொற்களை உள்ளிடவும்…",
+    "valid": true
+  },
+  {
+    "text": "இந்த வகுப்புக் குழுவுக்கு இந்த நாளிலும் நேரத்திலும் ஏற்கனவே ஒரு நேரம் உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "இந்த வகுப்புக் குழுவுக்கு நேரங்கள் எதுவும் திட்டமிடப்படவில்லை.",
     "valid": true
   },
   {
@@ -11212,6 +11740,14 @@
     "valid": true
   },
   {
+    "text": "இன்னும் அறைகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் ஆசிரியர் பணிச்சுமை பதிவு செய்யப்படவில்லை",
+    "valid": true
+  },
+  {
     "text": "இன்னும் ஆண்டு நிலைகளோ வகுப்புக் குழுக்களோ இல்லை.",
     "valid": true
   },
@@ -11236,6 +11772,10 @@
     "valid": true
   },
   {
+    "text": "இன்னும் கால அட்டவணை நேரங்கள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "இன்னும் குடும்பங்கள் இல்லை",
     "valid": true
   },
@@ -11253,6 +11793,10 @@
   },
   {
     "text": "இன்னும் பாடத்திட்டங்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் மணி அட்டவணைகள் இல்லை",
     "valid": true
   },
   {
@@ -12104,11 +12648,43 @@
     "valid": true
   },
   {
+    "text": "கால அட்டவணை",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணை நேரங்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணை நேரத்தைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணை நேரத்தைச் சேர்",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணை நேரத்தைச் சேர்க்க முடியவில்லை. உங்கள் உள்ளீடுகளைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணை நேரம் சேர்க்கப்பட்டது.",
+    "valid": true
+  },
+  {
     "text": "கால அட்டவணைகளை நிர்வகி",
     "valid": true
   },
   {
     "text": "கால அட்டவணைகளைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணைப் பிரிவுகள்",
+    "valid": true
+  },
+  {
+    "text": "கால அட்டவணையை ஏற்ற முடியவில்லை.",
     "valid": true
   },
   {
@@ -12145,6 +12721,10 @@
   },
   {
     "text": "கிளையன்ட் ரகசியம் உலாவியில் ஒருபோதும் காட்டப்படுவதோ சேமிக்கப்படுவதோ இல்லை. அது நிறுவனத்தின் சாவிப் பெட்டகத்தில் அமைக்கப்படுகிறது.",
+    "valid": true
+  },
+  {
+    "text": "கிழமை",
     "valid": true
   },
   {
@@ -12280,6 +12860,10 @@
     "valid": true
   },
   {
+    "text": "கொள்ளளவு: {value}",
+    "valid": true
+  },
+  {
     "text": "கோப்பு வடிவம்",
     "valid": true
   },
@@ -12365,6 +12949,14 @@
   },
   {
     "text": "சரிபார்ப்புச் சிக்கல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "சரியான தேதியை உள்ளிடவும் (YYYY-MM-DD).",
+    "valid": true
+  },
+  {
+    "text": "சரியான நேரத்தை உள்ளிடவும் (HH:MM).",
     "valid": true
   },
   {
@@ -13020,11 +13612,27 @@
     "valid": true
   },
   {
+    "text": "தேர்ந்தெடுத்த அறை இந்த நிறுவனத்திற்குச் செல்லாது.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த ஆசிரியர் இந்த நாளிலும் நேரத்திலும் ஏற்கனவே திட்டமிடப்பட்டுள்ளார்.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த ஆசிரியர்களில் ஒருவர் அல்லது அதற்கு மேற்பட்டோர் இந்த நிறுவனத்திற்குச் செல்லாது.",
+    "valid": true
+  },
+  {
     "text": "தேர்ந்தெடுத்த ஆண்டு நிலை இந்தப் பாடத்திட்டத்தைச் சேர்ந்ததல்ல.",
     "valid": true
   },
   {
     "text": "தேர்ந்தெடுத்த கல்வியாண்டு இந்த நிறுவனத்திற்குச் செல்லாது.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த பாட ஒதுக்கீடு இந்த நிறுவனத்திற்குச் செல்லாது.",
     "valid": true
   },
   {
@@ -13120,6 +13728,10 @@
     "valid": true
   },
   {
+    "text": "தொடக்க நேரம்",
+    "valid": true
+  },
+  {
     "text": "தொடக்கமும் முடிவும் வேறுபட வேண்டும்.",
     "valid": true
   },
@@ -13209,6 +13821,10 @@
   },
   {
     "text": "நடைமுறைகளும் எண் வடிவங்களும்",
+    "valid": true
+  },
+  {
+    "text": "நடைமுறைத் தேதி",
     "valid": true
   },
   {
@@ -13480,6 +14096,10 @@
     "valid": true
   },
   {
+    "text": "நூலகம்",
+    "valid": true
+  },
+  {
     "text": "நெடுவரிசை இணைப்புகளை ஏற்ற முடியவில்லை.",
     "valid": true
   },
@@ -13513,6 +14133,10 @@
   },
   {
     "text": "நேரடி முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "நேரத்தைச் சேர்",
     "valid": true
   },
   {
@@ -13661,6 +14285,14 @@
   },
   {
     "text": "பணியாளர்",
+    "valid": true
+  },
+  {
+    "text": "பணியாளர் {number}",
+    "valid": true
+  },
+  {
+    "text": "பணியாளர் சுயவிவரங்கள் எதுவும் இல்லை.",
     "valid": true
   },
   {
@@ -13849,6 +14481,10 @@
   },
   {
     "text": "பள்ளி நிலை",
+    "valid": true
+  },
+  {
+    "text": "பாட ஒதுக்கீடு",
     "valid": true
   },
   {
@@ -14136,7 +14772,15 @@
     "valid": true
   },
   {
+    "text": "மணி அட்டவணைகள்",
+    "valid": true
+  },
+  {
     "text": "மணி நேரங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மண்டபம்",
     "valid": true
   },
   {
@@ -14416,6 +15060,14 @@
     "valid": true
   },
   {
+    "text": "முடிவு நேரம்",
+    "valid": true
+  },
+  {
+    "text": "முடிவு நேரம் தொடக்க நேரத்திற்குப் பிறகு இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
     "text": "முடிவுத் தேதி இல்லை",
     "valid": true
   },
@@ -14616,11 +15268,27 @@
     "valid": true
   },
   {
+    "text": "வகுப்பறை",
+    "valid": true
+  },
+  {
     "text": "வகுப்பு",
     "valid": true
   },
   {
+    "text": "வகுப்புக் குழு",
+    "valid": true
+  },
+  {
     "text": "வகுப்புக் குழு உருவாக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "வகுப்புக் குழு வாரியாக வாராந்திர அட்டவணைகளைப் பார்க்கவும், அறைகள் மற்றும் மணி நேரங்களைச் சரிபார்க்கவும், ஆசிரியர் பணிச்சுமையைக் கண்காணிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "வகுப்புக் குழுக்கள் எதுவும் கிடைக்கவில்லை",
     "valid": true
   },
   {
@@ -14665,6 +15333,10 @@
   },
   {
     "text": "வரம்பற்றது",
+    "valid": true
+  },
+  {
+    "text": "வரம்பு இல்லை",
     "valid": true
   },
   {
@@ -14813,6 +15485,22 @@
   },
   {
     "text": "வார இறுதி நாட்கள்",
+    "valid": true
+  },
+  {
+    "text": "வாரம்",
+    "valid": true
+  },
+  {
+    "text": "வாராந்திர கால அட்டவணை",
+    "valid": true
+  },
+  {
+    "text": "வாராந்திர கால அட்டவணையில் ஒரு பாட நேரத்தைத் திட்டமிடுங்கள். அறை, ஆசிரியர் மற்றும் வகுப்பு மோதல்கள் தானாகச் சரிபார்க்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "வாராந்திர வகுப்பு அட்டவணைகள், அறைகள், மணி அட்டவணைகள் மற்றும் ஆசிரியர் பணிச்சுமை.",
     "valid": true
   },
   {
@@ -14977,6 +15665,10 @@
   },
   {
     "text": "விளக்கப்படங்கள்",
+    "valid": true
+  },
+  {
+    "text": "விளையாட்டு",
     "valid": true
   },
   {

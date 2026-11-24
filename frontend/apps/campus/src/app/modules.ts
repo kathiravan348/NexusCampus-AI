@@ -3,6 +3,7 @@ import type { MessageKey } from "@nexus/i18n";
 import {
   Bell,
   Building2,
+  CalendarClock,
   ClipboardList,
   FileUp,
   Gauge,
@@ -196,6 +197,16 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m15.structure.read",
     offlineLevel: "L1",
     load: () => import("../modules/m15/StructurePage"),
+  },
+  {
+    moduleId: "M16",
+    path: "timetable",
+    navKey: "m16.nav.title",
+    summaryKey: "m16.nav.summary",
+    icon: CalendarClock,
+    permission: "m16.timetable.read",
+    offlineLevel: "L1",
+    load: () => import("../modules/m16/TimetablePage"),
   },
   {
     moduleId: "M83",

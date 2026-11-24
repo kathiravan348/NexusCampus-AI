@@ -5247,6 +5247,270 @@
     "message": "Manage admissions",
     "description": "Permission description: Manage enquiries, applications, admission offers and waitlists."
   },
+  "m16.nav.title": {
+    "message": "Timetable",
+    "description": "Navigation item and page title for the Timetable & scheduling module (M16)."
+  },
+  "m16.nav.summary": {
+    "message": "Weekly class schedules, rooms, bell schedules and teacher load.",
+    "description": "Home tile summary for the Timetable module."
+  },
+  "m16.page.intro": {
+    "message": "View weekly schedules by class group, check rooms and bell times, and monitor teacher load.",
+    "description": "Introductory paragraph under the Timetable page heading."
+  },
+  "m16.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button opening Nexus Assist from the Timetable page header."
+  },
+  "m16.page.tabsLabel": {
+    "message": "Timetable sections",
+    "description": "Accessible label for the tabs on the Timetable page."
+  },
+  "m16.page.tabWeek": {
+    "message": "Week",
+    "description": "Tab label showing a class group's weekly timetable."
+  },
+  "m16.page.tabRooms": {
+    "message": "Rooms & bells",
+    "description": "Tab label showing institution rooms and bell schedules."
+  },
+  "m16.page.tabLoad": {
+    "message": "Teacher load",
+    "description": "Tab label showing weekly teaching load for staff."
+  },
+  "m16.page.error": {
+    "message": "Timetable could not be loaded.",
+    "description": "Error heading when the Timetable page fails to load user session details."
+  },
+  "m16.week.classGroup": {
+    "message": "Class group",
+    "description": "Select label for choosing which class group's weekly timetable to view."
+  },
+  "m16.week.addSlot": {
+    "message": "Add slot",
+    "description": "Button label opening the dialog to add a timetable slot."
+  },
+  "m16.week.gridCaption": {
+    "message": "Weekly timetable",
+    "description": "Accessible table caption for the weekday by time timetable grid."
+  },
+  "m16.week.timeColumn": {
+    "message": "Time",
+    "description": "Column header for time slots in the weekly timetable grid."
+  },
+  "m16.week.timeRange": {
+    "message": "{start}–{end}",
+    "description": "Start and end time range for a timetable slot or bell period (HH:MM)."
+  },
+  "m16.week.noRoom": {
+    "message": "No room",
+    "description": "Fallback text and select option when a timetable slot has no assigned room."
+  },
+  "m16.week.empty": {
+    "message": "No timetable slots yet",
+    "description": "Empty state heading when the selected class group has no scheduled slots."
+  },
+  "m16.week.emptyBody": {
+    "message": "No slots are scheduled for this class group.",
+    "description": "Empty state description when the selected class group has no scheduled slots."
+  },
+  "m16.week.noGroups": {
+    "message": "No class groups available",
+    "description": "Empty state heading when no class groups are visible for the viewer."
+  },
+  "m16.week.error": {
+    "message": "Timetable slots could not be loaded.",
+    "description": "Error heading when loading timetable slots fails."
+  },
+  "m16.rooms.title": {
+    "message": "Rooms",
+    "description": "Card heading listing rooms on the Rooms & bells tab."
+  },
+  "m16.rooms.empty": {
+    "message": "No rooms yet",
+    "description": "Empty state heading when the institution has no rooms."
+  },
+  "m16.rooms.capacity": {
+    "message": "Capacity: {value}",
+    "description": "Room seating capacity line. {value} is a formatted number or em dash."
+  },
+  "m16.rooms.error": {
+    "message": "Rooms and bell schedules could not be loaded.",
+    "description": "Error heading when loading rooms or bell schedules fails."
+  },
+  "m16.roomKind.classroom": {
+    "message": "Classroom",
+    "description": "Room kind badge: standard classroom."
+  },
+  "m16.roomKind.lab": {
+    "message": "Lab",
+    "description": "Room kind badge: science or computing laboratory."
+  },
+  "m16.roomKind.hall": {
+    "message": "Hall",
+    "description": "Room kind badge: assembly, lecture or activity hall."
+  },
+  "m16.roomKind.library": {
+    "message": "Library",
+    "description": "Room kind badge: library space."
+  },
+  "m16.roomKind.sports": {
+    "message": "Sports",
+    "description": "Room kind badge: sports facility or field."
+  },
+  "m16.roomKind.online": {
+    "message": "Online",
+    "description": "Room kind badge: virtual or online room."
+  },
+  "m16.roomKind.other": {
+    "message": "Other",
+    "description": "Room kind badge: other room type."
+  },
+  "m16.bells.title": {
+    "message": "Bell schedules",
+    "description": "Card heading listing bell schedules on the Rooms & bells tab."
+  },
+  "m16.bells.empty": {
+    "message": "No bell schedules yet",
+    "description": "Empty state heading when the institution has no bell schedules."
+  },
+  "m16.bells.break": {
+    "message": "Break",
+    "description": "Badge marking a break period in a bell schedule."
+  },
+  "m16.load.title": {
+    "message": "Teacher load",
+    "description": "Card heading listing weekly teaching load per staff member."
+  },
+  "m16.load.empty": {
+    "message": "No teacher load recorded yet",
+    "description": "Empty state heading when no teacher load rows exist."
+  },
+  "m16.load.error": {
+    "message": "Teacher load could not be loaded.",
+    "description": "Error heading when loading teacher load fails."
+  },
+  "m16.load.staff": {
+    "message": "Staff member {number}",
+    "description": "Fallback label for a staff row when the viewer cannot resolve the person's name. {number} is the 1-based row number."
+  },
+  "m16.load.periods": {
+    "message": "{count, plural, one {# period / week} other {# periods / week}}",
+    "description": "Weekly period count for one teacher. {count} is a number."
+  },
+  "m16.load.minutes": {
+    "message": "{count} min / week",
+    "description": "Weekly teaching minutes for one teacher. {count} is a formatted number."
+  },
+  "m16.load.maxPeriods": {
+    "message": "Max: {max} / week",
+    "description": "Maximum weekly period limit for a teacher. {max} is a formatted number."
+  },
+  "m16.load.noLimit": {
+    "message": "No limit",
+    "description": "Shown when a teacher has no configured maximum weekly period limit."
+  },
+  "m16.load.overloaded": {
+    "message": "Overloaded",
+    "description": "Warning badge when a teacher's weekly periods exceed their maximum limit."
+  },
+  "m16.addDialog.title": {
+    "message": "Add timetable slot",
+    "description": "Dialog title for adding a new timetable slot."
+  },
+  "m16.addDialog.description": {
+    "message": "Schedule a subject offering into the weekly timetable. Room, teacher and class clashes are checked automatically.",
+    "description": "Dialog description explaining automatic clash detection."
+  },
+  "m16.addDialog.offering": {
+    "message": "Subject offering",
+    "description": "Select label for choosing a subject offering in the add slot dialog."
+  },
+  "m16.addDialog.weekday": {
+    "message": "Weekday",
+    "description": "Select label for choosing the ISO day of the week in the add slot dialog."
+  },
+  "m16.addDialog.start": {
+    "message": "Start time",
+    "description": "Input label for the slot start time (HH:MM)."
+  },
+  "m16.addDialog.end": {
+    "message": "End time",
+    "description": "Input label for the slot end time (HH:MM)."
+  },
+  "m16.addDialog.room": {
+    "message": "Room",
+    "description": "Select label for choosing an optional room in the add slot dialog."
+  },
+  "m16.addDialog.teachers": {
+    "message": "Teachers",
+    "description": "Fieldset legend for choosing one or more staff profiles assigned to the slot."
+  },
+  "m16.addDialog.teachersEmpty": {
+    "message": "No staff profiles available.",
+    "description": "Helper text shown when no staff profiles can be chosen for the slot."
+  },
+  "m16.addDialog.effectiveFrom": {
+    "message": "Effective from",
+    "description": "Date input label for when the timetable slot takes effect."
+  },
+  "m16.addDialog.submit": {
+    "message": "Add slot",
+    "description": "Submit button inside the add timetable slot dialog."
+  },
+  "m16.addDialog.created": {
+    "message": "Timetable slot added.",
+    "description": "Success toast shown after creating a timetable slot."
+  },
+  "m16.addDialog.timeInvalid": {
+    "message": "Enter a valid time (HH:MM).",
+    "description": "Field validation error for an invalid start or end time."
+  },
+  "m16.addDialog.endBeforeStart": {
+    "message": "End time must be after start time.",
+    "description": "Field validation error when end time is not after start time."
+  },
+  "m16.addDialog.dateInvalid": {
+    "message": "Enter a valid date (YYYY-MM-DD).",
+    "description": "Field validation error when effective from date is invalid."
+  },
+  "m16.addDialog.invalidOffering": {
+    "message": "The selected subject offering is not valid for this institution.",
+    "description": "Server validation error when the offering does not belong to the tenant."
+  },
+  "m16.addDialog.invalidRoom": {
+    "message": "The selected room is not valid for this institution.",
+    "description": "Server validation error when the room does not belong to the tenant."
+  },
+  "m16.addDialog.invalidStaff": {
+    "message": "One or more selected teachers are not valid for this institution.",
+    "description": "Server validation error when a selected staff profile is not valid."
+  },
+  "m16.addDialog.invalidRequest": {
+    "message": "The timetable slot could not be added. Check your entries and try again.",
+    "description": "Form-level error when the server rejects the timetable slot request."
+  },
+  "m16.addDialog.roomClash": {
+    "message": "This room is already booked at this day and time.",
+    "description": "Conflict error on the room field when another slot already uses the room."
+  },
+  "m16.addDialog.teacherClash": {
+    "message": "A selected teacher is already scheduled at this day and time.",
+    "description": "Conflict error on the teachers field when a teacher is already scheduled."
+  },
+  "m16.addDialog.classClash": {
+    "message": "This class group already has a slot at this day and time.",
+    "description": "Conflict error on the subject offering field when the class group already has a slot."
+  },
+  "m16.addDialog.conflict": {
+    "message": "This slot clashes with an existing timetable slot.",
+    "description": "Fallback conflict error when the server reports a clash without a specific field."
+  },
+  "m16.addDialog.saveFailed": {
+    "message": "The timetable slot could not be saved. Try again.",
+    "description": "Generic error shown when saving a timetable slot fails unexpectedly."
+  },
   "m16.permission.timetableRead": {
     "message": "View timetables",
     "description": "Permission description: View rooms, bell schedules and timetable slots. Staff can also view teacher load."
