@@ -468,6 +468,10 @@
     "valid": true
   },
   {
+    "text": "Accessibility",
+    "valid": true
+  },
+  {
     "text": "Account invitation",
     "valid": true
   },
@@ -536,6 +540,10 @@
     "valid": true
   },
   {
+    "text": "Additional details",
+    "valid": true
+  },
+  {
     "text": "Address line 1",
     "valid": true
   },
@@ -545,6 +553,14 @@
   },
   {
     "text": "Administrator",
+    "valid": true
+  },
+  {
+    "text": "Admission date",
+    "valid": true
+  },
+  {
+    "text": "Adult sibling",
     "valid": true
   },
   {
@@ -572,11 +588,19 @@
     "valid": true
   },
   {
+    "text": "Allergy",
+    "valid": true
+  },
+  {
     "text": "Allow AI for safeguarding",
     "valid": true
   },
   {
     "text": "Allowed",
+    "valid": true
+  },
+  {
+    "text": "Alumni",
     "valid": true
   },
   {
@@ -756,7 +780,19 @@
     "valid": true
   },
   {
+    "text": "Authorised pickups",
+    "valid": true
+  },
+  {
+    "text": "Authorised pickups could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Back",
+    "valid": true
+  },
+  {
+    "text": "Back to learners",
     "valid": true
   },
   {
@@ -780,6 +816,10 @@
     "valid": true
   },
   {
+    "text": "Birth certificate",
+    "valid": true
+  },
+  {
     "text": "Block",
     "valid": true
   },
@@ -793,6 +833,10 @@
   },
   {
     "text": "Brand assets",
+    "valid": true
+  },
+  {
+    "text": "Browse learner records and open a profile for enrolments, documents and family links.",
     "valid": true
   },
   {
@@ -1000,6 +1044,10 @@
     "valid": true
   },
   {
+    "text": "Condition",
+    "valid": true
+  },
+  {
     "text": "Conflict resolved.",
     "valid": true
   },
@@ -1021,6 +1069,10 @@
   },
   {
     "text": "Contact",
+    "valid": true
+  },
+  {
+    "text": "Contact priority {priority}",
     "valid": true
   },
   {
@@ -1101,6 +1153,14 @@
   },
   {
     "text": "Course",
+    "valid": true
+  },
+  {
+    "text": "Court order note",
+    "valid": true
+  },
+  {
+    "text": "Court restricted",
     "valid": true
   },
   {
@@ -1193,6 +1253,10 @@
   },
   {
     "text": "Date",
+    "valid": true
+  },
+  {
+    "text": "Date of birth",
     "valid": true
   },
   {
@@ -1292,6 +1356,10 @@
     "valid": true
   },
   {
+    "text": "Dietary",
+    "valid": true
+  },
+  {
     "text": "Digital signature",
     "valid": true
   },
@@ -1321,6 +1389,14 @@
   },
   {
     "text": "Display calendar",
+    "valid": true
+  },
+  {
+    "text": "Documents",
+    "valid": true
+  },
+  {
+    "text": "Documents could not be loaded.",
     "valid": true
   },
   {
@@ -1460,6 +1536,18 @@
     "valid": true
   },
   {
+    "text": "Enrolled",
+    "valid": true
+  },
+  {
+    "text": "Enrolments",
+    "valid": true
+  },
+  {
+    "text": "Enrolments could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Enter a name up to 200 characters.",
     "valid": true
   },
@@ -1560,7 +1648,23 @@
     "valid": true
   },
   {
+    "text": "Families",
+    "valid": true
+  },
+  {
+    "text": "Families could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Family details are not available for this learner.",
+    "valid": true
+  },
+  {
     "text": "Fast",
+    "valid": true
+  },
+  {
+    "text": "Father",
     "valid": true
   },
   {
@@ -1604,6 +1708,10 @@
     "valid": true
   },
   {
+    "text": "Foster carer",
+    "valid": true
+  },
+  {
     "text": "Friday",
     "valid": true
   },
@@ -1613,6 +1721,10 @@
   },
   {
     "text": "From an offline bundle",
+    "valid": true
+  },
+  {
+    "text": "From {date}",
     "valid": true
   },
   {
@@ -1644,6 +1756,14 @@
     "valid": true
   },
   {
+    "text": "Graduated",
+    "valid": true
+  },
+  {
+    "text": "Grandparent",
+    "valid": true
+  },
+  {
     "text": "Granted",
     "valid": true
   },
@@ -1672,6 +1792,14 @@
     "valid": true
   },
   {
+    "text": "Guardians",
+    "valid": true
+  },
+  {
+    "text": "Guardians could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Handle data requests",
     "valid": true
   },
@@ -1681,6 +1809,10 @@
   },
   {
     "text": "Health fields",
+    "valid": true
+  },
+  {
+    "text": "Health flags",
     "valid": true
   },
   {
@@ -1740,7 +1872,23 @@
     "valid": true
   },
   {
+    "text": "Home address",
+    "valid": true
+  },
+  {
     "text": "Hours",
+    "valid": true
+  },
+  {
+    "text": "Households",
+    "valid": true
+  },
+  {
+    "text": "Households you can view will appear here.",
+    "valid": true
+  },
+  {
+    "text": "Households, guardians, pickup rights and authorised pickups.",
     "valid": true
   },
   {
@@ -1753,6 +1901,10 @@
   },
   {
     "text": "ID document fields",
+    "valid": true
+  },
+  {
+    "text": "ID proof",
     "valid": true
   },
   {
@@ -2024,11 +2176,35 @@
     "valid": true
   },
   {
+    "text": "Learner not found",
+    "valid": true
+  },
+  {
+    "text": "Learner number",
+    "valid": true
+  },
+  {
+    "text": "Learner records you can view will appear here.",
+    "valid": true
+  },
+  {
     "text": "Learners",
     "valid": true
   },
   {
+    "text": "Learners could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Lecturer",
+    "valid": true
+  },
+  {
+    "text": "Left on",
+    "valid": true
+  },
+  {
+    "text": "Legal guardian",
     "valid": true
   },
   {
@@ -2057,6 +2233,10 @@
   },
   {
     "text": "Live preview",
+    "valid": true
+  },
+  {
+    "text": "Lives with learner",
     "valid": true
   },
   {
@@ -2192,6 +2372,18 @@
     "valid": true
   },
   {
+    "text": "Medical",
+    "valid": true
+  },
+  {
+    "text": "Medication",
+    "valid": true
+  },
+  {
+    "text": "Members",
+    "valid": true
+  },
+  {
     "text": "Merged",
     "valid": true
   },
@@ -2253,6 +2445,10 @@
   },
   {
     "text": "Morning session",
+    "valid": true
+  },
+  {
+    "text": "Mother",
     "valid": true
   },
   {
@@ -2424,6 +2620,10 @@
     "valid": true
   },
   {
+    "text": "No",
+    "valid": true
+  },
+  {
     "text": "No academic calendar found for this institution.",
     "valid": true
   },
@@ -2441,6 +2641,10 @@
   },
   {
     "text": "No audit events match.",
+    "valid": true
+  },
+  {
+    "text": "No authorised pickups recorded.",
     "valid": true
   },
   {
@@ -2484,7 +2688,15 @@
     "valid": true
   },
   {
+    "text": "No documents recorded.",
+    "valid": true
+  },
+  {
     "text": "No emergency access has happened.",
+    "valid": true
+  },
+  {
+    "text": "No enrolments recorded.",
     "valid": true
   },
   {
@@ -2492,7 +2704,15 @@
     "valid": true
   },
   {
+    "text": "No guardians recorded.",
+    "valid": true
+  },
+  {
     "text": "No holidays added for this year.",
+    "valid": true
+  },
+  {
+    "text": "No households yet",
     "valid": true
   },
   {
@@ -2509,6 +2729,14 @@
   },
   {
     "text": "No keys.",
+    "valid": true
+  },
+  {
+    "text": "No learners match",
+    "valid": true
+  },
+  {
+    "text": "No learners yet",
     "valid": true
   },
   {
@@ -2664,6 +2892,10 @@
     "valid": true
   },
   {
+    "text": "On leave",
+    "valid": true
+  },
+  {
     "text": "Online academy",
     "valid": true
   },
@@ -2713,6 +2945,10 @@
   },
   {
     "text": "Organisation hierarchy",
+    "valid": true
+  },
+  {
+    "text": "Other",
     "valid": true
   },
   {
@@ -2800,6 +3036,10 @@
     "valid": true
   },
   {
+    "text": "Parental responsibility",
+    "valid": true
+  },
+  {
     "text": "Passkey",
     "valid": true
   },
@@ -2832,11 +3072,19 @@
     "valid": true
   },
   {
+    "text": "Phone",
+    "valid": true
+  },
+  {
     "text": "Phone notification",
     "valid": true
   },
   {
     "text": "Phone number changed on both sides",
+    "valid": true
+  },
+  {
+    "text": "Photo",
     "valid": true
   },
   {
@@ -2849,6 +3097,14 @@
   },
   {
     "text": "Pick colour for {token}",
+    "valid": true
+  },
+  {
+    "text": "Pickup allowed",
+    "valid": true
+  },
+  {
+    "text": "Pickup not allowed",
     "valid": true
   },
   {
@@ -2901,6 +3157,10 @@
   },
   {
     "text": "Previous page",
+    "valid": true
+  },
+  {
+    "text": "Previous report",
     "valid": true
   },
   {
@@ -3176,6 +3436,10 @@
     "valid": true
   },
   {
+    "text": "Roll number {roll}",
+    "valid": true
+  },
+  {
     "text": "Rolled back to version {version, number}.",
     "valid": true
   },
@@ -3252,11 +3516,23 @@
     "valid": true
   },
   {
+    "text": "Search by name or learner number…",
+    "valid": true
+  },
+  {
     "text": "Search interface texts, customise wording per language, review history, and import or export overrides.",
     "valid": true
   },
   {
     "text": "Search keys or text",
+    "valid": true
+  },
+  {
+    "text": "Search learners",
+    "valid": true
+  },
+  {
+    "text": "Search learners and view profiles, enrolments, documents and guardians.",
     "valid": true
   },
   {
@@ -3477,6 +3753,10 @@
   },
   {
     "text": "Status",
+    "valid": true
+  },
+  {
+    "text": "Step-parent",
     "valid": true
   },
   {
@@ -3728,6 +4008,10 @@
     "valid": true
   },
   {
+    "text": "The learner profile could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "The licence is checked on this server, without calling us.",
     "valid": true
   },
@@ -3816,6 +4100,10 @@
     "valid": true
   },
   {
+    "text": "This learner record does not exist or is outside your access.",
+    "valid": true
+  },
+  {
     "text": "This page works only online. Connect to the internet and try again.",
     "valid": true
   },
@@ -3888,6 +4176,14 @@
     "valid": true
   },
   {
+    "text": "Transfer certificate",
+    "valid": true
+  },
+  {
+    "text": "Transferred out",
+    "valid": true
+  },
+  {
     "text": "Trial",
     "valid": true
   },
@@ -3905,6 +4201,10 @@
   },
   {
     "text": "Try again",
+    "valid": true
+  },
+  {
+    "text": "Try another name or learner number.",
     "valid": true
   },
   {
@@ -3960,6 +4260,10 @@
     "valid": true
   },
   {
+    "text": "Unverified",
+    "valid": true
+  },
+  {
     "text": "Update on-brand ({onBrand}) and brand-primary-text ({brandText}) so buttons and links pass contrast checks.",
     "valid": true
   },
@@ -3969,6 +4273,10 @@
   },
   {
     "text": "Upload a JSON file or paste JSON below, preview the diff, then apply valid changes to {locale}.",
+    "valid": true
+  },
+  {
+    "text": "Uploaded {date}",
     "valid": true
   },
   {
@@ -4032,7 +4340,19 @@
     "valid": true
   },
   {
+    "text": "Valid from {from}",
+    "valid": true
+  },
+  {
+    "text": "Valid {from} – {to}",
+    "valid": true
+  },
+  {
     "text": "Value must be a text string",
+    "valid": true
+  },
+  {
+    "text": "Verified",
     "valid": true
   },
   {
@@ -4089,6 +4409,10 @@
   },
   {
     "text": "View forms, fields and workflows",
+    "valid": true
+  },
+  {
+    "text": "View households, family members, guardian pickup rights and authorised pickups.",
     "valid": true
   },
   {
@@ -4213,6 +4537,10 @@
   },
   {
     "text": "Year starts on",
+    "valid": true
+  },
+  {
+    "text": "Yes",
     "valid": true
   },
   {
@@ -4676,6 +5004,10 @@
     "valid": true
   },
   {
+    "text": "{date} को अपलोड",
+    "valid": true
+  },
+  {
     "text": "{date} को बदली गई",
     "valid": true
   },
@@ -4685,6 +5017,14 @@
   },
   {
     "text": "{date} तक सहायता",
+    "valid": true
+  },
+  {
+    "text": "{date} से",
+    "valid": true
+  },
+  {
+    "text": "{date} அன்று பதிவேற்றப்பட்டது",
     "valid": true
   },
   {
@@ -4701,6 +5041,10 @@
   },
   {
     "text": "{date} இன் மறையாக்கப்பட்ட காப்புப்பிரதி · {size}",
+    "valid": true
+  },
+  {
+    "text": "{date} முதல்",
     "valid": true
   },
   {
@@ -4752,7 +5096,23 @@
     "valid": true
   },
   {
+    "text": "{from} से मान्य",
+    "valid": true
+  },
+  {
+    "text": "{from} முதல் செல்லும்",
+    "valid": true
+  },
+  {
     "text": "{from} – {to}",
+    "valid": true
+  },
+  {
+    "text": "{from} – {to} तक मान्य",
+    "valid": true
+  },
+  {
+    "text": "{from} – {to} வரை செல்லும்",
     "valid": true
   },
   {
@@ -5016,7 +5376,19 @@
     "valid": true
   },
   {
+    "text": "अतिरिक्त विवरण",
+    "valid": true
+  },
+  {
     "text": "अधिकतम 200 अक्षरों का नाम दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "अधिकृत व्यक्ति",
+    "valid": true
+  },
+  {
+    "text": "अधिकृत व्यक्ति लोड नहीं हो सके।",
     "valid": true
   },
   {
@@ -5060,6 +5432,10 @@
     "valid": true
   },
   {
+    "text": "अन्य",
+    "valid": true
+  },
+  {
     "text": "अपडेट",
     "valid": true
   },
@@ -5100,6 +5476,10 @@
     "valid": true
   },
   {
+    "text": "अभिभावक लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
     "text": "अभी कोई अनुपालन पैक लागू नहीं है।",
     "valid": true
   },
@@ -5113,6 +5493,10 @@
   },
   {
     "text": "अभी कोई टेम्पलेट नहीं।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई परिवार नहीं",
     "valid": true
   },
   {
@@ -5133,6 +5517,10 @@
   },
   {
     "text": "अभी कोई विषय नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई शिक्षार्थी नहीं",
     "valid": true
   },
   {
@@ -5168,6 +5556,10 @@
     "valid": true
   },
   {
+    "text": "अवकाश पर",
+    "valid": true
+  },
+  {
     "text": "अवधि",
     "valid": true
   },
@@ -5181,6 +5573,10 @@
   },
   {
     "text": "अवधि जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "असत्यापित",
     "valid": true
   },
   {
@@ -5332,6 +5728,14 @@
     "valid": true
   },
   {
+    "text": "आपके लिए उपलब्ध परिवार यहाँ दिखाई देंगे।",
+    "valid": true
+  },
+  {
+    "text": "आपके लिए उपलब्ध शिक्षार्थियों के रिकॉर्ड यहाँ दिखाई देंगे।",
+    "valid": true
+  },
+  {
     "text": "आपके व्यवस्थापक इसे AI सेटिंग में चालू कर सकते हैं। बाकी सब सामान्य रूप से काम करता है।",
     "valid": true
   },
@@ -5385,6 +5789,10 @@
   },
   {
     "text": "आवश्यक नहीं",
+    "valid": true
+  },
+  {
+    "text": "आहार संबंधी",
     "valid": true
   },
   {
@@ -5452,6 +5860,10 @@
     "valid": true
   },
   {
+    "text": "इस शिक्षार्थी के पारिवारिक विवरण उपलब्ध नहीं हैं।",
+    "valid": true
+  },
+  {
     "text": "इस शैक्षणिक वर्ष के लिए इस कोड का कक्षा समूह पहले से मौजूद है।",
     "valid": true
   },
@@ -5513,6 +5925,10 @@
   },
   {
     "text": "उत्तर",
+    "valid": true
+  },
+  {
+    "text": "उत्तीर्ण",
     "valid": true
   },
   {
@@ -5621,6 +6037,10 @@
   },
   {
     "text": "एन्क्रिप्शन कुंजियाँ",
+    "valid": true
+  },
+  {
+    "text": "एलर्जी",
     "valid": true
   },
   {
@@ -5784,6 +6204,10 @@
     "valid": true
   },
   {
+    "text": "कानूनी अभिभावक",
+    "valid": true
+  },
+  {
     "text": "कानूनी आदेश",
     "valid": true
   },
@@ -5928,6 +6352,14 @@
     "valid": true
   },
   {
+    "text": "कोई अधिकृत व्यक्ति दर्ज नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "कोई अभिभावक दर्ज नहीं है।",
+    "valid": true
+  },
+  {
     "text": "कोई अवधि कॉन्फ़िगर नहीं (निरंतर कैलेंडर)।",
     "valid": true
   },
@@ -5968,7 +6400,19 @@
     "valid": true
   },
   {
+    "text": "कोई दस्तावेज़ दर्ज नहीं है।",
+    "valid": true
+  },
+  {
     "text": "कोई दूसरा खोज शब्द आज़माएँ या केवल-ओवरराइड फ़िल्टर बंद करें।",
+    "valid": true
+  },
+  {
+    "text": "कोई दूसरा नाम या शिक्षार्थी संख्या आज़माएँ।",
+    "valid": true
+  },
+  {
+    "text": "कोई नामांकन दर्ज नहीं है।",
     "valid": true
   },
   {
@@ -6005,6 +6449,10 @@
   },
   {
     "text": "कोई विशिष्ट परिसर नहीं",
+    "valid": true
+  },
+  {
+    "text": "कोई शिक्षार्थी मेल नहीं खाता",
     "valid": true
   },
   {
@@ -6120,11 +6568,19 @@
     "valid": true
   },
   {
+    "text": "घर का पता",
+    "valid": true
+  },
+  {
     "text": "चार्ट",
     "valid": true
   },
   {
     "text": "चालू",
+    "valid": true
+  },
+  {
+    "text": "चिकित्सा दस्तावेज़",
     "valid": true
   },
   {
@@ -6197,6 +6653,18 @@
   },
   {
     "text": "छेड़छाड़-प्रकट ऑडिट लॉग, सहमति रिकॉर्ड, डेटा अनुरोध और लागू गोपनीयता नियम देखें।",
+    "valid": true
+  },
+  {
+    "text": "छोड़ने की तिथि",
+    "valid": true
+  },
+  {
+    "text": "जन्म तिथि",
+    "valid": true
+  },
+  {
+    "text": "जन्म प्रमाणपत्र",
     "valid": true
   },
   {
@@ -6484,7 +6952,23 @@
     "valid": true
   },
   {
+    "text": "दवा",
+    "valid": true
+  },
+  {
+    "text": "दस्तावेज़",
+    "valid": true
+  },
+  {
     "text": "दस्तावेज़ जारी करें",
+    "valid": true
+  },
+  {
+    "text": "दस्तावेज़ लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "दादा-दादी / नाना-नानी",
     "valid": true
   },
   {
@@ -6560,6 +7044,10 @@
     "valid": true
   },
   {
+    "text": "नहीं",
+    "valid": true
+  },
+  {
     "text": "नहीं भेजा गया",
     "valid": true
   },
@@ -6572,7 +7060,27 @@
     "valid": true
   },
   {
+    "text": "नाम कटवाया",
+    "valid": true
+  },
+  {
     "text": "नाम दोनों ओर बदला गया",
+    "valid": true
+  },
+  {
+    "text": "नाम या शिक्षार्थी संख्या से खोजें…",
+    "valid": true
+  },
+  {
+    "text": "नामांकन",
+    "valid": true
+  },
+  {
+    "text": "नामांकन लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "नामांकित",
     "valid": true
   },
   {
@@ -6612,6 +7120,14 @@
     "valid": true
   },
   {
+    "text": "न्यायालय आदेश टिप्पणी",
+    "valid": true
+  },
+  {
+    "text": "न्यायालय द्वारा प्रतिबंधित",
+    "valid": true
+  },
+  {
     "text": "पढ़ना और संपादित करना",
     "valid": true
   },
@@ -6625,6 +7141,22 @@
   },
   {
     "text": "परियोजना",
+    "valid": true
+  },
+  {
+    "text": "परिवार",
+    "valid": true
+  },
+  {
+    "text": "परिवार लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "परिवार, अभिभावक, ले जाने के अधिकार और अधिकृत व्यक्ति।",
+    "valid": true
+  },
+  {
+    "text": "परिवार, सदस्य, अभिभावकों के ले जाने के अधिकार और अधिकृत व्यक्ति देखें।",
     "valid": true
   },
   {
@@ -6657,6 +7189,10 @@
   },
   {
     "text": "पहचान दस्तावेज़ फ़ील्ड",
+    "valid": true
+  },
+  {
+    "text": "पहचान पत्र",
     "valid": true
   },
   {
@@ -6712,6 +7248,10 @@
     "valid": true
   },
   {
+    "text": "पालक देखभालकर्ता",
+    "valid": true
+  },
+  {
     "text": "पासकी",
     "valid": true
   },
@@ -6725,6 +7265,14 @@
   },
   {
     "text": "पिछला पृष्ठ",
+    "valid": true
+  },
+  {
+    "text": "पिछली रिपोर्ट",
+    "valid": true
+  },
+  {
+    "text": "पिता",
     "valid": true
   },
   {
@@ -6745,6 +7293,14 @@
   },
   {
     "text": "पूरा नाम",
+    "valid": true
+  },
+  {
+    "text": "पूर्ण",
+    "valid": true
+  },
+  {
+    "text": "पूर्व छात्र",
     "valid": true
   },
   {
@@ -6852,6 +7408,10 @@
     "valid": true
   },
   {
+    "text": "प्रवेश तिथि",
+    "valid": true
+  },
+  {
     "text": "प्रवेश प्रबंधित करें",
     "valid": true
   },
@@ -6948,11 +7508,19 @@
     "valid": true
   },
   {
+    "text": "फ़ोटो",
+    "valid": true
+  },
+  {
     "text": "फ़ोटो और मीडिया",
     "valid": true
   },
   {
     "text": "फ़ोटो और मीडिया के लिए अभिभावक की सहमति",
+    "valid": true
+  },
+  {
+    "text": "फ़ोन",
     "valid": true
   },
   {
@@ -7228,7 +7796,15 @@
     "valid": true
   },
   {
+    "text": "माता",
+    "valid": true
+  },
+  {
     "text": "माता-पिता",
+    "valid": true
+  },
+  {
+    "text": "माता-पिता का दायित्व",
     "valid": true
   },
   {
@@ -7376,6 +7952,10 @@
     "valid": true
   },
   {
+    "text": "यह शिक्षार्थी रिकॉर्ड मौजूद नहीं है या आपकी पहुँच से बाहर है।",
+    "valid": true
+  },
+  {
     "text": "यह संस्थान फ़्रीज़ किया गया है",
     "valid": true
   },
@@ -7456,6 +8036,10 @@
     "valid": true
   },
   {
+    "text": "रोल नंबर {roll}",
+    "valid": true
+  },
+  {
     "text": "लंबित",
     "valid": true
   },
@@ -7500,6 +8084,14 @@
     "valid": true
   },
   {
+    "text": "ले जाने की अनुमति",
+    "valid": true
+  },
+  {
+    "text": "ले जाने की अनुमति नहीं",
+    "valid": true
+  },
+  {
     "text": "लेआउट घनत्व",
     "valid": true
   },
@@ -7529,6 +8121,10 @@
   },
   {
     "text": "लोड हो रहा है…",
+    "valid": true
+  },
+  {
+    "text": "वयस्क भाई-बहन",
     "valid": true
   },
   {
@@ -7688,11 +8284,47 @@
     "valid": true
   },
   {
+    "text": "शिक्षार्थियों के रिकॉर्ड देखें और नामांकन, दस्तावेज़ व पारिवारिक संबंधों के लिए प्रोफ़ाइल खोलें।",
+    "valid": true
+  },
+  {
     "text": "शिक्षार्थियों के रिकॉर्ड प्रबंधित करें",
     "valid": true
   },
   {
+    "text": "शिक्षार्थियों को खोजें और प्रोफ़ाइल, नामांकन, दस्तावेज़ व अभिभावक देखें।",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थियों पर वापस जाएँ",
+    "valid": true
+  },
+  {
     "text": "शिक्षार्थी",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी के साथ रहते हैं",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी खोजें",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी नहीं मिला",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी प्रोफ़ाइल लोड नहीं हो सकी।",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी संख्या",
     "valid": true
   },
   {
@@ -7812,6 +8444,10 @@
     "valid": true
   },
   {
+    "text": "संपर्क प्राथमिकता {priority}",
+    "valid": true
+  },
+  {
     "text": "संपादन की भाषा",
     "valid": true
   },
@@ -7924,11 +8560,19 @@
     "valid": true
   },
   {
+    "text": "सत्यापित",
+    "valid": true
+  },
+  {
     "text": "सत्र",
     "valid": true
   },
   {
     "text": "सत्र समाप्त किया गया।",
+    "valid": true
+  },
+  {
+    "text": "सदस्य",
     "valid": true
   },
   {
@@ -8152,6 +8796,10 @@
     "valid": true
   },
   {
+    "text": "सुगम्यता",
+    "valid": true
+  },
+  {
     "text": "सुझाई गई ब्रांड जोड़ी ({mode})",
     "valid": true
   },
@@ -8236,6 +8884,10 @@
     "valid": true
   },
   {
+    "text": "सौतेले माता-पिता",
+    "valid": true
+  },
+  {
     "text": "स्टार्टर",
     "valid": true
   },
@@ -8249,6 +8901,14 @@
   },
   {
     "text": "स्टोरेज",
+    "valid": true
+  },
+  {
+    "text": "स्थानांतरण प्रमाणपत्र",
+    "valid": true
+  },
+  {
+    "text": "स्थानांतरित",
     "valid": true
   },
   {
@@ -8289,6 +8949,14 @@
   },
   {
     "text": "स्वास्थ्य रिपोर्ट बंद हैं। NexusCampus को कुछ नहीं भेजा जाता।",
+    "valid": true
+  },
+  {
+    "text": "स्वास्थ्य संकेत",
+    "valid": true
+  },
+  {
+    "text": "स्वास्थ्य स्थिति",
     "valid": true
   },
   {
@@ -8336,6 +9004,10 @@
     "valid": true
   },
   {
+    "text": "हाँ",
+    "valid": true
+  },
+  {
     "text": "हाँ, यही डिवाइस",
     "valid": true
   },
@@ -8364,6 +9036,18 @@
     "valid": true
   },
   {
+    "text": "அங்கீகரிக்கப்பட்டவர்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அங்கீகரிக்கப்பட்டவர்கள்",
+    "valid": true
+  },
+  {
+    "text": "அங்கீகரிக்கப்பட்டவர்கள் எவரும் பதிவு செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
     "text": "அஞ்சல் குறியீடு",
     "valid": true
   },
@@ -8389,6 +9073,10 @@
   },
   {
     "text": "அடையாள ஆவணப் புலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "அடையாளச் சான்று",
     "valid": true
   },
   {
@@ -8429,6 +9117,10 @@
   },
   {
     "text": "அணுகல் திரும்பப் பெறப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "அணுகல்தன்மை",
     "valid": true
   },
   {
@@ -8584,6 +9276,14 @@
     "valid": true
   },
   {
+    "text": "அழைத்துச் செல்ல அனுமதி",
+    "valid": true
+  },
+  {
+    "text": "அழைத்துச் செல்ல அனுமதி இல்லை",
+    "valid": true
+  },
+  {
     "text": "அழைப்பு அனுப்பப்பட்டது.",
     "valid": true
   },
@@ -8676,6 +9376,10 @@
     "valid": true
   },
   {
+    "text": "ஆம்",
+    "valid": true
+  },
+  {
     "text": "ஆம், இந்தச் சாதனம்",
     "valid": true
   },
@@ -8696,7 +9400,19 @@
     "valid": true
   },
   {
+    "text": "ஆவணங்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "ஆவணங்களை வழங்கு",
+    "valid": true
+  },
+  {
+    "text": "ஆவணங்கள்",
+    "valid": true
+  },
+  {
+    "text": "ஆவணங்கள் எதுவும் பதிவு செய்யப்படவில்லை.",
     "valid": true
   },
   {
@@ -8717,6 +9433,10 @@
   },
   {
     "text": "இடஒதுக்கிகள், பன்மை போன்ற ICU செய்தி தொடரியலை ஆதரிக்கிறது.",
+    "valid": true
+  },
+  {
+    "text": "இடமாற்றம் ஆனார்",
     "valid": true
   },
   {
@@ -8816,6 +9536,14 @@
     "valid": true
   },
   {
+    "text": "இந்தக் கற்பவருக்கான குடும்ப விவரங்கள் கிடைக்கவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கற்பவர் பதிவு இல்லை அல்லது உங்கள் அணுகலுக்கு வெளியே உள்ளது.",
+    "valid": true
+  },
+  {
     "text": "இந்தக் கல்வியாண்டுக்கு இந்தக் குறியீட்டுடன் வகுப்புக் குழு ஏற்கனவே உள்ளது.",
     "valid": true
   },
@@ -8912,7 +9640,15 @@
     "valid": true
   },
   {
+    "text": "இன்னும் கற்பவர்கள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "இன்னும் காப்புப்பிரதி இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் குடும்பங்கள் இல்லை",
     "valid": true
   },
   {
@@ -9017,6 +9753,10 @@
   },
   {
     "text": "இலக்கு",
+    "valid": true
+  },
+  {
+    "text": "இல்லை",
     "valid": true
   },
   {
@@ -9136,7 +9876,15 @@
     "valid": true
   },
   {
+    "text": "உடல்நலக் குறிப்புகள்",
+    "valid": true
+  },
+  {
     "text": "உணர்திறன் மிக்கது",
+    "valid": true
+  },
+  {
+    "text": "உணவு முறை",
     "valid": true
   },
   {
@@ -9205,6 +9953,10 @@
   },
   {
     "text": "உரை மேலெழுதல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "உறுப்பினர்கள்",
     "valid": true
   },
   {
@@ -9400,6 +10152,10 @@
     "valid": true
   },
   {
+    "text": "ஒவ்வாமை",
+    "valid": true
+  },
+  {
     "text": "ஒவ்வொரு காப்புப்பிரதியும் எழுதப்படும் முன் உங்கள் விசைகளால் மறையாக்கப்படுகிறது.",
     "valid": true
   },
@@ -9488,7 +10244,23 @@
     "valid": true
   },
   {
+    "text": "கற்பவருடன் வசிக்கிறார்",
+    "valid": true
+  },
+  {
     "text": "கற்பவர்",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர் எண்",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர் கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர் சுயவிவரத்தை ஏற்ற முடியவில்லை.",
     "valid": true
   },
   {
@@ -9500,7 +10272,27 @@
     "valid": true
   },
   {
+    "text": "கற்பவர் பதிவுகளைப் பார்த்து, சேர்க்கைகள், ஆவணங்கள் மற்றும் குடும்ப இணைப்புகளுக்குச் சுயவிவரத்தைத் திறக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "கற்பவர்களின் கட்டுப்படுத்தப்பட்ட தரவைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர்களுக்குத் திரும்பு",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர்களைத் தேடி சுயவிவரம், சேர்க்கைகள், ஆவணங்கள் மற்றும் பாதுகாவலர்களைப் பார்.",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர்களைத் தேடு",
     "valid": true
   },
   {
@@ -9636,6 +10428,22 @@
     "valid": true
   },
   {
+    "text": "குடும்பங்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "குடும்பங்கள்",
+    "valid": true
+  },
+  {
+    "text": "குடும்பங்கள், உறுப்பினர்கள், பாதுகாவலர் அழைத்துச் செல்லும் உரிமைகள் மற்றும் அங்கீகரிக்கப்பட்டவர்களைப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "குடும்பங்கள், பாதுகாவலர்கள், அழைத்துச் செல்லும் உரிமைகள் மற்றும் அங்கீகரிக்கப்பட்டவர்கள்.",
+    "valid": true
+  },
+  {
     "text": "குடும்பப் பதிவுகளை நிர்வகி",
     "valid": true
   },
@@ -9701,6 +10509,10 @@
   },
   {
     "text": "கூடுதல்",
+    "valid": true
+  },
+  {
+    "text": "கூடுதல் விவரங்கள்",
     "valid": true
   },
   {
@@ -9772,6 +10584,10 @@
     "valid": true
   },
   {
+    "text": "சட்டப்பூர்வ பாதுகாவலர்",
+    "valid": true
+  },
+  {
     "text": "சந்தைப்படுத்தல்",
     "valid": true
   },
@@ -9781,6 +10597,14 @@
   },
   {
     "text": "சமநிலையானது",
+    "valid": true
+  },
+  {
+    "text": "சரிபார்க்கப்படவில்லை",
+    "valid": true
+  },
+  {
+    "text": "சரிபார்க்கப்பட்டது",
     "valid": true
   },
   {
@@ -9984,7 +10808,27 @@
     "valid": true
   },
   {
+    "text": "சேர்க்கப்பட்டார்",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "சேர்க்கைகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைகள்",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைகள் எதுவும் பதிவு செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கைத் தேதி",
     "valid": true
   },
   {
@@ -10096,6 +10940,10 @@
     "valid": true
   },
   {
+    "text": "தந்தை",
+    "valid": true
+  },
+  {
     "text": "தனி நேர மண்டலம்",
     "valid": true
   },
@@ -10201,6 +11049,14 @@
   },
   {
     "text": "தவறான JSON. செய்திச் சாவிகளை உரையுடன் இணைக்கும் JSON பொருளை வழங்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "தாத்தா / பாட்டி",
+    "valid": true
+  },
+  {
+    "text": "தாய்",
     "valid": true
   },
   {
@@ -10428,6 +11284,14 @@
     "valid": true
   },
   {
+    "text": "தொடர்பு முன்னுரிமை {priority}",
+    "valid": true
+  },
+  {
+    "text": "தொலைபேசி",
+    "valid": true
+  },
+  {
     "text": "தொலைபேசி அறிவிப்பு",
     "valid": true
   },
@@ -10612,6 +11476,10 @@
     "valid": true
   },
   {
+    "text": "நிறைவடைந்தது",
+    "valid": true
+  },
+  {
     "text": "நிலுவையில்",
     "valid": true
   },
@@ -10668,11 +11536,27 @@
     "valid": true
   },
   {
+    "text": "நீங்கள் பார்க்கக்கூடிய கற்பவர் பதிவுகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் பார்க்கக்கூடிய குடும்பங்கள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
     "text": "நீங்கள் மட்டும் (HYOK)",
     "valid": true
   },
   {
     "text": "நீண்டகால ஆதரவு",
+    "valid": true
+  },
+  {
+    "text": "நீதிமன்ற உத்தரவுக் குறிப்பு",
+    "valid": true
+  },
+  {
+    "text": "நீதிமன்றக் கட்டுப்பாடு",
     "valid": true
   },
   {
@@ -10801,6 +11685,10 @@
   },
   {
     "text": "பட்டம்",
+    "valid": true
+  },
+  {
+    "text": "பட்டம் பெற்றார்",
     "valid": true
   },
   {
@@ -11032,6 +11920,18 @@
     "valid": true
   },
   {
+    "text": "பாதுகாவலர்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாவலர்கள்",
+    "valid": true
+  },
+  {
+    "text": "பாதுகாவலர்கள் எவரும் பதிவு செய்யப்படவில்லை.",
+    "valid": true
+  },
+  {
     "text": "பார்",
     "valid": true
   },
@@ -11060,11 +11960,23 @@
     "valid": true
   },
   {
+    "text": "பிறந்த தேதி",
+    "valid": true
+  },
+  {
+    "text": "பிறப்புச் சான்றிதழ்",
+    "valid": true
+  },
+  {
     "text": "புகைப்படங்கள் மற்றும் ஊடகத்துக்குப் பாதுகாவலர் ஒப்புதல்",
     "valid": true
   },
   {
     "text": "புகைப்படங்கள் மற்றும் ஊடகம்",
+    "valid": true
+  },
+  {
+    "text": "புகைப்படம்",
     "valid": true
   },
   {
@@ -11104,6 +12016,10 @@
     "valid": true
   },
   {
+    "text": "பெயர் அல்லது கற்பவர் எண்ணால் தேடு…",
+    "valid": true
+  },
+  {
     "text": "பெயர் இரு பக்கமும் மாற்றப்பட்டது",
     "valid": true
   },
@@ -11128,6 +12044,10 @@
     "valid": true
   },
   {
+    "text": "பெற்றோர் பொறுப்பு",
+    "valid": true
+  },
+  {
     "text": "பேட்ச்",
     "valid": true
   },
@@ -11141,6 +12061,10 @@
   },
   {
     "text": "பொருந்தும் ஒப்புதல் பதிவுகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பொருந்தும் கற்பவர்கள் இல்லை",
     "valid": true
   },
   {
@@ -11196,6 +12120,18 @@
     "valid": true
   },
   {
+    "text": "மருத்துவ ஆவணம்",
+    "valid": true
+  },
+  {
+    "text": "மருத்துவ நிலை",
+    "valid": true
+  },
+  {
+    "text": "மருந்து",
+    "valid": true
+  },
+  {
     "text": "மறு",
     "valid": true
   },
@@ -11208,7 +12144,15 @@
     "valid": true
   },
   {
+    "text": "மறுமணப் பெற்றோர்",
+    "valid": true
+  },
+  {
     "text": "மறையாக்கச் சாவிகள்",
+    "valid": true
+  },
+  {
+    "text": "மற்றவை",
     "valid": true
   },
   {
@@ -11316,6 +12260,10 @@
     "valid": true
   },
   {
+    "text": "மாற்றுச் சான்றிதழ்",
+    "valid": true
+  },
+  {
     "text": "மிக முக்கியம்",
     "valid": true
   },
@@ -11416,7 +12364,15 @@
     "valid": true
   },
   {
+    "text": "முந்தைய அறிக்கை",
+    "valid": true
+  },
+  {
     "text": "முந்தைய பக்கம்",
+    "valid": true
+  },
+  {
+    "text": "முன்னாள் மாணவர்",
     "valid": true
   },
   {
@@ -11584,6 +12540,10 @@
     "valid": true
   },
   {
+    "text": "வயது வந்த உடன்பிறப்பு",
+    "valid": true
+  },
+  {
     "text": "வரம்பற்ற கொள்ளளவு",
     "valid": true
   },
@@ -11604,6 +12564,10 @@
     "valid": true
   },
   {
+    "text": "வரிசை எண் {roll}",
+    "valid": true
+  },
+  {
     "text": "வரிசையில்",
     "valid": true
   },
@@ -11617,6 +12581,10 @@
   },
   {
     "text": "வரை",
+    "valid": true
+  },
+  {
+    "text": "வளர்ப்புப் பராமரிப்பாளர்",
     "valid": true
   },
   {
@@ -11724,6 +12692,10 @@
     "valid": true
   },
   {
+    "text": "விடுப்பில்",
+    "valid": true
+  },
+  {
     "text": "விடுப்புக் கோரிக்கைகள் மீது முடிவெடு",
     "valid": true
   },
@@ -11768,6 +12740,18 @@
     "valid": true
   },
   {
+    "text": "விலகினார்",
+    "valid": true
+  },
+  {
+    "text": "விலகிய தேதி",
+    "valid": true
+  },
+  {
+    "text": "விலகியது",
+    "valid": true
+  },
+  {
     "text": "விளக்கப்படங்கள்",
     "valid": true
   },
@@ -11777,6 +12761,10 @@
   },
   {
     "text": "விவரங்கள்",
+    "valid": true
+  },
+  {
+    "text": "வீட்டு முகவரி",
     "valid": true
   },
   {
@@ -11805,6 +12793,10 @@
   },
   {
     "text": "வேறு தேடல் சொல்லை முயலவும் அல்லது மேலெழுதியவை-மட்டும் வடிகட்டியை அணைக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "வேறு பெயர் அல்லது கற்பவர் எண்ணை முயலவும்.",
     "valid": true
   },
   {
