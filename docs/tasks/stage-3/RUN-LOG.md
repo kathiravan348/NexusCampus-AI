@@ -98,7 +98,7 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-167 | Gemini · gemini-4-neon-xhigh (screen) | 15:43 | green | done — no fixes | `0a2069c`, pushed |
 | NEX-168 | Codex · gpt-6.2-astra / high (screen) | 16:43 | red ×4 (Prettier only, then 3 type errors); reviewer fixed, green | done — fix: format, MSW listen option, `root?.["…"]` access | merge after `71b6fc4`, pushed |
 | NEX-169 | Gemini · gemini-4-neon-xhigh (screen) | 17:19 | red ×4 (type errors); reviewer fixed, green | done — fix: `scores?.set` null guard in `MarkSheet.tsx` | `5da5c24`, pushed |
-| NEX-170 | Codex · gpt-6.2-astra / high (screen) | 18:49 | running | — | — |
+| NEX-170 | Codex · gpt-6.2-astra / high (screen) | 18:49; docs-only "ready" with a question 18:58, answered, restarted 19:1x | running | — | — |
 
 Planned next: NEX-171 (M22 report cards, status moves; after NEX-170) and NEX-172 (M23 documents, revoke; after NEX-171).
 Gemini waits (18:49) — every remaining screen task shares `modules.ts` with NEX-170.
@@ -128,6 +128,10 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 
 - Builders cannot run Prettier: a build that is red on `check:format` only stays red for all 4 rounds (NEX-168).
   The reviewer runs `prettier --write` on the task's files in the builder worktree and re-checks.
+
+- A question written as plain text (not a `- ` line) is missed by `open_questions`: the build ran green checks on a
+  docs-only change and was marked ready-for-review (NEX-170). The reviewer checks the diff has code before reviewing;
+  a restart from a non-`changes-requested` branch rebuilds it fresh from `main`.
 
 ## Waiting for the Owner
 _(nothing yet)_
