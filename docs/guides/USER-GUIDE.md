@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Academic structure)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Academic structure, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -34,7 +34,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications and Academic structure show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families and Academic structure show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -140,6 +140,15 @@ Available to everyone from **Notifications** in the menu.
 - **My preferences** lets you choose how you hear from the institution — **Email**, **Text message**, **WhatsApp**, **Phone notification**, or **In the app** — and set **Quiet hours** in the institution's time zone. Channels your institution has not set up are shown but cannot be switched on. You can change preferences offline: they are saved on this device and sync when you are back online.
 - Administrators also see **Templates**: each message by event, channel and language, with an on/off switch. **Edit** opens the message: pick a **Language** or **Add a language…**, change the **Subject** (email) and **Message**, and see a **Preview with sample values**. A message with broken syntax cannot be saved.
 - **Delivery log** shows what was sent to whom, by which channel, and whether it arrived, with the reason for anything that failed or was not sent. Filter by **Status** and **Channel**.
+
+## Learners and families
+Available from **Learners** and **Families** in the menu. Administrators and teachers see learners and households across their institution; parents/guardians and learners see only their own family. Cached lists and opened profiles stay readable offline, showing **Last synced …** under the heading. If your role has no access, the screen shows **No access**.
+
+- **Learners** lists each learner with their name (or learner number only when directory details are hidden), learner number, and status badge. Use **Search learners** to filter by name or learner number, then choose a learner to open their profile (choose **Back to learners** to return). Opening a learner outside your access shows **Learner not found**.
+- A learner profile shows **Details** (learner number, admission date, and any contact details your role may view), **Enrolments** (class group, program, year level, roll number, and dates), **Documents** (file name, type, upload date, and **Verified** / **Unverified** status, with no file downloads), and **Guardians** with their pickup rights.
+- **Health flags** and **Additional details** appear only with the fields your role is allowed to see; restricted health flags and sensitive fields are hidden from teachers (except for their own family) and omitted rather than shown as empty.
+- **Families** lists each household with its name, home address (when returned), **Members**, and — for each learner — their **Guardians** and **Authorised pickups** (name, relationship, phone number, and valid dates).
+- Guardian pickup rights appear as **Pickup allowed**, **Pickup not allowed**, or the **Court restricted** warning badge. The **Court order note** appears only for roles allowed to see restricted family details; teachers and guardians still see the **Court restricted** badge without the note.
 
 ## Academic structure
 Available from **Academic structure** in the menu to administrators, teachers, parents/guardians, and learners. Cached lists stay readable offline (showing **Last synced …** under the heading), while creating a class group requires an internet connection.

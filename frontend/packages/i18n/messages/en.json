@@ -3731,6 +3731,250 @@
     "message": "Manage forms, fields and workflows",
     "description": "Permission description: Manage configuration for custom fields, forms, workflows and numbering formats."
   },
+  "m13.nav.title": {
+    "message": "Learners",
+    "description": "Menu item and page title of the learner records screen (M13)."
+  },
+  "m13.nav.summary": {
+    "message": "Search learners and view profiles, enrolments, documents and guardians.",
+    "description": "Home tile description of the learner records module."
+  },
+  "m13.learners.intro": {
+    "message": "Browse learner records and open a profile for enrolments, documents and family links.",
+    "description": "Intro text under the learners page title."
+  },
+  "m13.learners.searchLabel": {
+    "message": "Search learners",
+    "description": "Label of the search input on the learners list."
+  },
+  "m13.learners.searchPlaceholder": {
+    "message": "Search by name or learner number…",
+    "description": "Placeholder inside the learner search input."
+  },
+  "m13.learners.listLabel": {
+    "message": "Learners",
+    "description": "Accessible label for the list of learner records."
+  },
+  "m13.learners.empty": {
+    "message": "No learners yet",
+    "description": "Empty state title when no learners are visible."
+  },
+  "m13.learners.emptyBody": {
+    "message": "Learner records you can view will appear here.",
+    "description": "Empty state description when no learners are visible."
+  },
+  "m13.learners.noMatches": {
+    "message": "No learners match",
+    "description": "Empty state title when a search matches no learners."
+  },
+  "m13.learners.noMatchesBody": {
+    "message": "Try another name or learner number.",
+    "description": "Empty state description when a search matches no learners."
+  },
+  "m13.learners.error": {
+    "message": "Learners could not be loaded.",
+    "description": "Error heading when the learners list fails to load."
+  },
+  "m13.status.enrolled": {
+    "message": "Enrolled",
+    "description": "Learner status badge: currently enrolled."
+  },
+  "m13.status.onLeave": {
+    "message": "On leave",
+    "description": "Learner status badge: temporarily on leave."
+  },
+  "m13.status.withdrawn": {
+    "message": "Withdrawn",
+    "description": "Learner status badge: withdrawn from the institution."
+  },
+  "m13.status.transferredOut": {
+    "message": "Transferred out",
+    "description": "Learner status badge: transferred to another institution."
+  },
+  "m13.status.graduated": {
+    "message": "Graduated",
+    "description": "Learner status badge: completed study and graduated."
+  },
+  "m13.status.alumni": {
+    "message": "Alumni",
+    "description": "Learner status badge: former learner (alumni)."
+  },
+  "m13.profile.back": {
+    "message": "Back to learners",
+    "description": "Button to return from a learner profile to the learners list."
+  },
+  "m13.profile.notFoundTitle": {
+    "message": "Learner not found",
+    "description": "Title shown when a learner URL does not exist or is outside the user's access."
+  },
+  "m13.profile.notFoundBody": {
+    "message": "This learner record does not exist or is outside your access.",
+    "description": "Description shown when a learner profile cannot be found."
+  },
+  "m13.profile.error": {
+    "message": "The learner profile could not be loaded.",
+    "description": "Error heading when a learner profile fails to load."
+  },
+  "m13.profile.detailsHeading": {
+    "message": "Details",
+    "description": "Section heading for core learner details."
+  },
+  "m13.profile.learnerNumber": {
+    "message": "Learner number",
+    "description": "Field label for the institution's learner number."
+  },
+  "m13.profile.admissionDate": {
+    "message": "Admission date",
+    "description": "Field label for when the learner was admitted."
+  },
+  "m13.profile.leftOn": {
+    "message": "Left on",
+    "description": "Field label for when a former learner left the institution."
+  },
+  "m13.profile.dateOfBirth": {
+    "message": "Date of birth",
+    "description": "Field label for the learner's date of birth."
+  },
+  "m13.profile.email": {
+    "message": "Email",
+    "description": "Field label for the learner's email address."
+  },
+  "m13.profile.phone": {
+    "message": "Phone",
+    "description": "Field label for the learner's phone number."
+  },
+  "m13.profile.healthFlagsHeading": {
+    "message": "Health flags",
+    "description": "Section heading for a learner's health and care flags."
+  },
+  "m13.healthKind.allergy": {
+    "message": "Allergy",
+    "description": "Health flag kind badge: allergy."
+  },
+  "m13.healthKind.medication": {
+    "message": "Medication",
+    "description": "Health flag kind badge: regular or emergency medication."
+  },
+  "m13.healthKind.condition": {
+    "message": "Condition",
+    "description": "Health flag kind badge: medical condition."
+  },
+  "m13.healthKind.dietary": {
+    "message": "Dietary",
+    "description": "Health flag kind badge: dietary requirement."
+  },
+  "m13.healthKind.accessibility": {
+    "message": "Accessibility",
+    "description": "Health flag kind badge: accessibility support need."
+  },
+  "m13.healthKind.other": {
+    "message": "Other",
+    "description": "Health flag kind badge: other health or care flag."
+  },
+  "m13.profile.customFieldsHeading": {
+    "message": "Additional details",
+    "description": "Section heading for institution-defined custom fields on a learner."
+  },
+  "m13.customField.yes": {
+    "message": "Yes",
+    "description": "Displayed value for a true boolean custom field."
+  },
+  "m13.customField.no": {
+    "message": "No",
+    "description": "Displayed value for a false boolean custom field."
+  },
+  "m13.profile.enrolmentsHeading": {
+    "message": "Enrolments",
+    "description": "Section heading for a learner's class enrolments."
+  },
+  "m13.profile.enrolmentsEmpty": {
+    "message": "No enrolments recorded.",
+    "description": "Shown when a learner has no enrolments."
+  },
+  "m13.profile.enrolmentsError": {
+    "message": "Enrolments could not be loaded.",
+    "description": "Error heading when a learner's enrolments fail to load."
+  },
+  "m13.profile.rollNumber": {
+    "message": "Roll number {roll}",
+    "description": "Roll number line on an enrolment. {roll} is the learner's roll number."
+  },
+  "m13.profile.effectiveFrom": {
+    "message": "From {date}",
+    "description": "Open-ended enrolment start date. {date} is a formatted calendar date."
+  },
+  "m13.profile.effectiveRange": {
+    "message": "{from} – {to}",
+    "description": "Enrolment date range. {from} and {to} are formatted calendar dates."
+  },
+  "m13.enrolmentStatus.active": {
+    "message": "Active",
+    "description": "Enrolment status badge: currently active."
+  },
+  "m13.enrolmentStatus.completed": {
+    "message": "Completed",
+    "description": "Enrolment status badge: completed."
+  },
+  "m13.enrolmentStatus.withdrawn": {
+    "message": "Withdrawn",
+    "description": "Enrolment status badge: withdrawn."
+  },
+  "m13.profile.documentsHeading": {
+    "message": "Documents",
+    "description": "Section heading for a learner's uploaded documents."
+  },
+  "m13.profile.documentsEmpty": {
+    "message": "No documents recorded.",
+    "description": "Shown when a learner has no documents."
+  },
+  "m13.profile.documentsError": {
+    "message": "Documents could not be loaded.",
+    "description": "Error heading when a learner's documents fail to load."
+  },
+  "m13.profile.uploadedOn": {
+    "message": "Uploaded {date}",
+    "description": "Document upload date line. {date} is a formatted date."
+  },
+  "m13.documentKind.birthCertificate": {
+    "message": "Birth certificate",
+    "description": "Document kind badge: birth certificate."
+  },
+  "m13.documentKind.idProof": {
+    "message": "ID proof",
+    "description": "Document kind badge: identity proof."
+  },
+  "m13.documentKind.transferCertificate": {
+    "message": "Transfer certificate",
+    "description": "Document kind badge: transfer certificate."
+  },
+  "m13.documentKind.photo": {
+    "message": "Photo",
+    "description": "Document kind badge: learner photo."
+  },
+  "m13.documentKind.medical": {
+    "message": "Medical",
+    "description": "Document kind badge: medical document."
+  },
+  "m13.documentKind.previousReport": {
+    "message": "Previous report",
+    "description": "Document kind badge: previous school report."
+  },
+  "m13.documentKind.other": {
+    "message": "Other",
+    "description": "Document kind badge: other document kind."
+  },
+  "m13.documentStatus.verified": {
+    "message": "Verified",
+    "description": "Document verification badge: verified by staff."
+  },
+  "m13.documentStatus.unverified": {
+    "message": "Unverified",
+    "description": "Document verification badge: not yet verified."
+  },
+  "m13.profile.guardiansHeading": {
+    "message": "Guardians",
+    "description": "Section heading for a learner's guardians."
+  },
   "m13.permission.learnerRead": {
     "message": "View learner records",
     "description": "Permission description: View learner records across the institution."
@@ -3742,6 +3986,142 @@
   "m13.permission.learnerManage": {
     "message": "Manage learner records",
     "description": "Permission description: Manage learner records across the institution."
+  },
+  "m14.nav.title": {
+    "message": "Families",
+    "description": "Menu item and page title of the families and guardians screen (M14)."
+  },
+  "m14.nav.summary": {
+    "message": "Households, guardians, pickup rights and authorised pickups.",
+    "description": "Home tile description of the families and guardians module."
+  },
+  "m14.families.intro": {
+    "message": "View households, family members, guardian pickup rights and authorised pickups.",
+    "description": "Intro text under the families page title."
+  },
+  "m14.families.listLabel": {
+    "message": "Households",
+    "description": "Accessible label for the list of households."
+  },
+  "m14.families.empty": {
+    "message": "No households yet",
+    "description": "Empty state title when no households are visible."
+  },
+  "m14.families.emptyBody": {
+    "message": "Households you can view will appear here.",
+    "description": "Empty state description when no households are visible."
+  },
+  "m14.families.error": {
+    "message": "Families could not be loaded.",
+    "description": "Error heading when households fail to load."
+  },
+  "m14.families.membersHeading": {
+    "message": "Members",
+    "description": "Section heading for the people belonging to a household."
+  },
+  "m14.families.addressLabel": {
+    "message": "Home address",
+    "description": "Accessible label for a household's home address."
+  },
+  "m14.guardians.heading": {
+    "message": "Guardians",
+    "description": "Subheading for a learner's guardians list."
+  },
+  "m14.guardians.empty": {
+    "message": "No guardians recorded.",
+    "description": "Shown when a learner has no recorded guardian relationships."
+  },
+  "m14.guardians.error": {
+    "message": "Guardians could not be loaded.",
+    "description": "Error heading when guardian relationships fail to load."
+  },
+  "m14.guardians.unavailable": {
+    "message": "Family details are not available for this learner.",
+    "description": "Shown when the signed-in user does not have access to a household member's guardian details."
+  },
+  "m14.guardians.parentalResponsibility": {
+    "message": "Parental responsibility",
+    "description": "Badge or label indicating a guardian holds parental responsibility."
+  },
+  "m14.guardians.livesWithLearner": {
+    "message": "Lives with learner",
+    "description": "Label indicating the guardian lives with the learner."
+  },
+  "m14.guardians.contactPriority": {
+    "message": "Contact priority {priority}",
+    "description": "Guardian contact order. {priority} is a formatted number."
+  },
+  "m14.guardians.courtNoteLabel": {
+    "message": "Court order note",
+    "description": "Heading above a restricted court order pickup note."
+  },
+  "m14.relationshipKind.mother": {
+    "message": "Mother",
+    "description": "Guardian relationship kind: mother."
+  },
+  "m14.relationshipKind.father": {
+    "message": "Father",
+    "description": "Guardian relationship kind: father."
+  },
+  "m14.relationshipKind.parent": {
+    "message": "Parent",
+    "description": "Guardian relationship kind: parent."
+  },
+  "m14.relationshipKind.stepParent": {
+    "message": "Step-parent",
+    "description": "Guardian relationship kind: step-parent."
+  },
+  "m14.relationshipKind.grandparent": {
+    "message": "Grandparent",
+    "description": "Guardian relationship kind: grandparent."
+  },
+  "m14.relationshipKind.legalGuardian": {
+    "message": "Legal guardian",
+    "description": "Guardian relationship kind: legal guardian."
+  },
+  "m14.relationshipKind.fosterCarer": {
+    "message": "Foster carer",
+    "description": "Guardian relationship kind: foster carer."
+  },
+  "m14.relationshipKind.adultSibling": {
+    "message": "Adult sibling",
+    "description": "Guardian relationship kind: adult sibling."
+  },
+  "m14.relationshipKind.other": {
+    "message": "Other",
+    "description": "Guardian relationship kind: other relationship."
+  },
+  "m14.pickupRight.allowed": {
+    "message": "Pickup allowed",
+    "description": "Pickup right badge: guardian may collect the learner."
+  },
+  "m14.pickupRight.notAllowed": {
+    "message": "Pickup not allowed",
+    "description": "Pickup right badge: guardian may not collect the learner."
+  },
+  "m14.pickupRight.courtRestricted": {
+    "message": "Court restricted",
+    "description": "Pickup right warning badge: collection is restricted by a court order."
+  },
+  "m14.pickups.heading": {
+    "message": "Authorised pickups",
+    "description": "Subheading for non-guardian people authorised to collect a learner."
+  },
+  "m14.pickups.empty": {
+    "message": "No authorised pickups recorded.",
+    "description": "Shown when a learner has no authorised non-guardian pickups."
+  },
+  "m14.pickups.error": {
+    "message": "Authorised pickups could not be loaded.",
+    "description": "Error heading when authorised pickups fail to load."
+  },
+  "m14.pickups.validFrom": {
+    "message": "Valid from {from}",
+    "description": "Open-ended pickup authorisation start date. {from} is a formatted calendar date."
+  },
+  "m14.pickups.validRange": {
+    "message": "Valid {from} – {to}",
+    "description": "Pickup authorisation date range. {from} and {to} are formatted calendar dates."
   },
   "m14.permission.familyRead": {
     "message": "View family records",
