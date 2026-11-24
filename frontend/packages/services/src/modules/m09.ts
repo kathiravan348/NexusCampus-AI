@@ -6,9 +6,13 @@ import {
   PromotionDecisionSchema,
   RolloverRunSchema,
   pageSchema,
+  type ImportJob,
+  type ImportJobInput,
 } from "@nexus/contracts";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryKeys } from "../keys";
-import { useScopedQuery } from "../query";
+import { useScopedQuery, useServices } from "../query";
+import { useSession } from "../session";
 
 const all = { pageSize: PAGE_SIZE_MAX };
 const ImportJobPage = pageSchema(ImportJobSchema);
@@ -43,6 +47,20 @@ export function useImportJobIssues(jobId: string | null) {
       }),
     jobId !== null,
   );
+}
+
+/** Registers an import job (M09, L0: online only) and invalidates M09 queries for the session. */
+export function useCreateImportJob() {
+  const { client } = useServices();
+  const { session } = useSession();
+  const qc = useQueryClient();
+  return useMutation<ImportJob, Error, ImportJobInput>({
+    mutationFn: (body) => client.send("POST", "/import-jobs", body, ImportJobSchema),
+    onSuccess: async () => {
+      if (!session) return;
+      await qc.invalidateQueries({ queryKey: queryKeys.m09.importJobs(session).slice(0, -1) });
+    },
+  });
 }
 
 export function useRolloverRuns() {

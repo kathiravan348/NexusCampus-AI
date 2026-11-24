@@ -2,11 +2,13 @@ import { describe, expect, it } from "vitest";
 import {
   ColumnMappingSchema,
   DryRunReportSchema,
+  ImportJobInputSchema,
   ImportJobSchema,
   ImportRowIssueSchema,
   type ColumnMapping,
   type DryRunReport,
   type ImportJob,
+  type ImportJobInput,
   type ImportRowIssue,
 } from "./imports";
 
@@ -52,6 +54,43 @@ const report: DryRunReport = {
   wouldCreate: 1,
   wouldUpdate: 1,
 };
+
+describe("ImportJobInputSchema", () => {
+  const input: ImportJobInput = {
+    entity: "learner",
+    fileName: "learners.csv",
+    sourceFormat: "csv",
+  };
+
+  it("accepts CSV and Excel import job inputs", () => {
+    expect(ImportJobInputSchema.parse(input)).toEqual(input);
+    const workbook: ImportJobInput = {
+      entity: "guardian",
+      fileName: "guardians-intake.xlsx",
+      sourceFormat: "xlsx",
+    };
+    expect(ImportJobInputSchema.parse(workbook)).toEqual(workbook);
+  });
+
+  it.each([
+    ["empty file name", { fileName: "" }],
+    ["blank file name", { fileName: "   " }],
+    ["current directory marker", { fileName: "." }],
+    ["parent directory marker", { fileName: ".." }],
+    ["path traversal", { fileName: "../learners.csv" }],
+    ["windows path separator", { fileName: "C:\\imports\\learners.csv" }],
+    ["control character", { fileName: "bad\nname.csv" }],
+    ["overlong file name", { fileName: `${"a".repeat(197)}.csv` }],
+    ["unknown format", { sourceFormat: "txt" }],
+    ["unknown entity", { entity: "invoice" }],
+    ["server-owned id", { id: "imp-1" }],
+    ["server-owned tenantId", { tenantId: "ten-demo" }],
+    ["server-owned status", { status: "uploaded" }],
+    ["raw file contents", { fileContents: "a,b" }],
+  ] as const)("rejects invalid input: %s", (_label, patch) => {
+    expect(ImportJobInputSchema.safeParse({ ...input, ...patch }).success).toBe(false);
+  });
+});
 
 describe("ImportJobSchema", () => {
   it("accepts a completed learner import with a rollback window", () => {

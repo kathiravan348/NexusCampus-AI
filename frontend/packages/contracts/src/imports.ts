@@ -27,28 +27,38 @@ export const ImportJobStatusSchema = z.enum([
 ]);
 export type ImportJobStatus = z.infer<typeof ImportJobStatusSchema>;
 
+const ImportFileNameSchema = z
+  .string()
+  .min(1)
+  .max(200)
+  .refine(
+    (name) => {
+      const trimmed = name.trim();
+      return (
+        trimmed.length > 0 &&
+        trimmed !== "." &&
+        trimmed !== ".." &&
+        !/[/:\\]/.test(name) &&
+        [...name].every((character) => character.charCodeAt(0) >= 32)
+      );
+    },
+    { message: "fileName must be a plain file name" },
+  );
+
+/** Input for registering an import job; id, tenant, status and timestamps are server-set. */
+export const ImportJobInputSchema = z.strictObject({
+  entity: ImportEntitySchema,
+  fileName: ImportFileNameSchema,
+  sourceFormat: ImportSourceFormatSchema,
+});
+export type ImportJobInput = z.infer<typeof ImportJobInputSchema>;
+
 export const ImportJobSchema = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
     entity: ImportEntitySchema,
-    fileName: z
-      .string()
-      .min(1)
-      .max(200)
-      .refine(
-        (name) => {
-          const trimmed = name.trim();
-          return (
-            trimmed.length > 0 &&
-            trimmed !== "." &&
-            trimmed !== ".." &&
-            !/[/:\\]/.test(name) &&
-            [...name].every((character) => character.charCodeAt(0) >= 32)
-          );
-        },
-        { message: "fileName must be a plain file name" },
-      ),
+    fileName: ImportFileNameSchema,
     sourceFormat: ImportSourceFormatSchema,
     templateVersion: z.int().min(1),
     status: ImportJobStatusSchema,

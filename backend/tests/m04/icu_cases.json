@@ -232,6 +232,22 @@
     "valid": true
   },
   {
+    "text": ".csv या .xlsx फ़ाइल चुनें।",
+    "valid": true
+  },
+  {
+    "text": ".csv या .xlsx फ़ाइल चुनें। इस प्रोटोटाइप में फ़ाइल पढ़ी या अपलोड नहीं की जाती।",
+    "valid": true
+  },
+  {
+    "text": ".csv அல்லது .xlsx கோப்பைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": ".csv அல்லது .xlsx கோப்பைத் தேர்ந்தெடுக்கவும். இந்த முன்மாதிரியில் கோப்பு படிக்கப்படவோ பதிவேற்றப்படவோ மாட்டாது.",
+    "valid": true
+  },
+  {
     "text": "1 से 2,000 के बीच पूर्ण संख्या दर्ज करें।",
     "valid": true
   },
@@ -268,7 +284,15 @@
     "valid": true
   },
   {
+    "text": "A matching name already exists in this institution.",
+    "valid": true
+  },
+  {
     "text": "A new version of NexusCampus is ready.",
+    "valid": true
+  },
+  {
+    "text": "A required value is missing.",
     "valid": true
   },
   {
@@ -844,6 +868,10 @@
     "valid": true
   },
   {
+    "text": "Back to imports",
+    "valid": true
+  },
+  {
     "text": "Back to learners",
     "valid": true
   },
@@ -917,6 +945,10 @@
   },
   {
     "text": "COPPA (US)",
+    "valid": true
+  },
+  {
+    "text": "CSV",
     "valid": true
   },
   {
@@ -1020,6 +1052,18 @@
     "valid": true
   },
   {
+    "text": "Choose a .csv or .xlsx file.",
+    "valid": true
+  },
+  {
+    "text": "Choose a .csv or .xlsx file. The file is not read or uploaded in this prototype.",
+    "valid": true
+  },
+  {
+    "text": "Choose a file with a plain file name (up to 200 characters).",
+    "valid": true
+  },
+  {
     "text": "Choose colour",
     "valid": true
   },
@@ -1081,6 +1125,18 @@
   },
   {
     "text": "Colours",
+    "valid": true
+  },
+  {
+    "text": "Column mappings",
+    "valid": true
+  },
+  {
+    "text": "Column mappings could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Column: {column}",
     "valid": true
   },
   {
@@ -1232,6 +1288,10 @@
     "valid": true
   },
   {
+    "text": "Created {date}",
+    "valid": true
+  },
+  {
     "text": "Credits renew at the start of next month, or your administrator can add more.",
     "valid": true
   },
@@ -1309,6 +1369,14 @@
   },
   {
     "text": "Date",
+    "valid": true
+  },
+  {
+    "text": "Date (DD/MM/YYYY)",
+    "valid": true
+  },
+  {
+    "text": "Date (MM/DD/YYYY)",
     "valid": true
   },
   {
@@ -1396,6 +1464,10 @@
     "valid": true
   },
   {
+    "text": "Detected format: {format}",
+    "valid": true
+  },
+  {
     "text": "Device",
     "valid": true
   },
@@ -1476,7 +1548,19 @@
     "valid": true
   },
   {
+    "text": "Dry run ready",
+    "valid": true
+  },
+  {
     "text": "Dry-run diff preview",
+    "valid": true
+  },
+  {
+    "text": "Dry-run issues",
+    "valid": true
+  },
+  {
+    "text": "Dry-run validation issues",
     "valid": true
   },
   {
@@ -1672,6 +1756,14 @@
     "valid": true
   },
   {
+    "text": "Error",
+    "valid": true
+  },
+  {
+    "text": "Error rows",
+    "valid": true
+  },
+  {
     "text": "Europe (EU)",
     "valid": true
   },
@@ -1689,6 +1781,10 @@
   },
   {
     "text": "Everything you can do at {institution}, in one place. Pick a module to get started.",
+    "valid": true
+  },
+  {
+    "text": "Excel (.xlsx)",
     "valid": true
   },
   {
@@ -1744,6 +1840,10 @@
     "valid": true
   },
   {
+    "text": "Fee balances",
+    "valid": true
+  },
+  {
     "text": "Fee concession",
     "valid": true
   },
@@ -1765,6 +1865,10 @@
   },
   {
     "text": "Fields",
+    "valid": true
+  },
+  {
+    "text": "File format",
     "valid": true
   },
   {
@@ -2024,7 +2128,31 @@
     "valid": true
   },
   {
+    "text": "Import data",
+    "valid": true
+  },
+  {
+    "text": "Import job not found",
+    "valid": true
+  },
+  {
+    "text": "Import job registered.",
+    "valid": true
+  },
+  {
+    "text": "Import jobs",
+    "valid": true
+  },
+  {
+    "text": "Import jobs could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Import overrides",
+    "valid": true
+  },
+  {
+    "text": "Importing",
     "valid": true
   },
   {
@@ -2189,6 +2317,10 @@
   },
   {
     "text": "JSON கோப்பைப் பதிவேற்றவும் அல்லது கீழே JSON ஐ ஒட்டவும், வேறுபாட்டை முன்னோட்டமிடவும், பின்னர் {locale} க்குச் சரியான மாற்றங்களைப் பயன்படுத்தவும்.",
+    "valid": true
+  },
+  {
+    "text": "Job summary",
     "valid": true
   },
   {
@@ -2412,6 +2544,10 @@
     "valid": true
   },
   {
+    "text": "Lowercase",
+    "valid": true
+  },
+  {
     "text": "MFA",
     "valid": true
   },
@@ -2492,6 +2628,10 @@
     "valid": true
   },
   {
+    "text": "Mapped",
+    "valid": true
+  },
+  {
     "text": "Mark attendance",
     "valid": true
   },
@@ -2501,6 +2641,10 @@
   },
   {
     "text": "Marketing",
+    "valid": true
+  },
+  {
+    "text": "Marks",
     "valid": true
   },
   {
@@ -2641,6 +2785,10 @@
   },
   {
     "text": "New custom role",
+    "valid": true
+  },
+  {
+    "text": "New import",
     "valid": true
   },
   {
@@ -2808,6 +2956,10 @@
     "valid": true
   },
   {
+    "text": "No column mappings have been saved for this job yet.",
+    "valid": true
+  },
+  {
     "text": "No compliance pack applies yet.",
     "valid": true
   },
@@ -2873,6 +3025,10 @@
   },
   {
     "text": "No image configured",
+    "valid": true
+  },
+  {
+    "text": "No import jobs yet",
     "valid": true
   },
   {
@@ -2960,6 +3116,10 @@
     "valid": true
   },
   {
+    "text": "No transform",
+    "valid": true
+  },
+  {
     "text": "No usage recorded this period.",
     "valid": true
   },
@@ -2969,6 +3129,10 @@
   },
   {
     "text": "No valid additions or changes to apply.",
+    "valid": true
+  },
+  {
+    "text": "No validation issues reported for this job.",
     "valid": true
   },
   {
@@ -3073,6 +3237,10 @@
   },
   {
     "text": "Only field names are recorded, never the values.",
+    "valid": true
+  },
+  {
+    "text": "Only row numbers, column names and issue types are shown — never cell values.",
     "valid": true
   },
   {
@@ -3268,11 +3436,19 @@
     "valid": true
   },
   {
+    "text": "Phone (+91)",
+    "valid": true
+  },
+  {
     "text": "Phone notification",
     "valid": true
   },
   {
     "text": "Phone number changed on both sides",
+    "valid": true
+  },
+  {
+    "text": "Phone number is not in a valid format.",
     "valid": true
   },
   {
@@ -3492,6 +3668,18 @@
     "valid": true
   },
   {
+    "text": "Register a CSV or Excel file to start an import job. Only the record type, file name and format are sent — file contents stay on your device because parsing runs on the server.",
+    "valid": true
+  },
+  {
+    "text": "Register import",
+    "valid": true
+  },
+  {
+    "text": "Registered CSV and Excel import jobs will appear here.",
+    "valid": true
+  },
+  {
     "text": "Reject",
     "valid": true
   },
@@ -3580,6 +3768,14 @@
     "valid": true
   },
   {
+    "text": "Review import jobs, column mappings and validation checks, or register a file.",
+    "valid": true
+  },
+  {
+    "text": "Review past import jobs, inspect column mappings and validation issues, or register a new file.",
+    "valid": true
+  },
+  {
     "text": "Review support diagnostics",
     "valid": true
   },
@@ -3652,6 +3848,14 @@
     "valid": true
   },
   {
+    "text": "Rollback available until",
+    "valid": true
+  },
+  {
+    "text": "Rolled back",
+    "valid": true
+  },
+  {
     "text": "Rolled back to version {version, number}.",
     "valid": true
   },
@@ -3661,6 +3865,10 @@
   },
   {
     "text": "Rotating",
+    "valid": true
+  },
+  {
+    "text": "Row {row}",
     "valid": true
   },
   {
@@ -3920,6 +4128,10 @@
     "valid": true
   },
   {
+    "text": "Skipped",
+    "valid": true
+  },
+  {
     "text": "Someone has already reviewed this bundle. Close this and check the list.",
     "valid": true
   },
@@ -3937,6 +4149,14 @@
   },
   {
     "text": "Spacious",
+    "valid": true
+  },
+  {
+    "text": "Split full name",
+    "valid": true
+  },
+  {
+    "text": "Spreadsheet file",
     "valid": true
   },
   {
@@ -4228,6 +4448,14 @@
     "valid": true
   },
   {
+    "text": "The import job could not be registered. Check your selections and try again.",
+    "valid": true
+  },
+  {
+    "text": "The import job could not be registered. Try again.",
+    "valid": true
+  },
+  {
     "text": "The issuer URL must start with https://",
     "valid": true
   },
@@ -4304,6 +4532,10 @@
     "valid": true
   },
   {
+    "text": "This import job does not exist or belongs to another institution.",
+    "valid": true
+  },
+  {
     "text": "This install is air-gapped: it never connects to NexusCampus.",
     "valid": true
   },
@@ -4341,6 +4573,10 @@
   },
   {
     "text": "This request is not valid. Check your selections and try again.",
+    "valid": true
+  },
+  {
+    "text": "This row has a validation issue.",
     "valid": true
   },
   {
@@ -4388,6 +4624,10 @@
     "valid": true
   },
   {
+    "text": "Total rows",
+    "valid": true
+  },
+  {
     "text": "Trainee",
     "valid": true
   },
@@ -4409,6 +4649,10 @@
   },
   {
     "text": "Trial",
+    "valid": true
+  },
+  {
+    "text": "Trim spaces",
     "valid": true
   },
   {
@@ -4508,7 +4752,15 @@
     "valid": true
   },
   {
+    "text": "Uploaded",
+    "valid": true
+  },
+  {
     "text": "Uploaded {date}",
+    "valid": true
+  },
+  {
+    "text": "Uppercase",
     "valid": true
   },
   {
@@ -4580,7 +4832,15 @@
     "valid": true
   },
   {
+    "text": "Valid rows",
+    "valid": true
+  },
+  {
     "text": "Valid {from} – {to}",
+    "valid": true
+  },
+  {
+    "text": "Validation issues could not be loaded.",
     "valid": true
   },
   {
@@ -4728,6 +4988,10 @@
     "valid": true
   },
   {
+    "text": "Warning",
+    "valid": true
+  },
+  {
     "text": "Wednesday",
     "valid": true
   },
@@ -4757,6 +5021,10 @@
   },
   {
     "text": "Where Assist may help",
+    "valid": true
+  },
+  {
+    "text": "Whole row",
     "valid": true
   },
   {
@@ -4845,6 +5113,10 @@
   },
   {
     "text": "You decide when Nexus support staff may see your data, for how long, and what they did. Key material is never shown.",
+    "valid": true
+  },
+  {
+    "text": "You do not have permission to register an import job.",
     "valid": true
   },
   {
@@ -5296,6 +5568,10 @@
     "valid": true
   },
   {
+    "text": "{date} को बनाया गया",
+    "valid": true
+  },
+  {
     "text": "{date} को समाप्त",
     "valid": true
   },
@@ -5305,6 +5581,10 @@
   },
   {
     "text": "{date} से",
+    "valid": true
+  },
+  {
+    "text": "{date} அன்று உருவாக்கப்பட்டது",
     "valid": true
   },
   {
@@ -5604,11 +5884,27 @@
     "valid": true
   },
   {
+    "text": "{valid} valid · {errorCount, plural, one {{errors} error} other {{errors} errors}} · {total} total",
+    "valid": true
+  },
+  {
+    "text": "{valid} मान्य · {errorCount, plural, one {{errors} त्रुटि} other {{errors} त्रुटियाँ}} · कुल {total}",
+    "valid": true
+  },
+  {
+    "text": "{valid} சரியானவை · {errorCount, plural, one {{errors} பிழை} other {{errors} பிழைகள்}} · மொத்தம் {total}",
+    "valid": true
+  },
+  {
     "text": "{value} GB",
     "valid": true
   },
   {
     "text": "{value} MB",
+    "valid": true
+  },
+  {
+    "text": "अंक",
     "valid": true
   },
   {
@@ -5776,6 +6072,10 @@
     "valid": true
   },
   {
+    "text": "अपलोड किया गया",
+    "valid": true
+  },
+  {
     "text": "अभिभावक",
     "valid": true
   },
@@ -5789,6 +6089,10 @@
   },
   {
     "text": "अभी कोई अनुपालन पैक लागू नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई आयात कार्य नहीं",
     "valid": true
   },
   {
@@ -6056,6 +6360,10 @@
     "valid": true
   },
   {
+    "text": "आपको आयात कार्य दर्ज करने की अनुमति नहीं है।",
+    "valid": true
+  },
+  {
     "text": "आपको बताया गया",
     "valid": true
   },
@@ -6084,7 +6392,39 @@
     "valid": true
   },
   {
+    "text": "आयात कार्य",
+    "valid": true
+  },
+  {
+    "text": "आयात कार्य दर्ज किया गया।",
+    "valid": true
+  },
+  {
+    "text": "आयात कार्य दर्ज नहीं किया जा सका। अपने विकल्प जाँचें और फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "आयात कार्य दर्ज नहीं किया जा सका। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
     "text": "आयात कार्य देखें",
+    "valid": true
+  },
+  {
+    "text": "आयात कार्य नहीं मिला",
+    "valid": true
+  },
+  {
+    "text": "आयात कार्य लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "आयात कार्य शुरू करने के लिए CSV या Excel फ़ाइल दर्ज करें। केवल रिकॉर्ड का प्रकार, फ़ाइल का नाम और प्रारूप भेजा जाता है — फ़ाइल की सामग्री आपके डिवाइस पर ही रहती है क्योंकि पार्सिंग सर्वर पर होती है।",
+    "valid": true
+  },
+  {
+    "text": "आयात कार्य, स्तंभ मानचित्रण और सत्यापन जाँच देखें, या नई फ़ाइल दर्ज करें।",
     "valid": true
   },
   {
@@ -6092,7 +6432,19 @@
     "valid": true
   },
   {
+    "text": "आयात दर्ज करें",
+    "valid": true
+  },
+  {
     "text": "आयात प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "आयात सूची पर वापस जाएँ",
+    "valid": true
+  },
+  {
+    "text": "आयात हो रहा है",
     "valid": true
   },
   {
@@ -6144,6 +6496,14 @@
     "valid": true
   },
   {
+    "text": "इस कार्य के लिए अभी कोई स्तंभ मानचित्रण सहेजा नहीं गया है।",
+    "valid": true
+  },
+  {
+    "text": "इस कार्य के लिए कोई सत्यापन समस्या नहीं मिली।",
+    "valid": true
+  },
+  {
     "text": "इस कुंजी के लिए अभी कोई ओवरराइड बदलाव दर्ज नहीं है।",
     "valid": true
   },
@@ -6157,6 +6517,10 @@
   },
   {
     "text": "इस डिवाइस से सब कुछ भेजा जा चुका है।",
+    "valid": true
+  },
+  {
+    "text": "इस पंक्ति में सत्यापन समस्या है।",
     "valid": true
   },
   {
@@ -6213,6 +6577,10 @@
   },
   {
     "text": "इस संस्थान के लिए कोई शैक्षणिक कैलेंडर नहीं मिला।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्थान में मिलता-जुलता नाम पहले से मौजूद है।",
     "valid": true
   },
   {
@@ -6349,6 +6717,10 @@
   },
   {
     "text": "एंटरप्राइज़ संस्करण",
+    "valid": true
+  },
+  {
+    "text": "एक अनिवार्य मान गायब है।",
     "valid": true
   },
   {
@@ -6572,6 +6944,10 @@
     "valid": true
   },
   {
+    "text": "कार्य सारांश",
+    "valid": true
+  },
+  {
     "text": "कार्यक्रम",
     "valid": true
   },
@@ -6652,6 +7028,10 @@
     "valid": true
   },
   {
+    "text": "कुल पंक्तियाँ",
+    "valid": true
+  },
+  {
     "text": "कुल सक्रिय",
     "valid": true
   },
@@ -6665,6 +7045,10 @@
   },
   {
     "text": "केवल ओवरराइड किए गए",
+    "valid": true
+  },
+  {
+    "text": "केवल पंक्ति संख्या, स्तंभ के नाम और समस्या के प्रकार दिखाए जाते हैं — सेल के मान कभी नहीं।",
     "valid": true
   },
   {
@@ -6809,6 +7193,10 @@
   },
   {
     "text": "कोई मॉड्यूल नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई रूपांतरण नहीं",
     "valid": true
   },
   {
@@ -6992,6 +7380,10 @@
     "valid": true
   },
   {
+    "text": "चेतावनी",
+    "valid": true
+  },
+  {
     "text": "चैनल",
     "valid": true
   },
@@ -7036,7 +7428,15 @@
     "valid": true
   },
   {
+    "text": "छोटे अक्षर",
+    "valid": true
+  },
+  {
     "text": "छोड़ने की तिथि",
+    "valid": true
+  },
+  {
+    "text": "छोड़ा गया",
     "valid": true
   },
   {
@@ -7240,6 +7640,10 @@
     "valid": true
   },
   {
+    "text": "डेटा आयात करें",
+    "valid": true
+  },
+  {
     "text": "डेटा क्षेत्र",
     "valid": true
   },
@@ -7300,11 +7704,27 @@
     "valid": true
   },
   {
+    "text": "तिथि (DD/MM/YYYY)",
+    "valid": true
+  },
+  {
+    "text": "तिथि (MM/DD/YYYY)",
+    "valid": true
+  },
+  {
     "text": "तेज़",
     "valid": true
   },
   {
     "text": "तैयार हो रहा है",
+    "valid": true
+  },
+  {
+    "text": "त्रुटि",
+    "valid": true
+  },
+  {
+    "text": "त्रुटि पंक्तियाँ",
     "valid": true
   },
   {
@@ -7329,6 +7749,10 @@
   },
   {
     "text": "दर्ज",
+    "valid": true
+  },
+  {
+    "text": "दर्ज किए गए CSV और Excel आयात कार्य यहाँ दिखाई देंगे।",
     "valid": true
   },
   {
@@ -7424,6 +7848,10 @@
     "valid": true
   },
   {
+    "text": "नया आयात",
+    "valid": true
+  },
+  {
     "text": "नष्ट",
     "valid": true
   },
@@ -7516,6 +7944,10 @@
     "valid": true
   },
   {
+    "text": "पंक्ति {row}",
+    "valid": true
+  },
+  {
     "text": "पढ़ना और संपादित करना",
     "valid": true
   },
@@ -7581,6 +8013,10 @@
   },
   {
     "text": "पहचान पत्र",
+    "valid": true
+  },
+  {
+    "text": "पहचाना गया प्रारूप: {format}",
     "valid": true
   },
   {
@@ -7660,6 +8096,10 @@
     "valid": true
   },
   {
+    "text": "पिछले आयात कार्य देखें, स्तंभ मानचित्रण और सत्यापन समस्याएँ जाँचें, या नई फ़ाइल दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "पिता",
     "valid": true
   },
@@ -7688,11 +8128,39 @@
     "valid": true
   },
   {
+    "text": "पूरा नाम विभाजित करें",
+    "valid": true
+  },
+  {
+    "text": "पूरी पंक्ति",
+    "valid": true
+  },
+  {
     "text": "पूर्ण",
     "valid": true
   },
   {
     "text": "पूर्व छात्र",
+    "valid": true
+  },
+  {
+    "text": "पूर्ववत करने की अंतिम समय-सीमा",
+    "valid": true
+  },
+  {
+    "text": "पूर्ववत किया गया",
+    "valid": true
+  },
+  {
+    "text": "पूर्वाभ्यास तैयार",
+    "valid": true
+  },
+  {
+    "text": "पूर्वाभ्यास सत्यापन समस्याएँ",
+    "valid": true
+  },
+  {
+    "text": "पूर्वाभ्यास समस्याएँ",
     "valid": true
   },
   {
@@ -7888,6 +8356,10 @@
     "valid": true
   },
   {
+    "text": "फ़ाइल प्रारूप",
+    "valid": true
+  },
+  {
     "text": "फ़ील्ड",
     "valid": true
   },
@@ -7940,7 +8412,15 @@
     "valid": true
   },
   {
+    "text": "फ़ोन (+91)",
+    "valid": true
+  },
+  {
     "text": "फ़ोन नंबर दोनों ओर बदला गया",
+    "valid": true
+  },
+  {
+    "text": "फ़ोन नंबर मान्य प्रारूप में नहीं है।",
     "valid": true
   },
   {
@@ -8016,6 +8496,10 @@
     "valid": true
   },
   {
+    "text": "बड़े अक्षर",
+    "valid": true
+  },
+  {
     "text": "बड़े अक्षर, अंक और हाइफ़न (अधिकतम 16 वर्ण)।",
     "valid": true
   },
@@ -8065,6 +8549,10 @@
   },
   {
     "text": "बनाई गई",
+    "valid": true
+  },
+  {
+    "text": "बनाया गया",
     "valid": true
   },
   {
@@ -8252,6 +8740,14 @@
     "valid": true
   },
   {
+    "text": "मानचित्रित",
+    "valid": true
+  },
+  {
+    "text": "मान्य पंक्तियाँ",
+    "valid": true
+  },
+  {
     "text": "मान्य बदलाव लागू करें",
     "valid": true
   },
@@ -8345,6 +8841,10 @@
   },
   {
     "text": "यह आपका खाता है। इसकी स्थिति कोई दूसरा व्यवस्थापक ही बदल सकता है।",
+    "valid": true
+  },
+  {
+    "text": "यह आयात कार्य मौजूद नहीं है या किसी अन्य संस्थान का है।",
     "valid": true
   },
   {
@@ -8477,6 +8977,10 @@
   },
   {
     "text": "रिकॉर्ड में बदलाव",
+    "valid": true
+  },
+  {
+    "text": "रिक्त स्थान हटाएँ",
     "valid": true
   },
   {
@@ -8840,6 +9344,10 @@
     "valid": true
   },
   {
+    "text": "शुल्क शेष",
+    "valid": true
+  },
+  {
     "text": "शैक्षणिक अवधियाँ",
     "valid": true
   },
@@ -9072,6 +9580,10 @@
     "valid": true
   },
   {
+    "text": "सत्यापन समस्याएँ लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
     "text": "सत्यापित",
     "valid": true
   },
@@ -9245,6 +9757,10 @@
   },
   {
     "text": "सामान्य",
+    "valid": true
+  },
+  {
+    "text": "सामान्य फ़ाइल नाम वाली फ़ाइल चुनें (अधिकतम 200 वर्ण)।",
     "valid": true
   },
   {
@@ -9424,6 +9940,18 @@
     "valid": true
   },
   {
+    "text": "स्तंभ मानचित्रण",
+    "valid": true
+  },
+  {
+    "text": "स्तंभ मानचित्रण लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "स्तंभ: {column}",
+    "valid": true
+  },
+  {
     "text": "स्थानांतरण प्रमाणपत्र",
     "valid": true
   },
@@ -9437,6 +9965,10 @@
   },
   {
     "text": "स्थिर",
+    "valid": true
+  },
+  {
+    "text": "स्प्रेडशीट फ़ाइल",
     "valid": true
   },
   {
@@ -10004,6 +10536,10 @@
     "valid": true
   },
   {
+    "text": "இடைவெளிகளை நீக்கு",
+    "valid": true
+  },
+  {
     "text": "இணக்கம்",
     "valid": true
   },
@@ -10028,6 +10564,10 @@
     "valid": true
   },
   {
+    "text": "இதே போன்ற பெயர் இந்த நிறுவனத்தில் ஏற்கனவே உள்ளது.",
+    "valid": true
+  },
+  {
     "text": "இந்த அனுமதியின் கீழ் எதுவும் செய்யப்படவில்லை.",
     "valid": true
   },
@@ -10037,6 +10577,10 @@
   },
   {
     "text": "இந்த ஆண்டுக்கு விடுமுறைகள் சேர்க்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த இறக்குமதிப் பணி இல்லை அல்லது வேறொரு நிறுவனத்தைச் சேர்ந்தது.",
     "valid": true
   },
   {
@@ -10081,6 +10625,10 @@
   },
   {
     "text": "இந்த மொழிக்கான தனிப்பயன் சொற்களை உள்ளிடவும்…",
+    "valid": true
+  },
+  {
+    "text": "இந்த வரிசையில் சரிபார்ப்புச் சிக்கல் உள்ளது.",
     "valid": true
   },
   {
@@ -10164,6 +10712,14 @@
     "valid": true
   },
   {
+    "text": "இந்தப் பணிக்கு இன்னும் நெடுவரிசை இணைப்புகள் சேமிக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பணிக்குச் சரிபார்ப்புச் சிக்கல்கள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
     "text": "இந்தப் பதிவு வகைக்குப் புலங்கள் இல்லை",
     "valid": true
   },
@@ -10193,6 +10749,10 @@
   },
   {
     "text": "இன்னும் இணக்கத் தொகுப்பு எதுவும் பொருந்தவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் இறக்குமதிப் பணிகள் இல்லை",
     "valid": true
   },
   {
@@ -10292,6 +10852,10 @@
     "valid": true
   },
   {
+    "text": "இறக்குமதி ஆகிறது",
+    "valid": true
+  },
+  {
     "text": "இறக்குமதி செய்த மேலெழுதல்களைப் பயன்படுத்த முடியவில்லை.",
     "valid": true
   },
@@ -10300,7 +10864,23 @@
     "valid": true
   },
   {
+    "text": "இறக்குமதிகளுக்குத் திரும்பு",
+    "valid": true
+  },
+  {
     "text": "இறக்குமதிகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணி கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணி பதிவு செய்யப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணிகளை ஏற்ற முடியவில்லை.",
     "valid": true
   },
   {
@@ -10308,7 +10888,35 @@
     "valid": true
   },
   {
+    "text": "இறக்குமதிப் பணிகள்",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணிகள், நெடுவரிசை இணைப்புகள் மற்றும் சரிபார்ப்புகளைப் பார்க்கவும் அல்லது புதிய கோப்பைப் பதிவு செய்யவும்.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணியைத் தொடங்க CSV அல்லது Excel கோப்பைப் பதிவு செய்யவும். பதிவின் வகை, கோப்பின் பெயர் மற்றும் வடிவம் மட்டுமே அனுப்பப்படும் — பாகுபடுத்தல் சேவையகத்தில் இயங்குவதால் கோப்பின் உள்ளடக்கம் உங்கள் சாதனத்திலேயே இருக்கும்.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணியைப் பதிவு செய்ய உங்களுக்கு அனுமதி இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணியைப் பதிவு செய்ய முடியவில்லை. உங்கள் தேர்வுகளைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதிப் பணியைப் பதிவு செய்ய முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
     "text": "இறக்குமதியை முன்னோட்டமிட முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இறக்குமதியைப் பதிவு செய்",
     "valid": true
   },
   {
@@ -10556,6 +11164,10 @@
     "valid": true
   },
   {
+    "text": "எச்சரிக்கை",
+    "valid": true
+  },
+  {
     "text": "எட்ஜ் சேவையகம்",
     "valid": true
   },
@@ -10784,6 +11396,10 @@
     "valid": true
   },
   {
+    "text": "கட்டண நிலுவைகள்",
+    "valid": true
+  },
+  {
     "text": "கட்டணங்களையும் செலுத்திய தொகைகளையும் நிர்வகி",
     "valid": true
   },
@@ -10801,6 +11417,10 @@
   },
   {
     "text": "கட்டமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கட்டாய மதிப்பு விடுபட்டுள்ளது.",
     "valid": true
   },
   {
@@ -10845,6 +11465,10 @@
   },
   {
     "text": "கண்டறிதல்கள் · {date} · {size}",
+    "valid": true
+  },
+  {
+    "text": "கண்டறியப்பட்ட வடிவம்: {format}",
     "valid": true
   },
   {
@@ -11160,6 +11784,10 @@
     "valid": true
   },
   {
+    "text": "கோப்பு வடிவம்",
+    "valid": true
+  },
+  {
     "text": "கோரப்பட்டது",
     "valid": true
   },
@@ -11232,11 +11860,19 @@
     "valid": true
   },
   {
+    "text": "சரிபார்ப்புச் சிக்கல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "சரியான மாற்றங்களைப் பயன்படுத்து",
     "valid": true
   },
   {
     "text": "சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "சரியான வரிசைகள்",
     "valid": true
   },
   {
@@ -11265,6 +11901,10 @@
   },
   {
     "text": "சாதனம்",
+    "valid": true
+  },
+  {
+    "text": "சாதாரண கோப்புப் பெயர் கொண்ட கோப்பைத் தேர்ந்தெடுக்கவும் (அதிகபட்சம் 200 எழுத்துகள்).",
     "valid": true
   },
   {
@@ -11297,6 +11937,10 @@
   },
   {
     "text": "சிறார் வயது வரம்பு",
+    "valid": true
+  },
+  {
+    "text": "சிறிய எழுத்துகள்",
     "valid": true
   },
   {
@@ -11668,6 +12312,10 @@
     "valid": true
   },
   {
+    "text": "தரவை இறக்குமதி செய்",
+    "valid": true
+  },
+  {
     "text": "தற்போதைய",
     "valid": true
   },
@@ -11705,6 +12353,10 @@
   },
   {
     "text": "தவறான JSON. செய்திச் சாவிகளை உரையுடன் இணைக்கும் JSON பொருளை வழங்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "தவிர்க்கப்பட்டது",
     "valid": true
   },
   {
@@ -11761,6 +12413,10 @@
   },
   {
     "text": "திரும்பப் பெறு",
+    "valid": true
+  },
+  {
+    "text": "திரும்பப் பெறும் காலக்கெடு",
     "valid": true
   },
   {
@@ -11821,6 +12477,14 @@
   },
   {
     "text": "தேதி",
+    "valid": true
+  },
+  {
+    "text": "தேதி (DD/MM/YYYY)",
+    "valid": true
+  },
+  {
+    "text": "தேதி (MM/DD/YYYY)",
     "valid": true
   },
   {
@@ -11948,11 +12612,19 @@
     "valid": true
   },
   {
+    "text": "தொலைபேசி (+91)",
+    "valid": true
+  },
+  {
     "text": "தொலைபேசி அறிவிப்பு",
     "valid": true
   },
   {
     "text": "தொலைபேசி எண் இரு பக்கமும் மாற்றப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "தொலைபேசி எண் சரியான வடிவத்தில் இல்லை.",
     "valid": true
   },
   {
@@ -12236,6 +12908,18 @@
     "valid": true
   },
   {
+    "text": "நெடுவரிசை இணைப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "நெடுவரிசை இணைப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "நெடுவரிசை: {column}",
+    "valid": true
+  },
+  {
     "text": "நெருக்கமானது",
     "valid": true
   },
@@ -12396,6 +13080,10 @@
     "valid": true
   },
   {
+    "text": "பணிச் சுருக்கம்",
+    "valid": true
+  },
+  {
     "text": "பணியாளர்",
     "valid": true
   },
@@ -12436,11 +13124,19 @@
     "valid": true
   },
   {
+    "text": "பதிவு செய்யப்பட்ட CSV மற்றும் Excel இறக்குமதிப் பணிகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
     "text": "பதிவு மாற்றம்",
     "valid": true
   },
   {
     "text": "பதிவுசெய்யப்பட்ட சாதனங்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பதிவேற்றப்பட்டது",
     "valid": true
   },
   {
@@ -12676,6 +13372,14 @@
     "valid": true
   },
   {
+    "text": "பிழை",
+    "valid": true
+  },
+  {
+    "text": "பிழை வரிசைகள்",
+    "valid": true
+  },
+  {
     "text": "புகைப்படங்கள் மற்றும் ஊடகத்துக்குப் பாதுகாவலர் ஒப்புதல்",
     "valid": true
   },
@@ -12693,6 +13397,10 @@
   },
   {
     "text": "புதிய அறிவிப்பு",
+    "valid": true
+  },
+  {
+    "text": "புதிய இறக்குமதி",
     "valid": true
   },
   {
@@ -12745,6 +13453,10 @@
   },
   {
     "text": "பெயர் இரு பக்கமும் மாற்றப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "பெரிய எழுத்துகள்",
     "valid": true
   },
   {
@@ -12833,6 +13545,10 @@
   },
   {
     "text": "மதிப்பு ஒரு உரைச் சரமாக இருக்க வேண்டும்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண்கள்",
     "valid": true
   },
   {
@@ -12984,6 +13700,10 @@
     "valid": true
   },
   {
+    "text": "மாற்றம் இல்லை",
+    "valid": true
+  },
+  {
     "text": "மாற்றுச் சான்றிதழ்",
     "valid": true
   },
@@ -13096,6 +13816,10 @@
     "valid": true
   },
   {
+    "text": "முந்தைய இறக்குமதிப் பணிகளைப் பார்க்கவும், நெடுவரிசை இணைப்புகளையும் சரிபார்ப்புச் சிக்கல்களையும் ஆய்வு செய்யவும் அல்லது புதிய கோப்பைப் பதிவு செய்யவும்.",
+    "valid": true
+  },
+  {
     "text": "முந்தைய பக்கம்",
     "valid": true
   },
@@ -13112,7 +13836,19 @@
     "valid": true
   },
   {
+    "text": "முன்னோட்டச் சரிபார்ப்புச் சிக்கல்கள்",
+    "valid": true
+  },
+  {
+    "text": "முன்னோட்டச் சிக்கல்கள்",
+    "valid": true
+  },
+  {
     "text": "முன்னோட்டத்தைப் பார்க்க மேலே உள்ள ICU தொடரியல் பிழையைச் சரிசெய்யவும்.",
+    "valid": true
+  },
+  {
+    "text": "முன்னோட்டம் தயார்",
     "valid": true
   },
   {
@@ -13133,6 +13869,14 @@
   },
   {
     "text": "முறை",
+    "valid": true
+  },
+  {
+    "text": "முழு வரிசை",
+    "valid": true
+  },
+  {
+    "text": "முழுப் பெயரைப் பிரி",
     "valid": true
   },
   {
@@ -13189,6 +13933,10 @@
   },
   {
     "text": "மேலெழுதியவை மட்டும்",
+    "valid": true
+  },
+  {
+    "text": "மொத்த வரிசைகள்",
     "valid": true
   },
   {
@@ -13300,7 +14048,15 @@
     "valid": true
   },
   {
+    "text": "வரிசை {row}",
+    "valid": true
+  },
+  {
     "text": "வரிசை எண் {roll}",
+    "valid": true
+  },
+  {
+    "text": "வரிசை எண்கள், நெடுவரிசைப் பெயர்கள் மற்றும் சிக்கல் வகைகள் மட்டுமே காட்டப்படும் — கலத்தின் மதிப்புகள் ஒருபோதும் காட்டப்படாது.",
     "valid": true
   },
   {
@@ -13473,6 +14229,10 @@
   },
   {
     "text": "வியாழன்",
+    "valid": true
+  },
+  {
+    "text": "விரிதாள் கோப்பு",
     "valid": true
   },
   {

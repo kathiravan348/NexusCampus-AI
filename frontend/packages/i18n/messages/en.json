@@ -4643,6 +4643,314 @@
     "message": "Manage academic structure",
     "description": "Permission description: Manage programmes, year levels, class groups, subjects and subject offerings."
   },
+  "m09.nav.title": {
+    "message": "Import data",
+    "description": "Menu item and page title for the data import screen (M09)."
+  },
+  "m09.nav.summary": {
+    "message": "Review import jobs, column mappings and validation checks, or register a file.",
+    "description": "Home tile description of the Import data module."
+  },
+  "m09.imports.intro": {
+    "message": "Review past import jobs, inspect column mappings and validation issues, or register a new file.",
+    "description": "Introductory subtitle under the Import data page heading."
+  },
+  "m09.imports.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button in the Import data header that opens Nexus Assist."
+  },
+  "m09.imports.newImport": {
+    "message": "New import",
+    "description": "Button that opens the dialog to register a new import file."
+  },
+  "m09.imports.error": {
+    "message": "Import jobs could not be loaded.",
+    "description": "Error heading when fetching import jobs fails."
+  },
+  "m09.jobs.listLabel": {
+    "message": "Import jobs",
+    "description": "Accessible label for the list of import jobs."
+  },
+  "m09.jobs.empty": {
+    "message": "No import jobs yet",
+    "description": "Empty state heading when the institution has no import jobs."
+  },
+  "m09.jobs.emptyBody": {
+    "message": "Registered CSV and Excel import jobs will appear here.",
+    "description": "Empty state description when the institution has no import jobs."
+  },
+  "m09.jobs.createdAt": {
+    "message": "Created {date}",
+    "description": "Timestamp label on an import job card. {date} is formatted in the institution time zone."
+  },
+  "m09.jobs.rowCounts": {
+    "message": "{valid} valid · {errorCount, plural, one {{errors} error} other {{errors} errors}} · {total} total",
+    "description": "Row summary on an import job card. {valid}, {errors} and {total} are formatted numbers; {errorCount} is the raw error count."
+  },
+  "m09.job.back": {
+    "message": "Back to imports",
+    "description": "Button returning from an import job detail view to the jobs list."
+  },
+  "m09.job.notFoundTitle": {
+    "message": "Import job not found",
+    "description": "Empty state title when the requested import job does not exist or belongs to another tenant."
+  },
+  "m09.job.notFoundBody": {
+    "message": "This import job does not exist or belongs to another institution.",
+    "description": "Empty state description when the requested import job cannot be found."
+  },
+  "m09.job.summaryHeading": {
+    "message": "Job summary",
+    "description": "Card title showing status, counts and dates for one import job."
+  },
+  "m09.job.entity": {
+    "message": "Record type",
+    "description": "Detail label for the type of records being imported."
+  },
+  "m09.job.format": {
+    "message": "File format",
+    "description": "Detail label for the spreadsheet file format (CSV or Excel)."
+  },
+  "m09.job.created": {
+    "message": "Created",
+    "description": "Detail label for when the import job was created."
+  },
+  "m09.job.totalRows": {
+    "message": "Total rows",
+    "description": "Detail label for total rows detected in the import job."
+  },
+  "m09.job.validRows": {
+    "message": "Valid rows",
+    "description": "Detail label for valid rows in the import job."
+  },
+  "m09.job.errorRows": {
+    "message": "Error rows",
+    "description": "Detail label for rows with errors in the import job."
+  },
+  "m09.job.rollbackUntil": {
+    "message": "Rollback available until",
+    "description": "Detail label showing when a completed import can still be rolled back."
+  },
+  "m09.job.mappingsHeading": {
+    "message": "Column mappings",
+    "description": "Card title for the source-to-target column mapping list."
+  },
+  "m09.job.mappingsListLabel": {
+    "message": "Column mappings",
+    "description": "Accessible label for the list of mapped columns."
+  },
+  "m09.job.mappingsEmpty": {
+    "message": "No column mappings have been saved for this job yet.",
+    "description": "Empty state text when an import job has no saved column mappings."
+  },
+  "m09.job.mappingsError": {
+    "message": "Column mappings could not be loaded.",
+    "description": "Error heading when loading column mappings fails."
+  },
+  "m09.job.skippedColumn": {
+    "message": "Skipped",
+    "description": "Badge indicating a source spreadsheet column is not mapped to any field."
+  },
+  "m09.job.issuesHeading": {
+    "message": "Dry-run issues",
+    "description": "Card title for validation errors and warnings found during dry run."
+  },
+  "m09.job.issuesListLabel": {
+    "message": "Dry-run validation issues",
+    "description": "Accessible label for the list of dry-run row issues."
+  },
+  "m09.job.issuesPrivacy": {
+    "message": "Only row numbers, column names and issue types are shown — never cell values.",
+    "description": "Privacy note in the issues card explaining that imported cell contents are never shown."
+  },
+  "m09.job.issuesEmpty": {
+    "message": "No validation issues reported for this job.",
+    "description": "Empty state text when a job has zero validation issues."
+  },
+  "m09.job.issuesError": {
+    "message": "Validation issues could not be loaded.",
+    "description": "Error heading when loading validation issues fails."
+  },
+  "m09.job.issueRow": {
+    "message": "Row {row}",
+    "description": "Row number label on a validation issue. {row} is a formatted number."
+  },
+  "m09.job.issueColumn": {
+    "message": "Column: {column}",
+    "description": "Column header label on a validation issue. {column} is the spreadsheet header name."
+  },
+  "m09.job.issueWholeRow": {
+    "message": "Whole row",
+    "description": "Shown when a validation issue applies to the entire row rather than one column."
+  },
+  "m09.entity.learner": {
+    "message": "Learners",
+    "description": "Import record type: learner records."
+  },
+  "m09.entity.guardian": {
+    "message": "Guardians",
+    "description": "Import record type: guardian records."
+  },
+  "m09.entity.staff": {
+    "message": "Staff",
+    "description": "Import record type: staff records."
+  },
+  "m09.entity.enrolment": {
+    "message": "Enrolments",
+    "description": "Import record type: class enrolment records."
+  },
+  "m09.entity.feeBalance": {
+    "message": "Fee balances",
+    "description": "Import record type: opening fee balances."
+  },
+  "m09.entity.mark": {
+    "message": "Marks",
+    "description": "Import record type: assessment marks."
+  },
+  "m09.format.csv": {
+    "message": "CSV",
+    "description": "Import source file format: comma-separated values."
+  },
+  "m09.format.xlsx": {
+    "message": "Excel (.xlsx)",
+    "description": "Import source file format: Excel workbook."
+  },
+  "m09.status.uploaded": {
+    "message": "Uploaded",
+    "description": "Import job status: file registered and awaiting mapping."
+  },
+  "m09.status.mapped": {
+    "message": "Mapped",
+    "description": "Import job status: columns mapped, awaiting dry run."
+  },
+  "m09.status.dryRunReady": {
+    "message": "Dry run ready",
+    "description": "Import job status: dry-run validation finished and ready to review."
+  },
+  "m09.status.importing": {
+    "message": "Importing",
+    "description": "Import job status: rows are currently being imported."
+  },
+  "m09.status.completed": {
+    "message": "Completed",
+    "description": "Import job status: import finished successfully."
+  },
+  "m09.status.failed": {
+    "message": "Failed",
+    "description": "Import job status: import stopped with an error."
+  },
+  "m09.status.rolledBack": {
+    "message": "Rolled back",
+    "description": "Import job status: completed import was reversed."
+  },
+  "m09.transform.none": {
+    "message": "No transform",
+    "description": "Column transform: copy value as is."
+  },
+  "m09.transform.trim": {
+    "message": "Trim spaces",
+    "description": "Column transform: strip leading and trailing spaces."
+  },
+  "m09.transform.upper": {
+    "message": "Uppercase",
+    "description": "Column transform: convert text to uppercase."
+  },
+  "m09.transform.lower": {
+    "message": "Lowercase",
+    "description": "Column transform: convert text to lowercase."
+  },
+  "m09.transform.dateDmy": {
+    "message": "Date (DD/MM/YYYY)",
+    "description": "Column transform: parse day-month-year dates."
+  },
+  "m09.transform.dateMdy": {
+    "message": "Date (MM/DD/YYYY)",
+    "description": "Column transform: parse month-day-year dates."
+  },
+  "m09.transform.phoneIn": {
+    "message": "Phone (+91)",
+    "description": "Column transform: normalise Indian phone numbers to +91 format."
+  },
+  "m09.transform.splitName": {
+    "message": "Split full name",
+    "description": "Column transform: split one full-name column into parts."
+  },
+  "m09.severity.error": {
+    "message": "Error",
+    "description": "Dry-run issue severity: row will not be imported until fixed."
+  },
+  "m09.severity.warning": {
+    "message": "Warning",
+    "description": "Dry-run issue severity: review recommended before importing."
+  },
+  "m09.import.invalidPhone": {
+    "message": "Phone number is not in a valid format.",
+    "description": "Import validation issue when a phone cell cannot be parsed as a valid number."
+  },
+  "m09.import.duplicateName": {
+    "message": "A matching name already exists in this institution.",
+    "description": "Import validation warning when a name matches an existing record."
+  },
+  "m09.import.required": {
+    "message": "A required value is missing.",
+    "description": "Import validation error when a mandatory field is blank."
+  },
+  "m09.import.unknownIssue": {
+    "message": "This row has a validation issue.",
+    "description": "Fallback import validation message when an issue key is not recognised."
+  },
+  "m09.newDialog.title": {
+    "message": "New import",
+    "description": "Dialog title for registering a new import job."
+  },
+  "m09.newDialog.description": {
+    "message": "Register a CSV or Excel file to start an import job. Only the record type, file name and format are sent — file contents stay on your device because parsing runs on the server.",
+    "description": "Dialog description explaining that only metadata is sent in the prototype and no file contents leave the device."
+  },
+  "m09.newDialog.entity": {
+    "message": "Record type",
+    "description": "Select label for choosing which record type to import."
+  },
+  "m09.newDialog.file": {
+    "message": "Spreadsheet file",
+    "description": "File picker label for choosing a CSV or Excel file."
+  },
+  "m09.newDialog.fileHint": {
+    "message": "Choose a .csv or .xlsx file. The file is not read or uploaded in this prototype.",
+    "description": "Helper text under the file picker."
+  },
+  "m09.newDialog.detectedFormat": {
+    "message": "Detected format: {format}",
+    "description": "Readout showing the format derived from the selected file extension."
+  },
+  "m09.newDialog.submit": {
+    "message": "Register import",
+    "description": "Submit button inside the New import dialog."
+  },
+  "m09.newDialog.created": {
+    "message": "Import job registered.",
+    "description": "Success toast after registering a new import job."
+  },
+  "m09.newDialog.unsupportedFormat": {
+    "message": "Choose a .csv or .xlsx file.",
+    "description": "Field error when the selected file does not end in .csv or .xlsx."
+  },
+  "m09.newDialog.invalidFileName": {
+    "message": "Choose a file with a plain file name (up to 200 characters).",
+    "description": "Field error when the selected file name is invalid."
+  },
+  "m09.newDialog.invalidRequest": {
+    "message": "The import job could not be registered. Check your selections and try again.",
+    "description": "Generic form error when the server rejects the import job input."
+  },
+  "m09.newDialog.forbidden": {
+    "message": "You do not have permission to register an import job.",
+    "description": "Form error when the server returns 403 forbidden."
+  },
+  "m09.newDialog.saveFailed": {
+    "message": "The import job could not be registered. Try again.",
+    "description": "Error shown when registering an import job fails unexpectedly."
+  },
   "m09.permission.importRead": {
     "message": "View import jobs",
     "description": "Permission description: View import jobs, column mappings and validation issues."

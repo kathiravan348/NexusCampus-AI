@@ -3,6 +3,7 @@ import type { MessageKey } from "@nexus/i18n";
 import {
   Bell,
   Building2,
+  FileUp,
   Gauge,
   GraduationCap,
   HardDrive,
@@ -124,6 +125,16 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m08.config.read",
     offlineLevel: "L1",
     load: () => import("../modules/m08/ConfigPage"),
+  },
+  {
+    moduleId: "M09",
+    path: "import",
+    navKey: "m09.nav.title",
+    summaryKey: "m09.nav.summary",
+    icon: FileUp,
+    permission: "m09.import.read",
+    offlineLevel: "L0",
+    load: () => import("../modules/m09/ImportsPage"),
   },
   {
     moduleId: "M10",
