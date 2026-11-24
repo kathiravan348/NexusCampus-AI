@@ -1,26 +1,56 @@
 import {
+  ApiErrorSchema,
   ColumnMappingSchema,
   ImportJobSchema,
   ImportRowIssueSchema,
   PromotionDecisionSchema,
   RolloverRunSchema,
   pageSchema,
+  type ImportJobInput,
 } from "@nexus/contracts";
-import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { MOCK_HEADER } from "../context";
-import { IMPORT_JOB, ROLLOVER_RUN, TENANT, USER } from "../fixtures";
+import { mockDb, resetMockDb } from "../db";
+import { IMPORT_JOB, PERSON, ROLLOVER_RUN, TENANT, USER } from "../fixtures";
 import { server } from "../node";
 
 const job = `/import-jobs/${IMPORT_JOB.ls[1]}`;
 const run = `/rollover-runs/${ROLLOVER_RUN.ls}`;
 
-function get(path: string, user: string = USER.lsPriya) {
+function get(path: string, user: string = USER.lsPriya, tenant: string = TENANT.littleSteps) {
   return fetch(`http://localhost/api/v1${path}`, {
-    headers: { [MOCK_HEADER.tenant]: TENANT.littleSteps, [MOCK_HEADER.user]: user },
+    headers: { [MOCK_HEADER.tenant]: tenant, [MOCK_HEADER.user]: user },
   });
 }
 
+function post(
+  path: string,
+  body: unknown,
+  user: string = USER.rvHelen,
+  tenant: string = TENANT.riverside,
+) {
+  return fetch(`http://localhost/api/v1${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      [MOCK_HEADER.tenant]: tenant,
+      [MOCK_HEADER.user]: user,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+const sampleInput: ImportJobInput = {
+  entity: "learner",
+  fileName: "learners.csv",
+  sourceFormat: "csv",
+};
+
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
+afterEach(() => {
+  server.resetHandlers();
+  resetMockDb();
+});
 afterAll(() => server.close());
 
 describe("M09 and M86 read handlers", () => {
@@ -65,5 +95,79 @@ describe("M09 and M86 read handlers", () => {
     const response = await get(`/import-jobs/${IMPORT_JOB.ls[0]}/issues`);
     expect(response.status).toBe(200);
     expect(pageSchema(ImportRowIssueSchema).parse(await response.json()).items).toEqual([]);
+  });
+});
+
+describe("POST /import-jobs", () => {
+  it("registers an uploaded import job for an admin with a staff profile", async () => {
+    const response = await post("/import-jobs", sampleInput);
+    expect(response.status).toBe(201);
+    const created = ImportJobSchema.parse(await response.json());
+    expect(created).toMatchObject({
+      tenantId: TENANT.riverside,
+      entity: "learner",
+      fileName: "learners.csv",
+      sourceFormat: "csv",
+      templateVersion: 1,
+      status: "uploaded",
+      totalRows: 0,
+      validRows: 0,
+      errorRows: 0,
+      createdByStaffProfileId: "rp-rv-helen-staff",
+      rollbackUntil: null,
+    });
+
+    const listResponse = await get("/import-jobs", USER.rvHelen, TENANT.riverside);
+    const page = pageSchema(ImportJobSchema).parse(await listResponse.json());
+    expect(page.items.some((row) => row.id === created.id)).toBe(true);
+  });
+
+  it("forbids viewers without m09.import.manage", async () => {
+    const response = await post("/import-jobs", sampleInput, USER.rvTom, TENANT.riverside);
+    expect(response.status).toBe(403);
+    expect(ApiErrorSchema.parse(await response.json()).error.code).toBe("forbidden");
+  });
+
+  it("forbids a viewer with read-only import permission", async () => {
+    const teacherRole = mockDb.roles.find(
+      (row) => row.tenantId === TENANT.riverside && row.id === "role-rv-teacher",
+    )!;
+    teacherRole.permissions.push("m09.import.read");
+
+    const response = await post("/import-jobs", sampleInput, USER.rvTom, TENANT.riverside);
+    expect(response.status).toBe(403);
+    expect(ApiErrorSchema.parse(await response.json()).error.code).toBe("forbidden");
+  });
+
+  it("forbids a manager who has no active staff profile", async () => {
+    mockDb.roleProfiles = mockDb.roleProfiles.filter(
+      (row) => !(row.tenantId === TENANT.riverside && row.personId === PERSON.rvHelen),
+    );
+    const response = await post("/import-jobs", sampleInput);
+    expect(response.status).toBe(403);
+    expect(ApiErrorSchema.parse(await response.json()).error.code).toBe("forbidden");
+  });
+
+  it("returns 403 module_disabled when M09 is switched off", async () => {
+    const entry = mockDb.entitlements.find(
+      (row) => row.tenantId === TENANT.riverside && row.moduleId === "M09",
+    )!;
+    entry.enabled = false;
+    const response = await post("/import-jobs", sampleInput);
+    expect(response.status).toBe(403);
+    expect(ApiErrorSchema.parse(await response.json()).error.code).toBe("module_disabled");
+  });
+
+  it.each([
+    ["path traversal in file name", { fileName: "../bad.csv" }, "fileName"],
+    ["unsupported format", { sourceFormat: "txt" }, "sourceFormat"],
+    ["unknown entity", { entity: "invoice" }, "entity"],
+    ["extra file contents field", { fileContents: "raw" }, ""],
+  ] as const)("returns 400 invalid_request for %s", async (_label, patch, expectedPath) => {
+    const response = await post("/import-jobs", { ...sampleInput, ...patch });
+    expect(response.status).toBe(400);
+    const body = ApiErrorSchema.parse(await response.json());
+    expect(body.error.code).toBe("invalid_request");
+    if (expectedPath) expect(body.error.details?.[0]?.path).toBe(expectedPath);
   });
 });

@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Academic structure, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Academic structure, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -148,6 +148,14 @@ Open **Forms & fields** in the demo menu. Under **Fields**, choose a **Record ty
 If you manage configuration, choose **Add custom field**. Pick the record type, enter a unique **Field key**, and give the field a label in the institution’s default language. You can add labels in the other supported languages. For **Single choice** or **Multiple choice**, use **Add option** and enter a distinct option key and a label for each choice. For **Number**, you can set a **Minimum** and **Maximum**. Choose **Save** to see the new field in its record type.
 
 **Forms** shows how many fields each form contains. **Workflows & numbering** shows the number of steps in each approval workflow and the numbering patterns used by the institution. Cached lists remain available offline with **Last synced** under the heading. Adding a field requires a connection. **Ask Assist** is available online when your institution has enabled Assist and you have access to it.
+
+## Importing data
+Available to administrators from **Import data** in the menu. It requires an internet connection; opening it while offline shows **Needs a connection**.
+
+- The list shows past import jobs with the file name, record type, status badge, valid/error/total row counts, and creation time in your institution's time zone. Choose a job to open its details (choose **Back to imports** to return).
+- A job view shows **Job summary** (status, counts, and **Rollback available until** for **Completed** imports), **Column mappings** (each source column, target field or **Skipped**, and transform), and **Dry-run issues** (row number, column name, **Error** or **Warning**, and issue description — cell values are never shown).
+- Staff allowed to manage imports see **New import** to pick a **Record type** and a `.csv` or `.xlsx` **Spreadsheet file**, then choose **Register import**. Unsupported file types are rejected inline. Only the record type, file name and format are recorded in this prototype; file contents stay on your device because parsing runs on the server.
+- When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
 
 ## Learners and families
 Available from **Learners** and **Families** in the menu. Administrators and teachers see learners and households across their institution; parents/guardians and learners see only their own family. Cached lists and opened profiles stay readable offline, showing **Last synced …** under the heading. If your role has no access, the screen shows **No access**.

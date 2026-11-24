@@ -81,6 +81,7 @@
 │     │                 modules/m05/ (PlanPage, ModulesTab, UsageTab, NEX-018),
 │     │                 modules/m06/ (PrivacyPage, AuditTab, ChainCheck, ConsentsTab, DataRequestsTab, ComplianceTab, NEX-017),
 │     │                 modules/m07/ (NotificationsPage, TemplatesTab, TemplateEditor, DeliveryLogTab, PreferencesTab, NEX-024),
+│     │                 modules/m09/ (ImportsPage, ImportJobView, NewImportDialog, NEX-162),
 │     │                 modules/m10/ (SyncCentrePage, ThisDeviceTab, DevicesTab, ConflictsTab, NEX-019),
 │     │                 modules/m11/ (AiSettingsPage, AssistButton, AssistPanel, AssistUnavailable, NEX-020),
 │     │                 modules/m13/ (LearnersPage, LearnerProfile, NEX-163),
