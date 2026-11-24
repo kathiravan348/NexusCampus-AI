@@ -232,6 +232,22 @@
     "valid": true
   },
   {
+    "text": "1 से 2,000 के बीच पूर्ण संख्या दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "1 முதல் 2,000 வரையிலான முழு எண்ணை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "200 எழுத்துகளுக்குள் ஒரு பெயரை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "A class group with this code already exists for this academic year.",
+    "valid": true
+  },
+  {
     "text": "A guardian's consent is needed",
     "valid": true
   },
@@ -416,6 +432,14 @@
     "valid": true
   },
   {
+    "text": "Academic structure could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Academic structure sections",
+    "valid": true
+  },
+  {
     "text": "Academic year",
     "valid": true
   },
@@ -468,6 +492,10 @@
     "valid": true
   },
   {
+    "text": "Activity",
+    "valid": true
+  },
+  {
     "text": "Actor",
     "valid": true
   },
@@ -485,6 +513,10 @@
   },
   {
     "text": "Add campus",
+    "valid": true
+  },
+  {
+    "text": "Add class group",
     "valid": true
   },
   {
@@ -517,6 +549,10 @@
   },
   {
     "text": "Afternoon session",
+    "valid": true
+  },
+  {
+    "text": "All academic years",
     "valid": true
   },
   {
@@ -628,6 +664,10 @@
     "valid": true
   },
   {
+    "text": "Ask Assist",
+    "valid": true
+  },
+  {
     "text": "Ask about your institution. Answers are AI-generated from your records and always list their sources.",
     "valid": true
   },
@@ -668,6 +708,10 @@
     "valid": true
   },
   {
+    "text": "Assist से पूछें",
+    "valid": true
+  },
+  {
     "text": "Assist உதவக்கூடிய இடங்கள்",
     "valid": true
   },
@@ -677,6 +721,10 @@
   },
   {
     "text": "Assist பதிலளிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "Assist-இடம் கேள்",
     "valid": true
   },
   {
@@ -724,6 +772,10 @@
     "valid": true
   },
   {
+    "text": "Batch program",
+    "valid": true
+  },
+  {
     "text": "Being prepared",
     "valid": true
   },
@@ -741,6 +793,10 @@
   },
   {
     "text": "Brand assets",
+    "valid": true
+  },
+  {
+    "text": "Browse programs, year levels, class groups, subjects and academic-year offerings.",
     "valid": true
   },
   {
@@ -796,7 +852,19 @@
     "valid": true
   },
   {
+    "text": "Capacity",
+    "valid": true
+  },
+  {
+    "text": "Capacity: {capacity}",
+    "valid": true
+  },
+  {
     "text": "Category",
+    "valid": true
+  },
+  {
+    "text": "Certificate",
     "valid": true
   },
   {
@@ -876,6 +944,10 @@
     "valid": true
   },
   {
+    "text": "Class group created.",
+    "valid": true
+  },
+  {
     "text": "Clear the filters to check the chain.",
     "valid": true
   },
@@ -893,6 +965,10 @@
   },
   {
     "text": "Close notification",
+    "valid": true
+  },
+  {
+    "text": "Code",
     "valid": true
   },
   {
@@ -1028,6 +1104,14 @@
     "valid": true
   },
   {
+    "text": "Create a class group under a program and academic year.",
+    "valid": true
+  },
+  {
+    "text": "Create class group",
+    "valid": true
+  },
+  {
     "text": "Created",
     "valid": true
   },
@@ -1136,6 +1220,10 @@
     "valid": true
   },
   {
+    "text": "Degree",
+    "valid": true
+  },
+  {
     "text": "Delete",
     "valid": true
   },
@@ -1204,6 +1292,10 @@
     "valid": true
   },
   {
+    "text": "Diploma",
+    "valid": true
+  },
+  {
     "text": "Disabled",
     "valid": true
   },
@@ -1264,6 +1356,10 @@
     "valid": true
   },
   {
+    "text": "Early years",
+    "valid": true
+  },
+  {
     "text": "Early years & preschool",
     "valid": true
   },
@@ -1297,6 +1393,10 @@
   },
   {
     "text": "Editing language",
+    "valid": true
+  },
+  {
+    "text": "Elective",
     "valid": true
   },
   {
@@ -1356,7 +1456,15 @@
     "valid": true
   },
   {
+    "text": "Enter a name up to 200 characters.",
+    "valid": true
+  },
+  {
     "text": "Enter a pixel value (for example, 8px).",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid code starting with a letter or number.",
     "valid": true
   },
   {
@@ -1365,6 +1473,10 @@
   },
   {
     "text": "Enter a valid hex colour (for example, #1F5FD1).",
+    "valid": true
+  },
+  {
+    "text": "Enter a whole number between 1 and 2,000.",
     "valid": true
   },
   {
@@ -1852,6 +1964,10 @@
     "valid": true
   },
   {
+    "text": "Lab",
+    "valid": true
+  },
+  {
     "text": "Language",
     "valid": true
   },
@@ -1905,6 +2021,10 @@
   },
   {
     "text": "Legal order",
+    "valid": true
+  },
+  {
+    "text": "Letters, numbers, dots, hyphens or underscores (up to 32 characters).",
     "valid": true
   },
   {
@@ -2288,6 +2408,10 @@
     "valid": true
   },
   {
+    "text": "No class groups in this year level yet.",
+    "valid": true
+  },
+  {
     "text": "No compliance pack applies yet.",
     "valid": true
   },
@@ -2368,6 +2492,10 @@
     "valid": true
   },
   {
+    "text": "No programs yet",
+    "valid": true
+  },
+  {
     "text": "No provider access has been granted.",
     "valid": true
   },
@@ -2377,6 +2505,18 @@
   },
   {
     "text": "No single sign-on provider is set up yet.",
+    "valid": true
+  },
+  {
+    "text": "No specific campus",
+    "valid": true
+  },
+  {
+    "text": "No subject offerings for this academic year.",
+    "valid": true
+  },
+  {
+    "text": "No subjects yet",
     "valid": true
   },
   {
@@ -2397,6 +2537,14 @@
   },
   {
     "text": "No valid additions or changes to apply.",
+    "valid": true
+  },
+  {
+    "text": "No year level",
+    "valid": true
+  },
+  {
+    "text": "No year levels or class groups yet.",
     "valid": true
   },
   {
@@ -2500,6 +2648,10 @@
     "valid": true
   },
   {
+    "text": "Open capacity",
+    "valid": true
+  },
+  {
     "text": "Open menu",
     "valid": true
   },
@@ -2509,6 +2661,10 @@
   },
   {
     "text": "Optional",
+    "valid": true
+  },
+  {
+    "text": "Optional. Whole number from 1 to 2,000.",
     "valid": true
   },
   {
@@ -2717,6 +2873,26 @@
   },
   {
     "text": "Profile, campuses, language and formats, and the school calendar.",
+    "valid": true
+  },
+  {
+    "text": "Program",
+    "valid": true
+  },
+  {
+    "text": "Programs & classes",
+    "valid": true
+  },
+  {
+    "text": "Programs and class groups for this institution will appear here.",
+    "valid": true
+  },
+  {
+    "text": "Programs, year levels, class groups, subjects and offerings.",
+    "valid": true
+  },
+  {
+    "text": "Project",
     "valid": true
   },
   {
@@ -3016,6 +3192,10 @@
     "valid": true
   },
   {
+    "text": "School stage",
+    "valid": true
+  },
+  {
     "text": "Search",
     "valid": true
   },
@@ -3033,6 +3213,10 @@
   },
   {
     "text": "Secondary",
+    "valid": true
+  },
+  {
+    "text": "Section",
     "valid": true
   },
   {
@@ -3268,6 +3452,18 @@
     "valid": true
   },
   {
+    "text": "Subject offerings",
+    "valid": true
+  },
+  {
+    "text": "Subject offerings could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Subjects",
+    "valid": true
+  },
+  {
     "text": "Suggested brand pair ({mode})",
     "valid": true
   },
@@ -3460,6 +3656,10 @@
     "valid": true
   },
   {
+    "text": "The class group could not be created. Try again.",
+    "valid": true
+  },
+  {
     "text": "The client secret is never shown or stored in the browser. It is set in the institution's key vault.",
     "valid": true
   },
@@ -3493,6 +3693,22 @@
   },
   {
     "text": "The report is being prepared.",
+    "valid": true
+  },
+  {
+    "text": "The selected academic year is not valid for this institution.",
+    "valid": true
+  },
+  {
+    "text": "The selected campus is not valid for this institution.",
+    "valid": true
+  },
+  {
+    "text": "The selected program is not valid for this institution.",
+    "valid": true
+  },
+  {
+    "text": "The selected year level does not belong to this program.",
     "valid": true
   },
   {
@@ -3561,6 +3777,10 @@
   },
   {
     "text": "This request is closed.",
+    "valid": true
+  },
+  {
+    "text": "This request is not valid. Check your selections and try again.",
     "valid": true
   },
   {
@@ -3892,6 +4112,10 @@
     "valid": true
   },
   {
+    "text": "Year level",
+    "valid": true
+  },
+  {
     "text": "Year start in display calendar: {date}",
     "valid": true
   },
@@ -4148,6 +4372,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# period / week} other {# periods / week}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# permission} other {# permissions}}",
     "valid": true
   },
@@ -4189,6 +4417,10 @@
   },
   {
     "text": "{count, plural, one {# कंट्रास्ट समस्या सहेजने से रोकती है} other {# कंट्रास्ट समस्याएँ सहेजने से रोकती हैं}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# कालांश / सप्ताह} other {# कालांश / सप्ताह}}",
     "valid": true
   },
   {
@@ -4272,6 +4504,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# பாடவேளை / வாரம்} other {# பாடவேளைகள் / வாரம்}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# மணி நேரம்} other {# மணி நேரங்கள்}}",
     "valid": true
   },
@@ -4325,6 +4561,18 @@
   },
   {
     "text": "{count, plural, one {ஆஃப்லைன் · # நிலுவையில்} other {ஆஃப்லைன் · # நிலுவையில்}}",
+    "valid": true
+  },
+  {
+    "text": "{credits} credits",
+    "valid": true
+  },
+  {
+    "text": "{credits} क्रेडिट",
+    "valid": true
+  },
+  {
+    "text": "{credits} மதிப்புப் புள்ளிகள்",
     "valid": true
   },
   {
@@ -4652,6 +4900,14 @@
     "valid": true
   },
   {
+    "text": "अक्षर या अंक से शुरू होने वाला मान्य कोड दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "अक्षर, अंक, बिंदु, हाइफ़न या अंडरस्कोर (अधिकतम 32 अक्षर)।",
+    "valid": true
+  },
+  {
     "text": "अगला पृष्ठ",
     "valid": true
   },
@@ -4668,7 +4924,15 @@
     "valid": true
   },
   {
+    "text": "अधिकतम 200 अक्षरों का नाम दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "अनुपालन",
+    "valid": true
+  },
+  {
+    "text": "अनुभाग",
     "valid": true
   },
   {
@@ -4748,6 +5012,10 @@
     "valid": true
   },
   {
+    "text": "अभी कोई कार्यक्रम नहीं",
+    "valid": true
+  },
+  {
     "text": "अभी कोई कैंपस नहीं जोड़ा गया।",
     "valid": true
   },
@@ -4765,6 +5033,14 @@
   },
   {
     "text": "अभी कोई मॉड्यूल नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई वर्ष स्तर या कक्षा समूह नहीं।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई विषय नहीं",
     "valid": true
   },
   {
@@ -4817,6 +5093,10 @@
   },
   {
     "text": "असीमित",
+    "valid": true
+  },
+  {
+    "text": "असीमित क्षमता",
     "valid": true
   },
   {
@@ -5065,6 +5345,22 @@
   },
   {
     "text": "इस वर्ष के लिए कोई छुट्टी नहीं जोड़ी गई।",
+    "valid": true
+  },
+  {
+    "text": "इस वर्ष स्तर में अभी कोई कक्षा समूह नहीं।",
+    "valid": true
+  },
+  {
+    "text": "इस शैक्षणिक वर्ष के लिए इस कोड का कक्षा समूह पहले से मौजूद है।",
+    "valid": true
+  },
+  {
+    "text": "इस शैक्षणिक वर्ष के लिए कोई विषय पेशकश नहीं।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्था के कार्यक्रम और कक्षा समूह यहाँ दिखाई देंगे।",
     "valid": true
   },
   {
@@ -5320,6 +5616,22 @@
     "valid": true
   },
   {
+    "text": "कक्षा समूह जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "कक्षा समूह नहीं बनाया जा सका। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "कक्षा समूह बनाएँ",
+    "valid": true
+  },
+  {
+    "text": "कक्षा समूह बनाया गया।",
+    "valid": true
+  },
+  {
     "text": "कतार में",
     "valid": true
   },
@@ -5376,6 +5688,22 @@
     "valid": true
   },
   {
+    "text": "कार्यक्रम",
+    "valid": true
+  },
+  {
+    "text": "कार्यक्रम और कक्षाएँ",
+    "valid": true
+  },
+  {
+    "text": "कार्यक्रम, वर्ष स्तर, कक्षा समूह, विषय और पेशकश।",
+    "valid": true
+  },
+  {
+    "text": "कार्यक्रम, वर्ष स्तर, कक्षा समूह, विषय और शैक्षणिक वर्ष की पेशकश देखें।",
+    "valid": true
+  },
+  {
     "text": "कार्रवाइयाँ",
     "valid": true
   },
@@ -5405,6 +5733,10 @@
   },
   {
     "text": "किसने स्वीकृत किया",
+    "valid": true
+  },
+  {
+    "text": "किसी कार्यक्रम और शैक्षणिक वर्ष के अंतर्गत नया कक्षा समूह बनाएँ।",
     "valid": true
   },
   {
@@ -5560,6 +5892,14 @@
     "valid": true
   },
   {
+    "text": "कोई वर्ष स्तर नहीं",
+    "valid": true
+  },
+  {
+    "text": "कोई विशिष्ट परिसर नहीं",
+    "valid": true
+  },
+  {
     "text": "कोई संदेश मेल नहीं खाता।",
     "valid": true
   },
@@ -5569,6 +5909,10 @@
   },
   {
     "text": "कोई सहमति रिकॉर्ड मेल नहीं खाता।",
+    "valid": true
+  },
+  {
+    "text": "कोड",
     "valid": true
   },
   {
@@ -5608,6 +5952,14 @@
     "valid": true
   },
   {
+    "text": "क्षमता",
+    "valid": true
+  },
+  {
+    "text": "क्षमता: {capacity}",
+    "valid": true
+  },
+  {
     "text": "क्षेत्र",
     "valid": true
   },
@@ -5629,6 +5981,10 @@
   },
   {
     "text": "खोजें",
+    "valid": true
+  },
+  {
+    "text": "गतिविधि",
     "valid": true
   },
   {
@@ -5661,6 +6017,22 @@
   },
   {
     "text": "चालू",
+    "valid": true
+  },
+  {
+    "text": "चुना गया कार्यक्रम इस संस्था के लिए मान्य नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "चुना गया परिसर इस संस्था के लिए मान्य नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "चुना गया वर्ष स्तर इस कार्यक्रम से संबंधित नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "चुना गया शैक्षणिक वर्ष इस संस्था के लिए मान्य नहीं है।",
     "valid": true
   },
   {
@@ -5840,7 +6212,15 @@
     "valid": true
   },
   {
+    "text": "डिग्री",
+    "valid": true
+  },
+  {
     "text": "डिजिटल हस्ताक्षर",
+    "valid": true
+  },
+  {
+    "text": "डिप्लोमा",
     "valid": true
   },
   {
@@ -6124,6 +6504,10 @@
     "valid": true
   },
   {
+    "text": "परियोजना",
+    "valid": true
+  },
+  {
     "text": "परिवारों की प्रतिबंधित जानकारी देखें",
     "valid": true
   },
@@ -6324,6 +6708,14 @@
     "valid": true
   },
   {
+    "text": "प्रमाणपत्र",
+    "valid": true
+  },
+  {
+    "text": "प्रयोगशाला",
+    "valid": true
+  },
+  {
     "text": "प्रशिक्षक",
     "valid": true
   },
@@ -6349,6 +6741,10 @@
   },
   {
     "text": "प्राप्तकर्ता",
+    "valid": true
+  },
+  {
+    "text": "प्रारंभिक वर्ष",
     "valid": true
   },
   {
@@ -6560,6 +6956,10 @@
     "valid": true
   },
   {
+    "text": "बैच कार्यक्रम",
+    "valid": true
+  },
+  {
     "text": "ब्रांड",
     "valid": true
   },
@@ -6765,6 +7165,10 @@
   },
   {
     "text": "यह अनुरोध बंद है।",
+    "valid": true
+  },
+  {
+    "text": "यह अनुरोध मान्य नहीं है। अपने विकल्प जाँचें और फिर से कोशिश करें।",
     "valid": true
   },
   {
@@ -6992,6 +7396,10 @@
     "valid": true
   },
   {
+    "text": "वर्ष स्तर",
+    "valid": true
+  },
+  {
     "text": "वापस",
     "valid": true
   },
@@ -7016,6 +7424,10 @@
     "valid": true
   },
   {
+    "text": "विद्यालय चरण",
+    "valid": true
+  },
+  {
     "text": "विफल",
     "valid": true
   },
@@ -7036,6 +7448,14 @@
     "valid": true
   },
   {
+    "text": "विषय पेशकश",
+    "valid": true
+  },
+  {
+    "text": "विषय पेशकश लोड नहीं हो सकी।",
+    "valid": true
+  },
+  {
     "text": "विस्तृत",
     "valid": true
   },
@@ -7045,6 +7465,10 @@
   },
   {
     "text": "वैकल्पिक",
+    "valid": true
+  },
+  {
+    "text": "वैकल्पिक। 1 से 2,000 के बीच पूर्ण संख्या।",
     "valid": true
   },
   {
@@ -7140,11 +7564,19 @@
     "valid": true
   },
   {
+    "text": "शैक्षणिक संरचना के भाग",
+    "valid": true
+  },
+  {
     "text": "शैक्षणिक संरचना देखें",
     "valid": true
   },
   {
     "text": "शैक्षणिक संरचना प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक संरचना लोड नहीं हो सकी।",
     "valid": true
   },
   {
@@ -7340,6 +7772,10 @@
     "valid": true
   },
   {
+    "text": "सभी शैक्षणिक वर्ष",
+    "valid": true
+  },
+  {
     "text": "सभी स्थितियाँ",
     "valid": true
   },
@@ -7381,6 +7817,10 @@
   },
   {
     "text": "समूह",
+    "valid": true
+  },
+  {
+    "text": "समूह (कोहोर्ट)",
     "valid": true
   },
   {
@@ -7872,6 +8312,10 @@
     "valid": true
   },
   {
+    "text": "அனைத்துக் கல்வியாண்டுகளும்",
+    "valid": true
+  },
+  {
     "text": "அமர்வு",
     "valid": true
   },
@@ -8004,6 +8448,14 @@
     "valid": true
   },
   {
+    "text": "ஆண்டு நிலை",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு நிலை இல்லை",
+    "valid": true
+  },
+  {
     "text": "ஆண்டு முடியும் நாள்",
     "valid": true
   },
@@ -8037,6 +8489,14 @@
   },
   {
     "text": "ஆம், நிராகரி",
+    "valid": true
+  },
+  {
+    "text": "ஆய்வகம்",
+    "valid": true
+  },
+  {
+    "text": "ஆரம்ப ஆண்டுகள்",
     "valid": true
   },
   {
@@ -8104,11 +8564,19 @@
     "valid": true
   },
   {
+    "text": "இந்த ஆண்டு நிலையில் இன்னும் வகுப்புக் குழுக்கள் இல்லை.",
+    "valid": true
+  },
+  {
     "text": "இந்த ஆண்டுக்கு விடுமுறைகள் சேர்க்கப்படவில்லை.",
     "valid": true
   },
   {
     "text": "இந்த நிறுவனத்தின் {locale} மேலெழுதல்களை JSON கோப்பாகப் பதிவிறக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனத்திற்கான பாடத்திட்டங்களும் வகுப்புக் குழுக்களும் இங்கே தோன்றும்.",
     "valid": true
   },
   {
@@ -8152,11 +8620,23 @@
     "valid": true
   },
   {
+    "text": "இந்தக் கல்வியாண்டுக்கு இந்தக் குறியீட்டுடன் வகுப்புக் குழு ஏற்கனவே உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கல்வியாண்டுக்குப் பாட வழங்கல்கள் இல்லை.",
+    "valid": true
+  },
+  {
     "text": "இந்தக் காலத்தில் பயன்பாடு பதிவாகவில்லை.",
     "valid": true
   },
   {
     "text": "இந்தக் காலம்",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கோரிக்கை செல்லாது. உங்கள் தேர்வுகளைச் சரிபார்த்து மீண்டும் முயலவும்.",
     "valid": true
   },
   {
@@ -8224,6 +8704,10 @@
     "valid": true
   },
   {
+    "text": "இன்னும் ஆண்டு நிலைகளோ வகுப்புக் குழுக்களோ இல்லை.",
+    "valid": true
+  },
+  {
     "text": "இன்னும் இணக்கத் தொகுப்பு எதுவும் பொருந்தவில்லை.",
     "valid": true
   },
@@ -8241,6 +8725,14 @@
   },
   {
     "text": "இன்னும் பங்குகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் பாடங்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் பாடத்திட்டங்கள் இல்லை",
     "valid": true
   },
   {
@@ -8580,6 +9072,14 @@
     "valid": true
   },
   {
+    "text": "எழுத்து அல்லது எண்ணுடன் தொடங்கும் சரியான குறியீட்டை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "எழுத்துகள், எண்கள், புள்ளிகள், கோடுகள் அல்லது அடிக்கோடுகள் (அதிகபட்சம் 32 எழுத்துகள்).",
+    "valid": true
+  },
+  {
     "text": "எழுத்துரு மற்றும் இடைவெளி",
     "valid": true
   },
@@ -8665,6 +9165,10 @@
   },
   {
     "text": "ஒரு பக்கத்திற்கான வரிசைகள்",
+    "valid": true
+  },
+  {
+    "text": "ஒரு பாடத்திட்டம் மற்றும் கல்வியாண்டின் கீழ் வகுப்புக் குழுவை உருவாக்கவும்.",
     "valid": true
   },
   {
@@ -8800,6 +9304,18 @@
     "valid": true
   },
   {
+    "text": "கல்விக் கட்டமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கல்விக் கட்டமைப்புப் பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "கல்விக் கட்டமைப்பை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "கல்விக் கட்டமைப்பை நிர்வகி",
     "valid": true
   },
@@ -8809,6 +9325,10 @@
   },
   {
     "text": "கல்விக் காலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "கல்விக்குழு",
     "valid": true
   },
   {
@@ -8896,7 +9416,15 @@
     "valid": true
   },
   {
+    "text": "குறிப்பிட்ட வளாகம் இல்லை",
+    "valid": true
+  },
+  {
     "text": "குறிப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "குறியீடு",
     "valid": true
   },
   {
@@ -8965,6 +9493,14 @@
   },
   {
     "text": "கையொப்பம் செல்லும்",
+    "valid": true
+  },
+  {
+    "text": "கொள்ளளவு",
+    "valid": true
+  },
+  {
+    "text": "கொள்ளளவு: {capacity}",
     "valid": true
   },
   {
@@ -9060,6 +9596,10 @@
     "valid": true
   },
   {
+    "text": "சான்றிதழ்",
+    "valid": true
+  },
+  {
     "text": "சாவி (எ.கா. term.learner) அல்லது சொற்களால் தேடவும்…",
     "valid": true
   },
@@ -9145,6 +9685,10 @@
   },
   {
     "text": "செயல்கள்",
+    "valid": true
+  },
+  {
+    "text": "செயல்பாடு",
     "valid": true
   },
   {
@@ -9432,6 +9976,10 @@
     "valid": true
   },
   {
+    "text": "திட்டப்பணி",
+    "valid": true
+  },
+  {
     "text": "திட்டம்",
     "valid": true
   },
@@ -9528,7 +10076,23 @@
     "valid": true
   },
   {
+    "text": "தேர்ந்தெடுத்த ஆண்டு நிலை இந்தப் பாடத்திட்டத்தைச் சேர்ந்ததல்ல.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த கல்வியாண்டு இந்த நிறுவனத்திற்குச் செல்லாது.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த பாடத்திட்டம் இந்த நிறுவனத்திற்குச் செல்லாது.",
+    "valid": true
+  },
+  {
     "text": "தேர்ந்தெடுத்த மொழிக்கான செய்திச் சாவிகளும் பயன்படும் சொற்களும்",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுத்த வளாகம் இந்த நிறுவனத்திற்குச் செல்லாது.",
     "valid": true
   },
   {
@@ -9565,6 +10129,10 @@
   },
   {
     "text": "தொகுதிக் காலம்",
+    "valid": true
+  },
+  {
+    "text": "தொகுதித் திட்டம்",
     "valid": true
   },
   {
@@ -9988,6 +10556,14 @@
     "valid": true
   },
   {
+    "text": "பட்டம்",
+    "valid": true
+  },
+  {
+    "text": "பட்டயம்",
+    "valid": true
+  },
+  {
     "text": "பட்டியை மூடு",
     "valid": true
   },
@@ -10148,6 +10724,38 @@
     "valid": true
   },
   {
+    "text": "பள்ளி நிலை",
+    "valid": true
+  },
+  {
+    "text": "பாட வழங்கல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பாட வழங்கல்கள்",
+    "valid": true
+  },
+  {
+    "text": "பாடங்கள்",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்டங்கள் & வகுப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்டங்கள், ஆண்டு நிலைகள், வகுப்புக் குழுக்கள், பாடங்கள் மற்றும் கல்வியாண்டு வழங்கல்களைப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்டங்கள், ஆண்டு நிலைகள், வகுப்புக் குழுக்கள், பாடங்கள் மற்றும் வழங்கல்கள்.",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்டம்",
+    "valid": true
+  },
+  {
     "text": "பாடநெறி",
     "valid": true
   },
@@ -10197,6 +10805,10 @@
   },
   {
     "text": "பிராண்ட் சொத்துகள்",
+    "valid": true
+  },
+  {
+    "text": "பிரிவு",
     "valid": true
   },
   {
@@ -10524,6 +11136,10 @@
     "valid": true
   },
   {
+    "text": "முதன்மை",
+    "valid": true
+  },
+  {
     "text": "முதன்மை வழிசெலுத்தல்",
     "valid": true
   },
@@ -10676,6 +11292,22 @@
     "valid": true
   },
   {
+    "text": "வகுப்புக் குழு உருவாக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "வகுப்புக் குழுவை உருவாக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "வகுப்புக் குழுவை உருவாக்கு",
+    "valid": true
+  },
+  {
+    "text": "வகுப்புக் குழுவைச் சேர்",
+    "valid": true
+  },
+  {
     "text": "வகை",
     "valid": true
   },
@@ -10689,6 +11321,10 @@
   },
   {
     "text": "வடிவத்தின் நேரடி முன்னோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "வரம்பற்ற கொள்ளளவு",
     "valid": true
   },
   {
@@ -10845,6 +11481,14 @@
   },
   {
     "text": "விருப்பத்தேர்வு",
+    "valid": true
+  },
+  {
+    "text": "விருப்பத்தேர்வு. 1 முதல் 2,000 வரையிலான முழு எண்.",
+    "valid": true
+  },
+  {
+    "text": "விருப்பப் பாடம்",
     "valid": true
   },
   {

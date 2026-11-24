@@ -83,6 +83,7 @@
 │     │                 modules/m07/ (NotificationsPage, TemplatesTab, TemplateEditor, DeliveryLogTab, PreferencesTab, NEX-024),
 │     │                 modules/m10/ (SyncCentrePage, ThisDeviceTab, DevicesTab, ConflictsTab, NEX-019),
 │     │                 modules/m11/ (AiSettingsPage, AssistButton, AssistPanel, AssistUnavailable, NEX-020),
+│     │                 modules/m15/ (StructurePage, ProgramsTab, SubjectsTab, AddClassGroupDialog, NEX-160),
 │     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023),
 │     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest in vite.config, NEX-030),
 │     │                 sw/ (sw.ts: Workbox injectManifest worker; mock builds host MSW in it, own tsconfig, NEX-038)

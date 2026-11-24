@@ -57,23 +57,31 @@ export type YearLevel = z.infer<typeof YearLevelSchema>;
 export const ClassGroupKindSchema = z.enum(["section", "batch", "cohort", "group"]);
 export type ClassGroupKind = z.infer<typeof ClassGroupKindSchema>;
 
+const classGroupInputFields = {
+  campusId: IdSchema.nullable(),
+  /** AcademicCalendar id. */
+  academicYearId: IdSchema,
+  programId: IdSchema,
+  /** A batch can run without a year level. */
+  yearLevelId: IdSchema.nullable(),
+  kind: ClassGroupKindSchema,
+  code: AcademicCodeSchema,
+  name: NameSchema,
+  capacity: z.int().min(1).max(2000).nullable(),
+  homeroomStaffProfileId: IdSchema.nullable(),
+};
+
+/** Input for creating a class group; id, tenant, institution and timestamps are server-set. */
+export const ClassGroupInputSchema = z.strictObject(classGroupInputFields);
+export type ClassGroupInput = z.infer<typeof ClassGroupInputSchema>;
+
 /** The server checks that the year level, when set, belongs to the program. */
 export const ClassGroupSchema = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
     institutionId: IdSchema,
-    campusId: IdSchema.nullable(),
-    /** AcademicCalendar id. */
-    academicYearId: IdSchema,
-    programId: IdSchema,
-    /** A batch can run without a year level. */
-    yearLevelId: IdSchema.nullable(),
-    kind: ClassGroupKindSchema,
-    code: AcademicCodeSchema,
-    name: NameSchema,
-    capacity: z.int().min(1).max(2000).nullable(),
-    homeroomStaffProfileId: IdSchema.nullable(),
+    ...classGroupInputFields,
     ...timestamps,
   })
   .refine(validTimestampOrder, timestampOrderIssue);

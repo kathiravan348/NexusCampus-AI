@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-23 (Stage 2 complete through NEX-145: every Nexus Control route P01–P18 on the control backend — no Control route is mock-only in real mode — plus the M84 install agent and diagnostic bundle decision audit events, D60 signed pull-only commands with D63 expiry, P04 provisioning / offboarding, P10 access broker, P18 moves, D66 one open offboarding or move per tenant, D62 Razorpay INR payment links and `NXTE/1` tenant export & import. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
+> State as of: 2026-11-24 (Stage 3 prototype — M15 academic structure mock routes incl. `POST /api/v1/class-groups` (NEX-160). Stage 2 complete through NEX-145: every Nexus Control route P01–P18 on the control backend — no Control route is mock-only in real mode — plus the M84 install agent and diagnostic bundle decision audit events, D60 signed pull-only commands with D63 expiry, P04 provisioning / offboarding, P10 access broker, P18 moves, D66 one open offboarding or move per tenant, D62 Razorpay INR payment links and `NXTE/1` tenant export & import. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -388,3 +388,11 @@ Partner scoping follows the mocks: rows with an account are visible when it is o
 replies are joined through visible tickets); rows without one (catalogue, payments, credit notes, health signals,
 releases, rollouts, SLA policies, KB articles, extension compatibility, unattached sandboxes, commissions, business
 metrics, sub-processors, certifications, security incidents, provisioning jobs, shred certificates, broker sessions) are not shown to partner users.
+
+## Academic structure (M15) — mock API (Stage 3 prototype, NEX-156, NEX-160)
+
+| Method & path | Permission | Input / Output | Errors |
+|---|---|---|---|
+| `GET /api/v1/programs` · `/year-levels` · `/class-groups` · `/subjects` | `m15.structure.read` | `?page=&pageSize=` → `Page<Program>` · `Page<YearLevel>` · `Page<ClassGroup>` · `Page<Subject>` | `400`, `401`, `403` |
+| `GET /api/v1/subject-offerings` | `m15.structure.read` | `?academicYearId=&page=&pageSize=` → `Page<SubjectOffering>` | `400`, `401`, `403`, `404` (unknown or other tenant's `academicYearId`) |
+| `POST /api/v1/class-groups` | `m15.structure.manage` | `ClassGroupInput` → `201 ClassGroup` (`id`, `tenantId`, `institutionId`, timestamps server-set) | `400 invalid_request` (bad body, or `programId` / `academicYearId` / `yearLevelId` / `campusId` / `homeroomStaffProfileId` outside tenant, or `yearLevelId` not in `programId`), `401`, `403`, `409 conflict` (duplicate `code` in the same academic year) |
