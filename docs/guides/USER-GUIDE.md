@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-25 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Learners, and Families)
+> State as of: 2026-11-25 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Dashboards, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -34,7 +34,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, and My portal show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, My portal, and Dashboards show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -292,6 +292,15 @@ Open **Staff portal** from the menu to see your teaching day. Guardians, learner
 - **Quick links** opens the teaching tools available in your menu, including **Attendance**, **Timetable**, **Gradebook** and **Messages & notices**.
 - Choose **Daily briefing** to open **Nexus Assist**. You can ask “What should I review today?” This button appears while you are online if your institution enables Assist and your role has access.
 - Offline, you can read the last summary saved on this device. **Last synced** shows when it was fetched. If you open the portal offline before a summary has been saved, you see **Staff portal could not be loaded.**
+
+## Dashboards
+
+Open **Dashboards** from the menu or select **Key metrics** on the leader home page. Owners and administrators with dashboard access can see totals for their institution. Other roles see **No access** if they open the page directly.
+
+- **Attendance rate** shows a percentage. **Fees collected** and **Fees outstanding** use the institution’s currency. **Open admissions** and **Active learners** show counts.
+- **As of** gives the date and time of each metric in the institution’s time zone. When a trend is available, the tile shows **Increasing**, **Decreasing** or **No change** beside an icon.
+- Offline, you can read the figures last saved on this device. **Last synced** shows when they were fetched. If you open the page offline before any figures have been saved, you see **Dashboards could not be loaded.** Reconnect and select **Try again**.
+- Choose **Ask Assist** to ask about the metrics when you are online, your institution enables Assist and your role has access.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
