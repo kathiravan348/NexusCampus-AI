@@ -1268,6 +1268,10 @@
     "valid": true
   },
   {
+    "text": "Check today’s attendance sessions, pending leave requests and communication updates.",
+    "valid": true
+  },
+  {
     "text": "Check updates for your children and jump to their attendance, fees, report cards and documents.",
     "valid": true
   },
@@ -1697,6 +1701,10 @@
   },
   {
     "text": "Daily",
+    "valid": true
+  },
+  {
+    "text": "Daily briefing",
     "valid": true
   },
   {
@@ -5340,6 +5348,10 @@
     "valid": true
   },
   {
+    "text": "See today’s summary and open your teaching tools.",
+    "valid": true
+  },
+  {
     "text": "See users and people",
     "valid": true
   },
@@ -5581,6 +5593,14 @@
   },
   {
     "text": "Staff member {number}",
+    "valid": true
+  },
+  {
+    "text": "Staff portal",
+    "valid": true
+  },
+  {
+    "text": "Staff portal could not be loaded.",
     "valid": true
   },
   {
@@ -6277,6 +6297,10 @@
   },
   {
     "text": "Try another status filter or check back when invoices are issued.",
+    "valid": true
+  },
+  {
+    "text": "Try asking “What should I review today?”",
     "valid": true
   },
   {
@@ -8192,7 +8216,15 @@
     "valid": true
   },
   {
+    "text": "आज का सारांश देखें और पढ़ाने के लिए ज़रूरी साधन खोलें।",
+    "valid": true
+  },
+  {
     "text": "आज की तारीख और समय",
+    "valid": true
+  },
+  {
+    "text": "आज के उपस्थिति सत्र, लंबित अवकाश अनुरोध और नए संदेश व सूचनाएँ देखें।",
     "valid": true
   },
   {
@@ -10320,6 +10352,10 @@
     "valid": true
   },
   {
+    "text": "दैनिक सारांश",
+    "valid": true
+  },
+  {
     "text": "दोपहर का सत्र",
     "valid": true
   },
@@ -10729,6 +10765,10 @@
   },
   {
     "text": "पूँजी",
+    "valid": true
+  },
+  {
+    "text": "पूछकर देखें “आज मुझे क्या देखना चाहिए?”",
     "valid": true
   },
   {
@@ -13340,6 +13380,14 @@
     "valid": true
   },
   {
+    "text": "स्टाफ़ पोर्टल",
+    "valid": true
+  },
+  {
+    "text": "स्टाफ़ पोर्टल लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
     "text": "स्टार्टर",
     "valid": true
   },
@@ -14528,7 +14576,19 @@
     "valid": true
   },
   {
+    "text": "இன்றைய கண்ணோட்டம்",
+    "valid": true
+  },
+  {
+    "text": "இன்றைய சுருக்கத்தைப் பார்த்து உங்கள் கற்பித்தல் கருவிகளைத் திறக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "இன்றைய தேதி மற்றும் நேரம்",
+    "valid": true
+  },
+  {
+    "text": "இன்றைய வருகைப் பதிவு அமர்வுகள், நிலுவையிலுள்ள விடுப்புக் கோரிக்கைகள், புதிய செய்திகள் மற்றும் அறிவிப்புகளைப் பார்க்கவும்.",
     "valid": true
   },
   {
@@ -17704,6 +17764,14 @@
     "valid": true
   },
   {
+    "text": "பணியாளர் முகப்பு",
+    "valid": true
+  },
+  {
+    "text": "பணியாளர் முகப்பை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "பணியாளர்கள்",
     "valid": true
   },
@@ -19533,6 +19601,10 @@
   },
   {
     "text": "—",
+    "valid": true
+  },
+  {
+    "text": "“இன்று நான் எவற்றைப் பார்க்க வேண்டும்?” என்று கேட்கலாம்.",
     "valid": true
   }
 ]
