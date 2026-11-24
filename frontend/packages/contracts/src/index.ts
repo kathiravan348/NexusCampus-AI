@@ -7,6 +7,8 @@ export * from "./calendar";
 export * from "./academics";
 export * from "./timetable";
 export * from "./attendance";
+export * from "./fees";
+export * from "./accounting";
 export * from "./person";
 export * from "./learners";
 export * from "./families";
