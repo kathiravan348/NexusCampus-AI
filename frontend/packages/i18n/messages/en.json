@@ -7307,6 +7307,62 @@
     "message": "Active learners",
     "description": "Dashboard count of enrolled learners, including those on leave."
   },
+  "m28.nav.title": {
+    "message": "Dashboards",
+    "description": "Navigation and page title for institution dashboards."
+  },
+  "m28.nav.summary": {
+    "message": "View key metrics for your institution.",
+    "description": "Summary on the dashboards module card."
+  },
+  "m28.page.intro": {
+    "message": "Review attendance, fees, admissions and enrolment across your institution.",
+    "description": "Introduction above the institution-wide KPI tiles."
+  },
+  "m28.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button opening the Assist panel from dashboards."
+  },
+  "m28.page.prompt": {
+    "message": "Try asking “Which metrics have changed?”",
+    "description": "Suggested question about aggregate metrics."
+  },
+  "m28.page.failed": {
+    "message": "Dashboards could not be loaded.",
+    "description": "Error when metrics cannot be loaded and none are cached."
+  },
+  "m28.page.empty": {
+    "message": "No metrics are available yet.",
+    "description": "Empty state after a successful dashboard query."
+  },
+  "m28.page.unknownKpi": {
+    "message": "Institution metric",
+    "description": "Fallback title for an unrecognised metric label."
+  },
+  "m28.page.asOf": {
+    "message": "As of {time}",
+    "description": "The time the metric was calculated, formatted in the institution time zone."
+  },
+  "m28.unit.percent": {
+    "message": "{value}%",
+    "description": "Percentage with an already formatted number on a 0–100 scale."
+  },
+  "m28.unit.days": {
+    "message": "{value, plural, one {# day} other {# days}}",
+    "description": "Duration of a metric in days."
+  },
+  "m28.trend.up": {
+    "message": "Increasing",
+    "description": "Text for an upward trend."
+  },
+  "m28.trend.down": {
+    "message": "Decreasing",
+    "description": "Text for a downward trend."
+  },
+  "m28.trend.flat": {
+    "message": "No change",
+    "description": "Text for a flat trend."
+  },
   "m86.permission.rolloverRead": {
     "message": "View year-end rollover",
     "description": "Permission description: View year-end rollover runs and promotion decisions."
