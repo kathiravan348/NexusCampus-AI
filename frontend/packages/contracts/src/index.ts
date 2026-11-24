@@ -6,6 +6,8 @@ export * from "./tenancy";
 export * from "./calendar";
 export * from "./academics";
 export * from "./person";
+export * from "./learners";
+export * from "./families";
 export * from "./user";
 export * from "./rbac";
 export * from "./studio";
