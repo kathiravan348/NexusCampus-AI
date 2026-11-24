@@ -6235,6 +6235,182 @@
     "message": "Manage accounting records",
     "description": "Permission description: Manage accounting records."
   },
+  "m20.nav.title": {
+    "message": "Gradebook",
+    "description": "Campus navigation label and page title for the assessment and gradebook screen (M20)."
+  },
+  "m20.nav.summary": {
+    "message": "Enter assessment marks and rubric scores by class group.",
+    "description": "Home tile description for the Gradebook module."
+  },
+  "m20.page.intro": {
+    "message": "Choose a class group and an assessment to enter or review marks.",
+    "description": "Introductory text under the Gradebook page heading."
+  },
+  "m20.page.classGroup": {
+    "message": "Class group",
+    "description": "Select label for picking a class group on the Gradebook page."
+  },
+  "m20.assessments.title": {
+    "message": "Assessments",
+    "description": "Heading above the list of assessments for the selected class group."
+  },
+  "m20.assessments.empty": {
+    "message": "No assessments for this class group",
+    "description": "Empty state shown when the selected class group has no assessments."
+  },
+  "m20.assessments.maxMarks": {
+    "message": "Max {max}",
+    "description": "Maximum marks for an assessment. {max} is a formatted number."
+  },
+  "m20.assessments.weight": {
+    "message": "Weight {weight}%",
+    "description": "Percentage weight of an assessment. {weight} is a formatted number."
+  },
+  "m20.assessments.dueOn": {
+    "message": "Due {date}",
+    "description": "Due date label on an assessment. {date} is a formatted calendar date."
+  },
+  "m20.assessments.noDueDate": {
+    "message": "No due date",
+    "description": "Shown when an assessment has no due date."
+  },
+  "m20.kind.test": {
+    "message": "Test",
+    "description": "Assessment kind: test."
+  },
+  "m20.kind.assignment": {
+    "message": "Assignment",
+    "description": "Assessment kind: assignment."
+  },
+  "m20.kind.project": {
+    "message": "Project",
+    "description": "Assessment kind: project."
+  },
+  "m20.kind.practical": {
+    "message": "Practical",
+    "description": "Assessment kind: practical."
+  },
+  "m20.kind.oral": {
+    "message": "Oral",
+    "description": "Assessment kind: oral."
+  },
+  "m20.kind.observation": {
+    "message": "Observation",
+    "description": "Assessment kind: observation."
+  },
+  "m20.status.draft": {
+    "message": "Draft",
+    "description": "Assessment status: draft, not open for marking."
+  },
+  "m20.status.open": {
+    "message": "Open",
+    "description": "Assessment status: open for mark entry."
+  },
+  "m20.status.marking": {
+    "message": "Marking",
+    "description": "Assessment status: marking in progress."
+  },
+  "m20.status.moderated": {
+    "message": "Moderated",
+    "description": "Assessment status: moderated and read-only."
+  },
+  "m20.status.published": {
+    "message": "Published",
+    "description": "Assessment status: published and read-only."
+  },
+  "m20.markSheet.title": {
+    "message": "Mark sheet",
+    "description": "Heading above the learner rows of the selected assessment."
+  },
+  "m20.markSheet.empty": {
+    "message": "No learners on this roster",
+    "description": "Empty state shown when no learners are currently enrolled in the assessment's class group."
+  },
+  "m20.markSheet.readOnly": {
+    "message": "Read-only. Marks can only be changed while the assessment is open or being marked.",
+    "description": "Notice shown above a read-only mark sheet."
+  },
+  "m20.markSheet.learner": {
+    "message": "Learner {roll}",
+    "description": "Fallback learner label using roll number when directory names are unavailable. Keep {roll}."
+  },
+  "m20.markSheet.unnumbered": {
+    "message": "Learner without a roll number",
+    "description": "Fallback learner label when neither a name nor a roll number is available."
+  },
+  "m20.markSheet.marks": {
+    "message": "Marks",
+    "description": "Numeric input label for a learner's marks on the mark sheet."
+  },
+  "m20.markSheet.marksHint": {
+    "message": "0 to {max}, in 0.5 steps",
+    "description": "Helper hint under the marks input. {max} is the formatted maximum marks."
+  },
+  "m20.markSheet.absent": {
+    "message": "Absent",
+    "description": "Checkbox label and status badge indicating the learner was absent for the assessment."
+  },
+  "m20.markSheet.notEntered": {
+    "message": "Not entered",
+    "description": "Status badge shown when a learner has no saved mark yet."
+  },
+  "m20.markSheet.percentLabel": {
+    "message": "Percent",
+    "description": "Label above the calculated percentage for a learner's marks."
+  },
+  "m20.markSheet.percent": {
+    "message": "{value}%",
+    "description": "Formatted percentage score for an assessment. {value} is a localized number."
+  },
+  "m20.markSheet.noPercent": {
+    "message": "—",
+    "description": "Placeholder shown instead of a percentage when no mark is entered or the learner is absent."
+  },
+  "m20.markSheet.scoreSummary": {
+    "message": "{marks} / {max}",
+    "description": "Badge showing saved marks out of the maximum. {marks} and {max} are formatted numbers."
+  },
+  "m20.markSheet.rubricHeading": {
+    "message": "Rubric scores",
+    "description": "Subheading above the rubric criterion selectors on a mark sheet row."
+  },
+  "m20.markSheet.rubricLevel": {
+    "message": "{score} — {descriptor}",
+    "description": "Option label in a rubric criterion select. {score} is a formatted number and {descriptor} is the level text."
+  },
+  "m20.markSheet.remark": {
+    "message": "Remark (optional)",
+    "description": "Optional text input label for a staff remark on a learner's assessment entry."
+  },
+  "m20.markSheet.waiting": {
+    "message": "Waiting to sync",
+    "description": "Badge shown when a learner's mark entry is queued in the offline outbox."
+  },
+  "m20.markSheet.marksAboveMax": {
+    "message": "Marks cannot be more than {max}.",
+    "description": "Field error when entered marks exceed the assessment maximum. {max} is a formatted number."
+  },
+  "m20.markSheet.marksInvalid": {
+    "message": "Enter a mark from 0 to {max} in 0.5 steps.",
+    "description": "Field error when entered marks are negative, not a 0.5 step, or not a valid number. {max} is formatted."
+  },
+  "m20.markSheet.rubricRequired": {
+    "message": "Choose a score for each rubric criterion.",
+    "description": "Validation error when a present learner is missing one or more rubric criterion scores."
+  },
+  "m20.markSheet.remarkInvalid": {
+    "message": "Remark must be 500 characters or fewer.",
+    "description": "Field error when a remark exceeds the maximum length."
+  },
+  "m20.markSheet.closedError": {
+    "message": "This assessment is closed and can no longer be edited.",
+    "description": "Error shown when saving fails because the assessment is no longer open or marking."
+  },
+  "m20.markSheet.failed": {
+    "message": "Could not save marks. Check the assessment and try again.",
+    "description": "Generic save error without personal data or mark values."
+  },
   "m20.permission.marksRead": {
     "message": "View assessments and marks",
     "description": "Permission description: View assessments and marks."

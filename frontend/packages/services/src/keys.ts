@@ -149,6 +149,8 @@ export const queryKeys = {
     assessments: (s: KeyScope, classGroupId: string | null) =>
       scoped(s, "m20", "assessments", classGroupId),
     rubrics: (s: KeyScope) => scoped(s, "m20", "rubrics"),
+    assessmentRoster: (s: KeyScope, assessmentId: string | null) =>
+      scoped(s, "m20", "assessments", assessmentId, "roster"),
     assessmentMarks: (s: KeyScope, assessmentId: string | null) =>
       scoped(s, "m20", "assessments", assessmentId, "marks"),
   },

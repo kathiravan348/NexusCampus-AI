@@ -119,25 +119,40 @@ export const RubricSchema = z.strictObject({
 });
 export type Rubric = z.infer<typeof RubricSchema>;
 
+const markEntryFields = {
+  /** The server checks this against the assessment's maximum. */
+  marks: z.number().min(0).multipleOf(0.5).nullable(),
+  absent: z.boolean(),
+  rubricScores: z.record(RubricCodeSchema, z.int()).nullable(),
+  /** Personal data (V-7). */
+  remark: z.string().max(500).nullable(),
+};
+
+function validAbsentMarks(entry: { absent: boolean; marks: number | null }) {
+  return !entry.absent || entry.marks === null;
+}
+
+const absentMarksIssue = {
+  message: "marks must be null for an absent learner",
+  path: ["marks"],
+};
+
+export const MarkEntryInputSchema = z
+  .strictObject(markEntryFields)
+  .refine(validAbsentMarks, absentMarksIssue);
+export type MarkEntryInput = z.infer<typeof MarkEntryInputSchema>;
+
 export const MarkEntrySchema = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
     assessmentId: IdSchema,
     learnerId: IdSchema,
-    /** The server checks this against the assessment's maximum. */
-    marks: z.number().min(0).multipleOf(0.5).nullable(),
-    absent: z.boolean(),
-    rubricScores: z.record(RubricCodeSchema, z.int()).nullable(),
-    /** Personal data (V-7). */
-    remark: z.string().max(500).nullable(),
+    ...markEntryFields,
     enteredByStaffProfileId: IdSchema,
     enteredAt: UtcDateTimeSchema,
     /** Device that recorded the mark offline (L2). */
     deviceId: IdSchema.nullable(),
   })
-  .refine((entry) => !entry.absent || entry.marks === null, {
-    message: "marks must be null for an absent learner",
-    path: ["marks"],
-  });
+  .refine(validAbsentMarks, absentMarksIssue);
 export type MarkEntry = z.infer<typeof MarkEntrySchema>;

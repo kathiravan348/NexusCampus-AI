@@ -248,6 +248,26 @@
     "valid": true
   },
   {
+    "text": "0 to {max}, in 0.5 steps",
+    "valid": true
+  },
+  {
+    "text": "0 से {max} तक 0.5 के अंतर में मान्य अंक दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "0 से {max} तक, 0.5 के अंतर से",
+    "valid": true
+  },
+  {
+    "text": "0 முதல் {max} வரை 0.5 படிகளில் சரியான மதிப்பெண்ணை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "0 முதல் {max} வரை, 0.5 படிகளில்",
+    "valid": true
+  },
+  {
     "text": "1 से 2,000 के बीच पूर्ण संख्या दर्ज करें।",
     "valid": true
   },
@@ -852,11 +872,19 @@
     "valid": true
   },
   {
+    "text": "Assessments",
+    "valid": true
+  },
+  {
     "text": "Asset",
     "valid": true
   },
   {
     "text": "Assets",
+    "valid": true
+  },
+  {
+    "text": "Assignment",
     "valid": true
   },
   {
@@ -1204,7 +1232,15 @@
     "valid": true
   },
   {
+    "text": "Choose a class group and an assessment to enter or review marks.",
+    "valid": true
+  },
+  {
     "text": "Choose a file with a plain file name (up to 200 characters).",
+    "valid": true
+  },
+  {
+    "text": "Choose a score for each rubric criterion.",
     "valid": true
   },
   {
@@ -1465,6 +1501,10 @@
   },
   {
     "text": "Could not roll back this override.",
+    "valid": true
+  },
+  {
+    "text": "Could not save marks. Check the assessment and try again.",
     "valid": true
   },
   {
@@ -1972,6 +2012,10 @@
     "valid": true
   },
   {
+    "text": "Enter a mark from 0 to {max} in 0.5 steps.",
+    "valid": true
+  },
+  {
     "text": "Enter a name up to 200 characters.",
     "valid": true
   },
@@ -2037,6 +2081,10 @@
   },
   {
     "text": "Enter assessment marks",
+    "valid": true
+  },
+  {
+    "text": "Enter assessment marks and rubric scores by class group.",
     "valid": true
   },
   {
@@ -2337,6 +2385,10 @@
   },
   {
     "text": "Grace period",
+    "valid": true
+  },
+  {
+    "text": "Gradebook",
     "valid": true
   },
   {
@@ -3100,11 +3152,27 @@
     "valid": true
   },
   {
+    "text": "Mark sheet",
+    "valid": true
+  },
+  {
     "text": "Marketing",
     "valid": true
   },
   {
+    "text": "Marking",
+    "valid": true
+  },
+  {
     "text": "Marks",
+    "valid": true
+  },
+  {
+    "text": "Marks cannot be more than {max}.",
+    "valid": true
+  },
+  {
+    "text": "Max {max}",
     "valid": true
   },
   {
@@ -3177,6 +3245,10 @@
   },
   {
     "text": "Minutes late",
+    "valid": true
+  },
+  {
+    "text": "Moderated",
     "valid": true
   },
   {
@@ -3420,6 +3492,10 @@
     "valid": true
   },
   {
+    "text": "No assessments for this class group",
+    "valid": true
+  },
+  {
     "text": "No attendance sessions for this class group",
     "valid": true
   },
@@ -3493,6 +3569,10 @@
   },
   {
     "text": "No documents recorded.",
+    "valid": true
+  },
+  {
+    "text": "No due date",
     "valid": true
   },
   {
@@ -3724,6 +3804,10 @@
     "valid": true
   },
   {
+    "text": "Not entered",
+    "valid": true
+  },
+  {
     "text": "Not helpful",
     "valid": true
   },
@@ -3797,6 +3881,10 @@
   },
   {
     "text": "Numbers and code font",
+    "valid": true
+  },
+  {
+    "text": "Observation",
     "valid": true
   },
   {
@@ -3913,6 +4001,10 @@
   },
   {
     "text": "Options",
+    "valid": true
+  },
+  {
+    "text": "Oral",
     "valid": true
   },
   {
@@ -4064,6 +4156,10 @@
     "valid": true
   },
   {
+    "text": "Percent",
+    "valid": true
+  },
+  {
     "text": "Percentage",
     "valid": true
   },
@@ -4184,6 +4280,10 @@
     "valid": true
   },
   {
+    "text": "Practical",
+    "valid": true
+  },
+  {
     "text": "Preferences saved.",
     "valid": true
   },
@@ -4280,6 +4380,10 @@
     "valid": true
   },
   {
+    "text": "Published",
+    "valid": true
+  },
+  {
     "text": "Purpose",
     "valid": true
   },
@@ -4309,6 +4413,10 @@
   },
   {
     "text": "Read the report",
+    "valid": true
+  },
+  {
+    "text": "Read-only. Marks can only be changed while the assessment is open or being marked.",
     "valid": true
   },
   {
@@ -4425,6 +4533,14 @@
   },
   {
     "text": "Reload",
+    "valid": true
+  },
+  {
+    "text": "Remark (optional)",
+    "valid": true
+  },
+  {
+    "text": "Remark must be 500 characters or fewer.",
     "valid": true
   },
   {
@@ -4649,6 +4765,10 @@
   },
   {
     "text": "Rows per page",
+    "valid": true
+  },
+  {
+    "text": "Rubric scores",
     "valid": true
   },
   {
@@ -5244,6 +5364,10 @@
     "valid": true
   },
   {
+    "text": "Test",
+    "valid": true
+  },
+  {
     "text": "Test preparation & coaching",
     "valid": true
   },
@@ -5417,6 +5541,10 @@
   },
   {
     "text": "This address does not match any page. Check the link or go back to home.",
+    "valid": true
+  },
+  {
+    "text": "This assessment is closed and can no longer be edited.",
     "valid": true
   },
   {
@@ -6021,6 +6149,10 @@
   },
   {
     "text": "Weekly timetable",
+    "valid": true
+  },
+  {
+    "text": "Weight {weight}%",
     "valid": true
   },
   {
@@ -6792,6 +6924,10 @@
     "valid": true
   },
   {
+    "text": "{marks} / {max}",
+    "valid": true
+  },
+  {
     "text": "{minutes, plural, one {# minute late} other {# minutes late}}",
     "valid": true
   },
@@ -6869,6 +7005,10 @@
   },
   {
     "text": "{role} ஐ நீக்கு",
+    "valid": true
+  },
+  {
+    "text": "{score} — {descriptor}",
     "valid": true
   },
   {
@@ -6984,7 +7124,27 @@
     "valid": true
   },
   {
+    "text": "अंक {max} से अधिक नहीं हो सकते।",
+    "valid": true
+  },
+  {
+    "text": "अंक दर्ज करने या देखने के लिए कक्षा समूह और मूल्यांकन चुनें।",
+    "valid": true
+  },
+  {
+    "text": "अंक पत्रक",
+    "valid": true
+  },
+  {
+    "text": "अंक सहेजे नहीं जा सके। मूल्यांकन जाँचें और फिर प्रयास करें।",
+    "valid": true
+  },
+  {
     "text": "अंतिम जाँच {date}",
+    "valid": true
+  },
+  {
+    "text": "अंतिम तिथि {date}",
     "valid": true
   },
   {
@@ -7057,6 +7217,10 @@
   },
   {
     "text": "अधिकतम 200 अक्षरों का नाम दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "अधिकतम {max}",
     "valid": true
   },
   {
@@ -7360,7 +7524,15 @@
     "valid": true
   },
   {
+    "text": "अवलोकन",
+    "valid": true
+  },
+  {
     "text": "असत्यापित",
+    "valid": true
+  },
+  {
+    "text": "असाइनमेंट",
     "valid": true
   },
   {
@@ -7700,6 +7872,10 @@
     "valid": true
   },
   {
+    "text": "इस कक्षा समूह के लिए कोई मूल्यांकन नहीं है",
+    "valid": true
+  },
+  {
     "text": "इस कक्षा समूह के लिए कोई स्लॉट निर्धारित नहीं है।",
     "valid": true
   },
@@ -7801,6 +7977,10 @@
   },
   {
     "text": "इस सूची में कोई विद्यार्थी नहीं है",
+    "valid": true
+  },
+  {
+    "text": "इस सूची में कोई शिक्षार्थी नहीं है",
     "valid": true
   },
   {
@@ -8128,6 +8308,10 @@
     "valid": true
   },
   {
+    "text": "कक्षा समूह के अनुसार मूल्यांकन अंक और रुब्रिक स्कोर दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "कक्षा समूह के अनुसार साप्ताहिक समय-सारणी देखें, कक्ष व घंटी का समय जांचें, और शिक्षक कार्यभार देखें।",
     "valid": true
   },
@@ -8384,6 +8568,10 @@
     "valid": true
   },
   {
+    "text": "केवल पढ़ने योग्य। अंक तभी बदले जा सकते हैं जब मूल्यांकन खुला हो या मूल्यांकन जारी हो।",
+    "valid": true
+  },
+  {
     "text": "केवल फ़ील्ड के नाम दर्ज होते हैं, मान कभी नहीं।",
     "valid": true
   },
@@ -8413,6 +8601,10 @@
   },
   {
     "text": "कैलेंडर",
+    "valid": true
+  },
+  {
+    "text": "कोई अंतिम तिथि नहीं",
     "valid": true
   },
   {
@@ -8712,6 +8904,10 @@
     "valid": true
   },
   {
+    "text": "ग्रेडबुक",
+    "valid": true
+  },
+  {
     "text": "घंटी समय-सारणी",
     "valid": true
   },
@@ -8965,6 +9161,10 @@
   },
   {
     "text": "टिप्पणी (वैकल्पिक)",
+    "valid": true
+  },
+  {
+    "text": "टिप्पणी 500 अक्षरों या उससे कम की होनी चाहिए।",
     "valid": true
   },
   {
@@ -9245,6 +9445,10 @@
   },
   {
     "text": "दर्ज की गई रसीदें यहाँ दिखाई देंगी।",
+    "valid": true
+  },
+  {
+    "text": "दर्ज नहीं",
     "valid": true
   },
   {
@@ -9544,6 +9748,10 @@
     "valid": true
   },
   {
+    "text": "परीक्षा",
+    "valid": true
+  },
+  {
     "text": "परीक्षा तैयारी और कोचिंग",
     "valid": true
   },
@@ -9788,6 +9996,10 @@
     "valid": true
   },
   {
+    "text": "प्रकाशित",
+    "valid": true
+  },
+  {
     "text": "प्रक्रिया में प्रवेश आवेदन",
     "valid": true
   },
@@ -9845,6 +10057,10 @@
   },
   {
     "text": "प्रत्येक पंक्ति में एक राशि भरें। कुल डेबिट और कुल क्रेडिट बराबर होने चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "प्रत्येक रुब्रिक मानदंड के लिए एक स्कोर चुनें।",
     "valid": true
   },
   {
@@ -9977,6 +10193,10 @@
   },
   {
     "text": "प्राप्ति तिथि व समय",
+    "valid": true
+  },
+  {
+    "text": "प्रायोगिक",
     "valid": true
   },
   {
@@ -10252,6 +10472,10 @@
     "valid": true
   },
   {
+    "text": "बिना रोल नंबर का शिक्षार्थी",
+    "valid": true
+  },
+  {
     "text": "बिना रोल नंबर वाला विद्यार्थी",
     "valid": true
   },
@@ -10317,6 +10541,10 @@
   },
   {
     "text": "भारतीय राष्ट्रीय",
+    "valid": true
+  },
+  {
+    "text": "भारांक {weight}%",
     "valid": true
   },
   {
@@ -10560,11 +10788,19 @@
     "valid": true
   },
   {
+    "text": "मूल्यांकन",
+    "valid": true
+  },
+  {
     "text": "मूल्यांकन और अंक देखें",
     "valid": true
   },
   {
     "text": "मूल्यांकन के अंक दर्ज करें",
+    "valid": true
+  },
+  {
+    "text": "मूल्यांकन जारी",
     "valid": true
   },
   {
@@ -10597,6 +10833,10 @@
   },
   {
     "text": "मॉड्यूल चालू या बंद करें",
+    "valid": true
+  },
+  {
+    "text": "मौखिक",
     "valid": true
   },
   {
@@ -10665,6 +10905,10 @@
   },
   {
     "text": "यह भुगतान दर्ज नहीं हो सका। अपनी प्रविष्टियाँ जाँचें और फिर प्रयास करें।",
+    "valid": true
+  },
+  {
+    "text": "यह मूल्यांकन बंद है और अब इसमें बदलाव नहीं किया जा सकता।",
     "valid": true
   },
   {
@@ -10813,6 +11057,10 @@
   },
   {
     "text": "रियायतें",
+    "valid": true
+  },
+  {
+    "text": "रुब्रिक स्कोर",
     "valid": true
   },
   {
@@ -11185,6 +11433,10 @@
   },
   {
     "text": "शिक्षार्थी",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी {roll}",
     "valid": true
   },
   {
@@ -11700,6 +11952,10 @@
     "valid": true
   },
   {
+    "text": "समीक्षित",
+    "valid": true
+  },
+  {
     "text": "समूह",
     "valid": true
   },
@@ -11845,6 +12101,10 @@
   },
   {
     "text": "सिंक हो रहा है…",
+    "valid": true
+  },
+  {
+    "text": "सिंक होने की प्रतीक्षा",
     "valid": true
   },
   {
@@ -12288,6 +12548,10 @@
     "valid": true
   },
   {
+    "text": "அதிகபட்சம் {max}",
+    "valid": true
+  },
+  {
     "text": "அதிகபட்சம்: {max} / வாரம்",
     "valid": true
   },
@@ -12469,6 +12733,10 @@
   },
   {
     "text": "அறைகள் மற்றும் மணி அட்டவணைகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அளவுகோல் புள்ளிகள்",
     "valid": true
   },
   {
@@ -12796,6 +13064,10 @@
     "valid": true
   },
   {
+    "text": "இந்த மதிப்பீடு மூடப்பட்டுவிட்டது; இனி திருத்த முடியாது.",
+    "valid": true
+  },
+  {
     "text": "இந்த மாத AI வரவுகள்",
     "valid": true
   },
@@ -12821,6 +13093,10 @@
   },
   {
     "text": "இந்த வகுப்புக் குழுவுக்கு நேரங்கள் எதுவும் திட்டமிடப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த வகுப்புக் குழுவுக்கு மதிப்பீடுகள் எதுவும் இல்லை",
     "valid": true
   },
   {
@@ -12913,6 +13189,10 @@
   },
   {
     "text": "இந்தப் பக்கம் ஆன்லைனில் மட்டுமே இயங்கும். இணையத்துடன் இணைத்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பட்டியலில் கற்பவர்கள் யாரும் இல்லை",
     "valid": true
   },
   {
@@ -13161,6 +13441,14 @@
   },
   {
     "text": "இறக்குமதியைப் பதிவு செய்",
+    "valid": true
+  },
+  {
+    "text": "இறுதி நாள் {date}",
+    "valid": true
+  },
+  {
+    "text": "இறுதி நாள் இல்லை",
     "valid": true
   },
   {
@@ -13424,6 +13712,10 @@
     "valid": true
   },
   {
+    "text": "எடை {weight}%",
+    "valid": true
+  },
+  {
     "text": "எட்ஜ் சேவையகம்",
     "valid": true
   },
@@ -13552,6 +13844,10 @@
     "valid": true
   },
   {
+    "text": "ஒப்படைப்பு",
+    "valid": true
+  },
+  {
     "text": "ஒப்புதல் அளிக்கப்பட்டது",
     "valid": true
   },
@@ -13625,6 +13921,10 @@
   },
   {
     "text": "ஒவ்வாமை",
+    "valid": true
+  },
+  {
+    "text": "ஒவ்வொரு அளவுகோலுக்கும் ஒரு புள்ளியைத் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
   {
@@ -13856,6 +14156,10 @@
     "valid": true
   },
   {
+    "text": "கற்பவர் {roll}",
+    "valid": true
+  },
+  {
     "text": "கற்பவர் எண்",
     "valid": true
   },
@@ -13961,6 +14265,10 @@
   },
   {
     "text": "கவனமாகக் கையாள வேண்டியது",
+    "valid": true
+  },
+  {
+    "text": "கவனிப்பு",
     "valid": true
   },
   {
@@ -14133,6 +14441,14 @@
   },
   {
     "text": "குறிப்பு (விருப்பத்திற்குரியது)",
+    "valid": true
+  },
+  {
+    "text": "குறிப்பு (விருப்பம்)",
+    "valid": true
+  },
+  {
+    "text": "குறிப்பு 500 எழுத்துகளுக்குள் இருக்க வேண்டும்.",
     "valid": true
   },
   {
@@ -14444,6 +14760,10 @@
     "valid": true
   },
   {
+    "text": "சீராய்வு செய்யப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "சுகாதாரப் பதிவுகள்",
     "valid": true
   },
@@ -14557,6 +14877,10 @@
   },
   {
     "text": "செய்தியின் தொடரியலைச் சரிசெய்யவும், எ.கா. விடுபட்ட மூடும் அடைப்புக்குறி.",
+    "valid": true
+  },
+  {
+    "text": "செய்முறை",
     "valid": true
   },
   {
@@ -15012,6 +15336,10 @@
     "valid": true
   },
   {
+    "text": "திறந்தது",
+    "valid": true
+  },
+  {
     "text": "திறந்தவை",
     "valid": true
   },
@@ -15129,6 +15457,10 @@
   },
   {
     "text": "தேர்ந்தெடு…",
+    "valid": true
+  },
+  {
+    "text": "தேர்வு",
     "valid": true
   },
   {
@@ -15744,6 +16076,10 @@
     "valid": true
   },
   {
+    "text": "படிக்க மட்டும். மதிப்பீடு திறந்திருக்கும்போதோ மதிப்பிடப்படும்போதோ மட்டுமே மதிப்பெண்களை மாற்ற முடியும்.",
+    "valid": true
+  },
+  {
     "text": "படிக்காத செய்திகள்",
     "valid": true
   },
@@ -15877,6 +16213,10 @@
   },
   {
     "text": "பதிவின் வகை",
+    "valid": true
+  },
+  {
+    "text": "பதிவு செய்யப்படவில்லை",
     "valid": true
   },
   {
@@ -16392,7 +16732,15 @@
     "valid": true
   },
   {
+    "text": "மதிப்பிடல் நடைபெறுகிறது",
+    "valid": true
+  },
+  {
     "text": "மதிப்பீடுகளையும் மதிப்பெண்களையும் பார்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பீடுகள்",
     "valid": true
   },
   {
@@ -16404,7 +16752,27 @@
     "valid": true
   },
   {
+    "text": "மதிப்பெண் பட்டியல்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண் பதிவேடு",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண்களைச் சேமிக்க முடியவில்லை. மதிப்பீட்டைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண்களைப் பதிவு செய்யவோ பார்க்கவோ ஒரு வகுப்புக் குழுவையும் மதிப்பீட்டையும் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "மதிப்பெண்கள்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண்கள் {max}-ஐ விட அதிகமாக இருக்கக்கூடாது.",
     "valid": true
   },
   {
@@ -16928,6 +17296,10 @@
     "valid": true
   },
   {
+    "text": "வகுப்புக் குழு வாரியாக மதிப்பீட்டு மதிப்பெண்களையும் அளவுகோல் புள்ளிகளையும் பதிவு செய்யுங்கள்.",
+    "valid": true
+  },
+  {
     "text": "வகுப்புக் குழு வாரியாக வாராந்திர அட்டவணைகளைப் பார்க்கவும், அறைகள் மற்றும் மணி நேரங்களைச் சரிபார்க்கவும், ஆசிரியர் பணிச்சுமையைக் கண்காணிக்கவும்.",
     "valid": true
   },
@@ -17052,6 +17424,10 @@
     "valid": true
   },
   {
+    "text": "வரிசை எண் இல்லாத கற்பவர்",
+    "valid": true
+  },
+  {
     "text": "வரிசை எண் இல்லாத மாணவர்",
     "valid": true
   },
@@ -17077,6 +17453,10 @@
   },
   {
     "text": "வருகை",
+    "valid": true
+  },
+  {
+    "text": "வருகை தரவில்லை",
     "valid": true
   },
   {
@@ -17209,6 +17589,10 @@
   },
   {
     "text": "வழிசெலுத்தல் பட்டி",
+    "valid": true
+  },
+  {
+    "text": "வாய்மொழி",
     "valid": true
   },
   {
@@ -17477,6 +17861,10 @@
   },
   {
     "text": "ஹிஜ்ரி (உம்முல் குரா)",
+    "valid": true
+  },
+  {
+    "text": "—",
     "valid": true
   }
 ]
