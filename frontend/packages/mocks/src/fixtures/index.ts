@@ -15,3 +15,8 @@ export * from "./sync";
 export * from "./ai";
 export * from "./vault";
 export * from "./install";
+export * from "./ids-stage3";
+export * from "./academics";
+export * from "./learner-records";
+export * from "./families";
+export * from "./config";
