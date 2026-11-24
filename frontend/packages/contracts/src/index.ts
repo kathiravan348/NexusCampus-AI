@@ -29,3 +29,6 @@ export * from "./ai";
 export * from "./vault";
 export * from "./control";
 export * from "./install";
+export * from "./communication";
+export * from "./homes";
+export * from "./rollover";
