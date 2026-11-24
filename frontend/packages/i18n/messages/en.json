@@ -3799,6 +3799,54 @@
     "message": "Decide leave requests",
     "description": "Permission description: View and decide learner leave requests across the institution."
   },
+  "m18.permission.feesRead": {
+    "message": "View fees and payments",
+    "description": "Permission description: View fees and payments."
+  },
+  "m18.permission.feesManage": {
+    "message": "Manage fees and payments",
+    "description": "Permission description: Manage fees and payments."
+  },
+  "m19.permission.accountsRead": {
+    "message": "View accounting records",
+    "description": "Permission description: View accounting records."
+  },
+  "m19.permission.accountsManage": {
+    "message": "Manage accounting records",
+    "description": "Permission description: Manage accounting records."
+  },
+  "m20.permission.marksRead": {
+    "message": "View assessments and marks",
+    "description": "Permission description: View assessments and marks."
+  },
+  "m20.permission.marksEnter": {
+    "message": "Enter assessment marks",
+    "description": "Permission description: Enter assessment marks."
+  },
+  "m21.permission.examsRead": {
+    "message": "View exams and exam records",
+    "description": "Permission description: View exams and exam records."
+  },
+  "m21.permission.examsManage": {
+    "message": "Manage exams",
+    "description": "Permission description: Manage exams."
+  },
+  "m22.permission.reportsRead": {
+    "message": "View report cards",
+    "description": "Permission description: View report cards."
+  },
+  "m22.permission.reportsPublish": {
+    "message": "Publish report cards",
+    "description": "Permission description: Publish report cards."
+  },
+  "m23.permission.documentsRead": {
+    "message": "View issued documents",
+    "description": "Permission description: View issued documents."
+  },
+  "m23.permission.documentsIssue": {
+    "message": "Issue documents",
+    "description": "Permission description: Issue documents."
+  },
   "m86.permission.rolloverRead": {
     "message": "View year-end rollover",
     "description": "Permission description: View year-end rollover runs and promotion decisions."

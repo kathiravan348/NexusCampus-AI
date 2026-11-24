@@ -1,4 +1,4 @@
-import type { ConfigEntity, EnquiryStatus } from "@nexus/contracts";
+import type { ConfigEntity, EnquiryStatus, FeeInvoiceStatus } from "@nexus/contracts";
 import type { QueryKey } from "@tanstack/react-query";
 
 /** Tenant + user every scoped key starts with, so one user's cache never serves another (O-3). */
@@ -126,6 +126,46 @@ export const queryKeys = {
     attendanceMarks: (s: KeyScope, sessionId: string | null) =>
       scoped(s, "m17", "attendance-sessions", sessionId, "marks"),
     leaveRequests: (s: KeyScope) => scoped(s, "m17", "leave-requests"),
+  },
+  m18: {
+    feeHeads: (s: KeyScope) => scoped(s, "m18", "fee-heads"),
+    feePlans: (s: KeyScope) => scoped(s, "m18", "fee-plans"),
+    concessions: (s: KeyScope) => scoped(s, "m18", "concessions"),
+    feeInvoices: (s: KeyScope, learnerId: string | null, status: FeeInvoiceStatus | null) =>
+      scoped(s, "m18", "fee-invoices", learnerId, status),
+    feePayments: (s: KeyScope, invoiceId: string | null) =>
+      scoped(s, "m18", "fee-payments", invoiceId),
+    feeRefunds: (s: KeyScope) => scoped(s, "m18", "fee-refunds"),
+  },
+  m19: {
+    ledgerAccounts: (s: KeyScope) => scoped(s, "m19", "ledger-accounts"),
+    journalEntries: (s: KeyScope) => scoped(s, "m19", "journal-entries"),
+    budgets: (s: KeyScope) => scoped(s, "m19", "budgets"),
+  },
+  m20: {
+    gradingSchemes: (s: KeyScope) => scoped(s, "m20", "grading-schemes"),
+    assessments: (s: KeyScope, classGroupId: string | null) =>
+      scoped(s, "m20", "assessments", classGroupId),
+    rubrics: (s: KeyScope) => scoped(s, "m20", "rubrics"),
+    assessmentMarks: (s: KeyScope, assessmentId: string | null) =>
+      scoped(s, "m20", "assessments", assessmentId, "marks"),
+  },
+  m21: {
+    exams: (s: KeyScope) => scoped(s, "m21", "exams"),
+    examPapers: (s: KeyScope, examId: string | null) => scoped(s, "m21", "exams", examId, "papers"),
+    examSeats: (s: KeyScope, paperId: string | null) =>
+      scoped(s, "m21", "exam-papers", paperId, "seats"),
+    hallTickets: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m21", "hall-tickets", learnerId),
+    revaluationRequests: (s: KeyScope) => scoped(s, "m21", "revaluation-requests"),
+  },
+  m22: {
+    reportCards: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m22", "report-cards", learnerId),
+  },
+  m23: {
+    issuedDocuments: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m23", "issued-documents", learnerId),
   },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),
