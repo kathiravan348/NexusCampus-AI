@@ -98,10 +98,11 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-167 | Gemini · gemini-4-neon-xhigh (screen) | 15:43 | green | done — no fixes | `0a2069c`, pushed |
 | NEX-168 | Codex · gpt-6.2-astra / high (screen) | 16:43 | red ×4 (Prettier only, then 3 type errors); reviewer fixed, green | done — fix: format, MSW listen option, `root?.["…"]` access | merge after `71b6fc4`, pushed |
 | NEX-169 | Gemini · gemini-4-neon-xhigh (screen) | 17:19 | red ×4 (type errors); reviewer fixed, green | done — fix: `scores?.set` null guard in `MarkSheet.tsx` | `5da5c24`, pushed |
-| NEX-170 | Codex · gpt-6.2-astra / high (screen) | 18:49; docs-only "ready" with a question 18:58, answered, restarted 19:1x | running | — | — |
+| NEX-170 | Codex · gpt-6.2-astra / high (screen) | 18:49; docs-only "ready" with a question 18:58, answered, restarted 19:1x | green | done — fix: seat labels past room 26 (`AA1`…) | `c9c5aa6`, pushed |
+| NEX-171 | Codex · gpt-6.2-astra / high (screen) | 19:44 | running | — | — |
 
-Planned next: NEX-171 (M22 report cards, status moves; after NEX-170) and NEX-172 (M23 documents, revoke; after NEX-171).
-Gemini waits (18:49) — every remaining screen task shares `modules.ts` with NEX-170.
+Planned next: NEX-172 (M23 documents, revoke; after NEX-171) and NEX-173 (M24 messages, offline reply; after NEX-172).
+Gemini waits (since 18:49) — every remaining screen task shares `modules.ts` with the running one.
 `m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
 Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both,
 and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_keys.json` or `icu_cases.json` conflict.
