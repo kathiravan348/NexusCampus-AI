@@ -47,6 +47,12 @@ function paperRoster(paper: ExamPaper) {
   return [...new Set(placements.map((row) => row.learnerId))];
 }
 
+/** Room index → A, B, …, Z, AA, AB, … (spreadsheet style). */
+function roomLetters(index: number): string {
+  const letter = String.fromCharCode(65 + (index % 26));
+  return index < 26 ? letter : roomLetters(Math.floor(index / 26) - 1) + letter;
+}
+
 function generatePlan(paper: ExamPaper) {
   const { tenantId } = paper;
   const roster = paperRoster(paper);
@@ -66,7 +72,7 @@ function generatePlan(paper: ExamPaper) {
           examPaperId: paper.id,
           learnerId,
           roomId,
-          seatLabel: String.fromCharCode(65 + index) + (position + 1),
+          seatLabel: roomLetters(index) + (position + 1),
         }),
       );
     }
