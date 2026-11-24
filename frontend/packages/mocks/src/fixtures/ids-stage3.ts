@@ -215,3 +215,85 @@ export const NUMBERING_FORMAT = {
   apex: "num-apex",
   harmony: "num-harmony",
 } as const;
+
+export type OpsTenantSlug = "ls" | "rv" | "nb" | "ax" | "hm";
+
+const t1 = <P extends string>(p: P) =>
+  ({ ls: `${p}-ls`, rv: `${p}-rv`, nb: `${p}-nb`, ax: `${p}-ax`, hm: `${p}-hm` }) as const;
+const t2 = <P extends string>(p: P) =>
+  ({
+    ls: [`${p}-ls-1`, `${p}-ls-2`],
+    rv: [`${p}-rv-1`, `${p}-rv-2`],
+    nb: [`${p}-nb-1`, `${p}-nb-2`],
+    ax: [`${p}-ax-1`, `${p}-ax-2`],
+    hm: [`${p}-hm-1`, `${p}-hm-2`],
+  }) as const;
+const t3 = <P extends string>(p: P) =>
+  ({
+    ls: [`${p}-ls-1`, `${p}-ls-2`, `${p}-ls-3`],
+    rv: [`${p}-rv-1`, `${p}-rv-2`, `${p}-rv-3`],
+    nb: [`${p}-nb-1`, `${p}-nb-2`, `${p}-nb-3`],
+    ax: [`${p}-ax-1`, `${p}-ax-2`, `${p}-ax-3`],
+    hm: [`${p}-hm-1`, `${p}-hm-2`, `${p}-hm-3`],
+  }) as const;
+
+export const ENQUIRY = t3("enq");
+export const APPLICATION = t2("app");
+export const ADMISSION_OFFER = t1("ofr");
+export const WAITLIST_ENTRY = t1("wlt");
+export const IMPORT_JOB = t2("imp");
+export const NEXT_ACADEMIC_YEAR = t1("cal-next");
+export const ROLLOVER_RUN = t1("rlv");
+export const promotionDecisionId = (learnerId: string): string =>
+  `pmd-${learnerId.replace(/^lrn-/, "")}`;
+
+export const ROOM = {
+  ls: ["rom-ls-1", "rom-ls-2"],
+  rvNorth: ["rom-rv-n1", "rom-rv-n2"],
+  rvSouth: ["rom-rv-s1", "rom-rv-s2"],
+  nb: ["rom-nb-1", "rom-nb-2"],
+  ax: ["rom-ax-1", "rom-ax-2"],
+  hm: ["rom-hm-1", "rom-hm-2"],
+} as const;
+export const BELL_SCHEDULE = t1("bel");
+export const timetableSlotId = (classGroupId: string, slot: number): string =>
+  `tts-${classGroupId.replace(/^clg-/, "")}-${slot}`;
+export const attendanceSessionId = (slug: OpsTenantSlug, day: number): string =>
+  `ats-${slug}-${day}`;
+export const attendanceMarkId = (sessionId: string, learnerId: string): string =>
+  `atm-${sessionId.replace(/^ats-/, "")}-${learnerId.replace(/^lrn-/, "")}`;
+export const LEAVE_REQUEST = t2("lvr");
+
+export const FEE_HEAD = t2("fhd");
+export const FEE_PLAN = t1("fpl");
+export const CONCESSION = t1("cnc");
+export const FEE_INVOICE = t3("inv");
+export const FEE_PAYMENT = t2("pay");
+export const FEE_REFUND = t1("rfd");
+export const LEDGER_ACCOUNT = t3("lac");
+export const JOURNAL_ENTRY = t2("jrn");
+export const BUDGET = t1("bdg");
+
+export const GRADING_SCHEME = t1("grd");
+export const RUBRIC = t1("rub");
+export const ASSESSMENT = t2("asm");
+export const markEntryId = (assessmentId: string, learnerId: string): string =>
+  `mrk-${assessmentId.replace(/^asm-/, "")}-${learnerId.replace(/^lrn-/, "")}`;
+export const EXAM = t1("exm");
+export const EXAM_PAPER = t1("exp");
+export const seatAssignmentId = (paperId: string, learnerId: string): string =>
+  `sat-${paperId.replace(/^exp-/, "")}-${learnerId.replace(/^lrn-/, "")}`;
+export const hallTicketId = (examId: string, learnerId: string): string =>
+  `hlt-${examId.replace(/^exm-/, "")}-${learnerId.replace(/^lrn-/, "")}`;
+export const REVALUATION_REQUEST = t1("rev");
+export const REPORT_CARD = t1("rpc");
+export const ISSUED_DOCUMENT = t1("doc");
+export const REPORT_TEMPLATE = t1("tpl-rc");
+export const DOCUMENT_TEMPLATE = t1("tpl-doc");
+
+export const MESSAGE_THREAD = t2("thd");
+export const threadMessageId = (threadId: string, seq: number): string =>
+  `msg-${threadId.replace(/^thd-/, "")}-${seq}`;
+export const NOTICE = t2("ntc");
+export const MEETING_SLOT = t2("mts");
+export const MEETING_BOOKING = t1("mtb");
