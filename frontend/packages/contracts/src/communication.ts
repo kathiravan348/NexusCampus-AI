@@ -67,7 +67,7 @@ export const ThreadMessageSchema = z
     attachmentIds: z.array(IdSchema).max(10),
     sentAt: UtcDateTimeSchema,
     editedAt: UtcDateTimeSchema.nullable(),
-    readByPersonIds: z.array(IdSchema),
+    readByPersonIds: z.array(IdSchema).max(500),
     /** Originating device id for offline L2 capture; null when sent online without a device id. */
     deviceId: IdSchema.nullable(),
   })
