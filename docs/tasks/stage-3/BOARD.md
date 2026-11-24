@@ -21,7 +21,7 @@
 | NEX-153 | Contracts (M24–M28, M86): messages, notices, meetings; portal homes; dashboards; rollover runs | B | done | Gemini | 148 |
 | NEX-154 | Fixtures: academic structure, learners and families for the 5 demo tenants and the Group | B | done | Codex | 146–148 |
 | NEX-155 | Fixtures: admissions, timetable, attendance, fees, marks and messages | B | planned | — | 149–154 |
-| NEX-156 | MSW handlers + services: M15, M08, M13, M14 | B | planned | — | 154 |
+| NEX-156 | MSW handlers + services: M15, M08, M13, M14 | B | ready-for-review | Codex | 154 |
 | NEX-157 | MSW handlers + services: M12, M09, M16, M17 | B | planned | — | 155, 156 |
 | NEX-158 | MSW handlers + services: M18–M23 | B | planned | — | 155–157 |
 | NEX-159 | MSW handlers + services: M24–M28, M86 | B | draft | — | 155 |

@@ -1,3 +1,4 @@
+import type { ConfigEntity } from "@nexus/contracts";
 import type { QueryKey } from "@tanstack/react-query";
 
 /** Tenant + user every scoped key starts with, so one user's cache never serves another (O-3). */
@@ -58,6 +59,13 @@ export const queryKeys = {
     dataRequests: (s: KeyScope) => scoped(s, "m06", "data-requests"),
     compliancePacks: (s: KeyScope) => scoped(s, "m06", "compliance-packs"),
   },
+  m08: {
+    customFields: (s: KeyScope, entity: ConfigEntity | null) =>
+      scoped(s, "m08", "custom-fields", entity),
+    forms: (s: KeyScope) => scoped(s, "m08", "forms"),
+    workflows: (s: KeyScope) => scoped(s, "m08", "workflows"),
+    numberingFormats: (s: KeyScope) => scoped(s, "m08", "numbering-formats"),
+  },
   m10: {
     all: (s: KeyScope) => scoped(s, "m10"),
     devices: (s: KeyScope) => scoped(s, "m10", "devices"),
@@ -67,6 +75,29 @@ export const queryKeys = {
     all: (s: KeyScope) => scoped(s, "m11"),
     settings: (s: KeyScope) => scoped(s, "m11", "settings"),
     credits: (s: KeyScope) => scoped(s, "m11", "credits"),
+  },
+  m13: {
+    learners: (s: KeyScope) => scoped(s, "m13", "learners"),
+    learner: (s: KeyScope, learnerId: string | null) => scoped(s, "m13", "learners", learnerId),
+    learnerEnrolments: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m13", "learners", learnerId, "enrolments"),
+    learnerDocuments: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m13", "learners", learnerId, "documents"),
+  },
+  m14: {
+    households: (s: KeyScope) => scoped(s, "m14", "households"),
+    guardianRelationships: (s: KeyScope, learnerPersonId: string | null) =>
+      scoped(s, "m14", "guardian-relationships", learnerPersonId),
+    authorisedPickups: (s: KeyScope, learnerPersonId: string | null) =>
+      scoped(s, "m14", "authorised-pickups", learnerPersonId),
+  },
+  m15: {
+    programs: (s: KeyScope) => scoped(s, "m15", "programs"),
+    yearLevels: (s: KeyScope) => scoped(s, "m15", "year-levels"),
+    classGroups: (s: KeyScope) => scoped(s, "m15", "class-groups"),
+    subjects: (s: KeyScope) => scoped(s, "m15", "subjects"),
+    subjectOfferings: (s: KeyScope, academicYearId: string | null) =>
+      scoped(s, "m15", "subject-offerings", academicYearId),
   },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),

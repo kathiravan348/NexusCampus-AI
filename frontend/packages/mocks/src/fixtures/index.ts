@@ -20,3 +20,4 @@ export * from "./academics";
 export * from "./learner-records";
 export * from "./families";
 export * from "./config";
+export * from "./stage3-access";

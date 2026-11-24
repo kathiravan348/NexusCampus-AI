@@ -33,11 +33,19 @@ export type GuardianRelationshipKind = z.infer<typeof GuardianRelationshipKindSc
 export const PickupRightSchema = z.enum(["allowed", "not_allowed", "court_restricted"]);
 export type PickupRight = z.infer<typeof PickupRightSchema>;
 
-/**
- * Extends the Stage 1 guardian link used for sign-in scoping (M02).
- * The Stage 3 build keeps the records in step.
- */
-export const GuardianRelationshipSchema = z
+const validRelationshipDates = ({
+  effectiveFrom,
+  effectiveTo,
+}: {
+  effectiveFrom: string;
+  effectiveTo: string | null;
+}) => effectiveTo === null || effectiveTo >= effectiveFrom;
+const relationshipDatesIssue = {
+  message: "effectiveTo is before effectiveFrom",
+  path: ["effectiveTo"],
+};
+
+const guardianRelationshipBase = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
@@ -58,7 +66,13 @@ export const GuardianRelationshipSchema = z
   .refine((relationship) => relationship.guardianPersonId !== relationship.learnerPersonId, {
     message: "guardianPersonId and learnerPersonId must differ",
     path: ["guardianPersonId"],
-  })
+  });
+
+/**
+ * Extends the Stage 1 guardian link used for sign-in scoping (M02).
+ * The Stage 3 build keeps the records in step.
+ */
+export const GuardianRelationshipSchema = guardianRelationshipBase
   .refine(
     (relationship) =>
       (relationship.courtOrderNote !== null) === (relationship.pickupRight === "court_restricted"),
@@ -67,16 +81,23 @@ export const GuardianRelationshipSchema = z
       path: ["courtOrderNote"],
     },
   )
-  .refine(
-    (relationship) =>
-      relationship.effectiveTo === null || relationship.effectiveTo >= relationship.effectiveFrom,
-    {
-      message: "effectiveTo is before effectiveFrom",
-      path: ["effectiveTo"],
-    },
-  )
+  .refine(validRelationshipDates, relationshipDatesIssue)
   .refine(validTimestampOrder, timestampOrderIssue);
 export type GuardianRelationship = z.infer<typeof GuardianRelationshipSchema>;
+
+/** Read view preserves the pickup restriction even when the court note is masked. */
+export const GuardianRelationshipViewSchema = guardianRelationshipBase
+  .refine(
+    (relationship) =>
+      relationship.courtOrderNote === null || relationship.pickupRight === "court_restricted",
+    {
+      message: "courtOrderNote is only allowed when pickupRight is court_restricted",
+      path: ["courtOrderNote"],
+    },
+  )
+  .refine(validRelationshipDates, relationshipDatesIssue)
+  .refine(validTimestampOrder, timestampOrderIssue);
+export type GuardianRelationshipView = z.infer<typeof GuardianRelationshipViewSchema>;
 
 export const HouseholdSchema = z
   .strictObject({
