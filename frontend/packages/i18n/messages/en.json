@@ -7203,6 +7203,30 @@
     "message": "Critical",
     "description": "Text badge label for a critical summary card severity."
   },
+  "m26.nav.title": {
+    "message": "My portal",
+    "description": "Navigation item and page title for the learner portal (M26)."
+  },
+  "m26.nav.summary": {
+    "message": "See your summary counts and jump to your pages.",
+    "description": "Home tile description for the learner portal module."
+  },
+  "m26.page.intro": {
+    "message": "Check your updates and open your timetable, attendance, report cards, documents and messages.",
+    "description": "Introduction line under the learner portal page heading."
+  },
+  "m26.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button label to open Nexus Assist from the learner portal."
+  },
+  "m26.page.failed": {
+    "message": "Your portal could not be loaded.",
+    "description": "Error title shown when the learner portal fails to load without cached data."
+  },
+  "m26.links.title": {
+    "message": "Quick links",
+    "description": "Heading and accessible navigation label for quick links to learner module pages."
+  },
   "m28.permission.dashboardsRead": {
     "message": "View leadership dashboards",
     "description": "Permission to view leadership dashboards."

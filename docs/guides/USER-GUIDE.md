@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -34,7 +34,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, and Family show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, and My portal show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -274,6 +274,14 @@ Open **Family** from the menu to see one home page for your children. Only paren
 - **Child switcher:** if you have one child linked to your account, their name appears at the top. If you have two or more children, choose a **Child** from the dropdown (your selection is kept in the page address). Links below the child area open **Attendance**, **Fees**, **Report cards**, and **Issued documents** when those modules are available in your menu.
 - **Summary cards:** each card shows a heading (such as **Attendance**, **Unpaid invoices**, **Unread messages**, and **Notices**), a count in your institution's number format when present, and any severity label (**Info**, **Warning**, or **Critical**). Select a card to open its module page. When you have two or more children, **Totals for all your children** notes that card counts combine all of them.
 - Previously loaded home data remains readable offline with **Last synced** under the heading. Opening **Family** offline without cached data shows **Family home could not be loaded.** When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
+
+## Learner portal
+
+Open **My portal** from the menu to see your own home page. Only learner accounts can open this screen; guardians, staff, and administrators see **No access**.
+
+- **Summary cards:** each card shows a heading (such as **Attendance**, **Unpaid invoices**, **Unread messages**, and **Notices**), a count in your institution's number format when present, and any severity label (**Info**, **Warning**, or **Critical**). Select a card to open its module page.
+- **Quick links:** opens **Timetable**, **Attendance**, **Report cards**, **Issued documents**, and **Messages & notices**, showing only the pages available in your menu.
+- Previously loaded home data remains readable offline with **Last synced** under the heading. Opening **My portal** offline without cached data shows **Your portal could not be loaded.** When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
