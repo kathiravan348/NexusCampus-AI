@@ -71,6 +71,24 @@ function createDb() {
     formDefinitions: clone(F.FORM_DEFINITIONS),
     workflowDefinitions: clone(F.WORKFLOW_DEFINITIONS),
     numberingFormats: clone(F.NUMBERING_FORMATS),
+    enquiries: clone(F.ENQUIRIES),
+    applications: clone(F.APPLICATIONS),
+    admissionOffers: clone(F.ADMISSION_OFFERS),
+    waitlistEntries: clone(F.WAITLIST_ENTRIES),
+    importJobs: clone(F.IMPORT_JOBS),
+    columnMappings: clone(F.COLUMN_MAPPINGS),
+    importRowIssues: Object.fromEntries(
+      Object.entries(F.IMPORT_ROW_ISSUES).map(([jobId, issues]) => [jobId, clone(issues)]),
+    ),
+    dryRunReports: clone(F.DRY_RUN_REPORTS),
+    rolloverRuns: clone(F.ROLLOVER_RUNS),
+    promotionDecisions: clone(F.PROMOTION_DECISIONS),
+    rooms: clone(F.ROOMS),
+    bellSchedules: clone(F.BELL_SCHEDULES),
+    timetableSlots: clone(F.TIMETABLE_SLOTS),
+    attendanceSessions: clone(F.ATTENDANCE_SESSIONS),
+    attendanceMarks: clone(F.ATTENDANCE_MARKS),
+    leaveRequests: clone(F.LEAVE_REQUESTS),
   };
 }
 

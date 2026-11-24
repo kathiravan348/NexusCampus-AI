@@ -1,4 +1,4 @@
-import type { ConfigEntity } from "@nexus/contracts";
+import type { ConfigEntity, EnquiryStatus } from "@nexus/contracts";
 import type { QueryKey } from "@tanstack/react-query";
 
 /** Tenant + user every scoped key starts with, so one user's cache never serves another (O-3). */
@@ -66,6 +66,13 @@ export const queryKeys = {
     workflows: (s: KeyScope) => scoped(s, "m08", "workflows"),
     numberingFormats: (s: KeyScope) => scoped(s, "m08", "numbering-formats"),
   },
+  m09: {
+    importJobs: (s: KeyScope) => scoped(s, "m09", "import-jobs"),
+    importJobMappings: (s: KeyScope, jobId: string | null) =>
+      scoped(s, "m09", "import-jobs", jobId, "mappings"),
+    importJobIssues: (s: KeyScope, jobId: string | null) =>
+      scoped(s, "m09", "import-jobs", jobId, "issues"),
+  },
   m10: {
     all: (s: KeyScope) => scoped(s, "m10"),
     devices: (s: KeyScope) => scoped(s, "m10", "devices"),
@@ -75,6 +82,12 @@ export const queryKeys = {
     all: (s: KeyScope) => scoped(s, "m11"),
     settings: (s: KeyScope) => scoped(s, "m11", "settings"),
     credits: (s: KeyScope) => scoped(s, "m11", "credits"),
+  },
+  m12: {
+    enquiries: (s: KeyScope, status: EnquiryStatus | null) => scoped(s, "m12", "enquiries", status),
+    applications: (s: KeyScope) => scoped(s, "m12", "applications"),
+    admissionOffers: (s: KeyScope) => scoped(s, "m12", "admission-offers"),
+    waitlist: (s: KeyScope) => scoped(s, "m12", "waitlist"),
   },
   m13: {
     learners: (s: KeyScope) => scoped(s, "m13", "learners"),
@@ -99,6 +112,21 @@ export const queryKeys = {
     subjectOfferings: (s: KeyScope, academicYearId: string | null) =>
       scoped(s, "m15", "subject-offerings", academicYearId),
   },
+  m16: {
+    rooms: (s: KeyScope) => scoped(s, "m16", "rooms"),
+    bellSchedules: (s: KeyScope) => scoped(s, "m16", "bell-schedules"),
+    timetableSlots: (s: KeyScope, classGroupId: string | null, staffProfileId: string | null) =>
+      scoped(s, "m16", "timetable-slots", classGroupId, staffProfileId),
+    teacherLoad: (s: KeyScope, academicYearId: string | null) =>
+      scoped(s, "m16", "teacher-load", academicYearId),
+  },
+  m17: {
+    attendanceSessions: (s: KeyScope, classGroupId: string | null) =>
+      scoped(s, "m17", "attendance-sessions", classGroupId),
+    attendanceMarks: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m17", "attendance-sessions", sessionId, "marks"),
+    leaveRequests: (s: KeyScope) => scoped(s, "m17", "leave-requests"),
+  },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),
     keys: (s: KeyScope) => scoped(s, "m83", "keys"),
@@ -113,6 +141,11 @@ export const queryKeys = {
     update: (s: KeyScope) => scoped(s, "m84", "update"),
     backups: (s: KeyScope) => scoped(s, "m84", "backups"),
     diagnostics: (s: KeyScope) => scoped(s, "m84", "diagnostics"),
+  },
+  m86: {
+    rolloverRuns: (s: KeyScope) => scoped(s, "m86", "rollover-runs"),
+    rolloverDecisions: (s: KeyScope, runId: string | null) =>
+      scoped(s, "m86", "rollover-runs", runId, "decisions"),
   },
   m07: {
     templates: (s: KeyScope) => scoped(s, "m07", "templates"),
