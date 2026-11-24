@@ -42,7 +42,7 @@
 | NEX-174 | M25 Family portal | C | done | Gemini | 159, 173 |
 | NEX-175 | M26 Learner portal | C | done | Gemini | 159, 174 |
 | NEX-176 | M27 Staff portal | C | done | Codex | 159, 175 |
-| NEX-177 | M28 Dashboards & role homes | C | planned | — | 159, 176 |
+| NEX-177 | M28 Dashboards & role homes | C | in-progress | Codex | 159, 176 |
 | NEX-178 | M86 Year-end rollover & promotion | C | planned | — | 159, 177 |
-| NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | draft | — | 160–178 |
+| NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | planned | — | 160–178 |
 | NEX-180 | Stage 3 freeze (planner + Owner) | — | draft | — | 179 |
