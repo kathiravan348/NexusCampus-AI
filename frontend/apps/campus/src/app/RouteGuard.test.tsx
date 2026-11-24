@@ -1,9 +1,30 @@
+import type { RoleProfileKind } from "@nexus/contracts";
 import { TENANT } from "@nexus/mocks";
-import { screen } from "@testing-library/react";
+import { screen, waitFor } from "@testing-library/react";
 import { Wifi } from "lucide-react";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import type { ModuleEntry } from "./modules";
+import { MODULES, type ModuleEntry } from "./modules";
 import { persona, renderApp, TEST_MODULES } from "../test/renderApp";
+
+// Synthetic /me profiles exercise the audience rule without permission grants.
+interface TestProfile {
+  tenantId: string;
+  kind: RoleProfileKind;
+  status: "active" | "inactive";
+}
+
+let profiles: TestProfile[] | undefined;
+vi.mock("@nexus/services", async (importOriginal) => {
+  const services = await importOriginal<typeof import("@nexus/services")>();
+  return {
+    ...services,
+    useMe() {
+      const me = services.useMe();
+      if (!profiles || !me.data) return me;
+      return { ...me, data: { ...me.data, permissions: [], roleProfiles: profiles } };
+    },
+  };
+});
 
 const ONLINE_ONLY_MODULE: ModuleEntry = {
   moduleId: "M01",
@@ -51,5 +72,87 @@ describe("RouteGuard", () => {
     });
     expect(await screen.findByRole("heading", { name: "Needs a connection" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "Go to home" })).toHaveAttribute("href", "/");
+  });
+});
+
+describe("module audience", () => {
+  afterEach(() => {
+    profiles = undefined;
+  });
+
+  const tenantId = TENANT.littleSteps;
+  const modules = MODULES.filter((entry) => entry.moduleId >= "M13" && entry.moduleId <= "M28");
+
+  async function expectMenu(
+    signInAs: Parameters<typeof persona>[1],
+    shown: readonly string[],
+    hidden: readonly string[],
+  ) {
+    renderApp("/", { as: persona(tenantId, signInAs), modules });
+    await waitFor(() => {
+      const paths = screen.getAllByRole("link").map((link) => link.getAttribute("href"));
+      for (const path of shown) expect(paths).toContain(path);
+      for (const path of hidden) expect(paths).not.toContain(path);
+    });
+  }
+
+  it("shows the admin's permitted screens and dashboard", async () => {
+    await expectMenu(
+      "admin",
+      ["/fees", "/exams", "/report-cards", "/documents", "/dashboards"],
+      ["/family", "/learner", "/staff"],
+    );
+  });
+
+  it("shows teachers the staff portal", async () => {
+    await expectMenu("teacher", ["/staff", "/messages"], ["/fees", "/family", "/learner"]);
+  });
+
+  it("shows guardians the family screens and portal", async () => {
+    await expectMenu(
+      "guardian",
+      ["/learners", "/families", "/fees", "/exams", "/report-cards", "/documents", "/family"],
+      ["/learner", "/staff"],
+    );
+  });
+
+  it("shows learners their own screens and portal", async () => {
+    // Little Steps has no learner sign-in. Supply a learner profile on its guardian session.
+    profiles = [{ tenantId, kind: "learner", status: "active" }];
+    await expectMenu(
+      "guardian",
+      ["/learners", "/fees", "/exams", "/report-cards", "/documents", "/learner"],
+      ["/families", "/family", "/staff"],
+    );
+  });
+
+  it("gives the staff portal priority over the family portal", async () => {
+    profiles = [
+      { tenantId, kind: "guardian", status: "active" },
+      { tenantId, kind: "staff", status: "active" },
+    ];
+    await expectMenu("guardian", ["/staff"], ["/family", "/learner", "/fees"]);
+  });
+
+  it("ignores foreign staff and only grants access for an active profile", async () => {
+    profiles = [
+      { tenantId, kind: "guardian", status: "inactive" },
+      { tenantId, kind: "learner", status: "active" },
+      { tenantId: "other-tenant", kind: "staff", status: "active" },
+    ];
+    await expectMenu("guardian", ["/fees"], ["/families", "/family", "/learner", "/staff"]);
+  });
+
+  it("excludes family access for a guardian with an inactive staff profile", async () => {
+    profiles = [
+      { tenantId, kind: "guardian", status: "active" },
+      { tenantId, kind: "staff", status: "inactive" },
+    ];
+    await expectMenu("guardian", ["/messages"], ["/fees", "/family", "/learner", "/staff"]);
+  });
+
+  it("shows Forbidden when a guardian opens the staff portal directly", async () => {
+    renderApp("/staff", { as: persona(tenantId, "guardian"), modules });
+    expect(await screen.findByRole("heading", { name: "No access" })).toBeInTheDocument();
   });
 });

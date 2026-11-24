@@ -106,10 +106,16 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-175 | Gemini · gemini-4-neon-xhigh (screen) | 23:38 (Codex at usage limit) | green | done — no fixes | `d53fc80`, pushed |
 | NEX-176 | Codex · gpt-6.2-astra / high (screen) | 00:2x (Owner: Codex) | green | done — no fixes | merged 00:4x, pushed |
 | NEX-177 | Codex · gpt-6.2-astra / high (screen) | 00:43 | green | done — no fixes | `4ac5dc4`, pushed |
-| NEX-178 | Codex · gpt-6.2-astra / high (screen) | 01:13 | running | — | — |
+| NEX-178 | Codex · gpt-6.2-astra / high (screen) | 01:13 | green | done — fix: reason keys via `isKnownMessageKey` (no cross-package `en.json` import) | `e62df0e`, pushed |
+| NEX-179 | Codex · gpt-6.2-astra / high (review build) | 01:47 | green (review:check); reviewer e2e 02:1x: 46 failed — menu links answer 403 (product bug, not the spec) | in-review, waits for NEX-181; then merge `main` into the branch, re-run e2e + `texts:export` | — |
+| NEX-181 | Codex · gpt-6.2-astra / high (fix from NEX-179 e2e, D77) | 02:1x; 2 questions (staff rule, portal role) answered 02:4x, restarted; 3rd question (guardian without learner) answered 03:1x, restarted | — | — | — |
 
-Planned next: NEX-179 (review build: persona smoke +
-walkthrough; after NEX-178, running — the reviewer runs `pnpm --dir frontend e2e`, builders cannot).
+NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
+because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
+`/fees`, guardian → `/staff`, learner → `/families` with 404s). Planner wrote NEX-181 (D77) on Codex. When it is merged:
+merge `main` into `task/NEX-179`, run `pnpm --dir frontend e2e` and `texts:export`, write the review, merge. Then the
+stop rule applies (NEX-179 and NEX-181 done). The reviewer runs `pnpm --dir frontend e2e` and `texts:export` (builders
+cannot). Nothing further to plan: NEX-180 is the Owner's freeze; Gemini stays idle. When NEX-179 is done the stop rule applies.
 Each remaining screen task shares `modules.ts` with the running one, so one builder waits.
 Owner (23:59): give the next task, NEX-176, to Codex (`gpt-6.2-astra` / `high`) once NEX-175 is merged. Codex's usage
 limit ended 23:52. If Codex hits a usage limit again, or fails twice, use Gemini (tick step 4).
@@ -143,6 +149,9 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - A question written as plain text (not a `- ` line) is missed by `open_questions`: the build ran green checks on a
   docs-only change and was marked ready-for-review (NEX-170). The reviewer checks the diff has code before reviewing;
   a restart from a non-`changes-requested` branch rebuilds it fresh from `main`.
+
+- `pnpm e2e` is not in `review:check`, so menu / route regressions reach `main` unseen (NEX-179 found 403 menu links
+  from NEX-160–178). Run `pnpm --dir frontend e2e` when reviewing a task that adds a menu entry.
 
 - To move a half-built branch to the other builder, set it `changes-requested` (numbered "finish" requests) and
   detach the first worktree (`git checkout --detach`) so the other worktree can check the branch out (NEX-172).

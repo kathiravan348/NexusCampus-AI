@@ -1,4 +1,4 @@
-import type { ModuleId } from "@nexus/contracts";
+import type { ModuleId, RoleProfileKind } from "@nexus/contracts";
 import type { MessageKey } from "@nexus/i18n";
 import {
   Award,
@@ -47,8 +47,19 @@ export interface ModuleEntry {
   /** One-line description on the home tile. */
   readonly summaryKey: MessageKey;
   readonly icon: LucideIcon;
-  /** Permission needed to open it; `null` = every user of an entitled tenant. */
+  /** Permission that grants access. With no audience, `null` permits every user. */
   readonly permission: string | null;
+  /**
+   * Also grants access for an active profile of a listed kind in the current tenant.
+   * notStaff and notGuardian exclude profiles of any status there. notLeader excludes
+   * dashboard readers. With a null permission, only this audience can open the entry.
+   */
+  readonly audience?: {
+    readonly kinds: readonly RoleProfileKind[];
+    readonly notStaff?: boolean;
+    readonly notGuardian?: boolean;
+    readonly notLeader?: boolean;
+  };
   readonly offlineLevel: OfflineLevel;
   /** Assist (M11) never reads this module's data (e.g. M61, M83). */
   readonly aiBlocked?: boolean;
@@ -186,7 +197,8 @@ export const MODULES: readonly ModuleEntry[] = [
     navKey: "m13.nav.title",
     summaryKey: "m13.nav.summary",
     icon: GraduationCap,
-    permission: null,
+    permission: "m13.learner.read",
+    audience: { kinds: ["guardian", "learner"], notStaff: true },
     offlineLevel: "L1",
     load: () => import("../modules/m13/LearnersPage"),
   },
@@ -196,7 +208,8 @@ export const MODULES: readonly ModuleEntry[] = [
     navKey: "m14.nav.title",
     summaryKey: "m14.nav.summary",
     icon: HeartHandshake,
-    permission: null,
+    permission: "m14.family.read",
+    audience: { kinds: ["guardian"], notStaff: true },
     offlineLevel: "L1",
     load: () => import("../modules/m14/FamiliesPage"),
   },
@@ -236,7 +249,8 @@ export const MODULES: readonly ModuleEntry[] = [
     navKey: "m18.nav.title",
     summaryKey: "m18.nav.summary",
     icon: Wallet,
-    permission: null,
+    permission: "m18.fees.read",
+    audience: { kinds: ["guardian", "learner"], notStaff: true },
     offlineLevel: "L2",
     load: () => import("../modules/m18/FeesPage"),
   },
@@ -266,7 +280,8 @@ export const MODULES: readonly ModuleEntry[] = [
     navKey: "m21.nav.title",
     summaryKey: "m21.nav.summary",
     icon: ScrollText,
-    permission: null,
+    permission: "m21.exams.read",
+    audience: { kinds: ["guardian", "learner"], notStaff: true },
     offlineLevel: "L2",
     load: () => import("../modules/m21/ExamsPage"),
   },
@@ -276,7 +291,8 @@ export const MODULES: readonly ModuleEntry[] = [
     navKey: "m22.nav.title",
     summaryKey: "m22.nav.summary",
     icon: Award,
-    permission: null,
+    permission: "m22.reports.read",
+    audience: { kinds: ["guardian", "learner"], notStaff: true },
     offlineLevel: "L1",
     load: () => import("../modules/m22/ReportCardsPage"),
   },
@@ -286,7 +302,8 @@ export const MODULES: readonly ModuleEntry[] = [
     navKey: "m23.nav.title",
     summaryKey: "m23.nav.summary",
     icon: FileBadge,
-    permission: null,
+    permission: "m23.documents.read",
+    audience: { kinds: ["guardian", "learner"], notStaff: true },
     offlineLevel: "L1",
     load: () => import("../modules/m23/DocumentsPage"),
   },
@@ -307,6 +324,7 @@ export const MODULES: readonly ModuleEntry[] = [
     summaryKey: "m25.nav.summary",
     icon: House,
     permission: null,
+    audience: { kinds: ["guardian"], notStaff: true, notLeader: true },
     offlineLevel: "L2",
     load: () => import("../modules/m25/FamilyPortalPage"),
   },
@@ -317,6 +335,7 @@ export const MODULES: readonly ModuleEntry[] = [
     summaryKey: "m26.nav.summary",
     icon: GraduationCap,
     permission: null,
+    audience: { kinds: ["learner"], notStaff: true, notGuardian: true, notLeader: true },
     offlineLevel: "L2",
     load: () => import("../modules/m26/LearnerPortalPage"),
   },
@@ -327,6 +346,7 @@ export const MODULES: readonly ModuleEntry[] = [
     summaryKey: "m27.nav.summary",
     icon: BriefcaseBusiness,
     permission: null,
+    audience: { kinds: ["staff"], notLeader: true },
     offlineLevel: "L2",
     load: () => import("../modules/m27/StaffPortalPage"),
   },
