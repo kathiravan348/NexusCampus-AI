@@ -70,7 +70,7 @@ function parseRow(row: RowDraft, max: number, rubric: Rubric | null): MarkEntryI
   for (const { code, levels } of scores && rubric ? rubric.criteria : []) {
     const score = row.rubricScores[code] ? Number(row.rubricScores[code]) : Number.NaN;
     if (!levels.some((l) => l.score === score)) return "rubric";
-    scores.set(code, score);
+    scores?.set(code, score);
   }
   const remark = row.remark.trim();
   if (remark.length > 500) return "remark";
