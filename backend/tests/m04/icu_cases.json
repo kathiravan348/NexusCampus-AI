@@ -708,11 +708,19 @@
     "valid": true
   },
   {
+    "text": "All class groups",
+    "valid": true
+  },
+  {
     "text": "All contrast pairs meet WCAG 2.2 AA requirements.",
     "valid": true
   },
   {
     "text": "All institution data",
+    "valid": true
+  },
+  {
+    "text": "All learners",
     "valid": true
   },
   {
@@ -804,6 +812,10 @@
     "valid": true
   },
   {
+    "text": "Approve",
+    "valid": true
+  },
+  {
     "text": "Approve access",
     "valid": true
   },
@@ -821,6 +833,10 @@
   },
   {
     "text": "Approve sending",
+    "valid": true
+  },
+  {
+    "text": "Approve this draft for publication?",
     "valid": true
   },
   {
@@ -997,6 +1013,10 @@
   },
   {
     "text": "Back to learners",
+    "valid": true
+  },
+  {
+    "text": "Back to report cards",
     "valid": true
   },
   {
@@ -2412,6 +2432,10 @@
     "valid": true
   },
   {
+    "text": "Grade",
+    "valid": true
+  },
+  {
     "text": "Gradebook",
     "valid": true
   },
@@ -3780,6 +3804,10 @@
     "valid": true
   },
   {
+    "text": "No report cards to show",
+    "valid": true
+  },
+  {
     "text": "No roles yet.",
     "valid": true
   },
@@ -4032,6 +4060,10 @@
     "valid": true
   },
   {
+    "text": "Open a report card to see subject grades and remarks.",
+    "valid": true
+  },
+  {
     "text": "Open admissions",
     "valid": true
   },
@@ -4085,6 +4117,10 @@
   },
   {
     "text": "Other",
+    "valid": true
+  },
+  {
+    "text": "Overall remark",
     "valid": true
   },
   {
@@ -4448,6 +4484,10 @@
     "valid": true
   },
   {
+    "text": "Publish",
+    "valid": true
+  },
+  {
     "text": "Publish notices",
     "valid": true
   },
@@ -4456,7 +4496,15 @@
     "valid": true
   },
   {
+    "text": "Publish this report card so the learner and their guardians can see it?",
+    "valid": true
+  },
+  {
     "text": "Published",
+    "valid": true
+  },
+  {
+    "text": "Published {date}",
     "valid": true
   },
   {
@@ -4649,6 +4697,22 @@
   },
   {
     "text": "Remove {role}",
+    "valid": true
+  },
+  {
+    "text": "Report card status updated",
+    "valid": true
+  },
+  {
+    "text": "Report card unavailable",
+    "valid": true
+  },
+  {
+    "text": "Report cards",
+    "valid": true
+  },
+  {
+    "text": "Report cards could not be loaded.",
     "valid": true
   },
   {
@@ -5596,6 +5660,10 @@
     "valid": true
   },
   {
+    "text": "The report card could not be updated.",
+    "valid": true
+  },
+  {
     "text": "The report is being prepared.",
     "valid": true
   },
@@ -5621,6 +5689,10 @@
   },
   {
     "text": "The selected year level does not belong to this program.",
+    "valid": true
+  },
+  {
+    "text": "The status has changed. Close this dialog to see the latest status.",
     "valid": true
   },
   {
@@ -6176,6 +6248,10 @@
     "valid": true
   },
   {
+    "text": "View term results and report cards.",
+    "valid": true
+  },
+  {
     "text": "View text override",
     "valid": true
   },
@@ -6317,6 +6393,14 @@
   },
   {
     "text": "Wipe requested for {device}.",
+    "valid": true
+  },
+  {
+    "text": "Withdraw",
+    "valid": true
+  },
+  {
+    "text": "Withdraw this report card from family view? This is the final status.",
     "valid": true
   },
   {
@@ -8080,6 +8164,10 @@
     "valid": true
   },
   {
+    "text": "इस मसौदे को प्रकाशन के लिए स्वीकृत करें?",
+    "valid": true
+  },
+  {
     "text": "इस महीने के AI क्रेडिट",
     "valid": true
   },
@@ -8089,6 +8177,14 @@
   },
   {
     "text": "इस रिकॉर्ड प्रकार में यह कुंजी पहले से उपयोग में है।",
+    "valid": true
+  },
+  {
+    "text": "इस रिपोर्ट कार्ड को परिवार के दृश्य से हटाएँ? यह इसकी अंतिम स्थिति होगी।",
+    "valid": true
+  },
+  {
+    "text": "इस रिपोर्ट कार्ड को प्रकाशित करें ताकि शिक्षार्थी और उनके अभिभावक इसे देख सकें?",
     "valid": true
   },
   {
@@ -9088,6 +9184,10 @@
     "valid": true
   },
   {
+    "text": "ग्रेड",
+    "valid": true
+  },
+  {
     "text": "ग्रेडबुक",
     "valid": true
   },
@@ -9672,6 +9772,10 @@
     "valid": true
   },
   {
+    "text": "दिखाने के लिए कोई रिपोर्ट कार्ड नहीं है",
+    "valid": true
+  },
+  {
     "text": "दी गई",
     "valid": true
   },
@@ -10220,7 +10324,15 @@
     "valid": true
   },
   {
+    "text": "प्रकाशन की तारीख़ {date}",
+    "valid": true
+  },
+  {
     "text": "प्रकाशित",
+    "valid": true
+  },
+  {
+    "text": "प्रकाशित करें",
     "valid": true
   },
   {
@@ -11304,6 +11416,30 @@
     "valid": true
   },
   {
+    "text": "रिपोर्ट कार्ड",
+    "valid": true
+  },
+  {
+    "text": "रिपोर्ट कार्ड अपडेट नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "रिपोर्ट कार्ड उपलब्ध नहीं है",
+    "valid": true
+  },
+  {
+    "text": "रिपोर्ट कार्ड की स्थिति बदल गई",
+    "valid": true
+  },
+  {
+    "text": "रिपोर्ट कार्ड लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "रिपोर्ट कार्ड सूची पर वापस जाएँ",
+    "valid": true
+  },
+  {
     "text": "रिपोर्ट तैयार की जा रही है।",
     "valid": true
   },
@@ -11504,6 +11640,10 @@
     "valid": true
   },
   {
+    "text": "वापस लें",
+    "valid": true
+  },
+  {
     "text": "वापसी योग्य",
     "valid": true
   },
@@ -11585,6 +11725,10 @@
   },
   {
     "text": "विषय पेशकश लोड नहीं हो सकी।",
+    "valid": true
+  },
+  {
+    "text": "विषयों के ग्रेड और टिप्पणियाँ देखने के लिए रिपोर्ट कार्ड खोलें।",
     "valid": true
   },
   {
@@ -12072,6 +12216,10 @@
     "valid": true
   },
   {
+    "text": "सत्र के परिणाम और रिपोर्ट कार्ड देखें।",
+    "valid": true
+  },
+  {
     "text": "सत्र समाप्त किया गया।",
     "valid": true
   },
@@ -12112,6 +12260,10 @@
     "valid": true
   },
   {
+    "text": "सभी कक्षा समूह",
+    "valid": true
+  },
+  {
     "text": "सभी को उपस्थित चिह्नित करें",
     "valid": true
   },
@@ -12120,11 +12272,19 @@
     "valid": true
   },
   {
+    "text": "सभी शिक्षार्थी",
+    "valid": true
+  },
+  {
     "text": "सभी शैक्षणिक वर्ष",
     "valid": true
   },
   {
     "text": "सभी स्थितियाँ",
+    "valid": true
+  },
+  {
+    "text": "समग्र टिप्पणी",
     "valid": true
   },
   {
@@ -12552,6 +12712,10 @@
     "valid": true
   },
   {
+    "text": "स्थिति बदल गई है। नई स्थिति देखने के लिए यह संवाद बंद करें।",
+    "valid": true
+  },
+  {
     "text": "स्थिर",
     "valid": true
   },
@@ -12609,6 +12773,10 @@
   },
   {
     "text": "स्वीकृत करने पर Nexus सहायता को ठीक यही मिलता है। व्यक्तिगत डेटा हटा दिया गया है। आपकी स्वीकृति के बिना आपके इंस्टॉल से कुछ भी बाहर नहीं जाता, और कोई भी चुनाव पूर्ववत नहीं किया जा सकता।",
+    "valid": true
+  },
+  {
+    "text": "स्वीकृत करें",
     "valid": true
   },
   {
@@ -12900,7 +13068,15 @@
     "valid": true
   },
   {
+    "text": "அனைத்து வகுப்புக் குழுக்களும்",
+    "valid": true
+  },
+  {
     "text": "அனைத்து வரிகளுக்கும் செயல்பாட்டில் உள்ள கணக்குகளைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "அனைத்துக் கற்பவர்களும்",
     "valid": true
   },
   {
@@ -12948,7 +13124,15 @@
     "valid": true
   },
   {
+    "text": "அறிக்கையின் நிலை புதுப்பிக்கப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "அறிக்கையைப் படி",
+    "valid": true
+  },
+  {
+    "text": "அறிக்கையைப் புதுப்பிக்க முடியவில்லை.",
     "valid": true
   },
   {
@@ -13389,6 +13573,10 @@
   },
   {
     "text": "இந்த வரிசையில் சரிபார்ப்புச் சிக்கல் உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "இந்த வரைவை வெளியிட ஒப்புதல் அளிக்கவா?",
     "valid": true
   },
   {
@@ -14112,6 +14300,10 @@
     "valid": true
   },
   {
+    "text": "ஒட்டுமொத்தக் குறிப்பு",
+    "valid": true
+  },
+  {
     "text": "ஒதுக்கப்படவில்லை",
     "valid": true
   },
@@ -14157,6 +14349,10 @@
   },
   {
     "text": "ஒப்படைப்பு",
+    "valid": true
+  },
+  {
+    "text": "ஒப்புதல் அளி",
     "valid": true
   },
   {
@@ -14464,6 +14660,10 @@
     "valid": true
   },
   {
+    "text": "கற்பவரும் அவருடைய பாதுகாவலர்களும் பார்க்க இந்த அறிக்கையை வெளியிடவா?",
+    "valid": true
+  },
+  {
     "text": "கற்பவர்",
     "valid": true
   },
@@ -14604,6 +14804,10 @@
     "valid": true
   },
   {
+    "text": "காட்டுவதற்கு மதிப்பெண் அறிக்கைகள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "காத்திருக்கிறது",
     "valid": true
   },
@@ -14733,6 +14937,10 @@
   },
   {
     "text": "குடும்பங்கள், பாதுகாவலர்கள், அழைத்துச் செல்லும் உரிமைகள் மற்றும் அங்கீகரிக்கப்பட்டவர்கள்.",
+    "valid": true
+  },
+  {
+    "text": "குடும்பத்தினர் பார்வையிலிருந்து இந்த அறிக்கையைத் திரும்பப் பெறவா? இதுவே இறுதி நிலை.",
     "valid": true
   },
   {
@@ -15445,6 +15653,10 @@
   },
   {
     "text": "தயாராகிறது",
+    "valid": true
+  },
+  {
+    "text": "தரநிலை",
     "valid": true
   },
   {
@@ -16208,6 +16420,10 @@
     "valid": true
   },
   {
+    "text": "நிலை மாறியுள்ளது. தற்போதைய நிலையைக் காண இந்த உரையாடலை மூடவும்.",
+    "valid": true
+  },
+  {
     "text": "நிலையான",
     "valid": true
   },
@@ -16740,6 +16956,10 @@
     "valid": true
   },
   {
+    "text": "பருவ முடிவுகளையும் மதிப்பெண் அறிக்கைகளையும் பார்க்கவும்.",
+    "valid": true
+  },
+  {
     "text": "பருவங்கள்",
     "valid": true
   },
@@ -16776,6 +16996,10 @@
     "valid": true
   },
   {
+    "text": "பாடங்களின் தரநிலைகளையும் குறிப்புகளையும் காண மதிப்பெண் அறிக்கையைத் திறக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "பாடங்கள்",
     "valid": true
   },
@@ -16797,6 +17021,10 @@
   },
   {
     "text": "பாடநெறி",
+    "valid": true
+  },
+  {
+    "text": "பாடம்",
     "valid": true
   },
   {
@@ -17117,6 +17345,26 @@
   },
   {
     "text": "மதிப்பு ஒரு உரைச் சரமாக இருக்க வேண்டும்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண் அறிக்கை கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண் அறிக்கைகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண் அறிக்கைகள்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண் அறிக்கைப் பட்டியலுக்குத் திரும்புக",
     "valid": true
   },
   {
@@ -18212,7 +18460,15 @@
     "valid": true
   },
   {
+    "text": "வெளியிடப்பட்ட நாள் {date}",
+    "valid": true
+  },
+  {
     "text": "வெளியிடப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "வெளியிடு",
     "valid": true
   },
   {

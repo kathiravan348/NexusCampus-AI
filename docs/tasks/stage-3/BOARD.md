@@ -36,7 +36,7 @@
 | NEX-168 | M19 Accounting | C | done | Codex | 158, 167 |
 | NEX-169 | M20 Assessment & gradebook | C | done | Gemini | 158, 168 |
 | NEX-170 | M21 Exams (in person) | C | done | Codex | 158, 169 |
-| NEX-171 | M22 Report cards & transcripts | C | planned | — | 158, 170 |
+| NEX-171 | M22 Report cards & transcripts | C | ready-for-review | Codex | 158, 170 |
 | NEX-172 | M23 Documents & e-signature | C | planned | — | 158, 171 |
 | NEX-173 | M24 Communication hub | C | draft | — | 159 |
 | NEX-174 | M25 Family portal | C | draft | — | 159 |

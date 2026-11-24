@@ -64,3 +64,56 @@ describe("M22 read handlers", () => {
     expect((await get("/report-cards")).status).toBe(403);
   });
 });
+
+function postStatus(id: string, body: unknown, user: string = USER.lsPriya) {
+  return fetch(`http://localhost/api/v1/report-cards/${encodeURIComponent(id)}/status`, {
+    method: "POST",
+    headers: {
+      [MOCK_HEADER.tenant]: TENANT.littleSteps,
+      [MOCK_HEADER.user]: user,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+describe("M22 status changes", () => {
+  it("enforces the publication sequence and removes withdrawn cards from family results", async () => {
+    const card = mockDb.reportCards.find((row) => row.tenantId === TENANT.littleSteps)!;
+    Object.assign(card, { learnerId: LEARNER.lsRohan, status: "draft", publishedAt: null });
+    const original = structuredClone(card);
+    const skipped = await postStatus(card.id, { status: "published" });
+    expect(skipped.status).toBe(409);
+    expect(await skipped.json()).toMatchObject({
+      error: { code: "conflict", details: [{ path: "status" }] },
+    });
+    expect(card).toEqual(original);
+
+    for (const status of ["approved", "published", "withdrawn"]) {
+      const response = await postStatus(card.id, { status });
+      expect(response.status).toBe(200);
+      const updated = ReportCardSchema.parse(await response.json());
+      expect(updated.status).toBe(status);
+      expect(updated.publishedAt).toBe(status === "published" ? updated.updatedAt : null);
+      const family = await get("/report-cards", USER.lsSunita);
+      const { items } = pageSchema(ReportCardSchema).parse(await family.json());
+      expect(items.some((row) => row.id === card.id)).toBe(status === "published");
+    }
+
+    const terminal = structuredClone(card);
+    for (const status of ["approved", "published", "withdrawn"]) {
+      expect((await postStatus(card.id, { status })).status).toBe(409);
+    }
+    expect(card).toEqual(terminal);
+  });
+
+  it("denies family writes, rejects extra input and hides foreign cards", async () => {
+    const card = mockDb.reportCards.find((row) => row.tenantId === TENANT.littleSteps)!;
+    const foreign = mockDb.reportCards.find((row) => row.tenantId !== TENANT.littleSteps)!;
+    const original = structuredClone(card);
+    expect((await postStatus(card.id, { status: "withdrawn" }, USER.lsSunita)).status).toBe(403);
+    expect((await postStatus(card.id, { status: "withdrawn", extra: true })).status).toBe(400);
+    expect((await postStatus(foreign.id, { status: "approved" })).status).toBe(404);
+    expect(card).toEqual(original);
+  });
+});

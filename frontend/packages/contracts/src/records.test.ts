@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { IssuedDocumentSchema, ReportCardSchema } from "./index";
+import { IssuedDocumentSchema, ReportCardSchema, ReportCardStatusInputSchema } from "./index";
 
 const tenantId = "tenant-school";
 const learnerId = "learner-01";
@@ -40,6 +40,15 @@ const certificate = {
 };
 
 describe("report cards", () => {
+  it("accepts only a target status in a status change request", () => {
+    for (const status of ["approved", "published", "withdrawn"]) {
+      expect(ReportCardStatusInputSchema.safeParse({ status }).success).toBe(true);
+    }
+    for (const input of [{}, { status: "draft" }, { status: "approved", extra: true }]) {
+      expect(ReportCardStatusInputSchema.safeParse(input).success).toBe(false);
+    }
+  });
+
   it("accepts a published report card", () => {
     expect(ReportCardSchema.parse(report)).toEqual(report);
   });

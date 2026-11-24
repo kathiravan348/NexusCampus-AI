@@ -1,6 +1,7 @@
 import type { ModuleId } from "@nexus/contracts";
 import type { MessageKey } from "@nexus/i18n";
 import {
+  Award,
   Bell,
   Building2,
   CalendarClock,
@@ -262,6 +263,16 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: null,
     offlineLevel: "L2",
     load: () => import("../modules/m21/ExamsPage"),
+  },
+  {
+    moduleId: "M22",
+    path: "report-cards",
+    navKey: "m22.nav.title",
+    summaryKey: "m22.nav.summary",
+    icon: Award,
+    permission: null,
+    offlineLevel: "L1",
+    load: () => import("../modules/m22/ReportCardsPage"),
   },
   {
     moduleId: "M83",
