@@ -20,3 +20,8 @@ export * from "./academics";
 export * from "./learner-records";
 export * from "./families";
 export * from "./config";
+export * from "./ops-admissions";
+export * from "./ops-timetable";
+export * from "./ops-fees";
+export * from "./ops-assessment";
+export * from "./ops-communication";
