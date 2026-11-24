@@ -25,10 +25,10 @@
 | NEX-157 | MSW handlers + services: M12, M09, M16, M17 | B | planned | — | 155, 156 |
 | NEX-158 | MSW handlers + services: M18–M23 | B | planned | — | 155–157 |
 | NEX-159 | MSW handlers + services: M24–M28, M86 | B | draft | — | 155 |
-| NEX-160 | M15 Academic structure screens | C | draft | — | 156 |
+| NEX-160 | M15 Academic structure screens | C | planned | — | 156 |
 | NEX-161 | M08 Forms, fields & workflow builder | C | draft | — | 156 |
 | NEX-162 | M09 Import & migration wizard | C | draft | — | 157 |
-| NEX-163 | M13 Learner records and M14 Families & guardians | C | draft | — | 156 |
+| NEX-163 | M13 Learner records and M14 Families & guardians | C | planned | — | 156 |
 | NEX-164 | M12 Admissions & enquiry CRM (with the public application form) | C | draft | — | 157 |
 | NEX-165 | M16 Timetable & scheduling | C | draft | — | 157 |
 | NEX-166 | M17 Attendance (offline L2, mobile first) | C | draft | — | 157 |

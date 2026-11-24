@@ -84,12 +84,13 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-153 | Gemini · gemini-4-neon-high | 08:57 | green on round 2 | done — fix: bounded read receipts | `391dc30`, pushed |
 | NEX-154 | Codex · gpt-6.2-sol / medium | 09:3x | green | done — no fixes | `007120a`, pushed |
 | NEX-155 | Gemini · gemini-4-neon-high | 09:45 | green | done — no fixes | `0fff900`, pushed |
-| NEX-156 | Codex · gpt-6.2-sol / medium | 09:45, restarted 10:08 | running (2 planner answers: read NEX-154 files; masked `GuardianRelationshipViewSchema`) | — | — |
+| NEX-156 | Codex · gpt-6.2-sol / medium | 09:45, restarted 10:08 | not run by the harness (answered questions misread as open); reviewer ran them: green | done — fix: locked demo user in `m14.test.ts`; backend key export | `4915913`, pushed |
+| NEX-157 | Codex · gpt-6.2-sol / medium | 10:5x | running | — | — |
+| NEX-160 | Gemini · gemini-4-neon-xhigh (screen) | 11:0x | running | — | — |
 
-Gemini idle until NEX-156 is merged (every startable task shares its files). Planned next: NEX-157 (needs 155, 156), NEX-158 (needs 155–157). The handler tasks 157–159 share the registry
-files (`stage3-access.ts`, `db.ts`, `handlers/index.ts`, `services/{keys,index}.ts`, message files), so they run one
-at a time; the other builder takes screen tasks (160, 161, 163 after NEX-156). NEX-155 and NEX-156 both append one
-line to `fixtures/index.ts`: at merge keep both lines.
+Planned next: NEX-158 (needs 157), NEX-163 (M13 + M14 screens, needs 156 — runs after NEX-160 because both edit
+`modules.ts` and the message files). Handler tasks 157–159 share the registry files, so they run one at a time.
+Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both.
 
 ## Lessons (harness)
 - Two `review:check` runs at once — or the agents' own CPU use — make some UI tests time out (5 s). Checks take a
@@ -101,6 +102,9 @@ line to `fixtures/index.ts`: at merge keep both lines.
 - Builders cannot run `export:fixtures`, so new message keys would leave the backend key list stale: the harness now
   runs it before `review:check` (`full_check … export`, D75); `check-main.sh` does not, so a stale export on `main`
   still fails.
+
+- The harness checked each Questions line on its own, so a question answered on the following lines still looked
+  open and the build was committed without checks (NEX-156). `open_questions` now reads each question as a block.
 
 ## Waiting for the Owner
 _(nothing yet)_
