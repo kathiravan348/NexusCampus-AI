@@ -79,10 +79,13 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-148 | Codex · default (gpt-6.2-sol) | 08:20 | green on round 3 | done — no fixes | `aa7a067`, pushed |
 | NEX-150 | Gemini · default (gemini-4-neon-high) | 08:14 | green on round 3 | done — no fixes | `ce5a025`, pushed |
 | NEX-149 | Codex · gpt-6.2-sol / medium | 08:40 | green on round 2 | done — fix: issue keys use `MessageKeySchema` | `1d392dc`, pushed |
-| NEX-152 | Codex · gpt-6.2-sol / medium | 08:45 | running | — | — |
-| NEX-151 | Gemini · gemini-4-neon-high | 09:0x | restarted after a planner answer (`Fee` prefix: Stage 2 `Invoice*` / `Payment*` exports clash) | — | — |
+| NEX-152 | Codex · gpt-6.2-sol / medium | 08:45 | green | done — fix: bounded `revokedReason`, rubric codes; personal-data notes | `3329c22`, pushed |
+| NEX-151 | Gemini · gemini-4-neon-high | 09:0x | green (after a planner answer: `Fee` prefix) | done — fix: refund reason marked personal data | `1081a0b`, pushed |
+| NEX-153 | Gemini · gemini-4-neon-high | 08:57 | green on round 2 | done — fix: bounded read receipts | `391dc30`, pushed |
+| NEX-154 | Codex · gpt-6.2-sol / medium | 09:3x | running | — | — |
 
-Planned next: NEX-153 (M24–M28, M86).
+Planned next: NEX-155 (needs NEX-154), NEX-156 (needs NEX-154). Gemini waits until NEX-154 is merged (every
+planned task depends on it).
 
 ## Lessons (harness)
 - Two `review:check` runs at once — or the agents' own CPU use — make some UI tests time out (5 s). Checks take a
@@ -90,6 +93,10 @@ Planned next: NEX-153 (M24–M28, M86).
   fail again (`lib.sh` `full_check`).
 - Codex `workspace-write` keeps `.git` read-only and hides fnm/pnpm, so the harness — not the builder — runs checks and
   commits. Planner answers in a task's Questions are marked "answered by the planner" so the harness continues.
+
+- Builders cannot run `export:fixtures`, so new message keys would leave the backend key list stale: the harness now
+  runs it before `review:check` (`full_check … export`, D75); `check-main.sh` does not, so a stale export on `main`
+  still fails.
 
 ## Waiting for the Owner
 _(nothing yet)_
