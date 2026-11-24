@@ -44,5 +44,5 @@
 | NEX-176 | M27 Staff portal | C | done | Codex | 159, 175 |
 | NEX-177 | M28 Dashboards & role homes | C | done | Codex | 159, 176 |
 | NEX-178 | M86 Year-end rollover & promotion | C | done | Codex | 159, 177 |
-| NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | planned | — | 160–178 |
+| NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | ready-for-review | Codex | 160–178 |
 | NEX-180 | Stage 3 freeze (planner + Owner) | — | draft | — | 179 |
