@@ -275,6 +275,7 @@ export const FeeRefundSchema = z
     tenantId: IdSchema,
     paymentId: IdSchema,
     amount: PositiveMinorUnitsSchema,
+    /** Personal data (V-7); keep out of logs. */
     reason: z.string().trim().min(1).max(300),
     status: FeeRefundStatusSchema,
     decidedByStaffProfileId: IdSchema.nullable(),
