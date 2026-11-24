@@ -5,6 +5,8 @@ export * from "./event";
 export * from "./tenancy";
 export * from "./calendar";
 export * from "./academics";
+export * from "./timetable";
+export * from "./attendance";
 export * from "./person";
 export * from "./user";
 export * from "./rbac";
