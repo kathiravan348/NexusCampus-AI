@@ -1,9 +1,11 @@
-import { renderHook, waitFor } from "@testing-library/react";
+import { mockDb } from "@nexus/mocks";
+import { act, renderHook, waitFor } from "@testing-library/react";
 import {
   useExamPapers,
   useExamSeats,
   useExams,
   useHallTickets,
+  useGenerateSeatPlan,
   useRevaluationRequests,
 } from "../index";
 import { ADMIN, freshDb, signInAs, startMockServer, wrapper } from "../test-utils";
@@ -41,6 +43,29 @@ describe("M21 hooks", () => {
       expect(seats.data?.items[0]?.examPaperId).toBe(paperId);
       expect(tickets.data?.items[0]?.tenantId).toBe(ADMIN.tenantId);
       expect(requests.data?.items[0]?.tenantId).toBe(ADMIN.tenantId);
+    });
+  });
+  it("refreshes the selected paper after generation", async () => {
+    signInAs(ADMIN);
+    const paper = mockDb.examPapers.find((row) => row.tenantId === ADMIN.tenantId)!;
+    const exam = mockDb.exams.find((row) => row.id === paper.examId)!;
+    exam.status = "planned";
+    const room = mockDb.rooms.find((row) => row.tenantId === ADMIN.tenantId)!;
+    room.capacity = null;
+    paper.roomIds = [room.id];
+    const { result } = renderHook(
+      () => ({ seats: useExamSeats(paper.id), plan: useGenerateSeatPlan(paper.id) }),
+      { wrapper: wrapper({ db: freshDb() }) },
+    );
+    await waitFor(() => expect(result.current.seats.isSuccess).toBe(true));
+    const original = result.current.seats.data;
+    await act(async () => {
+      await result.current.plan.mutateAsync();
+    });
+    await waitFor(() => {
+      expect(result.current.plan.isSuccess).toBe(true);
+      expect(result.current.seats.data).toEqual(result.current.plan.data);
+      expect(result.current.seats.data).not.toEqual(original);
     });
   });
 });

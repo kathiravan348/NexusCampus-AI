@@ -93,6 +93,7 @@
 │     │                 modules/m18/ (FeesPage, InvoicesTab, PaymentsTab, PlansTab, RecordPaymentDialog, NEX-167),
 │     │                 modules/m19/ (AccountingPage, AccountsTab, JournalTab, BudgetsTab, PostJournalDialog, NEX-168),
 │     │                 modules/m20/ (GradebookPage, AssessmentList, MarkSheet, NEX-169),
+│     │                 modules/m21/ (ExamsPage, ScheduleTab, SeatingTab, TicketsTab, NEX-170),
 │     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023),
 │     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest in vite.config, NEX-030),
 │     │                 sw/ (sw.ts: Workbox injectManifest worker; mock builds host MSW in it, own tsconfig, NEX-038)

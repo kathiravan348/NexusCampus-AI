@@ -83,3 +83,92 @@ describe("M21 read handlers", () => {
     expect((await get("/exams")).status).toBe(403);
   });
 });
+
+function seatPlan(id: string, key = crypto.randomUUID(), user: string = USER.lsPriya) {
+  return fetch(`http://localhost/api/v1/exam-papers/${id}/seat-plan`, {
+    method: "POST",
+    headers: {
+      [MOCK_HEADER.tenant]: TENANT.littleSteps,
+      [MOCK_HEADER.user]: user,
+      "Idempotency-Key": key,
+    },
+  });
+}
+
+function setupPaper() {
+  const tenantId = TENANT.littleSteps;
+  const paper = mockDb.examPapers.find((row) => row.tenantId === tenantId)!;
+  const exam = mockDb.exams.find((row) => row.id === paper.examId)!;
+  exam.status = "scheduled";
+  const offering = mockDb.subjectOfferings.find((row) => row.id === paper.subjectOfferingId)!;
+  const rooms = mockDb.rooms.filter((row) => row.tenantId === tenantId);
+  const first = rooms[0]!;
+  const second = { ...first, id: crypto.randomUUID(), capacity: null };
+  first.capacity = 1;
+  mockDb.rooms.push(second);
+  paper.roomIds = [first.id, second.id];
+  const placement = mockDb.enrolments.find((row) => row.tenantId === tenantId)!;
+  const template = {
+    ...placement,
+    classGroupId: offering.classGroupId,
+    effectiveFrom: paper.date,
+    effectiveTo: paper.date,
+  };
+  mockDb.enrolments = mockDb.enrolments.filter(
+    (row) => row.tenantId !== tenantId || row.classGroupId !== offering.classGroupId,
+  );
+  mockDb.enrolments.push(
+    { ...template, id: crypto.randomUUID(), learnerId: LEARNER.lsKavya, rollNumber: "10" },
+    { ...template, id: crypto.randomUUID(), learnerId: LEARNER.lsRohan, rollNumber: "2" },
+    { ...template, id: crypto.randomUUID(), learnerId: LEARNER.lsKavya, rollNumber: null },
+  );
+  return { paper, exam, first, second };
+}
+
+describe("M21 seating plan", () => {
+  it("fills rooms in order and replays the original response without replacing seats again", async () => {
+    const { paper, exam, first, second } = setupPaper();
+    const key = crypto.randomUUID();
+    const response = await seatPlan(paper.id, key);
+    expect(response.status).toBe(200);
+    const page = pageSchema(SeatAssignmentSchema).parse(await response.json());
+    expect(page.items.map((s) => [s.roomId, s.seatLabel, s.learnerId])).toEqual([
+      [first.id, "A1", LEARNER.lsRohan],
+      [second.id, "B1", LEARNER.lsKavya],
+    ]);
+    expect(page.total).toBe(2);
+    const newer = pageSchema(SeatAssignmentSchema).parse(await (await seatPlan(paper.id)).json());
+    expect(newer.items[0]?.id).not.toBe(page.items[0]?.id);
+    exam.status = "published";
+    expect((await seatPlan(paper.id, key, USER.lsSunita)).status).toBe(403);
+    const replay = await seatPlan(paper.id, key);
+    expect(replay.status).toBe(200);
+    expect(await replay.json()).toEqual(page);
+    expect(mockDb.seatAssignments.filter((row) => row.examPaperId === paper.id)).toEqual(
+      newer.items,
+    );
+  });
+
+  it("preserves the previous assignments on insufficient capacity or a closed exam", async () => {
+    const { paper, exam, first } = setupPaper();
+    const before = [...mockDb.seatAssignments];
+    paper.roomIds = [first.id];
+    const full = await seatPlan(paper.id);
+    expect(full.status).toBe(400);
+    expect(JSON.stringify(await full.json())).toContain('"path":"roomIds"');
+    exam.status = "published";
+    const closed = await seatPlan(paper.id);
+    expect(closed.status).toBe(409);
+    expect(JSON.stringify(await closed.json())).toContain('"path":"status"');
+    expect(mockDb.seatAssignments).toEqual(before);
+  });
+
+  it("rejects a guardian, a foreign paper and an account without active staff membership", async () => {
+    const { paper } = setupPaper();
+    expect((await seatPlan(paper.id, crypto.randomUUID(), USER.lsSunita)).status).toBe(403);
+    const foreign = mockDb.examPapers.find((row) => row.tenantId === TENANT.riverside)!;
+    expect((await seatPlan(foreign.id)).status).toBe(404);
+    mockDb.roleProfiles = mockDb.roleProfiles.filter((row) => row.kind !== "staff");
+    expect((await seatPlan(paper.id)).status).toBe(403);
+  });
+});

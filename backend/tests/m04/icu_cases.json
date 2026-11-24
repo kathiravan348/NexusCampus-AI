@@ -1200,6 +1200,10 @@
     "valid": true
   },
   {
+    "text": "Check exam dates, hall tickets and re-evaluation updates.",
+    "valid": true
+  },
+  {
     "text": "Check this page",
     "valid": true
   },
@@ -2148,6 +2152,22 @@
     "valid": true
   },
   {
+    "text": "Exam",
+    "valid": true
+  },
+  {
+    "text": "Exam papers",
+    "valid": true
+  },
+  {
+    "text": "Exam schedules, seating plans and hall tickets",
+    "valid": true
+  },
+  {
+    "text": "Exams",
+    "valid": true
+  },
+  {
     "text": "Excel (.xlsx)",
     "valid": true
   },
@@ -2368,6 +2388,10 @@
     "valid": true
   },
   {
+    "text": "Generate seating plan",
+    "valid": true
+  },
+  {
     "text": "Give each option a different valid key and at least one label. Add at least one option.",
     "valid": true
   },
@@ -2437,6 +2461,14 @@
   },
   {
     "text": "Hall",
+    "valid": true
+  },
+  {
+    "text": "Hall tickets",
+    "valid": true
+  },
+  {
+    "text": "Hall tickets & re-evaluation",
     "valid": true
   },
   {
@@ -2745,6 +2777,10 @@
   },
   {
     "text": "Issued",
+    "valid": true
+  },
+  {
+    "text": "Issued on {date}",
     "valid": true
   },
   {
@@ -3172,6 +3208,14 @@
     "valid": true
   },
   {
+    "text": "Marks changed",
+    "valid": true
+  },
+  {
+    "text": "Marks unchanged",
+    "valid": true
+  },
+  {
     "text": "Max {max}",
     "valid": true
   },
@@ -3181,6 +3225,10 @@
   },
   {
     "text": "Maximum",
+    "valid": true
+  },
+  {
+    "text": "Maximum marks: {marks}",
     "valid": true
   },
   {
@@ -3584,6 +3632,10 @@
     "valid": true
   },
   {
+    "text": "No exams scheduled.",
+    "valid": true
+  },
+  {
     "text": "No fee heads configured yet.",
     "valid": true
   },
@@ -3605,6 +3657,10 @@
   },
   {
     "text": "No guardians recorded.",
+    "valid": true
+  },
+  {
+    "text": "No hall tickets issued.",
     "valid": true
   },
   {
@@ -3696,6 +3752,10 @@
     "valid": true
   },
   {
+    "text": "No papers for this exam.",
+    "valid": true
+  },
+  {
     "text": "No payments recorded yet",
     "valid": true
   },
@@ -3712,6 +3772,10 @@
     "valid": true
   },
   {
+    "text": "No re-evaluation requests.",
+    "valid": true
+  },
+  {
     "text": "No refunds recorded.",
     "valid": true
   },
@@ -3725,6 +3789,10 @@
   },
   {
     "text": "No rooms yet",
+    "valid": true
+  },
+  {
+    "text": "No seats assigned.",
     "valid": true
   },
   {
@@ -4012,6 +4080,10 @@
     "valid": true
   },
   {
+    "text": "Original marks: {marks}",
+    "valid": true
+  },
+  {
     "text": "Other",
     "valid": true
   },
@@ -4248,6 +4320,10 @@
     "valid": true
   },
   {
+    "text": "Planned",
+    "valid": true
+  },
+  {
     "text": "Plans & refunds",
     "valid": true
   },
@@ -4397,6 +4473,10 @@
   },
   {
     "text": "Raised",
+    "valid": true
+  },
+  {
+    "text": "Re-evaluation requests",
     "valid": true
   },
   {
@@ -4612,6 +4692,10 @@
     "valid": true
   },
   {
+    "text": "Results pending",
+    "valid": true
+  },
+  {
     "text": "Reversed",
     "valid": true
   },
@@ -4657,6 +4741,10 @@
   },
   {
     "text": "Reviewing a bundle needs a connection to your install.",
+    "valid": true
+  },
+  {
+    "text": "Revised marks: {marks}",
     "valid": true
   },
   {
@@ -4756,6 +4844,10 @@
     "valid": true
   },
   {
+    "text": "Rooms: {rooms}",
+    "valid": true
+  },
+  {
     "text": "Rotating",
     "valid": true
   },
@@ -4820,7 +4912,15 @@
     "valid": true
   },
   {
+    "text": "Schedule",
+    "valid": true
+  },
+  {
     "text": "Schedule a subject offering into the weekly timetable. Room, teacher and class clashes are checked automatically.",
+    "valid": true
+  },
+  {
+    "text": "Scheduled",
     "valid": true
   },
   {
@@ -4857,6 +4957,18 @@
   },
   {
     "text": "Search learners and view profiles, enrolments, documents and guardians.",
+    "valid": true
+  },
+  {
+    "text": "Seating",
+    "valid": true
+  },
+  {
+    "text": "Seating plan generated.",
+    "valid": true
+  },
+  {
+    "text": "Seats can only be generated for planned or scheduled exams.",
     "valid": true
   },
   {
@@ -5416,6 +5528,10 @@
     "valid": true
   },
   {
+    "text": "The assigned rooms do not have enough seats.",
+    "valid": true
+  },
+  {
     "text": "The bundle could not be loaded. Try again.",
     "valid": true
   },
@@ -5604,6 +5720,10 @@
     "valid": true
   },
   {
+    "text": "This replaces the existing seat assignments for this paper.",
+    "valid": true
+  },
+  {
     "text": "This request is closed.",
     "valid": true
   },
@@ -5633,6 +5753,10 @@
   },
   {
     "text": "Thursday",
+    "valid": true
+  },
+  {
+    "text": "Ticket number: {number}",
     "valid": true
   },
   {
@@ -6984,6 +7108,10 @@
     "valid": true
   },
   {
+    "text": "{name} · {date} · {time}",
+    "valid": true
+  },
+  {
     "text": "{name} காலத்தை நீக்கு",
     "valid": true
   },
@@ -7033,6 +7161,14 @@
   },
   {
     "text": "{staff} க்கு அணுகலை அனுமதி",
+    "valid": true
+  },
+  {
+    "text": "{startHour, number, ::integer-width/*00}:{startMinute, number, ::integer-width/*00}–{endHour, number, ::integer-width/*00}:{endMinute, number, ::integer-width/*00}",
+    "valid": true
+  },
+  {
+    "text": "{start} – {end}",
     "valid": true
   },
   {
@@ -7128,11 +7264,19 @@
     "valid": true
   },
   {
+    "text": "अंक अपरिवर्तित",
+    "valid": true
+  },
+  {
     "text": "अंक दर्ज करने या देखने के लिए कक्षा समूह और मूल्यांकन चुनें।",
     "valid": true
   },
   {
     "text": "अंक पत्रक",
+    "valid": true
+  },
+  {
+    "text": "अंक बदले गए",
     "valid": true
   },
   {
@@ -7221,6 +7365,10 @@
   },
   {
     "text": "अधिकतम {max}",
+    "valid": true
+  },
+  {
+    "text": "अधिकतम अंक: {marks}",
     "valid": true
   },
   {
@@ -7808,6 +7956,10 @@
     "valid": true
   },
   {
+    "text": "आवंटित कक्षों में पर्याप्त सीटें नहीं हैं।",
+    "valid": true
+  },
+  {
     "text": "आवंटित नहीं",
     "valid": true
   },
@@ -7833,6 +7985,10 @@
   },
   {
     "text": "आहार संबंधी",
+    "valid": true
+  },
+  {
+    "text": "इंटरनेट कनेक्शन चाहिए",
     "valid": true
   },
   {
@@ -7905,6 +8061,14 @@
   },
   {
     "text": "इस पंक्ति में सत्यापन समस्या है।",
+    "valid": true
+  },
+  {
+    "text": "इस परीक्षा का कोई प्रश्नपत्र नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस प्रश्नपत्र के लिए पहले से आवंटित सीटों की जगह नई सीटें आवंटित होंगी।",
     "valid": true
   },
   {
@@ -8293,6 +8457,10 @@
   },
   {
     "text": "कक्ष व घंटी",
+    "valid": true
+  },
+  {
+    "text": "कक्ष: {rooms}",
     "valid": true
   },
   {
@@ -8692,7 +8860,19 @@
     "valid": true
   },
   {
+    "text": "कोई परीक्षा निर्धारित नहीं है।",
+    "valid": true
+  },
+  {
     "text": "कोई पहुँच अनुरोध नहीं।",
+    "valid": true
+  },
+  {
+    "text": "कोई पुनर्मूल्यांकन अनुरोध नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "कोई प्रवेश पत्र जारी नहीं हुआ है।",
     "valid": true
   },
   {
@@ -8769,6 +8949,10 @@
   },
   {
     "text": "कोई सहमति रिकॉर्ड मेल नहीं खाता।",
+    "valid": true
+  },
+  {
+    "text": "कोई सीट आवंटित नहीं है।",
     "valid": true
   },
   {
@@ -9117,6 +9301,14 @@
   },
   {
     "text": "जारी किए गए दस्तावेज़ देखें",
+    "valid": true
+  },
+  {
+    "text": "जारी है",
+    "valid": true
+  },
+  {
+    "text": "जारी होने की तारीख: {date}",
     "valid": true
   },
   {
@@ -9640,11 +9832,23 @@
     "valid": true
   },
   {
+    "text": "नियोजित",
+    "valid": true
+  },
+  {
     "text": "निरंतर",
     "valid": true
   },
   {
+    "text": "निरस्त",
+    "valid": true
+  },
+  {
     "text": "निर्णय चाहिए",
+    "valid": true
+  },
+  {
+    "text": "निर्धारित",
     "valid": true
   },
   {
@@ -9712,6 +9916,10 @@
     "valid": true
   },
   {
+    "text": "परिणाम लंबित",
+    "valid": true
+  },
+  {
     "text": "परियोजना",
     "valid": true
   },
@@ -9752,11 +9960,23 @@
     "valid": true
   },
   {
+    "text": "परीक्षा कार्यक्रम, बैठक योजना और प्रवेश पत्र",
+    "valid": true
+  },
+  {
+    "text": "परीक्षा की तारीखें, प्रवेश पत्र और पुनर्मूल्यांकन की स्थिति देखें।",
+    "valid": true
+  },
+  {
     "text": "परीक्षा तैयारी और कोचिंग",
     "valid": true
   },
   {
     "text": "परीक्षा निर्धारित",
+    "valid": true
+  },
+  {
+    "text": "परीक्षाएँ",
     "valid": true
   },
   {
@@ -9865,6 +10085,10 @@
   },
   {
     "text": "पिन कोड",
+    "valid": true
+  },
+  {
+    "text": "पुनर्मूल्यांकन अनुरोध",
     "valid": true
   },
   {
@@ -10132,6 +10356,18 @@
     "valid": true
   },
   {
+    "text": "प्रवेश पत्र",
+    "valid": true
+  },
+  {
+    "text": "प्रवेश पत्र और पुनर्मूल्यांकन",
+    "valid": true
+  },
+  {
+    "text": "प्रवेश पत्र संख्या: {number}",
+    "valid": true
+  },
+  {
     "text": "प्रवेश प्रबंधित करें",
     "valid": true
   },
@@ -10149,6 +10385,10 @@
   },
   {
     "text": "प्रशिक्षु",
+    "valid": true
+  },
+  {
+    "text": "प्रश्नपत्र",
     "valid": true
   },
   {
@@ -10516,6 +10756,22 @@
     "valid": true
   },
   {
+    "text": "बैठक योजना केवल नियोजित या निर्धारित परीक्षाओं के लिए बनाई जा सकती है।",
+    "valid": true
+  },
+  {
+    "text": "बैठक योजना बन गई है।",
+    "valid": true
+  },
+  {
+    "text": "बैठक योजना बनाएँ",
+    "valid": true
+  },
+  {
+    "text": "बैठक व्यवस्था",
+    "valid": true
+  },
+  {
     "text": "ब्रांड",
     "valid": true
   },
@@ -10785,6 +11041,10 @@
   },
   {
     "text": "मुद्रा",
+    "valid": true
+  },
+  {
+    "text": "मूल अंक: {marks}",
     "valid": true
   },
   {
@@ -11696,6 +11956,10 @@
     "valid": true
   },
   {
+    "text": "संशोधित अंक: {marks}",
+    "valid": true
+  },
+  {
     "text": "संस्करण",
     "valid": true
   },
@@ -12492,6 +12756,14 @@
     "valid": true
   },
   {
+    "text": "அட்டவணை",
+    "valid": true
+  },
+  {
+    "text": "அட்டவணையிடப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "அட்டை",
     "valid": true
   },
@@ -12541,6 +12813,10 @@
   },
   {
     "text": "அணைக்கப்பட்டால் Assist மறைக்கப்படும்; ஒவ்வொரு திரையும் வழக்கம்போல் இயங்கும்.",
+    "valid": true
+  },
+  {
+    "text": "அதிகபட்ச மதிப்பெண்: {marks}",
     "valid": true
   },
   {
@@ -12733,6 +13009,10 @@
   },
   {
     "text": "அறைகள் மற்றும் மணி அட்டவணைகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அறைகள்: {rooms}",
     "valid": true
   },
   {
@@ -12980,6 +13260,10 @@
     "valid": true
   },
   {
+    "text": "இணைய இணைப்பு தேவை",
+    "valid": true
+  },
+  {
     "text": "இணையதளம்",
     "valid": true
   },
@@ -13176,6 +13460,14 @@
     "valid": true
   },
   {
+    "text": "இந்தத் தேர்வுக்குத் தாள்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தத் தேர்வுத் தாளுக்கான தற்போதைய இருக்கை ஒதுக்கீடுகள் மாற்றப்படும்.",
+    "valid": true
+  },
+  {
     "text": "இந்தத் தொகுப்பை நிராகரிக்கவா? இது ஒருபோதும் அனுப்பப்படாது.",
     "valid": true
   },
@@ -13357,6 +13649,22 @@
   },
   {
     "text": "இரண்டாம் நிலை",
+    "valid": true
+  },
+  {
+    "text": "இருக்கை ஒதுக்கீடு",
+    "valid": true
+  },
+  {
+    "text": "இருக்கைகள் எதுவும் ஒதுக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இருக்கைத் திட்டத்தை உருவாக்கு",
+    "valid": true
+  },
+  {
+    "text": "இருக்கைத் திட்டம் உருவாக்கப்பட்டது.",
     "valid": true
   },
   {
@@ -13805,6 +14113,10 @@
   },
   {
     "text": "ஒதுக்கப்படவில்லை",
+    "valid": true
+  },
+  {
+    "text": "ஒதுக்கப்பட்ட அறைகளில் போதுமான இருக்கைகள் இல்லை.",
     "valid": true
   },
   {
@@ -15276,6 +15588,14 @@
     "valid": true
   },
   {
+    "text": "திட்டமிடப்பட்ட அல்லது அட்டவணையிடப்பட்ட தேர்வுகளுக்கு மட்டுமே இருக்கைகளை ஒதுக்க முடியும்.",
+    "valid": true
+  },
+  {
+    "text": "திட்டமிடப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "திட்டம்",
     "valid": true
   },
@@ -15297,6 +15617,10 @@
   },
   {
     "text": "திருத்தம்",
+    "valid": true
+  },
+  {
+    "text": "திருத்திய மதிப்பெண்: {marks}",
     "valid": true
   },
   {
@@ -15464,7 +15788,19 @@
     "valid": true
   },
   {
+    "text": "தேர்வு அட்டவணைகள், இருக்கைத் திட்டங்கள் மற்றும் தேர்வு நுழைவுச்சீட்டுகள்",
+    "valid": true
+  },
+  {
     "text": "தேர்வு திட்டமிடப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "தேர்வு நாட்கள், நுழைவுச்சீட்டுகள் மற்றும் மறுமதிப்பீட்டு நிலையைப் பார்க்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "தேர்வு நுழைவுச்சீட்டுகள்",
     "valid": true
   },
   {
@@ -15476,7 +15812,23 @@
     "valid": true
   },
   {
+    "text": "தேர்வுகள்",
+    "valid": true
+  },
+  {
+    "text": "தேர்வுகள் எதுவும் திட்டமிடப்படவில்லை.",
+    "valid": true
+  },
+  {
     "text": "தேர்வுத் தயாரிப்பு மற்றும் பயிற்சி",
+    "valid": true
+  },
+  {
+    "text": "தேர்வுத் தாள்",
+    "valid": true
+  },
+  {
+    "text": "தேர்வுத் தாள்கள்",
     "valid": true
   },
   {
@@ -15937,6 +16289,18 @@
   },
   {
     "text": "நீதிமன்றக் கட்டுப்பாடு",
+    "valid": true
+  },
+  {
+    "text": "நுழைவுச்சீட்டு எண்: {number}",
+    "valid": true
+  },
+  {
+    "text": "நுழைவுச்சீட்டுகள் எதுவும் வழங்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "நுழைவுச்சீட்டுகள் மற்றும் மறுமதிப்பீடு",
     "valid": true
   },
   {
@@ -16728,6 +17092,10 @@
     "valid": true
   },
   {
+    "text": "மதிப்பாய்வில் உள்ளது",
+    "valid": true
+  },
+  {
     "text": "மதிப்பாய்வு செய்",
     "valid": true
   },
@@ -16760,6 +17128,10 @@
     "valid": true
   },
   {
+    "text": "மதிப்பெண் மாற்றப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "மதிப்பெண்களைச் சேமிக்க முடியவில்லை. மதிப்பீட்டைச் சரிபார்த்து மீண்டும் முயலவும்.",
     "valid": true
   },
@@ -16773,6 +17145,10 @@
   },
   {
     "text": "மதிப்பெண்கள் {max}-ஐ விட அதிகமாக இருக்கக்கூடாது.",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பெண்ணில் மாற்றமில்லை",
     "valid": true
   },
   {
@@ -16809,6 +17185,14 @@
   },
   {
     "text": "மறுமணப் பெற்றோர்",
+    "valid": true
+  },
+  {
+    "text": "மறுமதிப்பீட்டு விண்ணப்பங்கள்",
+    "valid": true
+  },
+  {
+    "text": "மறுமதிப்பீட்டு விண்ணப்பங்கள் இல்லை.",
     "valid": true
   },
   {
@@ -17052,6 +17436,10 @@
     "valid": true
   },
   {
+    "text": "முடிவுகள் நிலுவையில் உள்ளன",
+    "valid": true
+  },
+  {
     "text": "முடிவுத் தேதி இல்லை",
     "valid": true
   },
@@ -17085,6 +17473,10 @@
   },
   {
     "text": "முந்தைய பக்கம்",
+    "valid": true
+  },
+  {
+    "text": "முந்தைய மதிப்பெண்: {marks}",
     "valid": true
   },
   {
@@ -17549,6 +17941,10 @@
   },
   {
     "text": "வழங்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "வழங்கிய நாள்: {date}",
     "valid": true
   },
   {
