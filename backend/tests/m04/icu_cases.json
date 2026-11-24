@@ -1272,6 +1272,10 @@
     "valid": true
   },
   {
+    "text": "Check your updates and open your timetable, attendance, report cards, documents and messages.",
+    "valid": true
+  },
+  {
     "text": "Cheque",
     "valid": true
   },
@@ -3532,6 +3536,10 @@
     "valid": true
   },
   {
+    "text": "My portal",
+    "valid": true
+  },
+  {
     "text": "My preferences",
     "valid": true
   },
@@ -4744,6 +4752,10 @@
     "valid": true
   },
   {
+    "text": "Quick links",
+    "valid": true
+  },
+  {
     "text": "Quiet hours",
     "valid": true
   },
@@ -5341,6 +5353,10 @@
   },
   {
     "text": "See your plan, switch optional modules on or off, and follow this period's usage.",
+    "valid": true
+  },
+  {
+    "text": "See your summary counts and jump to your pages.",
     "valid": true
   },
   {
@@ -6844,6 +6860,10 @@
     "valid": true
   },
   {
+    "text": "Your portal could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Your question",
     "valid": true
   },
@@ -7872,6 +7892,10 @@
     "valid": true
   },
   {
+    "text": "अपना सारांश देखें और अपने पृष्ठ खोलें।",
+    "valid": true
+  },
+  {
     "text": "अपनी योजना देखें, वैकल्पिक मॉड्यूल चालू या बंद करें और इस अवधि का उपयोग देखें।",
     "valid": true
   },
@@ -7885,6 +7909,10 @@
   },
   {
     "text": "अपनी सूचना प्राथमिकताएँ सेट करें",
+    "valid": true
+  },
+  {
+    "text": "अपने अपडेट देखें और अपनी समय-सारणी, उपस्थिति, रिपोर्ट कार्ड, दस्तावेज़ और संदेश खोलें।",
     "valid": true
   },
   {
@@ -8209,6 +8237,10 @@
   },
   {
     "text": "आपका डेटा इन कुंजियों से एन्क्रिप्ट है। आपके जाने पर कुंजियाँ नष्ट कर दी जाती हैं ताकि डेटा फिर कभी पढ़ा न जा सके।",
+    "valid": true
+  },
+  {
+    "text": "आपका पोर्टल लोड नहीं हो सका।",
     "valid": true
   },
   {
@@ -10128,6 +10160,10 @@
     "valid": true
   },
   {
+    "text": "त्वरित लिंक",
+    "valid": true
+  },
+  {
     "text": "थीम संपादक के भाग",
     "valid": true
   },
@@ -11721,6 +11757,10 @@
   },
   {
     "text": "मेनू बंद करें",
+    "valid": true
+  },
+  {
+    "text": "मेरा पोर्टल",
     "valid": true
   },
   {
@@ -14688,6 +14728,10 @@
     "valid": true
   },
   {
+    "text": "உங்கள் சுருக்க எண்ணிக்கைகளைப் பார்த்து, உங்கள் பக்கங்களைத் திறக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "உங்கள் செய்தி உரையாடல்களைப் பார்",
     "valid": true
   },
@@ -14776,11 +14820,19 @@
     "valid": true
   },
   {
+    "text": "உங்கள் புதுப்பிப்புகளைப் பார்த்து, கால அட்டவணை, வருகை, மதிப்பெண் அறிக்கைகள், ஆவணங்கள் மற்றும் செய்திகளைத் திறக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "உங்கள் பெற்றோர் அல்லது பாதுகாவலரிடம் அவர்களின் ஒப்புதல் அமைப்புகளில் AI அம்சங்களை அனுமதிக்கச் சொல்லுங்கள்.",
     "valid": true
   },
   {
     "text": "உங்கள் மதிப்பாய்வுக்குக் காத்திருக்கிறது",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் முகப்பை ஏற்ற முடியவில்லை.",
     "valid": true
   },
   {
@@ -14973,6 +15025,10 @@
   },
   {
     "text": "எனது விருப்பங்கள்",
+    "valid": true
+  },
+  {
+    "text": "என் முகப்பு",
     "valid": true
   },
   {
@@ -19365,6 +19421,10 @@
   },
   {
     "text": "விருப்பம் {count, number}",
+    "valid": true
+  },
+  {
+    "text": "விரைவு இணைப்புகள்",
     "valid": true
   },
   {

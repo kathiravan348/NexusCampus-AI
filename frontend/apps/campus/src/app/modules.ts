@@ -308,6 +308,16 @@ export const MODULES: readonly ModuleEntry[] = [
     load: () => import("../modules/m25/FamilyPortalPage"),
   },
   {
+    moduleId: "M26",
+    path: "learner",
+    navKey: "m26.nav.title",
+    summaryKey: "m26.nav.summary",
+    icon: GraduationCap,
+    permission: null,
+    offlineLevel: "L2",
+    load: () => import("../modules/m26/LearnerPortalPage"),
+  },
+  {
     moduleId: "M83",
     path: "vault",
     navKey: "m83.nav.title",
