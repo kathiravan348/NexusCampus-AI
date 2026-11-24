@@ -14,7 +14,7 @@
 | NEX-146 | Contracts (M15): programs, year levels, class groups, subjects, subject offerings | B | done | Codex | 008, 028 |
 | NEX-147 | Contracts (M08): custom fields and values, forms, approval workflows, numbering formats | B | done | Codex | 008 |
 | NEX-148 | Contracts (M13, M14): learner records, households, guardians, custody and pickup rights | B | done | Codex | 146, 147 |
-| NEX-149 | Contracts (M12, M09): enquiries, applications, offers, waitlist; import jobs and column mappings | B | planned | — | 148 |
+| NEX-149 | Contracts (M12, M09): enquiries, applications, offers, waitlist; import jobs and column mappings | B | done | Codex | 148 |
 | NEX-150 | Contracts (M16, M17): rooms, timetable slots, teacher load; attendance sessions, marks, leave requests | B | done | Gemini | 146 |
 | NEX-151 | Contracts (M18, M19): fee plans, instalments, concessions, invoices, payments, refunds; ledger and budgets | B | planned | — | 148 |
 | NEX-152 | Contracts (M20–M23): grading schemes, marks, rubrics; exams and seating; report cards; documents and e-sign | B | planned | — | 148 |
