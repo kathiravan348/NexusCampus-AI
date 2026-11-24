@@ -33,6 +33,8 @@ app,common.closeMenu,Close menu,Button label: close the mobile navigation drawer
 app,common.notifications,Notifications,Accessible region label for toast notifications.,सूचनाएँ,அறிவிப்புகள்,to check
 app,common.closeNotification,Close notification,Button label: dismiss a toast notification.,सूचना बंद करें,அறிவிப்பை மூடு,to check
 app,common.demoNotice,Demo data. Nothing on this screen is real.,Banner notice shown on screens displaying mock prototype data.,डेमो डेटा। इस स्क्रीन पर कुछ भी वास्तविक नहीं है।,டெமோ தரவு. இந்தத் திரையில் உள்ள எதுவும் உண்மையானது அல்ல.,to check
+app,common.tenantFrozen.title,This institution is frozen,Warning banner title shown across the app when the institution is frozen for offboarding or a move.,यह संस्थान फ़्रीज़ किया गया है,இந்த நிறுவனம் முடக்கப்பட்டுள்ளது,to check
+app,common.tenantFrozen.body,"It is being moved or is leaving NexusCampus. You can still sign in and read everything, but changes are not saved.",Warning banner body explaining that a frozen institution allows reading data but refuses saving changes.,"इसे स्थानांतरित किया जा रहा है या यह NexusCampus छोड़ रहा है। आप अभी भी साइन इन कर सकते हैं और सब कुछ पढ़ सकते हैं, लेकिन बदलाव सहेजे नहीं जाते।","இது இடமாற்றம் செய்யப்படுகிறது அல்லது NexusCampus-ஐ விட்டு வெளியேறுகிறது. நீங்கள் தொடர்ந்து உள்நுழைந்து அனைத்தையும் படிக்கலாம், ஆனால் மாற்றங்கள் சேமிக்கப்படாது.",to check
 app,common.syncSynced,Synced,Sync status: all local changes are synced with the server.,सिंक हो गया,ஒத்திசைக்கப்பட்டது,to check
 app,common.syncPendingGeneric,Changes waiting to sync,Sync status: unsynced local changes exist without a specific count.,बदलाव सिंक होने की प्रतीक्षा में,மாற்றங்கள் ஒத்திசைக்கக் காத்திருக்கின்றன,to check
 app,common.syncSyncing,Syncing…,Sync status: local changes are currently being uploaded.,सिंक हो रहा है…,ஒத்திசைக்கிறது…,to check
@@ -928,6 +930,952 @@ app,m07.prefs.to,To,Time field: quiet hours end.,तक,வரை,to check
 app,m07.prefs.sameTimes,Start and end must be different.,Field error when quiet hours start equals end.,शुरुआत और समाप्ति अलग होनी चाहिए।,தொடக்கமும் முடிவும் வேறுபட வேண்டும்.,to check
 app,m07.prefs.saved,Preferences saved.,Toast after preferences are saved.,प्राथमिकताएँ सहेजी गईं।,விருப்பங்கள் சேமிக்கப்பட்டன.,to check
 app,m07.prefs.queued,Saved on this device. It will sync when you are back online.,Toast when preferences were saved offline.,इस डिवाइस पर सहेजा गया। ऑनलाइन होने पर यह सिंक हो जाएगा।,இந்தச் சாதனத்தில் சேமிக்கப்பட்டது. மீண்டும் ஆன்லைனுக்கு வந்ததும் ஒத்திசைக்கப்படும்.,to check
+app,m08.nav.title,Forms & fields,Module menu and page header — title.,फ़ॉर्म और फ़ील्ड,படிவங்களும் புலங்களும்,to check
+app,m08.nav.summary,"Browse custom fields, forms, approval workflows and numbering formats.",Module menu and page header — summary.,"कस्टम फ़ील्ड, फ़ॉर्म, अनुमोदन कार्यप्रवाह और क्रमांकन प्रारूप देखें।","தனிப்பயன் புலங்கள், படிவங்கள், ஒப்புதல் நடைமுறைகள் மற்றும் எண் வடிவங்களைப் பாருங்கள்.",to check
+app,m08.config.fields,Fields,Configuration page control — fields.,फ़ील्ड,புலங்கள்,to check
+app,m08.config.forms,Forms,Configuration page control — forms.,फ़ॉर्म,படிவங்கள்,to check
+app,m08.config.workflows,Workflows & numbering,Configuration page control — workflows.,कार्यप्रवाह और क्रमांकन,நடைமுறைகளும் எண் வடிவங்களும்,to check
+app,m08.config.askAssist,Ask Assist,Configuration page control — askAssist.,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m08.entity.learner,Learner,Record type in the field selector — learner.,शिक्षार्थी,கற்பவர்,to check
+app,m08.entity.guardian,Guardian,Record type in the field selector — guardian.,अभिभावक,பாதுகாவலர்,to check
+app,m08.entity.staff,Staff,Record type in the field selector — staff.,कर्मचारी,பணியாளர்,to check
+app,m08.entity.enquiry,Enquiry,Record type in the field selector — enquiry.,पूछताछ,விசாரணை,to check
+app,m08.entity.application,Application,Record type in the field selector — application.,आवेदन,விண்ணப்பம்,to check
+app,m08.type.text,Short text,Custom field data type — text.,छोटा पाठ,சிறு உரை,to check
+app,m08.type.longText,Long text,Custom field data type — long_text.,लंबा पाठ,நீண்ட உரை,to check
+app,m08.type.number,Number,Custom field data type — number.,संख्या,எண்,to check
+app,m08.type.date,Date,Custom field data type — date.,तारीख,தேதி,to check
+app,m08.type.choice,Single choice,Custom field data type — choice.,एक विकल्प,ஒற்றைத் தேர்வு,to check
+app,m08.type.multiChoice,Multiple choice,Custom field data type — multi_choice.,कई विकल्प,பல தேர்வுகள்,to check
+app,m08.type.boolean,Yes or no,Custom field data type — boolean.,हाँ या नहीं,ஆம் அல்லது இல்லை,to check
+app,m08.type.email,Email,Custom field data type — email.,ईमेल,மின்னஞ்சல்,to check
+app,m08.type.phone,Phone,Custom field data type — phone.,फ़ोन,தொலைபேசி,to check
+app,m08.field.entity,Record type,Fields tab and field editor — entity.,रिकॉर्ड का प्रकार,பதிவின் வகை,to check
+app,m08.field.type,Field type,Fields tab and field editor — type.,फ़ील्ड का प्रकार,புலத்தின் வகை,to check
+app,m08.field.required,Required,Fields tab and field editor — required.,अनिवार्य,கட்டாயம்,to check
+app,m08.field.optional,Optional,Fields tab and field editor — optional.,वैकल्पिक,விருப்பத்திற்குரியது,to check
+app,m08.field.sensitive,Sensitive,Fields tab and field editor — sensitive.,संवेदनशील,கவனமாகக் கையாள வேண்டியது,to check
+app,m08.field.archived,Archived,Fields tab and field editor — archived.,संग्रहीत,காப்பகத்தில் உள்ளவை,to check
+app,m08.field.add,Add custom field,Fields tab and field editor — add.,कस्टम फ़ील्ड जोड़ें,தனிப்பயன் புலத்தைச் சேர்,to check
+app,m08.field.empty,No fields for this record type,Fields tab and field editor — empty.,इस रिकॉर्ड प्रकार के लिए कोई फ़ील्ड नहीं है,இந்தப் பதிவு வகைக்குப் புலங்கள் இல்லை,to check
+app,m08.forms.empty,No forms,Forms tab — empty.,कोई फ़ॉर्म नहीं है,படிவங்கள் இல்லை,to check
+app,m08.forms.count,"{count, plural, one {# field} other {# fields}}",Forms tab — count. {count} is a number.,"{count, plural, one {# फ़ील्ड} other {# फ़ील्ड}}","{count, plural, one {# புலம்} other {# புலங்கள்}}",to check
+app,m08.workflows.heading,Approval workflows,Approval workflows section — heading.,अनुमोदन कार्यप्रवाह,ஒப்புதல் நடைமுறைகள்,to check
+app,m08.workflows.empty,No approval workflows,Approval workflows section — empty.,कोई अनुमोदन कार्यप्रवाह नहीं है,ஒப்புதல் நடைமுறைகள் இல்லை,to check
+app,m08.workflows.steps,"{count, plural, one {# step} other {# steps}}",Approval workflows section — steps. {count} is a number.,"{count, plural, one {# चरण} other {# चरण}}","{count, plural, one {# படி} other {# படிகள்}}",to check
+app,m08.numbering.heading,Numbering formats,Numbering formats section — heading.,क्रमांकन प्रारूप,எண் வடிவங்கள்,to check
+app,m08.numbering.empty,No numbering formats,Numbering formats section — empty.,कोई क्रमांकन प्रारूप नहीं है,எண் வடிவங்கள் இல்லை,to check
+app,m08.subject.application,Application,Subject of a workflow or numbering format — application.,आवेदन,விண்ணப்பம்,to check
+app,m08.subject.leaveRequest,Leave request,Subject of a workflow or numbering format — leave_request.,अवकाश अनुरोध,விடுப்பு விண்ணப்பம்,to check
+app,m08.subject.documentRequest,Document request,Subject of a workflow or numbering format — document_request.,दस्तावेज़ अनुरोध,ஆவணக் கோரிக்கை,to check
+app,m08.subject.feeConcession,Fee concession,Subject of a workflow or numbering format — fee_concession.,शुल्क रियायत,கட்டணச் சலுகை,to check
+app,m08.subject.recordChange,Record change,Subject of a workflow or numbering format — record_change.,रिकॉर्ड में बदलाव,பதிவு மாற்றம்,to check
+app,m08.subject.learner,Learner,Subject of a workflow or numbering format — learner.,शिक्षार्थी,கற்பவர்,to check
+app,m08.subject.receipt,Receipt,Subject of a workflow or numbering format — receipt.,रसीद,ரசீது,to check
+app,m08.subject.invoice,Invoice,Subject of a workflow or numbering format — invoice.,बीजक,கட்டணப் பட்டியல்,to check
+app,m08.subject.certificate,Certificate,Subject of a workflow or numbering format — certificate.,प्रमाणपत्र,சான்றிதழ்,to check
+app,m08.dialog.key,Field key,Add custom field dialog — key.,फ़ील्ड की कुंजी,புலத்தின் குறியீடு,to check
+app,m08.dialog.keyHint,"Use 2–40 letters or digits, starting with a lowercase English letter.",Add custom field dialog — keyHint.,2–40 अंग्रेज़ी अक्षर या अंक लिखें। पहला अक्षर छोटा होना चाहिए।,2–40 ஆங்கில எழுத்துகள் அல்லது இலக்கங்களைப் பயன்படுத்துங்கள். முதல் எழுத்து சிறிய ஆங்கில எழுத்தாக இருக்க வேண்டும்.,to check
+app,m08.dialog.label,Label ({locale}),Add custom field dialog — label. {locale} is a supported language tag.,लेबल ({locale}),பெயர் ({locale}),to check
+app,m08.dialog.labelHint,Enter a label of up to 120 characters.,Add custom field dialog — labelHint.,अधिकतम 120 वर्णों का लेबल दर्ज करें।,120 எழுத்துகளுக்குள் ஒரு பெயரை உள்ளிடுங்கள்.,to check
+app,m08.dialog.duplicate,A field with this key already exists for this record type.,Add custom field dialog — duplicate.,इस रिकॉर्ड प्रकार में यह कुंजी पहले से उपयोग में है।,இந்தப் பதிவு வகையில் இதே குறியீட்டுடன் ஏற்கெனவே ஒரு புலம் உள்ளது.,to check
+app,m08.dialog.options,Options,Add custom field dialog — options.,विकल्प,விருப்பங்கள்,to check
+app,m08.dialog.option,"Option {count, number}",Add custom field dialog — option. {count} is a number.,"विकल्प {count, number}","விருப்பம் {count, number}",to check
+app,m08.dialog.optionKey,Option key,Add custom field dialog — optionKey.,विकल्प की कुंजी,விருப்பத்தின் குறியீடு,to check
+app,m08.dialog.optionsHint,Give each option a different valid key and at least one label. Add at least one option.,Add custom field dialog — optionsHint.,हर विकल्प को एक अलग मान्य कुंजी और कम से कम एक लेबल दें। कम से कम एक विकल्प जोड़ें।,ஒவ்வொரு விருப்பத்திற்கும் தனித்துவமான செல்லுபடியாகும் குறியீடும் குறைந்தது ஒரு பெயரும் தேவை. குறைந்தது ஒரு விருப்பத்தைச் சேருங்கள்.,to check
+app,m08.dialog.addOption,Add option,Add custom field dialog — addOption.,विकल्प जोड़ें,விருப்பத்தைச் சேர்,to check
+app,m08.dialog.removeOption,Remove option,Add custom field dialog — removeOption.,विकल्प हटाएँ,விருப்பத்தை அகற்று,to check
+app,m08.dialog.min,Minimum,Add custom field dialog — min.,न्यूनतम,குறைந்தபட்சம்,to check
+app,m08.dialog.max,Maximum,Add custom field dialog — max.,अधिकतम,அதிகபட்சம்,to check
+app,m08.dialog.boundsHint,Enter valid numbers. The maximum must be at least the minimum.,Add custom field dialog — boundsHint.,मान्य संख्याएँ लिखें। अधिकतम मान न्यूनतम से कम नहीं होना चाहिए।,செல்லுபடியாகும் எண்களை உள்ளிடுங்கள். அதிகபட்ச மதிப்பு குறைந்தபட்ச மதிப்புக்குச் சமமாகவோ அதிகமாகவோ இருக்க வேண்டும்.,to check
+app,m08.permission.configRead,"View forms, fields and workflows","Permission description: View configuration for custom fields, forms, workflows and numbering formats.","फ़ॉर्म, फ़ील्ड और कार्यप्रवाह देखें","படிவங்கள், புலங்கள் மற்றும் பணிப்பாய்வுகளைப் பார்",to check
+app,m08.permission.configManage,"Manage forms, fields and workflows","Permission description: Manage configuration for custom fields, forms, workflows and numbering formats.","फ़ॉर्म, फ़ील्ड और कार्यप्रवाह प्रबंधित करें","படிவங்கள், புலங்கள் மற்றும் பணிப்பாய்வுகளை நிர்வகி",to check
+app,m13.nav.title,Learners,Menu item and page title of the learner records screen (M13).,शिक्षार्थी,கற்பவர்கள்,to check
+app,m13.nav.summary,"Search learners and view profiles, enrolments, documents and guardians.",Home tile description of the learner records module.,"शिक्षार्थियों को खोजें और प्रोफ़ाइल, नामांकन, दस्तावेज़ व अभिभावक देखें।","கற்பவர்களைத் தேடி சுயவிவரம், சேர்க்கைகள், ஆவணங்கள் மற்றும் பாதுகாவலர்களைப் பார்.",to check
+app,m13.learners.intro,"Browse learner records and open a profile for enrolments, documents and family links.",Intro text under the learners page title.,"शिक्षार्थियों के रिकॉर्ड देखें और नामांकन, दस्तावेज़ व पारिवारिक संबंधों के लिए प्रोफ़ाइल खोलें।","கற்பவர் பதிவுகளைப் பார்த்து, சேர்க்கைகள், ஆவணங்கள் மற்றும் குடும்ப இணைப்புகளுக்குச் சுயவிவரத்தைத் திறக்கவும்.",to check
+app,m13.learners.searchLabel,Search learners,Label of the search input on the learners list.,शिक्षार्थी खोजें,கற்பவர்களைத் தேடு,to check
+app,m13.learners.searchPlaceholder,Search by name or learner number…,Placeholder inside the learner search input.,नाम या शिक्षार्थी संख्या से खोजें…,பெயர் அல்லது கற்பவர் எண்ணால் தேடு…,to check
+app,m13.learners.listLabel,Learners,Accessible label for the list of learner records.,शिक्षार्थी,கற்பவர்கள்,to check
+app,m13.learners.empty,No learners yet,Empty state title when no learners are visible.,अभी कोई शिक्षार्थी नहीं,இன்னும் கற்பவர்கள் இல்லை,to check
+app,m13.learners.emptyBody,Learner records you can view will appear here.,Empty state description when no learners are visible.,आपके लिए उपलब्ध शिक्षार्थियों के रिकॉर्ड यहाँ दिखाई देंगे।,நீங்கள் பார்க்கக்கூடிய கற்பவர் பதிவுகள் இங்கே தோன்றும்.,to check
+app,m13.learners.noMatches,No learners match,Empty state title when a search matches no learners.,कोई शिक्षार्थी मेल नहीं खाता,பொருந்தும் கற்பவர்கள் இல்லை,to check
+app,m13.learners.noMatchesBody,Try another name or learner number.,Empty state description when a search matches no learners.,कोई दूसरा नाम या शिक्षार्थी संख्या आज़माएँ।,வேறு பெயர் அல்லது கற்பவர் எண்ணை முயலவும்.,to check
+app,m13.learners.error,Learners could not be loaded.,Error heading when the learners list fails to load.,शिक्षार्थी लोड नहीं हो सके।,கற்பவர்களை ஏற்ற முடியவில்லை.,to check
+app,m13.status.enrolled,Enrolled,Learner status badge: currently enrolled.,नामांकित,சேர்க்கப்பட்டார்,to check
+app,m13.status.onLeave,On leave,Learner status badge: temporarily on leave.,अवकाश पर,விடுப்பில்,to check
+app,m13.status.withdrawn,Withdrawn,Learner status badge: withdrawn from the institution.,नाम कटवाया,விலகினார்,to check
+app,m13.status.transferredOut,Transferred out,Learner status badge: transferred to another institution.,स्थानांतरित,இடமாற்றம் ஆனார்,to check
+app,m13.status.graduated,Graduated,Learner status badge: completed study and graduated.,उत्तीर्ण,பட்டம் பெற்றார்,to check
+app,m13.status.alumni,Alumni,Learner status badge: former learner (alumni).,पूर्व छात्र,முன்னாள் மாணவர்,to check
+app,m13.profile.back,Back to learners,Button to return from a learner profile to the learners list.,शिक्षार्थियों पर वापस जाएँ,கற்பவர்களுக்குத் திரும்பு,to check
+app,m13.profile.notFoundTitle,Learner not found,Title shown when a learner URL does not exist or is outside the user's access.,शिक्षार्थी नहीं मिला,கற்பவர் கிடைக்கவில்லை,to check
+app,m13.profile.notFoundBody,This learner record does not exist or is outside your access.,Description shown when a learner profile cannot be found.,यह शिक्षार्थी रिकॉर्ड मौजूद नहीं है या आपकी पहुँच से बाहर है।,இந்தக் கற்பவர் பதிவு இல்லை அல்லது உங்கள் அணுகலுக்கு வெளியே உள்ளது.,to check
+app,m13.profile.error,The learner profile could not be loaded.,Error heading when a learner profile fails to load.,शिक्षार्थी प्रोफ़ाइल लोड नहीं हो सकी।,கற்பவர் சுயவிவரத்தை ஏற்ற முடியவில்லை.,to check
+app,m13.profile.detailsHeading,Details,Section heading for core learner details.,विवरण,விவரங்கள்,to check
+app,m13.profile.learnerNumber,Learner number,Field label for the institution's learner number.,शिक्षार्थी संख्या,கற்பவர் எண்,to check
+app,m13.profile.admissionDate,Admission date,Field label for when the learner was admitted.,प्रवेश तिथि,சேர்க்கைத் தேதி,to check
+app,m13.profile.leftOn,Left on,Field label for when a former learner left the institution.,छोड़ने की तिथि,விலகிய தேதி,to check
+app,m13.profile.dateOfBirth,Date of birth,Field label for the learner's date of birth.,जन्म तिथि,பிறந்த தேதி,to check
+app,m13.profile.email,Email,Field label for the learner's email address.,ईमेल,மின்னஞ்சல்,to check
+app,m13.profile.phone,Phone,Field label for the learner's phone number.,फ़ोन,தொலைபேசி,to check
+app,m13.profile.healthFlagsHeading,Health flags,Section heading for a learner's health and care flags.,स्वास्थ्य संकेत,உடல்நலக் குறிப்புகள்,to check
+app,m13.healthKind.allergy,Allergy,Health flag kind badge: allergy.,एलर्जी,ஒவ்வாமை,to check
+app,m13.healthKind.medication,Medication,Health flag kind badge: regular or emergency medication.,दवा,மருந்து,to check
+app,m13.healthKind.condition,Condition,Health flag kind badge: medical condition.,स्वास्थ्य स्थिति,மருத்துவ நிலை,to check
+app,m13.healthKind.dietary,Dietary,Health flag kind badge: dietary requirement.,आहार संबंधी,உணவு முறை,to check
+app,m13.healthKind.accessibility,Accessibility,Health flag kind badge: accessibility support need.,सुगम्यता,அணுகல்தன்மை,to check
+app,m13.healthKind.other,Other,Health flag kind badge: other health or care flag.,अन्य,மற்றவை,to check
+app,m13.profile.customFieldsHeading,Additional details,Section heading for institution-defined custom fields on a learner.,अतिरिक्त विवरण,கூடுதல் விவரங்கள்,to check
+app,m13.customField.yes,Yes,Displayed value for a true boolean custom field.,हाँ,ஆம்,to check
+app,m13.customField.no,No,Displayed value for a false boolean custom field.,नहीं,இல்லை,to check
+app,m13.profile.enrolmentsHeading,Enrolments,Section heading for a learner's class enrolments.,नामांकन,சேர்க்கைகள்,to check
+app,m13.profile.enrolmentsEmpty,No enrolments recorded.,Shown when a learner has no enrolments.,कोई नामांकन दर्ज नहीं है।,சேர்க்கைகள் எதுவும் பதிவு செய்யப்படவில்லை.,to check
+app,m13.profile.enrolmentsError,Enrolments could not be loaded.,Error heading when a learner's enrolments fail to load.,नामांकन लोड नहीं हो सके।,சேர்க்கைகளை ஏற்ற முடியவில்லை.,to check
+app,m13.profile.rollNumber,Roll number {roll},Roll number line on an enrolment. {roll} is the learner's roll number.,रोल नंबर {roll},வரிசை எண் {roll},to check
+app,m13.profile.effectiveFrom,From {date},Open-ended enrolment start date. {date} is a formatted calendar date.,{date} से,{date} முதல்,to check
+app,m13.profile.effectiveRange,{from} – {to},Enrolment date range. {from} and {to} are formatted calendar dates.,{from} – {to},{from} – {to},to check
+app,m13.enrolmentStatus.active,Active,Enrolment status badge: currently active.,सक्रिय,செயலில்,to check
+app,m13.enrolmentStatus.completed,Completed,Enrolment status badge: completed.,पूर्ण,நிறைவடைந்தது,to check
+app,m13.enrolmentStatus.withdrawn,Withdrawn,Enrolment status badge: withdrawn.,नाम कटवाया,விலகியது,to check
+app,m13.profile.documentsHeading,Documents,Section heading for a learner's uploaded documents.,दस्तावेज़,ஆவணங்கள்,to check
+app,m13.profile.documentsEmpty,No documents recorded.,Shown when a learner has no documents.,कोई दस्तावेज़ दर्ज नहीं है।,ஆவணங்கள் எதுவும் பதிவு செய்யப்படவில்லை.,to check
+app,m13.profile.documentsError,Documents could not be loaded.,Error heading when a learner's documents fail to load.,दस्तावेज़ लोड नहीं हो सके।,ஆவணங்களை ஏற்ற முடியவில்லை.,to check
+app,m13.profile.uploadedOn,Uploaded {date},Document upload date line. {date} is a formatted date.,{date} को अपलोड,{date} அன்று பதிவேற்றப்பட்டது,to check
+app,m13.documentKind.birthCertificate,Birth certificate,Document kind badge: birth certificate.,जन्म प्रमाणपत्र,பிறப்புச் சான்றிதழ்,to check
+app,m13.documentKind.idProof,ID proof,Document kind badge: identity proof.,पहचान पत्र,அடையாளச் சான்று,to check
+app,m13.documentKind.transferCertificate,Transfer certificate,Document kind badge: transfer certificate.,स्थानांतरण प्रमाणपत्र,மாற்றுச் சான்றிதழ்,to check
+app,m13.documentKind.photo,Photo,Document kind badge: learner photo.,फ़ोटो,புகைப்படம்,to check
+app,m13.documentKind.medical,Medical,Document kind badge: medical document.,चिकित्सा दस्तावेज़,மருத்துவ ஆவணம்,to check
+app,m13.documentKind.previousReport,Previous report,Document kind badge: previous school report.,पिछली रिपोर्ट,முந்தைய அறிக்கை,to check
+app,m13.documentKind.other,Other,Document kind badge: other document kind.,अन्य,மற்றவை,to check
+app,m13.documentStatus.verified,Verified,Document verification badge: verified by staff.,सत्यापित,சரிபார்க்கப்பட்டது,to check
+app,m13.documentStatus.unverified,Unverified,Document verification badge: not yet verified.,असत्यापित,சரிபார்க்கப்படவில்லை,to check
+app,m13.profile.guardiansHeading,Guardians,Section heading for a learner's guardians.,अभिभावक,பாதுகாவலர்கள்,to check
+app,m13.permission.learnerRead,View learner records,Permission description: View learner records across the institution.,शिक्षार्थियों के रिकॉर्ड देखें,கற்பவர் பதிவுகளைப் பார்,to check
+app,m13.permission.learnerReadRestricted,View restricted learner data,Permission description: View restricted learner data such as health flags and sensitive custom fields.,शिक्षार्थियों की प्रतिबंधित जानकारी देखें,கற்பவர்களின் கட்டுப்படுத்தப்பட்ட தரவைப் பார்,to check
+app,m13.permission.learnerManage,Manage learner records,Permission description: Manage learner records across the institution.,शिक्षार्थियों के रिकॉर्ड प्रबंधित करें,கற்பவர் பதிவுகளை நிர்வகி,to check
+app,m14.nav.title,Families,Menu item and page title of the families and guardians screen (M14).,परिवार,குடும்பங்கள்,to check
+app,m14.nav.summary,"Households, guardians, pickup rights and authorised pickups.",Home tile description of the families and guardians module.,"परिवार, अभिभावक, ले जाने के अधिकार और अधिकृत व्यक्ति।","குடும்பங்கள், பாதுகாவலர்கள், அழைத்துச் செல்லும் உரிமைகள் மற்றும் அங்கீகரிக்கப்பட்டவர்கள்.",to check
+app,m14.families.intro,"View households, family members, guardian pickup rights and authorised pickups.",Intro text under the families page title.,"परिवार, सदस्य, अभिभावकों के ले जाने के अधिकार और अधिकृत व्यक्ति देखें।","குடும்பங்கள், உறுப்பினர்கள், பாதுகாவலர் அழைத்துச் செல்லும் உரிமைகள் மற்றும் அங்கீகரிக்கப்பட்டவர்களைப் பார்க்கவும்.",to check
+app,m14.families.listLabel,Households,Accessible label for the list of households.,परिवार,குடும்பங்கள்,to check
+app,m14.families.empty,No households yet,Empty state title when no households are visible.,अभी कोई परिवार नहीं,இன்னும் குடும்பங்கள் இல்லை,to check
+app,m14.families.emptyBody,Households you can view will appear here.,Empty state description when no households are visible.,आपके लिए उपलब्ध परिवार यहाँ दिखाई देंगे।,நீங்கள் பார்க்கக்கூடிய குடும்பங்கள் இங்கே தோன்றும்.,to check
+app,m14.families.error,Families could not be loaded.,Error heading when households fail to load.,परिवार लोड नहीं हो सके।,குடும்பங்களை ஏற்ற முடியவில்லை.,to check
+app,m14.families.membersHeading,Members,Section heading for the people belonging to a household.,सदस्य,உறுப்பினர்கள்,to check
+app,m14.families.addressLabel,Home address,Accessible label for a household's home address.,घर का पता,வீட்டு முகவரி,to check
+app,m14.guardians.heading,Guardians,Subheading for a learner's guardians list.,अभिभावक,பாதுகாவலர்கள்,to check
+app,m14.guardians.empty,No guardians recorded.,Shown when a learner has no recorded guardian relationships.,कोई अभिभावक दर्ज नहीं है।,பாதுகாவலர்கள் எவரும் பதிவு செய்யப்படவில்லை.,to check
+app,m14.guardians.error,Guardians could not be loaded.,Error heading when guardian relationships fail to load.,अभिभावक लोड नहीं हो सके।,பாதுகாவலர்களை ஏற்ற முடியவில்லை.,to check
+app,m14.guardians.unavailable,Family details are not available for this learner.,Shown when the signed-in user does not have access to a household member's guardian details.,इस शिक्षार्थी के पारिवारिक विवरण उपलब्ध नहीं हैं।,இந்தக் கற்பவருக்கான குடும்ப விவரங்கள் கிடைக்கவில்லை.,to check
+app,m14.guardians.parentalResponsibility,Parental responsibility,Badge or label indicating a guardian holds parental responsibility.,माता-पिता का दायित्व,பெற்றோர் பொறுப்பு,to check
+app,m14.guardians.livesWithLearner,Lives with learner,Label indicating the guardian lives with the learner.,शिक्षार्थी के साथ रहते हैं,கற்பவருடன் வசிக்கிறார்,to check
+app,m14.guardians.contactPriority,Contact priority {priority},Guardian contact order. {priority} is a formatted number.,संपर्क प्राथमिकता {priority},தொடர்பு முன்னுரிமை {priority},to check
+app,m14.guardians.courtNoteLabel,Court order note,Heading above a restricted court order pickup note.,न्यायालय आदेश टिप्पणी,நீதிமன்ற உத்தரவுக் குறிப்பு,to check
+app,m14.relationshipKind.mother,Mother,Guardian relationship kind: mother.,माता,தாய்,to check
+app,m14.relationshipKind.father,Father,Guardian relationship kind: father.,पिता,தந்தை,to check
+app,m14.relationshipKind.parent,Parent,Guardian relationship kind: parent.,माता-पिता,பெற்றோர்,to check
+app,m14.relationshipKind.stepParent,Step-parent,Guardian relationship kind: step-parent.,सौतेले माता-पिता,மறுமணப் பெற்றோர்,to check
+app,m14.relationshipKind.grandparent,Grandparent,Guardian relationship kind: grandparent.,दादा-दादी / नाना-नानी,தாத்தா / பாட்டி,to check
+app,m14.relationshipKind.legalGuardian,Legal guardian,Guardian relationship kind: legal guardian.,कानूनी अभिभावक,சட்டப்பூர்வ பாதுகாவலர்,to check
+app,m14.relationshipKind.fosterCarer,Foster carer,Guardian relationship kind: foster carer.,पालक देखभालकर्ता,வளர்ப்புப் பராமரிப்பாளர்,to check
+app,m14.relationshipKind.adultSibling,Adult sibling,Guardian relationship kind: adult sibling.,वयस्क भाई-बहन,வயது வந்த உடன்பிறப்பு,to check
+app,m14.relationshipKind.other,Other,Guardian relationship kind: other relationship.,अन्य,மற்றவை,to check
+app,m14.pickupRight.allowed,Pickup allowed,Pickup right badge: guardian may collect the learner.,ले जाने की अनुमति,அழைத்துச் செல்ல அனுமதி,to check
+app,m14.pickupRight.notAllowed,Pickup not allowed,Pickup right badge: guardian may not collect the learner.,ले जाने की अनुमति नहीं,அழைத்துச் செல்ல அனுமதி இல்லை,to check
+app,m14.pickupRight.courtRestricted,Court restricted,Pickup right warning badge: collection is restricted by a court order.,न्यायालय द्वारा प्रतिबंधित,நீதிமன்றக் கட்டுப்பாடு,to check
+app,m14.pickups.heading,Authorised pickups,Subheading for non-guardian people authorised to collect a learner.,अधिकृत व्यक्ति,அங்கீகரிக்கப்பட்டவர்கள்,to check
+app,m14.pickups.empty,No authorised pickups recorded.,Shown when a learner has no authorised non-guardian pickups.,कोई अधिकृत व्यक्ति दर्ज नहीं है।,அங்கீகரிக்கப்பட்டவர்கள் எவரும் பதிவு செய்யப்படவில்லை.,to check
+app,m14.pickups.error,Authorised pickups could not be loaded.,Error heading when authorised pickups fail to load.,अधिकृत व्यक्ति लोड नहीं हो सके।,அங்கீகரிக்கப்பட்டவர்களை ஏற்ற முடியவில்லை.,to check
+app,m14.pickups.validFrom,Valid from {from},Open-ended pickup authorisation start date. {from} is a formatted calendar date.,{from} से मान्य,{from} முதல் செல்லும்,to check
+app,m14.pickups.validRange,Valid {from} – {to},Pickup authorisation date range. {from} and {to} are formatted calendar dates.,{from} – {to} तक मान्य,{from} – {to} வரை செல்லும்,to check
+app,m14.permission.familyRead,View family records,"Permission description: View households, guardian relationships and authorised pickups.",पारिवारिक रिकॉर्ड देखें,குடும்பப் பதிவுகளைப் பார்,to check
+app,m14.permission.familyReadRestricted,View restricted family data,Permission description: View restricted family data such as court order notes.,परिवारों की प्रतिबंधित जानकारी देखें,குடும்பங்களின் கட்டுப்படுத்தப்பட்ட தரவைப் பார்,to check
+app,m14.permission.familyManage,Manage family records,"Permission description: Manage households, guardian relationships and authorised pickups.",पारिवारिक रिकॉर्ड प्रबंधित करें,குடும்பப் பதிவுகளை நிர்வகி,to check
+app,m15.nav.title,Academic structure,Menu item and page title of the academic structure screen (M15).,शैक्षणिक संरचना,கல்விக் கட்டமைப்பு,to check
+app,m15.nav.summary,"Programs, year levels, class groups, subjects and offerings.",Home tile description of the academic structure module.,"कार्यक्रम, वर्ष स्तर, कक्षा समूह, विषय और पेशकश।","பாடத்திட்டங்கள், ஆண்டு நிலைகள், வகுப்புக் குழுக்கள், பாடங்கள் மற்றும் வழங்கல்கள்.",to check
+app,m15.structure.intro,"Browse programs, year levels, class groups, subjects and academic-year offerings.",Intro text under the academic structure page title.,"कार्यक्रम, वर्ष स्तर, कक्षा समूह, विषय और शैक्षणिक वर्ष की पेशकश देखें।","பாடத்திட்டங்கள், ஆண்டு நிலைகள், வகுப்புக் குழுக்கள், பாடங்கள் மற்றும் கல்வியாண்டு வழங்கல்களைப் பார்க்கவும்.",to check
+app,m15.structure.tabsLabel,Academic structure sections,Accessible label of the tab list on the academic structure page.,शैक्षणिक संरचना के भाग,கல்விக் கட்டமைப்புப் பகுதிகள்,to check
+app,m15.structure.tabPrograms,Programs & classes,"Tab: programs, year levels and class groups.",कार्यक्रम और कक्षाएँ,பாடத்திட்டங்கள் & வகுப்புகள்,to check
+app,m15.structure.tabSubjects,Subjects,Tab: subjects and academic-year subject offerings.,विषय,பாடங்கள்,to check
+app,m15.structure.askAssist,Ask Assist,Button on the academic structure page that opens Nexus Assist.,Assist से पूछें,Assist-இடம் கேள்,to check
+app,m15.structure.error,Academic structure could not be loaded.,Error heading when academic structure data fails to load.,शैक्षणिक संरचना लोड नहीं हो सकी।,கல்விக் கட்டமைப்பை ஏற்ற முடியவில்லை.,to check
+app,m15.programs.addClassGroup,Add class group,Button: open the dialog to create a new class group.,कक्षा समूह जोड़ें,வகுப்புக் குழுவைச் சேர்,to check
+app,m15.programs.empty,No programs yet,Empty state title when the institution has no programs.,अभी कोई कार्यक्रम नहीं,இன்னும் பாடத்திட்டங்கள் இல்லை,to check
+app,m15.programs.emptyBody,Programs and class groups for this institution will appear here.,Empty state description when the institution has no programs.,इस संस्था के कार्यक्रम और कक्षा समूह यहाँ दिखाई देंगे।,இந்த நிறுவனத்திற்கான பாடத்திட்டங்களும் வகுப்புக் குழுக்களும் இங்கே தோன்றும்.,to check
+app,m15.programs.noYearLevel,No year level,Heading and option label for class groups or batches not linked to a year level.,कोई वर्ष स्तर नहीं,ஆண்டு நிலை இல்லை,to check
+app,m15.programs.noYearLevels,No year levels or class groups yet.,Shown inside a program card that has neither year levels nor class groups.,अभी कोई वर्ष स्तर या कक्षा समूह नहीं।,இன்னும் ஆண்டு நிலைகளோ வகுப்புக் குழுக்களோ இல்லை.,to check
+app,m15.programs.noClassGroups,No class groups in this year level yet.,Shown under a year level that has no class groups.,इस वर्ष स्तर में अभी कोई कक्षा समूह नहीं।,இந்த ஆண்டு நிலையில் இன்னும் வகுப்புக் குழுக்கள் இல்லை.,to check
+app,m15.programs.capacity,Capacity: {capacity},Class group capacity line. {capacity} is a formatted number.,क्षमता: {capacity},கொள்ளளவு: {capacity},to check
+app,m15.programs.capacityOpen,Open capacity,Shown on a class group card when no capacity limit is set.,असीमित क्षमता,வரம்பற்ற கொள்ளளவு,to check
+app,m15.programKind.earlyYears,Early years,Program kind badge: early years or preschool.,प्रारंभिक वर्ष,ஆரம்ப ஆண்டுகள்,to check
+app,m15.programKind.schoolStage,School stage,Program kind badge: K-12 school stage.,विद्यालय चरण,பள்ளி நிலை,to check
+app,m15.programKind.degree,Degree,Program kind badge: higher education degree.,डिग्री,பட்டம்,to check
+app,m15.programKind.diploma,Diploma,Program kind badge: diploma program.,डिप्लोमा,பட்டயம்,to check
+app,m15.programKind.certificate,Certificate,Program kind badge: certificate program.,प्रमाणपत्र,சான்றிதழ்,to check
+app,m15.programKind.course,Course,Program kind badge: rolling or standalone course.,पाठ्यक्रम,பாடநெறி,to check
+app,m15.programKind.batchProgram,Batch program,Program kind badge: coaching or test-prep batch program.,बैच कार्यक्रम,தொகுதித் திட்டம்,to check
+app,m15.classGroupKind.section,Section,Class group type: school section.,अनुभाग,பிரிவு,to check
+app,m15.classGroupKind.batch,Batch,Class group type: coaching or course batch.,बैच,தொகுதி,to check
+app,m15.classGroupKind.cohort,Cohort,Class group type: higher-education cohort.,समूह (कोहोर्ट),கல்விக்குழு,to check
+app,m15.classGroupKind.group,Group,Class group type: general learning group.,समूह,குழு,to check
+app,m15.subjects.listTitle,Subjects,Card heading for the institution's subject list.,विषय,பாடங்கள்,to check
+app,m15.subjects.offeringsTitle,Subject offerings,Card heading for subject offerings per academic year.,विषय पेशकश,பாட வழங்கல்கள்,to check
+app,m15.subjects.academicYear,Academic year,Label of the academic-year filter for subject offerings.,शैक्षणिक वर्ष,கல்வியாண்டு,to check
+app,m15.subjects.allYears,All academic years,Filter option showing subject offerings across every academic year.,सभी शैक्षणिक वर्ष,அனைத்துக் கல்வியாண்டுகளும்,to check
+app,m15.subjects.credits,{credits} credits,Subject credit count. {credits} is a formatted number.,{credits} क्रेडिट,{credits} மதிப்புப் புள்ளிகள்,to check
+app,m15.subjects.weeklyPeriods,"{count, plural, one {# period / week} other {# periods / week}}",Weekly period count on a subject offering. {count} is a number.,"{count, plural, one {# कालांश / सप्ताह} other {# कालांश / सप्ताह}}","{count, plural, one {# பாடவேளை / வாரம்} other {# பாடவேளைகள் / வாரம்}}",to check
+app,m15.subjects.empty,No subjects yet,Empty state when the institution has no subjects.,अभी कोई विषय नहीं,இன்னும் பாடங்கள் இல்லை,to check
+app,m15.subjects.offeringsEmpty,No subject offerings for this academic year.,Empty state when no subject offerings match the selected academic year.,इस शैक्षणिक वर्ष के लिए कोई विषय पेशकश नहीं।,இந்தக் கல்வியாண்டுக்குப் பாட வழங்கல்கள் இல்லை.,to check
+app,m15.subjects.offeringsError,Subject offerings could not be loaded.,Error state when loading subject offerings fails.,विषय पेशकश लोड नहीं हो सकी।,பாட வழங்கல்களை ஏற்ற முடியவில்லை.,to check
+app,m15.subjectKind.core,Core,Subject type badge: core subject.,मुख्य,முதன்மை,to check
+app,m15.subjectKind.elective,Elective,Subject type badge: elective subject.,वैकल्पिक,விருப்பப் பாடம்,to check
+app,m15.subjectKind.language,Language,Subject type badge: language subject.,भाषा,மொழி,to check
+app,m15.subjectKind.activity,Activity,Subject type badge: activity subject.,गतिविधि,செயல்பாடு,to check
+app,m15.subjectKind.lab,Lab,Subject type badge: practical lab subject.,प्रयोगशाला,ஆய்வகம்,to check
+app,m15.subjectKind.project,Project,Subject type badge: project subject.,परियोजना,திட்டப்பணி,to check
+app,m15.addDialog.title,Add class group,Title of the dialog for creating a class group.,कक्षा समूह जोड़ें,வகுப்புக் குழுவைச் சேர்,to check
+app,m15.addDialog.description,Create a class group under a program and academic year.,Description under the add class group dialog title.,किसी कार्यक्रम और शैक्षणिक वर्ष के अंतर्गत नया कक्षा समूह बनाएँ।,ஒரு பாடத்திட்டம் மற்றும் கல்வியாண்டின் கீழ் வகுப்புக் குழுவை உருவாக்கவும்.,to check
+app,m15.addDialog.program,Program,Form field: program the class group belongs to.,कार्यक्रम,பாடத்திட்டம்,to check
+app,m15.addDialog.academicYear,Academic year,Form field: academic year the class group runs in.,शैक्षणिक वर्ष,கல்வியாண்டு,to check
+app,m15.addDialog.yearLevel,Year level,Form field: optional year level within the chosen program.,वर्ष स्तर,ஆண்டு நிலை,to check
+app,m15.addDialog.campus,Campus,Form field: optional campus for the class group.,परिसर,வளாகம்,to check
+app,m15.addDialog.campusNone,No specific campus,Option when the class group is not tied to one campus.,कोई विशिष्ट परिसर नहीं,குறிப்பிட்ட வளாகம் இல்லை,to check
+app,m15.addDialog.kind,Type,"Form field: kind of class group (section, batch, cohort or group).",प्रकार,வகை,to check
+app,m15.addDialog.code,Code,Form field: unique academic code for the class group.,कोड,குறியீடு,to check
+app,m15.addDialog.codeHint,"Letters, numbers, dots, hyphens or underscores (up to 32 characters).",Help text under the class group code field.,"अक्षर, अंक, बिंदु, हाइफ़न या अंडरस्कोर (अधिकतम 32 अक्षर)।","எழுத்துகள், எண்கள், புள்ளிகள், கோடுகள் அல்லது அடிக்கோடுகள் (அதிகபட்சம் 32 எழுத்துகள்).",to check
+app,m15.addDialog.name,Name,Form field: display name of the class group.,नाम,பெயர்,to check
+app,m15.addDialog.capacity,Capacity,Form field: optional maximum learner count for the class group.,क्षमता,கொள்ளளவு,to check
+app,m15.addDialog.capacityHint,"Optional. Whole number from 1 to 2,000.",Help text under the capacity field.,"वैकल्पिक। 1 से 2,000 के बीच पूर्ण संख्या।","விருப்பத்தேர்வு. 1 முதல் 2,000 வரையிலான முழு எண்.",to check
+app,m15.addDialog.submit,Create class group,Submit button inside the add class group dialog.,कक्षा समूह बनाएँ,வகுப்புக் குழுவை உருவாக்கு,to check
+app,m15.addDialog.created,Class group created.,Success toast after creating a class group.,कक्षा समूह बनाया गया।,வகுப்புக் குழு உருவாக்கப்பட்டது.,to check
+app,m15.addDialog.codeInvalid,Enter a valid code starting with a letter or number.,Field error when the class group code does not match the academic code rules.,अक्षर या अंक से शुरू होने वाला मान्य कोड दर्ज करें।,எழுத்து அல்லது எண்ணுடன் தொடங்கும் சரியான குறியீட்டை உள்ளிடவும்.,to check
+app,m15.addDialog.nameInvalid,Enter a name up to 200 characters.,Field error when the class group name exceeds the maximum length.,अधिकतम 200 अक्षरों का नाम दर्ज करें।,200 எழுத்துகளுக்குள் ஒரு பெயரை உள்ளிடவும்.,to check
+app,m15.addDialog.capacityInvalid,"Enter a whole number between 1 and 2,000.","Field error when capacity is not an integer between 1 and 2,000.","1 से 2,000 के बीच पूर्ण संख्या दर्ज करें।","1 முதல் 2,000 வரையிலான முழு எண்ணை உள்ளிடவும்.",to check
+app,m15.addDialog.duplicateCode,A class group with this code already exists for this academic year.,Error when the server returns a conflict for a duplicate class group code.,इस शैक्षणिक वर्ष के लिए इस कोड का कक्षा समूह पहले से मौजूद है।,இந்தக் கல்வியாண்டுக்கு இந்தக் குறியீட்டுடன் வகுப்புக் குழு ஏற்கனவே உள்ளது.,to check
+app,m15.addDialog.invalidProgram,The selected program is not valid for this institution.,Error when the server rejects the chosen program id as invalid.,चुना गया कार्यक्रम इस संस्था के लिए मान्य नहीं है।,தேர்ந்தெடுத்த பாடத்திட்டம் இந்த நிறுவனத்திற்குச் செல்லாது.,to check
+app,m15.addDialog.invalidYearLevel,The selected year level does not belong to this program.,Error when the server rejects the chosen year level id.,चुना गया वर्ष स्तर इस कार्यक्रम से संबंधित नहीं है।,தேர்ந்தெடுத்த ஆண்டு நிலை இந்தப் பாடத்திட்டத்தைச் சேர்ந்ததல்ல.,to check
+app,m15.addDialog.invalidAcademicYear,The selected academic year is not valid for this institution.,Error when the server rejects the chosen academic year id.,चुना गया शैक्षणिक वर्ष इस संस्था के लिए मान्य नहीं है।,தேர்ந்தெடுத்த கல்வியாண்டு இந்த நிறுவனத்திற்குச் செல்லாது.,to check
+app,m15.addDialog.invalidCampus,The selected campus is not valid for this institution.,Error when the server rejects the chosen campus id.,चुना गया परिसर इस संस्था के लिए मान्य नहीं है।,தேர்ந்தெடுத்த வளாகம் இந்த நிறுவனத்திற்குச் செல்லாது.,to check
+app,m15.addDialog.invalidRequest,This request is not valid. Check your selections and try again.,Generic form error when the server returns invalid_request.,यह अनुरोध मान्य नहीं है। अपने विकल्प जाँचें और फिर से कोशिश करें।,இந்தக் கோரிக்கை செல்லாது. உங்கள் தேர்வுகளைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m15.addDialog.saveFailed,The class group could not be created. Try again.,Error shown when creating a class group fails unexpectedly.,कक्षा समूह नहीं बनाया जा सका। फिर से कोशिश करें।,வகுப்புக் குழுவை உருவாக்க முடியவில்லை. மீண்டும் முயலவும்.,to check
+app,m15.permission.structureRead,View academic structure,"Permission description: View programmes, year levels, class groups, subjects and subject offerings.",शैक्षणिक संरचना देखें,கல்விக் கட்டமைப்பைப் பார்,to check
+app,m15.permission.structureManage,Manage academic structure,"Permission description: Manage programmes, year levels, class groups, subjects and subject offerings.",शैक्षणिक संरचना प्रबंधित करें,கல்விக் கட்டமைப்பை நிர்வகி,to check
+app,m09.nav.title,Import data,Menu item and page title for the data import screen (M09).,डेटा आयात करें,தரவை இறக்குமதி செய்,to check
+app,m09.nav.summary,"Review import jobs, column mappings and validation checks, or register a file.",Home tile description of the Import data module.,"आयात कार्य, स्तंभ मानचित्रण और सत्यापन जाँच देखें, या नई फ़ाइल दर्ज करें।","இறக்குமதிப் பணிகள், நெடுவரிசை இணைப்புகள் மற்றும் சரிபார்ப்புகளைப் பார்க்கவும் அல்லது புதிய கோப்பைப் பதிவு செய்யவும்.",to check
+app,m09.imports.intro,"Review past import jobs, inspect column mappings and validation issues, or register a new file.",Introductory subtitle under the Import data page heading.,"पिछले आयात कार्य देखें, स्तंभ मानचित्रण और सत्यापन समस्याएँ जाँचें, या नई फ़ाइल दर्ज करें।","முந்தைய இறக்குமதிப் பணிகளைப் பார்க்கவும், நெடுவரிசை இணைப்புகளையும் சரிபார்ப்புச் சிக்கல்களையும் ஆய்வு செய்யவும் அல்லது புதிய கோப்பைப் பதிவு செய்யவும்.",to check
+app,m09.imports.askAssist,Ask Assist,Button in the Import data header that opens Nexus Assist.,Assist से पूछें,Assist-இடம் கேள்,to check
+app,m09.imports.newImport,New import,Button that opens the dialog to register a new import file.,नया आयात,புதிய இறக்குமதி,to check
+app,m09.imports.error,Import jobs could not be loaded.,Error heading when fetching import jobs fails.,आयात कार्य लोड नहीं हो सके।,இறக்குமதிப் பணிகளை ஏற்ற முடியவில்லை.,to check
+app,m09.jobs.listLabel,Import jobs,Accessible label for the list of import jobs.,आयात कार्य,இறக்குமதிப் பணிகள்,to check
+app,m09.jobs.empty,No import jobs yet,Empty state heading when the institution has no import jobs.,अभी कोई आयात कार्य नहीं,இன்னும் இறக்குமதிப் பணிகள் இல்லை,to check
+app,m09.jobs.emptyBody,Registered CSV and Excel import jobs will appear here.,Empty state description when the institution has no import jobs.,दर्ज किए गए CSV और Excel आयात कार्य यहाँ दिखाई देंगे।,பதிவு செய்யப்பட்ட CSV மற்றும் Excel இறக்குமதிப் பணிகள் இங்கே தோன்றும்.,to check
+app,m09.jobs.createdAt,Created {date},Timestamp label on an import job card. {date} is formatted in the institution time zone.,{date} को बनाया गया,{date} அன்று உருவாக்கப்பட்டது,to check
+app,m09.jobs.rowCounts,"{valid} valid · {errorCount, plural, one {{errors} error} other {{errors} errors}} · {total} total","Row summary on an import job card. {valid}, {errors} and {total} are formatted numbers; {errorCount} is the raw error count.","{valid} मान्य · {errorCount, plural, one {{errors} त्रुटि} other {{errors} त्रुटियाँ}} · कुल {total}","{valid} சரியானவை · {errorCount, plural, one {{errors} பிழை} other {{errors} பிழைகள்}} · மொத்தம் {total}",to check
+app,m09.job.back,Back to imports,Button returning from an import job detail view to the jobs list.,आयात सूची पर वापस जाएँ,இறக்குமதிகளுக்குத் திரும்பு,to check
+app,m09.job.notFoundTitle,Import job not found,Empty state title when the requested import job does not exist or belongs to another tenant.,आयात कार्य नहीं मिला,இறக்குமதிப் பணி கிடைக்கவில்லை,to check
+app,m09.job.notFoundBody,This import job does not exist or belongs to another institution.,Empty state description when the requested import job cannot be found.,यह आयात कार्य मौजूद नहीं है या किसी अन्य संस्थान का है।,இந்த இறக்குமதிப் பணி இல்லை அல்லது வேறொரு நிறுவனத்தைச் சேர்ந்தது.,to check
+app,m09.job.summaryHeading,Job summary,"Card title showing status, counts and dates for one import job.",कार्य सारांश,பணிச் சுருக்கம்,to check
+app,m09.job.entity,Record type,Detail label for the type of records being imported.,रिकॉर्ड का प्रकार,பதிவின் வகை,to check
+app,m09.job.format,File format,Detail label for the spreadsheet file format (CSV or Excel).,फ़ाइल प्रारूप,கோப்பு வடிவம்,to check
+app,m09.job.created,Created,Detail label for when the import job was created.,बनाया गया,உருவாக்கியது,to check
+app,m09.job.totalRows,Total rows,Detail label for total rows detected in the import job.,कुल पंक्तियाँ,மொத்த வரிசைகள்,to check
+app,m09.job.validRows,Valid rows,Detail label for valid rows in the import job.,मान्य पंक्तियाँ,சரியான வரிசைகள்,to check
+app,m09.job.errorRows,Error rows,Detail label for rows with errors in the import job.,त्रुटि पंक्तियाँ,பிழை வரிசைகள்,to check
+app,m09.job.rollbackUntil,Rollback available until,Detail label showing when a completed import can still be rolled back.,पूर्ववत करने की अंतिम समय-सीमा,திரும்பப் பெறும் காலக்கெடு,to check
+app,m09.job.mappingsHeading,Column mappings,Card title for the source-to-target column mapping list.,स्तंभ मानचित्रण,நெடுவரிசை இணைப்புகள்,to check
+app,m09.job.mappingsListLabel,Column mappings,Accessible label for the list of mapped columns.,स्तंभ मानचित्रण,நெடுவரிசை இணைப்புகள்,to check
+app,m09.job.mappingsEmpty,No column mappings have been saved for this job yet.,Empty state text when an import job has no saved column mappings.,इस कार्य के लिए अभी कोई स्तंभ मानचित्रण सहेजा नहीं गया है।,இந்தப் பணிக்கு இன்னும் நெடுவரிசை இணைப்புகள் சேமிக்கப்படவில்லை.,to check
+app,m09.job.mappingsError,Column mappings could not be loaded.,Error heading when loading column mappings fails.,स्तंभ मानचित्रण लोड नहीं हो सके।,நெடுவரிசை இணைப்புகளை ஏற்ற முடியவில்லை.,to check
+app,m09.job.skippedColumn,Skipped,Badge indicating a source spreadsheet column is not mapped to any field.,छोड़ा गया,தவிர்க்கப்பட்டது,to check
+app,m09.job.issuesHeading,Dry-run issues,Card title for validation errors and warnings found during dry run.,पूर्वाभ्यास समस्याएँ,முன்னோட்டச் சிக்கல்கள்,to check
+app,m09.job.issuesListLabel,Dry-run validation issues,Accessible label for the list of dry-run row issues.,पूर्वाभ्यास सत्यापन समस्याएँ,முன்னோட்டச் சரிபார்ப்புச் சிக்கல்கள்,to check
+app,m09.job.issuesPrivacy,"Only row numbers, column names and issue types are shown — never cell values.",Privacy note in the issues card explaining that imported cell contents are never shown.,"केवल पंक्ति संख्या, स्तंभ के नाम और समस्या के प्रकार दिखाए जाते हैं — सेल के मान कभी नहीं।","வரிசை எண்கள், நெடுவரிசைப் பெயர்கள் மற்றும் சிக்கல் வகைகள் மட்டுமே காட்டப்படும் — கலத்தின் மதிப்புகள் ஒருபோதும் காட்டப்படாது.",to check
+app,m09.job.issuesEmpty,No validation issues reported for this job.,Empty state text when a job has zero validation issues.,इस कार्य के लिए कोई सत्यापन समस्या नहीं मिली।,இந்தப் பணிக்குச் சரிபார்ப்புச் சிக்கல்கள் எதுவும் இல்லை.,to check
+app,m09.job.issuesError,Validation issues could not be loaded.,Error heading when loading validation issues fails.,सत्यापन समस्याएँ लोड नहीं हो सकीं।,சரிபார்ப்புச் சிக்கல்களை ஏற்ற முடியவில்லை.,to check
+app,m09.job.issueRow,Row {row},Row number label on a validation issue. {row} is a formatted number.,पंक्ति {row},வரிசை {row},to check
+app,m09.job.issueColumn,Column: {column},Column header label on a validation issue. {column} is the spreadsheet header name.,स्तंभ: {column},நெடுவரிசை: {column},to check
+app,m09.job.issueWholeRow,Whole row,Shown when a validation issue applies to the entire row rather than one column.,पूरी पंक्ति,முழு வரிசை,to check
+app,m09.entity.learner,Learners,Import record type: learner records.,शिक्षार्थी,கற்பவர்கள்,to check
+app,m09.entity.guardian,Guardians,Import record type: guardian records.,अभिभावक,பாதுகாவலர்கள்,to check
+app,m09.entity.staff,Staff,Import record type: staff records.,कर्मचारी,பணியாளர்கள்,to check
+app,m09.entity.enrolment,Enrolments,Import record type: class enrolment records.,नामांकन,சேர்க்கைகள்,to check
+app,m09.entity.feeBalance,Fee balances,Import record type: opening fee balances.,शुल्क शेष,கட்டண நிலுவைகள்,to check
+app,m09.entity.mark,Marks,Import record type: assessment marks.,अंक,மதிப்பெண்கள்,to check
+app,m09.format.csv,CSV,Import source file format: comma-separated values.,CSV,CSV,to check
+app,m09.format.xlsx,Excel (.xlsx),Import source file format: Excel workbook.,Excel (.xlsx),Excel (.xlsx),to check
+app,m09.status.uploaded,Uploaded,Import job status: file registered and awaiting mapping.,अपलोड किया गया,பதிவேற்றப்பட்டது,to check
+app,m09.status.mapped,Mapped,"Import job status: columns mapped, awaiting dry run.",मानचित्रित,இணைக்கப்பட்டது,to check
+app,m09.status.dryRunReady,Dry run ready,Import job status: dry-run validation finished and ready to review.,पूर्वाभ्यास तैयार,முன்னோட்டம் தயார்,to check
+app,m09.status.importing,Importing,Import job status: rows are currently being imported.,आयात हो रहा है,இறக்குமதி ஆகிறது,to check
+app,m09.status.completed,Completed,Import job status: import finished successfully.,पूर्ण,நிறைவடைந்தது,to check
+app,m09.status.failed,Failed,Import job status: import stopped with an error.,विफल,தோல்வி,to check
+app,m09.status.rolledBack,Rolled back,Import job status: completed import was reversed.,पूर्ववत किया गया,திரும்பப் பெறப்பட்டது,to check
+app,m09.transform.none,No transform,Column transform: copy value as is.,कोई रूपांतरण नहीं,மாற்றம் இல்லை,to check
+app,m09.transform.trim,Trim spaces,Column transform: strip leading and trailing spaces.,रिक्त स्थान हटाएँ,இடைவெளிகளை நீக்கு,to check
+app,m09.transform.upper,Uppercase,Column transform: convert text to uppercase.,बड़े अक्षर,பெரிய எழுத்துகள்,to check
+app,m09.transform.lower,Lowercase,Column transform: convert text to lowercase.,छोटे अक्षर,சிறிய எழுத்துகள்,to check
+app,m09.transform.dateDmy,Date (DD/MM/YYYY),Column transform: parse day-month-year dates.,तिथि (DD/MM/YYYY),தேதி (DD/MM/YYYY),to check
+app,m09.transform.dateMdy,Date (MM/DD/YYYY),Column transform: parse month-day-year dates.,तिथि (MM/DD/YYYY),தேதி (MM/DD/YYYY),to check
+app,m09.transform.phoneIn,Phone (+91),Column transform: normalise Indian phone numbers to +91 format.,फ़ोन (+91),தொலைபேசி (+91),to check
+app,m09.transform.splitName,Split full name,Column transform: split one full-name column into parts.,पूरा नाम विभाजित करें,முழுப் பெயரைப் பிரி,to check
+app,m09.severity.error,Error,Dry-run issue severity: row will not be imported until fixed.,त्रुटि,பிழை,to check
+app,m09.severity.warning,Warning,Dry-run issue severity: review recommended before importing.,चेतावनी,எச்சரிக்கை,to check
+app,m09.import.invalidPhone,Phone number is not in a valid format.,Import validation issue when a phone cell cannot be parsed as a valid number.,फ़ोन नंबर मान्य प्रारूप में नहीं है।,தொலைபேசி எண் சரியான வடிவத்தில் இல்லை.,to check
+app,m09.import.duplicateName,A matching name already exists in this institution.,Import validation warning when a name matches an existing record.,इस संस्थान में मिलता-जुलता नाम पहले से मौजूद है।,இதே போன்ற பெயர் இந்த நிறுவனத்தில் ஏற்கனவே உள்ளது.,to check
+app,m09.import.required,A required value is missing.,Import validation error when a mandatory field is blank.,एक अनिवार्य मान गायब है।,கட்டாய மதிப்பு விடுபட்டுள்ளது.,to check
+app,m09.import.unknownIssue,This row has a validation issue.,Fallback import validation message when an issue key is not recognised.,इस पंक्ति में सत्यापन समस्या है।,இந்த வரிசையில் சரிபார்ப்புச் சிக்கல் உள்ளது.,to check
+app,m09.newDialog.title,New import,Dialog title for registering a new import job.,नया आयात,புதிய இறக்குமதி,to check
+app,m09.newDialog.description,"Register a CSV or Excel file to start an import job. Only the record type, file name and format are sent — file contents stay on your device because parsing runs on the server.",Dialog description explaining that only metadata is sent in the prototype and no file contents leave the device.,"आयात कार्य शुरू करने के लिए CSV या Excel फ़ाइल दर्ज करें। केवल रिकॉर्ड का प्रकार, फ़ाइल का नाम और प्रारूप भेजा जाता है — फ़ाइल की सामग्री आपके डिवाइस पर ही रहती है क्योंकि पार्सिंग सर्वर पर होती है।","இறக்குமதிப் பணியைத் தொடங்க CSV அல்லது Excel கோப்பைப் பதிவு செய்யவும். பதிவின் வகை, கோப்பின் பெயர் மற்றும் வடிவம் மட்டுமே அனுப்பப்படும் — பாகுபடுத்தல் சேவையகத்தில் இயங்குவதால் கோப்பின் உள்ளடக்கம் உங்கள் சாதனத்திலேயே இருக்கும்.",to check
+app,m09.newDialog.entity,Record type,Select label for choosing which record type to import.,रिकॉर्ड का प्रकार,பதிவின் வகை,to check
+app,m09.newDialog.file,Spreadsheet file,File picker label for choosing a CSV or Excel file.,स्प्रेडशीट फ़ाइल,விரிதாள் கோப்பு,to check
+app,m09.newDialog.fileHint,Choose a .csv or .xlsx file. The file is not read or uploaded in this prototype.,Helper text under the file picker.,.csv या .xlsx फ़ाइल चुनें। इस प्रोटोटाइप में फ़ाइल पढ़ी या अपलोड नहीं की जाती।,.csv அல்லது .xlsx கோப்பைத் தேர்ந்தெடுக்கவும். இந்த முன்மாதிரியில் கோப்பு படிக்கப்படவோ பதிவேற்றப்படவோ மாட்டாது.,to check
+app,m09.newDialog.detectedFormat,Detected format: {format},Readout showing the format derived from the selected file extension.,पहचाना गया प्रारूप: {format},கண்டறியப்பட்ட வடிவம்: {format},to check
+app,m09.newDialog.submit,Register import,Submit button inside the New import dialog.,आयात दर्ज करें,இறக்குமதியைப் பதிவு செய்,to check
+app,m09.newDialog.created,Import job registered.,Success toast after registering a new import job.,आयात कार्य दर्ज किया गया।,இறக்குமதிப் பணி பதிவு செய்யப்பட்டது.,to check
+app,m09.newDialog.unsupportedFormat,Choose a .csv or .xlsx file.,Field error when the selected file does not end in .csv or .xlsx.,.csv या .xlsx फ़ाइल चुनें।,.csv அல்லது .xlsx கோப்பைத் தேர்ந்தெடுக்கவும்.,to check
+app,m09.newDialog.invalidFileName,Choose a file with a plain file name (up to 200 characters).,Field error when the selected file name is invalid.,सामान्य फ़ाइल नाम वाली फ़ाइल चुनें (अधिकतम 200 वर्ण)।,சாதாரண கோப்புப் பெயர் கொண்ட கோப்பைத் தேர்ந்தெடுக்கவும் (அதிகபட்சம் 200 எழுத்துகள்).,to check
+app,m09.newDialog.invalidRequest,The import job could not be registered. Check your selections and try again.,Generic form error when the server rejects the import job input.,आयात कार्य दर्ज नहीं किया जा सका। अपने विकल्प जाँचें और फिर से कोशिश करें।,இறக்குமதிப் பணியைப் பதிவு செய்ய முடியவில்லை. உங்கள் தேர்வுகளைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m09.newDialog.forbidden,You do not have permission to register an import job.,Form error when the server returns 403 forbidden.,आपको आयात कार्य दर्ज करने की अनुमति नहीं है।,இறக்குமதிப் பணியைப் பதிவு செய்ய உங்களுக்கு அனுமதி இல்லை.,to check
+app,m09.newDialog.saveFailed,The import job could not be registered. Try again.,Error shown when registering an import job fails unexpectedly.,आयात कार्य दर्ज नहीं किया जा सका। फिर से कोशिश करें।,இறக்குமதிப் பணியைப் பதிவு செய்ய முடியவில்லை. மீண்டும் முயலவும்.,to check
+app,m09.permission.importRead,View import jobs,"Permission description: View import jobs, column mappings and validation issues.",आयात कार्य देखें,இறக்குமதிப் பணிகளைப் பார்,to check
+app,m09.permission.importManage,Manage imports,Permission description: Manage import jobs and column mappings.,आयात प्रबंधित करें,இறக்குமதிகளை நிர்வகி,to check
+app,m12.nav.title,Admissions,Admissions navigation (title).,प्रवेश,மாணவர் சேர்க்கை,to check
+app,m12.nav.summary,"Track enquiries, applications and offers.",Admissions navigation (summary).,"पूछताछ, आवेदनों और प्रस्तावों की स्थिति देखें।","விசாரணைகள், விண்ணப்பங்கள் மற்றும் சேர்க்கைச் சலுகைகளைக் கண்காணிக்கவும்.",to check
+app,m12.page.intro,Review enquiries and follow each application through to an offer or a waitlist place.,Admissions page (intro).,पूछताछ की समीक्षा करें और हर आवेदन के प्रस्ताव या प्रतीक्षा सूची तक की स्थिति देखें।,"விசாரணைகளைப் பார்வையிட்டு, ஒவ்வொரு விண்ணப்பத்திற்கும் சேர்க்கைச் சலுகை அல்லது காத்திருப்புப் பட்டியலில் இடம் கிடைக்கும் வரை அதன் நிலையைக் கண்காணிக்கவும்.",to check
+app,m12.page.askAssist,Ask Assist,Admissions page (askAssist).,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m12.page.tabsLabel,Admissions sections,Admissions page (tabsLabel).,प्रवेश अनुभाग,சேர்க்கைப் பிரிவுகள்,to check
+app,m12.page.tabEnquiries,Enquiries,Admissions page (tabEnquiries).,पूछताछ,விசாரணைகள்,to check
+app,m12.page.tabApplications,Applications,Admissions page (tabApplications).,आवेदन,விண்ணப்பங்கள்,to check
+app,m12.page.tabOffers,Offers & waitlist,Admissions page (tabOffers).,प्रस्ताव और प्रतीक्षा सूची,சேர்க்கைச் சலுகைகளும் காத்திருப்புப் பட்டியலும்,to check
+app,m12.page.error,Admissions records could not be loaded.,Admissions page (error).,प्रवेश रिकॉर्ड लोड नहीं हो सके।,சேர்க்கைப் பதிவுகளை ஏற்ற முடியவில்லை.,to check
+app,m12.enquiries.filter,Filter by status,Staff enquiry list (filter).,स्थिति के अनुसार छाँटें,நிலையின் அடிப்படையில் வடிகட்டவும்,to check
+app,m12.enquiries.all,All statuses,Staff enquiry list (all).,सभी स्थितियाँ,அனைத்து நிலைகளும்,to check
+app,m12.enquiries.empty,No matching enquiries,Staff enquiry list (empty).,कोई मेल खाती पूछताछ नहीं है,பொருந்தும் விசாரணைகள் இல்லை,to check
+app,m12.enquiries.contact,Contact person: {name},Staff enquiry list (contact).,संपर्क व्यक्ति: {name},தொடர்பு நபர்: {name},to check
+app,m12.enquiries.followUp,Follow up on {date},Staff enquiry list (followUp).,{date} को फिर संपर्क करें,மீண்டும் தொடர்புகொள்ள வேண்டிய நாள்: {date},to check
+app,m12.applications.empty,No applications yet,Admissions application list (empty).,अभी कोई आवेदन नहीं है,இதுவரை விண்ணப்பங்கள் இல்லை,to check
+app,m12.applications.submitted,Submitted on {date},Admissions application list (submitted).,{date} को जमा किया गया,சமர்ப்பித்த நாள்: {date},to check
+app,m12.offers.title,Offers,Admission offers (title).,प्रस्ताव,சேர்க்கைச் சலுகைகள்,to check
+app,m12.offers.empty,No offers yet,Admission offers (empty).,अभी कोई प्रस्ताव नहीं है,இதுவரை சேர்க்கைச் சலுகைகள் இல்லை,to check
+app,m12.offers.expires,Expires on {date},Admission offers (expires).,{date} तक मान्य,கடைசி நாள்: {date},to check
+app,m12.waitlist.title,Waitlist,Admissions waitlist (title).,प्रतीक्षा सूची,காத்திருப்புப் பட்டியல்,to check
+app,m12.waitlist.empty,The waitlist is empty,Admissions waitlist (empty).,प्रतीक्षा सूची खाली है,காத்திருப்புப் பட்டியல் காலியாக உள்ளது,to check
+app,m12.waitlist.position,Position {position},Admissions waitlist (position).,क्रमांक {position},வரிசை எண் {position},to check
+app,m12.add.title,Add enquiry,Add enquiry dialog (title).,पूछताछ जोड़ें,விசாரணையைச் சேர்க்கவும்,to check
+app,m12.add.description,Enter a phone number or email address so staff can follow up.,Add enquiry dialog (description).,आगे संपर्क करने के लिए फ़ोन नंबर या ईमेल पता दर्ज करें।,பணியாளர்கள் மீண்டும் தொடர்புகொள்ள ஒரு தொலைபேசி எண்ணையோ மின்னஞ்சல் முகவரியையோ உள்ளிடவும்.,to check
+app,m12.add.source,Source,Add enquiry dialog (source).,स्रोत,விசாரணை வந்த வழி,to check
+app,m12.add.campus,Campus,Add enquiry dialog (campus).,परिसर,வளாகம்,to check
+app,m12.add.contact,Contact name,Add enquiry dialog (contact).,संपर्क व्यक्ति का नाम,தொடர்பு நபரின் பெயர்,to check
+app,m12.add.phone,Contact phone,Add enquiry dialog (phone).,संपर्क फ़ोन,தொடர்பு எண்,to check
+app,m12.add.email,Contact email,Add enquiry dialog (email).,संपर्क ईमेल,தொடர்பு மின்னஞ்சல்,to check
+app,m12.add.learner,Learner name,Add enquiry dialog (learner).,विद्यार्थी का नाम,மாணவர் பெயர்,to check
+app,m12.add.program,Program,Add enquiry dialog (program).,कार्यक्रम,பாடத்திட்டம்,to check
+app,m12.add.followUp,Follow-up date,Add enquiry dialog (followUp).,अगले संपर्क की तारीख,மீண்டும் தொடர்புகொள்ள வேண்டிய நாள்,to check
+app,m12.add.unassigned,Unassigned,Add enquiry dialog (unassigned).,आवंटित नहीं,ஒதுக்கப்படவில்லை,to check
+app,m12.add.contactRequired,Enter a phone number or an email address.,Add enquiry dialog (contactRequired).,फ़ोन नंबर या ईमेल पता दर्ज करें।,தொலைபேசி எண்ணையோ மின்னஞ்சல் முகவரியையோ உள்ளிடவும்.,to check
+app,m12.add.invalidSource,Select an enquiry source.,Add enquiry dialog (invalidSource).,पूछताछ का स्रोत चुनें।,விசாரணை வந்த வழியைத் தேர்ந்தெடுக்கவும்.,to check
+app,m12.add.invalidName,Enter a valid name.,Add enquiry dialog (invalidName).,मान्य नाम दर्ज करें।,சரியான பெயரை உள்ளிடவும்.,to check
+app,m12.add.invalidPhone,"Include the country code, starting with +.",Add enquiry dialog (invalidPhone).,देश का कोड + से शुरू करते हुए दर्ज करें।,நாட்டுக் குறியீட்டை + உடன் தொடங்கி உள்ளிடவும்.,to check
+app,m12.add.invalidEmail,Enter a valid email address.,Add enquiry dialog (invalidEmail).,मान्य ईमेल पता दर्ज करें।,சரியான மின்னஞ்சல் முகவரியை உள்ளிடவும்.,to check
+app,m12.add.invalidProgram,Select a program in this institution.,Add enquiry dialog (invalidProgram).,इस संस्था का कार्यक्रम चुनें।,இந்த நிறுவனத்தின் பாடத்திட்டத்தைத் தேர்ந்தெடுக்கவும்.,to check
+app,m12.add.invalidCampus,Select a campus in this institution.,Add enquiry dialog (invalidCampus).,इस संस्था का परिसर चुनें।,இந்த நிறுவனத்தின் வளாகத்தைத் தேர்ந்தெடுக்கவும்.,to check
+app,m12.add.invalidDate,Enter a valid follow-up date.,Add enquiry dialog (invalidDate).,अगले संपर्क की मान्य तारीख दर्ज करें।,மீண்டும் தொடர்புகொள்ளச் சரியான நாளை உள்ளிடவும்.,to check
+app,m12.add.created,Enquiry added,Add enquiry dialog (created).,पूछताछ जोड़ दी गई,விசாரணை சேர்க்கப்பட்டது,to check
+app,m12.add.failed,The enquiry could not be saved. Try again.,Add enquiry dialog (failed).,पूछताछ सहेजी नहीं जा सकी। फिर प्रयास करें।,விசாரணையைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.,to check
+app,m12.source.walkIn,Walk-in,How the admissions enquiry originated (walk_in).,प्रत्यक्ष भेंट,நேரில்,to check
+app,m12.source.phone,Phone,How the admissions enquiry originated (phone).,फ़ोन,தொலைபேசி,to check
+app,m12.source.website,Website,How the admissions enquiry originated (website).,वेबसाइट,இணையதளம்,to check
+app,m12.source.publicForm,Public form,How the admissions enquiry originated (public_form).,सार्वजनिक फ़ॉर्म,பொதுப் படிவம்,to check
+app,m12.source.referral,Referral,How the admissions enquiry originated (referral).,सिफ़ारिश,பரிந்துரை,to check
+app,m12.source.campaign,Campaign,How the admissions enquiry originated (campaign).,अभियान,பிரசாரம்,to check
+app,m12.source.event,Event,How the admissions enquiry originated (event).,कार्यक्रम स्थल,நிகழ்ச்சி,to check
+app,m12.source.other,Other,How the admissions enquiry originated (other).,अन्य,பிற,to check
+app,m12.status.new,New,Admissions pipeline status badge (new).,नई,புதியது,to check
+app,m12.status.contacted,Contacted,Admissions pipeline status badge (contacted).,संपर्क किया गया,தொடர்புகொள்ளப்பட்டது,to check
+app,m12.status.visitBooked,Visit booked,Admissions pipeline status badge (visit_booked).,भेंट तय है,வருகை முன்பதிவு செய்யப்பட்டது,to check
+app,m12.status.applied,Applied,Admissions pipeline status badge (applied).,आवेदन किया गया,விண்ணப்பிக்கப்பட்டது,to check
+app,m12.status.lost,Lost,Admissions pipeline status badge (lost).,बंद हुई,கைவிடப்பட்டது,to check
+app,m12.status.draft,Draft,Admissions pipeline status badge (draft).,मसौदा,வரைவு,to check
+app,m12.status.submitted,Submitted,Admissions pipeline status badge (submitted).,जमा किया गया,சமர்ப்பிக்கப்பட்டது,to check
+app,m12.status.underReview,Under review,Admissions pipeline status badge (under_review).,समीक्षाधीन,பரிசீலனையில்,to check
+app,m12.status.testScheduled,Test scheduled,Admissions pipeline status badge (test_scheduled).,परीक्षा निर्धारित,தேர்வு திட்டமிடப்பட்டது,to check
+app,m12.status.offered,Offered,Admissions pipeline status badge (offered).,प्रस्ताव दिया गया,சேர்க்கை வழங்கப்பட்டது,to check
+app,m12.status.waitlisted,Waitlisted,Admissions pipeline status badge (waitlisted).,प्रतीक्षा सूची में,காத்திருப்புப் பட்டியலில்,to check
+app,m12.status.accepted,Accepted,Admissions pipeline status badge (accepted).,स्वीकृत,ஏற்கப்பட்டது,to check
+app,m12.status.rejected,Rejected,Admissions pipeline status badge (rejected).,अस्वीकृत,நிராகரிக்கப்பட்டது,to check
+app,m12.status.withdrawn,Withdrawn,Admissions pipeline status badge (withdrawn).,वापस लिया गया,திரும்பப் பெறப்பட்டது,to check
+app,m12.status.enrolled,Enrolled,Admissions pipeline status badge (enrolled).,नामांकित,சேர்க்கை முடிந்தது,to check
+app,m12.status.open,Open,Admissions pipeline status badge (open).,खुला,நிலுவையில்,to check
+app,m12.status.declined,Declined,Admissions pipeline status badge (declined).,ठुकराया गया,மறுக்கப்பட்டது,to check
+app,m12.status.expired,Expired,Admissions pipeline status badge (expired).,अवधि समाप्त,காலாவதியானது,to check
+app,m12.status.revoked,Revoked,Admissions pipeline status badge (revoked).,रद्द किया गया,ரத்து செய்யப்பட்டது,to check
+app,m12.permission.admissionsRead,View admissions,"Permission description: View enquiries, applications, admission offers and waitlists.",प्रवेश रिकॉर्ड देखें,சேர்க்கைப் பதிவுகளைப் பார்,to check
+app,m12.permission.admissionsManage,Manage admissions,"Permission description: Manage enquiries, applications, admission offers and waitlists.",प्रवेश प्रबंधित करें,சேர்க்கைகளை நிர்வகி,to check
+app,m16.nav.title,Timetable,Navigation item and page title for the Timetable & scheduling module (M16).,समय-सारणी,கால அட்டவணை,to check
+app,m16.nav.summary,"Weekly class schedules, rooms, bell schedules and teacher load.",Home tile summary for the Timetable module.,"साप्ताहिक कक्षा समय-सारणी, कक्ष, घंटी समय-सारणी और शिक्षक कार्यभार।","வாராந்திர வகுப்பு அட்டவணைகள், அறைகள், மணி அட்டவணைகள் மற்றும் ஆசிரியர் பணிச்சுமை.",to check
+app,m16.page.intro,"View weekly schedules by class group, check rooms and bell times, and monitor teacher load.",Introductory paragraph under the Timetable page heading.,"कक्षा समूह के अनुसार साप्ताहिक समय-सारणी देखें, कक्ष व घंटी का समय जांचें, और शिक्षक कार्यभार देखें।","வகுப்புக் குழு வாரியாக வாராந்திர அட்டவணைகளைப் பார்க்கவும், அறைகள் மற்றும் மணி நேரங்களைச் சரிபார்க்கவும், ஆசிரியர் பணிச்சுமையைக் கண்காணிக்கவும்.",to check
+app,m16.page.askAssist,Ask Assist,Button opening Nexus Assist from the Timetable page header.,Assist से पूछें,Assist-இடம் கேள்,to check
+app,m16.page.tabsLabel,Timetable sections,Accessible label for the tabs on the Timetable page.,समय-सारणी अनुभाग,கால அட்டவணைப் பிரிவுகள்,to check
+app,m16.page.tabWeek,Week,Tab label showing a class group's weekly timetable.,सप्ताह,வாரம்,to check
+app,m16.page.tabRooms,Rooms & bells,Tab label showing institution rooms and bell schedules.,कक्ष व घंटी,அறைகள் & மணிகள்,to check
+app,m16.page.tabLoad,Teacher load,Tab label showing weekly teaching load for staff.,शिक्षक कार्यभार,ஆசிரியர் பணிச்சுமை,to check
+app,m16.page.error,Timetable could not be loaded.,Error heading when the Timetable page fails to load user session details.,समय-सारणी लोड नहीं हो सकी।,கால அட்டவணையை ஏற்ற முடியவில்லை.,to check
+app,m16.week.classGroup,Class group,Select label for choosing which class group's weekly timetable to view.,कक्षा समूह,வகுப்புக் குழு,to check
+app,m16.week.addSlot,Add slot,Button label opening the dialog to add a timetable slot.,स्लॉट जोड़ें,நேரத்தைச் சேர்,to check
+app,m16.week.gridCaption,Weekly timetable,Accessible table caption for the weekday by time timetable grid.,साप्ताहिक समय-सारणी,வாராந்திர கால அட்டவணை,to check
+app,m16.week.timeColumn,Time,Column header for time slots in the weekly timetable grid.,समय,நேரம்,to check
+app,m16.week.timeRange,{start}–{end},Start and end time range for a timetable slot or bell period (HH:MM).,{start}–{end},{start}–{end},to check
+app,m16.week.noRoom,No room,Fallback text and select option when a timetable slot has no assigned room.,कोई कक्ष नहीं,அறை இல்லை,to check
+app,m16.week.empty,No timetable slots yet,Empty state heading when the selected class group has no scheduled slots.,अभी कोई समय-सारणी स्लॉट नहीं है,இன்னும் கால அட்டவணை நேரங்கள் இல்லை,to check
+app,m16.week.emptyBody,No slots are scheduled for this class group.,Empty state description when the selected class group has no scheduled slots.,इस कक्षा समूह के लिए कोई स्लॉट निर्धारित नहीं है।,இந்த வகுப்புக் குழுவுக்கு நேரங்கள் எதுவும் திட்டமிடப்படவில்லை.,to check
+app,m16.week.noGroups,No class groups available,Empty state heading when no class groups are visible for the viewer.,कोई कक्षा समूह उपलब्ध नहीं है,வகுப்புக் குழுக்கள் எதுவும் கிடைக்கவில்லை,to check
+app,m16.week.error,Timetable slots could not be loaded.,Error heading when loading timetable slots fails.,समय-सारणी स्लॉट लोड नहीं हो सके।,கால அட்டவணை நேரங்களை ஏற்ற முடியவில்லை.,to check
+app,m16.rooms.title,Rooms,Card heading listing rooms on the Rooms & bells tab.,कक्ष,அறைகள்,to check
+app,m16.rooms.empty,No rooms yet,Empty state heading when the institution has no rooms.,अभी कोई कक्ष नहीं है,இன்னும் அறைகள் இல்லை,to check
+app,m16.rooms.capacity,Capacity: {value},Room seating capacity line. {value} is a formatted number or em dash.,क्षमता: {value},கொள்ளளவு: {value},to check
+app,m16.rooms.error,Rooms and bell schedules could not be loaded.,Error heading when loading rooms or bell schedules fails.,कक्ष और घंटी समय-सारणी लोड नहीं हो सके।,அறைகள் மற்றும் மணி அட்டவணைகளை ஏற்ற முடியவில்லை.,to check
+app,m16.roomKind.classroom,Classroom,Room kind badge: standard classroom.,कक्षा,வகுப்பறை,to check
+app,m16.roomKind.lab,Lab,Room kind badge: science or computing laboratory.,प्रयोगशाला,ஆய்வகம்,to check
+app,m16.roomKind.hall,Hall,"Room kind badge: assembly, lecture or activity hall.",सभागार,மண்டபம்,to check
+app,m16.roomKind.library,Library,Room kind badge: library space.,पुस्तकालय,நூலகம்,to check
+app,m16.roomKind.sports,Sports,Room kind badge: sports facility or field.,खेल,விளையாட்டு,to check
+app,m16.roomKind.online,Online,Room kind badge: virtual or online room.,ऑनलाइन,ஆன்லைன்,to check
+app,m16.roomKind.other,Other,Room kind badge: other room type.,अन्य,பிற,to check
+app,m16.bells.title,Bell schedules,Card heading listing bell schedules on the Rooms & bells tab.,घंटी समय-सारणी,மணி அட்டவணைகள்,to check
+app,m16.bells.empty,No bell schedules yet,Empty state heading when the institution has no bell schedules.,अभी कोई घंटी समय-सारणी नहीं है,இன்னும் மணி அட்டவணைகள் இல்லை,to check
+app,m16.bells.break,Break,Badge marking a break period in a bell schedule.,अवकाश,இடைவேளை,to check
+app,m16.load.title,Teacher load,Card heading listing weekly teaching load per staff member.,शिक्षक कार्यभार,ஆசிரியர் பணிச்சுமை,to check
+app,m16.load.empty,No teacher load recorded yet,Empty state heading when no teacher load rows exist.,अभी कोई शिक्षक कार्यभार दर्ज नहीं है,இன்னும் ஆசிரியர் பணிச்சுமை பதிவு செய்யப்படவில்லை,to check
+app,m16.load.error,Teacher load could not be loaded.,Error heading when loading teacher load fails.,शिक्षक कार्यभार लोड नहीं हो सका।,ஆசிரியர் பணிச்சுமையை ஏற்ற முடியவில்லை.,to check
+app,m16.load.staff,Staff member {number},Fallback label for a staff row when the viewer cannot resolve the person's name. {number} is the 1-based row number.,कर्मचारी {number},பணியாளர் {number},to check
+app,m16.load.periods,"{count, plural, one {# period / week} other {# periods / week}}",Weekly period count for one teacher. {count} is a number.,"{count, plural, one {# पीरियड / सप्ताह} other {# पीरियड / सप्ताह}}","{count, plural, one {# பாடவேளை / வாரம்} other {# பாடவேளைகள் / வாரம்}}",to check
+app,m16.load.minutes,{count} min / week,Weekly teaching minutes for one teacher. {count} is a formatted number.,{count} मिनट / सप्ताह,{count} நிமிடம் / வாரம்,to check
+app,m16.load.maxPeriods,Max: {max} / week,Maximum weekly period limit for a teacher. {max} is a formatted number.,अधिकतम: {max} / सप्ताह,அதிகபட்சம்: {max} / வாரம்,to check
+app,m16.load.noLimit,No limit,Shown when a teacher has no configured maximum weekly period limit.,कोई सीमा नहीं,வரம்பு இல்லை,to check
+app,m16.load.overloaded,Overloaded,Warning badge when a teacher's weekly periods exceed their maximum limit.,अतिभारित,அதிகப் பணிச்சுமை,to check
+app,m16.addDialog.title,Add timetable slot,Dialog title for adding a new timetable slot.,समय-सारणी स्लॉट जोड़ें,கால அட்டவணை நேரத்தைச் சேர்,to check
+app,m16.addDialog.description,"Schedule a subject offering into the weekly timetable. Room, teacher and class clashes are checked automatically.",Dialog description explaining automatic clash detection.,"साप्ताहिक समय-सारणी में एक विषय स्लॉट निर्धारित करें। कक्ष, शिक्षक और कक्षा टकराव की जाँच स्वतः होती है।","வாராந்திர கால அட்டவணையில் ஒரு பாட நேரத்தைத் திட்டமிடுங்கள். அறை, ஆசிரியர் மற்றும் வகுப்பு மோதல்கள் தானாகச் சரிபார்க்கப்படும்.",to check
+app,m16.addDialog.offering,Subject offering,Select label for choosing a subject offering in the add slot dialog.,विषय आवंटन,பாட ஒதுக்கீடு,to check
+app,m16.addDialog.weekday,Weekday,Select label for choosing the ISO day of the week in the add slot dialog.,सप्ताह का दिन,கிழமை,to check
+app,m16.addDialog.start,Start time,Input label for the slot start time (HH:MM).,प्रारंभ समय,தொடக்க நேரம்,to check
+app,m16.addDialog.end,End time,Input label for the slot end time (HH:MM).,समाप्ति समय,முடிவு நேரம்,to check
+app,m16.addDialog.room,Room,Select label for choosing an optional room in the add slot dialog.,कक्ष,அறை,to check
+app,m16.addDialog.teachers,Teachers,Fieldset legend for choosing one or more staff profiles assigned to the slot.,शिक्षक,ஆசிரியர்கள்,to check
+app,m16.addDialog.teachersEmpty,No staff profiles available.,Helper text shown when no staff profiles can be chosen for the slot.,कोई शिक्षक प्रोफ़ाइल उपलब्ध नहीं है।,பணியாளர் சுயவிவரங்கள் எதுவும் இல்லை.,to check
+app,m16.addDialog.effectiveFrom,Effective from,Date input label for when the timetable slot takes effect.,प्रभावी तिथि,நடைமுறைத் தேதி,to check
+app,m16.addDialog.submit,Add slot,Submit button inside the add timetable slot dialog.,स्लॉट जोड़ें,நேரத்தைச் சேர்,to check
+app,m16.addDialog.created,Timetable slot added.,Success toast shown after creating a timetable slot.,समय-सारणी स्लॉट जोड़ा गया।,கால அட்டவணை நேரம் சேர்க்கப்பட்டது.,to check
+app,m16.addDialog.timeInvalid,Enter a valid time (HH:MM).,Field validation error for an invalid start or end time.,मान्य समय (HH:MM) दर्ज करें।,சரியான நேரத்தை உள்ளிடவும் (HH:MM).,to check
+app,m16.addDialog.endBeforeStart,End time must be after start time.,Field validation error when end time is not after start time.,समाप्ति समय प्रारंभ समय के बाद होना चाहिए।,முடிவு நேரம் தொடக்க நேரத்திற்குப் பிறகு இருக்க வேண்டும்.,to check
+app,m16.addDialog.dateInvalid,Enter a valid date (YYYY-MM-DD).,Field validation error when effective from date is invalid.,मान्य तिथि (YYYY-MM-DD) दर्ज करें।,சரியான தேதியை உள்ளிடவும் (YYYY-MM-DD).,to check
+app,m16.addDialog.invalidOffering,The selected subject offering is not valid for this institution.,Server validation error when the offering does not belong to the tenant.,चुना गया विषय आवंटन इस संस्था के लिए मान्य नहीं है।,தேர்ந்தெடுத்த பாட ஒதுக்கீடு இந்த நிறுவனத்திற்குச் செல்லாது.,to check
+app,m16.addDialog.invalidRoom,The selected room is not valid for this institution.,Server validation error when the room does not belong to the tenant.,चुना गया कक्ष इस संस्था के लिए मान्य नहीं है।,தேர்ந்தெடுத்த அறை இந்த நிறுவனத்திற்குச் செல்லாது.,to check
+app,m16.addDialog.invalidStaff,One or more selected teachers are not valid for this institution.,Server validation error when a selected staff profile is not valid.,चुने गए एक या अधिक शिक्षक इस संस्था के लिए मान्य नहीं हैं।,தேர்ந்தெடுத்த ஆசிரியர்களில் ஒருவர் அல்லது அதற்கு மேற்பட்டோர் இந்த நிறுவனத்திற்குச் செல்லாது.,to check
+app,m16.addDialog.invalidRequest,The timetable slot could not be added. Check your entries and try again.,Form-level error when the server rejects the timetable slot request.,समय-सारणी स्लॉट जोड़ा नहीं जा सका। अपनी प्रविष्टियाँ जाँचें और फिर प्रयास करें।,கால அட்டவணை நேரத்தைச் சேர்க்க முடியவில்லை. உங்கள் உள்ளீடுகளைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m16.addDialog.roomClash,This room is already booked at this day and time.,Conflict error on the room field when another slot already uses the room.,यह कक्ष इस दिन और समय पर पहले से बुक है।,இந்த அறை இந்த நாளிலும் நேரத்திலும் ஏற்கனவே ஒதுக்கப்பட்டுள்ளது.,to check
+app,m16.addDialog.teacherClash,A selected teacher is already scheduled at this day and time.,Conflict error on the teachers field when a teacher is already scheduled.,चुना गया शिक्षक इस दिन और समय पर पहले से निर्धारित है।,தேர்ந்தெடுத்த ஆசிரியர் இந்த நாளிலும் நேரத்திலும் ஏற்கனவே திட்டமிடப்பட்டுள்ளார்.,to check
+app,m16.addDialog.classClash,This class group already has a slot at this day and time.,Conflict error on the subject offering field when the class group already has a slot.,इस कक्षा समूह का इस दिन और समय पर पहले से एक स्लॉट है।,இந்த வகுப்புக் குழுவுக்கு இந்த நாளிலும் நேரத்திலும் ஏற்கனவே ஒரு நேரம் உள்ளது.,to check
+app,m16.addDialog.conflict,This slot clashes with an existing timetable slot.,Fallback conflict error when the server reports a clash without a specific field.,यह स्लॉट किसी मौजूदा समय-सारणी स्लॉट से टकराता है।,இந்த நேரம் ஏற்கனவே உள்ள கால அட்டவணை நேரத்துடன் மோதுகிறது.,to check
+app,m16.addDialog.saveFailed,The timetable slot could not be saved. Try again.,Generic error shown when saving a timetable slot fails unexpectedly.,समय-सारणी स्लॉट सहेजा नहीं जा सका। फिर प्रयास करें।,கால அட்டவணை நேரத்தைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.,to check
+app,m16.permission.timetableRead,View timetables,"Permission description: View rooms, bell schedules and timetable slots. Staff can also view teacher load.",समय-सारणी देखें,கால அட்டவணைகளைப் பார்,to check
+app,m16.permission.timetableManage,Manage timetables,"Permission description: Manage rooms, bell schedules and timetable slots.",समय-सारणी प्रबंधित करें,கால அட்டவணைகளை நிர்வகி,to check
+app,m17.nav.title,Attendance,Campus navigation label for attendance.,उपस्थिति,வருகைப் பதிவு,to check
+app,m17.nav.summary,Take roll call and see attendance by class group.,Attendance module summary on the home screen.,कक्षा समूह की हाज़िरी लें और उपस्थिति देखें।,வகுப்புக் குழுவின் வருகையைப் பதிவு செய்து பார்க்கவும்.,to check
+app,m17.page.intro,Choose a class group and a session to take roll call.,Instruction above the class group picker.,हाज़िरी लेने के लिए कक्षा समूह और सत्र चुनें।,வருகையைப் பதிவு செய்ய வகுப்புக் குழுவையும் அமர்வையும் தேர்ந்தெடுக்கவும்.,to check
+app,m17.page.classGroup,Class group,Label for the class group selector.,कक्षा समूह,வகுப்புக் குழு,to check
+app,m17.sessions.title,Attendance sessions,Heading for the list of dated sessions.,उपस्थिति सत्र,வருகைப் பதிவு அமர்வுகள்,to check
+app,m17.sessions.empty,No attendance sessions for this class group,Shown when the selected group has no sessions.,इस कक्षा समूह के लिए कोई उपस्थिति सत्र नहीं है,இந்த வகுப்புக் குழுவுக்கு வருகைப் பதிவு அமர்வுகள் இல்லை,to check
+app,m17.mode.daily,Daily,A roll call for the day.,दैनिक,தினசரி,to check
+app,m17.mode.period,Period,A roll call for a timetable period.,कालांश,பாடவேளை,to check
+app,m17.mode.session,Session,A roll call for a batch session.,सत्र,அமர்வு,to check
+app,m17.mode.event,Event,A roll call for an event.,कार्यक्रम,நிகழ்வு,to check
+app,m17.sessionStatus.open,Open,Session accepting marks.,खुला,திறந்துள்ளது,to check
+app,m17.sessionStatus.submitted,Submitted,Session submitted by staff.,जमा किया गया,சமர்ப்பிக்கப்பட்டது,to check
+app,m17.sessionStatus.locked,Locked,Session locked against edits.,लॉक किया गया,பூட்டப்பட்டது,to check
+app,m17.rollCall.title,Roll call,Heading above the session roster.,हाज़िरी,வருகைப் பதிவு,to check
+app,m17.rollCall.markAll,Mark all present,Mark every learner in this session present.,सभी को उपस्थित चिह्नित करें,அனைவரையும் வந்ததாகப் பதிவு செய்,to check
+app,m17.rollCall.empty,No learners on this roster,Shown when no enrolments apply to the session date.,इस सूची में कोई विद्यार्थी नहीं है,இந்தப் பட்டியலில் மாணவர்கள் இல்லை,to check
+app,m17.rollCall.learner,Learner {roll},Fallback learner label. Keep the roll number placeholder {roll}.,विद्यार्थी {roll},மாணவர் {roll},to check
+app,m17.rollCall.unnumbered,Learner without a roll number,Fallback when neither a name nor a roll number is available.,बिना रोल नंबर वाला विद्यार्थी,வரிசை எண் இல்லாத மாணவர்,to check
+app,m17.rollCall.unmarked,Unmarked,The learner has no attendance mark yet.,हाज़िरी दर्ज नहीं है,இன்னும் பதிவாகவில்லை,to check
+app,m17.rollCall.status,Attendance status,Label for the four attendance choices.,उपस्थिति स्थिति,வருகை நிலை,to check
+app,m17.rollCall.minutes,Minutes late,Whole minutes from one to six hundred.,देरी के मिनट,தாமதமான நிமிடங்கள்,to check
+app,m17.rollCall.lateBy,"{minutes, plural, one {# minute late} other {# minutes late}}",Recorded lateness in minutes.,"{minutes, plural, one {# मिनट की देरी} other {# मिनट की देरी}}","{minutes, plural, one {# நிமிடம் தாமதம்} other {# நிமிடங்கள் தாமதம்}}",to check
+app,m17.rollCall.note,Note (optional),Optional staff-only note for this mark.,टिप्पणी (वैकल्पिक),குறிப்பு (விருப்பத்திற்குரியது),to check
+app,m17.rollCall.waiting,Waiting to sync,The mark is in the offline outbox.,सिंक होने की प्रतीक्षा में,ஒத்திசைவுக்காகக் காத்திருக்கிறது,to check
+app,m17.rollCall.failed,Couldn’t save the mark. Check the session and try again.,Generic mark failure without personal information.,हाज़िरी दर्ज नहीं हुई। सत्र जाँचें और फिर कोशिश करें।,வருகையைப் பதிவு செய்ய முடியவில்லை. அமர்வைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m17.mark.present,Present,Learner attending.,उपस्थित,வந்துள்ளார்,to check
+app,m17.mark.absent,Absent,Learner absent.,अनुपस्थित,வரவில்லை,to check
+app,m17.mark.late,Late,Learner arrived late.,देर से आए,தாமதம்,to check
+app,m17.mark.excused,Excused,Absence excused by staff.,अनुमति सहित अनुपस्थित,அனுமதி பெற்றுள்ளார்,to check
+app,m17.mark.onLeave,On leave,Learner has recorded leave.,अवकाश पर,விடுப்பில்,to check
+app,m17.mark.remote,Remote,Learner attending remotely.,दूरस्थ रूप से उपस्थित,தொலைவழியில் பங்கேற்பு,to check
+app,m17.permission.attendanceRead,View attendance,Permission description: View attendance sessions and marks.,उपस्थिति देखें,வருகைப் பதிவுகளைப் பார்,to check
+app,m17.permission.attendanceMark,Mark attendance,Permission description: Record attendance marks and view private mark notes.,उपस्थिति दर्ज करें,வருகையைப் பதிவு செய்,to check
+app,m17.permission.leaveDecide,Decide leave requests,Permission description: View and decide learner leave requests across the institution.,छुट्टी के अनुरोधों पर निर्णय लें,விடுப்புக் கோரிக்கைகள் மீது முடிவெடு,to check
+app,m18.nav.title,Fees,Navigation label and page heading for the Fees & payments module (M18).,शुल्क,கட்டணங்கள்,to check
+app,m18.nav.summary,"Invoices, payment receipts, fee plans and refunds.",Home tile summary for the Fees & payments module.,"चालान, भुगतान रसीदें, शुल्क योजनाएँ और रिफ़ंड।","கட்டணப் பட்டியல்கள், கட்டண ரசீதுகள், கட்டணத் திட்டங்கள் மற்றும் பணம் திரும்பப்பெறுதல்.",to check
+app,m18.page.intro,"Review fee invoices and payment receipts, and record manual payments.",Introductory subtitle under the Fees page heading.,शुल्क चालान और भुगतान रसीदें देखें तथा मैनुअल भुगतान दर्ज करें।,"கட்டணப் பட்டியல்களையும் கட்டண ரசீதுகளையும் பார்வையிட்டு, நேரடி கட்டணங்களைப் பதிவு செய்யுங்கள்.",to check
+app,m18.page.askAssist,Ask Assist,Button label opening Nexus Assist from the Fees page header.,Assist से पूछें,Assist-இடம் கேள்,to check
+app,m18.page.recordPayment,Record payment,Button label opening the manual payment receipt dialog.,भुगतान दर्ज करें,கட்டணம் பதிவு செய்,to check
+app,m18.page.tabsLabel,Fees sections,Accessible label for the tab list on the Fees page.,शुल्क अनुभाग,கட்டணப் பிரிவுகள்,to check
+app,m18.page.tabInvoices,Invoices,Tab label showing fee invoices.,चालान,கட்டணப் பட்டியல்கள்,to check
+app,m18.page.tabPayments,Payments,Tab label showing recorded and pending fee payment receipts.,भुगतान,செலுத்திய தொகைகள்,to check
+app,m18.page.tabPlans,Plans & refunds,"Staff-only tab label showing fee heads, plans, concessions and refunds.",योजनाएँ और रिफ़ंड,திட்டங்கள் & பணம் திரும்பப்பெறுதல்,to check
+app,m18.page.error,Could not load fee records.,Error heading when the Fees page fails to load.,शुल्क अभिलेख लोड नहीं हो सके।,கட்டணப் பதிவுகளை ஏற்ற முடியவில்லை.,to check
+app,m18.invoices.filterStatus,Filter by status,Select label to filter fee invoices by status.,स्थिति के अनुसार छाँटें,நிலையின் அடிப்படையில் வடிகட்டவும்,to check
+app,m18.invoices.allStatuses,All statuses,Select option showing invoices of every status.,सभी स्थितियाँ,அனைத்து நிலைகளும்,to check
+app,m18.invoices.listLabel,Fee invoices,Accessible label for the list of fee invoices.,शुल्क चालान,கட்டணப் பட்டியல்கள்,to check
+app,m18.invoices.dueOn,Due {date},Invoice due date label. {date} is a formatted calendar date.,देय तिथि {date},செலுத்த வேண்டிய நாள் {date},to check
+app,m18.invoices.total,Total,Label for the invoice total amount.,कुल,மொத்தம்,to check
+app,m18.invoices.paid,Paid,Label for the amount already paid on an invoice.,भुगतान किया गया,செலுத்தியது,to check
+app,m18.invoices.balance,Balance,Label for the remaining unpaid balance on an invoice.,शेष,நிலுவை,to check
+app,m18.invoices.showLines,Show lines,Button hint indicating the invoice row can be expanded to inspect lines.,मदें दिखाएँ,விவரங்களைக் காட்டு,to check
+app,m18.invoices.hideLines,Hide lines,Button hint indicating the expanded invoice lines can be collapsed.,मदें छिपाएँ,விவரங்களை மறை,to check
+app,m18.invoices.linesHeading,Invoice lines,Subheading above the line items of an expanded invoice.,चालान मदें,பட்டியல் விவரங்கள்,to check
+app,m18.invoices.lineAmount,Amount: {amount},Base amount of one invoice line. {amount} is formatted money.,राशि: {amount},தொகை: {amount},to check
+app,m18.invoices.lineDiscount,Discount: {amount},Discount on one invoice line. {amount} is formatted money.,छूट: {amount},தள்ளுபடி: {amount},to check
+app,m18.invoices.lineTax,Tax: {amount},Tax on one invoice line. {amount} is formatted money.,कर: {amount},வரி: {amount},to check
+app,m18.invoices.empty,No invoices match,Empty state heading when no fee invoices match the current filter.,कोई मेल खाता चालान नहीं है,பொருந்தும் கட்டணப் பட்டியல்கள் இல்லை,to check
+app,m18.invoices.emptyBody,Try another status filter or check back when invoices are issued.,Empty state helper text when no fee invoices are listed.,कोई अन्य स्थिति फ़िल्टर चुनें या चालान जारी होने पर फिर देखें।,வேறு நிலை வடிகட்டியைத் தேர்ந்தெடுக்கவும் அல்லது பட்டியல்கள் வெளியிடப்பட்ட பிறகு பார்க்கவும்.,to check
+app,m18.invoices.error,Could not load invoices.,Error heading when loading fee invoices fails.,चालान लोड नहीं हो सके।,கட்டணப் பட்டியல்களை ஏற்ற முடியவில்லை.,to check
+app,m18.invoiceStatus.draft,Draft,Invoice status: not yet issued.,मसौदा,வரைவு,to check
+app,m18.invoiceStatus.issued,Issued,Invoice status: issued with no payment yet.,जारी,வெளியிடப்பட்டது,to check
+app,m18.invoiceStatus.partPaid,Part paid,Invoice status: partially paid with a balance remaining.,आंशिक भुगतान,பகுதி செலுத்தப்பட்டது,to check
+app,m18.invoiceStatus.paid,Paid,Invoice status: paid in full.,भुगतान पूर्ण,செலுத்தப்பட்டது,to check
+app,m18.invoiceStatus.void,Void,Invoice status: cancelled.,रद्द,ரத்து செய்யப்பட்டது,to check
+app,m18.invoiceStatus.writtenOff,Written off,Invoice status: unpaid balance written off.,बट्टे खाते में डाला गया,தள்ளுபடி செய்யப்பட்டது,to check
+app,m18.payments.listLabel,Fee payments,Accessible label for the list of fee payment receipts.,शुल्क भुगतान,கட்டண ரசீதுகள்,to check
+app,m18.payments.receivedAt,Received {date},When a payment was received in the institution time zone. {date} is a formatted date and time.,प्राप्त {date},பெற்ற நாள் {date},to check
+app,m18.payments.pendingReceipt,Pending offline receipt,Heading for a payment queued offline before the server assigns a receipt number.,लंबित ऑफ़लाइन रसीद,நிலுவையிலுள்ள ஆஃப்லைன் ரசீது,to check
+app,m18.payments.empty,No payments recorded yet,Empty state heading when no fee payments exist.,अभी कोई भुगतान दर्ज नहीं है,இன்னும் கட்டணங்கள் பதிவு செய்யப்படவில்லை,to check
+app,m18.payments.emptyBody,Recorded receipts will appear here.,Empty state helper text when no fee payments exist.,दर्ज की गई रसीदें यहाँ दिखाई देंगी।,பதிவு செய்யப்பட்ட ரசீதுகள் இங்கே தோன்றும்.,to check
+app,m18.payments.error,Could not load payments.,Error heading when loading fee payments fails.,भुगतान लोड नहीं हो सके।,கட்டண ரசீதுகளை ஏற்ற முடியவில்லை.,to check
+app,m18.method.cash,Cash,Payment method: cash.,नकद,பணம்,to check
+app,m18.method.cheque,Cheque,Payment method: cheque.,चेक,காசோலை,to check
+app,m18.method.bankTransfer,Bank transfer,Payment method: direct bank transfer.,बैंक ट्रांसफ़र,வங்கிப் பரிமாற்றம்,to check
+app,m18.method.card,Card,Payment method: debit or credit card.,कार्ड,அட்டை,to check
+app,m18.method.upi,UPI,Payment method: Unified Payments Interface.,UPI,UPI,to check
+app,m18.method.wallet,Wallet,Payment method: digital wallet.,वॉलेट,மின்னணுப் பணப்பை,to check
+app,m18.method.gateway,Online gateway,Payment method: online payment gateway.,ऑनलाइन गेटवे,ஆன்லைன் நுழைவாயில்,to check
+app,m18.paymentStatus.pending,Pending,Payment status: pending confirmation.,लंबित,நிலுவையில்,to check
+app,m18.paymentStatus.succeeded,Succeeded,Payment status: settled and applied.,सफल,வெற்றி,to check
+app,m18.paymentStatus.failed,Failed,Payment status: payment failed.,विफल,தோல்வி,to check
+app,m18.paymentStatus.reversed,Reversed,Payment status: payment was reversed.,वापस किया गया,திரும்பப் பெறப்பட்டது,to check
+app,m18.payment.waitingToSync,Waiting to sync,Badge shown on an offline receipt or affected invoice until it syncs.,सिंक होने की प्रतीक्षा में,ஒத்திசைவுக்காகக் காத்திருக்கிறது,to check
+app,m18.payment.queuedToast,Receipt saved offline. Waiting to sync.,Toast shown after queueing a manual payment while offline.,रसीद ऑफ़लाइन सहेजी गई। सिंक होने की प्रतीक्षा में।,ரசீது ஆஃப்லைனில் சேமிக்கப்பட்டது. ஒத்திசைவுக்காகக் காத்திருக்கிறது.,to check
+app,m18.payment.replayFailed,A queued payment could not sync. Check the open invoices and try again.,Generic alert when a queued offline receipt fails to replay without exposing personal data.,कतार में रखा गया भुगतान सिंक नहीं हो सका। खुले चालान जाँचें और फिर प्रयास करें।,வரிசையில் உள்ள கட்டணத்தை ஒத்திசைக்க முடியவில்லை. திறந்த பட்டியல்களைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m18.plans.error,Could not load fee plans and refunds.,Error heading when the Plans & refunds tab fails to load.,शुल्क योजनाएँ और रिफ़ंड लोड नहीं हो सके।,கட்டணத் திட்டங்களையும் பணம் திரும்பப்பெறுதலையும் ஏற்ற முடியவில்லை.,to check
+app,m18.plans.headsTitle,Fee heads,Card title for chargeable fee heads.,शुल्क शीर्ष,கட்டணத் தலைப்புகள்,to check
+app,m18.plans.headsEmpty,No fee heads configured yet.,Empty text when an institution has no fee heads.,अभी कोई शुल्क शीर्ष कॉन्फ़िगर नहीं है।,இன்னும் கட்டணத் தலைப்புகள் அமைக்கப்படவில்லை.,to check
+app,m18.plans.taxRate,Tax {rate},Tax rate displayed for a fee head. {rate} is a formatted percentage.,कर {rate},வரி {rate},to check
+app,m18.plans.refundable,Refundable,Badge indicating a fee head is refundable.,वापसी योग्य,திரும்பப் பெறக்கூடியது,to check
+app,m18.plans.nonRefundable,Non-refundable,Badge indicating a fee head is not refundable.,वापसी योग्य नहीं,திரும்பப் பெற இயலாதது,to check
+app,m18.plans.plansTitle,Fee plans,Card title for fee plans.,शुल्क योजनाएँ,கட்டணத் திட்டங்கள்,to check
+app,m18.plans.plansEmpty,No fee plans configured yet.,Empty text when an institution has no fee plans.,अभी कोई शुल्क योजना कॉन्फ़िगर नहीं है।,இன்னும் கட்டணத் திட்டங்கள் அமைக்கப்படவில்லை.,to check
+app,m18.plans.planLines,Fee lines,Subheading for the fee heads and amounts in a fee plan.,शुल्क मदें,கட்டண இனங்கள்,to check
+app,m18.plans.instalments,Instalments,Subheading for the due dates and shares of a fee plan.,किश्तें,தவணைகள்,to check
+app,m18.plans.percentValue,{value}%,Formatted percentage value. {value} is a localized number.,{value}%,{value}%,to check
+app,m18.plans.concessionsTitle,Concessions,Card title for fee concessions.,रियायतें,சலுகைகள்,to check
+app,m18.plans.concessionsEmpty,No concessions recorded.,Empty text when there are no concessions.,कोई रियायत दर्ज नहीं है।,சலுகைகள் எதுவும் பதிவு செய்யப்படவில்லை.,to check
+app,m18.plans.refundsTitle,Refunds,Card title for fee refunds.,रिफ़ंड,பணம் திரும்பப்பெறுதல்,to check
+app,m18.plans.refundsEmpty,No refunds recorded.,Empty text when there are no refunds.,कोई रिफ़ंड दर्ज नहीं है।,பணம் திரும்பப்பெறுதல் எதுவும் பதிவு செய்யப்படவில்லை.,to check
+app,m18.concessionKind.sibling,Sibling,Concession kind: sibling discount.,सहोदर,உடன்பிறந்தவர்,to check
+app,m18.concessionKind.merit,Merit,Concession kind: academic or merit concession.,योग्यता,தகுதி,to check
+app,m18.concessionKind.needBased,Need-based,Concession kind: financial need concession.,आवश्यकता आधारित,தேவை அடிப்படையிலானது,to check
+app,m18.concessionKind.staffChild,Staff child,Concession kind: discount for a staff member's child.,कर्मचारी संतान,பணியாளர் குழந்தை,to check
+app,m18.concessionKind.scholarship,Scholarship,Concession kind: scholarship.,छात्रवृत्ति,கல்வி உதவித்தொகை,to check
+app,m18.concessionKind.awardCredit,Award credit,Concession kind: credit from an award.,पुरस्कार क्रेडिट,விருது வரவு,to check
+app,m18.concessionKind.other,Other,Concession kind: other concession.,अन्य,பிற,to check
+app,m18.concessionMode.percent,Percentage,Concession mode: percentage discount.,प्रतिशत,சதவீதம்,to check
+app,m18.concessionMode.fixed,Fixed amount,Concession mode: fixed currency amount discount.,निश्चित राशि,நிலையான தொகை,to check
+app,m18.refundStatus.requested,Requested,Refund status: waiting for decision.,अनुरोधित,கோரப்பட்டது,to check
+app,m18.refundStatus.approved,Approved,Refund status: approved and awaiting payout.,स्वीकृत,ஒப்புதல் அளிக்கப்பட்டது,to check
+app,m18.refundStatus.paid,Paid,Refund status: refund paid out.,भुगतान पूर्ण,செலுத்தப்பட்டது,to check
+app,m18.refundStatus.rejected,Rejected,Refund status: refund request declined.,अस्वीकृत,நிராகரிக்கப்பட்டது,to check
+app,m18.recordDialog.title,Record payment,Modal title for recording a manual fee payment receipt.,भुगतान दर्ज करें,கட்டணம் பதிவு செய்,to check
+app,m18.recordDialog.description,"Record a cash, cheque or bank-transfer receipt against open invoices for one learner.",Modal description explaining manual payment recording.,"एक शिक्षार्थी के खुले चालानों के लिए नकद, चेक या बैंक ट्रांसफ़र रसीद दर्ज करें।","ஒரு கற்பவரின் திறந்த பட்டியல்களுக்கு பணம், காசோலை அல்லது வங்கிப் பரிமாற்ற ரசீதைப் பதிவு செய்யவும்.",to check
+app,m18.recordDialog.learner,Learner,Select label choosing which learner's open invoices to pay.,शिक्षार्थी,கற்பவர்,to check
+app,m18.recordDialog.invoices,Open invoices,Fieldset legend for selecting one or more open invoices.,खुले चालान,திறந்த கட்டணப் பட்டியல்கள்,to check
+app,m18.recordDialog.noOpenInvoices,There are no open invoices available for payment.,Shown inside the dialog when no issued or part-paid invoices exist.,भुगतान के लिए कोई खुला चालान उपलब्ध नहीं है।,கட்டணம் செலுத்த திறந்த பட்டியல்கள் எதுவும் இல்லை.,to check
+app,m18.recordDialog.selectedBalance,Selected balance: {amount},Combined remaining balance of the checked invoices. {amount} is formatted money.,चयनित शेष: {amount},தேர்ந்தெடுத்த நிலுவை: {amount},to check
+app,m18.recordDialog.amount,Amount ({currency}),Input label for the received payment amount in major currency units. {currency} is an ISO 4217 code.,राशि ({currency}),தொகை ({currency}),to check
+app,m18.recordDialog.method,Payment method,"Select label for choosing cash, cheque or bank transfer.",भुगतान माध्यम,கட்டண முறை,to check
+app,m18.recordDialog.receivedAt,Received at,Date and time input label for when the payment was received.,प्राप्ति तिथि व समय,பெற்ற நாள் மற்றும் நேரம்,to check
+app,m18.recordDialog.offlineHint,Offline — receipt will queue as Waiting to sync until you reconnect.,Status text in the modal footer while offline.,ऑफ़लाइन — कनेक्शन लौटने तक रसीद सिंक होने की प्रतीक्षा में रहेगी।,ஆஃப்லைன் — இணைப்பு திரும்பும் வரை ரசீது ஒத்திசைவுக்காகக் காத்திருக்கும்.,to check
+app,m18.recordDialog.submit,Record receipt,Submit button label for saving a manual payment receipt.,रसीद दर्ज करें,ரசீதைப் பதிவு செய்,to check
+app,m18.recordDialog.created,Payment receipt recorded.,Success toast after recording an online fee payment.,भुगतान रसीद दर्ज हो गई।,கட்டண ரசீது பதிவு செய்யப்பட்டது.,to check
+app,m18.recordDialog.invoicesRequired,Select at least one open invoice.,Validation error when no open invoice is checked.,कम से कम एक खुला चालान चुनें।,குறைந்தது ஒரு திறந்த பட்டியலையாவது தேர்ந்தெடுக்கவும்.,to check
+app,m18.recordDialog.invalidInvoices,One or more selected invoices are not open for payment.,Validation error returned when selected invoices cannot accept payment.,चुने गए एक या अधिक चालान भुगतान के लिए खुले नहीं हैं।,தேர்ந்தெடுத்த பட்டியல்களில் ஒன்று அல்லது அதற்கு மேற்பட்டவை கட்டணத்திற்குத் திறக்கப்படவில்லை.,to check
+app,m18.recordDialog.currencyMismatch,Selected invoices must use the same currency.,Validation error when selected invoices have different currencies.,चुने गए सभी चालानों की मुद्रा एक ही होनी चाहिए।,தேர்ந்தெடுத்த பட்டியல்கள் அனைத்தும் ஒரே நாணயத்தில் இருக்க வேண்டும்.,to check
+app,m18.recordDialog.amountInvalid,Enter a valid positive amount.,"Validation error when the payment amount is zero, negative or malformed.",मान्य धनात्मक राशि दर्ज करें।,சரியான நேர்மறைத் தொகையை உள்ளிடவும்.,to check
+app,m18.recordDialog.amountExceedsBalance,Amount exceeds the remaining balance of the selected invoices.,Validation error when the entered amount is greater than the remaining balance.,राशि चुने गए चालानों के शेष से अधिक है।,தொகை தேர்ந்தெடுத்த பட்டியல்களின் மீதமுள்ள நிலுவையை விட அதிகம்.,to check
+app,m18.recordDialog.invalidMethod,"Choose cash, cheque or bank transfer.",Validation error when an unsupported payment method is submitted.,"नकद, चेक या बैंक ट्रांसफ़र चुनें।","பணம், காசோலை அல்லது வங்கிப் பரிமாற்றத்தைத் தேர்ந்தெடுக்கவும்.",to check
+app,m18.recordDialog.invalidDate,Enter a valid received date and time.,Validation error when the received date and time is missing or invalid.,प्राप्ति की मान्य तिथि और समय दर्ज करें।,பெற்ற சரியான நாளையும் நேரத்தையும் உள்ளிடவும்.,to check
+app,m18.recordDialog.invalidRequest,Could not record this payment. Check your entries and try again.,Fallback validation error when the server rejects a payment request.,यह भुगतान दर्ज नहीं हो सका। अपनी प्रविष्टियाँ जाँचें और फिर प्रयास करें।,இந்தக் கட்டணத்தைப் பதிவு செய்ய முடியவில்லை. உங்கள் உள்ளீடுகளைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m18.recordDialog.saveFailed,Could not save the payment receipt. Try again.,Generic error shown when saving a payment fails unexpectedly.,भुगतान रसीद सहेजी नहीं जा सकी। फिर प्रयास करें।,கட்டண ரசீதைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.,to check
+app,m18.permission.feesRead,View fees and payments,Permission description: View fees and payments.,शुल्क और भुगतान देखें,கட்டணங்களையும் செலுத்திய தொகைகளையும் பார்,to check
+app,m18.permission.feesManage,Manage fees and payments,Permission description: Manage fees and payments.,शुल्क और भुगतान प्रबंधित करें,கட்டணங்களையும் செலுத்திய தொகைகளையும் நிர்வகி,to check
+app,m19.nav.title,Accounting,Module title for the account and journal screens.,लेखा,கணக்கியல்,to check
+app,m19.nav.summary,Review balances and post journal entries.,Menu description for accounting.,खाते देखें और जर्नल प्रविष्टियाँ दर्ज करें।,"கணக்குகளைப் பார்க்கவும், பதிவேட்டில் மாற்றங்களைப் பதிவு செய்யவும்.",to check
+app,m19.page.intro,"Review the chart of accounts, journal entries and budgets for your institution.",Intro for the accounting page.,"अपने संस्थान की खाता सूची, जर्नल प्रविष्टियाँ और बजट देखें।","உங்கள் நிறுவனத்தின் கணக்குப் பட்டியல், பதிவேடு மற்றும் வரவுசெலவுத் திட்டங்களைப் பார்க்கவும்.",to check
+app,m19.page.askAssist,Ask Assist,Button opening Assist.,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m19.page.accounts,Accounts,Tab for the chart of accounts.,खाते,கணக்குகள்,to check
+app,m19.page.journal,Journal,Tab for journal entries.,जर्नल,பதிவேடு,to check
+app,m19.page.budgets,Budgets,Tab for budgets.,बजट,வரவுசெலவுத் திட்டங்கள்,to check
+app,m19.page.error,Could not load accounting records.,Error when a list cannot be loaded.,लेखा रिकॉर्ड लोड नहीं हो सके।,கணக்கியல் பதிவுகளை ஏற்ற முடியவில்லை.,to check
+app,m19.accounts.empty,No ledger accounts yet.,Empty state for the account tree.,अभी कोई बही खाता नहीं है।,பேரேட்டில் கணக்குகள் எதுவும் இல்லை.,to check
+app,m19.kind.asset,Asset,Account kind for assets.,संपत्ति,சொத்து,to check
+app,m19.kind.liability,Liability,Account kind for liabilities.,देयता,பொறுப்பு,to check
+app,m19.kind.equity,Equity,Account kind for equity.,पूँजी,மூலதனம்,to check
+app,m19.kind.income,Income,Account kind for income.,आय,வருமானம்,to check
+app,m19.kind.expense,Expense,Account kind for expenses.,व्यय,செலவு,to check
+app,m19.journal.postEntry,Post entry,Button and title for the manual journal form.,प्रविष्टि दर्ज करें,பதிவைச் சேர்க்கவும்,to check
+app,m19.journal.empty,No journal entries yet.,Empty state for journal entries.,अभी कोई जर्नल प्रविष्टि नहीं है।,பதிவேட்டில் பதிவுகள் எதுவும் இல்லை.,to check
+app,m19.journal.totalDebit,Total debit,Journal entry or form summary for the debit tally.,कुल डेबिट,மொத்தப் பற்று,to check
+app,m19.journal.totalCredit,Total credit,Form summary for the credit tally.,कुल क्रेडिट,மொத்த வரவு,to check
+app,m19.source.manual,Manual,Journal entry posted by a person.,मैन्युअल,கைமுறை,to check
+app,m19.source.fees,Fees,Journal activity from the fees module.,शुल्क,கட்டணங்கள்,to check
+app,m19.source.payroll,Payroll,Journal activity from payroll.,वेतन,ஊதியப் பட்டியல்,to check
+app,m19.source.import,Import,Journal activity from an import.,आयात,இறக்குமதி,to check
+app,m19.account.unavailable,Account unavailable,Shown when an account cannot be identified from the available records.,खाता उपलब्ध नहीं है,கணக்கு கிடைக்கவில்லை,to check
+app,m19.budgets.empty,No budgets yet.,Empty state for accounting budgets.,अभी कोई बजट नहीं है।,வரவுசெலவுத் திட்டங்கள் எதுவும் இல்லை.,to check
+app,m19.line.label,Line {ordinal},Heading for a line of the journal form. ordinal is the number of this line.,पंक्ति {ordinal},வரி {ordinal},to check
+app,m19.line.account,Account,Message for the account selector in a journal line.,खाता,கணக்கு,to check
+app,m19.line.debit,Debit,Journal line debit amount.,डेबिट,பற்று,to check
+app,m19.line.credit,Credit,Journal line credit amount.,क्रेडिट,வரவு,to check
+app,m19.post.submit,Post,Submit button for the journal entry.,दर्ज करें,பதிவிடவும்,to check
+app,m19.post.institution,Institution,Select the institution whose accounts to use.,संस्थान,கல்வி நிறுவனம்,to check
+app,m19.post.postedOn,Posting date,Day the entry is posted to the journal.,प्रविष्टि की तारीख,பதிவு தேதி,to check
+app,m19.post.reference,Reference,Reference for the journal entry.,संदर्भ,குறிப்பு,to check
+app,m19.post.currency,Currency,Code for the currency used by all journal lines.,मुद्रा,நாணயம்,to check
+app,m19.post.currencyErr,Enter a three-letter currency code.,Validation hint for an invalid currency code.,तीन अक्षरों वाला मुद्रा कोड दर्ज करें।,மூன்று எழுத்துகளைக் கொண்ட நாணயக் குறியீட்டை உள்ளிடவும்.,to check
+app,m19.post.removeLine,Remove line,Delete this line from the form.,पंक्ति हटाएँ,வரியை அகற்றவும்,to check
+app,m19.post.addLine,Add line,Add another line to the form.,पंक्ति जोड़ें,வரியைச் சேர்க்கவும்,to check
+app,m19.post.balanceError,Enter one amount per line and make the debit and credit totals match.,Displayed when amounts are invalid or the journal contains unequal totals.,प्रत्येक पंक्ति में एक राशि भरें। कुल डेबिट और कुल क्रेडिट बराबर होने चाहिए।,ஒவ்வொரு வரியிலும் ஒரு தொகையை மட்டும் உள்ளிடவும். மொத்தப் பற்றும் மொத்த வரவும் சமமாக இருக்க வேண்டும்.,to check
+app,m19.post.lineError,Choose active accounts for all lines.,Generic field error for a rejected ledger account.,सभी पंक्तियों के लिए सक्रिय खाते चुनें।,அனைத்து வரிகளுக்கும் செயல்பாட்டில் உள்ள கணக்குகளைத் தேர்ந்தெடுக்கவும்.,to check
+app,m19.post.failed,Could not post the entry. Check your details and try again.,Generic failure shown without personal or financial data.,प्रविष्टि दर्ज नहीं हो सकी। विवरण जाँचें और फिर प्रयास करें।,பதிவைச் சேர்க்க முடியவில்லை. விவரங்களைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m19.post.success,Journal entry posted.,Completion toast after a journal entry is posted.,जर्नल प्रविष्टि दर्ज हो गई।,பதிவேட்டில் பதிவு சேர்க்கப்பட்டது.,to check
+app,m19.permission.accountsRead,View accounting records,Permission description: View accounting records.,लेखा अभिलेख देखें,கணக்குப் பதிவுகளைப் பார்,to check
+app,m19.permission.accountsManage,Manage accounting records,Permission description: Manage accounting records.,लेखा अभिलेख प्रबंधित करें,கணக்குப் பதிவுகளை நிர்வகி,to check
+app,m20.nav.title,Gradebook,Campus navigation label and page title for the assessment and gradebook screen (M20).,ग्रेडबुक,மதிப்பெண் பதிவேடு,to check
+app,m20.nav.summary,Enter assessment marks and rubric scores by class group.,Home tile description for the Gradebook module.,कक्षा समूह के अनुसार मूल्यांकन अंक और रुब्रिक स्कोर दर्ज करें।,வகுப்புக் குழு வாரியாக மதிப்பீட்டு மதிப்பெண்களையும் அளவுகோல் புள்ளிகளையும் பதிவு செய்யுங்கள்.,to check
+app,m20.page.intro,Choose a class group and an assessment to enter or review marks.,Introductory text under the Gradebook page heading.,अंक दर्ज करने या देखने के लिए कक्षा समूह और मूल्यांकन चुनें।,மதிப்பெண்களைப் பதிவு செய்யவோ பார்க்கவோ ஒரு வகுப்புக் குழுவையும் மதிப்பீட்டையும் தேர்ந்தெடுக்கவும்.,to check
+app,m20.page.classGroup,Class group,Select label for picking a class group on the Gradebook page.,कक्षा समूह,வகுப்புக் குழு,to check
+app,m20.assessments.title,Assessments,Heading above the list of assessments for the selected class group.,मूल्यांकन,மதிப்பீடுகள்,to check
+app,m20.assessments.empty,No assessments for this class group,Empty state shown when the selected class group has no assessments.,इस कक्षा समूह के लिए कोई मूल्यांकन नहीं है,இந்த வகுப்புக் குழுவுக்கு மதிப்பீடுகள் எதுவும் இல்லை,to check
+app,m20.assessments.maxMarks,Max {max},Maximum marks for an assessment. {max} is a formatted number.,अधिकतम {max},அதிகபட்சம் {max},to check
+app,m20.assessments.weight,Weight {weight}%,Percentage weight of an assessment. {weight} is a formatted number.,भारांक {weight}%,எடை {weight}%,to check
+app,m20.assessments.dueOn,Due {date},Due date label on an assessment. {date} is a formatted calendar date.,अंतिम तिथि {date},இறுதி நாள் {date},to check
+app,m20.assessments.noDueDate,No due date,Shown when an assessment has no due date.,कोई अंतिम तिथि नहीं,இறுதி நாள் இல்லை,to check
+app,m20.kind.test,Test,Assessment kind: test.,परीक्षा,தேர்வு,to check
+app,m20.kind.assignment,Assignment,Assessment kind: assignment.,असाइनमेंट,ஒப்படைப்பு,to check
+app,m20.kind.project,Project,Assessment kind: project.,परियोजना,திட்டப்பணி,to check
+app,m20.kind.practical,Practical,Assessment kind: practical.,प्रायोगिक,செய்முறை,to check
+app,m20.kind.oral,Oral,Assessment kind: oral.,मौखिक,வாய்மொழி,to check
+app,m20.kind.observation,Observation,Assessment kind: observation.,अवलोकन,கவனிப்பு,to check
+app,m20.status.draft,Draft,"Assessment status: draft, not open for marking.",मसौदा,வரைவு,to check
+app,m20.status.open,Open,Assessment status: open for mark entry.,खुला,திறந்தது,to check
+app,m20.status.marking,Marking,Assessment status: marking in progress.,मूल्यांकन जारी,மதிப்பிடல் நடைபெறுகிறது,to check
+app,m20.status.moderated,Moderated,Assessment status: moderated and read-only.,समीक्षित,சீராய்வு செய்யப்பட்டது,to check
+app,m20.status.published,Published,Assessment status: published and read-only.,प्रकाशित,வெளியிடப்பட்டது,to check
+app,m20.markSheet.title,Mark sheet,Heading above the learner rows of the selected assessment.,अंक पत्रक,மதிப்பெண் பட்டியல்,to check
+app,m20.markSheet.empty,No learners on this roster,Empty state shown when no learners are currently enrolled in the assessment's class group.,इस सूची में कोई शिक्षार्थी नहीं है,இந்தப் பட்டியலில் கற்பவர்கள் யாரும் இல்லை,to check
+app,m20.markSheet.readOnly,Read-only. Marks can only be changed while the assessment is open or being marked.,Notice shown above a read-only mark sheet.,केवल पढ़ने योग्य। अंक तभी बदले जा सकते हैं जब मूल्यांकन खुला हो या मूल्यांकन जारी हो।,படிக்க மட்டும். மதிப்பீடு திறந்திருக்கும்போதோ மதிப்பிடப்படும்போதோ மட்டுமே மதிப்பெண்களை மாற்ற முடியும்.,to check
+app,m20.markSheet.learner,Learner {roll},Fallback learner label using roll number when directory names are unavailable. Keep {roll}.,शिक्षार्थी {roll},கற்பவர் {roll},to check
+app,m20.markSheet.unnumbered,Learner without a roll number,Fallback learner label when neither a name nor a roll number is available.,बिना रोल नंबर का शिक्षार्थी,வரிசை எண் இல்லாத கற்பவர்,to check
+app,m20.markSheet.marks,Marks,Numeric input label for a learner's marks on the mark sheet.,अंक,மதிப்பெண்கள்,to check
+app,m20.markSheet.marksHint,"0 to {max}, in 0.5 steps",Helper hint under the marks input. {max} is the formatted maximum marks.,"0 से {max} तक, 0.5 के अंतर से","0 முதல் {max} வரை, 0.5 படிகளில்",to check
+app,m20.markSheet.absent,Absent,Checkbox label and status badge indicating the learner was absent for the assessment.,अनुपस्थित,வருகை தரவில்லை,to check
+app,m20.markSheet.notEntered,Not entered,Status badge shown when a learner has no saved mark yet.,दर्ज नहीं,பதிவு செய்யப்படவில்லை,to check
+app,m20.markSheet.percentLabel,Percent,Label above the calculated percentage for a learner's marks.,प्रतिशत,சதவீதம்,to check
+app,m20.markSheet.percent,{value}%,Formatted percentage score for an assessment. {value} is a localized number.,{value}%,{value}%,to check
+app,m20.markSheet.noPercent,—,Placeholder shown instead of a percentage when no mark is entered or the learner is absent.,—,—,to check
+app,m20.markSheet.scoreSummary,{marks} / {max},Badge showing saved marks out of the maximum. {marks} and {max} are formatted numbers.,{marks} / {max},{marks} / {max},to check
+app,m20.markSheet.rubricHeading,Rubric scores,Subheading above the rubric criterion selectors on a mark sheet row.,रुब्रिक स्कोर,அளவுகோல் புள்ளிகள்,to check
+app,m20.markSheet.rubricLevel,{score} — {descriptor},Option label in a rubric criterion select. {score} is a formatted number and {descriptor} is the level text.,{score} — {descriptor},{score} — {descriptor},to check
+app,m20.markSheet.remark,Remark (optional),Optional text input label for a staff remark on a learner's assessment entry.,टिप्पणी (वैकल्पिक),குறிப்பு (விருப்பம்),to check
+app,m20.markSheet.waiting,Waiting to sync,Badge shown when a learner's mark entry is queued in the offline outbox.,सिंक होने की प्रतीक्षा,ஒத்திசைவுக்காகக் காத்திருக்கிறது,to check
+app,m20.markSheet.marksAboveMax,Marks cannot be more than {max}.,Field error when entered marks exceed the assessment maximum. {max} is a formatted number.,अंक {max} से अधिक नहीं हो सकते।,மதிப்பெண்கள் {max}-ஐ விட அதிகமாக இருக்கக்கூடாது.,to check
+app,m20.markSheet.marksInvalid,Enter a mark from 0 to {max} in 0.5 steps.,"Field error when entered marks are negative, not a 0.5 step, or not a valid number. {max} is formatted.",0 से {max} तक 0.5 के अंतर में मान्य अंक दर्ज करें।,0 முதல் {max} வரை 0.5 படிகளில் சரியான மதிப்பெண்ணை உள்ளிடவும்.,to check
+app,m20.markSheet.rubricRequired,Choose a score for each rubric criterion.,Validation error when a present learner is missing one or more rubric criterion scores.,प्रत्येक रुब्रिक मानदंड के लिए एक स्कोर चुनें।,ஒவ்வொரு அளவுகோலுக்கும் ஒரு புள்ளியைத் தேர்ந்தெடுக்கவும்.,to check
+app,m20.markSheet.remarkInvalid,Remark must be 500 characters or fewer.,Field error when a remark exceeds the maximum length.,टिप्पणी 500 अक्षरों या उससे कम की होनी चाहिए।,குறிப்பு 500 எழுத்துகளுக்குள் இருக்க வேண்டும்.,to check
+app,m20.markSheet.closedError,This assessment is closed and can no longer be edited.,Error shown when saving fails because the assessment is no longer open or marking.,यह मूल्यांकन बंद है और अब इसमें बदलाव नहीं किया जा सकता।,இந்த மதிப்பீடு மூடப்பட்டுவிட்டது; இனி திருத்த முடியாது.,to check
+app,m20.markSheet.failed,Could not save marks. Check the assessment and try again.,Generic save error without personal data or mark values.,अंक सहेजे नहीं जा सके। मूल्यांकन जाँचें और फिर प्रयास करें।,மதிப்பெண்களைச் சேமிக்க முடியவில்லை. மதிப்பீட்டைச் சரிபார்த்து மீண்டும் முயலவும்.,to check
+app,m20.permission.marksRead,View assessments and marks,Permission description: View assessments and marks.,मूल्यांकन और अंक देखें,மதிப்பீடுகளையும் மதிப்பெண்களையும் பார்,to check
+app,m20.permission.marksEnter,Enter assessment marks,Permission description: Enter assessment marks.,मूल्यांकन के अंक दर्ज करें,மதிப்பீட்டு மதிப்பெண்களைப் பதிவு செய்,to check
+app,m21.nav.title,Exams,Navigation item and page heading.,परीक्षाएँ,தேர்வுகள்,to check
+app,m21.nav.summary,"Exam schedules, seating plans and hall tickets",Menu summary.,"परीक्षा कार्यक्रम, बैठक योजना और प्रवेश पत्र","தேர்வு அட்டவணைகள், இருக்கைத் திட்டங்கள் மற்றும் தேர்வு நுழைவுச்சீட்டுகள்",to check
+app,m21.page.intro,"Check exam dates, hall tickets and re-evaluation updates.",Introduction on the Exams page.,"परीक्षा की तारीखें, प्रवेश पत्र और पुनर्मूल्यांकन की स्थिति देखें।","தேர்வு நாட்கள், நுழைவுச்சீட்டுகள் மற்றும் மறுமதிப்பீட்டு நிலையைப் பார்க்கவும்.",to check
+app,m21.page.schedule,Schedule,Staff tab for exams and papers.,कार्यक्रम,அட்டவணை,to check
+app,m21.page.seating,Seating,Staff tab for allocated seats.,बैठक व्यवस्था,இருக்கை ஒதுக்கீடு,to check
+app,m21.page.tickets,Hall tickets & re-evaluation,Tab for tickets and requests.,प्रवेश पत्र और पुनर्मूल्यांकन,நுழைவுச்சீட்டுகள் மற்றும் மறுமதிப்பீடு,to check
+app,m21.schedule.papers,Exam papers,Heading above scheduled papers.,प्रश्नपत्र,தேர்வுத் தாள்கள்,to check
+app,m21.schedule.empty,No exams scheduled.,Empty exam list.,कोई परीक्षा निर्धारित नहीं है।,தேர்வுகள் எதுவும் திட்டமிடப்படவில்லை.,to check
+app,m21.schedule.noPapers,No papers for this exam.,Empty paper list.,इस परीक्षा का कोई प्रश्नपत्र नहीं है।,இந்தத் தேர்வுக்குத் தாள்கள் இல்லை.,to check
+app,m21.schedule.dates,{start} – {end},"Exam date range, with formatted dates.",{start} – {end},{start} – {end},to check
+app,m21.schedule.times,"{startHour, number, ::integer-width/*00}:{startMinute, number, ::integer-width/*00}–{endHour, number, ::integer-width/*00}:{endMinute, number, ::integer-width/*00}",Local start and end times of a paper using a 24-hour clock.,"{startHour, number, ::integer-width/*00}:{startMinute, number, ::integer-width/*00}–{endHour, number, ::integer-width/*00}:{endMinute, number, ::integer-width/*00}","{startHour, number, ::integer-width/*00}:{startMinute, number, ::integer-width/*00}–{endHour, number, ::integer-width/*00}:{endMinute, number, ::integer-width/*00}",to check
+app,m21.schedule.rooms,Rooms: {rooms},Rooms assigned to a paper.,कक्ष: {rooms},அறைகள்: {rooms},to check
+app,m21.schedule.unassigned,Unassigned,No rooms assigned.,आवंटित नहीं,ஒதுக்கப்படவில்லை,to check
+app,m21.schedule.maxMarks,Maximum marks: {marks},Maximum marks for a paper.,अधिकतम अंक: {marks},அதிகபட்ச மதிப்பெண்: {marks},to check
+app,m21.seating.room,Room,Fallback when a room name is unavailable.,कक्ष,அறை,to check
+app,m21.seating.learner,Learner,Fallback when neither name nor learner number is available.,विद्यार्थी,மாணவர்,to check
+app,m21.seating.paperOption,{name} · {date} · {time},"Paper selector option with subject, date and local time.",{name} · {date} · {time},{name} · {date} · {time},to check
+app,m21.seating.generate,Generate seating plan,Button to generate or confirm a paper’s seating plan.,बैठक योजना बनाएँ,இருக்கைத் திட்டத்தை உருவாக்கு,to check
+app,m21.seating.offline,Needs a connection,Reason generation is disabled while offline.,इंटरनेट कनेक्शन चाहिए,இணைய இணைப்பு தேவை,to check
+app,m21.seating.replace,This replaces the existing seat assignments for this paper.,Confirmation before replacing seats.,इस प्रश्नपत्र के लिए पहले से आवंटित सीटों की जगह नई सीटें आवंटित होंगी।,இந்தத் தேர்வுத் தாளுக்கான தற்போதைய இருக்கை ஒதுக்கீடுகள் மாற்றப்படும்.,to check
+app,m21.seating.capacity,The assigned rooms do not have enough seats.,Insufficient room capacity.,आवंटित कक्षों में पर्याप्त सीटें नहीं हैं।,ஒதுக்கப்பட்ட அறைகளில் போதுமான இருக்கைகள் இல்லை.,to check
+app,m21.seating.closed,Seats can only be generated for planned or scheduled exams.,Exam status prevents seat generation.,बैठक योजना केवल नियोजित या निर्धारित परीक्षाओं के लिए बनाई जा सकती है।,திட்டமிடப்பட்ட அல்லது அட்டவணையிடப்பட்ட தேர்வுகளுக்கு மட்டுமே இருக்கைகளை ஒதுக்க முடியும்.,to check
+app,m21.seating.generated,Seating plan generated.,Successful seat generation.,बैठक योजना बन गई है।,இருக்கைத் திட்டம் உருவாக்கப்பட்டது.,to check
+app,m21.seating.empty,No seats assigned.,Empty seat list.,कोई सीट आवंटित नहीं है।,இருக்கைகள் எதுவும் ஒதுக்கப்படவில்லை.,to check
+app,m21.tickets.heading,Hall tickets,Heading for hall tickets.,प्रवेश पत्र,தேர்வு நுழைவுச்சீட்டுகள்,to check
+app,m21.tickets.exam,Exam,Exam selector and family-safe ticket label.,परीक्षा,தேர்வு,to check
+app,m21.tickets.number,Ticket number: {number},Hall ticket identifier issued to a learner.,प्रवेश पत्र संख्या: {number},நுழைவுச்சீட்டு எண்: {number},to check
+app,m21.tickets.issued,Issued on {date},Ticket issue date in institution time.,जारी होने की तारीख: {date},வழங்கிய நாள்: {date},to check
+app,m21.tickets.revoked,Revoked,Badge for a revoked ticket.,निरस्त,ரத்து செய்யப்பட்டது,to check
+app,m21.tickets.empty,No hall tickets issued.,Empty ticket list.,कोई प्रवेश पत्र जारी नहीं हुआ है।,நுழைவுச்சீட்டுகள் எதுவும் வழங்கப்படவில்லை.,to check
+app,m21.revaluation.heading,Re-evaluation requests,Heading for requests.,पुनर्मूल्यांकन अनुरोध,மறுமதிப்பீட்டு விண்ணப்பங்கள்,to check
+app,m21.revaluation.paper,Paper,Paper selector and fallback label.,प्रश्नपत्र,தேர்வுத் தாள்,to check
+app,m21.revaluation.old,Original marks: {marks},Marks before re-evaluation.,मूल अंक: {marks},முந்தைய மதிப்பெண்: {marks},to check
+app,m21.revaluation.new,Revised marks: {marks},Marks after a change.,संशोधित अंक: {marks},திருத்திய மதிப்பெண்: {marks},to check
+app,m21.revaluation.empty,No re-evaluation requests.,Empty request list.,कोई पुनर्मूल्यांकन अनुरोध नहीं है।,மறுமதிப்பீட்டு விண்ணப்பங்கள் இல்லை.,to check
+app,m21.status.planned,Planned,Exam status before scheduling.,नियोजित,திட்டமிடப்பட்டது,to check
+app,m21.status.scheduled,Scheduled,Exam status once scheduled.,निर्धारित,அட்டவணையிடப்பட்டது,to check
+app,m21.status.running,In progress,Exam underway.,जारी है,நடைபெறுகிறது,to check
+app,m21.status.resultsPending,Results pending,Exam awaiting results.,परिणाम लंबित,முடிவுகள் நிலுவையில் உள்ளன,to check
+app,m21.status.published,Published,Exam results published.,प्रकाशित,வெளியிடப்பட்டது,to check
+app,m21.status.requested,Requested,New re-evaluation request.,अनुरोध किया गया,விண்ணப்பிக்கப்பட்டது,to check
+app,m21.status.inReview,Under review,Re-evaluation underway.,समीक्षाधीन,மதிப்பாய்வில் உள்ளது,to check
+app,m21.status.changed,Marks changed,Re-evaluation changed marks.,अंक बदले गए,மதிப்பெண் மாற்றப்பட்டது,to check
+app,m21.status.unchanged,Marks unchanged,Re-evaluation kept the original marks.,अंक अपरिवर्तित,மதிப்பெண்ணில் மாற்றமில்லை,to check
+app,m21.status.rejected,Rejected,Rejected re-evaluation request.,अस्वीकृत,நிராகரிக்கப்பட்டது,to check
+app,m21.permission.examsRead,View exams and exam records,Permission description: View exams and exam records.,परीक्षाएँ और परीक्षा अभिलेख देखें,தேர்வுகளையும் தேர்வுப் பதிவுகளையும் பார்,to check
+app,m21.permission.examsManage,Manage exams,Permission description: Manage exams.,परीक्षाएँ प्रबंधित करें,தேர்வுகளை நிர்வகி,to check
+app,m22.nav.title,Report cards,Navigation and page title.,रिपोर्ट कार्ड,மதிப்பெண் அறிக்கைகள்,to check
+app,m22.nav.summary,View term results and report cards.,Home tile description.,सत्र के परिणाम और रिपोर्ट कार्ड देखें।,பருவ முடிவுகளையும் மதிப்பெண் அறிக்கைகளையும் பார்க்கவும்.,to check
+app,m22.page.intro,Open a report card to see subject grades and remarks.,Introduction to the report card list.,विषयों के ग्रेड और टिप्पणियाँ देखने के लिए रिपोर्ट कार्ड खोलें।,பாடங்களின் தரநிலைகளையும் குறிப்புகளையும் காண மதிப்பெண் அறிக்கையைத் திறக்கவும்.,to check
+app,m22.page.askAssist,Ask Assist,Open the AI assistant.,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m22.page.failed,Report cards could not be loaded.,Report card read error.,रिपोर्ट कार्ड लोड नहीं हो सके।,மதிப்பெண் அறிக்கைகளை ஏற்ற முடியவில்லை.,to check
+app,m22.filter.group,Class group,Label for the class group filter.,कक्षा समूह,வகுப்புக் குழு,to check
+app,m22.filter.allGroups,All class groups,Option to clear the class group filter.,सभी कक्षा समूह,அனைத்து வகுப்புக் குழுக்களும்,to check
+app,m22.filter.learner,Learner,Label for the learner filter.,शिक्षार्थी,கற்பவர்,to check
+app,m22.filter.allLearners,All learners,Option to clear the learner filter.,सभी शिक्षार्थी,அனைத்துக் கற்பவர்களும்,to check
+app,m22.list.empty,No report cards to show,Empty list after applying access rules and filters.,दिखाने के लिए कोई रिपोर्ट कार्ड नहीं है,காட்டுவதற்கு மதிப்பெண் அறிக்கைகள் இல்லை,to check
+app,m22.list.term,Term,Term label when the academic period has no display name.,सत्र,பருவம்,to check
+app,m22.list.publishedAt,Published {date},Publication date and time in the institution’s time zone.,प्रकाशन की तारीख़ {date},வெளியிடப்பட்ட நாள் {date},to check
+app,m22.status.draft,Draft,Report card awaiting approval.,मसौदा,வரைவு,to check
+app,m22.status.approved,Approved,Report card approved for publication.,स्वीकृत,ஒப்புதல் அளிக்கப்பட்டது,to check
+app,m22.status.published,Published,Report card available to its family.,प्रकाशित,வெளியிடப்பட்டது,to check
+app,m22.status.withdrawn,Withdrawn,Report card withdrawn from family view.,वापस लिया गया,திரும்பப் பெறப்பட்டது,to check
+app,m22.view.back,Back to report cards,Return to the list.,रिपोर्ट कार्ड सूची पर वापस जाएँ,மதிப்பெண் அறிக்கைப் பட்டியலுக்குத் திரும்புக,to check
+app,m22.view.unavailable,Report card unavailable,A card link does not match an accessible card.,रिपोर्ट कार्ड उपलब्ध नहीं है,மதிப்பெண் அறிக்கை கிடைக்கவில்லை,to check
+app,m22.view.subject,Subject,Subject label when its name is unavailable.,विषय,பாடம்,to check
+app,m22.view.grade,Grade,Grade for one subject.,ग्रेड,தரநிலை,to check
+app,m22.view.marks,Marks,Subject mark as a percentage.,अंक,மதிப்பெண்,to check
+app,m22.view.percent,{value}%,Subject mark as a percentage. {value} is a localized number.,{value}%,{value}%,to check
+app,m22.view.noMark,—,Placeholder for an unrecorded percentage.,—,—,to check
+app,m22.view.overall,Overall remark,Heading for the overall report card remark.,समग्र टिप्पणी,ஒட்டுமொத்தக் குறிப்பு,to check
+app,m22.action.approve,Approve,Action to approve a draft.,स्वीकृत करें,ஒப்புதல் அளி,to check
+app,m22.action.publish,Publish,Action to publish an approved report card.,प्रकाशित करें,வெளியிடு,to check
+app,m22.action.withdraw,Withdraw,Action to withdraw a published report card.,वापस लें,திரும்பப் பெறு,to check
+app,m22.confirm.approve,Approve this draft for publication?,Approval confirmation.,इस मसौदे को प्रकाशन के लिए स्वीकृत करें?,இந்த வரைவை வெளியிட ஒப்புதல் அளிக்கவா?,to check
+app,m22.confirm.publish,Publish this report card so the learner and their guardians can see it?,Publication confirmation explaining family visibility.,इस रिपोर्ट कार्ड को प्रकाशित करें ताकि शिक्षार्थी और उनके अभिभावक इसे देख सकें?,கற்பவரும் அவருடைய பாதுகாவலர்களும் பார்க்க இந்த அறிக்கையை வெளியிடவா?,to check
+app,m22.confirm.withdraw,Withdraw this report card from family view? This is the final status.,Withdrawal confirmation explaining the terminal state.,इस रिपोर्ट कार्ड को परिवार के दृश्य से हटाएँ? यह इसकी अंतिम स्थिति होगी।,குடும்பத்தினர் பார்வையிலிருந்து இந்த அறிக்கையைத் திரும்பப் பெறவா? இதுவே இறுதி நிலை.,to check
+app,m22.action.saved,Report card status updated,Success message after changing status.,रिपोर्ट कार्ड की स्थिति बदल गई,அறிக்கையின் நிலை புதுப்பிக்கப்பட்டது,to check
+app,m22.action.failed,The report card could not be updated.,Generic status update failure.,रिपोर्ट कार्ड अपडेट नहीं हो सका।,அறிக்கையைப் புதுப்பிக்க முடியவில்லை.,to check
+app,m22.action.conflict,The status has changed. Close this dialog to see the latest status.,Status changed before confirmation.,स्थिति बदल गई है। नई स्थिति देखने के लिए यह संवाद बंद करें।,நிலை மாறியுள்ளது. தற்போதைய நிலையைக் காண இந்த உரையாடலை மூடவும்.,to check
+app,m22.permission.reportsRead,View report cards,Permission description: View report cards.,प्रगति पत्र देखें,மாணவர் முன்னேற்ற அறிக்கைகளைப் பார்,to check
+app,m22.permission.reportsPublish,Publish report cards,Permission description: Publish report cards.,प्रगति पत्र प्रकाशित करें,மாணவர் முன்னேற்ற அறிக்கைகளை வெளியிடு,to check
+app,m23.nav.title,Issued documents,Navigation and page title for issued documents.,जारी किए गए दस्तावेज़,வழங்கப்பட்ட ஆவணங்கள்,to check
+app,m23.nav.summary,View and verify issued certificates and letters.,Home tile description for issued documents.,जारी किए गए प्रमाणपत्र और पत्र देखें व सत्यापित करें।,வழங்கப்பட்ட சான்றிதழ்களையும் கடிதங்களையும் பார்த்துச் சரிபார்க்கவும்.,to check
+app,m23.page.intro,"Open an issued document to inspect its verification code, signatures and status.",Introduction above the issued documents list.,"सत्यापन कोड, हस्ताक्षर और स्थिति देखने के लिए जारी दस्तावेज़ खोलें।","சரிபார்ப்புக் குறியீடு, கையொப்பங்கள் மற்றும் நிலையைக் காண வழங்கப்பட்ட ஆவணத்தைத் திறக்கவும்.",to check
+app,m23.page.failed,Issued documents could not be loaded.,Error shown when issued documents fail to load.,जारी किए गए दस्तावेज़ लोड नहीं हो सके।,வழங்கப்பட்ட ஆவணங்களை ஏற்ற முடியவில்லை.,to check
+app,m23.filter.learner,Learner,Label for the learner filter on issued documents.,शिक्षार्थी,கற்பவர்,to check
+app,m23.filter.allLearners,All learners,Option to show issued documents for all learners.,सभी शिक्षार्थी,அனைத்துக் கற்பவர்களும்,to check
+app,m23.filter.kind,Document kind,Label for the document kind filter.,दस्तावेज़ का प्रकार,ஆவண வகை,to check
+app,m23.filter.allKinds,All kinds,Option to show all issued document kinds.,सभी प्रकार,அனைத்து வகைகளும்,to check
+app,m23.list.empty,No issued documents to show,Empty state when no issued documents match.,दिखाने के लिए कोई जारी दस्तावेज़ नहीं है,காட்டுவதற்கு வழங்கப்பட்ட ஆவணங்கள் இல்லை,to check
+app,m23.list.staffLetter,Staff letter,Recipient label for an issued document that is not linked to a learner.,कर्मचारी पत्र,பணியாளர் கடிதம்,to check
+app,m23.kind.bonafide,Bonafide certificate,Issued document kind: bonafide certificate.,वास्तविक छात्र प्रमाणपत्र,உண்மைநிலைச் சான்றிதழ்,to check
+app,m23.kind.transfer,Transfer certificate,Issued document kind: transfer certificate.,स्थानांतरण प्रमाणपत्र,மாற்றுச் சான்றிதழ்,to check
+app,m23.kind.completion,Completion certificate,Issued document kind: completion certificate.,पूर्णता प्रमाणपत्र,நிறைவுச் சான்றிதழ்,to check
+app,m23.kind.character,Character certificate,Issued document kind: character certificate.,चरित्र प्रमाणपत्र,நன்னடத்தைச் சான்றிதழ்,to check
+app,m23.kind.transcript,Transcript,Issued document kind: academic transcript.,प्रतिलिपि,மதிப்பெண் சான்றுப் படி,to check
+app,m23.kind.letter,Letter,Issued document kind: formal letter.,पत्र,கடிதம்,to check
+app,m23.kind.other,Other document,Issued document kind: other issued document.,अन्य दस्तावेज़,பிற ஆவணம்,to check
+app,m23.method.drawn,Drawn signature,Document signature method: drawn signature.,हस्तलिखित हस्ताक्षर,கையால் இட்ட கையொப்பம்,to check
+app,m23.method.digitalCertificate,Digital certificate,Document signature method: digital certificate.,डिजिटल प्रमाणपत्र,மின்னணுச் சான்றிதழ்,to check
+app,m23.method.otp,One-time passcode,Document signature method: one-time passcode confirmation.,एक बार का पासकोड,ஒருமுறை கடவுச்சொல்,to check
+app,m23.view.back,Back to issued documents,Button to return from a document view to the list.,जारी दस्तावेज़ों की सूची पर वापस जाएँ,வழங்கப்பட்ட ஆவணப் பட்டியலுக்குத் திரும்புக,to check
+app,m23.view.unavailable,Document unavailable,Shown when a direct link points to an inaccessible or unknown document.,दस्तावेज़ उपलब्ध नहीं है,ஆவணம் கிடைக்கவில்லை,to check
+app,m23.view.revoked,Revoked,Badge indicating an issued document has been revoked.,निरस्त,ரத்து செய்யப்பட்டது,to check
+app,m23.view.number,Document number,Label for the issued document number.,दस्तावेज़ संख्या,ஆவண எண்,to check
+app,m23.view.issuedOn,Issued on,Label for the date the document was issued.,जारी होने की तारीख़,வழங்கப்பட்ட நாள்,to check
+app,m23.view.code,Verification code,Label for the public verification code.,सत्यापन कोड,சரிபார்ப்புக் குறியீடு,to check
+app,m23.view.signatures,Signatures,Label for the document signature count and signing methods.,हस्ताक्षर,கையொப்பங்கள்,to check
+app,m23.revoke.action,Revoke,Button to open the document revocation dialog.,निरस्त करें,ரத்து செய்,to check
+app,m23.revoke.title,Revoke document,Dialog heading for revoking an issued document.,दस्तावेज़ निरस्त करें,ஆவணத்தை ரத்து செய்,to check
+app,m23.revoke.confirm,Public verification will show this document as invalid. Revocation cannot be undone.,Warning text explaining the effect of revoking an issued document.,सार्वजनिक सत्यापन में यह दस्तावेज़ अमान्य दिखेगा। निरस्तीकरण को पूर्ववत नहीं किया जा सकता।,பொதுச் சரிபார்ப்பில் இந்த ஆவணம் செல்லாததாகக் காட்டப்படும். ரத்து செய்ததை மாற்ற முடியாது.,to check
+app,m23.revoke.confirmAction,Revoke document,Confirm button inside the revocation dialog.,दस्तावेज़ निरस्त करें,ஆவணத்தை ரத்து செய்,to check
+app,m23.revoke.reason,Revocation reason,Label for the internal revocation reason field and detail row.,निरस्तीकरण का कारण,ரத்து செய்வதற்கான காரணம்,to check
+app,m23.revoke.counter,{count} / {max},Character counter under the revocation reason field. {count} and {max} are formatted numbers.,{count} / {max},{count} / {max},to check
+app,m23.revoke.tooLong,Reason must be {max} characters or fewer.,Validation error when the revocation reason exceeds the character limit. {max} is a formatted number.,कारण {max} या उससे कम अक्षरों का होना चाहिए।,காரணம் {max} எழுத்துகள் அல்லது அதற்குக் குறைவாக இருக்க வேண்டும்.,to check
+app,m23.revoke.invalidReason,Enter a revocation reason.,Server validation error for an invalid revocation reason.,निरस्तीकरण का कारण दर्ज करें।,ரத்து செய்வதற்கான காரணத்தை உள்ளிடவும்.,to check
+app,m23.revoke.saved,Document revoked,Success toast after revoking an issued document.,दस्तावेज़ निरस्त किया गया,ஆவணம் ரத்து செய்யப்பட்டது,to check
+app,m23.revoke.conflict,Already revoked. Close this dialog and reload to see the latest status.,Error shown when another session revoked the document first.,पहले से निरस्त है। नवीनतम स्थिति देखने के लिए यह संवाद बंद करें और पृष्ठ फिर से लोड करें।,ஏற்கனவே ரத்து செய்யப்பட்டது. தற்போதைய நிலையைக் காண இந்த உரையாடலை மூடிவிட்டுப் பக்கத்தை மீண்டும் ஏற்றவும்.,to check
+app,m23.revoke.failed,The document could not be revoked.,Generic error shown when revoking an issued document fails.,दस्तावेज़ निरस्त नहीं हो सका।,ஆவணத்தை ரத்து செய்ய முடியவில்லை.,to check
+app,m23.permission.documentsRead,View issued documents,Permission description: View issued documents.,जारी किए गए दस्तावेज़ देखें,வழங்கப்பட்ட ஆவணங்களைப் பார்,to check
+app,m23.permission.documentsIssue,Issue documents,Permission description: Issue documents.,दस्तावेज़ जारी करें,ஆவணங்களை வழங்கு,to check
+app,m24.nav.title,Messages & notices,Navigation and page title for the communication hub (M24).,संदेश और सूचनाएँ,செய்திகள் & அறிவிப்புகள்,to check
+app,m24.nav.summary,"Read message threads, notices and meeting bookings.",Home tile description for the communication hub module.,"संदेश संवाद, सूचनाएँ और बैठक बुकिंग देखें।","செய்தி உரையாடல்கள், அறிவிப்புகள் மற்றும் சந்திப்பு முன்பதிவுகளைப் பார்க்கவும்.",to check
+app,m24.page.intro,"Read your threads, reply to messages, check notices and view meeting bookings.",Introduction text under the communication hub page title.,"अपने संवाद पढ़ें, संदेशों का उत्तर दें, सूचनाएँ जाँचें और बैठक बुकिंग देखें।","உங்கள் உரையாடல்களைப் படிக்கவும், செய்திகளுக்குப் பதிலளிக்கவும், அறிவிப்புகளைச் சரிபார்க்கவும், சந்திப்பு முன்பதிவுகளைப் பார்க்கவும்.",to check
+app,m24.page.tabsLabel,Communication sections,Accessible label for the tabs on the communication hub page.,संचार अनुभाग,தொடர்புப் பிரிவுகள்,to check
+app,m24.page.tabMessages,Messages,Tab label for message threads.,संदेश,செய்திகள்,to check
+app,m24.page.tabNotices,Notices,Tab label for institution notices.,सूचनाएँ,அறிவிப்புகள்,to check
+app,m24.page.tabMeetings,Meetings,Tab label for parent-teacher meeting bookings.,बैठकें,சந்திப்புகள்,to check
+app,m24.threads.listLabel,Message threads,Accessible label for the list of message threads.,संदेश संवाद,செய்தி உரையாடல்கள்,to check
+app,m24.threads.empty,No message threads yet,Empty state when the viewer has no message threads.,अभी कोई संदेश संवाद नहीं है,இன்னும் செய்தி உரையாடல்கள் இல்லை,to check
+app,m24.threads.error,Message threads could not be loaded.,Error shown when message threads fail to load.,संदेश संवाद लोड नहीं हो सके।,செய்தி உரையாடல்களை ஏற்ற முடியவில்லை.,to check
+app,m24.threads.archived,Archived,Badge shown on archived message threads.,संग्रहीत,காப்பகப்படுத்தப்பட்டது,to check
+app,m24.threads.noMessages,No messages yet,Shown instead of a date when a thread has no messages yet.,अभी कोई संदेश नहीं है,இன்னும் செய்திகள் இல்லை,to check
+app,m24.kind.direct,Direct message,Message thread kind: direct conversation.,सीधा संदेश,நேரடிச் செய்தி,to check
+app,m24.kind.classGroup,Class group,Message thread kind: class group thread.,कक्षा समूह,வகுப்புக் குழு,to check
+app,m24.kind.staffGroup,Staff group,Message thread kind: staff group thread.,कर्मचारी समूह,பணியாளர் குழு,to check
+app,m24.kind.broadcast,Broadcast,Message thread kind: broadcast thread.,प्रसारण,ஒலிபரப்பு,to check
+app,m24.thread.back,Back to messages,Button to return from a thread view to the threads list.,संदेशों पर वापस जाएँ,செய்திகளுக்குத் திரும்புக,to check
+app,m24.thread.unavailable,Thread unavailable,Shown when a direct link points to an inaccessible or unknown thread.,संवाद उपलब्ध नहीं है,உரையாடல் கிடைக்கவில்லை,to check
+app,m24.thread.error,Messages could not be loaded.,Error shown when a thread's messages fail to load.,संदेश लोड नहीं हो सके।,செய்திகளை ஏற்ற முடியவில்லை.,to check
+app,m24.thread.empty,No messages in this thread yet,Empty state when an opened thread has no messages yet.,इस संवाद में अभी कोई संदेश नहीं है,இந்த உரையாடலில் இன்னும் செய்திகள் இல்லை,to check
+app,m24.thread.messagesLabel,Thread messages,Accessible label for the ordered list of messages in a thread.,संवाद के संदेश,உரையாடல் செய்திகள்,to check
+app,m24.thread.you,You,Sender label for messages sent by the signed-in viewer.,आप,நீங்கள்,to check
+app,m24.thread.member,Member,Fallback sender label when a participant's name is not available.,सदस्य,உறுப்பினர்,to check
+app,m24.thread.edited,Edited,Text label shown on a message that was edited after sending.,संपादित,திருத்தப்பட்டது,to check
+app,m24.thread.archivedNote,This thread is archived. Replies are closed.,Note explaining why the reply form is hidden on an archived thread.,यह संवाद संग्रहीत है। उत्तर देना बंद है।,இந்த உரையாடல் காப்பகப்படுத்தப்பட்டது. பதில்கள் மூடப்பட்டுள்ளன.,to check
+app,m24.reply.label,Reply,Label for the message reply text area.,उत्तर,பதில்,to check
+app,m24.reply.send,Send reply,Submit button to send a reply in a message thread.,उत्तर भेजें,பதில் அனுப்பு,to check
+app,m24.reply.counter,{count} / {max},Character counter under the reply text area. {count} and {max} are formatted numbers.,{count} / {max},{count} / {max},to check
+app,m24.reply.tooLong,Message must be {max} characters or fewer.,Validation error when a reply exceeds the maximum length. {max} is a formatted number.,संदेश {max} या उससे कम अक्षरों का होना चाहिए।,செய்தி {max} எழுத்துகள் அல்லது அதற்குக் குறைவாக இருக்க வேண்டும்.,to check
+app,m24.reply.invalidBody,Enter a reply before sending.,Error shown when the server rejects an invalid reply body.,भेजने से पहले उत्तर दर्ज करें।,அனுப்புவதற்கு முன் பதிலை உள்ளிடவும்.,to check
+app,m24.reply.archivedError,This thread is archived and can no longer receive replies.,Error shown when sending a reply fails because the thread is archived.,यह संवाद संग्रहीत है और अब इसमें उत्तर नहीं भेजे जा सकते।,இந்த உரையாடல் காப்பகப்படுத்தப்பட்டது; இனி பதில்களைப் பெற முடியாது.,to check
+app,m24.reply.waiting,Waiting to send,Badge on a queued offline reply waiting to be sent when back online.,भेजे जाने की प्रतीक्षा में,அனுப்பக் காத்திருக்கிறது,to check
+app,m24.reply.notSent,Not sent,Badge or error shown when a reply could not be sent.,भेजा नहीं गया,அனுப்பப்படவில்லை,to check
+app,m24.reply.replayFailed,One or more replies could not be sent.,Alert shown when a queued offline reply failed while replaying.,एक या अधिक उत्तर भेजे नहीं जा सके।,ஒன்று அல்லது அதற்கு மேற்பட்ட பதில்களை அனுப்ப முடியவில்லை.,to check
+app,m24.notices.listLabel,Notices,Accessible label for the list of institution notices.,सूचनाएँ,அறிவிப்புகள்,to check
+app,m24.notices.empty,No notices to show,Empty state when there are no visible notices.,दिखाने के लिए कोई सूचना नहीं है,காட்ட அறிவிப்புகள் எதுவும் இல்லை,to check
+app,m24.notices.error,Notices could not be loaded.,Error shown when notices fail to load.,सूचनाएँ लोड नहीं हो सकीं।,அறிவிப்புகளை ஏற்ற முடியவில்லை.,to check
+app,m24.notices.needsAck,Needs acknowledgement,Badge shown on notices that require acknowledgement.,पावती आवश्यक है,ஒப்புதல் தேவை,to check
+app,m24.noticeStatus.draft,Draft,Notice status badge: draft.,मसौदा,வரைவு,to check
+app,m24.noticeStatus.scheduled,Scheduled,Notice status badge: scheduled for future publication.,निर्धारित,திட்டமிடப்பட்டது,to check
+app,m24.noticeStatus.published,Published,Notice status badge: published.,प्रकाशित,வெளியிடப்பட்டது,to check
+app,m24.noticeStatus.withdrawn,Withdrawn,Notice status badge: withdrawn.,वापस ली गई,திரும்பப் பெறப்பட்டது,to check
+app,m24.meetings.listLabel,Meeting bookings,Accessible label for the list of meeting bookings.,बैठक बुकिंग,சந்திப்பு முன்பதிவுகள்,to check
+app,m24.meetings.empty,No meeting bookings to show,Empty state when there are no visible meeting bookings.,दिखाने के लिए कोई बैठक बुकिंग नहीं है,காட்ட சந்திப்பு முன்பதிவுகள் எதுவும் இல்லை,to check
+app,m24.meetings.error,Meeting bookings could not be loaded.,Error shown when meeting bookings fail to load.,बैठक बुकिंग लोड नहीं हो सकीं।,சந்திப்பு முன்பதிவுகளை ஏற்ற முடியவில்லை.,to check
+app,m24.meetings.timeRange,{start}–{end},"Start and end time range for a meeting slot, e.g. 14:00–14:20.",{start}–{end},{start}–{end},to check
+app,m24.meetings.slotUnavailable,Schedule unavailable,Fallback text when a booking's meeting slot details cannot be resolved.,समय-सारणी उपलब्ध नहीं है,நேர அட்டவணை கிடைக்கவில்லை,to check
+app,m24.meetingMode.inPerson,In person,Meeting mode: held in person at a physical location.,व्यक्तिगत भेंट,நேரில்,to check
+app,m24.meetingMode.video,Video call,Meeting mode: held over video call.,वीडियो कॉल,காணொளி அழைப்பு,to check
+app,m24.meetingMode.phone,Phone call,Meeting mode: held over phone call.,फ़ोन कॉल,தொலைபேசி அழைப்பு,to check
+app,m24.bookingStatus.booked,Booked,Meeting booking status badge: booked.,बुक किया गया,முன்பதிவு செய்யப்பட்டது,to check
+app,m24.bookingStatus.cancelled,Cancelled,Meeting booking status badge: cancelled.,रद्द किया गया,ரத்து செய்யப்பட்டது,to check
+app,m24.bookingStatus.attended,Attended,Meeting booking status badge: attended.,उपस्थित,பங்கேற்றார்,to check
+app,m24.bookingStatus.noShow,No-show,Meeting booking status badge: guardian did not attend.,अनुपस्थित,வரவில்லை,to check
+app,m24.permission.messagesRead,View your message threads,Permission to read threads the viewer participates in.,अपने संदेश संवाद देखें,உங்கள் செய்தி உரையாடல்களைப் பார்,to check
+app,m24.permission.messagesSend,Send messages,Permission to send messages.,संदेश भेजें,செய்திகளை அனுப்பு,to check
+app,m24.permission.noticesRead,View notices,Permission to read notices visible to the viewer.,सूचनाएँ देखें,அறிவிப்புகளைப் பார்,to check
+app,m24.permission.noticesPublish,Publish notices,Permission to publish and view institution notices.,सूचनाएँ प्रकाशित करें,அறிவிப்புகளை வெளியிடு,to check
+app,m24.permission.meetingsRead,View meeting slots and bookings,Permission to view meeting slots and bookings visible to the viewer.,बैठक के समय और बुकिंग देखें,சந்திப்பு நேரங்களையும் முன்பதிவுகளையும் பார்,to check
+app,m24.permission.meetingsManage,Manage meeting bookings,Permission to manage and view institution meeting bookings.,बैठक की बुकिंग प्रबंधित करें,சந்திப்பு முன்பதிவுகளை நிர்வகி,to check
+app,m25.nav.title,Family,Navigation item and page title for the family portal (M25).,परिवार,குடும்பம்,to check
+app,m25.nav.summary,See your children's summary counts and open their pages.,Home tile description for the family portal module.,अपने बच्चों का सारांश और उनके पृष्ठ देखें।,உங்கள் குழந்தைகளின் சுருக்க எண்ணிக்கைகளையும் பக்கங்களையும் பார்க்கவும்.,to check
+app,m25.page.intro,"Check updates for your children and jump to their attendance, fees, report cards and documents.",Introduction line under the family portal page heading.,"अपने बच्चों से जुड़े अपडेट देखें और उनकी उपस्थिति, शुल्क, रिपोर्ट कार्ड और दस्तावेज़ खोलें।","உங்கள் குழந்தைகளுக்கான புதுப்பிப்புகளைப் பார்த்து, வருகை, கட்டணம், மதிப்பெண் அறிக்கைகள் மற்றும் ஆவணங்களைத் திறக்கவும்.",to check
+app,m25.page.askAssist,Ask Assist,Button label to open Nexus Assist from the family portal.,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m25.page.failed,Family home could not be loaded.,Error title shown when the family home fails to load without cached data.,परिवार पृष्ठ लोड नहीं हो सका।,குடும்ப முகப்பை ஏற்ற முடியவில்லை.,to check
+app,m25.child.sectionLabel,Children and quick links,Accessible label for the child switcher and module links section.,बच्चे और त्वरित लिंक,குழந்தைகள் மற்றும் விரைவு இணைப்புகள்,to check
+app,m25.child.label,Child,Label for the child selector when a guardian has more than one child.,बच्चा,குழந்தை,to check
+app,m25.child.fallback,Child,Fallback display name when a child's name and learner number are unavailable.,बच्चा,குழந்தை,to check
+app,m25.child.linksLabel,Child pages,Accessible label for the list of module links under the child switcher.,बच्चे के पृष्ठ,குழந்தை பக்கங்கள்,to check
+app,m25.cards.listLabel,Summary cards,Accessible label for the list of family portal summary cards.,सारांश कार्ड,சுருக்க அட்டைகள்,to check
+app,m25.cards.allChildrenNote,Totals for all your children,"Note shown once above summary cards when a guardian has two or more children, explaining that counts combine all children.",आपके सभी बच्चों का कुल योग,உங்கள் அனைத்து குழந்தைகளுக்குமான மொத்த எண்ணிக்கை,to check
+app,m25.severity.info,Info,Text badge label for an informational summary card severity.,जानकारी,தகவல்,to check
+app,m25.severity.warning,Warning,Text badge label for a warning summary card severity.,चेतावनी,எச்சரிக்கை,to check
+app,m25.severity.critical,Critical,Text badge label for a critical summary card severity.,गंभीर,முக்கியம்,to check
+app,m26.nav.title,My portal,Navigation item and page title for the learner portal (M26).,मेरा पोर्टल,என் முகப்பு,to check
+app,m26.nav.summary,See your summary counts and jump to your pages.,Home tile description for the learner portal module.,अपना सारांश देखें और अपने पृष्ठ खोलें।,"உங்கள் சுருக்க எண்ணிக்கைகளைப் பார்த்து, உங்கள் பக்கங்களைத் திறக்கவும்.",to check
+app,m26.page.intro,"Check your updates and open your timetable, attendance, report cards, documents and messages.",Introduction line under the learner portal page heading.,"अपने अपडेट देखें और अपनी समय-सारणी, उपस्थिति, रिपोर्ट कार्ड, दस्तावेज़ और संदेश खोलें।","உங்கள் புதுப்பிப்புகளைப் பார்த்து, கால அட்டவணை, வருகை, மதிப்பெண் அறிக்கைகள், ஆவணங்கள் மற்றும் செய்திகளைத் திறக்கவும்.",to check
+app,m26.page.askAssist,Ask Assist,Button label to open Nexus Assist from the learner portal.,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m26.page.failed,Your portal could not be loaded.,Error title shown when the learner portal fails to load without cached data.,आपका पोर्टल लोड नहीं हो सका।,உங்கள் முகப்பை ஏற்ற முடியவில்லை.,to check
+app,m26.links.title,Quick links,Heading and accessible navigation label for quick links to learner module pages.,त्वरित लिंक,விரைவு இணைப்புகள்,to check
+app,m27.nav.title,Staff portal,Navigation label and page heading for the staff portal.,स्टाफ़ पोर्टल,பணியாளர் முகப்பு,to check
+app,m27.nav.summary,See today’s summary and open your teaching tools.,Home tile description for the staff portal.,आज का सारांश देखें और पढ़ाने के लिए ज़रूरी साधन खोलें।,இன்றைய சுருக்கத்தைப் பார்த்து உங்கள் கற்பித்தல் கருவிகளைத் திறக்கவும்.,to check
+app,m27.page.intro,"Check today’s attendance sessions, pending leave requests and communication updates.",Introduction below the staff portal heading.,"आज के उपस्थिति सत्र, लंबित अवकाश अनुरोध और नए संदेश व सूचनाएँ देखें।","இன்றைய வருகைப் பதிவு அமர்வுகள், நிலுவையிலுள்ள விடுப்புக் கோரிக்கைகள், புதிய செய்திகள் மற்றும் அறிவிப்புகளைப் பார்க்கவும்.",to check
+app,m27.page.briefing,Daily briefing,Button that opens Nexus Assist from the staff portal.,दैनिक सारांश,இன்றைய கண்ணோட்டம்,to check
+app,m27.page.briefingHint,Try asking “What should I review today?”,Suggested question to ask in the staff daily briefing.,पूछकर देखें “आज मुझे क्या देखना चाहिए?”,“இன்று நான் எவற்றைப் பார்க்க வேண்டும்?” என்று கேட்கலாம்.,to check
+app,m27.page.failed,Staff portal could not be loaded.,Error when the staff home is unavailable and there is no cached copy.,स्टाफ़ पोर्टल लोड नहीं हो सका।,பணியாளர் முகப்பை ஏற்ற முடியவில்லை.,to check
+app,m27.links.title,Quick links,Heading and accessible navigation label for links to staff tools.,त्वरित लिंक,விரைவு இணைப்புகள்,to check
+app,m28.permission.dashboardsRead,View leadership dashboards,Permission to view leadership dashboards.,संस्था नेतृत्व के डैशबोर्ड देखें,நிறுவனத் தலைமைப் பலகைகளைப் பார்,to check
+app,m28.card.attendance,Attendance,"Home card for absences this week or today's attendance sessions, depending on role.",उपस्थिति,வருகை,to check
+app,m28.card.fees,Unpaid invoices,Home card counting invoices with a balance due.,बकाया शुल्क बिल,செலுத்தப்படாத கட்டணப் பட்டியல்கள்,to check
+app,m28.card.messages,Unread messages,Home card counting unread messages.,अपठित संदेश,படிக்காத செய்திகள்,to check
+app,m28.card.notices,Notices,Home card counting notices visible to the viewer.,सूचनाएँ,அறிவிப்புகள்,to check
+app,m28.card.leave,Pending leave requests,Staff home card counting pending learner leave requests.,लंबित अवकाश अनुरोध,நிலுவையிலுள்ள விடுப்புக் கோரிக்கைகள்,to check
+app,m28.card.kpi,Key metrics,Leadership home card for dashboard metrics.,प्रमुख मापदंड,முக்கிய அளவீடுகள்,to check
+app,m28.card.alerts,Alerts,Leadership home card counting items that need attention.,चेतावनियाँ,விழிப்பூட்டல்கள்,to check
+app,m28.kpi.attendance,Attendance rate,"Dashboard percentage of attendance marks recorded as present, late or remote.",उपस्थिति दर,வருகை விகிதம்,to check
+app,m28.kpi.collected,Fees collected,Dashboard total paid against fee invoices in the institution currency.,वसूला गया शुल्क,வசூலிக்கப்பட்ட கட்டணம்,to check
+app,m28.kpi.outstanding,Fees outstanding,Dashboard total balance due on fee invoices in the institution currency.,बकाया शुल्क,நிலுவைக் கட்டணம்,to check
+app,m28.kpi.admissions,Open admissions,Dashboard count of admission applications awaiting a final outcome.,प्रक्रिया में प्रवेश आवेदन,செயலிலுள்ள சேர்க்கை விண்ணப்பங்கள்,to check
+app,m28.kpi.learners,Active learners,"Dashboard count of enrolled learners, including those on leave.",सक्रिय शिक्षार्थी,செயலில் உள்ள கற்பவர்கள்,to check
+app,m28.nav.title,Dashboards,Navigation and page title for institution dashboards.,डैशबोर्ड,புள்ளிவிவரப் பலகைகள்,to check
+app,m28.nav.summary,View key metrics for your institution.,Summary on the dashboards module card.,अपने संस्थान के प्रमुख आँकड़े देखें।,உங்கள் நிறுவனத்தின் முக்கிய அளவீடுகளைப் பாருங்கள்.,to check
+app,m28.page.intro,"Review attendance, fees, admissions and enrolment across your institution.",Introduction above the institution-wide KPI tiles.,"अपने संस्थान की उपस्थिति, शुल्क, प्रवेश और नामांकन के आँकड़े देखें।","உங்கள் நிறுவனத்தின் வருகை, கட்டணம், சேர்க்கை விண்ணப்பங்கள் மற்றும் மாணவர் சேர்க்கை விவரங்களைப் பாருங்கள்.",to check
+app,m28.page.askAssist,Ask Assist,Button opening the Assist panel from dashboards.,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m28.page.prompt,Try asking “Which metrics have changed?”,Suggested question about aggregate metrics.,पूछकर देखें “किन आँकड़ों में बदलाव आया है?”,“எந்த அளவீடுகளில் மாற்றம் ஏற்பட்டுள்ளது?” என்று கேட்டுப் பாருங்கள்.,to check
+app,m28.page.failed,Dashboards could not be loaded.,Error when metrics cannot be loaded and none are cached.,डैशबोर्ड लोड नहीं हो सके।,புள்ளிவிவரப் பலகைகளை ஏற்ற இயலவில்லை.,to check
+app,m28.page.empty,No metrics are available yet.,Empty state after a successful dashboard query.,अभी कोई आँकड़े उपलब्ध नहीं हैं।,தற்போது அளவீடுகள் எதுவும் கிடைக்கவில்லை.,to check
+app,m28.page.unknownKpi,Institution metric,Fallback title for an unrecognised metric label.,संस्थान का आँकड़ा,நிறுவன அளவீடு,to check
+app,m28.page.asOf,As of {time},"The time the metric was calculated, formatted in the institution time zone.",{time} तक,{time} நிலவரப்படி,to check
+app,m28.unit.percent,{value}%,Percentage with an already formatted number on a 0–100 scale.,{value}%,{value}%,to check
+app,m28.unit.days,"{value, plural, one {# day} other {# days}}",Duration of a metric in days.,"{value, plural, one {# दिन} other {# दिन}}","{value, plural, one {# நாள்} other {# நாட்கள்}}",to check
+app,m28.trend.up,Increasing,Text for an upward trend.,बढ़ रहा है,அதிகரிக்கிறது,to check
+app,m28.trend.down,Decreasing,Text for a downward trend.,घट रहा है,குறைகிறது,to check
+app,m28.trend.flat,No change,Text for a flat trend.,कोई बदलाव नहीं,மாற்றமில்லை,to check
+app,m86.nav.title,Year-end rollover,Navigation label for reviewing year-end rollover.,वर्षांत कक्षा परिवर्तन,ஆண்டு இறுதி வகுப்பு மாற்றம்,to check
+app,m86.nav.summary,Review rollover runs and learner promotion decisions.,Summary on the rollover home tile.,वर्षांत कक्षा परिवर्तन और विद्यार्थियों की पदोन्नति के निर्णय देखें।,ஆண்டு இறுதி வகுப்பு மாற்றங்களையும் மாணவர்களின் தேர்ச்சி முடிவுகளையும் பார்க்கலாம்.,to check
+app,m86.page.intro,Select a run to review its totals and the decision for each learner.,Introduces the read-only rollover screen.,कुल संख्या और प्रत्येक विद्यार्थी का निर्णय देखने के लिए एक प्रक्रिया चुनें।,மொத்த எண்ணிக்கையையும் ஒவ்வொரு மாணவருக்கான முடிவையும் பார்க்க ஒரு செயலாக்கத்தைத் தேர்ந்தெடுக்கவும்.,to check
+app,m86.page.askAssist,Ask Assist,Opens the Assist panel.,असिस्ट से पूछें,அசிஸ்டிடம் கேளுங்கள்,to check
+app,m86.page.prompt,Try asking “What do the rollover actions mean?”,General Assist suggestion without learner details.,पूछें “वर्षांत कक्षा परिवर्तन की कार्रवाइयों का क्या अर्थ है?”,“வகுப்பு மாற்ற நடவடிக்கைகளின் பொருள் என்ன?” என்று கேட்கலாம்.,to check
+app,m86.page.failed,Year-end rollover could not be loaded.,Shown when rollover data is unavailable.,वर्षांत कक्षा परिवर्तन लोड नहीं हो सका।,ஆண்டு இறுதி வகுப்பு மாற்றத்தை ஏற்ற முடியவில்லை.,to check
+app,m86.page.empty,No rollover runs yet.,Shown when no rollover runs exist.,अभी तक वर्षांत कक्षा परिवर्तन की कोई प्रक्रिया नहीं है।,இதுவரை வகுப்பு மாற்றச் செயலாக்கங்கள் இல்லை.,to check
+app,m86.run.heading,Rollover runs,Heading for the list of selectable runs.,कक्षा परिवर्तन प्रक्रियाएँ,வகுப்பு மாற்றச் செயலாக்கங்கள்,to check
+app,m86.run.created,Created {date},Creation date of a rollover run.,बनाने की तारीख {date},உருவாக்கிய நாள் {date},to check
+app,m86.run.fees,Carry fees forward,Label for carrying fee balances into the new year.,शुल्क शेष आगे ले जाएँ,கட்டண நிலுவையை அடுத்த ஆண்டுக்கு எடுத்துச் செல்லுதல்,to check
+app,m86.run.yes,Yes,Fees are carried forward.,हाँ,ஆம்,to check
+app,m86.run.no,No,Fees are not carried forward.,नहीं,இல்லை,to check
+app,m86.run.rollback,Rollback available until {date},Deadline for reversing a completed run.,{date} तक बदलाव वापस लिए जा सकते हैं,{date} வரை மாற்றங்களைத் திரும்பப் பெறலாம்,to check
+app,m86.status.draft,Draft,Run status before preparation.,मसौदा,வரைவு,to check
+app,m86.status.dryRunReady,Dry run ready,Run status when the simulation is ready.,पूर्वाभ्यास तैयार,ஒத்திகை தயார்,to check
+app,m86.status.running,In progress,Run status while processing.,जारी है,நடைபெறுகிறது,to check
+app,m86.status.completed,Completed,Run status after completion.,पूर्ण,முடிந்தது,to check
+app,m86.status.rolledBack,Rolled back,Status of a reversed run.,बदलाव वापस लिए गए,மாற்றங்கள் திரும்பப் பெறப்பட்டன,to check
+app,m86.status.failed,Failed,Status of an unsuccessful run.,विफल,தோல்வி,to check
+app,m86.action.promote,Promote,Action to advance the learner.,अगली कक्षा में भेजें,அடுத்த வகுப்புக்கு உயர்த்துதல்,to check
+app,m86.action.detain,Retain in current level,Action to retain a learner at the current level.,वर्तमान स्तर पर रखें,தற்போதைய நிலையிலேயே தொடர்தல்,to check
+app,m86.action.graduate,Graduate,Action for a learner completing their program.,पाठ्यक्रम पूरा करें,படிப்பை நிறைவு செய்தல்,to check
+app,m86.action.transfer,Transfer,Action to transfer a learner.,स्थानांतरण,இடமாற்றம்,to check
+app,m86.action.skip,Skip,Action to skip a learner for this run.,छोड़ें,தவிர்த்தல்,to check
+app,m86.decision.heading,Promotion decisions,Heading for the selected run’s learner decisions.,कक्षा परिवर्तन के निर्णय,வகுப்பு மாற்ற முடிவுகள்,to check
+app,m86.decision.filter,Filter by action,Label for the decision filter.,कार्रवाई के अनुसार छाँटें,நடவடிக்கையின்படி வடிகட்டவும்,to check
+app,m86.decision.all,All,Filter option showing every action.,सभी,அனைத்தும்,to check
+app,m86.decision.action,Action,Column label for the promotion action.,कार्रवाई,நடவடிக்கை,to check
+app,m86.decision.target,Target class group,Column label for the destination class group.,लक्ष्य कक्षा समूह,சேரவுள்ள வகுப்புக் குழு,to check
+app,m86.decision.reason,Reason,Column label for the decision reason.,कारण,காரணம்,to check
+app,m86.decision.changed,Changed by staff,Shown for decisions overridden by a staff member.,कर्मचारी ने बदलाव किया,பணியாளர் மாற்றியுள்ளார்,to check
+app,m86.decision.learnerFallback,Learner,Learner label when neither a name nor a learner number is available.,विद्यार्थी,மாணவர்,to check
+app,m86.decision.unavailable,—,Placeholder when the target group or reason is unavailable.,—,—,to check
+app,m86.decision.none,No decisions match this filter.,Shown when the selected action has no decisions.,इस फ़िल्टर से मेल खाने वाला कोई निर्णय नहीं है।,இந்த வடிகட்டிக்குப் பொருந்தும் முடிவுகள் இல்லை.,to check
+app,m86.permission.rolloverRead,View year-end rollover,Permission description: View year-end rollover runs and promotion decisions.,वर्षांत कक्षा परिवर्तन देखें,ஆண்டு இறுதி வகுப்பு மாற்றங்களைப் பார்,to check
+app,m86.permission.rolloverManage,Manage year-end rollover,Permission description: Manage year-end rollover runs and promotion decisions.,वर्षांत कक्षा परिवर्तन प्रबंधित करें,ஆண்டு இறுதி வகுப்பு மாற்றங்களை நிர்வகி,to check
 app,m07.permission.templateManage,Manage notification templates,Permission description: edit templates and see the delivery log.,सूचना टेम्पलेट प्रबंधित करें,அறிவிப்பு வார்ப்புருக்களை நிர்வகி,to check
 app,m07.permission.notificationSend,Send notifications,Permission description: send notifications.,सूचनाएँ भेजें,அறிவிப்புகளை அனுப்பு,to check
 app,m07.permission.preferenceManage,Set own notification preferences,Permission description: change own channels and quiet hours.,अपनी सूचना प्राथमिकताएँ सेट करें,சொந்த அறிவிப்பு விருப்பங்களை அமை,to check
@@ -984,6 +1932,26 @@ app,m84.bundle.readyForReview,Waiting for your review,Bundle state: an admin mus
 app,m84.bundle.approved,Approved,Bundle state.,स्वीकृत,ஒப்புதல் அளிக்கப்பட்டது,to check
 app,m84.bundle.sent,Sent,Bundle state.,भेजा गया,அனுப்பப்பட்டது,to check
 app,m84.bundle.discarded,Discarded,Bundle state.,हटाया गया,நிராகரிக்கப்பட்டது,to check
+app,m84.bundle.review,Review,Button on a bundle waiting for review: opens what it would send.,समीक्षा करें,மதிப்பாய்வு செய்,to check
+app,m84.bundle.reviewLabel,Review bundle {id},Accessible name of the Review button. {id} bundle id.,बंडल {id} की समीक्षा करें,தொகுப்பு {id}-ஐ மதிப்பாய்வு செய்,to check
+app,m84.bundle.reviewTitle,Review support diagnostics,Title of the dialog that shows a bundle before it is approved or discarded.,सहायता डायग्नोस्टिक्स की समीक्षा,ஆதரவு கண்டறிதல் தரவின் மதிப்பாய்வு,to check
+app,m84.bundle.reviewIntro,"This is exactly what Nexus support receives if you approve it. Personal data has been removed. Nothing leaves your install until you approve, and neither choice can be undone.",Dialog intro above the bundle text.,"स्वीकृत करने पर Nexus सहायता को ठीक यही मिलता है। व्यक्तिगत डेटा हटा दिया गया है। आपकी स्वीकृति के बिना आपके इंस्टॉल से कुछ भी बाहर नहीं जाता, और कोई भी चुनाव पूर्ववत नहीं किया जा सकता।",நீங்கள் ஒப்புதல் அளித்தால் Nexus ஆதரவுக் குழுவுக்குச் செல்வது சரியாக இதுதான். தனிப்பட்ட தரவு நீக்கப்பட்டுள்ளது. நீங்கள் ஒப்புதல் அளிக்கும் வரை உங்கள் நிறுவலிலிருந்து எதுவும் வெளியே செல்லாது; எந்தத் தேர்வையும் திரும்பப் பெற முடியாது.,to check
+app,m84.bundle.content,Bundle content,Accessible name of the read-only box with the bundle text.,बंडल की सामग्री,தொகுப்பின் உள்ளடக்கம்,to check
+app,m84.bundle.loadFailed,The bundle could not be loaded. Try again.,Shown in the dialog when the bundle text does not load.,बंडल लोड नहीं हो सका। फिर से कोशिश करें।,தொகுப்பை ஏற்ற முடியவில்லை. மீண்டும் முயலவும்.,to check
+app,m84.bundle.needsConnection,Reviewing a bundle needs a connection to your install.,Shown instead of the Review button while offline.,बंडल की समीक्षा के लिए आपके इंस्टॉल से कनेक्शन चाहिए।,தொகுப்பை மதிப்பாய்வு செய்ய உங்கள் நிறுவலுடன் இணைப்பு தேவை.,to check
+app,m84.bundle.approve,Approve sending,Button: allow the bundle to be sent to Nexus support.,भेजने की स्वीकृति दें,அனுப்ப ஒப்புதல் அளி,to check
+app,m84.bundle.discard,Discard,Button: delete the bundle without sending it.,हटाएँ,நிராகரி,to check
+app,m84.bundle.discardConfirm,Discard this bundle? It will never be sent.,Second question after pressing Discard.,यह बंडल हटाएँ? यह कभी नहीं भेजा जाएगा।,இந்தத் தொகுப்பை நிராகரிக்கவா? இது ஒருபோதும் அனுப்பப்படாது.,to check
+app,m84.bundle.discardYes,"Yes, discard",Button confirming the discard.,"हाँ, हटाएँ","ஆம், நிராகரி",to check
+app,m84.bundle.approvedDone,Bundle approved for sending,Toast after approving.,बंडल भेजने के लिए स्वीकृत,தொகுப்பு அனுப்ப ஒப்புதல் பெற்றது,to check
+app,m84.bundle.discardedDone,Bundle discarded,Toast after discarding.,बंडल हटाया गया,தொகுப்பு நிராகரிக்கப்பட்டது,to check
+app,m84.bundle.decideConflict,Someone has already reviewed this bundle. Close this and check the list.,Shown when another admin approved or discarded the bundle first.,किसी ने पहले ही इस बंडल की समीक्षा कर दी है। इसे बंद करके सूची देखें।,இந்தத் தொகுப்பை யாரோ ஏற்கனவே மதிப்பாய்வு செய்துவிட்டார். இதை மூடிவிட்டுப் பட்டியலைப் பாருங்கள்.,to check
+app,m84.bundle.decideFailed,The bundle could not be updated. Try again.,Shown when approving or discarding fails for another reason.,बंडल अपडेट नहीं हो सका। फिर से कोशिश करें।,தொகுப்பைப் புதுப்பிக்க முடியவில்லை. மீண்டும் முயலவும்.,to check
+app,m19.budgets.title,Budget,Heading for each accounting budget.,बजट,வரவுசெலவுத் திட்டம்,to check
+app,m19.budgets.total,Total,Sum of the budget's individual lines.,कुल,மொத்தம்,to check
+app,m19.status.draft,Draft,Budget status before approval.,प्रारूप,வரைவு,to check
+app,m19.status.approved,Approved,Budget status after approval.,स्वीकृत,அங்கீகரிக்கப்பட்டது,to check
+app,m19.status.closed,Closed,Budget status after closure.,बंद,முடிவடைந்தது,to check
 control,ctl.signIn.title,Sign in to {product},Heading of the Nexus Control sign-in page; {product} is the product name.,{product} में साइन इन करें,{product} இல் உள்நுழைக,to check
 control,ctl.signIn.intro,Demo: pick a staff member to see Nexus Control with their roles. Real sign-in uses staff single sign-on with multi-factor login.,"Text under the sign-in heading in the demo, explaining the staff picker.",डेमो: किसी स्टाफ़ सदस्य को चुनें और उनकी भूमिकाओं के साथ Nexus Control देखें। असली साइन-इन स्टाफ़ सिंगल साइन-ऑन और मल्टी-फ़ैक्टर लॉगिन से होता है।,டெமோ: ஒரு பணியாளரைத் தேர்ந்தெடுத்து அவரது பொறுப்புகளுடன் Nexus Control ஐப் பாருங்கள். உண்மையான உள்நுழைவு பணியாளர் ஒற்றை உள்நுழைவும் பல-காரணி உள்நுழைவும் பயன்படுத்தும்.,to check
 control,ctl.signIn.as,Sign in as {name},Accessible label of a button that signs in as a demo staff member; {name} is their name.,{name} के रूप में साइन इन करें,{name} ஆக உள்நுழைக,to check
@@ -1254,6 +2222,34 @@ control,p04.form.submit,Start,Button that starts the provisioning job.,शुर
 control,p04.form.started,Provisioning started,Toast after a provisioning job is created.,प्रोविज़निंग शुरू हुई,வழங்குதல் தொடங்கியது,to check
 control,p04.form.failed,Provisioning did not start. Check the form and try again.,Toast when starting provisioning fails.,प्रोविज़निंग शुरू नहीं हुई। फ़ॉर्म जाँचें और फिर से कोशिश करें।,வழங்குதல் தொடங்கவில்லை. படிவத்தைச் சரிபார்த்து மீண்டும் முயலுங்கள்.,to check
 control,p04.form.noAccounts,No account can get a new trial tenant.,Shown in the form when there is no suitable account.,किसी खाते को नया ट्रायल टेनेंट नहीं मिल सकता।,எந்தக் கணக்கும் புதிய சோதனை டெனன்ட் பெற முடியாது.,to check
+control,p04.retry,Retry,Button: retry a failed provisioning or offboarding job.,फिर से कोशिश करें,மீண்டும் முயல்,to check
+control,p04.retryLabel,Retry {job},Accessible label of the retry button on a failed job.,{job} फिर से चलाएँ,{job} ஐ மீண்டும் முயல்,to check
+control,p04.retried,Job retried,Toast after a failed job is retried.,कार्य फिर से शुरू हुआ,பணி மீண்டும் தொடங்கப்பட்டது,to check
+control,p04.retryFailed,Could not retry the job. Try again.,Toast and error message when retrying a job fails.,कार्य फिर से शुरू नहीं हो सका। फिर से कोशिश करें।,பணியை மீண்டும் தொடங்க முடியவில்லை. மீண்டும் முயலுங்கள்.,to check
+control,p04.off.start,Start offboarding,Button that opens the start-offboarding dialog.,ऑफ़बोर्डिंग शुरू करें,விடுவிப்பைத் தொடங்கு,to check
+control,p04.off.confirmDownload,Export received,Button: confirm that the institution received its encrypted export.,एक्सपोर्ट प्राप्त हुआ,ஏற்றுமதி பெறப்பட்டது,to check
+control,p04.off.confirmDownloadLabel,Confirm export received for {job},Accessible label of the export-received button.,{job} के लिए एक्सपोर्ट प्राप्ति की पुष्टि करें,{job} க்கான ஏற்றுமதி பெறப்பட்டதை உறுதிப்படுத்து,to check
+control,p04.off.downloadConfirmed,Export receipt confirmed,Toast after confirming the export was received.,एक्सपोर्ट प्राप्ति की पुष्टि हुई,ஏற்றுமதி பெறப்பட்டது உறுதிப்படுத்தப்பட்டது,to check
+control,p04.off.approveDestroy,Approve key destruction,Button that opens the confirm dialog to approve destroying the tenant's keys.,कुंजी नष्ट करने की मंज़ूरी दें,விசை அழிப்புக்கு ஒப்புதல் அளி,to check
+control,p04.off.approveDestroyLabel,Approve key destruction for {job},Accessible label of the approve-key-destruction button.,{job} की कुंजी नष्ट करने की मंज़ूरी दें,{job} க்கான விசை அழிப்புக்கு ஒப்புதல் அளி,to check
+control,p04.off.approveTitle,Approve key destruction for {account}?,Title of the confirm dialog for four-eyes key destruction.,{account} की कुंजियाँ नष्ट करने की मंज़ूरी दें?,{account} க்கான விசை அழிப்புக்கு ஒப்புதல் அளிக்கவா?,to check
+control,p04.off.approveBody,Destroying the encryption keys of {tenant} makes its data permanently unreadable and cannot be undone. Two different staff members must approve before key destruction runs.,Warning body of the key-destruction confirmation dialog.,{tenant} की एन्क्रिप्शन कुंजियाँ नष्ट करने से उसका डेटा हमेशा के लिए अपठनीय हो जाता है और इसे पूर्ववत नहीं किया जा सकता। कुंजी नष्ट होने से पहले दो अलग-अलग स्टाफ़ सदस्यों की मंज़ूरी आवश्यक है।,{tenant} இன் மறையாக்க விசைகளை அழிப்பது அதன் தரவை நிரந்தரமாகப் படிக்க முடியாததாக்கும்; இதை மாற்ற முடியாது. விசை அழிப்பு இயங்கும் முன் இரண்டு வெவ்வேறு பணியாளர்கள் ஒப்புதல் அளிக்க வேண்டும்.,to check
+control,p04.off.approveConfirm,Approve key destruction,Confirm button inside the key-destruction dialog.,कुंजी नष्ट करने की मंज़ूरी दें,விசை அழிப்புக்கு ஒப்புதல் அளி,to check
+control,p04.off.approvedFirst,First approval recorded. A second staff member must now approve.,Toast after the first of two staff members approves key destruction.,पहली मंज़ूरी दर्ज हुई। अब दूसरे स्टाफ़ सदस्य को मंज़ूरी देनी होगी।,முதல் ஒப்புதல் பதிவானது. இப்போது இரண்டாவது பணியாளர் ஒப்புதல் அளிக்க வேண்டும்.,to check
+control,p04.off.approvedQueued,Second approval recorded. Key destruction is now queued.,Toast after the second staff member approves and key destruction is queued.,दूसरी मंज़ूरी दर्ज हुई। कुंजी नष्ट करना अब कतार में है।,இரண்டாவது ஒப்புதல் பதிவானது. விசை அழிப்பு இப்போது வரிசையில் உள்ளது.,to check
+control,p04.off.approveSameStaff,"A second, different staff member must approve key destruction.",Error message when the same staff member tries to give both approvals.,"कुंजी नष्ट करने के लिए किसी दूसरे, अलग स्टाफ़ सदस्य की मंज़ूरी आवश्यक है।","விசை அழிப்புக்கு இரண்டாவது, வேறொரு பணியாளர் ஒப்புதல் அளிக்க வேண்டும்.",to check
+control,p04.off.actionFailed,The offboarding step could not be updated. Try again.,Error message when an offboarding action fails.,ऑफ़बोर्डिंग चरण अपडेट नहीं हो सका। फिर से कोशिश करें।,விடுவிப்புப் படியைப் புதுப்பிக்க முடியவில்லை. மீண்டும் முயலுங்கள்.,to check
+control,p04.off.form.title,Start offboarding,Title of the start-offboarding dialog.,ऑफ़बोर्डिंग शुरू करें,விடுவிப்பைத் தொடங்கு,to check
+control,p04.off.form.account,Account,Label of the account picker in the start-offboarding dialog.,खाता,கணக்கு,to check
+control,p04.off.form.tenant,Tenant,Label of the tenant picker in the start-offboarding dialog.,टेनेंट,டெனன்ட்,to check
+control,p04.off.form.pem,Institution public key (PEM),Label of the textarea where staff paste the institution's RSA public key.,संस्थान की सार्वजनिक कुंजी (PEM),நிறுவனத்தின் பொது விசை (PEM),to check
+control,p04.off.form.pemHint,Paste the institution's RSA public key (at least 3072 bits) used to wrap the encrypted export.,Help text under the public key textarea.,एन्क्रिप्टेड एक्सपोर्ट को लॉक करने के लिए संस्थान की RSA सार्वजनिक कुंजी (कम से कम 3072 बिट) पेस्ट करें।,மறையாக்க ஏற்றுமதியைப் பூட்ட நிறுவனத்தின் RSA பொது விசையை (குறைந்தது 3072 பிட்) ஒட்டவும்.,to check
+control,p04.off.form.freezeConfirm,The institution's data will be frozen,Required checkbox acknowledging that the institution's data will be frozen.,संस्थान का डेटा फ़्रीज़ कर दिया जाएगा,நிறுவனத்தின் தரவு முடக்கப்படும்,to check
+control,p04.off.form.submit,Start offboarding,Submit button of the start-offboarding dialog.,ऑफ़बोर्डिंग शुरू करें,விடுவிப்பைத் தொடங்கு,to check
+control,p04.off.form.started,Offboarding started,Toast after an offboarding job is created.,ऑफ़बोर्डिंग शुरू हुई,விடுவிப்பு தொடங்கியது,to check
+control,p04.off.form.failed,Offboarding did not start. Check the public key and try again.,Toast and error message when starting offboarding fails.,ऑफ़बोर्डिंग शुरू नहीं हुई। सार्वजनिक कुंजी जाँचें और फिर से कोशिश करें।,விடுவிப்பு தொடங்கவில்லை. பொது விசையைச் சரிபார்த்து மீண்டும் முயலுங்கள்.,to check
+control,p04.off.form.busy,This tenant already has an offboarding or move in progress.,Toast and error message when starting offboarding fails because the tenant already has an open offboarding or portability move.,इस टेनेंट का एक ऑफ़बोर्डिंग या स्थानांतरण पहले से चल रहा है।,இந்த டெனன்ட்க்கு ஏற்கனவே ஒரு விடுவிப்பு அல்லது இடமாற்றம் நடைபெறுகிறது.,to check
+control,p04.off.form.noAccounts,No SaaS account with an active tenant is available to offboard.,Shown in the start-offboarding dialog when no account has tenants.,ऑफ़बोर्ड करने के लिए सक्रिय टेनेंट वाला कोई SaaS खाता उपलब्ध नहीं है।,விடுவிக்கச் செயலில் உள்ள டெனன்ட் கொண்ட SaaS கணக்கு எதுவும் இல்லை.,to check
 control,p05.nav,Licences,Menu item and page title of the self-hosted licences page (P05).,लाइसेंस,உரிமங்கள்,to check
 control,p05.summary,"Signed licences for self-hosted installs, caps and renewals.",One-line description on the Licences home tile.,"स्व-होस्टेड इंस्टॉल के हस्ताक्षरित लाइसेंस, सीमाएँ और नवीनीकरण।","சுய-ஹோஸ்ட் நிறுவல்களுக்கான கையொப்பமிட்ட உரிமங்கள், வரம்புகள், புதுப்பிப்புகள்.",to check
 control,p05.intro,"When a licence expires the install keeps working in a grace period, then becomes read-only. It never loses data.",Intro line on the Licences page (rule D23).,"लाइसेंस समाप्त होने पर इंस्टॉल कुछ दिन ग्रेस अवधि में चलता है, फिर केवल-पढ़ने वाला हो जाता है। डेटा कभी नहीं खोता।","உரிமம் காலாவதியானால் நிறுவல் சில நாள் சலுகைக் காலத்தில் இயங்கும், பிறகு படிக்க மட்டும் ஆகும். தரவு ஒருபோதும் இழக்கப்படாது.",to check
@@ -1678,6 +2674,43 @@ control,p18.step.import,Import,Move step: load the data at the target.,आया
 control,p18.step.verify,Verify,Move step: check the moved data is complete.,सत्यापन,சரிபார்ப்பு,to check
 control,p18.step.cutover,Switch over,Move step: users start using the new place.,बदलाव,மாற்றம்,to check
 control,p18.step.shred,Destroy source keys,Move step: destroy the keys of the old copy so it can never be read (crypto-shred).,स्रोत कुंजियाँ नष्ट करें,மூல விசைகளை அழி,to check
+control,p18.start,Start move,Button that opens the start-move dialog.,स्थानांतरण शुरू करें,இடமாற்றத்தைத் தொடங்கு,to check
+control,p18.tenant,Tenant {id},Shows the tenant id on a move card.,टेनेंट {id},டெனன்ட் {id},to check
+control,p18.confirm,Confirm…,Button that opens the dialog to confirm the current manual staff step of a move.,पुष्टि करें…,உறுதிப்படுத்து…,to check
+control,p18.confirmStepLabel,Confirm {step} for {job},Accessible label of the confirm-step button.,{job} के लिए {step} की पुष्टि करें,{job} க்கான {step} ஐ உறுதிப்படுத்து,to check
+control,p18.confirmed,Move step confirmed,Toast after confirming a manual move step.,स्थानांतरण चरण की पुष्टि हुई,இடமாற்றப் படி உறுதிப்படுத்தப்பட்டது,to check
+control,p18.confirmFailed,Could not confirm the move step. Try again.,Toast and error message when confirming a move step fails.,स्थानांतरण चरण की पुष्टि नहीं हो सकी। फिर से कोशिश करें।,இடமாற்றப் படியை உறுதிப்படுத்த முடியவில்லை. மீண்டும் முயலுங்கள்.,to check
+control,p18.retry,Retry,Button: retry a failed portability move.,फिर से कोशिश करें,மீண்டும் முயல்,to check
+control,p18.retryLabel,Retry move {job},Accessible label of the retry button on a failed move.,स्थानांतरण {job} फिर से चलाएँ,இடமாற்றம் {job} ஐ மீண்டும் முயல்,to check
+control,p18.retried,Move retried,Toast after retrying a failed move.,स्थानांतरण फिर से शुरू हुआ,இடமாற்றம் மீண்டும் தொடங்கப்பட்டது,to check
+control,p18.retryFailed,Could not retry the move. Try again.,Toast and error message when retrying a move fails.,स्थानांतरण फिर से शुरू नहीं हो सका। फिर से कोशिश करें।,இடமாற்றத்தை மீண்டும் தொடங்க முடியவில்லை. மீண்டும் முயலுங்கள்.,to check
+control,p18.shredOnProvisioning,Two staff members approve the source's key destruction on the Provisioning page.,Note shown on a move with a SaaS cell source during the destroy-source-keys step.,दो स्टाफ़ सदस्य प्रोविज़निंग पृष्ठ पर स्रोत की कुंजी नष्ट करने की मंज़ूरी देते हैं।,வழங்குதல் பக்கத்தில் இரண்டு பணியாளர்கள் மூலத்தின் விசை அழிப்புக்கு ஒப்புதல் அளிக்கிறார்கள்.,to check
+control,p18.form.title,Start a tenant move,Title of the start-move dialog.,टेनेंट स्थानांतरण शुरू करें,டெனன்ட் இடமாற்றத்தைத் தொடங்கு,to check
+control,p18.form.frozenNotice,"The institution is frozen while the move runs: everyone can still sign in and read data, but changes are not saved until switch-over finishes.",Notice inside the start-move dialog explaining that the institution is frozen during a move.,"स्थानांतरण चलने के दौरान संस्थान फ़्रीज़ रहता है: सभी साइन इन करके डेटा पढ़ सकते हैं, पर बदलाव पूरे होने तक सहेजे नहीं जाते।","இடமாற்றம் நடைபெறும் போது நிறுவனம் முடக்கப்படும்: அனைவரும் உள்நுழைந்து தரவைப் படிக்கலாம், ஆனால் மாற்றம் முடியும் வரை மாற்றங்கள் சேமிக்கப்படாது.",to check
+control,p18.form.direction,Direction,Label of the move direction picker.,दिशा,திசை,to check
+control,p18.form.account,Account,Label of the account picker in the start-move dialog.,खाता,கணக்கு,to check
+control,p18.form.tenant,Tenant,Label of the tenant picker or field in the start-move dialog.,टेनेंट,டெனன்ட்,to check
+control,p18.form.toRegion,Destination region,Label of the destination region picker in the start-move dialog.,गंतव्य क्षेत्र,இலக்குப் பகுதி,to check
+control,p18.form.submit,Start move,Submit button of the start-move dialog.,स्थानांतरण शुरू करें,இடமாற்றத்தைத் தொடங்கு,to check
+control,p18.form.started,Move started,Toast after a move is created.,स्थानांतरण शुरू हुआ,இடமாற்றம் தொடங்கியது,to check
+control,p18.form.failed,Move did not start. Check the regions and delivery model and try again.,Toast and error message when starting a move fails.,स्थानांतरण शुरू नहीं हुआ। क्षेत्र और डिलीवरी मॉडल जाँचें और फिर से कोशिश करें।,இடமாற்றம் தொடங்கவில்லை. பகுதிகளையும் வழங்கல் மாதிரியையும் சரிபார்த்து மீண்டும் முயலுங்கள்.,to check
+control,p18.form.busy,This tenant already has an offboarding or move in progress.,Toast and error message when starting a move fails because the tenant already has an open offboarding or portability move.,इस टेनेंट का एक ऑफ़बोर्डिंग या स्थानांतरण पहले से चल रहा है।,இந்த டெனன்ட்க்கு ஏற்கனவே ஒரு விடுவிப்பு அல்லது இடமாற்றம் நடைபெறுகிறது.,to check
+control,p18.form.noAccounts,No account is eligible for this move direction.,Shown in the start-move dialog when no account matches the chosen direction.,इस स्थानांतरण दिशा के लिए कोई खाता पात्र नहीं है।,இந்த இடமாற்றத் திசைக்கு எந்தக் கணக்கும் தகுதியற்றது.,to check
+control,p18.confirm.title,Confirm {step},Title of the confirm-step dialog.,{step} की पुष्टि करें,{step} ஐ உறுதிப்படுத்து,to check
+control,p18.confirm.pem,Destination public key (PEM),Label of the textarea for the destination install's RSA public key.,गंतव्य सार्वजनिक कुंजी (PEM),இலக்கின் பொது விசை (PEM),to check
+control,p18.confirm.pemHint,Paste the destination install's RSA public key (at least 3072 bits) from nexus-agent import-key.,Help text under the destination public key textarea.,nexus-agent import-key से गंतव्य इंस्टॉल की RSA सार्वजनिक कुंजी (कम से कम 3072 बिट) पेस्ट करें।,nexus-agent import-key இலிருந்து இலக்கு நிறுவலின் RSA பொது விசையை (குறைந்தது 3072 பிட்) ஒட்டவும்.,to check
+control,p18.confirm.fileName,Export file name,Label of the plain file name input when confirming an export from a self-hosted source.,निर्यात फ़ाइल का नाम,ஏற்றுமதிக் கோப்புப் பெயர்,to check
+control,p18.confirm.rows,Row count,Label of the exported or imported row count input.,पंक्तियों की संख्या,வரிசை எண்ணிக்கை,to check
+control,p18.confirm.transferReady,The file is in the destination's import folder,Checkbox confirming the encrypted export file has been placed in the destination's import folder.,फ़ाइल गंतव्य के आयात फ़ोल्डर में है,கோப்பு இலக்கின் இறக்குமதி கோப்புறையில் உள்ளது,to check
+control,p18.confirm.chainOk,Activity log hash chain verified,Checkbox confirming the imported audit hash chain verified on the self-hosted destination.,गतिविधि लॉग हैश श्रृंखला सत्यापित,செயல்பாட்டுப் பதிவு ஹேஷ் சங்கிலி சரிபார்க்கப்பட்டது,to check
+control,p18.confirm.checkpointOk,Signed checkpoint verified,Checkbox confirming a fresh signed audit checkpoint was verified on the self-hosted destination.,हस्ताक्षरित चेकपॉइंट सत्यापित,கையொப்பமிட்ட சரிபார்ப்புப் புள்ளி சரிபார்க்கப்பட்டது,to check
+control,p18.confirm.checksNote,Leave a check unticked if it failed: the move stops at Verify and can be retried from the import.,Hint under the two verification checkboxes of the import step; an unticked box reports a failed check.,अगर कोई जाँच विफल हुई हो तो उसे बिना टिक किए छोड़ दें: स्थानांतरण सत्यापन पर रुक जाएगा और आयात से फिर से कोशिश की जा सकती है।,"ஏதேனும் சரிபார்ப்பு தோல்வியடைந்தால் அதைத் தேர்வு செய்யாமல் விடுங்கள்: நகர்வு சரிபார்ப்பில் நிற்கும், இறக்குமதியிலிருந்து மீண்டும் முயலலாம்.",to check
+control,p18.confirm.cutoverWarning,Switching over points the account to the destination and cannot be undone.,Warning shown in the switch-over confirmation dialog.,बदलाव करने से खाता गंतव्य से जुड़ जाता है और इसे पूर्ववत नहीं किया जा सकता।,மாற்றம் செய்வது கணக்கை இலக்குக்கு மாற்றும்; இதை மாற்ற முடியாது.,to check
+control,p18.confirm.cutoverAck,I understand switching over cannot be undone,Checkbox acknowledging the irreversible switch-over step.,मैं समझता/समझती हूँ कि यह बदलाव पूर्ववत नहीं किया जा सकता,மாற்றம் செய்வதைத் திரும்பப் பெற முடியாது என்பதை நான் புரிந்துகொள்கிறேன்,to check
+control,p18.confirm.sourceDeleted,Source copy deleted,Checkbox confirming the old self-hosted source copy was deleted after switch-over.,स्रोत प्रति हटाई गई,மூல நகல் நீக்கப்பட்டது,to check
+control,p18.confirm.submit,Confirm step,Submit button of the confirm-step dialog.,चरण की पुष्टि करें,படியை உறுதிப்படுத்து,to check
+control,ctl.signIn.sso,Sign in with your work account,Button on the real sign-in page: goes to the staff sign-in service.,अपने कार्य खाते से साइन इन करें,உங்கள் பணிக் கணக்குடன் உள்நுழையவும்,to check
+control,ctl.signIn.ssoIntro,"Use your work email and password, then the 6-digit code from your authenticator app. Every sign-in asks for a new code.","Explains the two steps of staff sign-in (password, then one-time code).","अपना कार्य ईमेल और पासवर्ड डालें, फिर अपने ऑथेंटिकेटर ऐप का 6 अंकों का कोड। हर साइन-इन पर नया कोड माँगा जाता है।","உங்கள் பணி மின்னஞ்சல் மற்றும் கடவுச்சொல்லை உள்ளிடவும், பின்னர் உங்கள் அங்கீகரிப்பு செயலியின் 6 இலக்கக் குறியீட்டை. ஒவ்வொரு உள்நுழைவிலும் புதிய குறியீடு கேட்கப்படும்.",to check
 terms:ey,term.learner,Child,Word for this institution type (ey).,बच्चा,குழந்தை,to check
 terms:ey,term.learners,Children,Word for this institution type (ey).,बच्चे,குழந்தைகள்,to check
 terms:ey,term.teacher,Teacher,Word for this institution type (ey).,शिक्षक,ஆசிரியர்,to check

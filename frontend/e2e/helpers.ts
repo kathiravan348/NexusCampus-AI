@@ -23,6 +23,29 @@ export const ADMINS: Readonly<Record<keyof typeof TENANTS, string>> = {
   harmony: "usr-hm-weiling",
 };
 
+/** Demo sign-in choices, in the same order as the DEMO_PERSONAS fixture. */
+export const PERSONAS = [
+  ["littleSteps", "admin", ADMINS.littleSteps],
+  ["littleSteps", "teacher", "usr-ls-arjun"],
+  ["littleSteps", "guardian", "usr-ls-sunita"],
+  ["riverside", "admin", ADMINS.riverside],
+  ["riverside", "teacher", "usr-rv-tom"],
+  ["riverside", "guardian", "usr-rv-grace"],
+  ["riverside", "learner", "usr-rv-oliver"],
+  ["northbridge", "admin", ADMINS.northbridge],
+  ["northbridge", "teacher", "usr-nb-elena"],
+  ["northbridge", "guardian", "usr-nb-patricia"],
+  ["northbridge", "learner", "usr-nb-jordan"],
+  ["apex", "admin", ADMINS.apex],
+  ["apex", "teacher", "usr-ax-meena"],
+  ["apex", "guardian", "usr-ax-lakshmi"],
+  ["apex", "learner", "usr-ax-arun"],
+  ["harmony", "admin", ADMINS.harmony],
+  ["harmony", "teacher", "usr-hm-daniel"],
+  ["harmony", "guardian", "usr-hm-mei"],
+  ["harmony", "learner", "usr-hm-rachel"],
+] as const;
+
 export const DEMO_BANNER = "Demo data. Nothing on this screen is real.";
 
 /** The demo banner in any language (`DemoBanner` is the shell's first `role="note"`). */
