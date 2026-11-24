@@ -108,7 +108,7 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-177 | Codex · gpt-6.2-astra / high (screen) | 00:43 | green | done — no fixes | `4ac5dc4`, pushed |
 | NEX-178 | Codex · gpt-6.2-astra / high (screen) | 01:13 | green | done — fix: reason keys via `isKnownMessageKey` (no cross-package `en.json` import) | `e62df0e`, pushed |
 | NEX-179 | Codex · gpt-6.2-astra / high (review build) | 01:47 | green (review:check); reviewer e2e 02:1x: 46 failed — menu links answer 403 (product bug, not the spec) | in-review, waits for NEX-181; then merge `main` into the branch, re-run e2e + `texts:export` | — |
-| NEX-181 | Codex · gpt-6.2-astra / high (fix from NEX-179 e2e, D77) | 02:4x | — | — | — |
+| NEX-181 | Codex · gpt-6.2-astra / high (fix from NEX-179 e2e, D77) | 02:1x; 2 questions (staff rule, portal role) answered 02:4x, restarted | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
