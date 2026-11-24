@@ -704,6 +704,10 @@
     "valid": true
   },
   {
+    "text": "All",
+    "valid": true
+  },
+  {
     "text": "All academic years",
     "valid": true
   },
@@ -1212,6 +1216,10 @@
     "valid": true
   },
   {
+    "text": "Carry fees forward",
+    "valid": true
+  },
+  {
     "text": "Cash",
     "valid": true
   },
@@ -1233,6 +1241,10 @@
   },
   {
     "text": "Change history",
+    "valid": true
+  },
+  {
+    "text": "Changed by staff",
     "valid": true
   },
   {
@@ -2452,6 +2464,10 @@
     "valid": true
   },
   {
+    "text": "Filter by action",
+    "valid": true
+  },
+  {
     "text": "Filter by status",
     "valid": true
   },
@@ -2573,6 +2589,10 @@
   },
   {
     "text": "Gradebook",
+    "valid": true
+  },
+  {
+    "text": "Graduate",
     "valid": true
   },
   {
@@ -3844,6 +3864,10 @@
     "valid": true
   },
   {
+    "text": "No decisions match this filter.",
+    "valid": true
+  },
+  {
     "text": "No demo institutions are available.",
     "valid": true
   },
@@ -4053,6 +4077,10 @@
   },
   {
     "text": "No roles yet.",
+    "valid": true
+  },
+  {
+    "text": "No rollover runs yet.",
     "valid": true
   },
   {
@@ -4732,6 +4760,14 @@
     "valid": true
   },
   {
+    "text": "Promote",
+    "valid": true
+  },
+  {
+    "text": "Promotion decisions",
+    "valid": true
+  },
+  {
     "text": "Protects",
     "valid": true
   },
@@ -5056,6 +5092,10 @@
     "valid": true
   },
   {
+    "text": "Retain in current level",
+    "valid": true
+  },
+  {
     "text": "Reversed",
     "valid": true
   },
@@ -5089,6 +5129,10 @@
   },
   {
     "text": "Review past import jobs, inspect column mappings and validation issues, or register a new file.",
+    "valid": true
+  },
+  {
+    "text": "Review rollover runs and learner promotion decisions.",
     "valid": true
   },
   {
@@ -5188,6 +5232,10 @@
     "valid": true
   },
   {
+    "text": "Rollback available until {date}",
+    "valid": true
+  },
+  {
     "text": "Rolled back",
     "valid": true
   },
@@ -5197,6 +5245,10 @@
   },
   {
     "text": "Rolling",
+    "valid": true
+  },
+  {
+    "text": "Rollover runs",
     "valid": true
   },
   {
@@ -5416,6 +5468,10 @@
     "valid": true
   },
   {
+    "text": "Select a run to review its totals and the decision for each learner.",
+    "valid": true
+  },
+  {
     "text": "Select an enquiry source.",
     "valid": true
   },
@@ -5565,6 +5621,10 @@
   },
   {
     "text": "Skills & hobby academy",
+    "valid": true
+  },
+  {
+    "text": "Skip",
     "valid": true
   },
   {
@@ -5837,6 +5897,10 @@
   },
   {
     "text": "Target",
+    "valid": true
+  },
+  {
+    "text": "Target class group",
     "valid": true
   },
   {
@@ -6296,6 +6360,10 @@
     "valid": true
   },
   {
+    "text": "Transfer",
+    "valid": true
+  },
+  {
     "text": "Transfer certificate",
     "valid": true
   },
@@ -6333,6 +6401,10 @@
   },
   {
     "text": "Try another status filter or check back when invoices are issued.",
+    "valid": true
+  },
+  {
+    "text": "Try asking “What do the rollover actions mean?”",
     "valid": true
   },
   {
@@ -6833,6 +6905,14 @@
   },
   {
     "text": "Year starts on",
+    "valid": true
+  },
+  {
+    "text": "Year-end rollover",
+    "valid": true
+  },
+  {
+    "text": "Year-end rollover could not be loaded.",
     "valid": true
   },
   {
@@ -7384,6 +7464,10 @@
     "valid": true
   },
   {
+    "text": "{date} तक बदलाव वापस लिए जा सकते हैं",
+    "valid": true
+  },
+  {
     "text": "{date} तक मान्य",
     "valid": true
   },
@@ -7425,6 +7509,10 @@
   },
   {
     "text": "{date} வரை ஆதரவு",
+    "valid": true
+  },
+  {
+    "text": "{date} வரை மாற்றங்களைத் திரும்பப் பெறலாம்",
     "valid": true
   },
   {
@@ -7844,6 +7932,10 @@
     "valid": true
   },
   {
+    "text": "अगली कक्षा में भेजें",
+    "valid": true
+  },
+  {
     "text": "अगली बार कनेक्ट होने पर डिवाइस साइन आउट होगा और उसका ऑफ़लाइन डेटा हटा दिया जाएगा।",
     "valid": true
   },
@@ -8173,6 +8265,10 @@
   },
   {
     "text": "अभी कोई सिंगल साइन-ऑन प्रदाता सेट नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी तक वर्षांत कक्षा परिवर्तन की कोई प्रक्रिया नहीं है।",
     "valid": true
   },
   {
@@ -8656,6 +8752,10 @@
     "valid": true
   },
   {
+    "text": "इस फ़िल्टर से मेल खाने वाला कोई निर्णय नहीं है।",
+    "valid": true
+  },
+  {
     "text": "इस भाषा का पहले से एक संस्करण है।",
     "valid": true
   },
@@ -9080,6 +9180,14 @@
     "valid": true
   },
   {
+    "text": "कक्षा परिवर्तन के निर्णय",
+    "valid": true
+  },
+  {
+    "text": "कक्षा परिवर्तन प्रक्रियाएँ",
+    "valid": true
+  },
+  {
     "text": "कक्षा समूह",
     "valid": true
   },
@@ -9157,6 +9265,10 @@
   },
   {
     "text": "कर्मचारी {number}",
+    "valid": true
+  },
+  {
+    "text": "कर्मचारी ने बदलाव किया",
     "valid": true
   },
   {
@@ -9256,6 +9368,10 @@
     "valid": true
   },
   {
+    "text": "कार्रवाई के अनुसार छाँटें",
+    "valid": true
+  },
+  {
     "text": "कालांश",
     "valid": true
   },
@@ -9329,6 +9445,10 @@
   },
   {
     "text": "कुल पंक्तियाँ",
+    "valid": true
+  },
+  {
+    "text": "कुल संख्या और प्रत्येक विद्यार्थी का निर्णय देखने के लिए एक प्रक्रिया चुनें।",
     "valid": true
   },
   {
@@ -9917,6 +10037,10 @@
   },
   {
     "text": "छोड़ा गया",
+    "valid": true
+  },
+  {
+    "text": "छोड़ें",
     "valid": true
   },
   {
@@ -10796,6 +10920,10 @@
     "valid": true
   },
   {
+    "text": "पाठ्यक्रम पूरा करें",
+    "valid": true
+  },
+  {
     "text": "पारिवारिक रिकॉर्ड देखें",
     "valid": true
   },
@@ -10897,6 +11025,10 @@
   },
   {
     "text": "पूछें",
+    "valid": true
+  },
+  {
+    "text": "पूछें “वर्षांत कक्षा परिवर्तन की कार्रवाइयों का क्या अर्थ है?”",
     "valid": true
   },
   {
@@ -11468,6 +11600,10 @@
     "valid": true
   },
   {
+    "text": "बदलाव वापस लिए गए",
+    "valid": true
+  },
+  {
     "text": "बदलाव सहेजा नहीं जा सका। फिर से कोशिश करें।",
     "valid": true
   },
@@ -11497,6 +11633,10 @@
   },
   {
     "text": "बनाई गई",
+    "valid": true
+  },
+  {
+    "text": "बनाने की तारीख {date}",
     "valid": true
   },
   {
@@ -12212,6 +12352,10 @@
     "valid": true
   },
   {
+    "text": "लक्ष्य कक्षा समूह",
+    "valid": true
+  },
+  {
     "text": "लाइट",
     "valid": true
   },
@@ -12324,6 +12468,10 @@
     "valid": true
   },
   {
+    "text": "वर्तमान स्तर पर रखें",
+    "valid": true
+  },
+  {
     "text": "वर्ष शुरू होता है",
     "valid": true
   },
@@ -12336,11 +12484,23 @@
     "valid": true
   },
   {
+    "text": "वर्षांत कक्षा परिवर्तन",
+    "valid": true
+  },
+  {
+    "text": "वर्षांत कक्षा परिवर्तन और विद्यार्थियों की पदोन्नति के निर्णय देखें।",
+    "valid": true
+  },
+  {
     "text": "वर्षांत कक्षा परिवर्तन देखें",
     "valid": true
   },
   {
     "text": "वर्षांत कक्षा परिवर्तन प्रबंधित करें",
+    "valid": true
+  },
+  {
+    "text": "वर्षांत कक्षा परिवर्तन लोड नहीं हो सका।",
     "valid": true
   },
   {
@@ -12673,6 +12833,10 @@
   },
   {
     "text": "शुल्क शेष",
+    "valid": true
+  },
+  {
+    "text": "शुल्क शेष आगे ले जाएँ",
     "valid": true
   },
   {
@@ -13045,6 +13209,10 @@
   },
   {
     "text": "सभागार",
+    "valid": true
+  },
+  {
+    "text": "सभी",
     "valid": true
   },
   {
@@ -13520,6 +13688,10 @@
     "valid": true
   },
   {
+    "text": "स्थानांतरण",
+    "valid": true
+  },
+  {
     "text": "स्थानांतरण प्रमाणपत्र",
     "valid": true
   },
@@ -13744,6 +13916,10 @@
     "valid": true
   },
   {
+    "text": "அடுத்த வகுப்புக்கு உயர்த்துதல்",
+    "valid": true
+  },
+  {
     "text": "அடுத்து",
     "valid": true
   },
@@ -13925,6 +14101,10 @@
   },
   {
     "text": "அனைத்துக் கல்வியாண்டுகளும்",
+    "valid": true
+  },
+  {
+    "text": "அனைத்தும்",
     "valid": true
   },
   {
@@ -14136,6 +14316,18 @@
     "valid": true
   },
   {
+    "text": "ஆண்டு இறுதி வகுப்பு மாற்றங்களையும் மாணவர்களின் தேர்ச்சி முடிவுகளையும் பார்க்கலாம்.",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு இறுதி வகுப்பு மாற்றத்தை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு இறுதி வகுப்பு மாற்றம்",
+    "valid": true
+  },
+  {
     "text": "ஆண்டு தொடங்கும் நாள்",
     "valid": true
   },
@@ -14276,6 +14468,10 @@
     "valid": true
   },
   {
+    "text": "இடமாற்றம்",
+    "valid": true
+  },
+  {
     "text": "இடமாற்றம் ஆனார்",
     "valid": true
   },
@@ -14333,6 +14529,10 @@
   },
   {
     "text": "இதுவரை சேர்க்கைச் சலுகைகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இதுவரை வகுப்பு மாற்றச் செயலாக்கங்கள் இல்லை.",
     "valid": true
   },
   {
@@ -14449,6 +14649,10 @@
   },
   {
     "text": "இந்த வகுப்புக் குழுவுக்கு வருகைப் பதிவு அமர்வுகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இந்த வடிகட்டிக்குப் பொருந்தும் முடிவுகள் இல்லை.",
     "valid": true
   },
   {
@@ -15056,6 +15260,10 @@
     "valid": true
   },
   {
+    "text": "உருவாக்கிய நாள் {date}",
+    "valid": true
+  },
+  {
     "text": "உருவாக்கியது",
     "valid": true
   },
@@ -15272,6 +15480,10 @@
     "valid": true
   },
   {
+    "text": "ஒத்திகை தயார்",
+    "valid": true
+  },
+  {
     "text": "ஒத்திசைக்கப்பட்டது",
     "valid": true
   },
@@ -15469,6 +15681,10 @@
   },
   {
     "text": "கட்டண நிலுவைகள்",
+    "valid": true
+  },
+  {
+    "text": "கட்டண நிலுவையை அடுத்த ஆண்டுக்கு எடுத்துச் செல்லுதல்",
     "valid": true
   },
   {
@@ -16540,6 +16756,10 @@
     "valid": true
   },
   {
+    "text": "சேரவுள்ள வகுப்புக் குழு",
+    "valid": true
+  },
+  {
     "text": "சேர்க்கப்படுபவை",
     "valid": true
   },
@@ -16816,6 +17036,10 @@
     "valid": true
   },
   {
+    "text": "தற்போதைய நிலையிலேயே தொடர்தல்",
+    "valid": true
+  },
+  {
     "text": "தற்போதைய விகிதம் {ratio}:1 · குறைந்தது {minRatio}:1 தேவை",
     "valid": true
   },
@@ -16857,6 +17081,10 @@
   },
   {
     "text": "தவிர்க்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "தவிர்த்தல்",
     "valid": true
   },
   {
@@ -17313,6 +17541,14 @@
   },
   {
     "text": "நடந்தது",
+    "valid": true
+  },
+  {
+    "text": "நடவடிக்கை",
+    "valid": true
+  },
+  {
+    "text": "நடவடிக்கையின்படி வடிகட்டவும்",
     "valid": true
   },
   {
@@ -17800,6 +18036,10 @@
     "valid": true
   },
   {
+    "text": "படிப்பை நிறைவு செய்தல்",
+    "valid": true
+  },
+  {
     "text": "படிவங்களும் புலங்களும்",
     "valid": true
   },
@@ -17889,6 +18129,10 @@
   },
   {
     "text": "பணியாளர் சுயவிவரங்கள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "பணியாளர் மாற்றியுள்ளார்",
     "valid": true
   },
   {
@@ -18720,6 +18964,10 @@
     "valid": true
   },
   {
+    "text": "மாற்றங்கள் திரும்பப் பெறப்பட்டன",
+    "valid": true
+  },
+  {
     "text": "மாற்றத்தின் வகை மட்டுமே இங்கே காட்டப்படும், அதன் உள்ளடக்கம் ஒருபோதும் இல்லை.",
     "valid": true
   },
@@ -19036,6 +19284,10 @@
     "valid": true
   },
   {
+    "text": "மொத்த எண்ணிக்கையையும் ஒவ்வொரு மாணவருக்கான முடிவையும் பார்க்க ஒரு செயலாக்கத்தைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "மொத்த வரவு",
     "valid": true
   },
@@ -19125,6 +19377,14 @@
   },
   {
     "text": "வகுப்பு",
+    "valid": true
+  },
+  {
+    "text": "வகுப்பு மாற்ற முடிவுகள்",
+    "valid": true
+  },
+  {
+    "text": "வகுப்பு மாற்றச் செயலாக்கங்கள்",
     "valid": true
   },
   {
@@ -19749,6 +20009,10 @@
   },
   {
     "text": "“எந்த அளவீடுகளில் மாற்றம் ஏற்பட்டுள்ளது?” என்று கேட்டுப் பாருங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "“வகுப்பு மாற்ற நடவடிக்கைகளின் பொருள் என்ன?” என்று கேட்கலாம்.",
     "valid": true
   }
 ]

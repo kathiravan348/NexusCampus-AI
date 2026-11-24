@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-25 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Dashboards, Learners, and Families)
+> State as of: 2026-11-25 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Dashboards, Year-end rollover, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -34,7 +34,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, My portal, and Dashboards show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, My portal, Dashboards, and Year-end rollover show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -301,6 +301,16 @@ Open **Dashboards** from the menu or select **Key metrics** on the leader home p
 - **As of** gives the date and time of each metric in the institution’s time zone. When a trend is available, the tile shows **Increasing**, **Decreasing** or **No change** beside an icon.
 - Offline, you can read the figures last saved on this device. **Last synced** shows when they were fetched. If you open the page offline before any figures have been saved, you see **Dashboards could not be loaded.** Reconnect and select **Try again**.
 - Choose **Ask Assist** to ask about the metrics when you are online, your institution enables Assist and your role has access.
+
+## Year-end rollover
+
+Open **Year-end rollover** from the menu. Owners and administrators with rollover access can review runs and promotion decisions. Other users see **No access** when they open the page directly.
+
+- The newest run opens first. Select an entry under **Rollover runs** to see its status, the number of learners for each action, and whether fee balances carry forward. A **Completed** run also shows the deadline for reversing it.
+- Under **Promotion decisions**, use **Filter by action** to narrow the list, or select **All** to see every decision in the run. Reloading the page keeps your selections.
+- Each decision shows the learner’s name when available, otherwise their learner number or **Learner**. The row also shows the action, the destination class group, and the reason when available. **Changed by staff** marks a decision a staff member changed.
+- This page is read-only. Offline, previously loaded runs and decisions remain available. **Last synced** shows when the runs were fetched. If the data you need is unavailable, reconnect and select **Try again**.
+- **Ask Assist** is available online when your institution enables Assist and your role has access.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.

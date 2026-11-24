@@ -6,6 +6,7 @@ import {
   BriefcaseBusiness,
   Building2,
   CalendarClock,
+  CalendarSync,
   ChartColumn,
   ClipboardCheck,
   ClipboardList,
@@ -359,5 +360,15 @@ export const MODULES: readonly ModuleEntry[] = [
     permission: "m01.institution.manage",
     offlineLevel: "L0",
     load: () => import("../modules/m84/InstallPage"),
+  },
+  {
+    moduleId: "M86",
+    path: "rollover",
+    navKey: "m86.nav.title",
+    summaryKey: "m86.nav.summary",
+    icon: CalendarSync,
+    permission: "m86.rollover.read",
+    offlineLevel: "L1",
+    load: () => import("../modules/m86/RolloverPage"),
   },
 ];

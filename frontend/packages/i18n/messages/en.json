@@ -7363,6 +7363,142 @@
     "message": "No change",
     "description": "Text for a flat trend."
   },
+  "m86.nav.title": {
+    "message": "Year-end rollover",
+    "description": "Navigation label for reviewing year-end rollover."
+  },
+  "m86.nav.summary": {
+    "message": "Review rollover runs and learner promotion decisions.",
+    "description": "Summary on the rollover home tile."
+  },
+  "m86.page.intro": {
+    "message": "Select a run to review its totals and the decision for each learner.",
+    "description": "Introduces the read-only rollover screen."
+  },
+  "m86.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Opens the Assist panel."
+  },
+  "m86.page.prompt": {
+    "message": "Try asking “What do the rollover actions mean?”",
+    "description": "General Assist suggestion without learner details."
+  },
+  "m86.page.failed": {
+    "message": "Year-end rollover could not be loaded.",
+    "description": "Shown when rollover data is unavailable."
+  },
+  "m86.page.empty": {
+    "message": "No rollover runs yet.",
+    "description": "Shown when no rollover runs exist."
+  },
+  "m86.run.heading": {
+    "message": "Rollover runs",
+    "description": "Heading for the list of selectable runs."
+  },
+  "m86.run.created": {
+    "message": "Created {date}",
+    "description": "Creation date of a rollover run."
+  },
+  "m86.run.fees": {
+    "message": "Carry fees forward",
+    "description": "Label for carrying fee balances into the new year."
+  },
+  "m86.run.yes": {
+    "message": "Yes",
+    "description": "Fees are carried forward."
+  },
+  "m86.run.no": {
+    "message": "No",
+    "description": "Fees are not carried forward."
+  },
+  "m86.run.rollback": {
+    "message": "Rollback available until {date}",
+    "description": "Deadline for reversing a completed run."
+  },
+  "m86.status.draft": {
+    "message": "Draft",
+    "description": "Run status before preparation."
+  },
+  "m86.status.dryRunReady": {
+    "message": "Dry run ready",
+    "description": "Run status when the simulation is ready."
+  },
+  "m86.status.running": {
+    "message": "In progress",
+    "description": "Run status while processing."
+  },
+  "m86.status.completed": {
+    "message": "Completed",
+    "description": "Run status after completion."
+  },
+  "m86.status.rolledBack": {
+    "message": "Rolled back",
+    "description": "Status of a reversed run."
+  },
+  "m86.status.failed": {
+    "message": "Failed",
+    "description": "Status of an unsuccessful run."
+  },
+  "m86.action.promote": {
+    "message": "Promote",
+    "description": "Action to advance the learner."
+  },
+  "m86.action.detain": {
+    "message": "Retain in current level",
+    "description": "Action to retain a learner at the current level."
+  },
+  "m86.action.graduate": {
+    "message": "Graduate",
+    "description": "Action for a learner completing their program."
+  },
+  "m86.action.transfer": {
+    "message": "Transfer",
+    "description": "Action to transfer a learner."
+  },
+  "m86.action.skip": {
+    "message": "Skip",
+    "description": "Action to skip a learner for this run."
+  },
+  "m86.decision.heading": {
+    "message": "Promotion decisions",
+    "description": "Heading for the selected run’s learner decisions."
+  },
+  "m86.decision.filter": {
+    "message": "Filter by action",
+    "description": "Label for the decision filter."
+  },
+  "m86.decision.all": {
+    "message": "All",
+    "description": "Filter option showing every action."
+  },
+  "m86.decision.action": {
+    "message": "Action",
+    "description": "Column label for the promotion action."
+  },
+  "m86.decision.target": {
+    "message": "Target class group",
+    "description": "Column label for the destination class group."
+  },
+  "m86.decision.reason": {
+    "message": "Reason",
+    "description": "Column label for the decision reason."
+  },
+  "m86.decision.changed": {
+    "message": "Changed by staff",
+    "description": "Shown for decisions overridden by a staff member."
+  },
+  "m86.decision.learnerFallback": {
+    "message": "Learner",
+    "description": "Learner label when neither a name nor a learner number is available."
+  },
+  "m86.decision.unavailable": {
+    "message": "—",
+    "description": "Placeholder when the target group or reason is unavailable."
+  },
+  "m86.decision.none": {
+    "message": "No decisions match this filter.",
+    "description": "Shown when the selected action has no decisions."
+  },
   "m86.permission.rolloverRead": {
     "message": "View year-end rollover",
     "description": "Permission description: View year-end rollover runs and promotion decisions."

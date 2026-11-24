@@ -102,6 +102,7 @@
 │     │                 modules/m27/ (StaffPortalPage, StaffQuickLinks, NEX-176),
 │     │                 modules/m28/ (DashboardsPage, KpiTile, NEX-177),
 │     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023),
+│     │                 modules/m86/ (RolloverPage, RolloverRunList, PromotionDecisions, NEX-178),
 │     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest in vite.config, NEX-030),
 │     │                 sw/ (sw.ts: Workbox injectManifest worker; mock builds host MSW in it, own tsconfig, NEX-038)
 │     └─ control/       Nexus Control provider app (NEX-071, D50): port 3200, mock mode, `publicDir` = campus public;
