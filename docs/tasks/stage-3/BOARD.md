@@ -23,8 +23,8 @@
 | NEX-155 | Fixtures: admissions, timetable, attendance, fees, marks and messages | B | done | Gemini | 149–154 |
 | NEX-156 | MSW handlers + services: M15, M08, M13, M14 | B | done | Codex | 154 |
 | NEX-157 | MSW handlers + services: M12, M09, M16, M17 | B | done | Codex | 155, 156 |
-| NEX-158 | MSW handlers + services: M18–M23 | B | planned | — | 155–157 |
-| NEX-159 | MSW handlers + services: M24–M28, M86 | B | draft | — | 155 |
+| NEX-158 | MSW handlers + services: M18–M23 | B | in-progress | Codex | 155–157 |
+| NEX-159 | MSW handlers + services: M24, M28 (portal homes for M25–M27) | B | planned | — | 155–158 |
 | NEX-160 | M15 Academic structure screens | C | planned | — | 156 |
 | NEX-161 | M08 Forms, fields & workflow builder | C | draft | — | 156 |
 | NEX-162 | M09 Import & migration wizard | C | draft | — | 157 |

@@ -85,11 +85,12 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-154 | Codex · gpt-6.2-sol / medium | 09:3x | green | done — no fixes | `007120a`, pushed |
 | NEX-155 | Gemini · gemini-4-neon-high | 09:45 | green | done — no fixes | `0fff900`, pushed |
 | NEX-156 | Codex · gpt-6.2-sol / medium | 09:45, restarted 10:08 | not run by the harness (answered questions misread as open); reviewer ran them: green | done — fix: locked demo user in `m14.test.ts`; backend key export | `4915913`, pushed |
-| NEX-157 | Codex · gpt-6.2-sol / medium | 10:5x | running | — | — |
+| NEX-157 | Codex · gpt-6.2-sol / medium | 10:5x | green | done — no fixes | `eda6b25`, pushed |
+| NEX-158 | Codex · gpt-6.2-sol / medium | 11:15 | running | — | — |
 | NEX-160 | Gemini · gemini-4-neon-xhigh (screen) | 11:0x | running | — | — |
 
-Planned next: NEX-158 (needs 157), NEX-163 (M13 + M14 screens, needs 156 — runs after NEX-160 because both edit
-`modules.ts` and the message files). Handler tasks 157–159 share the registry files, so they run one at a time.
+Planned next: NEX-163 (M13 + M14 screens, Gemini after NEX-160 — both edit `modules.ts` and the message files),
+NEX-159 (M24 + M28 handlers, needs 158; M86 reads were done in NEX-157). Handler tasks 157–159 share the registry files, so they run one at a time.
 Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both.
 
 ## Lessons (harness)
