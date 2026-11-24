@@ -6419,6 +6419,186 @@
     "message": "Enter assessment marks",
     "description": "Permission description: Enter assessment marks."
   },
+  "m21.nav.title": {
+    "message": "Exams",
+    "description": "Navigation item and page heading."
+  },
+  "m21.nav.summary": {
+    "message": "Exam schedules, seating plans and hall tickets",
+    "description": "Menu summary."
+  },
+  "m21.page.intro": {
+    "message": "Check exam dates, hall tickets and re-evaluation updates.",
+    "description": "Introduction on the Exams page."
+  },
+  "m21.page.schedule": {
+    "message": "Schedule",
+    "description": "Staff tab for exams and papers."
+  },
+  "m21.page.seating": {
+    "message": "Seating",
+    "description": "Staff tab for allocated seats."
+  },
+  "m21.page.tickets": {
+    "message": "Hall tickets & re-evaluation",
+    "description": "Tab for tickets and requests."
+  },
+  "m21.schedule.papers": {
+    "message": "Exam papers",
+    "description": "Heading above scheduled papers."
+  },
+  "m21.schedule.empty": {
+    "message": "No exams scheduled.",
+    "description": "Empty exam list."
+  },
+  "m21.schedule.noPapers": {
+    "message": "No papers for this exam.",
+    "description": "Empty paper list."
+  },
+  "m21.schedule.dates": {
+    "message": "{start} – {end}",
+    "description": "Exam date range, with formatted dates."
+  },
+  "m21.schedule.times": {
+    "message": "{startHour, number, ::integer-width/*00}:{startMinute, number, ::integer-width/*00}–{endHour, number, ::integer-width/*00}:{endMinute, number, ::integer-width/*00}",
+    "description": "Local start and end times of a paper using a 24-hour clock."
+  },
+  "m21.schedule.rooms": {
+    "message": "Rooms: {rooms}",
+    "description": "Rooms assigned to a paper."
+  },
+  "m21.schedule.unassigned": {
+    "message": "Unassigned",
+    "description": "No rooms assigned."
+  },
+  "m21.schedule.maxMarks": {
+    "message": "Maximum marks: {marks}",
+    "description": "Maximum marks for a paper."
+  },
+  "m21.seating.room": {
+    "message": "Room",
+    "description": "Fallback when a room name is unavailable."
+  },
+  "m21.seating.learner": {
+    "message": "Learner",
+    "description": "Fallback when neither name nor learner number is available."
+  },
+  "m21.seating.paperOption": {
+    "message": "{name} · {date} · {time}",
+    "description": "Paper selector option with subject, date and local time."
+  },
+  "m21.seating.generate": {
+    "message": "Generate seating plan",
+    "description": "Button to generate or confirm a paper’s seating plan."
+  },
+  "m21.seating.offline": {
+    "message": "Needs a connection",
+    "description": "Reason generation is disabled while offline."
+  },
+  "m21.seating.replace": {
+    "message": "This replaces the existing seat assignments for this paper.",
+    "description": "Confirmation before replacing seats."
+  },
+  "m21.seating.capacity": {
+    "message": "The assigned rooms do not have enough seats.",
+    "description": "Insufficient room capacity."
+  },
+  "m21.seating.closed": {
+    "message": "Seats can only be generated for planned or scheduled exams.",
+    "description": "Exam status prevents seat generation."
+  },
+  "m21.seating.generated": {
+    "message": "Seating plan generated.",
+    "description": "Successful seat generation."
+  },
+  "m21.seating.empty": {
+    "message": "No seats assigned.",
+    "description": "Empty seat list."
+  },
+  "m21.tickets.heading": {
+    "message": "Hall tickets",
+    "description": "Heading for hall tickets."
+  },
+  "m21.tickets.exam": {
+    "message": "Exam",
+    "description": "Exam selector and family-safe ticket label."
+  },
+  "m21.tickets.number": {
+    "message": "Ticket number: {number}",
+    "description": "Hall ticket identifier issued to a learner."
+  },
+  "m21.tickets.issued": {
+    "message": "Issued on {date}",
+    "description": "Ticket issue date in institution time."
+  },
+  "m21.tickets.revoked": {
+    "message": "Revoked",
+    "description": "Badge for a revoked ticket."
+  },
+  "m21.tickets.empty": {
+    "message": "No hall tickets issued.",
+    "description": "Empty ticket list."
+  },
+  "m21.revaluation.heading": {
+    "message": "Re-evaluation requests",
+    "description": "Heading for requests."
+  },
+  "m21.revaluation.paper": {
+    "message": "Paper",
+    "description": "Paper selector and fallback label."
+  },
+  "m21.revaluation.old": {
+    "message": "Original marks: {marks}",
+    "description": "Marks before re-evaluation."
+  },
+  "m21.revaluation.new": {
+    "message": "Revised marks: {marks}",
+    "description": "Marks after a change."
+  },
+  "m21.revaluation.empty": {
+    "message": "No re-evaluation requests.",
+    "description": "Empty request list."
+  },
+  "m21.status.planned": {
+    "message": "Planned",
+    "description": "Exam status before scheduling."
+  },
+  "m21.status.scheduled": {
+    "message": "Scheduled",
+    "description": "Exam status once scheduled."
+  },
+  "m21.status.running": {
+    "message": "In progress",
+    "description": "Exam underway."
+  },
+  "m21.status.resultsPending": {
+    "message": "Results pending",
+    "description": "Exam awaiting results."
+  },
+  "m21.status.published": {
+    "message": "Published",
+    "description": "Exam results published."
+  },
+  "m21.status.requested": {
+    "message": "Requested",
+    "description": "New re-evaluation request."
+  },
+  "m21.status.inReview": {
+    "message": "Under review",
+    "description": "Re-evaluation underway."
+  },
+  "m21.status.changed": {
+    "message": "Marks changed",
+    "description": "Re-evaluation changed marks."
+  },
+  "m21.status.unchanged": {
+    "message": "Marks unchanged",
+    "description": "Re-evaluation kept the original marks."
+  },
+  "m21.status.rejected": {
+    "message": "Rejected",
+    "description": "Rejected re-evaluation request."
+  },
   "m21.permission.examsRead": {
     "message": "View exams and exam records",
     "description": "Permission description: View exams and exam records."

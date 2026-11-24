@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -230,6 +230,15 @@ The **Accounting** menu item is available to staff with permission to see the in
 Open the assessment while connected so its roster is cached offline. Entries saved offline show **Waiting to sync** and upload automatically when the connection returns with **Gradebook** open. **Last synced** shows when the assessment list was last refreshed.
 
 Staff with permission to view assessments and marks can open **Gradebook**. Entering or changing marks requires mark-entry permission, and **Draft**, **Moderated**, and **Published** assessments are read-only. Parents, guardians, and learners do not see **Gradebook**.
+
+## Exams
+
+Open **Exams** to check exam arrangements. **Last synced** shows when the hall ticket list was last updated. Lists you have already opened remain available offline.
+
+- In **Schedule**, staff choose an **Exam** to see its dates and status. **Exam papers** lists each subject, date, start and end times, rooms, and maximum marks.
+- In **Seating**, choose an **Exam** and a **Paper** to see the seats grouped by room. Each seat shows the learner’s name when available, or their learner number.
+- Staff with permission to manage exams can choose **Generate seating plan** and confirm the replacement. It fills the assigned rooms in order for learners enrolled on the paper date. If the rooms have too few seats, the existing assignments stay in place. Generation is available for **Planned** and **Scheduled** exams and shows **Needs a connection** when offline.
+- **Hall tickets & re-evaluation** shows ticket numbers, issue dates and **Revoked** tickets, plus original marks, revised marks when available, and each request’s status. Parents, guardians and learners see only their own family records. Family tickets use the label **Exam** and family requests use **Paper**.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
