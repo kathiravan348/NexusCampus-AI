@@ -3,10 +3,9 @@ import {
   type PromotionAction,
   type PromotionDecision,
 } from "@nexus/contracts";
-import { useText, type MessageKey } from "@nexus/i18n";
+import { isKnownMessageKey, useText, type MessageKey } from "@nexus/i18n";
 import { useClassGroups } from "@nexus/services";
 import { EmptyState, Select } from "@nexus/ui-core";
-import english from "../../../../../packages/i18n/messages/en.json";
 import { useLearnerNames } from "../m18/InvoicesTab";
 
 interface Props {
@@ -23,7 +22,7 @@ const columns = [
 ] as const;
 
 function knownReason(key: string | null): key is MessageKey {
-  return key !== null && Object.hasOwn(english, key);
+  return key !== null && isKnownMessageKey(key);
 }
 
 export function PromotionDecisions({ decisions, action, onAction }: Props) {
