@@ -16,7 +16,7 @@ function get(path: string, user: string = USER.lsPriya) {
   });
 }
 
-beforeAll(() => server.listen({ onUnhandledRequest: "error" }));
+beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
 afterEach(() => {
   server.resetHandlers();
   resetMockDb();
@@ -55,12 +55,17 @@ describe("M19 read handlers", () => {
 
 function getInput() {
   const first = mockDb.ledgerAccounts.find((a) => a.active && a.tenantId === TENANT.littleSteps)!;
-  const second = mockDb.ledgerAccounts.find((a) =>
-    a.active && a.tenantId === first.tenantId && a.institutionId === first.institutionId &&
-    a.id !== first.id,
+  const second = mockDb.ledgerAccounts.find(
+    (a) =>
+      a.active &&
+      a.tenantId === first.tenantId &&
+      a.institutionId === first.institutionId &&
+      a.id !== first.id,
   )!;
   return {
-    institutionId: first.institutionId, postedOn: "2026-11-24", reference: "Weekly review",
+    institutionId: first.institutionId,
+    postedOn: "2026-11-24",
+    reference: "Weekly review",
     currency: "USD",
     lines: [
       { accountId: first.id, debit: 100, credit: 0 },

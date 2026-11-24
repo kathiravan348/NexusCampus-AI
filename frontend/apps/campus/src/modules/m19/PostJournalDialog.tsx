@@ -1,6 +1,11 @@
 import { JournalEntryInputSchema, type LedgerAccount } from "@nexus/contracts";
 import { formatMoney, isPseudoLocale, SOURCE_LOCALE, useText } from "@nexus/i18n";
-import { ApiRequestError, useCreateJournalEntry, useLocaleSettings, useTenant } from "@nexus/services";
+import {
+  ApiRequestError,
+  useCreateJournalEntry,
+  useLocaleSettings,
+  useTenant,
+} from "@nexus/services";
 import { Button, Input, Modal, Select, useToast } from "@nexus/ui-core";
 import { useEffect, useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
@@ -21,7 +26,10 @@ function amountFor(value: string, digits: number) {
 
 function todayAt(timeZone: string) {
   const parts = new Intl.DateTimeFormat("en-US", {
-    timeZone, year: "numeric", month: "2-digit", day: "2-digit",
+    timeZone,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
   }).formatToParts(new Date());
   const value = (key: string) => parts.find((p) => p.type === key)?.value;
   return `${value("year")}-${value("month")}-${value("day")}`;
@@ -53,7 +61,9 @@ export function PostJournalDialog({ accounts, online, onOpenChange }: Props) {
   useEffect(() => {
     if (settingCurrency && settingZone) {
       reset({
-        postedOn: todayAt(settingZone), reference: "", currency: settingCurrency,
+        postedOn: todayAt(settingZone),
+        reference: "",
+        currency: settingCurrency,
         lines: [blankLine(), blankLine()],
       });
     }
@@ -63,23 +73,34 @@ export function PostJournalDialog({ accounts, online, onOpenChange }: Props) {
   const currency = values.currency.trim().toUpperCase();
   const validCurrency = /^[A-Z]{3}$/.test(currency);
   const digits = validCurrency
-    ? new Intl.NumberFormat(local, { style: "currency", currency }).resolvedOptions().maximumFractionDigits ?? 2
+    ? (new Intl.NumberFormat(local, { style: "currency", currency }).resolvedOptions()
+        .maximumFractionDigits ?? 2)
     : 0;
   const options = accounts
     .filter((a) => a.institutionId === institutionId && a.active)
     .map((a) => ({ value: a.id, label: `${a.code} — ${a.name}` }));
   const lines = values.lines.map((l) => ({
-    accountId: l.accountId, debit: amountFor(l.debit, digits), credit: amountFor(l.credit, digits),
+    accountId: l.accountId,
+    debit: amountFor(l.debit, digits),
+    credit: amountFor(l.credit, digits),
   }));
   const debit = lines.reduce((sum, l) => sum + (l.debit ?? 0), 0);
   const credit = lines.reduce((sum, l) => sum + (l.credit ?? 0), 0);
-  const validKinds = lines.every((l) => l.debit !== undefined && l.credit !== undefined &&
-    (l.debit > 0) !== (l.credit > 0));
+  const validKinds = lines.every(
+    (l) => l.debit !== undefined && l.credit !== undefined && l.debit > 0 !== l.credit > 0,
+  );
   const hasAnyAmount = values.lines.some((l) => l.debit !== "" || l.credit !== "");
-  const validAmounts = validKinds && debit === credit && Number.isSafeInteger(debit) && Number.isSafeInteger(credit);
+  const validAmounts =
+    validKinds && debit === credit && Number.isSafeInteger(debit) && Number.isSafeInteger(credit);
   const payload = JournalEntryInputSchema.safeParse({ ...values, institutionId, currency, lines });
-  const canPost = !!institutionId && !!settingCurrency && validCurrency && validAmounts && payload.success &&
-    options.length > 0 && lines.every((l) => options.some((a) => a.value === l.accountId));
+  const canPost =
+    !!institutionId &&
+    !!settingCurrency &&
+    validCurrency &&
+    validAmounts &&
+    payload.success &&
+    options.length > 0 &&
+    lines.every((l) => options.some((a) => a.value === l.accountId));
 
   const submit = handleSubmit(async () => {
     if (!canPost || !payload.success || !online || create.isPending) return;
@@ -97,48 +118,107 @@ export function PostJournalDialog({ accounts, online, onOpenChange }: Props) {
   });
 
   return (
-    <Modal open size="lg" onOpenChange={onOpenChange} title={t("m19.journal.postEntry")}
+    <Modal
+      open
+      size="lg"
+      onOpenChange={onOpenChange}
+      title={t("m19.journal.postEntry")}
       footer={
         <>
-          <Button variant="secondary" onClick={() => onOpenChange(false)}>{t("common.cancel")}</Button>
-          <Button type="submit" form="post-journal" disabled={!online || !canPost} loading={create.isPending}>
+          <Button variant="secondary" onClick={() => onOpenChange(false)}>
+            {t("common.cancel")}
+          </Button>
+          <Button
+            type="submit"
+            form="post-journal"
+            disabled={!online || !canPost}
+            loading={create.isPending}
+          >
             {t("m19.post.submit")}
           </Button>
         </>
-      }>
+      }
+    >
       <form id="post-journal" onSubmit={(e) => void submit(e)} className="space-y-4">
-        {institutions.length > 1 && <Select label={t("m19.post.institution")} value={institutionId ?? ""}
-          options={institutions.map((i) => ({ value: i.id, label: i.name }))}
-          onChange={(event) => setSelected(event.target.value)} />}
+        {institutions.length > 1 && (
+          <Select
+            label={t("m19.post.institution")}
+            value={institutionId ?? ""}
+            options={institutions.map((i) => ({ value: i.id, label: i.name }))}
+            onChange={(event) => setSelected(event.target.value)}
+          />
+        )}
         {settings.isError || tenant.isError ? <p role="alert">{t("m19.post.failed")}</p> : null}
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
           <Input label={t("m19.post.postedOn")} type="date" required {...register("postedOn")} />
-          <Input label={t("m19.post.reference")} required maxLength={60} {...register("reference")} />
-          <Input label={t("m19.post.currency")} required maxLength={3} {...register("currency")}
-            error={values.currency.length > 0 && !validCurrency ? t("m19.post.currencyErr") : undefined} />
+          <Input
+            label={t("m19.post.reference")}
+            required
+            maxLength={60}
+            {...register("reference")}
+          />
+          <Input
+            label={t("m19.post.currency")}
+            required
+            maxLength={3}
+            {...register("currency")}
+            error={
+              values.currency.length > 0 && !validCurrency ? t("m19.post.currencyErr") : undefined
+            }
+          />
         </div>
         {fields.map((field, index) => (
-          <fieldset key={field.id} className="grid gap-2 rounded-md border border-border-default p-3 sm:grid-cols-3">
+          <fieldset
+            key={field.id}
+            className="grid gap-2 rounded-md border border-border-default p-3 sm:grid-cols-3"
+          >
             <legend className="font-semibold">{t("m19.line.label", { ordinal: index + 1 })}</legend>
-            <Select label={t("m19.line.account")} required placeholder={t("common.selectOption")}
-              options={options} {...register(`lines.${index}.accountId`)} />
-            <Input label={t("m19.line.debit")} inputMode="decimal"
-              {...register(`lines.${index}.debit`)} />
-            <Input label={t("m19.line.credit")} inputMode="decimal"
-              {...register(`lines.${index}.credit`)} />
-            {fields.length > 2 && <Button type="button" variant="secondary" onClick={() => remove(index)}>
-              {t("m19.post.removeLine")}</Button>}
+            <Select
+              label={t("m19.line.account")}
+              required
+              placeholder={t("common.selectOption")}
+              options={options}
+              {...register(`lines.${index}.accountId`)}
+            />
+            <Input
+              label={t("m19.line.debit")}
+              inputMode="decimal"
+              {...register(`lines.${index}.debit`)}
+            />
+            <Input
+              label={t("m19.line.credit")}
+              inputMode="decimal"
+              {...register(`lines.${index}.credit`)}
+            />
+            {fields.length > 2 && (
+              <Button type="button" variant="secondary" onClick={() => remove(index)}>
+                {t("m19.post.removeLine")}
+              </Button>
+            )}
           </fieldset>
         ))}
-        {fields.length < 20 && <Button type="button" variant="secondary" onClick={() => append(blankLine())}>
-          {t("m19.post.addLine")}</Button>}
-        {validCurrency && <div className="space-y-1" aria-live="polite">
-          {Number.isSafeInteger(debit) && <p>{t("m19.journal.totalDebit")} · {formatMoney(debit, currency, local)}</p>}
-          {Number.isSafeInteger(credit) && <p>{t("m19.journal.totalCredit")} · {formatMoney(credit, currency, local)}</p>}
-        </div>}
+        {fields.length < 20 && (
+          <Button type="button" variant="secondary" onClick={() => append(blankLine())}>
+            {t("m19.post.addLine")}
+          </Button>
+        )}
+        {validCurrency && (
+          <div className="space-y-1" aria-live="polite">
+            {Number.isSafeInteger(debit) && (
+              <p>
+                {t("m19.journal.totalDebit")} · {formatMoney(debit, currency, local)}
+              </p>
+            )}
+            {Number.isSafeInteger(credit) && (
+              <p>
+                {t("m19.journal.totalCredit")} · {formatMoney(credit, currency, local)}
+              </p>
+            )}
+          </div>
+        )}
         {hasAnyAmount && !validAmounts && <p role="alert">{t("m19.post.balanceError")}</p>}
-        {formState.errors.root?.lines && <p role="alert">{t("m19.post.lineError")}</p>}
-        {formState.errors.root?.request && <p role="alert">{t("m19.post.failed")}</p>}
+        {formState.errors.root?.["lines"] && <p role="alert">{t("m19.post.lineError")}</p>}
+        {formState.errors.root?.["request"] && <p role="alert">{t("m19.post.failed")}</p>}
         {!online && <p role="status">{t("common.offline")}</p>}
       </form>
     </Modal>

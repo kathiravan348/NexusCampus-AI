@@ -5,8 +5,16 @@ import { MODULES } from "../../app/modules";
 import { persona, renderApp } from "../../test/renderApp";
 
 it("shows the active account tree and distinguishes an inactive child", async () => {
-  const root = mockDb.ledgerAccounts.find((a) => a.tenantId === TENANT.riverside && a.parentId === null)!;
-  const child = { ...root, id: "acct-child-demo", parentId: root.id, name: "Old account", active: false };
+  const root = mockDb.ledgerAccounts.find(
+    (a) => a.tenantId === TENANT.riverside && a.parentId === null,
+  )!;
+  const child = {
+    ...root,
+    id: "acct-child-demo",
+    parentId: root.id,
+    name: "Old account",
+    active: false,
+  };
   mockDb.ledgerAccounts.push(child);
   renderApp("/accounting", { as: persona(TENANT.riverside, "admin"), modules: MODULES });
   const parent = await screen.findByText(`${root.code} — ${root.name}`);

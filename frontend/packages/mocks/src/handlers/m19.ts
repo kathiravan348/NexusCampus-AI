@@ -41,7 +41,11 @@ export const m19Handlers = [
         throw new ApiFailure("invalid_request", details.length ? details : undefined);
       }
       const { institutionId, lines } = parsed.data;
-      if (!ofTenant(mockDb.institutions, tenantId).some((institution) => institution.id === institutionId)) {
+      if (
+        !ofTenant(mockDb.institutions, tenantId).some(
+          (institution) => institution.id === institutionId,
+        )
+      ) {
         throw new ApiFailure("invalid_request", [
           { path: "institutionId", message: "Invalid institution" },
         ]);

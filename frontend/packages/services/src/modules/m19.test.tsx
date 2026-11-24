@@ -26,13 +26,20 @@ describe("M19 hooks", () => {
 
 it("refreshes the tenant's journal after an entitlement-protected write", async () => {
   signInAs(ADMIN);
-  const { result } = renderHook(() => ({
-    entries: useJournalEntries(), accounts: useLedgerAccounts(), create: useCreateJournalEntry(),
-  }), { wrapper: wrapper({ db: freshDb() }) });
+  const { result } = renderHook(
+    () => ({
+      entries: useJournalEntries(),
+      accounts: useLedgerAccounts(),
+      create: useCreateJournalEntry(),
+    }),
+    { wrapper: wrapper({ db: freshDb() }) },
+  );
   await waitFor(() => expect(result.current.accounts.data?.items.length).toBeGreaterThan(0));
   const records = result.current.accounts.data!.items;
   const first = records.find((row) => row.active)!;
-  const next = records.find((row) => row.active && row.id !== first.id && row.institutionId === first.institutionId)!;
+  const next = records.find(
+    (row) => row.active && row.id !== first.id && row.institutionId === first.institutionId,
+  )!;
   await act(async () => {
     await result.current.create.mutateAsync({
       institutionId: first.institutionId,
@@ -45,7 +52,9 @@ it("refreshes the tenant's journal after an entitlement-protected write", async 
       ],
     });
   });
-  await waitFor(() => expect(result.current.entries.data?.items.some(
-    (item) => item.id === result.current.create.data?.id,
-  )).toBe(true));
+  await waitFor(() =>
+    expect(
+      result.current.entries.data?.items.some((item) => item.id === result.current.create.data?.id),
+    ).toBe(true),
+  );
 });

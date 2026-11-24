@@ -6,8 +6,9 @@ import { persona, renderApp } from "../../test/renderApp";
 
 it("selects lines from the newest journal entry", async () => {
   const entries = mockDb.journalEntries.filter((x) => x.tenantId === TENANT.riverside);
-  const newest = [...entries].sort((a,b) => b.postedOn.localeCompare(a.postedOn)
-    || b.createdAt.localeCompare(a.createdAt))[0]!;
+  const newest = [...entries].sort(
+    (a, b) => b.postedOn.localeCompare(a.postedOn) || b.createdAt.localeCompare(a.createdAt),
+  )[0]!;
   renderApp("/accounting", { as: persona(TENANT.riverside, "admin"), modules: MODULES });
   const tab = await screen.findByRole("tab", { name: "Journal" });
   fireEvent.mouseDown(tab);
