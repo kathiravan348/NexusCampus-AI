@@ -89,9 +89,9 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-158 | Codex · gpt-6.2-sol / medium | 11:15 | green | done — no fixes | `88e57fa`, pushed |
 | NEX-160 | Gemini · gemini-4-neon-xhigh (screen) | 11:0x | green | done — no fixes (backend key export regenerated at merge) | `3470608`, pushed |
 | NEX-163 | Gemini · gemini-4-neon-xhigh (screen) | 11:43 | running | — | — |
-| NEX-159 | Codex · gpt-6.2-sol / medium | 11:43, question answered, restarted 11:47 | running | — | — |
+| NEX-159 | Codex · gpt-6.2-sol / medium | 11:43, question answered, restarted 11:47 | green | done — no fixes | `ce7f068`, pushed |
 
-Planned next: NEX-161 (M08 screens) and NEX-162 (M09 screens). Screen tasks each add one entry to `modules.ts` and
+Planned next: NEX-161 (M08 screens) and NEX-162 (M09 screens); Codex waits (12:15) — both share `modules.ts` with NEX-163. Screen tasks each add one entry to `modules.ts` and
 `m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
 Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both,
 and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_keys.json` or `icu_cases.json` conflict.
