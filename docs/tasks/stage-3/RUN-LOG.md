@@ -108,7 +108,8 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 Planned next: NEX-176 (M27 staff portal; after NEX-175), NEX-177 (M28 dashboards; after NEX-176) and NEX-178
 (M86 rollover, read-only per D76; after NEX-177).
 Each remaining screen task shares `modules.ts` with the running one, so one builder waits.
-Codex is at its usage limit until 23:52 (20:20): give new builds to Gemini until then.
+Owner (23:59): give the next task, NEX-176, to Codex (`gpt-6.2-astra` / `high`) once NEX-175 is merged. Codex's usage
+limit ended 23:52. If Codex hits a usage limit again, or fails twice, use Gemini (tick step 4).
 `m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
 Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both,
 and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_keys.json` or `icu_cases.json` conflict.
