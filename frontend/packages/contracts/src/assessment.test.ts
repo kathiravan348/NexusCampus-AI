@@ -3,6 +3,7 @@ import {
   AssessmentSchema,
   GradeBandSchema,
   GradingSchemeSchema,
+  MarkEntryInputSchema,
   MarkEntrySchema,
   RubricSchema,
 } from "./index";
@@ -149,5 +150,25 @@ describe("assessment marks", () => {
     const updatedAt = "2026-08-20T08:00:00Z";
     expect(AssessmentSchema.safeParse({ ...project, updatedAt }).success).toBe(false);
     expect(GradingSchemeSchema.safeParse({ ...letterScheme, updatedAt }).success).toBe(false);
+  });
+
+  it("validates mark entry inputs with the same absent and step rules", () => {
+    const input = {
+      marks: 12.5,
+      absent: false,
+      rubricScores: { evidence: 5 },
+      remark: "Clear methodology.",
+    };
+    expect(MarkEntryInputSchema.parse(input)).toEqual(input);
+    const absent = { marks: null, absent: true, rubricScores: null, remark: null };
+    expect(MarkEntryInputSchema.parse(absent)).toEqual(absent);
+    expect(MarkEntryInputSchema.safeParse({ ...input, absent: true }).success).toBe(false);
+    expect(MarkEntryInputSchema.safeParse({ ...input, marks: 12.25 }).success).toBe(false);
+    expect(MarkEntryInputSchema.safeParse({ ...input, marks: -0.5 }).success).toBe(false);
+    const fractionalRubric = { ...input, rubricScores: { evidence: 2.5 } };
+    expect(MarkEntryInputSchema.safeParse(fractionalRubric).success).toBe(false);
+    expect(MarkEntryInputSchema.safeParse({ ...input, learnerId: "learner-01" }).success).toBe(
+      false,
+    );
   });
 });

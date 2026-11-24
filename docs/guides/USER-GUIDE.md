@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -34,7 +34,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable and Fees show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees and Gradebook show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -220,6 +220,16 @@ The **Accounting** menu item is available to staff with permission to see the in
 - To post a journal entry, choose **Post entry** in **Journal**. If you have more than one institution, select the one whose accounts you need. Enter the **Posting date**, **Reference** and **Currency**. Use **Add line** to include more accounts. Enter an amount in either the **Debit** or **Credit** column of each line using the currency's usual units. Use **Post** when the totals match. The date and currency default to your institution’s local date and currency. Only staff with permission to manage accounting can post an entry.
 - Choose **Budgets** to see each budget's status, currency, amounts by account, and total.
 - When offline, read your cached records and check **Last synced** for the last update. Posting requires a connection. The **Ask Assist** button appears when the institution's AI is enabled, your role permits it, and you have a connection.
+
+## Entering marks
+
+1. Open **Gradebook**, choose a **Class group**, then select an assessment under **Assessments**. Each assessment shows its kind, maximum marks, weight, due date, and status.
+2. On an **Open** or **Marking** assessment, open the **Mark sheet** and enter **Marks** in 0.5 steps from 0 up to the maximum (the **Percent** updates as you type). If a learner missed the assessment, tick **Absent** to clear and disable the marks field and any rubric choices.
+3. When the assessment uses a rubric, pick a level for each criterion under **Rubric scores** for every learner who is not absent. Add a **Remark (optional)** if needed, then select **Save** on that row.
+
+Open the assessment while connected so its roster is cached offline. Entries saved offline show **Waiting to sync** and upload automatically when the connection returns with **Gradebook** open. **Last synced** shows when the assessment list was last refreshed.
+
+Staff with permission to view assessments and marks can open **Gradebook**. Entering or changing marks requires mark-entry permission, and **Draft**, **Moderated**, and **Published** assessments are read-only. Parents, guardians, and learners do not see **Gradebook**.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
