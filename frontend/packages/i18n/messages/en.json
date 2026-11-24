@@ -6907,6 +6907,222 @@
     "message": "Issue documents",
     "description": "Permission description: Issue documents."
   },
+  "m24.nav.title": {
+    "message": "Messages & notices",
+    "description": "Navigation and page title for the communication hub (M24)."
+  },
+  "m24.nav.summary": {
+    "message": "Read message threads, notices and meeting bookings.",
+    "description": "Home tile description for the communication hub module."
+  },
+  "m24.page.intro": {
+    "message": "Read your threads, reply to messages, check notices and view meeting bookings.",
+    "description": "Introduction text under the communication hub page title."
+  },
+  "m24.page.tabsLabel": {
+    "message": "Communication sections",
+    "description": "Accessible label for the tabs on the communication hub page."
+  },
+  "m24.page.tabMessages": {
+    "message": "Messages",
+    "description": "Tab label for message threads."
+  },
+  "m24.page.tabNotices": {
+    "message": "Notices",
+    "description": "Tab label for institution notices."
+  },
+  "m24.page.tabMeetings": {
+    "message": "Meetings",
+    "description": "Tab label for parent-teacher meeting bookings."
+  },
+  "m24.threads.listLabel": {
+    "message": "Message threads",
+    "description": "Accessible label for the list of message threads."
+  },
+  "m24.threads.empty": {
+    "message": "No message threads yet",
+    "description": "Empty state when the viewer has no message threads."
+  },
+  "m24.threads.error": {
+    "message": "Message threads could not be loaded.",
+    "description": "Error shown when message threads fail to load."
+  },
+  "m24.threads.archived": {
+    "message": "Archived",
+    "description": "Badge shown on archived message threads."
+  },
+  "m24.threads.noMessages": {
+    "message": "No messages yet",
+    "description": "Shown instead of a date when a thread has no messages yet."
+  },
+  "m24.kind.direct": {
+    "message": "Direct message",
+    "description": "Message thread kind: direct conversation."
+  },
+  "m24.kind.classGroup": {
+    "message": "Class group",
+    "description": "Message thread kind: class group thread."
+  },
+  "m24.kind.staffGroup": {
+    "message": "Staff group",
+    "description": "Message thread kind: staff group thread."
+  },
+  "m24.kind.broadcast": {
+    "message": "Broadcast",
+    "description": "Message thread kind: broadcast thread."
+  },
+  "m24.thread.back": {
+    "message": "Back to messages",
+    "description": "Button to return from a thread view to the threads list."
+  },
+  "m24.thread.unavailable": {
+    "message": "Thread unavailable",
+    "description": "Shown when a direct link points to an inaccessible or unknown thread."
+  },
+  "m24.thread.error": {
+    "message": "Messages could not be loaded.",
+    "description": "Error shown when a thread's messages fail to load."
+  },
+  "m24.thread.empty": {
+    "message": "No messages in this thread yet",
+    "description": "Empty state when an opened thread has no messages yet."
+  },
+  "m24.thread.messagesLabel": {
+    "message": "Thread messages",
+    "description": "Accessible label for the ordered list of messages in a thread."
+  },
+  "m24.thread.you": {
+    "message": "You",
+    "description": "Sender label for messages sent by the signed-in viewer."
+  },
+  "m24.thread.member": {
+    "message": "Member",
+    "description": "Fallback sender label when a participant's name is not available."
+  },
+  "m24.thread.edited": {
+    "message": "Edited",
+    "description": "Text label shown on a message that was edited after sending."
+  },
+  "m24.thread.archivedNote": {
+    "message": "This thread is archived. Replies are closed.",
+    "description": "Note explaining why the reply form is hidden on an archived thread."
+  },
+  "m24.reply.label": {
+    "message": "Reply",
+    "description": "Label for the message reply text area."
+  },
+  "m24.reply.send": {
+    "message": "Send reply",
+    "description": "Submit button to send a reply in a message thread."
+  },
+  "m24.reply.counter": {
+    "message": "{count} / {max}",
+    "description": "Character counter under the reply text area. {count} and {max} are formatted numbers."
+  },
+  "m24.reply.tooLong": {
+    "message": "Message must be {max} characters or fewer.",
+    "description": "Validation error when a reply exceeds the maximum length. {max} is a formatted number."
+  },
+  "m24.reply.invalidBody": {
+    "message": "Enter a reply before sending.",
+    "description": "Error shown when the server rejects an invalid reply body."
+  },
+  "m24.reply.archivedError": {
+    "message": "This thread is archived and can no longer receive replies.",
+    "description": "Error shown when sending a reply fails because the thread is archived."
+  },
+  "m24.reply.waiting": {
+    "message": "Waiting to send",
+    "description": "Badge on a queued offline reply waiting to be sent when back online."
+  },
+  "m24.reply.notSent": {
+    "message": "Not sent",
+    "description": "Badge or error shown when a reply could not be sent."
+  },
+  "m24.reply.replayFailed": {
+    "message": "One or more replies could not be sent.",
+    "description": "Alert shown when a queued offline reply failed while replaying."
+  },
+  "m24.notices.listLabel": {
+    "message": "Notices",
+    "description": "Accessible label for the list of institution notices."
+  },
+  "m24.notices.empty": {
+    "message": "No notices to show",
+    "description": "Empty state when there are no visible notices."
+  },
+  "m24.notices.error": {
+    "message": "Notices could not be loaded.",
+    "description": "Error shown when notices fail to load."
+  },
+  "m24.notices.needsAck": {
+    "message": "Needs acknowledgement",
+    "description": "Badge shown on notices that require acknowledgement."
+  },
+  "m24.noticeStatus.draft": {
+    "message": "Draft",
+    "description": "Notice status badge: draft."
+  },
+  "m24.noticeStatus.scheduled": {
+    "message": "Scheduled",
+    "description": "Notice status badge: scheduled for future publication."
+  },
+  "m24.noticeStatus.published": {
+    "message": "Published",
+    "description": "Notice status badge: published."
+  },
+  "m24.noticeStatus.withdrawn": {
+    "message": "Withdrawn",
+    "description": "Notice status badge: withdrawn."
+  },
+  "m24.meetings.listLabel": {
+    "message": "Meeting bookings",
+    "description": "Accessible label for the list of meeting bookings."
+  },
+  "m24.meetings.empty": {
+    "message": "No meeting bookings to show",
+    "description": "Empty state when there are no visible meeting bookings."
+  },
+  "m24.meetings.error": {
+    "message": "Meeting bookings could not be loaded.",
+    "description": "Error shown when meeting bookings fail to load."
+  },
+  "m24.meetings.timeRange": {
+    "message": "{start}–{end}",
+    "description": "Start and end time range for a meeting slot, e.g. 14:00–14:20."
+  },
+  "m24.meetings.slotUnavailable": {
+    "message": "Schedule unavailable",
+    "description": "Fallback text when a booking's meeting slot details cannot be resolved."
+  },
+  "m24.meetingMode.inPerson": {
+    "message": "In person",
+    "description": "Meeting mode: held in person at a physical location."
+  },
+  "m24.meetingMode.video": {
+    "message": "Video call",
+    "description": "Meeting mode: held over video call."
+  },
+  "m24.meetingMode.phone": {
+    "message": "Phone call",
+    "description": "Meeting mode: held over phone call."
+  },
+  "m24.bookingStatus.booked": {
+    "message": "Booked",
+    "description": "Meeting booking status badge: booked."
+  },
+  "m24.bookingStatus.cancelled": {
+    "message": "Cancelled",
+    "description": "Meeting booking status badge: cancelled."
+  },
+  "m24.bookingStatus.attended": {
+    "message": "Attended",
+    "description": "Meeting booking status badge: attended."
+  },
+  "m24.bookingStatus.noShow": {
+    "message": "No-show",
+    "description": "Meeting booking status badge: guardian did not attend."
+  },
   "m24.permission.messagesRead": {
     "message": "View your message threads",
     "description": "Permission to read threads the viewer participates in."

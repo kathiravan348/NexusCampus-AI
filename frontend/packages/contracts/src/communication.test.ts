@@ -4,6 +4,7 @@ import {
   MeetingSlotSchema,
   MessageThreadSchema,
   NoticeSchema,
+  ThreadMessageInputSchema,
   ThreadMessageSchema,
 } from "./communication";
 
@@ -122,6 +123,26 @@ describe("MessageThreadSchema and ThreadMessageSchema", () => {
     fails(ThreadMessageSchema.safeParse(dupeAttachments));
     fails(ThreadMessageSchema.safeParse(dupeReaders));
     fails(ThreadMessageSchema.safeParse({ ...threadMessage, extra: true }));
+  });
+});
+
+describe("ThreadMessageInputSchema", () => {
+  it("trims valid replies up to 4000 characters", () => {
+    expect(ThreadMessageInputSchema.parse({ body: "  Acknowledged  " })).toEqual({
+      body: "Acknowledged",
+    });
+    expect(ThreadMessageInputSchema.parse({ body: "a" })).toEqual({ body: "a" });
+    const maxBody = "a".repeat(4000);
+    expect(ThreadMessageInputSchema.parse({ body: maxBody })).toEqual({ body: maxBody });
+  });
+
+  it("rejects blank, over-length, missing, and extra-field payloads", () => {
+    fails(ThreadMessageInputSchema.safeParse({ body: "" }));
+    fails(ThreadMessageInputSchema.safeParse({ body: "   " }));
+    fails(ThreadMessageInputSchema.safeParse({ body: "a".repeat(4001) }));
+    fails(ThreadMessageInputSchema.safeParse({}));
+    fails(ThreadMessageInputSchema.safeParse({ body: 123 }));
+    fails(ThreadMessageInputSchema.safeParse({ body: "ok", extra: true }));
   });
 });
 

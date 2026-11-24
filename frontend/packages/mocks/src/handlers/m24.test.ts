@@ -148,3 +148,108 @@ describe("M24 read handlers", () => {
     }
   });
 });
+
+function postReply(
+  threadId: string,
+  body: unknown,
+  options: { user?: string; tenant?: string; key?: string } = {},
+) {
+  const { user = USER.lsArjun, tenant = TENANT.littleSteps, key = crypto.randomUUID() } = options;
+  return fetch(`http://localhost/api/v1/message-threads/${threadId}/messages`, {
+    method: "POST",
+    headers: {
+      [MOCK_HEADER.tenant]: tenant,
+      [MOCK_HEADER.user]: user,
+      "Content-Type": "application/json",
+      "Idempotency-Key": key,
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+describe("M24 message reply handler", () => {
+  it("appends a reply, updates lastMessageAt, and replays repeated keys", async () => {
+    const threadId = MESSAGE_THREAD.ls[0];
+    const thread = mockDb.messageThreads.find((row) => row.id === threadId)!;
+    const count = mockDb.threadMessages.length;
+    const key = crypto.randomUUID();
+    const [first, second] = await Promise.all([
+      postReply(threadId, { body: "  Confirmed for tomorrow  " }, { key }),
+      postReply(threadId, { body: "  Confirmed for tomorrow  " }, { key }),
+    ]);
+    expect([first.status, second.status]).toEqual([201, 201]);
+    const created = ThreadMessageSchema.parse(await first.json());
+    expect(await second.json()).toEqual(created);
+    expect(created).toMatchObject({
+      tenantId: TENANT.littleSteps,
+      threadId,
+      senderPersonId: PERSON.lsArjun,
+      body: "Confirmed for tomorrow",
+      attachmentIds: [],
+      editedAt: null,
+      readByPersonIds: [PERSON.lsArjun],
+      deviceId: null,
+    });
+    expect(thread.lastMessageAt).toBe(created.sentAt);
+    expect(mockDb.threadMessages).toHaveLength(count + 1);
+
+    thread.archived = true;
+    const replay = await postReply(threadId, { body: "Confirmed for tomorrow" }, { key });
+    expect(replay.status).toBe(201);
+    expect(await replay.json()).toEqual(created);
+  });
+
+  it("returns 409 for archived threads and 400 for invalid bodies without leaks", async () => {
+    const threadId = MESSAGE_THREAD.ls[0];
+    const thread = mockDb.messageThreads.find((row) => row.id === threadId)!;
+    const count = mockDb.threadMessages.length;
+
+    const tooLong = "x".repeat(4001);
+    for (const payload of [
+      { body: "" },
+      { body: "   " },
+      { body: tooLong },
+      { body: "ok", extra: true },
+    ]) {
+      const response = await postReply(threadId, payload);
+      expect(response.status).toBe(400);
+      const text = await response.text();
+      expect(text).toContain('"code":"invalid_request"');
+      expect(text).toContain('"path":"body"');
+      expect(text).not.toContain(tooLong.slice(0, 40));
+    }
+
+    thread.archived = true;
+    const conflict = await postReply(threadId, { body: "Private reply content" });
+    expect(conflict.status).toBe(409);
+    const conflictText = await conflict.text();
+    expect(conflictText).toContain('"code":"conflict"');
+    expect(conflictText).toContain('"path":"archived"');
+    expect(conflictText).not.toContain("Private reply content");
+    expect(mockDb.threadMessages).toHaveLength(count);
+  });
+
+  it("enforces participation, send permission, and M24 entitlement", async () => {
+    const [groupThread, directThread] = MESSAGE_THREAD.ls;
+    expect((await postReply(directThread, { body: "Hello" }, { user: USER.lsArjun })).status).toBe(
+      404,
+    );
+    expect(
+      (await postReply(MESSAGE_THREAD.rv[0], { body: "Hello" }, { user: USER.lsSunita })).status,
+    ).toBe(404);
+
+    for (const role of mockDb.roles) {
+      role.permissions = role.permissions.filter((code) => code !== "m24.messages.send");
+    }
+    expect((await postReply(groupThread, { body: "Hello" })).status).toBe(403);
+
+    resetMockDb();
+    const entitlement = mockDb.entitlements.find(
+      (row) => row.tenantId === TENANT.littleSteps && row.moduleId === "M24",
+    )!;
+    entitlement.enabled = false;
+    const disabled = await postReply(groupThread, { body: "Hello" });
+    expect(disabled.status).toBe(403);
+    expect(await disabled.text()).toContain('"code":"module_disabled"');
+  });
+});
