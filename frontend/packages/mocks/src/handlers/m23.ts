@@ -38,7 +38,7 @@ export const m23Handlers = [
 
       const body: unknown = await request.json().catch(() => undefined);
       const document = found(
-        ofTenant(mockDb.issuedDocuments, viewer.tenantId).find((row) => row.id === params.id),
+        ofTenant(mockDb.issuedDocuments, viewer.tenantId).find((row) => row.id === params["id"]),
       );
       if (document.revoked) {
         throw new ApiFailure("conflict", [{ path: "revoked", message: "conflict" }]);

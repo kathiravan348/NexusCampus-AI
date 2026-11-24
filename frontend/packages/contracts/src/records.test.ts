@@ -1,5 +1,11 @@
 import { describe, expect, it } from "vitest";
-import { IssuedDocumentSchema, ReportCardSchema, ReportCardStatusInputSchema } from "./index";
+import {
+  IssuedDocumentReadSchema,
+  IssuedDocumentRevokeInputSchema,
+  IssuedDocumentSchema,
+  ReportCardSchema,
+  ReportCardStatusInputSchema,
+} from "./index";
 
 const tenantId = "tenant-school";
 const learnerId = "learner-01";
@@ -96,5 +102,27 @@ describe("issued documents", () => {
     expect(IssuedDocumentSchema.parse(revoked)).toEqual(revoked);
     expect(IssuedDocumentSchema.safeParse({ ...certificate, revoked: true }).success).toBe(false);
     expect(IssuedDocumentSchema.safeParse({ ...revoked, revoked: false }).success).toBe(false);
+  });
+
+  it("enforces revocation reason bounds and rejects extra fields", () => {
+    const maxReason = "a".repeat(300);
+    const tooLong = "a".repeat(301);
+    const extra = { reason: "Corrected", extra: true };
+    expect(IssuedDocumentRevokeInputSchema.safeParse({ reason: "" }).success).toBe(false);
+    expect(IssuedDocumentRevokeInputSchema.safeParse({ reason: "   " }).success).toBe(false);
+    expect(IssuedDocumentRevokeInputSchema.parse({ reason: ` ${maxReason} ` })).toEqual({
+      reason: maxReason,
+    });
+    expect(IssuedDocumentRevokeInputSchema.safeParse({ reason: tooLong }).success).toBe(false);
+    expect(IssuedDocumentRevokeInputSchema.safeParse(extra).success).toBe(false);
+  });
+
+  it("allows a redacted reason on read while rejecting a reason on an active document", () => {
+    const redacted = { ...certificate, revoked: true, revokedReason: null };
+    const withReason = { ...certificate, revoked: true, revokedReason: "Replaced" };
+    const activeWithReason = { ...certificate, revoked: false, revokedReason: "Replaced" };
+    expect(IssuedDocumentReadSchema.parse(redacted)).toEqual(redacted);
+    expect(IssuedDocumentReadSchema.parse(withReason)).toEqual(withReason);
+    expect(IssuedDocumentReadSchema.safeParse(activeWithReason).success).toBe(false);
   });
 });

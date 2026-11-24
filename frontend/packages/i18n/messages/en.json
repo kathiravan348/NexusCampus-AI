@@ -6747,6 +6747,158 @@
     "message": "Publish report cards",
     "description": "Permission description: Publish report cards."
   },
+  "m23.nav.title": {
+    "message": "Issued documents",
+    "description": "Navigation and page title for issued documents."
+  },
+  "m23.nav.summary": {
+    "message": "View and verify issued certificates and letters.",
+    "description": "Home tile description for issued documents."
+  },
+  "m23.page.intro": {
+    "message": "Open an issued document to inspect its verification code, signatures and status.",
+    "description": "Introduction above the issued documents list."
+  },
+  "m23.page.failed": {
+    "message": "Issued documents could not be loaded.",
+    "description": "Error shown when issued documents fail to load."
+  },
+  "m23.filter.learner": {
+    "message": "Learner",
+    "description": "Label for the learner filter on issued documents."
+  },
+  "m23.filter.allLearners": {
+    "message": "All learners",
+    "description": "Option to show issued documents for all learners."
+  },
+  "m23.filter.kind": {
+    "message": "Document kind",
+    "description": "Label for the document kind filter."
+  },
+  "m23.filter.allKinds": {
+    "message": "All kinds",
+    "description": "Option to show all issued document kinds."
+  },
+  "m23.list.empty": {
+    "message": "No issued documents to show",
+    "description": "Empty state when no issued documents match."
+  },
+  "m23.list.staffLetter": {
+    "message": "Staff letter",
+    "description": "Recipient label for an issued document that is not linked to a learner."
+  },
+  "m23.kind.bonafide": {
+    "message": "Bonafide certificate",
+    "description": "Issued document kind: bonafide certificate."
+  },
+  "m23.kind.transfer": {
+    "message": "Transfer certificate",
+    "description": "Issued document kind: transfer certificate."
+  },
+  "m23.kind.completion": {
+    "message": "Completion certificate",
+    "description": "Issued document kind: completion certificate."
+  },
+  "m23.kind.character": {
+    "message": "Character certificate",
+    "description": "Issued document kind: character certificate."
+  },
+  "m23.kind.transcript": {
+    "message": "Transcript",
+    "description": "Issued document kind: academic transcript."
+  },
+  "m23.kind.letter": {
+    "message": "Letter",
+    "description": "Issued document kind: formal letter."
+  },
+  "m23.kind.other": {
+    "message": "Other document",
+    "description": "Issued document kind: other issued document."
+  },
+  "m23.method.drawn": {
+    "message": "Drawn signature",
+    "description": "Document signature method: drawn signature."
+  },
+  "m23.method.digitalCertificate": {
+    "message": "Digital certificate",
+    "description": "Document signature method: digital certificate."
+  },
+  "m23.method.otp": {
+    "message": "One-time passcode",
+    "description": "Document signature method: one-time passcode confirmation."
+  },
+  "m23.view.back": {
+    "message": "Back to issued documents",
+    "description": "Button to return from a document view to the list."
+  },
+  "m23.view.unavailable": {
+    "message": "Document unavailable",
+    "description": "Shown when a direct link points to an inaccessible or unknown document."
+  },
+  "m23.view.revoked": {
+    "message": "Revoked",
+    "description": "Badge indicating an issued document has been revoked."
+  },
+  "m23.view.number": {
+    "message": "Document number",
+    "description": "Label for the issued document number."
+  },
+  "m23.view.issuedOn": {
+    "message": "Issued on",
+    "description": "Label for the date the document was issued."
+  },
+  "m23.view.code": {
+    "message": "Verification code",
+    "description": "Label for the public verification code."
+  },
+  "m23.view.signatures": {
+    "message": "Signatures",
+    "description": "Label for the document signature count and signing methods."
+  },
+  "m23.revoke.action": {
+    "message": "Revoke",
+    "description": "Button to open the document revocation dialog."
+  },
+  "m23.revoke.title": {
+    "message": "Revoke document",
+    "description": "Dialog heading for revoking an issued document."
+  },
+  "m23.revoke.confirm": {
+    "message": "Public verification will show this document as invalid. Revocation cannot be undone.",
+    "description": "Warning text explaining the effect of revoking an issued document."
+  },
+  "m23.revoke.confirmAction": {
+    "message": "Revoke document",
+    "description": "Confirm button inside the revocation dialog."
+  },
+  "m23.revoke.reason": {
+    "message": "Revocation reason",
+    "description": "Label for the internal revocation reason field and detail row."
+  },
+  "m23.revoke.counter": {
+    "message": "{count} / {max}",
+    "description": "Character counter under the revocation reason field. {count} and {max} are formatted numbers."
+  },
+  "m23.revoke.tooLong": {
+    "message": "Reason must be {max} characters or fewer.",
+    "description": "Validation error when the revocation reason exceeds the character limit. {max} is a formatted number."
+  },
+  "m23.revoke.invalidReason": {
+    "message": "Enter a revocation reason.",
+    "description": "Server validation error for an invalid revocation reason."
+  },
+  "m23.revoke.saved": {
+    "message": "Document revoked",
+    "description": "Success toast after revoking an issued document."
+  },
+  "m23.revoke.conflict": {
+    "message": "Already revoked. Close this dialog and reload to see the latest status.",
+    "description": "Error shown when another session revoked the document first."
+  },
+  "m23.revoke.failed": {
+    "message": "The document could not be revoked.",
+    "description": "Generic error shown when revoking an issued document fails."
+  },
   "m23.permission.documentsRead": {
     "message": "View issued documents",
     "description": "Permission description: View issued documents."

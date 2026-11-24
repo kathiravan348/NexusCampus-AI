@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -248,6 +248,15 @@ Open **Report cards** and select a **Term** row to see subject grades, marks and
 - Guardians and learners see their own family's **Published** cards. Guardians with more than one child can choose a **Learner**. Withdrawing a card removes it from the family's list when it next syncs.
 - Previously loaded cards are readable offline. **Last synced** shows when the list was last refreshed. Status changes require a connection.
 - **Ask Assist** is available online when your institution enables AI and your role allows it.
+
+## Issued documents
+
+Open **Issued documents** to check certificates and letters issued by your institution. Each row shows the document kind, document number, issue date, learner name (or **Staff letter** when not linked to a learner), and a **Revoked** badge when revoked. Select a row to open its **Document number**, **Issued on** date, **Verification code**, and **Signatures** count and signing methods. Choose **Back to issued documents** to return to the list.
+
+- Staff with permission to view issued documents can filter by **Learner** (**All learners** by default) and **Document kind** (**All kinds** by default), and see the **Revocation reason** on revoked documents.
+- Staff with permission to issue documents can choose **Revoke** on an active document, enter a **Revocation reason** (required, up to 300 characters), and confirm with **Revoke document**. Public verification then shows the document as invalid, and revocation cannot be undone.
+- Parents, guardians, and learners see only their own family's issued documents, never staff letters and never the revocation reason. Guardians with more than one child can filter by **Learner**. Staff without permission see **No access**.
+- Previously loaded documents remain readable offline and **Last synced** shows when the list was last updated. **Revoke** is disabled offline with **You are offline**.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.

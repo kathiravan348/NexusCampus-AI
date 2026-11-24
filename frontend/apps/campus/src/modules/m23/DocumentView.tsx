@@ -1,8 +1,21 @@
-import type { IssuedDocument } from "@nexus/contracts";
-import { formatDate, formatNumber, isPseudoLocale, SOURCE_LOCALE, useText } from "@nexus/i18n";
+import type { IssuedDocument, SignatureMethod } from "@nexus/contracts";
+import {
+  formatDate,
+  formatNumber,
+  isPseudoLocale,
+  SOURCE_LOCALE,
+  useText,
+  type MessageKey,
+} from "@nexus/i18n";
 import { Badge } from "@nexus/ui-core";
 import { useRuntime } from "../../app/TenantRuntime";
 import { RevokeDialog } from "./RevokeDialog";
+
+const methodKeys: Readonly<Record<SignatureMethod, MessageKey>> = {
+  drawn: "m23.method.drawn",
+  digital_certificate: "m23.method.digitalCertificate",
+  otp: "m23.method.otp",
+};
 
 interface Props {
   readonly document: IssuedDocument;
@@ -44,7 +57,7 @@ export function DocumentView({ document, showReason, canRevoke }: Props) {
             {document.signatures.length > 0 && (
               <ul>
                 {document.signatures.map((signature, index) => (
-                  <li key={index}>{t(`m23.method.${signature.method}`)}</li>
+                  <li key={index}>{t(methodKeys[signature.method])}</li>
                 ))}
               </ul>
             )}

@@ -98,3 +98,4 @@ export const IssuedDocumentReadSchema = IssuedDocumentBaseSchema.refine(
   (document) => document.revokedReason === null || document.revoked,
   { message: "A reason requires a revoked document", path: ["revokedReason"] },
 );
+export type IssuedDocumentRead = z.infer<typeof IssuedDocumentReadSchema>;
