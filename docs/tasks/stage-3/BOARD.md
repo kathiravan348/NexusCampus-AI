@@ -41,7 +41,7 @@
 | NEX-173 | M24 Communication hub | C | done | Gemini | 159, 172 |
 | NEX-174 | M25 Family portal | C | planned | — | 159, 173 |
 | NEX-175 | M26 Learner portal | C | planned | — | 159, 174 |
-| NEX-176 | M27 Staff portal | C | draft | — | 159 |
+| NEX-176 | M27 Staff portal | C | planned | — | 159, 175 |
 | NEX-177 | M28 Dashboards & role homes | C | draft | — | 159 |
 | NEX-178 | M86 Year-end rollover & promotion | C | draft | — | 159 |
 | NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | draft | — | 160–178 |

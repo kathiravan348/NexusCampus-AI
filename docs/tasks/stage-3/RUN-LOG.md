@@ -101,9 +101,10 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-170 | Codex · gpt-6.2-astra / high (screen) | 18:49; docs-only "ready" with a question 18:58, answered, restarted 19:1x | green | done — fix: seat labels past room 26 (`AA1`…) | `c9c5aa6`, pushed |
 | NEX-171 | Codex · gpt-6.2-astra / high (screen) | 19:44 | green | done — no fixes | `2ddc5d9`, pushed |
 | NEX-172 | Codex · gpt-6.2-astra / high (screen) → Gemini · gemini-4-neon-xhigh | 20:13; question answered, restarted 20:17; Codex usage limit (until 23:52) after round 1, red on Prettier only; reviewer formatted, changes-requested (remaining build) → Gemini 20:48 | green | done — fix: list / view typed as `IssuedDocumentRead` | `3e1802a`, pushed |
-| NEX-173 | Gemini · gemini-4-neon-xhigh (screen) | 21:48 (Codex at usage limit) | running | — | — |
+| NEX-173 | Gemini · gemini-4-neon-xhigh (screen) | 21:48 (Codex at usage limit) | green | done — no fixes | `36c1590`, pushed |
+| NEX-174 | Gemini · gemini-4-neon-xhigh (screen) | 22:43 (Codex at usage limit) | running | — | — |
 
-Planned next: NEX-174 (M25 family portal home; after NEX-173) and NEX-175 (M26 learner portal; after NEX-174).
+Planned next: NEX-175 (M26 learner portal; after NEX-174) and NEX-176 (M27 staff portal; after NEX-175).
 Each remaining screen task shares `modules.ts` with the running one, so one builder waits.
 Codex is at its usage limit until 23:52 (20:20): give new builds to Gemini until then.
 `m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
