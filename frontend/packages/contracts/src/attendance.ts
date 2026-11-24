@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { IdSchema, IsoDateSchema, UtcDateTimeSchema } from "./common";
+import { EnrolmentSchema } from "./learners";
 
 const timestamps = {
   createdAt: UtcDateTimeSchema,
@@ -79,6 +80,35 @@ export const AttendanceStatusSchema = z.enum([
 ]);
 export type AttendanceStatus = z.infer<typeof AttendanceStatusSchema>;
 
+export const AttendanceRosterEntrySchema = z.strictObject({
+  learnerId: IdSchema,
+  rollNumber: EnrolmentSchema.shape.rollNumber,
+});
+export type AttendanceRosterEntry = z.infer<typeof AttendanceRosterEntrySchema>;
+
+const markFields = {
+  learnerId: IdSchema,
+  status: AttendanceStatusSchema,
+  /** Set iff `status` is `late`. */
+  minutesLate: z.int().min(1).max(600).nullable(),
+  /** Personal data; mask per role and never log (G-6, V-7). */
+  note: z.string().max(300).nullable(),
+};
+
+function validMinutesLate(mark: { status: AttendanceStatus; minutesLate: number | null }) {
+  return (mark.minutesLate !== null) === (mark.status === "late");
+}
+
+const minutesLateIssue = {
+  message: "minutesLate is required when status is late and must be null otherwise",
+  path: ["minutesLate"],
+};
+
+export const AttendanceMarkInputSchema = z
+  .strictObject(markFields)
+  .refine(validMinutesLate, minutesLateIssue);
+export type AttendanceMarkInput = z.infer<typeof AttendanceMarkInputSchema>;
+
 /**
  * One learner's mark in an attendance session (M17, offline L2).
  * Marks merge `append-only` (`sync.ts`). Biometric and geo methods store only the result, never
@@ -89,23 +119,15 @@ export const AttendanceMarkSchema = z
     id: IdSchema,
     tenantId: IdSchema,
     sessionId: IdSchema,
-    learnerId: IdSchema,
-    status: AttendanceStatusSchema,
+    ...markFields,
     method: AttendanceMethodSchema,
-    /** Set iff `status` is `late`. */
-    minutesLate: z.int().min(1).max(600).nullable(),
-    /** Personal data; mask per role and never log (G-6, V-7). */
-    note: z.string().max(300).nullable(),
     markedAt: UtcDateTimeSchema,
     /** Null for learner self check-in. */
     markedByStaffProfileId: IdSchema.nullable(),
     /** `DeviceSync` id when marked offline (L2); null when marked online. */
     deviceId: IdSchema.nullable(),
   })
-  .refine((mark) => (mark.minutesLate !== null) === (mark.status === "late"), {
-    message: "minutesLate is required when status is late and must be null otherwise",
-    path: ["minutesLate"],
-  });
+  .refine(validMinutesLate, minutesLateIssue);
 export type AttendanceMark = z.infer<typeof AttendanceMarkSchema>;
 
 export const LeaveRequestStatusSchema = z.enum(["pending", "approved", "rejected", "cancelled"]);

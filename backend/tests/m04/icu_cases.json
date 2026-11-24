@@ -460,6 +460,10 @@
     "valid": true
   },
   {
+    "text": "Absent",
+    "valid": true
+  },
+  {
     "text": "Academic calendar",
     "valid": true
   },
@@ -872,6 +876,14 @@
     "valid": true
   },
   {
+    "text": "Attendance sessions",
+    "valid": true
+  },
+  {
+    "text": "Attendance status",
+    "valid": true
+  },
+  {
     "text": "Audit & privacy",
     "valid": true
   },
@@ -1116,6 +1128,10 @@
     "valid": true
   },
   {
+    "text": "Choose a class group and a session to take roll call.",
+    "valid": true
+  },
+  {
     "text": "Choose a file with a plain file name (up to 200 characters).",
     "valid": true
   },
@@ -1340,6 +1356,10 @@
     "valid": true
   },
   {
+    "text": "Couldn’t save the mark. Check the session and try again.",
+    "valid": true
+  },
+  {
     "text": "Count",
     "valid": true
   },
@@ -1421,6 +1441,10 @@
   },
   {
     "text": "DPDP சட்டம் (இந்தியா)",
+    "valid": true
+  },
+  {
+    "text": "Daily",
     "valid": true
   },
   {
@@ -1921,6 +1945,10 @@
   },
   {
     "text": "Excel (.xlsx)",
+    "valid": true
+  },
+  {
+    "text": "Excused",
     "valid": true
   },
   {
@@ -2572,6 +2600,10 @@
     "valid": true
   },
   {
+    "text": "Late",
+    "valid": true
+  },
+  {
     "text": "Later",
     "valid": true
   },
@@ -2601,6 +2633,14 @@
   },
   {
     "text": "Learner records you can view will appear here.",
+    "valid": true
+  },
+  {
+    "text": "Learner without a roll number",
+    "valid": true
+  },
+  {
+    "text": "Learner {roll}",
     "valid": true
   },
   {
@@ -2804,6 +2844,10 @@
     "valid": true
   },
   {
+    "text": "Mark all present",
+    "valid": true
+  },
+  {
     "text": "Mark attendance",
     "valid": true
   },
@@ -2881,6 +2925,10 @@
   },
   {
     "text": "Minor until age",
+    "valid": true
+  },
+  {
+    "text": "Minutes late",
     "valid": true
   },
   {
@@ -3120,6 +3168,10 @@
     "valid": true
   },
   {
+    "text": "No attendance sessions for this class group",
+    "valid": true
+  },
+  {
     "text": "No audit events match.",
     "valid": true
   },
@@ -3237,6 +3289,10 @@
   },
   {
     "text": "No learners match",
+    "valid": true
+  },
+  {
+    "text": "No learners on this roster",
     "valid": true
   },
   {
@@ -3397,6 +3453,10 @@
   },
   {
     "text": "Not set up by your institution.",
+    "valid": true
+  },
+  {
+    "text": "Note (optional)",
     "valid": true
   },
   {
@@ -3668,6 +3728,10 @@
     "valid": true
   },
   {
+    "text": "Period",
+    "valid": true
+  },
+  {
     "text": "Period name",
     "valid": true
   },
@@ -3765,6 +3829,10 @@
   },
   {
     "text": "Preferences saved.",
+    "valid": true
+  },
+  {
+    "text": "Present",
     "valid": true
   },
   {
@@ -3964,6 +4032,10 @@
     "valid": true
   },
   {
+    "text": "Remote",
+    "valid": true
+  },
+  {
     "text": "Remove holiday {name}",
     "valid": true
   },
@@ -4109,6 +4181,10 @@
   },
   {
     "text": "Roll back",
+    "valid": true
+  },
+  {
+    "text": "Roll call",
     "valid": true
   },
   {
@@ -4660,6 +4736,10 @@
     "valid": true
   },
   {
+    "text": "Take roll call and see attendance by class group.",
+    "valid": true
+  },
+  {
     "text": "Target",
     "valid": true
   },
@@ -5132,6 +5212,10 @@
     "valid": true
   },
   {
+    "text": "Unmarked",
+    "valid": true
+  },
+  {
     "text": "Unpaid invoices",
     "valid": true
   },
@@ -5401,6 +5485,10 @@
   },
   {
     "text": "Waiting to send",
+    "valid": true
+  },
+  {
+    "text": "Waiting to sync",
     "valid": true
   },
   {
@@ -6212,6 +6300,18 @@
     "valid": true
   },
   {
+    "text": "{minutes, plural, one {# minute late} other {# minutes late}}",
+    "valid": true
+  },
+  {
+    "text": "{minutes, plural, one {# मिनट की देरी} other {# मिनट की देरी}}",
+    "valid": true
+  },
+  {
+    "text": "{minutes, plural, one {# நிமிடம் தாமதம்} other {# நிமிடங்கள் தாமதம்}}",
+    "valid": true
+  },
+  {
     "text": "{module} is off and hidden from the menu.",
     "valid": true
   },
@@ -6480,6 +6580,10 @@
     "valid": true
   },
   {
+    "text": "अनुपस्थित",
+    "valid": true
+  },
+  {
     "text": "अनुपालन",
     "valid": true
   },
@@ -6489,6 +6593,10 @@
   },
   {
     "text": "अनुमत",
+    "valid": true
+  },
+  {
+    "text": "अनुमति सहित अनुपस्थित",
     "valid": true
   },
   {
@@ -7044,6 +7152,10 @@
     "valid": true
   },
   {
+    "text": "इस कक्षा समूह के लिए कोई उपस्थिति सत्र नहीं है",
+    "valid": true
+  },
+  {
     "text": "इस कक्षा समूह के लिए कोई स्लॉट निर्धारित नहीं है।",
     "valid": true
   },
@@ -7141,6 +7253,10 @@
   },
   {
     "text": "इस संस्थान में मिलता-जुलता नाम पहले से मौजूद है।",
+    "valid": true
+  },
+  {
+    "text": "इस सूची में कोई विद्यार्थी नहीं है",
     "valid": true
   },
   {
@@ -7256,6 +7372,10 @@
     "valid": true
   },
   {
+    "text": "उपस्थित",
+    "valid": true
+  },
+  {
     "text": "उपस्थिति",
     "valid": true
   },
@@ -7269,6 +7389,14 @@
   },
   {
     "text": "उपस्थिति देखें",
+    "valid": true
+  },
+  {
+    "text": "उपस्थिति सत्र",
+    "valid": true
+  },
+  {
+    "text": "उपस्थिति स्थिति",
     "valid": true
   },
   {
@@ -7440,6 +7568,10 @@
     "valid": true
   },
   {
+    "text": "कक्षा समूह की हाज़िरी लें और उपस्थिति देखें।",
+    "valid": true
+  },
+  {
     "text": "कक्षा समूह के अनुसार साप्ताहिक समय-सारणी देखें, कक्ष व घंटी का समय जांचें, और शिक्षक कार्यभार देखें।",
     "valid": true
   },
@@ -7565,6 +7697,10 @@
   },
   {
     "text": "कार्रवाई",
+    "valid": true
+  },
+  {
+    "text": "कालांश",
     "valid": true
   },
   {
@@ -8144,6 +8280,10 @@
     "valid": true
   },
   {
+    "text": "टिप्पणी (वैकल्पिक)",
+    "valid": true
+  },
+  {
     "text": "टेक्स्ट",
     "valid": true
   },
@@ -8444,6 +8584,10 @@
     "valid": true
   },
   {
+    "text": "दूरस्थ रूप से उपस्थित",
+    "valid": true
+  },
+  {
     "text": "देखें",
     "valid": true
   },
@@ -8452,11 +8596,23 @@
     "valid": true
   },
   {
+    "text": "देर से आए",
+    "valid": true
+  },
+  {
+    "text": "देरी के मिनट",
+    "valid": true
+  },
+  {
     "text": "देश",
     "valid": true
   },
   {
     "text": "देश का कोड + से शुरू करते हुए दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "दैनिक",
     "valid": true
   },
   {
@@ -9312,6 +9468,10 @@
     "valid": true
   },
   {
+    "text": "बिना रोल नंबर वाला विद्यार्थी",
+    "valid": true
+  },
+  {
     "text": "बिना समाप्ति",
     "valid": true
   },
@@ -9860,6 +10020,10 @@
     "valid": true
   },
   {
+    "text": "लॉक किया गया",
+    "valid": true
+  },
+  {
     "text": "लोगो URL",
     "valid": true
   },
@@ -9961,6 +10125,10 @@
   },
   {
     "text": "विद्यार्थी",
+    "valid": true
+  },
+  {
+    "text": "विद्यार्थी {roll}",
     "valid": true
   },
   {
@@ -10456,6 +10624,10 @@
     "valid": true
   },
   {
+    "text": "सभी को उपस्थित चिह्नित करें",
+    "valid": true
+  },
+  {
     "text": "सभी शैक्षणिक वर्ष",
     "valid": true
   },
@@ -10693,6 +10865,10 @@
   },
   {
     "text": "सिंक हो रहा है…",
+    "valid": true
+  },
+  {
+    "text": "सिंक होने की प्रतीक्षा में",
     "valid": true
   },
   {
@@ -10988,6 +11164,22 @@
     "valid": true
   },
   {
+    "text": "हाज़िरी",
+    "valid": true
+  },
+  {
+    "text": "हाज़िरी दर्ज नहीं हुई। सत्र जाँचें और फिर कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "हाज़िरी दर्ज नहीं है",
+    "valid": true
+  },
+  {
+    "text": "हाज़िरी लेने के लिए कक्षा समूह और सत्र चुनें।",
+    "valid": true
+  },
+  {
     "text": "हिजरी (उम्म अल-क़ुरा)",
     "valid": true
   },
@@ -11148,6 +11340,10 @@
     "valid": true
   },
   {
+    "text": "அனுமதி பெற்றுள்ளார்",
+    "valid": true
+  },
+  {
     "text": "அனுமதிகள்",
     "valid": true
   },
@@ -11177,6 +11373,10 @@
   },
   {
     "text": "அனைத்துக் கல்வியாண்டுகளும்",
+    "valid": true
+  },
+  {
+    "text": "அனைவரையும் வந்ததாகப் பதிவு செய்",
     "valid": true
   },
   {
@@ -11624,6 +11824,10 @@
     "valid": true
   },
   {
+    "text": "இந்த வகுப்புக் குழுவுக்கு வருகைப் பதிவு அமர்வுகள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "இந்த வரிசையில் சரிபார்ப்புச் சிக்கல் உள்ளது.",
     "valid": true
   },
@@ -11708,6 +11912,10 @@
     "valid": true
   },
   {
+    "text": "இந்தப் பட்டியலில் மாணவர்கள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "இந்தப் பணிக்கு இன்னும் நெடுவரிசை இணைப்புகள் சேமிக்கப்படவில்லை.",
     "valid": true
   },
@@ -11785,6 +11993,10 @@
   },
   {
     "text": "இன்னும் பங்குகள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் பதிவாகவில்லை",
     "valid": true
   },
   {
@@ -12296,6 +12508,10 @@
     "valid": true
   },
   {
+    "text": "ஒத்திசைவுக்காகக் காத்திருக்கிறது",
+    "valid": true
+  },
+  {
     "text": "ஒத்திசைவுத் தரவை ஏற்ற முடியவில்லை.",
     "valid": true
   },
@@ -12761,6 +12977,10 @@
   },
   {
     "text": "குறிப்பிட்ட வளாகம் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "குறிப்பு (விருப்பத்திற்குரியது)",
     "valid": true
   },
   {
@@ -13488,6 +13708,14 @@
     "valid": true
   },
   {
+    "text": "தாமதமான நிமிடங்கள்",
+    "valid": true
+  },
+  {
+    "text": "தாமதம்",
+    "valid": true
+  },
+  {
     "text": "தாய்",
     "valid": true
   },
@@ -13520,6 +13748,10 @@
     "valid": true
   },
   {
+    "text": "தினசரி",
+    "valid": true
+  },
+  {
     "text": "திருத்தம்",
     "valid": true
   },
@@ -13549,6 +13781,10 @@
   },
   {
     "text": "திறந்தவை",
+    "valid": true
+  },
+  {
+    "text": "திறந்துள்ளது",
     "valid": true
   },
   {
@@ -13797,6 +14033,10 @@
   },
   {
     "text": "தொலைபேசி எண்ணையோ மின்னஞ்சல் முகவரியையோ உள்ளிடவும்.",
+    "valid": true
+  },
+  {
+    "text": "தொலைவழியில் பங்கேற்பு",
     "valid": true
   },
   {
@@ -14520,6 +14760,10 @@
     "valid": true
   },
   {
+    "text": "பாடவேளை",
+    "valid": true
+  },
+  {
     "text": "பாதுகாப்பது",
     "valid": true
   },
@@ -14849,6 +15093,10 @@
   },
   {
     "text": "மாணவர்",
+    "valid": true
+  },
+  {
+    "text": "மாணவர் {roll}",
     "valid": true
   },
   {
@@ -15292,6 +15540,10 @@
     "valid": true
   },
   {
+    "text": "வகுப்புக் குழுவின் வருகையைப் பதிவு செய்து பார்க்கவும்.",
+    "valid": true
+  },
+  {
     "text": "வகுப்புக் குழுவை உருவாக்க முடியவில்லை. மீண்டும் முயலவும்.",
     "valid": true
   },
@@ -15324,6 +15576,10 @@
     "valid": true
   },
   {
+    "text": "வந்துள்ளார்",
+    "valid": true
+  },
+  {
     "text": "வயது வந்த உடன்பிறப்பு",
     "valid": true
   },
@@ -15337,6 +15593,10 @@
   },
   {
     "text": "வரம்பு இல்லை",
+    "valid": true
+  },
+  {
+    "text": "வரவில்லை",
     "valid": true
   },
   {
@@ -15364,6 +15624,10 @@
     "valid": true
   },
   {
+    "text": "வரிசை எண் இல்லாத மாணவர்",
+    "valid": true
+  },
+  {
     "text": "வரிசை எண்கள், நெடுவரிசைப் பெயர்கள் மற்றும் சிக்கல் வகைகள் மட்டுமே காட்டப்படும் — கலத்தின் மதிப்புகள் ஒருபோதும் காட்டப்படாது.",
     "valid": true
   },
@@ -15376,6 +15640,10 @@
     "valid": true
   },
   {
+    "text": "வருகை நிலை",
+    "valid": true
+  },
+  {
     "text": "வருகை முன்பதிவு செய்யப்பட்டது",
     "valid": true
   },
@@ -15384,11 +15652,27 @@
     "valid": true
   },
   {
+    "text": "வருகைப் பதிவு",
+    "valid": true
+  },
+  {
+    "text": "வருகைப் பதிவு அமர்வுகள்",
+    "valid": true
+  },
+  {
     "text": "வருகைப் பதிவுகளைப் பார்",
     "valid": true
   },
   {
     "text": "வருகையைப் பதிவு செய்",
+    "valid": true
+  },
+  {
+    "text": "வருகையைப் பதிவு செய்ய முடியவில்லை. அமர்வைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "வருகையைப் பதிவு செய்ய வகுப்புக் குழுவையும் அமர்வையும் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
   {

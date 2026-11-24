@@ -5519,6 +5519,130 @@
     "message": "Manage timetables",
     "description": "Permission description: Manage rooms, bell schedules and timetable slots."
   },
+  "m17.nav.title": {
+    "message": "Attendance",
+    "description": "Campus navigation label for attendance."
+  },
+  "m17.nav.summary": {
+    "message": "Take roll call and see attendance by class group.",
+    "description": "Attendance module summary on the home screen."
+  },
+  "m17.page.intro": {
+    "message": "Choose a class group and a session to take roll call.",
+    "description": "Instruction above the class group picker."
+  },
+  "m17.page.classGroup": {
+    "message": "Class group",
+    "description": "Label for the class group selector."
+  },
+  "m17.sessions.title": {
+    "message": "Attendance sessions",
+    "description": "Heading for the list of dated sessions."
+  },
+  "m17.sessions.empty": {
+    "message": "No attendance sessions for this class group",
+    "description": "Shown when the selected group has no sessions."
+  },
+  "m17.mode.daily": {
+    "message": "Daily",
+    "description": "A roll call for the day."
+  },
+  "m17.mode.period": {
+    "message": "Period",
+    "description": "A roll call for a timetable period."
+  },
+  "m17.mode.session": {
+    "message": "Session",
+    "description": "A roll call for a batch session."
+  },
+  "m17.mode.event": {
+    "message": "Event",
+    "description": "A roll call for an event."
+  },
+  "m17.sessionStatus.open": {
+    "message": "Open",
+    "description": "Session accepting marks."
+  },
+  "m17.sessionStatus.submitted": {
+    "message": "Submitted",
+    "description": "Session submitted by staff."
+  },
+  "m17.sessionStatus.locked": {
+    "message": "Locked",
+    "description": "Session locked against edits."
+  },
+  "m17.rollCall.title": {
+    "message": "Roll call",
+    "description": "Heading above the session roster."
+  },
+  "m17.rollCall.markAll": {
+    "message": "Mark all present",
+    "description": "Mark every learner in this session present."
+  },
+  "m17.rollCall.empty": {
+    "message": "No learners on this roster",
+    "description": "Shown when no enrolments apply to the session date."
+  },
+  "m17.rollCall.learner": {
+    "message": "Learner {roll}",
+    "description": "Fallback learner label. Keep the roll number placeholder {roll}."
+  },
+  "m17.rollCall.unnumbered": {
+    "message": "Learner without a roll number",
+    "description": "Fallback when neither a name nor a roll number is available."
+  },
+  "m17.rollCall.unmarked": {
+    "message": "Unmarked",
+    "description": "The learner has no attendance mark yet."
+  },
+  "m17.rollCall.status": {
+    "message": "Attendance status",
+    "description": "Label for the four attendance choices."
+  },
+  "m17.rollCall.minutes": {
+    "message": "Minutes late",
+    "description": "Whole minutes from one to six hundred."
+  },
+  "m17.rollCall.lateBy": {
+    "message": "{minutes, plural, one {# minute late} other {# minutes late}}",
+    "description": "Recorded lateness in minutes."
+  },
+  "m17.rollCall.note": {
+    "message": "Note (optional)",
+    "description": "Optional staff-only note for this mark."
+  },
+  "m17.rollCall.waiting": {
+    "message": "Waiting to sync",
+    "description": "The mark is in the offline outbox."
+  },
+  "m17.rollCall.failed": {
+    "message": "Couldn’t save the mark. Check the session and try again.",
+    "description": "Generic mark failure without personal information."
+  },
+  "m17.mark.present": {
+    "message": "Present",
+    "description": "Learner attending."
+  },
+  "m17.mark.absent": {
+    "message": "Absent",
+    "description": "Learner absent."
+  },
+  "m17.mark.late": {
+    "message": "Late",
+    "description": "Learner arrived late."
+  },
+  "m17.mark.excused": {
+    "message": "Excused",
+    "description": "Absence excused by staff."
+  },
+  "m17.mark.onLeave": {
+    "message": "On leave",
+    "description": "Learner has recorded leave."
+  },
+  "m17.mark.remote": {
+    "message": "Remote",
+    "description": "Learner attending remotely."
+  },
   "m17.permission.attendanceRead": {
     "message": "View attendance",
     "description": "Permission description: View attendance sessions and marks."

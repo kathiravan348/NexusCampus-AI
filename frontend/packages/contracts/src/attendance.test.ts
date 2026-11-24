@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import {
+  AttendanceMarkInputSchema,
   AttendanceMarkSchema,
+  AttendanceRosterEntrySchema,
   AttendanceSessionSchema,
   LeaveRequestSchema,
   type AttendanceMark,
@@ -224,5 +226,36 @@ describe.each(timestampedRecords)("$name timestamp order", ({ schema, row }) => 
     const earlier = { ...row, createdAt, updatedAt: "2026-06-10T02:59:59.999Z" };
     expect(schema.safeParse(equal).success).toBe(true);
     expect(schema.safeParse(earlier).success).toBe(false);
+  });
+});
+
+describe("Manual roll call", () => {
+  const { learnerId, note, minutesLate, status } = lateQrMark;
+  const input = { learnerId, note, minutesLate, status };
+  it("shares the mark validation and rejects server-assigned fields", () => {
+    expect(AttendanceMarkInputSchema.parse(input)).toEqual(input);
+    for (const patch of [
+      { minutesLate: null },
+      { status: "present" },
+      { minutesLate: 601 },
+      { method: "qr" },
+    ]) {
+      expect(AttendanceMarkInputSchema.safeParse({ ...input, ...patch }).success).toBe(false);
+    }
+  });
+
+  it("accepts nullable roster numbers and restricts roster fields", () => {
+    expect(
+      AttendanceRosterEntrySchema.parse({ learnerId, rollNumber: null }).rollNumber,
+    ).toBeNull();
+    expect(AttendanceRosterEntrySchema.parse({ learnerId, rollNumber: " 01 " }).rollNumber).toBe(
+      "01",
+    );
+    expect(AttendanceRosterEntrySchema.safeParse({ learnerId, rollNumber: "" }).success).toBe(
+      false,
+    );
+    expect(
+      AttendanceRosterEntrySchema.safeParse({ learnerId, rollNumber: null, note }).success,
+    ).toBe(false);
   });
 });

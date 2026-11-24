@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Learners, and Families)
+> State as of: 2026-11-24 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 prototype — Forms & fields, Import data, Admissions, Academic structure, Timetable, Attendance, Learners, and Families)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -192,6 +192,16 @@ Available from **Timetable** in the menu to administrators, teachers, parents/gu
 - **Rooms & bells** lists each room (name, code, type, capacity or **—**, and **Inactive** when out of service) alongside the institution's **Bell schedules** (period labels, start and end times, and **Break** badges).
 - **Teacher load** is shown to staff only and displays each teacher's weekly periods, weekly minutes, maximum weekly period limit (or **No limit**), and an **Overloaded** badge when over the limit. Staff who cannot view the full directory see numbered staff labels for colleagues.
 - When Nexus Assist is switched on for your institution and you are online, **Ask Assist** opens **Nexus Assist** from the page header.
+
+## Taking attendance
+
+1. Open **Attendance**, choose a **Class group**, then select a date under **Attendance sessions**. The newest sessions appear first.
+2. In an **Open** session, choose **Present**, **Absent**, **Late**, or **Excused** beside a learner. For **Late**, enter **Minutes late** (1–600). Add a **Note (optional)** if needed, then select **Save**. To record everyone as present, choose **Mark all present**.
+3. To correct a mark, choose the new status and select **Save**. The roll call shows the most recent mark for each learner.
+
+Open the session while connected to make its roster available offline. Offline marks show **Waiting to sync**. They sync when the connection returns with **Attendance** open. **Last synced** shows when the session list was last refreshed.
+
+Staff with viewing access can read attendance. Marking requires marking permission. **Submitted** and **Locked** sessions are read-only.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
