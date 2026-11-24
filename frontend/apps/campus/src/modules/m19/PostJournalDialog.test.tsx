@@ -1,0 +1,34 @@
+import { TENANT } from "@nexus/mocks";
+import { fireEvent, screen, waitFor, within } from "@testing-library/react";
+import { expect, it } from "vitest";
+import { MODULES } from "../../app/modules";
+import { persona, renderApp } from "../../test/renderApp";
+
+it("submits the posted entry only after the journal is balanced", async () => {
+  renderApp("/accounting", { as: persona(TENANT.riverside, "admin"), modules: MODULES });
+  const tab = await screen.findByRole("tab", { name: "Journal" });
+  fireEvent.mouseDown(tab);
+  fireEvent.click(tab);
+  const postButton = await screen.findByRole("button", { name: "Post entry" });
+  fireEvent.click(postButton);
+  const dlg = within(await screen.findByRole("dialog", { name: "Post entry" }));
+  const output = await dlg.findByRole("button", { name: "Post" });
+  const selector = () => dlg.getAllByLabelText(/Account/) as HTMLSelectElement[];
+  await waitFor(() => expect(selector()[0]?.options.length).toBeGreaterThan(1));
+  await waitFor(() => expect(dlg.getByLabelText(/Posting date/)).not.toHaveValue(""));
+  const [a, b] = selector();
+  const names = [...a!.options].filter((x) => x.value !== "");
+  fireEvent.change(a!, { target: { value: names[0]!.value } });
+  fireEvent.change(b!, { target: { value: (names[1] ?? names[0])!.value } });
+  fireEvent.change(dlg.getByLabelText(/Reference/), { target: { value: "Studio snapshot" } });
+  fireEvent.change(dlg.getByLabelText(/Posting date/), { target: { value: "2099-01-01" } });
+  fireEvent.change(dlg.getAllByLabelText("Debit")[0]!, { target: { value: "42" } });
+  expect(output).toBeDisabled();
+  expect(await dlg.findByRole("alert")).toBeInTheDocument();
+  fireEvent.change(dlg.getAllByLabelText("Credit")[1]!, { target: { value: "42" } });
+  expect(output).toBeEnabled();
+  fireEvent.click(output);
+  await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+  const entry = await screen.findByText("Studio snapshot");
+  expect(entry.closest("details")).toBe(document.querySelector("details"));
+});

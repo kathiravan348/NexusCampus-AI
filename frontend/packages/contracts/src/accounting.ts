@@ -86,23 +86,32 @@ function isBalancedJournalEntry(entry: { lines: readonly JournalLine[] }): boole
   return debitTotal === creditTotal;
 }
 
-/** Balanced double-entry journal posting in one currency. */
+const journalEntryFields = {
+  institutionId: IdSchema,
+  postedOn: IsoDateSchema,
+  reference: z.string().trim().min(1).max(60),
+  currency: CurrencyCodeSchema,
+  lines: z.array(JournalLineSchema).min(2).max(100),
+};
+const balancedEntryIssue = {
+  message: "M19 journal entry must have matching debit and credit totals",
+  path: ["lines"],
+};
+
+export const JournalEntryInputSchema = z
+  .strictObject(journalEntryFields)
+  .refine(isBalancedJournalEntry, balancedEntryIssue);
+export type JournalEntryInput = z.infer<typeof JournalEntryInputSchema>;
+
 export const JournalEntrySchema = z
   .strictObject({
+    ...journalEntryFields,
     id: IdSchema,
     tenantId: IdSchema,
-    institutionId: IdSchema,
-    postedOn: IsoDateSchema,
-    reference: z.string().trim().min(1).max(60),
-    currency: CurrencyCodeSchema,
-    lines: z.array(JournalLineSchema).min(2).max(100),
     source: JournalSourceSchema,
     createdAt: UtcDateTimeSchema,
   })
-  .refine(isBalancedJournalEntry, {
-    message: "journal entry must be balanced (sum of debits equals sum of credits)",
-    path: ["lines"],
-  });
+  .refine(isBalancedJournalEntry, balancedEntryIssue);
 export type JournalEntry = z.infer<typeof JournalEntrySchema>;
 
 export const BudgetStatusSchema = z.enum(["draft", "approved", "closed"]);
