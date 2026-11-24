@@ -27,7 +27,7 @@
 | NEX-159 | MSW handlers + services: M24, M28 (portal homes for M25–M27) | B | done | Codex | 155–158 |
 | NEX-160 | M15 Academic structure screens | C | done | Gemini | 156 |
 | NEX-161 | M08 Forms, fields & workflow builder | C | done | Codex | 156 |
-| NEX-162 | M09 Import & migration wizard | C | ready-for-review | Gemini | 157 |
+| NEX-162 | M09 Import & migration wizard | C | done | Gemini | 157 |
 | NEX-163 | M13 Learner records and M14 Families & guardians | C | done | Gemini | 156 |
 | NEX-164 | M12 Admissions & enquiry CRM — staff screens (public form: follow-up) | C | planned | — | 157 |
 | NEX-165 | M16 Timetable & scheduling | C | draft | — | 157 |
