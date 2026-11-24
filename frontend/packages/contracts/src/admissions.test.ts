@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   AdmissionOfferSchema,
   ApplicationSchema,
+  EnquiryInputSchema,
   EnquirySchema,
   WaitlistEntrySchema,
   type AdmissionOffer,
@@ -143,5 +144,35 @@ describe("WaitlistEntrySchema", () => {
     expect(WaitlistEntrySchema.parse(waitlistEntry)).toEqual(waitlistEntry);
     expect(WaitlistEntrySchema.safeParse({ ...waitlistEntry, position: 0 }).success).toBe(false);
     expect(WaitlistEntrySchema.safeParse({ ...waitlistEntry, extra: true }).success).toBe(false);
+  });
+});
+
+describe("EnquiryInputSchema", () => {
+  const input = {
+    source: "walk_in",
+    campusId: null,
+    contactName: "Demo contact",
+    contactPhone: null,
+    contactEmail: "admissions@example.test",
+    learnerName: "Demo learner",
+    programId: null,
+    followUpOn: null,
+  } as const;
+
+  it("accepts either contact method and reports missing contact details on the phone field", () => {
+    expect(EnquiryInputSchema.safeParse(input).success).toBe(true);
+    expect(
+      EnquiryInputSchema.safeParse({
+        ...input,
+        contactEmail: null,
+        contactPhone: enquiry.contactPhone,
+      }).success,
+    ).toBe(true);
+    const result = EnquiryInputSchema.safeParse({ ...input, contactEmail: null });
+    expect(result.error?.issues.map((issue) => issue.path)).toContainEqual(["contactPhone"]);
+  });
+
+  it("rejects server-managed fields", () => {
+    expect(EnquiryInputSchema.safeParse({ ...input, status: "new" }).success).toBe(false);
   });
 });

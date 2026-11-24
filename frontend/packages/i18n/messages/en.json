@@ -4959,6 +4959,286 @@
     "message": "Manage imports",
     "description": "Permission description: Manage import jobs and column mappings."
   },
+  "m12.nav.title": {
+    "message": "Admissions",
+    "description": "Admissions navigation (title)."
+  },
+  "m12.nav.summary": {
+    "message": "Track enquiries, applications and offers.",
+    "description": "Admissions navigation (summary)."
+  },
+  "m12.page.intro": {
+    "message": "Review enquiries and follow each application through to an offer or a waitlist place.",
+    "description": "Admissions page (intro)."
+  },
+  "m12.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Admissions page (askAssist)."
+  },
+  "m12.page.tabsLabel": {
+    "message": "Admissions sections",
+    "description": "Admissions page (tabsLabel)."
+  },
+  "m12.page.tabEnquiries": {
+    "message": "Enquiries",
+    "description": "Admissions page (tabEnquiries)."
+  },
+  "m12.page.tabApplications": {
+    "message": "Applications",
+    "description": "Admissions page (tabApplications)."
+  },
+  "m12.page.tabOffers": {
+    "message": "Offers & waitlist",
+    "description": "Admissions page (tabOffers)."
+  },
+  "m12.page.error": {
+    "message": "Admissions records could not be loaded.",
+    "description": "Admissions page (error)."
+  },
+  "m12.enquiries.filter": {
+    "message": "Filter by status",
+    "description": "Staff enquiry list (filter)."
+  },
+  "m12.enquiries.all": {
+    "message": "All statuses",
+    "description": "Staff enquiry list (all)."
+  },
+  "m12.enquiries.empty": {
+    "message": "No matching enquiries",
+    "description": "Staff enquiry list (empty)."
+  },
+  "m12.enquiries.contact": {
+    "message": "Contact person: {name}",
+    "description": "Staff enquiry list (contact)."
+  },
+  "m12.enquiries.followUp": {
+    "message": "Follow up on {date}",
+    "description": "Staff enquiry list (followUp)."
+  },
+  "m12.applications.empty": {
+    "message": "No applications yet",
+    "description": "Admissions application list (empty)."
+  },
+  "m12.applications.submitted": {
+    "message": "Submitted on {date}",
+    "description": "Admissions application list (submitted)."
+  },
+  "m12.offers.title": {
+    "message": "Offers",
+    "description": "Admission offers (title)."
+  },
+  "m12.offers.empty": {
+    "message": "No offers yet",
+    "description": "Admission offers (empty)."
+  },
+  "m12.offers.expires": {
+    "message": "Expires on {date}",
+    "description": "Admission offers (expires)."
+  },
+  "m12.waitlist.title": {
+    "message": "Waitlist",
+    "description": "Admissions waitlist (title)."
+  },
+  "m12.waitlist.empty": {
+    "message": "The waitlist is empty",
+    "description": "Admissions waitlist (empty)."
+  },
+  "m12.waitlist.position": {
+    "message": "Position {position}",
+    "description": "Admissions waitlist (position)."
+  },
+  "m12.add.title": {
+    "message": "Add enquiry",
+    "description": "Add enquiry dialog (title)."
+  },
+  "m12.add.description": {
+    "message": "Enter a phone number or email address so staff can follow up.",
+    "description": "Add enquiry dialog (description)."
+  },
+  "m12.add.source": {
+    "message": "Source",
+    "description": "Add enquiry dialog (source)."
+  },
+  "m12.add.campus": {
+    "message": "Campus",
+    "description": "Add enquiry dialog (campus)."
+  },
+  "m12.add.contact": {
+    "message": "Contact name",
+    "description": "Add enquiry dialog (contact)."
+  },
+  "m12.add.phone": {
+    "message": "Contact phone",
+    "description": "Add enquiry dialog (phone)."
+  },
+  "m12.add.email": {
+    "message": "Contact email",
+    "description": "Add enquiry dialog (email)."
+  },
+  "m12.add.learner": {
+    "message": "Learner name",
+    "description": "Add enquiry dialog (learner)."
+  },
+  "m12.add.program": {
+    "message": "Program",
+    "description": "Add enquiry dialog (program)."
+  },
+  "m12.add.followUp": {
+    "message": "Follow-up date",
+    "description": "Add enquiry dialog (followUp)."
+  },
+  "m12.add.unassigned": {
+    "message": "Unassigned",
+    "description": "Add enquiry dialog (unassigned)."
+  },
+  "m12.add.contactRequired": {
+    "message": "Enter a phone number or an email address.",
+    "description": "Add enquiry dialog (contactRequired)."
+  },
+  "m12.add.invalidSource": {
+    "message": "Select an enquiry source.",
+    "description": "Add enquiry dialog (invalidSource)."
+  },
+  "m12.add.invalidName": {
+    "message": "Enter a valid name.",
+    "description": "Add enquiry dialog (invalidName)."
+  },
+  "m12.add.invalidPhone": {
+    "message": "Include the country code, starting with +.",
+    "description": "Add enquiry dialog (invalidPhone)."
+  },
+  "m12.add.invalidEmail": {
+    "message": "Enter a valid email address.",
+    "description": "Add enquiry dialog (invalidEmail)."
+  },
+  "m12.add.invalidProgram": {
+    "message": "Select a program in this institution.",
+    "description": "Add enquiry dialog (invalidProgram)."
+  },
+  "m12.add.invalidCampus": {
+    "message": "Select a campus in this institution.",
+    "description": "Add enquiry dialog (invalidCampus)."
+  },
+  "m12.add.invalidDate": {
+    "message": "Enter a valid follow-up date.",
+    "description": "Add enquiry dialog (invalidDate)."
+  },
+  "m12.add.created": {
+    "message": "Enquiry added",
+    "description": "Add enquiry dialog (created)."
+  },
+  "m12.add.failed": {
+    "message": "The enquiry could not be saved. Try again.",
+    "description": "Add enquiry dialog (failed)."
+  },
+  "m12.source.walkIn": {
+    "message": "Walk-in",
+    "description": "How the admissions enquiry originated (walk_in)."
+  },
+  "m12.source.phone": {
+    "message": "Phone",
+    "description": "How the admissions enquiry originated (phone)."
+  },
+  "m12.source.website": {
+    "message": "Website",
+    "description": "How the admissions enquiry originated (website)."
+  },
+  "m12.source.publicForm": {
+    "message": "Public form",
+    "description": "How the admissions enquiry originated (public_form)."
+  },
+  "m12.source.referral": {
+    "message": "Referral",
+    "description": "How the admissions enquiry originated (referral)."
+  },
+  "m12.source.campaign": {
+    "message": "Campaign",
+    "description": "How the admissions enquiry originated (campaign)."
+  },
+  "m12.source.event": {
+    "message": "Event",
+    "description": "How the admissions enquiry originated (event)."
+  },
+  "m12.source.other": {
+    "message": "Other",
+    "description": "How the admissions enquiry originated (other)."
+  },
+  "m12.status.new": {
+    "message": "New",
+    "description": "Admissions pipeline status badge (new)."
+  },
+  "m12.status.contacted": {
+    "message": "Contacted",
+    "description": "Admissions pipeline status badge (contacted)."
+  },
+  "m12.status.visitBooked": {
+    "message": "Visit booked",
+    "description": "Admissions pipeline status badge (visit_booked)."
+  },
+  "m12.status.applied": {
+    "message": "Applied",
+    "description": "Admissions pipeline status badge (applied)."
+  },
+  "m12.status.lost": {
+    "message": "Lost",
+    "description": "Admissions pipeline status badge (lost)."
+  },
+  "m12.status.draft": {
+    "message": "Draft",
+    "description": "Admissions pipeline status badge (draft)."
+  },
+  "m12.status.submitted": {
+    "message": "Submitted",
+    "description": "Admissions pipeline status badge (submitted)."
+  },
+  "m12.status.underReview": {
+    "message": "Under review",
+    "description": "Admissions pipeline status badge (under_review)."
+  },
+  "m12.status.testScheduled": {
+    "message": "Test scheduled",
+    "description": "Admissions pipeline status badge (test_scheduled)."
+  },
+  "m12.status.offered": {
+    "message": "Offered",
+    "description": "Admissions pipeline status badge (offered)."
+  },
+  "m12.status.waitlisted": {
+    "message": "Waitlisted",
+    "description": "Admissions pipeline status badge (waitlisted)."
+  },
+  "m12.status.accepted": {
+    "message": "Accepted",
+    "description": "Admissions pipeline status badge (accepted)."
+  },
+  "m12.status.rejected": {
+    "message": "Rejected",
+    "description": "Admissions pipeline status badge (rejected)."
+  },
+  "m12.status.withdrawn": {
+    "message": "Withdrawn",
+    "description": "Admissions pipeline status badge (withdrawn)."
+  },
+  "m12.status.enrolled": {
+    "message": "Enrolled",
+    "description": "Admissions pipeline status badge (enrolled)."
+  },
+  "m12.status.open": {
+    "message": "Open",
+    "description": "Admissions pipeline status badge (open)."
+  },
+  "m12.status.declined": {
+    "message": "Declined",
+    "description": "Admissions pipeline status badge (declined)."
+  },
+  "m12.status.expired": {
+    "message": "Expired",
+    "description": "Admissions pipeline status badge (expired)."
+  },
+  "m12.status.revoked": {
+    "message": "Revoked",
+    "description": "Admissions pipeline status badge (revoked)."
+  },
   "m12.permission.admissionsRead": {
     "message": "View admissions",
     "description": "Permission description: View enquiries, applications, admission offers and waitlists."

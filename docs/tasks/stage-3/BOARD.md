@@ -29,7 +29,7 @@
 | NEX-161 | M08 Forms, fields & workflow builder | C | done | Codex | 156 |
 | NEX-162 | M09 Import & migration wizard | C | done | Gemini | 157 |
 | NEX-163 | M13 Learner records and M14 Families & guardians | C | done | Gemini | 156 |
-| NEX-164 | M12 Admissions & enquiry CRM — staff screens (public form: follow-up) | C | in-progress | Codex | 157 |
+| NEX-164 | M12 Admissions & enquiry CRM — staff screens (public form: follow-up) | C | done | Codex | 157 |
 | NEX-165 | M16 Timetable & scheduling | C | planned | — | 157 |
 | NEX-166 | M17 Attendance (offline L2, mobile first) | C | planned | — | 157 |
 | NEX-167 | M18 Fees & payments | C | draft | — | 158 |

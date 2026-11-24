@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-24 (Stage 3 prototype — M08 custom field creation (NEX-161), M09 import job registration `POST /api/v1/import-jobs` (NEX-162), and M15 academic structure mock routes incl. `POST /api/v1/class-groups` (NEX-160). Stage 2 complete through NEX-145: every Nexus Control route P01–P18 on the control backend — no Control route is mock-only in real mode — plus the M84 install agent and diagnostic bundle decision audit events, D60 signed pull-only commands with D63 expiry, P04 provisioning / offboarding, P10 access broker, P18 moves, D66 one open offboarding or move per tenant, D62 Razorpay INR payment links and `NXTE/1` tenant export & import. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
+> State as of: 2026-11-24 (Stage 3 prototype — M12 enquiry creation (NEX-164), M08 custom field creation (NEX-161), M09 import job registration `POST /api/v1/import-jobs` (NEX-162), and M15 academic structure mock routes incl. `POST /api/v1/class-groups` (NEX-160). Stage 2 complete through NEX-145: every Nexus Control route P01–P18 on the control backend — no Control route is mock-only in real mode — plus the M84 install agent and diagnostic bundle decision audit events, D60 signed pull-only commands with D63 expiry, P04 provisioning / offboarding, P10 access broker, P18 moves, D66 one open offboarding or move per tenant, D62 Razorpay INR payment links and `NXTE/1` tenant export & import. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -404,6 +404,14 @@ For a tenant with multiple institutions, the first institution supplies the defa
 | `GET /api/v1/import-jobs` | M09 enabled, `m09.import.read` | `?page=&pageSize=` → `Page<ImportJob>` | `400`, `401`, `403` |
 | `GET /api/v1/import-jobs/:id/mappings` · `/issues` | M09 enabled, `m09.import.read` | `?page=&pageSize=` → `Page<ColumnMapping>` · `Page<ImportRowIssue>` (catalogue message keys only, never cell values) | `400`, `401`, `403`, `404` |
 | `POST /api/v1/import-jobs` | M09 enabled, `m09.import.manage` (active staff profile required) | `ImportJobInput` (`{ entity, fileName, sourceFormat }`) → `201 ImportJob` (`status: uploaded`, zero rows, `templateVersion: 1`, `rollbackUntil: null`, `createdByStaffProfileId` from viewer's active staff profile) | `400 invalid_request` (bad JSON, invalid plain file name, unknown entity/format, extra fields), `401`, `403 module_disabled`, `403 forbidden` (missing permission or no active staff profile) |
+
+## Admissions (M12) — mock API (Stage 3 prototype, NEX-164)
+
+| Method & path | Permission | Input / Output | Errors |
+|---|---|---|---|
+| `POST /api/v1/enquiries` | M12 enabled, `m12.admissions.manage` | `EnquiryInput` (source, campusId, contactName, contactPhone, contactEmail, learnerName, programId, followUpOn) → `201 Enquiry` | `400 invalid_request` for invalid JSON, invalid fields, missing contact method or a campus/program outside the tenant. Field details use input paths. `401` for a missing session, `403` for a disabled module or missing permission. |
+
+The server sets the tenant, institution, ID, timestamps and initial status `new`. It assigns the viewer’s staff profile when available. The campaign code and lost reason start as null.
 
 ## Academic structure (M15) — mock API (Stage 3 prototype, NEX-156, NEX-160)
 
