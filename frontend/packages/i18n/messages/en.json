@@ -7147,6 +7147,62 @@
     "message": "Manage meeting bookings",
     "description": "Permission to manage and view institution meeting bookings."
   },
+  "m25.nav.title": {
+    "message": "Family",
+    "description": "Navigation item and page title for the family portal (M25)."
+  },
+  "m25.nav.summary": {
+    "message": "See your children's summary counts and open their pages.",
+    "description": "Home tile description for the family portal module."
+  },
+  "m25.page.intro": {
+    "message": "Check updates for your children and jump to their attendance, fees, report cards and documents.",
+    "description": "Introduction line under the family portal page heading."
+  },
+  "m25.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button label to open Nexus Assist from the family portal."
+  },
+  "m25.page.failed": {
+    "message": "Family home could not be loaded.",
+    "description": "Error title shown when the family home fails to load without cached data."
+  },
+  "m25.child.sectionLabel": {
+    "message": "Children and quick links",
+    "description": "Accessible label for the child switcher and module links section."
+  },
+  "m25.child.label": {
+    "message": "Child",
+    "description": "Label for the child selector when a guardian has more than one child."
+  },
+  "m25.child.fallback": {
+    "message": "Child",
+    "description": "Fallback display name when a child's name and learner number are unavailable."
+  },
+  "m25.child.linksLabel": {
+    "message": "Child pages",
+    "description": "Accessible label for the list of module links under the child switcher."
+  },
+  "m25.cards.listLabel": {
+    "message": "Summary cards",
+    "description": "Accessible label for the list of family portal summary cards."
+  },
+  "m25.cards.allChildrenNote": {
+    "message": "Totals for all your children",
+    "description": "Note shown once above summary cards when a guardian has two or more children, explaining that counts combine all children."
+  },
+  "m25.severity.info": {
+    "message": "Info",
+    "description": "Text badge label for an informational summary card severity."
+  },
+  "m25.severity.warning": {
+    "message": "Warning",
+    "description": "Text badge label for a warning summary card severity."
+  },
+  "m25.severity.critical": {
+    "message": "Critical",
+    "description": "Text badge label for a critical summary card severity."
+  },
   "m28.permission.dashboardsRead": {
     "message": "View leadership dashboards",
     "description": "Permission to view leadership dashboards."

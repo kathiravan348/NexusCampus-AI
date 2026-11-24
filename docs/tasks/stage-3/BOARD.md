@@ -39,7 +39,7 @@
 | NEX-171 | M22 Report cards & transcripts | C | done | Codex | 158, 170 |
 | NEX-172 | M23 Documents & e-signature | C | done | Gemini | 158, 171 |
 | NEX-173 | M24 Communication hub | C | done | Gemini | 159, 172 |
-| NEX-174 | M25 Family portal | C | planned | — | 159, 173 |
+| NEX-174 | M25 Family portal | C | ready-for-review | Gemini | 159, 173 |
 | NEX-175 | M26 Learner portal | C | planned | — | 159, 174 |
 | NEX-176 | M27 Staff portal | C | draft | — | 159 |
 | NEX-177 | M28 Dashboards & role homes | C | draft | — | 159 |
