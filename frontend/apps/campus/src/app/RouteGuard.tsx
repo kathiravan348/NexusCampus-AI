@@ -17,25 +17,35 @@ export interface ModuleAccess {
   isVisible(entry: ModuleEntry): boolean;
 }
 
-/** What the signed-in user may open, from the tenant's entitlements and the user's permissions. */
+/** Resolves module access from tenant entitlements, permissions and role profiles. */
 export function useModuleAccess(): ModuleAccess {
   const entitlements = useEntitlements();
   const me = useMe();
+  const tenantId = useSession().session?.tenantId;
   return useMemo(() => {
     const enabled = new Set(
       (entitlements.data?.items ?? []).filter((e) => e.enabled).map((e) => e.moduleId),
     );
     const permissions = new Set<string>(me.data?.permissions ?? []);
+    const profiles = (me.data?.roleProfiles ?? []).filter((p) => p.tenantId === tenantId);
+    const kinds = new Set(profiles.map((profile) => profile.kind));
+    const activeKinds = new Set(profiles.filter((p) => p.status === "active").map((p) => p.kind));
     const isEntitled = (entry: ModuleEntry) => enabled.has(entry.moduleId);
-    const isPermitted = (entry: ModuleEntry) =>
-      entry.permission === null || permissions.has(entry.permission);
+    const isPermitted = ({ permission, audience }: ModuleEntry) => {
+      if (permission !== null && permissions.has(permission)) return true;
+      if (!audience) return permission === null;
+      if (audience.notLeader && permissions.has("m28.dashboards.read")) return false;
+      if (audience.notStaff && kinds.has("staff")) return false;
+      if (audience.notGuardian && kinds.has("guardian")) return false;
+      return audience.kinds.some((kind) => activeKinds.has(kind));
+    };
     return {
       loading: entitlements.isPending || me.isPending,
       isEntitled,
       isPermitted,
       isVisible: (entry) => isEntitled(entry) && isPermitted(entry),
     };
-  }, [entitlements.data, entitlements.isPending, me.data, me.isPending]);
+  }, [entitlements.data, entitlements.isPending, me.data, me.isPending, tenantId]);
 }
 
 function subscribeOnline(notify: () => void): () => void {

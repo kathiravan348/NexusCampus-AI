@@ -45,5 +45,5 @@
 | NEX-177 | M28 Dashboards & role homes | C | done | Codex | 159, 176 |
 | NEX-178 | M86 Year-end rollover & promotion | C | done | Codex | 159, 177 |
 | NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | in-review | Claude | 160–178, 181 |
-| NEX-181 | Menu shows only screens the user can open (role-profile audience, D77) | C | planned | — | 160–178 |
+| NEX-181 | Menu shows only screens the user can open (role-profile audience, D77) | C | done | Codex | 160–178 |
 | NEX-180 | Stage 3 freeze (planner + Owner) | — | draft | — | 179, 181 |
