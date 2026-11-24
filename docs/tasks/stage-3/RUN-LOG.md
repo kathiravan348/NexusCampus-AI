@@ -83,10 +83,10 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-151 | Gemini · gemini-4-neon-high | 09:0x | green (after a planner answer: `Fee` prefix) | done — fix: refund reason marked personal data | `1081a0b`, pushed |
 | NEX-153 | Gemini · gemini-4-neon-high | 08:57 | green on round 2 | done — fix: bounded read receipts | `391dc30`, pushed |
 | NEX-154 | Codex · gpt-6.2-sol / medium | 09:3x | green | done — no fixes | `007120a`, pushed |
-| NEX-156 | Codex · gpt-6.2-sol / medium | 09:45 | running | — | — |
-| NEX-155 | Gemini · gemini-4-neon-high | 09:45 | running | — | — |
+| NEX-155 | Gemini · gemini-4-neon-high | 09:45 | green | done — no fixes | `0fff900`, pushed |
+| NEX-156 | Codex · gpt-6.2-sol / medium | 09:45, restarted 10:08 | running (2 planner answers: read NEX-154 files; masked `GuardianRelationshipViewSchema`) | — | — |
 
-Planned next: NEX-157 (needs 155, 156), NEX-158 (needs 155–157). The handler tasks 157–159 share the registry
+Gemini idle until NEX-156 is merged (every startable task shares its files). Planned next: NEX-157 (needs 155, 156), NEX-158 (needs 155–157). The handler tasks 157–159 share the registry
 files (`stage3-access.ts`, `db.ts`, `handlers/index.ts`, `services/{keys,index}.ts`, message files), so they run one
 at a time; the other builder takes screen tasks (160, 161, 163 after NEX-156). NEX-155 and NEX-156 both append one
 line to `fixtures/index.ts`: at merge keep both lines.
