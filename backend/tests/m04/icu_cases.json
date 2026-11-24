@@ -1984,7 +1984,23 @@
     "valid": true
   },
   {
+    "text": "Manage academic structure",
+    "valid": true
+  },
+  {
     "text": "Manage consents",
+    "valid": true
+  },
+  {
+    "text": "Manage family records",
+    "valid": true
+  },
+  {
+    "text": "Manage forms, fields and workflows",
+    "valid": true
+  },
+  {
+    "text": "Manage learner records",
     "valid": true
   },
   {
@@ -3768,7 +3784,31 @@
     "valid": true
   },
   {
+    "text": "View academic structure",
+    "valid": true
+  },
+  {
     "text": "View details",
+    "valid": true
+  },
+  {
+    "text": "View family records",
+    "valid": true
+  },
+  {
+    "text": "View forms, fields and workflows",
+    "valid": true
+  },
+  {
+    "text": "View learner records",
+    "valid": true
+  },
+  {
+    "text": "View restricted family data",
+    "valid": true
+  },
+  {
+    "text": "View restricted learner data",
     "valid": true
   },
   {
@@ -6084,6 +6124,10 @@
     "valid": true
   },
   {
+    "text": "परिवारों की प्रतिबंधित जानकारी देखें",
+    "valid": true
+  },
+  {
     "text": "परिसर",
     "valid": true
   },
@@ -6145,6 +6189,14 @@
   },
   {
     "text": "पाठ्यक्रम",
+    "valid": true
+  },
+  {
+    "text": "पारिवारिक रिकॉर्ड देखें",
+    "valid": true
+  },
+  {
+    "text": "पारिवारिक रिकॉर्ड प्रबंधित करें",
     "valid": true
   },
   {
@@ -6345,6 +6397,14 @@
   },
   {
     "text": "फ़ॉर्म",
+    "valid": true
+  },
+  {
+    "text": "फ़ॉर्म, फ़ील्ड और कार्यप्रवाह देखें",
+    "valid": true
+  },
+  {
+    "text": "फ़ॉर्म, फ़ील्ड और कार्यप्रवाह प्रबंधित करें",
     "valid": true
   },
   {
@@ -7028,6 +7088,18 @@
     "valid": true
   },
   {
+    "text": "शिक्षार्थियों की प्रतिबंधित जानकारी देखें",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थियों के रिकॉर्ड देखें",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थियों के रिकॉर्ड प्रबंधित करें",
+    "valid": true
+  },
+  {
     "text": "शिक्षार्थी",
     "valid": true
   },
@@ -7065,6 +7137,14 @@
   },
   {
     "text": "शैक्षणिक संरचना",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक संरचना देखें",
+    "valid": true
+  },
+  {
+    "text": "शैक्षणिक संरचना प्रबंधित करें",
     "valid": true
   },
   {
@@ -8688,6 +8768,18 @@
     "valid": true
   },
   {
+    "text": "கற்பவர் பதிவுகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர் பதிவுகளைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "கற்பவர்களின் கட்டுப்படுத்தப்பட்ட தரவைப் பார்",
+    "valid": true
+  },
+  {
     "text": "கற்பவர்கள்",
     "valid": true
   },
@@ -8705,6 +8797,14 @@
   },
   {
     "text": "கல்வி நாட்காட்டிகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கல்விக் கட்டமைப்பை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "கல்விக் கட்டமைப்பைப் பார்",
     "valid": true
   },
   {
@@ -8781,6 +8881,18 @@
   },
   {
     "text": "கீழே உள்ள பாதுகாப்பு நிலைமாற்றி தேவை.",
+    "valid": true
+  },
+  {
+    "text": "குடும்பங்களின் கட்டுப்படுத்தப்பட்ட தரவைப் பார்",
+    "valid": true
+  },
+  {
+    "text": "குடும்பப் பதிவுகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "குடும்பப் பதிவுகளைப் பார்",
     "valid": true
   },
   {
@@ -9861,6 +9973,14 @@
   },
   {
     "text": "படித்துத் திருத்த",
+    "valid": true
+  },
+  {
+    "text": "படிவங்கள், புலங்கள் மற்றும் பணிப்பாய்வுகளை நிர்வகி",
+    "valid": true
+  },
+  {
+    "text": "படிவங்கள், புலங்கள் மற்றும் பணிப்பாய்வுகளைப் பார்",
     "valid": true
   },
   {

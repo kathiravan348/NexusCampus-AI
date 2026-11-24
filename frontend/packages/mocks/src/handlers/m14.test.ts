@@ -67,6 +67,10 @@ describe("M14 read handlers", () => {
   });
 
   it("limits guardians to their family and masks court notes even for family", async () => {
+    // Daniel's demo account is locked in the fixtures; unlock it so his family scope can be read.
+    mockDb.users = mockDb.users.map((row) =>
+      row.id === USER.rvDaniel ? { ...row, status: "active" } : row,
+    );
     const households = await get("/households", USER.rvGrace);
     expect(households.status).toBe(200);
     expect(HouseholdsPage.parse(await households.json()).items).toMatchObject([
