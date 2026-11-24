@@ -93,10 +93,11 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-161 | Codex · gpt-6.2-astra / high (screen) | 12:42, question answered, restarted 12:50 | green | done — no fixes (backend key export regenerated at merge) | `d4afc81`, pushed |
 | NEX-162 | Gemini · gemini-4-neon-xhigh (screen) | 13:12 | green | done — no fixes | `fe58ffe`, pushed |
 | NEX-164 | Codex · gpt-6.2-astra / high (screen) | 13:43 | green | done — no fixes | `acfc8c6`, pushed |
-| NEX-165 | Gemini · gemini-4-neon-xhigh (screen) | 14:2x | running | — | — |
+| NEX-165 | Gemini · gemini-4-neon-xhigh (screen) | 14:2x | green | done — no fixes | `5f89b7a`, pushed |
+| NEX-166 | Codex · gpt-6.2-astra / high (screen) | 15:13 | running | — | — |
 
-Planned next: NEX-166 (M17 attendance roll call, outbox L2) and NEX-167 (M18 fees, offline receipts L2; after NEX-166).
-Codex waits (14:2x) — every remaining screen task shares `modules.ts` with NEX-165. Screen tasks each add one entry to `modules.ts` and
+Planned next: NEX-167 (M18 fees, offline receipts L2; after NEX-166) and NEX-168 (M19 accounting, L1; after NEX-167).
+Gemini waits (15:13) — every remaining screen task shares `modules.ts` with NEX-166.
 `m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
 Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both,
 and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_keys.json` or `icu_cases.json` conflict.
@@ -118,6 +119,8 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - Task branches are checked out in the builder worktrees, so `review:` commits are made there (builder not alive).
 - A planner answer written only on `main` conflicts with the branch's own Questions line when the harness merges
   `main` (merge output is silenced): copy the same answer onto the branch too, so the merge is clean (NEX-159).
+- Piping `start-build.sh` (e.g. `| tail`) keeps the tick's shell waiting on the detached build's inherited output;
+  run it without a pipe and read `status.sh` afterwards.
 
 ## Waiting for the Owner
 _(nothing yet)_
