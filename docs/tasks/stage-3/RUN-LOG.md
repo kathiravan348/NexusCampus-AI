@@ -94,10 +94,11 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-162 | Gemini · gemini-4-neon-xhigh (screen) | 13:12 | green | done — no fixes | `fe58ffe`, pushed |
 | NEX-164 | Codex · gpt-6.2-astra / high (screen) | 13:43 | green | done — no fixes | `acfc8c6`, pushed |
 | NEX-165 | Gemini · gemini-4-neon-xhigh (screen) | 14:2x | green | done — no fixes | `5f89b7a`, pushed |
-| NEX-166 | Codex · gpt-6.2-astra / high (screen) | 15:13 | running | — | — |
+| NEX-166 | Codex · gpt-6.2-astra / high (screen) | 15:13 | green | done — no fixes | `15fcddf`, pushed |
+| NEX-167 | Gemini · gemini-4-neon-xhigh (screen) | 15:43 | running | — | — |
 
-Planned next: NEX-167 (M18 fees, offline receipts L2; after NEX-166) and NEX-168 (M19 accounting, L1; after NEX-167).
-Gemini waits (15:13) — every remaining screen task shares `modules.ts` with NEX-166.
+Planned next: NEX-168 (M19 accounting, L1; after NEX-167) and NEX-169 (M20 gradebook, offline marks L2; after NEX-168).
+Codex waits (15:43) — every remaining screen task shares `modules.ts` with NEX-167.
 `m0x.*` keys to the message files; they run one at a time (start the next when the running screen task is merged).
 Screen tasks and handler tasks both add keys to `messages/{en,hi,ta}.json` in different module blocks; at merge keep both,
 and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_keys.json` or `icu_cases.json` conflict.
