@@ -100,7 +100,7 @@ or branches, or weaken a security / privacy rule to finish faster. Keep the tick
 | NEX-169 | Gemini · gemini-4-neon-xhigh (screen) | 17:19 | red ×4 (type errors); reviewer fixed, green | done — fix: `scores?.set` null guard in `MarkSheet.tsx` | `5da5c24`, pushed |
 | NEX-170 | Codex · gpt-6.2-astra / high (screen) | 18:49; docs-only "ready" with a question 18:58, answered, restarted 19:1x | green | done — fix: seat labels past room 26 (`AA1`…) | `c9c5aa6`, pushed |
 | NEX-171 | Codex · gpt-6.2-astra / high (screen) | 19:44 | green | done — no fixes | `2ddc5d9`, pushed |
-| NEX-172 | Codex · gpt-6.2-astra / high (screen) | 20:13 | running | — | — |
+| NEX-172 | Codex · gpt-6.2-astra / high (screen) | 20:13; question (family read schema) answered, restarted 20:2x | running | — | — |
 
 Planned next: NEX-173 (M24 messages, offline reply; after NEX-172) and NEX-174 (M25 family portal home; after NEX-173).
 Gemini waits (since 18:49) — every remaining screen task shares `modules.ts` with the running one.
