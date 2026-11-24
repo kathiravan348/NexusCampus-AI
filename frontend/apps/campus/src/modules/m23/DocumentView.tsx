@@ -1,4 +1,4 @@
-import type { IssuedDocument, SignatureMethod } from "@nexus/contracts";
+import type { IssuedDocumentRead, SignatureMethod } from "@nexus/contracts";
 import {
   formatDate,
   formatNumber,
@@ -18,7 +18,7 @@ const methodKeys: Readonly<Record<SignatureMethod, MessageKey>> = {
 };
 
 interface Props {
-  readonly document: IssuedDocument;
+  readonly document: IssuedDocumentRead;
   readonly showReason: boolean;
   readonly canRevoke: boolean;
 }

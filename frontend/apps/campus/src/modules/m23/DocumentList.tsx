@@ -1,10 +1,10 @@
-import type { IssuedDocument } from "@nexus/contracts";
+import type { IssuedDocumentRead } from "@nexus/contracts";
 import { formatDate, isPseudoLocale, SOURCE_LOCALE, useText } from "@nexus/i18n";
 import { Badge, EmptyState } from "@nexus/ui-core";
 import { useRuntime } from "../../app/TenantRuntime";
 
 interface Props {
-  readonly documents: readonly IssuedDocument[];
+  readonly documents: readonly IssuedDocumentRead[];
   readonly names: ReadonlyMap<string, string>;
   readonly onOpen: (id: string) => void;
 }
