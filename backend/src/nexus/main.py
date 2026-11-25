@@ -52,6 +52,7 @@ from nexus.modules.m83 import broker_stub
 from nexus.modules.m83 import keys as m83_keys
 from nexus.modules.m83.grant_auth import GrantSigner
 from nexus.modules.m84 import router as m84
+from nexus.modules.m86 import router as m86
 from nexus.settings import Settings, get_settings
 
 log = logging.getLogger("nexus")
@@ -139,6 +140,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(m22.router)
     app.include_router(m24.router)
     app.include_router(m28.router)
+    app.include_router(m86.router)
     app.include_router(m12_public.router)
     app.include_router(m13.router)
     app.include_router(m14.router)
