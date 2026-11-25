@@ -249,6 +249,16 @@ All four tables have an opaque `id`, a `tenant_id`, an insertion-order column fo
 
 Ordinary application values are stored in the `answers` JSONB object. A database trigger rejects plaintext keys marked sensitive for applications in that tenant. Protected values are a JSON object encrypted with FieldCipher in `sensitive_answers`, bound to `applications.sensitive_answers` under the tenant's `tenant_data` key. NULL means there are no protected answers. Tenant export unwraps this column inside the encrypted export stream.
 
+### Public enquiry forms (`0029_enquiry_forms`)
+
+`enquiry_forms` holds one public form per institution: `id` (`pef-` + ULID, 80 random bits from `secrets`),
+`tenant_id`, `institution_id` (composite reference, unique) and `created_at`. Forced RLS with `tenant_isolation`;
+the application role can only read it. The migration backfills one form per existing institution. New institutions
+get a form with the demo data (NEX-195). `nexus_public_enquiry_form(form_id)` is an owner-owned SECURITY DEFINER
+function (`SET search_path = public`, no `PUBLIC` execute, granted to `nexus_app`) that returns only `tenant_id` and
+`institution_id` for one form ID, so the public endpoint can open that tenant's RLS transaction without any
+cross-tenant read access.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with

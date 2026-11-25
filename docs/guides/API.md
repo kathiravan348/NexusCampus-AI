@@ -423,13 +423,21 @@ On the real backend, a page that discloses sensitive application answers records
 
 Lists preserve insertion order within the tenant. The backend checks the module and permission before validating the enquiry body. It chooses the institution from the program, then the campus, then the viewer’s staff profile, then the first institution by ID. If none exists it returns `400 invalid_request`. The assignee is the viewer’s staff profile or null. The server sets the tenant, `enq-` ID, timestamps and `new` status. Campaign code and lost reason start as null. The same transaction records `m12.enquiry.created` with input field names only.
 
-## Admissions enquiry forms (M12) — mock API (NEX-186, NEX-201)
+## Admissions enquiry forms (M12) — real backend (NEX-204) and mock (NEX-186, NEX-201)
 
 | Method & path | Permission | Input / Output | Errors |
 |---|---|---|---|
 | `GET /api/v1/public/enquiry-forms/:formId` | Public (no session) | — → `PublicEnquiryForm` (`id`, `institutionName`, `institutionType`, `defaultLocale`, `supportedLocales`, active `programs` and `campuses` as `{ id, name }` only, D79) | `404 not_found` for an unknown form ID, disabled M12 or suspended institution. |
-| `POST /api/v1/public/enquiry-forms/:formId/enquiries` | Public (no session) | `PublicEnquiryInput` (`learnerName`, `contactName`, phone or email, optional `programId`/`campusId`, `consent: true`, empty honeypot `website`) → `202 PublicEnquiryReceipt` (`{ received: true }`, never echoes data). Stores a `new` / `public_form` enquiry with no assignee in the form's tenant; a filled `website` returns the same `202` and stores nothing. | `400 invalid_request` with field `details[].path` (incl. foreign program/campus), `404 not_found`. |
+| `POST /api/v1/public/enquiry-forms/:formId/enquiries` | Public (no session) | `PublicEnquiryInput` (`learnerName`, `contactName`, phone or email, optional `programId`/`campusId`, `consent: true`, empty honeypot `website`) → `202 PublicEnquiryReceipt` (`{ received: true }`, never echoes data). Stores a `new` / `public_form` enquiry with no assignee in the form's tenant; a filled `website` returns the same `202` and stores nothing. | `400 invalid_request` with field `details[].path` (incl. foreign program/campus), `404 not_found`, `429 rate_limited`. |
 | `GET /api/v1/enquiry-forms` | M12 enabled, `m12.admissions.manage` | `?page=&pageSize=` → `Page<EnquiryFormSummary>` (the signed-in tenant's public form IDs) | `400`, `401`, `403 module_disabled` or `forbidden`. |
+
+On the real backend (D81) both public routes count the request in Valkey **before** the form lookup, so unknown IDs and
+honeypot posts count too: posts 5 per client IP per 10 minutes and 100 per form ID per hour, form reads 60 per client
+IP per 10 minutes. Over a limit, or when Valkey is unavailable (fail closed), the answer is `429 rate_limited` (detail
+path `""`) with `Retry-After` in seconds. Keys hold only SHA-256 hashes of the IP and form ID; IPs are never logged or
+stored, and the client IP is the socket address (no forwarded headers yet). An unknown form ID, M12 switched off, a
+suspended institution, a frozen tenant or a tenant served by another region all return the same `404 not_found`.
+A stored enquiry records `m12.enquiry.publicReceived` (system actor, input field names only, no values).
 
 ## Families and guardians (M14) — real backend (NEX-202) and mock
 
