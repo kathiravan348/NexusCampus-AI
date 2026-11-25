@@ -270,6 +270,19 @@ The application role can read all three and insert import jobs only (no update o
 | `column_mappings` | One row per job (`job_id` primary key): `columns`, a JSON array of 1-200 mapped columns. |
 | `import_row_issues` | Job, row number (at least 1), optional column name, severity, a `snake_case` code and a catalogue message key. Issues never hold imported cell values (V-7). |
 
+## Timetable (M16 — `0031_timetable`)
+
+All three tables have an opaque `id`, a `tenant_id`, an insertion-order column for stable paging, timestamps
+(`updated_at >= created_at`), forced RLS with the `tenant_isolation` policy and composite tenant references. The
+application role can read all three and insert timetable slots only. The migration adds a unique `(id, tenant_id)`
+index on `subject_offerings` for the slot reference.
+
+| Table | Columns and constraints |
+|---|---|
+| `rooms` | Institution, optional campus, code, name, kind (classroom, lab, hall, library, sports, online, other), optional capacity 1-5000, active. |
+| `bell_schedules` | Institution, name and `periods`, a JSON array of 1-20 periods (code, label, start, end, break flag). |
+| `timetable_slots` | Academic year, optional academic period, subject offering, ISO weekday 1-7, `start` / `end` as `HH:MM` text with `end > start`, optional room, up to 10 distinct staff profile IDs, effective dates (`effective_to >= effective_from`, open when null). Clashes are API checks, not constraints. |
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with

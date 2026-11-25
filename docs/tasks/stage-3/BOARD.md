@@ -57,7 +57,7 @@
 | NEX-203 | Build: DB + API for M09 import jobs, mappings and row issues (split from NEX-185) | D | done | Claude | 204 |
 | NEX-186 | Public admissions enquiry form, no sign-in (M12; Owner review point 4; demo data first) | C | done | Gemini | 180 |
 | NEX-201 | Public enquiry form opens in the institution's default language, with a language switch (D42, D79) | C | done | Gemini | 186 |
-| NEX-187 | Build: DB + API for M16 timetable (rooms, bell schedules, slots, teacher load) | D | planned | — | 183, 184, 203 |
+| NEX-187 | Build: DB + API for M16 timetable (rooms, bell schedules, slots, teacher load) | D | done | Claude | 183, 184, 203 |
 | NEX-205 | Build: DB + API for M17 attendance (sessions, roster, marks, leave; offline replay) — split from NEX-187 | D | planned | — | 187 |
 | NEX-188 | Build: DB + API for M18 fees and payments and M19 accounting ledger and budgets | D | draft | — | 184 |
 | NEX-189 | Build: DB + API for M20 gradebook and M21 exams and seating | D | draft | — | 183, 184 |
