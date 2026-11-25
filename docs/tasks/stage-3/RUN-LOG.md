@@ -166,3 +166,9 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   `gpt-6.2-sol` low; reviewer ran the fixture export and updated two portal tests), merged. Points 3–4 planned as
   build tasks. **Stage 3 frozen (NEX-180, D78)**; build step NEX-183–199 on the board as draft. Nothing is running;
   the first two build task files are written when the Owner says to start the build.
+- 2026-11-25 — Owner: "push main and start the Stage 3 build". Dev stack started (`nexus-compose-up`); the harness
+  now also runs `backend-check` with `NEXUS_REQUIRE_DB=1` whenever `backend/` changes (and always on `main`), and ends
+  a red backend check with an error summary for the builder — before this, 267 database tests were skipped silently.
+  NEX-183 (Codex, two rounds of planner answers) and NEX-186 (Gemini) reviewed, live-checked and merged; `main`
+  green (2031 frontend, 522 backend). Follow-up NEX-201 (public form language). NEX-200 (Codex) and NEX-201
+  (Gemini) building. Not pushed since the first push — waiting for the Owner.
