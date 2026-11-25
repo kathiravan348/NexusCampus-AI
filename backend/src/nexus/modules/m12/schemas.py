@@ -4,7 +4,15 @@ import re
 from datetime import date, datetime
 from typing import Annotated, Literal, Self
 
-from pydantic import ConfigDict, Field, StringConstraints, ValidationError, field_validator, model_validator
+from pydantic import (
+    ConfigDict,
+    Field,
+    StrictBool,
+    StringConstraints,
+    ValidationError,
+    field_validator,
+    model_validator,
+)
 from pydantic_core import PydanticCustomError
 
 from nexus.core.schemas import Contract
@@ -126,3 +134,73 @@ class WaitlistEntryOut(Record):
     program_id: Id
     position: Annotated[int, Field(ge=1)]
     added_at: datetime
+
+
+class PublicEnquiryIn(Contract):
+    """Frozen `PublicEnquiryInput` (D79): consent required, honeypot empty, a contact method present."""
+
+    model_config = ConfigDict(
+        regex_engine="python-re", hide_input_in_errors=True, validate_by_alias=True, validate_by_name=False
+    )
+
+    learner_name: Name
+    contact_name: Name
+    contact_phone: Phone | None
+    contact_email: Email | None
+    program_id: Id | None
+    campus_id: Id | None
+    consent: StrictBool
+    website: Literal[""]
+
+    @field_validator("contact_name", "learner_name", "program_id", "campus_id")
+    @classmethod
+    def database_text(cls, value: str | None) -> str | None:
+        if value is not None and ("\x00" in value or len(value.encode("utf-16-le")) > 400):
+            raise ValueError("Invalid enquiry field")
+        return value
+
+    @field_validator("consent")
+    @classmethod
+    def consent_given(cls, value: bool) -> bool:
+        if value is not True:
+            raise ValueError("Invalid enquiry field")
+        return value
+
+    @model_validator(mode="after")
+    def contact_required(self) -> Self:
+        if self.contact_phone is None and self.contact_email is None:
+            raise ValidationError.from_exception_data(
+                type(self).__name__,
+                [
+                    {
+                        "type": PydanticCustomError("missing_contact", "Invalid enquiry field"),
+                        "loc": ("contactPhone",),
+                        "input": None,
+                    }
+                ],
+            )
+        return self
+
+
+class PublicEnquiryOption(Contract):
+    id: Id
+    name: Name
+
+
+class PublicEnquiryFormOut(Contract):
+    id: Id
+    institution_name: Name
+    institution_type: Literal["ey", "k12", "he", "voc", "tp", "sk", "onl", "grp"]
+    default_locale: str
+    supported_locales: Annotated[list[str], Field(min_length=1)]
+    programs: list[PublicEnquiryOption]
+    campuses: list[PublicEnquiryOption]
+
+
+class PublicEnquiryReceipt(Contract):
+    received: Literal[True] = True
+
+
+class EnquiryFormSummaryOut(Record):
+    institution_id: Id
+    institution_name: Name

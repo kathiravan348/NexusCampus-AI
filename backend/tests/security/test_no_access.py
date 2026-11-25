@@ -113,6 +113,8 @@ def test_V1_rls_check_fails_when_a_policy_is_broken(test_db: DbUrls) -> None:
 def test_V1_provider_without_a_grant_reaches_nothing(client: TestClient) -> None:
     routes = [r for r in api_routes(client.app) if "/dev/" not in r.path and r.path.startswith("/api/v1/")]
     open_paths = {"/api/v1/auth/login", "/api/v1/auth/callback", "/api/v1/auth/logout", "/api/v1/auth/sso/discover"}
+    # The public enquiry form (D79) has no session by design; its own limits and identical 404s are NEX-204 tests.
+    open_paths |= {"/api/v1/public/enquiry-forms/{form_id}", "/api/v1/public/enquiry-forms/{form_id}/enquiries"}
     checked = 0
     for route in routes:
         if route.path in open_paths or route.path.startswith("/api/v1/scim/"):
@@ -310,7 +312,11 @@ def test_V7_no_route_serves_tenant_records_without_a_tenant_guard(client: TestCl
         guarded = any(getattr(d.call, "__nexus_guard__", None) for d in _all_dependencies(route.dependant))
         if not guarded and "/dev/" not in route.path:
             unguarded.add(route.path)
-    allowed = re.compile(r"^(/healthz|/readyz|/api/v1/auth/.*|/api/v1/me|/api/v1/scim/.*|/api/v1/sessions.*)$")
+    # The public enquiry form (D79, NEX-204) resolves its tenant from an unguessable form id via an id-only function.
+    allowed = re.compile(
+        r"^(/healthz|/readyz|/api/v1/auth/.*|/api/v1/me|/api/v1/scim/.*|/api/v1/sessions.*"
+        r"|/api/v1/public/enquiry-forms/\{form_id\}(/enquiries)?)$"
+    )
     assert sorted(p for p in unguarded if not allowed.match(p)) == []
 
 

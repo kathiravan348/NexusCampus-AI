@@ -7,6 +7,7 @@ from sqlalchemy import (
     CheckConstraint,
     Date,
     DateTime,
+    ForeignKey,
     ForeignKeyConstraint,
     Identity,
     Index,
@@ -163,3 +164,20 @@ class WaitlistEntry(AdmissionsRow, Base):
     program_id: Mapped[str] = mapped_column(String(ID_LENGTH))
     position: Mapped[int] = mapped_column(Integer())
     added_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))
+
+
+class EnquiryForm(Base):
+    """One public enquiry form per institution (revision 0029, D79)."""
+
+    __tablename__ = "enquiry_forms"
+    __table_args__ = (
+        ForeignKeyConstraint(["institution_id", "tenant_id"], ["institutions.id", "institutions.tenant_id"]),
+        UniqueConstraint("institution_id", name="uq_enquiry_forms_institution"),
+        UniqueConstraint("id", "tenant_id", name="uq_enquiry_forms_ref_tenant"),
+        CheckConstraint("id ~ '^pef-[0-9A-Za-z]{12,64}$'", name="id_valid"),
+    )
+
+    id: Mapped[str] = mapped_column(String(ID_LENGTH), primary_key=True)
+    tenant_id: Mapped[str] = mapped_column(String(ID_LENGTH), ForeignKey("tenants.id"), index=True)
+    institution_id: Mapped[str] = mapped_column(String(ID_LENGTH))
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"))

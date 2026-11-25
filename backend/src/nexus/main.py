@@ -32,6 +32,7 @@ from nexus.modules.m10 import router as m10
 from nexus.modules.m11 import router as m11
 from nexus.modules.m11.gateway import build_gateway
 from nexus.modules.m11.retrieval import HashEmbedder
+from nexus.modules.m12 import public as m12_public
 from nexus.modules.m12 import router as m12
 from nexus.modules.m13 import router as m13
 from nexus.modules.m14 import router as m14
@@ -118,6 +119,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(m10.router)
     app.include_router(m11.router)
     app.include_router(m12.router)
+    app.include_router(m12_public.router)
     app.include_router(m13.router)
     app.include_router(m14.router)
     app.include_router(m15.router)

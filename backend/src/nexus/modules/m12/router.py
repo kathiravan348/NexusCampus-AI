@@ -4,17 +4,19 @@ from typing import Annotated, get_args
 
 from fastapi import APIRouter, Depends, Request
 from pydantic import ValidationError
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.exc import StatementError
 
 from nexus.core.errors import ApiError, ApiErrorDetail
 from nexus.core.fieldcrypto import FieldCipher
 from nexus.core.pagination import Page, PageQuery, page_query
 from nexus.core.permissions import Authorized, require
-from nexus.modules.m12.models import AdmissionOffer, Enquiry, WaitlistEntry
+from nexus.modules.m01.models import Institution
+from nexus.modules.m12.models import AdmissionOffer, Enquiry, EnquiryForm, WaitlistEntry
 from nexus.modules.m12.schemas import (
     AdmissionOfferOut,
     ApplicationOut,
+    EnquiryFormSummaryOut,
     EnquiryIn,
     EnquiryOut,
     EnquiryStatus,
@@ -57,6 +59,30 @@ async def admission_offers(auth: Reader, page: Paging) -> Page[AdmissionOfferOut
 async def waitlist(auth: Reader, page: Paging) -> Page[WaitlistEntryOut]:
     query = select(WaitlistEntry).order_by(WaitlistEntry.list_order, WaitlistEntry.id)
     return await read_page(auth.ctx.db, query, WaitlistEntryOut, page)
+
+
+@router.get("/enquiry-forms")
+async def enquiry_forms(auth: Manager, page: Paging) -> Page[EnquiryFormSummaryOut]:
+    """The signed-in tenant's public form ids (D79), one per institution."""
+    db = auth.ctx.db
+    total = await db.scalar(select(func.count()).select_from(EnquiryForm))
+    rows = await db.execute(
+        select(EnquiryForm.id, EnquiryForm.tenant_id, EnquiryForm.institution_id, Institution.name)
+        .join(
+            Institution,
+            (Institution.id == EnquiryForm.institution_id) & (Institution.tenant_id == EnquiryForm.tenant_id),
+        )
+        .order_by(EnquiryForm.institution_id, EnquiryForm.id)
+        .limit(page.page_size)
+        .offset(page.offset)
+    )
+    items = [
+        EnquiryFormSummaryOut(
+            id=row.id, tenant_id=row.tenant_id, institution_id=row.institution_id, institution_name=row.name
+        )
+        for row in rows
+    ]
+    return Page.of(items, total or 0, page)
 
 
 @router.post(
