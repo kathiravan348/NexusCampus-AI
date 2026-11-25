@@ -283,6 +283,21 @@ index on `subject_offerings` for the slot reference.
 | `bell_schedules` | Institution, name and `periods`, a JSON array of 1-20 periods (code, label, start, end, break flag). |
 | `timetable_slots` | Academic year, optional academic period, subject offering, ISO weekday 1-7, `start` / `end` as `HH:MM` text with `end > start`, optional room, up to 10 distinct staff profile IDs, effective dates (`effective_to >= effective_from`, open when null). Clashes are API checks, not constraints. |
 
+## Attendance (M17 — `0032_attendance`)
+
+All three tables have an opaque `id`, a `tenant_id`, an insertion-order column, forced RLS with the
+`tenant_isolation` policy and composite tenant references. The application role can read all three and insert
+attendance marks only: marks are append-only (no update or delete).
+
+| Table | Columns and constraints |
+|---|---|
+| `attendance_sessions` | Institution, mode (daily, period, session, event), date, optional class group, timetable slot exactly for `period`, event label exactly for `event`, optional taking staff profile, status (open, submitted, locked), `submitted_at` exactly when not open, timestamps. |
+| `attendance_marks` | Session, learner, status, `minutes_late` (1-600) exactly when `late`, encrypted `note`, method, `marked_at`, optional staff profile and device ID. |
+| `leave_requests` | Learner, requesting person, `from` / `to` dates (`to >= from`), encrypted `reason`, status, deciding staff profile and `decided_at` exactly when approved or rejected, timestamps. |
+
+`attendance_marks.note` and `leave_requests.reason` are FieldCipher text under the tenant's `tenant_data` key (a CHECK
+rejects plaintext) and are listed in `ENCRYPTED_COLUMNS` for tenant export.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
