@@ -162,8 +162,8 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-190 | Claude · claude-opus-5-5 (D83, lane D, `0037`) | 03:1x | green (backend 594, 0 skipped) | done — no fixes | merged 03:3x, pushed |
 | NEX-191 | Claude · claude-opus-5-5 (D83, lane D, `0038`) | 03:4x | green (backend 599, 0 skipped) | done — no fixes | merged 04:1x, pushed |
 | NEX-192 | Claude · claude-opus-5-5 (D83, API only) | 04:2x | green (backend 602, 0 skipped) | done — no fixes | merged 04:4x, pushed |
-| NEX-208 | — (planned 04:5x, contract inputs + mock writes, D84) | — | — | — | — |
-| NEX-193 | — (planned 04:5x, lane D, `0039`, D84) | — | — | — | — |
+| NEX-208 | Claude · claude-opus-5-5 (D83, contract inputs + mock writes) | 05:0x | green (frontend 2041 + 1 known P01 timeout passing alone) | done — no fixes | merged 05:2x, pushed |
+| NEX-193 | Claude · claude-opus-5-5 (D83, lane D, `0039`, D84) | 05:3x | green (backend 605, 0 skipped) | done — fix: M13 grant test follows D84 | merged 06:0x, pushed |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
@@ -274,3 +274,7 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   207, 190, 191, 192; backend 602 tests, 0 skipped; frontend 2035). Rollover writes planned as D84 (Owner review
   point 3): NEX-208 (contract input schemas + mock writes), then NEX-193 (backend), then NEX-194 (screens). Codex
   re-checks every D83 self-review when it is back.
+- 2026-11-26 06:0x (D83) — NEX-208 and NEX-193 merged and pushed: rollover writes on the mock and the real backend
+  (D84; the app role gains narrow enrolment / learner write grants — Owner may want to look at D84). Next: NEX-194
+  (rollover screens), then NEX-195 (demo seed incl. next-year calendars), NEX-196, NEX-197, NEX-198, NEX-199.
+
