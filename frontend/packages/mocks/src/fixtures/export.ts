@@ -17,9 +17,10 @@ import { demoAccessFixtures } from "./stage3-access";
 import { FONTS, TEXT_OVERRIDE_REVISIONS, TEXT_OVERRIDES, THEMES } from "./studio";
 import { DEVICE_SYNCS, SYNC_CONFLICTS } from "./sync";
 import { CAMPUSES, DEMO_TENANTS, GROUPS, INSTITUTIONS } from "./tenants";
+import * as S3 from "./stage3-data";
 
 /** Format version of `demo_fixtures.json`; bump when the shape changes so the backend seed can refuse old files. */
-export const DEMO_FIXTURES_VERSION = 15;
+export const DEMO_FIXTURES_VERSION = 16;
 
 /**
  * The demo data the backend seed reads, in contract shapes (camelCase): tenancy (NEX-043) plus each tenant's
@@ -74,6 +75,8 @@ export function demoFixtures() {
     tenantCompliance: Object.entries(TENANT_COMPLIANCE).flatMap(([tenantId, codes]) =>
       codes.map((packCode) => ({ tenantId, packCode })),
     ),
+    // Stage 3 demo data (NEX-195, D85): the backend seed writes these rows and seals personal columns.
+    ...S3.stage3Fixtures(),
   };
 }
 
