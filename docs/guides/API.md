@@ -419,6 +419,8 @@ The real backend checks the module and permission before reading the creation re
 | `GET /api/v1/waitlist` | M12 enabled, `m12.admissions.read` | `?page=&pageSize=` → `Page<WaitlistEntry>`. | `400`, `401`, `403`. |
 | `POST /api/v1/enquiries` | M12 enabled, `m12.admissions.manage` | `EnquiryInput` (source, campusId, contactName, contactPhone, contactEmail, learnerName, programId, followUpOn) → `201 Enquiry` | `400 invalid_request` for invalid JSON, invalid fields, missing contact method or a campus/program outside the tenant. Field details use input paths. `401` for a missing session, `403` for a disabled module or missing permission. |
 
+On the real backend, a page that discloses sensitive application answers records one `m12.application.sensitiveRead` event in the request transaction. It targets `applicationList` and records only the field name `answers`.
+
 Lists preserve insertion order within the tenant. The backend checks the module and permission before validating the enquiry body. It chooses the institution from the program, then the campus, then the viewer’s staff profile, then the first institution by ID. If none exists it returns `400 invalid_request`. The assignee is the viewer’s staff profile or null. The server sets the tenant, `enq-` ID, timestamps and `new` status. Campaign code and lost reason start as null. The same transaction records `m12.enquiry.created` with input field names only.
 
 ## Admissions enquiry forms (M12) — mock API (NEX-186, NEX-201)
@@ -428,7 +430,6 @@ Lists preserve insertion order within the tenant. The backend checks the module 
 | `GET /api/v1/public/enquiry-forms/:formId` | Public (no session) | — → `PublicEnquiryForm` (`id`, `institutionName`, `institutionType`, `defaultLocale`, `supportedLocales`, active `programs` and `campuses` as `{ id, name }` only, D79) | `404 not_found` for an unknown form ID, disabled M12 or suspended institution. |
 | `POST /api/v1/public/enquiry-forms/:formId/enquiries` | Public (no session) | `PublicEnquiryInput` (`learnerName`, `contactName`, phone or email, optional `programId`/`campusId`, `consent: true`, empty honeypot `website`) → `202 PublicEnquiryReceipt` (`{ received: true }`, never echoes data). Stores a `new` / `public_form` enquiry with no assignee in the form's tenant; a filled `website` returns the same `202` and stores nothing. | `400 invalid_request` with field `details[].path` (incl. foreign program/campus), `404 not_found`. |
 | `GET /api/v1/enquiry-forms` | M12 enabled, `m12.admissions.manage` | `?page=&pageSize=` → `Page<EnquiryFormSummary>` (the signed-in tenant's public form IDs) | `400`, `401`, `403 module_disabled` or `forbidden`. |
-
 
 ## Families and guardians (M14) — real backend (NEX-202) and mock
 

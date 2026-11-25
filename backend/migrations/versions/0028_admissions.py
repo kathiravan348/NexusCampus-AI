@@ -29,7 +29,7 @@ def upgrade() -> None:
         sa.Column("source", sa.String(16), nullable=False),
         sa.Column("contact_name", sa.String(200), nullable=False),
         sa.Column("contact_phone", sa.String(16), nullable=True),
-        sa.Column("contact_email", sa.Text(), nullable=True),
+        sa.Column("contact_email", sa.String(254), nullable=True),
         sa.Column("learner_name", sa.String(200), nullable=False),
         sa.Column("follow_up_on", sa.Date(), nullable=True),
         sa.Column("campaign_code", sa.String(32), nullable=True),
@@ -53,7 +53,11 @@ def upgrade() -> None:
         sa.CheckConstraint("status IN ('new','contacted','visit_booked','applied','lost')", name="status_valid"),
         sa.CheckConstraint("contact_phone IS NOT NULL OR contact_email IS NOT NULL", name="contact_present"),
         sa.CheckConstraint("contact_phone ~ '^[+][1-9][0-9]{6,14}$'", name="phone_valid"),
-        sa.CheckConstraint("contact_email ~ '^[^@[:space:]]+@[^@[:space:]]+[.][^@[:space:]]+$'", name="email_valid"),
+        sa.CheckConstraint(
+            """contact_email COLLATE "C" ~ '^(?![.])(?!.*[.][.])[A-Za-z0-9_''+.-]*[A-Za-z0-9_+-]@"""
+            "([A-Za-z0-9][A-Za-z0-9-]*[.])+[A-Za-z]{2,}$'",
+            name="email_valid",
+        ),
         sa.CheckConstraint("contact_name ~ '[^[:space:]]' AND learner_name ~ '[^[:space:]]'", name="names_present"),
         sa.CheckConstraint("campaign_code ~ '^[A-Za-z0-9][A-Za-z0-9._-]{0,31}$'", name="code_valid"),
         sa.CheckConstraint(

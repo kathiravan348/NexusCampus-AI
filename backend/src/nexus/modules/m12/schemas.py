@@ -12,14 +12,18 @@ from nexus.modules.m13.schemas import CustomFields
 from nexus.modules.m15.schemas import Code, Id, Name, Record, Timestamps
 
 Source = Literal["walk_in", "phone", "website", "public_form", "referral", "campaign", "event", "other"]
-Phone = Annotated[str, StringConstraints(pattern=r"^\+[1-9][0-9]{6,14}$")]
-# The frozen email schema uses Zod's default email grammar.
-EMAIL_PATTERN = r"^(?!\.)(?!.*\.\.)[A-Za-z0-9_'+.\-]*[A-Za-z0-9_+\-]@([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}$"
-Email = Annotated[str, StringConstraints(pattern=EMAIL_PATTERN)]
+EnquiryStatus = Literal["new", "contacted", "visit_booked", "applied", "lost"]
+Phone = Annotated[str, StringConstraints(pattern=r"^\+[1-9][0-9]{6,14}(?![\s\S])")]
+# Use an absolute end assertion in both Python and the published JSON Schema.
+EMAIL_PATTERN = (
+    r"^(?!\.)(?!.*\.\.)[A-Za-z0-9_'+.\-]*[A-Za-z0-9_+\-]@"
+    r"([A-Za-z0-9][A-Za-z0-9\-]*\.)+[A-Za-z]{2,}(?![\s\S])"
+)
+Email = Annotated[str, StringConstraints(pattern=EMAIL_PATTERN, max_length=254)]
 
 
 class EnquiryFields(Contract):
-    model_config = ConfigDict(regex_engine="python-re")
+    model_config = ConfigDict(regex_engine="python-re", hide_input_in_errors=True)
 
     source: Source
     campus_id: Id | None
@@ -29,6 +33,14 @@ class EnquiryFields(Contract):
     learner_name: Name
     program_id: Id | None
     follow_up_on: date | None
+
+    @field_validator("contact_name", "learner_name")
+    @classmethod
+    def name_length(cls, value: str) -> str:
+        # The frozen string limit counts UTF-16 code units, including surrogate pairs.
+        if len(value.encode("utf-16-le")) > 400:
+            raise ValueError("Invalid enquiry field")
+        return value
 
     @model_validator(mode="after")
     def contact_required(self) -> Self:
@@ -67,7 +79,7 @@ class EnquiryIn(EnquiryFields):
 class EnquiryOut(EnquiryFields, Record, Timestamps):
     institution_id: Id
     campaign_code: Code | None
-    status: Literal["new", "contacted", "visit_booked", "applied", "lost"]
+    status: EnquiryStatus
     lost_reason: Annotated[str, Field(min_length=1, max_length=300)] | None
     assigned_staff_profile_id: Id | None
 

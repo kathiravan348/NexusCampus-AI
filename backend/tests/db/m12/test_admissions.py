@@ -30,7 +30,7 @@ INPUT: dict[str, Any] = {
     "campusId": None,
     "contactName": "Test contact",
     "contactPhone": None,
-    "contactEmail": "contact@example.test",
+    "contactEmail": "nex-185-fixture@example.test",
     "learnerName": "Test learner",
     "programId": None,
     "source": "phone",
@@ -72,8 +72,13 @@ def admissions(test_db: DbUrls) -> Iterator[Engine]:
         yield engine
     finally:
         with engine.begin() as conn:
-            for table in ("waitlist_entries", "admission_offers", "applications", "enquiries"):
-                conn.execute(text(f"DELETE FROM {table} WHERE tenant_id = :t"), {"t": TENANT})  # noqa: S608
+            conn.execute(text("DELETE FROM waitlist_entries WHERE id = 'm12-wait'"))
+            conn.execute(text("DELETE FROM admission_offers WHERE id = 'm12-offer'"))
+            conn.execute(text("DELETE FROM applications WHERE id = 'm12-app'"))
+            conn.execute(
+                text("DELETE FROM enquiries WHERE tenant_id = :t AND contact_email = :email"),
+                {"t": TENANT, "email": INPUT["contactEmail"]},
+            )
             conn.execute(text("DELETE FROM custom_field_definitions WHERE id = 'm12-note'"))
             conn.execute(text("DELETE FROM form_definitions WHERE id = 'm12-form'"))
             conn.execute(text("DELETE FROM programs WHERE id IN ('m12-program-b', 'm12-apply', 'm12-foreign')"))
@@ -103,10 +108,12 @@ def test_create_read_back_paging_and_audit(client: TestClient, kc: FakeKeycloak,
     assert row["id"].startswith("enq-") and row["createdAt"].endswith("Z")
     second = client.post(API + "enquiries", json=INPUT, headers=csrf(client))
     assert second.status_code == 201 and second.json()["institutionId"] == INSTITUTION
-    page = client.get(API + "enquiries", params={"status": "new", "page": 1, "pageSize": 1}).json()
+    page = client.get(API + "enquiries", params={"status": " new ", "page": 1, "pageSize": 1}).json()
     assert page == {"items": [row], "total": 2, "page": 1, "pageSize": 1}
     assert client.get(API + "enquiries", params={"page": 2, "pageSize": 1}).json()["items"] == [second.json()]
     assert client.get(API + "enquiries", params={"status": "lost"}).json()["total"] == 0
+    assert client.get(API + "enquiries", params={"status": "  "}).json()["total"] == 2
+    assert client.get(API + "enquiries", params={"status": "unknown"}).json()["items"] == []
     with admissions.connect() as conn:
         changes = conn.execute(
             text("SELECT changes FROM audit_events WHERE target_id = :id AND action = 'm12.enquiry.created'"),
@@ -114,13 +121,17 @@ def test_create_read_back_paging_and_audit(client: TestClient, kc: FakeKeycloak,
         ).scalar_one()
     assert {change["field"] for change in changes} == set(INPUT)
     assert all(set(change) == {"field", "sensitive"} for change in changes)
-    assert "contact@example.test" not in json.dumps(changes)
+    assert INPUT["contactEmail"] not in json.dumps(changes)
 
 
 def test_invalid_body_and_foreign_references(client: TestClient, kc: FakeKeycloak, admissions: Engine) -> None:
     sign_in(client, kc)
     cases: list[tuple[dict[str, Any], str]] = [
         ({"contactEmail": None}, "contactPhone"),
+        ({"learnerName": "\U0001f600" * 101}, "learnerName"),
+        ({"contactEmail": "a" * 242 + "@example.test"}, "contactEmail"),
+        ({"contactEmail": "test@example.test\n"}, "contactEmail"),
+        ({"contactPhone": "+919876543210\n"}, "contactPhone"),
         ({"campusId": "cmp-rv-north"}, "campusId"),
         ({"programId": "m12-foreign"}, "programId"),
         ({"private-test-key": "private-test-value"}, ""),
@@ -135,6 +146,22 @@ def test_invalid_body_and_foreign_references(client: TestClient, kc: FakeKeycloa
     bad_json = client.post(API + "enquiries", content="{", headers=headers)
     assert bad_json.status_code == 400
     assert bad_json.json()["error"]["details"] == [{"path": "", "message": "Invalid JSON body"}]
+
+
+def test_failed_write_keeps_contact_out_of_logs(
+    client: TestClient,
+    kc: FakeKeycloak,
+    admissions: Engine,
+    monkeypatch: pytest.MonkeyPatch,
+    caplog: pytest.LogCaptureFixture,
+) -> None:
+    sign_in(client, kc)
+    monkeypatch.setattr("nexus.modules.m12.service.new_id", lambda prefix: "enq_m12-duplicate")
+    assert client.post(API + "enquiries", json=INPUT, headers=csrf(client)).status_code == 201
+    response = client.post(API + "enquiries", json=INPUT, headers=csrf(client))
+    assert response.status_code == 500 and response.json()["error"]["code"] == "internal"
+    for value in ("contactEmail", "contactName", "learnerName"):
+        assert INPUT[value] not in caplog.text + response.text
 
 
 def test_guard_precedes_body(client: TestClient, kc: FakeKeycloak, test_db: DbUrls) -> None:
@@ -211,11 +238,27 @@ def test_answers_encrypted_offers_waitlist_and_isolation(
         stored = conn.execute(text("SELECT answers, sensitive_answers FROM applications WHERE id = 'm12-app'")).one()
     assert tuple(stored) == ({"interest": "music"}, envelope)
     sign_in(client, kc)
+    with admissions.connect() as conn:
+        before = conn.scalar(text("SELECT coalesce(max(seq), 0) FROM audit_events WHERE tenant_id = :t"), t)
     application = client.get(API + "applications").json()["items"][0]
     assert application["answers"] == {"interest": "music", "privateNote": "test answer"}
     assert "sensitiveAnswers" not in application
+    events = text(
+        "SELECT target_id, changes FROM audit_events WHERE tenant_id = :t "
+        "AND action = 'm12.application.sensitiveRead' AND seq > :before"
+    )
+    with admissions.begin() as conn:
+        event = conn.execute(events, {**t, "before": before}).one()
+        assert event.target_id == "applicationList" and event.changes == [{"field": "answers", "sensitive": True}]
+        conn.execute(text("UPDATE applications SET sensitive_answers = NULL WHERE id = 'm12-app'"))
+    ordinary = client.get(API + "applications").json()["items"][0]
+    assert ordinary["answers"] == {"interest": "music"}
+    assert client.get(API + "applications", params={"page": 2}).json()["items"] == []
+    with admissions.connect() as conn:
+        assert conn.execute(events, {**t, "before": before}).all() == [event]
     assert client.get(API + "admission-offers").json()["items"][0]["id"] == "m12-offer"
     assert client.get(API + "waitlist").json()["items"][0]["position"] == 1
+    assert client.post(API + "enquiries", json=INPUT, headers=csrf(client)).status_code == 201
     with admissions.begin() as conn:  # Another tenant sees none of these rows through nexus_app.
         conn.execute(text("SET LOCAL ROLE nexus_app"))
         conn.execute(text("SELECT set_config('app.tenant_id', 'ten-rv', true)"))

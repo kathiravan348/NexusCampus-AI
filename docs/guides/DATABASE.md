@@ -242,7 +242,7 @@ All four tables have an opaque `id`, a `tenant_id`, an insertion-order column fo
 
 | Table | Columns and constraints |
 |---|---|
-| `enquiries` | Institution, optional campus, program and assigned staff profile, source, contact name, phone, email, learner name, follow-up date, campaign code, status, lost reason and timestamps. At least one contact method is required. A lost enquiry requires a nonblank reason. Other statuses require a null reason. |
+| `enquiries` | Institution, optional campus, program and assigned staff profile, source, contact name, phone, email, learner name, follow-up date, campaign code, status, lost reason and timestamps. At least one contact method is required. Email addresses are limited to 254 characters. A lost enquiry requires a nonblank reason. Other statuses require a null reason. |
 | `applications` | Institution, optional enquiry, application number, form, academic year, program, optional year level, applicant person, up to four distinct guardian person IDs, answers, up to 30 distinct document IDs, status, submission, decision and creation/update times. All statuses except draft require submission time. Offered, waitlisted, accepted, rejected and enrolled require decision time. |
 | `admission_offers` | Application, optional class group, expiry date, status, response time and creation time. Only accepted and declined offers have a response time, which is required for both. |
 | `waitlist_entries` | Application, program, position and time added. Positions start at one and are unique within the tenant and program. |

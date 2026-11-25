@@ -49,7 +49,11 @@ class Enquiry(AdmissionsRow, Base):
         CheckConstraint("status IN ('new','contacted','visit_booked','applied','lost')", name="status_valid"),
         CheckConstraint("contact_phone IS NOT NULL OR contact_email IS NOT NULL", name="contact_present"),
         CheckConstraint("contact_phone ~ '^[+][1-9][0-9]{6,14}$'", name="phone_valid"),
-        CheckConstraint("contact_email ~ '^[^@[:space:]]+@[^@[:space:]]+[.][^@[:space:]]+$'", name="email_valid"),
+        CheckConstraint(
+            """contact_email COLLATE "C" ~ '^(?![.])(?!.*[.][.])[A-Za-z0-9_''+.-]*[A-Za-z0-9_+-]@"""
+            "([A-Za-z0-9][A-Za-z0-9-]*[.])+[A-Za-z]{2,}$'",
+            name="email_valid",
+        ),
         CheckConstraint("contact_name ~ '[^[:space:]]' AND learner_name ~ '[^[:space:]]'", name="names_present"),
         CheckConstraint("campaign_code ~ '^[A-Za-z0-9][A-Za-z0-9._-]{0,31}$'", name="code_valid"),
         CheckConstraint(
@@ -65,7 +69,7 @@ class Enquiry(AdmissionsRow, Base):
     source: Mapped[str] = mapped_column(String(16))
     contact_name: Mapped[str] = mapped_column(String(200))
     contact_phone: Mapped[str | None] = mapped_column(String(16))
-    contact_email: Mapped[str | None] = mapped_column(Text())
+    contact_email: Mapped[str | None] = mapped_column(String(254))
     learner_name: Mapped[str] = mapped_column(String(200))
     follow_up_on: Mapped[date | None] = mapped_column(Date())
     campaign_code: Mapped[str | None] = mapped_column(String(32))

@@ -2,7 +2,6 @@
 
 from pydantic import TypeAdapter, ValidationError
 from sqlalchemy import func, insert, select, text
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from nexus.core.audit import AuditInput, changes, record_audit
 from nexus.core.errors import ApiError
@@ -11,6 +10,7 @@ from nexus.core.ids import new_id
 from nexus.core.pagination import Page, PageQuery
 from nexus.core.permissions import Authorized
 from nexus.core.vault import key_name
+from nexus.modules.m08.models import CustomFieldDefinition
 from nexus.modules.m12.models import Application, Enquiry
 from nexus.modules.m12.schemas import ApplicationOut, EnquiryIn, EnquiryOut
 from nexus.modules.m13.schemas import CustomFields
@@ -79,22 +79,49 @@ async def create_enquiry(auth: Authorized, data: EnquiryIn) -> EnquiryOut:
     return enquiry
 
 
-async def application_page(db: AsyncSession, page: PageQuery, cipher: FieldCipher) -> Page[ApplicationOut]:
+async def application_page(auth: Authorized, page: PageQuery, cipher: FieldCipher) -> Page[ApplicationOut]:
+    db = auth.ctx.db
     total = await db.scalar(select(func.count()).select_from(Application))
     query = (
         select(Application).order_by(Application.list_order, Application.id).limit(page.page_size).offset(page.offset)
     )
     items: list[ApplicationOut] = []
-    for row in await db.scalars(query):
+    rows = (await db.scalars(query)).all()
+    # A definition can be marked sensitive after an ordinary answer was stored.
+    sensitive_keys = set(
+        await db.scalars(
+            select(CustomFieldDefinition.key).where(
+                CustomFieldDefinition.entity == "application", CustomFieldDefinition.sensitive.is_(True)
+            )
+        )
+    )
+    disclosed = False
+    for row in rows:
         answers = dict(row.answers)
+        disclosed |= not sensitive_keys.isdisjoint(answers)
         try:
             if row.sensitive_answers is not None:
                 private = await cipher.decrypt(
                     key_name(row.tenant_id, "tenant_data"), "applications.sensitive_answers", row.sensitive_answers
                 )
-                answers.update(_ANSWERS.validate_json(private))
+                protected = _ANSWERS.validate_json(private)
+                answers.update(protected)
+                disclosed |= bool(protected)
             fields = {key: getattr(row, key) for key in ApplicationOut.model_fields if key != "answers"}
             items.append(ApplicationOut.model_validate({**fields, "answers": answers}))
         except ValidationError:
             raise ApiError(500, "internal", "Invalid stored application.") from None
+    if disclosed:
+        await record_audit(
+            db,
+            auth.ctx.tenant,
+            AuditInput(
+                action="m12.application.sensitiveRead",
+                actor_kind="user",
+                actor_id=auth.ctx.user_id,
+                target_type="application",
+                target_id="applicationList",
+                changes=changes("answers", sensitive=("answers",)),
+            ),
+        )
     return Page.of(items, total or 0, page)
