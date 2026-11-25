@@ -298,6 +298,25 @@ attendance marks only: marks are append-only (no update or delete).
 `attendance_marks.note` and `leave_requests.reason` are FieldCipher text under the tenant's `tenant_data` key (a CHECK
 rejects plaintext) and are listed in `ENCRYPTED_COLUMNS` for tenant export.
 
+## Fees and payments (M18 — `0033_fees`)
+
+All six tables have an opaque `id`, a `tenant_id`, an insertion-order column, forced RLS with the `tenant_isolation`
+policy and composite tenant references. Money is `bigint` minor units with a three-letter currency per row.
+The application role reads all six, inserts payments, and may update only `paid`, `status` and `updated_at` on
+invoices (applying a payment).
+
+| Table | Columns and constraints |
+|---|---|
+| `fee_heads` | Institution, code, name, tax rate 0-10000 basis points, refundable, active. |
+| `fee_plans` | Institution, academic year, optional program and year level (a year level needs its program), name, currency, `lines` (1-30) and `instalments` (1-24) as JSON arrays, timestamps. |
+| `concessions` | Learner, fee plan, kind, mode (`percent` value 1-10000, `fixed` value in minor units), encrypted `reason`, optional approving staff profile, valid dates in order, creation time. |
+| `fee_invoices` | Learner, invoice number (unique per tenant), currency, issue and due dates (`due_on >= issued_on`), `lines` (1-50), `total`, `paid <= total`, status that agrees with `paid` (`issued` = 0, `part_paid` between, `paid` = total), timestamps. |
+| `fee_payments` | 1-20 distinct invoice IDs (`m18_ids_valid`), payer person, currency, positive amount, method, optional gateway reference, receipt number (unique per tenant), received time, status, optional device ID. |
+| `fee_refunds` | Payment, positive amount, encrypted `reason`, status, deciding staff profile and time exactly when not `requested`, creation time. |
+
+`concessions.reason` and `fee_refunds.reason` are FieldCipher text under the tenant's `tenant_data` key (a CHECK
+rejects plaintext) and are listed in `ENCRYPTED_COLUMNS`.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
