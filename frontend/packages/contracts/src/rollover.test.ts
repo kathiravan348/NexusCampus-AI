@@ -1,5 +1,10 @@
 import { describe, expect, it } from "vitest";
-import { PromotionDecisionSchema, RolloverRunSchema } from "./rollover";
+import {
+  PromotionDecisionInputSchema,
+  PromotionDecisionSchema,
+  RolloverRunInputSchema,
+  RolloverRunSchema,
+} from "./rollover";
 
 const completedRun = {
   id: "roll-1",
@@ -95,5 +100,69 @@ describe("PromotionDecisionSchema", () => {
     fails(PromotionDecisionSchema.safeParse(detainNoTarget));
     fails(PromotionDecisionSchema.safeParse(graduateWithTarget));
     fails(PromotionDecisionSchema.safeParse({ ...promoteDecision, extra: true }));
+  });
+});
+
+describe("RolloverRunInputSchema", () => {
+  const input = {
+    institutionId: "ins-1",
+    fromAcademicYearId: "cal-2026",
+    toAcademicYearId: "cal-2027",
+    carryForwardFees: false,
+  };
+
+  it("accepts a run between two different years", () => {
+    expect(RolloverRunInputSchema.parse(input)).toEqual(input);
+  });
+
+  it("rejects the same year, a missing flag and extra keys", () => {
+    fails(RolloverRunInputSchema.safeParse({ ...input, toAcademicYearId: "cal-2026" }));
+    fails(RolloverRunInputSchema.safeParse({ ...input, carryForwardFees: undefined }));
+    fails(RolloverRunInputSchema.safeParse({ ...input, status: "completed" }));
+  });
+});
+
+describe("PromotionDecisionInputSchema", () => {
+  it("accepts targets for promote and detain only", () => {
+    const detain = {
+      action: "detain",
+      toClassGroupId: "cg-5a",
+      reasonKey: "m86.promotion.ageEligibility",
+    };
+    const graduate = { action: "graduate", toClassGroupId: null, reasonKey: null };
+    expect(PromotionDecisionInputSchema.parse(detain)).toEqual(detain);
+    expect(PromotionDecisionInputSchema.parse(graduate)).toEqual(graduate);
+  });
+
+  it("rejects a missing or extra target, bad reason keys and extra keys", () => {
+    fails(
+      PromotionDecisionInputSchema.safeParse({
+        action: "promote",
+        toClassGroupId: null,
+        reasonKey: null,
+      }),
+    );
+    fails(
+      PromotionDecisionInputSchema.safeParse({
+        action: "skip",
+        toClassGroupId: "cg-1",
+        reasonKey: null,
+      }),
+    );
+    fails(
+      PromotionDecisionInputSchema.safeParse({
+        action: "skip",
+        toClassGroupId: null,
+        reasonKey: "Not a key",
+      }),
+    );
+    fails(
+      PromotionDecisionInputSchema.safeParse({
+        action: "skip",
+        toClassGroupId: null,
+        reasonKey: null,
+        learnerId: "lrn-1",
+      }),
+    );
   });
 });

@@ -171,3 +171,129 @@ describe("POST /import-jobs", () => {
     if (expectedPath) expect(body.error.details?.[0]?.path).toBe(expectedPath);
   });
 });
+
+describe("M86 rollover writes (D84)", () => {
+  function send(method: string, path: string, body?: unknown, user: string = USER.lsPriya) {
+    return fetch(`http://localhost/api/v1${path}`, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        [MOCK_HEADER.tenant]: TENANT.littleSteps,
+        [MOCK_HEADER.user]: user,
+      },
+      body: body === undefined ? undefined : JSON.stringify(body),
+    });
+  }
+
+  async function fixtureRun() {
+    const page = pageSchema(RolloverRunSchema).parse(await (await get("/rollover-runs")).json());
+    const current = page.items[0];
+    if (!current) throw new Error("missing fixture run");
+    return current;
+  }
+
+  async function errorOf(response: Response) {
+    return ApiErrorSchema.parse(await response.json()).error;
+  }
+
+  it("refuses a second open run, then dry-runs once the first is confirmed", async () => {
+    const current = await fixtureRun();
+    // The demo names the next academic year without a calendar row yet (NEX-195 adds it).
+    const year = mockDb.calendars.find((row) => row.id === current.fromAcademicYearId);
+    if (!year) throw new Error("missing calendar");
+    mockDb.calendars.push({ ...year, id: current.toAcademicYearId } as typeof year);
+    const input = {
+      institutionId: current.institutionId,
+      fromAcademicYearId: current.fromAcademicYearId,
+      toAcademicYearId: current.toAcademicYearId,
+      carryForwardFees: false,
+    };
+    const blocked = await send("POST", "/rollover-runs", input);
+    expect(blocked.status).toBe(409);
+    expect((await errorOf(blocked)).details?.[0]?.path).toBe("fromAcademicYearId");
+
+    const confirmed = await send("POST", `/rollover-runs/${current.id}/confirm`);
+    expect(confirmed.status).toBe(200);
+    const done = RolloverRunSchema.parse(await confirmed.json());
+    expect(done.status).toBe("completed");
+    expect(Date.parse(done.rollbackUntil ?? "")).toBeGreaterThan(Date.now() + 13 * 86_400_000);
+
+    const created = await send("POST", "/rollover-runs", input);
+    expect(created.status).toBe(201);
+    const run = RolloverRunSchema.parse(await created.json());
+    expect(run).toMatchObject({
+      status: "dry_run_ready",
+      createdByStaffProfileId: "rp-ls-priya-staff",
+    });
+    const decisions = pageSchema(PromotionDecisionSchema).parse(
+      await (await get(`/rollover-runs/${run.id}/decisions`)).json(),
+    );
+    const total = Object.values(run.counts).reduce((sum, value) => sum + value, 0);
+    expect(decisions.total).toBe(total);
+    for (const decision of decisions.items) expect(decision.overriddenByStaffProfileId).toBeNull();
+  });
+
+  it("overrides a decision, recounts, confirms and rolls back inside the window", async () => {
+    const current = await fixtureRun();
+    const decisions = pageSchema(PromotionDecisionSchema).parse(
+      await (await get(`/rollover-runs/${current.id}/decisions`)).json(),
+    );
+    const target = decisions.items.find((row) => row.action !== "skip");
+    if (!target) throw new Error("missing decision");
+    const path = `/rollover-runs/${current.id}/decisions/${target.id}`;
+    const changed = await send("PUT", path, {
+      action: "skip",
+      toClassGroupId: null,
+      reasonKey: null,
+    });
+    expect(changed.status).toBe(200);
+    expect(PromotionDecisionSchema.parse(await changed.json())).toMatchObject({
+      action: "skip",
+      overriddenByStaffProfileId: "rp-ls-priya-staff",
+    });
+    expect((await fixtureRun()).counts.skip).toBe(current.counts.skip + 1);
+
+    const foreign = await send("PUT", path, {
+      action: "promote",
+      toClassGroupId: "cg-unknown",
+      reasonKey: null,
+    });
+    expect(foreign.status).toBe(400);
+    expect((await errorOf(foreign)).details?.[0]?.path).toBe("toClassGroupId");
+    const bad = await send("PUT", path, {
+      action: "promote",
+      toClassGroupId: null,
+      reasonKey: null,
+    });
+    expect(bad.status).toBe(400);
+
+    expect((await send("POST", `/rollover-runs/${current.id}/confirm`)).status).toBe(200);
+    const late = await send("PUT", path, { action: "skip", toClassGroupId: null, reasonKey: null });
+    expect(late.status).toBe(409);
+    expect((await errorOf(late)).details?.[0]?.path).toBe("status");
+
+    const undone = await send("POST", `/rollover-runs/${current.id}/rollback`);
+    expect(undone.status).toBe(200);
+    expect(RolloverRunSchema.parse(await undone.json())).toMatchObject({
+      status: "rolled_back",
+      rollbackUntil: null,
+    });
+    const again = await send("POST", `/rollover-runs/${current.id}/rollback`);
+    expect(again.status).toBe(409);
+    expect((await errorOf(again)).details?.[0]?.path).toBe("rollbackUntil");
+  });
+
+  it("checks permission before the body and answers 404 for unknown runs", async () => {
+    const current = await fixtureRun();
+    expect((await send("POST", "/rollover-runs", undefined, USER.lsArjun)).status).toBe(403);
+    expect(
+      (await send("POST", `/rollover-runs/${current.id}/confirm`, undefined, USER.lsArjun)).status,
+    ).toBe(403);
+    const invalid = await send("POST", "/rollover-runs", { institutionId: current.institutionId });
+    expect(invalid.status).toBe(400);
+    expect((await send("POST", "/rollover-runs/roll-unknown/confirm")).status).toBe(404);
+    expect(
+      (await send("PUT", `/rollover-runs/${current.id}/decisions/pd-unknown`, {})).status,
+    ).toBe(404);
+  });
+});
