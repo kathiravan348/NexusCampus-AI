@@ -27,8 +27,9 @@ function card(
   moduleId: HomeCard["moduleId"],
   href: string,
   count: number | null,
+  titleKey = `m28.card.${kind}`,
 ): HomeCard {
-  return { kind, titleKey: `m28.card.${kind}`, moduleId, count, severity: null, href };
+  return { kind, titleKey, moduleId, count, severity: null, href };
 }
 
 function tenantLocale(tenantId: string) {
@@ -98,7 +99,7 @@ function learnerCards(viewer: Viewer, learnerIds: readonly string[], now: Date):
   ).length;
 
   return [
-    card("attendance", "M17", "/attendance", absences),
+    card("attendance", "M17", "/attendance", absences, "m28.card.absences"),
     card("fees", "M18", "/fees", unpaid),
     ...communicationCards(viewer, now),
   ];

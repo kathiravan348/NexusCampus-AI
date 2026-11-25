@@ -5104,7 +5104,7 @@
     "description": "Add enquiry dialog (invalidName)."
   },
   "m12.add.invalidPhone": {
-    "message": "Include the country code, starting with +.",
+    "message": "Enter the number with its country code, for example +91 98765 43210.",
     "description": "Add enquiry dialog (invalidPhone)."
   },
   "m12.add.invalidEmail": {
@@ -7261,7 +7261,11 @@
   },
   "m28.card.attendance": {
     "message": "Attendance",
-    "description": "Home card for absences this week or today's attendance sessions, depending on role."
+    "description": "Staff home card counting today's attendance sessions."
+  },
+  "m28.card.absences": {
+    "message": "Absences this week",
+    "description": "Family and learner home card counting absence marks since Monday."
   },
   "m28.card.fees": {
     "message": "Unpaid invoices",

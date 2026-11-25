@@ -484,6 +484,10 @@
     "valid": true
   },
   {
+    "text": "Absences this week",
+    "valid": true
+  },
+  {
     "text": "Absent",
     "valid": true
   },
@@ -2268,6 +2272,10 @@
     "valid": true
   },
   {
+    "text": "Enter the number with its country code, for example +91 98765 43210.",
+    "valid": true
+  },
+  {
     "text": "Enter valid numbers. The maximum must be at least the minimum.",
     "valid": true
   },
@@ -2825,10 +2833,6 @@
   },
   {
     "text": "Include in summary",
-    "valid": true
-  },
-  {
-    "text": "Include the country code, starting with +.",
     "valid": true
   },
   {
@@ -8840,6 +8844,10 @@
     "valid": true
   },
   {
+    "text": "इस सप्ताह की अनुपस्थितियाँ",
+    "valid": true
+  },
+  {
     "text": "इस सूची में कोई विद्यार्थी नहीं है",
     "valid": true
   },
@@ -10560,10 +10568,6 @@
     "valid": true
   },
   {
-    "text": "देश का कोड + से शुरू करते हुए दर्ज करें।",
-    "valid": true
-  },
-  {
     "text": "दैनिक",
     "valid": true
   },
@@ -10577,6 +10581,10 @@
   },
   {
     "text": "द्वितीयक",
+    "valid": true
+  },
+  {
+    "text": "नंबर देश के कोड के साथ लिखें, जैसे +91 98765 43210।",
     "valid": true
   },
   {
@@ -14664,6 +14672,10 @@
     "valid": true
   },
   {
+    "text": "இந்த வார வருகையின்மைகள்",
+    "valid": true
+  },
+  {
     "text": "இந்தக் கட்டணத்தைப் பதிவு செய்ய முடியவில்லை. உங்கள் உள்ளீடுகளைச் சரிபார்த்து மீண்டும் முயலவும்.",
     "valid": true
   },
@@ -15393,6 +15405,10 @@
   },
   {
     "text": "எண்ணிக்கை",
+    "valid": true
+  },
+  {
+    "text": "எண்ணை நாட்டுக் குறியீட்டுடன் உள்ளிடவும், எ.கா. +91 98765 43210.",
     "valid": true
   },
   {
@@ -17601,10 +17617,6 @@
   },
   {
     "text": "நாட்காட்டி",
-    "valid": true
-  },
-  {
-    "text": "நாட்டுக் குறியீட்டை + உடன் தொடங்கி உள்ளிடவும்.",
     "valid": true
   },
   {
