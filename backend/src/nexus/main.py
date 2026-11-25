@@ -46,6 +46,7 @@ from nexus.modules.m20 import router as m20
 from nexus.modules.m21 import router as m21
 from nexus.modules.m22 import router as m22
 from nexus.modules.m24 import router as m24
+from nexus.modules.m28 import router as m28
 from nexus.modules.m83 import access as m83_access
 from nexus.modules.m83 import broker_stub
 from nexus.modules.m83 import keys as m83_keys
@@ -137,6 +138,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(m21.router)
     app.include_router(m22.router)
     app.include_router(m24.router)
+    app.include_router(m28.router)
     app.include_router(m12_public.router)
     app.include_router(m13.router)
     app.include_router(m14.router)

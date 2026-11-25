@@ -65,7 +65,7 @@
 | NEX-207 | Build: DB + API for M21 exams (papers, seat plans, hall tickets, revaluation) — split from NEX-189 | D | done | Claude | 189, 187 |
 | NEX-190 | Build: DB + API for M22 report cards and M23 issued documents | D | done | Claude | 189, 207 |
 | NEX-191 | Build: DB + API for M24 messages, notices and meetings | D | done | Claude | 184, 190 |
-| NEX-192 | Build: API for M25–M28 portal homes and dashboards (counts and aggregates only) | D | planned | — | 187–191, 205–207 |
+| NEX-192 | Build: API for M25–M28 portal homes and dashboards (counts and aggregates only) | D | done | Claude | 187–191, 205–207 |
 | NEX-193 | Build: M86 rollover backend — dry run, decisions, confirm, roll-back window, audit (Owner review point 3) | D | draft | — | 192 |
 | NEX-194 | M86 rollover screens: start a dry run, override decisions, confirm, reverse (Owner review point 3) | C | draft | — | 193 |
 | NEX-195 | Stage 3 demo seed: data fixtures into the backend seed (ends D75; access moved in NEX-183, D80) | D | draft | — | 183–191, 200 |
