@@ -29,7 +29,11 @@ class Household(AcademicRow, Timestamps, Base):
         CheckConstraint("m14_address_valid(address)", name="address_valid"),
         CheckConstraint("m14_person_ids_valid(learner_person_ids, 1, 20)", name="learners_valid"),
         CheckConstraint("m14_person_ids_valid(guardian_person_ids, 0, 10)", name="guardians_valid"),
-        CheckConstraint("m14_locale_valid(primary_language)", name="locale_valid"),
+        CheckConstraint(
+            """primary_language COLLATE "C" ~ '^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?"""
+            "(-([0-9A-Za-z]{5,8}|[0-9][0-9A-Za-z]{3}))*$'",
+            name="locale_valid",
+        ),
         CheckConstraint("updated_at >= created_at", name="updated_at_valid"),
     )
     name: Mapped[str] = mapped_column(String(200))
