@@ -38,6 +38,7 @@ Claude then reviews `git diff main...task/NEX-###`, re-runs `review:check`, writ
 |---|---|---|
 | Contracts, fixtures, mock handlers (exact specs) | `gpt-6.2-sol`, effort `medium` | `gemini-4-neon-high` |
 | Screens (UI, offline, i18n, a11y) | `gpt-6.2-astra`, effort `high` | `gemini-4-neon-xhigh` |
+| Backend: DB + API (lane D, migrations, RLS, encryption) | `gpt-6.2-astra`, effort `high` | — (Codex only) |
 | Small fix after review | `gpt-6.2-sol`, effort `low` | `gemini-3.8-flash-high` |
 
 ## Approvals — how they are decided
@@ -48,30 +49,49 @@ Claude then reviews `git diff main...task/NEX-###`, re-runs `review:check`, writ
 - Security / privacy rules (V-1…V-7) are never waived to finish faster; a failing review → `changes-requested`.
 - Gemini silent 90 minutes without a commit → task goes to Codex.
 
-## Tick procedure (scheduled task `nexus-stage3-tick`, every 30 min, a fresh Claude session each time — D74)
-The Owner does not approve individual steps until the Stage 3 final review. Each tick, in this order, briefly:
-0. If `$O/tick.lock` exists and is younger than 50 min, stop (another tick runs). Else write it; delete it at the end.
-1. `bash $O/status.sh`. Read `AGENTS.md`, `CLAUDE.md`, the board index and the Stage 3 board only as needed.
-2. **Review** every task branch whose task file says `ready-for-review` (CLAUDE.md reviewer steps; security and
-   privacy first). Check out the branch in `../NexusCampus-AI-review`, fix small / medium issues there, write 1
-   `review:` commit (review note + `done` in task file and board), then on `main`: `git merge --no-ff task/NEX-###`
-   (board conflicts: keep both rows' newest status). `bash $O/check-main.sh` must print GREEN, then `git push origin
-   main`. Larger problems: `changes-requested` with numbered requests in the task file, commit on the branch, and
-   start the same builder again (the harness continues the branch).
-3. **Questions** (`status=questions`): answer under Questions in the task file on `main`, prefixed
-   `(… answered by the planner <date>)`, `plan:` commit, start the build again.
+## Tick procedure — build step (scheduled task `nexus-stage3-tick`, every 30 min; Owner OK 2026-11-25)
+Owner, 2026-11-25: "push main and keep the build going" → "rewrite and enable". Each tick is a fresh Claude
+session that reviews, merges, pushes `main` after a green check, answers builders, starts builds and plans, without
+asking the Owner, until the stop rule. In this order, briefly (`O` = the orchestrator folder):
+0. **Lock:** if `$O/tick.lock` exists and is younger than 50 min, stop (another tick or an interactive Claude session
+   is working). Else write it; delete it at the end.
+1. **Stack and status:** `uv run --project backend nexus-compose-up` (idempotent; images are local; ports
+   55432/56379/58080/58200) — the harness's backend check needs the database. Then `bash $O/status.sh`. Read
+   `AGENTS.md`, `CLAUDE.md`, the board index and the Stage 3 board only as needed.
+2. **Review** every task branch whose task file says `ready-for-review` (CLAUDE.md reviewer steps). Security and
+   privacy first: forced RLS on every new table, composite `(id, tenant_id)` references, `nexus_app` grants only as
+   needed, permission and module guard before the body is read, audit with field names only, sensitive columns
+   field-encrypted and listed in `ENCRYPTED_COLUMNS`, sensitive reads audited (E-3), no personal data in logs.
+   Re-read the harness check: backend tasks must show `GREEN (backend-check, DB required)` with 0 skipped DB tests.
+   Screen tasks: in `../NexusCampus-AI-review` run `fnm exec --using=24 -- pnpm --dir frontend e2e` on the branch.
+   Fix small / medium issues there, write 1 `review:` commit (review note + `done` in task file and board), detach
+   the builder's worktree if it holds the branch, then on `main`: `git merge --no-ff task/NEX-###` (shared docs and
+   board conflicts: keep both sides, newest status). `bash $O/check-main.sh` must print GREEN (frontend and
+   backend), then `git push origin main`. RED on `main`: do not push, start no further merges, find the cause; fix it
+   as a `review:` follow-up or write it under "Waiting for the Owner". Larger problems in a branch:
+   `changes-requested` with numbered requests in the Review section (step 3 shows how to keep the branch).
+3. **Questions** (`status=questions`): the harness has committed the builder's work as `NEX-###: questions for the
+   planner (harness)`. In the builder's worktree on that branch: answer each question on the line below it with the
+   exact lowercase phrase `answered by the planner` (the harness checks it), set **Status** to `changes-requested`,
+   put numbered requests in Review, `git commit --amend --no-edit` (stays within D32), `git checkout --detach`, then
+   start the same builder again — it continues the branch. Never delete a branch to restart.
 4. **Not alive** and the branch is not ready-for-review / questions (`agent-no-changes`, `checks-failed`, or the
-   process died): start it again once; a second failure → give the task to the other builder; a third → park it
-   (`planned`, note under "Waiting for the Owner"). An agent quota / sign-in error in the log → use the other builder.
-5. **Free builders**: give each the next `planned` task in board order whose dependencies are `done` and whose
-   `Files` do not overlap a running task. Models: table above (screens → stronger models).
-6. **Plan** (CLAUDE.md planner steps): keep at least 2 tasks `planned` beyond those running; ≤ 60 lines; exact
-   files; check new export names against `index.ts`; new decisions in `DECISIONS.md`. `plan:` commit, push.
-7. Update the task log below in the same `plan:` / merge commits; push `main`.
-8. **Stop rule**: when NEX-179 is `done`, start nothing more: write "Stage 3 ready for the Owner's final review
-   (NEX-180)" under "Waiting for the Owner", push, and disable the scheduled task.
+   process died): start it again once; a second failure → the other builder; a third → park it (`planned`, note
+   under "Waiting for the Owner"). An agent quota / sign-in error in the log → use the other builder.
+5. **Free builders:** give each the next `planned` task in board order whose dependencies are `done` and whose
+   `Files` do not overlap a running task. **Only one task that adds a migration (lane D) runs at a time** — the
+   migration chain is linear, so the next one starts after the previous one is merged. Models: table below.
+6. **Plan** (CLAUDE.md planner steps): keep 2 tasks `planned` beyond those running (≤ 60 lines; exact files,
+   including tests that hard-code totals; the next migration number; the encrypted-column registry; the audit naming
+   rule — camelCase, no underscores). Split a task that is too big into a new ID. New decisions in `DECISIONS.md`.
+   `plan:` commit, push.
+7. Update the task log below in the same commits; push `main`.
+8. **Stop rule:** when NEX-199 is `done`, or when only tasks that need the Owner remain, start nothing more: write
+   "Stage 3 build ready for the Owner's release review" (or what is waiting) under "Waiting for the Owner", push, and
+   disable the scheduled task.
 Never: install packages, edit rule files other than `DECISIONS.md`, push other branches, force-push, delete worktrees
-or branches, or weaken a security / privacy rule to finish faster. Keep the tick's reply to 5 lines.
+or branches, change a frozen contract or screen without a task the Owner approved (D78), or weaken a security /
+privacy rule to finish faster. Keep the tick's reply to 5 lines.
 
 ## Task log
 | Task | Builder · model | Started | Checks | Review | Merged / pushed |
