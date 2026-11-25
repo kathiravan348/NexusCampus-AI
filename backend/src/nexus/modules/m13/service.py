@@ -23,7 +23,7 @@ _PRIVATE_FIELDS: TypeAdapter[CustomFields] = TypeAdapter(CustomFields)
 class LearnerAccess:
     auth: Authorized
     family: set[str]
-    query: Select[tuple[Learner]]
+    query: Select[Learner]
 
 
 async def learner_access(auth: Authorized) -> LearnerAccess:

@@ -59,14 +59,18 @@ def records(test_db: DbUrls, m13_vault: Vault) -> Iterator[Engine]:
         cipher.encrypt(key_name("ten-ls", "tenant_data"), "learners.sensitive_custom_fields", json.dumps(PRIVATE))
     )
     with engine.begin() as conn:
-        child = conn.execute(
-            text(
-                "SELECT rp.* FROM role_profiles rp JOIN guardian_links gl ON gl.learner_person_id = rp.person_id "
-                "JOIN role_profiles guardian ON guardian.person_id = gl.guardian_person_id "
-                "WHERE rp.kind = 'learner' AND rp.tenant_id = 'ten-ls' AND guardian.id = 'rp-ls-sunita-guardian' "
-                "ORDER BY rp.id LIMIT 1"
+        child = (
+            conn.execute(
+                text(
+                    "SELECT rp.* FROM role_profiles rp JOIN guardian_links gl ON gl.learner_person_id = rp.person_id "
+                    "JOIN role_profiles guardian ON guardian.person_id = gl.guardian_person_id "
+                    "WHERE rp.kind = 'learner' AND rp.tenant_id = 'ten-ls' AND guardian.id = 'rp-ls-sunita-guardian' "
+                    "ORDER BY rp.id LIMIT 1"
+                )
             )
-        ).mappings().one()
+            .mappings()
+            .one()
+        )
         conn.execute(
             text(
                 "INSERT INTO people (id, tenant_id, legal_name, preferred_name, date_of_birth, is_minor, "
@@ -156,7 +160,7 @@ def records(test_db: DbUrls, m13_vault: Vault) -> Iterator[Engine]:
                 ("people", ["m13-person"]),
                 ("custom_field_definitions", ["m13-field"]),
             ):
-                conn.execute(text(f"DELETE FROM {table} WHERE id = ANY(:ids)"), {"ids": ids})
+                conn.execute(text(f"DELETE FROM {table} WHERE id = ANY(:ids)"), {"ids": ids})  # noqa: S608
         engine.dispose()
 
 
@@ -186,8 +190,19 @@ def test_staff_disclosure_and_paging(client: TestClient, kc: FakeKeycloak, recor
     assert audit_count(records) == before
     row = client.get(URL + "/m13-a").json()
     assert set(row) == STAMPED | set(
-        "institutionId campusId personId roleProfileId learnerNumber admissionDate status leftOn "
-        "healthFlags customFields retentionState".split()
+        [
+            "institutionId",
+            "campusId",
+            "personId",
+            "roleProfileId",
+            "learnerNumber",
+            "admissionDate",
+            "status",
+            "leftOn",
+            "healthFlags",
+            "customFields",
+            "retentionState",
+        ]
     )
     assert row["healthFlags"] == FLAGS and row["customFields"] == {**PUBLIC, **PRIVATE}
     assert row["admissionDate"] == "2026-01-01" and row["createdAt"].endswith("Z")
@@ -244,13 +259,33 @@ def test_guardian_visibility_and_children(client: TestClient, kc: FakeKeycloak, 
         assert client.get(URL + "/m13-a" + suffix, params={"page": 0}).status_code == 400
     enrolment = client.get(URL + "/m13-a/enrolments").json()["items"][0]
     assert set(enrolment) == STAMPED | set(
-        "learnerId academicYearId programId yearLevelId classGroupId rollNumber status "
-        "effectiveFrom effectiveTo".split()
+        [
+            "learnerId",
+            "academicYearId",
+            "programId",
+            "yearLevelId",
+            "classGroupId",
+            "rollNumber",
+            "status",
+            "effectiveFrom",
+            "effectiveTo",
+        ]
     )
     assert enrolment["learnerId"] == "m13-a" and enrolment["effectiveFrom"] == "2026-01-01"
     doc = client.get(URL + "/m13-a/documents").json()["items"][0]
     assert set(doc) == set(
-        "id tenantId learnerId kind fileName contentType sizeBytes verified verifiedByStaffProfileId uploadedAt".split()
+        [
+            "id",
+            "tenantId",
+            "learnerId",
+            "kind",
+            "fileName",
+            "contentType",
+            "sizeBytes",
+            "verified",
+            "verifiedByStaffProfileId",
+            "uploadedAt",
+        ]
     )
     assert doc["sizeBytes"] == 100 and doc["uploadedAt"].endswith("Z")
     assert audit_count(records) == before
