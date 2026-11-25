@@ -1,15 +1,69 @@
 # Owner checklist
 
-> Everything that waits for you, in one place, in the order that saves the most time. State as of 2026-11-23 (Stage 2 released).
-> Tick a box when done. Details behind each item are linked; the full decision log is
-> [`OWNER-AWAY-DECISIONS.md`](OWNER-AWAY-DECISIONS.md).
+> Everything that waits for you, in one place, in the order that saves the most time. State as of 2026-11-25
+> (Stage 3 preview built, waiting for your review). Tick a box when done. Details behind each item are linked; the
+> full decision log is [`OWNER-AWAY-DECISIONS.md`](OWNER-AWAY-DECISIONS.md).
 
 ## Where things stand
 
 - **Stage 1** (platform foundation) released 2026-11-21 (D54); **Stage 2** (Nexus Control and delivery) released
   2026-11-23 (D70). Results: [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md).
-- **Stage 3** (core institution operations) is open: [`../tasks/stage-3/BOARD.md`](../tasks/stage-3/BOARD.md). The
-  first two contract tasks are planned (NEX-146 academic structure, NEX-147 fields, forms, workflows, numbering).
+- **Stage 3** (core institution operations) — the clickable preview is finished: all 35 tasks (NEX-146–179, 181)
+  are done, reviewed and merged on [`../tasks/stage-3/BOARD.md`](../tasks/stage-3/BOARD.md). Only the freeze
+  (NEX-180) is left, and it waits for you. The Stage 3 tick task is switched off (2026-11-25).
+
+## A. Review Stage 3, then freeze it (NEX-180) — waiting for you
+
+**Before you start (5 minutes)**
+
+- [ ] Open the demo: **http://localhost:4173** (sample data, no server). If it is not running, start it with
+      `fnm exec --using=24 -- pnpm --dir frontend review:start`, which builds and opens it. Pick an institution and a
+      role on the sign-in page; **Switch user** in the top bar changes role.
+- [ ] Optional: look at the pictures first. [`USER-MANUAL.md`](../manual/USER-MANUAL.md) now has 6 Stage 3
+      step-by-step examples (attendance, fees, marks, an enquiry, the three portals, leader dashboards) and a
+      picture of every Stage 3 screen.
+- [ ] Optional: [`NexusCampus-Introduction.pptx`](../presentation/NexusCampus-Introduction.pptx) is updated for
+      Stage 3 (Stage 2 released, Stage 3 "preview, in review", new slide 19 with Stage 3 screens, progress figures).
+
+Automatic browser checks (`pnpm --dir frontend e2e`, 2026-11-25): all 73 pass. The two desktop accessibility scans
+timed out once under full load (60 s limit) and passed on a re-run in 17 s each, with no violations.
+
+**Walk through it** — follow [`STAGE-3-WALKTHROUGH.md`](STAGE-3-WALKTHROUGH.md); write findings in
+[`STAGE-3-FEEDBACK.md`](STAGE-3-FEEDBACK.md), one row per module.
+
+- [ ] **Each role, at least once:** administrator, teacher, guardian, learner (the walkthrough's role table). Each
+      should see only its own menu, and only its own records.
+- [ ] **Each institution type, at least once:** Little Steps (early years), Riverside (K-12 group, Hindi),
+      Northbridge (university), Apex (coaching, Tamil), Harmony (music academy).
+- [ ] **The day-to-day jobs work end to end:**
+  - [ ] Teacher takes attendance: group → today's session → Late + minutes → Save.
+  - [ ] Office checks an invoice (**Show lines**) and opens **Record payment**.
+  - [ ] Teacher enters a mark in **Gradebook** and the percentage updates.
+  - [ ] Office adds an admissions enquiry and it shows as **New**.
+  - [ ] Guardian, learner and teacher each land on their own portal home.
+  - [ ] Leader sees **Dashboards** with an **As of** time on every figure.
+- [ ] **Wording and language:** switch Riverside to Hindi and Apex to Tamil; look for English left over, cut-off
+      text, or wording an institution would not use.
+- [ ] **Phone width (360 px) and dark theme:** the menu opens from the menu button and nothing runs off the screen.
+- [ ] **Offline:** in Attendance, go offline in the browser, save a mark, see **Waiting to sync**, reconnect.
+
+**Things I noticed while preparing — please judge them** (none blocks the freeze; say "fix" or "fine")
+
+- [ ] **Family home card "Attendance 0"** (Riverside guardian) counts *absences*, so 0 is good news, but it reads
+      like "no attendance". Rename it "Absences", or show an attendance percentage instead?
+- [ ] **Phone numbers with spaces are refused** in **Add enquiry** (`+91 98765 00000`), with the message "Include
+      the country code, starting with +", although it has one. Accept spaces, or change the message?
+- [ ] **Year-end rollover is read-only in this preview** (D76): runs can be inspected, not started or reversed.
+      OK for the freeze?
+- [ ] **Admissions public form** (families applying from the website) is a follow-up, not in this preview (NEX-164).
+      OK to plan it as a build task?
+
+**Decide**
+
+- [ ] Say **"approve the Stage 3 freeze"** — the screens and data shapes are frozen (new decision entry), and I plan
+      the Stage 3 build tasks (real backend, one module at a time). Or list what must change first; each item
+      becomes a fix task before the freeze.
+- [ ] Say whether to **push `main`** to GitHub after the freeze commit.
 
 ## 0. Approve the Stage 3 module list and order — approved 2026-11-23 (D72)
 
@@ -85,7 +139,7 @@ These are not blocking the build, but real billing and the trust page need them 
   - which certifications to aim for first, and when
 - [ ] **Presentation:** fill in the contact line on the last slide of
       [`NexusCampus-Introduction.pptx`](../presentation/NexusCampus-Introduction.pptx) (it still says "[Contact name] ·
-      [email] · [website]"). It is now a 25-slide product overview marked "work in progress": every module by stage (released, in review, planned), the technology, progress and a living-plan slide; the contact line is on the last slide.
+      [email] · [website]"). It is now a 26-slide product overview marked "work in progress": every module by stage (released, in review, planned), the technology, progress and a living-plan slide; the contact line is on the last slide.
 
 ## 5. Before production (not urgent now)
 
@@ -101,6 +155,8 @@ These are not blocking the build, but real billing and the trust page need them 
 
 ## What I do next, unless you say otherwise
 
-- Gemini and Codex build NEX-146 and NEX-147 (they do not overlap); I review and merge them (D68).
-- Write the next Stage 3 tasks two ahead in board order (D72): contracts first, then demo data and screens.
+- Nothing runs until you review Stage 3: the builders are idle and the tick task is off.
+- After **"approve the Stage 3 freeze"**: apply your feedback as fix tasks, write the freeze decision, then plan the
+  Stage 3 build tasks two ahead (backend behind the frozen contracts, screens switched from demo data to real one
+  at a time).
 - Anything that needs a new download, I hold and ask you first.

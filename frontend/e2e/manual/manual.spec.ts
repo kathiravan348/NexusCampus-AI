@@ -350,3 +350,152 @@ test("flow: roles", async ({ page }) => {
   await shot(page, p, "Parent: only their own family");
   save(p);
 });
+
+// ---------------------------------------------------------------------------------------------------------------
+// 4. Stage 3 — core institution operations (one example per day-to-day job)
+// ---------------------------------------------------------------------------------------------------------------
+
+async function as(
+  page: Page,
+  key: keyof typeof TENANTS,
+  user: string,
+  pathname: string,
+  locale?: string,
+) {
+  if (locale) await setLocale(page, TENANTS[key].id, locale);
+  await signInAs(page, TENANTS[key].id, user, pathname);
+  await expectScreenReady(page);
+}
+
+const main = (page: Page) => page.locator("#main-content");
+
+test("flow: stage 3 take attendance", async ({ page }) => {
+  const p = part(
+    22,
+    "flows",
+    "Take attendance",
+    "Attendance → class group → today's session → mark each learner → Save. Works offline too.",
+  );
+  await as(page, "littleSteps", "usr-ls-arjun", "/attendance");
+  await main(page).getByRole("combobox").first().selectOption({ index: 1 });
+  await expect(main(page).getByText("Open", { exact: true }).first()).toBeVisible();
+  await shot(page, p, "1. Choose the class group: its sessions are listed by date");
+  await main(page).getByRole("button").filter({ hasText: "Open" }).first().click();
+  await expect(page.getByRole("button", { name: "Mark all present" })).toBeVisible();
+  await shot(page, p, "2. Open today's session: one row per learner");
+  await page.getByRole("button", { name: "Late" }).first().click();
+  await page.getByRole("spinbutton", { name: "Minutes late" }).first().fill("10");
+  await shot(page, p, "3. Mark a learner Late and enter the minutes");
+  await page.getByRole("button", { name: "Save" }).first().click();
+  await shot(page, p, "4. Saved (offline, it waits and syncs when you reconnect)");
+  save(p);
+});
+
+test("flow: stage 3 fees", async ({ page }) => {
+  const p = part(
+    23,
+    "flows",
+    "Check an invoice and record a payment",
+    "Fees → Invoices → Show lines → Payments → Record payment.",
+  );
+  await as(page, "riverside", ADMINS.riverside, "/fees", "en-GB");
+  await shot(page, p, "1. Invoices with total, paid and balance");
+  await page.getByRole("button", { name: "Show lines" }).first().click();
+  await shot(page, p, "2. Show lines: what the invoice is made of");
+  await page.getByRole("tab", { name: "Payments" }).click();
+  await expectScreenReady(page);
+  await shot(page, p, "3. Payments: every receipt");
+  await page.getByRole("button", { name: "Record payment" }).first().click();
+  await expect(page.getByRole("dialog")).toBeVisible();
+  await shot(page, p, "4. Record payment shows the remaining balance before you save");
+  await page.keyboard.press("Escape");
+  save(p);
+});
+
+test("flow: stage 3 marks", async ({ page }) => {
+  const p = part(
+    24,
+    "flows",
+    "Enter marks",
+    "Gradebook → class group → assessment → type the marks. The percentage updates as you type.",
+  );
+  await as(page, "riverside", "usr-rv-tom", "/gradebook", "en-GB");
+  // The first class group whose assessment is still being marked (published ones are read-only).
+  const group = main(page).getByRole("combobox").first();
+  const marking = main(page)
+    .getByRole("listitem")
+    .getByRole("button")
+    .filter({ hasText: "Marking" });
+  const options = await group.locator("option").count();
+  for (let i = 1; i < options && (await marking.count()) === 0; i += 1) {
+    await group.selectOption({ index: i });
+    await expectScreenReady(page);
+    await page.waitForTimeout(300);
+  }
+  await expect(marking.first()).toBeVisible();
+  await shot(page, p, "1. Choose the class group: its assessments, maximum marks and weight");
+  await marking.first().click();
+  await expect(page.getByRole("spinbutton", { name: "Marks" }).first()).toBeVisible();
+  await shot(page, p, "2. Open an assessment: the mark sheet");
+  const open = page.getByRole("spinbutton", { name: "Marks" }).and(page.locator(":enabled"));
+  if ((await open.count()) === 0)
+    await page.getByRole("checkbox", { name: "Absent" }).first().click();
+  await open.first().fill("42");
+  await shot(page, p, "3. Type a mark: the percentage follows");
+  save(p);
+});
+
+test("flow: stage 3 enquiry", async ({ page }) => {
+  const p = part(
+    25,
+    "flows",
+    "Add an admissions enquiry",
+    "Admissions → Enquiries → Add enquiry → fill in → Save. It appears as New.",
+  );
+  await as(page, "apex", ADMINS.apex, "/admissions", "en-IN");
+  await shot(page, p, "1. Enquiries, filtered by status");
+  await page.getByRole("button", { name: "Add enquiry" }).click();
+  const dialog = page.getByRole("dialog");
+  await expect(dialog).toBeVisible();
+  await dialog.getByLabel("Learner name").fill("Divya Raman");
+  await dialog.getByLabel("Contact name").fill("Raman Krishnan");
+  await dialog.getByLabel("Contact phone").fill("+919876500000");
+  await shot(page, p, "2. Fill in the learner and the contact (sample names)");
+  await dialog.getByRole("button", { name: "Save" }).click();
+  await expect(dialog).toBeHidden();
+  await shot(page, p, "3. Saved: the enquiry is listed as New");
+  save(p);
+});
+
+test("flow: stage 3 portals", async ({ page }) => {
+  const p = part(
+    26,
+    "flows",
+    "Portals: family, learner, teacher",
+    "Each person gets their own home page, trimmed to their own records.",
+  );
+  await as(page, "riverside", "usr-rv-grace", "/family", "en-GB");
+  await shot(page, p, "Family: the child's attendance, fees, marks and messages at a glance");
+  await as(page, "riverside", "usr-rv-oliver", "/learner", "en-GB");
+  await shot(page, p, "Learner: today's classes, results and messages");
+  await as(page, "riverside", "usr-rv-tom", "/staff", "en-GB");
+  await shot(page, p, "Teacher: today's registers, pending leave and quick links");
+  save(p);
+});
+
+test("flow: stage 3 dashboards", async ({ page }) => {
+  const p = part(
+    27,
+    "flows",
+    "Key metrics for leaders",
+    "Home → Key metrics → Dashboards. Each figure shows when it was last updated.",
+  );
+  await as(page, "riverside", ADMINS.riverside, "/dashboards", "en-GB");
+  await shot(
+    page,
+    p,
+    "Attendance, fees and marks for the whole group, each with its As of time",
+    true,
+  );
+  save(p);
+});

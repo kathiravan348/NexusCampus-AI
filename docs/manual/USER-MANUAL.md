@@ -1,7 +1,7 @@
 # NexusCampus — User manual
 
 > Pictures first. Every screenshot is taken automatically from the demo (sample data), so this manual always
-> matches the app. Updated 2026-11-23 · 106 screenshots.
+> matches the app. Updated 2026-11-25 · 156 screenshots.
 
 ## Contents
 
@@ -20,6 +20,12 @@
 - [Wipe a lost device](#wipe-a-lost-device)
 - [Ask Nexus Assist](#ask-nexus-assist)
 - [What each role sees](#what-each-role-sees)
+- [Take attendance](#take-attendance)
+- [Check an invoice and record a payment](#check-an-invoice-and-record-a-payment)
+- [Enter marks](#enter-marks)
+- [Add an admissions enquiry](#add-an-admissions-enquiry)
+- [Portals: family, learner, teacher](#portals-family-learner-teacher)
+- [Key metrics for leaders](#key-metrics-for-leaders)
 
 **Every screen**
 
@@ -30,8 +36,25 @@
 - [Plan & usage](#plan-usage)
 - [Audit & privacy](#audit-privacy)
 - [Notifications](#notifications)
+- [Forms & fields](#forms-fields)
+- [Import data](#import-data)
 - [Sync centre](#sync-centre)
+- [Admissions](#admissions)
+- [Learners](#learners)
+- [Families](#families)
+- [Academic structure](#academic-structure)
+- [Timetable](#timetable)
+- [Attendance](#attendance)
+- [Fees](#fees)
+- [Accounting](#accounting)
+- [Gradebook](#gradebook)
+- [Exams](#exams)
+- [Report cards](#report-cards)
+- [Issued documents](#issued-documents)
+- [Messages & notices](#messages-notices)
+- [Dashboards](#dashboards)
 - [Data vault & access](#data-vault-access)
+- [Year-end rollover](#year-end-rollover)
 - [AI settings](#ai-settings)
 - [Install & updates](#install-updates)
 
@@ -249,6 +272,102 @@
 
 ![Parent: only their own family](screens/021-02-parent-only-their-own-family.png)
 
+## Take attendance
+
+*Attendance → class group → today's session → mark each learner → Save. Works offline too.*
+
+**1. Choose the class group: its sessions are listed by date**
+
+![1. Choose the class group: its sessions are listed by date](screens/022-01-1-choose-the-class-group-its-sessions-are-listed.png)
+
+**2. Open today's session: one row per learner**
+
+![2. Open today's session: one row per learner](screens/022-02-2-open-today-s-session-one-row-per-learner.png)
+
+**3. Mark a learner Late and enter the minutes**
+
+![3. Mark a learner Late and enter the minutes](screens/022-03-3-mark-a-learner-late-and-enter-the-minutes.png)
+
+**4. Saved (offline, it waits and syncs when you reconnect)**
+
+![4. Saved (offline, it waits and syncs when you reconnect)](screens/022-04-4-saved-offline-it-waits-and-syncs-when-you-reco.png)
+
+## Check an invoice and record a payment
+
+*Fees → Invoices → Show lines → Payments → Record payment.*
+
+**1. Invoices with total, paid and balance**
+
+![1. Invoices with total, paid and balance](screens/023-01-1-invoices-with-total-paid-and-balance.png)
+
+**2. Show lines: what the invoice is made of**
+
+![2. Show lines: what the invoice is made of](screens/023-02-2-show-lines-what-the-invoice-is-made-of.png)
+
+**3. Payments: every receipt**
+
+![3. Payments: every receipt](screens/023-03-3-payments-every-receipt.png)
+
+**4. Record payment shows the remaining balance before you save**
+
+![4. Record payment shows the remaining balance before you save](screens/023-04-4-record-payment-shows-the-remaining-balance-bef.png)
+
+## Enter marks
+
+*Gradebook → class group → assessment → type the marks. The percentage updates as you type.*
+
+**1. Choose the class group: its assessments, maximum marks and weight**
+
+![1. Choose the class group: its assessments, maximum marks and weight](screens/024-01-1-choose-the-class-group-its-assessments-maximum.png)
+
+**2. Open an assessment: the mark sheet**
+
+![2. Open an assessment: the mark sheet](screens/024-02-2-open-an-assessment-the-mark-sheet.png)
+
+**3. Type a mark: the percentage follows**
+
+![3. Type a mark: the percentage follows](screens/024-03-3-type-a-mark-the-percentage-follows.png)
+
+## Add an admissions enquiry
+
+*Admissions → Enquiries → Add enquiry → fill in → Save. It appears as New.*
+
+**1. Enquiries, filtered by status**
+
+![1. Enquiries, filtered by status](screens/025-01-1-enquiries-filtered-by-status.png)
+
+**2. Fill in the learner and the contact (sample names)**
+
+![2. Fill in the learner and the contact (sample names)](screens/025-02-2-fill-in-the-learner-and-the-contact-sample-nam.png)
+
+**3. Saved: the enquiry is listed as New**
+
+![3. Saved: the enquiry is listed as New](screens/025-03-3-saved-the-enquiry-is-listed-as-new.png)
+
+## Portals: family, learner, teacher
+
+*Each person gets their own home page, trimmed to their own records.*
+
+**Family: the child's attendance, fees, marks and messages at a glance**
+
+![Family: the child's attendance, fees, marks and messages at a glance](screens/026-01-family-the-child-s-attendance-fees-marks-and-mes.png)
+
+**Learner: today's classes, results and messages**
+
+![Learner: today's classes, results and messages](screens/026-02-learner-today-s-classes-results-and-messages.png)
+
+**Teacher: today's registers, pending leave and quick links**
+
+![Teacher: today's registers, pending leave and quick links](screens/026-03-teacher-today-s-registers-pending-leave-and-quic.png)
+
+## Key metrics for leaders
+
+*Home → Key metrics → Dashboards. Each figure shows when it was last updated.*
+
+**Attendance, fees and marks for the whole group, each with its As of time**
+
+![Attendance, fees and marks for the whole group, each with its As of time](screens/027-01-attendance-fees-and-marks-for-the-whole-group-ea.png)
+
 ---
 
 # Every screen
@@ -355,49 +474,211 @@
 
 ![Notifications — My preferences](screens/106-03-notifications-my-preferences.png)
 
+## Forms & fields
+
+**Forms & fields — Fields**
+
+![Forms & fields — Fields](screens/107-01-forms-fields-fields.png)
+
+**Forms & fields — Forms**
+
+![Forms & fields — Forms](screens/107-02-forms-fields-forms.png)
+
+**Forms & fields — Workflows & numbering**
+
+![Forms & fields — Workflows & numbering](screens/107-03-forms-fields-workflows-numbering.png)
+
+## Import data
+
+**Import data**
+
+![Import data](screens/108-01-import-data.png)
+
 ## Sync centre
 
 **Sync centre — This device**
 
-![Sync centre — This device](screens/107-01-sync-centre-this-device.png)
+![Sync centre — This device](screens/109-01-sync-centre-this-device.png)
 
 **Sync centre — Devices**
 
-![Sync centre — Devices](screens/107-02-sync-centre-devices.png)
+![Sync centre — Devices](screens/109-02-sync-centre-devices.png)
 
 **Sync centre — Conflicts**
 
-![Sync centre — Conflicts](screens/107-03-sync-centre-conflicts.png)
+![Sync centre — Conflicts](screens/109-03-sync-centre-conflicts.png)
+
+## Admissions
+
+**Admissions — Enquiries**
+
+![Admissions — Enquiries](screens/110-01-admissions-enquiries.png)
+
+**Admissions — Applications**
+
+![Admissions — Applications](screens/110-02-admissions-applications.png)
+
+**Admissions — Offers & waitlist**
+
+![Admissions — Offers & waitlist](screens/110-03-admissions-offers-waitlist.png)
+
+## Learners
+
+**Learners**
+
+![Learners](screens/111-01-learners.png)
+
+## Families
+
+**Families**
+
+![Families](screens/112-01-families.png)
+
+## Academic structure
+
+**Academic structure — Programs & classes**
+
+![Academic structure — Programs & classes](screens/113-01-academic-structure-programs-classes.png)
+
+**Academic structure — Subjects**
+
+![Academic structure — Subjects](screens/113-02-academic-structure-subjects.png)
+
+## Timetable
+
+**Timetable — Week**
+
+![Timetable — Week](screens/114-01-timetable-week.png)
+
+**Timetable — Rooms & bells**
+
+![Timetable — Rooms & bells](screens/114-02-timetable-rooms-bells.png)
+
+**Timetable — Teacher load**
+
+![Timetable — Teacher load](screens/114-03-timetable-teacher-load.png)
+
+## Attendance
+
+**Attendance**
+
+![Attendance](screens/115-01-attendance.png)
+
+## Fees
+
+**Fees — Invoices**
+
+![Fees — Invoices](screens/116-01-fees-invoices.png)
+
+**Fees — Payments**
+
+![Fees — Payments](screens/116-02-fees-payments.png)
+
+**Fees — Plans & refunds**
+
+![Fees — Plans & refunds](screens/116-03-fees-plans-refunds.png)
+
+## Accounting
+
+**Accounting — Accounts**
+
+![Accounting — Accounts](screens/117-01-accounting-accounts.png)
+
+**Accounting — Journal**
+
+![Accounting — Journal](screens/117-02-accounting-journal.png)
+
+**Accounting — Budgets**
+
+![Accounting — Budgets](screens/117-03-accounting-budgets.png)
+
+## Gradebook
+
+**Gradebook**
+
+![Gradebook](screens/118-01-gradebook.png)
+
+## Exams
+
+**Exams — Schedule**
+
+![Exams — Schedule](screens/119-01-exams-schedule.png)
+
+**Exams — Seating**
+
+![Exams — Seating](screens/119-02-exams-seating.png)
+
+**Exams — Hall tickets & re-evaluation**
+
+![Exams — Hall tickets & re-evaluation](screens/119-03-exams-hall-tickets-re-evaluation.png)
+
+## Report cards
+
+**Report cards**
+
+![Report cards](screens/120-01-report-cards.png)
+
+## Issued documents
+
+**Issued documents**
+
+![Issued documents](screens/121-01-issued-documents.png)
+
+## Messages & notices
+
+**Messages & notices — Messages**
+
+![Messages & notices — Messages](screens/122-01-messages-notices-messages.png)
+
+**Messages & notices — Notices**
+
+![Messages & notices — Notices](screens/122-02-messages-notices-notices.png)
+
+**Messages & notices — Meetings**
+
+![Messages & notices — Meetings](screens/122-03-messages-notices-meetings.png)
+
+## Dashboards
+
+**Dashboards**
+
+![Dashboards](screens/123-01-dashboards.png)
 
 ## Data vault & access
 
 **Data vault & access — Access requests**
 
-![Data vault & access — Access requests](screens/108-01-data-vault-access-access-requests.png)
+![Data vault & access — Access requests](screens/124-01-data-vault-access-access-requests.png)
 
 **Data vault & access — Grants**
 
-![Data vault & access — Grants](screens/108-02-data-vault-access-grants.png)
+![Data vault & access — Grants](screens/124-02-data-vault-access-grants.png)
 
 **Data vault & access — Keys**
 
-![Data vault & access — Keys](screens/108-03-data-vault-access-keys.png)
+![Data vault & access — Keys](screens/124-03-data-vault-access-keys.png)
 
 **Data vault & access — Emergency access**
 
-![Data vault & access — Emergency access](screens/108-04-data-vault-access-emergency-access.png)
+![Data vault & access — Emergency access](screens/124-04-data-vault-access-emergency-access.png)
+
+## Year-end rollover
+
+**Year-end rollover**
+
+![Year-end rollover](screens/125-01-year-end-rollover.png)
 
 ## AI settings
 
 **AI settings**
 
-![AI settings](screens/109-01-ai-settings.png)
+![AI settings](screens/126-01-ai-settings.png)
 
 ## Install & updates
 
 **Install & updates**
 
-![Install & updates](screens/110-01-install-updates.png)
+![Install & updates](screens/127-01-install-updates.png)
 
 ---
 

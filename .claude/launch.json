@@ -2,6 +2,13 @@
   "version": "0.0.1",
   "configurations": [
     {
+      "name": "campus-review",
+      "runtimeExecutable": "fnm",
+      "runtimeArgs": ["exec", "--using=24", "--", "pnpm", "--dir", "frontend/apps/campus", "exec", "vite", "preview", "--mode", "review", "--port", "4173", "--strictPort"],
+      "port": 4173,
+      "autoPort": false
+    },
+    {
       "name": "campus",
       "runtimeExecutable": "fnm",
       "runtimeArgs": [

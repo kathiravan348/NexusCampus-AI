@@ -158,5 +158,7 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 
 ## Waiting for the Owner
 - 2026-11-25 03:5x — **Stage 3 ready for the Owner's final review (NEX-180).** NEX-179 and NEX-181 are done and
-  merged. **Owner: please disable the scheduled task `nexus-stage3-tick`** (the tick could not — it needs your approval). Gemini's worktree still has `task/NEX-175` (merged)
-  checked out; nothing is running.
+  merged. Gemini's worktree still has `task/NEX-175` (merged) checked out; nothing is running.
+- 2026-11-25 — The scheduled task `nexus-stage3-tick` is disabled (Owner's OK in chat). Review pack ready: user
+  manual with Stage 3 examples, presentation updated, demo on http://localhost:4173, checklist in
+  [`OWNER-CHECKLIST.md`](../../review/OWNER-CHECKLIST.md) section A.
