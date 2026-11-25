@@ -53,7 +53,8 @@ Claude then reviews `git diff main...task/NEX-###`, re-runs `review:check`, writ
 Owner, 2026-11-25: "push main and keep the build going" → "rewrite and enable". Each tick is a fresh Claude
 session that reviews, merges, pushes `main` after a green check, answers builders, starts builds and plans, without
 asking the Owner, until the stop rule. In this order, briefly (`O` = the orchestrator folder):
-0. **Lock:** if `$O/tick.lock` exists and is younger than 50 min, stop (another tick or an interactive Claude session
+0. **Lock:** if `$O/tick.lock` says `claude-build` and is younger than 4 h, or any other `tick.lock` is younger than
+   50 min, stop (another tick or an interactive Claude session
    is working). Else write it; delete it at the end.
 1. **Stack and status:** `uv run --project backend nexus-compose-up` (idempotent; images are local; ports
    55432/56379/58080/58200) — the harness's backend check needs the database. Then `bash $O/status.sh`. Read
@@ -89,6 +90,18 @@ asking the Owner, until the stop rule. In this order, briefly (`O` = the orchest
 8. **Stop rule:** when NEX-199 is `done`, or when only tasks that need the Owner remain, start nothing more: write
    "Stage 3 build ready for the Owner's release review" (or what is waiting) under "Waiting for the Owner", push, and
    disable the scheduled task.
+9. **Claude builds (D82)** when Codex is unavailable (usage limit, sign-in error, or failed twice) and a task is ready
+   to start or continue — instead of waiting for the reset. Gate: `get_usage` 5-hour **and** weekly below 80 % used
+   (20 % stays for planning and reviewing); check again before each build step and stop at a commit point at 80 %.
+   Do steps 1–8 first, then write `claude-build NEX-### <time>` into `tick.lock`. Worktree `../NexusCampus-AI-claude`
+   (`git worktree add` it once if missing; a branch held by the Codex worktree: set `changes-requested` with "finish"
+   requests and detach that worktree first). Follow the `GEMINI.md` implementer steps with owner `Claude`, run
+   `fnm exec --using=24 -- pnpm --dir frontend review:check` and, for `backend/`, `uv run --project backend
+   backend-check` with `NEXUS_REQUIRE_DB=1`; max 3 commits; status `ready-for-review`, task log row "Claude · <model>".
+   Out of budget mid-task → commit what is green as `NEX-###: partial (Claude, budget)`, status `changes-requested`
+   with numbered "finish" requests, so Codex or a later tick continues. Never review your own build: Codex reviews it
+   (D68); the harness has no review run yet, so list it under "Waiting for the Owner" as "NEX-### needs Codex
+   review" and keep building other tasks. When Codex's limit resets, Codex gets the next task again.
 Never: install packages, edit rule files other than `DECISIONS.md`, push other branches, force-push, delete worktrees
 or branches, change a frozen contract or screen without a task the Owner approved (D78), or weaken a security /
 privacy rule to finish faster. Keep the tick's reply to 5 lines.
