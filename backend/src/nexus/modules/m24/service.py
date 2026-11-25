@@ -152,9 +152,10 @@ async def _role_keys(auth: Authorized) -> set[str]:
     return {role.removeprefix(prefix) for role in rows if role.removeprefix(prefix) in SYSTEM_ROLE_KEYS}
 
 
-async def notice_page(auth: Authorized, page: PageQuery) -> Page[NoticeOut]:
+async def visible_notices(auth: Authorized) -> list[Notice]:
+    """Publishers see every notice; others only published, live notices addressed to them (as `viewerNotices`)."""
     db = auth.ctx.db
-    rows = (await db.scalars(select(Notice).order_by(Notice.list_order, Notice.id))).all()
+    rows = list((await db.scalars(select(Notice).order_by(Notice.list_order, Notice.id))).all())
     if not auth.grants.has(NOTICES_PUBLISH):
         now = datetime.now(UTC)
         groups = await family_class_groups(auth)
@@ -175,6 +176,11 @@ async def notice_page(auth: Authorized, page: PageQuery) -> Page[NoticeOut]:
             )
 
         rows = [row for row in rows if addressed(row)]
+    return rows
+
+
+async def notice_page(auth: Authorized, page: PageQuery) -> Page[NoticeOut]:
+    rows = await visible_notices(auth)
     window = rows[page.offset : page.offset + page.page_size]
     return Page.of([stored(NoticeOut, row) for row in window], len(rows), page)
 
