@@ -393,6 +393,20 @@ messages and may update only a thread's `last_message_at` and `updated_at`.
 `thread_messages.body` and `meeting_bookings.note` are FieldCipher text under the tenant's `tenant_data` key (a
 CHECK rejects plaintext) and are listed in `ENCRYPTED_COLUMNS`.
 
+## Year-end rollover (M86 — `0039_rollover`, D84)
+
+Both tables have an opaque `id`, a `tenant_id`, an insertion-order column, forced RLS with the `tenant_isolation`
+policy and composite tenant references.
+
+| Table | Columns and constraints |
+|---|---|
+| `rollover_runs` | Institution, from and to academic years (different), status, five count columns (≥ 0), carry-forward flag, `rollback_until` exactly when completed, creating staff profile, timestamps. A partial unique index allows one open run (draft, dry run ready, running) per tenant, institution and from-year. |
+| `promotion_decisions` | Run, learner (one per run), action, target class group exactly for promote / detain, optional reason key, overriding staff profile; internal `previous_enrolment_id`, `new_enrolment_id`, `previous_learner_status`, `previous_left_on` for an exact roll-back (never returned). |
+
+The application role may insert into both and update only run status, counts and window, and the decision columns.
+For applying and reversing a run it may insert and delete enrolments and update their `status`, `effective_to` and
+`updated_at`, and update a learner's `status`, `left_on` and `updated_at` (D84). Nothing else on those tables.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with

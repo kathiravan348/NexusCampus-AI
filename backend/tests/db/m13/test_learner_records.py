@@ -313,7 +313,15 @@ def test_storage_rls_and_export(records: Engine, m13_vault: Vault) -> None:
                 ),
                 {"t": table},
             ).one()
-            assert tuple(flags) == (True, True, True, False)
+            # D84 (NEX-193): rollover may insert, delete and close enrolments; learners stay table-level read-only.
+            assert tuple(flags) == (True, True, True, table == "enrolments")
+        updatable = conn.scalars(
+            text(
+                "SELECT column_name FROM information_schema.column_privileges WHERE grantee = 'nexus_app' "
+                "AND privilege_type = 'UPDATE' AND table_name = 'learners' ORDER BY column_name"
+            )
+        ).all()
+        assert updatable == ["left_on", "status", "updated_at"]
         row = dict(conn.execute(text("SELECT * FROM learners WHERE id = 'm13-a'")).mappings().one())
     assert row["custom_fields"] == PUBLIC
     for col in ("health_flags", "sensitive_custom_fields"):
