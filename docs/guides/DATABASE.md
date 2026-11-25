@@ -376,6 +376,23 @@ policy and composite tenant references. The application role reads both and may 
 The three encrypted columns are FieldCipher text under the tenant's `tenant_data` key (a CHECK rejects plaintext) and
 are listed in `ENCRYPTED_COLUMNS`.
 
+## Communication (M24 — `0038_communication`)
+
+All five tables have an opaque `id`, a `tenant_id`, an insertion-order column, forced RLS with the
+`tenant_isolation` policy and composite tenant references. The application role reads all five, inserts thread
+messages and may update only a thread's `last_message_at` and `updated_at`.
+
+| Table | Columns and constraints |
+|---|---|
+| `message_threads` | Institution, kind, subject, up to 500 distinct participant person IDs (at least 2 unless `broadcast`; GIN index), class group exactly for `class_group`, last message time, archived, timestamps. |
+| `thread_messages` | Thread, sender person, encrypted `body`, up to 10 attachment IDs, sent and edited times (`edited_at >= sent_at`), up to 500 reader IDs, optional device. |
+| `notices` | Institution, title, body, `audience` (JSON kind and IDs), 1-5 distinct channels, acknowledgement flag, publish and expiry times (`expires_at > publish_at`), status, creating staff profile, timestamps. |
+| `meeting_slots` | Staff profile, date, `HH:MM` start and end (`end > start`), mode, optional location, capacity 1-10. |
+| `meeting_bookings` | Slot, guardian person, learner, status, encrypted `note`, timestamps. |
+
+`thread_messages.body` and `meeting_bookings.note` are FieldCipher text under the tenant's `tenant_data` key (a
+CHECK rejects plaintext) and are listed in `ENCRYPTED_COLUMNS`.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with

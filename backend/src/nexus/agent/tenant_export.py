@@ -58,6 +58,8 @@ ENCRYPTED_COLUMNS: dict[tuple[str, str], EncryptedField] = {
     ("report_cards", "line_remarks"): EncryptedField("tenant_data", "report_cards.line_remarks"),
     ("report_cards", "overall_remark"): EncryptedField("tenant_data", "report_cards.overall_remark"),
     ("issued_documents", "revoked_reason"): EncryptedField("tenant_data", "issued_documents.revoked_reason"),
+    ("thread_messages", "body"): EncryptedField("tenant_data", "thread_messages.body"),
+    ("meeting_bookings", "note"): EncryptedField("tenant_data", "meeting_bookings.note"),
     ("guardian_relationships", "court_order_note"): EncryptedField(
         "tenant_data", "guardian_relationships.court_order_note"
     ),
