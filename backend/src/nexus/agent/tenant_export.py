@@ -49,6 +49,8 @@ class EncryptedField:
 #: Stage 1-2 tables have no `FieldCipher`-encrypted columns yet; Stage 3+ sensitive columns register here.
 ENCRYPTED_COLUMNS: dict[tuple[str, str], EncryptedField] = {
     ("applications", "sensitive_answers"): EncryptedField("tenant_data", "applications.sensitive_answers"),
+    ("attendance_marks", "note"): EncryptedField("tenant_data", "attendance_marks.note"),
+    ("leave_requests", "reason"): EncryptedField("tenant_data", "leave_requests.reason"),
     ("guardian_relationships", "court_order_note"): EncryptedField(
         "tenant_data", "guardian_relationships.court_order_note"
     ),
