@@ -53,7 +53,8 @@ Claude then reviews `git diff main...task/NEX-###`, re-runs `review:check`, writ
 Owner, 2026-11-25: "push main and keep the build going" → "rewrite and enable". Each tick is a fresh Claude
 session that reviews, merges, pushes `main` after a green check, answers builders, starts builds and plans, without
 asking the Owner, until the stop rule. In this order, briefly (`O` = the orchestrator folder):
-0. **Lock:** if `$O/tick.lock` exists and is younger than 50 min, stop (another tick or an interactive Claude session
+0. **Lock:** if `$O/tick.lock` says `claude-build` and is younger than 4 h, or any other `tick.lock` is younger than
+   50 min, stop (another tick or an interactive Claude session
    is working). Else write it; delete it at the end.
 1. **Stack and status:** `uv run --project backend nexus-compose-up` (idempotent; images are local; ports
    55432/56379/58080/58200) — the harness's backend check needs the database. Then `bash $O/status.sh`. Read
@@ -89,6 +90,18 @@ asking the Owner, until the stop rule. In this order, briefly (`O` = the orchest
 8. **Stop rule:** when NEX-199 is `done`, or when only tasks that need the Owner remain, start nothing more: write
    "Stage 3 build ready for the Owner's release review" (or what is waiting) under "Waiting for the Owner", push, and
    disable the scheduled task.
+9. **Claude builds (D82)** when Codex is unavailable (usage limit, sign-in error, or failed twice) and a task is ready
+   to start or continue — instead of waiting for the reset. Gate: `get_usage` 5-hour **and** weekly below 80 % used
+   (20 % stays for planning and reviewing); check again before each build step and stop at a commit point at 80 %.
+   Do steps 1–8 first, then write `claude-build NEX-### <time>` into `tick.lock`. Worktree `../NexusCampus-AI-claude`
+   (`git worktree add` it once if missing; a branch held by the Codex worktree: set `changes-requested` with "finish"
+   requests and detach that worktree first). Follow the `GEMINI.md` implementer steps with owner `Claude`, run
+   `fnm exec --using=24 -- pnpm --dir frontend review:check` and, for `backend/`, `uv run --project backend
+   backend-check` with `NEXUS_REQUIRE_DB=1`; max 3 commits; status `ready-for-review`, task log row "Claude · <model>".
+   Out of budget mid-task → commit what is green as `NEX-###: partial (Claude, budget)`, status `changes-requested`
+   with numbered "finish" requests, so Codex or a later tick continues. Never review your own build: Codex reviews it
+   (D68); the harness has no review run yet, so list it under "Waiting for the Owner" as "NEX-### needs Codex
+   review" and keep building other tasks. When Codex's limit resets, Codex gets the next task again.
 Never: install packages, edit rule files other than `DECISIONS.md`, push other branches, force-push, delete worktrees
 or branches, change a frozen contract or screen without a task the Owner approved (D78), or weaken a security /
 privacy rule to finish faster. Keep the tick's reply to 5 lines.
@@ -131,8 +144,10 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-181 | Codex · gpt-6.2-astra / high (fix from NEX-179 e2e, D77) | 02:1x; 2 questions (staff rule, portal role) answered 02:4x, restarted; 3rd question (guardian without learner) answered 03:1x, restarted | green (1,997 tests) | done — no fixes; e2e proved on NEX-179 | `8ed758b`, pushed |
 | NEX-200 | Codex · gpt-6.2-astra / high (lane D, `0025`) | 12:5x; locale question answered, restarted | green (2031 frontend; backend 528, 0 skipped) | done — no fixes | merged 14:1x, pushed |
 | NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | red ×4 on format / lint / mypy only (533 tests green); reviewer fixed, green (backend 533, 0 skipped; main 2035 frontend) | done — fix: `ruff format`, list literals, `noqa: S608` on fixed-table cleanup, `Select[Learner]` type | merged 15:1x, pushed |
-| NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | — | — | — |
+| NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | green (2035 frontend; backend 538, 0 skipped) | done — fix: model `locale_valid` CHECK matched to migration | merged 17:4x; main GREEN, push blocked (see Waiting) |
+| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`) | 17:47 (tick) | — | — | — |
 | NEX-204 | — (planned 16:4x, lane D, `0029`, D81; waits for NEX-185) | — | — | — | — |
+| NEX-203 | — (planned 17:5x, lane D, `0030`; waits for NEX-204) | — | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
@@ -205,3 +220,7 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   endpoint, migration `0029`, abuse limits D81). Planned ahead: NEX-185, NEX-204. Gemini idle (lane D only) — not blocking.
 - 2026-11-25 17:1x (tick) — NEX-202 asked about locale aliases; answered (use `nexus.core.validation.is_locale`, no
   canonicaliser), restarted on Codex. Planned ahead: NEX-185, NEX-204. Gemini idle (lane D only) — not blocking.
+- 2026-11-25 17:4x (tick) — NEX-202 reviewed (1 fix) and merged; `check-main.sh` GREEN (frontend after the usual
+  load-timeout re-run, backend DB required). **`git push origin main` was refused by the session's auto-mode permission
+  check** — `main` is ahead of `origin` by the NEX-202 merge and this plan commit; the Owner pushes or allows the push
+  for the scheduled task. NEX-185 started on Codex. NEX-203 planned (M09, `0030`). Planned ahead: NEX-204, NEX-203.
