@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-25 (Stage 3 build, M14 families, NEX-202) · Migrations: product `0027_families`, Nexus Control
+> State as of: 2026-11-25 (Stage 3 build, M12 staff admissions, NEX-185) · Migrations: product `0028_admissions`, Nexus Control
 > `c0021_payment_links`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
@@ -235,6 +235,19 @@ The three tables use forced tenant RLS with the `tenant_isolation` policy. The a
 | `authorised_pickups` | `id`, `tenant_id`, `learner_person_id`, `name`, E.164 `phone`, `relationship_label`, `valid_from`, `valid_to`, `added_by_person_id`, `created_at` | Each pickup names the person who added it. |
 
 Relationship and pickup end dates are optional and must be on or after their start dates. Household and relationship update times must be on or after creation. Family visibility uses the existing M02 guardian links.
+
+## Staff admissions (M12 — `0028_admissions`)
+
+All four tables have an opaque `id`, a `tenant_id`, an insertion-order column for stable paging, and forced RLS with the `tenant_isolation` policy. The application role can read all four tables and insert enquiries. Scalar references include the tenant ID.
+
+| Table | Columns and constraints |
+|---|---|
+| `enquiries` | Institution, optional campus, program and assigned staff profile, source, contact name, phone, email, learner name, follow-up date, campaign code, status, lost reason and timestamps. At least one contact method is required. A lost enquiry requires a nonblank reason. Other statuses require a null reason. |
+| `applications` | Institution, optional enquiry, application number, form, academic year, program, optional year level, applicant person, up to four distinct guardian person IDs, answers, up to 30 distinct document IDs, status, submission, decision and creation/update times. All statuses except draft require submission time. Offered, waitlisted, accepted, rejected and enrolled require decision time. |
+| `admission_offers` | Application, optional class group, expiry date, status, response time and creation time. Only accepted and declined offers have a response time, which is required for both. |
+| `waitlist_entries` | Application, program, position and time added. Positions start at one and are unique within the tenant and program. |
+
+Ordinary application values are stored in the `answers` JSONB object. A database trigger rejects plaintext keys marked sensitive for applications in that tenant. Protected values are a JSON object encrypted with FieldCipher in `sensitive_answers`, bound to `applications.sensitive_answers` under the tenant's `tenant_data` key. NULL means there are no protected answers. Tenant export unwraps this column inside the encrypted export stream.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

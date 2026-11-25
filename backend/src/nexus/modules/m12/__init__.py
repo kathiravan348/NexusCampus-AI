@@ -1,0 +1,1 @@
+"""Staff admissions (M12)."""
