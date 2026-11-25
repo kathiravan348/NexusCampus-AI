@@ -102,6 +102,11 @@ asking the Owner, until the stop rule. In this order, briefly (`O` = the orchest
    with numbered "finish" requests, so Codex or a later tick continues. Never review your own build: Codex reviews it
    (D68); the harness has no review run yet, so list it under "Waiting for the Owner" as "NEX-### needs Codex
    review" and keep building other tasks. When Codex's limit resets, Codex gets the next task again.
+10. **Codex review of a Claude build (D68, Owner 21:5x):** start it with `bash $O/start-review.sh NEX-### gpt-6.2-astra high`
+   (detached; Codex reviews and edits files only, the harness runs the checks and writes 1 `review:` commit, then detaches).
+   Result in `$O/logs/codex.state`: `reviewed-done` → on `main` `git merge --no-ff task/NEX-###`, `check-main.sh` GREEN,
+   push; `reviewed-changes-requested` → the requests are built like step 4 (Codex, or Claude under D82 — then Codex
+   reviews again); `review-checks-failed` / `review-no-changes` → restart once, then "Waiting for the Owner".
 Never: install packages, edit rule files other than `DECISIONS.md`, push other branches, force-push, delete worktrees
 or branches, change a frozen contract or screen without a task the Owner approved (D78), or weaken a security /
 privacy rule to finish faster. Keep the tick's reply to 5 lines.
@@ -145,7 +150,7 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-200 | Codex · gpt-6.2-astra / high (lane D, `0025`) | 12:5x; locale question answered, restarted | green (2031 frontend; backend 528, 0 skipped) | done — no fixes | merged 14:1x, pushed |
 | NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | red ×4 on format / lint / mypy only (533 tests green); reviewer fixed, green (backend 533, 0 skipped; main 2035 frontend) | done — fix: `ruff format`, list literals, `noqa: S608` on fixed-table cleanup, `Select[Learner]` type | merged 15:1x, pushed |
 | NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | green (2035 frontend; backend 538, 0 skipped) | done — fix: model `locale_valid` CHECK matched to migration | merged 17:4x; main GREEN, push blocked (see Waiting) |
-| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`); round 5 Claude · claude-opus-5-5 (D82) | 17:47 (tick); institution-precedence question answered 18:1x (follow the mock), restarted; checks-failed 19:0x (test sign-in), restarted → Codex usage limit until 21:43; Claude built the test fix 19:4x | green (backend 543, 0 skipped; frontend 348 files after the usual re-run) | ready-for-review — needs Codex review (D68) | — |
+| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`); round 5 Claude · claude-opus-5-5 (D82) | 17:47 (tick); institution-precedence question answered 18:1x (follow the mock), restarted; checks-failed 19:0x (test sign-in), restarted → Codex usage limit until 21:43; Claude built the test fix 19:4x | green (backend 543, 0 skipped; frontend 348 files after the usual re-run) | ready-for-review — Codex review running (21:5x, Owner) | — |
 | NEX-204 | — (planned 16:4x, lane D, `0029`, D81; waits for NEX-185) | — | — | — | — |
 | NEX-203 | — (planned 17:5x, lane D, `0030`; waits for NEX-204) | — | — | — | — |
 
@@ -238,3 +243,6 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - 2026-11-25 21:4x (tick) — No change: Codex's limit has reset (21:43), but NEX-185 still needs a Codex review (D68)
   and the harness has no review run, so the Owner starts it. NEX-204, NEX-203 and the later lane D tasks wait for
   NEX-185's migration `0028`; nothing started, Claude did not build. Planned ahead: NEX-204, NEX-203. Gemini idle.
+- 2026-11-25 21:5x — Owner: "Start Codex review". New `$O/start-review.sh` / `run-review.sh` (tick step 10): Codex
+  (`gpt-6.2-astra` / high) is reviewing NEX-185 in its worktree; the harness checks and commits the `review:`; a later
+  tick merges it on `reviewed-done`, then lane D continues with NEX-204.
