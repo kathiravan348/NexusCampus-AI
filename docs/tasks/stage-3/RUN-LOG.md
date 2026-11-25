@@ -145,7 +145,7 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-200 | Codex · gpt-6.2-astra / high (lane D, `0025`) | 12:5x; locale question answered, restarted | green (2031 frontend; backend 528, 0 skipped) | done — no fixes | merged 14:1x, pushed |
 | NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | red ×4 on format / lint / mypy only (533 tests green); reviewer fixed, green (backend 533, 0 skipped; main 2035 frontend) | done — fix: `ruff format`, list literals, `noqa: S608` on fixed-table cleanup, `Select[Learner]` type | merged 15:1x, pushed |
 | NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | green (2035 frontend; backend 538, 0 skipped) | done — fix: model `locale_valid` CHECK matched to migration | merged 17:4x; main GREEN, push blocked (see Waiting) |
-| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`) | 17:47 (tick) | — | — | — |
+| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`) | 17:47 (tick); institution-precedence question (task vs frozen mock) answered 18:1x (follow the mock), restarted | — | — | — |
 | NEX-204 | — (planned 16:4x, lane D, `0029`, D81; waits for NEX-185) | — | — | — | — |
 | NEX-203 | — (planned 17:5x, lane D, `0030`; waits for NEX-204) | — | — | — | — |
 
@@ -224,3 +224,6 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   load-timeout re-run, backend DB required). **`git push origin main` was refused by the session's auto-mode permission
   check** — `main` is ahead of `origin` by the NEX-202 merge and this plan commit; the Owner pushes or allows the push
   for the scheduled task. NEX-185 started on Codex. NEX-203 planned (M09, `0030`). Planned ahead: NEX-204, NEX-203.
+- 2026-11-25 18:1x (tick) — `main` was already in sync with `origin` (the 17:4x push is done). NEX-185 asked which
+  institution owns an enquiry; answered (follow the frozen mock: program → campus → staff → first), restarted on Codex.
+  Planned ahead: NEX-204, NEX-203. Gemini idle (lane D only) — not blocking.
