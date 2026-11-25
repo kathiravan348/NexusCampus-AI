@@ -154,7 +154,9 @@ export function AddEnquiryDialog({
           label={t("m12.add.phone")}
           type="tel"
           error={errorFor("contactPhone")}
-          {...register("contactPhone", optional)}
+          {...register("contactPhone", {
+            setValueAs: (value: string | null) => value?.replace(/[\s.()-]/g, "").trim() || null,
+          })}
         />
         <Input
           label={t("m12.add.email")}

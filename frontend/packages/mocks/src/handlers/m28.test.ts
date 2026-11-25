@@ -35,7 +35,7 @@ describe("M28 read handlers", () => {
     expect([...home.learnerIds].sort()).toEqual([LEARNER.lsIshaan, LEARNER.lsRohan].sort());
     expect(home.cards).toEqual(
       expect.arrayContaining([
-        expect.objectContaining({ kind: "attendance", titleKey: "m28.card.attendance" }),
+        expect.objectContaining({ kind: "attendance", titleKey: "m28.card.absences" }),
         expect.objectContaining({ kind: "fees", titleKey: "m28.card.fees" }),
         expect.objectContaining({ kind: "messages", count: 1 }),
         expect.objectContaining({ kind: "notices", count: 1 }),
@@ -54,6 +54,10 @@ describe("M28 read handlers", () => {
       "messages",
       "notices",
     ]);
+
+    expect(staffHome.cards.find((row) => row.kind === "attendance")?.titleKey).toBe(
+      "m28.card.attendance",
+    );
 
     const admin = await get("/me/home");
     expect(admin.status).toBe(200);
