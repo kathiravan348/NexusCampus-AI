@@ -157,8 +157,9 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-205 | Claude · claude-opus-5-5 (D83, lane D, `0032`) | 00:3x | green (backend 571, 0 skipped) | done — no fixes | merged 00:5x, pushed |
 | NEX-188 | Claude · claude-opus-5-5 (D83, lane D, `0033`) | 01:0x | green (backend 576, 0 skipped) | done — no fixes | merged 01:3x, pushed |
 | NEX-206 | Claude · claude-opus-5-5 (D83, lane D, `0034`) | 01:4x | green (backend 580, 0 skipped) | done — no fixes | merged 01:5x, pushed |
-| NEX-189 | — (planned 02:0x, lane D, `0035`, M20 only) | — | — | — | — |
-| NEX-207 | — (planned 02:0x, lane D, `0036`, M21; split from NEX-189) | — | — | — | — |
+| NEX-189 | Claude · claude-opus-5-5 (D83, lane D, `0035`) | 02:1x | green (backend 585, 0 skipped) | done — self-review fix: family helper takes the module's read permission | merged 02:3x, pushed |
+| NEX-207 | Claude · claude-opus-5-5 (D83, lane D, `0036`) | 02:4x | green (backend 590, 0 skipped) | done — no fixes | merged 03:0x, pushed |
+| NEX-190 | — (planned 03:0x, lane D, `0037`, M22 + M23) | — | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
