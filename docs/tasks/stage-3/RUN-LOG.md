@@ -251,5 +251,5 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   migration `0028`, m12 models / router / schemas / service, tests, API and DATABASE guides; harness check GREEN,
   backend 544 passed, 0 skipped) but no verdict or review note (status `in-review`, owner Codex). Claude cannot review
   its own build (D68), and NEX-204, NEX-203 and NEX-187–195 all wait for NEX-185's migration `0028`, so nothing can
-  start. The scheduled task `nexus-stage3-tick` is disabled. Owner decides: wait for Codex (restart with
+  start. Disabling `nexus-stage3-tick` needs the Owner's approval (refused in the unattended run) — **Owner: disable it**; later ticks find nothing to do. Owner decides: wait for Codex (restart with
   `bash $O/start-review.sh NEX-185 gpt-6.2-astra high` after 11-30 16:41), or name another reviewer for NEX-185.
