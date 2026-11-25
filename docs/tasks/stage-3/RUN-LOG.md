@@ -151,8 +151,10 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | red ×4 on format / lint / mypy only (533 tests green); reviewer fixed, green (backend 533, 0 skipped; main 2035 frontend) | done — fix: `ruff format`, list literals, `noqa: S608` on fixed-table cleanup, `Select[Learner]` type | merged 15:1x, pushed |
 | NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | green (2035 frontend; backend 538, 0 skipped) | done — fix: model `locale_valid` CHECK matched to migration | merged 17:4x; main GREEN, push blocked (see Waiting) |
 | NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`); round 5 Claude · claude-opus-5-5 (D82) | 17:47 (tick); institution-precedence question answered 18:1x (follow the mock), restarted; checks-failed 19:0x (test sign-in), restarted → Codex usage limit until 21:43; Claude built the test fix 19:4x | green (backend 543, 0 skipped; frontend 348 files after the usual re-run) | done — Codex review fixes (stopped at its limit) + Claude self-review (D83) | merged 22:5x, pushed |
-| NEX-204 | Claude · claude-opus-5-5 (D83, lane D, `0029`) | 22:5x | M12 + migration tests green | building → self-review | — |
-| NEX-203 | — (planned 17:5x, lane D, `0030`; waits for NEX-204) | — | — | — | — |
+| NEX-204 | Claude · claude-opus-5-5 (D83, lane D, `0029`) | 22:5x | green (backend 552, 0 skipped) | done — self-review fix: public paths in the route-guard tests | merged 23:2x, pushed |
+| NEX-203 | Claude · claude-opus-5-5 (D83, lane D, `0030`) | 23:2x | green (backend 558, 0 skipped) | done — no fixes | merged 23:4x, pushed |
+| NEX-187 | — (planned 23:4x, lane D, `0031`, M16 only) | — | — | — | — |
+| NEX-205 | — (planned 23:4x, lane D, `0032`, M17; split from NEX-187) | — | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
