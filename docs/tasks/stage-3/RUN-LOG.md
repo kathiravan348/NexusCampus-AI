@@ -277,4 +277,8 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - 2026-11-26 06:0x (D83) — NEX-208 and NEX-193 merged and pushed: rollover writes on the mock and the real backend
   (D84; the app role gains narrow enrolment / learner write grants — Owner may want to look at D84). Next: NEX-194
   (rollover screens), then NEX-195 (demo seed incl. next-year calendars), NEX-196, NEX-197, NEX-198, NEX-199.
+- 2026-11-26 07:0x (D83) — NEX-194 merged and pushed (rollover screens; `main` GREEN, 2047 frontend tests, backend
+  605). Planned NEX-195 / NEX-209 (Stage 3 demo seed in two parts) with D85 (the seed seals personal columns with the
+  app's `FieldCipher`; tests pass a fake vault). Remaining after them: NEX-196 (contract parity), NEX-197 / NEX-198
+  (screens on real data), NEX-199 (release hardening, then the Owner's review).
 
