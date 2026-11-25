@@ -52,7 +52,8 @@
 | NEX-200 | Build: DB + API for M08 fields, forms, workflows, numbering | D | draft | — | 183 |
 | NEX-184 | Build: DB + API for M13 learner records and M14 families, guardians, custody and pickup | D | draft | — | 183, 200 |
 | NEX-185 | Build: DB + API for M12 admissions (incl. public enquiry endpoint with abuse limits) and M09 import jobs | D | draft | — | 184, 186 |
-| NEX-186 | Public admissions enquiry form, no sign-in (M12; Owner review point 4; demo data first) | C | ready-for-review | Gemini | 180 |
+| NEX-186 | Public admissions enquiry form, no sign-in (M12; Owner review point 4; demo data first) | C | done | Gemini | 180 |
+| NEX-201 | Public enquiry form opens in the institution's default language, with a language switch (D42, D79) | C | draft | — | 186 |
 | NEX-187 | Build: DB + API for M16 timetable and M17 attendance, with offline sync (L2) | D | draft | — | 183, 184 |
 | NEX-188 | Build: DB + API for M18 fees and payments and M19 accounting ledger and budgets | D | draft | — | 184 |
 | NEX-189 | Build: DB + API for M20 gradebook and M21 exams and seating | D | draft | — | 183, 184 |
