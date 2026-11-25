@@ -1,6 +1,6 @@
-import { TENANT, mockDb } from "@nexus/mocks";
+import { PUBLIC_ENQUIRY_FORM, TENANT, mockDb } from "@nexus/mocks";
 import { fireEvent, screen, waitFor } from "@testing-library/react";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { MODULES } from "../../app/modules";
 import { persona, renderApp } from "../../test/renderApp";
 
@@ -24,7 +24,7 @@ describe("EnquiriesTab", () => {
     await waitFor(() => expect(screen.queryByRole("button", { name: row.learnerName })).toBeNull());
   });
 
-  it("omits the manager action for a read-only viewer", async () => {
+  it("omits manager actions for a read-only viewer", async () => {
     const entry = MODULES.find((item) => item.moduleId === "M12")!;
     renderApp("/admissions", {
       as: persona(TENANT.riverside, "admin"),
@@ -40,5 +40,32 @@ describe("EnquiriesTab", () => {
     });
     expect(await screen.findByLabelText("Filter by status")).toBeVisible();
     expect(screen.queryByRole("button", { name: "Add enquiry" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Copy public form link" })).toBeNull();
+  });
+
+  it("copies the public enquiry form link and shows a confirmation toast", async () => {
+    const previous = Object.getOwnPropertyDescriptor(navigator, "clipboard");
+    const writeText = vi.fn().mockResolvedValue(undefined);
+    Object.defineProperty(navigator, "clipboard", {
+      configurable: true,
+      value: { writeText },
+    });
+    try {
+      renderApp("/admissions", { as: persona(TENANT.riverside, "admin"), modules: MODULES });
+      const copyButton = await screen.findByRole("button", { name: "Copy public form link" });
+      fireEvent.click(copyButton);
+      await waitFor(() =>
+        expect(writeText).toHaveBeenCalledWith(
+          `${window.location.origin}/apply/${PUBLIC_ENQUIRY_FORM.riversideSchool}`,
+        ),
+      );
+      expect(await screen.findByText("Public enquiry form link copied.")).toBeVisible();
+    } finally {
+      if (previous) {
+        Object.defineProperty(navigator, "clipboard", previous);
+      } else {
+        delete (navigator as { clipboard?: unknown }).clipboard;
+      }
+    }
   });
 });

@@ -21,6 +21,7 @@ export * from "./learner-records";
 export * from "./families";
 export * from "./config";
 export * from "./ops-admissions";
+export * from "./public-enquiry";
 export * from "./ops-timetable";
 export * from "./ops-fees";
 export * from "./ops-assessment";

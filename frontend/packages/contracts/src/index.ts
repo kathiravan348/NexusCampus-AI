@@ -20,6 +20,7 @@ export * from "./rbac";
 export * from "./studio";
 export * from "./forms";
 export * from "./admissions";
+export * from "./public-enquiry";
 export * from "./imports";
 export * from "./plan";
 export * from "./compliance";

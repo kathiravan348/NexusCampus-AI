@@ -3,6 +3,7 @@ import { lazy, Suspense } from "react";
 import { createBrowserRouter, type RouteObject } from "react-router";
 import { Home } from "../pages/Home";
 import { NotFound } from "../pages/NotFound";
+import { PublicEnquiry } from "../pages/PublicEnquiry";
 import { SignIn } from "../pages/SignIn";
 import { MODULES, type ModuleEntry } from "./modules";
 import { RouteGuard } from "./RouteGuard";
@@ -35,6 +36,7 @@ function moduleRoute(entry: ModuleEntry): RouteObject {
 export function appRoutes(modules: readonly ModuleEntry[] = MODULES): RouteObject[] {
   return [
     { path: "/sign-in", element: <SignIn /> },
+    { path: "/apply/:formId", element: <PublicEnquiry /> },
     {
       path: "/",
       element: (

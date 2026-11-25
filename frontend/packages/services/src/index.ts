@@ -79,6 +79,7 @@ export * from "./modules/m09";
 export * from "./modules/m10";
 export * from "./modules/m11";
 export * from "./modules/m12";
+export * from "./modules/m12-public";
 export * from "./modules/m13";
 export * from "./modules/m14";
 export * from "./modules/m15";
