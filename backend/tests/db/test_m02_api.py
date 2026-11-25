@@ -5,6 +5,7 @@ from typing import Any
 from fastapi.testclient import TestClient
 from sqlalchemy import create_engine, text
 
+from nexus.core.permissions import CATALOGUE
 from nexus.core.sessions import CSRF_COOKIE, CSRF_HEADER
 from tests.db.auth_fixtures import sign_in
 from tests.db.conftest import DbUrls
@@ -99,7 +100,7 @@ def test_custom_roles_and_read_only_system_roles(client: TestClient, kc: FakeKey
     assert client.put(f"/api/v1/roles/{TEACHER_ROLE}", json=role, headers=csrf(client)).status_code == 409
     unknown = client.post("/api/v1/roles", json={**role, "permissions": ["m02.user.fly"]}, headers=csrf(client))
     assert unknown.status_code == 400
-    assert client.get("/api/v1/permissions").json()["total"] == 24
+    assert client.get("/api/v1/permissions").json()["total"] == len(CATALOGUE)
 
 
 def test_assign_and_never_remove_your_own_last_admin_role(client: TestClient, kc: FakeKeycloak) -> None:

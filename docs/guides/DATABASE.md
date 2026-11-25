@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-23 (Stage 2 through NEX-139) · Migrations: product `0022_tenant_freeze`, Nexus Control
+> State as of: 2026-11-25 (Stage 3 through NEX-183) · Migrations: product `0024_academic_structure`, Nexus Control
 > `c0021_payment_links`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
@@ -186,6 +186,20 @@ access requests (`0021`) — never reason, modules or people.
 refuses every write with `423 tenant_frozen` (one shared guard in `tenant_transaction(write=True)`, used by API writes,
 SCIM, provider access and the outbox worker); reads, the export and the daily audit checkpoint keep working. `nexus_app`
 has column `UPDATE` on `tenants (name, type, region, updated_at)` only, so the app can never unfreeze a tenant.
+
+## Academic structure (M15 — `0024_academic_structure`)
+
+Each table has an opaque primary key `id`, a required `tenant_id` and forced tenant isolation. Foreign keys include the tenant when referencing tenant-owned rows. The app can read all five tables and insert class groups. Programs, class groups, subjects and offerings also store UTC `created_at` and `updated_at`.
+
+| Table | Academic columns | Rules |
+|---|---|---|
+| `programs` | `institution_id`, `code`, `name`, `kind`, `duration_years`, `active` | Unique code per institution. Duration is 1–10 years or NULL for a rolling course. |
+| `year_levels` | `program_id`, `code`, `name`, `order` | Code and positive ordinal are each unique within a program. |
+| `class_groups` | `institution_id`, `campus_id`, `academic_year_id`, `program_id`, `year_level_id`, `kind`, `code`, `name`, `capacity`, `homeroom_staff_profile_id` | Unique code per academic calendar. The program determines the institution. An optional year level must belong to the program. Campus, staff profile and capacity (1–2000) are nullable. |
+| `subjects` | `institution_id`, `code`, `name`, `kind`, `credits`, `active` | Unique code per institution. Credits are NULL or 0–60 in half-credit increments. |
+| `subject_offerings` | `academic_year_id`, `period_id`, `class_group_id`, `subject_id`, `staff_profile_ids[]`, `weekly_periods` | The class group belongs to the academic year. A NULL period covers the whole year. Up to ten distinct staff IDs. Weekly periods are NULL or 0–60. |
+
+Academic code uniqueness is case-insensitive. Migration `0023_stage3_access` adds the Stage 3 permission catalogue. Demo seeding applies the exported system-role grants and module entitlements to each demo tenant. Academic tables start empty.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from

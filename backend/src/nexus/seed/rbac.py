@@ -34,10 +34,10 @@ def seed_rbac(conn: Connection, data: dict[str, Any], tid: str) -> None:
             },
         )
         conn.execute(text("DELETE FROM role_permissions WHERE role_id = :r"), {"r": role["id"]})
-        for code in role["permissions"]:
+        if role["permissions"]:
             conn.execute(
                 text("INSERT INTO role_permissions (role_id, permission_code, tenant_id) VALUES (:r, :c, :t)"),
-                {"r": role["id"], "c": code, "t": tid},
+                [{"r": role["id"], "c": code, "t": tid} for code in role["permissions"]],
             )
     for a in _rows(data, "roleAssignments", tid):
         conn.execute(

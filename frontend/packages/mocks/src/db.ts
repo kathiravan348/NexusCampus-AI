@@ -1,4 +1,5 @@
 import * as F from "./fixtures";
+import { demoAccessFixtures } from "./fixtures/stage3-access";
 
 /** A mutable deep copy, so screen tasks' write handlers can change rows without touching the fixtures. */
 function clone<T>(items: readonly T[]): T[] {
@@ -6,6 +7,7 @@ function clone<T>(items: readonly T[]): T[] {
 }
 
 function createDb() {
+  const access = demoAccessFixtures();
   return {
     groups: clone(F.GROUPS),
     institutions: clone(F.INSTITUTIONS),
@@ -18,12 +20,8 @@ function createDb() {
     users: clone(F.USERS),
     sessions: clone(F.SESSIONS),
     ssoProviders: clone(F.SSO_PROVIDERS),
-    permissions: [...clone(F.PERMISSIONS), ...clone(F.STAGE3_PERMISSIONS)],
-    roles: clone(F.ROLES).map((role) => {
-      const key = F.SYSTEM_ROLE_KEYS.find((key) => role.id === F.roleId(role.tenantId, key));
-      if (role.system && key) role.permissions.push(...F.STAGE3_ROLE_PERMISSIONS[key]);
-      return role;
-    }),
+    permissions: clone(access.permissions),
+    roles: clone(access.roles),
     roleAssignments: clone(F.ROLE_ASSIGNMENTS),
     demoTenants: clone(F.DEMO_TENANTS),
     demoPersonas: clone(F.DEMO_PERSONAS),
@@ -33,11 +31,7 @@ function createDb() {
     textOverrideRevisions: clone(F.TEXT_OVERRIDE_REVISIONS),
     plans: clone(F.PLANS),
     tenantPlans: { ...F.TENANT_PLANS } as Record<string, string>,
-    entitlements: [
-      ...clone(F.ENTITLEMENTS),
-      ...clone(F.INSTALL_ENTITLEMENTS),
-      ...clone(F.STAGE3_ENTITLEMENTS),
-    ],
+    entitlements: [...clone(access.entitlements), ...clone(F.INSTALL_ENTITLEMENTS)],
     installs: structuredClone(F.INSTALLS) as Record<string, F.DemoInstall>,
     usageMeters: clone(F.USAGE_METERS),
     auditEvents: clone(F.AUDIT_EVENTS),

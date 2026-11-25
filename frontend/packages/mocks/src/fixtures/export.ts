@@ -4,8 +4,8 @@ import { ACADEMIC_CALENDARS } from "./calendars";
 import { COMPLIANCE_PACKS, CONSENTS, DATA_SUBJECT_REQUESTS, TENANT_COMPLIANCE } from "./compliance";
 import { SESSIONS, SSO_PROVIDERS, USERS } from "./identity";
 import { PEOPLE } from "./people";
-import { ENTITLEMENTS, PLANS, TENANT_PLANS, USAGE_METERS } from "./plans";
-import { PERMISSIONS, ROLE_ASSIGNMENTS, ROLES } from "./rbac";
+import { PLANS, TENANT_PLANS, USAGE_METERS } from "./plans";
+import { ROLE_ASSIGNMENTS } from "./rbac";
 import {
   NOTIFICATION_DELIVERIES,
   NOTIFICATION_PREFERENCES,
@@ -13,6 +13,7 @@ import {
 } from "./notifications";
 import { GUARDIAN_LINKS, ROLE_PROFILES } from "./role-profiles";
 import { ACCESS_GRANTS, ACCESS_REQUESTS, BREAK_GLASS_NOTICES, KEY_STATUSES } from "./vault";
+import { demoAccessFixtures } from "./stage3-access";
 import { FONTS, TEXT_OVERRIDE_REVISIONS, TEXT_OVERRIDES, THEMES } from "./studio";
 import { DEVICE_SYNCS, SYNC_CONFLICTS } from "./sync";
 import { CAMPUSES, DEMO_TENANTS, GROUPS, INSTITUTIONS } from "./tenants";
@@ -25,6 +26,7 @@ export const DEMO_FIXTURES_VERSION = 15;
  * hash-chained audit log in chain order (NEX-044), identity (NEX-045), RBAC and entitlements (NEX-046), vault keys and provider access (NEX-050/051), privacy (NEX-052), themes and fonts (NEX-053), text overrides (NEX-054), plans and usage (NEX-055), notifications (NEX-056), devices (NEX-057), AI settings and credits (NEX-058), and a `tenants` list with each tenant's region.
  */
 export function demoFixtures() {
+  const access = demoAccessFixtures();
   return {
     version: DEMO_FIXTURES_VERSION,
     tenants: DEMO_TENANTS.map((t) => ({
@@ -42,10 +44,10 @@ export function demoFixtures() {
     users: USERS,
     roleProfiles: ROLE_PROFILES,
     sessions: SESSIONS,
-    permissions: PERMISSIONS,
-    roles: ROLES,
+    permissions: access.permissions,
+    roles: access.roles,
     roleAssignments: ROLE_ASSIGNMENTS,
-    entitlements: ENTITLEMENTS,
+    entitlements: access.entitlements,
     guardianLinks: GUARDIAN_LINKS,
     ssoProviders: SSO_PROVIDERS,
     keyStatuses: KEY_STATUSES,
