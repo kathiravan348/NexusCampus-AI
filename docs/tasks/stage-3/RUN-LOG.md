@@ -145,7 +145,7 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-200 | Codex · gpt-6.2-astra / high (lane D, `0025`) | 12:5x; locale question answered, restarted | green (2031 frontend; backend 528, 0 skipped) | done — no fixes | merged 14:1x, pushed |
 | NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | red ×4 on format / lint / mypy only (533 tests green); reviewer fixed, green (backend 533, 0 skipped; main 2035 frontend) | done — fix: `ruff format`, list literals, `noqa: S608` on fixed-table cleanup, `Select[Learner]` type | merged 15:1x, pushed |
 | NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | green (2035 frontend; backend 538, 0 skipped) | done — fix: model `locale_valid` CHECK matched to migration | merged 17:4x; main GREEN, push blocked (see Waiting) |
-| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`) | 17:47 (tick); institution-precedence question (task vs frozen mock) answered 18:1x (follow the mock), restarted | — | — | — |
+| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`); round 5 Claude · claude-opus-5-5 (D82) | 17:47 (tick); institution-precedence question answered 18:1x (follow the mock), restarted; checks-failed 19:0x (test sign-in), restarted → Codex usage limit until 21:43; Claude built the test fix 19:4x | green (backend 543, 0 skipped; frontend 348 files after the usual re-run) | ready-for-review — needs Codex review (D68) | — |
 | NEX-204 | — (planned 16:4x, lane D, `0029`, D81; waits for NEX-185) | — | — | — | — |
 | NEX-203 | — (planned 17:5x, lane D, `0030`; waits for NEX-204) | — | — | — | — |
 
@@ -231,3 +231,4 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   rejected, 538 other backend tests green). Change requests added (use `tests.db.auth_fixtures`), restarted on Codex
   (1st restart). Planned ahead: NEX-204, NEX-203. Gemini idle (lane D only) — not blocking. Push of this plan
   commit was refused by the auto-mode permission check; `main` is 1 commit ahead of `origin` (no code change).
+- 2026-11-25 19:4x (tick) — Codex hit its usage limit (until 21:43), so Claude built NEX-185's change requests 4–5 under D82 (tests on the shared sign-in fixtures; `backend-check` DB required green, 543 passed, 0 skipped; `review:check` green). **NEX-185 needs Codex review** (D68) — the harness has no review run; a later tick or the Owner starts it once Codex's limit resets. NEX-204 / NEX-203 stay planned (lane D waits for NEX-185). Gemini idle.
