@@ -43,7 +43,7 @@ def test_core_and_unplanned_modules_cannot_be_switched(client: TestClient, kc: F
     sign_in(client, kc)
     core = client.patch("/api/v1/entitlements/M02", json={"enabled": False}, headers=csrf(client))
     assert core.status_code == 409 and core.json()["error"]["details"][0]["path"] == "enabled"
-    unplanned = client.patch("/api/v1/entitlements/M20", json={"enabled": True}, headers=csrf(client))
+    unplanned = client.patch("/api/v1/entitlements/M29", json={"enabled": True}, headers=csrf(client))
     assert unplanned.status_code == 403 and unplanned.json()["error"]["code"] == "module_disabled"
     bad = client.patch("/api/v1/entitlements/M10", json={"enabled": "yes", "x": 1}, headers=csrf(client))
     assert bad.status_code == 400

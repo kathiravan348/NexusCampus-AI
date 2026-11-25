@@ -415,7 +415,7 @@ The server sets the tenant, institution, ID, timestamps and initial status `new`
 
 ## Academic structure (M15) — real backend (NEX-183) and mock
 
-All routes require an enabled M15 entitlement. The backend records `m15.class_group.created` in the same transaction as a successful creation. Its change list contains input field names only. Codes are compared case-insensitively within an academic year.
+All routes require an enabled M15 entitlement. The backend records `m15.classGroup.created` in the same transaction as a successful creation. Its change list contains input field names only. Codes are compared case-insensitively within an academic year.
 
 | Method & path | Permission | Input / Output | Errors |
 |---|---|---|---|

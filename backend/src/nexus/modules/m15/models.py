@@ -24,7 +24,6 @@ from sqlalchemy.orm import Mapped, mapped_column
 
 from nexus.core.models import ID_LENGTH, Base, id_column
 
-
 # These indexes belong to the M15 migration but support FKs into existing modules.
 # Attach them whether the parent mappings load before or after the M15 mappings.
 _INDEXED_PARENTS = ("campuses", "academic_calendars", "role_profiles")

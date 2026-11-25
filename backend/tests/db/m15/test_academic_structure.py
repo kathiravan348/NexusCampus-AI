@@ -156,7 +156,7 @@ def test_create_read_back_audit_and_duplicate(client: TestClient, kc: FakeKeyclo
         audit = conn.execute(
             text(
                 "SELECT actor_id, target_type, changes FROM audit_events WHERE tenant_id = 'ten-ls' AND "
-                "action = 'm15.class_group.created' AND target_id = :id"
+                "action = 'm15.classGroup.created' AND target_id = :id"
             ),
             {"id": saved["id"]},
         ).one()
@@ -218,15 +218,18 @@ def test_guard_precedes_body_validation(client: TestClient, kc: FakeKeycloak, te
     denied = client.post(API + "class-groups", json={}, headers=csrf(client))
     assert denied.status_code == 403 and denied.json()["error"]["code"] == "forbidden"
     engine = create_engine(test_db.owner_url)
-    switch = " WHERE tenant_id = 'ten-ls' AND module_id = 'M15'"
+    update_switch = text(
+        "UPDATE entitlements SET source = :source, enabled = :enabled WHERE tenant_id = :tenant AND module_id = :module"
+    )
+    target = {"tenant": "ten-ls", "module": "M15"}
     with engine.begin() as conn:
-        conn.execute(text("UPDATE entitlements SET source = 'plan', enabled = false" + switch))
+        conn.execute(update_switch, {**target, "source": "plan", "enabled": False})
     try:
         for res in (client.get(API + "programs"), client.post(API + "class-groups", json={}, headers=csrf(client))):
             assert res.status_code == 403 and res.json()["error"]["code"] == "module_disabled"
     finally:
         with engine.begin() as conn:
-            conn.execute(text("UPDATE entitlements SET source = 'core', enabled = true" + switch))
+            conn.execute(update_switch, {**target, "source": "core", "enabled": True})
         engine.dispose()
 
 
@@ -239,9 +242,7 @@ def test_models_and_forced_rls(test_db: DbUrls) -> None:
             table = Base.metadata.tables[name]
             actual = inspector.get_columns(name)
             columns = {c["name"]: (c["type"].compile(dialect=conn.dialect), c["nullable"]) for c in actual}
-            assert columns == {
-                c.name: (str(c.type.compile(dialect=conn.dialect)), c.nullable) for c in table.columns
-            }
+            assert columns == {c.name: (str(c.type.compile(dialect=conn.dialect)), c.nullable) for c in table.columns}
             assert inspector.get_pk_constraint(name)["constrained_columns"] == ["id"]
             assert {
                 (tuple(fk["constrained_columns"]), tuple(f"{fk['referred_table']}.{c}" for c in fk["referred_columns"]))
@@ -260,9 +261,7 @@ def test_models_and_forced_rls(test_db: DbUrls) -> None:
                 {"name": name},
             ).one()
             assert tuple(rls) == (True, True)
-            policy = conn.scalar(
-                text("SELECT policyname FROM pg_policies WHERE tablename = :name"), {"name": name}
-            )
+            policy = conn.scalar(text("SELECT policyname FROM pg_policies WHERE tablename = :name"), {"name": name})
             assert policy == "tenant_isolation"
     engine.dispose()
 

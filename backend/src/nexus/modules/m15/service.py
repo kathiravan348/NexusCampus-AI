@@ -14,7 +14,7 @@ from nexus.modules.m15.schemas import ClassGroupIn, ClassGroupOut
 
 
 async def read_page[Row, Out: Contract](
-    db: AsyncSession, statement: Select[tuple[Row]], schema: type[Out], page: PageQuery
+    db: AsyncSession, statement: Select[Row], schema: type[Out], page: PageQuery
 ) -> Page[Out]:
     total = (await db.execute(select(func.count()).select_from(statement.order_by(None).subquery()))).scalar_one()
     rows = await db.scalars(statement.limit(page.page_size).offset(page.offset))
@@ -83,7 +83,7 @@ async def create_group(auth: Authorized, data: ClassGroupIn) -> ClassGroupOut:
         db,
         auth.ctx.tenant,
         AuditInput(
-            action="m15.class_group.created",
+            action="m15.classGroup.created",
             actor_kind="user",
             actor_id=auth.ctx.user_id,
             target_type="classGroup",
