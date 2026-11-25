@@ -153,8 +153,10 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`); round 5 Claude · claude-opus-5-5 (D82) | 17:47 (tick); institution-precedence question answered 18:1x (follow the mock), restarted; checks-failed 19:0x (test sign-in), restarted → Codex usage limit until 21:43; Claude built the test fix 19:4x | green (backend 543, 0 skipped; frontend 348 files after the usual re-run) | done — Codex review fixes (stopped at its limit) + Claude self-review (D83) | merged 22:5x, pushed |
 | NEX-204 | Claude · claude-opus-5-5 (D83, lane D, `0029`) | 22:5x | green (backend 552, 0 skipped) | done — self-review fix: public paths in the route-guard tests | merged 23:2x, pushed |
 | NEX-203 | Claude · claude-opus-5-5 (D83, lane D, `0030`) | 23:2x | green (backend 558, 0 skipped) | done — no fixes | merged 23:4x, pushed |
-| NEX-187 | — (planned 23:4x, lane D, `0031`, M16 only) | — | — | — | — |
-| NEX-205 | — (planned 23:4x, lane D, `0032`, M17; split from NEX-187) | — | — | — | — |
+| NEX-187 | Claude · claude-opus-5-5 (D83, lane D, `0031`) | 23:5x | green (backend 565, 0 skipped) | done — no fixes | merged 00:2x, pushed |
+| NEX-205 | Claude · claude-opus-5-5 (D83, lane D, `0032`) | 00:3x | green (backend 571, 0 skipped) | done — no fixes | merged 00:5x, pushed |
+| NEX-188 | — (planned 01:0x, lane D, `0033`, M18 only) | — | — | — | — |
+| NEX-206 | — (planned 01:0x, lane D, `0034`, M19; split from NEX-188) | — | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
