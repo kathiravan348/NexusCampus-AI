@@ -634,3 +634,16 @@ leave of learners in their groups. Messages and notices cards appear only when M
 them. The tenant's time zone and currency come from its first institution. Every value is a count or an aggregate;
 no other person's data is returned (G-6, V-7).
 
+## Year-end rollover (M86) — mock (NEX-178, NEX-208); real backend in NEX-193
+
+| Method & path | Permission | Input / Output | Errors |
+|---|---|---|---|
+| `GET /api/v1/rollover-runs` · `/rollover-runs/:id/decisions` | M86 enabled, `m86.rollover.read` | `?page=&pageSize=` → `Page<RolloverRun>` · `Page<PromotionDecision>` | `401`, `403`, `404` (unknown run) |
+| `POST /api/v1/rollover-runs` | M86 enabled, `m86.rollover.manage`, active staff profile | `RolloverRunInput` → `201 RolloverRun` (`dry_run_ready`, counts, decisions by D84) | `400` (fields; unknown institution or year), `403`, `409` path `fromAcademicYearId` (a run is already open) |
+| `PUT /api/v1/rollover-runs/:id/decisions/:decisionId` | as above | `PromotionDecisionInput` → `200 PromotionDecision` (overriding staff profile set; run counts recomputed) | `400` (fields; `toClassGroupId` not in the to-year), `403`, `404`, `409` path `status` (run not `dry_run_ready`) |
+| `POST /api/v1/rollover-runs/:id/confirm` | as above | → `200 RolloverRun` `completed`, `rollbackUntil` = now + 14 days | `403`, `404`, `409` path `status` |
+| `POST /api/v1/rollover-runs/:id/rollback` | as above | → `200 RolloverRun` `rolled_back` | `403`, `404`, `409` path `rollbackUntil` (window closed) |
+
+The checks run in this order: module, permission, active staff profile, run and decision, state, body. The mock does
+not move enrolments; the real backend (NEX-193) applies and reverses them as D84 describes.
+

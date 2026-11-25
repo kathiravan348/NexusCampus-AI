@@ -81,3 +81,33 @@ export const PromotionDecisionSchema = z
     path: ["toClassGroupId"],
   });
 export type PromotionDecision = z.infer<typeof PromotionDecisionSchema>;
+
+/**
+ * Starts a rollover run with its dry run (M86, D84): one decision per learner with an active enrolment in a class
+ * group of the institution in the from-year. `carryForwardFees` is stored only; fee carry-forward is later work.
+ */
+export const RolloverRunInputSchema = z
+  .strictObject({
+    institutionId: IdSchema,
+    fromAcademicYearId: IdSchema,
+    toAcademicYearId: IdSchema,
+    carryForwardFees: z.boolean(),
+  })
+  .refine((run) => run.toAcademicYearId !== run.fromAcademicYearId, {
+    message: "toAcademicYearId must differ from fromAcademicYearId",
+    path: ["toAcademicYearId"],
+  });
+export type RolloverRunInput = z.infer<typeof RolloverRunInputSchema>;
+
+/** Overrides one promotion decision while the run's dry run is ready (M86, D84). */
+export const PromotionDecisionInputSchema = z
+  .strictObject({
+    action: PromotionActionSchema,
+    toClassGroupId: IdSchema.nullable(),
+    reasonKey: MessageKeySchema.nullable(),
+  })
+  .refine((d) => (d.toClassGroupId !== null) === needsTargetClassGroup(d.action), {
+    message: "toClassGroupId must be set iff action is promote or detain",
+    path: ["toClassGroupId"],
+  });
+export type PromotionDecisionInput = z.infer<typeof PromotionDecisionInputSchema>;
