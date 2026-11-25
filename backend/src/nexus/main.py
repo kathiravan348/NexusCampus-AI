@@ -27,6 +27,7 @@ from nexus.modules.m04 import router as m04
 from nexus.modules.m05 import router as m05
 from nexus.modules.m06 import router as m06
 from nexus.modules.m07 import router as m07
+from nexus.modules.m08 import router as m08
 from nexus.modules.m10 import router as m10
 from nexus.modules.m11 import router as m11
 from nexus.modules.m11.gateway import build_gateway
@@ -110,6 +111,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app.include_router(m05.router)
     app.include_router(m06.router)
     app.include_router(m07.router)
+    app.include_router(m08.router)
     app.include_router(m10.router)
     app.include_router(m11.router)
     app.include_router(m15.router)
