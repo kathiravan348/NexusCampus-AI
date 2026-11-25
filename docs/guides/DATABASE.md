@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-25 (Stage 3 build, M13 learner records, NEX-184) · Migrations: product `0026_learner_records`, Nexus Control
+> State as of: 2026-11-25 (Stage 3 build, M14 families, NEX-202) · Migrations: product `0027_families`, Nexus Control
 > `c0021_payment_links`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
@@ -223,6 +223,18 @@ All three tables have an opaque primary key, forced tenant RLS and the `tenant_i
 | `learner_documents` | Learner, document kind, plain file name, MIME type, size in bytes, verification flag, verifying staff profile and UTC upload time. A verified document requires a verifier. The table holds metadata only. |
 
 The `learners.health_flags` column holds an encrypted JSON array under the tenant's `field_health` key. The `learners.sensitive_custom_fields` column holds an encrypted JSON object under its `tenant_data` key. Each ciphertext is bound to its qualified column name. NULL represents an empty collection. Other values use the `custom_fields` JSONB object. The database rejects learner writes that put a field marked sensitive for learners in that object. Tenant export unwraps both encrypted columns inside the encrypted export stream.
+
+## Families and guardians (M14 — `0027_families`)
+
+The three tables use forced tenant RLS with the `tenant_isolation` policy. The application role has SELECT access. Each scalar person reference includes the tenant ID in its foreign key to `people`.
+
+| Table | Columns | Constraints |
+|---|---|---|
+| `households` | `id`, `tenant_id`, `name`, nullable JSONB `address`, `learner_person_ids[]`, `guardian_person_ids[]`, nullable `primary_language`, `created_at`, `updated_at` | Each list contains distinct person IDs. A household has 1–20 learners and up to 10 guardians. An address requires a street line, city and country code. The second line, region and postal code are optional. Primary language accepts the same locale shape as M01. |
+| `guardian_relationships` | `id`, `tenant_id`, `guardian_person_id`, `learner_person_id`, `kind`, `parental_responsibility`, `lives_with_learner`, `contact_priority`, `pickup_right`, `court_order_note`, `effective_from`, `effective_to`, timestamps | Distinct guardian and learner. Priority is 1–10. A court restriction requires a note, encrypted under the tenant data key with `guardian_relationships.court_order_note` as its field path. All other rights require a null note. |
+| `authorised_pickups` | `id`, `tenant_id`, `learner_person_id`, `name`, E.164 `phone`, `relationship_label`, `valid_from`, `valid_to`, `added_by_person_id`, `created_at` | Each pickup names the person who added it. |
+
+Relationship and pickup end dates are optional and must be on or after their start dates. Household and relationship update times must be on or after creation. Family visibility uses the existing M02 guardian links.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
