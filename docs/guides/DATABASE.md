@@ -345,6 +345,23 @@ entries and may update only their entry columns (marks, absent, rubric scores, r
 `mark_entries.remark` is FieldCipher text under the tenant's `tenant_data` key (a CHECK rejects plaintext) and is
 listed in `ENCRYPTED_COLUMNS`.
 
+## Exams (M21 — `0036_exams`)
+
+All five tables have an opaque `id`, a `tenant_id`, an insertion-order column, forced RLS with the
+`tenant_isolation` policy and composite tenant references. The application role reads all five and may insert and
+delete seat assignments only (a new seat plan replaces the old one).
+
+| Table | Columns and constraints |
+|---|---|
+| `exams` | Institution, academic year, name, start and end dates in order, status, timestamps. |
+| `exam_papers` | Exam, subject offering, date, `start` / `end` as `HH:MM` with `end > start`, up to 20 distinct room IDs (`m21_room_ids_valid`), `max_marks` (1-1000 in halves). |
+| `seat_assignments` | Paper, learner (one seat per learner and paper), room, seat label (unique per paper and room). |
+| `hall_tickets` | Exam, learner, ticket number (unique per tenant), issue time, revoked. |
+| `revaluation_requests` | Paper, learner, encrypted `reason`, status, `old_marks`, `new_marks` exactly when `changed` (marks ≥ 0 in halves), timestamps. |
+
+`revaluation_requests.reason` is FieldCipher text under the tenant's `tenant_data` key (a CHECK rejects plaintext)
+and is listed in `ENCRYPTED_COLUMNS`.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
