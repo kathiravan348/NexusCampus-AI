@@ -320,6 +320,10 @@
     "valid": true
   },
   {
+    "text": "A rollover run is already open for this year.",
+    "valid": true
+  },
+  {
     "text": "A selected teacher is already scheduled at this day and time.",
     "valid": true
   },
@@ -705,6 +709,10 @@
   },
   {
     "text": "Afternoon session",
+    "valid": true
+  },
+  {
+    "text": "Age eligibility",
     "valid": true
   },
   {
@@ -1228,6 +1236,10 @@
     "valid": true
   },
   {
+    "text": "Carry forward unpaid fees",
+    "valid": true
+  },
+  {
     "text": "Cash",
     "valid": true
   },
@@ -1245,6 +1257,10 @@
   },
   {
     "text": "Change any text in the app, in every language.",
+    "valid": true
+  },
+  {
+    "text": "Change decision",
     "valid": true
   },
   {
@@ -1344,6 +1360,10 @@
     "valid": true
   },
   {
+    "text": "Choose a class of the next academic year.",
+    "valid": true
+  },
+  {
     "text": "Choose a file with a plain file name (up to 200 characters).",
     "valid": true
   },
@@ -1368,6 +1388,10 @@
     "valid": true
   },
   {
+    "text": "Choose two different academic years.",
+    "valid": true
+  },
+  {
     "text": "Choose whether Nexus Assist is on, where it may help, and which answer quality to use by default.",
     "valid": true
   },
@@ -1389,6 +1413,10 @@
   },
   {
     "text": "Class group created.",
+    "valid": true
+  },
+  {
+    "text": "Class next year",
     "valid": true
   },
   {
@@ -1477,6 +1505,10 @@
   },
   {
     "text": "Condition",
+    "valid": true
+  },
+  {
+    "text": "Confirm rollover",
     "valid": true
   },
   {
@@ -2009,6 +2041,10 @@
   },
   {
     "text": "Dry run ready",
+    "valid": true
+  },
+  {
+    "text": "Dry run ready. Check the decisions before you confirm.",
     "valid": true
   },
   {
@@ -2565,6 +2601,10 @@
   },
   {
     "text": "From",
+    "valid": true
+  },
+  {
+    "text": "From academic year",
     "valid": true
   },
   {
@@ -3860,6 +3900,10 @@
     "valid": true
   },
   {
+    "text": "No class for the next level yet",
+    "valid": true
+  },
+  {
     "text": "No class groups available",
     "valid": true
   },
@@ -4684,6 +4728,10 @@
     "valid": true
   },
   {
+    "text": "Plan next year's class for every learner. Nothing moves until you confirm.",
+    "valid": true
+  },
+  {
     "text": "Plan sections",
     "valid": true
   },
@@ -5284,6 +5332,14 @@
     "valid": true
   },
   {
+    "text": "Rollover completed.",
+    "valid": true
+  },
+  {
+    "text": "Rollover rolled back.",
+    "valid": true
+  },
+  {
     "text": "Rollover runs",
     "valid": true
   },
@@ -5365,6 +5421,10 @@
   },
   {
     "text": "Save",
+    "valid": true
+  },
+  {
+    "text": "Save decision",
     "valid": true
   },
   {
@@ -5756,7 +5816,15 @@
     "valid": true
   },
   {
+    "text": "Start a rollover dry run",
+    "valid": true
+  },
+  {
     "text": "Start and end must be different.",
+    "valid": true
+  },
+  {
+    "text": "Start dry run",
     "valid": true
   },
   {
@@ -6048,6 +6116,10 @@
     "valid": true
   },
   {
+    "text": "That did not work. Reload the page and try again.",
+    "valid": true
+  },
+  {
     "text": "That did not work. Try again.",
     "valid": true
   },
@@ -6081,6 +6153,10 @@
   },
   {
     "text": "The client secret is never shown or stored in the browser. It is set in the institution's key vault.",
+    "valid": true
+  },
+  {
+    "text": "The current class has no year level",
     "valid": true
   },
   {
@@ -6284,6 +6360,10 @@
     "valid": true
   },
   {
+    "text": "This restores every enrolment and learner status from before the rollover.",
+    "valid": true
+  },
+  {
     "text": "This room is already booked at this day and time.",
     "valid": true
   },
@@ -6365,6 +6445,10 @@
   },
   {
     "text": "To",
+    "valid": true
+  },
+  {
+    "text": "To academic year",
     "valid": true
   },
   {
@@ -7784,6 +7868,18 @@
     "valid": true
   },
   {
+    "text": "{promote} learners move up, {detain} stay in their level, {graduate} graduate, {transfer} leave and {skip} stay unchanged. You can roll back for 14 days.",
+    "valid": true
+  },
+  {
+    "text": "{promote} शिक्षार्थी आगे बढ़ेंगे, {detain} उसी स्तर पर रहेंगे, {graduate} उत्तीर्ण होंगे, {transfer} जाएँगे और {skip} में कोई बदलाव नहीं होगा। आप 14 दिन तक इसे वापस ले सकते हैं।",
+    "valid": true
+  },
+  {
+    "text": "{promote} கற்பவர்கள் அடுத்த நிலைக்குச் செல்வார்கள், {detain} அதே நிலையில் இருப்பார்கள், {graduate} பட்டம் பெறுவார்கள், {transfer} வெளியேறுவார்கள், {skip} மாறாமல் இருப்பார்கள். 14 நாட்கள் வரை திரும்பப் பெறலாம்.",
+    "valid": true
+  },
+  {
     "text": "{role} हटाएँ",
     "valid": true
   },
@@ -8008,11 +8104,23 @@
     "valid": true
   },
   {
+    "text": "अगले वर्ष की कक्षा",
+    "valid": true
+  },
+  {
+    "text": "अगले शैक्षणिक वर्ष की कोई कक्षा चुनें।",
+    "valid": true
+  },
+  {
     "text": "अगले संपर्क की तारीख",
     "valid": true
   },
   {
     "text": "अगले संपर्क की मान्य तारीख दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "अगले स्तर के लिए अभी कोई कक्षा नहीं है",
     "valid": true
   },
   {
@@ -8712,6 +8820,10 @@
     "valid": true
   },
   {
+    "text": "आयु पात्रता",
+    "valid": true
+  },
+  {
     "text": "आरामदायक",
     "valid": true
   },
@@ -8868,6 +8980,10 @@
     "valid": true
   },
   {
+    "text": "इस वर्ष के लिए एक रोलओवर पहले से खुला है।",
+    "valid": true
+  },
+  {
     "text": "इस वर्ष के लिए कोई छुट्टी नहीं जोड़ी गई।",
     "valid": true
   },
@@ -8933,6 +9049,10 @@
   },
   {
     "text": "इसके लिए नीचे का सुरक्षा स्विच चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "इससे रोलओवर से पहले के सभी नामांकन और शिक्षार्थी की स्थिति वापस आ जाएगी।",
     "valid": true
   },
   {
@@ -9465,6 +9585,14 @@
   },
   {
     "text": "किस पर लागू",
+    "valid": true
+  },
+  {
+    "text": "किस शैक्षणिक वर्ष में",
+    "valid": true
+  },
+  {
+    "text": "किस शैक्षणिक वर्ष से",
     "valid": true
   },
   {
@@ -10460,6 +10588,14 @@
     "valid": true
   },
   {
+    "text": "ड्राई रन तैयार है। पुष्टि से पहले निर्णय जाँच लें।",
+    "valid": true
+  },
+  {
+    "text": "ड्राई रन शुरू करें",
+    "valid": true
+  },
+  {
     "text": "तक",
     "valid": true
   },
@@ -10660,6 +10796,10 @@
     "valid": true
   },
   {
+    "text": "दो अलग-अलग शैक्षणिक वर्ष चुनें।",
+    "valid": true
+  },
+  {
     "text": "दोपहर का सत्र",
     "valid": true
   },
@@ -10801,6 +10941,14 @@
   },
   {
     "text": "निर्णय चाहिए",
+    "valid": true
+  },
+  {
+    "text": "निर्णय बदलें",
+    "valid": true
+  },
+  {
+    "text": "निर्णय सहेजें",
     "valid": true
   },
   {
@@ -11660,6 +11808,10 @@
     "valid": true
   },
   {
+    "text": "बकाया शुल्क अगले वर्ष में ले जाएँ",
+    "valid": true
+  },
+  {
     "text": "बकाया शुल्क बिल",
     "valid": true
   },
@@ -11745,6 +11897,10 @@
   },
   {
     "text": "बदले जाएँगे",
+    "valid": true
+  },
+  {
+    "text": "बदलें",
     "valid": true
   },
   {
@@ -12236,6 +12392,10 @@
     "valid": true
   },
   {
+    "text": "यह नहीं हो सका। पेज फिर से लोड करके कोशिश करें।",
+    "valid": true
+  },
+  {
     "text": "यह पता किसी पृष्ठ से मेल नहीं खाता। लिंक जाँचें या होम पर वापस जाएँ।",
     "valid": true
   },
@@ -12456,6 +12616,22 @@
     "valid": true
   },
   {
+    "text": "रोलओवर का ड्राई रन शुरू करें",
+    "valid": true
+  },
+  {
+    "text": "रोलओवर की पुष्टि करें",
+    "valid": true
+  },
+  {
+    "text": "रोलओवर पूरा हुआ।",
+    "valid": true
+  },
+  {
+    "text": "रोलओवर वापस ले लिया गया।",
+    "valid": true
+  },
+  {
     "text": "लंबा पाठ",
     "valid": true
   },
@@ -12585,6 +12761,10 @@
   },
   {
     "text": "वर्तमान अनुपात {ratio}:1 · कम से कम {minRatio}:1 आवश्यक",
+    "valid": true
+  },
+  {
+    "text": "वर्तमान कक्षा का कोई वर्ष स्तर नहीं है",
     "valid": true
   },
   {
@@ -13944,6 +14124,10 @@
     "valid": true
   },
   {
+    "text": "हर शिक्षार्थी के लिए अगले वर्ष की कक्षा तय करें। पुष्टि करने तक कुछ नहीं बदलेगा।",
+    "valid": true
+  },
+  {
     "text": "हस्तलिखित हस्ताक्षर",
     "valid": true
   },
@@ -14037,6 +14221,18 @@
   },
   {
     "text": "அடர்த்தி",
+    "valid": true
+  },
+  {
+    "text": "அடுத்த ஆண்டு வகுப்பு",
+    "valid": true
+  },
+  {
+    "text": "அடுத்த கல்வியாண்டின் ஒரு வகுப்பைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "அடுத்த நிலைக்கு இன்னும் வகுப்பு இல்லை",
     "valid": true
   },
   {
@@ -14149,6 +14345,10 @@
   },
   {
     "text": "அதிகரிக்கிறது",
+    "valid": true
+  },
+  {
+    "text": "அது செயல்படவில்லை. பக்கத்தை மீண்டும் ஏற்றி முயலவும்.",
     "valid": true
   },
   {
@@ -14476,6 +14676,22 @@
     "valid": true
   },
   {
+    "text": "ஆண்டு மாற்றச் சோதனை ஓட்டத்தைத் தொடங்கு",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு மாற்றத்தை உறுதிசெய்",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு மாற்றம் திரும்பப் பெறப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "ஆண்டு மாற்றம் முடிந்தது.",
+    "valid": true
+  },
+  {
     "text": "ஆண்டு முடியும் நாள்",
     "valid": true
   },
@@ -14656,6 +14872,10 @@
     "valid": true
   },
   {
+    "text": "இது ஆண்டு மாற்றத்துக்கு முந்தைய அனைத்து சேர்க்கைகளையும் கற்பவர் நிலைகளையும் மீட்டெடுக்கும்.",
+    "valid": true
+  },
+  {
     "text": "இது இடமாற்றம் செய்யப்படுகிறது அல்லது NexusCampus-ஐ விட்டு வெளியேறுகிறது. நீங்கள் தொடர்ந்து உள்நுழைந்து அனைத்தையும் படிக்கலாம், ஆனால் மாற்றங்கள் சேமிக்கப்படாது.",
     "valid": true
   },
@@ -14693,6 +14913,10 @@
   },
   {
     "text": "இந்த ஆண்டு நிலையில் இன்னும் வகுப்புக் குழுக்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த ஆண்டுக்கு ஏற்கனவே ஒரு ஆண்டு மாற்ற ஓட்டம் திறந்துள்ளது.",
     "valid": true
   },
   {
@@ -14829,6 +15053,14 @@
   },
   {
     "text": "இந்தக் கற்பவர் பதிவு இல்லை அல்லது உங்கள் அணுகலுக்கு வெளியே உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கல்வியாண்டிலிருந்து",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கல்வியாண்டுக்கு",
     "valid": true
   },
   {
@@ -15093,6 +15325,10 @@
   },
   {
     "text": "இரண்டாம் நிலை",
+    "valid": true
+  },
+  {
+    "text": "இரண்டு வெவ்வேறு கல்வியாண்டுகளைத் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
   {
@@ -15789,6 +16025,10 @@
   },
   {
     "text": "ஒவ்வொரு அளவுகோலுக்கும் ஒரு புள்ளியைத் தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "ஒவ்வொரு கற்பவருக்கும் அடுத்த ஆண்டு வகுப்பைத் திட்டமிடுங்கள். நீங்கள் உறுதிசெய்யும் வரை எதுவும் மாறாது.",
     "valid": true
   },
   {
@@ -16884,6 +17124,10 @@
     "valid": true
   },
   {
+    "text": "செலுத்தப்படாத கட்டணங்களை அடுத்த ஆண்டுக்குக் கொண்டு செல்",
+    "valid": true
+  },
+  {
     "text": "செலுத்தப்படாத கட்டணப் பட்டியல்கள்",
     "valid": true
   },
@@ -17037,6 +17281,14 @@
   },
   {
     "text": "சோதனை",
+    "valid": true
+  },
+  {
+    "text": "சோதனை ஓட்டத்தைத் தொடங்கு",
+    "valid": true
+  },
+  {
+    "text": "சோதனை ஓட்டம் தயார். உறுதிசெய்வதற்கு முன் முடிவுகளைச் சரிபார்க்கவும்.",
     "valid": true
   },
   {
@@ -17217,6 +17469,10 @@
   },
   {
     "text": "தற்போதைய நிலையிலேயே தொடர்தல்",
+    "valid": true
+  },
+  {
+    "text": "தற்போதைய வகுப்புக்கு ஆண்டு நிலை இல்லை",
     "valid": true
   },
   {
@@ -19188,6 +19444,10 @@
     "valid": true
   },
   {
+    "text": "மாற்று",
+    "valid": true
+  },
+  {
     "text": "மாற்றுச் சான்றிதழ்",
     "valid": true
   },
@@ -19309,6 +19569,14 @@
   },
   {
     "text": "முடிவுத் தேதி இல்லை",
+    "valid": true
+  },
+  {
+    "text": "முடிவை மாற்று",
+    "valid": true
+  },
+  {
+    "text": "முடிவைச் சேமி",
     "valid": true
   },
   {
@@ -19637,6 +19905,10 @@
   },
   {
     "text": "வந்துள்ளார்",
+    "valid": true
+  },
+  {
+    "text": "வயது தகுதி",
     "valid": true
   },
   {

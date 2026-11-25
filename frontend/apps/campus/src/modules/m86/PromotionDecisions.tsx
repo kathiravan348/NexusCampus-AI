@@ -5,13 +5,15 @@ import {
 } from "@nexus/contracts";
 import { isKnownMessageKey, useText, type MessageKey } from "@nexus/i18n";
 import { useClassGroups } from "@nexus/services";
-import { EmptyState, Select } from "@nexus/ui-core";
+import { Button, EmptyState, Select } from "@nexus/ui-core";
 import { useLearnerNames } from "../m18/InvoicesTab";
 
 interface Props {
   readonly decisions: readonly PromotionDecision[];
   readonly action: PromotionAction | "";
   readonly onAction: (action: string) => void;
+  /** Set for `m86.rollover.manage` while the dry run is ready: shows a "Change" button per row (D84). */
+  readonly onChange?: (decision: PromotionDecision) => void;
 }
 
 const columns = [
@@ -25,7 +27,7 @@ function knownReason(key: string | null): key is MessageKey {
   return key !== null && isKnownMessageKey(key);
 }
 
-export function PromotionDecisions({ decisions, action, onAction }: Props) {
+export function PromotionDecisions({ decisions, action, onAction, onChange }: Props) {
   const t = useText();
   const names = useLearnerNames(true);
   const groups = useClassGroups();
@@ -62,6 +64,11 @@ export function PromotionDecisions({ decisions, action, onAction }: Props) {
                   {t(key)}
                 </th>
               ))}
+              {onChange && (
+                <th scope="col" className="p-2 text-start text-body-sm">
+                  <span className="sr-only">{t("m86.change.open")}</span>
+                </th>
+              )}
             </tr>
           </thead>
           <tbody className="grid gap-3 sm:table-row-group">
@@ -93,6 +100,18 @@ export function PromotionDecisions({ decisions, action, onAction }: Props) {
                       )}
                     </td>
                   ))}
+                  {onChange && (
+                    <td className="p-2 align-top sm:table-cell">
+                      <Button
+                        variant="secondary"
+                        className="min-h-11"
+                        aria-label={`${t("m86.change.open")}: ${fields[0]}`}
+                        onClick={() => onChange(decision)}
+                      >
+                        {t("m86.change.open")}
+                      </Button>
+                    </td>
+                  )}
                 </tr>
               );
             })}
