@@ -47,7 +47,10 @@ class EncryptedField:
 
 #: Columns encrypted with `FieldCipher`: `(table, column) -> EncryptedField(purpose, field_path)`.
 #: Stage 1-2 tables have no `FieldCipher`-encrypted columns yet; Stage 3+ sensitive columns register here.
-ENCRYPTED_COLUMNS: dict[tuple[str, str], EncryptedField] = {}
+ENCRYPTED_COLUMNS: dict[tuple[str, str], EncryptedField] = {
+    ("learners", "health_flags"): EncryptedField("field_health", "learners.health_flags"),
+    ("learners", "sensitive_custom_fields"): EncryptedField("tenant_data", "learners.sensitive_custom_fields"),
+}
 
 
 @dataclass(frozen=True)

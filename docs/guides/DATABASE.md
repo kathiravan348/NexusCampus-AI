@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-25 (Stage 3 through NEX-200 (M08 configuration)) · Migrations: product `0025_configuration`, Nexus Control
+> State as of: 2026-11-25 (Stage 3 build, M13 learner records, NEX-184) · Migrations: product `0026_learner_records`, Nexus Control
 > `c0021_payment_links`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
@@ -211,6 +211,18 @@ All four tables have an opaque primary key `id`, a foreign key `tenant_id` to `t
 | `form_definitions` | `entity`, `name`, `field_keys`, `public`, `published` | The ordered field keys use a JSONB array. Only enquiry and application forms may be public. |
 | `workflow_definitions` | `subject`, `name`, `steps`, `active` | The JSONB array stores 1–10 ordered approval steps with role IDs, optional escalation and response times. |
 | `numbering_formats` | `subject`, `pattern`, `resets_yearly`, `next_sequence` | The next sequence is a positive integer. |
+
+## Learner records (M13 — `0026_learner_records`)
+
+All three tables have an opaque primary key, forced tenant RLS and the `tenant_isolation` policy. The application role has SELECT access only. References to institution records include the tenant ID.
+
+| Table | Contents and rules |
+|---|---|
+| `learners` | Institution, optional campus, person and matching role profile, learner number, admission and departure dates, status, retention state and UTC creation and update times. A departure date is required for withdrawn, transferred, graduated and alumni learners. |
+| `enrolments` | Learner, academic year, program, optional year level, class group, optional roll number, status, effective dates and UTC creation and update times. The year level belongs to the referenced program and the class group to the academic year. |
+| `learner_documents` | Learner, document kind, plain file name, MIME type, size in bytes, verification flag, verifying staff profile and UTC upload time. A verified document requires a verifier. The table holds metadata only. |
+
+The `learners.health_flags` column holds an encrypted JSON array under the tenant's `field_health` key. The `learners.sensitive_custom_fields` column holds an encrypted JSON object under its `tenant_data` key. Each ciphertext is bound to its qualified column name. NULL represents an empty collection. Other values use the `custom_fields` JSONB object. The database rejects learner writes that put a field marked sensitive for learners in that object. Tenant export unwraps both encrypted columns inside the encrypted export stream.
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
