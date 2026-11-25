@@ -215,9 +215,13 @@ def test_guards_precede_input(client: TestClient, kc: FakeKeycloak, config_db: E
         "UPDATE entitlements SET source = :source, enabled = :enabled WHERE tenant_id = 'ten-ls' AND module_id = 'M08'"
     )
     with config_db.begin() as conn:
-        previous = conn.execute(
-            text("SELECT source, enabled FROM entitlements WHERE tenant_id = 'ten-ls' AND module_id = 'M08'")
-        ).mappings().one()
+        previous = (
+            conn.execute(
+                text("SELECT source, enabled FROM entitlements WHERE tenant_id = 'ten-ls' AND module_id = 'M08'")
+            )
+            .mappings()
+            .one()
+        )
         conn.execute(switch, {"source": "plan", "enabled": False})
     try:
         for route in SHAPES:

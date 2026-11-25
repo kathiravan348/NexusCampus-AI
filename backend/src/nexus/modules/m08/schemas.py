@@ -1,6 +1,5 @@
 """Frozen M08 configuration contracts from contracts/src/forms.ts."""
 
-import re
 from datetime import datetime
 from typing import Annotated, Literal, Self
 
@@ -8,6 +7,7 @@ from pydantic import AfterValidator, Field, StringConstraints, ValidationError, 
 from pydantic_core import InitErrorDetails, PydanticCustomError
 
 from nexus.core.schemas import Contract
+from nexus.core.validation import is_locale
 
 Id = Annotated[str, StringConstraints(min_length=1, max_length=128)]
 Key = Annotated[str, StringConstraints(pattern=r"^[a-z][a-zA-Z0-9]{1,39}$")]
@@ -18,22 +18,9 @@ Flag = Annotated[bool, Field(strict=True)]
 Number = Annotated[float, Field(strict=True, allow_inf_nan=False)]
 MAX_SAFE_INTEGER = 9007199254740991
 
-# Unicode language identifiers use canonical case for language, script, region and extensions.
-_LOCALE = re.compile(
-    r"(?:[a-z]{2,3}|[a-z]{5,8})(?:-[A-Z][a-z]{3})?(?:-(?:[A-Z]{2}|[0-9]{3}))?"
-    r"(?P<variants>(?:-(?:[0-9][a-z0-9]{3}|[a-z0-9]{5,8}))*)"
-    r"(?P<extensions>(?:-[0-9a-wy-z](?:-[a-z0-9]{2,8})+)*)"
-    r"(?:-x(?:-[a-z0-9]{1,8})+)?"
-)
-
 
 def _locale(value: str) -> str:
-    match = _LOCALE.fullmatch(value)
-    if match is None:
-        raise ValueError("Invalid locale")
-    variants = match["variants"].split("-")[1:]
-    singletons = [part for part in match["extensions"].split("-") if len(part) == 1]
-    if variants != sorted(set(variants)) or singletons != sorted(set(singletons)):
+    if not is_locale(value):
         raise ValueError("Invalid locale")
     return value
 
@@ -84,9 +71,9 @@ class CustomFieldFields(Contract):
     @model_validator(mode="after")
     def validate_definition(self) -> Self:
         paths: list[str] = []
-        if (self.options is not None) != (self.type in ("choice", "multi_choice")):
-            paths.append("options")
-        elif self.options and len({opt.value for opt in self.options}) != len(self.options):
+        requires_options = self.type in ("choice", "multi_choice")
+        option_values = [option.value for option in self.options or []]
+        if (self.options is not None) != requires_options or len(set(option_values)) != len(option_values):
             paths.append("options")
         if self.type != "number" and (self.min is not None or self.max is not None):
             paths.append("type")

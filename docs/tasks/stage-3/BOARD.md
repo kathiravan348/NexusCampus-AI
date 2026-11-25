@@ -49,7 +49,7 @@
 | NEX-182 | Stage 3 review fixes: "Absences this week" card, phone numbers with spaces | C | done | Codex | 179, 181 |
 | NEX-180 | Stage 3 freeze (planner + Owner) | — | done | Claude | 179, 181, 182 |
 | NEX-183 | Build: DB + API for M15 academic structure | D | done | Codex | 180 |
-| NEX-200 | Build: DB + API for M08 fields, forms, workflows, numbering | D | in-progress | Codex | 183 |
+| NEX-200 | Build: DB + API for M08 fields, forms, workflows, numbering | D | ready-for-review | Codex | 183 |
 | NEX-184 | Build: DB + API for M13 learner records and M14 families, guardians, custody and pickup | D | draft | — | 183, 200 |
 | NEX-185 | Build: DB + API for M12 admissions (incl. public enquiry endpoint with abuse limits) and M09 import jobs | D | draft | — | 184, 186 |
 | NEX-186 | Public admissions enquiry form, no sign-in (M12; Owner review point 4; demo data first) | C | done | Gemini | 180 |
