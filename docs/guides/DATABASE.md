@@ -259,6 +259,17 @@ function (`SET search_path = public`, no `PUBLIC` execute, granted to `nexus_app
 `institution_id` for one form ID, so the public endpoint can open that tenant's RLS transaction without any
 cross-tenant read access.
 
+## Import jobs (M09 — `0030_import_jobs`)
+
+All three tables have a `tenant_id`, forced RLS with the `tenant_isolation` policy and composite tenant references.
+The application role can read all three and insert import jobs only (no update or delete yet).
+
+| Table | Columns and constraints |
+|---|---|
+| `import_jobs` | Entity, file name, source format, template version, status, total / valid / error rows, the creating staff role profile (`(id, tenant_id)` reference), roll-back deadline and timestamps. The file name must be a plain name: 1-200 characters, not blank, `.` or `..`, no `/ : \` and no control characters. Template version is at least 1; row counts are not negative and valid plus error rows never exceed the total; `rollback_until` is set exactly when the job is completed; `updated_at >= created_at`. |
+| `column_mappings` | One row per job (`job_id` primary key): `columns`, a JSON array of 1-200 mapped columns. |
+| `import_row_issues` | Job, row number (at least 1), optional column name, severity, a `snake_case` code and a catalogue message key. Issues never hold imported cell values (V-7). |
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
