@@ -281,4 +281,8 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   605). Planned NEX-195 / NEX-209 (Stage 3 demo seed in two parts) with D85 (the seed seals personal columns with the
   app's `FieldCipher`; tests pass a fake vault). Remaining after them: NEX-196 (contract parity), NEX-197 / NEX-198
   (screens on real data), NEX-199 (release hardening, then the Owner's review).
+- 2026-11-26 08:1x (D83) — NEX-194 and NEX-195 merged and pushed. NEX-195 seeds all Stage 3 demo data (NEX-209 folded
+  in, withdrawn); the dev database was upgraded `0022` → `0039` and seeded live through OpenBao. `main` GREEN (2047
+  frontend, 607 backend). Remaining: NEX-196 (contract parity), NEX-197 / NEX-198 (screens on real data), NEX-199
+  (release hardening) — then the stop rule (Owner's release review).
 
