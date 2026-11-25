@@ -408,6 +408,12 @@ For applying and reversing a run it may insert and delete enrolments and update 
 `updated_at`, and update a learner's `status`, `left_on` and `updated_at` (D84). Nothing else on those tables.
 
 ## Demo data
+
+Stage 3 demo rows (NEX-195, D85): `nexus-seed` also writes the Stage 3 mock fixtures of M08, M09 and M12–M24, M86
+(`demo_fixtures.json` version 16) and the next academic year's calendar per tenant. Personal columns listed in
+`ENCRYPTED_COLUMNS` are sealed through the configured key service (tenant keys are created if missing). The shared
+test database is seeded without Stage 3 rows; `tests/db/test_seed_stage3.py` seeds its own database.
+
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
 `pnpm --dir frontend --filter @nexus/mocks export:fixtures` (a mocks test fails when the file is stale). Upsert by

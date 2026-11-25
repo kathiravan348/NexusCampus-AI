@@ -13,19 +13,22 @@ import sys
 from pathlib import Path
 from typing import Any
 
+import httpx2
 from sqlalchemy import Connection, create_engine, text
 
 from nexus.core.tenancy import TENANT_SETTING
 from nexus.core.timing import utf8_console
-from nexus.core.vault import key_name
+from nexus.core.vault import HttpVault, Vault, key_name
 from nexus.seed.modules import MODULE_TABLES_CHILD_FIRST, seed_modules, seed_shared
 from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
+from nexus.seed.stage3 import STAGE3_TABLES_CHILD_FIRST, Sealer, seed_stage3
 from nexus.settings import get_settings
 
 FIXTURES = Path(__file__).with_name("demo_fixtures.json")
-FIXTURES_VERSION = 15
+FIXTURES_VERSION = 16
 #: Delete order for `--reset` (children first).
 TABLES_CHILD_FIRST = (
+    *STAGE3_TABLES_CHILD_FIRST,
     *MODULE_TABLES_CHILD_FIRST,
     "vault_keys",
     "scim_tokens",
@@ -231,10 +234,22 @@ def reset_tenant(conn: Connection, tenant_id: str) -> None:
         conn.execute(text(f"DELETE FROM {table} WHERE {column} = :t"), {"t": tenant_id})  # noqa: S608
 
 
-def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -> dict[str, int]:
-    """Loads every demo tenant (one transaction each). Returns row counts per table."""
+def seed(
+    url: str,
+    *,
+    reset: bool = False,
+    data: dict[str, Any] | None = None,
+    vault: Vault | None = None,
+) -> dict[str, int]:
+    """Loads every demo tenant (one transaction each). Returns row counts per table.
+
+    With a key service (`vault`) the Stage 3 demo rows are written too, sealing personal columns (D85). The shared
+    test database is seeded without them, so module tests start from empty Stage 3 tables.
+    """
     fixtures = data if data is not None else load_fixtures()
     engine = create_engine(url)
+    sealer = Sealer(vault) if vault is not None else None
+    stage3: dict[str, int] = {}
     try:
         with engine.begin() as conn:
             seed_shared(conn, fixtures)
@@ -247,7 +262,12 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
                 seed_rbac(conn, fixtures, tenant["id"])
                 seed_modules(conn, fixtures, tenant["id"])
                 seed_audit(conn, fixtures, tenant["id"])
+                if sealer is not None:
+                    for table, count in seed_stage3(conn, fixtures, tenant["id"], sealer).items():
+                        stage3[table] = stage3.get(table, 0) + count
     finally:
+        if sealer is not None:
+            sealer.close()
         engine.dispose()
     return {
         "tenants": len(fixtures["tenants"]),
@@ -263,6 +283,7 @@ def seed(url: str, *, reset: bool = False, data: dict[str, Any] | None = None) -
         "roles": len(fixtures["roles"]),
         "role_assignments": len(fixtures["roleAssignments"]),
         "entitlements": len(fixtures["entitlements"]),
+        **stage3,
     }
 
 
@@ -274,7 +295,9 @@ def main() -> None:
     settings = get_settings()
     if args.reset and settings.environment != "dev":
         sys.exit("--reset is only allowed with NEXUS_ENVIRONMENT=dev")
-    counts = seed(settings.migrate_database_url.get_secret_value(), reset=args.reset)
+    # Stage 3 rows are sealed through the configured key service (OpenBao in the dev stack, D85).
+    vault = HttpVault(settings, httpx2.AsyncClient(timeout=10.0))
+    counts = seed(settings.migrate_database_url.get_secret_value(), reset=args.reset, vault=vault)
     print("seeded " + ", ".join(f"{n} {t}" for t, n in counts.items()))
 
 
