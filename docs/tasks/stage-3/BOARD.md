@@ -60,7 +60,7 @@
 | NEX-187 | Build: DB + API for M16 timetable (rooms, bell schedules, slots, teacher load) | D | done | Claude | 183, 184, 203 |
 | NEX-205 | Build: DB + API for M17 attendance (sessions, roster, marks, leave; offline replay) — split from NEX-187 | D | done | Claude | 187 |
 | NEX-188 | Build: DB + API for M18 fees and payments | D | done | Claude | 184, 205 |
-| NEX-206 | Build: DB + API for M19 accounting (ledger accounts, journal entries, budgets) — split from NEX-188 | D | planned | — | 188 |
+| NEX-206 | Build: DB + API for M19 accounting (ledger accounts, journal entries, budgets) — split from NEX-188 | D | done | Claude | 188 |
 | NEX-189 | Build: DB + API for M20 gradebook and M21 exams and seating | D | draft | — | 183, 184 |
 | NEX-190 | Build: DB + API for M22 report cards and M23 documents and e-signature | D | draft | — | 189 |
 | NEX-191 | Build: DB + API for M24 messages, notices and meetings (on the M07 notifications engine) | D | draft | — | 184 |
