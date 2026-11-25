@@ -1,6 +1,6 @@
 # Database
 
-> State as of: 2026-11-25 (Stage 3 through NEX-183) · Migrations: product `0024_academic_structure`, Nexus Control
+> State as of: 2026-11-25 (Stage 3 through NEX-200 (M08 configuration)) · Migrations: product `0025_configuration`, Nexus Control
 > `c0021_payment_links`
 
 PostgreSQL 16 with pgvector (D47). Migrations are hand-written Alembic files in `backend/migrations/versions/`;
@@ -200,6 +200,17 @@ Each table has an opaque primary key `id`, a required `tenant_id` and forced ten
 | `subject_offerings` | `academic_year_id`, `period_id`, `class_group_id`, `subject_id`, `staff_profile_ids[]`, `weekly_periods` | The class group belongs to the academic year. A NULL period covers the whole year. Up to ten distinct staff IDs. Weekly periods are NULL or 0–60. |
 
 Academic code uniqueness is case-insensitive. Migration `0023_stage3_access` adds the Stage 3 permission catalogue. Demo seeding applies the exported system-role grants and module entitlements to each demo tenant. Academic tables start empty.
+
+## Forms and fields (M08 — `0025_configuration`)
+
+All four tables have an opaque primary key `id`, a foreign key `tenant_id` to `tenants.id`, a unique `(id, tenant_id)` pair for tenant-bound references, and a UTC `updated_at`. Field, form and workflow definitions also record `created_at`. Each table enables and forces the `tenant_isolation` policy. The `nexus_app` role can select from all four tables and insert custom field definitions.
+
+| Table | Configuration columns | Rules |
+|---|---|---|
+| `custom_field_definitions` | `entity`, `key`, `label`, `type`, `required`, `sensitive`, `options`, `min`, `max`, `order`, `archived` | Keys are unique per tenant and entity, including archived rows. Localized labels and choice options use JSONB. Only numeric fields have bounds. |
+| `form_definitions` | `entity`, `name`, `field_keys`, `public`, `published` | The ordered field keys use a JSONB array. Only enquiry and application forms may be public. |
+| `workflow_definitions` | `subject`, `name`, `steps`, `active` | The JSONB array stores 1–10 ordered approval steps with role IDs, optional escalation and response times. |
+| `numbering_formats` | `subject`, `pattern`, `resets_yearly`, `next_sequence` | The next sequence is a positive integer. |
 
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
