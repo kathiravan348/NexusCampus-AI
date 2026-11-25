@@ -66,10 +66,28 @@ describe("M12 public enquiry form fixtures and handlers", () => {
     expect(okRes.status).toBe(200);
     const raw = (await okRes.json()) as Record<string, unknown>;
     const form = PublicEnquiryFormSchema.parse(raw);
-    expect(Object.keys(raw).sort()).toEqual(["campuses", "id", "institutionName", "programs"]);
+    expect(Object.keys(raw).sort()).toEqual([
+      "campuses",
+      "defaultLocale",
+      "id",
+      "institutionName",
+      "institutionType",
+      "programs",
+      "supportedLocales",
+    ]);
     expect(form.institutionName).toBe("Riverside School");
+    expect(form.institutionType).toBe("k12");
+    expect(form.defaultLocale).toBe("hi-IN");
+    expect(form.supportedLocales).toEqual(["hi-IN", "en-GB"]);
     expect(form.programs).toEqual([{ id: PROGRAM.riverside, name: "Years 5 to 10" }]);
     expect(form.campuses.map((c) => c.id)).toEqual([CAMPUS.riversideNorth, CAMPUS.riversideSouth]);
+
+    const apexRes = await fetch(`${BASE}/public/enquiry-forms/${PUBLIC_ENQUIRY_FORM.apex}`);
+    expect(apexRes.status).toBe(200);
+    const apex = PublicEnquiryFormSchema.parse(await apexRes.json());
+    expect(apex.institutionType).toBe("tp");
+    expect(apex.defaultLocale).toBe("ta-IN");
+    expect(apex.supportedLocales).toEqual(["ta-IN", "en-IN"]);
 
     const missingRes = await fetch(`${BASE}/public/enquiry-forms/pef-does-not-exist`);
     expect(missingRes.status).toBe(404);

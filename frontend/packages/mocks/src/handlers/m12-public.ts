@@ -54,6 +54,9 @@ export const m12PublicHandlers = [
       return ok(PublicEnquiryFormSchema, {
         id: form.id,
         institutionName: institution.name,
+        institutionType: institution.type,
+        defaultLocale: institution.locale.defaultLocale,
+        supportedLocales: [...institution.locale.supportedLocales],
         programs,
         campuses,
       });
