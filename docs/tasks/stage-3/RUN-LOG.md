@@ -131,8 +131,10 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-181 | Codex · gpt-6.2-astra / high (fix from NEX-179 e2e, D77) | 02:1x; 2 questions (staff rule, portal role) answered 02:4x, restarted; 3rd question (guardian without learner) answered 03:1x, restarted | green (1,997 tests) | done — no fixes; e2e proved on NEX-179 | `8ed758b`, pushed |
 | NEX-200 | Codex · gpt-6.2-astra / high (lane D, `0025`) | 12:5x; locale question answered, restarted | green (2031 frontend; backend 528, 0 skipped) | done — no fixes | merged 14:1x, pushed |
 | NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | red ×4 on format / lint / mypy only (533 tests green); reviewer fixed, green (backend 533, 0 skipped; main 2035 frontend) | done — fix: `ruff format`, list literals, `noqa: S608` on fixed-table cleanup, `Select[Learner]` type | merged 15:1x, pushed |
-| NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | — | — | — |
+| NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | green (2035 frontend; backend 538, 0 skipped) | done — fix: model `locale_valid` CHECK matched to migration | merged 17:4x; main GREEN, push blocked (see Waiting) |
+| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`) | 17:47 (tick) | — | — | — |
 | NEX-204 | — (planned 16:4x, lane D, `0029`, D81; waits for NEX-185) | — | — | — | — |
+| NEX-203 | — (planned 17:5x, lane D, `0030`; waits for NEX-204) | — | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
@@ -205,3 +207,7 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   endpoint, migration `0029`, abuse limits D81). Planned ahead: NEX-185, NEX-204. Gemini idle (lane D only) — not blocking.
 - 2026-11-25 17:1x (tick) — NEX-202 asked about locale aliases; answered (use `nexus.core.validation.is_locale`, no
   canonicaliser), restarted on Codex. Planned ahead: NEX-185, NEX-204. Gemini idle (lane D only) — not blocking.
+- 2026-11-25 17:4x (tick) — NEX-202 reviewed (1 fix) and merged; `check-main.sh` GREEN (frontend after the usual
+  load-timeout re-run, backend DB required). **`git push origin main` was refused by the session's auto-mode permission
+  check** — `main` is ahead of `origin` by the NEX-202 merge and this plan commit; the Owner pushes or allows the push
+  for the scheduled task. NEX-185 started on Codex. NEX-203 planned (M09, `0030`). Planned ahead: NEX-204, NEX-203.
