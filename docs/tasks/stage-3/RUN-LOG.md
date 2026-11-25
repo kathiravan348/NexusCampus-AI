@@ -155,8 +155,10 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-203 | Claude · claude-opus-5-5 (D83, lane D, `0030`) | 23:2x | green (backend 558, 0 skipped) | done — no fixes | merged 23:4x, pushed |
 | NEX-187 | Claude · claude-opus-5-5 (D83, lane D, `0031`) | 23:5x | green (backend 565, 0 skipped) | done — no fixes | merged 00:2x, pushed |
 | NEX-205 | Claude · claude-opus-5-5 (D83, lane D, `0032`) | 00:3x | green (backend 571, 0 skipped) | done — no fixes | merged 00:5x, pushed |
-| NEX-188 | — (planned 01:0x, lane D, `0033`, M18 only) | — | — | — | — |
-| NEX-206 | — (planned 01:0x, lane D, `0034`, M19; split from NEX-188) | — | — | — | — |
+| NEX-188 | Claude · claude-opus-5-5 (D83, lane D, `0033`) | 01:0x | green (backend 576, 0 skipped) | done — no fixes | merged 01:3x, pushed |
+| NEX-206 | Claude · claude-opus-5-5 (D83, lane D, `0034`) | 01:4x | green (backend 580, 0 skipped) | done — no fixes | merged 01:5x, pushed |
+| NEX-189 | — (planned 02:0x, lane D, `0035`, M20 only) | — | — | — | — |
+| NEX-207 | — (planned 02:0x, lane D, `0036`, M21; split from NEX-189) | — | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
