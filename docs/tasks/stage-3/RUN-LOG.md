@@ -232,3 +232,6 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   (1st restart). Planned ahead: NEX-204, NEX-203. Gemini idle (lane D only) — not blocking. Push of this plan
   commit was refused by the auto-mode permission check; `main` is 1 commit ahead of `origin` (no code change).
 - 2026-11-25 19:4x (tick) — Codex hit its usage limit (until 21:43), so Claude built NEX-185's change requests 4–5 under D82 (tests on the shared sign-in fixtures; `backend-check` DB required green, 543 passed, 0 skipped; `review:check` green). **NEX-185 needs Codex review** (D68) — the harness has no review run; a later tick or the Owner starts it once Codex's limit resets. NEX-204 / NEX-203 stay planned (lane D waits for NEX-185). Gemini idle.
+- 2026-11-25 21:0x (tick) — No change: NEX-185 still needs Codex review (D68; Codex limit until 21:43, no harness review
+  run). Every next task (NEX-204, NEX-203, then NEX-187–195) is lane D and waits for NEX-185's migration `0028`, so
+  nothing started and Claude did not build. Planned ahead: NEX-204, NEX-203. Gemini idle — not blocking.
