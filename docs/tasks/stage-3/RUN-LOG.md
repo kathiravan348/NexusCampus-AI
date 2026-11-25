@@ -161,7 +161,9 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-207 | Claude · claude-opus-5-5 (D83, lane D, `0036`) | 02:4x | green (backend 590, 0 skipped) | done — no fixes | merged 03:0x, pushed |
 | NEX-190 | Claude · claude-opus-5-5 (D83, lane D, `0037`) | 03:1x | green (backend 594, 0 skipped) | done — no fixes | merged 03:3x, pushed |
 | NEX-191 | Claude · claude-opus-5-5 (D83, lane D, `0038`) | 03:4x | green (backend 599, 0 skipped) | done — no fixes | merged 04:1x, pushed |
-| NEX-192 | — (planned 04:2x, API only, no migration) | — | — | — | — |
+| NEX-192 | Claude · claude-opus-5-5 (D83, API only) | 04:2x | green (backend 602, 0 skipped) | done — no fixes | merged 04:4x, pushed |
+| NEX-208 | — (planned 04:5x, contract inputs + mock writes, D84) | — | — | — | — |
+| NEX-193 | — (planned 04:5x, lane D, `0039`, D84) | — | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
@@ -268,3 +270,7 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   NEX-185 merged (Codex review fixes + Claude self-review); `main` GREEN (2035 frontend; backend DB required).
   Lesson: never run DB tests in a worktree while `check-main.sh` runs — both migrate test databases on the same
   server and the shared role update collides ("tuple concurrently updated").
+- 2026-11-26 04:5x (D83) — Lane D through NEX-192 is merged and pushed (NEX-185, 204, 203, 187, 205, 188, 206, 189,
+  207, 190, 191, 192; backend 602 tests, 0 skipped; frontend 2035). Rollover writes planned as D84 (Owner review
+  point 3): NEX-208 (contract input schemas + mock writes), then NEX-193 (backend), then NEX-194 (screens). Codex
+  re-checks every D83 self-review when it is back.
