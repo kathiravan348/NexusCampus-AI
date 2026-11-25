@@ -235,3 +235,6 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - 2026-11-25 21:0x (tick) — No change: NEX-185 still needs Codex review (D68; Codex limit until 21:43, no harness review
   run). Every next task (NEX-204, NEX-203, then NEX-187–195) is lane D and waits for NEX-185's migration `0028`, so
   nothing started and Claude did not build. Planned ahead: NEX-204, NEX-203. Gemini idle — not blocking.
+- 2026-11-25 21:4x (tick) — No change: Codex's limit has reset (21:43), but NEX-185 still needs a Codex review (D68)
+  and the harness has no review run, so the Owner starts it. NEX-204, NEX-203 and the later lane D tasks wait for
+  NEX-185's migration `0028`; nothing started, Claude did not build. Planned ahead: NEX-204, NEX-203. Gemini idle.
