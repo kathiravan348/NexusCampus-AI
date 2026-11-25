@@ -52,7 +52,7 @@
 | NEX-200 | Build: DB + API for M08 fields, forms, workflows, numbering | D | done | Claude | 183 |
 | NEX-184 | Build: DB + API for M13 learner records (encrypted health flags, sensitive reads audited) | D | done | Claude | 183, 200 |
 | NEX-202 | Build: DB + API for M14 families, guardians, custody and pickup | D | done | Codex | 184 |
-| NEX-185 | Build: DB + API for M12 admissions (staff side: enquiries, applications, offers, waitlist) | D | in-progress | Codex | 202, 186 |
+| NEX-185 | Build: DB + API for M12 admissions (staff side: enquiries, applications, offers, waitlist) | D | ready-for-review | Claude | 202, 186 |
 | NEX-204 | Build: public enquiry endpoint with abuse limits and form IDs (M12; split from NEX-185) | D | planned | — | 185 |
 | NEX-203 | Build: DB + API for M09 import jobs, mappings and row issues (split from NEX-185) | D | planned | — | 204 |
 | NEX-186 | Public admissions enquiry form, no sign-in (M12; Owner review point 4; demo data first) | C | done | Gemini | 180 |
