@@ -129,6 +129,8 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-178 | Codex · gpt-6.2-astra / high (screen) | 01:13 | green | done — fix: reason keys via `isKnownMessageKey` (no cross-package `en.json` import) | `e62df0e`, pushed |
 | NEX-179 | Codex · gpt-6.2-astra / high (review build) | 01:47 | green (review:check); reviewer e2e 02:1x: 46 failed (menu 403s) → NEX-181; with NEX-181 03:4x: 72 passed, 1 a11y load timeout (passes alone) | done — fix: merged `main`, `texts:export` refreshed | merged 03:5x, pushed |
 | NEX-181 | Codex · gpt-6.2-astra / high (fix from NEX-179 e2e, D77) | 02:1x; 2 questions (staff rule, portal role) answered 02:4x, restarted; 3rd question (guardian without learner) answered 03:1x, restarted | green (1,997 tests) | done — no fixes; e2e proved on NEX-179 | `8ed758b`, pushed |
+| NEX-200 | Codex · gpt-6.2-astra / high (lane D, `0025`) | 12:5x; locale question answered, restarted | green (2031 frontend; backend 528, 0 skipped) | done — no fixes | merged 14:1x, pushed |
+| NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | — | — | — |
 
 NEX-179 e2e (02:1x): the new persona smoke — and the existing admin smoke and a11y specs, already red on `main` — fail
 because modules with `permission: null` show in every menu and their screens answer 403 (admin → `/family`, teacher →
@@ -192,3 +194,6 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   NEX-183 (Codex, two rounds of planner answers) and NEX-186 (Gemini) reviewed, live-checked and merged; `main`
   green (2031 frontend, 522 backend). Follow-up NEX-201 (public form language). NEX-200 (Codex) and NEX-201
   (Gemini) building. Not pushed since the first push — waiting for the Owner.
+- 2026-11-25 14:1x (tick) — NEX-200 merged, `main` green and pushed. NEX-184 building on Codex. NEX-202 and NEX-185
+  planned; NEX-185 split (public endpoint + abuse limits → NEX-204, M09 import jobs → NEX-203). Every open task
+  before NEX-194 is lane D (Codex only, one migration at a time), so Gemini stays idle until then — not blocking.
