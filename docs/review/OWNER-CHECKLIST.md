@@ -1,7 +1,7 @@
 # Owner checklist
 
 > Everything that waits for you, in one place, in the order that saves the most time. State as of 2026-11-25
-> (Stage 3 preview built, waiting for your review). Tick a box when done. Details behind each item are linked; the
+> (Stage 3 prototype frozen, D78). Tick a box when done. Details behind each item are linked; the
 > full decision log is [`OWNER-AWAY-DECISIONS.md`](OWNER-AWAY-DECISIONS.md).
 
 ## Where things stand
@@ -9,10 +9,11 @@
 - **Stage 1** (platform foundation) released 2026-11-21 (D54); **Stage 2** (Nexus Control and delivery) released
   2026-11-23 (D70). Results: [`STAGE-2-RELEASE.md`](STAGE-2-RELEASE.md).
 - **Stage 3** (core institution operations) — the clickable preview is finished: all 35 tasks (NEX-146–179, 181)
-  are done, reviewed and merged on [`../tasks/stage-3/BOARD.md`](../tasks/stage-3/BOARD.md). Only the freeze
-  (NEX-180) is left, and it waits for you. The Stage 3 tick task is switched off (2026-11-25).
+  are done, reviewed and merged on [`../tasks/stage-3/BOARD.md`](../tasks/stage-3/BOARD.md). Your review points 1–2
+  were fixed (NEX-182) and Stage 3 is **frozen** (NEX-180, D78). The build step (NEX-183–199) is on the board as
+  draft. The Stage 3 tick task is switched off (2026-11-25).
 
-## A. Review Stage 3, then freeze it (NEX-180) — waiting for you
+## A. Review Stage 3, then freeze it (NEX-180) — done 2026-11-25 (D78)
 
 **Before you start (5 minutes)**
 
@@ -49,18 +50,18 @@ timed out once under full load (60 s limit) and passed on a re-run in 17 s each,
 
 **Things I noticed while preparing — please judge them** (none blocks the freeze; say "fix" or "fine")
 
-- [ ] **Family home card "Attendance 0"** (Riverside guardian) counts *absences*, so 0 is good news, but it reads
+- [x] **Fixed (NEX-182).** **Family home card "Attendance 0"** (Riverside guardian) counts *absences*, so 0 is good news, but it reads
       like "no attendance". Rename it "Absences", or show an attendance percentage instead?
-- [ ] **Phone numbers with spaces are refused** in **Add enquiry** (`+91 98765 00000`), with the message "Include
+- [x] **Fixed (NEX-182).** **Phone numbers with spaces are refused** in **Add enquiry** (`+91 98765 00000`), with the message "Include
       the country code, starting with +", although it has one. Accept spaces, or change the message?
-- [ ] **Year-end rollover is read-only in this preview** (D76): runs can be inspected, not started or reversed.
+- [x] **Build tasks NEX-193/194.** **Year-end rollover is read-only in this preview** (D76): runs can be inspected, not started or reversed.
       OK for the freeze?
-- [ ] **Admissions public form** (families applying from the website) is a follow-up, not in this preview (NEX-164).
+- [x] **Build tasks NEX-185/186.** **Admissions public form** (families applying from the website) is a follow-up, not in this preview (NEX-164).
       OK to plan it as a build task?
 
 **Decide**
 
-- [ ] Say **"approve the Stage 3 freeze"** — the screens and data shapes are frozen (new decision entry), and I plan
+- [x] Say **"approve the Stage 3 freeze"** — the screens and data shapes are frozen (new decision entry), and I plan
       the Stage 3 build tasks (real backend, one module at a time). Or list what must change first; each item
       becomes a fix task before the freeze.
 - [ ] Say whether to **push `main`** to GitHub after the freeze commit.
@@ -155,8 +156,8 @@ These are not blocking the build, but real billing and the trust page need them 
 
 ## What I do next, unless you say otherwise
 
-- Nothing runs until you review Stage 3: the builders are idle and the tick task is off.
-- After **"approve the Stage 3 freeze"**: apply your feedback as fix tasks, write the freeze decision, then plan the
-  Stage 3 build tasks two ahead (backend behind the frozen contracts, screens switched from demo data to real one
-  at a time).
+- Write the first two Stage 3 build task files (NEX-183, NEX-184) when you say to start the build; builders stay
+  idle and the tick task stays off until then.
+- Build order: DB + API per module group, the public enquiry form and rollover write flow, the demo seed, contract
+  parity, then screens switched from demo data to real one at a time (NEX-183–199).
 - Anything that needs a new download, I hold and ask you first.

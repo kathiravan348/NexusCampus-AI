@@ -162,3 +162,7 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - 2026-11-25 — The scheduled task `nexus-stage3-tick` is disabled (Owner's OK in chat). Review pack ready: user
   manual with Stage 3 examples, presentation updated, demo on http://localhost:4173, checklist in
   [`OWNER-CHECKLIST.md`](../../review/OWNER-CHECKLIST.md) section A.
+- 2026-11-25 — Owner: "fix the 4 points, then approve the Stage 3 freeze". Points 1–2 fixed in NEX-182 (Codex
+  `gpt-6.2-sol` low; reviewer ran the fixture export and updated two portal tests), merged. Points 3–4 planned as
+  build tasks. **Stage 3 frozen (NEX-180, D78)**; build step NEX-183–199 on the board as draft. Nothing is running;
+  the first two build task files are written when the Owner says to start the build.

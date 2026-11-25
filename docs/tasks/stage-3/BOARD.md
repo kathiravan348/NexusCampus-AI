@@ -6,7 +6,7 @@
 > Lanes: **A** UI/theme/text · **B** contracts/mocks · **C** screens · **D** backend / deploy.
 > `draft` rows have no task file yet; the planner writes them 2 ahead (`AGENTS.md` §3.5).
 
-**Step:** design → prototype (`docs/PLAN.md` → Stage 3, D71) · **Modules:** M08, M09, M12–M28, M86 ·
+**Step:** build (prototype frozen 2026-11-25, D78; `docs/PLAN.md` → Stage 3, D71) · **Modules:** M08, M09, M12–M28, M86 ·
 **Module list and order:** approved by the Owner 2026-11-23 (D72).
 
 | ID | Title | Lane | Status | Owner | Depends on |
@@ -47,4 +47,21 @@
 | NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | done | Codex | 160–178, 181 |
 | NEX-181 | Menu shows only screens the user can open (role-profile audience, D77) | C | done | Codex | 160–178 |
 | NEX-182 | Stage 3 review fixes: "Absences this week" card, phone numbers with spaces | C | done | Codex | 179, 181 |
-| NEX-180 | Stage 3 freeze (planner + Owner) | — | in-progress | Claude | 179, 181, 182 |
+| NEX-180 | Stage 3 freeze (planner + Owner) | — | done | Claude | 179, 181, 182 |
+| NEX-183 | Build: DB + API for M15 academic structure and M08 fields, forms, workflows, numbering | D | draft | — | 180 |
+| NEX-184 | Build: DB + API for M13 learner records and M14 families, guardians, custody and pickup | D | draft | — | 183 |
+| NEX-185 | Build: DB + API for M12 admissions (incl. public enquiry endpoint with abuse limits) and M09 import jobs | D | draft | — | 184 |
+| NEX-186 | Public admissions enquiry form, no sign-in (M12; Owner review point 4) | C | draft | — | 185 |
+| NEX-187 | Build: DB + API for M16 timetable and M17 attendance, with offline sync (L2) | D | draft | — | 183, 184 |
+| NEX-188 | Build: DB + API for M18 fees and payments and M19 accounting ledger and budgets | D | draft | — | 184 |
+| NEX-189 | Build: DB + API for M20 gradebook and M21 exams and seating | D | draft | — | 183, 184 |
+| NEX-190 | Build: DB + API for M22 report cards and M23 documents and e-signature | D | draft | — | 189 |
+| NEX-191 | Build: DB + API for M24 messages, notices and meetings (on the M07 notifications engine) | D | draft | — | 184 |
+| NEX-192 | Build: API for M25–M28 portal homes and dashboards (counts and aggregates only) | D | draft | — | 187–191 |
+| NEX-193 | Build: M86 rollover backend — dry run, decisions, confirm, roll-back window, audit (Owner review point 3) | D | draft | — | 192 |
+| NEX-194 | M86 rollover screens: start a dry run, override decisions, confirm, reverse (Owner review point 3) | C | draft | — | 193 |
+| NEX-195 | Stage 3 demo seed: fixtures into the backend seed and real roles (ends D75) | D | draft | — | 183–191 |
+| NEX-196 | Stage 3 contract parity: API responses match the frozen contracts | D | draft | — | 192, 195 |
+| NEX-197 | Switch Stage 3 screens to real data: M08, M09, M12–M17 | C | draft | — | 196 |
+| NEX-198 | Switch Stage 3 screens to real data: M18–M28, M86 | C | draft | — | 196, 197 |
+| NEX-199 | Stage 3 harden & release: offline, i18n, WCAG 2.2 AA, security review V-1…V-7, install test, guides | D | draft | — | 186, 194, 198 |
