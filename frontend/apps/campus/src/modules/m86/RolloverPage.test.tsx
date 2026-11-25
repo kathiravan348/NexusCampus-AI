@@ -62,6 +62,16 @@ vi.mock("./PromotionDecisions", () => ({
   }) => <button onClick={() => onAction("skip")}>{action || "All"}</button>,
 }));
 
+vi.mock("./RunActions", () => ({
+  RunActions: () => <p>run actions</p>,
+}));
+vi.mock("./StartRolloverDialog", () => ({
+  StartRolloverDialog: ({ open }: { open: boolean }) => (open ? <p>start dialog</p> : null),
+}));
+vi.mock("./ChangeDecisionDialog", () => ({
+  ChangeDecisionDialog: () => null,
+}));
+
 function Location() {
   return <output>{useLocation().search}</output>;
 }
@@ -163,4 +173,16 @@ it("distinguishes an empty run list from a pending request", () => {
   state.runs = { items: [] };
   open();
   expect(screen.getByText("No rollover runs yet.")).toBeTruthy();
+});
+
+it("shows the D84 write controls only to rollover managers", () => {
+  open();
+  expect(screen.queryByRole("button", { name: "Start dry run" })).toBeNull();
+  expect(screen.queryByText("run actions")).toBeNull();
+  cleanup();
+  state.permissions = ["m86.rollover.read", "m86.rollover.manage"];
+  open();
+  expect(screen.getByText("run actions")).toBeTruthy();
+  fireEvent.click(screen.getByRole("button", { name: "Start dry run" }));
+  expect(screen.getByText("start dialog")).toBeTruthy();
 });

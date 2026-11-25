@@ -8,6 +8,10 @@ import {
   pageSchema,
   type ImportJob,
   type ImportJobInput,
+  type PromotionDecision,
+  type PromotionDecisionInput,
+  type RolloverRun,
+  type RolloverRunInput,
 } from "@nexus/contracts";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { queryKeys } from "../keys";
@@ -81,4 +85,69 @@ export function useRolloverDecisions(runId: string | null) {
       ),
     runId !== null,
   );
+}
+
+/** Invalidates every M86 query of the session (runs and every run's decisions). */
+function useInvalidateRollover() {
+  const { session } = useSession();
+  const qc = useQueryClient();
+  return async () => {
+    if (!session) return;
+    await qc.invalidateQueries({ queryKey: queryKeys.m86.rolloverRuns(session).slice(0, -1) });
+  };
+}
+
+/** Starts a rollover run with its dry run (M86, D84; L0: online only). */
+export function useStartRollover() {
+  const { client } = useServices();
+  const invalidate = useInvalidateRollover();
+  return useMutation<RolloverRun, Error, RolloverRunInput>({
+    mutationFn: (body) => client.send("POST", "/rollover-runs", body, RolloverRunSchema),
+    onSuccess: invalidate,
+  });
+}
+
+/** Changes one learner's decision while the dry run is ready (M86, D84). */
+export function useChangeDecision(runId: string) {
+  const { client } = useServices();
+  const invalidate = useInvalidateRollover();
+  return useMutation<
+    PromotionDecision,
+    Error,
+    { decisionId: string; input: PromotionDecisionInput }
+  >({
+    mutationFn: ({ decisionId, input }) =>
+      client.send(
+        "PUT",
+        `/rollover-runs/${encodeURIComponent(runId)}/decisions/${encodeURIComponent(decisionId)}`,
+        input,
+        PromotionDecisionSchema,
+      ),
+    onSuccess: invalidate,
+  });
+}
+
+function useRunAction(action: "confirm" | "rollback") {
+  const { client } = useServices();
+  const invalidate = useInvalidateRollover();
+  return useMutation<RolloverRun, Error, string>({
+    mutationFn: (runId) =>
+      client.send(
+        "POST",
+        `/rollover-runs/${encodeURIComponent(runId)}/${action}`,
+        {},
+        RolloverRunSchema,
+      ),
+    onSuccess: invalidate,
+  });
+}
+
+/** Applies a ready dry run (M86, D84): enrolments move, roll back stays possible for 14 days. */
+export function useConfirmRollover() {
+  return useRunAction("confirm");
+}
+
+/** Reverses a completed run inside its roll-back window (M86, D84). */
+export function useRollBackRollover() {
+  return useRunAction("rollback");
 }

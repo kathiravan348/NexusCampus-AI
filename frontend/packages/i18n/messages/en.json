@@ -7571,6 +7571,106 @@
     "message": "No decisions match this filter.",
     "description": "Shown when the selected action has no decisions."
   },
+  "m86.start.open": {
+    "message": "Start dry run",
+    "description": "Opens the form that starts a rollover dry run."
+  },
+  "m86.start.title": {
+    "message": "Start a rollover dry run",
+    "description": "Title of the start dry run dialog."
+  },
+  "m86.start.description": {
+    "message": "Plan next year's class for every learner. Nothing moves until you confirm.",
+    "description": "Explains that a dry run changes nothing yet."
+  },
+  "m86.start.institution": {
+    "message": "Institution",
+    "description": "Label of the institution field."
+  },
+  "m86.start.fromYear": {
+    "message": "From academic year",
+    "description": "Label of the current academic year field."
+  },
+  "m86.start.toYear": {
+    "message": "To academic year",
+    "description": "Label of the next academic year field."
+  },
+  "m86.start.carryFees": {
+    "message": "Carry forward unpaid fees",
+    "description": "Checkbox to carry unpaid fees into the next year."
+  },
+  "m86.start.sameYear": {
+    "message": "Choose two different academic years.",
+    "description": "Error when both years are the same."
+  },
+  "m86.start.alreadyOpen": {
+    "message": "A rollover run is already open for this year.",
+    "description": "Error when another run is open."
+  },
+  "m86.start.created": {
+    "message": "Dry run ready. Check the decisions before you confirm.",
+    "description": "Toast after a dry run starts."
+  },
+  "m86.confirm.open": {
+    "message": "Confirm rollover",
+    "description": "Button that applies a ready dry run."
+  },
+  "m86.confirm.description": {
+    "message": "{promote} learners move up, {detain} stay in their level, {graduate} graduate, {transfer} leave and {skip} stay unchanged. You can roll back for 14 days.",
+    "description": "Summary shown before confirming; the counts come from the dry run."
+  },
+  "m86.confirm.done": {
+    "message": "Rollover completed.",
+    "description": "Toast after a rollover is confirmed."
+  },
+  "m86.rollback.open": {
+    "message": "Roll back",
+    "description": "Button that reverses a completed rollover."
+  },
+  "m86.rollback.description": {
+    "message": "This restores every enrolment and learner status from before the rollover.",
+    "description": "Explains what rolling back does."
+  },
+  "m86.rollback.done": {
+    "message": "Rollover rolled back.",
+    "description": "Toast after a rollover is reversed."
+  },
+  "m86.actionFailed": {
+    "message": "That did not work. Reload the page and try again.",
+    "description": "Error when a rollover action is refused."
+  },
+  "m86.change.open": {
+    "message": "Change",
+    "description": "Button to change one learner's decision."
+  },
+  "m86.change.title": {
+    "message": "Change decision",
+    "description": "Title of the change decision dialog."
+  },
+  "m86.change.target": {
+    "message": "Class next year",
+    "description": "Label of the next year's class field."
+  },
+  "m86.change.submit": {
+    "message": "Save decision",
+    "description": "Button that saves a changed decision."
+  },
+  "m86.change.invalidTarget": {
+    "message": "Choose a class of the next academic year.",
+    "description": "Error when the class is not in the next year."
+  },
+  "m86.promotion.noYearLevel": {
+    "message": "The current class has no year level",
+    "description": "Reason a learner is skipped."
+  },
+  "m86.promotion.noTargetGroup": {
+    "message": "No class for the next level yet",
+    "description": "Reason a learner is skipped."
+  },
+  "m86.promotion.ageEligibility": {
+    "message": "Age eligibility",
+    "description": "Reason a learner stays in the level."
+  },
   "m86.permission.rolloverRead": {
     "message": "View year-end rollover",
     "description": "Permission description: View year-end rollover runs and promotion decisions."

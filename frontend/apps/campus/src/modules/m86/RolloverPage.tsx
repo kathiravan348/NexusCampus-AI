@@ -1,4 +1,4 @@
-import { PromotionActionSchema } from "@nexus/contracts";
+import { PromotionActionSchema, type PromotionDecision } from "@nexus/contracts";
 import { useText } from "@nexus/i18n";
 import {
   ApiRequestError,
@@ -15,8 +15,11 @@ import { LastSynced } from "../../app/LastSynced";
 import { useOnline } from "../../app/RouteGuard";
 import { Forbidden } from "../../pages/Forbidden";
 import { AssistPanel } from "../m11/AssistPanel";
+import { ChangeDecisionDialog } from "./ChangeDecisionDialog";
 import { PromotionDecisions } from "./PromotionDecisions";
 import { RolloverRunList } from "./RolloverRunList";
+import { RunActions } from "./RunActions";
+import { StartRolloverDialog } from "./StartRolloverDialog";
 
 function forbidden(error: unknown) {
   return error instanceof ApiRequestError && error.status === 403;
@@ -29,6 +32,10 @@ export function RolloverPage() {
   const runs = useRolloverRuns();
   const entitlements = useEntitlements();
   const canRead = !!me.data?.permissions.includes("m86.rollover.read");
+  // D84: the write flow is for `m86.rollover.manage` only; read-only viewers see the same page as before.
+  const canManage = canRead && !!me.data?.permissions.includes("m86.rollover.manage");
+  const [starting, setStarting] = useState(false);
+  const [changing, setChanging] = useState<PromotionDecision | null>(null);
   const canAsk =
     canRead &&
     online &&
@@ -96,6 +103,11 @@ export function RolloverPage() {
           <p className="text-body text-text-secondary">{t("m86.page.intro")}</p>
           <LastSynced updatedAt={runs.dataUpdatedAt} />
         </div>
+        {canManage && (
+          <Button className="min-h-11" disabled={!online} onClick={() => setStarting(true)}>
+            {t("m86.start.open")}
+          </Button>
+        )}
         {showAssist && (
           <div className="space-y-1">
             <Button className="min-h-11" variant="secondary" onClick={() => setAssistOpen(true)}>
@@ -121,11 +133,13 @@ export function RolloverPage() {
             selectedId={selected.id}
             onSelect={(id) => change("run", id)}
           />
+          {canManage && <RunActions run={selected} online={online} />}
           {decisions.data ? (
             <PromotionDecisions
               decisions={decisions.data.items}
               action={filter.success ? filter.data : ""}
               onAction={(value) => change("action", value)}
+              onChange={canManage && selected.status === "dry_run_ready" ? setChanging : undefined}
             />
           ) : decisions.isError || !online ? (
             failure(() => void decisions.refetch())
@@ -135,6 +149,22 @@ export function RolloverPage() {
         </>
       )}
       {showAssist && <AssistPanel open={assistOpen} onOpenChange={setAssistOpen} />}
+      {canManage && (
+        <StartRolloverDialog
+          open={starting}
+          onOpenChange={setStarting}
+          online={online}
+          onStarted={(id) => change("run", id)}
+        />
+      )}
+      {canManage && selected && (
+        <ChangeDecisionDialog
+          run={selected}
+          decision={changing}
+          onClose={() => setChanging(null)}
+          online={online}
+        />
+      )}
     </div>
   );
 }
