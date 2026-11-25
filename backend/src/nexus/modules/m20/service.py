@@ -65,12 +65,11 @@ async def assessment_of(auth: Authorized, assessment_id: str) -> Assessment:
     return assessment
 
 
-async def roster_of(auth: Authorized, assessment: Assessment, on: date) -> list[RosterEntryOut]:
-    """Learners placed in the offering's class group on `on`, roll numbers in natural order, one row each."""
+async def roster_of(auth: Authorized, offering_id: str, on: date) -> list[RosterEntryOut]:
+    """Learners placed in the offering's class group on `on`, roll numbers in natural order, one row each.
+    M20 uses today's date; M21 uses the exam paper's date."""
     db = auth.ctx.db
-    group = await db.scalar(
-        select(SubjectOffering.class_group_id).where(SubjectOffering.id == assessment.subject_offering_id)
-    )
+    group = await db.scalar(select(SubjectOffering.class_group_id).where(SubjectOffering.id == offering_id))
     if group is None:
         return []
     rows = await db.execute(
@@ -185,7 +184,9 @@ async def save_mark(
             [ApiErrorDetail(path="status", message="Assessment is not open for marking")],
         )
     data = parse_mark(body)
-    if not any(entry.learner_id == learner_id for entry in await roster_of(auth, assessment, today())):
+    if not any(
+        entry.learner_id == learner_id for entry in await roster_of(auth, assessment.subject_offering_id, today())
+    ):
         raise _bad("learnerId", "Outside the assessment roster")
     if data.marks is not None and data.marks > float(assessment.max_marks):
         raise _bad("marks", "Marks exceed the assessment maximum")

@@ -52,7 +52,8 @@ async def rubrics(auth: Reader, page: Paging) -> Page[RubricOut]:
 
 @router.get("/assessments/{assessment_id}/roster")
 async def roster(assessment_id: str, auth: Reader, page: Paging) -> Page[RosterEntryOut]:
-    entries = await roster_of(auth, await assessment_of(auth, assessment_id), today())
+    assessment = await assessment_of(auth, assessment_id)
+    entries = await roster_of(auth, assessment.subject_offering_id, today())
     return Page.of(entries[page.offset : page.offset + page.page_size], len(entries), page)
 
 
