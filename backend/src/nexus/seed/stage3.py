@@ -17,7 +17,7 @@ from sqlalchemy import Connection, text
 
 from nexus.agent.tenant_export import ENCRYPTED_COLUMNS
 from nexus.core.fieldcrypto import FieldCipher
-from nexus.core.vault import key_name
+from nexus.core.vault import Vault, key_name
 
 #: (fixture key, table) in insert order (parents first).
 STAGE3_TABLES: tuple[tuple[str, str], ...] = (
@@ -152,10 +152,15 @@ HOOKS: dict[str, Callable[[dict[str, Any], Row], Row]] = {
 
 
 class Sealer:
-    """Seals one value with the production `FieldCipher` (sync wrapper for the seed's sync connection)."""
+    """Seals one value with the production `FieldCipher` (sync wrapper for the seed's sync connection).
 
-    def __init__(self, cipher: FieldCipher) -> None:
-        self._cipher = cipher
+    Each tenant key is created once in the key service first (idempotent), as provisioning would.
+    """
+
+    def __init__(self, vault: Vault) -> None:
+        self._vault = vault
+        self._cipher = FieldCipher(vault)
+        self._ready: set[str] = set()
         # One loop for the whole seed: an HTTP key-service client must not move between event loops.
         self._loop = asyncio.new_event_loop()
 
@@ -166,13 +171,18 @@ class Sealer:
         spec = ENCRYPTED_COLUMNS.get((table, column))
         if spec is None or value is None:
             return value
+        name = key_name(tenant_id, spec.purpose)
+        if name not in self._ready:
+            self._loop.run_until_complete(self._vault.create_key(name))
+            self._ready.add(name)
         plain = value if isinstance(value, str) else json.dumps(value)
-        return self._loop.run_until_complete(self._cipher.encrypt(key_name(tenant_id, spec.purpose), spec.field, plain))
+        return self._loop.run_until_complete(self._cipher.encrypt(name, spec.field, plain))
 
 
 def _upsert(conn: Connection, table: str, columns: dict[str, str], row: Row) -> None:
     names = list(row)
-    key = "job_id" if table == "column_mappings" else "id"
+    # One mapping per job; one public form per institution (0029 may already have given it a random id).
+    key = {"column_mappings": "job_id", "enquiry_forms": "institution_id"}.get(table, "id")
     quoted = ", ".join(f'"{n}"' for n in names)
     values = ", ".join(f"CAST(:{n} AS jsonb)" if columns[n] in _JSON else f":{n}" for n in names)
     updates = ", ".join(f'"{n}" = EXCLUDED."{n}"' for n in names if n != key)
@@ -185,8 +195,14 @@ def _upsert(conn: Connection, table: str, columns: dict[str, str], row: Row) -> 
 def seed_stage3(conn: Connection, data: dict[str, Any], tenant_id: str, sealer: Sealer) -> dict[str, int]:
     """Writes one tenant's Stage 3 rows (inside its RLS scope). Returns rows written per table."""
     counts: dict[str, int] = {}
+    # Mappings and row issues belong to their import job in the mock: they take its tenant.
+    job_tenant = {job["id"]: job["tenantId"] for job in data.get("importJobs", [])}
     for key, table in STAGE3_TABLES:
-        rows = [row for row in data.get(key, []) if row.get("tenantId") == tenant_id]
+        rows = [
+            row if "tenantId" in row else {**row, "tenantId": job_tenant.get(row.get("jobId", ""))}
+            for row in data.get(key, [])
+        ]
+        rows = [row for row in rows if row.get("tenantId") == tenant_id]
         if not rows:
             continue
         columns = _columns(conn, table)

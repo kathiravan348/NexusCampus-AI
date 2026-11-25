@@ -16,10 +16,9 @@ from typing import Any
 import httpx2
 from sqlalchemy import Connection, create_engine, text
 
-from nexus.core.fieldcrypto import FieldCipher
 from nexus.core.tenancy import TENANT_SETTING
 from nexus.core.timing import utf8_console
-from nexus.core.vault import HttpVault, key_name
+from nexus.core.vault import HttpVault, Vault, key_name
 from nexus.seed.modules import MODULE_TABLES_CHILD_FIRST, seed_modules, seed_shared
 from nexus.seed.rbac import RBAC_TABLES_CHILD_FIRST, seed_rbac
 from nexus.seed.stage3 import STAGE3_TABLES_CHILD_FIRST, Sealer, seed_stage3
@@ -240,16 +239,16 @@ def seed(
     *,
     reset: bool = False,
     data: dict[str, Any] | None = None,
-    cipher: FieldCipher | None = None,
+    vault: Vault | None = None,
 ) -> dict[str, int]:
     """Loads every demo tenant (one transaction each). Returns row counts per table.
 
-    With a `cipher` the Stage 3 demo rows are written too, sealing personal columns (D85). The shared test database
-    is seeded without them, so module tests start from empty Stage 3 tables.
+    With a key service (`vault`) the Stage 3 demo rows are written too, sealing personal columns (D85). The shared
+    test database is seeded without them, so module tests start from empty Stage 3 tables.
     """
     fixtures = data if data is not None else load_fixtures()
     engine = create_engine(url)
-    sealer = Sealer(cipher) if cipher is not None else None
+    sealer = Sealer(vault) if vault is not None else None
     stage3: dict[str, int] = {}
     try:
         with engine.begin() as conn:
@@ -298,7 +297,7 @@ def main() -> None:
         sys.exit("--reset is only allowed with NEXUS_ENVIRONMENT=dev")
     # Stage 3 rows are sealed through the configured key service (OpenBao in the dev stack, D85).
     vault = HttpVault(settings, httpx2.AsyncClient(timeout=10.0))
-    counts = seed(settings.migrate_database_url.get_secret_value(), reset=args.reset, cipher=FieldCipher(vault))
+    counts = seed(settings.migrate_database_url.get_secret_value(), reset=args.reset, vault=vault)
     print("seeded " + ", ".join(f"{n} {t}" for t, n in counts.items()))
 
 

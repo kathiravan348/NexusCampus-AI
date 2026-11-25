@@ -69,8 +69,8 @@
 | NEX-208 | M86 rollover write contract (input schemas) and mock handlers: dry run, override, confirm, roll back (D84) | C | done | Claude | 192 |
 | NEX-193 | Build: M86 rollover backend — dry run, decisions, confirm, roll-back window, audit (Owner review point 3, D84) | D | done | Claude | 208, 191 |
 | NEX-194 | M86 rollover screens: start a dry run, override decisions, confirm, reverse (Owner review point 3) | C | done | Claude | 193, 208 |
-| NEX-195 | Stage 3 demo seed, part 1: M08, M09, M12–M17 rows and next-year calendars (D85) | D | planned | — | 183–191, 193, 200 |
-| NEX-209 | Stage 3 demo seed, part 2: M18–M24 and M86 rows (D85) — split from NEX-195 | D | planned | — | 195 |
+| NEX-195 | Stage 3 demo seed, part 1: M08, M09, M12–M17 rows and next-year calendars (D85) | D | done | Claude | 183–191, 193, 200 |
+| NEX-209 | Stage 3 demo seed, part 2: M18–M24 and M86 rows (D85) — split from NEX-195 | D | withdrawn | Claude | 195 |
 | NEX-196 | Stage 3 contract parity: API responses match the frozen contracts | D | draft | — | 192, 195, 209 |
 | NEX-197 | Switch Stage 3 screens to real data: M08, M09, M12–M17 | C | draft | — | 196 |
 | NEX-198 | Switch Stage 3 screens to real data: M18–M28, M86 | C | draft | — | 196, 197 |

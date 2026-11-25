@@ -10,7 +10,6 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.engine import make_url
 
 from nexus.agent.tenant_export import ENCRYPTED_COLUMNS
-from nexus.core.fieldcrypto import FieldCipher
 from nexus.core.vault import FakeVault
 from nexus.seed.demo import load_fixtures, seed
 from nexus.seed.stage3 import STAGE3_TABLES
@@ -40,8 +39,8 @@ def _count(url: str, table: str) -> int:
 
 def test_stage3_seed_writes_every_table_and_seals_personal_columns(stage3_db: str) -> None:
     data: dict[str, Any] = load_fixtures()
-    cipher = FieldCipher(FakeVault())
-    first = seed(stage3_db, data=data, cipher=cipher)
+    vault = FakeVault()
+    first = seed(stage3_db, data=data, vault=vault)
     for key, table in STAGE3_TABLES:
         if table == "academic_calendars":
             continue
@@ -63,7 +62,7 @@ def test_stage3_seed_writes_every_table_and_seals_personal_columns(stage3_db: st
     finally:
         engine.dispose()
 
-    second = seed(stage3_db, data=data, cipher=cipher)
+    second = seed(stage3_db, data=data, vault=vault)
     assert second == first
     for _, table in STAGE3_TABLES:
         if table != "academic_calendars":
