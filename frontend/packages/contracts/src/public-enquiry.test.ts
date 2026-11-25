@@ -13,6 +13,9 @@ import {
 const form: PublicEnquiryForm = {
   id: "pef-3p9w6c2r5t4h",
   institutionName: "Riverside School",
+  institutionType: "k12",
+  defaultLocale: "hi-IN",
+  supportedLocales: ["hi-IN", "en-GB"],
   programs: [{ id: "prg-riverside", name: "Years 5 to 10" }],
   campuses: [
     { id: "cmp-rv-north", name: "Riverside School North" },
@@ -52,6 +55,28 @@ describe("PublicEnquiryFormSchema", () => {
     expect(PublicEnquiryFormSchema.safeParse({ ...form, institutionId: "ins-rv" }).success).toBe(
       false,
     );
+  });
+
+  it("rejects missing defaultLocale, duplicates and invalid locale or type", () => {
+    const missing = PublicEnquiryFormSchema.safeParse({ ...form, defaultLocale: "ta-IN" });
+    expect(missing.success).toBe(false);
+    expect(missing.error?.issues.map((issue) => issue.path)).toContainEqual(["supportedLocales"]);
+
+    const duplicate = PublicEnquiryFormSchema.safeParse({
+      ...form,
+      supportedLocales: ["hi-IN", "hi-IN"],
+    });
+    expect(duplicate.success).toBe(false);
+    const duplicatePaths = duplicate.error?.issues.map((issue) => issue.path);
+    expect(duplicatePaths).toContainEqual(["supportedLocales"]);
+
+    for (const bad of [
+      { supportedLocales: [] },
+      { defaultLocale: "hi_IN" },
+      { institutionType: "unknown" },
+    ]) {
+      expect(PublicEnquiryFormSchema.safeParse({ ...form, ...bad }).success).toBe(false);
+    }
   });
 });
 

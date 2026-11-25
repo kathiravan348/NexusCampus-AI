@@ -405,12 +405,12 @@ For a tenant with multiple institutions, the first institution supplies the defa
 | `GET /api/v1/import-jobs/:id/mappings` · `/issues` | M09 enabled, `m09.import.read` | `?page=&pageSize=` → `Page<ColumnMapping>` · `Page<ImportRowIssue>` (catalogue message keys only, never cell values) | `400`, `401`, `403`, `404` |
 | `POST /api/v1/import-jobs` | M09 enabled, `m09.import.manage` (active staff profile required) | `ImportJobInput` (`{ entity, fileName, sourceFormat }`) → `201 ImportJob` (`status: uploaded`, zero rows, `templateVersion: 1`, `rollbackUntil: null`, `createdByStaffProfileId` from viewer's active staff profile) | `400 invalid_request` (bad JSON, invalid plain file name, unknown entity/format, extra fields), `401`, `403 module_disabled`, `403 forbidden` (missing permission or no active staff profile) |
 
-## Admissions (M12) — mock API (Stage 3 prototype, NEX-164; public enquiry form, NEX-186)
+## Admissions (M12) — mock API (Stage 3 prototype, NEX-164; public enquiry form, NEX-186, NEX-201)
 
 | Method & path | Permission | Input / Output | Errors |
 |---|---|---|---|
 | `POST /api/v1/enquiries` | M12 enabled, `m12.admissions.manage` | `EnquiryInput` (source, campusId, contactName, contactPhone, contactEmail, learnerName, programId, followUpOn) → `201 Enquiry` | `400 invalid_request` for invalid JSON, invalid fields, missing contact method or a campus/program outside the tenant. Field details use input paths. `401` for a missing session, `403` for a disabled module or missing permission. |
-| `GET /api/v1/public/enquiry-forms/:formId` | Public (no session) | — → `PublicEnquiryForm` (`id`, `institutionName`, active `programs` and `campuses` as `{ id, name }` only, D79) | `404 not_found` for an unknown form ID, disabled M12 or suspended institution. |
+| `GET /api/v1/public/enquiry-forms/:formId` | Public (no session) | — → `PublicEnquiryForm` (`id`, `institutionName`, `institutionType`, `defaultLocale`, `supportedLocales`, active `programs` and `campuses` as `{ id, name }` only, D79) | `404 not_found` for an unknown form ID, disabled M12 or suspended institution. |
 | `POST /api/v1/public/enquiry-forms/:formId/enquiries` | Public (no session) | `PublicEnquiryInput` (`learnerName`, `contactName`, phone or email, optional `programId`/`campusId`, `consent: true`, empty honeypot `website`) → `202 PublicEnquiryReceipt` (`{ received: true }`, never echoes data). Stores a `new` / `public_form` enquiry with no assignee in the form's tenant; a filled `website` returns the same `202` and stores nothing. | `400 invalid_request` with field `details[].path` (incl. foreign program/campus), `404 not_found`. |
 | `GET /api/v1/enquiry-forms` | M12 enabled, `m12.admissions.manage` | `?page=&pageSize=` → `Page<EnquiryFormSummary>` (the signed-in tenant's public form IDs) | `400`, `401`, `403 module_disabled` or `forbidden`. |
 
