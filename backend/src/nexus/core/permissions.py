@@ -45,7 +45,7 @@ def _p(code: str, key: str, sensitive: bool = False) -> PermissionDef:
     return PermissionDef(code, sensitive, key)
 
 
-#: The Stage 1 catalogue — identical to the mocks' `PERMISSIONS` (a parity test checks code, flag and key).
+#: The catalogue exported with the demo fixtures (a parity test checks code, flag and key).
 CATALOGUE: tuple[PermissionDef, ...] = (
     _p("m01.institution.read", "m01.permission.institutionRead"),
     _p("m01.institution.manage", "m01.permission.institutionManage"),
@@ -71,6 +71,46 @@ CATALOGUE: tuple[PermissionDef, ...] = (
     _p("m11.settings.manage", "m11.permission.settingsManage"),
     _p("m83.vault.read", "m83.permission.vaultRead"),
     _p("m83.grant.approve", "m83.permission.grantApprove", True),
+    _p("m08.config.read", "m08.permission.configRead"),
+    _p("m08.config.manage", "m08.permission.configManage"),
+    _p("m13.learner.read", "m13.permission.learnerRead"),
+    _p("m13.learner.read_restricted", "m13.permission.learnerReadRestricted", True),
+    _p("m13.learner.manage", "m13.permission.learnerManage"),
+    _p("m14.family.read", "m14.permission.familyRead"),
+    _p("m14.family.read_restricted", "m14.permission.familyReadRestricted", True),
+    _p("m14.family.manage", "m14.permission.familyManage"),
+    _p("m15.structure.read", "m15.permission.structureRead"),
+    _p("m15.structure.manage", "m15.permission.structureManage"),
+    _p("m09.import.read", "m09.permission.importRead"),
+    _p("m09.import.manage", "m09.permission.importManage"),
+    _p("m12.admissions.read", "m12.permission.admissionsRead"),
+    _p("m12.admissions.manage", "m12.permission.admissionsManage"),
+    _p("m16.timetable.read", "m16.permission.timetableRead"),
+    _p("m16.timetable.manage", "m16.permission.timetableManage"),
+    _p("m17.attendance.read", "m17.permission.attendanceRead"),
+    _p("m17.attendance.mark", "m17.permission.attendanceMark", True),
+    _p("m17.leave.decide", "m17.permission.leaveDecide", True),
+    _p("m18.fees.read", "m18.permission.feesRead", True),
+    _p("m18.fees.manage", "m18.permission.feesManage", True),
+    _p("m19.accounts.read", "m19.permission.accountsRead"),
+    _p("m19.accounts.manage", "m19.permission.accountsManage", True),
+    _p("m20.marks.read", "m20.permission.marksRead", True),
+    _p("m20.marks.enter", "m20.permission.marksEnter", True),
+    _p("m21.exams.read", "m21.permission.examsRead", True),
+    _p("m21.exams.manage", "m21.permission.examsManage", True),
+    _p("m22.reports.read", "m22.permission.reportsRead", True),
+    _p("m22.reports.publish", "m22.permission.reportsPublish", True),
+    _p("m23.documents.read", "m23.permission.documentsRead", True),
+    _p("m23.documents.issue", "m23.permission.documentsIssue", True),
+    _p("m24.messages.read", "m24.permission.messagesRead", True),
+    _p("m24.messages.send", "m24.permission.messagesSend", True),
+    _p("m24.notices.read", "m24.permission.noticesRead"),
+    _p("m24.notices.publish", "m24.permission.noticesPublish"),
+    _p("m24.meetings.read", "m24.permission.meetingsRead", True),
+    _p("m24.meetings.manage", "m24.permission.meetingsManage", True),
+    _p("m28.dashboards.read", "m28.permission.dashboardsRead"),
+    _p("m86.rollover.read", "m86.permission.rolloverRead"),
+    _p("m86.rollover.manage", "m86.permission.rolloverManage"),
 )
 CODES = frozenset(p.code for p in CATALOGUE)
 

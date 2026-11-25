@@ -4168,6 +4168,246 @@
       "moduleId": "M83",
       "sensitive": true,
       "descriptionKey": "m83.permission.grantApprove"
+    },
+    {
+      "code": "m08.config.read",
+      "moduleId": "M08",
+      "sensitive": false,
+      "descriptionKey": "m08.permission.configRead"
+    },
+    {
+      "code": "m08.config.manage",
+      "moduleId": "M08",
+      "sensitive": false,
+      "descriptionKey": "m08.permission.configManage"
+    },
+    {
+      "code": "m13.learner.read",
+      "moduleId": "M13",
+      "sensitive": false,
+      "descriptionKey": "m13.permission.learnerRead"
+    },
+    {
+      "code": "m13.learner.read_restricted",
+      "moduleId": "M13",
+      "sensitive": true,
+      "descriptionKey": "m13.permission.learnerReadRestricted"
+    },
+    {
+      "code": "m13.learner.manage",
+      "moduleId": "M13",
+      "sensitive": false,
+      "descriptionKey": "m13.permission.learnerManage"
+    },
+    {
+      "code": "m14.family.read",
+      "moduleId": "M14",
+      "sensitive": false,
+      "descriptionKey": "m14.permission.familyRead"
+    },
+    {
+      "code": "m14.family.read_restricted",
+      "moduleId": "M14",
+      "sensitive": true,
+      "descriptionKey": "m14.permission.familyReadRestricted"
+    },
+    {
+      "code": "m14.family.manage",
+      "moduleId": "M14",
+      "sensitive": false,
+      "descriptionKey": "m14.permission.familyManage"
+    },
+    {
+      "code": "m15.structure.read",
+      "moduleId": "M15",
+      "sensitive": false,
+      "descriptionKey": "m15.permission.structureRead"
+    },
+    {
+      "code": "m15.structure.manage",
+      "moduleId": "M15",
+      "sensitive": false,
+      "descriptionKey": "m15.permission.structureManage"
+    },
+    {
+      "code": "m09.import.read",
+      "moduleId": "M09",
+      "sensitive": false,
+      "descriptionKey": "m09.permission.importRead"
+    },
+    {
+      "code": "m09.import.manage",
+      "moduleId": "M09",
+      "sensitive": false,
+      "descriptionKey": "m09.permission.importManage"
+    },
+    {
+      "code": "m12.admissions.read",
+      "moduleId": "M12",
+      "sensitive": false,
+      "descriptionKey": "m12.permission.admissionsRead"
+    },
+    {
+      "code": "m12.admissions.manage",
+      "moduleId": "M12",
+      "sensitive": false,
+      "descriptionKey": "m12.permission.admissionsManage"
+    },
+    {
+      "code": "m16.timetable.read",
+      "moduleId": "M16",
+      "sensitive": false,
+      "descriptionKey": "m16.permission.timetableRead"
+    },
+    {
+      "code": "m16.timetable.manage",
+      "moduleId": "M16",
+      "sensitive": false,
+      "descriptionKey": "m16.permission.timetableManage"
+    },
+    {
+      "code": "m17.attendance.read",
+      "moduleId": "M17",
+      "sensitive": false,
+      "descriptionKey": "m17.permission.attendanceRead"
+    },
+    {
+      "code": "m17.attendance.mark",
+      "moduleId": "M17",
+      "sensitive": true,
+      "descriptionKey": "m17.permission.attendanceMark"
+    },
+    {
+      "code": "m17.leave.decide",
+      "moduleId": "M17",
+      "sensitive": true,
+      "descriptionKey": "m17.permission.leaveDecide"
+    },
+    {
+      "code": "m18.fees.read",
+      "moduleId": "M18",
+      "sensitive": true,
+      "descriptionKey": "m18.permission.feesRead"
+    },
+    {
+      "code": "m18.fees.manage",
+      "moduleId": "M18",
+      "sensitive": true,
+      "descriptionKey": "m18.permission.feesManage"
+    },
+    {
+      "code": "m19.accounts.read",
+      "moduleId": "M19",
+      "sensitive": false,
+      "descriptionKey": "m19.permission.accountsRead"
+    },
+    {
+      "code": "m19.accounts.manage",
+      "moduleId": "M19",
+      "sensitive": true,
+      "descriptionKey": "m19.permission.accountsManage"
+    },
+    {
+      "code": "m20.marks.read",
+      "moduleId": "M20",
+      "sensitive": true,
+      "descriptionKey": "m20.permission.marksRead"
+    },
+    {
+      "code": "m20.marks.enter",
+      "moduleId": "M20",
+      "sensitive": true,
+      "descriptionKey": "m20.permission.marksEnter"
+    },
+    {
+      "code": "m21.exams.read",
+      "moduleId": "M21",
+      "sensitive": true,
+      "descriptionKey": "m21.permission.examsRead"
+    },
+    {
+      "code": "m21.exams.manage",
+      "moduleId": "M21",
+      "sensitive": true,
+      "descriptionKey": "m21.permission.examsManage"
+    },
+    {
+      "code": "m22.reports.read",
+      "moduleId": "M22",
+      "sensitive": true,
+      "descriptionKey": "m22.permission.reportsRead"
+    },
+    {
+      "code": "m22.reports.publish",
+      "moduleId": "M22",
+      "sensitive": true,
+      "descriptionKey": "m22.permission.reportsPublish"
+    },
+    {
+      "code": "m23.documents.read",
+      "moduleId": "M23",
+      "sensitive": true,
+      "descriptionKey": "m23.permission.documentsRead"
+    },
+    {
+      "code": "m23.documents.issue",
+      "moduleId": "M23",
+      "sensitive": true,
+      "descriptionKey": "m23.permission.documentsIssue"
+    },
+    {
+      "code": "m24.messages.read",
+      "moduleId": "M24",
+      "sensitive": true,
+      "descriptionKey": "m24.permission.messagesRead"
+    },
+    {
+      "code": "m24.messages.send",
+      "moduleId": "M24",
+      "sensitive": true,
+      "descriptionKey": "m24.permission.messagesSend"
+    },
+    {
+      "code": "m24.notices.read",
+      "moduleId": "M24",
+      "sensitive": false,
+      "descriptionKey": "m24.permission.noticesRead"
+    },
+    {
+      "code": "m24.notices.publish",
+      "moduleId": "M24",
+      "sensitive": false,
+      "descriptionKey": "m24.permission.noticesPublish"
+    },
+    {
+      "code": "m24.meetings.read",
+      "moduleId": "M24",
+      "sensitive": true,
+      "descriptionKey": "m24.permission.meetingsRead"
+    },
+    {
+      "code": "m24.meetings.manage",
+      "moduleId": "M24",
+      "sensitive": true,
+      "descriptionKey": "m24.permission.meetingsManage"
+    },
+    {
+      "code": "m28.dashboards.read",
+      "moduleId": "M28",
+      "sensitive": false,
+      "descriptionKey": "m28.permission.dashboardsRead"
+    },
+    {
+      "code": "m86.rollover.read",
+      "moduleId": "M86",
+      "sensitive": false,
+      "descriptionKey": "m86.permission.rolloverRead"
+    },
+    {
+      "code": "m86.rollover.manage",
+      "moduleId": "M86",
+      "sensitive": false,
+      "descriptionKey": "m86.permission.rolloverManage"
     }
   ],
   "roles": [
@@ -4200,7 +4440,47 @@
         "m11.assist.use",
         "m11.settings.manage",
         "m83.vault.read",
-        "m83.grant.approve"
+        "m83.grant.approve",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4237,7 +4517,47 @@
         "m10.device.wipe",
         "m11.assist.use",
         "m11.settings.manage",
-        "m83.vault.read"
+        "m83.vault.read",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4258,7 +4578,22 @@
         "m07.notification.send",
         "m07.preference.manage",
         "m10.device.read",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m08.config.read",
+        "m13.learner.read",
+        "m14.family.read",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m22.reports.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "institution",
@@ -4277,7 +4612,13 @@
       "permissions": [
         "m06.consent.manage",
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4292,7 +4633,12 @@
       "system": true,
       "permissions": [
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4329,7 +4675,47 @@
         "m11.assist.use",
         "m11.settings.manage",
         "m83.vault.read",
-        "m83.grant.approve"
+        "m83.grant.approve",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4366,7 +4752,47 @@
         "m10.device.wipe",
         "m11.assist.use",
         "m11.settings.manage",
-        "m83.vault.read"
+        "m83.vault.read",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4387,7 +4813,22 @@
         "m07.notification.send",
         "m07.preference.manage",
         "m10.device.read",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m08.config.read",
+        "m13.learner.read",
+        "m14.family.read",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m22.reports.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "institution",
@@ -4406,7 +4847,13 @@
       "permissions": [
         "m06.consent.manage",
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4421,7 +4868,12 @@
       "system": true,
       "permissions": [
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4458,7 +4910,47 @@
         "m11.assist.use",
         "m11.settings.manage",
         "m83.vault.read",
-        "m83.grant.approve"
+        "m83.grant.approve",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4495,7 +4987,47 @@
         "m10.device.wipe",
         "m11.assist.use",
         "m11.settings.manage",
-        "m83.vault.read"
+        "m83.vault.read",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4516,7 +5048,22 @@
         "m07.notification.send",
         "m07.preference.manage",
         "m10.device.read",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m08.config.read",
+        "m13.learner.read",
+        "m14.family.read",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m22.reports.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "institution",
@@ -4535,7 +5082,13 @@
       "permissions": [
         "m06.consent.manage",
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4550,7 +5103,12 @@
       "system": true,
       "permissions": [
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4587,7 +5145,47 @@
         "m11.assist.use",
         "m11.settings.manage",
         "m83.vault.read",
-        "m83.grant.approve"
+        "m83.grant.approve",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4624,7 +5222,47 @@
         "m10.device.wipe",
         "m11.assist.use",
         "m11.settings.manage",
-        "m83.vault.read"
+        "m83.vault.read",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4645,7 +5283,22 @@
         "m07.notification.send",
         "m07.preference.manage",
         "m10.device.read",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m08.config.read",
+        "m13.learner.read",
+        "m14.family.read",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m22.reports.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "institution",
@@ -4664,7 +5317,13 @@
       "permissions": [
         "m06.consent.manage",
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4679,7 +5338,12 @@
       "system": true,
       "permissions": [
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4716,7 +5380,47 @@
         "m11.assist.use",
         "m11.settings.manage",
         "m83.vault.read",
-        "m83.grant.approve"
+        "m83.grant.approve",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4753,7 +5457,47 @@
         "m10.device.wipe",
         "m11.assist.use",
         "m11.settings.manage",
-        "m83.vault.read"
+        "m83.vault.read",
+        "m08.config.read",
+        "m08.config.manage",
+        "m13.learner.read",
+        "m13.learner.read_restricted",
+        "m13.learner.manage",
+        "m14.family.read",
+        "m14.family.read_restricted",
+        "m14.family.manage",
+        "m15.structure.read",
+        "m15.structure.manage",
+        "m09.import.read",
+        "m09.import.manage",
+        "m12.admissions.read",
+        "m12.admissions.manage",
+        "m16.timetable.read",
+        "m16.timetable.manage",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m17.leave.decide",
+        "m18.fees.read",
+        "m18.fees.manage",
+        "m19.accounts.read",
+        "m19.accounts.manage",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m21.exams.manage",
+        "m22.reports.read",
+        "m22.reports.publish",
+        "m23.documents.read",
+        "m23.documents.issue",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.notices.publish",
+        "m24.meetings.read",
+        "m24.meetings.manage",
+        "m28.dashboards.read",
+        "m86.rollover.read",
+        "m86.rollover.manage"
       ],
       "allowedScopeKinds": [
         "group",
@@ -4774,7 +5518,22 @@
         "m07.notification.send",
         "m07.preference.manage",
         "m10.device.read",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m08.config.read",
+        "m13.learner.read",
+        "m14.family.read",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m17.attendance.read",
+        "m17.attendance.mark",
+        "m20.marks.read",
+        "m20.marks.enter",
+        "m21.exams.read",
+        "m22.reports.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "institution",
@@ -4793,7 +5552,13 @@
       "permissions": [
         "m06.consent.manage",
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read",
+        "m24.meetings.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -4808,7 +5573,12 @@
       "system": true,
       "permissions": [
         "m07.preference.manage",
-        "m11.assist.use"
+        "m11.assist.use",
+        "m15.structure.read",
+        "m16.timetable.read",
+        "m24.messages.read",
+        "m24.messages.send",
+        "m24.notices.read"
       ],
       "allowedScopeKinds": [
         "own"
@@ -5692,6 +6462,706 @@
     {
       "tenantId": "ten-hm",
       "moduleId": "M83",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M08",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M09",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M12",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M13",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M14",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M15",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M16",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M17",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M18",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M19",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M20",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M21",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M22",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M23",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M24",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M25",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M26",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M27",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M28",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ls",
+      "moduleId": "M86",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M08",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M09",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M12",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M13",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M14",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M15",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M16",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M17",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M18",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M19",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M20",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M21",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M22",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M23",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M24",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M25",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M26",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M27",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M28",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-rv",
+      "moduleId": "M86",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M08",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M09",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M12",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M13",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M14",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M15",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M16",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M17",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M18",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M19",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M20",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M21",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M22",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M23",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M24",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M25",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M26",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M27",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M28",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-nb",
+      "moduleId": "M86",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M08",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M09",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M12",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M13",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M14",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M15",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M16",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M17",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M18",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M19",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M20",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M21",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M22",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M23",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M24",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M25",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M26",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M27",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M28",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-ax",
+      "moduleId": "M86",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M08",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M09",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M12",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M13",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M14",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M15",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M16",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M17",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M18",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M19",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M20",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M21",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M22",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M23",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M24",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M25",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M26",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M27",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M28",
+      "enabled": true,
+      "source": "core",
+      "expiresAt": null
+    },
+    {
+      "tenantId": "ten-hm",
+      "moduleId": "M86",
       "enabled": true,
       "source": "core",
       "expiresAt": null

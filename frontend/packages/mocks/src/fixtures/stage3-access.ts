@@ -1,5 +1,7 @@
 import type { Entitlement, ModuleId, Permission, PermissionCode } from "@nexus/contracts";
-import type { SystemRoleKey } from "./ids";
+import { roleId, type SystemRoleKey } from "./ids";
+import { ENTITLEMENTS } from "./plans";
+import { PERMISSIONS, ROLES } from "./rbac";
 import { DEMO_TENANTS } from "./tenants";
 
 const perm = (code: PermissionCode, descriptionKey: string, sensitive = false): Permission => ({
@@ -123,3 +125,18 @@ export const STAGE3_ENTITLEMENTS: readonly Entitlement[] = DEMO_TENANTS.flatMap(
     expiresAt: null,
   })),
 );
+
+/** Shared by the demo seed export and the mutable mock database. */
+export function demoAccessFixtures() {
+  const grants = Object.entries(STAGE3_ROLE_PERMISSIONS);
+  return {
+    permissions: [...PERMISSIONS, ...STAGE3_PERMISSIONS],
+    roles: ROLES.map((role) => {
+      const match = role.system
+        ? grants.find(([key]) => role.id === roleId(role.tenantId, key as SystemRoleKey))
+        : undefined;
+      return match ? { ...role, permissions: [...role.permissions, ...match[1]] } : role;
+    }),
+    entitlements: [...ENTITLEMENTS, ...STAGE3_ENTITLEMENTS],
+  };
+}
