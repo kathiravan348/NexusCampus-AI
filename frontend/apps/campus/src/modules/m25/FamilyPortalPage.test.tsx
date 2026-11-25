@@ -39,7 +39,7 @@ describe("FamilyPortalPage", () => {
 
     expect(screen.getAllByText("Totals for all your children")).toHaveLength(1);
     const cards = screen.getByRole("list", { name: "Summary cards" });
-    expect(within(cards).getByRole("link", { name: /Attendance/ })).toHaveAttribute(
+    expect(within(cards).getByRole("link", { name: /Absences this week/ })).toHaveAttribute(
       "href",
       "/attendance",
     );

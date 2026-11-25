@@ -46,5 +46,5 @@
 | NEX-178 | M86 Year-end rollover & promotion | C | done | Codex | 159, 177 |
 | NEX-179 | Stage 3 review build: walkthrough per persona × institution type, Playwright smoke | C | done | Codex | 160–178, 181 |
 | NEX-181 | Menu shows only screens the user can open (role-profile audience, D77) | C | done | Codex | 160–178 |
-| NEX-182 | Stage 3 review fixes: "Absences this week" card, phone numbers with spaces | C | in-progress | Codex | 179, 181 |
+| NEX-182 | Stage 3 review fixes: "Absences this week" card, phone numbers with spaces | C | done | Codex | 179, 181 |
 | NEX-180 | Stage 3 freeze (planner + Owner) | — | in-progress | Claude | 179, 181, 182 |

@@ -33,7 +33,7 @@ describe("LearnerPortalPage", () => {
     expect(within(main).queryByText(learner.learnerNumber)).toBeNull();
 
     const cards = screen.getByRole("list", { name: "Summary cards" });
-    const attendanceCard = within(cards).getByRole("link", { name: /Attendance/ });
+    const attendanceCard = within(cards).getByRole("link", { name: /Absences this week/ });
     expect(attendanceCard).toHaveAttribute("href", "/attendance");
     expect(within(attendanceCard).getByText(/^\d+$/)).toBeVisible();
 
@@ -96,7 +96,7 @@ describe("LearnerPortalPage", () => {
     const messagesCard = within(cards).getByRole("link", { name: /Unread messages/ });
     expect(messagesCard).toHaveAttribute("href", "/messages");
     expect(within(messagesCard).getByText(/^\d+$/)).toBeVisible();
-    expect(within(cards).getByRole("link", { name: /Attendance/ })).toHaveAttribute(
+    expect(within(cards).getByRole("link", { name: /Absences this week/ })).toHaveAttribute(
       "href",
       "/attendance",
     );
