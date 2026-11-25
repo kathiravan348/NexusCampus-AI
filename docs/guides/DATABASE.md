@@ -230,7 +230,7 @@ The three tables use forced tenant RLS with the `tenant_isolation` policy. The a
 
 | Table | Columns | Constraints |
 |---|---|---|
-| `households` | `id`, `tenant_id`, `name`, nullable JSONB `address`, `learner_person_ids[]`, `guardian_person_ids[]`, nullable `primary_language`, `created_at`, `updated_at` | Each list contains distinct person IDs. A household has 1–20 learners and up to 10 guardians. An address requires a street line, city and country code. The second line, region and postal code are optional. |
+| `households` | `id`, `tenant_id`, `name`, nullable JSONB `address`, `learner_person_ids[]`, `guardian_person_ids[]`, nullable `primary_language`, `created_at`, `updated_at` | Each list contains distinct person IDs. A household has 1–20 learners and up to 10 guardians. An address requires a street line, city and country code. The second line, region and postal code are optional. Primary language accepts the same locale shape as M01. |
 | `guardian_relationships` | `id`, `tenant_id`, `guardian_person_id`, `learner_person_id`, `kind`, `parental_responsibility`, `lives_with_learner`, `contact_priority`, `pickup_right`, `court_order_note`, `effective_from`, `effective_to`, timestamps | Distinct guardian and learner. Priority is 1–10. A court restriction requires a note, encrypted under the tenant data key with `guardian_relationships.court_order_note` as its field path. All other rights require a null note. |
 | `authorised_pickups` | `id`, `tenant_id`, `learner_person_id`, `name`, E.164 `phone`, `relationship_label`, `valid_from`, `valid_to`, `added_by_person_id`, `created_at` | Each pickup names the person who added it. |
 

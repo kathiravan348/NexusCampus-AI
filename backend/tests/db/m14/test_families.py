@@ -108,8 +108,15 @@ def test_tenant_scope_and_disclosure(client: TestClient, kc: FakeKeycloak, famil
     assert houses["items"][-1]["address"] is None
     house = houses["items"][0]
     assert set(house) == {
-        "id", "tenantId", "name", "address", "learnerPersonIds", "guardianPersonIds", "primaryLanguage",
-        "createdAt", "updatedAt",
+        "id",
+        "tenantId",
+        "name",
+        "address",
+        "learnerPersonIds",
+        "guardianPersonIds",
+        "primaryLanguage",
+        "createdAt",
+        "updatedAt",
     }
     assert house["address"] == ADDRESS and house["primaryLanguage"] == "en-IN"
     child = house["learnerPersonIds"][0]
@@ -121,15 +128,35 @@ def test_tenant_scope_and_disclosure(client: TestClient, kc: FakeKeycloak, famil
             assert client.get(BASE + route, params={"learnerPersonId": outside}).status_code == 404
     pickup = client.get(BASE + PICKUP, params={"learnerPersonId": child}).json()["items"][0]
     assert set(pickup) == {
-        "id", "tenantId", "learnerPersonId", "name", "phone", "relationshipLabel", "validFrom", "validTo",
-        "addedByPersonId", "createdAt",
+        "id",
+        "tenantId",
+        "learnerPersonId",
+        "name",
+        "phone",
+        "relationshipLabel",
+        "validFrom",
+        "validTo",
+        "addedByPersonId",
+        "createdAt",
     }
     assert pickup["validFrom"] == "2026-01-01" and pickup["createdAt"].endswith("Z")
     assert event_count(families) == before
     row = client.get(BASE + REL, params={"learnerPersonId": child}).json()["items"][0]
     assert set(row) == {
-        "id", "tenantId", "guardianPersonId", "learnerPersonId", "kind", "parentalResponsibility", "livesWithLearner",
-        "contactPriority", "pickupRight", "courtOrderNote", "effectiveFrom", "effectiveTo", "createdAt", "updatedAt",
+        "id",
+        "tenantId",
+        "guardianPersonId",
+        "learnerPersonId",
+        "kind",
+        "parentalResponsibility",
+        "livesWithLearner",
+        "contactPriority",
+        "pickupRight",
+        "courtOrderNote",
+        "effectiveFrom",
+        "effectiveTo",
+        "createdAt",
+        "updatedAt",
     }
     assert row["courtOrderNote"] == NOTE and row["pickupRight"] == "court_restricted"
     with families.begin() as conn:
@@ -213,9 +240,22 @@ def test_storage_and_export(families: Engine, m13_vault: Vault) -> None:
 def test_household_contract_checks(families: Engine) -> None:
     with families.connect() as conn:
         row = dict(conn.execute(text("SELECT * FROM households WHERE id = 'm13-a'")).mappings().one())
+    with families.begin() as conn:
+        stored = (
+            conn.execute(
+                text("UPDATE households SET primary_language = 'sl-Latn-IT-1994' WHERE id = 'm13-a' RETURNING *")
+            )
+            .mappings()
+            .one()
+        )
+        assert HouseholdOut.model_validate(dict(stored)).primary_language == "sl-Latn-IT-1994"
     for address in (
-        {**ADDRESS, "line2": None}, {**ADDRESS, "city": " "}, {**ADDRESS, "postalCode": "1" * 21},
-        {**ADDRESS, "countryCode": "ZZ"}, {**ADDRESS, "extra": "x"}, {"line1": "Example", "city": "Pune"},
+        {**ADDRESS, "line2": None},
+        {**ADDRESS, "city": " "},
+        {**ADDRESS, "postalCode": "1" * 21},
+        {**ADDRESS, "countryCode": "ZZ"},
+        {**ADDRESS, "extra": "x"},
+        {"line1": "Example", "city": "Pune"},
     ):
         with pytest.raises(ValidationError):
             HouseholdOut.model_validate({**row, "address": address})
@@ -225,8 +265,13 @@ def test_household_contract_checks(families: Engine) -> None:
                 {"a": json.dumps(address)},
             )
     for field, value in (
-        ("learner_person_ids", []), ("learner_person_ids", ["id", "id"]), ("guardian_person_ids", [""]),
-        ("guardian_person_ids", [str(i) for i in range(11)]), ("primary_language", "en-in"),
+        ("learner_person_ids", []),
+        ("learner_person_ids", ["id", "id"]),
+        ("guardian_person_ids", [""]),
+        ("guardian_person_ids", [str(i) for i in range(11)]),
+        ("primary_language", "en-in"),
+        ("primary_language", "en-u-ca-gregory"),
+        ("primary_language", "abcde"),
     ):
         with pytest.raises(ValidationError):
             HouseholdOut.model_validate({**row, field: value})

@@ -57,19 +57,6 @@ def upgrade() -> None:
         $$
         """
     )
-    op.execute(
-        """
-        CREATE FUNCTION m14_locale_valid(tag text)
-        RETURNS boolean LANGUAGE sql IMMUTABLE STRICT PARALLEL SAFE AS $$
-          SELECT tag COLLATE "C" ~ (
-            '^([a-z]{2,3}|[a-z]{5,8})(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?'
-            '(-([0-9][a-z0-9]{3}|[a-z0-9]{5,8}))*'
-            '(-[0-9a-wy-z](-[a-z0-9]{2,8})+)*(-x(-[a-z0-9]{1,8})+)?$'
-          )
-        $$
-        """
-    )
-
     op.create_table(
         "households",
         sa.Column("id", sa.String(ID), primary_key=True),
@@ -86,7 +73,12 @@ def upgrade() -> None:
         sa.CheckConstraint("m14_address_valid(address)", name="address_valid"),
         sa.CheckConstraint("m14_person_ids_valid(learner_person_ids, 1, 20)", name="learners_valid"),
         sa.CheckConstraint("m14_person_ids_valid(guardian_person_ids, 0, 10)", name="guardians_valid"),
-        sa.CheckConstraint("m14_locale_valid(primary_language)", name="locale_valid"),
+        # Match nexus.core.validation.is_locale, including script, region and variant subtags.
+        sa.CheckConstraint(
+            """primary_language COLLATE "C" ~ '^[a-z]{2,3}(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?"""
+            "(-([0-9A-Za-z]{5,8}|[0-9][0-9A-Za-z]{3}))*$'",
+            name="locale_valid",
+        ),
         sa.CheckConstraint("updated_at >= created_at", name="updated_at_valid"),
     )
 
@@ -166,6 +158,5 @@ def upgrade() -> None:
 def downgrade() -> None:
     for table in reversed(TABLES):
         op.drop_table(table)
-    op.execute("DROP FUNCTION m14_locale_valid(text)")
     op.execute("DROP FUNCTION m14_address_valid(jsonb)")
     op.execute("DROP FUNCTION m14_person_ids_valid(varchar[], integer, integer)")

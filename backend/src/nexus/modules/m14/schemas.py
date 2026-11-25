@@ -5,29 +5,35 @@ from typing import Annotated, Literal, NotRequired, Self, TypedDict
 
 from pydantic import AfterValidator, ConfigDict, Field, StringConstraints, field_validator, model_validator, with_config
 
+from nexus.core.validation import COUNTRIES, check, is_locale
 from nexus.modules.m15.schemas import Id, Name, Record, Timestamps
 
 # CountryCodeSchema uses the regions named by Intl.DisplayNames, excluding pseudo-regions.
-COUNTRY_CODES = frozenset((
-    "AC AD AE AF AG AI AL AM AN AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT "
-    "BU BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CP CQ CR CS CU CV CW CX CY CZ DD DE DG DJ DK DM DO DY "
-    "DZ EA EC EE EG EH ER ES ET FI FJ FK FM FO FR FX GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY "
-    "HK HM HN HR HT HU HV IC ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB "
-    "LC LI LK LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE "
-    "NF NG NH NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RH RO RS RU RW SA SB SC "
-    "SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SU SV SX SY SZ TA TC TD TF TG TH TJ TK TL TM TN TO TP TR TT TV "
-    "TW TZ UA UG UK UM US UY UZ VA VC VD VE VG VI VN VU WF WS XK YD YE YT YU ZA ZM ZR ZW"
-).split())
-Locale = Annotated[
-    str,
-    StringConstraints(
-        pattern=(
-            r"^([a-z]{2,3}|[a-z]{5,8})(-[A-Z][a-z]{3})?(-([A-Z]{2}|[0-9]{3}))?"
-            r"(-([0-9][a-z0-9]{3}|[a-z0-9]{5,8}))*"
-            r"(-[0-9a-wy-z](-[a-z0-9]{2,8})+)*(-x(-[a-z0-9]{1,8})+)?$"
-        )
-    ),
-]
+COUNTRY_CODES = COUNTRIES | {
+    "AC",
+    "AN",
+    "BU",
+    "CP",
+    "CQ",
+    "CS",
+    "DD",
+    "DG",
+    "DY",
+    "EA",
+    "FX",
+    "HV",
+    "IC",
+    "NH",
+    "RH",
+    "SU",
+    "TA",
+    "TP",
+    "UK",
+    "VD",
+    "YD",
+    "YU",
+    "ZR",
+}
 
 
 def country_code(value: str) -> str:
@@ -59,7 +65,13 @@ class HouseholdOut(UpdatedRecord):
     address: Address | None
     learner_person_ids: Annotated[list[Id], Field(min_length=1, max_length=20)]
     guardian_person_ids: Annotated[list[Id], Field(max_length=10)]
-    primary_language: Locale | None
+    primary_language: str | None
+
+    @field_validator("primary_language")
+    @classmethod
+    def valid_locale(cls, value: str | None) -> str | None:
+        check(value is None or is_locale(value), "Must be a canonical BCP 47 locale, e.g. en-IN")
+        return value
 
     @field_validator("learner_person_ids", "guardian_person_ids")
     @classmethod
@@ -73,7 +85,14 @@ class GuardianRelationshipOut(UpdatedRecord):
     guardian_person_id: Id
     learner_person_id: Id
     kind: Literal[
-        "mother", "father", "parent", "step_parent", "grandparent", "legal_guardian", "foster_carer", "adult_sibling",
+        "mother",
+        "father",
+        "parent",
+        "step_parent",
+        "grandparent",
+        "legal_guardian",
+        "foster_carer",
+        "adult_sibling",
         "other",
     ]
     parental_responsibility: bool
