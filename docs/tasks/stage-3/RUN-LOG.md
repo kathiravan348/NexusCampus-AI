@@ -227,3 +227,7 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - 2026-11-25 18:1x (tick) — `main` was already in sync with `origin` (the 17:4x push is done). NEX-185 asked which
   institution owns an enquiry; answered (follow the frozen mock: program → campus → staff → first), restarted on Codex.
   Planned ahead: NEX-204, NEX-203. Gemini idle (lane D only) — not blocking.
+- 2026-11-25 19:1x (tick) — NEX-185 ended `checks-failed` (4 rounds; only its new DB test's hand-made session is
+  rejected, 538 other backend tests green). Change requests added (use `tests.db.auth_fixtures`), restarted on Codex
+  (1st restart). Planned ahead: NEX-204, NEX-203. Gemini idle (lane D only) — not blocking. Push of this plan
+  commit was refused by the auto-mode permission check; `main` is 1 commit ahead of `origin` (no code change).
