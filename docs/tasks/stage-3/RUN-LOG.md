@@ -150,7 +150,7 @@ privacy rule to finish faster. Keep the tick's reply to 5 lines.
 | NEX-200 | Codex · gpt-6.2-astra / high (lane D, `0025`) | 12:5x; locale question answered, restarted | green (2031 frontend; backend 528, 0 skipped) | done — no fixes | merged 14:1x, pushed |
 | NEX-184 | Codex · gpt-6.2-astra / high (lane D, `0026`) | 14:15 (tick) | red ×4 on format / lint / mypy only (533 tests green); reviewer fixed, green (backend 533, 0 skipped; main 2035 frontend) | done — fix: `ruff format`, list literals, `noqa: S608` on fixed-table cleanup, `Select[Learner]` type | merged 15:1x, pushed |
 | NEX-202 | Codex · gpt-6.2-astra / high (lane D, `0027`) | 15:18 (tick) — Codex usage limit until 16:42, no changes; restarted 16:43 (tick); 2 questions (households for tenant-wide readers, contract imports) answered 16:5x, restarted; locale-alias question answered 17:1x (use `is_locale`, `iw-IL` an accepted gap), restarted | green (2035 frontend; backend 538, 0 skipped) | done — fix: model `locale_valid` CHECK matched to migration | merged 17:4x; main GREEN, push blocked (see Waiting) |
-| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`); round 5 Claude · claude-opus-5-5 (D82) | 17:47 (tick); institution-precedence question answered 18:1x (follow the mock), restarted; checks-failed 19:0x (test sign-in), restarted → Codex usage limit until 21:43; Claude built the test fix 19:4x | green (backend 543, 0 skipped; frontend 348 files after the usual re-run) | ready-for-review — Codex review running (21:5x, Owner) | — |
+| NEX-185 | Codex · gpt-6.2-astra / high (lane D, `0028`); round 5 Claude · claude-opus-5-5 (D82) | 17:47 (tick); institution-precedence question answered 18:1x (follow the mock), restarted; checks-failed 19:0x (test sign-in), restarted → Codex usage limit until 21:43; Claude built the test fix 19:4x | green (backend 543, 0 skipped; frontend 348 files after the usual re-run) | in-review — Codex review stopped 21:58 at its usage limit (until 2026-11-30 16:41): partial fixes in `5d5db55`, checks green (backend 544, 0 skipped), no verdict or review note | — |
 | NEX-204 | — (planned 16:4x, lane D, `0029`, D81; waits for NEX-185) | — | — | — | — |
 | NEX-203 | — (planned 17:5x, lane D, `0030`; waits for NEX-204) | — | — | — | — |
 
@@ -246,3 +246,10 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
 - 2026-11-25 21:5x — Owner: "Start Codex review". New `$O/start-review.sh` / `run-review.sh` (tick step 10): Codex
   (`gpt-6.2-astra` / high) is reviewing NEX-185 in its worktree; the harness checks and commits the `review:`; a later
   tick merges it on `reviewed-done`, then lane D continues with NEX-204.
+- 2026-11-25 22:1x (tick) — **Stop rule: only work that needs the Owner remains.** Codex's review of NEX-185 stopped
+  at 21:58: Codex hit a usage limit until **2026-11-30 16:41**. It left review fixes on `task/NEX-185` (`5d5db55`:
+  migration `0028`, m12 models / router / schemas / service, tests, API and DATABASE guides; harness check GREEN,
+  backend 544 passed, 0 skipped) but no verdict or review note (status `in-review`, owner Codex). Claude cannot review
+  its own build (D68), and NEX-204, NEX-203 and NEX-187–195 all wait for NEX-185's migration `0028`, so nothing can
+  start. The scheduled task `nexus-stage3-tick` is disabled. Owner decides: wait for Codex (restart with
+  `bash $O/start-review.sh NEX-185 gpt-6.2-astra high` after 11-30 16:41), or name another reviewer for NEX-185.
