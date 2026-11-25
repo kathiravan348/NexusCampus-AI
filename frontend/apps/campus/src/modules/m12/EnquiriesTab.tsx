@@ -1,7 +1,8 @@
 import { EnquiryStatusSchema, type EnquiryStatus } from "@nexus/contracts";
 import { formatDate, isPseudoLocale, SOURCE_LOCALE, useText, type MessageKey } from "@nexus/i18n";
-import { ApiRequestError, useEnquiries, usePrograms } from "@nexus/services";
-import { Badge, Button, EmptyState, Select, Skeleton } from "@nexus/ui-core";
+import { ApiRequestError, useEnquiries, useEnquiryForms, usePrograms } from "@nexus/services";
+import { Badge, Button, EmptyState, Select, Skeleton, useToast } from "@nexus/ui-core";
+import { Link2 } from "lucide-react";
 import { useState } from "react";
 import { useRuntime } from "../../app/TenantRuntime";
 import { AddEnquiryDialog, ENQUIRY_SOURCE_KEYS } from "./AddEnquiryDialog";
@@ -16,6 +17,7 @@ const ENQUIRY_STATUS_KEYS: Readonly<Record<EnquiryStatus, MessageKey>> = {
 
 export function EnquiriesTab({ canManage, online }: { canManage: boolean; online: boolean }) {
   const t = useText();
+  const toast = useToast();
   const { locale } = useRuntime();
   const displayLocale = isPseudoLocale(locale) ? SOURCE_LOCALE : locale;
   const [status, setStatus] = useState<EnquiryStatus | null>(null);
@@ -23,6 +25,19 @@ export function EnquiriesTab({ canManage, online }: { canManage: boolean; online
   const [adding, setAdding] = useState(false);
   const enquiries = useEnquiries(status);
   const programs = usePrograms();
+  const forms = useEnquiryForms(canManage);
+  const publicFormId = forms.data?.items[0]?.id ?? null;
+
+  const copyPublicLink = async (formId: string) => {
+    const url = `${window.location.origin}/apply/${encodeURIComponent(formId)}`;
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error("Clipboard unavailable");
+      await navigator.clipboard.writeText(url);
+      toast.show({ tone: "success", title: t("m12.public.linkCopied") });
+    } catch {
+      toast.show({ tone: "danger", title: t("m12.public.copyFailed") });
+    }
+  };
   const options = [
     { value: "", label: t("m12.enquiries.all") },
     ...EnquiryStatusSchema.options.map((value) => ({
@@ -47,6 +62,12 @@ export function EnquiriesTab({ canManage, online }: { canManage: boolean; online
           <div className="flex flex-wrap items-center gap-2">
             {!online && (
               <span className="text-body-sm text-text-secondary">{t("common.offline")}</span>
+            )}
+            {publicFormId && (
+              <Button variant="secondary" onClick={() => void copyPublicLink(publicFormId)}>
+                <Link2 className="h-4 w-4" aria-hidden="true" />
+                {t("m12.public.copyLink")}
+              </Button>
             )}
             <Button disabled={!online} onClick={() => setAdding(true)}>
               {t("m12.add.title")}

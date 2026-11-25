@@ -11,6 +11,7 @@ import { m09Handlers } from "./m09";
 import { m10Handlers } from "./m10";
 import { m11Handlers } from "./m11";
 import { m12Handlers } from "./m12";
+import { m12PublicHandlers } from "./m12-public";
 import { m13Handlers } from "./m13";
 import { m14Handlers } from "./m14";
 import { m15Handlers } from "./m15";
@@ -49,6 +50,7 @@ export const handlers: HttpHandler[] = [
   ...m10Handlers,
   ...m11Handlers,
   ...m12Handlers,
+  ...m12PublicHandlers,
   ...m13Handlers,
   ...m14Handlers,
   ...m15Handlers,

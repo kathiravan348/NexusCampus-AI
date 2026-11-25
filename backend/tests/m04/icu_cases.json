@@ -688,6 +688,10 @@
     "valid": true
   },
   {
+    "text": "Admissions enquiry",
+    "valid": true
+  },
+  {
     "text": "Admissions records could not be loaded.",
     "valid": true
   },
@@ -1476,6 +1480,10 @@
     "valid": true
   },
   {
+    "text": "Confirm that you consent to be contacted.",
+    "valid": true
+  },
+  {
     "text": "Conflict resolved.",
     "valid": true
   },
@@ -1528,6 +1536,10 @@
     "valid": true
   },
   {
+    "text": "Copy public form link",
+    "valid": true
+  },
+  {
     "text": "Core",
     "valid": true
   },
@@ -1545,6 +1557,10 @@
   },
   {
     "text": "Could not apply imported overrides.",
+    "valid": true
+  },
+  {
+    "text": "Could not copy the link. Try again.",
     "valid": true
   },
   {
@@ -2156,6 +2172,10 @@
     "valid": true
   },
   {
+    "text": "Enquiry form not found",
+    "valid": true
+  },
+  {
     "text": "Enrolled",
     "valid": true
   },
@@ -2757,6 +2777,10 @@
   },
   {
     "text": "How you hear from us",
+    "valid": true
+  },
+  {
+    "text": "I consent to {institution} contacting me about this admissions enquiry.",
     "valid": true
   },
   {
@@ -4060,6 +4084,10 @@
     "valid": true
   },
   {
+    "text": "No preference",
+    "valid": true
+  },
+  {
     "text": "No programs yet",
     "valid": true
   },
@@ -4792,6 +4820,10 @@
     "valid": true
   },
   {
+    "text": "Public enquiry form link copied.",
+    "valid": true
+  },
+  {
     "text": "Public form",
     "valid": true
   },
@@ -5504,6 +5536,14 @@
     "valid": true
   },
   {
+    "text": "Send an admissions enquiry. Enter a phone number or email address so the admissions team can contact you.",
+    "valid": true
+  },
+  {
+    "text": "Send enquiry",
+    "valid": true
+  },
+  {
     "text": "Send invitation",
     "valid": true
   },
@@ -5521,6 +5561,10 @@
   },
   {
     "text": "Sending",
+    "valid": true
+  },
+  {
+    "text": "Sending an enquiry needs a connection. Connect to the internet and try again.",
     "valid": true
   },
   {
@@ -6000,6 +6044,10 @@
     "valid": true
   },
   {
+    "text": "Thank you for your enquiry",
+    "valid": true
+  },
+  {
     "text": "That did not work. Try again.",
     "valid": true
   },
@@ -6049,6 +6097,10 @@
   },
   {
     "text": "The enquiry could not be saved. Try again.",
+    "valid": true
+  },
+  {
+    "text": "The enquiry form could not be loaded.",
     "valid": true
   },
   {
@@ -6173,6 +6225,10 @@
   },
   {
     "text": "This email already has an account.",
+    "valid": true
+  },
+  {
+    "text": "This enquiry link does not match an active admissions form. Check the link and try again.",
     "valid": true
   },
   {
@@ -6997,6 +7053,14 @@
   },
   {
     "text": "Your data is encrypted with these keys. When you leave, the keys are destroyed so the data can never be read again.",
+    "valid": true
+  },
+  {
+    "text": "Your enquiry could not be sent. Try again.",
+    "valid": true
+  },
+  {
+    "text": "Your enquiry has been sent to {institution}. The admissions team will contact you using the details you provided.",
     "valid": true
   },
   {
@@ -8460,6 +8524,18 @@
     "valid": true
   },
   {
+    "text": "आपकी पूछताछ {institution} को भेज दी गई है। प्रवेश टीम आपके दिए गए विवरण पर आपसे संपर्क करेगी।",
+    "valid": true
+  },
+  {
+    "text": "आपकी पूछताछ के लिए धन्यवाद",
+    "valid": true
+  },
+  {
+    "text": "आपकी पूछताछ भेजी नहीं जा सकी। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
     "text": "आपकी प्रतीक्षा में",
     "valid": true
   },
@@ -9464,6 +9540,10 @@
     "valid": true
   },
   {
+    "text": "कृपया संपर्क किए जाने की सहमति की पुष्टि करें।",
+    "valid": true
+  },
+  {
     "text": "केवल अपने रिकॉर्ड",
     "valid": true
   },
@@ -9625,6 +9705,10 @@
   },
   {
     "text": "कोई प्रवेश पत्र जारी नहीं हुआ है।",
+    "valid": true
+  },
+  {
+    "text": "कोई प्राथमिकता नहीं",
     "valid": true
   },
   {
@@ -11024,6 +11108,22 @@
     "valid": true
   },
   {
+    "text": "पूछताछ फ़ॉर्म नहीं मिला",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ फ़ॉर्म लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ भेजने के लिए इंटरनेट कनेक्शन आवश्यक है। इंटरनेट से जुड़ें और फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "पूछताछ भेजें",
+    "valid": true
+  },
+  {
     "text": "पूछताछ सहेजी नहीं जा सकी। फिर प्रयास करें।",
     "valid": true
   },
@@ -11285,6 +11385,14 @@
   },
   {
     "text": "प्रवेश पत्र संख्या: {number}",
+    "valid": true
+  },
+  {
+    "text": "प्रवेश पूछताछ",
+    "valid": true
+  },
+  {
+    "text": "प्रवेश पूछताछ भेजें। फ़ोन नंबर या ईमेल पता दर्ज करें ताकि प्रवेश टीम आपसे संपर्क कर सके।",
     "valid": true
   },
   {
@@ -12060,6 +12168,10 @@
     "valid": true
   },
   {
+    "text": "मैं इस प्रवेश पूछताछ के बारे में {institution} द्वारा मुझसे संपर्क किए जाने की सहमति देता/देती हूँ।",
+    "valid": true
+  },
+  {
     "text": "मैं समझता/समझती हूँ कि Nexus सहायता कर्मचारी {end} तक यह डेटा देखेंगे।",
     "valid": true
   },
@@ -12125,6 +12237,10 @@
   },
   {
     "text": "यह पता किसी पृष्ठ से मेल नहीं खाता। लिंक जाँचें या होम पर वापस जाएँ।",
+    "valid": true
+  },
+  {
+    "text": "यह पूछताछ लिंक किसी सक्रिय प्रवेश फ़ॉर्म से मेल नहीं खाता। लिंक जाँचें और फिर से कोशिश करें।",
     "valid": true
   },
   {
@@ -12397,6 +12513,10 @@
   },
   {
     "text": "लागू होने की परतें",
+    "valid": true
+  },
+  {
+    "text": "लिंक कॉपी नहीं हो सका। फिर से कोशिश करें।",
     "valid": true
   },
   {
@@ -13480,7 +13600,15 @@
     "valid": true
   },
   {
+    "text": "सार्वजनिक पूछताछ फ़ॉर्म का लिंक कॉपी किया गया।",
+    "valid": true
+  },
+  {
     "text": "सार्वजनिक फ़ॉर्म",
+    "valid": true
+  },
+  {
+    "text": "सार्वजनिक फ़ॉर्म लिंक कॉपी करें",
     "valid": true
   },
   {
@@ -14516,6 +14644,10 @@
     "valid": true
   },
   {
+    "text": "இணைப்பை நகலெடுக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
     "text": "இணைய இணைப்பு தேவை",
     "valid": true
   },
@@ -14581,6 +14713,10 @@
   },
   {
     "text": "இந்த உரையாடல் காப்பகப்படுத்தப்பட்டது; இனி பதில்களைப் பெற முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "இந்த சேர்க்கை விசாரணை தொடர்பாக {institution} என்னைத் தொடர்புகொள்ள சம்மதிக்கிறேன்.",
     "valid": true
   },
   {
@@ -14673,6 +14809,10 @@
   },
   {
     "text": "இந்த வார வருகையின்மைகள்",
+    "valid": true
+  },
+  {
+    "text": "இந்த விசாரணை இணைப்பு செயலில் உள்ள சேர்க்கைப் படிவத்துடன் பொருந்தவில்லை. இணைப்பைச் சரிபார்த்து மீண்டும் முயலவும்.",
     "valid": true
   },
   {
@@ -15229,6 +15369,18 @@
   },
   {
     "text": "உங்கள் வரைவுத் தீமில் உரை மற்றும் ஒரு மாதிரி இணைப்பின் முன்னோட்டம்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் விசாரணை {institution} நிறுவனத்திற்கு அனுப்பப்பட்டுள்ளது. நீங்கள் வழங்கிய விவரங்களின் மூலம் சேர்க்கைக் குழு உங்களைத் தொடர்புகொள்ளும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் விசாரணைக்கு நன்றி",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் விசாரணையை அனுப்ப முடியவில்லை. மீண்டும் முயலவும்.",
     "valid": true
   },
   {
@@ -16200,6 +16352,10 @@
     "valid": true
   },
   {
+    "text": "குறிப்பிட்ட விருப்பம் இல்லை",
+    "valid": true
+  },
+  {
     "text": "குறிப்பு",
     "valid": true
   },
@@ -16789,6 +16945,14 @@
   },
   {
     "text": "சேர்க்கை வழங்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கை விசாரணை",
+    "valid": true
+  },
+  {
+    "text": "சேர்க்கை விசாரணையை அனுப்பவும். சேர்க்கைக் குழு உங்களைத் தொடர்புகொள்ளத் தொலைபேசி எண்ணையோ மின்னஞ்சல் முகவரியையோ உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -17501,6 +17665,10 @@
   },
   {
     "text": "தொடர்பு முன்னுரிமை {priority}",
+    "valid": true
+  },
+  {
+    "text": "தொடர்புகொள்ள சம்மதிக்கிறேன் என்பதை உறுதிப்படுத்தவும்.",
     "valid": true
   },
   {
@@ -18680,7 +18848,15 @@
     "valid": true
   },
   {
+    "text": "பொது விசாரணைப் படிவ இணைப்பு நகலெடுக்கப்பட்டது.",
+    "valid": true
+  },
+  {
     "text": "பொதுச் சரிபார்ப்பில் இந்த ஆவணம் செல்லாததாகக் காட்டப்படும். ரத்து செய்ததை மாற்ற முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "பொதுப் படிவ இணைப்பை நகலெடு",
     "valid": true
   },
   {
@@ -19793,6 +19969,22 @@
   },
   {
     "text": "விசாரணைகள், விண்ணப்பங்கள் மற்றும் சேர்க்கைச் சலுகைகளைக் கண்காணிக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "விசாரணைப் படிவத்தை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "விசாரணைப் படிவம் கிடைக்கவில்லை",
+    "valid": true
+  },
+  {
+    "text": "விசாரணையை அனுப்ப இணைய இணைப்பு தேவை. இணையத்துடன் இணைந்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "விசாரணையை அனுப்பு",
     "valid": true
   },
   {

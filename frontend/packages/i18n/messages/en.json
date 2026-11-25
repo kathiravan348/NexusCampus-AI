@@ -5247,6 +5247,74 @@
     "message": "Manage admissions",
     "description": "Permission description: Manage enquiries, applications, admission offers and waitlists."
   },
+  "m12.public.title": {
+    "message": "Admissions enquiry",
+    "description": "Subtitle under the institution name and fallback heading on the public admissions enquiry page."
+  },
+  "m12.public.intro": {
+    "message": "Send an admissions enquiry. Enter a phone number or email address so the admissions team can contact you.",
+    "description": "Introductory text on the public admissions enquiry form."
+  },
+  "m12.public.noPreference": {
+    "message": "No preference",
+    "description": "Optional select option when a family has not chosen a specific program or campus."
+  },
+  "m12.public.consent": {
+    "message": "I consent to {institution} contacting me about this admissions enquiry.",
+    "description": "Required consent checkbox label on the public enquiry form. {institution} is the institution's name."
+  },
+  "m12.public.consentRequired": {
+    "message": "Confirm that you consent to be contacted.",
+    "description": "Validation error when the required consent checkbox on the public enquiry form is not ticked."
+  },
+  "m12.public.website": {
+    "message": "Website",
+    "description": "Hidden anti-spam honeypot field label on the public enquiry form; not shown to users."
+  },
+  "m12.public.submit": {
+    "message": "Send enquiry",
+    "description": "Submit button on the public admissions enquiry form."
+  },
+  "m12.public.thankYouTitle": {
+    "message": "Thank you for your enquiry",
+    "description": "Confirmation heading shown after a public admissions enquiry is submitted."
+  },
+  "m12.public.thankYouBody": {
+    "message": "Your enquiry has been sent to {institution}. The admissions team will contact you using the details you provided.",
+    "description": "Confirmation text after sending a public enquiry; never echoes personal details. {institution} is the institution's name."
+  },
+  "m12.public.offlineNotice": {
+    "message": "Sending an enquiry needs a connection. Connect to the internet and try again.",
+    "description": "Notice shown on the public enquiry form when the device is offline."
+  },
+  "m12.public.notFoundTitle": {
+    "message": "Enquiry form not found",
+    "description": "Heading shown when the public enquiry form link does not exist."
+  },
+  "m12.public.notFoundBody": {
+    "message": "This enquiry link does not match an active admissions form. Check the link and try again.",
+    "description": "Description shown when the public enquiry form link is unknown or unavailable."
+  },
+  "m12.public.loadError": {
+    "message": "The enquiry form could not be loaded.",
+    "description": "Error heading when fetching the public enquiry form fails unexpectedly."
+  },
+  "m12.public.submitFailed": {
+    "message": "Your enquiry could not be sent. Try again.",
+    "description": "Error alert shown when submitting the public enquiry form fails."
+  },
+  "m12.public.copyLink": {
+    "message": "Copy public form link",
+    "description": "Button on the Enquiries tab that copies the institution's public admissions enquiry link."
+  },
+  "m12.public.linkCopied": {
+    "message": "Public enquiry form link copied.",
+    "description": "Success toast shown after copying the public enquiry form link."
+  },
+  "m12.public.copyFailed": {
+    "message": "Could not copy the link. Try again.",
+    "description": "Error toast shown when copying the public enquiry form link fails."
+  },
   "m16.nav.title": {
     "message": "Timetable",
     "description": "Navigation item and page title for the Timetable & scheduling module (M16)."
