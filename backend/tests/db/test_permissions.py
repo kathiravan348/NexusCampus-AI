@@ -131,7 +131,15 @@ def test_guardian_cannot_invite(client: TestClient, kc: FakeKeycloak) -> None:
     assert client.get("/probe/invite").status_code == 403
 
 
-PUBLIC = {"/healthz", "/readyz", "/api/v1/auth/login", "/api/v1/auth/callback"}
+PUBLIC = {
+    "/healthz",
+    "/readyz",
+    "/api/v1/auth/login",
+    "/api/v1/auth/callback",
+    # Public enquiry form (D79, NEX-204): no session by design, rate limited and tenant-blind.
+    "/api/v1/public/enquiry-forms/{form_id}",
+    "/api/v1/public/enquiry-forms/{form_id}/enquiries",
+}
 
 
 def _guards(dependant: Any) -> list[tuple[str | None, str]]:
