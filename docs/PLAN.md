@@ -52,7 +52,7 @@ in Tamil (D42); the Group exercises inherited/locked themes and text overrides.
 | 2. Data layer | 154–155 fixtures for the 5 demo tenants and the Group · 156–159 MSW handlers + services | Demo institutions with classes, learners, families, timetables, fees and marks served through MSW |
 | 3. Screens | 160–178: one task per module (M15, M08, M09, M13+M14, M12, M16, M17, M18, M19, M20, M21, M22, M23, M24, M25, M26, M27, M28, M86) with its offline level and its AI helper mocked behind M11 | Every Stage 3 screen clickable in demo mode, per persona and institution type |
 | 4. Review | 179 review build + walkthrough · 181 menu audience · 182 review fixes · 180 freeze (D78) | Frozen Stage 3 scope; build tasks planned at the freeze |
-| 5. Build | 183–185, 187–191 DB + API per module group · 186 public enquiry form · 192 portal homes and dashboards API · 193–194 rollover write flow · 195 demo seed · 196 contract parity · 197–198 screens switched to real | Stage 3 runs on the real backend, one module at a time |
+| 5. Build | 183 M15, 200 M08, 184–185, 187–191 DB + API per module group (one migration chain, in order) · 186 public enquiry form (demo data first, D79) · 192 portal homes and dashboards API · 193–194 rollover write flow · 195 demo seed · 196 contract parity · 197–198 screens switched to real | Stage 3 runs on the real backend, one module at a time |
 | 6. Harden & release | 199 offline, i18n, WCAG 2.2 AA, security review, install test, guides | Stage 3 released |
 
 ## Stage 2 — Nexus Control & delivery (outline; detail at Stage 1 freeze)
