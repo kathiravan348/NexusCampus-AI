@@ -317,6 +317,18 @@ invoices (applying a payment).
 `concessions.reason` and `fee_refunds.reason` are FieldCipher text under the tenant's `tenant_data` key (a CHECK
 rejects plaintext) and are listed in `ENCRYPTED_COLUMNS`.
 
+## Accounting (M19 — `0034_accounting`)
+
+All three tables have an opaque `id`, a `tenant_id`, an institution, an insertion-order column, forced RLS with the
+`tenant_isolation` policy and composite tenant references. Money is `bigint` minor units. The application role reads
+all three and inserts journal entries only; entries are never updated or deleted.
+
+| Table | Columns and constraints |
+|---|---|
+| `ledger_accounts` | Code of 3-10 digits (unique per institution), name, kind (asset, liability, equity, income, expense), optional parent account in the same tenant (never itself), active. |
+| `journal_entries` | Posting date, reference, currency, `lines` (JSON array), source (manual, fees, payroll, import), creation time. `m19_journal_lines_valid(lines)` requires 2-100 lines, each with exactly one positive side, and equal debit and credit totals. |
+| `budgets` | Academic year, currency, `lines` (1-200 JSON lines of account and amount), status (draft, approved, closed), timestamps. |
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with
