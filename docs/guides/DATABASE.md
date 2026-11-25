@@ -362,6 +362,20 @@ delete seat assignments only (a new seat plan replaces the old one).
 `revaluation_requests.reason` is FieldCipher text under the tenant's `tenant_data` key (a CHECK rejects plaintext)
 and is listed in `ENCRYPTED_COLUMNS`.
 
+## Report cards and issued documents (M22, M23 — `0037_records`)
+
+Both tables have an opaque `id`, a `tenant_id`, an insertion-order column, forced RLS with the `tenant_isolation`
+policy and composite tenant references. The application role reads both and may update only a report card's
+`status`, `published_at` and `updated_at`, and a document's `revoked` and `revoked_reason`.
+
+| Table | Columns and constraints |
+|---|---|
+| `report_cards` | Learner, academic year, optional period, template, `lines` (1-60 JSON lines of subject, grade and marks percent), encrypted `line_remarks` (one JSON array of the line remarks), encrypted `overall_remark`, status, `published_at` exactly when published, timestamps. |
+| `issued_documents` | Optional learner (null for staff letters), kind, number, template, issue date, `signatures` (at most 5), verification code `^[A-Z0-9]{10,16}$` (unique), `revoked` exactly when an encrypted `revoked_reason` is present. |
+
+The three encrypted columns are FieldCipher text under the tenant's `tenant_data` key (a CHECK rejects plaintext) and
+are listed in `ENCRYPTED_COLUMNS`.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with

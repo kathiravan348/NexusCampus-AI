@@ -1,6 +1,6 @@
 # API
 
-> State as of: 2026-11-26 (Stage 3 build — M21 exams on the real backend (NEX-207), M20 gradebook on the real backend (NEX-189), M19 accounting on the real backend (NEX-206), M18 fees and payments on the real backend (NEX-188), M17 attendance on the real backend (NEX-205), M16 timetable on the real backend (NEX-187), M09 import jobs on the real backend (NEX-203), M12 public enquiry form with abuse limits (NEX-204), M12 staff admissions on the real backend (NEX-185), M14 families on the real backend (NEX-202), M13 learner records on the real backend (NEX-184), M08 configuration on the real backend (NEX-200), M15 academic structure on the real backend (NEX-183); M12 public admissions enquiry mock routes `GET /api/v1/public/enquiry-forms/:formId`, `POST /api/v1/public/enquiry-forms/:formId/enquiries`, `GET /api/v1/enquiry-forms` (NEX-186); Stage 3 prototype — M24 communication replies `POST /api/v1/message-threads/:id/messages` (NEX-173), M23 issued document revocation `POST /api/v1/issued-documents/:id/revoke` (NEX-172), M22 report card status changes (NEX-171), M21 exam seating plans (NEX-170), M20 assessment rosters and mark entry (NEX-169), M19 journal entry posting (NEX-168), M18 manual fee payment recording `POST /api/v1/fee-payments` (NEX-167), M17 attendance rosters and marks (NEX-166), M16 timetable slot creation `POST /api/v1/timetable-slots` (NEX-165), M12 enquiry creation (NEX-164), M08 custom field creation (NEX-161), M09 import job registration `POST /api/v1/import-jobs` (NEX-162), and M15 academic structure mock routes incl. `POST /api/v1/class-groups` (NEX-160). Stage 2 complete through NEX-145: every Nexus Control route P01–P18 on the control backend — no Control route is mock-only in real mode — plus the M84 install agent and diagnostic bundle decision audit events, D60 signed pull-only commands with D63 expiry, P04 provisioning / offboarding, P10 access broker, P18 moves, D66 one open offboarding or move per tenant, D62 Razorpay INR payment links and `NXTE/1` tenant export & import. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
+> State as of: 2026-11-26 (Stage 3 build — M22 report cards and M23 issued documents on the real backend (NEX-190), M21 exams on the real backend (NEX-207), M20 gradebook on the real backend (NEX-189), M19 accounting on the real backend (NEX-206), M18 fees and payments on the real backend (NEX-188), M17 attendance on the real backend (NEX-205), M16 timetable on the real backend (NEX-187), M09 import jobs on the real backend (NEX-203), M12 public enquiry form with abuse limits (NEX-204), M12 staff admissions on the real backend (NEX-185), M14 families on the real backend (NEX-202), M13 learner records on the real backend (NEX-184), M08 configuration on the real backend (NEX-200), M15 academic structure on the real backend (NEX-183); M12 public admissions enquiry mock routes `GET /api/v1/public/enquiry-forms/:formId`, `POST /api/v1/public/enquiry-forms/:formId/enquiries`, `GET /api/v1/enquiry-forms` (NEX-186); Stage 3 prototype — M24 communication replies `POST /api/v1/message-threads/:id/messages` (NEX-173), M23 issued document revocation `POST /api/v1/issued-documents/:id/revoke` (NEX-172), M22 report card status changes (NEX-171), M21 exam seating plans (NEX-170), M20 assessment rosters and mark entry (NEX-169), M19 journal entry posting (NEX-168), M18 manual fee payment recording `POST /api/v1/fee-payments` (NEX-167), M17 attendance rosters and marks (NEX-166), M16 timetable slot creation `POST /api/v1/timetable-slots` (NEX-165), M12 enquiry creation (NEX-164), M08 custom field creation (NEX-161), M09 import job registration `POST /api/v1/import-jobs` (NEX-162), and M15 academic structure mock routes incl. `POST /api/v1/class-groups` (NEX-160). Stage 2 complete through NEX-145: every Nexus Control route P01–P18 on the control backend — no Control route is mock-only in real mode — plus the M84 install agent and diagnostic bundle decision audit events, D60 signed pull-only commands with D63 expiry, P04 provisioning / offboarding, P10 access broker, P18 moves, D66 one open offboarding or move per tenant, D62 Razorpay INR payment links and `NXTE/1` tenant export & import. Stage 1 build — real backend: sign-in, `GET /me` (NEX-045), M01 (NEX-047), M02 users & access (NEX-048) with SSO + SCIM (NEX-049), M83 `GET /vault/keys` (NEX-050), M83 provider access (NEX-051), M06 audit & privacy (NEX-052), M03 theme + fonts (NEX-053), M04 texts (NEX-054), M05 plan & usage (NEX-055), M07 notifications + outbox worker (NEX-056), M10 sync (NEX-057), M11 Assist via the AI gateway (NEX-058))
 
 In prototype mode (`VITE_DATA_MODE=mock`), MSW serves `/api/v1/*` using request headers `X-Nexus-Tenant`, `X-Nexus-User`, and optional `X-Nexus-Scenario` (`empty`, `error`, `slow`, `offline`). Lists return `{ items, total, page, pageSize }` (D15); errors return `{ error: { code, message, details? } }`.
 
@@ -577,7 +577,7 @@ size 200, total). A replay with the same `Idempotency-Key` returns the stored re
 records the paper only. Revaluation reasons are stored encrypted; a page that shows them records
 `m21.revaluationRequest.sensitiveRead`.
 
-## Report cards (M22) — mock API (Stage 3 prototype, NEX-171)
+## Report cards (M22) — real backend (NEX-190) and mock (NEX-171)
 
 | Method & path | Access | Input / output | Errors |
 |---|---|---|---|
@@ -586,7 +586,7 @@ records the paper only. Revaluation reasons are stored encrypted; a page that sh
 
 Allowed moves are draft → approved, approved → published, and published → withdrawn. Each successful move sets `updatedAt` to the current UTC time. Publishing sets `publishedAt` to that same time. Withdrawal clears it. Invalid bodies and transitions report the field path `status`. Rejected writes preserve the card.
 
-## Issued documents (M23) — mock API (Stage 3 prototype, NEX-158, NEX-172)
+## Issued documents (M23) — real backend (NEX-190) and mock (NEX-172)
 
 | Method & path | Access | Input / output | Errors |
 |---|---|---|---|
@@ -594,6 +594,13 @@ Allowed moves are draft → approved, approved → published, and published → 
 | `POST /api/v1/issued-documents/:id/revoke` | M23 enabled and `m23.documents.issue` | `IssuedDocumentRevokeInput` (`{ reason }`, trimmed 1–300 chars) → `200 IssuedDocument` (`revoked: true`, `revokedReason` set) | `400 invalid_request` (path `reason`), `401`, `403 module_disabled` or `forbidden`, `404` for an unknown or foreign document, `409 conflict` (path `revoked`) when already revoked |
 
 Error details carry field paths only, never learner names, document numbers, verification codes or revocation reasons (V-7). Rejected writes leave the document unchanged.
+
+On the real backend (NEX-190) M22 and M23 answer as the mock. Report card status changes follow draft → approved →
+published → withdrawn (`publishedAt` set only while published); `m22.reportCard.statusChanged` records the field
+name. Revoking a document stores its reason encrypted; `m23.issuedDocument.revoked` marks `reason` sensitive.
+Report card remarks and revocation reasons are stored encrypted; families see published cards of their learners and
+never a revocation reason; a page that shows a remark or reason records `m22.reportCard.sensitiveRead` /
+`m23.issuedDocument.sensitiveRead` (field name only).
 
 ## Communication (M24) — mock API (Stage 3 prototype, NEX-159, NEX-173)
 

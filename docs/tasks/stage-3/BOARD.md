@@ -63,7 +63,7 @@
 | NEX-206 | Build: DB + API for M19 accounting (ledger accounts, journal entries, budgets) — split from NEX-188 | D | done | Claude | 188 |
 | NEX-189 | Build: DB + API for M20 gradebook (schemes, assessments, rubrics, mark entry) | D | done | Claude | 183, 184, 206 |
 | NEX-207 | Build: DB + API for M21 exams (papers, seat plans, hall tickets, revaluation) — split from NEX-189 | D | done | Claude | 189, 187 |
-| NEX-190 | Build: DB + API for M22 report cards and M23 issued documents | D | planned | — | 189, 207 |
+| NEX-190 | Build: DB + API for M22 report cards and M23 issued documents | D | done | Claude | 189, 207 |
 | NEX-191 | Build: DB + API for M24 messages, notices and meetings (on the M07 notifications engine) | D | draft | — | 184 |
 | NEX-192 | Build: API for M25–M28 portal homes and dashboards (counts and aggregates only) | D | draft | — | 187–191 |
 | NEX-193 | Build: M86 rollover backend — dry run, decisions, confirm, roll-back window, audit (Owner review point 3) | D | draft | — | 192 |
