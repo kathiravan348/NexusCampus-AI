@@ -329,6 +329,22 @@ all three and inserts journal entries only; entries are never updated or deleted
 | `journal_entries` | Posting date, reference, currency, `lines` (JSON array), source (manual, fees, payroll, import), creation time. `m19_journal_lines_valid(lines)` requires 2-100 lines, each with exactly one positive side, and equal debit and credit totals. |
 | `budgets` | Academic year, currency, `lines` (1-200 JSON lines of account and amount), status (draft, approved, closed), timestamps. |
 
+## Gradebook (M20 — `0035_gradebook`)
+
+All four tables have an opaque `id`, a `tenant_id`, an insertion-order column, forced RLS with the
+`tenant_isolation` policy and composite tenant references. The application role reads all four, inserts mark
+entries and may update only their entry columns (marks, absent, rubric scores, remark, staff profile, time, device).
+
+| Table | Columns and constraints |
+|---|---|
+| `grading_schemes` | Institution, name, kind, `bands` (1-20 JSON bands), timestamps. |
+| `rubrics` | Name and `criteria` (1-20 JSON criteria with levels). |
+| `assessments` | Subject offering, name, kind, `max_marks` (1-1000 in halves), `weight_percent` (0-100), optional rubric, optional due date, status, timestamps. |
+| `mark_entries` | Assessment, learner (one entry per assessment and learner), `marks` (≥ 0 in halves, null when absent), `absent`, optional `rubric_scores` JSON object, encrypted `remark`, staff profile, entry time, optional device. |
+
+`mark_entries.remark` is FieldCipher text under the tenant's `tenant_data` key (a CHECK rejects plaintext) and is
+listed in `ENCRYPTED_COLUMNS`.
+
 ## Demo data
 `uv run --project backend nexus-seed [--reset]` loads the five demo tenants (D16), their audit chains, identities, roles and module switches from
 `backend/src/nexus/seed/demo_fixtures.json`, exported from the frontend mocks with

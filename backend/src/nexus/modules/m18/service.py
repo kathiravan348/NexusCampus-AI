@@ -51,9 +51,10 @@ async def _staff_ids(auth: Authorized, *, active_today: bool) -> list[str]:
     return list(await auth.ctx.db.scalars(query.order_by(RoleProfile.id)))
 
 
-async def family_learner_ids(auth: Authorized) -> set[str] | None:
-    """`None` with `m18.fees.read`; otherwise the viewer's family learners (staff and empty families: `403`)."""
-    if auth.grants.has(READ):
+async def family_learner_ids(auth: Authorized, read_permission: str = READ) -> set[str] | None:
+    """`None` with the module's read permission; otherwise the viewer's family learners (staff and empty families:
+    `403`). M20 and M21 reuse it with their own read permission, as the mock's `familyLearnerIds`."""
+    if auth.grants.has(read_permission):
         return None
     if await _staff_ids(auth, active_today=False):
         raise forbidden()
