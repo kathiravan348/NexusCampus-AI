@@ -6,6 +6,7 @@ export * from "./tenancy";
 export * from "./calendar";
 export * from "./academics";
 export * from "./curriculum";
+export * from "./courses";
 export * from "./timetable";
 export * from "./attendance";
 export * from "./fees";
