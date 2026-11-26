@@ -131,6 +131,8 @@ describe("products and coupons", () => {
     expect(
       StoreProductSchema.safeParse({ ...product, publishedByStaffProfileId: null }).success,
     ).toBe(false);
+    expect(StoreProductSchema.safeParse({ ...product, status: "archived" }).success).toBe(true);
+    expect(StoreProductSchema.safeParse({ ...product, status: "draft" }).success).toBe(false);
     expect(StoreProductSchema.safeParse({ ...product, slug: "Python Basics" }).success).toBe(false);
     expect(
       CouponSchema.safeParse({ ...coupon, kind: "amount", percentBps: null, amount: 50000 })

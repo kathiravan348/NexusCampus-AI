@@ -66,9 +66,11 @@ export const StoreProductSchema = z
     },
   )
   .refine(
-    (product) => (product.status === "published") === (product.publishedByStaffProfileId !== null),
+    (product) =>
+      product.status === "archived" ||
+      (product.status === "published") === (product.publishedByStaffProfileId !== null),
     {
-      message: "a person publishes a product",
+      message: "a person publishes a product (an archived product keeps who published it)",
       path: ["publishedByStaffProfileId"],
     },
   );
