@@ -25,7 +25,7 @@
 | NEX-251 | Contracts (M91): media items with consent state, portfolios, entries, portable exports — split from NEX-216 | B | done | Claude | 210, 216 |
 | NEX-217 | Contracts (M39): catalogue records, copies, loans, holds, fines, AI recommendations (private reading history) | B | planned | — | 151 |
 | NEX-252 | Contracts (M44): surveys, questions, anonymity, responses, results, AI theme summaries — split from NEX-217 | B | planned | — | 211 |
-| NEX-253 | Contracts (M45): credential templates, issued credentials (Open Badges 3, W3C VC), verification, revocation — split from NEX-217 | B | draft | — | 148 |
+| NEX-253 | Contracts (M45): credential templates, issued credentials (Open Badges 3, W3C VC), verification, revocation — split from NEX-217 | B | planned | — | 210 |
 | NEX-218 | Contracts (M40, M41): test series, ranks, percentiles, doubts; catalogue courses, session packs, trial and make-up sessions, level exams | B | draft | — | 146, 247 |
 | NEX-219 | Contracts (M42, M43): credit rules, elective registration, degree audit, thesis supervision; store products, bundles, coupons, orders | B | draft | — | 146, 211 |
 | NEX-220 | Fixtures: curriculum, courses, content, assignments, questions and mastery for the 5 demo tenants and the Group | B | draft | — | 210–214, 247, 248 |
