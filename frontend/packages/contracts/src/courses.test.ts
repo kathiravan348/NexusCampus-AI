@@ -128,6 +128,9 @@ describe("course spaces", () => {
   });
 
   it("rejects bad spaces", () => {
+    expect(CourseSpaceSchema.safeParse({ ...classSpace, academicYearId: null }).success).toBe(
+      false,
+    );
     expect(CourseSpaceSchema.safeParse({ ...classSpace, extra: 1 }).success).toBe(false);
     expect(CourseSpaceSchema.safeParse({ ...classSpace, selfEnrol: true }).success).toBe(false);
     expect(CourseSpaceSchema.safeParse({ ...onlineCourse, kind: "community" }).success).toBe(false);
@@ -209,6 +212,18 @@ describe("course items", () => {
     expect(CourseItemSchema.safeParse({ ...byKind.test, passMarkBps: null }).success).toBe(false);
     expect(CourseItemSchema.safeParse({ ...item, passMarkBps: 5000 }).success).toBe(false);
     expect(CourseItemSchema.safeParse({ ...byKind.test, passMarkBps: 10001 }).success).toBe(false);
+    expect(CourseItemSchema.safeParse({ ...byKind.page, completion: "submit" }).success).toBe(
+      false,
+    );
+    expect(
+      CourseItemSchema.safeParse({ ...byKind.test, completion: "submit", passMarkBps: null })
+        .success,
+    ).toBe(false);
+    expect(
+      CourseItemSchema.safeParse({ ...byKind.link, completion: "pass", passMarkBps: 5000 }).success,
+    ).toBe(false);
+    const passContent = { ...item, completion: "pass", passMarkBps: 8000 };
+    expect(CourseItemSchema.safeParse(passContent).success).toBe(true);
   });
 });
 

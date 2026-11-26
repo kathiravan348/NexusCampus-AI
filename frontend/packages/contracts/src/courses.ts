@@ -61,6 +61,10 @@ export const CourseSpaceSchema = z
     message: "subjectOfferingId is set exactly for a class space",
     path: ["subjectOfferingId"],
   })
+  .refine((space) => space.kind !== "class" || space.academicYearId !== null, {
+    message: "a class space belongs to an academic year",
+    path: ["academicYearId"],
+  })
   .refine((space) => !space.selfEnrol || space.kind === "course", {
     message: "only a course allows self-enrolment",
     path: ["selfEnrol"],
@@ -111,6 +115,8 @@ const referencedKinds: ReadonlySet<CourseItemKind> = new Set([
   "discussion",
 ]);
 
+const passableKinds: ReadonlySet<CourseItemKind> = new Set(["test", "content", "assignment"]);
+
 export const CourseItemSchema = z
   .strictObject({
     id: IdSchema,
@@ -139,6 +145,16 @@ export const CourseItemSchema = z
     message: "url is set exactly for link items",
     path: ["url"],
   })
+  .refine(
+    (item) =>
+      (item.completion !== "submit" || item.kind === "assignment") &&
+      (item.completion !== "pass" || passableKinds.has(item.kind)),
+    {
+      message:
+        "submit completion needs an assignment; pass needs a test, content or assignment item",
+      path: ["completion"],
+    },
+  )
   .refine((item) => (item.completion === "pass") === (item.passMarkBps !== null), {
     message: "passMarkBps is set exactly when completion is pass",
     path: ["passMarkBps"],
