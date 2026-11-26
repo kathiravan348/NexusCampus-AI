@@ -9,6 +9,8 @@ export * from "./curriculum";
 export * from "./courses";
 export * from "./content";
 export * from "./assignments";
+export * from "./questions";
+export * from "./online-tests";
 export * from "./timetable";
 export * from "./attendance";
 export * from "./fees";
