@@ -74,4 +74,4 @@
 | NEX-196 | Stage 3 contract parity: API responses match the frozen contracts | D | done | Claude | 192, 195, 209 |
 | NEX-197 | Switch Stage 3 screens to real data: M08, M09, M12–M17 | C | done | Claude | 196 |
 | NEX-198 | Switch Stage 3 screens to real data: M18–M28, M86 | C | withdrawn | — | 196, 197 |
-| NEX-199 | Stage 3 harden & release: offline, i18n, WCAG 2.2 AA, security review V-1…V-7, install test, guides | D | draft | — | 186, 194, 198 |
+| NEX-199 | Stage 3 harden & release: offline, i18n, WCAG 2.2 AA, security review V-1…V-7, install test, guides | D | done | Claude | 186, 194, 197 |

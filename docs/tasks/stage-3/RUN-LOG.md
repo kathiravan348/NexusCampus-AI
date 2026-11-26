@@ -285,4 +285,9 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   in, withdrawn); the dev database was upgraded `0022` → `0039` and seeded live through OpenBao. `main` GREEN (2047
   frontend, 607 backend). Remaining: NEX-196 (contract parity), NEX-197 / NEX-198 (screens on real data), NEX-199
   (release hardening) — then the stop rule (Owner's release review).
-
+- 2026-11-26 (D83) — **Stage 3 build ready for the Owner's release review.** NEX-196 and NEX-197 merged; NEX-199
+  done: [`STAGE-3-SECURITY.md`](../../review/STAGE-3-SECURITY.md) and
+  [`STAGE-3-RELEASE.md`](../../review/STAGE-3-RELEASE.md). Real-data runs pass (Stage 3 screens for admin, teacher
+  and guardian; a11y light/dark; Tamil and Hindi). Owner items in the release checklist §5: native hi/ta review,
+  Compose install test, D84 grant review, Codex re-check of the D83 reviews. Scheduled task stays disabled; nothing
+  is running.
