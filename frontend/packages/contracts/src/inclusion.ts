@@ -7,7 +7,8 @@ import { IdSchema, IsoDateSchema, UtcDateTimeSchema } from "./common";
  * allows). `needsSummary` is health-like data: it never reaches the AI gateway, another learner's view, an export for
  * anyone outside the plan team, or a log. AI goal drafts are off unless the institution switches them on, use only the
  * goal area, outcomes and progress ratings, and become active only after a person approves them (A-3, A-4). M21 exams
- * and M33 online tests read active accommodations to adjust time and rooms.
+ * and M33 online tests read active accommodations to adjust time and rooms. A region pack may require the guardian's
+ * agreement before a plan becomes active.
  */
 
 const isUnique = (values: readonly unknown[]) => new Set(values).size === values.length;
@@ -106,6 +107,8 @@ export const SupportGoalSchema = z
     targetDate: IsoDateSchema,
     outcomeIds: uniqueIds(10),
     source: z.enum(["manual", "ai_draft"]),
+    /** The AI's original wording, kept beside the person's decision (A-4); set exactly for AI drafts. */
+    aiDraftStatement: z.string().trim().min(1).max(1000).nullable(),
     status: SupportGoalStatusSchema,
     approvedByStaffProfileId: IdSchema.nullable(),
     approvedAt: UtcDateTimeSchema.nullable(),
@@ -118,7 +121,11 @@ export const SupportGoalSchema = z
       message: "a goal leaves draft only with a person's approval",
       path: ["approvedByStaffProfileId"],
     },
-  );
+  )
+  .refine((goal) => (goal.source === "ai_draft") === (goal.aiDraftStatement !== null), {
+    message: "aiDraftStatement is kept exactly for AI drafts",
+    path: ["aiDraftStatement"],
+  });
 export type SupportGoal = z.infer<typeof SupportGoalSchema>;
 
 export const AccommodationCategorySchema = z.enum([
@@ -166,6 +173,7 @@ export const SupportSessionSchema = z.strictObject({
   date: IsoDateSchema,
   minutes: z.int().min(1).max(600),
   deliveredByStaffProfileId: IdSchema,
+  /** Personal data (V-7). */
   note: z.string().trim().max(2000).nullable(),
 });
 export type SupportSession = z.infer<typeof SupportSessionSchema>;
@@ -184,6 +192,7 @@ export const GoalProgressSchema = z.strictObject({
   goalId: IdSchema,
   recordedOn: IsoDateSchema,
   rating: GoalProgressRatingSchema,
+  /** Personal data (V-7). */
   note: z.string().trim().max(2000).nullable(),
   recordedByStaffProfileId: IdSchema,
 });

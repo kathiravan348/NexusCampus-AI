@@ -40,6 +40,7 @@ const goal: SupportGoal = {
   targetDate: "2026-10-01",
   outcomeIds: [],
   source: "manual",
+  aiDraftStatement: null,
   status: "active",
   approvedByStaffProfileId: "staff-senco",
   approvedAt: "2026-06-12T09:00:00Z",
@@ -90,10 +91,19 @@ describe("support plans", () => {
 describe("support goals", () => {
   it("accepts a manual goal, an approved AI draft and an unapproved draft", () => {
     expect(SupportGoalSchema.safeParse(goal).success).toBe(true);
-    expect(SupportGoalSchema.safeParse({ ...goal, source: "ai_draft" }).success).toBe(true);
+    expect(
+      SupportGoalSchema.safeParse({
+        ...goal,
+        source: "ai_draft",
+        aiDraftStatement: "Read 60 words a minute.",
+      }).success,
+    ).toBe(true);
+    expect(SupportGoalSchema.safeParse({ ...goal, source: "ai_draft" }).success).toBe(false);
+    expect(SupportGoalSchema.safeParse({ ...goal, aiDraftStatement: "x" }).success).toBe(false);
     const draft = {
       ...goal,
       source: "ai_draft",
+      aiDraftStatement: "Read fluently.",
       status: "draft",
       approvedByStaffProfileId: null,
       approvedAt: null,
