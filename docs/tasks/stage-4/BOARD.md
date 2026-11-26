@@ -7,7 +7,7 @@
 > `draft` rows have no task file yet; the planner writes them 2 ahead (`AGENTS.md` §3.5).
 
 **Step:** design (D87; `docs/PLAN.md` → Stage 4) · **Modules:** M29–M46, M91 ·
-**Module list and order:** waiting for the Owner's OK (D87). NEX-210–212 do not depend on it.
+**Module list and order:** approved by the Owner 2026-11-26 (D88).
 
 | ID | Title | Lane | Status | Owner | Depends on |
 |---|---|---|---|---|---|

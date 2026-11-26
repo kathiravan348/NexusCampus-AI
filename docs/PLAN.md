@@ -14,7 +14,7 @@
 | 6 | Campus life & services | M52–M56, M60–M62, M64–M70, M85 | Transport, hostel, canteen, store, wallet, gate, emergency & crisis (L3), health, wellbeing, events, sports, trips, placement, internships, international, alumni |
 | 7 | Enterprise & ecosystem | M73–M82 | Groups/franchises, BI, integrations and public API, marketplace, white-label apps, website builder, Edge node, IoT, ESG, trust centre; certifications |
 
-**Current: Stage 4 — design (D87), `docs/tasks/stage-4/BOARD.md`.** Stage 1 released 2026-11-21 (D54), Stage 2 released 2026-11-23 (D70), Stage 3 released 2026-11-26 (D86). Do not build modules of a later stage.
+**Current: Stage 4 — design (plan D87, approved D88), `docs/tasks/stage-4/BOARD.md`.** Stage 1 released 2026-11-21 (D54), Stage 2 released 2026-11-23 (D70), Stage 3 released 2026-11-26 (D86). Do not build modules of a later stage.
 Why Control is Stage 2: the first paying customer (SaaS or self-hosted) needs provisioning, billing or licensing,
 updates and support before any school module ships to them.
 

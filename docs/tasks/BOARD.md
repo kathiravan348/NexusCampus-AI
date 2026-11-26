@@ -4,7 +4,7 @@
 > Task IDs `NEX-###` are global and never reused; each task file lives in its stage folder.
 
 **Planning lock:** —
-**Current stage:** Stage 4 — Teaching & learning, design (D87): [`stage-4/BOARD.md`](stage-4/BOARD.md)
+**Current stage:** Stage 4 — Teaching & learning, design (D87, approved D88): [`stage-4/BOARD.md`](stage-4/BOARD.md)
 
 | Stage | Name | Board | Tasks | Status |
 |---|---|---|---|---|

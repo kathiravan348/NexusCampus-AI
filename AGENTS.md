@@ -9,7 +9,7 @@
 > Platform names come from `brand.config.ts` only. An institution's name, theme, fonts and texts are tenant data.
 
 ## 1. Current stage
-**Stage 4 — Teaching & learning, design (D87): `docs/tasks/stage-4/BOARD.md`**
+**Stage 4 — Teaching & learning, design (D87, approved D88): `docs/tasks/stage-4/BOARD.md`**
 (M29–M46, M91; contracts → fixtures → MSW + services → screens → review → freeze, NEX-210 first). Stages 1 (D54),
 2 (D70) and 3 (D86, 2026-11-26) are released; their contracts and screens change only through a task with the Owner's OK. Full plan: `docs/PLAN.md`; modules: `docs/MODULES.md`. Never build a module from a
 later stage.
