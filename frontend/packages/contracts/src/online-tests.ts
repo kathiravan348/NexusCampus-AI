@@ -24,7 +24,8 @@ const timestampOrderIssue = {
 const isUnique = (values: readonly unknown[]) => new Set(values).size === values.length;
 const uniqueIds = (max: number) =>
   z.array(IdSchema).max(max).refine(isUnique, { message: "ids must be unique" });
-const HalfStepScoreSchema = z.number().min(0).multipleOf(0.5);
+/** Signed scores in 0.01 steps: negative marking can take a response or an attempt below zero (NEX-256). */
+const SignedScoreSchema = z.number().multipleOf(0.01);
 
 export const TestPoolSchema = z.strictObject({
   bankIds: uniqueIds(10).min(1),
@@ -124,7 +125,7 @@ export const TestAttemptSchema = z
     status: TestAttemptStatusSchema,
     startedAt: UtcDateTimeSchema,
     submittedAt: UtcDateTimeSchema.nullable(),
-    scorePoints: HalfStepScoreSchema.nullable(),
+    scorePoints: SignedScoreSchema.nullable(),
     maxPoints: z.number().min(0.5).multipleOf(0.5),
     /** Offline outbox client id (L2 practice). */
     clientId: z.uuid(),
@@ -152,10 +153,15 @@ export const TestAttemptSchema = z
       path: ["scorePoints"],
     },
   )
-  .refine((attempt) => attempt.scorePoints === null || attempt.scorePoints <= attempt.maxPoints, {
-    message: "scorePoints is more than maxPoints",
-    path: ["scorePoints"],
-  });
+  .refine(
+    (attempt) =>
+      attempt.scorePoints === null ||
+      (attempt.scorePoints >= -attempt.maxPoints && attempt.scorePoints <= attempt.maxPoints),
+    {
+      message: "scorePoints is outside −maxPoints…maxPoints",
+      path: ["scorePoints"],
+    },
+  );
 export type TestAttempt = z.infer<typeof TestAttemptSchema>;
 
 export const TestResponseSchema = z
@@ -172,8 +178,8 @@ export const TestResponseSchema = z
     /** Personal data (V-7). */
     textAnswer: z.string().max(20000).nullable(),
     numericAnswer: z.number().nullable(),
-    autoScore: HalfStepScoreSchema.nullable(),
-    manualScore: HalfStepScoreSchema.nullable(),
+    autoScore: SignedScoreSchema.nullable(),
+    manualScore: SignedScoreSchema.nullable(),
     markedByStaffProfileId: IdSchema.nullable(),
     /** The learner's own "review later" flag. */
     flagged: z.boolean(),
