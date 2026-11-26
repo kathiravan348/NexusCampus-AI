@@ -18,6 +18,7 @@ export * from "./inclusion";
 export * from "./portfolios";
 export * from "./library";
 export * from "./surveys";
+export * from "./credentials";
 export * from "./tutor";
 export * from "./analytics";
 export * from "./timetable";
