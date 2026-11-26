@@ -51,6 +51,7 @@ const score: RiskScore = {
     { code: "low_scores", weightBps: 1500, detail: "Average quiz score 48%.", sourceModule: "M33" },
   ],
   computedAt: "2026-08-15T01:00:00Z",
+  validUntil: "2026-09-15T01:00:00Z",
   status: "open",
   reviewedByStaffProfileId: null,
   reviewedAt: null,
@@ -136,6 +137,9 @@ describe("risk scores", () => {
 
   it("rejects unlabelled or unreviewed decisions", () => {
     expect(RiskScoreSchema.safeParse({ ...score, aiGenerated: false }).success).toBe(false);
+    expect(RiskScoreSchema.safeParse({ ...score, validUntil: score.computedAt }).success).toBe(
+      false,
+    );
     expect(RiskScoreSchema.safeParse({ ...score, status: "confirmed" }).success).toBe(false);
     expect(RiskScoreSchema.safeParse({ ...score, ...reviewed }).success).toBe(false);
     expect(RiskScoreSchema.safeParse({ ...score, ...reviewed, status: "dismissed" }).success).toBe(

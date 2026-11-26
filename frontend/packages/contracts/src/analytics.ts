@@ -8,7 +8,7 @@ import { IdSchema, IsoDateSchema, UtcDateTimeSchema } from "./common";
  * Rules the server enforces (A-3, A-4, V-7): risk scores are read only with an M46 staff permission and are never shown
  * to learners or families; no score starts an intervention, message or record change by itself — a person reviews it
  * and plans any intervention; factors never use health (M61) or safeguarding (M62) data; the server keeps each score's
- * model inputs for audit; a learner's data is used only while the tenant's AI switch and M46 are on.
+ * model inputs for audit until the score's `validUntil`; expired scores are hidden and deleted; a learner's data is used only while the tenant's AI switch and M46 are on.
  */
 
 const count = z.int().min(0);
@@ -83,6 +83,8 @@ export const RiskScoreSchema = z
     /** Main factors, highest weight first. */
     factors: z.array(RiskFactorSchema).min(1).max(8),
     computedAt: UtcDateTimeSchema,
+    /** After this time the score is no longer shown and the retention engine (M06) deletes it. */
+    validUntil: UtcDateTimeSchema,
     status: RiskReviewStatusSchema,
     reviewedByStaffProfileId: IdSchema.nullable(),
     reviewedAt: UtcDateTimeSchema.nullable(),
@@ -115,6 +117,10 @@ export const RiskScoreSchema = z
       path: ["reviewedByStaffProfileId"],
     },
   )
+  .refine((score) => Date.parse(score.validUntil) > Date.parse(score.computedAt), {
+    message: "validUntil must be after computedAt",
+    path: ["validUntil"],
+  })
   .refine((score) => score.reviewedAt === null || isNotBefore(score.reviewedAt, score.computedAt), {
     message: "reviewedAt is before computedAt",
     path: ["reviewedAt"],
