@@ -17,7 +17,7 @@
 | NEX-213 | Contracts (M32): assignments, submissions, feedback, AI marking suggestions, peer reviews, originality signals | B | done | Claude | 152, 211 |
 | NEX-247 | Contracts (M33): question banks, items, online tests, attempts, responses, item statistics — split from NEX-213 | B | done | Claude | 210, 212 |
 | NEX-214 | Contracts (M35): mastery, learning paths, tutor settings, tutor sessions and messages (AI-labelled, sources, consent) | B | done | Claude | 210, 211 |
-| NEX-248 | Contracts (M46): engagement signals, risk scores with factors, interventions (human action) — split from NEX-214 | B | planned | — | 213, 214, 247 |
+| NEX-248 | Contracts (M46): engagement signals, risk scores with factors, interventions (human action) — split from NEX-214 | B | done | Claude | 213, 214, 247 |
 | NEX-215 | Contracts (M34): proctoring settings, sessions, recordings, flags for human review (no emotion or biometric data) | B | planned | — | 247 |
 | NEX-249 | Contracts (M36): live sessions, joins, recordings, AI summaries and chapters — split from NEX-215 | B | planned | — | 211 |
 | NEX-216 | Contracts (M37, M38, M91): daily diary, observations, milestones, pickup checks, ratios; support plans, accommodations; media items, consent, portfolios, evidence | B | draft | — | 148, 210 |
