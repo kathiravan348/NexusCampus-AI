@@ -11,7 +11,11 @@ import { IdSchema, IsoDateSchema, NameSchema, UtcDateTimeSchema } from "./common
  */
 
 const isUnique = (values: readonly unknown[]) => new Set(values).size === values.length;
-const HalfStepSchema = z.number().min(0).multipleOf(0.5);
+/** Signed: entrance exams use negative marking (e.g. +4 / −1, −1/3), so scores go below zero in 0.01 steps. */
+const SignedScoreSchema = z.number().multipleOf(0.01);
+const MaxPointsSchema = z.number().min(0.01).multipleOf(0.01);
+const withinMax = ({ scorePoints, maxPoints }: { scorePoints: number; maxPoints: number }) =>
+  scorePoints >= -maxPoints && scorePoints <= maxPoints;
 
 export const TestSeriesSchema = z
   .strictObject({
@@ -41,11 +45,11 @@ export type TestSeries = z.infer<typeof TestSeriesSchema>;
 export const SectionScoreSchema = z
   .strictObject({
     sectionId: IdSchema,
-    scorePoints: HalfStepSchema,
-    maxPoints: z.number().min(0.5).multipleOf(0.5),
+    scorePoints: SignedScoreSchema,
+    maxPoints: MaxPointsSchema,
   })
-  .refine((score) => score.scorePoints <= score.maxPoints, {
-    message: "scorePoints is more than maxPoints",
+  .refine(withinMax, {
+    message: "scorePoints is outside −maxPoints…maxPoints",
     path: ["scorePoints"],
   });
 export type SectionScore = z.infer<typeof SectionScoreSchema>;
@@ -56,16 +60,16 @@ export const TestRankSchema = z
     seriesId: IdSchema,
     testId: IdSchema,
     learnerId: IdSchema,
-    scorePoints: HalfStepSchema,
-    maxPoints: z.number().min(0.5).multipleOf(0.5),
+    scorePoints: SignedScoreSchema,
+    maxPoints: MaxPointsSchema,
     participants: z.int().min(1),
     rank: z.int().min(1),
     percentileBps: z.int().min(0).max(10000),
     sectionScores: z.array(SectionScoreSchema).max(20),
     publishedAt: UtcDateTimeSchema,
   })
-  .refine((rank) => rank.scorePoints <= rank.maxPoints, {
-    message: "scorePoints is more than maxPoints",
+  .refine(withinMax, {
+    message: "scorePoints is outside −maxPoints…maxPoints",
     path: ["scorePoints"],
   })
   .refine((rank) => rank.rank <= rank.participants, {

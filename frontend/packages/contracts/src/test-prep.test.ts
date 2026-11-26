@@ -125,11 +125,19 @@ const report: ParentReport = {
 
 describe("series and ranks", () => {
   it("accepts a JEE series and a rank with section scores", () => {
+    const negative = {
+      ...rank,
+      scorePoints: -7,
+      sectionScores: [{ sectionId: "physics", scorePoints: -2.67, maxPoints: 100 }],
+    };
+    expect(TestRankSchema.safeParse(negative).success).toBe(true);
     expect(TestSeriesSchema.safeParse(series).success).toBe(true);
     expect(TestRankSchema.safeParse(rank).success).toBe(true);
   });
 
   it("rejects an empty series and bad ranks", () => {
+    expect(TestRankSchema.safeParse({ ...rank, scorePoints: -300.01 }).success).toBe(false);
+    expect(TestRankSchema.safeParse({ ...rank, scorePoints: 1.005 }).success).toBe(false);
     expect(TestSeriesSchema.safeParse({ ...series, testIds: [] }).success).toBe(false);
     expect(TestRankSchema.safeParse({ ...rank, rank: 481 }).success).toBe(false);
     const overSection = [{ sectionId: "physics", scorePoints: 101, maxPoints: 100 }];
