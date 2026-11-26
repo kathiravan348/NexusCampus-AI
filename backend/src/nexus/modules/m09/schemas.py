@@ -70,8 +70,6 @@ class ImportJobOut(Record):
     def contract_rules(self) -> Self:
         if self.valid_rows + self.error_rows > self.total_rows:
             raise ValueError("Valid and error rows cannot exceed total rows")
-        if (self.rollback_until is not None) != (self.status == "completed"):
-            raise ValueError("rollbackUntil is set exactly when the import is completed")
         if self.updated_at < self.created_at:
             raise ValueError("updatedAt is before createdAt")
         return self

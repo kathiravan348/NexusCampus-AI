@@ -59,12 +59,6 @@ class PromotionDecisionOut(Record):
     reason_key: MessageKey | None
     overridden_by_staff_profile_id: Id | None
 
-    @model_validator(mode="after")
-    def rules(self) -> Self:
-        if not _target_rule(self.action, self.to_class_group_id):
-            raise ValueError("toClassGroupId must be set iff action is promote or detain")
-        return self
-
 
 class RolloverRunIn(Contract):
     model_config = STRICT_INPUT

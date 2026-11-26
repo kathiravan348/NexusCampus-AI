@@ -84,8 +84,3 @@ class LearnerDocumentOut(Record):
             raise ValueError("Expected a plain file name")
         return name
 
-    @model_validator(mode="after")
-    def verifier_present(self) -> Self:
-        if self.verified != (self.verified_by_staff_profile_id is not None):
-            raise ValueError("Verification requires a staff profile")
-        return self

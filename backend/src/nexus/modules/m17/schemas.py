@@ -40,15 +40,6 @@ class AttendanceSessionOut(Timestamped):
     status: Literal["open", "submitted", "locked"]
     submitted_at: datetime | None
 
-    @model_validator(mode="after")
-    def rules(self) -> Self:
-        if (self.timetable_slot_id is not None) != (self.mode == "period"):
-            raise ValueError("timetableSlotId is required for period sessions and must be null otherwise")
-        if (self.event_label is not None) != (self.mode == "event"):
-            raise ValueError("eventLabel is required for event sessions and must be null otherwise")
-        if (self.submitted_at is not None) != (self.status != "open"):
-            raise ValueError("submittedAt is required when submitted or locked and must be null when open")
-        return self
 
 
 class RosterEntryOut(Contract):
@@ -98,9 +89,6 @@ class LeaveRequestOut(Timestamped):
 
     @model_validator(mode="after")
     def rules(self) -> Self:
-        decided = self.status in {"approved", "rejected"}
         if self.to < self.from_:
             raise ValueError("to must be on or after from")
-        if (self.decided_by_staff_profile_id is not None) != decided or (self.decided_at is not None) != decided:
-            raise ValueError("decision fields are set iff status is approved or rejected")
         return self
