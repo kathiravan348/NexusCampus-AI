@@ -21,7 +21,7 @@
 | NEX-215 | Contracts (M34): proctoring settings, sessions, recordings, flags for human review (no emotion or biometric data) | B | done | Claude | 247 |
 | NEX-249 | Contracts (M36): live sessions, joins, recordings, AI summaries and chapters — split from NEX-215 | B | planned | — | 211 |
 | NEX-216 | Contracts (M37): daily diary, observations, milestones, pickup checks, ratios, AI day summaries | B | planned | — | 210, 214 |
-| NEX-250 | Contracts (M38): support plans (IEP / ILP), goals, accommodations, interventions, progress (AI goal drafts need approval) — split from NEX-216 | B | draft | — | 210 |
+| NEX-250 | Contracts (M38): support plans (IEP / ILP), goals, accommodations, interventions, progress (AI goal drafts need approval) — split from NEX-216 | B | planned | — | 210 |
 | NEX-251 | Contracts (M91): media items with consent, guardian opt-out, portfolios, evidence, portable export — split from NEX-216 | B | draft | — | 148, 210 |
 | NEX-217 | Contracts (M39, M44, M45): catalogue, copies, loans, holds, fines; surveys, responses, anonymity; credential templates, issued credentials, verification | B | draft | — | 148 |
 | NEX-218 | Contracts (M40, M41): test series, ranks, percentiles, doubts; catalogue courses, session packs, trial and make-up sessions, level exams | B | draft | — | 146, 247 |
