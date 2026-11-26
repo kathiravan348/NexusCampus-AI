@@ -159,7 +159,15 @@ describe("attempts", () => {
     }
   });
 
+  it("accepts negative and full scores", () => {
+    expect(TestAttemptSchema.safeParse({ ...attempt, scorePoints: -7 }).success).toBe(true);
+    expect(TestAttemptSchema.safeParse({ ...attempt, scorePoints: 10 }).success).toBe(true);
+    expect(TestAttemptSchema.safeParse({ ...attempt, scorePoints: -2.67 }).success).toBe(true);
+    expect(TestResponseSchema.safeParse({ ...response, autoScore: -1 }).success).toBe(true);
+  });
+
   it("rejects bad attempts", () => {
+    expect(TestAttemptSchema.safeParse({ ...attempt, scorePoints: -10.5 }).success).toBe(false);
     expect(TestAttemptSchema.safeParse({ ...attempt, scorePoints: 10.5 }).success).toBe(false);
     expect(TestAttemptSchema.safeParse({ ...attempt, scorePoints: null }).success).toBe(false);
     expect(TestAttemptSchema.safeParse({ ...attempt, submittedAt: null }).success).toBe(false);
@@ -194,7 +202,7 @@ describe("responses and statistics", () => {
     expect(
       TestResponseSchema.safeParse({ ...response, markedByStaffProfileId: "staff-maths" }).success,
     ).toBe(false);
-    expect(TestResponseSchema.safeParse({ ...response, autoScore: 0.25 }).success).toBe(false);
+    expect(TestResponseSchema.safeParse({ ...response, autoScore: 0.255 }).success).toBe(false);
     expect(
       TestResponseSchema.safeParse({ ...response, selectedOptionIds: ["a", "a"] }).success,
     ).toBe(false);

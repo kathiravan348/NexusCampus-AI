@@ -8,7 +8,8 @@ import { IdSchema, LocaleSchema, NameSchema, UtcDateTimeSchema } from "./common"
  *
  * Server checks (not expressible per record): items and pools come from banks of the tenant; only `approved` items
  * appear in a test; an `ai_generated` item is approved only by a person (A-4); scores are at most the item's points;
- * a learner's attempts never exceed `attemptsAllowed`; the answer key never reaches a learner before results are shown.
+ * a learner's attempts never exceed `attemptsAllowed`; the answer key never reaches a learner before results are shown;
+ * a response scores between −the item's `negativePoints` and its `maxPoints`, and an unanswered item scores 0.
  */
 
 const timestamps = {
@@ -105,6 +106,8 @@ export const QuestionItemSchema = z
     /** Set exactly for `numeric`. */
     numericAnswer: z.strictObject({ value: z.number(), tolerance: z.number().min(0) }).nullable(),
     maxPoints: z.number().min(0.5).max(100).multipleOf(0.5),
+    /** Points taken off a wrong answer (negative marking); 0 = none. Shown to learners before they answer. */
+    negativePoints: z.number().min(0).max(100).multipleOf(0.01),
     difficulty: QuestionDifficultySchema.nullable(),
     outcomeIds: uniqueIds(20),
     /** QTI 3 item identifier for import / export. */
@@ -137,6 +140,14 @@ export const QuestionItemSchema = z
   .refine((item) => (item.kind === "numeric") === (item.numericAnswer !== null), {
     message: "numericAnswer is set exactly for numeric",
     path: ["numericAnswer"],
+  })
+  .refine((item) => item.negativePoints <= item.maxPoints, {
+    message: "negativePoints is more than maxPoints",
+    path: ["negativePoints"],
+  })
+  .refine((item) => item.negativePoints === 0 || (item.kind !== "essay" && item.kind !== "order"), {
+    message: "essay and order items have no penalty (they are marked by hand or partially)",
+    path: ["negativePoints"],
   });
 export type QuestionItem = z.infer<typeof QuestionItemSchema>;
 
@@ -156,6 +167,8 @@ export const QuestionDeliverySchema = z
       )
       .max(10),
     maxPoints: z.number().min(0.5).max(100).multipleOf(0.5),
+    /** Points taken off a wrong answer (negative marking); 0 = none. Shown to learners before they answer. */
+    negativePoints: z.number().min(0).max(100).multipleOf(0.01),
   })
   .refine((item) => isUnique(item.options.map((option) => option.id)), {
     message: "option ids must be unique",
@@ -164,5 +177,9 @@ export const QuestionDeliverySchema = z
   .refine((item) => inRange(optionRange[item.kind], item.options.length), {
     message: "wrong number of options for this kind",
     path: ["options"],
+  })
+  .refine((item) => item.negativePoints <= item.maxPoints, {
+    message: "negativePoints is more than maxPoints",
+    path: ["negativePoints"],
   });
 export type QuestionDelivery = z.infer<typeof QuestionDeliverySchema>;

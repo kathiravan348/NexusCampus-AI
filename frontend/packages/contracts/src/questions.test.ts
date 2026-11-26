@@ -37,6 +37,7 @@ const base: QuestionItem = {
   acceptedAnswers: [],
   numericAnswer: null,
   maxPoints: 1,
+  negativePoints: 0,
   difficulty: "easy",
   outcomeIds: ["outcome-number-a1"],
   qtiIdentifier: "item-half-v1",
@@ -172,6 +173,25 @@ describe("question items", () => {
     expect(QuestionItemSchema.safeParse(negativeTolerance).success).toBe(false);
   });
 
+  it("accepts negative marking on objective items", () => {
+    const jee = { ...base, id: "item-jee", maxPoints: 4, negativePoints: 1 };
+    expect(QuestionItemSchema.safeParse(jee).success).toBe(true);
+    const gate = { ...itemsByKind.numeric, id: "item-gate", maxPoints: 2, negativePoints: 0.67 };
+    expect(QuestionItemSchema.safeParse(gate).success).toBe(true);
+  });
+
+  it("rejects bad penalties", () => {
+    expect(QuestionItemSchema.safeParse({ ...base, negativePoints: 1.5 }).success).toBe(false);
+    expect(QuestionItemSchema.safeParse({ ...base, negativePoints: -1 }).success).toBe(false);
+    expect(QuestionItemSchema.safeParse({ ...base, negativePoints: 0.333 }).success).toBe(false);
+    expect(QuestionItemSchema.safeParse({ ...itemsByKind.essay, negativePoints: 1 }).success).toBe(
+      false,
+    );
+    expect(
+      QuestionItemSchema.safeParse({ ...itemsByKind.order, negativePoints: 0.5 }).success,
+    ).toBe(false);
+  });
+
   it("rejects bad points, option ids and language", () => {
     expect(QuestionItemSchema.safeParse({ ...base, maxPoints: 0 }).success).toBe(false);
     expect(QuestionItemSchema.safeParse({ ...base, maxPoints: 1.25 }).success).toBe(false);
@@ -192,8 +212,15 @@ describe("question delivery", () => {
       language: base.language,
       options: base.options.map(({ id, text }) => ({ id, text })),
       maxPoints: base.maxPoints,
+      negativePoints: 0,
     };
     expect(QuestionDeliverySchema.safeParse(delivered).success).toBe(true);
+    expect(
+      QuestionDeliverySchema.safeParse({ ...delivered, maxPoints: 4, negativePoints: 1 }).success,
+    ).toBe(true);
+    const { negativePoints: _penalty, ...withoutPenalty } = delivered;
+    expect(_penalty).toBe(0);
+    expect(QuestionDeliverySchema.safeParse(withoutPenalty).success).toBe(false);
     expect(QuestionDeliverySchema.safeParse({ ...delivered, options: base.options }).success).toBe(
       false,
     );
