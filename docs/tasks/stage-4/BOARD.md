@@ -31,12 +31,15 @@
 | NEX-219 | Contracts (M42): credit requirements, elective registration, degree audit, thesis supervision, AI path advice | B | done | Claude | 146 |
 | NEX-255 | Contracts (M43): store products, bundles, coupons, orders, subscriptions, affiliates — split from NEX-219 | B | planned | — | 211, 254 |
 | NEX-256 | Contracts (M33): negative marking — item penalties, signed response and attempt scores (NEX-218 review follow-up) | B | done | Claude | 247, 218 |
-| NEX-220 | Fixtures: curriculum, courses, content, assignments, questions and mastery for the 5 demo tenants and the Group | B | draft | — | 210–214, 247, 248, 256 |
-| NEX-221 | Fixtures: proctoring, live classes, early years, inclusion, media, library, surveys, credentials, test prep, courses, credits, store | B | draft | — | 215–220, 249–256 |
-| NEX-222 | MSW handlers + services: M29, M30, M31 | B | draft | — | 220 |
-| NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213; learners get `QuestionDelivery` only, NEX-247) | B | draft | — | 220, 222 |
-| NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 | B | draft | — | 221, 223 |
-| NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 221, 224 |
+| NEX-259 | Stage 4 access (mock only, D87): permission codes, system-role grants, module entitlements, en / hi / ta texts | B | planned | — | 210–219, 247–256 |
+| NEX-220 | Fixtures: M29, M30, M31 — outcomes, syllabus, lesson plans, course spaces, content for the 5 demo tenants and the Group | B | planned | — | 210–212, 259 |
+| NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | draft | — | 213, 214, 247, 248, 256, 220 |
+| NEX-257 | Fixtures: M34, M36, M37, M38, M91 — proctoring, live classes, early years, inclusion, media and portfolios | B | draft | — | 215, 216, 249–251, 221 |
+| NEX-258 | Fixtures: M39–M45 — library, test prep, session courses, higher-ed, store, surveys, credentials | B | draft | — | 217–219, 252–255, 257 |
+| NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | draft | — | 220, 259 |
+| NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213; learners get `QuestionDelivery` only, NEX-247) | B | draft | — | 221, 257, 222 |
+| NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 | B | draft | — | 257, 223 |
+| NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 258, 224 |
 | NEX-226 | M29 Curriculum & lesson planning | C | draft | — | 222 |
 | NEX-227 | M30 LMS classrooms & courses | C | draft | — | 222, 226 |
 | NEX-228 | M31 Content authoring studio (accessibility check before publish) | C | draft | — | 222, 227 |
