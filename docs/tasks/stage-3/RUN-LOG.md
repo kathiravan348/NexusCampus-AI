@@ -291,3 +291,5 @@ and re-run `--filter @nexus/mocks export:fixtures` when `backend/.../message_key
   and guardian; a11y light/dark; Tamil and Hindi). Owner items in the release checklist §5: native hi/ta review,
   Compose install test, D84 grant review, Codex re-check of the D83 reviews. Scheduled task stays disabled; nothing
   is running.
+- 2026-11-26 — **Owner approved the Stage 3 release; Stage 3 released and frozen (D86).** Open Owner items stay in
+  `STAGE-3-RELEASE.md` §5. Stage 4 is not opened yet.

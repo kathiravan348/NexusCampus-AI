@@ -6,7 +6,7 @@
 > Lanes: **A** UI/theme/text · **B** contracts/mocks · **C** screens · **D** backend / deploy.
 > `draft` rows have no task file yet; the planner writes them 2 ahead (`AGENTS.md` §3.5).
 
-**Step:** build (prototype frozen 2026-11-25, D78; `docs/PLAN.md` → Stage 3, D71) · **Modules:** M08, M09, M12–M28, M86 ·
+**Step:** released 2026-11-26 (D86; prototype frozen 2026-11-25, D78; `docs/PLAN.md` → Stage 3, D71) · **Modules:** M08, M09, M12–M28, M86 ·
 **Module list and order:** approved by the Owner 2026-11-23 (D72).
 
 | ID | Title | Lane | Status | Owner | Depends on |

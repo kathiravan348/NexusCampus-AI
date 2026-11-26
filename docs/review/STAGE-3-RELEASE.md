@@ -1,5 +1,7 @@
 # Stage 3 — release checklist
 
+> **Released 2026-11-26 — approved by the Owner (D86).** Open Owner items before the first production customer: §5.
+
 > For the Owner's release review (NEX-199). Filled on 2026-11-26 on the Owner PC (Windows 11, Docker Desktop, Node 24,
 > Python 3.12, PostgreSQL 16, OpenBao, Valkey, Keycloak) against `main` after NEX-197. Items marked **Owner** need a
 > person, not a local test.
