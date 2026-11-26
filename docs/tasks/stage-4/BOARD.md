@@ -24,7 +24,7 @@
 | NEX-250 | Contracts (M38): support plans (IEP / ILP), goals, accommodations, interventions, progress (AI goal drafts need approval) — split from NEX-216 | B | done | Claude | 210 |
 | NEX-251 | Contracts (M91): media items with consent state, portfolios, entries, portable exports — split from NEX-216 | B | done | Claude | 210, 216 |
 | NEX-217 | Contracts (M39): catalogue records, copies, loans, holds, fines, AI recommendations (private reading history) | B | done | Claude | 151 |
-| NEX-252 | Contracts (M44): surveys, questions, anonymity, responses, results, AI theme summaries — split from NEX-217 | B | planned | — | 211 |
+| NEX-252 | Contracts (M44): surveys, questions, anonymity, responses, results, AI theme summaries — split from NEX-217 | B | done | Claude | 211 |
 | NEX-253 | Contracts (M45): credential templates, issued credentials (Open Badges 3, W3C VC), verification, revocation — split from NEX-217 | B | planned | — | 210 |
 | NEX-218 | Contracts (M40): test series, ranks and percentiles, doubts and answers, weak-topic plans, parent reports | B | planned | — | 214, 247 |
 | NEX-254 | Contracts (M41): catalogue courses, session packs, bookings, trial and make-up sessions, level exams — split from NEX-218 | B | draft | — | 146 |
