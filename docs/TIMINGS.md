@@ -76,6 +76,9 @@ Owner PC (Windows 11, Node 24.21, pnpm), 2026-11-20, `timings:measure` (cold = b
 
 Per package (`pnpm --filter <pkg> test`): campus 23.62s (70 files), ui-core 6.74s. In the workspace run, campus holds
 ~85% of summed file time; slowest files are the M04/M03 studio pages and M02 role/user screens (~3–3.6s each).
+Since the Stage 3 build (2,061 tests, NEX-210 run 2026-11-26): `check:test` 4m 01s — **WARN over the 2m soft budget**
+(format 7.4s, lint 20.8s, typecheck 24.0s, build 12.9s). Growth comes from Stage 3 screens, not one task; under that load
+two `control` page tests can time out and pass when re-run alone. Budget review: Stage 4 harden task.
 
 ## Backend (NEX-042)
 
