@@ -26,7 +26,7 @@
 | NEX-217 | Contracts (M39): catalogue records, copies, loans, holds, fines, AI recommendations (private reading history) | B | done | Claude | 151 |
 | NEX-252 | Contracts (M44): surveys, questions, anonymity, responses, results, AI theme summaries — split from NEX-217 | B | done | Claude | 211 |
 | NEX-253 | Contracts (M45): credential templates, issued credentials (Open Badges 3, W3C VC), verification, revocation — split from NEX-217 | B | done | Claude | 210 |
-| NEX-218 | Contracts (M40): test series, ranks and percentiles, doubts and answers, weak-topic plans, parent reports | B | planned | — | 214, 247 |
+| NEX-218 | Contracts (M40): test series, ranks and percentiles, doubts and answers, weak-topic plans, parent reports | B | done | Claude | 214, 247 |
 | NEX-254 | Contracts (M41): catalogue courses, session packs, purchases, sessions, bookings, level exams, practice feedback — split from NEX-218 | B | planned | — | 146, 151 |
 | NEX-219 | Contracts (M42): credit requirements, elective registration, degree audit, thesis supervision, AI path advice | B | planned | — | 146 |
 | NEX-255 | Contracts (M43): store products, bundles, coupons, orders, subscriptions, affiliates — split from NEX-219 | B | draft | — | 211, 254 |
