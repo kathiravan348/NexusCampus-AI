@@ -6,7 +6,7 @@ import { IdSchema, UtcDateTimeSchema } from "./common";
  * M91 media, portfolios and learning evidence (NEX-251, D87 rule 4).
  *
  * Rules the server enforces (G-6, A-3, V-7): `consentState` is computed from every tagged learner's media consent —
- * `cleared` only when all are `allowed` — and recomputed when a consent changes, so a withdrawal hides the item from
+ * `cleared` only when at least one learner is tagged and all are `allowed` — and recomputed when a consent changes, so a withdrawal hides the item from
  * families at once; people are tagged by hand, never by face recognition, and untagged faces are the uploader's duty;
  * AI captions and outcome suggestions need the tenant AI switch and never identify people; exports drop or blur media
  * that shows other tagged learners; files are fetched through a signed endpoint — no key or URL in any contract.
@@ -89,6 +89,10 @@ export const MediaItemSchema = z
   .refine((item) => item.visibility === "staff_only" || item.consentState === "cleared", {
     message: "only cleared media is shared beyond staff",
     path: ["visibility"],
+  })
+  .refine((item) => item.visibility === "staff_only" || item.taggedLearnerIds.length > 0, {
+    message: "media without tagged learners stays with staff — nobody's consent covers it",
+    path: ["taggedLearnerIds"],
   });
 export type MediaItem = z.infer<typeof MediaItemSchema>;
 

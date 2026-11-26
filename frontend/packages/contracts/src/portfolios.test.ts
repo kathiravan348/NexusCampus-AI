@@ -116,6 +116,11 @@ describe("media consent and items", () => {
       }).success,
     ).toBe(false);
     expect(MediaItemSchema.safeParse({ ...photo, faceIds: ["f1"] }).success).toBe(false);
+    expect(MediaItemSchema.safeParse({ ...photo, taggedLearnerIds: [] }).success).toBe(false);
+    expect(
+      MediaItemSchema.safeParse({ ...photo, taggedLearnerIds: [], visibility: "staff_only" })
+        .success,
+    ).toBe(true);
     const thirtyOne = Array.from({ length: 31 }, (_, index) => `learner-${index}`);
     expect(MediaItemSchema.safeParse({ ...photo, taggedLearnerIds: thirtyOne }).success).toBe(
       false,
