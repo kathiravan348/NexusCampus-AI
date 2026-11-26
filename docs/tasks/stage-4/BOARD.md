@@ -23,11 +23,13 @@
 | NEX-216 | Contracts (M37): daily diary, observations, milestones, pickup checks, ratios, AI day summaries | B | done | Claude | 210, 214 |
 | NEX-250 | Contracts (M38): support plans (IEP / ILP), goals, accommodations, interventions, progress (AI goal drafts need approval) — split from NEX-216 | B | planned | — | 210 |
 | NEX-251 | Contracts (M91): media items with consent state, portfolios, entries, portable exports — split from NEX-216 | B | planned | — | 210, 216 |
-| NEX-217 | Contracts (M39, M44, M45): catalogue, copies, loans, holds, fines; surveys, responses, anonymity; credential templates, issued credentials, verification | B | draft | — | 148 |
+| NEX-217 | Contracts (M39): catalogue records, copies, loans, holds, fines, AI recommendations (private reading history) | B | planned | — | 151 |
+| NEX-252 | Contracts (M44): surveys, questions, anonymity rules, responses, AI theme summaries — split from NEX-217 | B | draft | — | 148 |
+| NEX-253 | Contracts (M45): credential templates, issued credentials (Open Badges 3, W3C VC), verification, revocation — split from NEX-217 | B | draft | — | 148 |
 | NEX-218 | Contracts (M40, M41): test series, ranks, percentiles, doubts; catalogue courses, session packs, trial and make-up sessions, level exams | B | draft | — | 146, 247 |
 | NEX-219 | Contracts (M42, M43): credit rules, elective registration, degree audit, thesis supervision; store products, bundles, coupons, orders | B | draft | — | 146, 211 |
 | NEX-220 | Fixtures: curriculum, courses, content, assignments, questions and mastery for the 5 demo tenants and the Group | B | draft | — | 210–214, 247, 248 |
-| NEX-221 | Fixtures: proctoring, live classes, early years, inclusion, media, library, surveys, credentials, test prep, courses, credits, store | B | draft | — | 215–220, 249–251 |
+| NEX-221 | Fixtures: proctoring, live classes, early years, inclusion, media, library, surveys, credentials, test prep, courses, credits, store | B | draft | — | 215–220, 249–253 |
 | NEX-222 | MSW handlers + services: M29, M30, M31 | B | draft | — | 220 |
 | NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213; learners get `QuestionDelivery` only, NEX-247) | B | draft | — | 220, 222 |
 | NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 | B | draft | — | 221, 223 |
