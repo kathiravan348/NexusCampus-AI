@@ -128,7 +128,11 @@ export const IssuedCredentialSchema = z
       message: "proof and statusListIndex are set exactly for verifiable formats",
       path: ["proof"],
     },
-  );
+  )
+  .refine((credential) => credential.status !== "expired" || credential.expiresAt !== null, {
+    message: "an expired credential has an expiry date",
+    path: ["expiresAt"],
+  });
 export type IssuedCredential = z.infer<typeof IssuedCredentialSchema>;
 
 export const VerificationResultSchema = z.enum(["valid", "revoked", "expired", "not_found"]);
@@ -153,7 +157,8 @@ export const CredentialVerificationSchema = z
         found === (verification.credentialName !== null) &&
         found === (verification.institutionName !== null) &&
         found === (verification.issuedOn !== null) &&
-        (found || verification.expiresOn === null)
+        (found || verification.expiresOn === null) &&
+        (verification.result !== "expired" || verification.expiresOn !== null)
       );
     },
     { message: "details are shown exactly when the credential is found", path: ["result"] },

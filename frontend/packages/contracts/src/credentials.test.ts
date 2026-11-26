@@ -141,6 +141,9 @@ describe("issued credentials", () => {
     expect(IssuedCredentialSchema.safeParse({ ...credential, revokedReason: "x" }).success).toBe(
       false,
     );
+    expect(IssuedCredentialSchema.safeParse({ ...credential, status: "expired" }).success).toBe(
+      false,
+    );
     expect(IssuedCredentialSchema.safeParse({ ...credential, format: "pdf_only" }).success).toBe(
       false,
     );
@@ -181,6 +184,9 @@ describe("public verification", () => {
       false,
     );
     expect(CredentialVerificationSchema.safeParse({ ...valid, credentialName: null }).success).toBe(
+      false,
+    );
+    expect(CredentialVerificationSchema.safeParse({ ...valid, result: "expired" }).success).toBe(
       false,
     );
     expect(CredentialVerificationSchema.safeParse({ ...valid, learnerName: "Sam" }).success).toBe(
