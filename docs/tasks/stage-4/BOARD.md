@@ -22,7 +22,7 @@
 | NEX-249 | Contracts (M36): live sessions, joins, recordings, AI summaries and chapters — split from NEX-215 | B | done | Claude | 211 |
 | NEX-216 | Contracts (M37): daily diary, observations, milestones, pickup checks, ratios, AI day summaries | B | planned | — | 210, 214 |
 | NEX-250 | Contracts (M38): support plans (IEP / ILP), goals, accommodations, interventions, progress (AI goal drafts need approval) — split from NEX-216 | B | planned | — | 210 |
-| NEX-251 | Contracts (M91): media items with consent, guardian opt-out, portfolios, evidence, portable export — split from NEX-216 | B | draft | — | 148, 210 |
+| NEX-251 | Contracts (M91): media items with consent state, portfolios, entries, portable exports — split from NEX-216 | B | planned | — | 210, 216 |
 | NEX-217 | Contracts (M39, M44, M45): catalogue, copies, loans, holds, fines; surveys, responses, anonymity; credential templates, issued credentials, verification | B | draft | — | 148 |
 | NEX-218 | Contracts (M40, M41): test series, ranks, percentiles, doubts; catalogue courses, session packs, trial and make-up sessions, level exams | B | draft | — | 146, 247 |
 | NEX-219 | Contracts (M42, M43): credit rules, elective registration, degree audit, thesis supervision; store products, bundles, coupons, orders | B | draft | — | 146, 211 |
