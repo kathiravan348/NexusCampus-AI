@@ -76,7 +76,15 @@ export default defineConfig(({ mode }) => {
       host: "127.0.0.1",
       // Real mode (NEX-060): the backend is same-origin through this proxy, so its cookies just work.
       ...(process.env["VITE_DATA_MODE"] === "real" || mode === "real"
-        ? { proxy: { "/api": { target: "http://127.0.0.1:8000", changeOrigin: false } } }
+        ? {
+            proxy: {
+              // `NEXUS_API_URL` when 8000 is taken on this machine (NEX-197); the backend then runs with `NEXUS_PORT`.
+              "/api": {
+                target: process.env["NEXUS_API_URL"] ?? "http://127.0.0.1:8000",
+                changeOrigin: false,
+              },
+            },
+          }
         : {}),
     },
     test: {
