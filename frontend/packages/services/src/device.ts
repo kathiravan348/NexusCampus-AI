@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import { z } from "zod";
 import { ApiRequestError, type ApiClient } from "./client";
 import { DATA_MODE } from "./config";
+import { useMe } from "./modules/m02";
 import { useServices } from "./query";
 import { useSession } from "./session";
 
@@ -121,8 +122,11 @@ export async function heartbeat(
 export function useDeviceHeartbeat(intervalMs = HEARTBEAT_MS): void {
   const { client, scope, db } = useServices();
   const { expire } = useSession();
+  // Registering a device needs `m10.device.read` (NEX-062); families without it never call (NEX-197 real-data run).
+  const me = useMe();
+  const allowed = !!me.data?.permissions.includes("m10.device.read");
   useEffect(() => {
-    if (DATA_MODE !== "real" || !scope) return;
+    if (DATA_MODE !== "real" || !scope || !allowed) return;
     let running = false;
     const run = () => {
       if (running || globalThis.navigator?.onLine === false) return;
@@ -143,7 +147,7 @@ export function useDeviceHeartbeat(intervalMs = HEARTBEAT_MS): void {
       globalThis.removeEventListener?.(HEARTBEAT_EVENT, run);
       currentServerDevice = null;
     };
-  }, [client, scope, db, expire, intervalMs]);
+  }, [client, scope, db, expire, intervalMs, allowed]);
 }
 
 /** This browser's id in the device list: the server id in real mode, the local id in mock mode. */
