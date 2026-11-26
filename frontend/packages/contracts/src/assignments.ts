@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { CapabilityTierSchema } from "./ai";
 import { IdSchema, UtcDateTimeSchema } from "./common";
 
 /**
@@ -194,6 +195,9 @@ export const AiMarkingSuggestionSchema = z
     id: IdSchema,
     tenantId: IdSchema,
     submissionId: IdSchema,
+    /** Always labelled as AI output (AGENTS §7). */
+    aiGenerated: z.literal(true),
+    tier: CapabilityTierSchema,
     suggestedMarks: HalfStepMarksSchema.nullable(),
     suggestedRubricScores: RubricScoresSchema.nullable(),
     reasons: z.array(z.string().trim().min(1).max(500)).min(1).max(10),
@@ -224,7 +228,11 @@ export const PeerReviewSchema = z
     tenantId: IdSchema,
     assignmentId: IdSchema,
     submissionId: IdSchema,
-    reviewerLearnerId: IdSchema,
+    /**
+     * Null only on an anonymous review read by the submission's author or group (redacted read, as `IssuedDocumentRead`);
+     * staff always see the reviewer.
+     */
+    reviewerLearnerId: IdSchema.nullable(),
     anonymous: z.boolean(),
     status: z.enum(["assigned", "submitted"]),
     rubricScores: RubricScoresSchema.nullable(),
@@ -235,6 +243,10 @@ export const PeerReviewSchema = z
   .refine((review) => (review.status === "submitted") === (review.submittedAt !== null), {
     message: "submittedAt is set exactly when the review is submitted",
     path: ["submittedAt"],
+  })
+  .refine((review) => review.anonymous || review.reviewerLearnerId !== null, {
+    message: "only an anonymous review may hide its reviewer",
+    path: ["reviewerLearnerId"],
   });
 export type PeerReview = z.infer<typeof PeerReviewSchema>;
 

@@ -93,6 +93,8 @@ const suggestion: AiMarkingSuggestion = {
   id: "ai-suggestion-1",
   tenantId: "tenant-university",
   submissionId: "submission-essay-1",
+  aiGenerated: true,
+  tier: "balanced",
   suggestedMarks: 16,
   suggestedRubricScores: { THESIS: 4, EVIDENCE: 4 },
   reasons: ["The thesis is stated in the first paragraph.", "Two primary sources are cited."],
@@ -257,6 +259,8 @@ describe("feedback and AI suggestions", () => {
 describe("peer reviews and originality", () => {
   it("accepts a submitted and an assigned peer review and each originality status", () => {
     expect(PeerReviewSchema.safeParse(peerReview).success).toBe(true);
+    const redactedForAuthor = { ...peerReview, reviewerLearnerId: null };
+    expect(PeerReviewSchema.safeParse(redactedForAuthor).success).toBe(true);
     const assigned = {
       ...peerReview,
       status: "assigned",
@@ -280,6 +284,14 @@ describe("peer reviews and originality", () => {
 
   it("rejects bad peer reviews and signals", () => {
     expect(PeerReviewSchema.safeParse({ ...peerReview, submittedAt: null }).success).toBe(false);
+    const namedHidden = { ...peerReview, anonymous: false, reviewerLearnerId: null };
+    expect(PeerReviewSchema.safeParse(namedHidden).success).toBe(false);
+    expect(AiMarkingSuggestionSchema.safeParse({ ...suggestion, aiGenerated: false }).success).toBe(
+      false,
+    );
+    expect(AiMarkingSuggestionSchema.safeParse({ ...suggestion, tier: "turbo" }).success).toBe(
+      false,
+    );
     expect(OriginalitySignalSchema.safeParse({ ...originality, similarityBps: null }).success).toBe(
       false,
     );
