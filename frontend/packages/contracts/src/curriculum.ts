@@ -78,7 +78,7 @@ export const OutcomeSchema = z
     statement: z.string().trim().min(1).max(2000),
     order: z.int().min(1),
     /** CASE item identifier when imported. */
-    caseItemId: z.uuid().nullable(),
+    caseItemId: z.guid().nullable(),
     subjectIds: uniqueIds(20),
     yearLevelIds: uniqueIds(20),
     ...timestamps,
@@ -193,7 +193,14 @@ const lessonPlanInputFields = {
 export const LessonPlanInputSchema = z.strictObject(lessonPlanInputFields);
 export type LessonPlanInput = z.infer<typeof LessonPlanInputSchema>;
 
-const isReviewed = (status: LessonPlanStatus) => status === "approved" || status === "returned";
+/** Review state per status: approved / returned plans carry it, drafts and submissions do not, delivered keeps it if any. */
+const reviewRule: Record<LessonPlanStatus, "required" | "forbidden" | "optional"> = {
+  draft: "forbidden",
+  submitted: "forbidden",
+  approved: "required",
+  returned: "required",
+  delivered: "optional",
+};
 
 export const LessonPlanSchema = z
   .strictObject({
@@ -208,11 +215,15 @@ export const LessonPlanSchema = z
   })
   .refine(validTimestampOrder, timestampOrderIssue)
   .refine(
-    (plan) =>
-      isReviewed(plan.status) === (plan.reviewedByStaffProfileId !== null) &&
-      isReviewed(plan.status) === (plan.reviewedAt !== null),
+    (plan) => {
+      const reviewed = plan.reviewedByStaffProfileId !== null;
+      if (reviewed !== (plan.reviewedAt !== null)) return false;
+      const rule = reviewRule[plan.status];
+      return rule === "optional" || reviewed === (rule === "required");
+    },
     {
-      message: "reviewer and review time are set exactly when the plan is approved or returned",
+      message:
+        "reviewer and review time are set together: required when approved or returned, absent on drafts and submissions",
       path: ["reviewedByStaffProfileId"],
     },
   )

@@ -141,6 +141,9 @@ describe("outcome frameworks and outcomes", () => {
   it("accepts K12 standards with a parent, EY milestones and SK skill levels", () => {
     expect(OutcomeSchema.safeParse(standardsParent).success).toBe(true);
     expect(OutcomeSchema.safeParse(standardsChild).success).toBe(true);
+    // CASE GUIDs from older frameworks need not carry RFC 4122 version / variant bits.
+    const legacyGuid = { ...standardsChild, caseItemId: "6b1b4b3e-0f0a-0c55-0f6c-2f2d0d5f5a11" };
+    expect(OutcomeSchema.safeParse(legacyGuid).success).toBe(true);
     const milestone = {
       ...standardsParent,
       id: "milestone-pincer",
@@ -269,6 +272,14 @@ describe("lesson plans", () => {
       false,
     );
     expect(LessonPlanSchema.safeParse({ ...plan, ...reviewed }).success).toBe(false);
+    expect(LessonPlanSchema.safeParse({ ...plan, ...reviewed, status: "submitted" }).success).toBe(
+      false,
+    );
+    const deliveredReviewed = { ...byStatus.delivered, ...reviewed };
+    expect(LessonPlanSchema.safeParse(deliveredReviewed).success).toBe(true);
+    expect(LessonPlanSchema.safeParse({ ...deliveredReviewed, reviewedAt: null }).success).toBe(
+      false,
+    );
     const [first] = plan.activities;
     expect(LessonPlanSchema.safeParse({ ...plan, activities: [first, first] }).success).toBe(false);
     expect(
