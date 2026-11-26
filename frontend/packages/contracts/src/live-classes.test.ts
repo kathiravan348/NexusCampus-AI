@@ -123,6 +123,7 @@ describe("joins", () => {
     expect(LiveJoinSchema.safeParse({ ...join, leftAt: "2026-08-04T09:00:00Z" }).success).toBe(
       false,
     );
+    expect(LiveJoinSchema.safeParse({ ...join, durationSeconds: 3181 }).success).toBe(false);
   });
 });
 
@@ -145,6 +146,9 @@ describe("recordings and summaries", () => {
     expect(
       LiveRecordingSchema.safeParse({ ...recording, noticeShownToParticipants: false }).success,
     ).toBe(false);
+    expect(LiveRecordingSchema.safeParse({ ...recording, deleteOn: "2026-08-03" }).success).toBe(
+      false,
+    );
     expect(LiveRecordingSchema.safeParse({ ...recording, url: "https://x/rec.mp4" }).success).toBe(
       false,
     );

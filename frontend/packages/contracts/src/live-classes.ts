@@ -87,26 +87,41 @@ export const LiveJoinSchema = z
   .refine((join) => join.leftAt === null || isNotBefore(join.leftAt, join.joinedAt), {
     message: "leftAt is before joinedAt",
     path: ["leftAt"],
-  });
+  })
+  .refine(
+    (join) =>
+      join.leftAt === null ||
+      join.durationSeconds <=
+        Math.floor((Date.parse(join.leftAt) - Date.parse(join.joinedAt)) / 1000),
+    {
+      message: "durationSeconds is longer than the time between joining and leaving",
+      path: ["durationSeconds"],
+    },
+  );
 export type LiveJoin = z.infer<typeof LiveJoinSchema>;
 
 export const LiveRecordingStatusSchema = z.enum(["processing", "ready", "failed", "deleted"]);
 export type LiveRecordingStatus = z.infer<typeof LiveRecordingStatusSchema>;
 
 /** Metadata of a recording; personal data, no storage key or URL. */
-export const LiveRecordingSchema = z.strictObject({
-  id: IdSchema,
-  tenantId: IdSchema,
-  sessionId: IdSchema,
-  status: LiveRecordingStatusSchema,
-  durationSeconds: z.int().min(0).nullable(),
-  sizeBytes: z.int().min(1).nullable(),
-  deleteOn: IsoDateSchema,
-  visibleToLearners: z.boolean(),
-  /** Participants are always told that the session is recorded. */
-  noticeShownToParticipants: z.literal(true),
-  createdAt: UtcDateTimeSchema,
-});
+export const LiveRecordingSchema = z
+  .strictObject({
+    id: IdSchema,
+    tenantId: IdSchema,
+    sessionId: IdSchema,
+    status: LiveRecordingStatusSchema,
+    durationSeconds: z.int().min(0).nullable(),
+    sizeBytes: z.int().min(1).nullable(),
+    deleteOn: IsoDateSchema,
+    visibleToLearners: z.boolean(),
+    /** Participants are always told that the session is recorded. */
+    noticeShownToParticipants: z.literal(true),
+    createdAt: UtcDateTimeSchema,
+  })
+  .refine((recording) => recording.deleteOn >= recording.createdAt.slice(0, 10), {
+    message: "deleteOn is before the recording",
+    path: ["deleteOn"],
+  });
 export type LiveRecording = z.infer<typeof LiveRecordingSchema>;
 
 export const LiveChapterSchema = z.strictObject({
