@@ -82,7 +82,13 @@ describe("proctoring settings", () => {
           ProctoringSettingsSchema.safeParse({ ...settings, identityCheck, recording }).success,
         ).toBe(true);
       }
-      const unrecorded = { ...settings, identityCheck, recording: "none", retentionDays: null };
+      const unrecorded = {
+        ...settings,
+        identityCheck,
+        recording: "none",
+        retentionDays: null,
+        aiFlagging: false,
+      };
       expect(ProctoringSettingsSchema.safeParse(unrecorded).success).toBe(true);
     }
   });
@@ -97,6 +103,13 @@ describe("proctoring settings", () => {
     expect(ProctoringSettingsSchema.safeParse({ ...settings, retentionDays: 366 }).success).toBe(
       false,
     );
+    const aiWithoutRecording = {
+      ...settings,
+      recording: "none",
+      retentionDays: null,
+      aiFlagging: true,
+    };
+    expect(ProctoringSettingsSchema.safeParse(aiWithoutRecording).success).toBe(false);
     expect(
       ProctoringSettingsSchema.safeParse({ ...settings, provider: "Demo Provider" }).success,
     ).toBe(false);
@@ -168,6 +181,9 @@ describe("recording segments", () => {
     expect(
       RecordingSegmentSchema.safeParse({ ...segment, endedAt: segment.startedAt }).success,
     ).toBe(false);
+    expect(RecordingSegmentSchema.safeParse({ ...segment, deleteOn: "2026-07-19" }).success).toBe(
+      false,
+    );
     expect(RecordingSegmentSchema.safeParse({ ...segment, url: "https://x/y.webm" }).success).toBe(
       false,
     );

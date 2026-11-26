@@ -9,7 +9,8 @@ import { IdSchema, IsoDateSchema, UtcDateTimeSchema } from "./common";
  * template is ever stored; a flag never changes an attempt, score or record by itself — an upheld flag starts a person's
  * academic-integrity process outside M34; `aiFlagging` needs the tenant AI switch; recordings are deleted on
  * `deleteOn`; a session reaches `in_progress` only after the learner accepted the current notice; provider keys live in
- * settings / OpenBao, never in a contract.
+ * settings / OpenBao, never in a contract; camera recording of a minor needs a current guardian consent (G-6), else
+ * that learner's session records the screen only.
  */
 
 const isNotBefore = (later: string, earlier: string) => Date.parse(later) >= Date.parse(earlier);
@@ -40,6 +41,10 @@ export const ProctoringSettingsSchema = z
   .refine((settings) => (settings.recording !== "none") === (settings.retentionDays !== null), {
     message: "retentionDays is set exactly when something is recorded",
     path: ["retentionDays"],
+  })
+  .refine((settings) => !settings.aiFlagging || settings.recording !== "none", {
+    message: "AI flagging needs a recording to work from",
+    path: ["aiFlagging"],
   });
 export type ProctoringSettings = z.infer<typeof ProctoringSettingsSchema>;
 
@@ -113,6 +118,10 @@ export const RecordingSegmentSchema = z
   .refine((segment) => Date.parse(segment.endedAt) > Date.parse(segment.startedAt), {
     message: "endedAt must be after startedAt",
     path: ["endedAt"],
+  })
+  .refine((segment) => segment.deleteOn >= segment.startedAt.slice(0, 10), {
+    message: "deleteOn is before the recording",
+    path: ["deleteOn"],
   });
 export type RecordingSegment = z.infer<typeof RecordingSegmentSchema>;
 
