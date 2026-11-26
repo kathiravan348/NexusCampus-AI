@@ -13,7 +13,7 @@
 |---|---|---|---|---|---|
 | NEX-210 | Contracts (M29): outcome frameworks, outcomes, CO–PO mapping, syllabus units, lesson plans, coverage | B | done | Claude | 146 |
 | NEX-211 | Contracts (M30): course spaces, modules, items, progress, discussions | B | done | Claude | 146 |
-| NEX-212 | Contracts (M31): content items, assets, lesson blocks, packages, accessibility checks, attempts | B | planned | — | 146 |
+| NEX-212 | Contracts (M31): content items, assets, lesson blocks, packages, accessibility checks, attempts | B | ready-for-review | Claude | 146 |
 | NEX-213 | Contracts (M32): assignments, submissions, feedback, AI marking suggestions, peer reviews, originality signals | B | planned | — | 152, 211 |
 | NEX-247 | Contracts (M33): question banks, items, online tests, attempts, responses, item statistics — split from NEX-213 | B | planned | — | 210, 212 |
 | NEX-214 | Contracts (M35, M46): mastery, learning paths, tutor sessions (AI-labelled, sources); engagement, risk scores with factors, interventions | B | draft | — | 210, 213, 247 |
