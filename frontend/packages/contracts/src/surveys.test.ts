@@ -73,7 +73,7 @@ const response: SurveyResponse = {
     { questionId: "q-helpful", rating: null, optionIndexes: [0, 2], text: null },
     { questionId: "q-improve", rating: null, optionIndexes: [], text: "More worked examples." },
   ],
-  submittedAt: "2026-11-03T10:00:00Z",
+  submittedAt: "2026-11-03T00:00:00Z",
   clientId: "7e6d5c4b-3a29-4180-9f6e-5d4c3b2a1908",
   deviceId: null,
 };
@@ -157,6 +157,7 @@ describe("responses", () => {
       anonymous: false,
       respondentProfileId: "guardian-1",
       deviceId: "device-1",
+      submittedAt: "2026-11-03T10:03:00Z",
     };
     expect(SurveyResponseSchema.safeParse(named).success).toBe(true);
   });
@@ -168,6 +169,8 @@ describe("responses", () => {
     expect(SurveyResponseSchema.safeParse({ ...response, deviceId: "device-1" }).success).toBe(
       false,
     );
+    const exactTime = { ...response, submittedAt: "2026-11-03T10:03:00Z" };
+    expect(SurveyResponseSchema.safeParse(exactTime).success).toBe(false);
     const twoKinds = { questionId: "q-clarity", rating: 4, optionIndexes: [1], text: null };
     expect(SurveyResponseSchema.safeParse({ ...response, answers: [twoKinds] }).success).toBe(
       false,

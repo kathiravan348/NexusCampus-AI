@@ -5,12 +5,14 @@ import { IdSchema, UtcDateTimeSchema } from "./common";
 /**
  * M44 surveys and feedback (NEX-252, D87). Anonymity holds end to end (G-6, V-7): the server never stores who answered
  * an anonymous survey (a separate "has answered" marker only prevents repeats) and an anonymous response carries no
- * person or device; confidential responses are seen only by the survey owner; results for groups smaller than
+ * person or device and only the day it was submitted (an exact time could identify someone in a small class); the
+ * server drops its outbox client id once the retry window has passed; confidential responses are seen only by the survey owner; results for groups smaller than
  * `minResponsesToShow` are suppressed; AI theme summaries quote no one and are made only from at least
  * `minResponsesToShow` responses. Faculty results reach the staff member and their managers, and AI sentiment about a
  * named person is never the sole basis for an appraisal (M50, A-4).
  */
 
+const DAY_MS = 24 * 60 * 60 * 1000;
 const isUnique = (values: readonly unknown[]) => new Set(values).size === values.length;
 const uniqueIds = (max: number) =>
   z.array(IdSchema).max(max).refine(isUnique, { message: "ids must be unique" });
@@ -153,6 +155,10 @@ export const SurveyResponseSchema = z
   .refine((response) => !response.anonymous || response.deviceId === null, {
     message: "an anonymous response carries no device",
     path: ["deviceId"],
+  })
+  .refine((response) => !response.anonymous || Date.parse(response.submittedAt) % DAY_MS === 0, {
+    message: "an anonymous response keeps only the day it was submitted",
+    path: ["submittedAt"],
   })
   .refine((response) => isUnique(response.answers.map((answer) => answer.questionId)), {
     message: "one answer per question",
