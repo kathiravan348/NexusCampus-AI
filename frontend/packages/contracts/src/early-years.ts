@@ -10,7 +10,9 @@ import { IdSchema, IsoDateSchema, LocaleSchema, UtcDateTimeSchema } from "./comm
  * `court_restricted`, or by anyone not on the learner's authorised list, is refused and alerts the manager; an
  * observation of several children is shared with each family without the other children's names; photos follow M91
  * media consent; AI milestone tagging and day summaries need the tenant AI switch, a guardian's `ai_features` consent
- * and never read health (M61) data; medication is recorded in M61, never in the diary.
+ * and never read health (M61) data; medication is recorded in M61, never in the diary. A day summary uses only records
+ * already shared with that family and never names other children. A refusal reason is restricted (it may reveal a
+ * court order): staff with M14 custody access see it, the refused collector and other families never do.
  */
 
 const isUnique = (values: readonly unknown[]) => new Set(values).size === values.length;
@@ -148,6 +150,7 @@ export const PickupCheckSchema = z
     collectorRefId: IdSchema.nullable(),
     verification: PickupVerificationSchema,
     outcome: z.enum(["released", "refused"]),
+    /** Restricted: may reveal a court order (see the file comment). */
     refusedReason: z.string().trim().min(1).max(300).nullable(),
     ...offlineFields,
   })

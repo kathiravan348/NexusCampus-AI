@@ -20,7 +20,7 @@
 | NEX-248 | Contracts (M46): engagement signals, risk scores with factors, interventions (human action) — split from NEX-214 | B | done | Claude | 213, 214, 247 |
 | NEX-215 | Contracts (M34): proctoring settings, sessions, recordings, flags for human review (no emotion or biometric data) | B | done | Claude | 247 |
 | NEX-249 | Contracts (M36): live sessions, joins, recordings, AI summaries and chapters — split from NEX-215 | B | done | Claude | 211 |
-| NEX-216 | Contracts (M37): daily diary, observations, milestones, pickup checks, ratios, AI day summaries | B | ready-for-review | Claude | 210, 214 |
+| NEX-216 | Contracts (M37): daily diary, observations, milestones, pickup checks, ratios, AI day summaries | B | done | Claude | 210, 214 |
 | NEX-250 | Contracts (M38): support plans (IEP / ILP), goals, accommodations, interventions, progress (AI goal drafts need approval) — split from NEX-216 | B | planned | — | 210 |
 | NEX-251 | Contracts (M91): media items with consent state, portfolios, entries, portable exports — split from NEX-216 | B | planned | — | 210, 216 |
 | NEX-217 | Contracts (M39, M44, M45): catalogue, copies, loans, holds, fines; surveys, responses, anonymity; credential templates, issued credentials, verification | B | draft | — | 148 |
