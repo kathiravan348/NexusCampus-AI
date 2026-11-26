@@ -116,17 +116,34 @@ export type ContentKind = z.infer<typeof ContentKindSchema>;
 export const ContentStatusSchema = z.enum(["draft", "in_review", "published", "archived"]);
 export type ContentStatus = z.infer<typeof ContentStatusSchema>;
 
-/** A relative path inside the package: no leading `/`, no `..` segment, no scheme, no backslash. */
+const isSafeRelativePath = (path: string) =>
+  !path.startsWith("/") &&
+  !path.includes("\\") &&
+  !/^[A-Za-z][A-Za-z0-9+.-]*:/.test(path) &&
+  path.split("/").every((segment) => segment !== "..");
+
+/** Percent-decoded once, so `%2e%2e/` or `%5c` cannot hide a traversal; malformed escapes are refused. */
+const decodedOrNull = (path: string) => {
+  try {
+    return decodeURIComponent(path);
+  } catch {
+    return null;
+  }
+};
+
+/**
+ * A relative path inside the package: no leading `/`, no `..` segment, no scheme, no backslash — checked as written and
+ * once percent-decoded.
+ */
 const LaunchPathSchema = z
   .string()
   .min(1)
   .max(500)
   .refine(
-    (path) =>
-      !path.startsWith("/") &&
-      !path.includes("\\") &&
-      !/^[A-Za-z][A-Za-z0-9+.-]*:/.test(path) &&
-      path.split("/").every((segment) => segment !== ".."),
+    (path) => {
+      const decoded = decodedOrNull(path.split("?")[0] ?? "");
+      return isSafeRelativePath(path) && decoded !== null && isSafeRelativePath(decoded);
+    },
     { message: "launchPath must be a relative path inside the package" },
   );
 
@@ -155,6 +172,11 @@ export const ContentItemSchema = z
     blocks: z.array(ContentBlockSchema).min(1).max(200).nullable(),
     /** Set exactly for video, audio and document items. */
     assetId: IdSchema.nullable(),
+    /** Caption assets of a video or the transcript of an audio item; empty for every other kind. */
+    textTrackAssetIds: z
+      .array(IdSchema)
+      .max(10)
+      .refine(isUnique, { message: "ids must be unique" }),
     /** Set exactly for SCORM, xAPI and cmi5 items. */
     package: ContentPackageSchema.nullable(),
     durationSeconds: z.int().min(0).nullable(),
@@ -176,6 +198,13 @@ export const ContentItemSchema = z
     message: "assetId is set exactly for video, audio and document items",
     path: ["assetId"],
   })
+  .refine(
+    (item) => item.kind === "video" || item.kind === "audio" || item.textTrackAssetIds.length === 0,
+    {
+      message: "text tracks belong only to video and audio items",
+      path: ["textTrackAssetIds"],
+    },
+  )
   .refine((item) => packageKinds.has(item.kind) === (item.package !== null), {
     message: "package is set exactly for SCORM, xAPI and cmi5 items",
     path: ["package"],

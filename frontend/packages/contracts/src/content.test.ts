@@ -48,6 +48,7 @@ const lesson: ContentItem = {
   version: 2,
   blocks,
   assetId: null,
+  textTrackAssetIds: [],
   package: null,
   durationSeconds: 1200,
   aiAssisted: false,
@@ -60,6 +61,7 @@ const video: ContentItem = {
   kind: "video",
   blocks: null,
   assetId: asset.id,
+  textTrackAssetIds: ["asset-strips-captions-en", "asset-strips-captions-hi"],
 };
 const scorm: ContentItem = {
   ...lesson,
@@ -151,6 +153,19 @@ describe("content items", () => {
     expect(ContentItemSchema.safeParse({ ...video, assetId: null }).success).toBe(false);
     expect(ContentItemSchema.safeParse({ ...scorm, package: null }).success).toBe(false);
     expect(ContentItemSchema.safeParse({ ...lesson, package: scorm.package }).success).toBe(false);
+    expect(ContentItemSchema.safeParse({ ...lesson, textTrackAssetIds: ["asset-x"] }).success).toBe(
+      false,
+    );
+    expect(ContentItemSchema.safeParse({ ...video, textTrackAssetIds: ["c", "c"] }).success).toBe(
+      false,
+    );
+    const transcribedAudio = {
+      ...video,
+      id: "content-audio",
+      kind: "audio",
+      textTrackAssetIds: ["asset-transcript"],
+    };
+    expect(ContentItemSchema.safeParse(transcribedAudio).success).toBe(true);
   });
 
   it("rejects launch paths outside the package", () => {
@@ -161,6 +176,11 @@ describe("content items", () => {
       "https://x/y",
       "a\\b",
       "javascript:alert(1)",
+      "%2e%2e/index.html",
+      "res/%2E%2E/%2e%2e/x.html",
+      "res%5c..%5cx.html",
+      "%2fetc/passwd",
+      "%zz.html",
     ]) {
       const item = { ...scorm, package: { ...scorm.package, launchPath } };
       expect(ContentItemSchema.safeParse(item).success).toBe(false);
