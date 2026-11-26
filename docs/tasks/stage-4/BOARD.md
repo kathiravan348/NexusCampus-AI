@@ -15,7 +15,7 @@
 | NEX-211 | Contracts (M30): course spaces, modules, items, progress, discussions | B | done | Claude | 146 |
 | NEX-212 | Contracts (M31): content items, assets, lesson blocks, packages, accessibility checks, attempts | B | done | Claude | 146 |
 | NEX-213 | Contracts (M32): assignments, submissions, feedback, AI marking suggestions, peer reviews, originality signals | B | done | Claude | 152, 211 |
-| NEX-247 | Contracts (M33): question banks, items, online tests, attempts, responses, item statistics — split from NEX-213 | B | ready-for-review | Claude | 210, 212 |
+| NEX-247 | Contracts (M33): question banks, items, online tests, attempts, responses, item statistics — split from NEX-213 | B | done | Claude | 210, 212 |
 | NEX-214 | Contracts (M35): mastery, learning paths, tutor settings, tutor sessions and messages (AI-labelled, sources, consent) | B | planned | — | 210, 211 |
 | NEX-248 | Contracts (M46): engagement signals, risk scores with factors, interventions (human action) — split from NEX-214 | B | planned | — | 213, 214, 247 |
 | NEX-215 | Contracts (M34, M36): proctoring sessions and flags (result only, human review); live sessions, providers, joins, recordings, transcripts | B | draft | — | 211, 247 |
@@ -26,7 +26,7 @@
 | NEX-220 | Fixtures: curriculum, courses, content, assignments, questions and mastery for the 5 demo tenants and the Group | B | draft | — | 210–214, 247, 248 |
 | NEX-221 | Fixtures: proctoring, live classes, early years, inclusion, media, library, surveys, credentials, test prep, courses, credits, store | B | draft | — | 215–220 |
 | NEX-222 | MSW handlers + services: M29, M30, M31 | B | draft | — | 220 |
-| NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213) | B | draft | — | 220, 222 |
+| NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213; learners get `QuestionDelivery` only, NEX-247) | B | draft | — | 220, 222 |
 | NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 | B | draft | — | 221, 223 |
 | NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 221, 224 |
 | NEX-226 | M29 Curriculum & lesson planning | C | draft | — | 222 |

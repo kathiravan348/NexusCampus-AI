@@ -139,3 +139,30 @@ export const QuestionItemSchema = z
     path: ["numericAnswer"],
   });
 export type QuestionItem = z.infer<typeof QuestionItemSchema>;
+
+/**
+ * What a learner receives while taking a test: no `correct` flags, accepted answers, numeric answer or explanation, so
+ * the answer key cannot reach the learner (strict — extra keys are refused). Options arrive in the server's shuffle.
+ */
+export const QuestionDeliverySchema = z
+  .strictObject({
+    id: IdSchema,
+    kind: QuestionKindSchema,
+    stem: z.string().trim().min(1).max(10000),
+    language: LocaleSchema,
+    options: z
+      .array(
+        z.strictObject({ id: QuestionOptionIdSchema, text: z.string().trim().min(1).max(2000) }),
+      )
+      .max(10),
+    maxPoints: z.number().min(0.5).max(100).multipleOf(0.5),
+  })
+  .refine((item) => isUnique(item.options.map((option) => option.id)), {
+    message: "option ids must be unique",
+    path: ["options"],
+  })
+  .refine((item) => inRange(optionRange[item.kind], item.options.length), {
+    message: "wrong number of options for this kind",
+    path: ["options"],
+  });
+export type QuestionDelivery = z.infer<typeof QuestionDeliverySchema>;

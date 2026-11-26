@@ -164,6 +164,7 @@ export const TestResponseSchema = z
     tenantId: IdSchema,
     attemptId: IdSchema,
     itemId: IdSchema,
+    /** Chosen options; for an `order` item, the learner's order of all option ids. */
     selectedOptionIds: z
       .array(QuestionOptionIdSchema)
       .max(10)

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   QuestionBankSchema,
+  QuestionDeliverySchema,
   QuestionItemSchema,
   type QuestionBank,
   type QuestionItem,
@@ -179,5 +180,34 @@ describe("question items", () => {
     );
     expect(QuestionItemSchema.safeParse({ ...base, options: badOptionId }).success).toBe(false);
     expect(QuestionItemSchema.safeParse({ ...base, language: "en_IN" }).success).toBe(false);
+  });
+});
+
+describe("question delivery", () => {
+  it("carries the question without its answer key", () => {
+    const delivered = {
+      id: base.id,
+      kind: base.kind,
+      stem: base.stem,
+      language: base.language,
+      options: base.options.map(({ id, text }) => ({ id, text })),
+      maxPoints: base.maxPoints,
+    };
+    expect(QuestionDeliverySchema.safeParse(delivered).success).toBe(true);
+    expect(QuestionDeliverySchema.safeParse({ ...delivered, options: base.options }).success).toBe(
+      false,
+    );
+    expect(
+      QuestionDeliverySchema.safeParse({ ...delivered, explanation: base.explanation }).success,
+    ).toBe(false);
+    expect(
+      QuestionDeliverySchema.safeParse({ ...delivered, acceptedAnswers: ["2/4"] }).success,
+    ).toBe(false);
+    expect(QuestionDeliverySchema.safeParse(base).success).toBe(false);
+    const essay = { ...delivered, kind: "essay", options: [] };
+    expect(QuestionDeliverySchema.safeParse(essay).success).toBe(true);
+    expect(QuestionDeliverySchema.safeParse({ ...essay, options: delivered.options }).success).toBe(
+      false,
+    );
   });
 });
