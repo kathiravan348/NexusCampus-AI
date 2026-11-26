@@ -72,6 +72,6 @@
 | NEX-195 | Stage 3 demo seed, part 1: M08, M09, M12–M17 rows and next-year calendars (D85) | D | done | Claude | 183–191, 193, 200 |
 | NEX-209 | Stage 3 demo seed, part 2: M18–M24 and M86 rows (D85) — split from NEX-195 | D | withdrawn | Claude | 195 |
 | NEX-196 | Stage 3 contract parity: API responses match the frozen contracts | D | done | Claude | 192, 195, 209 |
-| NEX-197 | Switch Stage 3 screens to real data: M08, M09, M12–M17 | C | draft | — | 196 |
-| NEX-198 | Switch Stage 3 screens to real data: M18–M28, M86 | C | draft | — | 196, 197 |
+| NEX-197 | Switch Stage 3 screens to real data: M08, M09, M12–M17 | C | planned | — | 196 |
+| NEX-198 | Switch Stage 3 screens to real data: M18–M28, M86 | C | withdrawn | — | 196, 197 |
 | NEX-199 | Stage 3 harden & release: offline, i18n, WCAG 2.2 AA, security review V-1…V-7, install test, guides | D | draft | — | 186, 194, 198 |
