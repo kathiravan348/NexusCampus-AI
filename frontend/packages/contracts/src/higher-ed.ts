@@ -5,11 +5,13 @@ import { IdSchema, IsoDateSchema, NameSchema, UtcDateTimeSchema } from "./common
 /**
  * M42 higher-ed academics (NEX-219, D87) across credit systems (CBCS, ECTS, semester hours). A degree audit's verdict
  * follows from its numbers, and a person still confirms graduation (M22 / M86). AI degree-path advice is reviewed by an
- * advisor and never registers a learner (A-4); it cites its reasons (A-5).
+ * advisor and never registers a learner (A-4); it cites its reasons (A-5) and, for a minor (vocational programmes),
+ * needs a guardian's `ai_features` consent (A-3).
  */
 
 const isUnique = (values: readonly unknown[]) => new Set(values).size === values.length;
-const CreditsSchema = z.number().min(0).max(300).multipleOf(0.5);
+/** Up to 600 so integrated and medical degrees (300–360 ECTS) fit. */
+const CreditsSchema = z.number().min(0).max(600).multipleOf(0.5);
 
 export const CreditSystemSchema = z.enum(["cbcs", "ects", "semester_hours", "custom"]);
 export type CreditSystem = z.infer<typeof CreditSystemSchema>;

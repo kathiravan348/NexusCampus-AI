@@ -151,6 +151,20 @@ describe("requirements and registration", () => {
 
 describe("degree audit", () => {
   it("accepts an eligible and a not-eligible audit", () => {
+    const medicine = {
+      requirementId: "requirement-core",
+      creditsEarned: 360,
+      creditsRequired: 360,
+      satisfied: true,
+    };
+    expect(
+      DegreeAuditSchema.safeParse({
+        ...audit,
+        creditsEarned: 360,
+        creditsRequired: 360,
+        requirements: [medicine],
+      }).success,
+    ).toBe(true);
     expect(DegreeAuditSchema.safeParse(audit).success).toBe(true);
     const short = {
       ...audit,
@@ -170,6 +184,7 @@ describe("degree audit", () => {
   });
 
   it("rejects a verdict that does not follow from the numbers", () => {
+    expect(DegreeAuditSchema.safeParse({ ...audit, creditsEarned: 600.5 }).success).toBe(false);
     const unmet = {
       requirementId: "requirement-elective",
       creditsEarned: 36,
