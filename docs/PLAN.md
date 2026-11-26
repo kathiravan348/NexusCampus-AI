@@ -14,7 +14,7 @@
 | 6 | Campus life & services | M52–M56, M60–M62, M64–M70, M85 | Transport, hostel, canteen, store, wallet, gate, emergency & crisis (L3), health, wellbeing, events, sports, trips, placement, internships, international, alumni |
 | 7 | Enterprise & ecosystem | M73–M82 | Groups/franchises, BI, integrations and public API, marketplace, white-label apps, website builder, Edge node, IoT, ESG, trust centre; certifications |
 
-**Current: Stage 3 — build (prototype frozen 2026-11-25, D78; plan D71, approved D72), `docs/tasks/stage-3/BOARD.md`.** Stage 1 released 2026-11-21 (D54), Stage 2 released 2026-11-23 (D70). Do not build modules of a later stage.
+**Current: Stage 4 — design (D87), `docs/tasks/stage-4/BOARD.md`.** Stage 1 released 2026-11-21 (D54), Stage 2 released 2026-11-23 (D70), Stage 3 released 2026-11-26 (D86). Do not build modules of a later stage.
 Why Control is Stage 2: the first paying customer (SaaS or self-hosted) needs provisioning, billing or licensing,
 updates and support before any school module ships to them.
 
@@ -54,6 +54,15 @@ in Tamil (D42); the Group exercises inherited/locked themes and text overrides.
 | 4. Review | 179 review build + walkthrough · 181 menu audience · 182 review fixes · 180 freeze (D78) | Frozen Stage 3 scope; build tasks planned at the freeze |
 | 5. Build | 183 M15, 200 M08, 184–185, 187–191 DB + API per module group (one migration chain, in order) · 186 public enquiry form (demo data first, D79) · 192 portal homes and dashboards API · 193–194 rollover write flow · 195 demo seed · 196 contract parity · 197–198 screens switched to real | Stage 3 runs on the real backend, one module at a time |
 | 6. Harden & release | 199 offline, i18n, WCAG 2.2 AA, security review, install test, guides | Stage 3 released |
+
+## Stage 4 — Teaching & learning (detail, D87)
+| Step | Tasks | What exists after |
+|---|---|---|
+| 1. Contracts | 210 outcomes, syllabus, lesson plans (M29) · 211 course spaces (M30) · 212 content (M31) · 213 assignments and tests (M32, M33) · 214 mastery, tutor, early warning (M35, M46) · 215 proctoring and live classes (M34, M36) · 216 early years, inclusion, media and portfolios (M37, M38, M91) · 217 library, surveys, credentials (M39, M44, M45) · 218 test prep and session courses (M40, M41) · 219 higher-ed credits and store (M42, M43) | Strict shapes for every Stage 4 module, tagged to M29 outcomes and plugged into M30 course spaces |
+| 2. Data layer | 220–221 fixtures for the 5 demo tenants and the Group · 222–225 MSW handlers + services | Demo courses, content, homework, tests, diaries, library and credentials served through MSW |
+| 3. Screens | 226–244: one task per module (M29, M30, M31, M32, M33, M34, M35, M36, M37, M38, M91, M46, M39, M40, M41, M42, M43, M44, M45) with its offline level and its AI helper mocked behind M11 | Every Stage 4 screen clickable in demo mode, per persona and institution type |
+| 4. Review | 245 review build + walkthrough · 246 freeze | Frozen Stage 4 scope; build tasks planned at the freeze |
+| 5. Build, harden & release | planned at the freeze (DB + API per module group, provider adapters when the Owner supplies accounts, seed, parity, real data, AI evaluations, release) | Stage 4 released |
 
 ## Stage 2 — Nexus Control & delivery (outline; detail at Stage 1 freeze)
 Prototype `apps/control`: accounts → plans and quotes → SaaS provisioning → billing and metering → licence files →

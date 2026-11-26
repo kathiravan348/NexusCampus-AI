@@ -9,9 +9,9 @@
 > Platform names come from `brand.config.ts` only. An institution's name, theme, fonts and texts are tenant data.
 
 ## 1. Current stage
-**Stage 3 — Core institution operations, build (prototype frozen D78): `docs/tasks/stage-3/BOARD.md`**
-(M08, M09, M12–M28, M86; DB + API per module, NEX-183 first). Stage 1 (D54) and Stage 2 (D70, 2026-11-23) are
-released; their contracts and screens change only through a task with the Owner's OK. Full plan: `docs/PLAN.md`; modules: `docs/MODULES.md`. Never build a module from a
+**Stage 4 — Teaching & learning, design (D87): `docs/tasks/stage-4/BOARD.md`**
+(M29–M46, M91; contracts → fixtures → MSW + services → screens → review → freeze, NEX-210 first). Stages 1 (D54),
+2 (D70) and 3 (D86, 2026-11-26) are released; their contracts and screens change only through a task with the Owner's OK. Full plan: `docs/PLAN.md`; modules: `docs/MODULES.md`. Never build a module from a
 later stage.
 v1 is archived at git tag `legacy-v1`: never read or copy it.
 
