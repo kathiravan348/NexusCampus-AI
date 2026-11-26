@@ -143,6 +143,12 @@ export const TutorSessionSchema = z
     startedAt: UtcDateTimeSchema,
     endedAt: UtcDateTimeSchema.nullable(),
     messageCount: z.int().min(0),
+    /**
+     * The visibility the learner was shown when the session started. Staff read this session's messages only when it
+     * is true — a later settings change never opens older transcripts; a safety-blocked answer is the exception the
+     * notice names (designated reviewers see the flagged exchange).
+     */
+    transcriptsVisibleToStaff: z.boolean(),
     flaggedForReview: z.boolean(),
   })
   .refine((session) => !session.learnerIsMinor || session.consentId !== null, {

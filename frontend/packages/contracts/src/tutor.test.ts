@@ -79,6 +79,7 @@ const minorSession: TutorSession = {
   startedAt: "2026-07-04T15:00:00Z",
   endedAt: "2026-07-04T15:20:00Z",
   messageCount: 6,
+  transcriptsVisibleToStaff: true,
   flaggedForReview: false,
 };
 const learnerMessage: TutorMessage = {
@@ -216,6 +217,9 @@ describe("tutor settings and sessions", () => {
 
   it("rejects a minor without consent and bad end times", () => {
     expect(TutorSessionSchema.safeParse({ ...minorSession, consentId: null }).success).toBe(false);
+    const { transcriptsVisibleToStaff: _shown, ...withoutSnapshot } = minorSession;
+    expect(_shown).toBe(true);
+    expect(TutorSessionSchema.safeParse(withoutSnapshot).success).toBe(false);
     expect(TutorSessionSchema.safeParse({ ...minorSession, status: "open" }).success).toBe(false);
     expect(TutorSessionSchema.safeParse({ ...minorSession, endedAt: null }).success).toBe(false);
     expect(
