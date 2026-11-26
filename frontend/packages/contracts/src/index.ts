@@ -21,6 +21,7 @@ export * from "./surveys";
 export * from "./credentials";
 export * from "./test-prep";
 export * from "./session-courses";
+export * from "./higher-ed";
 export * from "./tutor";
 export * from "./analytics";
 export * from "./timetable";
