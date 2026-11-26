@@ -83,4 +83,3 @@ class LearnerDocumentOut(Record):
         if name.strip() in {"", ".", ".."} or any(c in "/:\\" or ord(c) < 32 for c in name):
             raise ValueError("Expected a plain file name")
         return name
-

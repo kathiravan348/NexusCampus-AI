@@ -41,7 +41,6 @@ class AttendanceSessionOut(Timestamped):
     submitted_at: datetime | None
 
 
-
 class RosterEntryOut(Contract):
     learner_id: Id
     roll_number: Annotated[str, Field(min_length=1, max_length=20)] | None
