@@ -12,6 +12,7 @@ export * from "./assignments";
 export * from "./questions";
 export * from "./online-tests";
 export * from "./proctoring";
+export * from "./live-classes";
 export * from "./tutor";
 export * from "./analytics";
 export * from "./timetable";
