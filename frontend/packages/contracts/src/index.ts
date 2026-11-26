@@ -13,6 +13,7 @@ export * from "./questions";
 export * from "./online-tests";
 export * from "./proctoring";
 export * from "./live-classes";
+export * from "./early-years";
 export * from "./tutor";
 export * from "./analytics";
 export * from "./timetable";
