@@ -16,6 +16,7 @@ export * from "./live-classes";
 export * from "./early-years";
 export * from "./inclusion";
 export * from "./portfolios";
+export * from "./library";
 export * from "./tutor";
 export * from "./analytics";
 export * from "./timetable";
