@@ -83,6 +83,7 @@ const fine: LibraryFine = {
   currency: "INR",
   status: "invoiced",
   feeInvoiceId: "fee-invoice-17",
+  deskReceiptNumber: null,
   waivedByStaffProfileId: null,
   waiveReason: null,
 };
@@ -211,5 +212,21 @@ describe("fines and recommendations", () => {
       LibraryFineSchema.safeParse({ ...fine, status: "waived", feeInvoiceId: null }).success,
     ).toBe(false);
     expect(LibraryFineSchema.safeParse({ ...fine, amount: 0 }).success).toBe(false);
+    const deskPaid = {
+      ...fine,
+      status: "paid",
+      feeInvoiceId: null,
+      deskReceiptNumber: "LIB-R-0042",
+    };
+    expect(LibraryFineSchema.safeParse(deskPaid).success).toBe(true);
+    expect(
+      LibraryFineSchema.safeParse({ ...deskPaid, feeInvoiceId: "fee-invoice-17" }).success,
+    ).toBe(false);
+    expect(LibraryFineSchema.safeParse({ ...deskPaid, deskReceiptNumber: null }).success).toBe(
+      false,
+    );
+    expect(LibraryFineSchema.safeParse({ ...fine, deskReceiptNumber: "LIB-R-0042" }).success).toBe(
+      false,
+    );
   });
 });

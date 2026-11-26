@@ -210,16 +210,27 @@ export const LibraryFineSchema = z
     amount: MinorUnitsSchema.min(1),
     currency: CurrencyCodeSchema,
     status: LibraryFineStatusSchema,
-    /** M18 fee invoice; set exactly when invoiced or paid. */
+    /** M18 fee invoice (learners); required when invoiced. */
     feeInvoiceId: IdSchema.nullable(),
+    /** Receipt for a fine paid at the library desk (staff, or a learner paying in person). */
+    deskReceiptNumber: z
+      .string()
+      .regex(/^[A-Z0-9-]{3,32}$/)
+      .nullable(),
     waivedByStaffProfileId: IdSchema.nullable(),
     waiveReason: z.string().trim().min(1).max(300).nullable(),
   })
   .refine(
-    (fine) =>
-      (fine.status === "invoiced" || fine.status === "paid") === (fine.feeInvoiceId !== null),
+    (fine) => {
+      if (fine.status === "invoiced")
+        return fine.feeInvoiceId !== null && fine.deskReceiptNumber === null;
+      if (fine.status === "paid")
+        return (fine.feeInvoiceId !== null) !== (fine.deskReceiptNumber !== null);
+      return fine.feeInvoiceId === null && fine.deskReceiptNumber === null;
+    },
     {
-      message: "feeInvoiceId is set exactly when the fine is invoiced or paid",
+      message:
+        "an invoiced fine has an invoice; a paid fine has an invoice or a desk receipt, not both",
       path: ["feeInvoiceId"],
     },
   )
