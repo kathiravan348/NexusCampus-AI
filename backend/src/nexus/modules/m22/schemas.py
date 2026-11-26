@@ -33,8 +33,6 @@ class ReportCardOut(Record):
 
     @model_validator(mode="after")
     def rules(self) -> Self:
-        if (self.status == "published") != (self.published_at is not None):
-            raise ValueError("publishedAt is set exactly when status is published")
         if self.updated_at < self.created_at:
             raise ValueError("updatedAt is before createdAt")
         return self

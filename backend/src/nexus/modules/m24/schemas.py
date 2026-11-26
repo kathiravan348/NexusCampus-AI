@@ -34,8 +34,6 @@ class MessageThreadOut(Record):
             raise ValueError("participantPersonIds has duplicates")
         if self.kind != "broadcast" and len(self.participant_person_ids) < 2:
             raise ValueError("participantPersonIds requires at least 2 participants unless kind is broadcast")
-        if (self.class_group_id is not None) != (self.kind == "class_group"):
-            raise ValueError("classGroupId must be set iff kind is class_group")
         if self.updated_at < self.created_at:
             raise ValueError("updatedAt is before createdAt")
         return self

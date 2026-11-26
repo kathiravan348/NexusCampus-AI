@@ -69,8 +69,6 @@ class KpiOut(Contract):
 
     @model_validator(mode="after")
     def rules(self) -> Self:
-        if (self.currency is not None) != (self.unit == "minor_units"):
-            raise ValueError("currency must be set iff unit is minor_units")
         if self.unit == "minor_units" and not float(self.value).is_integer():
             raise ValueError("value must be an integer when unit is minor_units")
         return self
