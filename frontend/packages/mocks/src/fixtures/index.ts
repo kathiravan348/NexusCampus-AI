@@ -28,3 +28,7 @@ export * from "./ops-assessment";
 export * from "./ops-communication";
 export * from "./stage3-access";
 export * from "./stage4-access";
+export * from "./ids-stage4-learning";
+export * from "./curriculum";
+export * from "./content";
+export * from "./courses";
