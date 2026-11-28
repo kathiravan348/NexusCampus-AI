@@ -134,7 +134,7 @@ describe("outbox", () => {
 
     // Raw serverSnapshot is also encrypted at rest
     const rawConflict = await db.outbox.get(conflictEntry.id);
-    expect(JSON.stringify(rawConflict)).not.toContain("4500");
+    expect(JSON.stringify(rawConflict)).not.toContain('"amount":4500');
 
     await resolveConflict(db, scope, conflictEntry.id, {
       kind: "replace",

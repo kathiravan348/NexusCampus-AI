@@ -115,6 +115,7 @@ describe("Stage 4 access fixtures (D87)", () => {
     expect(STAGE4_ROLE_PERMISSIONS.learner).toEqual([
       "m30.course.read",
       "m31.content.read",
+      "m32.assignment.read",
       "m33.test.read",
       "m36.live.read",
       "m39.library.read",
