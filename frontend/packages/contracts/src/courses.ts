@@ -185,6 +185,15 @@ export const DiscussionThreadSchema = z.strictObject({
 });
 export type DiscussionThread = z.infer<typeof DiscussionThreadSchema>;
 
+const postBody = z.string().trim().min(1).max(5000);
+
+/** Client input for posting a top-level or nested reply to a discussion thread (M30, L2). */
+export const DiscussionPostInputSchema = z.strictObject({
+  parentPostId: IdSchema.nullable(),
+  body: postBody,
+});
+export type DiscussionPostInput = z.infer<typeof DiscussionPostInputSchema>;
+
 /** A post body is personal data of its author; a moderator may hide it. */
 export const DiscussionPostSchema = z
   .strictObject({
@@ -193,7 +202,7 @@ export const DiscussionPostSchema = z
     threadId: IdSchema,
     parentPostId: IdSchema.nullable(),
     authorProfileId: IdSchema,
-    body: z.string().trim().min(1).max(5000),
+    body: postBody,
     hidden: z.boolean(),
     hiddenByProfileId: IdSchema.nullable(),
     createdAt: UtcDateTimeSchema,

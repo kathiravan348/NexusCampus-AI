@@ -3,17 +3,45 @@ import {
   CourseModuleSchema,
   CourseProgressSchema,
   CourseSpaceSchema,
+  DiscussionPostInputSchema,
   DiscussionPostSchema,
   DiscussionThreadSchema,
   pageSchema,
   type CourseSpace,
 } from "@nexus/contracts";
-import { ofTenant, type Viewer } from "../context";
+import { HttpResponse, http, type JsonBodyType } from "msw";
+import {
+  ApiFailure,
+  entitled,
+  failureResponse,
+  ofTenant,
+  readViewer,
+  type Viewer,
+} from "../context";
 import { mockDb } from "../db";
-import { found, get, list, ok } from "./route";
+import { applyScenario, readScenario } from "../scenarios";
+import { API_BASE, found, get, list, ok } from "./route";
 
 const M = { module: "M30", permission: "m30.course.read" } as const;
 const MANAGE = "m30.course.manage";
+const postReceipts = new Map<string, string>();
+
+function authorProfile(viewer: Viewer, space: CourseSpace) {
+  const profiles = ofTenant(mockDb.roleProfiles, viewer.tenantId).filter(
+    (row) => row.personId === viewer.personId && row.status === "active",
+  );
+  const teaching = profiles.find(
+    (row) => row.kind === "staff" && space.staffProfileIds.includes(row.id),
+  );
+  if (teaching) return teaching;
+  const staff = profiles.find((row) => row.kind === "staff");
+  if (staff) return staff;
+  const learner = profiles.find((row) => row.kind === "learner");
+  if (learner) return learner;
+  const fallback = profiles[0];
+  if (!fallback) throw new ApiFailure("forbidden");
+  return fallback;
+}
 
 function courseAccess(viewer: Viewer) {
   const { tenantId, personId, permissions } = viewer;
@@ -110,5 +138,89 @@ export const m30Handlers = [
       (row) => row.threadId === thread.id && (moderate || !row.hidden),
     );
     return list(ctx, rows, pageSchema(DiscussionPostSchema));
+  }),
+  http.post(`*${API_BASE}/threads/:id/posts`, async ({ request, params }) => {
+    const early = await applyScenario(readScenario(request));
+    if (early) return early;
+    try {
+      const viewer = readViewer(request);
+      if (!entitled(viewer.tenantId, "M30")) throw new ApiFailure("module_disabled");
+      if (!viewer.permissions.has("m30.course.read")) throw new ApiFailure("forbidden");
+      const threadId = typeof params["id"] === "string" ? params["id"] : undefined;
+      const thread = found(
+        ofTenant(mockDb.discussionThreads, viewer.tenantId).find((row) => row.id === threadId),
+      );
+      const space = courseAccess(viewer).spaceById(thread.courseSpaceId);
+      const author = authorProfile(viewer, space);
+
+      const key = request.headers.get("Idempotency-Key");
+      const receiptKey = key && JSON.stringify([viewer.tenantId, thread.id, author.id, key]);
+      const savedId = receiptKey ? postReceipts.get(receiptKey) : undefined;
+      const saved = savedId
+        ? ofTenant(mockDb.discussionPosts, viewer.tenantId).find(
+            (row) => row.id === savedId && row.threadId === thread.id,
+          )
+        : undefined;
+      if (saved) {
+        const payload = DiscussionPostSchema.parse(saved) as JsonBodyType;
+        return HttpResponse.json(payload, { status: 201 });
+      }
+
+      if (thread.locked) {
+        throw new ApiFailure("conflict", [{ path: "locked", message: "Thread is locked" }]);
+      }
+
+      const raw: unknown = await request.json().catch(() => undefined);
+      const parsed = DiscussionPostInputSchema.safeParse(raw);
+      if (!parsed.success) {
+        throw new ApiFailure(
+          "invalid_request",
+          parsed.error.issues.map((issue) => ({
+            path: String(issue.path[0] ?? ""),
+            message: "Invalid discussion post field",
+          })),
+        );
+      }
+
+      const moderate = viewer.permissions.has("m30.discussion.moderate");
+      const { parentPostId, body } = parsed.data;
+      if (parentPostId !== null) {
+        const parent = ofTenant(mockDb.discussionPosts, viewer.tenantId).find(
+          (row) =>
+            row.id === parentPostId && row.threadId === thread.id && (moderate || !row.hidden),
+        );
+        if (!parent) {
+          throw new ApiFailure("invalid_request", [
+            { path: "parentPostId", message: "Invalid parent post" },
+          ]);
+        }
+      }
+
+      const now = new Date().toISOString();
+      const created = DiscussionPostSchema.parse({
+        id: `dpo-${globalThis.crypto.randomUUID().slice(0, 8)}`,
+        tenantId: viewer.tenantId,
+        threadId: thread.id,
+        parentPostId,
+        authorProfileId: author.id,
+        body,
+        hidden: false,
+        hiddenByProfileId: null,
+        createdAt: now,
+        editedAt: null,
+      });
+      mockDb.discussionPosts.push(created);
+      const index = mockDb.discussionThreads.indexOf(thread);
+      mockDb.discussionThreads[index] = DiscussionThreadSchema.parse({
+        ...thread,
+        postCount: thread.postCount + 1,
+        lastPostAt: now,
+      });
+      if (receiptKey) postReceipts.set(receiptKey, created.id);
+      return HttpResponse.json(created as JsonBodyType, { status: 201 });
+    } catch (error) {
+      if (error instanceof ApiFailure) return failureResponse(error);
+      throw error;
+    }
   }),
 ];

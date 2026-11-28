@@ -1104,6 +1104,10 @@
     "valid": true
   },
   {
+    "text": "Back to courses",
+    "valid": true
+  },
+  {
     "text": "Back to imports",
     "valid": true
   },
@@ -1205,6 +1209,10 @@
   },
   {
     "text": "Browse programs, year levels, class groups, subjects and academic-year offerings.",
+    "valid": true
+  },
+  {
+    "text": "Browse your course spaces, follow modules and items, and join class discussions.",
     "valid": true
   },
   {
@@ -1564,6 +1572,10 @@
     "valid": true
   },
   {
+    "text": "Community",
+    "valid": true
+  },
+  {
     "text": "Compact",
     "valid": true
   },
@@ -1773,6 +1785,34 @@
   },
   {
     "text": "Course outcomes",
+    "valid": true
+  },
+  {
+    "text": "Course outline could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Course space sections",
+    "valid": true
+  },
+  {
+    "text": "Course spaces",
+    "valid": true
+  },
+  {
+    "text": "Course spaces could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Course spaces you teach or are enrolled in will appear here.",
+    "valid": true
+  },
+  {
+    "text": "Course spaces, outlines, progress and discussions.",
+    "valid": true
+  },
+  {
+    "text": "Courses",
     "valid": true
   },
   {
@@ -2100,6 +2140,26 @@
     "valid": true
   },
   {
+    "text": "Discussion replies",
+    "valid": true
+  },
+  {
+    "text": "Discussion threads",
+    "valid": true
+  },
+  {
+    "text": "Discussion threads for this course space will appear here.",
+    "valid": true
+  },
+  {
+    "text": "Discussions",
+    "valid": true
+  },
+  {
+    "text": "Discussions could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Display calendar",
     "valid": true
   },
@@ -2189,6 +2249,10 @@
   },
   {
     "text": "Due {date}",
+    "valid": true
+  },
+  {
+    "text": "Due {time}",
     "valid": true
   },
   {
@@ -2432,6 +2496,10 @@
     "valid": true
   },
   {
+    "text": "Enter a valid reply.",
+    "valid": true
+  },
+  {
     "text": "Enter a valid time (HH:MM).",
     "valid": true
   },
@@ -2665,6 +2733,10 @@
   },
   {
     "text": "Fields",
+    "valid": true
+  },
+  {
+    "text": "File",
     "valid": true
   },
   {
@@ -2905,6 +2977,10 @@
   },
   {
     "text": "Helpful",
+    "valid": true
+  },
+  {
+    "text": "Hidden",
     "valid": true
   },
   {
@@ -3384,6 +3460,10 @@
     "valid": true
   },
   {
+    "text": "Learner progress",
+    "valid": true
+  },
+  {
     "text": "Learner records you can view will appear here.",
     "valid": true
   },
@@ -3421,6 +3501,10 @@
   },
   {
     "text": "Legal order",
+    "valid": true
+  },
+  {
+    "text": "Lesson",
     "valid": true
   },
   {
@@ -3481,6 +3565,14 @@
   },
   {
     "text": "Line {ordinal}",
+    "valid": true
+  },
+  {
+    "text": "Link",
+    "valid": true
+  },
+  {
+    "text": "Live class",
     "valid": true
   },
   {
@@ -3832,6 +3924,10 @@
     "valid": true
   },
   {
+    "text": "Modules and items for this course space will appear here.",
+    "valid": true
+  },
+  {
     "text": "Modules for your role appear here once they are switched on for your institution.",
     "valid": true
   },
@@ -4140,6 +4236,10 @@
     "valid": true
   },
   {
+    "text": "No completion required",
+    "valid": true
+  },
+  {
     "text": "No compliance pack applies yet.",
     "valid": true
   },
@@ -4153,6 +4253,10 @@
   },
   {
     "text": "No consent records match.",
+    "valid": true
+  },
+  {
+    "text": "No course spaces yet",
     "valid": true
   },
   {
@@ -4177,6 +4281,10 @@
   },
   {
     "text": "No diagnostic bundles.",
+    "valid": true
+  },
+  {
+    "text": "No discussions yet",
     "valid": true
   },
   {
@@ -4257,6 +4365,10 @@
   },
   {
     "text": "No issued documents to show",
+    "valid": true
+  },
+  {
+    "text": "No items in this module yet.",
     "valid": true
   },
   {
@@ -4389,6 +4501,10 @@
   },
   {
     "text": "No refunds recorded.",
+    "valid": true
+  },
+  {
+    "text": "No replies in this thread yet.",
     "valid": true
   },
   {
@@ -4720,6 +4836,10 @@
     "valid": true
   },
   {
+    "text": "Open {title}",
+    "valid": true
+  },
+  {
     "text": "OpenID Connect",
     "valid": true
   },
@@ -4788,6 +4908,10 @@
     "valid": true
   },
   {
+    "text": "Outline",
+    "valid": true
+  },
+  {
     "text": "Overall remark",
     "valid": true
   },
@@ -4848,6 +4972,10 @@
     "valid": true
   },
   {
+    "text": "Page",
+    "valid": true
+  },
+  {
     "text": "Page check: the chain is broken at row {row}.",
     "valid": true
   },
@@ -4889,6 +5017,14 @@
   },
   {
     "text": "Part paid",
+    "valid": true
+  },
+  {
+    "text": "Participant",
+    "valid": true
+  },
+  {
+    "text": "Pass at {percent}%",
     "valid": true
   },
   {
@@ -5008,6 +5144,10 @@
     "valid": true
   },
   {
+    "text": "Pinned",
+    "valid": true
+  },
+  {
     "text": "Placeholders are filled with sample values.",
     "valid": true
   },
@@ -5060,6 +5200,10 @@
     "valid": true
   },
   {
+    "text": "Post reply",
+    "valid": true
+  },
+  {
     "text": "Postal code",
     "valid": true
   },
@@ -5077,6 +5221,10 @@
   },
   {
     "text": "Preferences saved.",
+    "valid": true
+  },
+  {
+    "text": "Prerequisites: {modules}",
     "valid": true
   },
   {
@@ -5420,7 +5568,31 @@
     "valid": true
   },
   {
+    "text": "Replies could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Reply",
+    "valid": true
+  },
+  {
+    "text": "Reply must be {max} characters or fewer.",
+    "valid": true
+  },
+  {
+    "text": "Reply posted.",
+    "valid": true
+  },
+  {
+    "text": "Reply queued offline. It will sync when you reconnect.",
+    "valid": true
+  },
+  {
+    "text": "Reply to post",
+    "valid": true
+  },
+  {
+    "text": "Reply to thread",
     "valid": true
   },
   {
@@ -5932,6 +6104,10 @@
     "valid": true
   },
   {
+    "text": "Self-enrol",
+    "valid": true
+  },
+  {
     "text": "Semester",
     "valid": true
   },
@@ -6249,6 +6425,10 @@
   },
   {
     "text": "Submit",
+    "valid": true
+  },
+  {
+    "text": "Submit to complete",
     "valid": true
   },
   {
@@ -6592,6 +6772,10 @@
     "valid": true
   },
   {
+    "text": "The post you replied to is no longer available.",
+    "valid": true
+  },
+  {
     "text": "The preview appears once the message is valid.",
     "valid": true
   },
@@ -6684,6 +6868,10 @@
     "valid": true
   },
   {
+    "text": "This discussion thread is not available.",
+    "valid": true
+  },
+  {
     "text": "This email already has an account.",
     "valid": true
   },
@@ -6765,6 +6953,14 @@
   },
   {
     "text": "This thread is archived. Replies are closed.",
+    "valid": true
+  },
+  {
+    "text": "This thread is locked and cannot accept new replies.",
+    "valid": true
+  },
+  {
+    "text": "This thread is locked. New replies are closed.",
     "valid": true
   },
   {
@@ -7012,11 +7208,19 @@
     "valid": true
   },
   {
+    "text": "Unlocks {date}",
+    "valid": true
+  },
+  {
     "text": "Unmarked",
     "valid": true
   },
   {
     "text": "Unpaid invoices",
+    "valid": true
+  },
+  {
+    "text": "Unpublished",
     "valid": true
   },
   {
@@ -7272,6 +7476,10 @@
     "valid": true
   },
   {
+    "text": "View to complete",
+    "valid": true
+  },
+  {
     "text": "View weekly schedules by class group, check rooms and bell times, and monitor teacher load.",
     "valid": true
   },
@@ -7424,6 +7632,14 @@
     "valid": true
   },
   {
+    "text": "Write a reply before posting.",
+    "valid": true
+  },
+  {
+    "text": "Write your reply…",
+    "valid": true
+  },
+  {
     "text": "Written off",
     "valid": true
   },
@@ -7485,6 +7701,10 @@
   },
   {
     "text": "You are offline. Changes to institution setup cannot be saved until you reconnect.",
+    "valid": true
+  },
+  {
+    "text": "You are offline. Posting will queue your reply to sync later.",
     "valid": true
   },
   {
@@ -7564,7 +7784,15 @@
     "valid": true
   },
   {
+    "text": "Your progress",
+    "valid": true
+  },
+  {
     "text": "Your question",
+    "valid": true
+  },
+  {
+    "text": "Your reply could not be posted. Try again.",
     "valid": true
   },
   {
@@ -7692,11 +7920,35 @@
     "valid": true
   },
   {
+    "text": "{count, plural, =0 {No learners with recorded progress yet} one {# learner with recorded progress} other {# learners with recorded progress}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {No replies} one {# reply} other {# replies}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {अभी किसी शिक्षार्थी की प्रगति दर्ज नहीं है} one {# शिक्षार्थी की प्रगति दर्ज है} other {# शिक्षार्थियों की प्रगति दर्ज है}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, =0 {इस डिवाइस पर कोई बदलाव प्रतीक्षा में नहीं है।} one {इस डिवाइस पर प्रतीक्षा में # बदलाव खो जाएगा।} other {इस डिवाइस पर प्रतीक्षा में # बदलाव खो जाएँगे।}}",
     "valid": true
   },
   {
+    "text": "{count, plural, =0 {कोई उत्तर नहीं} one {# उत्तर} other {# उत्तर}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, =0 {இந்தச் சாதனத்தில் எந்த மாற்றமும் காத்திருக்கவில்லை.} one {இந்தச் சாதனத்தில் காத்திருக்கும் # மாற்றம் இழக்கப்படும்.} other {இந்தச் சாதனத்தில் காத்திருக்கும் # மாற்றங்கள் இழக்கப்படும்.}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {இன்னும் எந்தக் கற்பவரின் முன்னேற்றமும் பதிவாகவில்லை} one {# கற்பவரின் முன்னேற்றம் பதிவாகியுள்ளது} other {# கற்பவர்களின் முன்னேற்றம் பதிவாகியுள்ளது}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {பதில்கள் இல்லை} one {# பதில்} other {# பதில்கள்}}",
     "valid": true
   },
   {
@@ -8020,6 +8272,10 @@
     "valid": true
   },
   {
+    "text": "{date} को खुलेगा",
+    "valid": true
+  },
+  {
     "text": "{date} को जमा किया गया",
     "valid": true
   },
@@ -8061,6 +8317,10 @@
   },
   {
     "text": "{date} அன்று உருவாக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "{date} அன்று திறக்கும்",
     "valid": true
   },
   {
@@ -8129,6 +8389,10 @@
   },
   {
     "text": "{device} ஐத் திரும்பப் பெற்று அழிக்கவா?",
+    "valid": true
+  },
+  {
+    "text": "{done} of {total} done",
     "valid": true
   },
   {
@@ -8316,7 +8580,19 @@
     "valid": true
   },
   {
+    "text": "{percent}%",
+    "valid": true
+  },
+  {
+    "text": "{percent}% ({completed} of {total})",
+    "valid": true
+  },
+  {
     "text": "{percent}% ({covered} of {total})",
+    "valid": true
+  },
+  {
+    "text": "{percent}% ({total} में से {completed})",
     "valid": true
   },
   {
@@ -8324,7 +8600,19 @@
     "valid": true
   },
   {
+    "text": "{percent}% ({total} இல் {completed})",
+    "valid": true
+  },
+  {
     "text": "{percent}% ({total} இல் {covered})",
+    "valid": true
+  },
+  {
+    "text": "{percent}% पर उत्तीर्ण",
+    "valid": true
+  },
+  {
+    "text": "{percent}% மதிப்பெண்ணில் தேர்ச்சி",
     "valid": true
   },
   {
@@ -8408,11 +8696,19 @@
     "valid": true
   },
   {
+    "text": "{title} खोलें",
+    "valid": true
+  },
+  {
     "text": "{title} संपादित करें",
     "valid": true
   },
   {
     "text": "{title}-ஐத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "{title}-ஐத் திற",
     "valid": true
   },
   {
@@ -8445,6 +8741,14 @@
   },
   {
     "text": "{total, number} இல் {start, number}–{end, number} காட்டப்படுகிறது",
+    "valid": true
+  },
+  {
+    "text": "{total} में से {done} पूर्ण",
+    "valid": true
+  },
+  {
+    "text": "{total} இல் {done} முடிந்தது",
     "valid": true
   },
   {
@@ -8537,6 +8841,10 @@
   },
   {
     "text": "अंतिम बार देखा गया",
+    "valid": true
+  },
+  {
+    "text": "अंतिम समय {time}",
     "valid": true
   },
   {
@@ -8740,6 +9048,10 @@
     "valid": true
   },
   {
+    "text": "अपना उत्तर लिखें…",
+    "valid": true
+  },
+  {
     "text": "अपना सारांश देखें और अपने पृष्ठ खोलें।",
     "valid": true
   },
@@ -8761,6 +9073,10 @@
   },
   {
     "text": "अपने अपडेट देखें और अपनी समय-सारणी, उपस्थिति, रिपोर्ट कार्ड, दस्तावेज़ और संदेश खोलें।",
+    "valid": true
+  },
+  {
+    "text": "अपने पाठ्यक्रम कक्ष देखें, मॉड्यूल और सामग्री का अनुसरण करें और कक्षा की चर्चाओं में भाग लें।",
     "valid": true
   },
   {
@@ -8805,6 +9121,10 @@
   },
   {
     "text": "अपलोड किया गया",
+    "valid": true
+  },
+  {
+    "text": "अप्रकाशित",
     "valid": true
   },
   {
@@ -8868,6 +9188,10 @@
     "valid": true
   },
   {
+    "text": "अभी कोई चर्चा नहीं है",
+    "valid": true
+  },
+  {
     "text": "अभी कोई जर्नल प्रविष्टि नहीं है।",
     "valid": true
   },
@@ -8881,6 +9205,10 @@
   },
   {
     "text": "अभी कोई पाठ योजना नहीं है",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई पाठ्यक्रम कक्ष नहीं है",
     "valid": true
   },
   {
@@ -8909,6 +9237,10 @@
   },
   {
     "text": "अभी कोई मॉड्यूल नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई मॉड्यूल नहीं है",
     "valid": true
   },
   {
@@ -9120,6 +9452,10 @@
     "valid": true
   },
   {
+    "text": "आप ऑफ़लाइन हैं। पोस्ट करने पर आपका उत्तर बाद में सिंक होने के लिए कतार में जुड़ जाएगा।",
+    "valid": true
+  },
+  {
     "text": "आप ऑफ़लाइन हैं। बदलाव इस डिवाइस पर सुरक्षित रहते हैं और ऑनलाइन होने पर भेजे जाते हैं।",
     "valid": true
   },
@@ -9137,6 +9473,10 @@
   },
   {
     "text": "आप तय करते हैं कि Nexus सहायता कर्मचारी आपका डेटा कब और कितनी देर देख सकते हैं, और उन्होंने क्या किया। कुंजी सामग्री कभी नहीं दिखाई जाती।",
+    "valid": true
+  },
+  {
+    "text": "आपका उत्तर पोस्ट नहीं हो सका। फिर से कोशिश करें।",
     "valid": true
   },
   {
@@ -9165,6 +9505,10 @@
   },
   {
     "text": "आपकी पूछताछ भेजी नहीं जा सकी। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "आपकी प्रगति",
     "valid": true
   },
   {
@@ -9448,6 +9792,10 @@
     "valid": true
   },
   {
+    "text": "इस चर्चा में अभी कोई उत्तर नहीं है।",
+    "valid": true
+  },
+  {
     "text": "इस डिवाइस पर सहेजा गया। ऑनलाइन होने पर यह सिंक हो जाएगा।",
     "valid": true
   },
@@ -9465,6 +9813,14 @@
   },
   {
     "text": "इस परीक्षा का कोई प्रश्नपत्र नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस पाठ्यक्रम कक्ष के चर्चा विषय यहाँ दिखाई देंगे।",
+    "valid": true
+  },
+  {
+    "text": "इस पाठ्यक्रम कक्ष के मॉड्यूल और सामग्री यहाँ दिखाई देंगे।",
     "valid": true
   },
   {
@@ -9489,6 +9845,10 @@
   },
   {
     "text": "इस महीने के AI क्रेडिट",
+    "valid": true
+  },
+  {
+    "text": "इस मॉड्यूल में अभी कोई सामग्री नहीं है।",
     "valid": true
   },
   {
@@ -9648,7 +10008,31 @@
     "valid": true
   },
   {
+    "text": "उत्तर {max} या उससे कम अक्षरों का होना चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "उत्तर ऑफ़लाइन कतार में है। पुनः जुड़ने पर यह सिंक हो जाएगा।",
+    "valid": true
+  },
+  {
+    "text": "उत्तर दें",
+    "valid": true
+  },
+  {
+    "text": "उत्तर पोस्ट करें",
+    "valid": true
+  },
+  {
+    "text": "उत्तर पोस्ट किया गया।",
+    "valid": true
+  },
+  {
     "text": "उत्तर भेजें",
+    "valid": true
+  },
+  {
+    "text": "उत्तर लोड नहीं हो सके।",
     "valid": true
   },
   {
@@ -10616,6 +11000,10 @@
     "valid": true
   },
   {
+    "text": "खोलें",
+    "valid": true
+  },
+  {
     "text": "गंभीर",
     "valid": true
   },
@@ -10701,6 +11089,26 @@
   },
   {
     "text": "चर्चा",
+    "valid": true
+  },
+  {
+    "text": "चर्चा उत्तर",
+    "valid": true
+  },
+  {
+    "text": "चर्चा का उत्तर दें",
+    "valid": true
+  },
+  {
+    "text": "चर्चा विषय",
+    "valid": true
+  },
+  {
+    "text": "चर्चाएँ",
+    "valid": true
+  },
+  {
+    "text": "चर्चाएँ लोड नहीं हो सकीं।",
     "valid": true
   },
   {
@@ -10825,6 +11233,10 @@
   },
   {
     "text": "छात्रवृत्ति",
+    "valid": true
+  },
+  {
+    "text": "छिपाया गया",
     "valid": true
   },
   {
@@ -10957,6 +11369,10 @@
   },
   {
     "text": "जारीकर्ता URL https:// से शुरू होना चाहिए",
+    "valid": true
+  },
+  {
+    "text": "जिस पोस्ट का आपने उत्तर दिया वह अब उपलब्ध नहीं है।",
     "valid": true
   },
   {
@@ -11816,6 +12232,10 @@
     "valid": true
   },
   {
+    "text": "पाठ",
+    "valid": true
+  },
+  {
     "text": "पाठ की तिथि",
     "valid": true
   },
@@ -11876,7 +12296,31 @@
     "valid": true
   },
   {
+    "text": "पाठ्यक्रम कक्ष",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम कक्ष अनुभाग",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम कक्ष लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम कक्ष सूची",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम कक्ष, रूपरेखा, प्रगति और चर्चाएँ।",
+    "valid": true
+  },
+  {
     "text": "पाठ्यक्रम कवरेज",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम की रूपरेखा लोड नहीं हो सकी।",
     "valid": true
   },
   {
@@ -11897,6 +12341,10 @@
   },
   {
     "text": "पाठ्यक्रम विषयों, अधिगम परिणामों और समयबद्ध गतिविधियों से जुड़ी पाठ योजना बनाएँ।",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रमों पर वापस जाएँ",
     "valid": true
   },
   {
@@ -11941,6 +12389,10 @@
   },
   {
     "text": "पिता",
+    "valid": true
+  },
+  {
+    "text": "पिन किया गया",
     "valid": true
   },
   {
@@ -12028,6 +12480,14 @@
     "valid": true
   },
   {
+    "text": "पूरा करने के लिए जमा करें",
+    "valid": true
+  },
+  {
+    "text": "पूरा करने के लिए देखें",
+    "valid": true
+  },
+  {
     "text": "पूरा चिह्नित करें",
     "valid": true
   },
@@ -12052,7 +12512,15 @@
     "valid": true
   },
   {
+    "text": "पूर्णता आवश्यक नहीं",
+    "valid": true
+  },
+  {
     "text": "पूर्णता प्रमाणपत्र",
+    "valid": true
+  },
+  {
+    "text": "पूर्व आवश्यकताएँ: {modules}",
     "valid": true
   },
   {
@@ -12088,6 +12556,10 @@
     "valid": true
   },
   {
+    "text": "पृष्ठ",
+    "valid": true
+  },
+  {
     "text": "पृष्ठ {page, number} / {pageCount, number}",
     "valid": true
   },
@@ -12105,6 +12577,14 @@
   },
   {
     "text": "पृष्ठ नहीं मिला",
+    "valid": true
+  },
+  {
+    "text": "पोस्ट करने से पहले उत्तर लिखें।",
+    "valid": true
+  },
+  {
+    "text": "पोस्ट का उत्तर दें",
     "valid": true
   },
   {
@@ -12161,6 +12641,10 @@
   },
   {
     "text": "प्रतिबंधित व्यक्तिगत डेटा देखें",
+    "valid": true
+  },
+  {
+    "text": "प्रतिभागी",
     "valid": true
   },
   {
@@ -12413,6 +12897,10 @@
   },
   {
     "text": "प्लेसहोल्डर नमूना मानों से भरे गए हैं।",
+    "valid": true
+  },
+  {
+    "text": "फ़ाइल",
     "valid": true
   },
   {
@@ -12980,6 +13468,10 @@
     "valid": true
   },
   {
+    "text": "मान्य उत्तर दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "मान्य तिथि (YYYY-MM-DD) दर्ज करें।",
     "valid": true
   },
@@ -13153,6 +13645,18 @@
   },
   {
     "text": "यह काम नहीं हुआ। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "यह चर्चा लॉक है और इसमें नए उत्तर स्वीकार नहीं किए जा सकते।",
+    "valid": true
+  },
+  {
+    "text": "यह चर्चा लॉक है। नए उत्तर बंद हैं।",
+    "valid": true
+  },
+  {
+    "text": "यह चर्चा विषय उपलब्ध नहीं है।",
     "valid": true
   },
   {
@@ -13384,6 +13888,10 @@
     "valid": true
   },
   {
+    "text": "रूपरेखा",
+    "valid": true
+  },
+  {
     "text": "रोल नंबर {roll}",
     "valid": true
   },
@@ -13440,6 +13948,10 @@
     "valid": true
   },
   {
+    "text": "लाइव कक्षा",
+    "valid": true
+  },
+  {
     "text": "लाइव पूर्वावलोकन",
     "valid": true
   },
@@ -13461,6 +13973,10 @@
   },
   {
     "text": "लागू होने की परतें",
+    "valid": true
+  },
+  {
+    "text": "लिंक",
     "valid": true
   },
   {
@@ -13720,6 +14236,10 @@
     "valid": true
   },
   {
+    "text": "वे पाठ्यक्रम कक्ष यहाँ दिखाई देंगे जिन्हें आप पढ़ाते हैं या जिनमें आप नामांकित हैं।",
+    "valid": true
+  },
+  {
     "text": "वेतन",
     "valid": true
   },
@@ -13841,6 +14361,10 @@
   },
   {
     "text": "शिक्षार्थी नहीं मिला",
+    "valid": true
+  },
+  {
+    "text": "शिक्षार्थी प्रगति",
     "valid": true
   },
   {
@@ -14284,6 +14808,10 @@
     "valid": true
   },
   {
+    "text": "सत्रीय कार्य",
+    "valid": true
+  },
+  {
     "text": "सदस्य",
     "valid": true
   },
@@ -14457,6 +14985,10 @@
   },
   {
     "text": "समीक्षित",
+    "valid": true
+  },
+  {
+    "text": "समुदाय",
     "valid": true
   },
   {
@@ -14845,6 +15377,10 @@
   },
   {
     "text": "स्लॉट जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "स्वयं नामांकन",
     "valid": true
   },
   {
@@ -15676,6 +16212,10 @@
     "valid": true
   },
   {
+    "text": "இணைப்பு",
+    "valid": true
+  },
+  {
     "text": "இணைப்பு தேவை",
     "valid": true
   },
@@ -15729,6 +16269,10 @@
   },
   {
     "text": "இந்த அறை இந்த நாளிலும் நேரத்திலும் ஏற்கனவே ஒதுக்கப்பட்டுள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "இந்த அலகில் இன்னும் உள்ளடக்கங்கள் இல்லை.",
     "valid": true
   },
   {
@@ -15888,6 +16432,22 @@
     "valid": true
   },
   {
+    "text": "இந்தக் கலந்துரையாடலில் இன்னும் பதில்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கலந்துரையாடல் தலைப்பு கிடைக்கவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கலந்துரையாடல் பூட்டப்பட்டுள்ளது. புதிய பதில்கள் மூடப்பட்டுள்ளன.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கலந்துரையாடல் பூட்டப்பட்டுள்ளது; புதிய பதில்களை ஏற்க முடியாது.",
+    "valid": true
+  },
+  {
     "text": "இந்தக் கல்வியாண்டிலிருந்து",
     "valid": true
   },
@@ -16016,6 +16576,14 @@
     "valid": true
   },
   {
+    "text": "இந்தப் பாடநெறி இடத்தின் அலகுகளும் உள்ளடக்கங்களும் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பாடநெறி இடத்தின் கலந்துரையாடல் தலைப்புகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
     "text": "இந்தப் புலம் தேவை",
     "valid": true
   },
@@ -16029,6 +16597,10 @@
   },
   {
     "text": "இன்னும் அறைகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் அலகுகள் இல்லை",
     "valid": true
   },
   {
@@ -16073,6 +16645,10 @@
   },
   {
     "text": "இன்னும் கற்றல் விளைவுகள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் கலந்துரையாடல்கள் இல்லை",
     "valid": true
   },
   {
@@ -16125,6 +16701,10 @@
   },
   {
     "text": "இன்னும் பாடத்திட்டங்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் பாடநெறி இடங்கள் இல்லை",
     "valid": true
   },
   {
@@ -16308,6 +16888,10 @@
     "valid": true
   },
   {
+    "text": "இறுதி நேரம் {time}",
+    "valid": true
+  },
+  {
     "text": "இலக்கு",
     "valid": true
   },
@@ -16460,6 +17044,18 @@
     "valid": true
   },
   {
+    "text": "உங்கள் பதிலை எழுதுங்கள்…",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் பதிலைப் பதிவிட முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் பாடநெறி இடங்களைப் பாருங்கள், அலகுகளையும் உள்ளடக்கங்களையும் பின்தொடருங்கள், வகுப்புக் கலந்துரையாடல்களில் இணையுங்கள்.",
+    "valid": true
+  },
+  {
     "text": "உங்கள் புதுப்பிப்புகளைப் பார்த்து, கால அட்டவணை, வருகை, மதிப்பெண் அறிக்கைகள், ஆவணங்கள் மற்றும் செய்திகளைத் திறக்கவும்.",
     "valid": true
   },
@@ -16473,6 +17069,10 @@
   },
   {
     "text": "உங்கள் முகப்பை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் முன்னேற்றம்",
     "valid": true
   },
   {
@@ -17180,6 +17780,10 @@
     "valid": true
   },
   {
+    "text": "கற்பவர் முன்னேற்றம்",
+    "valid": true
+  },
+  {
     "text": "கற்பவர்களின் கட்டுப்படுத்தப்பட்ட தரவைப் பார்",
     "valid": true
   },
@@ -17236,7 +17840,27 @@
     "valid": true
   },
   {
+    "text": "கலந்துரையாடலுக்குப் பதிலளி",
+    "valid": true
+  },
+  {
     "text": "கலந்துரையாடல்",
+    "valid": true
+  },
+  {
+    "text": "கலந்துரையாடல் தலைப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "கலந்துரையாடல் பதில்கள்",
+    "valid": true
+  },
+  {
+    "text": "கலந்துரையாடல்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கலந்துரையாடல்கள்",
     "valid": true
   },
   {
@@ -17664,6 +18288,10 @@
     "valid": true
   },
   {
+    "text": "கோப்பு",
+    "valid": true
+  },
+  {
     "text": "கோப்பு வடிவம்",
     "valid": true
   },
@@ -17757,6 +18385,10 @@
   },
   {
     "text": "சமர்ப்பித்த நாள்: {date}",
+    "valid": true
+  },
+  {
+    "text": "சமூகம்",
     "valid": true
   },
   {
@@ -18101,6 +18733,10 @@
   },
   {
     "text": "செல்லுபடியாகும் தேதியை உள்ளிடவும் (YYYY-MM-DD).",
+    "valid": true
+  },
+  {
+    "text": "செல்லுபடியாகும் பதிலை உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -18492,6 +19128,10 @@
     "valid": true
   },
   {
+    "text": "தானாகச் சேர்க்கை",
+    "valid": true
+  },
+  {
     "text": "தாமதமான நிமிடங்கள்",
     "valid": true
   },
@@ -18601,6 +19241,10 @@
   },
   {
     "text": "திரும்பப் பெற்று அழி",
+    "valid": true
+  },
+  {
+    "text": "திற",
     "valid": true
   },
   {
@@ -19192,6 +19836,18 @@
     "valid": true
   },
   {
+    "text": "நிறைவு செய்யச் சமர்ப்பிக்கவும்",
+    "valid": true
+  },
+  {
+    "text": "நிறைவு செய்யப் பார்க்கவும்",
+    "valid": true
+  },
+  {
+    "text": "நிறைவு தேவையில்லை",
+    "valid": true
+  },
+  {
     "text": "நிறைவுச் சான்றிதழ்",
     "valid": true
   },
@@ -19276,6 +19932,10 @@
     "valid": true
   },
   {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். பதிவிட்டால் உங்கள் பதில் பின்னர் ஒத்திசைக்க வரிசையில் சேர்க்கப்படும்.",
+    "valid": true
+  },
+  {
     "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். மாற்றங்கள் இந்தச் சாதனத்தில் பாதுகாப்பாக இருந்து, மீண்டும் ஆன்லைனுக்கு வந்ததும் அனுப்பப்படும்.",
     "valid": true
   },
@@ -19285,6 +19945,14 @@
   },
   {
     "text": "நீங்கள் ஒப்புதல் அளித்தால் Nexus ஆதரவுக் குழுவுக்குச் செல்வது சரியாக இதுதான். தனிப்பட்ட தரவு நீக்கப்பட்டுள்ளது. நீங்கள் ஒப்புதல் அளிக்கும் வரை உங்கள் நிறுவலிலிருந்து எதுவும் வெளியே செல்லாது; எந்தத் தேர்வையும் திரும்பப் பெற முடியாது.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் கற்பிக்கும் அல்லது சேர்ந்துள்ள பாடநெறி இடங்கள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் பதிலளித்த பதிவு இப்போது கிடைக்கவில்லை.",
     "valid": true
   },
   {
@@ -19384,6 +20052,10 @@
     "valid": true
   },
   {
+    "text": "நேரலை வகுப்பு",
+    "valid": true
+  },
+  {
     "text": "நேரில்",
     "valid": true
   },
@@ -19413,6 +20085,10 @@
   },
   {
     "text": "பக்கச் சரிபார்ப்பு: சங்கிலி வரிசை {row} இல் உடைந்துள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "பக்கம்",
     "valid": true
   },
   {
@@ -19457,6 +20133,10 @@
   },
   {
     "text": "பங்குக்கு ஒரு பெயர், குறைந்தது ஒரு அனுமதி மற்றும் குறைந்தது ஒரு வரம்பை வழங்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "பங்கேற்பாளர்",
     "valid": true
   },
   {
@@ -19628,11 +20308,35 @@
     "valid": true
   },
   {
+    "text": "பதிலளி",
+    "valid": true
+  },
+  {
+    "text": "பதிலைப் பதிவிடு",
+    "valid": true
+  },
+  {
     "text": "பதில்",
     "valid": true
   },
   {
+    "text": "பதில் {max} எழுத்துகள் அல்லது அதற்குக் குறைவாக இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
     "text": "பதில் அனுப்பு",
+    "valid": true
+  },
+  {
+    "text": "பதில் ஆஃப்லைனில் வரிசையில் வைக்கப்பட்டுள்ளது. மீண்டும் இணையும்போது ஒத்திசைக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "பதில் பதிவிடப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "பதில்களை ஏற்ற முடியவில்லை.",
     "valid": true
   },
   {
@@ -19645,6 +20349,10 @@
   },
   {
     "text": "பதிவிடவும்",
+    "valid": true
+  },
+  {
+    "text": "பதிவிடுவதற்கு முன் பதிலை எழுதுங்கள்.",
     "valid": true
   },
   {
@@ -19669,6 +20377,10 @@
   },
   {
     "text": "பதிவு மாற்றம்",
+    "valid": true
+  },
+  {
+    "text": "பதிவுக்குப் பதிலளி",
     "valid": true
   },
   {
@@ -19848,6 +20560,14 @@
     "valid": true
   },
   {
+    "text": "பாட அமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "பாட அமைப்பை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "பாட ஒதுக்கீடு",
     "valid": true
   },
@@ -19964,7 +20684,35 @@
     "valid": true
   },
   {
+    "text": "பாடநெறி இடங்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பாடநெறி இடங்கள்",
+    "valid": true
+  },
+  {
+    "text": "பாடநெறி இடங்கள், பாட அமைப்பு, முன்னேற்றம் மற்றும் கலந்துரையாடல்கள்.",
+    "valid": true
+  },
+  {
+    "text": "பாடநெறி இடப் பிரிவுகள்",
+    "valid": true
+  },
+  {
     "text": "பாடநெறி விளைவுகள்",
+    "valid": true
+  },
+  {
+    "text": "பாடநெறிகளுக்குத் திரும்புக",
+    "valid": true
+  },
+  {
+    "text": "பாடநெறிகள்",
+    "valid": true
+  },
+  {
+    "text": "பாடப் பணி",
     "valid": true
   },
   {
@@ -20236,6 +20984,10 @@
     "valid": true
   },
   {
+    "text": "பொருத்தப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "பொருந்தும் ஒப்புதல் பதிவுகள் இல்லை.",
     "valid": true
   },
@@ -20425,6 +21177,10 @@
   },
   {
     "text": "மறுமதிப்பீட்டு விண்ணப்பங்கள் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "மறைக்கப்பட்டது",
     "valid": true
   },
   {
@@ -20741,6 +21497,10 @@
   },
   {
     "text": "முந்தைய மதிப்பெண்: {marks}",
+    "valid": true
+  },
+  {
+    "text": "முன் தேவைகள்: {modules}",
     "valid": true
   },
   {
@@ -21561,6 +22321,10 @@
   },
   {
     "text": "வெற்றி",
+    "valid": true
+  },
+  {
+    "text": "வெளியிடப்படாதது",
     "valid": true
   },
   {

@@ -7,9 +7,20 @@ import {
   DiscussionThreadSchema,
   PAGE_SIZE_MAX,
   pageSchema,
+  type DiscussionPost,
+  type DiscussionPostInput,
 } from "@nexus/contracts";
+import { useQueryClient } from "@tanstack/react-query";
 import { queryKeys } from "../keys";
+import { idempotencyHeaders, useOutboxMutation } from "../mutation";
 import { useScopedQuery } from "../query";
+import { useSession } from "../session";
+
+export interface CreateDiscussionPostInput {
+  readonly threadId: string;
+  readonly courseSpaceId?: string;
+  readonly input: DiscussionPostInput;
+}
 
 const all = { pageSize: PAGE_SIZE_MAX };
 const CourseSpacePage = pageSchema(CourseSpaceSchema);
@@ -104,4 +115,34 @@ export function useDiscussionPosts(threadId: string | null) {
       }),
     threadId !== null,
   );
+}
+
+/** Posts a reply via `POST /threads/:id/posts` (M30, L2 outbox write). */
+export function useCreateDiscussionPost() {
+  const { session } = useSession();
+  const qc = useQueryClient();
+
+  return useOutboxMutation<CreateDiscussionPostInput, DiscussionPost>({
+    moduleId: "M30",
+    operation: "discussion.post",
+    mergeRule: "append-only",
+    send: async (client, { threadId, courseSpaceId, input }, idempotencyKey) => {
+      const post = await client.send(
+        "POST",
+        `/threads/${encodeURIComponent(threadId)}/posts`,
+        input,
+        DiscussionPostSchema,
+        { headers: idempotencyHeaders(idempotencyKey) },
+      );
+      if (session) {
+        await qc.invalidateQueries({ queryKey: queryKeys.m30.discussionPosts(session, threadId) });
+        if (courseSpaceId) {
+          await qc.invalidateQueries({
+            queryKey: queryKeys.m30.discussionThreads(session, courseSpaceId),
+          });
+        }
+      }
+      return post;
+    },
+  });
 }

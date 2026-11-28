@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-28 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 — Forms & fields, Import data, Admissions with public enquiry form, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Dashboards, Year-end rollover, Learners, Families, role-based portal links, weekly absence cards, and formatted enquiry phone entry; Stage 4 prototype — Curriculum with outcome frameworks, syllabus coverage, and offline lesson-plan drafting, review and delivery)
+> State as of: 2026-11-28 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 — Forms & fields, Import data, Admissions with public enquiry form, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Dashboards, Year-end rollover, Learners, Families, role-based portal links, weekly absence cards, and formatted enquiry phone entry; Stage 4 prototype — Curriculum with outcome frameworks, syllabus coverage, and offline lesson-plan drafting, review and delivery, and Courses with outlines, progress and offline discussion replies)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -35,7 +35,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, My portal, Dashboards, Year-end rollover, and Curriculum show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, My portal, Dashboards, Year-end rollover, Curriculum, and Courses show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -326,6 +326,17 @@ Open **Curriculum** from the menu to inspect outcome frameworks, track syllabus 
 - After teaching an **Approved** plan, its author chooses the **Date taught** and selects **Mark delivered**. Under **Syllabus & coverage**, the topics for that subject offering now show **Covered** with the date taught. Each newly covered topic increases the coverage meter.
 - **Working offline:** previously loaded frameworks, syllabus units, and lesson plans remain readable offline. Saving, submitting, reviewing or marking a plan delivered while offline queues the change on your device (**Lesson plan saved offline. Waiting to sync.**) and syncs it automatically when you reconnect.
 - **Ask Assist** is available online when your institution enables AI and your role allows it.
+
+## Courses
+
+Open **Courses** from the menu to browse the course spaces you teach or are enrolled in, follow course outlines and progress, and take part in class discussions. Roles without course access (such as parents and guardians) do not see **Courses** in the menu and see **No access** if they open the address directly. **Last synced** under the heading shows when the course list was last refreshed.
+
+- **Course spaces:** each card shows the space title, kind (**Class**, **Course**, or **Community**), status (**Draft**, **Published**, or **Archived**), **Self-enrol** when learners can join themselves, and any summary or dates. Choose **Open** on a space to view its details, and **Back to courses** to return to the list.
+- **Outline:** lists each module in order with any unlock date and prerequisite module names (**Prerequisites:**). Each item shows its kind (**Page**, **File**, **Link**, **Lesson**, **Assignment**, **Test**, **Live class**, or **Discussion**), completion rule (**No completion required**, **View to complete**, **Submit to complete**, or a passing score), and due date when set. Course managers also see **Unpublished** items.
+- **Progress:** learners see **Your progress** as a completion bar with their percentage (to one decimal place) and completed item count, plus a **Done** badge on completed items. Staff see **Learner progress** as an overall count of learners with recorded progress and per-item completion counts, without a list of individual learners.
+- **Discussions:** lists threads with **Pinned** threads first, reply counts, and a **Locked** badge when replies are closed. Select a thread to read replies arranged as a nested reply tree (**You** marks your own posts, **Participant** marks other authors, and **Edited** marks edited posts). Moderators also see hidden posts marked **Hidden**; other viewers do not see hidden posts.
+- **Posting replies:** on an open thread, enter text under **Reply to thread** (up to 5,000 characters) and choose **Post reply**, or select **Reply** under any post to write a nested **Reply to post**. Locked threads hide the reply forms and show **This thread is locked. New replies are closed.**
+- **Working offline:** previously opened course spaces, outlines, progress, and discussions remain readable offline. Posting a reply while offline saves it on your device (**Reply queued offline. It will sync when you reconnect.**) and sends it automatically when your connection returns.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.
