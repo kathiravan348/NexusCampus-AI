@@ -55,7 +55,7 @@
 | NEX-229 | M32 Homework & assignments (offline L2 submit) | C | planned | — | 223, 228 |
 | NEX-230 | M33 Online tests screens (read): list, test view, attempts, item statistics | C | planned | — | 223, 229 |
 | NEX-269 | M33 test taking data: contracts, mocks, hooks (start, deliver, answer, submit; offline L2) — split from NEX-230 | B | planned | — | 223 |
-| NEX-270 | M33 learner test-taking screen + API guide for the NEX-269 endpoints | C | draft | — | 230, 269 |
+| NEX-270 | M33 learner test-taking screen + API guide for the NEX-269 endpoints | C | planned | — | 230, 269 |
 | NEX-231 | M34 Online proctoring (flags for human review only) | C | draft | — | 223, 230 |
 | NEX-232 | M35 AI tutor & learning paths (guardian consent for minors) | C | draft | — | 223, 231 |
 | NEX-233 | M36 Live classes | C | draft | — | 224, 232 |
