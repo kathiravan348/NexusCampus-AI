@@ -4,6 +4,7 @@ import {
   CourseModuleSchema,
   CourseProgressSchema,
   CourseSpaceSchema,
+  DiscussionPostInputSchema,
   DiscussionPostSchema,
   DiscussionThreadSchema,
   type CourseItem,
@@ -261,5 +262,17 @@ describe("progress and discussions", () => {
       DiscussionPostSchema.safeParse({ ...post, editedAt: "2026-07-02T09:00:00Z" }).success,
     ).toBe(false);
     expect(DiscussionPostSchema.safeParse({ ...post, body: "   " }).success).toBe(false);
+  });
+
+  it("validates discussion post input for valid, empty and too-long bodies", () => {
+    const ok = (value: unknown) => DiscussionPostInputSchema.safeParse(value).success;
+    const parsed = DiscussionPostInputSchema.parse({ parentPostId: null, body: "  Valid reply  " });
+    expect(parsed).toEqual({ parentPostId: null, body: "Valid reply" });
+    expect(ok({ parentPostId: post.id, body: "a".repeat(5000) })).toBe(true);
+    expect(ok({ parentPostId: null, body: "" })).toBe(false);
+    expect(ok({ parentPostId: null, body: "   " })).toBe(false);
+    expect(ok({ parentPostId: null, body: "a".repeat(5001) })).toBe(false);
+    expect(ok({ parentPostId: "", body: "Reply" })).toBe(false);
+    expect(ok({ parentPostId: null, body: "Reply", extra: 1 })).toBe(false);
   });
 });

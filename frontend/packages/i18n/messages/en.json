@@ -8455,6 +8455,322 @@
     "message": "Moderate course discussions",
     "description": "Permission description: Moderate discussions in course spaces."
   },
+  "m30.nav.title": {
+    "message": "Courses",
+    "description": "Navigation item and page title of the Courses screen (M30)."
+  },
+  "m30.nav.summary": {
+    "message": "Course spaces, outlines, progress and discussions.",
+    "description": "Home tile summary of the Courses module."
+  },
+  "m30.page.intro": {
+    "message": "Browse your course spaces, follow modules and items, and join class discussions.",
+    "description": "Introductory text under the Courses page heading."
+  },
+  "m30.spaces.listLabel": {
+    "message": "Course spaces",
+    "description": "Accessible label for the list of course spaces on the Courses screen."
+  },
+  "m30.spaces.open": {
+    "message": "Open",
+    "description": "Button label to open a course space card."
+  },
+  "m30.spaces.openLabel": {
+    "message": "Open {title}",
+    "description": "Accessible label for the Open button on a course space card. {title} is the course space title."
+  },
+  "m30.spaces.empty": {
+    "message": "No course spaces yet",
+    "description": "Empty state heading when the viewer has no course spaces."
+  },
+  "m30.spaces.emptyBody": {
+    "message": "Course spaces you teach or are enrolled in will appear here.",
+    "description": "Empty state description when no course spaces are available for the viewer."
+  },
+  "m30.spaces.error": {
+    "message": "Course spaces could not be loaded.",
+    "description": "Error heading when loading the viewer's course spaces fails."
+  },
+  "m30.spaceKind.class": {
+    "message": "Class",
+    "description": "Course space kind badge: a class space linked to a subject offering."
+  },
+  "m30.spaceKind.course": {
+    "message": "Course",
+    "description": "Course space kind badge: a standalone course space."
+  },
+  "m30.spaceKind.community": {
+    "message": "Community",
+    "description": "Course space kind badge: a learning community space."
+  },
+  "m30.spaceStatus.draft": {
+    "message": "Draft",
+    "description": "Course space status badge: draft and not yet published."
+  },
+  "m30.spaceStatus.published": {
+    "message": "Published",
+    "description": "Course space status badge: published and active."
+  },
+  "m30.spaceStatus.archived": {
+    "message": "Archived",
+    "description": "Course space status badge: archived and read-only."
+  },
+  "m30.space.back": {
+    "message": "Back to courses",
+    "description": "Button returning from a course space view to the course spaces list."
+  },
+  "m30.space.selfEnrol": {
+    "message": "Self-enrol",
+    "description": "Badge showing that learners may enrol themselves in this course."
+  },
+  "m30.space.dates": {
+    "message": "{start}–{end}",
+    "description": "Start and end date range of a course space. {start} and {end} are formatted dates."
+  },
+  "m30.space.tabsLabel": {
+    "message": "Course space sections",
+    "description": "Accessible label for the tab list inside a course space."
+  },
+  "m30.space.tabOutline": {
+    "message": "Outline",
+    "description": "Tab label showing a course space's modules, items and progress."
+  },
+  "m30.space.tabDiscussions": {
+    "message": "Discussions",
+    "description": "Tab label showing a course space's discussion threads and replies."
+  },
+  "m30.outline.progressLabel": {
+    "message": "Your progress",
+    "description": "Label above a learner's own progress meter in a course space."
+  },
+  "m30.outline.progressValue": {
+    "message": "{percent}% ({completed} of {total})",
+    "description": "Formatted progress meter value. {percent} has one decimal; {completed} and {total} are item counts."
+  },
+  "m30.outline.progressPercent": {
+    "message": "{percent}%",
+    "description": "Formatted progress percentage when a course space has no required items. {percent} has one decimal."
+  },
+  "m30.outline.staffProgressHeading": {
+    "message": "Learner progress",
+    "description": "Heading of the aggregate progress count card shown to staff."
+  },
+  "m30.outline.staffProgressCount": {
+    "message": "{count, plural, =0 {No learners with recorded progress yet} one {# learner with recorded progress} other {# learners with recorded progress}}",
+    "description": "Aggregate count of learners with progress recorded in this course space. {count} is a number."
+  },
+  "m30.outline.unlocksOn": {
+    "message": "Unlocks {date}",
+    "description": "Badge showing the date a course module unlocks. {date} is a formatted calendar date."
+  },
+  "m30.outline.prerequisites": {
+    "message": "Prerequisites: {modules}",
+    "description": "Text listing prerequisite module titles before a course module's items. {modules} is a comma-separated list."
+  },
+  "m30.outline.noItems": {
+    "message": "No items in this module yet.",
+    "description": "Empty text when a course module has no visible items."
+  },
+  "m30.outline.unpublished": {
+    "message": "Unpublished",
+    "description": "Badge marking an unpublished course item visible only to staff who manage courses."
+  },
+  "m30.outline.dueAt": {
+    "message": "Due {time}",
+    "description": "Due date and time of a course item. {time} is a formatted date and time."
+  },
+  "m30.outline.done": {
+    "message": "Done",
+    "description": "Badge marking a course item completed by the learner."
+  },
+  "m30.outline.doneCount": {
+    "message": "{done} of {total} done",
+    "description": "Per-item completion count shown to staff. {done} completed learners out of {total} tracked learners."
+  },
+  "m30.outline.empty": {
+    "message": "No modules yet",
+    "description": "Empty state heading when a course space has no modules."
+  },
+  "m30.outline.emptyBody": {
+    "message": "Modules and items for this course space will appear here.",
+    "description": "Empty state description when no modules exist in the course space."
+  },
+  "m30.outline.error": {
+    "message": "Course outline could not be loaded.",
+    "description": "Error heading when loading modules, items or progress fails."
+  },
+  "m30.itemKind.page": {
+    "message": "Page",
+    "description": "Course item kind label: a static reading page."
+  },
+  "m30.itemKind.file": {
+    "message": "File",
+    "description": "Course item kind label: a downloadable file or handout."
+  },
+  "m30.itemKind.link": {
+    "message": "Link",
+    "description": "Course item kind label: an external web link."
+  },
+  "m30.itemKind.content": {
+    "message": "Lesson",
+    "description": "Course item kind label: interactive learning content."
+  },
+  "m30.itemKind.assignment": {
+    "message": "Assignment",
+    "description": "Course item kind label: a homework assignment."
+  },
+  "m30.itemKind.test": {
+    "message": "Test",
+    "description": "Course item kind label: an online test or quiz."
+  },
+  "m30.itemKind.liveSession": {
+    "message": "Live class",
+    "description": "Course item kind label: a live class session."
+  },
+  "m30.itemKind.discussion": {
+    "message": "Discussion",
+    "description": "Course item kind label: a linked discussion thread."
+  },
+  "m30.completion.none": {
+    "message": "No completion required",
+    "description": "Course item completion rule: no completion requirement."
+  },
+  "m30.completion.view": {
+    "message": "View to complete",
+    "description": "Course item completion rule: completed once viewed."
+  },
+  "m30.completion.submit": {
+    "message": "Submit to complete",
+    "description": "Course item completion rule: completed once submitted."
+  },
+  "m30.completion.pass": {
+    "message": "Pass at {percent}%",
+    "description": "Course item completion rule: completed once passed at the required score. {percent} is a formatted percentage."
+  },
+  "m30.discussions.threadsLabel": {
+    "message": "Discussion threads",
+    "description": "Accessible label for the list of discussion threads in a course space."
+  },
+  "m30.discussions.postsLabel": {
+    "message": "Discussion replies",
+    "description": "Accessible label for the nested reply tree inside a discussion thread."
+  },
+  "m30.discussions.pinned": {
+    "message": "Pinned",
+    "description": "Badge marking a pinned discussion thread."
+  },
+  "m30.discussions.locked": {
+    "message": "Locked",
+    "description": "Badge marking a locked discussion thread."
+  },
+  "m30.discussions.hidden": {
+    "message": "Hidden",
+    "description": "Badge marking a hidden discussion post visible only to moderators."
+  },
+  "m30.discussions.edited": {
+    "message": "Edited",
+    "description": "Badge showing that a discussion post was edited after posting."
+  },
+  "m30.discussions.you": {
+    "message": "You",
+    "description": "Author label for a discussion post written by the signed-in user."
+  },
+  "m30.discussions.participant": {
+    "message": "Participant",
+    "description": "Author label for a discussion post written by another participant."
+  },
+  "m30.discussions.postCount": {
+    "message": "{count, plural, =0 {No replies} one {# reply} other {# replies}}",
+    "description": "Count of replies in a discussion thread. {count} is a number."
+  },
+  "m30.discussions.replyAction": {
+    "message": "Reply",
+    "description": "Button opening an inline reply form under a discussion post."
+  },
+  "m30.discussions.lockedNote": {
+    "message": "This thread is locked. New replies are closed.",
+    "description": "Notice shown on a locked discussion thread where replying is disabled."
+  },
+  "m30.discussions.empty": {
+    "message": "No discussions yet",
+    "description": "Empty state heading when a course space has no discussion threads."
+  },
+  "m30.discussions.emptyBody": {
+    "message": "Discussion threads for this course space will appear here.",
+    "description": "Empty state description when no discussion threads exist in the course space."
+  },
+  "m30.discussions.noPosts": {
+    "message": "No replies in this thread yet.",
+    "description": "Empty text when a discussion thread has no visible replies."
+  },
+  "m30.discussions.error": {
+    "message": "Discussions could not be loaded.",
+    "description": "Error heading when loading discussion threads fails."
+  },
+  "m30.discussions.postsError": {
+    "message": "Replies could not be loaded.",
+    "description": "Error heading when loading replies for a discussion thread fails."
+  },
+  "m30.reply.threadLabel": {
+    "message": "Reply to thread",
+    "description": "Textarea label for posting a top-level reply in a discussion thread."
+  },
+  "m30.reply.postLabel": {
+    "message": "Reply to post",
+    "description": "Textarea label for posting a nested reply under an existing post."
+  },
+  "m30.reply.placeholder": {
+    "message": "Write your reply…",
+    "description": "Placeholder text inside the discussion reply textarea."
+  },
+  "m30.reply.submit": {
+    "message": "Post reply",
+    "description": "Submit button for posting a discussion reply."
+  },
+  "m30.reply.counter": {
+    "message": "{count} / {max}",
+    "description": "Character counter under the discussion reply box. {count} typed out of {max} allowed."
+  },
+  "m30.reply.posted": {
+    "message": "Reply posted.",
+    "description": "Success toast shown after posting a discussion reply online."
+  },
+  "m30.reply.queued": {
+    "message": "Reply queued offline. It will sync when you reconnect.",
+    "description": "Status message shown after queueing a discussion reply in the offline outbox."
+  },
+  "m30.reply.offlineHint": {
+    "message": "You are offline. Posting will queue your reply to sync later.",
+    "description": "Status notice inside the reply form while the device is offline."
+  },
+  "m30.reply.required": {
+    "message": "Write a reply before posting.",
+    "description": "Validation error when submitting an empty discussion reply."
+  },
+  "m30.reply.tooLong": {
+    "message": "Reply must be {max} characters or fewer.",
+    "description": "Validation error when a discussion reply exceeds the maximum length. {max} is a formatted number."
+  },
+  "m30.reply.invalidBody": {
+    "message": "Enter a valid reply.",
+    "description": "Server validation error for an invalid discussion reply body."
+  },
+  "m30.reply.invalidParent": {
+    "message": "The post you replied to is no longer available.",
+    "description": "Server validation error when the parent post cannot be replied to."
+  },
+  "m30.reply.lockedError": {
+    "message": "This thread is locked and cannot accept new replies.",
+    "description": "Server conflict error when trying to reply to a locked thread."
+  },
+  "m30.reply.unavailable": {
+    "message": "This discussion thread is not available.",
+    "description": "Server error when the discussion thread cannot be accessed."
+  },
+  "m30.reply.failed": {
+    "message": "Your reply could not be posted. Try again.",
+    "description": "Generic error when posting a discussion reply fails unexpectedly."
+  },
   "m31.permission.contentRead": {
     "message": "View learning content",
     "description": "Permission description: View learning content and its assets."

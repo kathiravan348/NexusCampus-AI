@@ -23,6 +23,25 @@ function get(path: string, userId: string, tenantId: string = tenant) {
   });
 }
 
+function post(
+  path: string,
+  userId: string,
+  body: unknown,
+  tenantId: string = tenant,
+  idempotencyKey?: string,
+) {
+  return fetch(`http://localhost/api/v1${path}`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      [MOCK_HEADER.tenant]: tenantId,
+      [MOCK_HEADER.user]: userId,
+      ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
+    },
+    body: JSON.stringify(body),
+  });
+}
+
 function admin() {
   return mockDb.users.find(
     (row) => row.tenantId === tenant && permissionsOf(row.id).has("m30.course.manage"),
@@ -169,5 +188,97 @@ describe("M30 read handlers", () => {
     const disabled = await get("/course-spaces", user);
     expect(disabled.status).toBe(403);
     expect(await disabled.json()).toMatchObject({ error: { code: "module_disabled" } });
+  });
+});
+
+describe("M30 discussion post write handler", () => {
+  it("posts top-level and nested replies, bumps thread stats and supports idempotency", async () => {
+    const { thread, space } = mathCourse();
+    const progress = mockDb.courseProgress.find((row) => row.courseSpaceId === space.id)!;
+    const learner = mockDb.learners.find((row) => row.id === progress.learnerId)!;
+    const user = signInLearner(tenant, admin(), learner.personId);
+    const parent = mockDb.discussionPosts.find((r) => r.threadId === thread.id && !r.hidden)!;
+    const initialCount = thread.postCount;
+    const route = `/threads/${thread.id}/posts`;
+
+    const first = await post(route, user, { parentPostId: null, body: "Thanks!" }, tenant, "k-1");
+    expect(first.status).toBe(201);
+    const created = DiscussionPostSchema.parse(await first.json());
+    expect(created).toMatchObject({
+      tenantId: tenant,
+      threadId: thread.id,
+      parentPostId: null,
+      authorProfileId: learner.roleProfileId,
+      body: "Thanks!",
+      hidden: false,
+      hiddenByProfileId: null,
+    });
+
+    const replay = await post(route, user, { parentPostId: null, body: "Thanks!" }, tenant, "k-1");
+    expect(replay.status).toBe(201);
+    expect(DiscussionPostSchema.parse(await replay.json()).id).toBe(created.id);
+
+    const nested = await post(route, user, { parentPostId: parent.id, body: "Makes sense." });
+    expect(nested.status).toBe(201);
+    expect(DiscussionPostSchema.parse(await nested.json()).parentPostId).toBe(parent.id);
+
+    const updatedThread = mockDb.discussionThreads.find((row) => row.id === thread.id)!;
+    expect(updatedThread.postCount).toBe(initialCount + 2);
+    expect(updatedThread.lastPostAt).not.toBe(thread.lastPostAt);
+  });
+
+  it("returns 409 on locked threads and 400 on bad parents without leaking text", async () => {
+    const { thread, space } = mathCourse();
+    const route = `/threads/${thread.id}/posts`;
+    const otherPost = mockDb.discussionPosts.find((row) => row.threadId !== thread.id)!;
+    const hiddenPost = mockDb.discussionPosts.find((r) => r.threadId === thread.id && r.hidden)!;
+    const progress = mockDb.courseProgress.find((row) => row.courseSpaceId === space.id)!;
+    const learner = mockDb.learners.find((row) => row.id === progress.learnerId)!;
+    const staffUser = admin();
+
+    const secret = "SECRET-BODY-TEXT";
+    const badParent = await post(route, staffUser, { parentPostId: otherPost.id, body: secret });
+    expect(badParent.status).toBe(400);
+    const badParentText = await badParent.text();
+    expect(JSON.parse(badParentText)).toMatchObject({ error: { code: "invalid_request" } });
+    expect(badParentText).not.toContain(secret);
+
+    const longBody = "x".repeat(5001);
+    const tooLong = await post(route, staffUser, { parentPostId: null, body: longBody });
+    expect(tooLong.status).toBe(400);
+    expect(await tooLong.text()).not.toContain("xxxxx");
+
+    const learnerUser = signInLearner(tenant, USER.rvOliver, learner.personId);
+    const hiddenParent = await post(route, learnerUser, {
+      parentPostId: hiddenPost.id,
+      body: "Reply to hidden",
+    });
+    expect(hiddenParent.status).toBe(400);
+
+    const idx = mockDb.discussionThreads.indexOf(thread);
+    mockDb.discussionThreads[idx] = { ...thread, locked: true };
+    const locked = await post(route, staffUser, { parentPostId: null, body: secret });
+    expect(locked.status).toBe(409);
+    const lockedText = await locked.text();
+    expect(JSON.parse(lockedText)).toMatchObject({ error: { code: "conflict" } });
+    expect(lockedText).not.toContain(secret);
+  });
+
+  it("returns 404 for another tenant's thread or an inaccessible space", async () => {
+    const { thread } = mathCourse();
+    const route = `/threads/${thread.id}/posts`;
+    const foreign = await post(
+      route,
+      USER.lsPriya,
+      { parentPostId: null, body: "Cross-tenant" },
+      TENANT.littleSteps,
+    );
+    expect(foreign.status).toBe(404);
+
+    const outsideSpace = await post(route, USER.rvOliver, {
+      parentPostId: null,
+      body: "Not my class",
+    });
+    expect(outsideSpace.status).toBe(404);
   });
 });
