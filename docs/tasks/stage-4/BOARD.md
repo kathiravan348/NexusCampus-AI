@@ -36,7 +36,7 @@
 | NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | done | Gemini | 213, 214, 247, 248, 256, 220 |
 | NEX-257 | Fixtures: M34, M36 — proctoring, live classes, `live_session` course items | B | done | Gemini | 215, 249, 221 |
 | NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | done | Codex | 216, 250, 251, 220 |
-| NEX-258 | Fixtures: M39, M40, M41 — library, test prep, session courses | B | planned | — | 217, 218, 254, 257 |
+| NEX-258 | Fixtures: M39, M40, M41 — library, test prep, session courses | B | changes-requested | Codex | 217, 218, 254, 257 |
 | NEX-263 | Fixtures: M42–M45 — higher-ed, store, surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) — split from NEX-258 | B | draft | — | 219, 252, 253, 255, 258 |
 | NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | done | Codex | 220, 259 |
 | NEX-223 | MSW handlers + services: M32, M33 read (anonymous peer reviewers hidden from authors, NEX-213; learners never get `QuestionItem`; D91) | B | planned | — | 221, 222 |
