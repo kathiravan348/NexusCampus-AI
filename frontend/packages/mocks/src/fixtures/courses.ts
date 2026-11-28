@@ -1,11 +1,4 @@
-import type {
-  CourseItem,
-  CourseModule,
-  CourseProgress,
-  CourseSpace,
-  DiscussionPost,
-  DiscussionThread,
-} from "@nexus/contracts";
+import type * as C from "@nexus/contracts";
 import { CLASS_GROUPS, SUBJECT_OFFERINGS } from "./academics";
 import { ACADEMIC_CALENDARS } from "./calendars";
 import { INSTITUTION as I, PERSON, TENANT as T } from "./ids";
@@ -20,6 +13,7 @@ import {
   DISCUSSION_THREAD as DT,
   OUTCOME as O,
 } from "./ids-stage4-learning";
+import { LIVE_COURSE_ITEM as LI, LIVE_SESSION as LS } from "./ids-stage4-live";
 import { ROLE_PROFILES } from "./role-profiles";
 import { CREATED_AT, UPDATED_AT } from "./tenants";
 
@@ -42,7 +36,7 @@ const P = {
 
 type SpaceSpec = readonly [string, string, string, string];
 
-export const COURSE_SPACES: readonly CourseSpace[] = [
+export const COURSE_SPACES: readonly C.CourseSpace[] = [
   ...(
     [
       [CS.lsStory, OFF.lsSeedlings[0], "LS-STORY-NUR", "Seedlings Story Circle"],
@@ -58,7 +52,7 @@ export const COURSE_SPACES: readonly CourseSpace[] = [
       [CS.axAlgebra, OFF.axFoundation[0], "AX-ALG-FND", "Foundation Algebra"],
       [CS.hmPiano, OFF.hmBeginner[0], "HM-PIANO-BEG", "Beginner Piano Studio"],
     ] as readonly SpaceSpec[]
-  ).map(([id, offeringId, code, title]): CourseSpace => {
+  ).map(([id, offeringId, code, title]): C.CourseSpace => {
     const offering = SUBJECT_OFFERINGS.find((row) => row.id === offeringId);
     const group = CLASS_GROUPS.find((row) => row.id === offering?.classGroupId);
     const calendar = ACADEMIC_CALENDARS.find((row) => row.id === offering?.academicYearId);
@@ -108,7 +102,7 @@ function mods(
   titles: readonly string[],
   outcomes: readonly string[] = [],
   opts?: { unlock?: readonly string[]; chain?: boolean },
-): CourseModule[] {
+): C.CourseModule[] {
   const space = COURSE_SPACES.find((row) => row.id === courseSpaceId);
   if (!space) throw new Error(`Missing course space ${courseSpaceId}`);
   return ids.map((id, i) => {
@@ -127,7 +121,7 @@ function mods(
   });
 }
 
-export const COURSE_MODULES: readonly CourseModule[] = [
+export const COURSE_MODULES: readonly C.CourseModule[] = [
   ...mods(CS.lsStory, CM.lsStory, ["Picture Stories", "Retelling"], [O.lsLang1, O.lsLang2]),
   ...mods(CS.rvY5Eng, CM.rvY5Eng, ["Main Ideas", "Summary"], [O.rvEngRead, O.rvEngRead]),
   ...mods(
@@ -149,7 +143,7 @@ export const COURSE_MODULES: readonly CourseModule[] = [
   ...mods(CS.hmSightRead, CM.hmSightRead, ["Rhythm", "Keys"], [O.hmGrade1, O.hmGrade3]),
 ];
 
-export const DISCUSSION_THREADS: readonly DiscussionThread[] = [
+export const DISCUSSION_THREADS: readonly C.DiscussionThread[] = [
   {
     id: DT.rvMathQna,
     tenantId: T.riverside,
@@ -180,7 +174,7 @@ type PostRow = readonly [string, string, string | null, string, string, string, 
 const rvQ = DT.rvMathQna;
 const nbL = DT.nbCs101Lab;
 
-export const DISCUSSION_POSTS: readonly DiscussionPost[] = (
+export const DISCUSSION_POSTS: readonly C.DiscussionPost[] = (
   [
     [DP.rvMiaQuestion, rvQ, null, P.rvMia, "Does 3/6 equal 1/2?", "2026-09-16T09:00:00Z"],
     [DP.rvAmiraReply, rvQ, DP.rvMiaQuestion, P.rvAmira, "Divide by 3.", "2026-09-16T10:15:00Z"],
@@ -218,11 +212,11 @@ const ITEM_DEFAULTS = {
 function item(
   id: string,
   moduleId: string,
-  kind: CourseItem["kind"],
+  kind: C.CourseItem["kind"],
   title: string,
   order: number,
-  opts?: Partial<CourseItem>,
-): CourseItem {
+  opts?: Partial<C.CourseItem>,
+): C.CourseItem {
   const mod = COURSE_MODULES.find((row) => row.id === moduleId);
   if (!mod) throw new Error(`Missing course module ${moduleId}`);
   return { id, tenantId: mod.tenantId, moduleId, kind, title, order, ...ITEM_DEFAULTS, ...opts };
@@ -239,11 +233,14 @@ const asg = (id: string, m: string, t: string, o: number, r: string, d: string) 
   item(id, m, "assignment", t, o, { refId: r, completion: "submit", dueAt: due(d) });
 const tst = (id: string, m: string, t: string, o: number, r: string, bps: number, d: string) =>
   item(id, m, "test", t, o, { refId: r, completion: "pass", passMarkBps: bps, dueAt: due(d) });
+const lvs = (id: string, m: string, t: string, o: number, refId: string) =>
+  item(id, m, "live_session", t, o, { refId });
 
-export const COURSE_ITEMS: readonly CourseItem[] = [
+export const COURSE_ITEMS: readonly C.CourseItem[] = [
   item(IT.lsStoryIntro, CM.lsStory[0], "page", "Welcome to Story Circle", 1),
   cnt(IT.lsStoryGuide, CM.lsStory[0], "Picture Prompts", 2, CI.lsStoryGuide),
   item(IT.rvY5EngPage, CM.rvY5Eng[0], "page", "Reading Non-Fiction Guide", 1),
+  lvs(LI.rvY5EngLive, CM.rvY5Eng[0], "Main Ideas Live", 2, LS.rvY5EngEnded),
   cnt(IT.rvY5MathLesson, CM.rvY5Math[0], "Equivalent Fractions", 1, CI.rvFractionsLesson),
   link(IT.rvY5MathLink, CM.rvY5Math[1], "Fraction Bar", 1, "fractions"),
   disc(IT.rvY5MathDiscuss, CM.rvY5Math[1], "Fractions Q&A", 2, DT.rvMathQna),
@@ -260,10 +257,12 @@ export const COURSE_ITEMS: readonly CourseItem[] = [
   cnt(IT.nbCs101Lab, CM.nbCs101[0], "SCORM Lab", 2, CI.nbScormLab, 7000),
   disc(IT.nbCs101Discuss, CM.nbCs101[1], "Loops Lab Forum", 1, DT.nbCs101Lab),
   asg(AI.nbCs101Assign, CM.nbCs101[1], "Control-Flow Lab", 2, AG.nbAlgoLab, "2026-09-24"),
+  lvs(LI.nbCs101Live, CM.nbCs101[1], "Loops Live Q&A", 3, LS.nbCs101OfficeHour),
   item(IT.axAlgIntro, CM.axAlgebra[0], "page", "Quadratic Formula Sheet", 1),
   cnt(IT.axAlgDrill, CM.axAlgebra[1], "cmi5 Drill", 1, CI.axCmi5Drill, 7500),
   tst(AI.axAlgMock, CM.axAlgebra[1], "STEM Timed Mock 1", 2, OT.axMock, 7000, "2026-09-30"),
   item(IT.hmPianoIntro, CM.hmPiano[0], "page", "Warm-Up Practice Routine", 1),
+  lvs(LI.hmPianoLive, CM.hmPiano[0], "Scales Group Recital", 2, LS.hmPianoScheduled),
   cnt(IT.hmPianoAudio, CM.hmPiano[1], "Interval Track", 1, CI.hmEarAudio),
   item(IT.hmSightIntro, CM.hmSightRead[0], "page", "Daily Sight-Reading Plan", 1),
   link(IT.hmSightLink, CM.hmSightRead[1], "Metronome", 1, "metronome"),
@@ -271,7 +270,7 @@ export const COURSE_ITEMS: readonly CourseItem[] = [
 
 type ProgRow = readonly [string, string, readonly string[], string | null];
 
-export const COURSE_PROGRESS: readonly CourseProgress[] = (
+export const COURSE_PROGRESS: readonly C.CourseProgress[] = (
   [
     [CS.lsStory, L.lsKavya, [IT.lsStoryIntro, IT.lsStoryGuide], "2026-07-10T05:30:00Z"],
     [CS.rvY5Math, L.rvMia, [IT.rvY5MathLesson, IT.rvY5MathLink], "2026-09-16T10:15:00Z"],

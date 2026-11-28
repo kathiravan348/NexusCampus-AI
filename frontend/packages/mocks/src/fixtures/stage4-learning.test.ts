@@ -3,6 +3,7 @@ import {
   ContentAttemptSchema,
   ContentAttemptStatusSchema,
   ContentItemSchema,
+  CourseItemKindSchema,
   CourseItemSchema,
   CourseModuleSchema,
   CourseProgressSchema,
@@ -195,13 +196,15 @@ describe("Stage 4 M29–M31 fixtures (NEX-220)", () => {
       if (item.kind === "discussion") expectRef(F.DISCUSSION_THREADS, item.refId, item.tenantId);
       if (item.kind === "assignment") expectRef(F.ASSIGNMENTS, item.refId, item.tenantId);
       if (item.kind === "test") expectRef(F.ONLINE_TESTS, item.refId, item.tenantId);
+      if (item.kind === "live_session") {
+        const mod = byId(F.COURSE_MODULES, item.moduleId);
+        const expected = { tenantId: item.tenantId, courseSpaceId: mod?.courseSpaceId };
+        expect(byId(F.LIVE_SESSIONS, item.refId), item.id).toMatchObject(expected);
+      }
       if (item.dueAt !== null) expectDate(item.tenantId, item.dueAt.slice(0, 10));
     }
     const kinds = new Set(F.COURSE_ITEMS.map((r) => r.kind));
-    expect(kinds).toEqual(
-      new Set(["page", "file", "link", "content", "discussion", "assignment", "test"]),
-    );
-    expect(kinds.has("live_session")).toBe(false);
+    expect(kinds).toEqual(new Set(CourseItemKindSchema.options));
     for (const p of F.COURSE_PROGRESS) {
       const sp = byId(F.COURSE_SPACES, p.courseSpaceId);
       expect(sp?.tenantId, p.learnerId).toBe(p.tenantId);

@@ -217,6 +217,7 @@ describe("Stage 4 M32, M33, M35 and M46 fixtures (NEX-221)", () => {
         if (s.kind === "content") ref(F.CONTENT_ITEMS, s.refId, p.tenantId);
         if (s.kind === "assignment") ref(F.ASSIGNMENTS, s.refId, p.tenantId);
         if (s.kind === "test" || s.kind === "practice") ref(F.ONLINE_TESTS, s.refId, p.tenantId);
+        if (s.kind === "live_session") ref(F.LIVE_SESSIONS, s.refId, p.tenantId);
       }
     }
     for (const ts of F.TUTOR_SETTINGS) {
