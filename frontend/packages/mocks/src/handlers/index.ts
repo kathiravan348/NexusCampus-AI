@@ -33,9 +33,12 @@ import { m33Handlers } from "./m33";
 import { m34Handlers } from "./m34";
 import { m35Handlers } from "./m35";
 import { m36Handlers } from "./m36";
+import { m37Handlers } from "./m37";
+import { m38Handlers } from "./m38";
 import { m46Handlers } from "./m46";
 import { m83Handlers, m83WriteHandlers } from "./m83";
 import { m84Handlers } from "./m84";
+import { m91Handlers } from "./m91";
 
 export { API_BASE } from "./route";
 export { DemoTenantEntrySchema, TenantResponseSchema } from "./m01";
@@ -81,8 +84,11 @@ export const handlers: HttpHandler[] = [
   ...m34Handlers,
   ...m35Handlers,
   ...m36Handlers,
+  ...m37Handlers,
+  ...m38Handlers,
   ...m46Handlers,
   ...m83Handlers,
   ...m84Handlers,
+  ...m91Handlers,
   ...m83WriteHandlers,
 ];

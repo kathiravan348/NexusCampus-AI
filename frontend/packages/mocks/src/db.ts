@@ -26,11 +26,34 @@ import {
 } from "./fixtures/curriculum";
 import { ENGAGEMENT_SNAPSHOTS, INTERVENTIONS, RISK_SCORES } from "./fixtures/early-warning";
 import {
+  DAY_SUMMARIES,
+  DIARY_ENTRIES,
+  MILESTONE_PROGRESS,
+  OBSERVATIONS,
+  PICKUP_CHECKS,
+  RATIO_SNAPSHOTS,
+} from "./fixtures/early-years";
+import {
+  ACCOMMODATIONS,
+  GOAL_PROGRESS,
+  SUPPORT_GOALS,
+  SUPPORT_PLANS,
+  SUPPORT_SESSIONS,
+} from "./fixtures/inclusion";
+import {
   LIVE_JOINS,
   LIVE_RECORDINGS,
   LIVE_SESSIONS,
   LIVE_SUMMARIES,
 } from "./fixtures/live-classes";
+import {
+  LEARNER_MEDIA_CONSENTS,
+  MEDIA_ITEMS,
+  MEDIA_SHARING_CONSENTS,
+  PORTFOLIO_ENTRIES,
+  PORTFOLIO_EXPORTS,
+  PORTFOLIOS,
+} from "./fixtures/portfolios";
 import {
   PROCTORING_FLAGS,
   PROCTORING_SESSIONS,
@@ -99,7 +122,7 @@ function createDb() {
     installs: structuredClone(F.INSTALLS) as Record<string, F.DemoInstall>,
     usageMeters: clone(F.USAGE_METERS),
     auditEvents: clone(F.AUDIT_EVENTS),
-    consents: clone(F.CONSENTS),
+    consents: clone([...F.CONSENTS, ...MEDIA_SHARING_CONSENTS]),
     dataRequests: clone(F.DATA_SUBJECT_REQUESTS),
     compliancePacks: clone(F.COMPLIANCE_PACKS),
     tenantCompliance: structuredClone(F.TENANT_COMPLIANCE) as Record<string, string[]>,
@@ -215,6 +238,22 @@ function createDb() {
     engagementSnapshots: clone(ENGAGEMENT_SNAPSHOTS),
     riskScores: clone(RISK_SCORES),
     interventions: clone(INTERVENTIONS),
+    diaryEntries: clone(DIARY_ENTRIES),
+    observations: clone(OBSERVATIONS),
+    milestoneProgress: clone(MILESTONE_PROGRESS),
+    pickupChecks: clone(PICKUP_CHECKS),
+    ratioSnapshots: clone(RATIO_SNAPSHOTS),
+    daySummaries: clone(DAY_SUMMARIES),
+    supportPlans: clone(SUPPORT_PLANS),
+    supportGoals: clone(SUPPORT_GOALS),
+    accommodations: clone(ACCOMMODATIONS),
+    supportSessions: clone(SUPPORT_SESSIONS),
+    goalProgress: clone(GOAL_PROGRESS),
+    learnerMediaConsents: clone(LEARNER_MEDIA_CONSENTS),
+    mediaItems: clone(MEDIA_ITEMS),
+    portfolios: clone(PORTFOLIOS),
+    portfolioEntries: clone(PORTFOLIO_ENTRIES),
+    portfolioExports: clone(PORTFOLIO_EXPORTS),
   };
 }
 
