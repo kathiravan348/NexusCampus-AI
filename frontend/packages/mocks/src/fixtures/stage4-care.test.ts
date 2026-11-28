@@ -1,8 +1,10 @@
 import * as C from "@nexus/contracts";
 import { describe, expect, it } from "vitest";
 import { CLASS_GROUPS } from "./academics";
+import { ASSIGNMENT_SUBMISSIONS } from "./assignments";
 import { ACADEMIC_CALENDARS } from "./calendars";
 import { CONSENTS, DEMO_NOW } from "./compliance";
+import { ISSUED_CREDENTIALS } from "./credentials";
 import { OUTCOME_FRAMEWORKS, OUTCOMES } from "./curriculum";
 import * as EY from "./early-years";
 import { AUTHORISED_PICKUPS, GUARDIAN_RELATIONSHIPS } from "./families";
@@ -41,9 +43,7 @@ const staff = ROLE_PROFILES.filter((row) => row.kind === "staff");
 const consents = [...CONSENTS, ...PF.MEDIA_SHARING_CONSENTS];
 const guardians = ROLE_PROFILES.filter((row) => row.kind === "guardian");
 const milestones = OUTCOMES.filter((row) =>
-  OUTCOME_FRAMEWORKS.some(
-    (framework) => framework.id === row.frameworkId && framework.kind === "milestones",
-  ),
+  OUTCOME_FRAMEWORKS.some((f) => f.id === row.frameworkId && f.kind === "milestones"),
 );
 
 function ref<T extends Reference>(rows: readonly T[], id: string | null, tenantId: string): T {
@@ -162,25 +162,21 @@ describe("Stage 4 M37, M38 and M91 fixtures (NEX-260)", () => {
     for (const r of EY.DAY_SUMMARIES) {
       expect(r.tenantId).toBe(TENANT.littleSteps);
       const learner = ref(LEARNERS, r.learnerId, r.tenantId);
-      expect(
-        CONSENTS.some(
-          (c) =>
-            c.tenantId === r.tenantId &&
-            c.personId === learner.personId &&
-            c.purpose === "ai_features" &&
-            c.status === "granted" &&
-            c.recordedAt.slice(0, 10) <= r.date &&
-            guardianOf(r.tenantId, c.givenByPersonId, learner.personId) !== undefined,
-        ),
-      ).toBe(true);
+      const hasConsent = CONSENTS.some(
+        (c) =>
+          c.tenantId === r.tenantId &&
+          c.personId === learner.personId &&
+          c.purpose === "ai_features" &&
+          c.status === "granted" &&
+          c.recordedAt.slice(0, 10) <= r.date &&
+          guardianOf(r.tenantId, c.givenByPersonId, learner.personId) !== undefined,
+      );
+      expect(hasConsent).toBe(true);
       if (r.status === "sent") ref(staff, r.sentByStaffProfileId, r.tenantId);
       for (const source of r.sources) {
         expect(source).toMatchObject({ moduleId: "M37", recordType: "diaryEntry" });
-        expect(ref(EY.DIARY_ENTRIES, source.recordId, r.tenantId)).toMatchObject({
-          learnerId: r.learnerId,
-          date: r.date,
-          sharedWithFamily: true,
-        });
+        const d = ref(EY.DIARY_ENTRIES, source.recordId, r.tenantId);
+        expect(d).toMatchObject({ learnerId: r.learnerId, date: r.date, sharedWithFamily: true });
       }
     }
   });
@@ -270,20 +266,22 @@ describe("Stage 4 M37, M38 and M91 fixtures (NEX-260)", () => {
   it("links portfolio evidence and covers export states", () => {
     covers(PF.PORTFOLIOS, (r) => r.tenantId, [TENANT.littleSteps, TENANT.riverside]);
     for (const r of PF.PORTFOLIOS) ref(LEARNERS, r.learnerId, r.tenantId);
-    // NEX-258 adds assignment_submission and credential once their evidence exists.
-    covers(PF.PORTFOLIO_ENTRIES, (r) => r.kind, ["media", "observation", "reflection"]);
+    covers(PF.PORTFOLIO_ENTRIES, (r) => r.kind, C.PortfolioEntryKindSchema.options);
     for (const r of PF.PORTFOLIO_ENTRIES) {
-      const portfolio = ref(PF.PORTFOLIOS, r.portfolioId, r.tenantId);
+      const { learnerId } = ref(PF.PORTFOLIOS, r.portfolioId, r.tenantId);
       expect(ref(ROLE_PROFILES, r.addedByProfileId, r.tenantId).kind).toBe(r.addedByRole);
       for (const id of r.outcomeIds) ref(OUTCOMES, id, r.tenantId);
       if (r.kind === "media") {
         const media = ref(PF.MEDIA_ITEMS, r.refId, r.tenantId);
-        expect(media.taggedLearnerIds).toContain(portfolio.learnerId);
+        expect(media.taggedLearnerIds).toContain(learnerId);
         expect(media.consentState).toBe("cleared");
       }
-      if (r.kind === "observation") {
-        expect(ref(EY.OBSERVATIONS, r.refId, r.tenantId).learnerIds).toContain(portfolio.learnerId);
-      }
+      if (r.kind === "observation")
+        expect(ref(EY.OBSERVATIONS, r.refId, r.tenantId).learnerIds).toContain(learnerId);
+      if (r.kind === "assignment_submission")
+        expect(ref(ASSIGNMENT_SUBMISSIONS, r.refId, r.tenantId).learnerId).toBe(learnerId);
+      if (r.kind === "credential")
+        expect(ref(ISSUED_CREDENTIALS, r.refId, r.tenantId).learnerId).toBe(learnerId);
     }
     covers(PF.PORTFOLIO_EXPORTS, (r) => r.status, C.PortfolioExportStatusSchema.options);
     for (const r of PF.PORTFOLIO_EXPORTS) {

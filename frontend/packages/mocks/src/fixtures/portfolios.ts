@@ -10,14 +10,16 @@ import { CONSENTS } from "./compliance";
 import { GUARDIAN_RELATIONSHIPS } from "./families";
 import { INSTITUTION, PERSON, TENANT } from "./ids";
 import { GUARDIAN_RELATIONSHIP, LEARNER } from "./ids-stage3";
+import { ASSIGNMENT_SUBMISSION as AS } from "./ids-stage4-assess";
 import {
   MEDIA_ITEM,
   MEDIA_SHARING_CONSENT,
   OBSERVATION,
   PORTFOLIO,
-  PORTFOLIO_ENTRY,
-  PORTFOLIO_EXPORT,
+  PORTFOLIO_ENTRY as PE,
+  PORTFOLIO_EXPORT as PX,
 } from "./ids-stage4-care";
+import { DEFERRED_PORTFOLIO_ENTRY as DPE, ISSUED_CREDENTIAL as IC } from "./ids-stage4-engage";
 import { OUTCOME } from "./ids-stage4-learning";
 import { ROLE_PROFILES } from "./role-profiles";
 import { CREATED_AT, UPDATED_AT } from "./tenants";
@@ -203,93 +205,74 @@ export const PORTFOLIOS: readonly Portfolio[] = [
   },
 ];
 
+const lsScope = { tenantId: ls, portfolioId: PORTFOLIO.lsIshaan, outcomeIds: [OUTCOME.lsSocial1] };
+const rvScope = { tenantId: rv, portfolioId: PORTFOLIO.rvMia, outcomeIds: [OUTCOME.rvMathFrac] };
+const at = (s: string) => `2026-${s}:00Z`;
+const refNote = "Drawing the fraction strips helped me see which pieces are the same size.";
+
+const entry = (
+  scope: typeof lsScope | typeof rvScope,
+  id: string,
+  kind: PortfolioEntry["kind"],
+  refId: string | null,
+  who: readonly [string, PortfolioEntry["addedByRole"]],
+  addedAt: string,
+  reflection: string | null = null,
+): PortfolioEntry => ({
+  ...scope,
+  outcomeIds: [...scope.outcomeIds],
+  id,
+  kind,
+  refId,
+  reflection,
+  addedByProfileId: who[0],
+  addedByRole: who[1],
+  addedAt: at(addedAt),
+});
+
+const byLsStaff = [lsStaff, "staff"] as const;
+const byRvStaff = [rvStaff, "staff"] as const;
+const byRvLearner = [rvLearner, "learner"] as const;
+
 export const PORTFOLIO_ENTRIES: readonly PortfolioEntry[] = [
-  {
-    id: PORTFOLIO_ENTRY.media,
-    tenantId: ls,
-    portfolioId: PORTFOLIO.lsIshaan,
-    kind: "media",
-    refId: MEDIA_ITEM.lsActivity,
-    reflection: null,
-    outcomeIds: [OUTCOME.lsSocial1],
-    addedByProfileId: lsStaff,
-    addedByRole: "staff",
-    addedAt: "2026-09-14T08:30:00Z",
-  },
-  {
-    id: PORTFOLIO_ENTRY.observation,
-    tenantId: ls,
-    portfolioId: PORTFOLIO.lsIshaan,
-    kind: "observation",
-    refId: OBSERVATION.turnTaking,
-    reflection: null,
-    outcomeIds: [OUTCOME.lsSocial1],
-    addedByProfileId: lsStaff,
-    addedByRole: "staff",
-    addedAt: "2026-09-14T08:35:00Z",
-  },
-  {
-    id: PORTFOLIO_ENTRY.reflection,
-    tenantId: rv,
-    portfolioId: PORTFOLIO.rvMia,
-    kind: "reflection",
-    refId: null,
-    reflection: "Drawing the fraction strips helped me see which pieces are the same size.",
-    outcomeIds: [OUTCOME.rvMathFrac],
-    addedByProfileId: rvLearner,
-    addedByRole: "learner",
-    addedAt: "2026-09-04T14:45:00Z",
-  },
+  entry(lsScope, PE.media, "media", MEDIA_ITEM.lsActivity, byLsStaff, "09-14T08:30"),
+  entry(lsScope, PE.observation, "observation", OBSERVATION.turnTaking, byLsStaff, "09-14T08:35"),
+  entry(rvScope, PE.reflection, "reflection", null, byRvLearner, "09-04T14:45", refNote),
+  entry(
+    rvScope,
+    DPE.assignmentSubmission,
+    "assignment_submission",
+    AS.rvMiaFrac,
+    byRvStaff,
+    "09-17T12:30",
+  ),
+  entry(rvScope, DPE.credential, "credential", IC.rvMiaBadge, byRvLearner, "09-18T13:00"),
 ];
 
-const lsExport = {
-  tenantId: ls,
-  portfolioId: PORTFOLIO.lsIshaan,
-  requestedByProfileId: lsGuardian,
+const lsExp = { tenantId: ls, portfolioId: PORTFOLIO.lsIshaan, requestedByProfileId: lsGuardian };
+const rvExp = { tenantId: rv, portfolioId: PORTFOLIO.rvMia, requestedByProfileId: rvLearner };
+
+const exp = (
+  base: typeof lsExp | typeof rvExp,
+  id: string,
+  format: PortfolioExport["format"],
+  status: PortfolioExport["status"],
+  reqAt: string,
+  done?: readonly [string, string],
+): PortfolioExport => ({
+  ...base,
   otherLearnersExcluded: true,
-} as const;
-const rvExport = {
-  tenantId: rv,
-  portfolioId: PORTFOLIO.rvMia,
-  requestedByProfileId: rvLearner,
-  otherLearnersExcluded: true,
-} as const;
+  id,
+  format,
+  status,
+  requestedAt: at(reqAt),
+  readyAt: done ? at(done[0]) : null,
+  expiresAt: done ? at(done[1]) : null,
+});
 
 export const PORTFOLIO_EXPORTS: readonly PortfolioExport[] = [
-  {
-    ...lsExport,
-    id: PORTFOLIO_EXPORT.queued,
-    format: "zip",
-    status: "queued",
-    requestedAt: "2026-09-15T11:59:00Z",
-    readyAt: null,
-    expiresAt: null,
-  },
-  {
-    ...lsExport,
-    id: PORTFOLIO_EXPORT.ready,
-    format: "pdf",
-    status: "ready",
-    requestedAt: "2026-09-14T09:40:00Z",
-    readyAt: "2026-09-14T09:42:00Z",
-    expiresAt: "2026-09-20T09:42:00Z",
-  },
-  {
-    ...rvExport,
-    id: PORTFOLIO_EXPORT.failed,
-    format: "zip",
-    status: "failed",
-    requestedAt: "2026-09-14T14:00:00Z",
-    readyAt: null,
-    expiresAt: null,
-  },
-  {
-    ...rvExport,
-    id: PORTFOLIO_EXPORT.expired,
-    format: "pdf",
-    status: "expired",
-    requestedAt: "2026-09-04T15:00:00Z",
-    readyAt: "2026-09-04T15:02:00Z",
-    expiresAt: "2026-09-11T15:02:00Z",
-  },
+  exp(lsExp, PX.queued, "zip", "queued", "09-15T11:59"),
+  exp(lsExp, PX.ready, "pdf", "ready", "09-14T09:40", ["09-14T09:42", "09-20T09:42"]),
+  exp(rvExp, PX.failed, "zip", "failed", "09-14T14:00"),
+  exp(rvExp, PX.expired, "pdf", "expired", "09-04T15:00", ["09-04T15:02", "09-11T15:02"]),
 ];
