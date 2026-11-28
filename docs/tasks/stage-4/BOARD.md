@@ -36,10 +36,11 @@
 | NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | done | Gemini | 213, 214, 247, 248, 256, 220 |
 | NEX-257 | Fixtures: M34, M36 — proctoring, live classes, `live_session` course items | B | done | Gemini | 215, 249, 221 |
 | NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | done | Codex | 216, 250, 251, 220 |
-| NEX-258 | Fixtures: M39–M45 — library, test prep, session courses, higher-ed, store, surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) | B | draft | — | 217–219, 252–255, 257 |
+| NEX-258 | Fixtures: M39, M40, M41 — library, test prep, session courses | B | planned | — | 217, 218, 254, 257 |
+| NEX-263 | Fixtures: M42–M45 — higher-ed, store, surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) — split from NEX-258 | B | draft | — | 219, 252, 253, 255, 258 |
 | NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | done | Codex | 220, 259 |
-| NEX-223 | MSW handlers + services: M32, M33 read (anonymous peer reviewers hidden from authors, NEX-213; learners never get `QuestionItem`; D91) | B | in-progress | Codex | 221, 222 |
-| NEX-262 | MSW handlers + services: M34, M35 — proctoring, mastery, paths and tutor — split from NEX-223 | B | draft | — | 257, 223 |
+| NEX-223 | MSW handlers + services: M32, M33 read (anonymous peer reviewers hidden from authors, NEX-213; learners never get `QuestionItem`; D91) | B | ready-for-review | Codex | 221, 222 |
+| NEX-262 | MSW handlers + services: M34, M35 — proctoring, mastery, paths and tutor (read) — split from NEX-223 | B | planned | — | 257, 223 |
 | NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 (adds the NEX-260 exports to `fixtures/index.ts`; merges `MEDIA_SHARING_CONSENTS` into consents) | B | draft | — | 257, 260, 223 |
 | NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 258, 224 |
 | NEX-226 | M29 Curriculum & lesson planning: outcomes, syllabus and coverage, draft lesson plans (offline L2 writes) | C | planned | — | 222 |
