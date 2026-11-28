@@ -5,6 +5,7 @@ import {
   PAGE_SIZE_MAX,
   pageSchema,
   type ContentItem,
+  type ContentLessonInput,
 } from "@nexus/contracts";
 import { useQueryClient } from "@tanstack/react-query";
 import { ApiRequestError } from "../client";
@@ -52,18 +53,21 @@ export function useContentAttempts(contentItemId: string | null = null) {
   );
 }
 
-function useContentAction(action: "accessibility-check" | "publish") {
+function useInvalidateContent() {
   const { session } = useSession();
   const qc = useQueryClient();
 
-  const invalidate = async (contentItemId: string) => {
+  return async (contentItemId: string) => {
     if (!session) return;
     await Promise.all([
       qc.invalidateQueries({ queryKey: queryKeys.m31.contentItems(session) }),
       qc.invalidateQueries({ queryKey: queryKeys.m31.contentItem(session, contentItemId) }),
     ]);
   };
+}
 
+function useContentAction(action: "accessibility-check" | "publish") {
+  const invalidate = useInvalidateContent();
   return useOutboxMutation<string, ContentItem>({
     moduleId: "M31",
     operation: `content.${action}`,
@@ -97,4 +101,42 @@ export function useCheckContentAccessibility() {
 /** Publishes a clean draft or in-review item via `POST /content-items/:id/publish` (M31, L2). */
 export function usePublishContentItem() {
   return useContentAction("publish");
+}
+
+export function useCreateContentLesson() {
+  const invalidate = useInvalidateContent();
+  return useOutboxMutation<ContentLessonInput, ContentItem>({
+    moduleId: "M31",
+    operation: "content.create",
+    mergeRule: "lww-audited",
+    send: async (client, input, key) => {
+      const item = await client.send("POST", "/content-items", input, ContentItemSchema, {
+        headers: idempotencyHeaders(key),
+      });
+      await invalidate(item.id);
+      return item;
+    },
+  });
+}
+
+export function useUpdateContentLesson() {
+  const invalidate = useInvalidateContent();
+  return useOutboxMutation<{ id: string; input: ContentLessonInput }, ContentItem>({
+    moduleId: "M31",
+    operation: "content.update",
+    mergeRule: "lww-audited",
+    send: async (client, { id, input }, key) => {
+      const item = await client.send(
+        "PUT",
+        `/content-items/${encodeURIComponent(id)}`,
+        input,
+        ContentItemSchema,
+        {
+          headers: idempotencyHeaders(key),
+        },
+      );
+      await invalidate(item.id);
+      return item;
+    },
+  });
 }

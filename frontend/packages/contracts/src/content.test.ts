@@ -4,6 +4,7 @@ import {
   ContentAttemptSchema,
   ContentBlockSchema,
   ContentItemSchema,
+  ContentLessonInputSchema,
   type ContentAsset,
   type ContentAttempt,
   type ContentAttemptStatus,
@@ -237,4 +238,16 @@ describe("content attempts", () => {
     );
     expect(ContentAttemptSchema.safeParse({ ...attempt, scoreBps: 10001 }).success).toBe(false);
   });
+});
+
+it("accepts lesson authoring fields and rejects missing alt text and server fields", () => {
+  const input = { title: lesson.title, language: lesson.language, outcomeIds: [], blocks };
+  expect(ContentLessonInputSchema.parse(input)).toEqual(input);
+  for (const invalid of [
+    { ...input, blocks: [{ type: "image", assetId: "asset-1" }] },
+    { ...input, blocks: [] },
+    { ...input, aiAssisted: true },
+  ]) {
+    expect(ContentLessonInputSchema.safeParse(invalid).success).toBe(false);
+  }
 });

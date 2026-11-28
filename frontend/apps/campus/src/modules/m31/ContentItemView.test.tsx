@@ -16,7 +16,7 @@ function renderView(itemId: string, who: DemoPersona) {
       db={freshDb()}
       createClient={() => createNexusQueryClient({ defaultOptions: { queries: { retry: false } } })}
     >
-      <ContentItemView item={item} onBack={onBack} />
+      <ContentItemView item={item} onEdit={vi.fn()} onBack={onBack} />
     </AppProviders>,
   );
   return { ...view, onBack };
@@ -56,8 +56,19 @@ describe("ContentItemView (M31)", () => {
       await screen.findByRole("button", { name: "Run accessibility check" }),
     ).toBeInTheDocument();
 
+    expect(screen.queryByRole("button", { name: "Edit" })).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Back to content" }));
     expect(onBack).toHaveBeenCalledTimes(1);
+  });
+
+  it("hides Edit for an in-review lesson even when the viewer manages content", async () => {
+    const item = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
+    mockDb.contentItems = mockDb.contentItems.map((row) =>
+      row === item ? { ...row, status: "in_review" } : row,
+    );
+    renderView(item.id, { ...persona(TENANT.riverside, "teacher"), userId: USER.rvAmira });
+    expect(await screen.findByRole("button", { name: "Run accessibility check" })).toBeVisible();
+    expect(screen.queryByRole("button", { name: "Edit" })).toBeNull();
   });
 
   it("shows learning package metadata for a SCORM item", async () => {

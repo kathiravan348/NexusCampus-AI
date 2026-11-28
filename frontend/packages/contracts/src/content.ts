@@ -157,19 +157,27 @@ export type ContentPackage = z.infer<typeof ContentPackageSchema>;
 const mediaKinds: ReadonlySet<ContentKind> = new Set(["video", "audio", "document"]);
 const packageKinds: ReadonlySet<ContentKind> = new Set(["scorm12", "scorm2004", "xapi", "cmi5"]);
 
+const lessonFields = {
+  title: z.string().trim().min(1).max(200),
+  language: LocaleSchema,
+  outcomeIds: z.array(IdSchema).max(20).refine(isUnique, { message: "ids must be unique" }),
+};
+const lessonBlocks = z.array(ContentBlockSchema).min(1).max(200);
+
+export const ContentLessonInputSchema = z.strictObject({ ...lessonFields, blocks: lessonBlocks });
+export type ContentLessonInput = z.infer<typeof ContentLessonInputSchema>;
+
 export const ContentItemSchema = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
     institutionId: IdSchema,
     kind: ContentKindSchema,
-    title: z.string().trim().min(1).max(200),
-    language: LocaleSchema,
-    outcomeIds: z.array(IdSchema).max(20).refine(isUnique, { message: "ids must be unique" }),
+    ...lessonFields,
     status: ContentStatusSchema,
     version: z.int().min(1),
     /** Set exactly for a lesson. */
-    blocks: z.array(ContentBlockSchema).min(1).max(200).nullable(),
+    blocks: lessonBlocks.nullable(),
     /** Set exactly for video, audio and document items. */
     assetId: IdSchema.nullable(),
     /** Caption assets of a video or the transcript of an audio item; empty for every other kind. */
