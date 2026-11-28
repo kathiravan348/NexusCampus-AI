@@ -126,6 +126,7 @@ export const STAGE4_ROLE_PERMISSIONS: Readonly<Record<SystemRoleKey, readonly Pe
   learner: [
     "m30.course.read",
     "m31.content.read",
+    "m32.assignment.read",
     "m33.test.read",
     "m36.live.read",
     "m39.library.read",

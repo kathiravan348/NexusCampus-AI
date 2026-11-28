@@ -220,6 +220,36 @@ export const queryKeys = {
     contentAttempts: (s: KeyScope, contentItemId: string | null) =>
       scoped(s, "m31", "content-attempts", contentItemId),
   },
+  m32: {
+    assignments: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m32", "assignments", "by-course-space", courseSpaceId),
+    assignment: (s: KeyScope, assignmentId: string | null) =>
+      scoped(s, "m32", "assignments", assignmentId),
+    assignmentSubmissions: (s: KeyScope, assignmentId: string | null) =>
+      scoped(s, "m32", "assignments", assignmentId, "submissions"),
+    submissionFeedback: (s: KeyScope, submissionId: string | null) =>
+      scoped(s, "m32", "submissions", submissionId, "feedback"),
+    peerReviews: (s: KeyScope, submissionId: string | null) =>
+      scoped(s, "m32", "submissions", submissionId, "peer-reviews"),
+    originalitySignals: (s: KeyScope, submissionId: string | null) =>
+      scoped(s, "m32", "submissions", submissionId, "originality"),
+    aiMarkingSuggestions: (s: KeyScope, submissionId: string | null) =>
+      scoped(s, "m32", "submissions", submissionId, "ai-suggestions"),
+  },
+  m33: {
+    questionBanks: (s: KeyScope) => scoped(s, "m33", "question-banks"),
+    questionItems: (s: KeyScope, bankId: string | null) =>
+      scoped(s, "m33", "question-items", bankId),
+    onlineTests: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m33", "online-tests", "by-course-space", courseSpaceId),
+    onlineTest: (s: KeyScope, testId: string | null) => scoped(s, "m33", "online-tests", testId),
+    testAttempts: (s: KeyScope, testId: string | null) =>
+      scoped(s, "m33", "online-tests", testId, "attempts"),
+    testResponses: (s: KeyScope, attemptId: string | null) =>
+      scoped(s, "m33", "attempts", attemptId, "responses"),
+    itemStatistics: (s: KeyScope, testId: string | null) =>
+      scoped(s, "m33", "online-tests", testId, "item-statistics"),
+  },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),
     keys: (s: KeyScope) => scoped(s, "m83", "keys"),
