@@ -1,4 +1,12 @@
 import * as F from "./fixtures";
+import {
+  AI_MARKING_SUGGESTIONS,
+  ASSIGNMENTS,
+  ASSIGNMENT_SUBMISSIONS,
+  ORIGINALITY_SIGNALS,
+  PEER_REVIEWS,
+  SUBMISSION_FEEDBACK,
+} from "./fixtures/assignments";
 import { CONTENT_ASSETS, CONTENT_ATTEMPTS, CONTENT_ITEMS } from "./fixtures/content";
 import {
   COURSE_ITEMS,
@@ -16,6 +24,14 @@ import {
   OUTCOMES,
   SYLLABUS_UNITS,
 } from "./fixtures/curriculum";
+import {
+  ITEM_STATISTICS,
+  ONLINE_TESTS,
+  QUESTION_BANKS,
+  QUESTION_ITEMS,
+  TEST_ATTEMPTS,
+  TEST_RESPONSES,
+} from "./fixtures/question-tests";
 import { demoAccessFixtures } from "./fixtures/stage3-access";
 import { stage4AccessFixtures } from "./fixtures/stage4-access";
 
@@ -151,6 +167,18 @@ function createDb() {
     contentItems: clone(CONTENT_ITEMS),
     contentAssets: clone(CONTENT_ASSETS),
     contentAttempts: clone(CONTENT_ATTEMPTS),
+    assignments: clone(ASSIGNMENTS),
+    assignmentSubmissions: clone(ASSIGNMENT_SUBMISSIONS),
+    submissionFeedback: clone(SUBMISSION_FEEDBACK),
+    peerReviews: clone(PEER_REVIEWS),
+    originalitySignals: clone(ORIGINALITY_SIGNALS),
+    aiMarkingSuggestions: clone(AI_MARKING_SUGGESTIONS),
+    questionBanks: clone(QUESTION_BANKS),
+    questionItems: clone(QUESTION_ITEMS),
+    onlineTests: clone(ONLINE_TESTS),
+    testAttempts: clone(TEST_ATTEMPTS),
+    testResponses: clone(TEST_RESPONSES),
+    itemStatistics: clone(ITEM_STATISTICS),
   };
 }
 
