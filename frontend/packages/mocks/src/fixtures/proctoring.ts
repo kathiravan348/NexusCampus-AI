@@ -109,7 +109,9 @@ export const PROCTORING_SESSIONS: readonly C.ProctoringSession[] = [
   session(PS.axVijay, TA.axVijayMock, {
     status: "ended",
     noticeAt: "09-16T04:58",
-    idRes: "not_required",
+    idRes: "verified",
+    idBy: axMeena,
+    idAt: "09-16T04:59",
     start: "09-16T05",
     end: "09-16T05:52",
   }),
@@ -141,7 +143,10 @@ const seg = (
 const NB_DEL = "2026-12-11";
 const AX_DEL = "2026-11-15";
 
-/** Apex minor Vijay has no current guardian camera consent, so only the screen is recorded (G-6). */
+/**
+ * The Apex mock records the screen only; Apex minor Vijay has no current guardian camera consent (G-6). No session has
+ * `not_required` identity: no proctored test with `identityCheck: "none"` has an attempt yet.
+ */
 export const RECORDING_SEGMENTS: readonly C.RecordingSegment[] = [
   seg(RS.nbJordanScreen, PS.nbJordan, "screen", "09-12T14", "09-12T14:38", 42_500_000, NB_DEL),
   seg(RS.nbJordanCamera, PS.nbJordan, "camera", "09-12T14", "09-12T14:38", 31_200_000, NB_DEL),

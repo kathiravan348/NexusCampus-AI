@@ -106,7 +106,9 @@ describe("Stage 4 M34 and M36 fixtures (NEX-257)", () => {
     }
 
     hasAll(F.PROCTORING_SESSIONS, "status", C.ProctoringSessionStatusSchema);
-    hasAll(F.PROCTORING_SESSIONS, "identityResult", C.IdentityResultSchema);
+    expect(new Set(F.PROCTORING_SESSIONS.map((r) => r.identityResult))).toEqual(
+      new Set(C.IdentityResultSchema.options.filter((o) => o !== "not_required")),
+    );
     expect(new Set(F.PROCTORING_SESSIONS.map((r) => r.attemptId)).size).toBe(
       F.PROCTORING_SESSIONS.length,
     );
@@ -121,6 +123,7 @@ describe("Stage 4 M34 and M36 fixtures (NEX-257)", () => {
         learnerId: ses.learnerId,
       });
       const cfg = F.PROCTORING_SETTINGS.find((s) => s.testId === ses.testId);
+      expect(ses.identityResult === "not_required", ses.id).toBe(cfg?.identityCheck === "none");
       if (ses.status === "in_progress") {
         expect(ses.noticeAcceptedAt, ses.id).not.toBeNull();
         expect(ses.noticeVersion, ses.id).toBe(cfg?.noticeVersion);
