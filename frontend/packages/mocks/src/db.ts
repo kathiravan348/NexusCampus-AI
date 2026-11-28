@@ -1,5 +1,23 @@
 import * as F from "./fixtures";
+import { CONTENT_ASSETS, CONTENT_ATTEMPTS, CONTENT_ITEMS } from "./fixtures/content";
+import {
+  COURSE_ITEMS,
+  COURSE_MODULES,
+  COURSE_PROGRESS,
+  COURSE_SPACES,
+  DISCUSSION_POSTS,
+  DISCUSSION_THREADS,
+} from "./fixtures/courses";
+import {
+  COVERAGE_ENTRIES,
+  LESSON_PLANS,
+  OUTCOME_FRAMEWORKS,
+  OUTCOME_MAPPINGS,
+  OUTCOMES,
+  SYLLABUS_UNITS,
+} from "./fixtures/curriculum";
 import { demoAccessFixtures } from "./fixtures/stage3-access";
+import { stage4AccessFixtures } from "./fixtures/stage4-access";
 
 /** A mutable deep copy, so screen tasks' write handlers can change rows without touching the fixtures. */
 function clone<T>(items: readonly T[]): T[] {
@@ -8,6 +26,12 @@ function clone<T>(items: readonly T[]): T[] {
 
 function createDb() {
   const access = demoAccessFixtures();
+  const stage4 = stage4AccessFixtures();
+  const stage4Grants = new Map(stage4.roles.map((role) => [role.id, role.permissions]));
+  const roles = access.roles.map((role) => ({
+    ...role,
+    permissions: [...role.permissions, ...(stage4Grants.get(role.id) ?? [])],
+  }));
   return {
     groups: clone(F.GROUPS),
     institutions: clone(F.INSTITUTIONS),
@@ -20,8 +44,8 @@ function createDb() {
     users: clone(F.USERS),
     sessions: clone(F.SESSIONS),
     ssoProviders: clone(F.SSO_PROVIDERS),
-    permissions: clone(access.permissions),
-    roles: clone(access.roles),
+    permissions: clone([...access.permissions, ...stage4.permissions]),
+    roles: clone(roles),
     roleAssignments: clone(F.ROLE_ASSIGNMENTS),
     demoTenants: clone(F.DEMO_TENANTS),
     demoPersonas: clone(F.DEMO_PERSONAS),
@@ -31,7 +55,11 @@ function createDb() {
     textOverrideRevisions: clone(F.TEXT_OVERRIDE_REVISIONS),
     plans: clone(F.PLANS),
     tenantPlans: { ...F.TENANT_PLANS } as Record<string, string>,
-    entitlements: [...clone(access.entitlements), ...clone(F.INSTALL_ENTITLEMENTS)],
+    entitlements: clone([
+      ...access.entitlements,
+      ...stage4.entitlements,
+      ...F.INSTALL_ENTITLEMENTS,
+    ]),
     installs: structuredClone(F.INSTALLS) as Record<string, F.DemoInstall>,
     usageMeters: clone(F.USAGE_METERS),
     auditEvents: clone(F.AUDIT_EVENTS),
@@ -108,6 +136,21 @@ function createDb() {
     notices: clone(F.NOTICES),
     meetingSlots: clone(F.MEETING_SLOTS),
     meetingBookings: clone(F.MEETING_BOOKINGS),
+    outcomeFrameworks: clone(OUTCOME_FRAMEWORKS),
+    outcomes: clone(OUTCOMES),
+    outcomeMappings: clone(OUTCOME_MAPPINGS),
+    syllabusUnits: clone(SYLLABUS_UNITS),
+    lessonPlans: clone(LESSON_PLANS),
+    coverageEntries: clone(COVERAGE_ENTRIES),
+    courseSpaces: clone(COURSE_SPACES),
+    courseModules: clone(COURSE_MODULES),
+    courseItems: clone(COURSE_ITEMS),
+    courseProgress: clone(COURSE_PROGRESS),
+    discussionThreads: clone(DISCUSSION_THREADS),
+    discussionPosts: clone(DISCUSSION_POSTS),
+    contentItems: clone(CONTENT_ITEMS),
+    contentAssets: clone(CONTENT_ASSETS),
+    contentAttempts: clone(CONTENT_ATTEMPTS),
   };
 }
 
