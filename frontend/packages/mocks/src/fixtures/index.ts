@@ -32,3 +32,8 @@ export * from "./ids-stage4-learning";
 export * from "./curriculum";
 export * from "./content";
 export * from "./courses";
+export * from "./ids-stage4-assess";
+export * from "./assignments";
+export * from "./question-tests";
+export * from "./tutor";
+export * from "./early-warning";

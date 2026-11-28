@@ -193,13 +193,15 @@ describe("Stage 4 M29–M31 fixtures (NEX-220)", () => {
       expectRef(F.COURSE_MODULES, item.moduleId, item.tenantId);
       if (item.kind === "content") expectRef(F.CONTENT_ITEMS, item.refId, item.tenantId);
       if (item.kind === "discussion") expectRef(F.DISCUSSION_THREADS, item.refId, item.tenantId);
+      if (item.kind === "assignment") expectRef(F.ASSIGNMENTS, item.refId, item.tenantId);
+      if (item.kind === "test") expectRef(F.ONLINE_TESTS, item.refId, item.tenantId);
       if (item.dueAt !== null) expectDate(item.tenantId, item.dueAt.slice(0, 10));
     }
     const kinds = new Set(F.COURSE_ITEMS.map((r) => r.kind));
-    expect(kinds).toEqual(new Set(["page", "file", "link", "content", "discussion"]));
-    for (const k of ["assignment", "test", "live_session"] as const) {
-      expect(kinds.has(k)).toBe(false);
-    }
+    expect(kinds).toEqual(
+      new Set(["page", "file", "link", "content", "discussion", "assignment", "test"]),
+    );
+    expect(kinds.has("live_session")).toBe(false);
     for (const p of F.COURSE_PROGRESS) {
       const sp = byId(F.COURSE_SPACES, p.courseSpaceId);
       expect(sp?.tenantId, p.learnerId).toBe(p.tenantId);
@@ -253,6 +255,7 @@ describe("Stage 4 M29–M31 fixtures (NEX-220)", () => {
       }
       for (const b of item.blocks ?? []) {
         blocks.add(b.type);
+        if (b.type === "question") expectRef(F.QUESTION_ITEMS, b.questionId, item.tenantId);
         if (b.type === "image" || b.type === "video") {
           const expected = { tenantId: item.tenantId, kind: b.type };
           expect(byId(F.CONTENT_ASSETS, b.assetId)).toMatchObject(expected);
@@ -265,8 +268,7 @@ describe("Stage 4 M29–M31 fixtures (NEX-220)", () => {
         }
       }
     }
-    expect(blocks).toEqual(new Set(["text", "image", "video", "embed"]));
-    expect(blocks.has("question")).toBe(false);
+    expect(blocks).toEqual(new Set(["text", "image", "video", "embed", "question"]));
     const hasTrack = (kind: "video" | "audio") =>
       F.CONTENT_ITEMS.some((r) => r.kind === kind && r.textTrackAssetIds.length > 0);
     expect(hasTrack("video")).toBe(true);

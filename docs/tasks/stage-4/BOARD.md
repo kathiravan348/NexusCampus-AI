@@ -33,7 +33,7 @@
 | NEX-256 | Contracts (M33): negative marking — item penalties, signed response and attempt scores (NEX-218 review follow-up) | B | done | Claude | 247, 218 |
 | NEX-259 | Stage 4 access (mock only, D87): permission codes, system-role grants, module entitlements, en / hi / ta texts | B | done | Codex | 210–219, 247–256 |
 | NEX-220 | Fixtures: M29, M30, M31 — outcomes, syllabus, lesson plans, course spaces, content for the 5 demo tenants and the Group | B | done | Gemini | 210–212, 259 |
-| NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | planned | — | 213, 214, 247, 248, 256, 220 |
+| NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | done | Gemini | 213, 214, 247, 248, 256, 220 |
 | NEX-257 | Fixtures: M34, M36 — proctoring, live classes, `live_session` course items | B | planned | — | 215, 249, 221 |
 | NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | planned | — | 216, 250, 251, 220 |
 | NEX-258 | Fixtures: M39–M45 — library, test prep, session courses, higher-ed, store, surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) | B | draft | — | 217–219, 252–255, 257 |
