@@ -7,11 +7,21 @@ import {
   SyllabusCoverageSchema,
   SyllabusUnitSchema,
   pageSchema,
+  type LessonPlanInput,
 } from "@nexus/contracts";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { MOCK_HEADER, permissionsOf } from "../context";
 import { mockDb, resetMockDb } from "../db";
-import { LEARNER, TENANT, USER } from "../fixtures";
+import {
+  LEARNER,
+  LESSON_PLAN,
+  OFFERING,
+  OUTCOME,
+  PERSON,
+  SYLLABUS_TOPIC,
+  TENANT,
+  USER,
+} from "../fixtures";
 import { server } from "../node";
 import type { Parser } from "./route";
 
@@ -19,6 +29,47 @@ function get(path: string, tenantId: string, userId: string) {
   return fetch("http://localhost/api/v1" + path, {
     headers: { [MOCK_HEADER.tenant]: tenantId, [MOCK_HEADER.user]: userId },
   });
+}
+
+function send(
+  method: "POST" | "PUT",
+  path: string,
+  tenantId: string,
+  userId: string,
+  body: unknown,
+  idempotencyKey?: string,
+) {
+  return fetch("http://localhost/api/v1" + path, {
+    method,
+    headers: {
+      "Content-Type": "application/json",
+      [MOCK_HEADER.tenant]: tenantId,
+      [MOCK_HEADER.user]: userId,
+      ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
+    },
+    body: JSON.stringify(body),
+  });
+}
+
+function staffIdFor(personId: string): string {
+  return mockDb.roleProfiles.find((row) => row.personId === personId && row.kind === "staff")!.id;
+}
+
+function draftInput(overrides: Partial<LessonPlanInput> = {}): LessonPlanInput {
+  return {
+    subjectOfferingId: OFFERING.rvNorthYearNine[0],
+    staffProfileId: staffIdFor(PERSON.rvTom),
+    date: "2026-10-05",
+    timetableSlotId: null,
+    title: "Thesis Workshop",
+    topicIds: [SYLLABUS_TOPIC.rvEng3],
+    outcomeIds: [OUTCOME.rvEngWrite],
+    objectives: "Draft clear thesis statements.",
+    activities: [{ order: 1, title: "Model examples", minutes: 15, kind: "instruction" }],
+    resources: "Worksheet pack",
+    source: "manual",
+    ...overrides,
+  };
 }
 
 function admin(tenantId: string) {
@@ -149,5 +200,97 @@ describe("M29 read handlers", () => {
     const response = await get("/outcome-frameworks", tenant, USER.lsPriya);
     expect(response.status).toBe(403);
     expect(await response.json()).toMatchObject({ error: { code: "module_disabled" } });
+  });
+});
+
+describe("M29 write handlers", () => {
+  it("creates drafts with idempotency and rejects foreign or wrong-subject refs", async () => {
+    const post = (body: unknown, key?: string) =>
+      send("POST", "/lesson-plans", TENANT.riverside, USER.rvTom, body, key);
+    const first = await post(draftInput(), "m29-create-1");
+    expect(first.status).toBe(201);
+    const created = LessonPlanSchema.parse(await first.json());
+    expect(created).toMatchObject({
+      tenantId: TENANT.riverside,
+      status: "draft",
+      reviewedByStaffProfileId: null,
+      reviewNote: null,
+    });
+
+    const replay = await post(draftInput(), "m29-create-1");
+    expect(replay.status).toBe(201);
+    expect(LessonPlanSchema.parse(await replay.json()).id).toBe(created.id);
+
+    const foreignOffering = mockDb.subjectOfferings.find(
+      (row) => row.tenantId === TENANT.northbridge,
+    )!;
+    expect((await post(draftInput({ subjectOfferingId: foreignOffering.id }))).status).toBe(400);
+    expect((await post(draftInput({ topicIds: [SYLLABUS_TOPIC.rvMath1] }))).status).toBe(400);
+    expect((await post(draftInput({ outcomeIds: [OUTCOME.nbCo1] }))).status).toBe(400);
+
+    const foreignTopic = await send(
+      "POST",
+      "/lesson-plans",
+      TENANT.northbridge,
+      USER.nbElena,
+      draftInput({
+        subjectOfferingId: foreignOffering.id,
+        staffProfileId: staffIdFor(PERSON.nbElena),
+        topicIds: [SYLLABUS_TOPIC.rvEng3],
+        outcomeIds: [OUTCOME.nbCo1],
+      }),
+    );
+    expect(foreignTopic.status).toBe(400);
+  });
+
+  it("updates own returned plans and blocks submitted (409) or others' plans (403)", async () => {
+    const updated = await send(
+      "PUT",
+      `/lesson-plans/${LESSON_PLAN.rvReturned}`,
+      TENANT.riverside,
+      USER.rvTom,
+      draftInput({ title: "Updated Evidence Paragraphs", topicIds: [SYLLABUS_TOPIC.rvEng4] }),
+      "m29-put-1",
+    );
+    expect(updated.status).toBe(200);
+    expect(LessonPlanSchema.parse(await updated.json())).toMatchObject({
+      id: LESSON_PLAN.rvReturned,
+      title: "Updated Evidence Paragraphs",
+      status: "returned",
+      reviewNote: "Add a brief formative check.",
+    });
+
+    const submitted = await send(
+      "PUT",
+      `/lesson-plans/${LESSON_PLAN.rvSubmitted}`,
+      TENANT.riverside,
+      USER.rvAmira,
+      draftInput({
+        subjectOfferingId: OFFERING.rvSouthYearFive[0],
+        staffProfileId: staffIdFor(PERSON.rvAmira),
+        topicIds: [SYLLABUS_TOPIC.rvEng1],
+        outcomeIds: [OUTCOME.rvEngRead],
+      }),
+    );
+    expect(submitted.status).toBe(409);
+    expect(await submitted.json()).toMatchObject({ error: { code: "conflict" } });
+
+    const otherTeacher = await send(
+      "PUT",
+      `/lesson-plans/${LESSON_PLAN.rvReturned}`,
+      TENANT.riverside,
+      USER.rvAmira,
+      draftInput({ staffProfileId: staffIdFor(PERSON.rvAmira) }),
+    );
+    expect(otherTeacher.status).toBe(403);
+
+    const spoofed = await send(
+      "POST",
+      "/lesson-plans",
+      TENANT.riverside,
+      USER.rvTom,
+      draftInput({ staffProfileId: staffIdFor(PERSON.rvAmira) }),
+    );
+    expect(spoofed.status).toBe(403);
   });
 });

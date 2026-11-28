@@ -7999,6 +7999,414 @@
     "message": "Review lesson plans",
     "description": "Permission description: Review lesson plans submitted for approval."
   },
+  "m29.nav.title": {
+    "message": "Curriculum",
+    "description": "Navigation item and page title of the Curriculum & lesson planning screen (M29)."
+  },
+  "m29.nav.summary": {
+    "message": "Outcome frameworks, syllabus coverage and lesson plans.",
+    "description": "Home tile summary of the Curriculum module."
+  },
+  "m29.page.intro": {
+    "message": "Browse outcome frameworks and CO–PO mappings, track syllabus coverage, and draft lesson plans.",
+    "description": "Introductory text under the Curriculum page heading."
+  },
+  "m29.page.tabsLabel": {
+    "message": "Curriculum sections",
+    "description": "Accessible label for the tab list on the Curriculum page."
+  },
+  "m29.page.tabOutcomes": {
+    "message": "Outcomes",
+    "description": "Tab label showing outcome frameworks, outcome trees and CO–PO mappings."
+  },
+  "m29.page.tabSyllabus": {
+    "message": "Syllabus & coverage",
+    "description": "Tab label showing syllabus units, topics and coverage per subject offering."
+  },
+  "m29.page.tabLessonPlans": {
+    "message": "Lesson plans",
+    "description": "Tab label showing lesson plans per subject offering."
+  },
+  "m29.page.askAssist": {
+    "message": "Ask Assist",
+    "description": "Button opening Nexus Assist from the Curriculum page header."
+  },
+  "m29.page.error": {
+    "message": "Curriculum could not be loaded.",
+    "description": "Error heading when the Curriculum page fails to load."
+  },
+  "m29.outcomes.framework": {
+    "message": "Outcome framework",
+    "description": "Select label for choosing an outcome framework."
+  },
+  "m29.outcomes.version": {
+    "message": "Version {version}",
+    "description": "Version badge on an outcome framework card. {version} is a version string."
+  },
+  "m29.outcomes.caseImport": {
+    "message": "CASE import",
+    "description": "Badge showing that an outcome framework was imported from a CASE document."
+  },
+  "m29.outcomes.empty": {
+    "message": "No outcome frameworks yet",
+    "description": "Empty state heading when the institution has no outcome frameworks."
+  },
+  "m29.outcomes.emptyBody": {
+    "message": "Outcome frameworks and standards for this institution will appear here.",
+    "description": "Empty state description when no outcome frameworks exist."
+  },
+  "m29.outcomes.noOutcomes": {
+    "message": "No outcomes in this framework yet.",
+    "description": "Empty text when the selected framework has no outcomes."
+  },
+  "m29.outcomes.error": {
+    "message": "Outcomes could not be loaded.",
+    "description": "Error heading when outcome frameworks or outcomes fail to load."
+  },
+  "m29.outcomes.mappingsError": {
+    "message": "Outcome mappings could not be loaded.",
+    "description": "Inline error notice when outcome mappings fail to load."
+  },
+  "m29.outcomes.mappingsLabel": {
+    "message": "Mapped outcomes",
+    "description": "Accessible label for the list of CO–PO mappings under an outcome."
+  },
+  "m29.outcomes.mappingPair": {
+    "message": "{from} → {to}",
+    "description": "Pair of outcome codes linked by a mapping. {from} and {to} are outcome codes."
+  },
+  "m29.frameworkKind.standards": {
+    "message": "Standards",
+    "description": "Outcome framework kind badge: curriculum standards."
+  },
+  "m29.frameworkKind.courseOutcomes": {
+    "message": "Course outcomes",
+    "description": "Outcome framework kind badge: course outcomes (CO)."
+  },
+  "m29.frameworkKind.programOutcomes": {
+    "message": "Program outcomes",
+    "description": "Outcome framework kind badge: program outcomes (PO)."
+  },
+  "m29.frameworkKind.milestones": {
+    "message": "Milestones",
+    "description": "Outcome framework kind badge: developmental milestones."
+  },
+  "m29.frameworkKind.skills": {
+    "message": "Skills",
+    "description": "Outcome framework kind badge: skills or graded competencies."
+  },
+  "m29.mappingStrength.low": {
+    "message": "Low (1)",
+    "description": "Outcome mapping correlation strength level 1 (low)."
+  },
+  "m29.mappingStrength.medium": {
+    "message": "Medium (2)",
+    "description": "Outcome mapping correlation strength level 2 (medium)."
+  },
+  "m29.mappingStrength.high": {
+    "message": "High (3)",
+    "description": "Outcome mapping correlation strength level 3 (high)."
+  },
+  "m29.syllabus.offering": {
+    "message": "Subject offering",
+    "description": "Select label for choosing a subject offering on the Syllabus & coverage tab."
+  },
+  "m29.syllabus.coverageLabel": {
+    "message": "Syllabus coverage",
+    "description": "Label above the syllabus coverage meter."
+  },
+  "m29.syllabus.coverageValue": {
+    "message": "{percent}% ({covered} of {total})",
+    "description": "Formatted coverage meter value. {percent} has one decimal; {covered} and {total} are topic counts."
+  },
+  "m29.syllabus.plannedHours": {
+    "message": "{hours} hrs",
+    "description": "Planned teaching hours badge on a syllabus unit. {hours} is a formatted number."
+  },
+  "m29.syllabus.coveredOn": {
+    "message": "Covered on {date}",
+    "description": "Date a syllabus topic was covered. {date} is a formatted calendar date."
+  },
+  "m29.syllabus.noOfferings": {
+    "message": "No subject offerings yet",
+    "description": "Empty state heading when the institution has no subject offerings."
+  },
+  "m29.syllabus.noOfferingsBody": {
+    "message": "Subject offerings for this institution will appear here.",
+    "description": "Empty state description when no subject offerings exist."
+  },
+  "m29.syllabus.empty": {
+    "message": "No syllabus units for this offering yet",
+    "description": "Empty state heading when the selected offering has no syllabus units."
+  },
+  "m29.syllabus.emptyBody": {
+    "message": "Units and topics linked to this subject offering will appear here.",
+    "description": "Empty state description when no syllabus units match the offering."
+  },
+  "m29.syllabus.error": {
+    "message": "Syllabus and coverage could not be loaded.",
+    "description": "Error heading when syllabus units or coverage fail to load."
+  },
+  "m29.coverage.notStarted": {
+    "message": "Not started",
+    "description": "Topic coverage status: teaching has not started."
+  },
+  "m29.coverage.inProgress": {
+    "message": "In progress",
+    "description": "Topic coverage status: currently being taught."
+  },
+  "m29.coverage.covered": {
+    "message": "Covered",
+    "description": "Topic coverage status: completed."
+  },
+  "m29.plans.offering": {
+    "message": "Subject offering",
+    "description": "Select label for filtering lesson plans by subject offering."
+  },
+  "m29.plans.allOfferings": {
+    "message": "All subject offerings",
+    "description": "Filter option showing lesson plans across every subject offering."
+  },
+  "m29.plans.newPlan": {
+    "message": "New lesson plan",
+    "description": "Button opening the dialog to draft a new lesson plan."
+  },
+  "m29.plans.editLabel": {
+    "message": "Edit {title}",
+    "description": "Accessible label for the Edit button on a lesson plan card. {title} is the plan title."
+  },
+  "m29.plans.unscheduled": {
+    "message": "No date set",
+    "description": "Shown on a lesson plan card when no teaching date has been chosen."
+  },
+  "m29.plans.topicsCount": {
+    "message": "{count, plural, one {# topic} other {# topics}}",
+    "description": "Count of syllabus topics linked to a lesson plan. {count} is a number."
+  },
+  "m29.plans.activitiesCount": {
+    "message": "{count, plural, one {# activity} other {# activities}}",
+    "description": "Count of timed activities in a lesson plan. {count} is a number."
+  },
+  "m29.plans.reviewerNote": {
+    "message": "Reviewer note",
+    "description": "Heading above a reviewer's return note on a returned lesson plan."
+  },
+  "m29.plans.aiDraft": {
+    "message": "AI draft",
+    "description": "Badge marking a lesson plan whose initial draft was produced by AI."
+  },
+  "m29.plans.empty": {
+    "message": "No lesson plans yet",
+    "description": "Empty state heading when no lesson plans match the current offering filter."
+  },
+  "m29.plans.emptyBody": {
+    "message": "Draft lesson plans for this subject offering will appear here.",
+    "description": "Empty state description when no lesson plans are listed."
+  },
+  "m29.plans.error": {
+    "message": "Lesson plans could not be loaded.",
+    "description": "Error heading when loading lesson plans fails."
+  },
+  "m29.planStatus.draft": {
+    "message": "Draft",
+    "description": "Lesson plan status badge: draft."
+  },
+  "m29.planStatus.submitted": {
+    "message": "Submitted",
+    "description": "Lesson plan status badge: submitted for review."
+  },
+  "m29.planStatus.approved": {
+    "message": "Approved",
+    "description": "Lesson plan status badge: approved by a reviewer."
+  },
+  "m29.planStatus.returned": {
+    "message": "Returned",
+    "description": "Lesson plan status badge: returned for revisions."
+  },
+  "m29.planStatus.delivered": {
+    "message": "Delivered",
+    "description": "Lesson plan status badge: taught in class."
+  },
+  "m29.planDialog.createTitle": {
+    "message": "New lesson plan",
+    "description": "Modal title when creating a new draft lesson plan."
+  },
+  "m29.planDialog.editTitle": {
+    "message": "Edit lesson plan",
+    "description": "Modal title when editing an existing draft or returned lesson plan."
+  },
+  "m29.planDialog.description": {
+    "message": "Draft a lesson plan linked to syllabus topics, outcomes and timed activities.",
+    "description": "Subtitle inside the lesson plan modal."
+  },
+  "m29.planDialog.offering": {
+    "message": "Subject offering",
+    "description": "Select label for the subject offering in the lesson plan form."
+  },
+  "m29.planDialog.date": {
+    "message": "Lesson date",
+    "description": "Date input label for the planned lesson date."
+  },
+  "m29.planDialog.title": {
+    "message": "Title",
+    "description": "Text input label for the lesson plan title."
+  },
+  "m29.planDialog.topics": {
+    "message": "Syllabus topics",
+    "description": "Fieldset legend for choosing syllabus topics in the lesson plan form."
+  },
+  "m29.planDialog.topicsEmpty": {
+    "message": "No syllabus topics are available for this subject offering.",
+    "description": "Helper text when the chosen offering has no syllabus topics."
+  },
+  "m29.planDialog.topicsRequired": {
+    "message": "Select at least one syllabus topic.",
+    "description": "Validation error when no syllabus topic is ticked."
+  },
+  "m29.planDialog.outcomes": {
+    "message": "Outcomes",
+    "description": "Fieldset legend for choosing outcomes in the lesson plan form."
+  },
+  "m29.planDialog.outcomesEmpty": {
+    "message": "No outcomes are available yet.",
+    "description": "Helper text when the institution has no outcomes to select."
+  },
+  "m29.planDialog.objectives": {
+    "message": "Objectives",
+    "description": "Textarea label for lesson learning objectives."
+  },
+  "m29.planDialog.resources": {
+    "message": "Resources",
+    "description": "Textarea label for teaching resources and materials."
+  },
+  "m29.planDialog.activities": {
+    "message": "Activities",
+    "description": "Section heading for the ordered list of lesson activities."
+  },
+  "m29.planDialog.activitiesEmpty": {
+    "message": "No activities added yet.",
+    "description": "Helper text when no activities have been added to the lesson plan."
+  },
+  "m29.planDialog.addActivity": {
+    "message": "Add activity",
+    "description": "Button that appends a new activity row in the lesson plan form."
+  },
+  "m29.planDialog.activityTitle": {
+    "message": "Activity title",
+    "description": "Input label for one activity's title."
+  },
+  "m29.planDialog.activityMinutes": {
+    "message": "Minutes",
+    "description": "Numeric input label for one activity's duration in minutes."
+  },
+  "m29.planDialog.activityKind": {
+    "message": "Kind",
+    "description": "Select label for one activity's kind."
+  },
+  "m29.planDialog.moveUp": {
+    "message": "Move activity {index, number} up",
+    "description": "Accessible button label to move an activity earlier in the list. {index} is 1-based."
+  },
+  "m29.planDialog.moveDown": {
+    "message": "Move activity {index, number} down",
+    "description": "Accessible button label to move an activity later in the list. {index} is 1-based."
+  },
+  "m29.planDialog.removeActivity": {
+    "message": "Remove activity {index, number}",
+    "description": "Accessible button label to remove an activity row. {index} is 1-based."
+  },
+  "m29.planDialog.submitCreate": {
+    "message": "Save draft",
+    "description": "Submit button when creating a new draft lesson plan."
+  },
+  "m29.planDialog.submitEdit": {
+    "message": "Save changes",
+    "description": "Submit button when saving edits to an existing lesson plan."
+  },
+  "m29.planDialog.created": {
+    "message": "Lesson plan draft created.",
+    "description": "Success toast shown after creating a lesson plan online."
+  },
+  "m29.planDialog.updated": {
+    "message": "Lesson plan draft updated.",
+    "description": "Success toast shown after updating a lesson plan online."
+  },
+  "m29.planDialog.queued": {
+    "message": "Lesson plan saved offline. Waiting to sync.",
+    "description": "Toast shown after queueing a lesson plan create or update in the offline outbox."
+  },
+  "m29.planDialog.offlineHint": {
+    "message": "You are offline. Saving will queue this lesson plan to sync later.",
+    "description": "Status notice inside the lesson plan modal while the device is offline."
+  },
+  "m29.planDialog.titleInvalid": {
+    "message": "Enter a title up to 200 characters.",
+    "description": "Validation error when the lesson plan title exceeds 200 characters."
+  },
+  "m29.planDialog.dateInvalid": {
+    "message": "Enter a valid date (YYYY-MM-DD).",
+    "description": "Validation error when the lesson date is not a valid calendar date."
+  },
+  "m29.planDialog.minutesInvalid": {
+    "message": "Enter whole minutes between 1 and 600.",
+    "description": "Validation error when an activity duration is outside 1–600 minutes."
+  },
+  "m29.planDialog.activitiesInvalid": {
+    "message": "Check each activity has a title and valid duration.",
+    "description": "Validation error summary for invalid activity rows."
+  },
+  "m29.planDialog.invalidOffering": {
+    "message": "The selected subject offering is not valid for this institution.",
+    "description": "Server error when the subject offering does not belong to the tenant."
+  },
+  "m29.planDialog.invalidTopics": {
+    "message": "Selected topics must belong to this subject's syllabus.",
+    "description": "Server error when a selected topic does not match the offering's subject."
+  },
+  "m29.planDialog.invalidOutcomes": {
+    "message": "One or more selected outcomes are not valid for this institution.",
+    "description": "Server error when a selected outcome does not belong to the tenant."
+  },
+  "m29.planDialog.conflict": {
+    "message": "Only draft or returned lesson plans can be edited.",
+    "description": "Server conflict error when trying to edit a submitted, approved or delivered plan."
+  },
+  "m29.planDialog.forbidden": {
+    "message": "You can only edit your own lesson plans.",
+    "description": "Server forbidden error when trying to edit another staff member's plan."
+  },
+  "m29.planDialog.invalidRequest": {
+    "message": "The lesson plan could not be saved. Check your entries and try again.",
+    "description": "Generic validation error when the server rejects a lesson plan write."
+  },
+  "m29.planDialog.saveFailed": {
+    "message": "The lesson plan could not be saved. Try again.",
+    "description": "Generic error when saving a lesson plan fails unexpectedly."
+  },
+  "m29.activityKind.intro": {
+    "message": "Introduction",
+    "description": "Lesson activity kind: warm-up or introduction."
+  },
+  "m29.activityKind.instruction": {
+    "message": "Instruction",
+    "description": "Lesson activity kind: direct teaching or walkthrough."
+  },
+  "m29.activityKind.practice": {
+    "message": "Practice",
+    "description": "Lesson activity kind: guided or independent practice."
+  },
+  "m29.activityKind.discussion": {
+    "message": "Discussion",
+    "description": "Lesson activity kind: class or group discussion."
+  },
+  "m29.activityKind.assessment": {
+    "message": "Assessment",
+    "description": "Lesson activity kind: check for understanding or quiz."
+  },
+  "m29.activityKind.other": {
+    "message": "Other",
+    "description": "Lesson activity kind: other classroom activity."
+  },
   "m30.permission.courseRead": {
     "message": "View course spaces",
     "description": "Permission description: View course spaces, their modules and items."

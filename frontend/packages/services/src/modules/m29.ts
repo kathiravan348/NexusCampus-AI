@@ -8,10 +8,15 @@ import {
   SyllabusCoverageSchema,
   SyllabusUnitSchema,
   pageSchema,
+  type LessonPlan,
+  type LessonPlanInput,
 } from "@nexus/contracts";
+import { useQueryClient } from "@tanstack/react-query";
 import { z } from "zod";
 import { queryKeys } from "../keys";
+import { idempotencyHeaders, useOutboxMutation } from "../mutation";
 import { useScopedQuery } from "../query";
+import { useSession } from "../session";
 
 const all = { pageSize: PAGE_SIZE_MAX };
 const OutcomeFrameworkPage = pageSchema(OutcomeFrameworkSchema);
@@ -23,6 +28,11 @@ const CoverageResponse = z.strictObject({
   coverage: SyllabusCoverageSchema,
   entries: z.array(CoverageEntrySchema),
 });
+
+export interface LessonPlanUpdateInput {
+  readonly id: string;
+  readonly input: LessonPlanInput;
+}
 
 export function useOutcomeFrameworks() {
   return useScopedQuery(queryKeys.m29.outcomeFrameworks, (c, signal) =>
@@ -45,18 +55,20 @@ export function useOutcomeMappings(frameworkId: string | null = null) {
   );
 }
 
-export function useSyllabusUnits(subjectId: string | null = null) {
+export function useSyllabusUnits(subjectId: string | null = null, enabled = true) {
   return useScopedQuery(
     (s) => queryKeys.m29.syllabusUnits(s, subjectId),
     (c, signal) => c.get("/syllabus-units", SyllabusUnitPage, { ...all, subjectId }, { signal }),
+    enabled,
   );
 }
 
-export function useLessonPlans(subjectOfferingId: string | null = null) {
+export function useLessonPlans(subjectOfferingId: string | null = null, enabled = true) {
   return useScopedQuery(
     (s) => queryKeys.m29.lessonPlans(s, subjectOfferingId),
     (c, signal) =>
       c.get("/lesson-plans", LessonPlanPage, { ...all, subjectOfferingId }, { signal }),
+    enabled,
   );
 }
 
@@ -66,4 +78,52 @@ export function useSyllabusCoverage(subjectOfferingId: string | null) {
     (c, signal) => c.get("/syllabus-coverage", CoverageResponse, { subjectOfferingId }, { signal }),
     subjectOfferingId !== null,
   );
+}
+
+/** Creates a draft lesson plan via `POST /lesson-plans` (M29, L2 outbox write). */
+export function useCreateLessonPlan() {
+  const { session } = useSession();
+  const qc = useQueryClient();
+
+  return useOutboxMutation<LessonPlanInput, LessonPlan>({
+    moduleId: "M29",
+    operation: "lessonplan.create",
+    mergeRule: "lww-audited",
+    send: async (client, body, idempotencyKey) => {
+      const plan = await client.send("POST", "/lesson-plans", body, LessonPlanSchema, {
+        headers: idempotencyHeaders(idempotencyKey),
+      });
+      if (session) {
+        const m29Prefix = queryKeys.m29.outcomeFrameworks(session).slice(0, -1);
+        await qc.invalidateQueries({ queryKey: m29Prefix });
+      }
+      return plan;
+    },
+  });
+}
+
+/** Updates an editable draft or returned lesson plan via `PUT /lesson-plans/:id` (M29, L2). */
+export function useUpdateLessonPlan() {
+  const { session } = useSession();
+  const qc = useQueryClient();
+
+  return useOutboxMutation<LessonPlanUpdateInput, LessonPlan>({
+    moduleId: "M29",
+    operation: "lessonplan.update",
+    mergeRule: "lww-audited",
+    send: async (client, { id, input }, idempotencyKey) => {
+      const plan = await client.send(
+        "PUT",
+        `/lesson-plans/${encodeURIComponent(id)}`,
+        input,
+        LessonPlanSchema,
+        { headers: idempotencyHeaders(idempotencyKey) },
+      );
+      if (session) {
+        const m29Prefix = queryKeys.m29.outcomeFrameworks(session).slice(0, -1);
+        await qc.invalidateQueries({ queryKey: m29Prefix });
+      }
+      return plan;
+    },
+  });
 }

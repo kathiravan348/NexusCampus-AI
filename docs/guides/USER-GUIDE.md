@@ -1,6 +1,6 @@
 # User guide
 
-> State as of: 2026-11-25 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 — Forms & fields, Import data, Admissions with public enquiry form, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Dashboards, Year-end rollover, Learners, Families, role-based portal links, weekly absence cards, and formatted enquiry phone entry)
+> State as of: 2026-11-28 (Stage 1 prototype — app shell, Institution setup, Users & access, Plan & usage, Theme studio, Text & language studio, Audit & privacy, Sync centre, Nexus Assist, Data vault & access, and Notifications; Stage 2 — Install & updates with support diagnostics review and audit history for your own server, support access requests from Nexus, leaving or moving an institution; Stage 3 — Forms & fields, Import data, Admissions with public enquiry form, Academic structure, Timetable, Attendance, Fees, Accounting, Gradebook, Exams, Report cards, Issued documents, Messages & notices, Family portal, Learner portal, Staff portal, Dashboards, Year-end rollover, Learners, Families, role-based portal links, weekly absence cards, and formatted enquiry phone entry; Stage 4 prototype — Curriculum with outcome frameworks, syllabus coverage, and offline-capable draft lesson plans)
 
 This guide explains each screen in plain language as it is built. Names of buttons and labels match the default English text in **bold**.
 
@@ -35,7 +35,7 @@ Developers: start Compose, migrate and seed, run `uv run --project backend nexus
 ## Working offline and signing out
 - The sync pill in the top bar shows whether your changes are **Synced**, waiting to sync, or **Offline** (with the last sync time in your institution's time zone).
 - Pages that require an internet connection show **Needs a connection** when you are offline.
-- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, My portal, Dashboards, and Year-end rollover show **Last synced …** under their title, so you know how old the data is when you look at it offline.
+- Users & access, Theme studio, Text & language studio, Notifications, Learners, Families, Academic structure, Timetable, Fees, Gradebook, Family, My portal, Dashboards, Year-end rollover, and Curriculum show **Last synced …** under their title, so you know how old the data is when you look at it offline.
 - **Sign out** returns you to the sign-in screen and clears this device's offline data for your account. If changes are still waiting to sync, sign-out is paused and a notice tells you how many changes need to sync first so nothing is lost.
 
 ## Institution setup
@@ -313,6 +313,17 @@ Open **Year-end rollover** from the menu. Owners and administrators with rollove
 - Each decision shows the learner’s name when available, otherwise their learner number or **Learner**. The row also shows the action, the destination class group, and the reason when available. **Changed by staff** marks a decision a staff member changed.
 - This page is read-only. Offline, previously loaded runs and decisions remain available. **Last synced** shows when the runs were fetched. If the data you need is unavailable, reconnect and select **Try again**.
 - **Ask Assist** is available online when your institution enables Assist and your role has access.
+
+## Curriculum
+
+Open **Curriculum** from the menu to inspect outcome frameworks, track syllabus coverage, and draft lesson plans. People without curriculum access do not see **Curriculum** in the menu and see **No access** if they open the page directly. **Last synced** under the heading shows when the data was last refreshed.
+
+- **Outcomes:** choose an **Outcome framework** to view its outcomes as a nested tree with codes and statements, along with any **CASE import** or version badges. Where course outcomes are mapped to program outcomes, each outcome lists its mapped pairs and strength (**Low (1)**, **Medium (2)**, or **High (3)**).
+- **Syllabus & coverage:** choose a **Subject offering** to view the **Syllabus coverage** meter (shown to one decimal place with covered and total topic counts) and each unit's topics in order. Every topic shows both an icon and a text status (**Not started**, **In progress**, or **Covered** with the covered date).
+- **Lesson plans:** visible only to roles allowed to write or review lesson plans (learners and guardians with curriculum access see **Outcomes** and **Syllabus & coverage** only). Filter by **Subject offering** (**All subject offerings** by default) to see each plan's title, date, status badge (**Draft**, **Submitted**, **Approved**, **Returned**, or **Delivered**), and **Reviewer note** when a plan has been returned.
+- **Drafting and editing lesson plans:** teachers choose **New lesson plan** to draft a plan or **Edit** on their own **Draft** or **Returned** plans. Choose a **Subject offering**, optional **Lesson date**, **Title**, at least one **Syllabus topics** checkbox, optional **Outcomes**, **Objectives**, ordered **Activities** (with **Add activity**, move up, move down, and remove buttons), and **Resources**, then choose **Save draft** or **Save changes**.
+- **Working offline:** previously loaded frameworks, syllabus units, and lesson plans remain readable offline. Saving a new or edited draft while offline queues the change on your device (**Lesson plan saved offline. Waiting to sync.**) and syncs it automatically when you reconnect.
+- **Ask Assist** is available online when your institution enables AI and your role allows it.
 
 ## Install the app, offline and updates
 - **Install:** when your browser offers it, an install button (download icon) appears in the top bar. Choose it to add NexusCampus to your device like an app. The button only shows when installation is possible and disappears once installed.

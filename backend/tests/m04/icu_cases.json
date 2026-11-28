@@ -272,11 +272,27 @@
     "valid": true
   },
   {
+    "text": "1 से 600 के बीच पूर्ण मिनट दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "1 முதல் 2,000 வரையிலான முழு எண்ணை உள்ளிடவும்.",
     "valid": true
   },
   {
+    "text": "1 முதல் 600 வரை முழு நிமிடங்களை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
     "text": "120 எழுத்துகளுக்குள் ஒரு பெயரை உள்ளிடுங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "200 अक्षरों तक का शीर्षक दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "200 எழுத்துகளுக்குள் ஒரு தலைப்பை உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -344,6 +360,10 @@
     "valid": true
   },
   {
+    "text": "AI draft",
+    "valid": true
+  },
+  {
     "text": "AI features",
     "valid": true
   },
@@ -397,6 +417,10 @@
   },
   {
     "text": "AI प्रदाता: {provider}",
+    "valid": true
+  },
+  {
+    "text": "AI प्रारूप",
     "valid": true
   },
   {
@@ -477,6 +501,10 @@
   },
   {
     "text": "AI வரவுகள் தீர்ந்துவிட்டன",
+    "valid": true
+  },
+  {
+    "text": "AI வரைவு",
     "valid": true
   },
   {
@@ -600,7 +628,15 @@
     "valid": true
   },
   {
+    "text": "Activities",
+    "valid": true
+  },
+  {
     "text": "Activity",
+    "valid": true
+  },
+  {
+    "text": "Activity title",
     "valid": true
   },
   {
@@ -617,6 +653,10 @@
   },
   {
     "text": "Add a role",
+    "valid": true
+  },
+  {
+    "text": "Add activity",
     "valid": true
   },
   {
@@ -753,6 +793,10 @@
   },
   {
     "text": "All statuses",
+    "valid": true
+  },
+  {
+    "text": "All subject offerings",
     "valid": true
   },
   {
@@ -920,6 +964,10 @@
     "valid": true
   },
   {
+    "text": "Assessment",
+    "valid": true
+  },
+  {
     "text": "Assessments",
     "valid": true
   },
@@ -973,6 +1021,10 @@
   },
   {
     "text": "Assist பதிலளிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "Assist-இடம் கேளுங்கள்",
     "valid": true
   },
   {
@@ -1140,6 +1192,10 @@
     "valid": true
   },
   {
+    "text": "Browse outcome frameworks and CO–PO mappings, track syllabus coverage, and draft lesson plans.",
+    "valid": true
+  },
+  {
     "text": "Browse programs, year levels, class groups, subjects and academic-year offerings.",
     "valid": true
   },
@@ -1165,6 +1221,18 @@
   },
   {
     "text": "Bundle discarded",
+    "valid": true
+  },
+  {
+    "text": "CASE import",
+    "valid": true
+  },
+  {
+    "text": "CASE आयात",
+    "valid": true
+  },
+  {
+    "text": "CASE இறக்குமதி",
     "valid": true
   },
   {
@@ -1297,6 +1365,10 @@
   },
   {
     "text": "Charts",
+    "valid": true
+  },
+  {
+    "text": "Check each activity has a title and valid duration.",
     "valid": true
   },
   {
@@ -1692,11 +1764,23 @@
     "valid": true
   },
   {
+    "text": "Course outcomes",
+    "valid": true
+  },
+  {
     "text": "Court order note",
     "valid": true
   },
   {
     "text": "Court restricted",
+    "valid": true
+  },
+  {
+    "text": "Covered",
+    "valid": true
+  },
+  {
+    "text": "Covered on {date}",
     "valid": true
   },
   {
@@ -1745,6 +1829,18 @@
   },
   {
     "text": "Current text",
+    "valid": true
+  },
+  {
+    "text": "Curriculum",
+    "valid": true
+  },
+  {
+    "text": "Curriculum could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Curriculum sections",
     "valid": true
   },
   {
@@ -1984,6 +2080,10 @@
     "valid": true
   },
   {
+    "text": "Discussion",
+    "valid": true
+  },
+  {
     "text": "Display calendar",
     "valid": true
   },
@@ -2033,6 +2133,14 @@
   },
   {
     "text": "Draft",
+    "valid": true
+  },
+  {
+    "text": "Draft a lesson plan linked to syllabus topics, outcomes and timed activities.",
+    "valid": true
+  },
+  {
+    "text": "Draft lesson plans for this subject offering will appear here.",
     "valid": true
   },
   {
@@ -2104,6 +2212,10 @@
     "valid": true
   },
   {
+    "text": "Edit lesson plan",
+    "valid": true
+  },
+  {
     "text": "Edit role {name}",
     "valid": true
   },
@@ -2113,6 +2225,10 @@
   },
   {
     "text": "Edit text override",
+    "valid": true
+  },
+  {
+    "text": "Edit {title}",
     "valid": true
   },
   {
@@ -2260,6 +2376,10 @@
     "valid": true
   },
   {
+    "text": "Enter a title up to 200 characters.",
+    "valid": true
+  },
+  {
     "text": "Enter a valid code starting with a letter or number.",
     "valid": true
   },
@@ -2333,6 +2453,10 @@
   },
   {
     "text": "Enter valid numbers. The maximum must be at least the minimum.",
+    "valid": true
+  },
+  {
+    "text": "Enter whole minutes between 1 and 600.",
     "valid": true
   },
   {
@@ -2772,6 +2896,10 @@
     "valid": true
   },
   {
+    "text": "High (3)",
+    "valid": true
+  },
+  {
     "text": "Higher education",
     "valid": true
   },
@@ -2980,7 +3108,15 @@
     "valid": true
   },
   {
+    "text": "Instruction",
+    "valid": true
+  },
+  {
     "text": "Instructor",
+    "valid": true
+  },
+  {
+    "text": "Introduction",
     "valid": true
   },
   {
@@ -3268,6 +3404,30 @@
     "valid": true
   },
   {
+    "text": "Lesson date",
+    "valid": true
+  },
+  {
+    "text": "Lesson plan draft created.",
+    "valid": true
+  },
+  {
+    "text": "Lesson plan draft updated.",
+    "valid": true
+  },
+  {
+    "text": "Lesson plan saved offline. Waiting to sync.",
+    "valid": true
+  },
+  {
+    "text": "Lesson plans",
+    "valid": true
+  },
+  {
+    "text": "Lesson plans could not be loaded.",
+    "valid": true
+  },
+  {
     "text": "Letter",
     "valid": true
   },
@@ -3364,6 +3524,10 @@
     "valid": true
   },
   {
+    "text": "Low (1)",
+    "valid": true
+  },
+  {
     "text": "Lowercase",
     "valid": true
   },
@@ -3456,6 +3620,10 @@
     "valid": true
   },
   {
+    "text": "Mapped outcomes",
+    "valid": true
+  },
+  {
     "text": "Mark all present",
     "valid": true
   },
@@ -3517,6 +3685,10 @@
   },
   {
     "text": "Medication",
+    "valid": true
+  },
+  {
+    "text": "Medium (2)",
     "valid": true
   },
   {
@@ -3600,11 +3772,19 @@
     "valid": true
   },
   {
+    "text": "Milestones",
+    "valid": true
+  },
+  {
     "text": "Minimum",
     "valid": true
   },
   {
     "text": "Minor until age",
+    "valid": true
+  },
+  {
+    "text": "Minutes",
     "valid": true
   },
   {
@@ -3641,6 +3821,14 @@
   },
   {
     "text": "Mother",
+    "valid": true
+  },
+  {
+    "text": "Move activity {index, number} down",
+    "valid": true
+  },
+  {
+    "text": "Move activity {index, number} up",
     "valid": true
   },
   {
@@ -3717,6 +3905,10 @@
   },
   {
     "text": "New language",
+    "valid": true
+  },
+  {
+    "text": "New lesson plan",
     "valid": true
   },
   {
@@ -3856,6 +4048,10 @@
     "valid": true
   },
   {
+    "text": "No activities added yet.",
+    "valid": true
+  },
+  {
     "text": "No applications yet",
     "valid": true
   },
@@ -3933,6 +4129,10 @@
   },
   {
     "text": "No data requests.",
+    "valid": true
+  },
+  {
+    "text": "No date set",
     "valid": true
   },
   {
@@ -4056,6 +4256,10 @@
     "valid": true
   },
   {
+    "text": "No lesson plans yet",
+    "valid": true
+  },
+  {
     "text": "No limit",
     "valid": true
   },
@@ -4109,6 +4313,18 @@
   },
   {
     "text": "No offers yet",
+    "valid": true
+  },
+  {
+    "text": "No outcome frameworks yet",
+    "valid": true
+  },
+  {
+    "text": "No outcomes are available yet.",
+    "valid": true
+  },
+  {
+    "text": "No outcomes in this framework yet.",
     "valid": true
   },
   {
@@ -4192,7 +4408,19 @@
     "valid": true
   },
   {
+    "text": "No subject offerings yet",
+    "valid": true
+  },
+  {
     "text": "No subjects yet",
+    "valid": true
+  },
+  {
+    "text": "No syllabus topics are available for this subject offering.",
+    "valid": true
+  },
+  {
+    "text": "No syllabus units for this offering yet",
     "valid": true
   },
   {
@@ -4280,6 +4508,10 @@
     "valid": true
   },
   {
+    "text": "Not started",
+    "valid": true
+  },
+  {
     "text": "Note (optional)",
     "valid": true
   },
@@ -4336,6 +4568,10 @@
     "valid": true
   },
   {
+    "text": "Objectives",
+    "valid": true
+  },
+  {
     "text": "Observation",
     "valid": true
   },
@@ -4376,6 +4612,10 @@
     "valid": true
   },
   {
+    "text": "One or more selected outcomes are not valid for this institution.",
+    "valid": true
+  },
+  {
     "text": "One or more selected teachers are not valid for this institution.",
     "valid": true
   },
@@ -4393,6 +4633,10 @@
   },
   {
     "text": "Online gateway",
+    "valid": true
+  },
+  {
+    "text": "Only draft or returned lesson plans can be edited.",
     "valid": true
   },
   {
@@ -4489,6 +4733,30 @@
   },
   {
     "text": "Other document",
+    "valid": true
+  },
+  {
+    "text": "Outcome framework",
+    "valid": true
+  },
+  {
+    "text": "Outcome frameworks and standards for this institution will appear here.",
+    "valid": true
+  },
+  {
+    "text": "Outcome frameworks, syllabus coverage and lesson plans.",
+    "valid": true
+  },
+  {
+    "text": "Outcome mappings could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Outcomes",
+    "valid": true
+  },
+  {
+    "text": "Outcomes could not be loaded.",
     "valid": true
   },
   {
@@ -4776,6 +5044,10 @@
     "valid": true
   },
   {
+    "text": "Practice",
+    "valid": true
+  },
+  {
     "text": "Preferences saved.",
     "valid": true
   },
@@ -4821,6 +5093,10 @@
   },
   {
     "text": "Program",
+    "valid": true
+  },
+  {
+    "text": "Program outcomes",
     "valid": true
   },
   {
@@ -5088,6 +5364,10 @@
     "valid": true
   },
   {
+    "text": "Remove activity {index, number}",
+    "valid": true
+  },
+  {
     "text": "Remove holiday {name}",
     "valid": true
   },
@@ -5168,6 +5448,10 @@
     "valid": true
   },
   {
+    "text": "Resources",
+    "valid": true
+  },
+  {
     "text": "Restricted",
     "valid": true
   },
@@ -5177,6 +5461,10 @@
   },
   {
     "text": "Retain in current level",
+    "valid": true
+  },
+  {
+    "text": "Returned",
     "valid": true
   },
   {
@@ -5229,6 +5517,10 @@
   },
   {
     "text": "Review the tamper-evident audit log, consent records, data requests and the privacy rules that apply.",
+    "valid": true
+  },
+  {
+    "text": "Reviewer note",
     "valid": true
   },
   {
@@ -5424,7 +5716,15 @@
     "valid": true
   },
   {
+    "text": "Save changes",
+    "valid": true
+  },
+  {
     "text": "Save decision",
+    "valid": true
+  },
+  {
+    "text": "Save draft",
     "valid": true
   },
   {
@@ -5580,11 +5880,19 @@
     "valid": true
   },
   {
+    "text": "Select at least one syllabus topic.",
+    "valid": true
+  },
+  {
     "text": "Selected balance: {amount}",
     "valid": true
   },
   {
     "text": "Selected invoices must use the same currency.",
+    "valid": true
+  },
+  {
+    "text": "Selected topics must belong to this subject's syllabus.",
     "valid": true
   },
   {
@@ -5728,6 +6036,10 @@
     "valid": true
   },
   {
+    "text": "Skills",
+    "valid": true
+  },
+  {
     "text": "Skills & hobby academy",
     "valid": true
   },
@@ -5816,6 +6128,10 @@
     "valid": true
   },
   {
+    "text": "Standards",
+    "valid": true
+  },
+  {
     "text": "Start a rollover dry run",
     "valid": true
   },
@@ -5888,6 +6204,10 @@
     "valid": true
   },
   {
+    "text": "Subject offerings for this institution will appear here.",
+    "valid": true
+  },
+  {
     "text": "Subjects",
     "valid": true
   },
@@ -5957,6 +6277,22 @@
   },
   {
     "text": "Switch user",
+    "valid": true
+  },
+  {
+    "text": "Syllabus & coverage",
+    "valid": true
+  },
+  {
+    "text": "Syllabus and coverage could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Syllabus coverage",
+    "valid": true
+  },
+  {
+    "text": "Syllabus topics",
     "valid": true
   },
   {
@@ -6197,6 +6533,14 @@
   },
   {
     "text": "The learner profile could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "The lesson plan could not be saved. Check your entries and try again.",
+    "valid": true
+  },
+  {
+    "text": "The lesson plan could not be saved. Try again.",
     "valid": true
   },
   {
@@ -6444,6 +6788,10 @@
     "valid": true
   },
   {
+    "text": "Title",
+    "valid": true
+  },
+  {
     "text": "To",
     "valid": true
   },
@@ -6609,6 +6957,10 @@
   },
   {
     "text": "United States (US)",
+    "valid": true
+  },
+  {
+    "text": "Units and topics linked to this subject offering will appear here.",
     "valid": true
   },
   {
@@ -7096,11 +7448,19 @@
     "valid": true
   },
   {
+    "text": "You are offline. Saving will queue this lesson plan to sync later.",
+    "valid": true
+  },
+  {
     "text": "You are offline. You can inspect the cached theme, but saving changes requires a connection.",
     "valid": true
   },
   {
     "text": "You are offline. You can look at cached users, but changes need a connection.",
+    "valid": true
+  },
+  {
+    "text": "You can only edit your own lesson plans.",
     "valid": true
   },
   {
@@ -7300,6 +7660,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# activity} other {# activities}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# added} other {# added}}",
     "valid": true
   },
@@ -7364,6 +7728,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# topic} other {# topics}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# unchanged} other {# unchanged}}",
     "valid": true
   },
@@ -7397,6 +7765,10 @@
   },
   {
     "text": "{count, plural, one {# खोया} other {# खोए}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# गतिविधि} other {# गतिविधियाँ}}",
     "valid": true
   },
   {
@@ -7444,6 +7816,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# विषय} other {# विषय}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# संस्थान ओवरराइड निर्यात के लिए तैयार} other {# संस्थान ओवरराइड निर्यात के लिए तैयार}}",
     "valid": true
   },
@@ -7476,7 +7852,15 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# செயல்பாடு} other {# செயல்பாடுகள்}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# சேர்க்கப்பட்டது} other {# சேர்க்கப்பட்டன}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# தலைப்பு} other {# தலைப்புகள்}}",
     "valid": true
   },
   {
@@ -7600,6 +7984,10 @@
     "valid": true
   },
   {
+    "text": "{date} को पूरा हुआ",
+    "valid": true
+  },
+  {
     "text": "{date} को फिर संपर्क करें",
     "valid": true
   },
@@ -7633,6 +8021,10 @@
   },
   {
     "text": "{date} அன்று உருவாக்கப்பட்டது",
+    "valid": true
+  },
+  {
+    "text": "{date} அன்று நிறைவடைந்தது",
     "valid": true
   },
   {
@@ -7732,6 +8124,10 @@
     "valid": true
   },
   {
+    "text": "{from} → {to}",
+    "valid": true
+  },
+  {
     "text": "{granted} में से {used}",
     "valid": true
   },
@@ -7740,7 +8136,19 @@
     "valid": true
   },
   {
+    "text": "{hours} hrs",
+    "valid": true
+  },
+  {
     "text": "{hours} घं {minutes} मि में समाप्त",
+    "valid": true
+  },
+  {
+    "text": "{hours} घंटे",
+    "valid": true
+  },
+  {
+    "text": "{hours} மணி",
     "valid": true
   },
   {
@@ -7868,6 +8276,18 @@
     "valid": true
   },
   {
+    "text": "{percent}% ({covered} of {total})",
+    "valid": true
+  },
+  {
+    "text": "{percent}% ({total} में से {covered})",
+    "valid": true
+  },
+  {
+    "text": "{percent}% ({total} இல் {covered})",
+    "valid": true
+  },
+  {
     "text": "{promote} learners move up, {detain} stay in their level, {graduate} graduate, {transfer} leave and {skip} stay unchanged. You can roll back for 14 days.",
     "valid": true
   },
@@ -7945,6 +8365,14 @@
   },
   {
     "text": "{time} நிலவரப்படி",
+    "valid": true
+  },
+  {
+    "text": "{title} संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "{title}-ஐத் திருத்து",
     "valid": true
   },
   {
@@ -8172,6 +8600,30 @@
     "valid": true
   },
   {
+    "text": "अधिगम परिणाम",
+    "valid": true
+  },
+  {
+    "text": "अधिगम परिणाम ढाँचा",
+    "valid": true
+  },
+  {
+    "text": "अधिगम परिणाम ढाँचे और CO–PO मैपिंग देखें, पाठ्यक्रम कवरेज ट्रैक करें और पाठ योजनाओं के प्रारूप तैयार करें।",
+    "valid": true
+  },
+  {
+    "text": "अधिगम परिणाम ढाँचे, पाठ्यक्रम कवरेज और पाठ योजनाएँ।",
+    "valid": true
+  },
+  {
+    "text": "अधिगम परिणाम मैपिंग लोड नहीं हो सकी।",
+    "valid": true
+  },
+  {
+    "text": "अधिगम परिणाम लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
     "text": "अनिवार्य",
     "valid": true
   },
@@ -8332,6 +8784,14 @@
     "valid": true
   },
   {
+    "text": "अभी कोई अधिगम परिणाम उपलब्ध नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई अधिगम परिणाम ढाँचा नहीं है",
+    "valid": true
+  },
+  {
     "text": "अभी कोई अनुपालन पैक लागू नहीं है।",
     "valid": true
   },
@@ -8360,6 +8820,10 @@
     "valid": true
   },
   {
+    "text": "अभी कोई गतिविधि नहीं जोड़ी गई है।",
+    "valid": true
+  },
+  {
     "text": "अभी कोई घंटी समय-सारणी नहीं है",
     "valid": true
   },
@@ -8373,6 +8837,10 @@
   },
   {
     "text": "अभी कोई परिवार नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई पाठ योजना नहीं है",
     "valid": true
   },
   {
@@ -8409,6 +8877,10 @@
   },
   {
     "text": "अभी कोई विषय नहीं",
+    "valid": true
+  },
+  {
+    "text": "अभी कोई विषय पेशकश नहीं है",
     "valid": true
   },
   {
@@ -8457,6 +8929,10 @@
   },
   {
     "text": "अभी सिंक करें",
+    "valid": true
+  },
+  {
+    "text": "अभ्यास",
     "valid": true
   },
   {
@@ -8608,7 +9084,15 @@
     "valid": true
   },
   {
+    "text": "आप ऑफ़लाइन हैं। सहेजने पर यह पाठ योजना बाद में सिंक होने के लिए कतार में जुड़ जाएगी।",
+    "valid": true
+  },
+  {
     "text": "आप केवल अनुरोधित पहुँच को कम कर सकते हैं।",
+    "valid": true
+  },
+  {
+    "text": "आप केवल अपनी ही पाठ योजनाएँ संपादित कर सकते हैं।",
     "valid": true
   },
   {
@@ -8932,6 +9416,10 @@
     "valid": true
   },
   {
+    "text": "इस ढाँचे में अभी कोई अधिगम परिणाम नहीं है।",
+    "valid": true
+  },
+  {
     "text": "इस पंक्ति में सत्यापन समस्या है।",
     "valid": true
   },
@@ -8992,6 +9480,22 @@
     "valid": true
   },
   {
+    "text": "इस विषय पेशकश की पाठ योजनाओं के प्रारूप यहाँ दिखाई देंगे।",
+    "valid": true
+  },
+  {
+    "text": "इस विषय पेशकश के लिए अभी कोई पाठ्यक्रम इकाई नहीं है",
+    "valid": true
+  },
+  {
+    "text": "इस विषय पेशकश के लिए कोई पाठ्यक्रम विषय उपलब्ध नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "इस विषय पेशकश से जुड़ी इकाइयाँ और विषय यहाँ दिखाई देंगे।",
+    "valid": true
+  },
+  {
     "text": "इस शिक्षार्थी के पारिवारिक विवरण उपलब्ध नहीं हैं।",
     "valid": true
   },
@@ -9020,7 +9524,15 @@
     "valid": true
   },
   {
+    "text": "इस संस्थान की विषय पेशकशें यहाँ दिखाई देंगी।",
+    "valid": true
+  },
+  {
     "text": "इस संस्थान के {locale} ओवरराइड JSON फ़ाइल के रूप में डाउनलोड करें।",
+    "valid": true
+  },
+  {
+    "text": "इस संस्थान के अधिगम परिणाम ढाँचे और मानक यहाँ दिखाई देंगे।",
     "valid": true
   },
   {
@@ -9081,6 +9593,10 @@
   },
   {
     "text": "उच्च",
+    "valid": true
+  },
+  {
+    "text": "उच्च (3)",
     "valid": true
   },
   {
@@ -9452,6 +9968,10 @@
     "valid": true
   },
   {
+    "text": "कम से कम एक पाठ्यक्रम विषय चुनें।",
+    "valid": true
+  },
+  {
     "text": "कर {rate}",
     "valid": true
   },
@@ -9545,6 +10065,10 @@
   },
   {
     "text": "कार्यक्रम और कक्षाएँ",
+    "valid": true
+  },
+  {
+    "text": "कार्यक्रम परिणाम",
     "valid": true
   },
   {
@@ -9700,6 +10224,10 @@
     "valid": true
   },
   {
+    "text": "केवल प्रारूप या लौटाई गई पाठ योजनाएँ ही संपादित की जा सकती हैं।",
+    "valid": true
+  },
+  {
     "text": "केवल फ़ील्ड के नाम दर्ज होते हैं, मान कभी नहीं।",
     "valid": true
   },
@@ -9801,6 +10329,10 @@
   },
   {
     "text": "कोई डेमो संस्थान उपलब्ध नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "कोई तिथि तय नहीं",
     "valid": true
   },
   {
@@ -9936,6 +10468,10 @@
     "valid": true
   },
   {
+    "text": "कौशल",
+    "valid": true
+  },
+  {
     "text": "कौशल और शौक अकादमी",
     "valid": true
   },
@@ -10048,6 +10584,30 @@
     "valid": true
   },
   {
+    "text": "गतिविधि {index, number} ऊपर ले जाएँ",
+    "valid": true
+  },
+  {
+    "text": "गतिविधि {index, number} नीचे ले जाएँ",
+    "valid": true
+  },
+  {
+    "text": "गतिविधि {index, number} हटाएँ",
+    "valid": true
+  },
+  {
+    "text": "गतिविधि का शीर्षक",
+    "valid": true
+  },
+  {
+    "text": "गतिविधि जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "गतिविधियाँ",
+    "valid": true
+  },
+  {
     "text": "गिनती",
     "valid": true
   },
@@ -10097,6 +10657,10 @@
   },
   {
     "text": "चरित्र प्रमाणपत्र",
+    "valid": true
+  },
+  {
+    "text": "चर्चा",
     "valid": true
   },
   {
@@ -10160,11 +10724,23 @@
     "valid": true
   },
   {
+    "text": "चुनी गई विषय पेशकश इस संस्थान के लिए मान्य नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "चुने गए एक या अधिक अधिगम परिणाम इस संस्थान के लिए मान्य नहीं हैं।",
+    "valid": true
+  },
+  {
     "text": "चुने गए एक या अधिक चालान भुगतान के लिए खुले नहीं हैं।",
     "valid": true
   },
   {
     "text": "चुने गए एक या अधिक शिक्षक इस संस्था के लिए मान्य नहीं हैं।",
+    "valid": true
+  },
+  {
+    "text": "चुने गए विषय इस विषय के पाठ्यक्रम के होने चाहिए।",
     "valid": true
   },
   {
@@ -10276,11 +10852,19 @@
     "valid": true
   },
   {
+    "text": "जमा की गई",
+    "valid": true
+  },
+  {
     "text": "जर्नल",
     "valid": true
   },
   {
     "text": "जर्नल प्रविष्टि दर्ज हो गई।",
+    "valid": true
+  },
+  {
+    "text": "जाँचें कि प्रत्येक गतिविधि का शीर्षक और मान्य अवधि है।",
     "valid": true
   },
   {
@@ -10824,6 +11408,10 @@
     "valid": true
   },
   {
+    "text": "नई पाठ योजना",
+    "valid": true
+  },
+  {
     "text": "नई भाषा",
     "valid": true
   },
@@ -10909,6 +11497,10 @@
   },
   {
     "text": "निम्न",
+    "valid": true
+  },
+  {
+    "text": "निम्न (1)",
     "valid": true
   },
   {
@@ -11008,7 +11600,15 @@
     "valid": true
   },
   {
+    "text": "पड़ाव",
+    "valid": true
+  },
+  {
     "text": "पढ़ना और संपादित करना",
+    "valid": true
+  },
+  {
+    "text": "पढ़ाई गई",
     "valid": true
   },
   {
@@ -11021,6 +11621,10 @@
   },
   {
     "text": "पत्र",
+    "valid": true
+  },
+  {
+    "text": "परिचय",
     "valid": true
   },
   {
@@ -11156,11 +11760,79 @@
     "valid": true
   },
   {
+    "text": "पाठ की तिथि",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजना ऑफ़लाइन सहेजी गई। सिंक की प्रतीक्षा में है।",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजना का प्रारूप अपडेट किया गया।",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजना का प्रारूप बनाया गया।",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजना संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजना सहेजी नहीं जा सकी। अपनी प्रविष्टियाँ जाँचकर फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजना सहेजी नहीं जा सकी। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजनाएँ",
+    "valid": true
+  },
+  {
+    "text": "पाठ योजनाएँ लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
     "text": "पाठ्यक्रम",
     "valid": true
   },
   {
+    "text": "पाठ्यक्रम अनुभाग",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम और कवरेज",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम और कवरेज लोड नहीं हो सके।",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम कवरेज",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम परिणाम",
+    "valid": true
+  },
+  {
     "text": "पाठ्यक्रम पूरा करें",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम विषय",
+    "valid": true
+  },
+  {
+    "text": "पाठ्यक्रम विषयों, अधिगम परिणामों और समयबद्ध गतिविधियों से जुड़ी पाठ योजना बनाएँ।",
     "valid": true
   },
   {
@@ -11304,6 +11976,10 @@
     "valid": true
   },
   {
+    "text": "पूरा हुआ",
+    "valid": true
+  },
+  {
     "text": "पूरी पंक्ति",
     "valid": true
   },
@@ -11397,6 +12073,10 @@
   },
   {
     "text": "प्रगति पत्र प्रकाशित करें",
+    "valid": true
+  },
+  {
+    "text": "प्रगति पर",
     "valid": true
   },
   {
@@ -11640,6 +12320,10 @@
     "valid": true
   },
   {
+    "text": "प्रारूप सहेजें",
+    "valid": true
+  },
+  {
     "text": "प्रोटोकॉल",
     "valid": true
   },
@@ -11877,6 +12561,10 @@
   },
   {
     "text": "बदलाव सहेजे नहीं जा सके। चिह्नित फ़ील्ड जाँचें और फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "बदलाव सहेजें",
     "valid": true
   },
   {
@@ -12188,6 +12876,10 @@
     "valid": true
   },
   {
+    "text": "मध्यम (2)",
+    "valid": true
+  },
+  {
     "text": "मसौदा",
     "valid": true
   },
@@ -12212,6 +12904,10 @@
     "valid": true
   },
   {
+    "text": "मानक",
+    "valid": true
+  },
+  {
     "text": "मानचित्रित",
     "valid": true
   },
@@ -12221,6 +12917,10 @@
   },
   {
     "text": "मान्य तिथि (YYYY-MM-DD) दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "मान्य तिथि दर्ज करें (YYYY-MM-DD)।",
     "valid": true
   },
   {
@@ -12253,6 +12953,10 @@
   },
   {
     "text": "मिटाना लंबित",
+    "valid": true
+  },
+  {
+    "text": "मिनट",
     "valid": true
   },
   {
@@ -12333,6 +13037,10 @@
   },
   {
     "text": "मैन्युअल",
+    "valid": true
+  },
+  {
+    "text": "मैप किए गए परिणाम",
     "valid": true
   },
   {
@@ -12752,6 +13460,10 @@
     "valid": true
   },
   {
+    "text": "लौटाई गई",
+    "valid": true
+  },
+  {
     "text": "वयस्क भाई-बहन",
     "valid": true
   },
@@ -13020,6 +13732,10 @@
     "valid": true
   },
   {
+    "text": "शिक्षण",
+    "valid": true
+  },
+  {
     "text": "शिक्षार्थियों की प्रतिबंधित जानकारी देखें",
     "valid": true
   },
@@ -13076,11 +13792,19 @@
     "valid": true
   },
   {
+    "text": "शीर्षक",
+    "valid": true
+  },
+  {
     "text": "शुक्रवार",
     "valid": true
   },
   {
     "text": "शुरुआत और समाप्ति अलग होनी चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "शुरू नहीं हुआ",
     "valid": true
   },
   {
@@ -13360,6 +14084,10 @@
     "valid": true
   },
   {
+    "text": "संसाधन",
+    "valid": true
+  },
+  {
     "text": "संस्करण",
     "valid": true
   },
@@ -13548,6 +14276,10 @@
     "valid": true
   },
   {
+    "text": "सभी विषय पेशकशें",
+    "valid": true
+  },
+  {
     "text": "सभी शिक्षार्थी",
     "valid": true
   },
@@ -13645,6 +14377,10 @@
   },
   {
     "text": "समाप्ति समय प्रारंभ समय के बाद होना चाहिए।",
+    "valid": true
+  },
+  {
+    "text": "समीक्षक की टिप्पणी",
     "valid": true
   },
   {
@@ -14344,6 +15080,10 @@
     "valid": true
   },
   {
+    "text": "அதிகம் (3)",
+    "valid": true
+  },
+  {
     "text": "அதிகரிக்கிறது",
     "valid": true
   },
@@ -14413,6 +15153,10 @@
   },
   {
     "text": "அனைத்து நோக்கங்களும்",
+    "valid": true
+  },
+  {
+    "text": "அனைத்து பாட வகுப்புகளும்",
     "valid": true
   },
   {
@@ -14493,6 +15237,10 @@
   },
   {
     "text": "அறிக்கையைப் புதுப்பிக்க முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "அறிமுகம்",
     "valid": true
   },
   {
@@ -14852,6 +15600,10 @@
     "valid": true
   },
   {
+    "text": "இணைக்கப்பட்ட விளைவுகள்",
+    "valid": true
+  },
+  {
     "text": "இணைக்கப்பட்டது",
     "valid": true
   },
@@ -14948,6 +15700,14 @@
     "valid": true
   },
   {
+    "text": "இந்த நிறுவனத்தின் கற்றல் விளைவு கட்டமைப்புகளும் தரநிலைகளும் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிறுவனத்தின் பாட வகுப்புகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
     "text": "இந்த நிறுவனத்தின் பாடத்திட்டத்தைத் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
@@ -15041,6 +15801,10 @@
   },
   {
     "text": "இந்தக் கட்டணத்தைப் பதிவு செய்ய முடியவில்லை. உங்கள் உள்ளீடுகளைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தக் கட்டமைப்பில் இன்னும் கற்றல் விளைவுகள் இல்லை.",
     "valid": true
   },
   {
@@ -15168,6 +15932,22 @@
     "valid": true
   },
   {
+    "text": "இந்தப் பாட வகுப்புக்கான பாடத் திட்ட வரைவுகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பாட வகுப்புக்கு இன்னும் பாடத்திட்ட அலகுகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பாட வகுப்புக்கு பாடத்திட்ட தலைப்புகள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்தப் பாட வகுப்புடன் இணைக்கப்பட்ட அலகுகளும் தலைப்புகளும் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
     "text": "இந்தப் புலம் தேவை",
     "valid": true
   },
@@ -15220,6 +16000,14 @@
     "valid": true
   },
   {
+    "text": "இன்னும் கற்றல் விளைவு கட்டமைப்புகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் கற்றல் விளைவுகள் எதுவும் இல்லை.",
+    "valid": true
+  },
+  {
     "text": "இன்னும் காப்புப்பிரதி இல்லை.",
     "valid": true
   },
@@ -15229,6 +16017,10 @@
   },
   {
     "text": "இன்னும் குடும்பங்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் செயல்பாடுகள் எதுவும் சேர்க்கப்படவில்லை.",
     "valid": true
   },
   {
@@ -15252,7 +16044,15 @@
     "valid": true
   },
   {
+    "text": "இன்னும் பாட வகுப்புகள் இல்லை",
+    "valid": true
+  },
+  {
     "text": "இன்னும் பாடங்கள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் பாடத் திட்டங்கள் இல்லை",
     "valid": true
   },
   {
@@ -15505,6 +16305,10 @@
   },
   {
     "text": "உங்கள் சொந்தச் சேவையகங்களில் இயங்குகிறது",
+    "valid": true
+  },
+  {
+    "text": "உங்கள் சொந்தப் பாடத் திட்டங்களை மட்டுமே திருத்த முடியும்.",
     "valid": true
   },
   {
@@ -16036,6 +16840,10 @@
     "valid": true
   },
   {
+    "text": "ஒவ்வொரு செயல்பாட்டிற்கும் தலைப்பும் சரியான நேர அளவும் உள்ளதா எனச் சரிபார்க்கவும்.",
+    "valid": true
+  },
+  {
     "text": "ஒவ்வொரு வரியிலும் ஒரு தொகையை மட்டும் உள்ளிடவும். மொத்தப் பற்றும் மொத்த வரவும் சமமாக இருக்க வேண்டும்.",
     "valid": true
   },
@@ -16321,6 +17129,34 @@
   },
   {
     "text": "கற்பவர்கள்",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் விளைவு இணைப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் விளைவு கட்டமைப்பு",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் விளைவு கட்டமைப்புகளையும் CO–PO இணைப்புகளையும் பார்வையிடவும், பாடத்திட்ட உள்ளடக்கத்தைக் கண்காணிக்கவும், பாடத் திட்ட வரைவுகளை உருவாக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் விளைவு கட்டமைப்புகள், பாடத்திட்ட உள்ளடக்கம் மற்றும் பாடத் திட்டங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் விளைவுகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் விளைவுகள்",
+    "valid": true
+  },
+  {
+    "text": "கலந்துரையாடல்",
     "valid": true
   },
   {
@@ -16636,11 +17472,19 @@
     "valid": true
   },
   {
+    "text": "குறைந்தது ஒரு பாடத்திட்ட தலைப்பையாவது தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "குறைந்தபட்சம்",
     "valid": true
   },
   {
     "text": "குறைவு",
+    "valid": true
+  },
+  {
+    "text": "குறைவு (1)",
     "valid": true
   },
   {
@@ -17044,6 +17888,30 @@
     "valid": true
   },
   {
+    "text": "செயல்பாடு {index, number}-ஐ கீழே நகர்த்து",
+    "valid": true
+  },
+  {
+    "text": "செயல்பாடு {index, number}-ஐ நீக்கு",
+    "valid": true
+  },
+  {
+    "text": "செயல்பாடு {index, number}-ஐ மேலே நகர்த்து",
+    "valid": true
+  },
+  {
+    "text": "செயல்பாடுகள்",
+    "valid": true
+  },
+  {
+    "text": "செயல்பாட்டின் தலைப்பு",
+    "valid": true
+  },
+  {
+    "text": "செயல்பாட்டைச் சேர்",
+    "valid": true
+  },
+  {
     "text": "செய்தவர்",
     "valid": true
   },
@@ -17145,6 +18013,10 @@
   },
   {
     "text": "செல்லுபடியாகும் எண்களை உள்ளிடுங்கள். அதிகபட்ச மதிப்பு குறைந்தபட்ச மதிப்புக்குச் சமமாகவோ அதிகமாகவோ இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
+    "text": "செல்லுபடியாகும் தேதியை உள்ளிடவும் (YYYY-MM-DD).",
     "valid": true
   },
   {
@@ -17400,6 +18272,10 @@
     "valid": true
   },
   {
+    "text": "தரநிலைகள்",
+    "valid": true
+  },
+  {
     "text": "தரவு அணுகல்",
     "valid": true
   },
@@ -17480,6 +18356,10 @@
     "valid": true
   },
   {
+    "text": "தலைப்பு",
+    "valid": true
+  },
+  {
     "text": "தள இயல்புநிலை",
     "valid": true
   },
@@ -17544,6 +18424,10 @@
     "valid": true
   },
   {
+    "text": "திட்ட விளைவுகள்",
+    "valid": true
+  },
+  {
     "text": "திட்டங்கள் & பணம் திரும்பப்பெறுதல்",
     "valid": true
   },
@@ -17604,6 +18488,10 @@
     "valid": true
   },
   {
+    "text": "திருப்பி அனுப்பப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "திரும்பப் பெற இயலாதது",
     "valid": true
   },
@@ -17645,6 +18533,10 @@
   },
   {
     "text": "திறன் மற்றும் பொழுதுபோக்கு அகாடமி",
+    "valid": true
+  },
+  {
+    "text": "திறன்கள்",
     "valid": true
   },
   {
@@ -17701,6 +18593,22 @@
   },
   {
     "text": "தேதி (MM/DD/YYYY)",
+    "valid": true
+  },
+  {
+    "text": "தேதி நிர்ணயிக்கப்படவில்லை",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுக்கப்பட்ட ஒன்று அல்லது அதற்கு மேற்பட்ட கற்றல் விளைவுகள் இந்த நிறுவனத்திற்குச் செல்லாது.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுக்கப்பட்ட தலைப்புகள் இந்தப் பாடத்தின் பாடத்திட்டத்தைச் சேர்ந்தவையாக இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
+    "text": "தேர்ந்தெடுக்கப்பட்ட பாட வகுப்பு இந்த நிறுவனத்திற்குச் செல்லாது.",
     "valid": true
   },
   {
@@ -17892,6 +18800,10 @@
     "valid": true
   },
   {
+    "text": "தொடங்கவில்லை",
+    "valid": true
+  },
+  {
     "text": "தொடங்கும் நாள்",
     "valid": true
   },
@@ -17980,6 +18892,10 @@
     "valid": true
   },
   {
+    "text": "நடத்தப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "நடந்தது",
     "valid": true
   },
@@ -17989,6 +18905,10 @@
   },
   {
     "text": "நடவடிக்கையின்படி வடிகட்டவும்",
+    "valid": true
+  },
+  {
+    "text": "நடுத்தரம் (2)",
     "valid": true
   },
   {
@@ -18057,6 +18977,10 @@
   },
   {
     "text": "நிதிப் புலங்கள்",
+    "valid": true
+  },
+  {
+    "text": "நிமிடங்கள்",
     "valid": true
   },
   {
@@ -18260,6 +19184,10 @@
     "valid": true
   },
   {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். சேமித்தால் இந்தப் பாடத் திட்டம் பின்னர் ஒத்திசைக்க வரிசையில் சேர்க்கப்படும்.",
+    "valid": true
+  },
+  {
     "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். மாற்றங்கள் இந்தச் சாதனத்தில் பாதுகாப்பாக இருந்து, மீண்டும் ஆன்லைனுக்கு வந்ததும் அனுப்பப்படும்.",
     "valid": true
   },
@@ -18369,6 +19297,10 @@
   },
   {
     "text": "நேரில்",
+    "valid": true
+  },
+  {
+    "text": "நோக்கங்கள்",
     "valid": true
   },
   {
@@ -18752,6 +19684,10 @@
     "valid": true
   },
   {
+    "text": "பயிற்சி",
+    "valid": true
+  },
+  {
     "text": "பயிற்சி பெறுபவர்",
     "valid": true
   },
@@ -18761,6 +19697,10 @@
   },
   {
     "text": "பயிற்றுநர்",
+    "valid": true
+  },
+  {
+    "text": "பயிற்றுவித்தல்",
     "valid": true
   },
   {
@@ -18824,6 +19764,10 @@
     "valid": true
   },
   {
+    "text": "பாட வகுப்பு",
+    "valid": true
+  },
+  {
     "text": "பாட வழங்கல்களை ஏற்ற முடியவில்லை.",
     "valid": true
   },
@@ -18840,6 +19784,54 @@
     "valid": true
   },
   {
+    "text": "பாடத் திட்ட வரைவு உருவாக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "பாடத் திட்ட வரைவு புதுப்பிக்கப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "பாடத் திட்டங்களை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பாடத் திட்டங்கள்",
+    "valid": true
+  },
+  {
+    "text": "பாடத் திட்டத்தைச் சேமிக்க முடியவில்லை. உங்கள் உள்ளீடுகளைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "பாடத் திட்டத்தைச் சேமிக்க முடியவில்லை. மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "பாடத் திட்டத்தைத் திருத்து",
+    "valid": true
+  },
+  {
+    "text": "பாடத் திட்டம் ஆஃப்லைனில் சேமிக்கப்பட்டது. ஒத்திசைக்கக் காத்திருக்கிறது.",
+    "valid": true
+  },
+  {
+    "text": "பாடத் தேதி",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்ட உள்ளடக்கம்",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்ட தலைப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்ட தலைப்புகள், கற்றல் விளைவுகள் மற்றும் நேர அளவு கொண்ட செயல்பாடுகளுடன் பாடத் திட்ட வரைவை உருவாக்குங்கள்.",
+    "valid": true
+  },
+  {
     "text": "பாடத்திட்டங்கள் & வகுப்புகள்",
     "valid": true
   },
@@ -18852,11 +19844,31 @@
     "valid": true
   },
   {
+    "text": "பாடத்திட்டத்தை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்டத்தையும் உள்ளடக்கத்தையும் ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "பாடத்திட்டப் பிரிவுகள்",
+    "valid": true
+  },
+  {
     "text": "பாடத்திட்டம்",
     "valid": true
   },
   {
+    "text": "பாடத்திட்டம் & உள்ளடக்கம்",
+    "valid": true
+  },
+  {
     "text": "பாடநெறி",
+    "valid": true
+  },
+  {
+    "text": "பாடநெறி விளைவுகள்",
     "valid": true
   },
   {
@@ -18993,6 +20005,10 @@
   },
   {
     "text": "புதிய பங்கு",
+    "valid": true
+  },
+  {
+    "text": "புதிய பாடத் திட்டம்",
     "valid": true
   },
   {
@@ -19180,6 +20196,10 @@
     "valid": true
   },
   {
+    "text": "மதிப்பாய்வாளர் குறிப்பு",
+    "valid": true
+  },
+  {
     "text": "மதிப்பாய்வில் உள்ளது",
     "valid": true
   },
@@ -19189,6 +20209,10 @@
   },
   {
     "text": "மதிப்பிடல் நடைபெறுகிறது",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பீடு",
     "valid": true
   },
   {
@@ -19393,6 +20417,10 @@
   },
   {
     "text": "மாற்றங்களைக் கைவிடு",
+    "valid": true
+  },
+  {
+    "text": "மாற்றங்களைச் சேமி",
     "valid": true
   },
   {
@@ -19740,6 +20768,10 @@
     "valid": true
   },
   {
+    "text": "மைல்கற்கள்",
+    "valid": true
+  },
+  {
     "text": "மொத்த எண்ணிக்கையையும் ஒவ்வொரு மாணவருக்கான முடிவையும் பார்க்க ஒரு செயலாக்கத்தைத் தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
@@ -20065,6 +21097,18 @@
   },
   {
     "text": "வரைவு",
+    "valid": true
+  },
+  {
+    "text": "வரைவு அல்லது திருப்பி அனுப்பப்பட்ட பாடத் திட்டங்களை மட்டுமே திருத்த முடியும்.",
+    "valid": true
+  },
+  {
+    "text": "வரைவைச் சேமி",
+    "valid": true
+  },
+  {
+    "text": "வளங்கள்",
     "valid": true
   },
   {
