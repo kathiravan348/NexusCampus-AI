@@ -4,9 +4,14 @@ import {
   ContentItemSchema,
   PAGE_SIZE_MAX,
   pageSchema,
+  type ContentItem,
 } from "@nexus/contracts";
+import { useQueryClient } from "@tanstack/react-query";
+import { ApiRequestError } from "../client";
 import { queryKeys } from "../keys";
+import { idempotencyHeaders, useOutboxMutation } from "../mutation";
 import { useScopedQuery } from "../query";
+import { useSession } from "../session";
 
 const all = { pageSize: PAGE_SIZE_MAX };
 const ContentItemPage = pageSchema(ContentItemSchema);
@@ -45,4 +50,51 @@ export function useContentAttempts(contentItemId: string | null = null) {
     (c, signal) =>
       c.get("/content-attempts", ContentAttemptPage, { ...all, contentItemId }, { signal }),
   );
+}
+
+function useContentAction(action: "accessibility-check" | "publish") {
+  const { session } = useSession();
+  const qc = useQueryClient();
+
+  const invalidate = async (contentItemId: string) => {
+    if (!session) return;
+    await Promise.all([
+      qc.invalidateQueries({ queryKey: queryKeys.m31.contentItems(session) }),
+      qc.invalidateQueries({ queryKey: queryKeys.m31.contentItem(session, contentItemId) }),
+    ]);
+  };
+
+  return useOutboxMutation<string, ContentItem>({
+    moduleId: "M31",
+    operation: `content.${action}`,
+    mergeRule: "lww-audited",
+    send: async (client, contentItemId, key) => {
+      try {
+        const item = await client.send(
+          "POST",
+          `/content-items/${encodeURIComponent(contentItemId)}/${action}`,
+          undefined,
+          ContentItemSchema,
+          { headers: idempotencyHeaders(key) },
+        );
+        await invalidate(contentItemId);
+        return item;
+      } catch (error) {
+        if (action === "publish" && error instanceof ApiRequestError && error.status === 409) {
+          await invalidate(contentItemId);
+        }
+        throw error;
+      }
+    },
+  });
+}
+
+/** Runs `POST /content-items/:id/accessibility-check` (M31, L2 outbox write). */
+export function useCheckContentAccessibility() {
+  return useContentAction("accessibility-check");
+}
+
+/** Publishes a clean draft or in-review item via `POST /content-items/:id/publish` (M31, L2). */
+export function usePublishContentItem() {
+  return useContentAction("publish");
 }

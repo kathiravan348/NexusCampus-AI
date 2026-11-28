@@ -8783,6 +8783,366 @@
     "message": "Publish learning content",
     "description": "Permission description: Publish learning content after the required accessibility check."
   },
+  "m31.nav.title": {
+    "message": "Content",
+    "description": "Navigation item and page title of the Content studio screen (M31)."
+  },
+  "m31.nav.summary": {
+    "message": "Interactive lessons, media, packages, accessibility checks and publishing.",
+    "description": "Home tile summary of the Content studio module."
+  },
+  "m31.page.intro": {
+    "message": "Browse learning content, review lesson blocks and assets, check accessibility, and publish ready items.",
+    "description": "Introductory text under the Content page heading."
+  },
+  "m31.library.listLabel": {
+    "message": "Content items",
+    "description": "Accessible label for the list of content items on the Content screen."
+  },
+  "m31.library.statusFilter": {
+    "message": "Filter by status",
+    "description": "Select label to filter content items by workflow status."
+  },
+  "m31.library.allStatuses": {
+    "message": "All statuses",
+    "description": "Filter option showing content items of every status."
+  },
+  "m31.library.open": {
+    "message": "Open",
+    "description": "Button label to open a content item from the library."
+  },
+  "m31.library.openLabel": {
+    "message": "Open {title}",
+    "description": "Accessible label for the Open button on a content item card. {title} is the item title."
+  },
+  "m31.library.empty": {
+    "message": "No content yet",
+    "description": "Empty state heading when the institution has no visible content items."
+  },
+  "m31.library.emptyBody": {
+    "message": "Lessons, media and learning packages for your institution will appear here.",
+    "description": "Empty state description when no content items are available."
+  },
+  "m31.library.noMatch": {
+    "message": "No content matches this status",
+    "description": "Empty state heading when the selected status filter matches no content items."
+  },
+  "m31.library.error": {
+    "message": "Content library could not be loaded.",
+    "description": "Error heading when loading content items fails."
+  },
+  "m31.kind.lesson": {
+    "message": "Lesson",
+    "description": "Content kind badge: interactive block-based lesson."
+  },
+  "m31.kind.video": {
+    "message": "Video",
+    "description": "Content kind badge: standalone video item."
+  },
+  "m31.kind.audio": {
+    "message": "Audio",
+    "description": "Content kind badge: standalone audio item."
+  },
+  "m31.kind.document": {
+    "message": "Document",
+    "description": "Content kind badge: document handout or PDF."
+  },
+  "m31.kind.scorm12": {
+    "message": "SCORM 1.2",
+    "description": "Content kind badge: SCORM 1.2 learning package."
+  },
+  "m31.kind.scorm2004": {
+    "message": "SCORM 2004",
+    "description": "Content kind badge: SCORM 2004 learning package."
+  },
+  "m31.kind.xapi": {
+    "message": "xAPI",
+    "description": "Content kind badge: xAPI learning package."
+  },
+  "m31.kind.cmi5": {
+    "message": "cmi5",
+    "description": "Content kind badge: cmi5 learning package."
+  },
+  "m31.status.draft": {
+    "message": "Draft",
+    "description": "Content status badge: draft and not yet published."
+  },
+  "m31.status.inReview": {
+    "message": "In review",
+    "description": "Content status badge: under review before publishing."
+  },
+  "m31.status.published": {
+    "message": "Published",
+    "description": "Content status badge: published and visible to learners."
+  },
+  "m31.status.archived": {
+    "message": "Archived",
+    "description": "Content status badge: archived and no longer active."
+  },
+  "m31.item.back": {
+    "message": "Back to content",
+    "description": "Button returning from a content item view to the content library list."
+  },
+  "m31.item.version": {
+    "message": "Version {version}",
+    "description": "Version number badge on a content item. {version} is a formatted integer."
+  },
+  "m31.item.aiAssisted": {
+    "message": "AI-assisted",
+    "description": "Badge marking content drafted with AI assistance."
+  },
+  "m31.item.language": {
+    "message": "Language",
+    "description": "Metadata label for the content item's BCP 47 language tag."
+  },
+  "m31.item.outcomes": {
+    "message": "Outcomes",
+    "description": "Metadata label for the linked learning outcomes count."
+  },
+  "m31.item.outcomesCount": {
+    "message": "{count, plural, =0 {No outcomes} one {# outcome} other {# outcomes}}",
+    "description": "Count of learning outcomes linked to a content item."
+  },
+  "m31.item.duration": {
+    "message": "Duration",
+    "description": "Metadata label for the estimated duration of a content item."
+  },
+  "m31.item.durationMinutes": {
+    "message": "{minutes} min",
+    "description": "Formatted content duration in minutes. {minutes} is a formatted number."
+  },
+  "m31.item.durationSeconds": {
+    "message": "{seconds} s",
+    "description": "Formatted content duration in seconds. {seconds} is a formatted number."
+  },
+  "m31.item.updated": {
+    "message": "Last updated",
+    "description": "Metadata label for when the content item was last updated."
+  },
+  "m31.item.packageHeading": {
+    "message": "Learning package",
+    "description": "Card heading for SCORM, xAPI or cmi5 package metadata."
+  },
+  "m31.item.packageManifest": {
+    "message": "Manifest ID: {id}",
+    "description": "Package manifest identifier line. {id} is the manifest identifier string."
+  },
+  "m31.item.packageLaunchPath": {
+    "message": "Launch path: {path}",
+    "description": "Relative launch path inside a learning package. {path} is the relative path."
+  },
+  "m31.assets.heading": {
+    "message": "Assets",
+    "description": "Heading for the list of file assets attached to a content item."
+  },
+  "m31.assets.empty": {
+    "message": "No files attached to this item.",
+    "description": "Empty text when a content item references no assets."
+  },
+  "m31.assets.error": {
+    "message": "Assets could not be loaded.",
+    "description": "Error heading when loading content asset metadata fails."
+  },
+  "m31.assetKind.image": {
+    "message": "Image",
+    "description": "Asset kind label: image file."
+  },
+  "m31.assetKind.video": {
+    "message": "Video",
+    "description": "Asset kind label: video file."
+  },
+  "m31.assetKind.audio": {
+    "message": "Audio",
+    "description": "Asset kind label: audio file."
+  },
+  "m31.assetKind.document": {
+    "message": "Document",
+    "description": "Asset kind label: document file."
+  },
+  "m31.assetKind.package": {
+    "message": "Package",
+    "description": "Asset kind label: SCORM, xAPI or cmi5 archive package."
+  },
+  "m31.assetKind.captions": {
+    "message": "Captions",
+    "description": "Asset kind label: caption or transcript text track file."
+  },
+  "m31.size.bytes": {
+    "message": "{value} B",
+    "description": "File size in bytes. {value} is a formatted number."
+  },
+  "m31.size.kb": {
+    "message": "{value} KB",
+    "description": "File size in kilobytes. {value} is a formatted number."
+  },
+  "m31.size.mb": {
+    "message": "{value} MB",
+    "description": "File size in megabytes. {value} is a formatted number."
+  },
+  "m31.blocks.heading": {
+    "message": "Lesson blocks",
+    "description": "Card heading for the ordered list of blocks in a lesson."
+  },
+  "m31.blocks.number": {
+    "message": "Block {number}",
+    "description": "1-based block label used in lesson block previews and accessibility issues. {number} is a formatted integer."
+  },
+  "m31.blockType.text": {
+    "message": "Text",
+    "description": "Lesson block type badge: plain text / markdown block."
+  },
+  "m31.blockType.image": {
+    "message": "Image",
+    "description": "Lesson block type badge: image block with alt text."
+  },
+  "m31.blockType.video": {
+    "message": "Video",
+    "description": "Lesson block type badge: video block with captions."
+  },
+  "m31.blockType.question": {
+    "message": "Question",
+    "description": "Lesson block type badge: embedded question reference."
+  },
+  "m31.blockType.embed": {
+    "message": "Embed",
+    "description": "Lesson block type badge: external embed host reference."
+  },
+  "m31.blocks.altText": {
+    "message": "Alt text: {altText}",
+    "description": "Alternative text shown on an image block preview. {altText} is the image description."
+  },
+  "m31.blocks.captionCount": {
+    "message": "{count, plural, =0 {No captions} one {# caption track} other {# caption tracks}}",
+    "description": "Number of caption tracks linked to a video block."
+  },
+  "m31.blocks.questionId": {
+    "message": "Question ID: {id}",
+    "description": "Identifier label shown on a question block preview. {id} is the question identifier."
+  },
+  "m31.blocks.embedHost": {
+    "message": "Embedded host: {host}",
+    "description": "Host name only shown on an embed block preview without loading an iframe. {host} is the hostname."
+  },
+  "m31.a11y.heading": {
+    "message": "Accessibility check",
+    "description": "Card heading for the accessibility check report on a content item."
+  },
+  "m31.a11y.notChecked": {
+    "message": "Not checked",
+    "description": "Status shown when a content item has not had an accessibility check yet."
+  },
+  "m31.a11y.notCheckedHint": {
+    "message": "Run an accessibility check before publishing.",
+    "description": "Helper text shown when a content item has not been checked yet."
+  },
+  "m31.a11y.checkedAt": {
+    "message": "Checked {time}",
+    "description": "Timestamp of the last accessibility check. {time} is a formatted date and time."
+  },
+  "m31.a11y.passed": {
+    "message": "No accessibility issues found",
+    "description": "Success badge when an accessibility check completes with zero issues."
+  },
+  "m31.a11y.severity.error": {
+    "message": "Error",
+    "description": "Accessibility issue severity label for a blocking error."
+  },
+  "m31.a11y.severity.warning": {
+    "message": "Warning",
+    "description": "Accessibility issue severity label for a non-blocking warning."
+  },
+  "m31.a11y.errorCount": {
+    "message": "{count, plural, one {# error} other {# errors}}",
+    "description": "Count of blocking accessibility errors found by the check."
+  },
+  "m31.a11y.warningCount": {
+    "message": "{count, plural, one {# warning} other {# warnings}}",
+    "description": "Count of non-blocking accessibility warnings found by the check."
+  },
+  "m31.a11y.code.missingAltText": {
+    "message": "Missing alt text",
+    "description": "Accessibility issue code description: an image is missing alternative text."
+  },
+  "m31.a11y.code.missingCaptions": {
+    "message": "Missing video captions",
+    "description": "Accessibility issue code description: a video block or video item has no captions."
+  },
+  "m31.a11y.code.lowContrast": {
+    "message": "Low colour contrast",
+    "description": "Accessibility issue code description: text or graphics have insufficient colour contrast."
+  },
+  "m31.a11y.code.headingOrder": {
+    "message": "Skipped heading level",
+    "description": "Accessibility issue code description: markdown headings skip one or more heading levels."
+  },
+  "m31.a11y.code.missingTranscript": {
+    "message": "Missing audio transcript",
+    "description": "Accessibility issue code description: an audio item has no transcript attached."
+  },
+  "m31.a11y.wholeItem": {
+    "message": "Whole item",
+    "description": "Location label when an accessibility issue applies to the whole content item rather than a single block."
+  },
+  "m31.publish.heading": {
+    "message": "Review & publish",
+    "description": "Heading of the check and publish action bar on a content item."
+  },
+  "m31.publish.runCheck": {
+    "message": "Run accessibility check",
+    "description": "Button that runs the accessibility check on a content item."
+  },
+  "m31.publish.publish": {
+    "message": "Publish",
+    "description": "Button that publishes a clean draft or in-review content item."
+  },
+  "m31.publish.fixErrors": {
+    "message": "Fix the errors to publish",
+    "description": "Notice shown when blocking accessibility errors prevent publishing a content item."
+  },
+  "m31.publish.aiHumanReview": {
+    "message": "Drafted with AI. A person must review and publish it.",
+    "description": "Notice reminding staff that AI-assisted content requires human review before publishing."
+  },
+  "m31.publish.alreadyPublished": {
+    "message": "This item is published.",
+    "description": "Status notice shown on an already published content item."
+  },
+  "m31.publish.archivedNote": {
+    "message": "Archived items cannot be published.",
+    "description": "Status notice shown on an archived content item."
+  },
+  "m31.publish.offlineHint": {
+    "message": "You are offline. Actions will queue on this device and sync when you reconnect.",
+    "description": "Notice in the publish bar while the device is offline."
+  },
+  "m31.publish.checkDone": {
+    "message": "Accessibility check finished.",
+    "description": "Toast shown after an accessibility check completes online."
+  },
+  "m31.publish.checkQueued": {
+    "message": "Accessibility check queued offline. It will sync when you reconnect.",
+    "description": "Status message shown when an accessibility check is queued in the offline outbox."
+  },
+  "m31.publish.published": {
+    "message": "Content item published.",
+    "description": "Toast shown after a content item is published online."
+  },
+  "m31.publish.publishQueued": {
+    "message": "Publish queued offline. It will sync when you reconnect.",
+    "description": "Status message shown when publishing is queued in the offline outbox."
+  },
+  "m31.publish.statusConflict": {
+    "message": "This item cannot be published in its current status.",
+    "description": "Error shown when trying to publish an already published or archived content item."
+  },
+  "m31.publish.forbidden": {
+    "message": "You do not have permission for this action.",
+    "description": "Error shown when the signed-in user lacks permission to check or publish."
+  },
+  "m31.publish.failed": {
+    "message": "That action could not be completed. Try again.",
+    "description": "Generic error shown when running an accessibility check or publishing fails unexpectedly."
+  },
   "m32.permission.assignmentRead": {
     "message": "View assignments",
     "description": "Permission description: View homework and assignments."

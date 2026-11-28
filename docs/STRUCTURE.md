@@ -104,6 +104,7 @@
 │     │                 modules/m28/ (DashboardsPage, KpiTile, NEX-177),
 │     │                 modules/m29/ (CurriculumPage, OutcomesTab, SyllabusTab, LessonPlansTab, LessonPlanDialog, LessonPlanActivities, lessonPlanForm, NEX-226),
 │     │                 modules/m30/ (CoursesPage, CourseSpaceView, CourseOutline, DiscussionsTab, ReplyForm, NEX-227),
+│     │                 modules/m31/ (ContentPage, ContentItemView, BlockPreview, AccessibilityReport, PublishBar, NEX-228),
 │     │                 modules/m83/ (VaultPage, RequestsTab, ApproveModal, GrantsTab, KeysTab, BreakGlassTab, NEX-023),
 │     │                 modules/m86/ (RolloverPage, RolloverRunList, PromotionDecisions, NEX-178),
 │     │                 pwa/ (registerPwa → usePwaUpdate, InstallPrompt, UpdateToast; manifest in vite.config, NEX-030),

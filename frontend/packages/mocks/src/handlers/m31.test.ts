@@ -3,11 +3,12 @@ import {
   ContentAttemptSchema,
   ContentItemSchema,
   pageSchema,
+  type ContentItem,
 } from "@nexus/contracts";
 import { afterAll, afterEach, beforeAll, describe, expect, it } from "vitest";
 import { MOCK_HEADER, permissionsOf } from "../context";
 import { mockDb, resetMockDb } from "../db";
-import { LEARNER, TENANT, USER } from "../fixtures";
+import { CONTENT_ASSET, CONTENT_ITEM, LEARNER, TENANT, USER } from "../fixtures";
 import { roleId } from "../fixtures/ids";
 import { server } from "../node";
 import type { Parser } from "./route";
@@ -18,10 +19,33 @@ function get(path: string, tenantId: string, userId: string) {
   });
 }
 
+function post(path: string, tenantId: string, userId: string, idempotencyKey?: string) {
+  return fetch(`http://localhost/api/v1${path}`, {
+    method: "POST",
+    headers: {
+      [MOCK_HEADER.tenant]: tenantId,
+      [MOCK_HEADER.user]: userId,
+      ...(idempotencyKey ? { "Idempotency-Key": idempotencyKey } : {}),
+    },
+  });
+}
+
 function admin(tenantId: string) {
   return mockDb.users.find(
     (row) => row.tenantId === tenantId && permissionsOf(row.id).has("m31.content.manage"),
   )!.id;
+}
+
+function publisher(tenantId: string) {
+  return mockDb.users.find(
+    (row) => row.tenantId === tenantId && permissionsOf(row.id).has("m31.content.publish"),
+  )!.id;
+}
+
+function replaceItem(id: string, patch: Partial<ContentItem>) {
+  const index = mockDb.contentItems.findIndex((row) => row.id === id);
+  mockDb.contentItems[index] = { ...mockDb.contentItems[index]!, ...patch };
+  return mockDb.contentItems[index]!;
 }
 
 function signInLearner(tenantId: string, userId: string, personId: string) {
@@ -129,5 +153,124 @@ describe("M31 read handlers", () => {
     const disabled = await get("/content-items", tenant, USER.lsPriya);
     expect(disabled.status).toBe(403);
     expect(await disabled.json()).toMatchObject({ error: { code: "module_disabled" } });
+  });
+});
+
+describe("M31 write handlers", () => {
+  it("computes caption, transcript and heading-order issues on check", async () => {
+    const rv = TENANT.riverside;
+    const check = async (id: string, tenant: string = rv, user: string = USER.rvAmira) =>
+      parse(
+        await post(`/content-items/${id}/accessibility-check`, tenant, user),
+        ContentItemSchema,
+      );
+
+    replaceItem(CONTENT_ITEM.rvDraftLesson, {
+      accessibility: null,
+      blocks: [
+        { type: "text", markdown: "# Topic\n\n### Skipped Level" },
+        { type: "video", assetId: CONTENT_ASSET.rvFractionClip, captionAssetIds: [] },
+      ],
+    });
+    expect((await check(CONTENT_ITEM.rvDraftLesson)).accessibility?.issues).toEqual([
+      { code: "heading_order", blockIndex: 0, severity: "warning" },
+      { code: "missing_captions", blockIndex: 1, severity: "error" },
+    ]);
+
+    replaceItem(CONTENT_ITEM.rvWaterVideo, {
+      status: "draft",
+      textTrackAssetIds: [],
+      accessibility: null,
+    });
+    expect((await check(CONTENT_ITEM.rvWaterVideo)).accessibility?.issues).toEqual([
+      { code: "missing_captions", blockIndex: null, severity: "error" },
+    ]);
+
+    replaceItem(CONTENT_ITEM.hmEarAudio, {
+      status: "draft",
+      textTrackAssetIds: [],
+      accessibility: null,
+    });
+    const audio = await check(CONTENT_ITEM.hmEarAudio, TENANT.harmony, admin(TENANT.harmony));
+    expect(audio.accessibility?.issues).toEqual([
+      { code: "missing_transcript", blockIndex: null, severity: "error" },
+    ]);
+  });
+
+  it("returns 409 on publish with errors, stores the check, and omits item text", async () => {
+    const rv = TENANT.riverside;
+    const secret = "SECRET-DRAFT-PHRASE-409";
+    replaceItem(CONTENT_ITEM.rvDraftLesson, {
+      title: secret,
+      accessibility: null,
+      blocks: [
+        { type: "text", markdown: `# ${secret}` },
+        { type: "video", assetId: CONTENT_ASSET.rvFractionClip, captionAssetIds: [] },
+      ],
+    });
+
+    const response = await post(
+      `/content-items/${CONTENT_ITEM.rvDraftLesson}/publish`,
+      rv,
+      publisher(rv),
+    );
+    expect(response.status).toBe(409);
+    const body = await response.json();
+    expect(body).toMatchObject({ error: { code: "conflict" } });
+    expect(JSON.stringify(body)).not.toContain(secret);
+
+    const stored = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
+    expect(stored.status).toBe("draft");
+    expect(stored.accessibility?.issues).toEqual([
+      { code: "missing_captions", blockIndex: 1, severity: "error" },
+    ]);
+  });
+
+  it("publishes drafts with heading warnings only and replays idempotently", async () => {
+    const rv = TENANT.riverside;
+    const pub = publisher(rv);
+    const path = `/content-items/${CONTENT_ITEM.rvDraftLesson}/publish`;
+    replaceItem(CONTENT_ITEM.rvDraftLesson, {
+      accessibility: null,
+      aiAssisted: true,
+      blocks: [{ type: "text", markdown: "# Heading\n\n### Skipped heading" }],
+    });
+
+    const first = await parse(await post(path, rv, pub, "idem-pub-1"), ContentItemSchema);
+    expect(first.status).toBe("published");
+    expect(first.aiAssisted).toBe(true);
+    expect(first.accessibility?.issues).toEqual([
+      { code: "heading_order", blockIndex: 0, severity: "warning" },
+    ]);
+
+    expect(await parse(await post(path, rv, pub, "idem-pub-1"), ContentItemSchema)).toEqual(first);
+    expect((await post(path, rv, pub, "idem-pub-2")).status).toBe(409);
+  });
+
+  it("enforces status conflicts, tenant isolation, and write permissions", async () => {
+    const rv = TENANT.riverside;
+    const ls = TENANT.littleSteps;
+    const pub = publisher(rv);
+    const draft = CONTENT_ITEM.rvDraftLesson;
+
+    const already = await post(`/content-items/${CONTENT_ITEM.rvFractionsLesson}/publish`, rv, pub);
+    expect(already.status).toBe(409);
+
+    replaceItem(draft, { status: "archived" });
+    expect((await post(`/content-items/${draft}/publish`, rv, pub)).status).toBe(409);
+
+    expect((await post(`/content-items/${draft}/publish`, ls, publisher(ls))).status).toBe(404);
+    expect((await post(`/content-items/${draft}/accessibility-check`, ls, admin(ls))).status).toBe(
+      404,
+    );
+
+    const noPublish = await post(`/content-items/${draft}/publish`, rv, USER.rvAmira);
+    expect(noPublish.status).toBe(403);
+    expect(await noPublish.json()).toMatchObject({ error: { code: "forbidden" } });
+
+    const learner = mockDb.learners.find((row) => row.id === LEARNER.rvMia)!;
+    const learnerId = signInLearner(rv, USER.rvTom, learner.personId);
+    const noManage = await post(`/content-items/${draft}/accessibility-check`, rv, learnerId);
+    expect(noManage.status).toBe(403);
   });
 });
