@@ -98,5 +98,7 @@ export * from "./modules/m30";
 export * from "./modules/m31";
 export * from "./modules/m32";
 export * from "./modules/m33";
+export * from "./modules/m34";
+export * from "./modules/m35";
 export * from "./modules/m83";
 export * from "./modules/m84";
