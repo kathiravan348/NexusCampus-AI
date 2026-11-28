@@ -23,11 +23,11 @@ function isMediaClearedForFamily(tenantId: string, mediaItemId: string): boolean
   const consents = new Map(ofTenant(mockDb.consents, tenantId).map((row) => [row.id, row]));
   for (const learnerId of item.taggedLearnerIds) {
     const learnerConsent = mediaConsents.get(learnerId);
-    if (!learnerConsent) continue;
-    if (learnerConsent.status !== "allowed") return false;
+    // Deny by default: no consent row for a tagged learner means not cleared.
+    if (!learnerConsent || learnerConsent.status !== "allowed") return false;
     if (learnerConsent.consentId !== null) {
       const sourceConsent = consents.get(learnerConsent.consentId);
-      if (sourceConsent && sourceConsent.status !== "granted") return false;
+      if (!sourceConsent || sourceConsent.status !== "granted") return false;
     }
   }
   return true;
