@@ -24,6 +24,13 @@ import {
   OUTCOMES,
   SYLLABUS_UNITS,
 } from "./fixtures/curriculum";
+import { ENGAGEMENT_SNAPSHOTS, INTERVENTIONS, RISK_SCORES } from "./fixtures/early-warning";
+import {
+  LIVE_JOINS,
+  LIVE_RECORDINGS,
+  LIVE_SESSIONS,
+  LIVE_SUMMARIES,
+} from "./fixtures/live-classes";
 import {
   PROCTORING_FLAGS,
   PROCTORING_SESSIONS,
@@ -201,6 +208,13 @@ function createDb() {
     tutorSettings: clone(TUTOR_SETTINGS),
     tutorSessions: clone(TUTOR_SESSIONS),
     tutorMessages: clone(TUTOR_MESSAGES),
+    liveSessions: clone(LIVE_SESSIONS),
+    liveJoins: clone(LIVE_JOINS),
+    liveRecordings: clone(LIVE_RECORDINGS),
+    liveSummaries: clone(LIVE_SUMMARIES),
+    engagementSnapshots: clone(ENGAGEMENT_SNAPSHOTS),
+    riskScores: clone(RISK_SCORES),
+    interventions: clone(INTERVENTIONS),
   };
 }
 

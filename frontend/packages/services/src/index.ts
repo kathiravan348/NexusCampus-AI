@@ -100,5 +100,7 @@ export * from "./modules/m32";
 export * from "./modules/m33";
 export * from "./modules/m34";
 export * from "./modules/m35";
+export * from "./modules/m36";
+export * from "./modules/m46";
 export * from "./modules/m83";
 export * from "./modules/m84";

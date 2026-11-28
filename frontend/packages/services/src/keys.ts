@@ -1,4 +1,4 @@
-import type { ConfigEntity, EnquiryStatus, FeeInvoiceStatus } from "@nexus/contracts";
+import type { ConfigEntity, EnquiryStatus, FeeInvoiceStatus, RiskLevel } from "@nexus/contracts";
 import type { QueryKey } from "@tanstack/react-query";
 
 /** Tenant + user every scoped key starts with, so one user's cache never serves another (O-3). */
@@ -271,6 +271,28 @@ export const queryKeys = {
       scoped(s, "m35", "tutor-sessions", "by-course-space", courseSpaceId),
     tutorMessages: (s: KeyScope, sessionId: string | null) =>
       scoped(s, "m35", "tutor-sessions", sessionId, "messages"),
+  },
+  m36: {
+    liveSessions: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m36", "live-sessions", "by-course-space", courseSpaceId),
+    liveSession: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m36", "live-sessions", sessionId),
+    liveJoins: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m36", "live-sessions", sessionId, "joins"),
+    liveRecordings: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m36", "live-sessions", sessionId, "recordings"),
+    liveSummary: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m36", "live-sessions", sessionId, "summary"),
+  },
+  m46: {
+    engagementSnapshots: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m46", "engagement", learnerId),
+    riskScores: (s: KeyScope, learnerId: string | null, level: RiskLevel | null) =>
+      scoped(s, "m46", "risk-scores", "list", learnerId, level),
+    riskScore: (s: KeyScope, riskScoreId: string | null) =>
+      scoped(s, "m46", "risk-scores", riskScoreId),
+    interventions: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m46", "interventions", learnerId),
   },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),
