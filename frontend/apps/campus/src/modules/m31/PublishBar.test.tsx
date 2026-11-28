@@ -28,11 +28,13 @@ function renderBar(
       db={db}
       createClient={() => createNexusQueryClient({ defaultOptions: { queries: { retry: false } } })}
     >
-      <PublishBar
-        item={item}
-        canManage={options?.canManage ?? true}
-        canPublish={options?.canPublish ?? true}
-      />
+      <div data-testid="publish-bar-host">
+        <PublishBar
+          item={item}
+          canManage={options?.canManage ?? true}
+          canPublish={options?.canPublish ?? true}
+        />
+      </div>
     </AppProviders>,
   );
 
@@ -47,18 +49,26 @@ describe("PublishBar (M31)", () => {
     });
   });
 
-  it("renders nothing when the viewer cannot manage or publish", () => {
+  it("renders nothing when the viewer cannot manage or publish", async () => {
     const item = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
-    const { container } = renderBar(item, { canManage: false, canPublish: false });
+    renderBar(item, { canManage: false, canPublish: false });
 
-    expect(container.firstChild).toBeNull();
+    const host = await screen.findByTestId("publish-bar-host");
+    expect(host.firstChild).toBeNull();
+    expect(
+      screen.queryByRole("heading", { level: 3, name: "Review & publish" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole("button", { name: "Run accessibility check" }),
+    ).not.toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "Publish" })).not.toBeInTheDocument();
   });
 
-  it("disables publish and shows Fix the errors to publish while errors exist", () => {
+  it("disables publish and shows Fix the errors to publish while errors exist", async () => {
     const item = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
     renderBar(item);
 
-    expect(screen.getByText("Fix the errors to publish")).toBeInTheDocument();
+    expect(await screen.findByText("Fix the errors to publish")).toBeInTheDocument();
     expect(
       screen.getByText("Drafted with AI. A person must review and publish it."),
     ).toBeInTheDocument();
@@ -70,7 +80,7 @@ describe("PublishBar (M31)", () => {
     const draft = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
     const first = renderBar(draft);
 
-    fireEvent.click(screen.getByRole("button", { name: "Run accessibility check" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Run accessibility check" }));
 
     await waitFor(() => {
       const updated = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
@@ -81,7 +91,7 @@ describe("PublishBar (M31)", () => {
     const cleaned = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
     renderBar(cleaned);
 
-    const publishButton = screen.getByRole("button", { name: "Publish" });
+    const publishButton = await screen.findByRole("button", { name: "Publish" });
     expect(publishButton).toBeEnabled();
     fireEvent.click(publishButton);
 
@@ -96,6 +106,8 @@ describe("PublishBar (M31)", () => {
     const draft = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvDraftLesson)!;
     draft.accessibility = { checkedAt: "2026-08-20T10:30:00Z", issues: [] };
     const { db, who } = renderBar(draft);
+
+    await screen.findByRole("button", { name: "Publish" });
 
     onlineSpy.mockReturnValue(false);
     act(() => {
@@ -138,7 +150,7 @@ describe("PublishBar (M31)", () => {
     mockDb.contentItems.push(blockedItem);
 
     renderBar(blockedItem);
-    fireEvent.click(screen.getByRole("button", { name: "Publish" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Publish" }));
 
     const alert = await screen.findByRole("alert");
     expect(alert).toHaveTextContent("Fix the errors to publish");

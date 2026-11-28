@@ -23,7 +23,7 @@ function renderPreview(
 }
 
 describe("BlockPreview (M31)", () => {
-  it("renders all five block types safely without HTML injection or iframes", () => {
+  it("renders all five block types safely without HTML injection or iframes", async () => {
     const assets = CONTENT_ASSETS.filter((asset) => asset.tenantId === TENANT.riverside);
     const assetById = new Map(assets.map((asset) => [asset.id, asset]));
     const imageAsset = assets.find((asset) => asset.kind === "image")!;
@@ -41,7 +41,9 @@ describe("BlockPreview (M31)", () => {
       assetById,
     );
 
-    expect(screen.getByRole("heading", { level: 3, name: "Lesson blocks" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { level: 3, name: "Lesson blocks" }),
+    ).toBeInTheDocument();
     expect(screen.getByText("Block 1")).toBeInTheDocument();
     expect(screen.getByText("Block 5")).toBeInTheDocument();
 
@@ -64,13 +66,13 @@ describe("BlockPreview (M31)", () => {
     expect(screen.queryByText(/fractions-wall/)).not.toBeInTheDocument();
   });
 
-  it("shows zero and plural caption track counts for video blocks", () => {
+  it("shows zero and plural caption track counts for video blocks", async () => {
     renderPreview([
       { type: "video", assetId: "cas-missing", captionAssetIds: [] },
       { type: "video", assetId: "cas-missing-2", captionAssetIds: ["cas-cap-1", "cas-cap-2"] },
     ]);
 
-    expect(screen.getByText("No captions")).toBeInTheDocument();
+    expect(await screen.findByText("No captions")).toBeInTheDocument();
     expect(screen.getByText("2 caption tracks")).toBeInTheDocument();
   });
 });

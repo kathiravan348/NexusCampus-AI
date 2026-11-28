@@ -46,18 +46,13 @@
 | NEX-264 | MSW handlers + services: M37, M38, M91 (adds the NEX-260 exports to `fixtures/index.ts`; merges `MEDIA_SHARING_CONSENTS` into consents) — split from NEX-224 | B | done | Gemini | 260, 224 |
 | NEX-266 | MSW handlers + services: M39, M40, M41 — library (reading-history privacy, G-6), test prep, session courses (read) — split from NEX-225 | B | done | Gemini | 258, 264 |
 | NEX-267 | MSW handlers + services: M42, M43 — higher-ed academics, academy store (read; affiliates manager-only) — split from NEX-225 | B | done | Codex | 263, 266 |
-| NEX-225 | MSW handlers + services: M44, M45 — surveys (anonymity, suppression, faculty results A-4) and credentials (read + public verification) | B | planned | — | 265, 267, 224 |
+| NEX-225 | MSW handlers + services: M44, M45 — surveys (anonymity, suppression, faculty results A-4) and credentials (read + public verification) | B | done | Codex | 265, 267, 224 |
 | NEX-226 | M29 Curriculum & lesson planning: outcomes, syllabus and coverage, draft lesson plans (offline L2 writes) | C | done | Gemini | 222 |
 | NEX-261 | M29 lesson-plan workflow: submit, approve / return, delivered, coverage updates — split from NEX-226 | C | done | Codex | 226 |
 | NEX-227 | M30 LMS classrooms & courses (read + discussion replies, offline L2) | C | done | Gemini | 222, 226, 261 |
-<<<<<<< HEAD
-| NEX-228 | M31 Content studio: library, item view, accessibility check, publish (offline L2) | C | changes-requested | Gemini | 222, 227 |
-| NEX-268 | M31 lesson block editor: create / edit drafts, blocks, alt text and captions (AI drafts labelled) — split from NEX-228 | C | draft | — | 228 |
-=======
-| NEX-228 | M31 Content studio: library, item view, accessibility check, publish (offline L2) | C | planned | — | 222, 227 |
+| NEX-228 | M31 Content studio: library, item view, accessibility check, publish (offline L2) | C | done | Gemini | 222, 227 |
 | NEX-268 | M31 lesson block editor: create / edit drafts, blocks, alt text and captions (AI drafts labelled) — split from NEX-228 | C | planned | — | 228 |
->>>>>>> main
-| NEX-229 | M32 Homework & assignments (offline L2 submit) | C | draft | — | 223, 228 |
+| NEX-229 | M32 Homework & assignments (offline L2 submit) | C | planned | — | 223, 228 |
 | NEX-230 | M33 Question bank & online tests | C | draft | — | 223, 229 |
 | NEX-231 | M34 Online proctoring (flags for human review only) | C | draft | — | 223, 230 |
 | NEX-232 | M35 AI tutor & learning paths (guardian consent for minors) | C | draft | — | 223, 231 |

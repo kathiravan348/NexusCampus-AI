@@ -1,7 +1,7 @@
 import type { AccessibilityCheck } from "@nexus/contracts";
 import { TENANT } from "@nexus/mocks";
 import { createNexusQueryClient } from "@nexus/services";
-import { render, screen, within } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 import { AppProviders } from "../../App";
 import { freshDb, persona, signInAs } from "../../test/renderApp";
@@ -20,24 +20,24 @@ function renderReport(accessibility: AccessibilityCheck | null) {
 }
 
 describe("AccessibilityReport (M31)", () => {
-  it("shows Not checked when accessibility is null", () => {
+  it("shows Not checked when accessibility is null", async () => {
     renderReport(null);
 
     expect(
-      screen.getByRole("heading", { level: 3, name: "Accessibility check" }),
+      await screen.findByRole("heading", { level: 3, name: "Accessibility check" }),
     ).toBeInTheDocument();
     expect(screen.getByText("Not checked")).toBeInTheDocument();
     expect(screen.getByText("Run an accessibility check before publishing.")).toBeInTheDocument();
   });
 
-  it("shows the check time and clean state when there are no issues", () => {
+  it("shows the check time and clean state when there are no issues", async () => {
     renderReport({ checkedAt: "2026-08-20T10:30:00Z", issues: [] });
 
-    expect(screen.getByText(/^Checked /)).toBeInTheDocument();
+    expect(await screen.findByText(/^Checked /)).toBeInTheDocument();
     expect(screen.getByText("No accessibility issues found")).toBeInTheDocument();
   });
 
-  it("orders errors before warnings with translated codes and locations", () => {
+  it("orders errors before warnings with translated codes and locations", async () => {
     renderReport({
       checkedAt: "2026-08-20T10:30:00Z",
       issues: [
@@ -47,11 +47,10 @@ describe("AccessibilityReport (M31)", () => {
       ],
     });
 
-    expect(screen.getByText("2 errors")).toBeInTheDocument();
+    expect(await screen.findByText("2 errors")).toBeInTheDocument();
     expect(screen.getByText("1 warning")).toBeInTheDocument();
 
-    const list = screen.getByRole("list");
-    const rows = within(list).getAllByRole("listitem");
+    const rows = screen.getAllByRole("listitem");
     expect(rows).toHaveLength(3);
 
     expect(rows[0]).toHaveTextContent("Error");

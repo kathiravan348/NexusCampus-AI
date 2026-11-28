@@ -1,6 +1,6 @@
 import { CONTENT_ITEM, TENANT, USER, mockDb, type DemoPersona } from "@nexus/mocks";
 import { createNexusQueryClient } from "@nexus/services";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { describe, expect, it, vi } from "vitest";
 import { AppProviders } from "../../App";
 import { LOCALE_STORAGE_KEY } from "../../app/TenantRuntime";
@@ -85,12 +85,16 @@ describe("ContentItemView (M31)", () => {
   });
 
   it("renders cleanly in RTL (ar) direction", async () => {
+    const institution = mockDb.institutions.find((row) => row.tenantId === TENANT.riverside)!;
+    institution.locale.supportedLocales.push("ar");
     localStorage.setItem(LOCALE_STORAGE_KEY, JSON.stringify({ [TENANT.riverside]: "ar" }));
     renderView(CONTENT_ITEM.rvWaterVideo, persona(TENANT.riverside, "learner"));
 
     expect(
       await screen.findByRole("heading", { level: 2, name: "The Water Cycle Explained" }),
     ).toBeInTheDocument();
-    expect(document.documentElement.dir).toBe("rtl");
+    await waitFor(() => {
+      expect(document.documentElement.dir).toBe("rtl");
+    });
   });
 });
