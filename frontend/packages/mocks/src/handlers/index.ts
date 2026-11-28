@@ -30,6 +30,8 @@ import { m30Handlers } from "./m30";
 import { m31Handlers } from "./m31";
 import { m32Handlers } from "./m32";
 import { m33Handlers } from "./m33";
+import { m34Handlers } from "./m34";
+import { m35Handlers } from "./m35";
 import { m83Handlers, m83WriteHandlers } from "./m83";
 import { m84Handlers } from "./m84";
 
@@ -74,6 +76,8 @@ export const handlers: HttpHandler[] = [
   ...m31Handlers,
   ...m32Handlers,
   ...m33Handlers,
+  ...m34Handlers,
+  ...m35Handlers,
   ...m83Handlers,
   ...m84Handlers,
   ...m83WriteHandlers,

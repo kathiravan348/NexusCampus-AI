@@ -25,6 +25,12 @@ import {
   SYLLABUS_UNITS,
 } from "./fixtures/curriculum";
 import {
+  PROCTORING_FLAGS,
+  PROCTORING_SESSIONS,
+  PROCTORING_SETTINGS,
+  RECORDING_SEGMENTS,
+} from "./fixtures/proctoring";
+import {
   ITEM_STATISTICS,
   ONLINE_TESTS,
   QUESTION_BANKS,
@@ -34,6 +40,13 @@ import {
 } from "./fixtures/question-tests";
 import { demoAccessFixtures } from "./fixtures/stage3-access";
 import { stage4AccessFixtures } from "./fixtures/stage4-access";
+import {
+  LEARNING_PATHS,
+  MASTERY_RECORDS,
+  TUTOR_MESSAGES,
+  TUTOR_SESSIONS,
+  TUTOR_SETTINGS,
+} from "./fixtures/tutor";
 
 /** A mutable deep copy, so screen tasks' write handlers can change rows without touching the fixtures. */
 function clone<T>(items: readonly T[]): T[] {
@@ -179,6 +192,15 @@ function createDb() {
     testAttempts: clone(TEST_ATTEMPTS),
     testResponses: clone(TEST_RESPONSES),
     itemStatistics: clone(ITEM_STATISTICS),
+    proctoringSettings: clone(PROCTORING_SETTINGS),
+    proctoringSessions: clone(PROCTORING_SESSIONS),
+    recordingSegments: clone(RECORDING_SEGMENTS),
+    proctoringFlags: clone(PROCTORING_FLAGS),
+    masteryRecords: clone(MASTERY_RECORDS),
+    learningPaths: clone(LEARNING_PATHS),
+    tutorSettings: clone(TUTOR_SETTINGS),
+    tutorSessions: clone(TUTOR_SESSIONS),
+    tutorMessages: clone(TUTOR_MESSAGES),
   };
 }
 

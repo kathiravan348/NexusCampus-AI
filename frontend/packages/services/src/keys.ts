@@ -250,6 +250,28 @@ export const queryKeys = {
     itemStatistics: (s: KeyScope, testId: string | null) =>
       scoped(s, "m33", "online-tests", testId, "item-statistics"),
   },
+  m34: {
+    proctoringSettings: (s: KeyScope, testId: string | null) =>
+      scoped(s, "m34", "online-tests", testId, "proctoring"),
+    proctoringSessions: (s: KeyScope, testId: string | null) =>
+      scoped(s, "m34", "proctoring-sessions", "by-test", testId),
+    proctoringFlags: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m34", "proctoring-sessions", sessionId, "flags"),
+    recordingSegments: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m34", "proctoring-sessions", sessionId, "recordings"),
+  },
+  m35: {
+    masteryRecords: (s: KeyScope, learnerId: string | null, courseSpaceId: string | null) =>
+      scoped(s, "m35", "mastery", learnerId, courseSpaceId),
+    learningPaths: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m35", "learning-paths", learnerId),
+    tutorSettings: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m35", "course-spaces", courseSpaceId, "tutor"),
+    tutorSessions: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m35", "tutor-sessions", "by-course-space", courseSpaceId),
+    tutorMessages: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m35", "tutor-sessions", sessionId, "messages"),
+  },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),
     keys: (s: KeyScope) => scoped(s, "m83", "keys"),
