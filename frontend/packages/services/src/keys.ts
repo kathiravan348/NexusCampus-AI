@@ -245,6 +245,8 @@ export const queryKeys = {
     onlineTest: (s: KeyScope, testId: string | null) => scoped(s, "m33", "online-tests", testId),
     testAttempts: (s: KeyScope, testId: string | null) =>
       scoped(s, "m33", "online-tests", testId, "attempts"),
+    attemptDelivery: (s: KeyScope, attemptId: string | null) =>
+      scoped(s, "m33", "attempts", attemptId, "delivery"),
     testResponses: (s: KeyScope, attemptId: string | null) =>
       scoped(s, "m33", "attempts", attemptId, "responses"),
     itemStatistics: (s: KeyScope, testId: string | null) =>

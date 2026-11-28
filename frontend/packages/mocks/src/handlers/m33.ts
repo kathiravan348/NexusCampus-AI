@@ -8,10 +8,26 @@ import {
   pageSchema,
   type OnlineTest,
 } from "@nexus/contracts";
-import { ApiFailure, ofTenant, type Viewer } from "../context";
+import { http } from "msw";
+import {
+  ApiFailure,
+  entitled,
+  failureResponse,
+  ofTenant,
+  readViewer,
+  type Viewer,
+} from "../context";
 import { mockDb } from "../db";
+import { applyScenario, readScenario } from "../scenarios";
 import { learningSpaceAccess } from "./m32";
-import { found, get, list, ok, param } from "./route";
+import {
+  getDelivery,
+  resultsVisible,
+  saveAnswer,
+  startAttempt,
+  submitAttempt,
+} from "./m33-attempts";
+import { API_BASE, found, get, list, ok, param } from "./route";
 
 const M = { module: "M33", permission: "m33.test.read" } as const;
 const MANAGE = "m33.test.manage";
@@ -52,14 +68,85 @@ function testAccess(viewer: Viewer) {
   return { tests, testById, spaceById, canReadClass, attemptsOf };
 }
 
-function resultsVisible(test: OnlineTest): boolean {
-  return (
-    test.showResults === "immediately" ||
-    (test.showResults === "after_close" && test.status === "closed")
+function learnerTest(viewer: Viewer, id: unknown, learnerId?: string) {
+  const { tenantId, personId } = viewer;
+  const learner = found(
+    ofTenant(mockDb.learners, tenantId).find(
+      (row) => row.personId === personId && (learnerId === undefined || row.id === learnerId),
+    ),
   );
+  const test = found(
+    ofTenant(mockDb.onlineTests, tenantId).find((row) => row.id === id && row.status !== "draft"),
+  );
+  const space = found(
+    ofTenant(mockDb.courseSpaces, tenantId).find(
+      (row) => row.id === test.courseSpaceId && row.status === "published",
+    ),
+  );
+  found(
+    ofTenant(mockDb.enrolments, tenantId).find(
+      (row) =>
+        row.learnerId === learner.id &&
+        row.classGroupId !== null &&
+        space.classGroupIds.includes(row.classGroupId) &&
+        (space.academicYearId === null || row.academicYearId === space.academicYearId),
+    ),
+  );
+  return { learner, test };
+}
+
+function ownAttempt(viewer: Viewer, id: unknown) {
+  const attempt = found(
+    ofTenant(mockDb.testAttempts, viewer.tenantId).find((row) => row.id === id),
+  );
+  const { test } = learnerTest(viewer, attempt.testId, attempt.learnerId);
+  return { attempt, test };
+}
+
+async function runWrite(
+  request: Request,
+  handle: (viewer: Viewer, raw: unknown, key: string | null) => Response,
+) {
+  const early = await applyScenario(readScenario(request));
+  if (early) return early;
+  try {
+    const viewer = readViewer(request);
+    if (!entitled(viewer.tenantId, M.module)) throw new ApiFailure("module_disabled");
+    if (!viewer.permissions.has(M.permission)) throw new ApiFailure("forbidden");
+    const body = await request.text();
+    let raw: unknown = body === "" ? {} : undefined;
+    if (body !== "") {
+      try {
+        raw = JSON.parse(body) as unknown;
+      } catch {
+        // The input schema reports a generic error without reflecting the request body.
+      }
+    }
+    return handle(viewer, raw, request.headers.get("Idempotency-Key"));
+  } catch (error) {
+    if (error instanceof ApiFailure) return failureResponse(error);
+    throw error;
+  }
 }
 
 export const m33Handlers = [
+  http.post(`*${API_BASE}/online-tests/:id/attempts`, ({ request, params }) =>
+    runWrite(request, (viewer, raw) => {
+      const { learner, test } = learnerTest(viewer, params["id"]);
+      return startAttempt(test, learner.id, raw);
+    }),
+  ),
+  get("/attempts/:id/delivery", M, ({ viewer, params }) =>
+    getDelivery(ownAttempt(viewer, params["id"])),
+  ),
+  http.put(`*${API_BASE}/attempts/:id/responses/:itemId`, ({ request, params }) =>
+    runWrite(request, (viewer, raw, key) =>
+      saveAnswer(ownAttempt(viewer, params["id"]), params["itemId"], raw, key),
+    ),
+  ),
+  http.post(`*${API_BASE}/attempts/:id/submit`, ({ request, params }) =>
+    runWrite(request, (viewer, raw) => submitAttempt(ownAttempt(viewer, params["id"]), raw)),
+  ),
   get("/question-banks", M, (ctx) =>
     list(ctx, banksFor(ctx.viewer), pageSchema(QuestionBankSchema)),
   ),
