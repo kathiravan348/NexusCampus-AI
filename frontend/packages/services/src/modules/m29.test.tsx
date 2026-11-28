@@ -16,6 +16,9 @@ import { afterEach, describe, expect, it, vi } from "vitest";
 import {
   useCreateLessonPlan,
   useLessonPlans,
+  useSubmitLessonPlan,
+  useMarkLessonPlanDelivered,
+  useReviewLessonPlan,
   useOutcomeFrameworks,
   useOutcomeMappings,
   useOutcomes,
@@ -172,3 +175,68 @@ describe("M29 hooks", () => {
     });
   });
 });
+
+it.each(["submit", "review", "delivered"] as const)(
+  "queues %s and applies it on reconnect",
+  async (action) => {
+    const userId = action === "review" ? USER.rvHelen : USER.rvTom;
+    const scope = { tenantId: TENANT.riverside, userId };
+    signInAs({ ...ADMIN, ...scope });
+    const online = vi.spyOn(window.navigator, "onLine", "get").mockReturnValue(false);
+    const db = freshDb();
+    const id = action === "review" ? LESSON_PLAN.rvSubmitted : LESSON_PLAN.rvReturned;
+    const initial = mockDb.lessonPlans.find((row) => row.id === id)!;
+    const initialStatus = action === "delivered" ? "approved" : initial.status;
+    mockDb.lessonPlans[mockDb.lessonPlans.indexOf(initial)] = { ...initial, status: initialStatus };
+    const { result } = renderHook(
+      () => ({
+        submit: useSubmitLessonPlan(),
+        review: useReviewLessonPlan(),
+        delivered: useMarkLessonPlanDelivered(),
+        plans: useLessonPlans(initial.subjectOfferingId),
+        coverage: useSyllabusCoverage(initial.subjectOfferingId),
+      }),
+      { wrapper: wrapper({ db }) },
+    );
+    const deliveredOn = "2026-01-01";
+    await act(async () => {
+      const outcome =
+        action === "submit"
+          ? await result.current.submit.mutateAsync({ id, input: {} })
+          : action === "review"
+            ? await result.current.review.mutateAsync({
+                id,
+                input: { decision: "approve", note: null },
+              })
+            : await result.current.delivered.mutateAsync({ id, input: { deliveredOn } });
+      expect(outcome.queued).toBe(true);
+    });
+    expect(mockDb.lessonPlans.find((row) => row.id === id)?.status).toBe(initialStatus);
+    expect(await listOutbox(db, scope)).toMatchObject([
+      {
+        moduleId: "M29",
+        operation: `lessonplan.${action}`,
+        mergeRule: "lww-audited",
+        idempotencyKey: expect.any(String),
+        payload: { id },
+      },
+    ]);
+    online.mockReturnValue(true);
+    act(() => {
+      window.dispatchEvent(new Event("online"));
+    });
+    const expected = { submit: "submitted", review: "approved", delivered: "delivered" };
+    await waitFor(async () => expect(await listOutbox(db, scope)).toHaveLength(0));
+    await waitFor(() => {
+      const plan = result.current.plans.data?.items.find((row) => row.id === id);
+      expect(plan?.status).toBe(expected[action]);
+      if (action === "delivered") {
+        for (const topicId of initial.topicIds) {
+          expect(
+            result.current.coverage.data?.entries.find((row) => row.topicId === topicId),
+          ).toMatchObject({ status: "covered", coveredOn: deliveredOn, lessonPlanId: id });
+        }
+      }
+    });
+  },
+);

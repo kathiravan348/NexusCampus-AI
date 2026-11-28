@@ -1,27 +1,17 @@
+import type { ZodType } from "zod";
 import { describe, expect, it } from "vitest";
-import {
-  CoverageEntrySchema,
-  LessonPlanInputSchema,
-  LessonPlanSchema,
-  OutcomeCodeSchema,
-  OutcomeFrameworkSchema,
-  OutcomeMappingSchema,
-  OutcomeSchema,
-  SyllabusCoverageSchema,
-  SyllabusUnitSchema,
-  type CoverageEntry,
-  type LessonPlan,
-  type LessonPlanInput,
-  type LessonPlanStatus,
-  type Outcome,
-  type OutcomeFramework,
-  type OutcomeMapping,
-  type SyllabusUnit,
-} from "./index";
+import * as curriculum from "./index";
+
+function accepts(schema: ZodType, value: unknown) {
+  expect(schema.safeParse(value).success).toBe(true);
+}
+function rejects(schema: ZodType, value: unknown) {
+  expect(schema.safeParse(value).success).toBe(false);
+}
 
 const timestamps = { createdAt: "2026-06-01T08:00:00Z", updatedAt: "2026-06-02T08:00:00Z" };
 
-const standards: OutcomeFramework = {
+const standards: curriculum.OutcomeFramework = {
   ...timestamps,
   id: "framework-national-maths",
   tenantId: "tenant-school",
@@ -34,7 +24,7 @@ const standards: OutcomeFramework = {
   version: "2023",
   active: true,
 };
-const standardsParent: Outcome = {
+const standardsParent: curriculum.Outcome = {
   ...timestamps,
   id: "outcome-number",
   tenantId: "tenant-school",
@@ -47,7 +37,7 @@ const standardsParent: Outcome = {
   subjectIds: ["subject-maths"],
   yearLevelIds: ["grade-5"],
 };
-const standardsChild: Outcome = {
+const standardsChild: curriculum.Outcome = {
   ...standardsParent,
   id: "outcome-number-a1",
   parentId: standardsParent.id,
@@ -55,8 +45,8 @@ const standardsChild: Outcome = {
   statement: "Recognise that a digit in one place is ten times the digit to its right.",
   caseItemId: null,
 };
-const courseOutcomes: OutcomeFramework = {
-  ...timestamps,
+const courseOutcomes: curriculum.OutcomeFramework = {
+  ...standards,
   id: "framework-cs101-co",
   tenantId: "tenant-university",
   institutionId: "institution-university",
@@ -66,9 +56,8 @@ const courseOutcomes: OutcomeFramework = {
   source: "local",
   caseDocumentUri: null,
   version: "1",
-  active: true,
 };
-const mapping: OutcomeMapping = {
+const mapping: curriculum.OutcomeMapping = {
   id: "mapping-co3-po1",
   tenantId: "tenant-university",
   fromOutcomeId: "outcome-co3",
@@ -76,7 +65,7 @@ const mapping: OutcomeMapping = {
   strength: 3,
   createdAt: timestamps.createdAt,
 };
-const unit: SyllabusUnit = {
+const unit: curriculum.SyllabusUnit = {
   ...timestamps,
   id: "unit-fractions",
   tenantId: "tenant-school",
@@ -92,7 +81,7 @@ const unit: SyllabusUnit = {
     { id: "topic-adding", title: "Adding fractions", order: 2, outcomeIds: [standardsChild.id] },
   ],
 };
-const planInput: LessonPlanInput = {
+const planInput: curriculum.LessonPlanInput = {
   subjectOfferingId: "offering-5a-maths",
   staffProfileId: "staff-maths",
   date: "2026-07-06",
@@ -108,7 +97,7 @@ const planInput: LessonPlanInput = {
   resources: "Paper strips, coloured pencils",
   source: "manual",
 };
-const plan: LessonPlan = {
+const plan: curriculum.LessonPlan = {
   ...planInput,
   ...timestamps,
   id: "plan-fractions-1",
@@ -118,7 +107,7 @@ const plan: LessonPlan = {
   reviewedAt: null,
   reviewNote: null,
 };
-const entry: CoverageEntry = {
+const entry: curriculum.CoverageEntry = {
   id: "coverage-5a-equivalent",
   tenantId: "tenant-school",
   subjectOfferingId: "offering-5a-maths",
@@ -131,119 +120,88 @@ const entry: CoverageEntry = {
 
 describe("outcome frameworks and outcomes", () => {
   it("accepts every framework kind", () => {
-    expect(OutcomeFrameworkSchema.safeParse(standards).success).toBe(true);
-    expect(OutcomeFrameworkSchema.safeParse(courseOutcomes).success).toBe(true);
+    accepts(curriculum.OutcomeFrameworkSchema, standards);
+    accepts(curriculum.OutcomeFrameworkSchema, courseOutcomes);
     for (const kind of ["program_outcomes", "milestones", "skills"] as const) {
-      expect(OutcomeFrameworkSchema.safeParse({ ...courseOutcomes, kind }).success).toBe(true);
+      accepts(curriculum.OutcomeFrameworkSchema, { ...courseOutcomes, kind });
     }
   });
 
   it("accepts K12 standards with a parent, EY milestones and SK skill levels", () => {
-    expect(OutcomeSchema.safeParse(standardsParent).success).toBe(true);
-    expect(OutcomeSchema.safeParse(standardsChild).success).toBe(true);
+    accepts(curriculum.OutcomeSchema, standardsParent);
+    accepts(curriculum.OutcomeSchema, standardsChild);
     // CASE GUIDs from older frameworks need not carry RFC 4122 version / variant bits.
     const legacyGuid = { ...standardsChild, caseItemId: "6b1b4b3e-0f0a-0c55-0f6c-2f2d0d5f5a11" };
-    expect(OutcomeSchema.safeParse(legacyGuid).success).toBe(true);
-    const milestone = {
-      ...standardsParent,
-      id: "milestone-pincer",
-      code: "PD-4",
-      subjectIds: [],
-      yearLevelIds: [],
-    };
-    expect(
-      OutcomeSchema.safeParse({ ...milestone, statement: "Uses a pincer grip." }).success,
-    ).toBe(true);
-    const skill = { ...milestone, id: "skill-grade-3", code: "PIANO-G3", caseItemId: null };
-    expect(OutcomeSchema.safeParse(skill).success).toBe(true);
+    accepts(curriculum.OutcomeSchema, legacyGuid);
+    const milestone = { ...standardsParent, code: "PD-4", caseItemId: null };
+    accepts(curriculum.OutcomeSchema, { ...milestone, statement: "Uses a pincer grip." });
+    accepts(curriculum.OutcomeSchema, { ...milestone, id: "skill-grade-3", code: "PIANO-G3" });
   });
 
   it("checks codes", () => {
     for (const code of ["CO3", "PO-12", "CCSS.MATH.5.NBT.A.1", "ISTE:1.a"]) {
-      expect(OutcomeCodeSchema.safeParse(code).success).toBe(true);
+      accepts(curriculum.OutcomeCodeSchema, code);
     }
     for (const code of ["", "-CO3", "CO 3", "x".repeat(65)]) {
-      expect(OutcomeCodeSchema.safeParse(code).success).toBe(false);
+      rejects(curriculum.OutcomeCodeSchema, code);
     }
-    expect(OutcomeSchema.safeParse({ ...standardsChild, code: "bad code" }).success).toBe(false);
-    expect(OutcomeFrameworkSchema.safeParse({ ...standards, code: "NCF MATHS" }).success).toBe(
-      false,
-    );
+    rejects(curriculum.OutcomeSchema, { ...standardsChild, code: "bad code" });
+    rejects(curriculum.OutcomeFrameworkSchema, { ...standards, code: "NCF MATHS" });
   });
 
   it("rejects bad frameworks and outcomes", () => {
-    expect(OutcomeFrameworkSchema.safeParse({ ...standards, extra: true }).success).toBe(false);
-    expect(OutcomeFrameworkSchema.safeParse({ ...standards, caseDocumentUri: null }).success).toBe(
-      false,
-    );
-    expect(
-      OutcomeFrameworkSchema.safeParse({
-        ...courseOutcomes,
-        caseDocumentUri: standards.caseDocumentUri,
-      }).success,
-    ).toBe(false);
-    expect(
-      OutcomeFrameworkSchema.safeParse({
-        ...standards,
-        caseDocumentUri: "http://case.example.org/doc",
-      }).success,
-    ).toBe(false);
-    expect(
-      OutcomeFrameworkSchema.safeParse({ ...standards, updatedAt: "2026-05-01T08:00:00Z" }).success,
-    ).toBe(false);
-    expect(
-      OutcomeSchema.safeParse({ ...standardsChild, parentId: standardsChild.id }).success,
-    ).toBe(false);
-    expect(OutcomeSchema.safeParse({ ...standardsChild, subjectIds: ["s", "s"] }).success).toBe(
-      false,
-    );
-    expect(OutcomeSchema.safeParse({ ...standardsChild, caseItemId: "not-a-uuid" }).success).toBe(
-      false,
-    );
-    expect(OutcomeSchema.safeParse({ ...standardsChild, statement: "  " }).success).toBe(false);
+    rejects(curriculum.OutcomeFrameworkSchema, { ...standards, extra: true });
+    rejects(curriculum.OutcomeFrameworkSchema, { ...standards, caseDocumentUri: null });
+    rejects(curriculum.OutcomeFrameworkSchema, {
+      ...courseOutcomes,
+      caseDocumentUri: standards.caseDocumentUri,
+    });
+    rejects(curriculum.OutcomeFrameworkSchema, {
+      ...standards,
+      caseDocumentUri: "http://case.example.org/doc",
+    });
+    rejects(curriculum.OutcomeFrameworkSchema, { ...standards, updatedAt: "2026-05-01T08:00:00Z" });
+    rejects(curriculum.OutcomeSchema, { ...standardsChild, parentId: standardsChild.id });
+    rejects(curriculum.OutcomeSchema, { ...standardsChild, subjectIds: ["s", "s"] });
+    rejects(curriculum.OutcomeSchema, { ...standardsChild, caseItemId: "not-a-uuid" });
+    rejects(curriculum.OutcomeSchema, { ...standardsChild, statement: "  " });
   });
 });
 
 describe("outcome mappings", () => {
   it("accepts a CO → PO mapping", () => {
-    expect(OutcomeMappingSchema.safeParse(mapping).success).toBe(true);
+    accepts(curriculum.OutcomeMappingSchema, mapping);
   });
 
   it("rejects self-mapping and strength 4", () => {
-    expect(
-      OutcomeMappingSchema.safeParse({ ...mapping, toOutcomeId: mapping.fromOutcomeId }).success,
-    ).toBe(false);
-    expect(OutcomeMappingSchema.safeParse({ ...mapping, strength: 4 }).success).toBe(false);
-    expect(OutcomeMappingSchema.safeParse({ ...mapping, strength: 0 }).success).toBe(false);
+    rejects(curriculum.OutcomeMappingSchema, { ...mapping, toOutcomeId: mapping.fromOutcomeId });
+    rejects(curriculum.OutcomeMappingSchema, { ...mapping, strength: 4 });
+    rejects(curriculum.OutcomeMappingSchema, { ...mapping, strength: 0 });
   });
 });
 
 describe("syllabus units", () => {
   it("accepts a unit and a unit without year level or hours", () => {
-    expect(SyllabusUnitSchema.safeParse(unit).success).toBe(true);
-    expect(
-      SyllabusUnitSchema.safeParse({ ...unit, yearLevelId: null, plannedHours: null }).success,
-    ).toBe(true);
+    accepts(curriculum.SyllabusUnitSchema, unit);
+    accepts(curriculum.SyllabusUnitSchema, { ...unit, yearLevelId: null, plannedHours: null });
   });
 
   it("rejects duplicate topics, quarter hours and empty units", () => {
     const [first, second] = unit.topics;
-    expect(
-      SyllabusUnitSchema.safeParse({ ...unit, topics: [first, { ...second, order: 1 }] }).success,
-    ).toBe(false);
-    expect(
-      SyllabusUnitSchema.safeParse({ ...unit, topics: [first, { ...second, id: first?.id }] })
-        .success,
-    ).toBe(false);
-    expect(SyllabusUnitSchema.safeParse({ ...unit, plannedHours: 2.25 }).success).toBe(false);
-    expect(SyllabusUnitSchema.safeParse({ ...unit, plannedHours: 501 }).success).toBe(false);
-    expect(SyllabusUnitSchema.safeParse({ ...unit, topics: [] }).success).toBe(false);
+    rejects(curriculum.SyllabusUnitSchema, { ...unit, topics: [first, { ...second, order: 1 }] });
+    rejects(curriculum.SyllabusUnitSchema, {
+      ...unit,
+      topics: [first, { ...second, id: first?.id }],
+    });
+    rejects(curriculum.SyllabusUnitSchema, { ...unit, plannedHours: 2.25 });
+    rejects(curriculum.SyllabusUnitSchema, { ...unit, plannedHours: 501 });
+    rejects(curriculum.SyllabusUnitSchema, { ...unit, topics: [] });
   });
 });
 
 describe("lesson plans", () => {
   const reviewed = { reviewedByStaffProfileId: "staff-head", reviewedAt: "2026-06-03T08:00:00Z" };
-  const byStatus: Record<LessonPlanStatus, LessonPlan> = {
+  const byStatus: Record<curriculum.LessonPlanStatus, curriculum.LessonPlan> = {
     draft: plan,
     submitted: { ...plan, status: "submitted" },
     approved: { ...plan, ...reviewed, status: "approved" },
@@ -252,54 +210,40 @@ describe("lesson plans", () => {
   };
 
   it("accepts a plan in each status", () => {
-    for (const value of Object.values(byStatus)) {
-      expect(LessonPlanSchema.safeParse(value).success).toBe(true);
-    }
+    for (const value of Object.values(byStatus)) accepts(curriculum.LessonPlanSchema, value);
   });
 
   it("accepts an input without server fields and rejects server fields in input", () => {
-    expect(LessonPlanInputSchema.safeParse(planInput).success).toBe(true);
-    expect(LessonPlanInputSchema.safeParse({ ...planInput, status: "approved" }).success).toBe(
-      false,
-    );
+    accepts(curriculum.LessonPlanInputSchema, planInput);
+    rejects(curriculum.LessonPlanInputSchema, { ...planInput, status: "approved" });
   });
 
   it("rejects review mismatches and bad activities", () => {
-    expect(LessonPlanSchema.safeParse({ ...byStatus.returned, reviewNote: null }).success).toBe(
-      false,
-    );
-    expect(LessonPlanSchema.safeParse({ ...byStatus.approved, reviewedAt: null }).success).toBe(
-      false,
-    );
-    expect(LessonPlanSchema.safeParse({ ...plan, ...reviewed }).success).toBe(false);
-    expect(LessonPlanSchema.safeParse({ ...plan, ...reviewed, status: "submitted" }).success).toBe(
-      false,
-    );
+    rejects(curriculum.LessonPlanSchema, { ...byStatus.returned, reviewNote: null });
+    rejects(curriculum.LessonPlanSchema, { ...byStatus.approved, reviewedAt: null });
+    rejects(curriculum.LessonPlanSchema, { ...plan, ...reviewed });
+    rejects(curriculum.LessonPlanSchema, { ...plan, ...reviewed, status: "submitted" });
     const deliveredReviewed = { ...byStatus.delivered, ...reviewed };
-    expect(LessonPlanSchema.safeParse(deliveredReviewed).success).toBe(true);
-    expect(LessonPlanSchema.safeParse({ ...deliveredReviewed, reviewedAt: null }).success).toBe(
-      false,
-    );
+    accepts(curriculum.LessonPlanSchema, deliveredReviewed);
+    rejects(curriculum.LessonPlanSchema, { ...deliveredReviewed, reviewedAt: null });
     const [first] = plan.activities;
-    expect(LessonPlanSchema.safeParse({ ...plan, activities: [first, first] }).success).toBe(false);
-    expect(
-      LessonPlanSchema.safeParse({ ...plan, activities: [{ ...first, minutes: 0 }] }).success,
-    ).toBe(false);
-    expect(LessonPlanSchema.safeParse({ ...plan, topicIds: [] }).success).toBe(false);
-    expect(LessonPlanSchema.safeParse({ ...plan, source: "ai" }).success).toBe(false);
+    rejects(curriculum.LessonPlanSchema, { ...plan, activities: [first, first] });
+    rejects(curriculum.LessonPlanSchema, { ...plan, activities: [{ ...first, minutes: 0 }] });
+    rejects(curriculum.LessonPlanSchema, { ...plan, topicIds: [] });
+    rejects(curriculum.LessonPlanSchema, { ...plan, source: "ai" });
   });
 });
 
 describe("coverage", () => {
   it("accepts covered and open entries", () => {
-    expect(CoverageEntrySchema.safeParse(entry).success).toBe(true);
+    accepts(curriculum.CoverageEntrySchema, entry);
     const open = { ...entry, status: "in_progress", coveredOn: null, lessonPlanId: null };
-    expect(CoverageEntrySchema.safeParse(open).success).toBe(true);
+    accepts(curriculum.CoverageEntrySchema, open);
   });
 
   it("rejects a covered entry without date and a date on an open entry", () => {
-    expect(CoverageEntrySchema.safeParse({ ...entry, coveredOn: null }).success).toBe(false);
-    expect(CoverageEntrySchema.safeParse({ ...entry, status: "not_started" }).success).toBe(false);
+    rejects(curriculum.CoverageEntrySchema, { ...entry, coveredOn: null });
+    rejects(curriculum.CoverageEntrySchema, { ...entry, status: "not_started" });
   });
 
   it("checks the percentage against the counts", () => {
@@ -309,19 +253,48 @@ describe("coverage", () => {
       topicsCovered: 2,
       percentBps: 6667,
     };
-    expect(SyllabusCoverageSchema.safeParse(coverage).success).toBe(true);
-    expect(
-      SyllabusCoverageSchema.safeParse({
-        ...coverage,
-        topicsTotal: 0,
-        topicsCovered: 0,
-        percentBps: 0,
-      }).success,
-    ).toBe(true);
-    expect(SyllabusCoverageSchema.safeParse({ ...coverage, percentBps: 6666 }).success).toBe(false);
-    expect(
-      SyllabusCoverageSchema.safeParse({ ...coverage, topicsCovered: 4, percentBps: 13333 })
-        .success,
-    ).toBe(false);
+    accepts(curriculum.SyllabusCoverageSchema, coverage);
+    accepts(curriculum.SyllabusCoverageSchema, {
+      ...coverage,
+      topicsTotal: 0,
+      topicsCovered: 0,
+      percentBps: 0,
+    });
+    rejects(curriculum.SyllabusCoverageSchema, { ...coverage, percentBps: 6666 });
+    rejects(curriculum.SyllabusCoverageSchema, {
+      ...coverage,
+      topicsCovered: 4,
+      percentBps: 13333,
+    });
+  });
+});
+
+describe("lesson plan workflow inputs", () => {
+  it("requires an empty submission and a calendar date for delivery", () => {
+    accepts(curriculum.LessonPlanSubmitInputSchema, {});
+    rejects(curriculum.LessonPlanSubmitInputSchema, { status: "submitted" });
+    accepts(curriculum.LessonPlanDeliveredInputSchema, { deliveredOn: "2026-10-01" });
+    rejects(curriculum.LessonPlanDeliveredInputSchema, {});
+    rejects(curriculum.LessonPlanDeliveredInputSchema, { deliveredOn: "tomorrow" });
+    rejects(curriculum.LessonPlanDeliveredInputSchema, {
+      deliveredOn: "2026-10-01",
+      actor: "other",
+    });
+  });
+
+  it("requires a decision and a bounded note for returns", () => {
+    accepts(curriculum.LessonPlanReviewInputSchema, { decision: "approve", note: null });
+    accepts(curriculum.LessonPlanReviewInputSchema, { decision: "return", note: "x".repeat(1000) });
+    for (const note of [null, " ", "", "x".repeat(1001)]) {
+      rejects(curriculum.LessonPlanReviewInputSchema, { decision: "return", note });
+    }
+    rejects(curriculum.LessonPlanReviewInputSchema, { decision: "approve" });
+    rejects(curriculum.LessonPlanReviewInputSchema, { decision: "approve", note: "" });
+    rejects(curriculum.LessonPlanReviewInputSchema, { decision: "other", note: null });
+    rejects(curriculum.LessonPlanReviewInputSchema, {
+      decision: "approve",
+      note: null,
+      id: "plan",
+    });
   });
 });

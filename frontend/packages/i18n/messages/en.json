@@ -8333,7 +8333,7 @@
   },
   "m29.planDialog.queued": {
     "message": "Lesson plan saved offline. Waiting to sync.",
-    "description": "Toast shown after queueing a lesson plan create or update in the offline outbox."
+    "description": "Toast shown after queueing a lesson plan draft or workflow action for offline sync."
   },
   "m29.planDialog.offlineHint": {
     "message": "You are offline. Saving will queue this lesson plan to sync later.",
@@ -8382,6 +8382,42 @@
   "m29.planDialog.saveFailed": {
     "message": "The lesson plan could not be saved. Try again.",
     "description": "Generic error when saving a lesson plan fails unexpectedly."
+  },
+  "m29.workflow.submit": {
+    "message": "Submit",
+    "description": "Button to submit a lesson plan for review."
+  },
+  "m29.workflow.approve": {
+    "message": "Approve",
+    "description": "Decision to approve another staff member's submitted plan."
+  },
+  "m29.workflow.return": {
+    "message": "Return",
+    "description": "Decision to return a plan to its author for edits."
+  },
+  "m29.workflow.deliver": {
+    "message": "Mark delivered",
+    "description": "Button recording that the teacher delivered an approved lesson."
+  },
+  "m29.workflow.deliveredOn": {
+    "message": "Date taught",
+    "description": "Date on which the lesson was taught and its topics covered."
+  },
+  "m29.workflow.decision": {
+    "message": "Decision",
+    "description": "Label for choosing whether to approve or return a plan."
+  },
+  "m29.workflow.reviewTitle": {
+    "message": "Review lesson plan",
+    "description": "Title of the lesson plan review dialog."
+  },
+  "m29.workflow.noteError": {
+    "message": "Enter a review note of 1 to 1,000 characters.",
+    "description": "Validation error for a missing return note or a note outside the length limit."
+  },
+  "m29.workflow.saved": {
+    "message": "Lesson plan status updated.",
+    "description": "Confirmation after a lesson plan workflow action succeeds."
   },
   "m29.activityKind.intro": {
     "message": "Introduction",

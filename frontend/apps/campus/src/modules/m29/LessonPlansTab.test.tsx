@@ -2,7 +2,7 @@ import { OFFERING, TENANT } from "@nexus/mocks";
 import { server } from "@nexus/mocks/node";
 import { fireEvent, screen, within } from "@testing-library/react";
 import { HttpResponse, http } from "msw";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { MODULES } from "../../app/modules";
 import { persona, renderApp } from "../../test/renderApp";
 
@@ -72,4 +72,34 @@ describe("LessonPlansTab (M29)", () => {
     fireEvent.change(select, { target: { value: OFFERING.rvSouthYearSeven[0] } });
     expect(await screen.findByRole("heading", { name: "No lesson plans yet" })).toBeInTheDocument();
   });
+});
+
+it("opens a submitted plan for administrative review and refreshes its card", async () => {
+  await openLessonPlansTab("admin");
+  const submitted = await screen.findByText("Submitted");
+  const card = within(submitted.closest("li")!);
+  fireEvent.click(card.getByRole("button", { name: "Return" }));
+  const dialog = await screen.findByRole("dialog", { name: "Review lesson plan" });
+  fireEvent.change(within(dialog).getByLabelText(/^Reviewer note/), {
+    target: { value: "Add a warm-up." },
+  });
+  fireEvent.click(within(dialog).getByRole("button", { name: "Return" }));
+  expect(await card.findByText("Add a warm-up.")).toBeInTheDocument();
+  expect(card.getByText("Returned")).toBeInTheDocument();
+});
+
+it("confirms offline submission and keeps the last synced status visible", async () => {
+  await openLessonPlansTab();
+  const title = await screen.findByText("Evidence Paragraphs");
+  const card = within(title.closest("li")!);
+  const online = vi.spyOn(navigator, "onLine", "get").mockReturnValue(false);
+  try {
+    fireEvent.click(card.getByRole("button", { name: "Submit" }));
+    expect(
+      await screen.findByText("Lesson plan saved offline. Waiting to sync."),
+    ).toBeInTheDocument();
+    expect(card.getByText("Returned")).toBeInTheDocument();
+  } finally {
+    online.mockRestore();
+  }
 });
