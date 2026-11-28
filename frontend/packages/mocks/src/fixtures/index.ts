@@ -37,3 +37,6 @@ export * from "./assignments";
 export * from "./question-tests";
 export * from "./tutor";
 export * from "./early-warning";
+export * from "./ids-stage4-live";
+export * from "./proctoring";
+export * from "./live-classes";
