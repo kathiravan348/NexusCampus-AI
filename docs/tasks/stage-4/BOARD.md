@@ -56,7 +56,7 @@
 | NEX-230 | M33 Online tests screens (read): list, test view, attempts, item statistics | C | planned | — | 223, 229 |
 | NEX-269 | M33 test taking data: contracts, mocks, hooks (start, deliver, answer, submit; offline L2) — split from NEX-230 | B | done | Codex | 223 |
 | NEX-270 | M33 learner test-taking screen + API guide for the NEX-269 endpoints | C | planned | — | 230, 269 |
-| NEX-271 | M34 proctoring data: staff flag review and identity decision (contracts, mocks, hooks) — split from NEX-231 | B | ready-for-review | Codex | 223 |
+| NEX-271 | M34 proctoring data: staff flag review and identity decision (contracts, mocks, hooks) — split from NEX-231 | B | done | Codex | 223 |
 | NEX-231 | M34 Online proctoring (flags for human review only) | C | draft | — | 223, 230 |
 | NEX-232 | M35 AI tutor & learning paths (guardian consent for minors) | C | draft | — | 223, 231 |
 | NEX-233 | M36 Live classes | C | draft | — | 224, 232 |
