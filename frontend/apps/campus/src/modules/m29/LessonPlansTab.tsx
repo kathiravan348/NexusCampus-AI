@@ -3,14 +3,30 @@ import { formatDate, isPseudoLocale, SOURCE_LOCALE, useText, type MessageKey } f
 import {
   useClassGroups,
   useLessonPlans,
+  useMarkLessonPlanDelivered,
+  useMe,
+  useReviewLessonPlan,
+  useSubmitLessonPlan,
   useSubjectOfferings,
   useSubjects,
   useSyllabusUnits,
 } from "@nexus/services";
-import { Badge, Button, Card, EmptyState, Select, Skeleton } from "@nexus/ui-core";
-import { Calendar, FileText, Pencil, Plus, Sparkles } from "lucide-react";
+import { Badge, Button, Card, EmptyState, Select, Skeleton, useToast } from "@nexus/ui-core";
+import {
+  Calendar,
+  CheckCheck,
+  CheckCircle2,
+  FilePenLine,
+  FileText,
+  Plus,
+  RotateCcw,
+  Send,
+  Sparkles,
+} from "lucide-react";
 import { useMemo, useState } from "react";
 import { useRuntime } from "../../app/TenantRuntime";
+import { LessonPlanActions } from "./LessonPlanActions";
+import { LessonPlanReviewDialog } from "./LessonPlanReviewDialog";
 import { LessonPlanDialog } from "./LessonPlanDialog";
 
 const STATUS_META: Readonly<
@@ -18,15 +34,16 @@ const STATUS_META: Readonly<
     LessonPlanStatus,
     {
       readonly key: MessageKey;
+      readonly icon: typeof FileText;
       readonly tone: "neutral" | "info" | "success" | "warning" | "brand";
     }
   >
 > = {
-  draft: { key: "m29.planStatus.draft", tone: "neutral" },
-  submitted: { key: "m29.planStatus.submitted", tone: "info" },
-  approved: { key: "m29.planStatus.approved", tone: "success" },
-  returned: { key: "m29.planStatus.returned", tone: "warning" },
-  delivered: { key: "m29.planStatus.delivered", tone: "brand" },
+  draft: { key: "m29.planStatus.draft", tone: "neutral", icon: FilePenLine },
+  submitted: { key: "m29.planStatus.submitted", tone: "info", icon: Send },
+  approved: { key: "m29.planStatus.approved", tone: "success", icon: CheckCircle2 },
+  returned: { key: "m29.planStatus.returned", tone: "warning", icon: RotateCcw },
+  delivered: { key: "m29.planStatus.delivered", tone: "brand", icon: CheckCheck },
 };
 
 export interface LessonPlansTabProps {
@@ -45,6 +62,32 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
   const [selectedOfferingId, setSelectedOfferingId] = useState("");
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingPlan, setEditingPlan] = useState<LessonPlan | null>(null);
+
+  const me = useMe();
+  const canReview = me.data?.permissions.includes("m29.lessonplan.review") ?? false;
+  const submit = useSubmitLessonPlan();
+  const review = useReviewLessonPlan();
+  const deliver = useMarkLessonPlanDelivered();
+  const toast = useToast();
+  const [reviewing, setReviewing] = useState<{
+    plan: LessonPlan;
+    decision: "approve" | "return";
+  } | null>(null);
+
+  async function notify(action: Promise<{ queued: boolean }>) {
+    try {
+      const { queued } = await action;
+      toast.show(
+        queued
+          ? { tone: "info", title: t("m29.planDialog.queued") }
+          : { tone: "success", title: t("m29.workflow.saved") },
+      );
+      return true;
+    } catch {
+      toast.show({ tone: "danger", title: t("m29.planDialog.saveFailed") });
+      return false;
+    }
+  }
 
   const plans = useLessonPlans(selectedOfferingId === "" ? null : selectedOfferingId);
   const safeLocale = isPseudoLocale(locale) ? SOURCE_LOCALE : locale;
@@ -105,12 +148,7 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
     (classGroups.isPending && !classGroups.data);
   const failed = (plans.isError && !plans.data) || (offerings.isError && !offerings.data);
 
-  const openCreate = () => {
-    setEditingPlan(null);
-    setDialogOpen(true);
-  };
-
-  const openEdit = (plan: LessonPlan) => {
+  const openEditor = (plan: LessonPlan | null) => {
     setEditingPlan(plan);
     setDialogOpen(true);
   };
@@ -129,7 +167,7 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
           containerClassName="w-full sm:w-80"
         />
         {canAuthor && (
-          <Button onClick={openCreate} disabled={offeringList.length === 0}>
+          <Button onClick={() => openEditor(null)} disabled={offeringList.length === 0}>
             <Plus className="h-4 w-4" aria-hidden="true" />
             {t("m29.plans.newPlan")}
           </Button>
@@ -167,10 +205,7 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
         <ul className="space-y-3">
           {planList.map((plan) => {
             const statusMeta = STATUS_META[plan.status];
-            const canEditPlan =
-              canAuthor &&
-              plan.staffProfileId === ownStaffProfileId &&
-              (plan.status === "draft" || plan.status === "returned");
+            const StatusIcon = statusMeta.icon;
 
             return (
               <li key={plan.id} className="min-w-0">
@@ -179,7 +214,10 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
                   title={
                     <span className="flex flex-wrap items-center gap-2">
                       <span className="break-words">{plan.title}</span>
-                      <Badge tone={statusMeta.tone}>{t(statusMeta.key)}</Badge>
+                      <Badge tone={statusMeta.tone}>
+                        <StatusIcon className="h-3 w-3 shrink-0" aria-hidden="true" />
+                        {t(statusMeta.key)}
+                      </Badge>
                       {plan.source === "ai_draft" && (
                         <Badge tone="info">
                           <Sparkles className="h-3 w-3 shrink-0" aria-hidden="true" />
@@ -187,19 +225,6 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
                         </Badge>
                       )}
                     </span>
-                  }
-                  actions={
-                    canEditPlan ? (
-                      <Button
-                        variant="secondary"
-                        size="sm"
-                        aria-label={t("m29.plans.editLabel", { title: plan.title })}
-                        onClick={() => openEdit(plan)}
-                      >
-                        <Pencil className="h-3.5 w-3.5" aria-hidden="true" />
-                        {t("common.edit")}
-                      </Button>
-                    ) : undefined
                   }
                 >
                   <div className="space-y-3">
@@ -225,6 +250,19 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
                         <p className="mt-1 break-words">{plan.reviewNote}</p>
                       </div>
                     )}
+                    <LessonPlanActions
+                      plan={plan}
+                      ownStaffProfileId={ownStaffProfileId}
+                      canWrite={canWrite}
+                      canReview={canReview}
+                      pending={submit.isPending || review.isPending || deliver.isPending}
+                      onEdit={() => openEditor(plan)}
+                      onSubmit={() => void notify(submit.mutateAsync({ id: plan.id, input: {} }))}
+                      onDeliver={(deliveredOn) =>
+                        void notify(deliver.mutateAsync({ id: plan.id, input: { deliveredOn } }))
+                      }
+                      onReview={(decision) => setReviewing({ plan, decision })}
+                    />
                   </div>
                 </Card>
               </li>
@@ -233,6 +271,14 @@ export function LessonPlansTab({ canWrite, ownStaffProfileId }: LessonPlansTabPr
         </ul>
       )}
 
+      {reviewing && (
+        <LessonPlanReviewDialog
+          title={reviewing.plan.title}
+          decision={reviewing.decision}
+          onClose={() => setReviewing(null)}
+          onSave={(input) => notify(review.mutateAsync({ id: reviewing.plan.id, input }))}
+        />
+      )}
       {canAuthor && (
         <LessonPlanDialog
           open={dialogOpen}

@@ -9,6 +9,9 @@ import {
   SyllabusUnitSchema,
   pageSchema,
   type LessonPlan,
+  type LessonPlanDeliveredInput,
+  type LessonPlanReviewInput,
+  type LessonPlanSubmitInput,
   type LessonPlanInput,
 } from "@nexus/contracts";
 import { useQueryClient } from "@tanstack/react-query";
@@ -126,4 +129,41 @@ export function useUpdateLessonPlan() {
       return plan;
     },
   });
+}
+
+function useLessonPlanAction<TInput>(action: "submit" | "review" | "delivered") {
+  const { session } = useSession();
+  const qc = useQueryClient();
+  return useOutboxMutation<{ id: string; input: TInput }, LessonPlan>({
+    moduleId: "M29",
+    operation: `lessonplan.${action}`,
+    mergeRule: "lww-audited",
+    send: async (client, { id, input }, key) => {
+      const plan = await client.send(
+        "POST",
+        `/lesson-plans/${encodeURIComponent(id)}/${action}`,
+        input,
+        LessonPlanSchema,
+        { headers: idempotencyHeaders(key) },
+      );
+      if (session) {
+        await qc.invalidateQueries({
+          queryKey: queryKeys.m29.outcomeFrameworks(session).slice(0, -1),
+        });
+      }
+      return plan;
+    },
+  });
+}
+
+export function useSubmitLessonPlan() {
+  return useLessonPlanAction<LessonPlanSubmitInput>("submit");
+}
+
+export function useReviewLessonPlan() {
+  return useLessonPlanAction<LessonPlanReviewInput>("review");
+}
+
+export function useMarkLessonPlanDelivered() {
+  return useLessonPlanAction<LessonPlanDeliveredInput>("delivered");
 }

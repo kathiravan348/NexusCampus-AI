@@ -193,6 +193,23 @@ const lessonPlanInputFields = {
 export const LessonPlanInputSchema = z.strictObject(lessonPlanInputFields);
 export type LessonPlanInput = z.infer<typeof LessonPlanInputSchema>;
 
+export const LessonPlanSubmitInputSchema = z.strictObject({});
+export type LessonPlanSubmitInput = z.infer<typeof LessonPlanSubmitInputSchema>;
+
+export const LessonPlanReviewInputSchema = z
+  .strictObject({
+    decision: z.enum(["approve", "return"]),
+    note: z.string().trim().min(1).max(1000).nullable(),
+  })
+  .refine((input) => input.decision !== "return" || input.note !== null, {
+    message: "A returned plan requires a note",
+    path: ["note"],
+  });
+export type LessonPlanReviewInput = z.infer<typeof LessonPlanReviewInputSchema>;
+
+export const LessonPlanDeliveredInputSchema = z.strictObject({ deliveredOn: IsoDateSchema });
+export type LessonPlanDeliveredInput = z.infer<typeof LessonPlanDeliveredInputSchema>;
+
 /** Review state per status: approved / returned plans carry it, drafts and submissions do not, delivered keeps it if any. */
 const reviewRule: Record<LessonPlanStatus, "required" | "forbidden" | "optional"> = {
   draft: "forbidden",
