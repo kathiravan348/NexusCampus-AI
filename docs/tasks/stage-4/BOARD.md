@@ -34,11 +34,12 @@
 | NEX-259 | Stage 4 access (mock only, D87): permission codes, system-role grants, module entitlements, en / hi / ta texts | B | done | Codex | 210–219, 247–256 |
 | NEX-220 | Fixtures: M29, M30, M31 — outcomes, syllabus, lesson plans, course spaces, content for the 5 demo tenants and the Group | B | done | Gemini | 210–212, 259 |
 | NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | planned | — | 213, 214, 247, 248, 256, 220 |
-| NEX-257 | Fixtures: M34, M36, M37, M38, M91 — proctoring, live classes, early years, inclusion, media and portfolios | B | draft | — | 215, 216, 249–251, 221 |
+| NEX-257 | Fixtures: M34, M36 — proctoring, live classes, `live_session` course items | B | planned | — | 215, 249, 221 |
+| NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | planned | — | 216, 250, 251, 220 |
 | NEX-258 | Fixtures: M39–M45 — library, test prep, session courses, higher-ed, store, surveys, credentials | B | draft | — | 217–219, 252–255, 257 |
 | NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | planned | — | 220, 259 |
 | NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213; learners get `QuestionDelivery` only, NEX-247) | B | draft | — | 221, 257, 222 |
-| NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 | B | draft | — | 257, 223 |
+| NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 (adds the NEX-260 exports to `fixtures/index.ts`) | B | draft | — | 257, 260, 223 |
 | NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 258, 224 |
 | NEX-226 | M29 Curriculum & lesson planning | C | draft | — | 222 |
 | NEX-227 | M30 LMS classrooms & courses | C | draft | — | 222, 226 |
