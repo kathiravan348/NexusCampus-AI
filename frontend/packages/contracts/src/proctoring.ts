@@ -51,6 +51,11 @@ export type ProctoringSettings = z.infer<typeof ProctoringSettingsSchema>;
 export const IdentityResultSchema = z.enum(["not_required", "pending", "verified", "not_verified"]);
 export type IdentityResult = z.infer<typeof IdentityResultSchema>;
 
+export const IdentityDecisionInputSchema = z.strictObject({
+  result: IdentityResultSchema.extract(["verified", "not_verified"]),
+});
+export type IdentityDecisionInput = z.infer<typeof IdentityDecisionInputSchema>;
+
 export const ProctoringSessionStatusSchema = z.enum(["waiting", "in_progress", "ended"]);
 export type ProctoringSessionStatus = z.infer<typeof ProctoringSessionStatusSchema>;
 
@@ -144,6 +149,19 @@ export type ProctoringFlagSource = z.infer<typeof ProctoringFlagSourceSchema>;
 export const ProctoringFlagReviewSchema = z.enum(["pending", "dismissed", "upheld"]);
 export type ProctoringFlagReview = z.infer<typeof ProctoringFlagReviewSchema>;
 
+const reviewNoteSchema = z.string().trim().min(1).max(1000).nullable();
+
+export const FlagReviewInputSchema = z
+  .strictObject({
+    review: ProctoringFlagReviewSchema.extract(["dismissed", "upheld"]),
+    note: reviewNoteSchema,
+  })
+  .refine((input) => input.review !== "upheld" || input.note !== null, {
+    message: "An upheld flag needs a note",
+    path: ["note"],
+  });
+export type FlagReviewInput = z.infer<typeof FlagReviewInputSchema>;
+
 /** A signal for a person to review (A-4); it never changes an attempt or score by itself. */
 export const ProctoringFlagSchema = z
   .strictObject({
@@ -162,7 +180,7 @@ export const ProctoringFlagSchema = z
     review: ProctoringFlagReviewSchema,
     reviewedByStaffProfileId: IdSchema.nullable(),
     reviewedAt: UtcDateTimeSchema.nullable(),
-    reviewNote: z.string().trim().min(1).max(1000).nullable(),
+    reviewNote: reviewNoteSchema,
   })
   .refine((flag) => flag.aiGenerated === (flag.source === "ai"), {
     message: "aiGenerated is true exactly for AI flags",
