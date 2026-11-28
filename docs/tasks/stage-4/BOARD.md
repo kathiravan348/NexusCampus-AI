@@ -38,7 +38,7 @@
 | NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | done | Codex | 216, 250, 251, 220 |
 | NEX-258 | Fixtures: M39, M40, M41 — library, test prep, session courses | B | done | Codex | 217, 218, 254, 257 |
 | NEX-263 | Fixtures: M42, M43 — higher-ed, store — split from NEX-258 | B | done | Gemini | 219, 255, 258 |
-| NEX-265 | Fixtures: M44, M45 — surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) — split from NEX-263 | B | planned | — | 252, 253, 263 |
+| NEX-265 | Fixtures: M44, M45 — surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) — split from NEX-263 | B | done | Gemini | 252, 253, 263 |
 | NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | done | Codex | 220, 259 |
 | NEX-223 | MSW handlers + services: M32, M33 read (anonymous peer reviewers hidden from authors, NEX-213; learners never get `QuestionItem`; D91) | B | done | Codex | 221, 222 |
 | NEX-262 | MSW handlers + services: M34, M35 — proctoring, mastery, paths and tutor (read) — split from NEX-223 | B | done | Gemini | 257, 223 |
