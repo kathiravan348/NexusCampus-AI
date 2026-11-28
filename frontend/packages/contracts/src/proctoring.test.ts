@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
+  FlagReviewInputSchema,
+  IdentityDecisionInputSchema,
   ProctoringFlagSchema,
   ProctoringSessionSchema,
   ProctoringSettingsSchema,
@@ -244,5 +246,45 @@ describe("proctoring flags", () => {
       reviewedAt: "2026-07-20T05:00:00Z",
     };
     expect(ProctoringFlagSchema.safeParse(earlyReview).success).toBe(false);
+  });
+});
+
+describe("proctoring decision inputs", () => {
+  it("accepts dismissals and trims a note on an upheld flag", () => {
+    expect(FlagReviewInputSchema.parse({ review: "dismissed", note: null })).toEqual({
+      review: "dismissed",
+      note: null,
+    });
+    const note = "  Reviewed in person  ";
+    const upheld = FlagReviewInputSchema.parse({ review: "upheld", note });
+    expect(upheld).toEqual({
+      review: "upheld",
+      note: "Reviewed in person",
+    });
+  });
+
+  it("rejects invalid flag review inputs", () => {
+    const inputs = [
+      { review: "pending", note: null },
+      { review: "upheld", note: null },
+      { review: "upheld" },
+      { review: "upheld", note: " " },
+      { review: "dismissed", note: "a".repeat(1001) },
+      { review: "dismissed", note: null, reviewedByStaffProfileId: "another-staff" },
+    ];
+    for (const input of inputs) {
+      expect(FlagReviewInputSchema.safeParse(input).success).toBe(false);
+    }
+  });
+
+  it("accepts only the two final identity results without extra keys", () => {
+    for (const result of ["verified", "not_verified"]) {
+      expect(IdentityDecisionInputSchema.parse({ result })).toEqual({ result });
+    }
+    for (const result of ["pending", "not_required"]) {
+      expect(IdentityDecisionInputSchema.safeParse({ result }).success).toBe(false);
+    }
+    const extra = { result: "verified", identityCheckedAt: null };
+    expect(IdentityDecisionInputSchema.safeParse(extra).success).toBe(false);
   });
 });

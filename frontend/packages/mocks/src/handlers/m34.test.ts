@@ -13,7 +13,7 @@ import { roleId, type SystemRoleKey } from "../fixtures/ids";
 import { server } from "../node";
 import type { Parser } from "./route";
 
-const tenant = TENANT.northbridge;
+const tenant: string = TENANT.northbridge;
 
 function adminOf(tenantId: string): string {
   return mockDb.users.find(
@@ -27,6 +27,19 @@ function adminOf(tenantId: string): string {
 function get(path: string, userId: string, tenantId: string = tenant) {
   return fetch(`http://localhost/api/v1${path}`, {
     headers: { [MOCK_HEADER.tenant]: tenantId, [MOCK_HEADER.user]: userId },
+  });
+}
+
+function patch(path: string, body: unknown, userId: string, key?: string, tenantId = tenant) {
+  return fetch(`http://localhost/api/v1${path}`, {
+    method: "PATCH",
+    headers: {
+      [MOCK_HEADER.tenant]: tenantId,
+      [MOCK_HEADER.user]: userId,
+      "Content-Type": "application/json",
+      ...(key ? { "Idempotency-Key": key } : {}),
+    },
+    body: JSON.stringify(body),
   });
 }
 
@@ -54,6 +67,28 @@ function midterm() {
 async function parse<T>(response: Response, schema: Parser<T>): Promise<T> {
   expect(response.status).toBe(200);
   return schema.parse(await response.json());
+}
+
+function staffViewer(role: "manager" | "reviewer" = "manager") {
+  const userId = adminOf(tenant);
+  const staff = mockDb.roleProfiles.find(
+    (row) => row.tenantId === tenant && row.kind === "staff" && row.status === "active",
+  )!;
+  if (role === "reviewer") {
+    signInAs(userId, staff.personId, "teacher");
+    const teacher = mockDb.roles.find((row) => row.id === roleId(tenant, "teacher"))!;
+    teacher.permissions.push("m34.flag.review");
+  } else {
+    mockDb.users.find((row) => row.id === userId)!.personId = staff.personId;
+  }
+  return { userId, staff };
+}
+
+function pendingFlag() {
+  const flag = mockDb.proctoringFlags.find(
+    (row) => row.tenantId === tenant && row.review === "pending",
+  )!;
+  return { flag, path: `/proctoring-flags/${flag.id}/review` };
 }
 
 beforeAll(() => server.listen({ onUnhandledFrame: "error" }));
@@ -96,14 +131,8 @@ describe("M34 read handlers", () => {
   });
 
   it("allows a flag reviewer to read flags and recordings", async () => {
-    const userId = adminOf(tenant);
+    const { userId } = staffViewer("reviewer");
     const { settings, sessionPath, settingsPath } = midterm();
-    const staff = mockDb.roleProfiles.find(
-      (row) => row.tenantId === tenant && row.kind === "staff",
-    )!;
-    signInAs(userId, staff.personId, "teacher");
-    const teacherRole = mockDb.roles.find((row) => row.id === roleId(tenant, "teacher"))!;
-    teacherRole.permissions.push("m34.flag.review");
 
     const sessionsPath = `/proctoring-sessions?testId=${settings.testId}`;
     expect((await get(settingsPath, userId)).status).toBe(403);
@@ -167,5 +196,103 @@ describe("M34 read handlers", () => {
       expect(res.status).toBe(403);
       expect(await res.json()).toMatchObject({ error: { code: "module_disabled" } });
     }
+  });
+});
+
+describe("M34 flag reviews", () => {
+  it("stores a dismissal by a flag reviewer and replays only its key", async () => {
+    const { userId, staff } = staffViewer("reviewer");
+    const { flag, path } = pendingFlag();
+    const body = { review: "dismissed", note: null };
+    const before = Date.now();
+    const saved = await parse(await patch(path, body, userId, "dismiss"), ProctoringFlagSchema);
+    expect(saved.reviewNote).toBeNull();
+    expect(saved).toMatchObject({ review: "dismissed", reviewedByStaffProfileId: staff.id });
+    expect(Date.parse(saved.reviewedAt!)).toBeGreaterThanOrEqual(before);
+    expect(mockDb.proctoringFlags.find((row) => row.id === flag.id)).toEqual(saved);
+    const replay = await parse(await patch(path, body, userId, "dismiss"), ProctoringFlagSchema);
+    expect(replay).toEqual(saved);
+    const conflict = await patch(path, body, userId, "different");
+    expect(conflict.status).toBe(409);
+    expect(await conflict.json()).toMatchObject({ error: { code: "conflict" } });
+  });
+
+  it("rejects missing keys and invalid bodies without exposing note text", async () => {
+    const { userId } = staffViewer();
+    const { flag, path } = pendingFlag();
+    expect((await patch(path, { review: "dismissed", note: null }, userId)).status).toBe(400);
+    const missing = await patch(path, { review: "upheld", note: null }, userId, "missing-note");
+    expect(missing.status).toBe(422);
+    expect(await missing.json()).toMatchObject({ error: { details: [{ path: "note" }] } });
+    const note = "Private example note";
+    const body = { review: "upheld", note: note.repeat(100) };
+    const oversized = await patch(path, body, userId, "long-note");
+    expect(oversized.status).toBe(422);
+    expect(await oversized.text()).not.toContain(note);
+    expect(mockDb.proctoringFlags.find((row) => row.id === flag.id)).toEqual(flag);
+  });
+
+  it("denies cross-tenant and unauthorized reviews", async () => {
+    const { userId, staff } = staffViewer();
+    const { path } = pendingFlag();
+    const body = { review: "dismissed", note: null };
+    const outside = await patch(path, body, adminOf(TENANT.apex), "outside", TENANT.apex);
+    expect(outside.status).toBe(404);
+    staff.effectiveTo = "2000-01-01";
+    expect((await patch(path, body, userId, "inactive")).status).toBe(403);
+    signInAs(userId, staff.personId, "learner");
+    expect((await patch(path, body, userId, "forbidden")).status).toBe(403);
+  });
+
+  it("upholds a flag without changing attempts or responses", async () => {
+    const { userId } = staffViewer();
+    const { path } = pendingFlag();
+    const attempts = structuredClone(mockDb.testAttempts);
+    const responses = structuredClone(mockDb.testResponses);
+    const body = { review: "upheld", note: "  Reviewed with the invigilator  " };
+    const saved = await parse(await patch(path, body, userId, "uphold"), ProctoringFlagSchema);
+    expect(saved).toMatchObject({ review: "upheld", reviewNote: "Reviewed with the invigilator" });
+    expect(mockDb.testAttempts).toEqual(attempts);
+    expect(mockDb.testResponses).toEqual(responses);
+  });
+});
+
+describe("M34 identity decisions", () => {
+  function pendingSession() {
+    const { session, sessionPath, settings } = midterm();
+    session.identityResult = "pending";
+    session.identityCheckedByStaffProfileId = null;
+    session.identityCheckedAt = null;
+    return { session, settings, path: sessionPath + "/identity" };
+  }
+
+  it("stores a staff decision and returns it on replay", async () => {
+    const { userId, staff } = staffViewer();
+    const { session, path } = pendingSession();
+    const body = { result: "verified" };
+    const before = Date.now();
+    const saved = await parse(await patch(path, body, userId, "verify"), ProctoringSessionSchema);
+    expect(saved).toMatchObject({
+      id: session.id,
+      identityResult: "verified",
+      identityCheckedByStaffProfileId: staff.id,
+    });
+    expect(Date.parse(saved.identityCheckedAt!)).toBeGreaterThanOrEqual(before);
+    expect(mockDb.proctoringSessions.find((row) => row.id === session.id)).toEqual(saved);
+    const replay = await parse(await patch(path, body, userId, "verify"), ProctoringSessionSchema);
+    expect(replay).toEqual(saved);
+    expect((await patch(path, body, userId, "verify-again")).status).toBe(409);
+  });
+
+  it("rejects identity decisions without a configured check or manage permission", async () => {
+    const { userId } = staffViewer("reviewer");
+    const { path } = pendingSession();
+    const body = { result: "not_verified" };
+    expect((await patch(path, body, userId, "reviewer-only")).status).toBe(403);
+    resetMockDb();
+    const manager = staffViewer();
+    const { settings } = pendingSession();
+    settings.identityCheck = "none";
+    expect((await patch(path, body, manager.userId, "no-check")).status).toBe(409);
   });
 });
