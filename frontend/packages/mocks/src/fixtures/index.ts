@@ -60,3 +60,32 @@ export {
 export * from "./early-years";
 export * from "./inclusion";
 export * from "./portfolios";
+export {
+  BOOKING_CLIENT,
+  CATALOGUE_COURSE,
+  CATALOGUE_RECORD,
+  CLASS_SESSION,
+  DOUBT,
+  DOUBT_ANSWER,
+  DOUBT_CLIENT,
+  LEVEL_EXAM,
+  LIBRARY_BARCODE,
+  LIBRARY_CLIENT,
+  LIBRARY_COPY,
+  LIBRARY_DESK_RECEIPT,
+  LIBRARY_DIGITAL_RESOURCE,
+  LIBRARY_FINE,
+  LIBRARY_HOLD,
+  LIBRARY_LOAN,
+  PACK_PURCHASE,
+  PARENT_REPORT,
+  PRACTICE_FEEDBACK as PRACTICE_FEEDBACK_ID,
+  PRACTICE_MEDIA,
+  SESSION_BOOKING,
+  SESSION_PACK,
+  TEST_SERIES,
+  WEAK_TOPIC_PLAN,
+} from "./ids-stage4-more";
+export * from "./library";
+export * from "./test-prep";
+export * from "./session-courses";

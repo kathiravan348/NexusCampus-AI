@@ -310,6 +310,48 @@ export const queryKeys = {
     supportPlanProgress: (s: KeyScope, planId: string | null) =>
       scoped(s, "m38", "support-plans", planId, "progress"),
   },
+  m39: {
+    catalogueRecords: (s: KeyScope) => scoped(s, "m39", "catalogue-records", "list"),
+    catalogueRecord: (s: KeyScope, recordId: string | null) =>
+      scoped(s, "m39", "catalogue-records", recordId),
+    libraryCopies: (s: KeyScope, recordId: string | null) =>
+      scoped(s, "m39", "library-copies", recordId),
+    loans: (s: KeyScope, borrowerProfileId: string | null) =>
+      scoped(s, "m39", "loans", borrowerProfileId),
+    holds: (s: KeyScope, borrowerProfileId: string | null) =>
+      scoped(s, "m39", "holds", borrowerProfileId),
+    libraryFines: (s: KeyScope, borrowerProfileId: string | null) =>
+      scoped(s, "m39", "library-fines", borrowerProfileId),
+    readingRecommendations: (s: KeyScope, borrowerProfileId: string | null) =>
+      scoped(s, "m39", "reading-recommendations", borrowerProfileId),
+  },
+  m40: {
+    testSeries: (s: KeyScope) => scoped(s, "m40", "test-series", "list"),
+    testSeriesRanks: (s: KeyScope, seriesId: string | null) =>
+      scoped(s, "m40", "test-series", seriesId, "ranks"),
+    doubts: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m40", "doubts", "list", learnerId),
+    doubtAnswers: (s: KeyScope, doubtId: string | null) =>
+      scoped(s, "m40", "doubts", doubtId, "answers"),
+    weakTopicPlans: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m40", "weak-topic-plans", learnerId),
+    parentReports: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m40", "parent-reports", learnerId),
+  },
+  m41: {
+    catalogueCourses: (s: KeyScope) => scoped(s, "m41", "catalogue-courses"),
+    sessionPacks: (s: KeyScope) => scoped(s, "m41", "session-packs"),
+    packPurchases: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m41", "pack-purchases", learnerId),
+    classSessions: (s: KeyScope, from: string | null, to: string | null) =>
+      scoped(s, "m41", "class-sessions", from, to),
+    sessionBookings: (s: KeyScope, sessionId: string | null) =>
+      scoped(s, "m41", "session-bookings", sessionId),
+    levelExams: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m41", "level-exams", learnerId),
+    practiceFeedback: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m41", "practice-feedback", learnerId),
+  },
   m46: {
     engagementSnapshots: (s: KeyScope, learnerId: string | null) =>
       scoped(s, "m46", "engagement", learnerId),
