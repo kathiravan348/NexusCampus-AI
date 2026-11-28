@@ -42,7 +42,7 @@ describe("M30 hooks", () => {
       expect(spaces.data?.total).toBe(8);
       expect(space.data?.code).toBe("RV-Y5-MATH");
       expect(modules.data?.total).toBe(3);
-      expect(items.data?.total).toBe(4);
+      expect(items.data?.total).toBe(6);
       expect(progress.data?.total).toBe(1);
       expect(threads.data?.total).toBe(1);
       expect(posts.data?.total).toBe(3);

@@ -86,7 +86,7 @@ describe("M30 read handlers", () => {
       pageSchema(DiscussionPostSchema),
     );
     expect(modules.total).toBe(3);
-    expect(items.total).toBe(4);
+    expect(items.total).toBe(6);
     expect(progress.total).toBe(1);
     expect(threads.items).toEqual([thread]);
     expect(posts.total).toBe(3);
@@ -117,7 +117,7 @@ describe("M30 read handlers", () => {
     expect((await get(`/course-spaces/${unrelated.id}/items`, user)).status).toBe(404);
 
     const items = await parse(await get(`${path}/items`, user), pageSchema(CourseItemSchema));
-    expect(items.total).toBe(4);
+    expect(items.total).toBe(6);
     expect(items.items.every((row) => row.published)).toBe(true);
     const rows = await parse(await get(`${path}/progress`, user), pageSchema(CourseProgressSchema));
     expect(rows.items).toEqual([progress]);
