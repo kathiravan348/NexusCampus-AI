@@ -53,7 +53,8 @@
 | NEX-228 | M31 Content studio: library, item view, accessibility check, publish (offline L2) | C | done | Gemini | 222, 227 |
 | NEX-268 | M31 lesson block editor: create / edit drafts, blocks, alt text and captions (AI drafts labelled) — split from NEX-228 | C | planned | — | 228 |
 | NEX-229 | M32 Homework & assignments (offline L2 submit) | C | planned | — | 223, 228 |
-| NEX-230 | M33 Question bank & online tests | C | draft | — | 223, 229 |
+| NEX-230 | M33 Online tests screens (read): list, test view, attempts, item statistics | C | planned | — | 223, 229 |
+| NEX-269 | M33 learner test taking: start, answer, submit (offline L2) — split from NEX-230 | C | draft | — | 230 |
 | NEX-231 | M34 Online proctoring (flags for human review only) | C | draft | — | 223, 230 |
 | NEX-232 | M35 AI tutor & learning paths (guardian consent for minors) | C | draft | — | 223, 231 |
 | NEX-233 | M36 Live classes | C | draft | — | 224, 232 |
