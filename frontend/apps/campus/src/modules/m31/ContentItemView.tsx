@@ -115,6 +115,7 @@ function formatDuration(seconds: number, locale: string, t: ReturnType<typeof us
 
 export interface ContentItemViewProps {
   readonly item: ContentItem;
+  readonly onEdit?: (item: ContentItem) => void;
   readonly onBack: () => void;
 }
 
@@ -122,7 +123,7 @@ export interface ContentItemViewProps {
  * Detail view of a single M31 content item: metadata, outcome count, referenced assets (without
  * URLs), lesson block previews, accessibility report, and permission-gated check/publish actions.
  */
-export function ContentItemView({ item, onBack }: ContentItemViewProps) {
+export function ContentItemView({ item, onBack, onEdit }: ContentItemViewProps) {
   const t = useText();
   const { locale, timeZone } = useRuntime();
   const safeLocale = isPseudoLocale(locale) ? SOURCE_LOCALE : locale;
@@ -159,11 +160,16 @@ export function ContentItemView({ item, onBack }: ContentItemViewProps) {
 
   return (
     <div className="space-y-4">
-      <div>
+      <div className="flex flex-wrap gap-2">
         <Button variant="ghost" size="sm" onClick={onBack}>
           <ArrowLeft className="h-4 w-4 shrink-0 rtl:rotate-180" aria-hidden="true" />
           <span>{t("m31.item.back")}</span>
         </Button>
+        {onEdit && canManage && current.kind === "lesson" && current.status === "draft" && (
+          <Button variant="secondary" size="sm" onClick={() => onEdit(current)}>
+            {t("common.edit")}
+          </Button>
+        )}
       </div>
 
       <section className="space-y-3 rounded-lg border border-border-default bg-bg-surface p-4">

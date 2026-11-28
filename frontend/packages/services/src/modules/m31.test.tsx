@@ -8,6 +8,8 @@ import {
   useContentAttempts,
   useContentItem,
   useContentItems,
+  useCreateContentLesson,
+  useUpdateContentLesson,
   usePublishContentItem,
 } from "../index";
 import { ADMIN, freshDb, signInAs, startMockServer, wrapper } from "../test-utils";
@@ -80,6 +82,56 @@ describe("M31 hooks", () => {
       expect(result.current.item.data?.status).toBe("published");
       const listed = result.current.items.data?.items.find((row) => row.id === id);
       expect(listed?.status).toBe("published");
+    });
+  });
+
+  it("queues a lesson offline, syncs one draft, and refreshes its list and detail after editing", async () => {
+    const scope = { tenantId: TENANT.riverside, userId: USER.rvAmira };
+    signInAs({ ...ADMIN, ...scope });
+    const db = freshDb();
+    const online = vi.spyOn(window.navigator, "onLine", "get").mockReturnValue(false);
+    const title = "Paper folding";
+    const input = {
+      title,
+      language: "en",
+      outcomeIds: [],
+      blocks: [{ type: "text" as const, markdown: "Fold once." }],
+    };
+    const { result } = renderHook(
+      () => {
+        const list = useContentItems();
+        const id = list.data?.items.find((i) => i.title === title)?.id ?? null;
+        return {
+          list,
+          detail: useContentItem(id),
+          create: useCreateContentLesson(),
+          update: useUpdateContentLesson(),
+        };
+      },
+      { wrapper: wrapper({ db }) },
+    );
+    await act(async () =>
+      expect((await result.current.create.mutateAsync(input)).queued).toBe(true),
+    );
+    expect(await listOutbox(db, scope)).toMatchObject([
+      { operation: "content.create", payload: input },
+    ]);
+    expect(mockDb.contentItems.some((item) => item.title === title)).toBe(false);
+    online.mockReturnValue(true);
+    act(() => {
+      window.dispatchEvent(new Event("online"));
+    });
+    await waitFor(() => expect(result.current.detail.data?.status).toBe("draft"));
+    await waitFor(async () => expect(await listOutbox(db, scope)).toHaveLength(0));
+    const id = result.current.detail.data!.id;
+    await act(async () => {
+      await result.current.update.mutateAsync({ id, input: { ...input, language: "hi" } });
+    });
+    await waitFor(() => {
+      expect(result.current.detail.data?.language).toBe("hi");
+      expect(result.current.list.data?.items.filter((item) => item.id === id)).toMatchObject([
+        { language: "hi" },
+      ]);
     });
   });
 

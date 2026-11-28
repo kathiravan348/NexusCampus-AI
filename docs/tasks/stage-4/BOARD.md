@@ -51,7 +51,7 @@
 | NEX-261 | M29 lesson-plan workflow: submit, approve / return, delivered, coverage updates — split from NEX-226 | C | done | Codex | 226 |
 | NEX-227 | M30 LMS classrooms & courses (read + discussion replies, offline L2) | C | done | Gemini | 222, 226, 261 |
 | NEX-228 | M31 Content studio: library, item view, accessibility check, publish (offline L2) | C | done | Gemini | 222, 227 |
-| NEX-268 | M31 lesson block editor: create / edit drafts, blocks, alt text and captions (AI drafts labelled) — split from NEX-228 | C | planned | — | 228 |
+| NEX-268 | M31 lesson block editor: create / edit drafts, blocks, alt text and captions (AI drafts labelled) — split from NEX-228 | C | ready-for-review | Codex | 228 |
 | NEX-229 | M32 Homework & assignments (offline L2 submit) | C | planned | — | 223, 228 |
 | NEX-230 | M33 Question bank & online tests | C | draft | — | 223, 229 |
 | NEX-231 | M34 Online proctoring (flags for human review only) | C | draft | — | 223, 230 |

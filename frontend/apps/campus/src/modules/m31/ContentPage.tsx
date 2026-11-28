@@ -1,12 +1,18 @@
-import type { ContentStatus } from "@nexus/contracts";
+import type { ContentItem, ContentLessonInput, ContentStatus } from "@nexus/contracts";
 import { formatNumber, isPseudoLocale, SOURCE_LOCALE, useText } from "@nexus/i18n";
-import { useContentItems } from "@nexus/services";
-import { Badge, Button, Card, EmptyState, Select, Skeleton } from "@nexus/ui-core";
+import {
+  useContentItems,
+  useCreateContentLesson,
+  useMe,
+  useUpdateContentLesson,
+} from "@nexus/services";
+import { Badge, Button, Card, EmptyState, Select, Skeleton, useToast } from "@nexus/ui-core";
 import { FileStack, Sparkles } from "lucide-react";
 import { useMemo, useState } from "react";
 import { LastSynced } from "../../app/LastSynced";
 import { useRuntime } from "../../app/TenantRuntime";
 import { CONTENT_KIND_META, CONTENT_STATUS_META, ContentItemView } from "./ContentItemView";
+import { LessonEditor } from "./LessonEditor";
 
 type StatusFilter = "all" | ContentStatus;
 
@@ -19,6 +25,11 @@ export function ContentPage() {
   const { locale } = useRuntime();
   const safeLocale = isPseudoLocale(locale) ? SOURCE_LOCALE : locale;
   const items = useContentItems();
+  const canManage = useMe().data?.permissions.includes("m31.content.manage");
+  const create = useCreateContentLesson();
+  const update = useUpdateContentLesson();
+  const toast = useToast();
+  const [editor, setEditor] = useState<"new" | ContentItem | null>(null);
   const [statusFilter, setStatusFilter] = useState<StatusFilter>("all");
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
 
@@ -31,6 +42,20 @@ export function ContentPage() {
       statusFilter === "all" ? allItems : allItems.filter((row) => row.status === statusFilter),
     [allItems, statusFilter],
   );
+
+  async function saveLesson(input: ContentLessonInput) {
+    if (!editor || !canManage) return;
+    const result =
+      editor === "new"
+        ? await create.mutateAsync(input)
+        : await update.mutateAsync({ id: editor.id, input });
+    if (editor === "new") setStatusFilter("all");
+    toast.show({
+      tone: result.queued ? "info" : "success",
+      title: t(result.queued ? "m31.editor.queued" : "m31.editor.saved"),
+    });
+    setEditor(null);
+  }
 
   const statusOptions = [
     { value: "all", label: t("m31.library.allStatuses") },
@@ -50,8 +75,22 @@ export function ContentPage() {
         <LastSynced updatedAt={items.dataUpdatedAt} />
       </header>
 
-      {selectedItem ? (
-        <ContentItemView item={selectedItem} onBack={() => setSelectedItemId(null)} />
+      {!selectedItem && !editor && canManage && (
+        <Button onClick={() => setEditor("new")}>{t("m31.editor.newLesson")}</Button>
+      )}
+
+      {editor && canManage ? (
+        <LessonEditor
+          item={editor === "new" ? null : editor}
+          onSave={saveLesson}
+          onCancel={() => setEditor(null)}
+        />
+      ) : selectedItem ? (
+        <ContentItemView
+          item={selectedItem}
+          onEdit={setEditor}
+          onBack={() => setSelectedItemId(null)}
+        />
       ) : items.isPending && !items.data ? (
         <div
           className="grid grid-cols-1 gap-4 md:grid-cols-2"

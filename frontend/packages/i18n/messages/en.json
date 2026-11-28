@@ -8783,6 +8783,114 @@
     "message": "Publish learning content",
     "description": "Permission description: Publish learning content after the required accessibility check."
   },
+  "m31.editor.newLesson": {
+    "message": "New lesson",
+    "description": "Button and heading for creating a lesson draft."
+  },
+  "m31.editor.editLesson": {
+    "message": "Edit lesson",
+    "description": "Heading for editing an existing lesson draft."
+  },
+  "m31.editor.title": {
+    "message": "Lesson title",
+    "description": "Label for the editable lesson title."
+  },
+  "m31.editor.titleError": {
+    "message": "Enter a title of up to 200 characters.",
+    "description": "Validation hint for the lesson title."
+  },
+  "m31.editor.outcomeLimit": {
+    "message": "Choose up to 20 outcomes.",
+    "description": "Selection limit for learning outcomes."
+  },
+  "m31.editor.type": {
+    "message": "Block type",
+    "description": "Label for the type of block to add."
+  },
+  "m31.editor.add": {
+    "message": "Add block",
+    "description": "Button that appends a block of the selected type."
+  },
+  "m31.editor.up": {
+    "message": "Move up",
+    "description": "Moves the block one place earlier in the lesson."
+  },
+  "m31.editor.down": {
+    "message": "Move down",
+    "description": "Moves the block one place later in the lesson."
+  },
+  "m31.editor.remove": {
+    "message": "Remove block",
+    "description": "Button to remove the current lesson block."
+  },
+  "m31.editor.confirmRemove": {
+    "message": "Remove this block from the lesson?",
+    "description": "Confirmation before removing a block from the draft."
+  },
+  "m31.editor.blockRequired": {
+    "message": "Add at least one block.",
+    "description": "Shown when the lesson has no blocks."
+  },
+  "m31.editor.markdown": {
+    "message": "Lesson text",
+    "description": "Label for a plain-text editor that accepts Markdown."
+  },
+  "m31.editor.textError": {
+    "message": "Enter lesson text.",
+    "description": "Prompt for a required text block."
+  },
+  "m31.editor.chooseAsset": {
+    "message": "Choose a file",
+    "description": "Prompt to select an existing file matching the block type."
+  },
+  "m31.editor.alt": {
+    "message": "Alt text",
+    "description": "Label for the image text alternative."
+  },
+  "m31.editor.altError": {
+    "message": "Describe the image in up to 500 characters.",
+    "description": "Validation hint for required image alternative text."
+  },
+  "m31.editor.count": {
+    "message": "{count} of {max} characters",
+    "description": "Alt text character counter. Both values are formatted numbers."
+  },
+  "m31.editor.captionWarning": {
+    "message": "You can save this draft. Add captions before publishing.",
+    "description": "Warning for a video without caption tracks."
+  },
+  "m31.editor.questionId": {
+    "message": "Question ID",
+    "description": "Label for a question reference."
+  },
+  "m31.editor.questionError": {
+    "message": "Enter a valid question ID.",
+    "description": "Validation hint for a question reference."
+  },
+  "m31.editor.url": {
+    "message": "Embed URL",
+    "description": "Label for an embedded resource's HTTPS address."
+  },
+  "m31.editor.urlError": {
+    "message": "Enter a valid HTTPS address.",
+    "description": "Validation hint for an embedded resource address."
+  },
+  "m31.editor.optionsError": {
+    "message": "Some file or outcome choices could not be loaded.",
+    "description": "Error loading asset or outcome options in the lesson editor."
+  },
+  "m31.editor.saveError": {
+    "message": "Could not save this lesson. Check your access and try again.",
+    "description": "Generic save error that contains no lesson content."
+  },
+  "m31.editor.queued": {
+    "message": "Lesson queued offline. It will sync when you reconnect.",
+    "description": "Confirmation that a lesson write was queued on this device."
+  },
+  "m31.editor.saved": {
+    "message": "Lesson draft saved.",
+    "description": "Confirmation of an online draft save."
+  },
   "m31.nav.title": {
     "message": "Content",
     "description": "Navigation item and page title of the Content studio screen (M31)."

@@ -296,6 +296,10 @@
     "valid": true
   },
   {
+    "text": "20 கற்றல் விளைவுகள் வரை தேர்ந்தெடுக்கவும்.",
+    "valid": true
+  },
+  {
     "text": "200 अक्षरों तक का शीर्षक दर्ज करें।",
     "valid": true
   },
@@ -700,6 +704,14 @@
     "valid": true
   },
   {
+    "text": "Add at least one block.",
+    "valid": true
+  },
+  {
+    "text": "Add block",
+    "valid": true
+  },
+  {
     "text": "Add campus",
     "valid": true
   },
@@ -853,6 +865,10 @@
   },
   {
     "text": "Already revoked. Close this dialog and reload to see the latest status.",
+    "valid": true
+  },
+  {
+    "text": "Alt text",
     "valid": true
   },
   {
@@ -1220,6 +1236,10 @@
     "valid": true
   },
   {
+    "text": "Block type",
+    "valid": true
+  },
+  {
     "text": "Block {number}",
     "valid": true
   },
@@ -1520,6 +1540,10 @@
     "valid": true
   },
   {
+    "text": "Choose a file",
+    "valid": true
+  },
+  {
     "text": "Choose a file with a plain file name (up to 200 characters).",
     "valid": true
   },
@@ -1545,6 +1569,10 @@
   },
   {
     "text": "Choose two different academic years.",
+    "valid": true
+  },
+  {
+    "text": "Choose up to 20 outcomes.",
     "valid": true
   },
   {
@@ -1852,6 +1880,10 @@
     "valid": true
   },
   {
+    "text": "Could not save this lesson. Check your access and try again.",
+    "valid": true
+  },
+  {
     "text": "Couldn’t save the mark. Check the session and try again.",
     "valid": true
   },
@@ -2148,6 +2180,10 @@
     "valid": true
   },
   {
+    "text": "Describe the image in up to 500 characters.",
+    "valid": true
+  },
+  {
     "text": "Destroyed",
     "valid": true
   },
@@ -2388,6 +2424,10 @@
     "valid": true
   },
   {
+    "text": "Edit lesson",
+    "valid": true
+  },
+  {
     "text": "Edit lesson plan",
     "valid": true
   },
@@ -2441,6 +2481,10 @@
   },
   {
     "text": "Embed",
+    "valid": true
+  },
+  {
+    "text": "Embed URL",
     "valid": true
   },
   {
@@ -2564,7 +2608,15 @@
     "valid": true
   },
   {
+    "text": "Enter a title of up to 200 characters.",
+    "valid": true
+  },
+  {
     "text": "Enter a title up to 200 characters.",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid HTTPS address.",
     "valid": true
   },
   {
@@ -2593,6 +2645,10 @@
   },
   {
     "text": "Enter a valid positive amount.",
+    "valid": true
+  },
+  {
+    "text": "Enter a valid question ID.",
     "valid": true
   },
   {
@@ -2625,6 +2681,10 @@
   },
   {
     "text": "Enter custom wording for this language…",
+    "valid": true
+  },
+  {
+    "text": "Enter lesson text.",
     "valid": true
   },
   {
@@ -3648,6 +3708,10 @@
     "valid": true
   },
   {
+    "text": "Lesson draft saved.",
+    "valid": true
+  },
+  {
     "text": "Lesson plan draft created.",
     "valid": true
   },
@@ -3669,6 +3733,18 @@
   },
   {
     "text": "Lesson plans could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Lesson queued offline. It will sync when you reconnect.",
+    "valid": true
+  },
+  {
+    "text": "Lesson text",
+    "valid": true
+  },
+  {
+    "text": "Lesson title",
     "valid": true
   },
   {
@@ -4116,6 +4192,14 @@
     "valid": true
   },
   {
+    "text": "Move down",
+    "valid": true
+  },
+  {
+    "text": "Move up",
+    "valid": true
+  },
+  {
     "text": "Multi-campus group",
     "valid": true
   },
@@ -4189,6 +4273,10 @@
   },
   {
     "text": "New language",
+    "valid": true
+  },
+  {
+    "text": "New lesson",
     "valid": true
   },
   {
@@ -5552,6 +5640,10 @@
     "valid": true
   },
   {
+    "text": "Question ID",
+    "valid": true
+  },
+  {
     "text": "Question ID: {id}",
     "valid": true
   },
@@ -5740,6 +5832,10 @@
     "valid": true
   },
   {
+    "text": "Remove block",
+    "valid": true
+  },
+  {
     "text": "Remove holiday {name}",
     "valid": true
   },
@@ -5757,6 +5853,10 @@
   },
   {
     "text": "Remove period {name}",
+    "valid": true
+  },
+  {
+    "text": "Remove this block from the lesson?",
     "valid": true
   },
   {
@@ -6485,6 +6585,10 @@
   },
   {
     "text": "Skipped heading level",
+    "valid": true
+  },
+  {
+    "text": "Some file or outcome choices could not be loaded.",
     "valid": true
   },
   {
@@ -7972,6 +8076,10 @@
     "valid": true
   },
   {
+    "text": "You can save this draft. Add captions before publishing.",
+    "valid": true
+  },
+  {
     "text": "You cannot remove your own last admin role.",
     "valid": true
   },
@@ -8544,6 +8652,10 @@
     "valid": true
   },
   {
+    "text": "{count} of {max} characters",
+    "valid": true
+  },
+  {
     "text": "{count} मिनट / सप्ताह",
     "valid": true
   },
@@ -8805,6 +8917,14 @@
   },
   {
     "text": "{marks} / {max}",
+    "valid": true
+  },
+  {
+    "text": "{max} में से {count} अक्षर",
+    "valid": true
+  },
+  {
+    "text": "{max} எழுத்துகளில் {count}",
     "valid": true
   },
   {
@@ -9272,7 +9392,19 @@
     "valid": true
   },
   {
+    "text": "अधिकतम 20 परिणाम चुनें।",
+    "valid": true
+  },
+  {
     "text": "अधिकतम 200 अक्षरों का नाम दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "अधिकतम 200 अक्षरों का शीर्षक दर्ज करें।",
+    "valid": true
+  },
+  {
+    "text": "अधिकतम 500 अक्षरों में चित्र का वर्णन करें।",
     "valid": true
   },
   {
@@ -9828,6 +9960,10 @@
     "valid": true
   },
   {
+    "text": "आप ड्राफ़्ट सहेज सकते हैं। प्रकाशित करने से पहले कैप्शन जोड़ें।",
+    "valid": true
+  },
+  {
     "text": "आप तय करते हैं कि Nexus सहायता कर्मचारी आपका डेटा कब और कितनी देर देख सकते हैं, और उन्होंने क्या किया। कुंजी सामग्री कभी नहीं दिखाई जाती।",
     "valid": true
   },
@@ -10200,6 +10336,10 @@
     "valid": true
   },
   {
+    "text": "इस ब्लॉक को पाठ से हटाएँ?",
+    "valid": true
+  },
+  {
     "text": "इस भाषा का पहले से एक संस्करण है।",
     "valid": true
   },
@@ -10512,6 +10652,10 @@
     "valid": true
   },
   {
+    "text": "ऊपर ले जाएँ",
+    "valid": true
+  },
+  {
     "text": "एंटरप्राइज़",
     "valid": true
   },
@@ -10565,6 +10709,10 @@
   },
   {
     "text": "एम्बेड",
+    "valid": true
+  },
+  {
+    "text": "एम्बेड यूआरएल",
     "valid": true
   },
   {
@@ -10792,6 +10940,10 @@
     "valid": true
   },
   {
+    "text": "कम से कम एक ब्लॉक जोड़ें।",
+    "valid": true
+  },
+  {
     "text": "कर {rate}",
     "valid": true
   },
@@ -10985,6 +11137,10 @@
   },
   {
     "text": "कुछ गलत हो गया",
+    "valid": true
+  },
+  {
+    "text": "कुछ फ़ाइलों या परिणामों के विकल्प लोड नहीं हो सके।",
     "valid": true
   },
   {
@@ -12324,6 +12480,10 @@
     "valid": true
   },
   {
+    "text": "नया पाठ",
+    "valid": true
+  },
+  {
     "text": "नष्ट",
     "valid": true
   },
@@ -12441,6 +12601,10 @@
   },
   {
     "text": "निष्क्रिय",
+    "valid": true
+  },
+  {
+    "text": "नीचे ले जाएँ",
     "valid": true
   },
   {
@@ -12648,7 +12812,27 @@
     "valid": true
   },
   {
+    "text": "पाठ ऑफ़लाइन कतार में है। कनेक्शन लौटने पर यह सिंक होगा।",
+    "valid": true
+  },
+  {
+    "text": "पाठ का ड्राफ़्ट सहेजा गया।",
+    "valid": true
+  },
+  {
+    "text": "पाठ का शीर्षक",
+    "valid": true
+  },
+  {
     "text": "पाठ की तिथि",
+    "valid": true
+  },
+  {
+    "text": "पाठ की सामग्री",
+    "valid": true
+  },
+  {
+    "text": "पाठ की सामग्री दर्ज करें।",
     "valid": true
   },
   {
@@ -12693,6 +12877,14 @@
   },
   {
     "text": "पाठ योजनाएँ लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
+    "text": "पाठ संपादित करें",
+    "valid": true
+  },
+  {
+    "text": "पाठ सहेजा नहीं जा सका। अपनी अनुमति जाँचें और फिर कोशिश करें।",
     "valid": true
   },
   {
@@ -13232,6 +13424,10 @@
     "valid": true
   },
   {
+    "text": "प्रश्न आईडी",
+    "valid": true
+  },
+  {
     "text": "प्रश्न आईडी: {id}",
     "valid": true
   },
@@ -13345,6 +13541,10 @@
   },
   {
     "text": "फ़ाइल",
+    "valid": true
+  },
+  {
+    "text": "फ़ाइल चुनें",
     "valid": true
   },
   {
@@ -13708,6 +13908,18 @@
     "valid": true
   },
   {
+    "text": "ब्लॉक का प्रकार",
+    "valid": true
+  },
+  {
+    "text": "ब्लॉक जोड़ें",
+    "valid": true
+  },
+  {
+    "text": "ब्लॉक हटाएँ",
+    "valid": true
+  },
+  {
     "text": "भारत (IN)",
     "valid": true
   },
@@ -13912,6 +14124,10 @@
     "valid": true
   },
   {
+    "text": "मान्य HTTPS पता दर्ज करें।",
+    "valid": true
+  },
+  {
     "text": "मान्य ईमेल पता दर्ज करें।",
     "valid": true
   },
@@ -13937,6 +14153,10 @@
   },
   {
     "text": "मान्य पंक्तियाँ",
+    "valid": true
+  },
+  {
+    "text": "मान्य प्रश्न आईडी दर्ज करें।",
     "valid": true
   },
   {
@@ -14725,6 +14945,10 @@
   },
   {
     "text": "वैकल्पिक",
+    "valid": true
+  },
+  {
+    "text": "वैकल्पिक पाठ",
     "valid": true
   },
   {
@@ -17128,6 +17352,10 @@
     "valid": true
   },
   {
+    "text": "இந்தப் பகுதியைப் பாடத்திலிருந்து அகற்ற வேண்டுமா?",
+    "valid": true
+  },
+  {
     "text": "இந்தப் பக்கத்தைச் சரிபார்",
     "valid": true
   },
@@ -17717,6 +17945,10 @@
   },
   {
     "text": "உட்பொதிப்பு",
+    "valid": true
+  },
+  {
+    "text": "உட்பொதிவு முகவரி",
     "valid": true
   },
   {
@@ -18768,6 +19000,10 @@
     "valid": true
   },
   {
+    "text": "கீழே நகர்த்து",
+    "valid": true
+  },
+  {
     "text": "குடும்ப முகப்பை ஏற்ற முடியவில்லை.",
     "valid": true
   },
@@ -18860,6 +19096,10 @@
     "valid": true
   },
   {
+    "text": "குறைந்தது ஒரு பகுதியைச் சேர்க்கவும்.",
+    "valid": true
+  },
+  {
     "text": "குறைந்தது ஒரு பாடத்திட்ட தலைப்பையாவது தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
@@ -18936,6 +19176,10 @@
     "valid": true
   },
   {
+    "text": "கேள்வி அடையாளம்",
+    "valid": true
+  },
+  {
     "text": "கைமுறை",
     "valid": true
   },
@@ -18985,6 +19229,10 @@
   },
   {
     "text": "கோப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "கோப்பைத் தேர்ந்தெடுக்கவும்",
     "valid": true
   },
   {
@@ -19212,6 +19460,10 @@
     "valid": true
   },
   {
+    "text": "சில கோப்புகள் அல்லது கற்றல் விளைவுகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "சீராய்வு செய்யப்பட்டது",
     "valid": true
   },
@@ -19420,7 +19672,15 @@
     "valid": true
   },
   {
+    "text": "செல்லுபடியாகும் HTTPS முகவரியை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
     "text": "செல்லுபடியாகும் எண்களை உள்ளிடுங்கள். அதிகபட்ச மதிப்பு குறைந்தபட்ச மதிப்புக்குச் சமமாகவோ அதிகமாகவோ இருக்க வேண்டும்.",
+    "valid": true
+  },
+  {
+    "text": "செல்லுபடியாகும் கேள்வி அடையாளத்தை உள்ளிடவும்.",
     "valid": true
   },
   {
@@ -20788,7 +21048,19 @@
     "valid": true
   },
   {
+    "text": "பகுதி வகை",
+    "valid": true
+  },
+  {
     "text": "பகுதிகள்",
+    "valid": true
+  },
+  {
+    "text": "பகுதியை அகற்று",
+    "valid": true
+  },
+  {
+    "text": "பகுதியைச் சேர்",
     "valid": true
   },
   {
@@ -20865,6 +21137,10 @@
   },
   {
     "text": "படங்கள் மற்றும் உரை",
+    "valid": true
+  },
+  {
+    "text": "படத்தை 500 எழுத்துகளுக்குள் விவரிக்கவும்.",
     "valid": true
   },
   {
@@ -21288,11 +21564,23 @@
     "valid": true
   },
   {
+    "text": "பாட உரை",
+    "valid": true
+  },
+  {
+    "text": "பாட உரையை உள்ளிடவும்.",
+    "valid": true
+  },
+  {
     "text": "பாட ஒதுக்கீடு",
     "valid": true
   },
   {
     "text": "பாட வகுப்பு",
+    "valid": true
+  },
+  {
+    "text": "பாட வரைவு சேமிக்கப்பட்டது.",
     "valid": true
   },
   {
@@ -21309,6 +21597,10 @@
   },
   {
     "text": "பாடங்கள்",
+    "valid": true
+  },
+  {
+    "text": "பாடத் தலைப்பு",
     "valid": true
   },
   {
@@ -21400,6 +21692,14 @@
     "valid": true
   },
   {
+    "text": "பாடத்தைச் சேமிக்க முடியவில்லை. அனுமதியைச் சரிபார்த்து மீண்டும் முயலவும்.",
+    "valid": true
+  },
+  {
+    "text": "பாடத்தைத் திருத்து",
+    "valid": true
+  },
+  {
     "text": "பாடநெறி",
     "valid": true
   },
@@ -21441,6 +21741,10 @@
   },
   {
     "text": "பாடம்",
+    "valid": true
+  },
+  {
+    "text": "பாடம் ஆஃப்லைன் வரிசையில் உள்ளது. மீண்டும் இணைந்ததும் ஒத்திசையும்.",
     "valid": true
   },
   {
@@ -21577,6 +21881,10 @@
   },
   {
     "text": "புதிய பாடத் திட்டம்",
+    "valid": true
+  },
+  {
+    "text": "புதிய பாடம்",
     "valid": true
   },
   {
@@ -22060,6 +22368,10 @@
     "valid": true
   },
   {
+    "text": "மாற்று உரை",
+    "valid": true
+  },
+  {
     "text": "மாற்று உரை இல்லை",
     "valid": true
   },
@@ -22373,6 +22685,10 @@
   },
   {
     "text": "மேலெழுதியவை மட்டும்",
+    "valid": true
+  },
+  {
+    "text": "மேலே நகர்த்து",
     "valid": true
   },
   {
@@ -22717,6 +23033,10 @@
   },
   {
     "text": "வரைவைச் சேமி",
+    "valid": true
+  },
+  {
+    "text": "வரைவைச் சேமிக்கலாம். வெளியிடுவதற்கு முன் வசனவரிகளைச் சேர்க்கவும்.",
     "valid": true
   },
   {

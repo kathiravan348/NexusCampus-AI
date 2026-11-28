@@ -21,7 +21,11 @@ describe("ContentPage (M31)", () => {
 
   it("blocks publishing a captionless video after check and publishes a clean draft", async () => {
     const teacherRole = mockDb.roles.find((r) => r.id === roleId(TENANT.riverside, "teacher"))!;
-    teacherRole.permissions = [...teacherRole.permissions, "m31.content.publish"];
+    mockDb.roles = mockDb.roles.map((role) =>
+      role === teacherRole
+        ? { ...role, permissions: [...role.permissions, "m31.content.publish"] }
+        : role,
+    );
 
     const baseVideo = mockDb.contentItems.find((row) => row.id === CONTENT_ITEM.rvWaterVideo)!;
     const uncaptionedDraft: ContentItem = {
@@ -81,6 +85,62 @@ describe("ContentPage (M31)", () => {
     expect(within(essayCard).getByText("Published")).toBeInTheDocument();
   });
 
+  it("saves a text and image lesson, then edits it to add a video", async () => {
+    openContent({ ...persona(TENANT.riverside, "teacher"), userId: USER.rvAmira });
+    fireEvent.click(await screen.findByRole("button", { name: "New lesson" }));
+    const change = (label: string, value: string) =>
+      fireEvent.change(screen.getByLabelText(label), { target: { value } });
+    const add = (type: string) => {
+      change("Block type", type);
+      fireEvent.click(screen.getByRole("button", { name: "Add block" }));
+    };
+    change("Lesson title", "Local habitats");
+    change("Lesson text", "Compare the habitats.");
+    add("image");
+    const image = mockDb.contentAssets.find(
+      (a) => a.tenantId === TENANT.riverside && a.kind === "image",
+    )!;
+    await screen.findByRole("option", { name: image.fileName });
+    change("Image", image.id);
+    expect(screen.getByRole("button", { name: "Save" })).toBeDisabled();
+    change("Alt text", "A pond and its banks.");
+    fireEvent.click(screen.getByRole("button", { name: "Save" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Open Local habitats" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Run accessibility check" }));
+    expect(await screen.findByText("No accessibility issues found")).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Edit" }));
+    add("video");
+    const video = mockDb.contentAssets.find((a) => a.id === CONTENT_ASSET.rvFractionClip)!;
+    await screen.findByRole("option", { name: video.fileName });
+    change("Video", video.id);
+    expect(
+      screen.getByText("You can save this draft. Add captions before publishing."),
+    ).toBeVisible();
+    fireEvent.click(screen.getByRole("button", { name: "Save" }));
+    expect(await screen.findByText("Not checked")).toBeVisible();
+    const lesson = mockDb.contentItems.find((row) => row.title === "Local habitats");
+    expect(lesson?.status).toBe("draft");
+    expect(lesson?.blocks?.map((b) => b.type)).toEqual(["text", "image", "video"]);
+  });
+
+  it("hides authoring controls from a teacher without manage permission", async () => {
+    const role = mockDb.roles.find((r) => r.id === roleId(TENANT.riverside, "teacher"))!;
+    const previous = role.permissions;
+    role.permissions = previous.filter((p) => p !== "m31.content.manage");
+    try {
+      openContent({ ...persona(TENANT.riverside, "teacher"), userId: USER.rvAmira });
+      const open = await screen.findByRole("button", {
+        name: "Open Equivalent Fractions Interactive Lesson",
+      });
+      expect(screen.queryByRole("button", { name: "New lesson" })).toBeNull();
+      fireEvent.click(open);
+      expect(await screen.findByRole("heading", { name: "Lesson blocks" })).toBeVisible();
+      expect(screen.queryByRole("button", { name: "Edit" })).toBeNull();
+    } finally {
+      role.permissions = previous;
+    }
+  });
+
   it("filters content items by status", async () => {
     const amira: DemoPersona = {
       ...persona(TENANT.riverside, "teacher"),
@@ -110,6 +170,7 @@ describe("ContentPage (M31)", () => {
 
     const list = await screen.findByRole("list", { name: "Content items" });
     expect(within(list).getByText("Equivalent Fractions Interactive Lesson")).toBeInTheDocument();
+    expect(screen.queryByRole("button", { name: "New lesson" })).toBeNull();
     expect(within(list).getByText("The Water Cycle Explained")).toBeInTheDocument();
     expect(within(list).queryByText("Analytical Essay Structure (Draft)")).not.toBeInTheDocument();
 

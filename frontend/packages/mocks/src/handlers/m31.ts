@@ -2,21 +2,17 @@ import {
   ContentAssetSchema,
   ContentAttemptSchema,
   ContentItemSchema,
+  ContentLessonInputSchema,
+  type ContentLessonInput,
   pageSchema,
   type AccessibilityCheck,
   type AccessibilityIssue,
   type ContentItem,
 } from "@nexus/contracts";
-import { http } from "msw";
+import { HttpResponse, http } from "msw";
 import { z } from "zod";
-import {
-  ApiFailure,
-  entitled,
-  failureResponse,
-  ofTenant,
-  readViewer,
-  type Viewer,
-} from "../context";
+import { ApiFailure, entitled, failureResponse, ofTenant, readViewer } from "../context";
+import type { Viewer } from "../context";
 import { mockDb } from "../db";
 import { applyScenario, readScenario } from "../scenarios";
 import { API_BASE, found, get, list, ok, param } from "./route";
@@ -45,10 +41,7 @@ function assetIdsOf(item: ContentItem): string[] {
   return ids;
 }
 
-function checkMarkdownHeadings(
-  markdown: string,
-  previousLevel: number | null,
-): { readonly skipped: boolean; readonly lastLevel: number | null } {
+function checkMarkdownHeadings(markdown: string, previousLevel: number | null) {
   let lastLevel = previousLevel;
   let skipped = false;
   let inFence = false;
@@ -61,9 +54,7 @@ function checkMarkdownHeadings(
     const match = /^\s*(#{1,6})(?:\s|$)/.exec(line);
     if (!match) continue;
     const level = match[1]!.length;
-    if (lastLevel === null ? level > 2 : level > lastLevel + 1) {
-      skipped = true;
-    }
+    if (level > (lastLevel ?? 1) + 1) skipped = true;
     lastLevel = level;
   }
   return { skipped, lastLevel };
@@ -96,10 +87,12 @@ function computeAccessibility(item: ContentItem, checkedAt: string): Accessibili
   return { checkedAt, issues };
 }
 
+type WriteContext = { viewer: Viewer; key: string | null; raw: unknown };
+
 async function runWrite(
   request: Request,
   permission: typeof MANAGE | typeof PUBLISH,
-  handle: (ctx: { viewer: Viewer; key: string | null }) => Response,
+  handle: (ctx: WriteContext) => Response,
 ): Promise<Response> {
   const early = await applyScenario(readScenario(request));
   if (early) return early;
@@ -108,22 +101,143 @@ async function runWrite(
     if (!entitled(viewer.tenantId, "M31")) throw new ApiFailure("module_disabled");
     if (!viewer.permissions.has(permission)) throw new ApiFailure("forbidden");
     const rawText = await request.text();
-    if (rawText.trim().length > 0) {
-      let parsed: unknown;
-      try {
-        parsed = JSON.parse(rawText);
-      } catch {
-        throw new ApiFailure("invalid_request");
-      }
-      if (!EmptyBodySchema.safeParse(parsed).success) {
-        throw new ApiFailure("invalid_request");
-      }
-    }
-    return handle({ viewer, key: request.headers.get("Idempotency-Key") });
+    const raw: unknown = JSON.parse(rawText.trim() || "{}");
+    return handle({ viewer, raw, key: request.headers.get("Idempotency-Key") });
   } catch (error) {
+    if (error instanceof SyntaxError) return failureResponse(new ApiFailure("invalid_request"));
     if (error instanceof ApiFailure) return failureResponse(error);
     throw error;
   }
+}
+
+function invalidFields(paths: string[]) {
+  const error = new ApiFailure(
+    "invalid_request",
+    paths.map((path) => ({ path, message: "Invalid field" })),
+  );
+  const response = failureResponse(error);
+  return new Response(response.body, { status: 422, headers: response.headers });
+}
+
+function referenceErrors(input: ContentLessonInput, tenantId: string) {
+  const assets = new Map(ofTenant(mockDb.contentAssets, tenantId).map((a) => [a.id, a.kind]));
+  const outcomes = new Set(ofTenant(mockDb.outcomes, tenantId).map((o) => o.id));
+  const paths: string[] = [];
+  input.outcomeIds.forEach((id, i) => {
+    if (!outcomes.has(id)) paths.push(`outcomeIds.${i}`);
+  });
+  input.blocks.forEach((block, i) => {
+    if ("assetId" in block && assets.get(block.assetId) !== block.type)
+      paths.push(`blocks.${i}.assetId`);
+    if (block.type === "video") {
+      block.captionAssetIds.forEach((id, j) => {
+        if (assets.get(id) !== "captions") paths.push(`blocks.${i}.captionAssetIds.${j}`);
+      });
+    }
+  });
+  return paths;
+}
+
+const createReceipts = new Map<string, ContentItem>();
+
+function saveLesson({ viewer, raw, key }: WriteContext, id?: string | readonly string[]) {
+  const { tenantId, userId } = viewer;
+  const items = ofTenant(mockDb.contentItems, tenantId);
+  const item = id === undefined ? undefined : found(items.find((row) => row.id === id));
+  const receiptKey = key && JSON.stringify([tenantId, userId, id ?? null, "lesson", key]);
+  if (receiptKey) {
+    const saved = item ? actionReceipts.get(item)?.get(receiptKey) : createReceipts.get(receiptKey);
+    if (saved && (item || items.some((row) => row.id === saved.id))) {
+      return HttpResponse.json(saved, { status: item ? 200 : 201 });
+    }
+  }
+  if (item && (item.kind !== "lesson" || item.status !== "draft")) throw new ApiFailure("conflict");
+  const parsed = ContentLessonInputSchema.safeParse(raw);
+  if (!parsed.success)
+    return invalidFields(parsed.error.issues.map((i) => i.path.join(".") || "body"));
+  const paths = referenceErrors(parsed.data, tenantId);
+  if (paths.length) return invalidFields(paths);
+  const updatedAt = new Date().toISOString();
+  const changes = { ...parsed.data, accessibility: null, updatedAt };
+  if (item) {
+    const updated = ContentItemSchema.parse({ ...item, ...changes });
+    storeChange(item, updated, receiptKey);
+    return ok(ContentItemSchema, updated);
+  }
+
+  const today = updatedAt.slice(0, 10);
+  const profile = ofTenant(mockDb.roleProfiles, tenantId).find(
+    (row) =>
+      row.personId === viewer.personId &&
+      row.status === "active" &&
+      row.effectiveFrom <= today &&
+      (row.effectiveTo === null || row.effectiveTo >= today),
+  );
+  if (!profile) throw new ApiFailure("forbidden");
+  const institution = found(mockDb.institutions.find((row) => row.tenantId === tenantId));
+  const created = ContentItemSchema.parse({
+    ...changes,
+    id: `cit-${crypto.randomUUID()}`,
+    tenantId,
+    institutionId: institution.id,
+    kind: "lesson",
+    status: "draft",
+    version: 1,
+    aiAssisted: false,
+    createdAt: updatedAt,
+    createdByProfileId: profile.id,
+    assetId: null,
+    package: null,
+    textTrackAssetIds: [],
+    durationSeconds: null,
+  });
+  mockDb.contentItems.unshift(created);
+  if (receiptKey) createReceipts.set(receiptKey, created);
+  return HttpResponse.json(created, { status: 201 });
+}
+
+function storeChange(item: ContentItem, updated: ContentItem, key: string | null) {
+  const receipts = actionReceipts.get(item) ?? new Map<string, ContentItem>();
+  if (key) receipts.set(key, updated);
+  mockDb.contentItems[mockDb.contentItems.indexOf(item)] = updated;
+  actionReceipts.set(updated, receipts);
+}
+
+function checkOrPublish(action: "accessibility-check" | "publish") {
+  const publish = action === "publish";
+  return http.post(`*${API_BASE}/content-items/:id/${action}`, ({ request, params }) =>
+    runWrite(request, publish ? PUBLISH : MANAGE, ({ viewer, key, raw }) => {
+      if (!EmptyBodySchema.safeParse(raw).success) throw new ApiFailure("invalid_request");
+      const item = found(
+        ofTenant(mockDb.contentItems, viewer.tenantId).find((row) => row.id === params["id"]),
+      );
+      const receiptKey =
+        key && JSON.stringify([viewer.tenantId, item.id, viewer.userId, action, key]);
+      const saved = receiptKey && actionReceipts.get(item)?.get(receiptKey);
+      if (saved) return ok(ContentItemSchema, saved);
+      if (publish && (item.status === "published" || item.status === "archived")) {
+        throw new ApiFailure("conflict", [
+          { path: "status", message: "Item is already published or archived" },
+        ]);
+      }
+      const updatedAt = new Date().toISOString();
+      const accessibility = computeAccessibility(item, updatedAt);
+      if (
+        (publish || item.status === "published") &&
+        accessibility.issues.some((i) => i.severity === "error")
+      ) {
+        if (publish)
+          storeChange(item, ContentItemSchema.parse({ ...item, updatedAt, accessibility }), null);
+        throw new ApiFailure("conflict", [
+          { path: "accessibility", message: "Accessibility errors must be resolved" },
+        ]);
+      }
+      const status = publish ? "published" : item.status;
+      const updated = ContentItemSchema.parse({ ...item, updatedAt, accessibility, status });
+      storeChange(item, updated, receiptKey);
+      return ok(ContentItemSchema, updated);
+    }),
+  );
 }
 
 export const m31Handlers = [
@@ -168,72 +282,12 @@ export const m31Handlers = [
     );
     return list(ctx, rows, pageSchema(ContentAttemptSchema));
   }),
-  http.post(`*${API_BASE}/content-items/:id/accessibility-check`, ({ request, params }) =>
-    runWrite(request, MANAGE, ({ viewer, key }) => {
-      const item = found(
-        ofTenant(mockDb.contentItems, viewer.tenantId).find((row) => row.id === params["id"]),
-      );
-      const receipts = actionReceipts.get(item) ?? new Map<string, ContentItem>();
-      const receiptKey =
-        key && JSON.stringify([viewer.tenantId, item.id, viewer.userId, "check", key]);
-      const saved = receiptKey ? receipts.get(receiptKey) : undefined;
-      if (saved) return ok(ContentItemSchema, saved);
-
-      const now = new Date().toISOString();
-      const accessibility = computeAccessibility(item, now);
-      if (
-        item.status === "published" &&
-        accessibility.issues.some((issue) => issue.severity === "error")
-      ) {
-        throw new ApiFailure("conflict", [
-          { path: "accessibility", message: "Accessibility errors must be resolved" },
-        ]);
-      }
-      const updated = ContentItemSchema.parse({ ...item, accessibility, updatedAt: now });
-      mockDb.contentItems[mockDb.contentItems.indexOf(item)] = updated;
-      if (receiptKey) receipts.set(receiptKey, updated);
-      actionReceipts.set(updated, receipts);
-      return ok(ContentItemSchema, updated);
-    }),
+  http.post(`*${API_BASE}/content-items`, ({ request }) =>
+    runWrite(request, MANAGE, (ctx) => saveLesson(ctx)),
   ),
-  http.post(`*${API_BASE}/content-items/:id/publish`, ({ request, params }) =>
-    runWrite(request, PUBLISH, ({ viewer, key }) => {
-      const item = found(
-        ofTenant(mockDb.contentItems, viewer.tenantId).find((row) => row.id === params["id"]),
-      );
-      const receipts = actionReceipts.get(item) ?? new Map<string, ContentItem>();
-      const receiptKey =
-        key && JSON.stringify([viewer.tenantId, item.id, viewer.userId, "publish", key]);
-      const saved = receiptKey ? receipts.get(receiptKey) : undefined;
-      if (saved) return ok(ContentItemSchema, saved);
-
-      if (item.status === "published" || item.status === "archived") {
-        throw new ApiFailure("conflict", [
-          { path: "status", message: "Item is already published or archived" },
-        ]);
-      }
-
-      const now = new Date().toISOString();
-      const accessibility = computeAccessibility(item, now);
-      if (accessibility.issues.some((issue) => issue.severity === "error")) {
-        const checked = ContentItemSchema.parse({ ...item, accessibility, updatedAt: now });
-        mockDb.contentItems[mockDb.contentItems.indexOf(item)] = checked;
-        actionReceipts.set(checked, receipts);
-        throw new ApiFailure("conflict", [
-          { path: "accessibility", message: "Accessibility errors block publishing" },
-        ]);
-      }
-
-      const published = ContentItemSchema.parse({
-        ...item,
-        status: "published",
-        accessibility,
-        updatedAt: now,
-      });
-      mockDb.contentItems[mockDb.contentItems.indexOf(item)] = published;
-      if (receiptKey) receipts.set(receiptKey, published);
-      actionReceipts.set(published, receipts);
-      return ok(ContentItemSchema, published);
-    }),
+  http.put(`*${API_BASE}/content-items/:id`, ({ request, params }) =>
+    runWrite(request, MANAGE, (ctx) => saveLesson(ctx, params["id"])),
   ),
+  checkOrPublish("accessibility-check"),
+  checkOrPublish("publish"),
 ];
