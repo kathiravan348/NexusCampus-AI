@@ -273,6 +273,18 @@ function createDb() {
     sessionBookings: clone(F.SESSION_BOOKINGS),
     levelExams: clone(F.LEVEL_EXAMS),
     practiceFeedback: clone(F.PRACTICE_FEEDBACK),
+    programRequirements: clone(F.PROGRAM_REQUIREMENTS),
+    registrationWindows: clone(F.REGISTRATION_WINDOWS),
+    electiveRegistrations: clone(F.ELECTIVE_REGISTRATIONS),
+    degreeAudits: clone(F.DEGREE_AUDITS),
+    theses: clone(F.THESES),
+    pathAdvice: clone(F.PATH_ADVICE),
+    storeProducts: clone(F.STORE_PRODUCTS),
+    coupons: clone(F.COUPONS),
+    storeOrders: clone(F.STORE_ORDERS),
+    storeSubscriptions: clone(F.STORE_SUBSCRIPTIONS),
+    affiliates: clone(F.AFFILIATES),
+    affiliateConversions: clone(F.AFFILIATE_CONVERSIONS),
   };
 }
 
