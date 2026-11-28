@@ -284,6 +284,32 @@ export const queryKeys = {
     liveSummary: (s: KeyScope, sessionId: string | null) =>
       scoped(s, "m36", "live-sessions", sessionId, "summary"),
   },
+  m37: {
+    diaryEntries: (s: KeyScope, learnerId: string | null, date: string | null) =>
+      scoped(s, "m37", "diary-entries", learnerId, date),
+    observations: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m37", "observations", learnerId),
+    milestoneProgress: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m37", "milestone-progress", learnerId),
+    daySummaries: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m37", "day-summaries", learnerId),
+    pickupChecks: (s: KeyScope, learnerId: string | null, date: string | null) =>
+      scoped(s, "m37", "pickup-checks", learnerId, date),
+    ratioSnapshots: (s: KeyScope) => scoped(s, "m37", "ratio-snapshots"),
+  },
+  m38: {
+    supportPlans: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m38", "support-plans", "list", learnerId),
+    supportPlan: (s: KeyScope, planId: string | null) => scoped(s, "m38", "support-plans", planId),
+    supportPlanGoals: (s: KeyScope, planId: string | null) =>
+      scoped(s, "m38", "support-plans", planId, "goals"),
+    supportPlanAccommodations: (s: KeyScope, planId: string | null) =>
+      scoped(s, "m38", "support-plans", planId, "accommodations"),
+    supportPlanSessions: (s: KeyScope, planId: string | null) =>
+      scoped(s, "m38", "support-plans", planId, "sessions"),
+    supportPlanProgress: (s: KeyScope, planId: string | null) =>
+      scoped(s, "m38", "support-plans", planId, "progress"),
+  },
   m46: {
     engagementSnapshots: (s: KeyScope, learnerId: string | null) =>
       scoped(s, "m46", "engagement", learnerId),
@@ -313,6 +339,19 @@ export const queryKeys = {
     rolloverRuns: (s: KeyScope) => scoped(s, "m86", "rollover-runs"),
     rolloverDecisions: (s: KeyScope, runId: string | null) =>
       scoped(s, "m86", "rollover-runs", runId, "decisions"),
+  },
+  m91: {
+    mediaItems: (s: KeyScope) => scoped(s, "m91", "media-items"),
+    learnerMediaConsents: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m91", "learner-media-consents", learnerId),
+    portfolios: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m91", "portfolios", "list", learnerId),
+    portfolio: (s: KeyScope, portfolioId: string | null) =>
+      scoped(s, "m91", "portfolios", portfolioId),
+    portfolioEntries: (s: KeyScope, portfolioId: string | null) =>
+      scoped(s, "m91", "portfolios", portfolioId, "entries"),
+    portfolioExports: (s: KeyScope, portfolioId: string | null) =>
+      scoped(s, "m91", "portfolios", portfolioId, "exports"),
   },
   m07: {
     templates: (s: KeyScope) => scoped(s, "m07", "templates"),

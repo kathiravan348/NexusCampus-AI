@@ -43,7 +43,7 @@
 | NEX-223 | MSW handlers + services: M32, M33 read (anonymous peer reviewers hidden from authors, NEX-213; learners never get `QuestionItem`; D91) | B | done | Codex | 221, 222 |
 | NEX-262 | MSW handlers + services: M34, M35 — proctoring, mastery, paths and tutor (read) — split from NEX-223 | B | done | Gemini | 257, 223 |
 | NEX-224 | MSW handlers + services: M36, M46 — live classes and early warning (read; risk scores never to families, A-3) | B | done | Gemini | 257, 221, 262 |
-| NEX-264 | MSW handlers + services: M37, M38, M91 (adds the NEX-260 exports to `fixtures/index.ts`; merges `MEDIA_SHARING_CONSENTS` into consents) — split from NEX-224 | B | planned | — | 260, 224 |
+| NEX-264 | MSW handlers + services: M37, M38, M91 (adds the NEX-260 exports to `fixtures/index.ts`; merges `MEDIA_SHARING_CONSENTS` into consents) — split from NEX-224 | B | done | Gemini | 260, 224 |
 | NEX-266 | MSW handlers + services: M39, M40, M41 — library (reading-history privacy, G-6), test prep, session courses (read) — split from NEX-225 | B | planned | — | 258, 264 |
 | NEX-225 | MSW handlers + services: M42–M45 | B | draft | — | 263, 265, 266, 224 |
 | NEX-226 | M29 Curriculum & lesson planning: outcomes, syllabus and coverage, draft lesson plans (offline L2 writes) | C | done | Gemini | 222 |

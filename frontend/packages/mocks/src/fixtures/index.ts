@@ -40,3 +40,23 @@ export * from "./early-warning";
 export * from "./ids-stage4-live";
 export * from "./proctoring";
 export * from "./live-classes";
+export {
+  ACCOMMODATION,
+  CARE_CLIENT_ID,
+  DAY_SUMMARY,
+  DIARY_ENTRY,
+  GOAL_PROGRESS as GOAL_PROGRESS_ID,
+  MEDIA_ITEM,
+  MEDIA_SHARING_CONSENT,
+  OBSERVATION,
+  PICKUP_CHECK,
+  PORTFOLIO,
+  PORTFOLIO_ENTRY,
+  PORTFOLIO_EXPORT,
+  SUPPORT_GOAL,
+  SUPPORT_PLAN,
+  SUPPORT_SESSION,
+} from "./ids-stage4-care";
+export * from "./early-years";
+export * from "./inclusion";
+export * from "./portfolios";
