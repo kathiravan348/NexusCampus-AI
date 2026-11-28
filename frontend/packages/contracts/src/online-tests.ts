@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { IdSchema, UtcDateTimeSchema } from "./common";
-import { QuestionOptionIdSchema } from "./questions";
+import { QuestionDeliverySchema, QuestionOptionIdSchema } from "./questions";
 
 /**
  * M33 online tests (NEX-247, D87): practice / graded / adaptive tests from the question bank, attempts (practice
@@ -164,25 +164,33 @@ export const TestAttemptSchema = z
   );
 export type TestAttempt = z.infer<typeof TestAttemptSchema>;
 
+export const StartAttemptInputSchema = z.strictObject({ clientId: z.uuid() });
+export type StartAttemptInput = z.infer<typeof StartAttemptInputSchema>;
+
+export const TestAnswerInputSchema = z.strictObject({
+  /** Chosen options; for an `order` item, the learner's order of all option ids. */
+  selectedOptionIds: z
+    .array(QuestionOptionIdSchema)
+    .max(10)
+    .refine(isUnique, { message: "ids must be unique" }),
+  /** Personal data (V-7). */
+  textAnswer: z.string().max(20000).nullable(),
+  numericAnswer: z.number().nullable(),
+  /** The learner's own "review later" flag. */
+  flagged: z.boolean(),
+});
+export type TestAnswerInput = z.infer<typeof TestAnswerInputSchema>;
+
 export const TestResponseSchema = z
   .strictObject({
     id: IdSchema,
     tenantId: IdSchema,
     attemptId: IdSchema,
     itemId: IdSchema,
-    /** Chosen options; for an `order` item, the learner's order of all option ids. */
-    selectedOptionIds: z
-      .array(QuestionOptionIdSchema)
-      .max(10)
-      .refine(isUnique, { message: "ids must be unique" }),
-    /** Personal data (V-7). */
-    textAnswer: z.string().max(20000).nullable(),
-    numericAnswer: z.number().nullable(),
+    ...TestAnswerInputSchema.shape,
     autoScore: SignedScoreSchema.nullable(),
     manualScore: SignedScoreSchema.nullable(),
     markedByStaffProfileId: IdSchema.nullable(),
-    /** The learner's own "review later" flag. */
-    flagged: z.boolean(),
     answeredAt: UtcDateTimeSchema,
   })
   .refine(
@@ -193,6 +201,20 @@ export const TestResponseSchema = z
     },
   );
 export type TestResponse = z.infer<typeof TestResponseSchema>;
+
+export const AttemptDeliverySchema = z.strictObject({
+  attempt: TestAttemptSchema,
+  deadlineAt: UtcDateTimeSchema.nullable(),
+  sections: z.array(
+    z.strictObject({
+      id: IdSchema,
+      title: TestSectionSchema.shape.title,
+      items: z.array(QuestionDeliverySchema),
+    }),
+  ),
+  answers: z.array(TestResponseSchema),
+});
+export type AttemptDelivery = z.infer<typeof AttemptDeliverySchema>;
 
 /** Classical item analysis: facility (share answering correctly) and discrimination (point-biserial). */
 export const ItemStatisticSchema = z.strictObject({

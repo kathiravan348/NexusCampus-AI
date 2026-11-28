@@ -1,7 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
+  AttemptDeliverySchema,
   ItemStatisticSchema,
   OnlineTestSchema,
+  StartAttemptInputSchema,
+  TestAnswerInputSchema,
   TestAttemptSchema,
   TestResponseSchema,
   type ItemStatistic,
@@ -213,5 +216,53 @@ describe("responses and statistics", () => {
     expect(ItemStatisticSchema.safeParse({ ...statistic, optionCounts: { a: -1 } }).success).toBe(
       false,
     );
+  });
+});
+
+describe("attempt delivery", () => {
+  it("rejects option correctness and accepted answers in delivery items", () => {
+    const item = {
+      id: response.itemId,
+      kind: "single_choice",
+      stem: "Which is one half?",
+      language: "en",
+      options: [
+        { id: "a", text: "1/2" },
+        { id: "b", text: "1/3" },
+      ],
+      maxPoints: 1,
+      negativePoints: 0,
+    };
+    const payload = (delivered: unknown) => ({
+      attempt,
+      deadlineAt: "2026-07-02T09:15:00Z",
+      sections: [{ id: "section-1", title: "Warm-up", items: [delivered] }],
+      answers: [response],
+    });
+    expect(AttemptDeliverySchema.safeParse(payload(item)).success).toBe(true);
+    expect(
+      AttemptDeliverySchema.safeParse(
+        payload({ ...item, options: [{ ...item.options[0], correct: true }, item.options[1]] }),
+      ).success,
+    ).toBe(false);
+    expect(
+      AttemptDeliverySchema.safeParse(payload({ ...item, acceptedAnswers: ["1/2"] })).success,
+    ).toBe(false);
+  });
+
+  it("accepts only the start and answer fields", () => {
+    expect(StartAttemptInputSchema.safeParse({ clientId: attempt.clientId }).success).toBe(true);
+    expect(
+      StartAttemptInputSchema.safeParse({ clientId: attempt.clientId, testId: practice.id })
+        .success,
+    ).toBe(false);
+    const input = {
+      selectedOptionIds: ["a"],
+      textAnswer: null,
+      numericAnswer: null,
+      flagged: false,
+    };
+    expect(TestAnswerInputSchema.safeParse(input).success).toBe(true);
+    expect(TestAnswerInputSchema.safeParse({ ...input, autoScore: 1 }).success).toBe(false);
   });
 });
