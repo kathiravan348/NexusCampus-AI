@@ -7982,5 +7982,221 @@
   "m19.status.closed": {
     "message": "Closed",
     "description": "Budget status after closure."
+  },
+  "m29.permission.curriculumRead": {
+    "message": "View curriculum",
+    "description": "Permission description: View outcome frameworks, outcomes, mappings, syllabus units and coverage."
+  },
+  "m29.permission.curriculumManage": {
+    "message": "Manage curriculum",
+    "description": "Permission description: Manage outcome frameworks, outcomes, mappings and syllabus units."
+  },
+  "m29.permission.lessonplanWrite": {
+    "message": "Write lesson plans",
+    "description": "Permission description: Create and edit lesson plans."
+  },
+  "m29.permission.lessonplanReview": {
+    "message": "Review lesson plans",
+    "description": "Permission description: Review lesson plans submitted for approval."
+  },
+  "m30.permission.courseRead": {
+    "message": "View course spaces",
+    "description": "Permission description: View course spaces, their modules and items."
+  },
+  "m30.permission.courseManage": {
+    "message": "Manage course spaces",
+    "description": "Permission description: Manage course spaces, their modules and items."
+  },
+  "m30.permission.discussionModerate": {
+    "message": "Moderate course discussions",
+    "description": "Permission description: Moderate discussions in course spaces."
+  },
+  "m31.permission.contentRead": {
+    "message": "View learning content",
+    "description": "Permission description: View learning content and its assets."
+  },
+  "m31.permission.contentManage": {
+    "message": "Manage learning content",
+    "description": "Permission description: Create and edit learning content, assets and lesson blocks."
+  },
+  "m31.permission.contentPublish": {
+    "message": "Publish learning content",
+    "description": "Permission description: Publish learning content after the required accessibility check."
+  },
+  "m32.permission.assignmentRead": {
+    "message": "View assignments",
+    "description": "Permission description: View homework and assignments."
+  },
+  "m32.permission.assignmentManage": {
+    "message": "Manage assignments",
+    "description": "Permission description: Create and manage homework and assignments."
+  },
+  "m32.permission.submissionMark": {
+    "message": "Mark assignment submissions",
+    "description": "Permission description: Mark learners' assignment submissions."
+  },
+  "m33.permission.testRead": {
+    "message": "View online tests",
+    "description": "Permission description: View online tests."
+  },
+  "m33.permission.testManage": {
+    "message": "Manage online tests",
+    "description": "Permission description: Create and manage online tests."
+  },
+  "m33.permission.bankManage": {
+    "message": "Manage question banks",
+    "description": "Permission description: Manage question banks and their items."
+  },
+  "m33.permission.responseMark": {
+    "message": "Mark test responses",
+    "description": "Permission description: Mark learners' online test responses."
+  },
+  "m34.permission.proctoringManage": {
+    "message": "Manage online proctoring",
+    "description": "Permission description: Manage online exam proctoring settings and sessions."
+  },
+  "m34.permission.flagReview": {
+    "message": "Review proctoring flags",
+    "description": "Permission description: Perform the human review of flagged events in a proctored exam."
+  },
+  "m35.permission.tutorManage": {
+    "message": "Manage AI tutor settings",
+    "description": "Permission description: Manage settings for the AI tutor."
+  },
+  "m35.permission.masteryRead": {
+    "message": "View learner mastery",
+    "description": "Permission description: View learner mastery records and learning paths."
+  },
+  "m35.permission.transcriptRead": {
+    "message": "View tutor transcripts",
+    "description": "Permission description: View transcripts of learners' conversations with the AI tutor."
+  },
+  "m36.permission.liveRead": {
+    "message": "View live classes",
+    "description": "Permission description: View live class sessions."
+  },
+  "m36.permission.liveHost": {
+    "message": "Host live classes",
+    "description": "Permission description: Host live class sessions."
+  },
+  "m37.permission.diaryRead": {
+    "message": "View early years diaries",
+    "description": "Permission description: View daily diaries in an early years institution."
+  },
+  "m37.permission.diaryRecord": {
+    "message": "Record early years diary entries",
+    "description": "Permission description: Record daily diary entries in an early years institution."
+  },
+  "m37.permission.pickupCheck": {
+    "message": "Verify child pickup",
+    "description": "Permission description: Verify the person collecting a child."
+  },
+  "m38.permission.planRead": {
+    "message": "View individual support plans",
+    "description": "Permission description: View individual education or learning support plans."
+  },
+  "m38.permission.planManage": {
+    "message": "Manage individual support plans",
+    "description": "Permission description: Manage individual education or learning support plans."
+  },
+  "m39.permission.libraryRead": {
+    "message": "View the library catalogue",
+    "description": "Permission description: View titles in the library catalogue."
+  },
+  "m39.permission.catalogueManage": {
+    "message": "Manage the library catalogue",
+    "description": "Permission description: Manage the library catalogue and its copies."
+  },
+  "m39.permission.circulationManage": {
+    "message": "Manage library circulation",
+    "description": "Permission description: Manage library loans, holds and fines."
+  },
+  "m40.permission.seriesRead": {
+    "message": "View test series",
+    "description": "Permission description: View test series for coaching and test preparation."
+  },
+  "m40.permission.seriesManage": {
+    "message": "Manage test series",
+    "description": "Permission description: Manage test series for coaching and test preparation."
+  },
+  "m40.permission.doubtAnswer": {
+    "message": "Answer learner questions",
+    "description": "Permission description: Answer questions from learners preparing for tests."
+  },
+  "m41.permission.courseRead": {
+    "message": "View catalogue courses",
+    "description": "Permission description: View catalogue courses offered with sessions or packages."
+  },
+  "m41.permission.courseManage": {
+    "message": "Manage catalogue courses",
+    "description": "Permission description: Manage courses offered with sessions or packages."
+  },
+  "m41.permission.bookingManage": {
+    "message": "Manage session bookings",
+    "description": "Permission description: Manage reservations for course sessions."
+  },
+  "m42.permission.registrationRead": {
+    "message": "View elective registrations",
+    "description": "Permission description: View elective course registrations in higher education."
+  },
+  "m42.permission.registrationDecide": {
+    "message": "Decide on elective registrations",
+    "description": "Permission description: Approve or decline an elective registration."
+  },
+  "m42.permission.auditRead": {
+    "message": "View degree audits",
+    "description": "Permission description: View a learner's progress against degree requirements."
+  },
+  "m43.permission.storeRead": {
+    "message": "View the academy store",
+    "description": "Permission description: View the academy store catalogue."
+  },
+  "m43.permission.storeManage": {
+    "message": "Manage the academy store",
+    "description": "Permission description: Manage academy store products, bundles and offers."
+  },
+  "m43.permission.orderRead": {
+    "message": "View store orders",
+    "description": "Permission description: View customer orders in the academy store."
+  },
+  "m44.permission.surveyRead": {
+    "message": "View surveys",
+    "description": "Permission description: View surveys and their questions."
+  },
+  "m44.permission.surveyManage": {
+    "message": "Manage surveys",
+    "description": "Permission description: Create and manage surveys and their questions."
+  },
+  "m44.permission.resultsRead": {
+    "message": "View survey results",
+    "description": "Permission description: View survey results under the survey's anonymity rules."
+  },
+  "m45.permission.credentialRead": {
+    "message": "View credentials",
+    "description": "Permission description: View certificates, badges and other issued credentials."
+  },
+  "m45.permission.credentialIssue": {
+    "message": "Issue credentials",
+    "description": "Permission description: Issue certificates, badges and other credentials."
+  },
+  "m46.permission.riskRead": {
+    "message": "View learner risk assessments",
+    "description": "Permission description: View early warning risk scores and their contributing factors."
+  },
+  "m46.permission.interventionManage": {
+    "message": "Manage learner interventions",
+    "description": "Permission description: Manage actions that staff take to support learners after an early warning."
+  },
+  "m91.permission.mediaRead": {
+    "message": "View learning media",
+    "description": "Permission description: View learning photos and videos under the media consent rules."
+  },
+  "m91.permission.mediaManage": {
+    "message": "Manage learning media",
+    "description": "Permission description: Manage learning photos and videos."
+  },
+  "m91.permission.portfolioRead": {
+    "message": "View learner portfolios",
+    "description": "Permission description: View portfolios of learners' work and evidence."
   }
 }

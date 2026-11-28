@@ -57,7 +57,7 @@
 │  │  │                 src/control/ = Nexus Control fixtures, mock DB, staff context, table-driven API (NEX-070, 071),
 │  │  │                 entries `./control`, `./control/browser`
 │  │  │  ├─ src/fixtures/ ids, tenants, profiles, calendars, people, role-profiles, identity, rbac, studio, plans,
-│  │  │  │                 compliance, audit (+ audit-hashes), notifications, sync, ai, vault
+│  │  │  │                 compliance, audit (+ audit-hashes), notifications, sync, ai, vault, stage4-access (mock only)
 │  │  │  ├─ src/          db (mutable mockDb, reset), context (headers, can, entitled, paginate, apiError,
 │  │  │  │                 maskPerson), scenarios (empty/error/slow/offline), browser (worker), node (server)
 │  │  │  └─ src/handlers/ route (get/list/ok helpers), m01–m07, m10, m11, m83 read handlers, index

@@ -80,6 +80,9 @@ Since the Stage 3 build (2,061 tests, NEX-210 run 2026-11-26): `check:test` 4m 0
 (format 7.4s, lint 20.8s, typecheck 24.0s, build 12.9s). Growth comes from Stage 3 screens, not one task; under that load
 two `control` page tests can time out and pass when re-run alone. Budget review: Stage 4 harden task.
 
+NEX-259 (2026-11-28, 2,211 tests): `check:test` 3m 57.5s, **over the 2m soft budget**.
+`review:check` passed in 4m 39.2s (format 3.12s, lint 14.40s, typecheck 11.87s, build 12.29s).
+
 ## Backend (NEX-042)
 
 | Place | Key | Time | Budget | Status |

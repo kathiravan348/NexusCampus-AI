@@ -31,7 +31,7 @@
 | NEX-219 | Contracts (M42): credit requirements, elective registration, degree audit, thesis supervision, AI path advice | B | done | Claude | 146 |
 | NEX-255 | Contracts (M43): store products, bundles, coupons, orders, subscriptions, affiliates — split from NEX-219 | B | done | Claude | 211, 254 |
 | NEX-256 | Contracts (M33): negative marking — item penalties, signed response and attempt scores (NEX-218 review follow-up) | B | done | Claude | 247, 218 |
-| NEX-259 | Stage 4 access (mock only, D87): permission codes, system-role grants, module entitlements, en / hi / ta texts | B | planned | — | 210–219, 247–256 |
+| NEX-259 | Stage 4 access (mock only, D87): permission codes, system-role grants, module entitlements, en / hi / ta texts | B | ready-for-review | Codex | 210–219, 247–256 |
 | NEX-220 | Fixtures: M29, M30, M31 — outcomes, syllabus, lesson plans, course spaces, content for the 5 demo tenants and the Group | B | planned | — | 210–212, 259 |
 | NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | draft | — | 213, 214, 247, 248, 256, 220 |
 | NEX-257 | Fixtures: M34, M36, M37, M38, M91 — proctoring, live classes, early years, inclusion, media and portfolios | B | draft | — | 215, 216, 249–251, 221 |

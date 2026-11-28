@@ -27,3 +27,4 @@ export * from "./ops-fees";
 export * from "./ops-assessment";
 export * from "./ops-communication";
 export * from "./stage3-access";
+export * from "./stage4-access";
