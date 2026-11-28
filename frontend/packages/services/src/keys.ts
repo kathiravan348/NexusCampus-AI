@@ -19,7 +19,7 @@ const scoped = (s: KeyScope, ...rest: readonly unknown[]): QueryKey => [
 export const queryKeys = {
   /** Prefix of everything one user may see; invalidate it to refetch all. */
   scope: (s: KeyScope): QueryKey => scoped(s),
-  /** Demo sign-in list: shown before anyone signs in, so it is the one key without a scope. */
+  /** Demo sign-in list: shown before anyone signs in, so it has no scope. */
   demoTenants: (): QueryKey => ["public", "m01", "demo-tenants"],
   m01: {
     tenant: (s: KeyScope) => scoped(s, "m01", "tenant"),
@@ -374,6 +374,19 @@ export const queryKeys = {
     storeSubscriptions: (s: KeyScope) => scoped(s, "m43", "store-subscriptions"),
     affiliates: (s: KeyScope) => scoped(s, "m43", "affiliates"),
     affiliateConversions: (s: KeyScope) => scoped(s, "m43", "affiliate-conversions"),
+  },
+  m44: {
+    surveys: (s: KeyScope) => scoped(s, "m44", "surveys", "list"),
+    survey: (s: KeyScope, surveyId: string) => scoped(s, "m44", "surveys", "detail", surveyId),
+    results: (s: KeyScope, surveyId: string) => scoped(s, "m44", "surveys", surveyId, "results"),
+    themes: (s: KeyScope, surveyId: string) => scoped(s, "m44", "surveys", surveyId, "themes"),
+  },
+  m45: {
+    templates: (s: KeyScope) => scoped(s, "m45", "credential-templates"),
+    issuedCredentials: (s: KeyScope) => scoped(s, "m45", "issued-credentials", "list"),
+    issuedCredential: (s: KeyScope, credentialId: string) =>
+      scoped(s, "m45", "issued-credentials", "detail", credentialId),
+    verification: (code: string): QueryKey => ["public", "m45", "credential-verifications", code],
   },
   m46: {
     engagementSnapshots: (s: KeyScope, learnerId: string | null) =>

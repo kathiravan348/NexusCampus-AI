@@ -41,12 +41,6 @@ import {
   SUPPORT_SESSIONS,
 } from "./fixtures/inclusion";
 import {
-  LIVE_JOINS,
-  LIVE_RECORDINGS,
-  LIVE_SESSIONS,
-  LIVE_SUMMARIES,
-} from "./fixtures/live-classes";
-import {
   LEARNER_MEDIA_CONSENTS,
   MEDIA_ITEMS,
   MEDIA_SHARING_CONSENTS,
@@ -231,10 +225,10 @@ function createDb() {
     tutorSettings: clone(TUTOR_SETTINGS),
     tutorSessions: clone(TUTOR_SESSIONS),
     tutorMessages: clone(TUTOR_MESSAGES),
-    liveSessions: clone(LIVE_SESSIONS),
-    liveJoins: clone(LIVE_JOINS),
-    liveRecordings: clone(LIVE_RECORDINGS),
-    liveSummaries: clone(LIVE_SUMMARIES),
+    liveSessions: clone(F.LIVE_SESSIONS),
+    liveJoins: clone(F.LIVE_JOINS),
+    liveRecordings: clone(F.LIVE_RECORDINGS),
+    liveSummaries: clone(F.LIVE_SUMMARIES),
     engagementSnapshots: clone(ENGAGEMENT_SNAPSHOTS),
     riskScores: clone(RISK_SCORES),
     interventions: clone(INTERVENTIONS),
@@ -285,6 +279,14 @@ function createDb() {
     storeSubscriptions: clone(F.STORE_SUBSCRIPTIONS),
     affiliates: clone(F.AFFILIATES),
     affiliateConversions: clone(F.AFFILIATE_CONVERSIONS),
+    surveys: clone(F.SURVEYS),
+    surveyResponses: clone(F.SURVEY_RESPONSES),
+    questionResults: clone(F.QUESTION_RESULTS),
+    themeSummaries: clone(F.THEME_SUMMARIES),
+    credentialTemplates: clone(F.CREDENTIAL_TEMPLATES),
+    issuedCredentials: clone(F.ISSUED_CREDENTIALS),
+    hiddenCredentialIds: clone(F.HIDDEN_CREDENTIAL_IDS),
+    credentialVerifications: clone(F.CREDENTIAL_VERIFICATIONS),
   };
 }
 
