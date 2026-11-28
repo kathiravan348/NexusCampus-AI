@@ -132,11 +132,6 @@ export const LEARNING_PATH_STEP = {
   hmEthan1: "lps-hm-ethan-1",
 } as const;
 
-/** Placeholder M36 live-session ref for a learning-path step (added in NEX-257). */
-export const LIVE_SESSION_REF = {
-  nbCs101OfficeHour: "lvs-nb-cs101-1",
-} as const;
-
 export const TUTOR_SESSION = {
   rvMiaFractions: "tse-rv-mia-fractions",
   nbJordanLoops: "tse-nb-jordan-loops",

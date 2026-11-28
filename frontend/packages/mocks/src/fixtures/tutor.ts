@@ -7,12 +7,12 @@ import {
   ASSIGNMENT as ASG,
   LEARNING_PATH as LPA,
   LEARNING_PATH_STEP as LPS,
-  LIVE_SESSION_REF as LVS,
   ONLINE_TEST as TST,
   TUTOR_MESSAGE as TMG,
   TUTOR_SESSION as TSE,
 } from "./ids-stage4-assess";
 import { CONTENT_ITEM as CI, COURSE_SPACE as CS, OUTCOME as O } from "./ids-stage4-learning";
+import { LIVE_SESSION as LVS } from "./ids-stage4-live";
 import { ROLE_PROFILES } from "./role-profiles";
 import { CREATED_AT, UPDATED_AT } from "./tenants";
 
