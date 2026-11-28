@@ -94,7 +94,11 @@ export function LessonEditor({ item, onSave, onCancel }: LessonEditorProps) {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
-          {invalid("title") && <p id={`${id}-title-error`}>{t("m31.editor.titleError")}</p>}
+          {invalid("title") && (
+            <p id={`${id}-title-error`} className="text-body-sm text-danger-text">
+              {t("m31.editor.titleError")}
+            </p>
+          )}
         </div>
         <div>
           <label htmlFor={`${id}-language`}>{t("m31.item.language")}</label>
@@ -135,7 +139,9 @@ export function LessonEditor({ item, onSave, onCancel }: LessonEditorProps) {
               ))}
           </select>
           {invalid("outcomeIds") && (
-            <p id={`${id}-outcomeIds-error`}>{t("m31.editor.outcomeLimit")}</p>
+            <p id={`${id}-outcomeIds-error`} className="text-body-sm text-danger-text">
+              {t("m31.editor.outcomeLimit")}
+            </p>
           )}
         </div>
         {(assets.isError || outcomes.isError) && (
@@ -244,7 +250,11 @@ export function LessonEditor({ item, onSave, onCancel }: LessonEditorProps) {
               </option>
             ))}
           </select>
-          {invalid("blocks") && <p id={`${id}-blocks-error`}>{t("m31.editor.blockRequired")}</p>}
+          {invalid("blocks") && (
+            <p id={`${id}-blocks-error`} className="text-body-sm text-danger-text">
+              {t("m31.editor.blockRequired")}
+            </p>
+          )}
         </div>
         <Button
           type="button"
@@ -254,7 +264,11 @@ export function LessonEditor({ item, onSave, onCancel }: LessonEditorProps) {
         >
           {t("m31.editor.add")}
         </Button>
-        {failed && <p role="alert">{t("m31.editor.saveError")}</p>}
+        {failed && (
+          <p role="alert" className="text-body-sm text-danger-text">
+            {t("m31.editor.saveError")}
+          </p>
+        )}
         <div className="flex flex-wrap gap-2">
           <Button type="submit" disabled={!parsed.success || busy}>
             {t("common.save")}
