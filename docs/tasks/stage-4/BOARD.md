@@ -37,7 +37,7 @@
 | NEX-257 | Fixtures: M34, M36 — proctoring, live classes, `live_session` course items | B | planned | — | 215, 249, 221 |
 | NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | planned | — | 216, 250, 251, 220 |
 | NEX-258 | Fixtures: M39–M45 — library, test prep, session courses, higher-ed, store, surveys, credentials | B | draft | — | 217–219, 252–255, 257 |
-| NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | planned | — | 220, 259 |
+| NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | done | Codex | 220, 259 |
 | NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213; learners get `QuestionDelivery` only, NEX-247) | B | draft | — | 221, 257, 222 |
 | NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 (adds the NEX-260 exports to `fixtures/index.ts`) | B | draft | — | 257, 260, 223 |
 | NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 258, 224 |
