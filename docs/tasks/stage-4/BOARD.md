@@ -44,7 +44,7 @@
 | NEX-224 | MSW handlers + services: M36, M46 — live classes and early warning (read; risk scores never to families, A-3) | B | planned | — | 257, 221, 262 |
 | NEX-264 | MSW handlers + services: M37, M38, M91 (adds the NEX-260 exports to `fixtures/index.ts`; merges `MEDIA_SHARING_CONSENTS` into consents) — split from NEX-224 | B | draft | — | 260, 224 |
 | NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 258, 224 |
-| NEX-226 | M29 Curriculum & lesson planning: outcomes, syllabus and coverage, draft lesson plans (offline L2 writes) | C | planned | — | 222 |
+| NEX-226 | M29 Curriculum & lesson planning: outcomes, syllabus and coverage, draft lesson plans (offline L2 writes) | C | done | Gemini | 222 |
 | NEX-261 | M29 lesson-plan workflow: submit, approve / return, delivered, coverage updates — split from NEX-226 | C | draft | — | 226 |
 | NEX-227 | M30 LMS classrooms & courses | C | draft | — | 222, 226 |
 | NEX-228 | M31 Content authoring studio (accessibility check before publish) | C | draft | — | 222, 227 |
