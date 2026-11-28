@@ -184,6 +184,42 @@ export const queryKeys = {
     roleHome: (s: KeyScope) => scoped(s, "m28", "me", "home"),
     dashboardKpis: (s: KeyScope) => scoped(s, "m28", "dashboards", "kpis"),
   },
+  m29: {
+    outcomeFrameworks: (s: KeyScope) => scoped(s, "m29", "outcome-frameworks"),
+    outcomes: (s: KeyScope, frameworkId: string | null) =>
+      scoped(s, "m29", "outcomes", frameworkId),
+    outcomeMappings: (s: KeyScope, frameworkId: string | null) =>
+      scoped(s, "m29", "outcome-mappings", frameworkId),
+    syllabusUnits: (s: KeyScope, subjectId: string | null) =>
+      scoped(s, "m29", "syllabus-units", subjectId),
+    lessonPlans: (s: KeyScope, subjectOfferingId: string | null) =>
+      scoped(s, "m29", "lesson-plans", subjectOfferingId),
+    syllabusCoverage: (s: KeyScope, subjectOfferingId: string | null) =>
+      scoped(s, "m29", "syllabus-coverage", subjectOfferingId),
+  },
+  m30: {
+    courseSpaces: (s: KeyScope) => scoped(s, "m30", "course-spaces"),
+    courseSpace: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m30", "course-spaces", courseSpaceId),
+    courseModules: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m30", "course-spaces", courseSpaceId, "modules"),
+    courseItems: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m30", "course-spaces", courseSpaceId, "items"),
+    courseProgress: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m30", "course-spaces", courseSpaceId, "progress"),
+    discussionThreads: (s: KeyScope, courseSpaceId: string | null) =>
+      scoped(s, "m30", "course-spaces", courseSpaceId, "threads"),
+    discussionPosts: (s: KeyScope, threadId: string | null) =>
+      scoped(s, "m30", "threads", threadId, "posts"),
+  },
+  m31: {
+    contentItems: (s: KeyScope) => scoped(s, "m31", "content-items"),
+    contentItem: (s: KeyScope, contentItemId: string | null) =>
+      scoped(s, "m31", "content-items", contentItemId),
+    contentAssets: (s: KeyScope) => scoped(s, "m31", "content-assets"),
+    contentAttempts: (s: KeyScope, contentItemId: string | null) =>
+      scoped(s, "m31", "content-attempts", contentItemId),
+  },
   m83: {
     all: (s: KeyScope) => scoped(s, "m83"),
     keys: (s: KeyScope) => scoped(s, "m83", "keys"),
