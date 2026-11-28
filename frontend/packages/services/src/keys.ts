@@ -352,6 +352,29 @@ export const queryKeys = {
     practiceFeedback: (s: KeyScope, learnerId: string | null) =>
       scoped(s, "m41", "practice-feedback", learnerId),
   },
+  m42: {
+    programRequirements: (s: KeyScope) => scoped(s, "m42", "program-requirements"),
+    registrationWindows: (s: KeyScope) => scoped(s, "m42", "registration-windows"),
+    electiveRegistrations: (s: KeyScope, learnerId: string | null, windowId: string | null) =>
+      scoped(s, "m42", "elective-registrations", learnerId, windowId),
+    degreeAudits: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m42", "degree-audits", learnerId),
+    theses: (s: KeyScope, learnerId: string | null) => scoped(s, "m42", "theses", learnerId),
+    pathAdvice: (s: KeyScope, learnerId: string | null) =>
+      scoped(s, "m42", "path-advice", learnerId),
+  },
+  m43: {
+    storeProducts: (s: KeyScope) => scoped(s, "m43", "store-products", "list"),
+    storeProduct: (s: KeyScope, productId: string) =>
+      scoped(s, "m43", "store-products", "detail", productId),
+    coupons: (s: KeyScope) => scoped(s, "m43", "coupons"),
+    storeOrders: (s: KeyScope) => scoped(s, "m43", "store-orders", "list"),
+    storeOrder: (s: KeyScope, orderId: string) =>
+      scoped(s, "m43", "store-orders", "detail", orderId),
+    storeSubscriptions: (s: KeyScope) => scoped(s, "m43", "store-subscriptions"),
+    affiliates: (s: KeyScope) => scoped(s, "m43", "affiliates"),
+    affiliateConversions: (s: KeyScope) => scoped(s, "m43", "affiliate-conversions"),
+  },
   m46: {
     engagementSnapshots: (s: KeyScope, learnerId: string | null) =>
       scoped(s, "m46", "engagement", learnerId),

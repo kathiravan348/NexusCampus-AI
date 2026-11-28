@@ -106,6 +106,8 @@ export * from "./modules/m38";
 export * from "./modules/m39";
 export * from "./modules/m40";
 export * from "./modules/m41";
+export * from "./modules/m42";
+export * from "./modules/m43";
 export * from "./modules/m46";
 export * from "./modules/m83";
 export * from "./modules/m84";
