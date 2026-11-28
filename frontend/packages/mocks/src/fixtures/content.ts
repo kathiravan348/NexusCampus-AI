@@ -146,7 +146,7 @@ export const CONTENT_ITEMS: readonly ContentItem[] = [
     I.riversideSchool,
     "lesson",
     "Analytical Essay Structure (Draft)",
-    "hi-IN",
+    "en-GB",
     O.rvEngWrite,
     PERSON.rvTom,
     {
@@ -198,7 +198,7 @@ export const CONTENT_ITEMS: readonly ContentItem[] = [
     I.apex,
     "cmi5",
     "Quadratic Discriminant Timed Drill (cmi5)",
-    "ta-IN",
+    "en-IN",
     O.axAlgQuad,
     PERSON.axMeena,
     {
