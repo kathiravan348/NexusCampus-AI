@@ -33,15 +33,16 @@
 | NEX-256 | Contracts (M33): negative marking — item penalties, signed response and attempt scores (NEX-218 review follow-up) | B | done | Claude | 247, 218 |
 | NEX-259 | Stage 4 access (mock only, D87): permission codes, system-role grants, module entitlements, en / hi / ta texts | B | done | Codex | 210–219, 247–256 |
 | NEX-220 | Fixtures: M29, M30, M31 — outcomes, syllabus, lesson plans, course spaces, content for the 5 demo tenants and the Group | B | done | Gemini | 210–212, 259 |
-| NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | planned | — | 213, 214, 247, 248, 256, 220 |
+| NEX-221 | Fixtures: M32, M33, M35, M46 — assignments, question banks and tests, mastery and tutor, early warning | B | done | Gemini | 213, 214, 247, 248, 256, 220 |
 | NEX-257 | Fixtures: M34, M36 — proctoring, live classes, `live_session` course items | B | planned | — | 215, 249, 221 |
-| NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | changes-requested | Codex | 216, 250, 251, 220 |
-| NEX-258 | Fixtures: M39–M45 — library, test prep, session courses, higher-ed, store, surveys, credentials | B | draft | — | 217–219, 252–255, 257 |
+| NEX-260 | Fixtures: M37, M38, M91 — early years, inclusion, media and portfolios — split from NEX-257 | B | ready-for-review | Codex | 216, 250, 251, 220 |
+| NEX-258 | Fixtures: M39–M45 — library, test prep, session courses, higher-ed, store, surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) | B | draft | — | 217–219, 252–255, 257 |
 | NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | done | Codex | 220, 259 |
 | NEX-223 | MSW handlers + services: M32, M33, M34, M35 (anonymous peer reviewers hidden from authors, NEX-213; learners get `QuestionDelivery` only, NEX-247) | B | draft | — | 221, 257, 222 |
-| NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 (adds the NEX-260 exports to `fixtures/index.ts`) | B | draft | — | 257, 260, 223 |
+| NEX-224 | MSW handlers + services: M36, M37, M38, M91, M46 (adds the NEX-260 exports to `fixtures/index.ts`; merges `MEDIA_SHARING_CONSENTS` into consents) | B | draft | — | 257, 260, 223 |
 | NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 258, 224 |
-| NEX-226 | M29 Curriculum & lesson planning | C | draft | — | 222 |
+| NEX-226 | M29 Curriculum & lesson planning: outcomes, syllabus and coverage, draft lesson plans (offline L2 writes) | C | planned | — | 222 |
+| NEX-261 | M29 lesson-plan workflow: submit, approve / return, delivered, coverage updates — split from NEX-226 | C | draft | — | 226 |
 | NEX-227 | M30 LMS classrooms & courses | C | draft | — | 222, 226 |
 | NEX-228 | M31 Content authoring studio (accessibility check before publish) | C | draft | — | 222, 227 |
 | NEX-229 | M32 Homework & assignments (offline L2 submit) | C | draft | — | 223, 228 |

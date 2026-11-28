@@ -12,6 +12,7 @@ import type {
 } from "@nexus/contracts";
 import { INSTITUTION as I, PERSON, TENANT as T } from "./ids";
 import { LEARNER as L } from "./ids-stage3";
+import { QUESTION_ITEM as QI } from "./ids-stage4-assess";
 import {
   CONTENT_ASSET as A,
   CONTENT_ATTEMPT as ATT,
@@ -137,6 +138,7 @@ export const CONTENT_ITEMS: readonly ContentItem[] = [
         },
         { type: "video", assetId: A.rvFractionClip, captionAssetIds: [A.rvFractionCaptions] },
         { type: "embed", url: "https://interactive.example.edu/fractions-wall" },
+        { type: "question", questionId: QI.rvFracChoice },
       ],
     },
   ),

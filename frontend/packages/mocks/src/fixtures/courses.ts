@@ -1,6 +1,5 @@
 import type {
   CourseItem,
-  CourseItemKind,
   CourseModule,
   CourseProgress,
   CourseSpace,
@@ -11,6 +10,7 @@ import { CLASS_GROUPS, SUBJECT_OFFERINGS } from "./academics";
 import { ACADEMIC_CALENDARS } from "./calendars";
 import { INSTITUTION as I, PERSON, TENANT as T } from "./ids";
 import { LEARNER as L, OFFERING as OFF } from "./ids-stage3";
+import { ASSESS_COURSE_ITEM as AI, ASSIGNMENT as AG, ONLINE_TEST as OT } from "./ids-stage4-assess";
 import {
   CONTENT_ITEM as CI,
   COURSE_ITEM as IT,
@@ -205,43 +205,40 @@ export const DISCUSSION_POSTS: readonly DiscussionPost[] = (
   };
 });
 
-type ItemOpts = Partial<
-  Pick<CourseItem, "refId" | "url" | "required" | "completion" | "passMarkBps">
->;
+const ITEM_DEFAULTS = {
+  refId: null,
+  url: null,
+  required: true,
+  completion: "view" as const,
+  passMarkBps: null,
+  dueAt: null,
+  published: true,
+};
 
 function item(
   id: string,
   moduleId: string,
-  kind: CourseItemKind,
+  kind: CourseItem["kind"],
   title: string,
   order: number,
-  opts?: ItemOpts,
+  opts?: Partial<CourseItem>,
 ): CourseItem {
   const mod = COURSE_MODULES.find((row) => row.id === moduleId);
   if (!mod) throw new Error(`Missing course module ${moduleId}`);
-  return {
-    id,
-    tenantId: mod.tenantId,
-    moduleId,
-    kind,
-    title,
-    order,
-    refId: opts?.refId ?? null,
-    url: opts?.url ?? null,
-    required: opts?.required ?? true,
-    completion: opts?.completion ?? "view",
-    passMarkBps: opts?.passMarkBps ?? null,
-    dueAt: null,
-    published: true,
-  };
+  return { id, tenantId: mod.tenantId, moduleId, kind, title, order, ...ITEM_DEFAULTS, ...opts };
 }
 
+const due = (d: string) => `${d}T16:00:00Z`;
 const link = (id: string, m: string, title: string, o: number, slug: string) =>
   item(id, m, "link", title, o, { url: `https://practice.example.edu/${slug}` });
 const disc = (id: string, m: string, title: string, o: number, refId: string) =>
   item(id, m, "discussion", title, o, { refId, required: false, completion: "none" });
 const cnt = (id: string, m: string, t: string, o: number, refId: string, bps?: number) =>
-  item(id, m, "content", t, o, { refId, completion: bps ? "pass" : "view", passMarkBps: bps });
+  item(id, m, "content", t, o, bps ? { refId, completion: "pass", passMarkBps: bps } : { refId });
+const asg = (id: string, m: string, t: string, o: number, r: string, d: string) =>
+  item(id, m, "assignment", t, o, { refId: r, completion: "submit", dueAt: due(d) });
+const tst = (id: string, m: string, t: string, o: number, r: string, bps: number, d: string) =>
+  item(id, m, "test", t, o, { refId: r, completion: "pass", passMarkBps: bps, dueAt: due(d) });
 
 export const COURSE_ITEMS: readonly CourseItem[] = [
   item(IT.lsStoryIntro, CM.lsStory[0], "page", "Welcome to Story Circle", 1),
@@ -250,7 +247,9 @@ export const COURSE_ITEMS: readonly CourseItem[] = [
   cnt(IT.rvY5MathLesson, CM.rvY5Math[0], "Equivalent Fractions", 1, CI.rvFractionsLesson),
   link(IT.rvY5MathLink, CM.rvY5Math[1], "Fraction Bar", 1, "fractions"),
   disc(IT.rvY5MathDiscuss, CM.rvY5Math[1], "Fractions Q&A", 2, DT.rvMathQna),
+  asg(AI.rvY5MathAssign, CM.rvY5Math[1], "Fractions Set", 3, AG.rvFracPractice, "2026-09-25"),
   item(IT.rvY5MathFile, CM.rvY5Math[2], "file", "Review Worksheet PDF", 1),
+  tst(AI.rvY5MathQuiz, CM.rvY5Math[2], "Fractions Quiz", 2, OT.rvFracQuiz, 6000, "2026-09-28"),
   cnt(IT.rvY7SciVideo, CM.rvY7Sci[0], "Water Cycle Video", 1, CI.rvWaterVideo),
   item(IT.rvY7HistPage, CM.rvY7Hist[0], "page", "Reading Primary Sources", 1),
   item(IT.rvY9EngFile, CM.rvY9Eng[0], "file", "Thesis Checklist Handout", 1),
@@ -260,8 +259,10 @@ export const COURSE_ITEMS: readonly CourseItem[] = [
   item(IT.nbCs101Intro, CM.nbCs101[0], "page", "CS101 Syllabus & Setup", 1),
   cnt(IT.nbCs101Lab, CM.nbCs101[0], "SCORM Lab", 2, CI.nbScormLab, 7000),
   disc(IT.nbCs101Discuss, CM.nbCs101[1], "Loops Lab Forum", 1, DT.nbCs101Lab),
+  asg(AI.nbCs101Assign, CM.nbCs101[1], "Control-Flow Lab", 2, AG.nbAlgoLab, "2026-09-24"),
   item(IT.axAlgIntro, CM.axAlgebra[0], "page", "Quadratic Formula Sheet", 1),
   cnt(IT.axAlgDrill, CM.axAlgebra[1], "cmi5 Drill", 1, CI.axCmi5Drill, 7500),
+  tst(AI.axAlgMock, CM.axAlgebra[1], "STEM Timed Mock 1", 2, OT.axMock, 7000, "2026-09-30"),
   item(IT.hmPianoIntro, CM.hmPiano[0], "page", "Warm-Up Practice Routine", 1),
   cnt(IT.hmPianoAudio, CM.hmPiano[1], "Interval Track", 1, CI.hmEarAudio),
   item(IT.hmSightIntro, CM.hmSightRead[0], "page", "Daily Sight-Reading Plan", 1),
