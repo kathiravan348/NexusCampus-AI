@@ -400,6 +400,10 @@
     "valid": true
   },
   {
+    "text": "AI की सहायता से तैयार किया गया। इसे प्रकाशित करने से पहले किसी व्यक्ति द्वारा समीक्षा आवश्यक है।",
+    "valid": true
+  },
+  {
     "text": "AI के लिए अभिभावक की सहमति",
     "valid": true
   },
@@ -488,6 +492,14 @@
     "valid": true
   },
   {
+    "text": "AI உதவி பெற்றது",
+    "valid": true
+  },
+  {
+    "text": "AI உதவியுடன் உருவாக்கப்பட்டது. வெளியிடுவதற்கு முன் ஒருவர் இதை மதிப்பாய்வு செய்ய வேண்டும்.",
+    "valid": true
+  },
+  {
     "text": "AI உருவாக்கியது",
     "valid": true
   },
@@ -520,7 +532,15 @@
     "valid": true
   },
   {
+    "text": "AI-assisted",
+    "valid": true
+  },
+  {
     "text": "AI-generated",
+    "valid": true
+  },
+  {
+    "text": "AI-सहायता प्राप्त",
     "valid": true
   },
   {
@@ -589,6 +609,18 @@
   },
   {
     "text": "Accessibility",
+    "valid": true
+  },
+  {
+    "text": "Accessibility check",
+    "valid": true
+  },
+  {
+    "text": "Accessibility check finished.",
+    "valid": true
+  },
+  {
+    "text": "Accessibility check queued offline. It will sync when you reconnect.",
     "valid": true
   },
   {
@@ -824,6 +856,10 @@
     "valid": true
   },
   {
+    "text": "Alt text: {altText}",
+    "valid": true
+  },
+  {
     "text": "Alumni",
     "valid": true
   },
@@ -936,6 +972,10 @@
     "valid": true
   },
   {
+    "text": "Archived items cannot be published.",
+    "valid": true
+  },
+  {
     "text": "Areas",
     "valid": true
   },
@@ -985,6 +1025,10 @@
   },
   {
     "text": "Assets",
+    "valid": true
+  },
+  {
+    "text": "Assets could not be loaded.",
     "valid": true
   },
   {
@@ -1064,6 +1108,10 @@
     "valid": true
   },
   {
+    "text": "Audio",
+    "valid": true
+  },
+  {
     "text": "Audit & privacy",
     "valid": true
   },
@@ -1101,6 +1149,10 @@
   },
   {
     "text": "Back",
+    "valid": true
+  },
+  {
+    "text": "Back to content",
     "valid": true
   },
   {
@@ -1168,6 +1220,10 @@
     "valid": true
   },
   {
+    "text": "Block {number}",
+    "valid": true
+  },
+  {
     "text": "Body and UI font",
     "valid": true
   },
@@ -1201,6 +1257,10 @@
   },
   {
     "text": "Browse learner records and open a profile for enrolments, documents and family links.",
+    "valid": true
+  },
+  {
+    "text": "Browse learning content, review lesson blocks and assets, check accessibility, and publish ready items.",
     "valid": true
   },
   {
@@ -1312,6 +1372,10 @@
     "valid": true
   },
   {
+    "text": "Captions",
+    "valid": true
+  },
+  {
     "text": "Card",
     "valid": true
   },
@@ -1405,6 +1469,10 @@
   },
   {
     "text": "Check your updates and open your timetable, attendance, report cards, documents and messages.",
+    "valid": true
+  },
+  {
+    "text": "Checked {time}",
     "valid": true
   },
   {
@@ -1653,6 +1721,22 @@
   },
   {
     "text": "Contacted",
+    "valid": true
+  },
+  {
+    "text": "Content",
+    "valid": true
+  },
+  {
+    "text": "Content item published.",
+    "valid": true
+  },
+  {
+    "text": "Content items",
+    "valid": true
+  },
+  {
+    "text": "Content library could not be loaded.",
     "valid": true
   },
   {
@@ -2164,6 +2248,10 @@
     "valid": true
   },
   {
+    "text": "Document",
+    "valid": true
+  },
+  {
     "text": "Document kind",
     "valid": true
   },
@@ -2220,6 +2308,10 @@
     "valid": true
   },
   {
+    "text": "Drafted with AI. A person must review and publish it.",
+    "valid": true
+  },
+  {
     "text": "Drawn signature",
     "valid": true
   },
@@ -2253,6 +2345,10 @@
   },
   {
     "text": "Due {time}",
+    "valid": true
+  },
+  {
+    "text": "Duration",
     "valid": true
   },
   {
@@ -2341,6 +2437,14 @@
   },
   {
     "text": "Emails",
+    "valid": true
+  },
+  {
+    "text": "Embed",
+    "valid": true
+  },
+  {
+    "text": "Embedded host: {host}",
     "valid": true
   },
   {
@@ -2768,6 +2872,10 @@
     "valid": true
   },
   {
+    "text": "Fix the errors to publish",
+    "valid": true
+  },
+  {
     "text": "Fix the message syntax, for example a missing closing brace.",
     "valid": true
   },
@@ -3060,6 +3168,10 @@
     "valid": true
   },
   {
+    "text": "Image",
+    "valid": true
+  },
+  {
     "text": "Images and text",
     "valid": true
   },
@@ -3105,6 +3217,10 @@
   },
   {
     "text": "In progress",
+    "valid": true
+  },
+  {
+    "text": "In review",
     "valid": true
   },
   {
@@ -3209,6 +3325,10 @@
   },
   {
     "text": "Instructor",
+    "valid": true
+  },
+  {
+    "text": "Interactive lessons, media, packages, accessibility checks and publishing.",
     "valid": true
   },
   {
@@ -3428,11 +3548,19 @@
     "valid": true
   },
   {
+    "text": "Last updated",
+    "valid": true
+  },
+  {
     "text": "Late",
     "valid": true
   },
   {
     "text": "Later",
+    "valid": true
+  },
+  {
+    "text": "Launch path: {path}",
     "valid": true
   },
   {
@@ -3484,6 +3612,10 @@
     "valid": true
   },
   {
+    "text": "Learning package",
+    "valid": true
+  },
+  {
     "text": "Leave request",
     "valid": true
   },
@@ -3505,6 +3637,10 @@
   },
   {
     "text": "Lesson",
+    "valid": true
+  },
+  {
+    "text": "Lesson blocks",
     "valid": true
   },
   {
@@ -3533,6 +3669,10 @@
   },
   {
     "text": "Lesson plans could not be loaded.",
+    "valid": true
+  },
+  {
+    "text": "Lessons, media and learning packages for your institution will appear here.",
     "valid": true
   },
   {
@@ -3644,6 +3784,10 @@
     "valid": true
   },
   {
+    "text": "Low colour contrast",
+    "valid": true
+  },
+  {
     "text": "Lowercase",
     "valid": true
   },
@@ -3725,6 +3869,10 @@
   },
   {
     "text": "Manage your institution profile, campuses, regional formats, and academic calendar.",
+    "valid": true
+  },
+  {
+    "text": "Manifest ID: {id}",
     "valid": true
   },
   {
@@ -3909,6 +4057,18 @@
   },
   {
     "text": "Minutes late",
+    "valid": true
+  },
+  {
+    "text": "Missing alt text",
+    "valid": true
+  },
+  {
+    "text": "Missing audio transcript",
+    "valid": true
+  },
+  {
+    "text": "Missing video captions",
     "valid": true
   },
   {
@@ -4168,6 +4328,10 @@
     "valid": true
   },
   {
+    "text": "No accessibility issues found",
+    "valid": true
+  },
+  {
     "text": "No active sessions.",
     "valid": true
   },
@@ -4256,6 +4420,14 @@
     "valid": true
   },
   {
+    "text": "No content matches this status",
+    "valid": true
+  },
+  {
+    "text": "No content yet",
+    "valid": true
+  },
+  {
     "text": "No course spaces yet",
     "valid": true
   },
@@ -4321,6 +4493,10 @@
   },
   {
     "text": "No fields for this record type",
+    "valid": true
+  },
+  {
+    "text": "No files attached to this item.",
     "valid": true
   },
   {
@@ -4621,6 +4797,10 @@
   },
   {
     "text": "Normal",
+    "valid": true
+  },
+  {
+    "text": "Not checked",
     "valid": true
   },
   {
@@ -4969,6 +5149,10 @@
   },
   {
     "text": "POPIA (தென்னாப்பிரிக்கா)",
+    "valid": true
+  },
+  {
+    "text": "Package",
     "valid": true
   },
   {
@@ -5340,6 +5524,10 @@
     "valid": true
   },
   {
+    "text": "Publish queued offline. It will sync when you reconnect.",
+    "valid": true
+  },
+  {
     "text": "Publish report cards",
     "valid": true
   },
@@ -5357,6 +5545,14 @@
   },
   {
     "text": "Purpose",
+    "valid": true
+  },
+  {
+    "text": "Question",
+    "valid": true
+  },
+  {
+    "text": "Question ID: {id}",
     "valid": true
   },
   {
@@ -5680,6 +5876,10 @@
     "valid": true
   },
   {
+    "text": "Review & publish",
+    "valid": true
+  },
+  {
     "text": "Review attendance, fees, admissions and enrolment across your institution.",
     "valid": true
   },
@@ -5880,6 +6080,14 @@
     "valid": true
   },
   {
+    "text": "Run accessibility check",
+    "valid": true
+  },
+  {
+    "text": "Run an accessibility check before publishing.",
+    "valid": true
+  },
+  {
     "text": "Running",
     "valid": true
   },
@@ -5893,6 +6101,14 @@
   },
   {
     "text": "SCIM மூலம் பயனர்களை உருவாக்கு",
+    "valid": true
+  },
+  {
+    "text": "SCORM 1.2",
+    "valid": true
+  },
+  {
+    "text": "SCORM 2004",
     "valid": true
   },
   {
@@ -6265,6 +6481,10 @@
   },
   {
     "text": "Skipped",
+    "valid": true
+  },
+  {
+    "text": "Skipped heading level",
     "valid": true
   },
   {
@@ -6672,6 +6892,10 @@
     "valid": true
   },
   {
+    "text": "That action could not be completed. Try again.",
+    "valid": true
+  },
+  {
     "text": "That did not work. Reload the page and try again.",
     "valid": true
   },
@@ -6905,6 +7129,14 @@
   },
   {
     "text": "This is your account. Another administrator must change its status.",
+    "valid": true
+  },
+  {
+    "text": "This item cannot be published in its current status.",
+    "valid": true
+  },
+  {
+    "text": "This item is published.",
     "valid": true
   },
   {
@@ -7364,6 +7596,10 @@
     "valid": true
   },
   {
+    "text": "Video",
+    "valid": true
+  },
+  {
     "text": "Video call",
     "valid": true
   },
@@ -7600,6 +7836,10 @@
     "valid": true
   },
   {
+    "text": "Whole item",
+    "valid": true
+  },
+  {
     "text": "Whole row",
     "valid": true
   },
@@ -7692,6 +7932,10 @@
     "valid": true
   },
   {
+    "text": "You are offline. Actions will queue on this device and sync when you reconnect.",
+    "valid": true
+  },
+  {
     "text": "You are offline. Cached texts can be browsed, but saving, removing, rolling back, or importing overrides requires a connection.",
     "valid": true
   },
@@ -7733,6 +7977,10 @@
   },
   {
     "text": "You decide when Nexus support staff may see your data, for how long, and what they did. Key material is never shown.",
+    "valid": true
+  },
+  {
+    "text": "You do not have permission for this action.",
     "valid": true
   },
   {
@@ -7801,6 +8049,10 @@
   },
   {
     "text": "cloud service",
+    "valid": true
+  },
+  {
+    "text": "cmi5",
     "valid": true
   },
   {
@@ -7884,6 +8136,10 @@
     "valid": true
   },
   {
+    "text": "xAPI",
+    "valid": true
+  },
+  {
     "text": "{attempts, plural, =0 {Not tried yet} one {Tried once} other {Tried # times}} · queued {created}",
     "valid": true
   },
@@ -7916,11 +8172,19 @@
     "valid": true
   },
   {
+    "text": "{count, plural, =0 {No captions} one {# caption track} other {# caption tracks}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, =0 {No changes are waiting on this device.} one {# change waiting on this device will be lost.} other {# changes waiting on this device will be lost.}}",
     "valid": true
   },
   {
     "text": "{count, plural, =0 {No learners with recorded progress yet} one {# learner with recorded progress} other {# learners with recorded progress}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {No outcomes} one {# outcome} other {# outcomes}}",
     "valid": true
   },
   {
@@ -7940,6 +8204,14 @@
     "valid": true
   },
   {
+    "text": "{count, plural, =0 {कोई कैप्शन नहीं} one {# कैप्शन ट्रैक} other {# कैप्शन ट्रैक}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {कोई परिणाम नहीं} one {# परिणाम} other {# परिणाम}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, =0 {இந்தச் சாதனத்தில் எந்த மாற்றமும் காத்திருக்கவில்லை.} one {இந்தச் சாதனத்தில் காத்திருக்கும் # மாற்றம் இழக்கப்படும்.} other {இந்தச் சாதனத்தில் காத்திருக்கும் # மாற்றங்கள் இழக்கப்படும்.}}",
     "valid": true
   },
@@ -7949,6 +8221,14 @@
   },
   {
     "text": "{count, plural, =0 {பதில்கள் இல்லை} one {# பதில்} other {# பதில்கள்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {வசனங்கள் இல்லை} one {# வசனத் தடம்} other {# வசனத் தடங்கள்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, =0 {விளைவுகள் இல்லை} one {# விளைவு} other {# விளைவுகள்}}",
     "valid": true
   },
   {
@@ -7977,6 +8257,10 @@
   },
   {
     "text": "{count, plural, one {# contrast issue blocks saving} other {# contrast issues block saving}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# error} other {# errors}}",
     "valid": true
   },
   {
@@ -8032,6 +8316,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# warning} other {# warnings}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# अनुमति} other {# अनुमतियाँ}}",
     "valid": true
   },
@@ -8072,6 +8360,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# चेतावनी} other {# चेतावनियाँ}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# जोड़ा गया} other {# जोड़े गए}}",
     "valid": true
   },
@@ -8081,6 +8373,10 @@
   },
   {
     "text": "{count, plural, one {# टेक्स्ट ओवरराइड लागू किया गया} other {# टेक्स्ट ओवरराइड लागू किए गए}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# त्रुटि} other {# त्रुटियाँ}}",
     "valid": true
   },
   {
@@ -8132,6 +8428,10 @@
     "valid": true
   },
   {
+    "text": "{count, plural, one {# எச்சரிக்கை} other {# எச்சரிக்கைகள்}}",
+    "valid": true
+  },
+  {
     "text": "{count, plural, one {# ஒத்திசைவு முரண்பாடு} other {# ஒத்திசைவு முரண்பாடுகள்}}",
     "valid": true
   },
@@ -8169,6 +8469,10 @@
   },
   {
     "text": "{count, plural, one {# பாடவேளை / வாரம்} other {# பாடவேளைகள் / வாரம்}}",
+    "valid": true
+  },
+  {
+    "text": "{count, plural, one {# பிழை} other {# பிழைகள்}}",
     "valid": true
   },
   {
@@ -8516,6 +8820,18 @@
     "valid": true
   },
   {
+    "text": "{minutes} min",
+    "valid": true
+  },
+  {
+    "text": "{minutes} मिनट",
+    "valid": true
+  },
+  {
+    "text": "{minutes} நிமி",
+    "valid": true
+  },
+  {
     "text": "{module} is off and hidden from the menu.",
     "valid": true
   },
@@ -8640,6 +8956,18 @@
     "valid": true
   },
   {
+    "text": "{seconds} s",
+    "valid": true
+  },
+  {
+    "text": "{seconds} से.",
+    "valid": true
+  },
+  {
+    "text": "{seconds} வி",
+    "valid": true
+  },
+  {
     "text": "{sent, plural, =0 {Nothing was sent.} one {# change sent.} other {# changes sent.}}",
     "valid": true
   },
@@ -8688,7 +9016,15 @@
     "valid": true
   },
   {
+    "text": "{time} को जाँचा गया",
+    "valid": true
+  },
+  {
     "text": "{time} तक",
+    "valid": true
+  },
+  {
+    "text": "{time} அன்று சரிபார்க்கப்பட்டது",
     "valid": true
   },
   {
@@ -8788,7 +9124,15 @@
     "valid": true
   },
   {
+    "text": "{value} B",
+    "valid": true
+  },
+  {
     "text": "{value} GB",
+    "valid": true
+  },
+  {
+    "text": "{value} KB",
     "valid": true
   },
   {
@@ -8825,6 +9169,10 @@
   },
   {
     "text": "अंक सहेजे नहीं जा सके। मूल्यांकन जाँचें और फिर प्रयास करें।",
+    "valid": true
+  },
+  {
+    "text": "अंतिम अपडेट",
     "valid": true
   },
   {
@@ -9284,6 +9632,10 @@
     "valid": true
   },
   {
+    "text": "अभी कोई सामग्री नहीं है",
+    "valid": true
+  },
+  {
     "text": "अभी कोई सिंगल साइन-ऑन प्रदाता सेट नहीं है।",
     "valid": true
   },
@@ -9444,6 +9796,10 @@
     "valid": true
   },
   {
+    "text": "आप ऑफ़लाइन हैं। कार्य इस डिवाइस पर कतार में रहेंगे और पुनः जुड़ने पर सिंक हो जाएँगे।",
+    "valid": true
+  },
+  {
     "text": "आप ऑफ़लाइन हैं। कैश किए गए टेक्स्ट देखे जा सकते हैं, लेकिन ओवरराइड सहेजने, हटाने, वापस लाने या आयात करने के लिए कनेक्शन चाहिए।",
     "valid": true
   },
@@ -9588,11 +9944,19 @@
     "valid": true
   },
   {
+    "text": "आपके संस्थान के पाठ, मीडिया और शिक्षण पैकेज यहाँ दिखाई देंगे।",
+    "valid": true
+  },
+  {
     "text": "आपके सभी बच्चों का कुल योग",
     "valid": true
   },
   {
     "text": "आपको आयात कार्य दर्ज करने की अनुमति नहीं है।",
+    "valid": true
+  },
+  {
+    "text": "आपको इस कार्य की अनुमति नहीं है।",
     "valid": true
   },
   {
@@ -9733,6 +10097,10 @@
   },
   {
     "text": "इंटरफ़ेस के टेक्स्ट खोजें, हर भाषा में शब्द बदलें, इतिहास देखें और ओवरराइड आयात या निर्यात करें।",
+    "valid": true
+  },
+  {
+    "text": "इंटरैक्टिव पाठ, मीडिया, पैकेज, सुगम्यता जाँच और प्रकाशन।",
     "valid": true
   },
   {
@@ -9952,11 +10320,19 @@
     "valid": true
   },
   {
+    "text": "इस सामग्री से कोई फ़ाइल जुड़ी नहीं है।",
+    "valid": true
+  },
+  {
     "text": "इस सूची में कोई विद्यार्थी नहीं है",
     "valid": true
   },
   {
     "text": "इस सूची में कोई शिक्षार्थी नहीं है",
+    "valid": true
+  },
+  {
+    "text": "इस स्थिति से कोई सामग्री मेल नहीं खाती",
     "valid": true
   },
   {
@@ -10188,6 +10564,14 @@
     "valid": true
   },
   {
+    "text": "एम्बेड",
+    "valid": true
+  },
+  {
+    "text": "एम्बेड होस्ट: {host}",
+    "valid": true
+  },
+  {
     "text": "एलर्जी",
     "valid": true
   },
@@ -10241,6 +10625,14 @@
   },
   {
     "text": "ऑडिट लॉग, सहमतियाँ और डेटा अनुरोध।",
+    "valid": true
+  },
+  {
+    "text": "ऑडियो",
+    "valid": true
+  },
+  {
+    "text": "ऑडियो प्रतिलेख अनुपस्थित",
     "valid": true
   },
   {
@@ -10385,6 +10777,10 @@
   },
   {
     "text": "कभी नहीं",
+    "valid": true
+  },
+  {
+    "text": "कम रंग कंट्रास्ट",
     "valid": true
   },
   {
@@ -10680,6 +11076,10 @@
     "valid": true
   },
   {
+    "text": "कैप्शन",
+    "valid": true
+  },
+  {
     "text": "कैलेंडर",
     "valid": true
   },
@@ -10881,6 +11281,10 @@
   },
   {
     "text": "कोई सीमा नहीं",
+    "valid": true
+  },
+  {
+    "text": "कोई सुगम्यता समस्या नहीं मिली",
     "valid": true
   },
   {
@@ -11140,6 +11544,10 @@
     "valid": true
   },
   {
+    "text": "चित्र",
+    "valid": true
+  },
+  {
     "text": "चुना गया कक्ष इस संस्था के लिए मान्य नहीं है।",
     "valid": true
   },
@@ -11317,6 +11725,10 @@
   },
   {
     "text": "जर्नल प्रविष्टि दर्ज हो गई।",
+    "valid": true
+  },
+  {
+    "text": "जाँच नहीं हुई",
     "valid": true
   },
   {
@@ -12240,6 +12652,10 @@
     "valid": true
   },
   {
+    "text": "पाठ ब्लॉक",
+    "valid": true
+  },
+  {
     "text": "पाठ योजना ऑफ़लाइन सहेजी गई। सिंक की प्रतीक्षा में है।",
     "valid": true
   },
@@ -12277,6 +12693,10 @@
   },
   {
     "text": "पाठ योजनाएँ लोड नहीं हो सकीं।",
+    "valid": true
+  },
+  {
+    "text": "पाठ्य",
     "valid": true
   },
   {
@@ -12580,6 +13000,10 @@
     "valid": true
   },
   {
+    "text": "पैकेज",
+    "valid": true
+  },
+  {
     "text": "पोस्ट करने से पहले उत्तर लिखें।",
     "valid": true
   },
@@ -12596,11 +13020,23 @@
     "valid": true
   },
   {
+    "text": "प्रकाशन ऑफ़लाइन कतार में है। पुनः जुड़ने पर यह सिंक हो जाएगा।",
+    "valid": true
+  },
+  {
     "text": "प्रकाशन की तारीख़ {date}",
     "valid": true
   },
   {
     "text": "प्रकाशित",
+    "valid": true
+  },
+  {
+    "text": "प्रकाशित करने के लिए त्रुटियाँ ठीक करें",
+    "valid": true
+  },
+  {
+    "text": "प्रकाशित करने से पहले सुगम्यता जाँच चलाएँ।",
     "valid": true
   },
   {
@@ -12789,6 +13225,14 @@
   },
   {
     "text": "प्रशिक्षु",
+    "valid": true
+  },
+  {
+    "text": "प्रश्न",
+    "valid": true
+  },
+  {
+    "text": "प्रश्न आईडी: {id}",
     "valid": true
   },
   {
@@ -13260,6 +13704,10 @@
     "valid": true
   },
   {
+    "text": "ब्लॉक {number}",
+    "valid": true
+  },
+  {
     "text": "भारत (IN)",
     "valid": true
   },
@@ -13592,6 +14040,10 @@
     "valid": true
   },
   {
+    "text": "मैनिफ़ेस्ट आईडी: {id}",
+    "valid": true
+  },
+  {
     "text": "मैन्युअल",
     "valid": true
   },
@@ -13645,6 +14097,10 @@
   },
   {
     "text": "यह काम नहीं हुआ। फिर से कोशिश करें।",
+    "valid": true
+  },
+  {
+    "text": "यह कार्य पूरा नहीं हो सका। फिर से कोशिश करें।",
     "valid": true
   },
   {
@@ -13721,6 +14177,14 @@
   },
   {
     "text": "यह संस्थान फ़्रीज़ किया गया है",
+    "valid": true
+  },
+  {
+    "text": "यह सामग्री अपनी वर्तमान स्थिति में प्रकाशित नहीं की जा सकती।",
+    "valid": true
+  },
+  {
+    "text": "यह सामग्री प्रकाशित है।",
     "valid": true
   },
   {
@@ -14024,6 +14488,10 @@
     "valid": true
   },
   {
+    "text": "लॉन्च पथ: {path}",
+    "valid": true
+  },
+  {
     "text": "लोगो URL",
     "valid": true
   },
@@ -14228,6 +14696,14 @@
     "valid": true
   },
   {
+    "text": "वीडियो",
+    "valid": true
+  },
+  {
+    "text": "वीडियो कैप्शन अनुपस्थित",
+    "valid": true
+  },
+  {
     "text": "वीडियो कॉल",
     "valid": true
   },
@@ -14249,6 +14725,14 @@
   },
   {
     "text": "वैकल्पिक",
+    "valid": true
+  },
+  {
+    "text": "वैकल्पिक पाठ अनुपस्थित",
+    "valid": true
+  },
+  {
+    "text": "वैकल्पिक पाठ: {altText}",
     "valid": true
   },
   {
@@ -14320,6 +14804,18 @@
     "valid": true
   },
   {
+    "text": "शिक्षण पैकेज",
+    "valid": true
+  },
+  {
+    "text": "शिक्षण सामग्री",
+    "valid": true
+  },
+  {
+    "text": "शिक्षण सामग्री देखें, पाठ ब्लॉक और संसाधनों की समीक्षा करें, सुगम्यता जाँचें और तैयार सामग्री प्रकाशित करें।",
+    "valid": true
+  },
+  {
     "text": "शिक्षार्थियों की प्रतिबंधित जानकारी देखें",
     "valid": true
   },
@@ -14381,6 +14877,10 @@
   },
   {
     "text": "शीर्षक",
+    "valid": true
+  },
+  {
+    "text": "शीर्षक स्तर छूटा हुआ है",
     "valid": true
   },
   {
@@ -14528,6 +15028,10 @@
     "valid": true
   },
   {
+    "text": "संग्रहीत सामग्री प्रकाशित नहीं की जा सकती।",
+    "valid": true
+  },
+  {
     "text": "संचार अनुभाग",
     "valid": true
   },
@@ -14648,6 +15152,10 @@
     "valid": true
   },
   {
+    "text": "संपूर्ण सामग्री",
+    "valid": true
+  },
+  {
     "text": "संयुक्त राज्य (US)",
     "valid": true
   },
@@ -14673,6 +15181,10 @@
   },
   {
     "text": "संसाधन",
+    "valid": true
+  },
+  {
+    "text": "संसाधन लोड नहीं हो सके।",
     "valid": true
   },
   {
@@ -14976,7 +15488,15 @@
     "valid": true
   },
   {
+    "text": "समीक्षा और प्रकाशन",
+    "valid": true
+  },
+  {
     "text": "समीक्षा करें",
+    "valid": true
+  },
+  {
+    "text": "समीक्षा में",
     "valid": true
   },
   {
@@ -15092,7 +15612,23 @@
     "valid": true
   },
   {
+    "text": "सामग्री आइटम",
+    "valid": true
+  },
+  {
     "text": "सामग्री पर जाएँ",
+    "valid": true
+  },
+  {
+    "text": "सामग्री पर वापस जाएँ",
+    "valid": true
+  },
+  {
+    "text": "सामग्री पुस्तकालय लोड नहीं हो सका।",
+    "valid": true
+  },
+  {
+    "text": "सामग्री प्रकाशित की गई।",
     "valid": true
   },
   {
@@ -15201,6 +15737,22 @@
   },
   {
     "text": "सुगम्यता",
+    "valid": true
+  },
+  {
+    "text": "सुगम्यता जाँच",
+    "valid": true
+  },
+  {
+    "text": "सुगम्यता जाँच ऑफ़लाइन कतार में है। पुनः जुड़ने पर यह सिंक हो जाएगी।",
+    "valid": true
+  },
+  {
+    "text": "सुगम्यता जाँच चलाएँ",
+    "valid": true
+  },
+  {
+    "text": "सुगम्यता जाँच पूरी हुई।",
     "valid": true
   },
   {
@@ -15357,6 +15909,10 @@
   },
   {
     "text": "स्थिति के अनुसार छाँटें",
+    "valid": true
+  },
+  {
+    "text": "स्थिति के अनुसार फ़िल्टर करें",
     "valid": true
   },
   {
@@ -15660,6 +16216,26 @@
     "valid": true
   },
   {
+    "text": "அணுகல்தன்மை சரிபார்ப்பு",
+    "valid": true
+  },
+  {
+    "text": "அணுகல்தன்மை சரிபார்ப்பு ஆஃப்லைனில் வரிசையில் வைக்கப்பட்டுள்ளது. மீண்டும் இணையும்போது ஒத்திசைக்கப்படும்.",
+    "valid": true
+  },
+  {
+    "text": "அணுகல்தன்மை சரிபார்ப்பு முடிந்தது.",
+    "valid": true
+  },
+  {
+    "text": "அணுகல்தன்மை சரிபார்ப்பை இயக்கு",
+    "valid": true
+  },
+  {
+    "text": "அணுகல்தன்மை சிக்கல்கள் எதுவும் இல்லை",
+    "valid": true
+  },
+  {
     "text": "அணைக்கப்பட்டால் Assist மறைக்கப்படும்; ஒவ்வொரு திரையும் வழக்கம்போல் இயங்கும்.",
     "valid": true
   },
@@ -15705,6 +16281,10 @@
   },
   {
     "text": "அந்த மொழிக்கு ஏற்கனவே ஒரு பதிப்பு உள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "அந்தச் செயலை நிறைவு செய்ய முடியவில்லை. மீண்டும் முயலவும்.",
     "valid": true
   },
   {
@@ -16144,6 +16724,10 @@
     "valid": true
   },
   {
+    "text": "ஆவணம்",
+    "valid": true
+  },
+  {
     "text": "ஆவணம் கிடைக்கவில்லை",
     "valid": true
   },
@@ -16292,6 +16876,18 @@
     "valid": true
   },
   {
+    "text": "இந்த உருப்படி வெளியிடப்பட்டுள்ளது.",
+    "valid": true
+  },
+  {
+    "text": "இந்த உருப்படியுடன் கோப்புகள் எதுவும் இணைக்கப்படவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "இந்த உருப்படியை அதன் தற்போதைய நிலையில் வெளியிட முடியாது.",
+    "valid": true
+  },
+  {
     "text": "இந்த உரையாடலில் இன்னும் செய்திகள் இல்லை",
     "valid": true
   },
@@ -16345,6 +16941,10 @@
   },
   {
     "text": "இந்த நிறுவல் தனிமைப்படுத்தப்பட்டது: NexusCampus உடன் ஒருபோதும் இணையாது.",
+    "valid": true
+  },
+  {
+    "text": "இந்த நிலைக்குப் பொருந்தும் உள்ளடக்கம் இல்லை",
     "valid": true
   },
   {
@@ -16508,6 +17108,10 @@
     "valid": true
   },
   {
+    "text": "இந்தச் செயலைச் செய்ய உங்களுக்கு அனுமதி இல்லை.",
+    "valid": true
+  },
+  {
     "text": "இந்தத் தேர்வுக்குத் தாள்கள் இல்லை.",
     "valid": true
   },
@@ -16617,6 +17221,10 @@
   },
   {
     "text": "இன்னும் இறக்குமதிப் பணிகள் இல்லை",
+    "valid": true
+  },
+  {
+    "text": "இன்னும் உள்ளடக்கம் இல்லை",
     "valid": true
   },
   {
@@ -17008,6 +17616,10 @@
     "valid": true
   },
   {
+    "text": "உங்கள் நிறுவனத்தின் பாடங்கள், ஊடகங்கள் மற்றும் கற்றல் தொகுப்புகள் இங்கே தோன்றும்.",
+    "valid": true
+  },
+  {
     "text": "உங்கள் நிறுவனத்தின் முக்கிய அளவீடுகளைப் பாருங்கள்.",
     "valid": true
   },
@@ -17097,6 +17709,14 @@
   },
   {
     "text": "உடல்நலக் குறிப்புகள்",
+    "valid": true
+  },
+  {
+    "text": "உட்பொதிக்கப்பட்ட தளம்: {host}",
+    "valid": true
+  },
+  {
+    "text": "உட்பொதிப்பு",
     "valid": true
   },
   {
@@ -17216,7 +17836,27 @@
     "valid": true
   },
   {
+    "text": "உள்ளடக்க உருப்படி வெளியிடப்பட்டது.",
+    "valid": true
+  },
+  {
+    "text": "உள்ளடக்க உருப்படிகள்",
+    "valid": true
+  },
+  {
+    "text": "உள்ளடக்க நூலகத்தை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
     "text": "உள்ளடக்கத்திற்குச் செல்",
+    "valid": true
+  },
+  {
+    "text": "உள்ளடக்கத்திற்குத் திரும்புக",
+    "valid": true
+  },
+  {
+    "text": "ஊடாடும் பாடங்கள், ஊடகங்கள், தொகுப்புகள், அணுகல்தன்மை சரிபார்ப்பு மற்றும் வெளியீடு.",
     "valid": true
   },
   {
@@ -17492,6 +18132,14 @@
     "valid": true
   },
   {
+    "text": "ஒலி",
+    "valid": true
+  },
+  {
+    "text": "ஒலி உரைவடிவம் இல்லை",
+    "valid": true
+  },
+  {
     "text": "ஒலிபரப்பு",
     "valid": true
   },
@@ -17561,6 +18209,10 @@
   },
   {
     "text": "கடைசியாகப் பார்த்தது",
+    "valid": true
+  },
+  {
+    "text": "கடைசியாகப் புதுப்பிக்கப்பட்டது",
     "valid": true
   },
   {
@@ -17816,6 +18468,18 @@
     "valid": true
   },
   {
+    "text": "கற்றல் உள்ளடக்கத்தைப் பாருங்கள், பாடப் பகுதிகளையும் கோப்புகளையும் மதிப்பாய்வு செய்யுங்கள், அணுகல்தன்மையைச் சரிபார்த்து தயாரானவற்றை வெளியிடுங்கள்.",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் உள்ளடக்கம்",
+    "valid": true
+  },
+  {
+    "text": "கற்றல் தொகுப்பு",
+    "valid": true
+  },
+  {
     "text": "கற்றல் விளைவு இணைப்புகளை ஏற்ற முடியவில்லை.",
     "valid": true
   },
@@ -17964,7 +18628,15 @@
     "valid": true
   },
   {
+    "text": "காணொளி",
+    "valid": true
+  },
+  {
     "text": "காணொளி அழைப்பு",
+    "valid": true
+  },
+  {
+    "text": "காணொளி வசனங்கள் இல்லை",
     "valid": true
   },
   {
@@ -17985,6 +18657,10 @@
   },
   {
     "text": "காப்பகத்தில் உள்ளவை",
+    "valid": true
+  },
+  {
+    "text": "காப்பகப்படுத்தப்பட்ட உருப்படிகளை வெளியிட முடியாது.",
     "valid": true
   },
   {
@@ -18041,6 +18717,10 @@
   },
   {
     "text": "கால அட்டவணையை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கால அளவு",
     "valid": true
   },
   {
@@ -18172,6 +18852,10 @@
     "valid": true
   },
   {
+    "text": "குறைந்த நிற வேறுபாடு",
+    "valid": true
+  },
+  {
     "text": "குறைந்தது ஒரு திறந்த பட்டியலையாவது தேர்ந்தெடுக்கவும்.",
     "valid": true
   },
@@ -18293,6 +18977,14 @@
   },
   {
     "text": "கோப்பு வடிவம்",
+    "valid": true
+  },
+  {
+    "text": "கோப்புகளை ஏற்ற முடியவில்லை.",
+    "valid": true
+  },
+  {
+    "text": "கோப்புகள்",
     "valid": true
   },
   {
@@ -19080,6 +19772,10 @@
     "valid": true
   },
   {
+    "text": "தலைப்பு நிலை தவிர்க்கப்பட்டது",
+    "valid": true
+  },
+  {
     "text": "தள இயல்புநிலை",
     "valid": true
   },
@@ -19484,6 +20180,10 @@
     "valid": true
   },
   {
+    "text": "தொகுப்பு",
+    "valid": true
+  },
+  {
     "text": "தொகுப்பு {id}-ஐ மதிப்பாய்வு செய்",
     "valid": true
   },
@@ -19521,6 +20221,10 @@
   },
   {
     "text": "தொடக்க நேரம்",
+    "valid": true
+  },
+  {
+    "text": "தொடக்கப் பாதை: {path}",
     "valid": true
   },
   {
@@ -19900,6 +20604,10 @@
     "valid": true
   },
   {
+    "text": "நிலையின் அடிப்படையில் வடிகட்டு",
+    "valid": true
+  },
+  {
     "text": "நீக்கம்",
     "valid": true
   },
@@ -19913,6 +20621,10 @@
   },
   {
     "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள்",
+    "valid": true
+  },
+  {
+    "text": "நீங்கள் ஆஃப்லைனில் உள்ளீர்கள். செயல்கள் இந்தச் சாதனத்தில் வரிசையில் சேமிக்கப்பட்டு மீண்டும் இணையும்போது ஒத்திசைக்கப்படும்.",
     "valid": true
   },
   {
@@ -20068,6 +20780,10 @@
     "valid": true
   },
   {
+    "text": "பகுதி {number}",
+    "valid": true
+  },
+  {
     "text": "பகுதி செலுத்தப்பட்டது",
     "valid": true
   },
@@ -20149,6 +20865,10 @@
   },
   {
     "text": "படங்கள் மற்றும் உரை",
+    "valid": true
+  },
+  {
+    "text": "படம்",
     "valid": true
   },
   {
@@ -20712,6 +21432,10 @@
     "valid": true
   },
   {
+    "text": "பாடப் பகுதிகள்",
+    "valid": true
+  },
+  {
     "text": "பாடப் பணி",
     "valid": true
   },
@@ -21048,11 +21772,19 @@
     "valid": true
   },
   {
+    "text": "மதிப்பாய்வில்",
+    "valid": true
+  },
+  {
     "text": "மதிப்பாய்வில் உள்ளது",
     "valid": true
   },
   {
     "text": "மதிப்பாய்வு செய்",
+    "valid": true
+  },
+  {
+    "text": "மதிப்பாய்வு மற்றும் வெளியீடு",
     "valid": true
   },
   {
@@ -21328,6 +22060,14 @@
     "valid": true
   },
   {
+    "text": "மாற்று உரை இல்லை",
+    "valid": true
+  },
+  {
+    "text": "மாற்று உரை: {altText}",
+    "valid": true
+  },
+  {
     "text": "மாற்றுச் சான்றிதழ்",
     "valid": true
   },
@@ -21556,6 +22296,10 @@
     "valid": true
   },
   {
+    "text": "முழு உருப்படி",
+    "valid": true
+  },
+  {
     "text": "முழு வரிசை",
     "valid": true
   },
@@ -21597,6 +22341,10 @@
   },
   {
     "text": "மேகக்கணிச் சேவை",
+    "valid": true
+  },
+  {
+    "text": "மேனிஃபெஸ்ட் ஐடி: {id}",
     "valid": true
   },
   {
@@ -21785,6 +22533,10 @@
   },
   {
     "text": "வசதியானது",
+    "valid": true
+  },
+  {
+    "text": "வசனங்கள்",
     "valid": true
   },
   {
@@ -22216,6 +22968,14 @@
     "valid": true
   },
   {
+    "text": "வினா",
+    "valid": true
+  },
+  {
+    "text": "வினா ஐடி: {id}",
+    "valid": true
+  },
+  {
     "text": "வியாழன்",
     "valid": true
   },
@@ -22324,6 +23084,10 @@
     "valid": true
   },
   {
+    "text": "வெளியிட பிழைகளைச் சரிசெய்யவும்",
+    "valid": true
+  },
+  {
     "text": "வெளியிடப்படாதது",
     "valid": true
   },
@@ -22337,6 +23101,14 @@
   },
   {
     "text": "வெளியிடு",
+    "valid": true
+  },
+  {
+    "text": "வெளியிடுவதற்கு முன் அணுகல்தன்மை சரிபார்ப்பை இயக்கவும்.",
+    "valid": true
+  },
+  {
+    "text": "வெளியீடு ஆஃப்லைனில் வரிசையில் வைக்கப்பட்டுள்ளது. மீண்டும் இணையும்போது ஒத்திசைக்கப்படும்.",
     "valid": true
   },
   {
