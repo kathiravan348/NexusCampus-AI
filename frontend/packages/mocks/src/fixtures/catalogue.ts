@@ -5,6 +5,11 @@ import {
   TERMINOLOGY,
   isValidMessage,
 } from "@nexus/i18n/resolve";
+import { STAGE4_PERMISSIONS } from "./stage4-access";
+
+// D87 keeps Stage 4 permission texts out of both backend catalogues until the freeze.
+const mockOnlyKeys = new Set(STAGE4_PERMISSIONS.map(({ descriptionKey }) => descriptionKey));
+const backendMessageKeys = MESSAGE_KEYS.filter((key) => !mockOnlyKeys.has(key));
 
 /** Hand-picked ICU edge cases: what the backend parser must accept or refuse exactly like formatjs. */
 const ICU_EDGE_CASES: readonly string[] = [
@@ -69,9 +74,11 @@ const ICU_EDGE_CASES: readonly string[] = [
 ];
 
 const allCatalogueMessages = (): string[] => {
-  const texts = new Set<string>(Object.values(SOURCE_MESSAGES));
+  const texts = new Set<string>(backendMessageKeys.map((key) => SOURCE_MESSAGES[key]));
   for (const catalog of Object.values(LOCALE_CATALOGS)) {
-    for (const text of Object.values(catalog)) if (text !== undefined) texts.add(text);
+    for (const [key, text] of Object.entries(catalog)) {
+      if (!mockOnlyKeys.has(key) && text !== undefined) texts.add(text);
+    }
   }
   for (const packs of Object.values(TERMINOLOGY)) {
     for (const pack of Object.values(packs)) {
@@ -83,7 +90,7 @@ const allCatalogueMessages = (): string[] => {
 
 /** Known message keys (`backend/src/nexus/modules/m04/message_keys.json`, NEX-054). */
 export function messageKeysJson(): string {
-  return `${JSON.stringify([...MESSAGE_KEYS].sort(), null, 2)}\n`;
+  return `${JSON.stringify([...backendMessageKeys].sort(), null, 2)}\n`;
 }
 
 /** formatjs verdicts for the backend ICU parity test (`backend/tests/m04/icu_cases.json`, NEX-054). */
