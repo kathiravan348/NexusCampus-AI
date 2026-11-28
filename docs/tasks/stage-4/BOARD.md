@@ -40,7 +40,7 @@
 | NEX-263 | Fixtures: M42–M45 — higher-ed, store, surveys, credentials (also the NEX-260 deferred `assignment_submission` and `credential` portfolio entries) — split from NEX-258 | B | draft | — | 219, 252, 253, 255, 258 |
 | NEX-222 | MSW handlers + services: M29, M30, M31; merge Stage 4 access into the mock database | B | done | Codex | 220, 259 |
 | NEX-223 | MSW handlers + services: M32, M33 read (anonymous peer reviewers hidden from authors, NEX-213; learners never get `QuestionItem`; D91) | B | done | Codex | 221, 222 |
-| NEX-262 | MSW handlers + services: M34, M35 — proctoring, mastery, paths and tutor (read) — split from NEX-223 | B | ready-for-review | Gemini | 257, 223 |
+| NEX-262 | MSW handlers + services: M34, M35 — proctoring, mastery, paths and tutor (read) — split from NEX-223 | B | done | Gemini | 257, 223 |
 | NEX-224 | MSW handlers + services: M36, M46 — live classes and early warning (read; risk scores never to families, A-3) | B | planned | — | 257, 221, 262 |
 | NEX-264 | MSW handlers + services: M37, M38, M91 (adds the NEX-260 exports to `fixtures/index.ts`; merges `MEDIA_SHARING_CONSENTS` into consents) — split from NEX-224 | B | draft | — | 260, 224 |
 | NEX-225 | MSW handlers + services: M39–M45 | B | draft | — | 258, 224 |
